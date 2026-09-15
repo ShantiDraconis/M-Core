@@ -1,4 +1,5 @@
 import MCore.Core
+import MCore.CertificateKernel
 import MCore.A1Amplitude
 import MCore.A2SelfRef
 import MCore.A3Zero
