@@ -14,14 +14,14 @@ def zeroPath (c t : ℝ) : ℝ × ℝ := (c * t, t)
 /-- The numerator tends to zero along every fixed-c path. -/
 theorem zeroG_tendsto (c : ℝ) :
     Filter.Tendsto (fun t : ℝ => zeroG (zeroPath c t)) (nhds 0) (nhds 0) := by
-  simpa [zeroG, zeroPath] using
-    (continuousAt_const.mul continuousAt_id).tendsto
+  change Filter.Tendsto (fun t : ℝ => c * t) (nhds 0) (nhds 0)
+  convert (tendsto_const_nhds.mul (tendsto_id : Filter.Tendsto (fun t : ℝ => t) (nhds 0) (nhds 0))) using 1 <;> simp
 
 /-- The denominator tends to zero along every fixed-c path. -/
 theorem zeroH_tendsto (c : ℝ) :
     Filter.Tendsto (fun t : ℝ => zeroH (zeroPath c t)) (nhds 0) (nhds 0) := by
-  simpa [zeroH, zeroPath] using
-    (continuousAt_id : ContinuousAt (fun t : ℝ => t) 0).tendsto
+  change Filter.Tendsto (fun t : ℝ => t) (nhds 0) (nhds 0)
+  exact tendsto_id
 
 /-- Away from the zero itself, the fixed quotient G/H is exactly the path
 parameter c. -/
@@ -34,11 +34,11 @@ theorem quotient_tendsto (c : ℝ) :
     Filter.Tendsto
       (fun t : ℝ => zeroG (zeroPath c t) / zeroH (zeroPath c t))
       (nhdsWithin 0 {0}ᶜ) (nhds c) := by
-  apply tendsto_nhdsWithin_iff.2
-  refine ⟨?_, ?_⟩
-  · filter_upwards [self_mem_nhdsWithin] with t ht
-    simpa using quotient_zeroPath (c := c) (t := t) ht
-  · exact tendsto_const_nhds
+  rw [show (fun t : ℝ => zeroG (zeroPath c t) / zeroH (zeroPath c t)) =ᶠ[nhdsWithin 0 {0}ᶜ]
+      (fun _ : ℝ => c) from by
+        filter_upwards with t ht
+        exact quotient_zeroPath (c := c) (t := t) ht]
+  exact tendsto_const_nhds
 
 /-- K0 and RHO give incompatible limits for the same globally fixed G/H. -/
 theorem K0_RHO_incompatible : (0 : ℝ) ≠ (1 / 2 : ℝ) := by
@@ -53,8 +53,20 @@ theorem quotient_explicit :
   intro c
   exact ⟨zeroG_tendsto c, zeroH_tendsto c⟩
 
-/-- Obligation 18: the K0 and RHO paths have distinct quotient limits, so no
-single path-independent value can agree with both. -/
+/-- Obligation 18: K0 and RHO are genuine paths for the same quotient, with
+actual punctured-neighborhood limits 0 and 1/2. -/
+theorem K0_limit :
+    Filter.Tendsto
+      (fun t : ℝ => zeroG (zeroPath 0 t) / zeroH (zeroPath 0 t))
+      (nhdsWithin 0 {0}ᶜ) (nhds 0) := quotient_tendsto 0
+
+theorem RHO_limit :
+    Filter.Tendsto
+      (fun t : ℝ => zeroG (zeroPath (1 / 2 : ℝ) t) / zeroH (zeroPath (1 / 2 : ℝ) t))
+      (nhdsWithin 0 {0}ᶜ) (nhds (1 / 2 : ℝ)) := quotient_tendsto (1 / 2)
+
+/-- No single path-independent extension value can agree with both distinct
+limits. -/
 theorem explicit_no_common_extension :
     ¬ ∃ L : ℝ, L = 0 ∧ L = (1 / 2 : ℝ) := by
   exact no_path_independent_extension
