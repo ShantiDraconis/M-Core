@@ -58,6 +58,17 @@ def frontier (nodes : List AuditNode) : List AuditNode :=
 def blocked (nodes : List AuditNode) : List AuditNode :=
   nodes.filter fun n => hasBlockedDependency nodes n
 
+/-- K14: an illegal promotion is exactly a certificate claim for a node whose
+status is not `proved`.  This is proposition-level: proof inhabitants are not
+inspected as runtime metadata. -/
+def IllegalPromotion (n : CertNode) : Prop :=
+  n.status ≠ .proved ∧ Nonempty (ProofCertificate n)
+
+/-- The certificate kernel rules out every illegal promotion. -/
+theorem audit_illegal_promotions (n : CertNode) : ¬ IllegalPromotion n := by
+  rintro ⟨hstatus, hcert⟩
+  exact (no_promotion n hstatus) hcert
+
 /-- Regression fixtures lock the distinction between frontier and blocked. -/
 def auditProved : AuditNode := ⟨"K_PROVED", [], .proved⟩
 def auditOpenReady : AuditNode := ⟨"K_OPEN_READY", ["K_PROVED"], .openBridge⟩
@@ -67,5 +78,12 @@ def auditFixture : List AuditNode := [auditProved, auditOpenReady, auditBlocked]
 example : auditOpenReady ∈ frontier auditFixture := by decide
 example : auditBlocked ∈ blocked auditFixture := by decide
 example : auditBlocked ∉ frontier auditFixture := by decide
+
+/-- K14 regressions cover every non-PROVED status explicitly. -/
+example : ¬ IllegalPromotion kernelConditionalNode := audit_illegal_promotions _
+example : ¬ IllegalPromotion kernelRefutedNode := audit_illegal_promotions _
+example : ¬ IllegalPromotion kernelDefinitionNode := audit_illegal_promotions _
+example : ¬ IllegalPromotion kernelNumericalNode := audit_illegal_promotions _
+example : ¬ IllegalPromotion kernelOpenNode := audit_illegal_promotions _
 
 end MCore
