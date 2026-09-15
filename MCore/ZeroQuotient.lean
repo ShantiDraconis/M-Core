@@ -33,8 +33,10 @@ theorem quotient_tendsto (c : ℝ) :
       (fun t : ℝ => zeroG (zeroPath c t) / zeroH (zeroPath c t))
       (nhdsWithin 0 {0}ᶜ) (nhds c) := by
   have hne : ∀ᶠ t : ℝ in nhdsWithin 0 {0}ᶜ, t ≠ 0 := by
-    filter_upwards [] with t ht
-    simpa only [Set.mem_compl_iff, Set.mem_singleton_iff] using ht
+    filter_upwards [self_mem_nhdsWithin] with t ht
+    intro hzero
+    apply ht
+    simp [hzero]
   have hEq : (fun t : ℝ => zeroG (zeroPath c t) / zeroH (zeroPath c t))
       =ᶠ[nhdsWithin 0 {0}ᶜ] (fun _ : ℝ => c) := by
     filter_upwards [hne] with t ht
