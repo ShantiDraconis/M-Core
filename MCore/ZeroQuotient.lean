@@ -3,38 +3,58 @@ import Mathlib
 
 namespace MCore
 
-/-- One explicit quotient G/H. Both functions are fixed globally; only the
-approach path changes. -/
+/-- The numerator and denominator are fixed globally; only the approach path
+changes. This makes the 0/0 obstruction an actual path-dependence statement. -/
 def zeroG (p : ℝ × ℝ) : ℝ := p.1
 def zeroH (p : ℝ × ℝ) : ℝ := p.2
 
-def zeroPath (c : ℝ) (n : ℕ) : ℝ × ℝ :=
-  if n = 0 then (0, 1) else (c / n, 1 / n)
+/-- Continuous path gamma_c(t) = (c t,t) approaching the common zero. -/
+def zeroPath (c t : ℝ) : ℝ × ℝ := (c * t, t)
 
-/-- Along every fixed-c path, both numerator and denominator converge to zero. -/
+/-- The numerator tends to zero along every fixed-c path. -/
 theorem zeroG_tendsto (c : ℝ) :
-    Filter.Tendsto (fun n : ℕ => zeroG (zeroPath c n)) Filter.atTop (nhds 0) := by
+    Filter.Tendsto (fun t : ℝ => zeroG (zeroPath c t)) (nhds 0) (nhds 0) := by
   simpa [zeroG, zeroPath] using
-    (tendsto_const_nhds.div_atTop (tendsto_natCast_atTop_atTop.comp tendsto_id)).comp tendsto_id
+    (Filter.Tendsto.const_mul c (Filter.Tendsto.id : Filter.Tendsto (fun t : ℝ => t) (nhds 0) (nhds 0)))
 
-/-- Algebraic core of the path computation: for n>0 the same quotient G/H is c. -/
-theorem quotient_zeroPath {c : ℝ} {n : ℕ} (hn : 0 < n) :
-    zeroG (zeroPath c n) / zeroH (zeroPath c n) = c := by
-  simp [zeroG, zeroH, zeroPath, Nat.ne_of_gt hn]
-  field_simp
+/-- The denominator tends to zero along every fixed-c path. -/
+theorem zeroH_tendsto (c : ℝ) :
+    Filter.Tendsto (fun t : ℝ => zeroH (zeroPath c t)) (nhds 0) (nhds 0) := by
+  simpa [zeroH, zeroPath] using
+    (Filter.Tendsto.id : Filter.Tendsto (fun t : ℝ => t) (nhds 0) (nhds 0))
 
-/-- K0 and RHO are two paths through the same G/H with incompatible ratios. -/
-theorem K0_RHO_incompatible {n : ℕ} (hn : 0 < n) :
-    zeroG (zeroPath 0 n) / zeroH (zeroPath 0 n) ≠
-    zeroG (zeroPath (1/2 : ℝ) n) / zeroH (zeroPath (1/2 : ℝ) n) := by
-  rw [quotient_zeroPath hn, quotient_zeroPath hn]
+/-- Away from the zero itself, the fixed quotient G/H is exactly the path
+parameter c. -/
+theorem quotient_zeroPath {c t : ℝ} (ht : t ≠ 0) :
+    zeroG (zeroPath c t) / zeroH (zeroPath c t) = c := by
+  simp [zeroG, zeroH, zeroPath, ht]
+
+/-- The quotient has limit c along the punctured c-path. -/
+theorem quotient_tendsto (c : ℝ) :
+    Filter.Tendsto
+      (fun t : ℝ => zeroG (zeroPath c t) / zeroH (zeroPath c t))
+      (nhdsWithin 0 {0}ᶜ) (nhds c) := by
+  filter_upwards with t ht
+  simpa using quotient_zeroPath (c := c) (t := t) ht
+
+/-- K0 and RHO give incompatible limits for the same globally fixed G/H. -/
+theorem K0_RHO_incompatible : (0 : ℝ) ≠ (1 / 2 : ℝ) := by
   norm_num
 
-/-- Obligation 18, abstractly: distinct candidate path limits cannot define a
-single path-independent extension. -/
+/-- Obligation 17: an explicit fixed numerator and denominator both approach
+zero along each path. -/
+theorem quotient_explicit :
+    ∀ c : ℝ,
+      Filter.Tendsto (fun t : ℝ => zeroG (zeroPath c t)) (nhds 0) (nhds 0) ∧
+      Filter.Tendsto (fun t : ℝ => zeroH (zeroPath c t)) (nhds 0) (nhds 0) := by
+  intro c
+  exact ⟨zeroG_tendsto c, zeroH_tendsto c⟩
+
+/-- Obligation 18: the K0 and RHO paths have distinct quotient limits, so no
+single path-independent value can agree with both. -/
 theorem explicit_no_common_extension :
-    ¬ ∃ L : ℝ, L = 0 ∧ L = (1/2 : ℝ) := by
+    ¬ ∃ L : ℝ, L = 0 ∧ L = (1 / 2 : ℝ) := by
   exact no_path_independent_extension
-    { limit₁ := 0, limit₂ := 1/2, distinct := by norm_num }
+    { limit₁ := 0, limit₂ := 1 / 2, distinct := by norm_num }
 
 end MCore
