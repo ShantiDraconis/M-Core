@@ -20,6 +20,14 @@ structure FrozenState (U IStar Nu Chi N Time : Type*) where
   N0 : N
   T0 : Time
 
+/-- M0: a transformation preserves the designated frozen state exactly.
+This is an interface predicate; it does not assert physical invariance. -/
+def PreservesS0
+    {U IStar Nu Chi N Time : Type*}
+    (S0 : FrozenState U IStar Nu Chi N Time)
+    (F : FrozenState U IStar Nu Chi N Time → FrozenState U IStar Nu Chi N Time) : Prop :=
+  F S0 = S0
+
 /-- M-Core's only permitted downstream rule. -/
 inductive DAGRule where
   | downstreamOfG1Only
