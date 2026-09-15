@@ -14,12 +14,12 @@ def zeroPath (c t : ℝ) : ℝ × ℝ := (c * t, t)
 /-- The numerator tends to zero along every fixed-c path. -/
 theorem zeroG_tendsto (c : ℝ) :
     Filter.Tendsto (fun t : ℝ => zeroG (zeroPath c t)) (nhds 0) (nhds 0) := by
-  simpa [zeroG, zeroPath] using (continuousAt_const.mul (continuousAt_id' : ContinuousAt (fun t : ℝ => t) 0))
+  simpa [zeroG, zeroPath] using (continuousAt_const.mul (continuousAt_id' (0 : ℝ))).tendsto
 
 /-- The denominator tends to zero along every fixed-c path. -/
 theorem zeroH_tendsto (c : ℝ) :
     Filter.Tendsto (fun t : ℝ => zeroH (zeroPath c t)) (nhds 0) (nhds 0) := by
-  simpa [zeroH, zeroPath] using (continuousAt_id' : ContinuousAt (fun t : ℝ => t) 0)
+  simpa [zeroH, zeroPath] using (continuousAt_id' (0 : ℝ)).tendsto
 
 /-- Away from the zero itself, the fixed quotient G/H is exactly the path
 parameter c. -/
@@ -32,9 +32,12 @@ theorem quotient_tendsto (c : ℝ) :
     Filter.Tendsto
       (fun t : ℝ => zeroG (zeroPath c t) / zeroH (zeroPath c t))
       (nhdsWithin 0 {0}ᶜ) (nhds c) := by
+  have hne : ∀ᶠ t : ℝ in nhdsWithin 0 {0}ᶜ, t ≠ 0 := by
+    filter_upwards [] with t ht
+    simpa only [Set.mem_compl_iff, Set.mem_singleton_iff] using ht
   have hEq : (fun t : ℝ => zeroG (zeroPath c t) / zeroH (zeroPath c t))
       =ᶠ[nhdsWithin 0 {0}ᶜ] (fun _ : ℝ => c) := by
-    filter_upwards with t ht
+    filter_upwards [hne] with t ht
     exact quotient_zeroPath (c := c) (t := t) ht
   exact (tendsto_const_nhds : Filter.Tendsto (fun _ : ℝ => c) (nhdsWithin 0 {0}ᶜ) (nhds c)).congr' hEq.symm
 
