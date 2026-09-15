@@ -15,6 +15,6 @@ compares those names with the explicit foundational allowlist.
 #print axioms MCore.amplitude_unbounded
 #print axioms MCore.no_fixed_delta_gap
 #print axioms MCore.no_path_independent_extension
-#print axioms MCore.zeroQuotient_no_common_extension
-#print axioms MCore.rhoStar_scale_law
+#print axioms MCore.explicit_no_common_extension
+#print axioms MCore.rhoStarScaleLaw_holds
 #print axioms MCore.certifiedObligations_iff_zeroTotal
