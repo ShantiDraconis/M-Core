@@ -15,13 +15,13 @@ def zeroPath (c t : ℝ) : ℝ × ℝ := (c * t, t)
 theorem zeroG_tendsto (c : ℝ) :
     Filter.Tendsto (fun t : ℝ => zeroG (zeroPath c t)) (nhds 0) (nhds 0) := by
   simpa [zeroG, zeroPath] using
-    (Filter.Tendsto.const_mul c (Filter.Tendsto.id : Filter.Tendsto (fun t : ℝ => t) (nhds 0) (nhds 0)))
+    (continuousAt_const.mul continuousAt_id).tendsto
 
 /-- The denominator tends to zero along every fixed-c path. -/
 theorem zeroH_tendsto (c : ℝ) :
     Filter.Tendsto (fun t : ℝ => zeroH (zeroPath c t)) (nhds 0) (nhds 0) := by
   simpa [zeroH, zeroPath] using
-    (Filter.Tendsto.id : Filter.Tendsto (fun t : ℝ => t) (nhds 0) (nhds 0))
+    (continuousAt_id : ContinuousAt (fun t : ℝ => t) 0).tendsto
 
 /-- Away from the zero itself, the fixed quotient G/H is exactly the path
 parameter c. -/
@@ -34,8 +34,11 @@ theorem quotient_tendsto (c : ℝ) :
     Filter.Tendsto
       (fun t : ℝ => zeroG (zeroPath c t) / zeroH (zeroPath c t))
       (nhdsWithin 0 {0}ᶜ) (nhds c) := by
-  filter_upwards with t ht
-  simpa using quotient_zeroPath (c := c) (t := t) ht
+  apply tendsto_nhdsWithin_iff.2
+  refine ⟨?_, ?_⟩
+  · filter_upwards [self_mem_nhdsWithin] with t ht
+    simpa using quotient_zeroPath (c := c) (t := t) ht
+  · exact tendsto_const_nhds
 
 /-- K0 and RHO give incompatible limits for the same globally fixed G/H. -/
 theorem K0_RHO_incompatible : (0 : ℝ) ≠ (1 / 2 : ℝ) := by
