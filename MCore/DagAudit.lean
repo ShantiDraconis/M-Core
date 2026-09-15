@@ -16,9 +16,10 @@ def DependencyIdsConsistent (target : DerivedNode) : Prop :=
   target.node.deps = target.dependencies.map CertNode.id
 
 /-- A derivation route is ready only when every typed dependency has a proof
-certificate. -/
+certificate.  `Nonempty` propositionalizes the Type-valued certificate. -/
 def DerivationReady (target : DerivedNode) : Prop :=
-  ∀ dependency, dependency ∈ target.dependencies → ProofCertificate dependency
+  ∀ dependency, dependency ∈ target.dependencies →
+    Nonempty (ProofCertificate dependency)
 
 /-- K11: if a necessary dependency has no certificate, this derivation route
 is blocked.  We intentionally do NOT conclude that the target proposition has
@@ -28,7 +29,7 @@ theorem blocked_necessary {dependency : CertNode} {target : DerivedNode}
     (hblocked : ¬ Nonempty (ProofCertificate dependency)) :
     ¬ DerivationReady target := by
   intro hready
-  exact hblocked ⟨hready dependency hnecessary⟩
+  exact hblocked (hready dependency hnecessary)
 
 /-- Decidable metadata used by K12-K13 frontier reports.  It contains no proof
 term and therefore cannot promote a node to PROVED. -/
