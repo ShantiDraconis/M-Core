@@ -13,4 +13,6 @@ import MCore.RH.Status
 import MCore.RH.GeometryDynamics
 import MCore.RH.BridgeInterfaces
 import MCore.RH.ResearchObligations
+import MCore.RH.NB.Distance
+import MCore.RH.NB.MCoreNBEstimate
 import MCore.RH.Certificate
