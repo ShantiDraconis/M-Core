@@ -25,7 +25,7 @@ def V (S : NestedApproximationSpaces E) (N : ℕ) : Submodule ℝ E :=
 /-- The finite approximation spaces are nested. -/
 theorem V_mono (S : NestedApproximationSpaces E) : Monotone S.V := by
   intro a b hab
-  apply Submodule.span_mono.mpr
+  apply Submodule.span_mono
   intro x hx
   rcases hx with ⟨i, rfl⟩
   refine ⟨⟨i.val, lt_of_lt_of_le i.isLt hab⟩, ?_⟩
