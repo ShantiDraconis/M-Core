@@ -1,0 +1,47 @@
+name: M-Core CI
+
+on:
+  push:
+    branches: [main, python-audit]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-audit:
+    name: Python audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pip pytest pyyaml
+      - name: Compile Python sources
+        run: python -m compileall -q python adapters tests/python
+      - name: Run Python audit gates
+        run: python -m pytest tests/python -vv
+
+  lean-build:
+    name: Lean formal build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Build M-Core
+        run: lake build
+      - name: Reject sorry in M-Core source
+        run: |
+          if grep -RInE '\bsorry\b|\badmit\b' MCore MCore.lean --include='*.lean'; then
+            echo 'Unresolved Lean placeholder found.'
+            exit 1
+          fi
