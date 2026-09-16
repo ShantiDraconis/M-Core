@@ -13,14 +13,14 @@ structure FiniteApproximationSystem (E : Type) [NormedAddCommGroup E]
 /-- Real Gram matrix of the finite generator family. -/
 def gramMatrix {E : Type} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
     {n : ℕ} (S : FiniteApproximationSystem E n) : Matrix (Fin n) (Fin n) ℝ :=
-  fun i j => ⟪S.generator i, S.generator j⟫_ℝ
+  fun i j => inner ℝ (S.generator i) (S.generator j)
 
 /-- Every real Gram matrix is symmetric. -/
 theorem gramMatrix_symmetric {E : Type} [NormedAddCommGroup E]
     [InnerProductSpace ℝ E] {n : ℕ} (S : FiniteApproximationSystem E n) :
     (gramMatrix S).IsSymm := by
-  intro i j
-  exact real_inner_comm _ _
+  ext i j
+  simp [gramMatrix, real_inner_comm]
 
 /-- The Gram quadratic form is nonnegative. This theorem requires no RH assumption
 and does not assert invertibility. -/
@@ -29,12 +29,13 @@ theorem gram_quadratic_nonneg {E : Type} [NormedAddCommGroup E]
     (c : Fin n → ℝ) :
     0 ≤ ∑ i, ∑ j, c i * gramMatrix S i j * c j := by
   let v : E := ∑ i, c i • S.generator i
-  have hv : 0 ≤ ⟪v, v⟫_ℝ := real_inner_self_nonneg
+  have hv : 0 ≤ inner ℝ v v := real_inner_self_nonneg
   have hexpand :
-      ⟪v, v⟫_ℝ = ∑ i, ∑ j, c i * gramMatrix S i j * c j := by
+      inner ℝ v v = ∑ i, ∑ j, c i * gramMatrix S i j * c j := by
     simp [v, gramMatrix, inner_sum, sum_inner, real_inner_smul_left,
       real_inner_smul_right, mul_assoc]
-  simpa [hexpand] using hv
+  rw [hexpand] at hv
+  exact hv
 
 /-- Invertibility is kept as an explicit certificate. Later NB code must either prove
 this from linear independence or use a projection formulation that does not require it. -/
