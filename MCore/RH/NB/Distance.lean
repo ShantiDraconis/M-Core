@@ -1,5 +1,4 @@
-import Mathlib.Topology.MetricSpace.Pseudo.Defs
-import Mathlib.Topology.Algebra.Order
+import Mathlib
 import MCore.RH.ResearchObligations
 
 namespace MCore.RH.NB
@@ -45,10 +44,8 @@ majorant converges to zero. The hard mathematics is precisely construction of `c
 theorem converges_of_majorant {X : Type} [PseudoMetricSpace X]
     (F : ApproximationFamily X) (cert : MajorantCertificate F) :
     Converges F := by
-  have hzero : Filter.Tendsto (fun _ : ℕ => (0 : ℝ)) Filter.atTop (nhds 0) :=
-    tendsto_const_nhds
-  exact squeeze_zero' hzero cert.tendsToZero
-    (fun N => distanceSq_nonneg F N) cert.bound
+  apply squeeze_zero' (fun N => distanceSq_nonneg F N) cert.bound
+  exact cert.tendsToZero
 
 /-- Gram/projection identities are not assumed by `ApproximationFamily`; a concrete
 certificate must prove the formula for the actual finite-dimensional family. -/
