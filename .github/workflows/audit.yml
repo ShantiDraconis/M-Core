@@ -2,7 +2,12 @@ name: M-Core CI
 
 on:
   push:
-    branches: [main, python-audit]
+    branches:
+      - main
+      - python-audit
+      - rh-certificates
+      - research/rh-mcore-certification
+      - research/rh-certificates
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -39,9 +44,25 @@ jobs:
         run: lake update
       - name: Build M-Core
         run: lake build
-      - name: Reject sorry in M-Core source
+      - name: Reject Lean placeholders
         run: |
-          if grep -RInE '\bsorry\b|\badmit\b' MCore MCore.lean --include='*.lean'; then
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' MCore MCore.lean --include='*.lean'; then
             echo 'Unresolved Lean placeholder found.'
             exit 1
           fi
+      - name: RH scientific firewall
+        run: |
+          set -eu
+          if grep -RInE 'theorem[[:space:]][^:]+:[[:space:]]*True([[:space:]]|$)' MCore/RH --include='*.lean'; then
+            echo 'VACUOUS_TRUE theorem found in RH modules.'
+            exit 1
+          fi
+          if grep -RInE 'def[[:space:]]+deBruijnNewmanConstant[^:]*:[[:space:]]*ℝ[[:space:]]*:=[[:space:]]*0([[:space:]]|$)' MCore/RH --include='*.lean'; then
+            echo 'Hard-coded de Bruijn-Newman constant found.'
+            exit 1
+          fi
+          grep -Rqs 'targetProved := false' MCore/RH/Certificate.lean
+          grep -Rqs 'noHiddenGaps := true' MCore/RH/Certificate.lean
+          grep -Rqs 'structure ApproximationDatum' MCore/RH/ResearchObligations.lean
+          grep -Rqs 'def PositiveScale' MCore/RH/GeometryDynamics.lean
+          grep -Rqs 'inductive EvidenceStatus' MCore/RH/Status.lean
