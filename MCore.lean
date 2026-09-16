@@ -15,4 +15,5 @@ import MCore.RH.BridgeInterfaces
 import MCore.RH.ResearchObligations
 import MCore.RH.NB.Distance
 import MCore.RH.NB.MCoreNBEstimate
+import MCore.RH.NB.FiniteGram
 import MCore.RH.Certificate
