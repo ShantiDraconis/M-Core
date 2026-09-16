@@ -4,7 +4,7 @@ import MCore.RH.ResearchObligations
 
 namespace MCore.RH.NB
 
-/-- Abstract nested approximation spaces.  This layer deliberately does not identify
+/-- Abstract nested approximation spaces. This layer deliberately does not identify
 these spaces with the Nyman--Beurling spaces until the admissibility bridge is built. -/
 structure ApproximationFamily (X : Type) [PseudoMetricSpace X] where
   target : X
@@ -32,5 +32,29 @@ into the definition. -/
 def Converges {X : Type} [PseudoMetricSpace X]
     (F : ApproximationFamily X) : Prop :=
   ApproximationConverges (asDatum F)
+
+/-- A quantitative majorant is useful only when its bound and decay are separately proved. -/
+structure MajorantCertificate {X : Type} [PseudoMetricSpace X]
+    (F : ApproximationFamily X) where
+  E : ℕ → ℝ
+  bound : ∀ N, distanceSq F N ≤ E N
+  tendsToZero : Filter.Tendsto E Filter.atTop (nhds 0)
+
+/-- Closed infrastructure lemma: a nonnegative NB-distance bounded by a decaying
+majorant converges to zero. The hard mathematics is precisely construction of `cert`. -/
+theorem converges_of_majorant {X : Type} [PseudoMetricSpace X]
+    (F : ApproximationFamily X) (cert : MajorantCertificate F) :
+    Converges F := by
+  have hzero : Filter.Tendsto (fun _ : ℕ => (0 : ℝ)) Filter.atTop (nhds 0) :=
+    tendsto_const_nhds
+  exact squeeze_zero' hzero cert.tendsToZero
+    (fun N => distanceSq_nonneg F N) cert.bound
+
+/-- Gram/projection identities are not assumed by `ApproximationFamily`; a concrete
+certificate must prove the formula for the actual finite-dimensional family. -/
+structure GramProjectionCertificate {X : Type} [PseudoMetricSpace X]
+    (F : ApproximationFamily X) where
+  gramFormula : ℕ → ℝ
+  formula_correct : ∀ N, distanceSq F N = gramFormula N
 
 end MCore.RH.NB
