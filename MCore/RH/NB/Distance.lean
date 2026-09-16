@@ -25,6 +25,7 @@ theorem distanceSq_nonneg {X : Type} [PseudoMetricSpace X]
 noncomputable def asDatum {X : Type} [PseudoMetricSpace X]
     (F : ApproximationFamily X) : ApproximationDatum where
   error := distanceSq F
+  nonnegative := distanceSq_nonneg F
 
 /-- The endpoint remains an explicit convergence obligation, not a theorem smuggled
 into the definition. -/
@@ -44,8 +45,11 @@ majorant converges to zero. The hard mathematics is precisely construction of `c
 theorem converges_of_majorant {X : Type} [PseudoMetricSpace X]
     (F : ApproximationFamily X) (cert : MajorantCertificate F) :
     Converges F := by
-  apply squeeze_zero' (fun N => distanceSq_nonneg F N) cert.bound
-  exact cert.tendsToZero
+  have hnonneg : ∀ᶠ N in Filter.atTop, 0 ≤ distanceSq F N :=
+    Filter.Eventually.of_forall (distanceSq_nonneg F)
+  have hbound : ∀ᶠ N in Filter.atTop, distanceSq F N ≤ cert.E N :=
+    Filter.Eventually.of_forall cert.bound
+  exact squeeze_zero' hnonneg hbound cert.tendsToZero
 
 /-- Gram/projection identities are not assumed by `ApproximationFamily`; a concrete
 certificate must prove the formula for the actual finite-dimensional family. -/
