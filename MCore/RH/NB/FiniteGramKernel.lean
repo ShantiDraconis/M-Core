@@ -36,4 +36,24 @@ theorem gram_mulVec_kernel_trivial_of_linearIndependent
   intro c hc
   exact gram_mulVec_eq_zero_imp_coeff_zero_of_linearIndependent S hLI c hc
 
+/-- A square matrix over the reals with trivial right `mulVec` kernel has nonzero determinant.
+This is the exact finite-dimensional bridge used by the Gram layer. -/
+theorem det_ne_zero_of_mulVec_kernel_trivial
+    {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ)
+    (hker : ∀ c : Fin n → ℝ, Matrix.mulVec G c = 0 → c = 0) :
+    G.det ≠ 0 := by
+  intro hdet
+  obtain ⟨c, hc0, hcG⟩ := (Matrix.exists_mulVec_eq_zero_iff).2 hdet
+  exact hc0 (hker c hcG)
+
+/-- For every fixed finite system, linear independence of the generators implies
+that its Gram determinant is nonzero. No uniform conditioning claim is made. -/
+theorem gram_det_ne_zero_of_linearIndependent
+    {E : Type} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    {n : ℕ} (S : FiniteApproximationSystem E n)
+    (hLI : LinearIndependent ℝ S.generator) :
+    (gramMatrix S).det ≠ 0 := by
+  exact det_ne_zero_of_mulVec_kernel_trivial (gramMatrix S)
+    (gram_mulVec_kernel_trivial_of_linearIndependent S hLI)
+
 end MCore.RH.NB
