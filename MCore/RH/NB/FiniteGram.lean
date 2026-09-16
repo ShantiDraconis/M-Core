@@ -21,7 +21,7 @@ def gramMatrix {E : Type} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
 theorem gramMatrix_symmetric {E : Type} [NormedAddCommGroup E]
     [InnerProductSpace ℝ E] {n : ℕ} (S : FiniteApproximationSystem E n) :
     (gramMatrix S).IsSymm := by
-  rw [Matrix.isSymm_iff]
+  apply Matrix.IsSymm.ext
   intro i j
   exact real_inner_comm _ _
 
