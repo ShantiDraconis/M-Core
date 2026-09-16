@@ -21,6 +21,7 @@ def gramMatrix {E : Type} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
 theorem gramMatrix_symmetric {E : Type} [NormedAddCommGroup E]
     [InnerProductSpace ℝ E] {n : ℕ} (S : FiniteApproximationSystem E n) :
     (gramMatrix S).IsSymm := by
+  rw [Matrix.isSymm_iff]
   intro i j
   exact real_inner_comm _ _
 
@@ -34,8 +35,14 @@ theorem gram_quadratic_nonneg {E : Type} [NormedAddCommGroup E]
   have hv : 0 ≤ ⟪v, v⟫_ℝ := real_inner_self_nonneg
   have hexpand :
       ⟪v, v⟫_ℝ = ∑ i, ∑ j, c i * gramMatrix S i j * c j := by
-    simp [v, gramMatrix, inner_sum, sum_inner, real_inner_smul_left,
-      real_inner_smul_right, mul_assoc]
+    simp only [v, gramMatrix, inner_sum, sum_inner, real_inner_smul_left,
+      real_inner_smul_right]
+    congr 1
+    funext i
+    congr 1
+    funext j
+    rw [real_inner_comm]
+    ring
   rw [hexpand] at hv
   exact hv
 
