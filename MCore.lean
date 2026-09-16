@@ -16,5 +16,6 @@ import MCore.RH.ResearchObligations
 import MCore.RH.NB.Distance
 import MCore.RH.NB.MCoreNBEstimate
 import MCore.RH.NB.FiniteGram
+import MCore.RH.NB.FiniteGramIndependence
 import MCore.RH.NB.ClosureObligations
 import MCore.RH.Certificate
