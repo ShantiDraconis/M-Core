@@ -24,6 +24,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: pip
       - name: Install test dependencies
         run: python -m pip install --upgrade pip pytest pyyaml
       - name: Compile Python sources
@@ -40,9 +41,19 @@ jobs:
         run: |
           curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Restore Lean/Lake cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .lake/packages
+            .lake/build
+          key: lean-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: |
+            lean-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json') }}-
+            lean-${{ runner.os }}-
       - name: Resolve dependencies
         run: lake update
-      - name: Build M-Core
+      - name: Build M-Core incrementally
         run: lake build
       - name: Reject Lean placeholders
         run: |
