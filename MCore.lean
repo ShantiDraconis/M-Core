@@ -12,3 +12,10 @@ import MCore.V21.Examples
 import MCore.V21.CoreIdentity
 import MCore.V21.ProblemEmbedding
 import MCore.V21.CertificateTests
+
+import MCore.V22.Universe
+import MCore.V22.State
+import MCore.V22.Matrix
+import MCore.V22.ProofDebt
+import MCore.V22.Operators
+import MCore.V22.Tests
