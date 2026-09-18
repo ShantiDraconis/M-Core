@@ -1,4 +1,4 @@
-name: V2.1 Closed Chain
+name: M-Core V2 Closed System
 
 on:
   push:
@@ -28,15 +28,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -R -n -E '\b(sorry|admit)\b' MCore/V21 --include='*.lean'; then
+          if grep -R -n -E '\b(sorry|admit)\b' MCore/V21 MCore/V22 --include='*.lean'; then
             echo "forbidden proof placeholder found"
             exit 1
           fi
-          if grep -R -n -E '^(axiom|constant|constants)[[:space:]]' MCore/V21 --include='*.lean'; then
+          if grep -R -n -E '^(axiom|constant|constants)[[:space:]]' MCore/V21 MCore/V22 --include='*.lean'; then
             echo "unaccounted declaration-level axiom/constant found"
             exit 1
           fi
-          if grep -R -n -E 'Option\.none' MCore/V21 --include='*.lean'; then
+          if grep -R -n -E 'Option\.none' MCore/V21 MCore/V22 --include='*.lean'; then
             echo "Option.none found in closed-chain core"
             exit 1
           fi
@@ -75,3 +75,15 @@ jobs:
             echo "unexpected non-allowlisted axiom dependency"
             exit 1
           fi
+
+      - name: Reproduce V2.2 matrix tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean MCore/V22/Tests.lean | tee V22_AXIOMS.log
+          grep -F "node_count_is_39" V22_AXIOMS.log
+          grep -F "relation_count_is_1521" V22_AXIOMS.log
+          grep -F "open_open_classifies" V22_AXIOMS.log
+          grep -F "false_true_is_both_closed" V22_AXIOMS.log
+          grep -F "indeterminate_absorbs_left" V22_AXIOMS.log
+          grep -F "indeterminate_absorbs_right" V22_AXIOMS.log
