@@ -4,3 +4,9 @@ import MCore.A2SelfRef
 import MCore.A3Zero
 import MCore.A4Scale
 import MCore.Admissible
+import MCore.V21.Control
+import MCore.V21.ClosedChain
+import MCore.V21.ResidueClassifier
+import MCore.V21.CrossRepo
+import MCore.V21.Examples
+import MCore.V21.CertificateTests
