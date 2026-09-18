@@ -1,0 +1,56 @@
+name: V2.1 Closed Chain
+
+on:
+  push:
+    branches:
+      - audit/closed-chain-v2.1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closed-chain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record observed HEAD
+        run: |
+          git rev-parse HEAD
+          git rev-parse HEAD > V21_OBSERVED_HEAD.txt
+
+      - name: Source firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -R -n -E '\b(sorry|admit)\b' MCore/V21 --include='*.lean'; then
+            echo "forbidden proof placeholder found"
+            exit 1
+          fi
+          if grep -R -n -E '^[[:space:]]*(axiom|constant|constants)[[:space:]]' MCore/V21 --include='*.lean'; then
+            echo "unaccounted declaration-level axiom/constant found"
+            exit 1
+          fi
+          if grep -R -n -E 'Option\.none' MCore/V21 --include='*.lean'; then
+            echo "Option.none found in closed-chain core"
+            exit 1
+          fi
+
+      - name: Install Lean and build
+        uses: leanprover/lean-action@v1
+
+      - name: Reproduce V2.1 certificate tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean MCore/V21/CertificateTests.lean | tee V21_AXIOMS.log
+          grep -F "greenControls_closed' does not depend on any axioms" V21_AXIOMS.log
+          grep -F "badHead_fails_closed' does not depend on any axioms" V21_AXIOMS.log
+          grep -F "placebo_fails_closed' does not depend on any axioms" V21_AXIOMS.log
+          grep -F "blockingResidue_fails_closed' does not depend on any axioms" V21_AXIOMS.log
+          grep -F "demo_chain_closes' does not depend on any axioms" V21_AXIOMS.log
