@@ -66,8 +66,12 @@ jobs:
         run: |
           set -euo pipefail
           lake env lean MCore/V21/CertificateTests.lean | tee V21_AXIOMS.log
-          grep -F "greenControls_closed' does not depend on any axioms" V21_AXIOMS.log
-          grep -F "badHead_fails_closed' does not depend on any axioms" V21_AXIOMS.log
-          grep -F "placebo_fails_closed' does not depend on any axioms" V21_AXIOMS.log
-          grep -F "blockingResidue_fails_closed' does not depend on any axioms" V21_AXIOMS.log
-          grep -F "demo_chain_closes' does not depend on any axioms" V21_AXIOMS.log
+          grep -F "greenControls_closed' depends on axioms: [propext]" V21_AXIOMS.log
+          grep -F "badHead_fails_closed' depends on axioms: [propext]" V21_AXIOMS.log
+          grep -F "placebo_fails_closed' depends on axioms: [propext]" V21_AXIOMS.log
+          grep -F "blockingResidue_fails_closed' depends on axioms: [propext]" V21_AXIOMS.log
+          grep -F "demo_chain_closes' depends on axioms: [propext]" V21_AXIOMS.log
+          if grep -F "depends on axioms:" V21_AXIOMS.log | grep -v -F "[propext]"; then
+            echo "unexpected non-allowlisted axiom dependency"
+            exit 1
+          fi
