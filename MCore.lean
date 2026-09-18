@@ -9,4 +9,6 @@ import MCore.V21.ClosedChain
 import MCore.V21.ResidueClassifier
 import MCore.V21.CrossRepo
 import MCore.V21.Examples
+import MCore.V21.CoreIdentity
+import MCore.V21.ProblemEmbedding
 import MCore.V21.CertificateTests
