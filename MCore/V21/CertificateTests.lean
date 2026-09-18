@@ -2,6 +2,7 @@ import MCore.V21.ClosedChain
 import MCore.V21.ResidueClassifier
 import MCore.V21.CrossRepo
 import MCore.V21.Examples
+import MCore.V21.ProblemEmbedding
 
 namespace MCore.V21.CertificateTests
 
@@ -75,11 +76,30 @@ def demoChain : ClosedChain True True True where
 theorem demo_chain_closes : True → True :=
   demoChain.closes
 
+def demoTarget : TargetCertificate True True True :=
+  ⟨demoChain⟩
+
+def demoInterior : ProblemEmbedding :=
+  interiorEmbedding "DEMO"
+
+def packedDemo : CoreClosedLocus :=
+  demoInterior.register demoTarget
+
+theorem packed_demo_identity :
+    coreIdentity packedDemo = packedDemo := rfl
+
+theorem packed_demo_endpoint :
+    packedDemo.Start → packedDemo.Final :=
+  packedDemo.endpoint
+
 #check demoChain
+#check packedDemo
 #print axioms greenControls_closed
 #print axioms badHead_fails_closed
 #print axioms placebo_fails_closed
 #print axioms blockingResidue_fails_closed
 #print axioms demo_chain_closes
+#print axioms packed_demo_identity
+#print axioms packed_demo_endpoint
 
 end MCore.V21.CertificateTests
