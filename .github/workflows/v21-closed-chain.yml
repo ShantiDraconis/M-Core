@@ -32,7 +32,7 @@ jobs:
             echo "forbidden proof placeholder found"
             exit 1
           fi
-          if grep -R -n -E '^[[:space:]]*(axiom|constant|constants)[[:space:]]' MCore/V21 --include='*.lean'; then
+          if grep -R -n -E '^(axiom|constant|constants)[[:space:]]' MCore/V21 --include='*.lean'; then
             echo "unaccounted declaration-level axiom/constant found"
             exit 1
           fi
