@@ -128,7 +128,7 @@ jobs:
         run: |
           set -euo pipefail
           lake env lean MCore/V22/ExactBlockers.lean | tee V22_EXACT_BLOCKERS.log
-          grep -F "exact_mathematical_blocker_count" V22_EXACT_BLOCKERS.log
-          grep -F "rh_has_two_exact_blockers" V22_EXACT_BLOCKERS.log
-          grep -F "ym_has_two_exact_blockers" V22_EXACT_BLOCKERS.log
-          grep -F "ns_has_two_exact_blockers" V22_EXACT_BLOCKERS.log
+          # ExactBlockers contains checked declarations but no #print commands.
+          # Successful Lean elaboration is the reproduction check; axiom checks
+          # belong to the dedicated axiom-audit step.
+          test "${PIPESTATUS[0]}" -eq 0
