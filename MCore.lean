@@ -21,3 +21,4 @@ import MCore.V22.Operators
 import MCore.V22.Tests
 import MCore.V22.FrontierRegistry
 import MCore.V22.FrontierKernel
+import MCore.V22.NodeLocator
