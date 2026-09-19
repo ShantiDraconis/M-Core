@@ -85,7 +85,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry MCore.V22.FrontierKernel
+          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry MCore.V22.FrontierKernel MCore.V22.NodeLocator
 
       - name: Reproduce V2.1 certificate tests
         shell: bash
@@ -113,3 +113,12 @@ jobs:
           grep -F "false_true_is_both_closed" V22_AXIOMS.log
           grep -F "indeterminate_absorbs_left" V22_AXIOMS.log
           grep -F "indeterminate_absorbs_right" V22_AXIOMS.log
+
+      - name: Reproduce V2.2 node locator
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean MCore/V22/NodeLocator.lean | tee V22_NODE_LOCATOR.log
+          grep -F "blocking_nodes_count" V22_NODE_LOCATOR.log
+          grep -F "frontier_subnode_count" V22_NODE_LOCATOR.log
+          grep -F "constructor_blocker_count" V22_NODE_LOCATOR.log
