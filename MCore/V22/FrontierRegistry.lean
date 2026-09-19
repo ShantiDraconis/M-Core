@@ -57,6 +57,17 @@ theorem candidate_scope_not_main :
     EvidenceScope.candidateBranch ≠ EvidenceScope.mainVerified := by
   decide
 
+theorem candidate_record_not_mainCertified
+    (r : FrontierRecord)
+    (hScope : r.evidenceScope = .candidateBranch) :
+    ¬ r.MainCertified := by
+  intro h
+  rcases h with ⟨hMain, _, _⟩
+  have hBad : EvidenceScope.candidateBranch = EvidenceScope.mainVerified := by
+    rw [← hScope]
+    exact hMain
+  exact candidate_scope_not_main hBad
+
 def primaryFrontiers : List FrontierRecord :=
   [
     { problem := .hodge
