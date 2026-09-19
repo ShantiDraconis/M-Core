@@ -1,0 +1,18 @@
+{
+  "schema": "mcore.system.certificate.v1",
+  "problem": "M-Core V2.2 closed system",
+  "certified_source_sha": "ef87c371f8cbe617fe19f073a3d7f78ee9021c5a",
+  "workflow_run": 35433224252,
+  "workflow_job": 105871391763,
+  "conclusion": "SUCCESS",
+  "certified_scope": "V2.1 closed-chain tests, V2.2 39-node/1521-relation matrix, frontier registry, common FrontierKernel",
+  "certified_theorems": [
+    "MCore.V22.primary_frontier_count",
+    "MCore.V22.constructor_closes_frontier",
+    "MCore.V22.frontier_constructor_iff_global"
+  ],
+  "formal_status": "CORE_SYSTEM_CERTIFIED",
+  "mathematical_endpoint_status": "MIXED_OPEN_CLOSED_BY_PROBLEM",
+  "remaining_frontier": "problem-specific witness/adapter/orientation/uniformization constructors recorded in FrontierRegistry",
+  "no_mathematical_promotion": true
+}
