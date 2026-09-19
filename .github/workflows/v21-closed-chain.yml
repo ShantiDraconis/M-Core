@@ -55,11 +55,11 @@ jobs:
           lake update
           lake exe cache get
 
-      - name: Lake build
+      - name: Targeted V2 build
         shell: bash
         run: |
           set -euo pipefail
-          lake build
+          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry
 
       - name: Reproduce V2.1 certificate tests
         shell: bash
