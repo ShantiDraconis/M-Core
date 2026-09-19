@@ -59,7 +59,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry
+          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry MCore.V22.FrontierKernel
 
       - name: Reproduce V2.1 certificate tests
         shell: bash
