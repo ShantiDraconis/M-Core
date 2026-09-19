@@ -41,6 +41,32 @@ jobs:
             exit 1
           fi
 
+      - name: Validate frontier certificate index
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+          p = Path("certificates/FRONTIER_CERTIFICATE_INDEX_2026-09-19.json")
+          d = json.loads(p.read_text())
+          certs = d["certificates"]
+          assert d["schema"] == "mcore.frontier.certificate.index.v1"
+          assert d["certificate_count"] == len(certs)
+          assert len({x["repo"] for x in certs}) == len(certs)
+          sha = re.compile(r"^[0-9a-f]{40}$")
+          for x in certs:
+              assert x["conclusion"] == "SUCCESS", x
+              assert x["no_mathematical_promotion"] is True, x
+              assert sha.fullmatch(x["certificate_commit"]), x
+              assert sha.fullmatch(x["certified_source_sha"]), x
+              assert isinstance(x["workflow_run"], int) and x["workflow_run"] > 0, x
+              assert isinstance(x["workflow_job"], int) and x["workflow_job"] > 0, x
+              assert x["mathematical_endpoint_status"] in {"OPEN","MIXED_OPEN_CLOSED_BY_PROBLEM"}, x
+          assert any(x["problem"] == "Navier-Stokes" and x["status"].startswith("PENDING_") for x in d["pending"])
+          print(f"CERTIFICATE_INDEX_GREEN={len(certs)}")
+          PY
+
       - name: Install Lean
         shell: bash
         run: |
