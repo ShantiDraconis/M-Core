@@ -19,3 +19,4 @@ import MCore.V22.Matrix
 import MCore.V22.ProofDebt
 import MCore.V22.Operators
 import MCore.V22.Tests
+import MCore.V22.FrontierRegistry
