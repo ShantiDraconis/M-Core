@@ -22,3 +22,4 @@ import MCore.V22.Tests
 import MCore.V22.FrontierRegistry
 import MCore.V22.FrontierKernel
 import MCore.V22.NodeLocator
+import MCore.V22.ExactBlockers
