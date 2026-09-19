@@ -119,12 +119,9 @@ jobs:
         run: |
           set -euo pipefail
           lake env lean MCore/V22/NodeLocator.lean | tee V22_NODE_LOCATOR.log
-          grep -F "blocking_nodes_count" V22_NODE_LOCATOR.log
-          grep -F "frontier_subnode_count" V22_NODE_LOCATOR.log
-          grep -F "constructor_blocker_count" V22_NODE_LOCATOR.log || {
-            echo "NodeLocator compiled successfully; #print axioms emits no line for declarations not explicitly printed."
-            grep -F "Build completed successfully." V22_NODE_LOCATOR.log >/dev/null 2>&1 || true
-          }
+          # Successful Lean exit is the reproduction check. NodeLocator contains
+          # native_decide theorems but no #print commands, so stdout may be empty.
+          test "${PIPESTATUS[0]}" -eq 0
 
       - name: Reproduce V2.2 exact blockers
         shell: bash
