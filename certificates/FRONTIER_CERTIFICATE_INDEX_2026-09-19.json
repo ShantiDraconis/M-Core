@@ -1,0 +1,91 @@
+{
+  "schema": "mcore.frontier.certificate.index.v1",
+  "generated_on": "2026-09-19",
+  "certificate_count": 7,
+  "certificates": [
+    {
+      "problem": "Hodge",
+      "repo": "ShantiDraconis/m-core-hodge",
+      "certificate_commit": "860f329f20cb7393013981b8ef5074deb8ae2050",
+      "certified_source_sha": "337ac80fa5e500029790c59ab501317fa10846c8",
+      "workflow_run": 35432909242,
+      "workflow_job": 105870528596,
+      "conclusion": "SUCCESS",
+      "no_mathematical_promotion": true,
+      "mathematical_endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Birch-Swinnerton-Dyer (rank part)",
+      "repo": "ShantiDraconis/m-core-bsd",
+      "certificate_commit": "fd9401e7c05b5fcb2a84e6ea22418c596e55b650",
+      "certified_source_sha": "f98be3a7f6dccdb01aa09fa83915cef97c85adfa",
+      "workflow_run": 35432910957,
+      "workflow_job": 105870532865,
+      "conclusion": "SUCCESS",
+      "no_mathematical_promotion": true,
+      "mathematical_endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Beal",
+      "repo": "ShantiDraconis/m-core-beal",
+      "certificate_commit": "a8da5b8c89d00c6b2369c867d748d0d3855dc509",
+      "certified_source_sha": "ccf054d669b269b09f3b65f840ac2745daf4e821",
+      "workflow_run": 35432912618,
+      "workflow_job": 105870537118,
+      "conclusion": "SUCCESS",
+      "no_mathematical_promotion": true,
+      "mathematical_endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Riemann Hypothesis",
+      "repo": "ShantiDraconis/m-core-riemann",
+      "certificate_commit": "7f482b6e19fc73dffe319fa1e0716a9b634b5211",
+      "certified_source_sha": "21216ff1141f97921aeddb3708fee0bfea05fd14",
+      "workflow_run": 35432825821,
+      "workflow_job": 105870314478,
+      "conclusion": "SUCCESS",
+      "no_mathematical_promotion": true,
+      "mathematical_endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Yang-Mills existence and mass gap",
+      "repo": "ShantiDraconis/m-core-yang-mills",
+      "certificate_commit": "bf51318ce56b9fcb3c67c692104a37ab98661666",
+      "certified_source_sha": "2b401f28942221beb36256b9d8ce9c44cc2b9c6d",
+      "workflow_run": 35432825975,
+      "workflow_job": 105870314819,
+      "conclusion": "SUCCESS",
+      "no_mathematical_promotion": true,
+      "mathematical_endpoint_status": "OPEN"
+    },
+    {
+      "problem": "P versus NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "certificate_commit": "f14c2e1854d6b62dc3e5b567a6769a04075f76d5",
+      "certified_source_sha": "969408f2d84121667319da04680893dd2978e9a6",
+      "workflow_run": 35432954976,
+      "workflow_job": 105870651044,
+      "conclusion": "SUCCESS",
+      "no_mathematical_promotion": true,
+      "mathematical_endpoint_status": "OPEN"
+    },
+    {
+      "problem": "M-Core V2.2 closed system",
+      "repo": "ShantiDraconis/M-Core",
+      "certificate_commit": "d93a9b4ab63cbca8a3f08423af39399a8b6927ae",
+      "certified_source_sha": "ef87c371f8cbe617fe19f073a3d7f78ee9021c5a",
+      "workflow_run": 35433224252,
+      "workflow_job": 105871391763,
+      "conclusion": "SUCCESS",
+      "no_mathematical_promotion": true,
+      "mathematical_endpoint_status": "MIXED_OPEN_CLOSED_BY_PROBLEM"
+    }
+  ],
+  "pending": [
+    {
+      "problem": "Navier-Stokes",
+      "repo": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+      "status": "PENDING_GREEN_MULTIPROVER_AND_G1_UNIFORMITY_CERTIFICATION"
+    }
+  ]
+}
