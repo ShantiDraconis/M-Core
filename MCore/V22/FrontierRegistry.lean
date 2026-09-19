@@ -26,7 +26,7 @@ inductive EvidenceScope where
 
 inductive VerificationState where
   | success
-  | partial
+  | partialSuccess
   | failure
   | notRun
   deriving DecidableEq, Repr
@@ -152,7 +152,7 @@ def primaryFrontiers : List FrontierRecord :=
       artifactPath := "formal/millennium/lean/MillenniumAudit/G1Uniformity.lean"
       evidenceScope := .candidateBranch
       verificationRun := "G1=35436856529;AUDIT=35436856528;MULTIPROVER=35436856547"
-      verification := .partial
+      verification := .partialSuccess
       integration := .candidateBranch },
     { problem := .poincare
       proofState := .provedTrue
