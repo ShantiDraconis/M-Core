@@ -85,7 +85,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry MCore.V22.FrontierKernel MCore.V22.NodeLocator
+          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry MCore.V22.FrontierKernel MCore.V22.NodeLocator MCore.V22.ExactBlockers
 
       - name: Reproduce V2.1 certificate tests
         shell: bash
@@ -122,3 +122,13 @@ jobs:
           grep -F "blocking_nodes_count" V22_NODE_LOCATOR.log
           grep -F "frontier_subnode_count" V22_NODE_LOCATOR.log
           grep -F "constructor_blocker_count" V22_NODE_LOCATOR.log
+
+      - name: Reproduce V2.2 exact blockers
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean MCore/V22/ExactBlockers.lean | tee V22_EXACT_BLOCKERS.log
+          grep -F "exact_mathematical_blocker_count" V22_EXACT_BLOCKERS.log
+          grep -F "rh_has_two_exact_blockers" V22_EXACT_BLOCKERS.log
+          grep -F "ym_has_two_exact_blockers" V22_EXACT_BLOCKERS.log
+          grep -F "ns_has_two_exact_blockers" V22_EXACT_BLOCKERS.log
