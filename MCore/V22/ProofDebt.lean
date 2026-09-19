@@ -10,8 +10,8 @@ inductive Prover where
   deriving DecidableEq, Repr
 
 inductive DebtKind where
-  | sorry
-  | admit
+  | sorryDebt
+  | admitDebt
   | axiom
   | placeholder
   | unresolvedGoal
