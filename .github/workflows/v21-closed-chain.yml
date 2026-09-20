@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - audit/closed-chain-v2.1
+      - research/pure-math-final-proof-v1
   pull_request:
   workflow_dispatch:
 
@@ -85,7 +86,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry MCore.V22.FrontierKernel MCore.V22.NodeLocator MCore.V22.ExactBlockers
+          lake build MCore.V21.CertificateTests MCore.V22.Tests MCore.V22.FrontierRegistry MCore.V22.FrontierKernel MCore.V22.NodeLocator MCore.V22.ExactBlockers MCore.V22.BidirectionalClosure MCore.V22.ExactBlockerNecessity MCore.V22.ResidualCalculus MCore.V22.RecursiveDecomposition MCore.V22.ClosureCriterion MCore.V22.ProblemInstance
 
       - name: Reproduce V2.1 certificate tests
         shell: bash
