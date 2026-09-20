@@ -25,10 +25,11 @@ structure Step (before after : S.Residual) : Prop where
 private theorem acc_irrefl
     (x : S.Residual) (hx : Acc S.smaller x) :
     ¬ S.smaller x x := by
+  intro hxx
   induction hx with
   | intro y ih =>
-      intro hyy
-      exact (ih y hyy) hyy
+      have hy : Acc S.smaller y := ih y hxx
+      exact acc_irrefl S y hy hxx
 
 theorem step_irrefl {r : S.Residual} :
     ¬ Step S r r := by
