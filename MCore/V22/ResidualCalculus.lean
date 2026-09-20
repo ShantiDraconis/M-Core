@@ -22,13 +22,18 @@ def Closed (r : S.Residual) : Prop :=
 structure Step (before after : S.Residual) : Prop where
   decreases : S.smaller after before
 
+private theorem acc_irrefl
+    (x : S.Residual) (hx : Acc S.smaller x) :
+    ¬ S.smaller x x := by
+  induction hx with
+  | intro y ih =>
+      intro hyy
+      exact (ih y hyy) hyy
+
 theorem step_irrefl {r : S.Residual} :
     ¬ Step S r r := by
   intro h
-  have hacc : Acc S.smaller r := S.wellFounded.apply r
-  induction hacc with
-  | intro x ih =>
-      exact fun hxx => Acc.recOn (ih x hxx) (fun y _ _ => ih y) hxx
+  exact acc_irrefl S r (S.wellFounded.apply r) h.decreases
 
 theorem no_step_from_closed {r : S.Residual}
     (h : Closed S r) :
