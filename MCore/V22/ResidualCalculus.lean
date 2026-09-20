@@ -29,12 +29,12 @@ private theorem acc_irrefl
   induction hx with
   | intro y ih =>
       have hy : Acc S.smaller y := ih y hxx
-      exact acc_irrefl (S := S) y hy hxx
+      exact acc_irrefl S y hy hxx
 
 theorem step_irrefl {r : S.Residual} :
     ¬ Step S r r := by
   intro h
-  exact acc_irrefl (S := S) r (S.wellFounded.apply r) h.decreases
+  exact acc_irrefl S r (S.wellFounded.apply r) h.decreases
 
 theorem no_step_from_closed {r : S.Residual}
     (h : Closed S r) :
