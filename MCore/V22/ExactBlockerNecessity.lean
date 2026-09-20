@@ -20,39 +20,25 @@ theorem blocker_mem_implies_hasExactBlocker
   exact ⟨b, hb, rfl⟩
 
 theorem hodge_has_exact_blocker : HasExactBlocker .hodge := by
-  refine ⟨exactMathematicalBlockers.head!, ?_, ?_⟩
-  · native_decide
-  · native_decide
+  exact blocker_mem_implies_hasExactBlocker (b := exactMathematicalBlockers[0]!) (by native_decide)
 
 theorem bsd_has_exact_blocker : HasExactBlocker .bsd := by
-  refine ⟨exactMathematicalBlockers[1]!, ?_, ?_⟩
-  · native_decide
-  · native_decide
+  exact blocker_mem_implies_hasExactBlocker (b := exactMathematicalBlockers[1]!) (by native_decide)
 
 theorem beal_has_exact_blocker : HasExactBlocker .beal := by
-  refine ⟨exactMathematicalBlockers[2]!, ?_, ?_⟩
-  · native_decide
-  · native_decide
+  exact blocker_mem_implies_hasExactBlocker (b := exactMathematicalBlockers[2]!) (by native_decide)
 
 theorem pnp_has_exact_blocker : HasExactBlocker .pVsNP := by
-  refine ⟨exactMathematicalBlockers[3]!, ?_, ?_⟩
-  · native_decide
-  · native_decide
+  exact blocker_mem_implies_hasExactBlocker (b := exactMathematicalBlockers[3]!) (by native_decide)
 
 theorem riemann_has_exact_blocker : HasExactBlocker .riemann := by
-  refine ⟨exactMathematicalBlockers[4]!, ?_, ?_⟩
-  · native_decide
-  · native_decide
+  exact blocker_mem_implies_hasExactBlocker (b := exactMathematicalBlockers[4]!) (by native_decide)
 
 theorem yangMills_has_exact_blocker : HasExactBlocker .yangMills := by
-  refine ⟨exactMathematicalBlockers[6]!, ?_, ?_⟩
-  · native_decide
-  · native_decide
+  exact blocker_mem_implies_hasExactBlocker (b := exactMathematicalBlockers[6]!) (by native_decide)
 
 theorem navierStokes_has_exact_blocker : HasExactBlocker .navierStokes := by
-  refine ⟨exactMathematicalBlockers[8]!, ?_, ?_⟩
-  · native_decide
-  · native_decide
+  exact blocker_mem_implies_hasExactBlocker (b := exactMathematicalBlockers[8]!) (by native_decide)
 
 def OpenResearchProblem (p : ProblemId) : Prop :=
   p = .hodge ∨ p = .bsd ∨ p = .beal ∨ p = .pVsNP ∨
