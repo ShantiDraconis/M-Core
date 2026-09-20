@@ -25,10 +25,7 @@ structure Step (before after : S.Residual) : Prop where
 theorem step_irrefl {r : S.Residual} :
     ¬ Step S r r := by
   intro h
-  have hacc : Acc S.smaller r := S.wellFounded.apply r
-  induction hacc with
-  | intro _ ih =>
-      exact (ih r h.decreases) h.decreases
+  exact WellFounded.asymmetric S.wellFounded h.decreases h.decreases
 
 theorem no_step_from_closed {r : S.Residual}
     (h : Closed S r) :
