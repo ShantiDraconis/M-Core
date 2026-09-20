@@ -20,37 +20,37 @@ theorem blocker_mem_implies_hasExactBlocker
   exact ⟨b, hb, rfl⟩
 
 theorem hodge_has_exact_blocker : HasExactBlocker .hodge := by
-  refine ⟨exactMathematicalBlockers[0], ?_, ?_⟩
+  refine ⟨exactMathematicalBlockers.head!, ?_, ?_⟩
   · native_decide
   · native_decide
 
 theorem bsd_has_exact_blocker : HasExactBlocker .bsd := by
-  refine ⟨exactMathematicalBlockers[1], ?_, ?_⟩
+  refine ⟨exactMathematicalBlockers[1]!, ?_, ?_⟩
   · native_decide
   · native_decide
 
 theorem beal_has_exact_blocker : HasExactBlocker .beal := by
-  refine ⟨exactMathematicalBlockers[2], ?_, ?_⟩
+  refine ⟨exactMathematicalBlockers[2]!, ?_, ?_⟩
   · native_decide
   · native_decide
 
 theorem pnp_has_exact_blocker : HasExactBlocker .pVsNP := by
-  refine ⟨exactMathematicalBlockers[3], ?_, ?_⟩
+  refine ⟨exactMathematicalBlockers[3]!, ?_, ?_⟩
   · native_decide
   · native_decide
 
 theorem riemann_has_exact_blocker : HasExactBlocker .riemann := by
-  refine ⟨exactMathematicalBlockers[4], ?_, ?_⟩
+  refine ⟨exactMathematicalBlockers[4]!, ?_, ?_⟩
   · native_decide
   · native_decide
 
 theorem yangMills_has_exact_blocker : HasExactBlocker .yangMills := by
-  refine ⟨exactMathematicalBlockers[6], ?_, ?_⟩
+  refine ⟨exactMathematicalBlockers[6]!, ?_, ?_⟩
   · native_decide
   · native_decide
 
 theorem navierStokes_has_exact_blocker : HasExactBlocker .navierStokes := by
-  refine ⟨exactMathematicalBlockers[8], ?_, ?_⟩
+  refine ⟨exactMathematicalBlockers[8]!, ?_, ?_⟩
   · native_decide
   · native_decide
 
@@ -80,6 +80,6 @@ structure BlockerDischarge (b : ExactBlocker) where
 
 def AllBlockersDischarged
     (D : (b : ExactBlocker) → b ∈ exactMathematicalBlockers → Prop) : Prop :=
-  ∀ b, b ∈ exactMathematicalBlockers → D b ‹b ∈ exactMathematicalBlockers›
+  ∀ (b : ExactBlocker) (hb : b ∈ exactMathematicalBlockers), D b hb
 
 end MCore.V22
