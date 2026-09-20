@@ -29,9 +29,10 @@ theorem step_irrefl {r : S.Residual} :
   have loop : ∀ x : S.Residual, Acc S.smaller x → ¬ S.smaller x x := by
     intro x hx
     induction hx with
-    | intro _ ih =>
-        intro hxx
-        exact (ih x hxx) hxx
+    | intro y ih =>
+        intro hyy
+        have hy : Acc S.smaller y := ih y hyy
+        exact loop y hy hyy
   exact loop r hacc h.decreases
 
 theorem no_step_from_closed {r : S.Residual}
