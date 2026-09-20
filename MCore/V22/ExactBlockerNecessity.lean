@@ -20,43 +20,43 @@ theorem blocker_mem_implies_hasExactBlocker
   exact ⟨b, hb, rfl⟩
 
 theorem hodge_has_exact_blocker : HasExactBlocker .hodge := by
-  refine ⟨{ problem := .hodge, parent := { problem := .hodge, stage := .middle },
+  refine ⟨{ problem := .hodge, parent := ⟨.hodge, .middle⟩,
     kind := .hodgeAlgebraicityConstructor,
     expectedArtifact := "forall smooth projective X and rational Hodge class alpha, construct rationalSpanOfCycles alpha" }, ?_, rfl⟩
   simp [exactMathematicalBlockers]
 
 theorem bsd_has_exact_blocker : HasExactBlocker .bsd := by
-  refine ⟨{ problem := .bsd, parent := { problem := .bsd, stage := .middle },
+  refine ⟨{ problem := .bsd, parent := ⟨.bsd, .middle⟩,
     kind := .bsdRankConstructor,
     expectedArtifact := "forall BSDArithmeticAnalyticData d, prove BSDRankPart d" }, ?_, rfl⟩
   simp [exactMathematicalBlockers]
 
 theorem beal_has_exact_blocker : HasExactBlocker .beal := by
-  refine ⟨{ problem := .beal, parent := { problem := .beal, stage := .middle },
+  refine ⟨{ problem := .beal, parent := ⟨.beal, .middle⟩,
     kind := .bealCommonPrimeConstructor,
     expectedArtifact := "forall BealData d, construct CommonPrime d.a d.b d.c" }, ?_, rfl⟩
   simp [exactMathematicalBlockers]
 
 theorem pnp_has_exact_blocker : HasExactBlocker .pVsNP := by
-  refine ⟨{ problem := .pVsNP, parent := { problem := .pVsNP, stage := .middle },
+  refine ⟨{ problem := .pVsNP, parent := ⟨.pVsNP, .middle⟩,
     kind := .pnpMaterialOrientation,
     expectedArtifact := "either PolySATCertificate + SATCompletenessTransfer, or LowerBoundWitness P NP" }, ?_, rfl⟩
   simp [exactMathematicalBlockers]
 
 theorem riemann_has_exact_blocker : HasExactBlocker .riemann := by
-  refine ⟨{ problem := .riemann, parent := { problem := .riemann, stage := .middle },
+  refine ⟨{ problem := .riemann, parent := ⟨.riemann, .middle⟩,
     kind := .rhClassicalZetaAdapter,
     expectedArtifact := "construct ClassicalZetaAdapter with exact zero_match and line_match" }, ?_, rfl⟩
   simp [exactMathematicalBlockers]
 
 theorem yangMills_has_exact_blocker : HasExactBlocker .yangMills := by
-  refine ⟨{ problem := .yangMills, parent := { problem := .yangMills, stage := .middle },
+  refine ⟨{ problem := .yangMills, parent := ⟨.yangMills, .middle⟩,
     kind := .ymConcreteTheoryAdapter,
     expectedArtifact := "construct ConcreteTheoryAdapter matching concrete existence, positivity, and mass-gap semantics" }, ?_, rfl⟩
   simp [exactMathematicalBlockers]
 
 theorem navierStokes_has_exact_blocker : HasExactBlocker .navierStokes := by
-  refine ⟨{ problem := .navierStokes, parent := { problem := .navierStokes, stage := .middle },
+  refine ⟨{ problem := .navierStokes, parent := ⟨.navierStokes, .middle⟩,
     kind := .nsPointwiseDepletionFromActualNS,
     expectedArtifact := "derive PointwiseClosedDepletion from ActualNS without an oracle" }, ?_, rfl⟩
   simp [exactMathematicalBlockers]
