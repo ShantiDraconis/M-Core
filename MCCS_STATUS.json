@@ -11,7 +11,9 @@
     "red_infra": "REPAIR_AND_RERUN_SAME_GATE",
     "red_math": "ISOLATE_MINIMAL_NONCIRCULAR_OBLIGATION_AND_CONTINUE",
     "open_math": "REUSE_CANONICAL_FROZEN_HARD_BASE_THEN_ATTACK_ONLY_UNCOVERED_MATERIAL_DELTA",
-    "cross_chain_reuse": "PIN_FROZEN_CERTIFICATE_AND_REPROVE_GENERIC_LEMMA_LOCALLY"
+    "cross_chain_reuse": "PIN_FROZEN_CERTIFICATE_AND_REPROVE_GENERIC_LEMMA_LOCALLY",
+    "core_formulation_parallel": true,
+    "core_formulation_rule": "ADVANCE_MCORE_FORMULATION_WITHOUT_COUNTING_IT_AS_A_MILLENNIUM_ENDPOINT_OR_IMPORTING_UNPROVED_ENDPOINT_CLAIMS"
   },
   "counters": {
     "hard_composite_remaining": 10,
@@ -26,7 +28,11 @@
     "microtests_progress_metric": false,
     "frozen_prefixes_do_not_decrement": true,
     "final_proof": "0/7",
-    "closed_center_hard_foundation_green_frozen": 1
+    "closed_center_hard_foundation_green_frozen": 1,
+    "active_problem_attacks": 7,
+    "active_core_formulation_tracks": 1,
+    "active_tracks_total": 8,
+    "mcore_formulation_endpoint_credit": 0
   },
   "queues": [
     {
@@ -173,13 +179,43 @@
       "recovered_provenance": [
         "frozen/bsd-universal-producer-countermodel-green-6258a9f9"
       ]
+    },
+    {
+      "repo": "M-Core",
+      "track": "CORE_FORMULATION",
+      "state": "IN_PROCESS",
+      "canonical_hard_base": "758f775c5cbb9aed7055904aae1a959b1d8bae74",
+      "inherited_foundation": "frozen/final-fail-closed-center-hard-ee1ec8fb",
+      "active_attack_head": "5fa518dc1d2e28e403595b17933e172489d31a73",
+      "attack_branch": "attack/mcore-formulation-v2-20260921",
+      "source_hygiene": "PENDING_CI",
+      "kernel_state": "BUILD_PENDING",
+      "current": [
+        "MCORE_F2_RELATIONAL_CENTER_UNIFICATION",
+        "MCORE_F2_MASTER_CORE_REPAIR"
+      ],
+      "established": [
+        "ClosedCenterHard START<->CENTER<->FINISH foundation is GREEN_FROZEN",
+        "FundamentalIndeterminacy is structural branching, not numeric 0/0",
+        "RelationalHardAtom preserves admissible continuations",
+        "read-only external interface remains separate from internal attack/formulation namespaces"
+      ],
+      "source_delta": [
+        "RelationalCenterBridge.lean proves FailAt <-> FundamentalIndeterminacy <-> IFail under an induced center resolution",
+        "Master.lean removes dangling BrainKernel import and exposes CORE_V2 state",
+        "mcore-formulation-v2.yml: fail-closed build/axiom gate"
+      ],
+      "next_delta": "relation-level HARD closure: characterize when total/single-valued relational arrows induce ClosedCenterHard maps while preserving non-unique branch structure; then add an explicit typed adapter firewall between recovered Phi3 numeric indeterminacy and structural IFail rather than identifying them definitionally",
+      "counts_toward_final_proof": false,
+      "counts_toward_hard_remaining": false,
+      "endpoint_promotion": false
     }
   ],
   "hub": {
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CLOSED_CENTER_HARD_FOUNDATION_GREEN_FROZEN + SEVEN CLEAN ATTACKS + CERTIFIED PREFIX RECOVERY MATERIALIZED"
+    "current": "CLOSED_CENTER_HARD_FOUNDATION_GREEN_FROZEN + SEVEN FINAL-PROOF ATTACKS + MCORE FORMULATION V2 IN_PARALLEL"
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
