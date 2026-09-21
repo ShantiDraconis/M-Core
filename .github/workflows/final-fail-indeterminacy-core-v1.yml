@@ -3,7 +3,7 @@ name: FINAL_FAIL Fundamental Indeterminacy Core v1
 on:
   push:
     branches:
-      - attack/final-fail-projective-brain-v1-20260921
+      - attack/final-fail-indeterminacy-core-v1-20260921
   pull_request:
     paths:
       - 'lean/MCore/FinalFail/FundamentalIndeterminacy.lean'
