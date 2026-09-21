@@ -140,15 +140,15 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "a9e94da1868399ce03662f115fee5bf579aa861d",
+      "active_attack_head": "0c89ecaca4449e1b551970a13a38f4e4d3d55a9a",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
       "current": [
-        "P01_SAT_OPERATIONAL_NTM",
+        "P01_CANONICAL_SINGLE_TAPE_NTM",
         "P02_SAT_NOT_IN_P"
       ],
-      "next_delta": "finish a concrete polynomial-time single-tape PolyNTMRealization of SATBits circuitBitEncoding; canonical encoding + finite witness + verified relation are recovered, legacy component records are fail-proofed; after P01, P02 genuine SAT not-in-P lower bound remains",
+      "next_delta": "P01: compile the already-certified SATBits short-witness relation into the hardened finite-control single-tape NTM. Immediate subgate: recursive parser/stack composition over Fin-state control and Option Bool alphabet; CanonicalSATFrameMachineV2 is SOURCE under fail-closed CI. Then P02 remains the genuine universal SAT not-in-P lower bound.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -156,7 +156,12 @@
         "frozen/p01-component-failproof-green-9e21b631"
       ],
       "source_delta": [
-        "lean/MCore/Real/CanonicalSATFrameMachineV2.lean: SOURCE_BUILD_PENDING"
+        "lean/MCore/Real/CanonicalSATFrameMachineV2.lean: SOURCE_BUILD_PENDING",
+        ".github/workflows/atk-p01-clean.yml: clean P01 build + axiom + boundary gate"
+      ],
+      "rejected_shortcuts": [
+        "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
+        "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ]
     },
     {
