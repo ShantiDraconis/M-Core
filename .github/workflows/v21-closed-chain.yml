@@ -5,6 +5,7 @@ on:
     branches:
       - audit/closed-chain-v2.1
       - research/pure-math-final-proof-v1
+      - attack/mcore-v22-residual-red-20260921
   pull_request:
   workflow_dispatch:
 
