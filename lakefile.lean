@@ -8,3 +8,7 @@ require mathlib from git
 
 @[default_target]
 lean_lib MCore where
+
+lean_lib MCoreAudit where
+  srcDir := "lean"
+  globs := #[.submodules `MCore]
