@@ -11,4 +11,4 @@ lean_lib MCore where
 
 lean_lib MCoreAudit where
   srcDir := "lean"
-  globs := #[.submodules `MCore]
+  roots := #[`MCore.KernelBuild]
