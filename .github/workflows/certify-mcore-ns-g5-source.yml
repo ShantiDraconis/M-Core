@@ -1,0 +1,38 @@
+name: certify-mcore-ns-g5-source
+
+on:
+  push:
+    branches: [attack/ns-g5-mcore-20260921]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean 4.19
+        run: |
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.19.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Bootstrap
+        run: |
+          lake update
+          lake exe cache get
+      - name: Build audit library
+        run: lake build MCoreAudit
+      - name: Kernel audit
+        run: python3 scripts/kernel_audit.py
+      - name: Compile kernel surface
+        run: lake env lean lean/MCore/KernelBuild.lean
+      - name: Scientific boundary
+        run: |
+          grep -q 'def Resolved (c : ResolutionClaim) : Prop := c.obstruction → c.endpoint' lean/MCore/ResolutionPredicate.lean
+          grep -q 'def G5_1_THETA_STATUS\|G5-1 theta<1 OPEN_MATH' lean/MCore/Attack/NS/G5DirectCorrected.lean || true
+          grep -q 'adapterStatus' lean/MCore/Attack/NS/G5DirectCorrected.lean
+          grep -q 'FINAL PROOF 0/7' scripts/kernel_audit.py
+          echo "SOURCE_BUILD=GREEN_IF_ALL_PRIOR_STEPS_PASS"
+          echo "CERTIFIED=NO"
+          echo "FINAL_PROOF=0/7"
