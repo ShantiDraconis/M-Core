@@ -1,0 +1,41 @@
+{
+  "certified_results": [
+    "advance: START -> CENTER -> FINISH",
+    "return: FINISH -> CENTER -> START",
+    "CENTER has two admissible unlabeled outgoing transitions",
+    "all allowed transitions preserve closure under AllSitesClosed",
+    "ClosedCenterHard implies START <-> CENTER",
+    "ClosedCenterHard implies CENTER <-> FINISH",
+    "ClosedCenterHard implies START <-> FINISH",
+    "ClosedCenterTerminalChain closes FINISH from certified START plus the four semantic maps and a closed firewall"
+  ],
+  "checks": {
+    "admit": 0,
+    "axiom_footprint": "PASS",
+    "kernel_compile": "PASS",
+    "new_axiom_declarations": 0,
+    "sorry": 0,
+    "source_hygiene": "PASS"
+  },
+  "date": "2026-09-21",
+  "formal_sources": [
+    "lean/MCore/FinalFail/TriadicObstructionCalculus.lean",
+    "lean/MCore/FinalFail/MinimalOpenBridge.lean",
+    "lean/MCore/FinalFail/ClosedCenterHard.lean"
+  ],
+  "pull_request": 3,
+  "repository": "ShantiDraconis/M-Core",
+  "schema": "FINAL_FAIL_CLOSED_CENTER_HARD_CERT_V1",
+  "semantic_firewall": {
+    "endpoint_promotion": false,
+    "final_proof": "0/7",
+    "four_maps_are_inputs_not_manufactured": true,
+    "millennium_endpoint_claim": false
+  },
+  "source_branch": "attack/final-fail-closed-center-dynamics-20260921",
+  "source_commit": "c3910589cd1865b4adfbe790938a1e77884ebfcd",
+  "status": "GREEN",
+  "toolchain": "leanprover/lean4:v4.19.0",
+  "workflow_job": 106509145638,
+  "workflow_run": 35652843838
+}
