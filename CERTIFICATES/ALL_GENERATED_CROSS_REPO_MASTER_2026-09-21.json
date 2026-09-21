@@ -1,0 +1,36 @@
+{
+  "schema": "ALL_GENERATED_CROSS_REPO_MASTER_CERT_V1",
+  "date": "2026-09-21",
+  "scope": "All generated HARD / indeterminacy / brain SHAs recovered in this session",
+  "totals": {
+    "m_core_shas": 21,
+    "zero_ai_shas": 17,
+    "total_shas": 38
+  },
+  "m_core": {
+    "ledger_path": "CERTIFICATES/ALL_GENERATED_HARD_BRAIN_SHAS_2026-09-21.json",
+    "ledger_blob_sha": "ca6eb49fecab945ac079a2049fad162f1c64d505",
+    "certificate_commit": "05d047d239f0030d0d981e5775d2c187747e4bde",
+    "frozen_branch": "frozen/all-generated-hard-brain-shas-05d047d2",
+    "canonical_closed_center_source": "c3910589cd1865b4adfbe790938a1e77884ebfcd",
+    "canonical_closed_center_merge": "6c9de849df210cd35063c0cf7f74333cf4eadfe6",
+    "canonical_indeterminacy_source": "2d47aa595f031d384162fd10e74ce0481602c11d",
+    "canonical_indeterminacy_frozen": "e931de92096b4233ee98422e1442b1a5406c8483",
+    "canonical_indeterminacy_merge": "dbfd1ca3bd5cc948c64401074808498b61e53b72",
+    "canonical_readonly_interface": "e77ab366364f117e74131acef7af5f7f23a8d789"
+  },
+  "zero_ai": {
+    "ledger_path": "CERTIFICATES/ALL_GENERATED_BRAIN_SHAS_2026-09-21.json",
+    "ledger_blob_sha": "437d7beaa5c38031682d5a66505030818306c145",
+    "certificate_commit": "4a25d120b110dc91cb446115b0721bb7abfbba30",
+    "frozen_branch": "frozen/all-generated-brain-shas-4a25d120",
+    "canonical_runtime_merge": "e1d39e498eb44691a9a0fa601d18d680e56e4e26",
+    "canonical_runtime_frozen": "0dfb618e80f8aa176ca116f2c3eed4cfd79733d8",
+    "canonical_boundary_source": "a341af6576a71d34ef4996f852a8a86c57cfb5b9",
+    "canonical_boundary_certificate": "bb2166de3ee356786f1978c997d9b592241cea54",
+    "canonical_boundary_sha256": "0e963e2c3b3af3e78d9dd62663ac7684e76960c94d87f862b5506dc60b594c04"
+  },
+  "certification_rule": "GREEN only where explicit successful CI/kernel evidence exists. Historical failed commits remain certified as RED/SUPERSEDED provenance; they are not promoted.",
+  "final_proof": "0/7",
+  "endpoint_promotion": false
+}
