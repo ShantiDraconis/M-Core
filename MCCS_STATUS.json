@@ -140,7 +140,7 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "0c89ecaca4449e1b551970a13a38f4e4d3d55a9a",
+      "active_attack_head": "3ab811a9561e3eda2cb67d77c8bed1b6cfd35e98",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
@@ -148,7 +148,7 @@
         "P01_CANONICAL_SINGLE_TAPE_NTM",
         "P02_SAT_NOT_IN_P"
       ],
-      "next_delta": "P01: compile the already-certified SATBits short-witness relation into the hardened finite-control single-tape NTM. Immediate subgate: recursive parser/stack composition over Fin-state control and Option Bool alphabet; CanonicalSATFrameMachineV2 is SOURCE under fail-closed CI. Then P02 remains the genuine universal SAT not-in-P lower bound.",
+      "next_delta": "Construct an inhabitant of CanonicalRecursiveParserOperationalGap using fixed finite control Fin (stateCount+1), Option Bool tape alphabet, canonical tape, polynomial bound and exact decodeCircuit correctness; then compose nondeterministic witness generation + verifier into CanonicalSATMachineClosure. P02 SAT not-in-P remains independent OPEN_MATH.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -157,7 +157,9 @@
       ],
       "source_delta": [
         "lean/MCore/Real/CanonicalSATFrameMachineV2.lean: SOURCE_BUILD_PENDING",
-        ".github/workflows/atk-p01-clean.yml: clean P01 build + axiom + boundary gate"
+        "lean/MCore/Real/P01RecursiveFiniteControlFrontier.lean: SOURCE_BUILD_PENDING",
+        "certificado-runner/00_cert_runner.py: fail-closed expected-open runner",
+        ".github/workflows/atk-p01-clean.yml: clean P01 build/axiom/expected-open gate"
       ],
       "rejected_shortcuts": [
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
@@ -214,14 +216,27 @@
       "counts_toward_final_proof": false,
       "counts_toward_hard_remaining": false,
       "endpoint_promotion": false,
-      "superseded_branch": "attack/mcore-formulation-v2-20260921"
+      "superseded_branch": "attack/mcore-formulation-v2-20260921",
+      "formulation_obligations": {
+        "green": 2,
+        "open": 2,
+        "total": 4,
+        "green_items": [
+          "FailAt <-> FundamentalIndeterminacy <-> IFail under induced center resolution with admissible identity",
+          "DeterminedAt <-> CenterDetermined"
+        ],
+        "open_items": [
+          "relation-level HARD closure -> ClosedCenterHard maps under explicit totality/single-valuedness while preserving branch multiplicity",
+          "typed Phi3/numeric-indeterminacy -> structural IFail adapter without definitional collapse"
+        ]
+      }
     }
   ],
   "hub": {
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CLOSED_CENTER_HARD_FOUNDATION_GREEN_FROZEN + SEVEN FINAL-PROOF ATTACKS + MCORE FORMULATION V2 IN_PARALLEL"
+    "current": "CANONICAL 7/7 GREEN_FROZEN + 7 FINAL-PROOF ATTACKS + MCORE FORMULATION 2/4 GREEN, 2/4 OPEN + P01 FAIL-CLOSED RUNNER INSTALLED"
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
