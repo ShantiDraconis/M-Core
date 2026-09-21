@@ -44,8 +44,9 @@ jobs:
         run: |
           set -euo pipefail
           cd lean
-          lean MCore/FinalFail/TriadicObstructionCalculus.lean
-          lean MCore/FinalFail/MinimalOpenBridge.lean
+          export LEAN_PATH="$PWD"
+          lean -o MCore/FinalFail/TriadicObstructionCalculus.olean MCore/FinalFail/TriadicObstructionCalculus.lean
+          lean -o MCore/FinalFail/MinimalOpenBridge.olean MCore/FinalFail/MinimalOpenBridge.lean
           lean MCore/FinalFail/ClosedCenterHard.lean 2>&1 | tee /tmp/closed-center-hard.log
 
       - name: Axiom footprint
