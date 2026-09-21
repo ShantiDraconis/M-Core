@@ -140,15 +140,17 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "3ab811a9561e3eda2cb67d77c8bed1b6cfd35e98",
+      "active_attack_head": "15748f5cad1a5d5eadc2977d2f6076ff75c98e21",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
       "current": [
+        "P01_CANONICAL_DECODER_INVERSE",
+        "P01_SLOT_PARSER_EXACT_SPEC",
         "P01_CANONICAL_SINGLE_TAPE_NTM",
         "P02_SAT_NOT_IN_P"
       ],
-      "next_delta": "Construct an inhabitant of CanonicalRecursiveParserOperationalGap using fixed finite control Fin (stateCount+1), Option Bool tape alphabet, canonical tape, polynomial bound and exact decodeCircuit correctness; then compose nondeterministic witness generation + verifier into CanonicalSATMachineClosure. P02 SAT not-in-P remains independent OPEN_MATH.",
+      "next_delta": "Kernel/CI validate decoder inverse + exact slot parser. Then implement a TM (Fin (stateCount+1)) (Option Bool) whose acceptance realizes slotAccept with a polynomial bound and total halting; package it as CanonicalRecursiveParserMachineCertificate. After that compose witness guessing + verified relation into CanonicalSATMachineClosure. P02 SAT not-in-P remains independent OPEN_MATH.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -156,10 +158,11 @@
         "frozen/p01-component-failproof-green-9e21b631"
       ],
       "source_delta": [
-        "lean/MCore/Real/CanonicalSATFrameMachineV2.lean: SOURCE_BUILD_PENDING",
-        "lean/MCore/Real/P01RecursiveFiniteControlFrontier.lean: SOURCE_BUILD_PENDING",
-        "certificado-runner/00_cert_runner.py: fail-closed expected-open runner",
-        ".github/workflows/atk-p01-clean.yml: clean P01 build/axiom/expected-open gate"
+        "CanonicalCircuitBitsInverse.lean: exact decoder inverse SOURCE_BUILD_PENDING",
+        "CanonicalSATSlotParserSpec.lean: slotAccept <-> exact canonical encoding <-> decodeCircuit SOURCE_BUILD_PENDING",
+        "CanonicalSATFrameMachineV2.lean: frame protocol SOURCE_BUILD_PENDING",
+        "P01RecursiveFiniteControlFrontier.lean: canonical operational target SOURCE_BUILD_PENDING",
+        ".github/workflows/atk-p01-clean.yml: fail-closed build/axiom/expected-open gate"
       ],
       "rejected_shortcuts": [
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
@@ -193,7 +196,7 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "e6bcc70441797e7c2b371bff1a473be19a5663a4",
       "inherited_foundation": "frozen/final-fail-closed-center-hard-ee1ec8fb",
-      "active_attack_head": "0d999a1d2580adac0c59688d8d38c01c82838a3c",
+      "active_attack_head": "53cab04081827f792c6f55f7dc5d1eb232155134",
       "attack_branch": "attack/mcore-formulation-v2-clean-20260921",
       "source_hygiene": "PENDING_CI",
       "kernel_state": "BUILD_PENDING",
@@ -208,8 +211,9 @@
         "read-only external interface remains separate from internal attack/formulation namespaces"
       ],
       "source_delta": [
-        "RelationalCenterBridge.lean proves FailAt <-> FundamentalIndeterminacy <-> IFail under an induced center resolution",
-        "Master.lean removes dangling BrainKernel import and exposes CORE_V2 state",
+        "RelationalCenterBridge.lean: FailAt/FundamentalIndeterminacy/IFail bridge",
+        "RelationalClosedCenterBridge.lean: relational totality -> proposition-level ClosedCenterHard; explicit functional witness avoids choice; FailAt coexists",
+        "Master.lean: CORE_V2 integration",
         "mcore-formulation-v2.yml: fail-closed build/axiom gate"
       ],
       "next_delta": "relation-level HARD closure: characterize when total/single-valued relational arrows induce ClosedCenterHard maps while preserving non-unique branch structure; then add an explicit typed adapter firewall between recovered Phi3 numeric indeterminacy and structural IFail rather than identifying them definitionally",
@@ -219,15 +223,18 @@
       "superseded_branch": "attack/mcore-formulation-v2-20260921",
       "formulation_obligations": {
         "green": 2,
-        "open": 2,
+        "source_build_pending": 1,
+        "open": 1,
         "total": 4,
         "green_items": [
           "FailAt <-> FundamentalIndeterminacy <-> IFail under induced center resolution with admissible identity",
           "DeterminedAt <-> CenterDetermined"
         ],
+        "source_items": [
+          "relation-level HARD closure: RelationalTotality induces proposition-level ClosedCenterHard and preserves separate FailAt; explicit RelationalFunctionalWitness supplies underlying maps without Classical.choice"
+        ],
         "open_items": [
-          "relation-level HARD closure -> ClosedCenterHard maps under explicit totality/single-valuedness while preserving branch multiplicity",
-          "typed Phi3/numeric-indeterminacy -> structural IFail adapter without definitional collapse"
+          "typed adapter from certified external Phi3/numeric indeterminacy to structural IFail without definitional collapse"
         ]
       }
     }
@@ -236,7 +243,7 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CANONICAL 7/7 GREEN_FROZEN + 7 FINAL-PROOF ATTACKS + MCORE FORMULATION 2/4 GREEN, 2/4 OPEN + P01 FAIL-CLOSED RUNNER INSTALLED"
+    "current": "CANONICAL 7/7 GREEN_FROZEN + 7 FINAL-PROOF ATTACKS + MCORE FORMULATION 2/4 GREEN, 1/4 SOURCE_BUILD_PENDING, 1/4 OPEN + P01 EXACT SLOT SPEC SOURCE_BUILD_PENDING"
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
