@@ -1,0 +1,34 @@
+name: Cross-chain certified reuse
+on:
+  push:
+    branches: ['attack/cross-chain-certified-reuse-20260921']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: false
+          test: false
+          lint: false
+      - name: Build reusable firewalls
+        run: |
+          set -euo pipefail
+          lake build MCore.CertifiedFirewalls
+          lake build MCore
+      - name: Fail-closed hygiene
+        run: |
+          set -euo pipefail
+          if grep -nE '\b(sorry|admit)\b' MCore/CertifiedFirewalls.lean; then exit 1; fi
+          if grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' MCore/CertifiedFirewalls.lean; then exit 1; fi
+          lake env lean MCore/CertifiedFirewalls.lean 2>&1 | tee /tmp/firewalls.log
+          if grep -F 'sorryAx' /tmp/firewalls.log; then exit 1; fi
+      - name: Clean rebuild
+        run: |
+          set -euo pipefail
+          lake clean
+          lake build MCore.CertifiedFirewalls
