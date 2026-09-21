@@ -9,7 +9,8 @@ on:
       - 'lean/MCore/FinalFail/ClosedCenterHard.lean'
       - 'lean/MCore/FinalFail/FundamentalIndeterminacy.lean'
       - 'lean/MCore/FinalFail/RelationalHardAtom.lean'
-      - 'lean/MCore/FinalFail/RelationalCenterBridge.lean'
+      - 'lean/MCore/FinalFail/RelationalCenterBridge.lean
+      - 'lean/MCore/FinalFail/RelationalClosedCenterBridge.lean''
       - 'lean/MCore/FinalFail/Master.lean'
   workflow_dispatch:
 
@@ -36,6 +37,7 @@ jobs:
             lean/MCore/FinalFail/FundamentalIndeterminacy.lean
             lean/MCore/FinalFail/RelationalHardAtom.lean
             lean/MCore/FinalFail/RelationalCenterBridge.lean
+            lean/MCore/FinalFail/RelationalClosedCenterBridge.lean
             lean/MCore/FinalFail/Master.lean
           )
           if grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${files[@]}"; then
@@ -51,7 +53,7 @@ jobs:
       - name: Build formulation
         run: |
           set -euo pipefail
-          lake build MCore.FinalFail.RelationalCenterBridge MCore.FinalFail.Master
+          lake build MCore.FinalFail.RelationalCenterBridge MCore.FinalFail.RelationalClosedCenterBridge MCore.FinalFail.Master
 
       - name: Axiom audit
         run: |
@@ -62,6 +64,9 @@ jobs:
           #print axioms MCore.FinalFail.RelationalHardAtom.determinedAt_iff_centerDetermined
           #print axioms MCore.FinalFail.RelationalHardAtom.failAt_iff_IFail
           #print axioms MCore.FinalFail.RelationalHardAtom.determinedAt_not_failAt
+          #print axioms MCore.FinalFail.RelationalTotality.toClosedCenterHard
+          #print axioms MCore.FinalFail.RelationalTotality.closedCenterHard_coexists_with_failAt
+          #print axioms MCore.FinalFail.RelationalFunctionalWitness.toClosedCenterHard
           EOF
           lake env lean /tmp/MCoreFormulationAudit.lean 2>&1 | tee /tmp/mcore-formulation-v2.log
           if grep -q 'sorryAx' /tmp/mcore-formulation-v2.log; then exit 1; fi
