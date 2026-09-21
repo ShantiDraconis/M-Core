@@ -1,4 +1,5 @@
 import MCore.V22.ClosureCriterion
+import MCore.V22.ExactBlockerNecessity
 
 namespace MCore.V22
 
