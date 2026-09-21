@@ -140,21 +140,17 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "80fbfce82e3ef09e89a2df317e18ec4f8c20c645",
+      "active_attack_head": "75d2c6376dde3854ae553b0ec9ac1c9488c11943",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
       "current": [
-        "P01_DECODER_INVERSE_SOURCE",
-        "P01_SLOT_ACCEPT_EXACT_SPEC_SOURCE",
-        "P01_TAG_CONSUMER_SOURCE",
-        "P01_VAR_PAYLOAD_CONSUMER_SOURCE",
-        "P01_TAPE_LAYOUT_INIT_SOURCE",
-        "P01_TOMBSTONE_SLOT_LOG_SOURCE",
-        "P01_CANONICAL_SINGLE_TAPE_NTM",
-        "P02_SAT_NOT_IN_P"
+        "P01_FIN25_SINGLE_TAPE_MACHINE_SOURCE",
+        "P01_PARSER_SIMULATION_GAP",
+        "P01_MACHINE_LEVEL_WITNESS_GUESS_AND_VERIFY",
+        "P02_UNIVERSAL_FAILURE_SAT_TARGET"
       ],
-      "next_delta": "Implement the slot-log push/pop tape machines and compose init + tag consumer + var payload consumer + slot-log updates into one TM (Fin (stateCount+1)) (Option Bool). Prove total halting and polynomial runtime against the exact slotAccept specification, then package CanonicalRecursiveParserMachineCertificate. No CI/kernel promotion until live status exists.",
+      "next_delta": "P01: prove SlotParserMachineSimulationCertificate for the concrete Fin25 TM, then implement genuine machine-level nondeterministic witness generation and verification to obtain CanonicalSATMachineClosure. P02: construct UniversalFailure (SATBits circuitBitEncoding), equivalently prove SATTarget not in hardened InP. This is the unresolved P vs NP lower-bound object; no existing repository abstraction closes it.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -162,19 +158,18 @@
         "frozen/p01-component-failproof-green-9e21b631"
       ],
       "source_delta": [
-        "CanonicalCircuitBitsInverse.lean: exact decode inverse",
-        "CanonicalSATSlotParserSpec.lean: slotAccept <-> exact encoding <-> decodeCircuit",
-        "CanonicalSATTagConsumerMachine.lean: 13-state consuming tag machine",
-        "CanonicalSATVarPayloadMachine.lean: 3-state unary payload consumer; no Nat in control",
-        "CanonicalSATParserTapeLayout.lean: blank-delimited input/work layout",
-        "CanonicalSATParserInitMachine.lean: finite-control initialization to slots=1",
-        "CanonicalSATSlotLog.lean: true active slot / false tombstone work-log semantics",
-        ".github/workflows/atk-p01-clean.yml: expanded fail-closed build/axiom gate"
+        "CanonicalSATRecursiveParserMachine.lean: concrete TM (Fin 25) (Option Bool), blank none, quadratic bound",
+        "CanonicalSATRecursiveParserSimulation.lean: parser closure reduced exactly to halts + realizes_slotAccept",
+        "CanonicalSATSlotParserSpec.lean: slotAccept <-> exists exact canonical encoding <-> decodeCircuit",
+        "P02ExactFrontier.lean: P02 <-> not InP(SATTarget); P01+P02 -> PneqNP",
+        "PR #16 opened as draft for live CI evidence; connector currently returns no workflow runs"
       ],
       "rejected_shortcuts": [
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
-      ]
+      ],
+      "p01_state": "SOURCE_MACHINE_DEFINED / SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
+      "p02_state": "EXACT_FRONTIER_PROVED / LOWER_BOUND_OPEN_MATH"
     },
     {
       "repo": "m-core-bsd",
@@ -250,7 +245,7 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CANONICAL 7/7 GREEN_FROZEN + 7 FINAL-PROOF ATTACKS + MCORE FORMULATION 2/4 GREEN, 1/4 SOURCE_BUILD_PENDING, 1/4 OPEN + P01 OPERATIONAL COMPONENTS SOURCE_BUILD_PENDING"
+    "current": "P01 CONCRETE FIN25 TM SOURCE + EXACT SIMULATION GAP OPEN; P02 EXACTLY REDUCED TO UNIVERSAL FAILURE / SAT NOT-IN-P OPEN_MATH; NO FINAL_PROOF PROMOTION"
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
