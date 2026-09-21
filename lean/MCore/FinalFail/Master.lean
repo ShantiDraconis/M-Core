@@ -7,6 +7,7 @@ import MCore.FinalFail.ClosedCenterHard
 import MCore.FinalFail.FundamentalIndeterminacy
 import MCore.FinalFail.RelationalHardAtom
 import MCore.FinalFail.RelationalCenterBridge
+import MCore.FinalFail.RelationalClosedCenterBridge
 import MCore.FinalFail.Attack.Beal
 import MCore.FinalFail.Attack.NavierStokes
 
