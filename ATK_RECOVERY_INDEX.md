@@ -93,6 +93,8 @@ equation + x,y,z>2 + gcd(A,gcd(B,C))=1.
 Attack only elimination of that residual case.
 
 ## P vs NP
+Active clean continuation: `attack/material-orientation-clean-v2-20260921` at `9c0e4e6de3f3d899ee55b2f945a91d37e4cf34e3`, based directly on canonical frozen `969408f2d84121667319da04680893dd2978e9a6` (`ahead=1`, `behind=0`).
+Superseded for continuation: `attack/material-orientation-clean-20260921` (diverged from canonical base; retain provenance only).
 Reuse:
 - audit/EndpointCompression.lean
 - audit/repro_PNP.lean
@@ -119,6 +121,8 @@ Historical curve-specific computations are evidence only, not universalization.
 
 ## Navier-Stokes
 Repository: ShantiDraconis/navier-stokes-critical-barrier-audit.
+Active clean continuation: `attack/n01-uniformization-clean-v2-20260921` at `0ceb0c52180dba965b8ce80255b92795ccc7e7b5`, based directly on canonical frozen `b7caecc2db571679af4b6ee64829253dcd97cea2` (`ahead=1`, `behind=0`).
+Superseded for continuation: `attack/n01-uniformization-clean-20260921` (diverged from canonical base; retain provenance only).
 Mutation rule: no commits/issues/releases without explicit user approval.
 Known state:
 - FAILPROOF GREEN: run 35565581964, job 106226618089.
