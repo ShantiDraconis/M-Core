@@ -6,17 +6,20 @@ import MCore.FinalFail.TriadicObstructionCalculus
 import MCore.FinalFail.ClosedCenterHard
 import MCore.FinalFail.FundamentalIndeterminacy
 import MCore.FinalFail.RelationalHardAtom
-import MCore.FinalFail.BrainKernel
+import MCore.FinalFail.RelationalCenterBridge
 import MCore.FinalFail.Attack.Beal
 import MCore.FinalFail.Attack.NavierStokes
 
 namespace MCore.FinalFail
 
 def masterState : String :=
-  "FINAL_FAIL: closed-center HARD + fundamental branching indeterminacy + relational brain kernel active; exact gaps pinned; no endpoint promoted"
+  "FINAL_FAIL: closed-center HARD + fundamental branching indeterminacy + relational HARD core active; exact gaps pinned; no endpoint promoted"
 
-def brainFoundationState : String :=
-  "BRAIN_V1: START<->CENTER<->FINISH; branch-preserving relations; IFail is structural non-uniqueness, not numeric 0/0"
+def coreFoundationState : String :=
+  "CORE_V2: START<->CENTER<->FINISH; branch-preserving relations; FailAt = IFail under the induced center resolution; IFail is structural non-uniqueness, not numeric 0/0"
+
+/-- Compatibility name retained for older consumers; M-Core itself is the core formulation. -/
+def brainFoundationState : String := coreFoundationState
 
 theorem master_open_count : openFinalProblems = 7 := openFinalProblems_eq_seven
 
