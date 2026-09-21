@@ -1,5 +1,6 @@
 import Mathlib.Analysis.Calculus.Deriv.Basic
 import Mathlib.MeasureTheory.Integral.IntervalIntegral
+import Mathlib.Analysis.ODE.Gronwall
 
 noncomputable section
 open MeasureTheory
@@ -47,6 +48,20 @@ theorem G5_to_Gronwall
   linarith
 
 /--
+Exact G5-4 formal target.  Mathlib 4.19's ODE/Gronwall theorem is stated for
+a constant coefficient K; it does not directly supply this variable-coefficient
+L1 version.  Therefore this proposition remains a formal-library bridge, not a
+mathematical promotion.
+-/
+def VariableCoefficientGronwallTarget : Prop :=
+  ∀ (y a : ℝ → ℝ) (t0 T : ℝ),
+    ContinuousOn y (Set.Icc t0 T) →
+    IntervalIntegrable a volume t0 T →
+    (∀ t, t ∈ Set.Ioo t0 T → deriv y t ≤ 2 * a t * y t) →
+    ∀ t, t ∈ Set.Icc t0 T,
+      y t ≤ y t0 * Real.exp (2 * ∫ s in t0..t, a s)
+
+/--
 Semantic adapter to the real M-Navier-Stokes definitions.
 This M-Core repository does not pretend that its abstract TimeFuncs are already
 the concrete maximal-solution trajectory.
@@ -62,11 +77,14 @@ structure SemanticAdapter where
 def adapterStatus : String :=
   "OPEN_EXTERNAL_SEMANTIC_MATCH_TO_PINNED_M-NAVIER-STOKES"
 
+def gronwallLibraryStatus : String :=
+  "MATHLIB_4_19_HAS_CONSTANT_K_GRONWALL; VARIABLE_KT_L1_TARGET_NOT_DIRECTLY_AVAILABLE"
+
 def failClosed : List String := [
   "G5-1 theta<1 OPEN_MATH",
   "G5-2 terminal a in L1 OPEN_MATH",
   "G5-3 balance+G5 -> differential inequality PROVED",
-  "G5-4 exact Gronwall theorem/match pending",
+  "G5-4 variable-coefficient L1 Gronwall FORMAL_LIBRARY_GAP",
   "G5-5 critical-control semantic match pending",
   "G5-6 ESS exact hypothesis match pending",
   "M-Core -> real M-Navier-Stokes semantic adapter OPEN"
