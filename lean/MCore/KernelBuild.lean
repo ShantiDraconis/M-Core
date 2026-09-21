@@ -12,6 +12,7 @@ import MCore.SigmaClassification
 import MCore.SevenDeltasFormal
 import MCore.SevenParallelAttack
 import MCore.UnifiedTerminalLogic
+import MCore.CrossProblemTaxonomy
 import MCore.Attack.NS.MNavierStokes
 import MCore.Attack.NS.G5DirectCorrected
 
