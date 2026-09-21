@@ -1,0 +1,36 @@
+{
+  "certified_scope": [
+    "FundamentalIndeterminacy is structural non-uniqueness of admissible center branches",
+    "FundamentalIndeterminacy implies center is not determined",
+    "FundamentalIndeterminacy is preserved by explicit admissibility-preserving coordinate equivalence",
+    "0/1/infinity are reference directions and explicitly non-exhaustive",
+    "RelationalHardAtom preserves set-valued START<->CENTER<->FINISH transitions",
+    "FAIL at a center implies non-determination at that center",
+    "ClosedCenterBrain packages encode/reconstruct and generate/feedback loops over one branch-preserving center",
+    "Toy kernel tests distinguish determined singleton center from indeterminate two-branch center"
+  ],
+  "checks": {
+    "admit": 0,
+    "axiom_footprint": "PASS",
+    "kernel_compile": "PASS",
+    "new_axiom_declarations": 0,
+    "sorry": 0,
+    "source_hygiene": "PASS"
+  },
+  "date": "2026-09-21",
+  "repository": "ShantiDraconis/M-Core",
+  "schema": "FINAL_FAIL_PROJECTIVE_BRAIN_V1_CERT",
+  "semantic_firewall": {
+    "final_proof": "0/7",
+    "indeterminacy_numeric_constant": false,
+    "indeterminacy_structural_invariant": true,
+    "literal_0_over_0_redefined": false,
+    "millennium_endpoint_promotion": false
+  },
+  "source_branch": "attack/final-fail-projective-brain-v1-20260921",
+  "source_commit": "bf17e3a44eace986f7e68f06846b8131a40d0133",
+  "status": "GREEN",
+  "toolchain": "leanprover/lean4:v4.19.0",
+  "workflow_job": 106519470292,
+  "workflow_run": 35655922368
+}
