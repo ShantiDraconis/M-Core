@@ -13,8 +13,40 @@ Source of truth for HARD accounting: `MCCS_STATUS.json`.
 - Terminal certificates: **7/7 GREEN_FROZEN**
 - Canonical HARD bases: **7/7 GREEN_FROZEN incorporated**
 - FINAL_PROOF: **0/7**
+- Closed-center HARD foundation: **GREEN_FROZEN**
+  - source: `c3910589cd1865b4adfbe790938a1e77884ebfcd`
+  - run: `35652843838`
+  - frozen: `frozen/final-fail-closed-center-hard-ee1ec8fb`
+  - certificate SHA256: `9d3a64ba4af8deedf66757dd723ec5173b6d17649483d1b86fe90bc18a769747`
 - Progress metric: `FROZEN_HARD/TOTAL_HARD`
 - Frozen prefixes do **not** decrement the historical HARD counters until the corresponding HARD producer itself closes.
+
+
+
+## Closed-center HARD foundation
+
+The canonical proof architecture now includes a kernel-certified bidirectional triad:
+
+```text
+advance: START  -> CENTER -> FINISH
+return:  START <- CENTER <- FINISH
+```
+
+The unlabeled transition relation has two admissible continuations at CENTER. This
+is a formal non-uniqueness of continuation, not a numerical definition of 0/0.
+
+For a concrete HARD, closure is conditional on proving all four semantic maps:
+
+```text
+Start  -> Center
+Center -> Start
+Center -> Finish
+Finish -> Center
+```
+
+Once these four maps are supplied, Lean proves `Start ↔ Center`,
+`Center ↔ Finish`, and `Start ↔ Finish`. The architecture does not manufacture
+the maps and therefore does not reduce any OPEN_MATH count by itself.
 
 ## Canonical HARD bases incorporated
 
