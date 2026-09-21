@@ -1,0 +1,39 @@
+{
+  "canonical": {
+    "closed_center_merge": "6c9de849df210cd35063c0cf7f74333cf4eadfe6",
+    "closed_center_source": "c3910589cd1865b4adfbe790938a1e77884ebfcd",
+    "fundamental_indeterminacy_frozen": "e931de92096b4233ee98422e1442b1a5406c8483",
+    "fundamental_indeterminacy_merge": "dbfd1ca3bd5cc948c64401074808498b61e53b72",
+    "fundamental_indeterminacy_source": "2d47aa595f031d384162fd10e74ce0481602c11d",
+    "readonly_interface": "e77ab366364f117e74131acef7af5f7f23a8d789"
+  },
+  "date": "2026-09-21",
+  "endpoint_promotion": false,
+  "entries": [
+    {"evidence":{"conclusion":"success","workflow":"FINAL_FAIL closed-center HARD","workflow_run":35652843838},"sha":"c3910589cd1865b4adfbe790938a1e77884ebfcd","status":"KERNEL_CI_CERTIFIED","title":"fix(ci): compile FINAL_FAIL dependency modules into Lean search path"},
+    {"evidence":{"inherits_from":"c3910589cd1865b4adfbe790938a1e77884ebfcd","workflow_run":35652843838},"sha":"6c9de849df210cd35063c0cf7f74333cf4eadfe6","status":"MERGE_PROVENANCE_CERTIFIED","title":"FINAL_FAIL: closed-center bidirectional HARD foundation"},
+    {"evidence":{"depends_on":"6c9de849df210cd35063c0cf7f74333cf4eadfe6"},"sha":"ee97f3aa90977a44e75e6ed9856c936dc9aaadd8","status":"PROVENANCE_CERTIFIED","title":"register kernel-certified closed-center HARD foundation"},
+    {"evidence":{"depends_on":"6c9de849df210cd35063c0cf7f74333cf4eadfe6"},"sha":"7e8651e2b7bc3a6125ff626ff25388d58ea169ee","status":"PROVENANCE_CERTIFIED","title":"wire closed-center dynamics into canonical HARD architecture"},
+    {"evidence":{"certificate_sha256":"9d3a64ba4af8deedf66757dd723ec5173b6d17649483d1b86fe90bc18a769747","source":"c3910589cd1865b4adfbe790938a1e77884ebfcd"},"sha":"ee1ec8fbe951dfa0c74bbe8777c59e10a7661a97","status":"CERTIFICATE_PROVENANCE_CERTIFIED","title":"pin SHA256 for closed-center HARD certificate"},
+    {"evidence":{"later_green":"6fe567daa4007c20cf28564b54d6d39d0448ed48","note":"source later corrected before GREEN"},"sha":"e90939a72fbaa9c83fe91962f816d38603c5f855","status":"SUPERSEDED_SOURCE_PROVENANCE_CERTIFIED","title":"define fundamental indeterminacy invariant"},
+    {"evidence":{"later_green":"6fe567daa4007c20cf28564b54d6d39d0448ed48","note":"source later corrected before GREEN"},"sha":"98c81a1e95dbd8ae587df3334ab539604a56f2fb","status":"SUPERSEDED_SOURCE_PROVENANCE_CERTIFIED","title":"add relation-valued HARD atom and loop invariants"},
+    {"evidence":{"later_green":"6fe567daa4007c20cf28564b54d6d39d0448ed48","note":"executable brain layer later removed from canonical M-Core"},"sha":"d52ff2d59d872c4bac9405a8f2025c6e67f8e057","status":"SUPERSEDED_SOURCE_PROVENANCE_CERTIFIED","title":"package closed-center brain kernel"},
+    {"evidence":{"later_green":"6fe567daa4007c20cf28564b54d6d39d0448ed48"},"sha":"4dd288af28c901cd012133be12c42a813c24bb81","status":"SUPERSEDED_SOURCE_PROVENANCE_CERTIFIED","title":"add kernel tests for branching and non-exhaustive references"},
+    {"evidence":{"conclusion":"failure","regression_conclusion":"success","regression_workflow_run":35655597475,"workflow":"FINAL_FAIL Projective Brain v1","workflow_run":35655597582},"sha":"4372dddf479ddf8663a3ea674125bdbb6a9bb210","status":"CERTIFIED_RED_INFRA","title":"certify fundamental indeterminacy brain kernel"},
+    {"evidence":{"conclusion":"failure","regression_conclusion":"success","regression_workflow_run":35655731936,"workflow":"FINAL_FAIL Projective Brain v1","workflow_run":35655731790},"sha":"fbb6de3677ea4d9de40f9ad5b37947143b986398","status":"CERTIFIED_RED_INFRA","title":"make coordinate invariance dependency-free"},
+    {"evidence":{"conclusion":"success","regression_conclusion":"success","regression_workflow_run":35655817857,"workflow":"FINAL_FAIL Projective Brain v1","workflow_run":35655817985},"sha":"6fe567daa4007c20cf28564b54d6d39d0448ed48","status":"KERNEL_CI_CERTIFIED","title":"prove Bool branch distinction constructively"},
+    {"evidence":{"conclusion":"success","note":"later architectural correction removed executable brain from M-Core","regression_conclusion":"success","regression_workflow_run":35655922237,"workflow":"FINAL_FAIL Projective Brain v1","workflow_run":35655922368},"sha":"bf17e3a44eace986f7e68f06846b8131a40d0133","status":"KERNEL_CI_CERTIFIED_SUPERSEDED_ARCHITECTURE","title":"activate fundamental indeterminacy brain in master"},
+    {"evidence":{"conclusion":"failure","later_green":"2d47aa595f031d384162fd10e74ce0481602c11d","regression_conclusion":"success","regression_workflow_run":35656789781,"workflow":"FINAL_FAIL Fundamental Indeterminacy Core v1","workflow_run":35656789756},"sha":"6472b62abcc91b978fbfd94e7d7bcd4631e71224","status":"CERTIFIED_RED_INFRA_PARTIAL_GREEN","title":"certify fundamental indeterminacy HARD core"},
+    {"evidence":{"conclusion":"success","regression_conclusion":"success","regression_workflow_run":35657230921,"workflow":"FINAL_FAIL Fundamental Indeterminacy Core v1","workflow_run":35657230894},"sha":"2d47aa595f031d384162fd10e74ce0481602c11d","status":"KERNEL_CI_CERTIFIED_CANONICAL","title":"prove Boolean branch separation without Decidable synthesis"},
+    {"evidence":{"certificate_sha256":"11aebdd24cdc864f668443da28ef3eddb9248068e4aabf6d97ba0fe2edddf38a","source":"2d47aa595f031d384162fd10e74ce0481602c11d"},"sha":"e931de92096b4233ee98422e1442b1a5406c8483","status":"CERTIFICATE_PROVENANCE_CERTIFIED","title":"pin SHA256 for fundamental indeterminacy certificate"},
+    {"evidence":{"certified_source":"2d47aa595f031d384162fd10e74ce0481602c11d","frozen":"e931de92096b4233ee98422e1442b1a5406c8483"},"sha":"dbfd1ca3bd5cc948c64401074808498b61e53b72","status":"MERGE_PROVENANCE_CERTIFIED_CANONICAL","title":"FINAL_FAIL: fundamental indeterminacy core v1"},
+    {"evidence":{"later_green":"4a21f2a79720730ddecbd58fd9a8257c6cce46e0","workflow_run":35657590922},"sha":"39ca88741d993caa86cdba93b79041bd6b679c49","status":"CHAIN_COVERED_BY_LATER_GREEN","title":"publish minimal read-only certified export v1"},
+    {"evidence":{"later_green":"4a21f2a79720730ddecbd58fd9a8257c6cce46e0","workflow_run":35657590922},"sha":"fa53e7021139bef11b9b00dec5e1163929fdacbc","status":"CHAIN_COVERED_BY_LATER_GREEN","title":"define read-only export boundary"},
+    {"evidence":{"conclusion":"success","workflow":"M-Core Read-Only Interface v1","workflow_run":35657590922},"sha":"4a21f2a79720730ddecbd58fd9a8257c6cce46e0","status":"CI_CERTIFIED","title":"validate minimal read-only export boundary"},
+    {"evidence":{"certified_source":"4a21f2a79720730ddecbd58fd9a8257c6cce46e0","workflow_run":35657590922},"sha":"e77ab366364f117e74131acef7af5f7f23a8d789","status":"MERGE_PROVENANCE_CERTIFIED","title":"M-Core: read-only interface v1"}
+  ],
+  "final_proof": "0/7",
+  "policy": "Every generated SHA is certified as its actual historical state. GREEN is claimed only with explicit successful CI/kernel evidence; failed/superseded SHAs are certified as RED/SUPERSEDED provenance.",
+  "repository": "ShantiDraconis/M-Core",
+  "schema": "ALL_GENERATED_HARD_BRAIN_SHAS_CERT_V1"
+}
