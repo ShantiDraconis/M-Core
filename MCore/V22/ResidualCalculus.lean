@@ -26,9 +26,11 @@ structure Step (before after : S.Residual) : Prop where
 private theorem relation_irrefl
     (x : S.Residual) :
     ¬ S.smaller x x := by
-  letI : WellFounded S.smaller := S.wellFounded
-  intro hxx
-  exact (WellFounded.asymmetric x x hxx) hxx
+  have hx : Acc S.smaller x := S.wellFounded.apply x
+  induction hx with
+  | intro y ih =>
+      intro hyy
+      exact ih y hyy hyy
 
 theorem step_irrefl {r : S.Residual} :
     ¬ Step S r r := by
