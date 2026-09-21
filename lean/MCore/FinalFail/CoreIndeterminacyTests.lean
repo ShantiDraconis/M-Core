@@ -10,7 +10,9 @@ def twoBranchResolution : ResolvedCenter where
 
 theorem twoBranchResolution_is_indeterminate :
     FundamentalIndeterminacy twoBranchResolution := by
-  exact ⟨false, true, trivial, trivial, by decide⟩
+  exact ⟨false, true, trivial, trivial, by
+    intro h
+    cases h⟩
 
 def singletonResolution : ResolvedCenter where
   Branch := Unit
@@ -43,7 +45,9 @@ def toyHardAtom : RelationalHardAtom where
 
 theorem toyHardAtom_center_is_fail (c : toyHardAtom.Center) :
     toyHardAtom.FailAt c := by
-  exact ⟨false, true, trivial, trivial, by decide⟩
+  exact ⟨false, true, trivial, trivial, by
+    intro h
+    cases h⟩
 
 theorem toyHardAtom_left_loop_fixed (c : toyHardAtom.Center) :
     toyHardAtom.leftLoop c c := by
