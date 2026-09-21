@@ -1,0 +1,104 @@
+{
+  "schema": "atk.seven-terminal-frozen-certificate-index.v1",
+  "generated_date": "2026-09-21",
+  "hub_repository": "ShantiDraconis/M-Core",
+  "hub_source_commit": "8d099265a789e159a188da79650cf7742e6243a7",
+  "global_state": {
+    "final_proof": "0/7",
+    "open_final_problems": 7,
+    "meaning": "This index certifies provenance and frozen terminal reductions/frontiers only; it does not certify solutions to the seven final mathematical problems."
+  },
+  "certificates": [
+    {
+      "problem": "Beal",
+      "repository": "ShantiDraconis/m-core-beal",
+      "source_frozen_branch": "frozen/triple-gcd-equivalence-green-73f1fd7b",
+      "source_frozen_commit": "73f1fd7b2a692ea857acaea70e18745f08878c2a",
+      "terminal_certificate_branch": "frozen/atk-terminal-certificate-beal-0a0819ea",
+      "terminal_certificate_commit": "0a0819ea3800d1a9cf40c2888eb971ad35dda188",
+      "certificate_file": "CERTIFICATES/ATK_TERMINAL_BEAL_73f1fd7b.json",
+      "certificate_sha256": "f2f3de46b8e9e5cda1bb52fd52569edf4085ab442d2a4353a7ddd2145407768c",
+      "certificate_scope": "EXACT_TERMINAL_REDUCTION",
+      "endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Riemann Hypothesis",
+      "repository": "ShantiDraconis/m-core-riemann",
+      "source_frozen_branch": "frozen/nb-zero-limit-density-equivalence-green-d6a291b4",
+      "source_frozen_commit": "d6a291b4563f9021f74ab63cc983d44f079472da",
+      "terminal_certificate_branch": "frozen/atk-terminal-certificate-riemann-8a179aee",
+      "terminal_certificate_commit": "8a179aee88ba3c7e794169e4e4e4100f5b5e8b32",
+      "certificate_file": "CERTIFICATES/ATK_TERMINAL_RIEMANN_d6a291b4.json",
+      "certificate_sha256": "8d5900a9c8601bbddd56d5479d28cd4e7beeb249bb4137f6ca4dc7b0415253aa",
+      "certificate_scope": "NB_ZERO_LIMIT_DENSITY_EQUIVALENCE",
+      "endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Hodge Conjecture",
+      "repository": "ShantiDraconis/m-core-hodge",
+      "source_frozen_branch": "frozen/terminal-frontier-green-f4918c01",
+      "source_frozen_commit": "f4918c01d970658e303033c1caf7c2ee0899b342",
+      "terminal_certificate_branch": "frozen/atk-terminal-certificate-hodge-a4d9172f",
+      "terminal_certificate_commit": "a4d9172f8795030dba07beff06109b20fa5fea30",
+      "certificate_file": "CERTIFICATES/ATK_TERMINAL_HODGE_f4918c01.json",
+      "certificate_sha256": "885d032033870f43c077e962c6823d642e3737a00ad6d9133c2de8be6e38a008",
+      "certificate_scope": "TERMINAL_FRONTIER_MINIMAL_CUT",
+      "endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Yang-Mills Mass Gap",
+      "repository": "ShantiDraconis/m-core-yang-mills",
+      "source_frozen_branch": "frozen/terminal-frontier-green-dc5b45c4",
+      "source_frozen_commit": "dc5b45c4b1ec9e435b76f22e156878634dfdb59c",
+      "terminal_certificate_branch": "frozen/atk-terminal-certificate-yang-mills-075c2aee",
+      "terminal_certificate_commit": "075c2aee62cc829fe2a5ed10579e8e8475e4d4db",
+      "certificate_file": "CERTIFICATES/ATK_TERMINAL_YANG_MILLS_dc5b45c4.json",
+      "certificate_sha256": "5501ec881b9e548048ca17ce6abf24778e5ba4148c556bbd9e1a2be26ac4f1e8",
+      "certificate_scope": "TERMINAL_FRONTIER_B6",
+      "endpoint_status": "OPEN"
+    },
+    {
+      "problem": "P versus NP",
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "source_frozen_branch": "frozen/canonical-terminal-green-e927d326",
+      "source_frozen_commit": "e927d32684ae9294bb97f2fa5e66f24e57e085de",
+      "terminal_certificate_branch": "frozen/atk-terminal-certificate-p-vs-np-8ca2065e",
+      "terminal_certificate_commit": "8ca2065ebc829a4c8cefe91062f03677f5396031",
+      "certificate_file": "CERTIFICATES/ATK_TERMINAL_P_VS_NP_e927d326.json",
+      "certificate_sha256": "d13f1eebda2f5d533b368c900d010642e71e77b78badcd3748887cc11543776d",
+      "certificate_scope": "CANONICAL_TERMINAL_FAIL_PROOF_BOUNDARY",
+      "endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Birch and Swinnerton-Dyer",
+      "repository": "ShantiDraconis/m-core-bsd",
+      "source_frozen_branch": "frozen/bsd-universal-producer-countermodel-green-6258a9f9",
+      "source_frozen_commit": "6258a9f9a13cd90193dc7d12927ce3c044fe0da6",
+      "terminal_certificate_branch": "frozen/atk-terminal-certificate-bsd-5a1bb915",
+      "terminal_certificate_commit": "5a1bb915bd600da469dcf14db61be08092fade48",
+      "certificate_file": "CERTIFICATES/ATK_TERMINAL_BSD_6258a9f9.json",
+      "certificate_sha256": "e3b3c1b9830eccea7903124da9104d3845191260b5fb0d7981a4f0d42ea9750f",
+      "certificate_scope": "SEMANTIC_COUNTERMODEL_TO_OVERBROAD_PRODUCER",
+      "endpoint_status": "OPEN"
+    },
+    {
+      "problem": "Navier-Stokes",
+      "repository": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+      "source_frozen_branch": "frozen/n01-hardened-geometry-green-04aa4c04",
+      "source_frozen_commit": "04aa4c0450bba417e83c643de1eb54eb189b7c53",
+      "terminal_certificate_branch": "frozen/atk-terminal-certificate-navier-stokes-99117aaa",
+      "terminal_certificate_commit": "99117aaa64280acf8c889b28eade26a8a51f5714",
+      "certificate_file": "CERTIFICATES/ATK_TERMINAL_NAVIER_STOKES_04aa4c04.json",
+      "certificate_sha256": "66ecb6f4760c1888a9dfad2200bfd0e369334a4d9b8eb308b1fb74946bfa33fc",
+      "certificate_scope": "N01_HARDENED_GEOMETRY_FRONTIER",
+      "endpoint_status": "OPEN"
+    }
+  ],
+  "fail_closed": {
+    "sorry_allowed": false,
+    "admit_allowed": false,
+    "hidden_axiom_promotion_allowed": false,
+    "proxy_to_endpoint_promotion_allowed": false,
+    "vacuous_witness_promotion_allowed": false
+  }
+}
