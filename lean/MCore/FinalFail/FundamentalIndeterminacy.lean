@@ -37,11 +37,16 @@ theorem determined_not_fundamentally_indeterminate
   intro hfail
   exact fundamental_indeterminacy_not_determined hfail h
 
-/-- Coordinate changes are represented by an equivalence preserving admissibility. -/
+/-- Coordinate change between branch spaces, with explicit inverse and
+admissibility preservation. This avoids treating a coordinate choice as
+mathematical content. -/
 structure CenterCoordinateEquiv (A B : ResolvedCenter) where
-  branchEquiv : A.Branch ≃ B.Branch
+  toFun : A.Branch → B.Branch
+  invFun : B.Branch → A.Branch
+  leftInv : ∀ a : A.Branch, invFun (toFun a) = a
+  rightInv : ∀ b : B.Branch, toFun (invFun b) = b
   admissible_iff :
-    ∀ a : A.Branch, A.admissible a ↔ B.admissible (branchEquiv a)
+    ∀ a : A.Branch, A.admissible a ↔ B.admissible (toFun a)
 
 theorem fundamental_indeterminacy_forward_invariant
     {A B : ResolvedCenter}
@@ -49,12 +54,15 @@ theorem fundamental_indeterminacy_forward_invariant
     (hA : FundamentalIndeterminacy A) :
     FundamentalIndeterminacy B := by
   rcases hA with ⟨a, b, ha, hb, hab⟩
-  refine ⟨E.branchEquiv a, E.branchEquiv b, ?_, ?_, ?_⟩
+  refine ⟨E.toFun a, E.toFun b, ?_, ?_, ?_⟩
   · exact (E.admissible_iff a).mp ha
   · exact (E.admissible_iff b).mp hb
   · intro hEq
     apply hab
-    exact E.branchEquiv.injective hEq
+    calc
+      a = E.invFun (E.toFun a) := (E.leftInv a).symm
+      _ = E.invFun (E.toFun b) := by rw [hEq]
+      _ = b := E.leftInv b
 
 /-- Three distinguished semantic reference directions, explicitly non-exhaustive. -/
 inductive ReferenceDirection where
