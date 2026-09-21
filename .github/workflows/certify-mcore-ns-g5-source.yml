@@ -22,7 +22,7 @@ jobs:
           lake update
           lake exe cache get
       - name: Build current kernel surface
-        run: lake build MCoreAudit
+        run: lake build MCore
       - name: Kernel audit current surface
         run: |
           python3 scripts/kernel_audit.py
