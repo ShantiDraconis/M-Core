@@ -1,5 +1,5 @@
 {
-  "schema": "MCCS_STATUS_V2",
+  "schema": "MCCS_STATUS_V3",
   "updated_utc": "2026-09-21",
   "scheduler": {
     "repos": 8,
@@ -10,82 +10,88 @@
     "green_transition": "CERTIFY_FREEZE_ADVANCE_IMMEDIATELY",
     "red_infra": "REPAIR_AND_RERUN_SAME_GATE",
     "red_math": "ISOLATE_MINIMAL_NONCIRCULAR_OBLIGATION_AND_CONTINUE",
-    "open_math": "REUSE_FROZEN_GENERIC_FIREWALLS_THEN_ATTACK_LOCAL_MATERIAL_BRIDGE",
+    "open_math": "REUSE_CANONICAL_FROZEN_HARD_BASE_THEN_ATTACK_ONLY_UNCOVERED_MATERIAL_DELTA",
     "cross_chain_reuse": "PIN_FROZEN_CERTIFICATE_AND_REPROVE_GENERIC_LEMMA_LOCALLY"
   },
   "counters": {
     "hard_composite_remaining": 10,
     "hard_atomic_remaining": 11,
+    "material_producer_slots": 8,
+    "terminal_certificates_green_frozen": 7,
+    "canonical_hard_bases_green_frozen": 7,
     "progress_metric": "FROZEN_HARD/TOTAL_HARD",
     "microtests_progress_metric": false,
-    "frozen_prefixes_do_not_decrement": true
+    "frozen_prefixes_do_not_decrement": true,
+    "final_proof": "0/7"
   },
   "queues": [
     {
       "repo": "m-core-beal",
       "state": "IN_PROCESS",
-      "current": [
-        "B01_CONDUCTOR_EXACT_LEVEL",
-        "B02_RESIDUAL_ELIMINATION"
-      ],
+      "canonical_hard_base": "b6667e63a2c28c32cee0ab17714f9d772a0b4768",
+      "canonical_frozen": "frozen/b01-conductor-level-interface-green-b6667e63",
+      "current": ["B01_CONDUCTOR_EXACT_LEVEL", "B02_RESIDUAL_ELIMINATION"],
+      "next_delta": "exact local conductor exponent + exact lowered level -> universal CommonPrime",
       "composite_remaining": 2,
       "atomic_remaining": 2
     },
     {
       "repo": "navier-stokes-critical-barrier-audit",
       "state": "IN_PROCESS",
-      "current": [
-        "N01_SIGNED_DEPLETION",
-        "N02_ENDPOINT_REGULARITY"
-      ],
+      "canonical_hard_base": "b7caecc2db571679af4b6ee64829253dcd97cea2",
+      "canonical_frozen": "frozen/prefix-n01-uniformity-b7caecc2",
+      "current": ["N01_SIGNED_DEPLETION", "N02_ENDPOINT_REGULARITY"],
+      "next_delta": "single positive parameter-independent signed-depletion constant from ActualNS",
       "composite_remaining": 2,
       "atomic_remaining": 2
     },
     {
       "repo": "m-core-riemann",
       "state": "IN_PROCESS",
-      "current": [
-        "R01_ZERO_RESIDUE_DNLIMIT"
-      ],
+      "canonical_hard_base": "5c66f8dca03834f24a61a9b1219e7af9d4892dd6",
+      "canonical_frozen": "frozen/vanishing-upper-bound-green-5c66f8dc",
+      "current": ["R01_ZERO_RESIDUE_DNLIMIT"],
+      "next_delta": "unconditional BCF/zero-residue control yielding VanishingUpperBound",
       "composite_remaining": 1,
       "atomic_remaining": 1
     },
     {
       "repo": "m-core-hodge",
       "state": "IN_PROCESS",
-      "current": [
-        "H01_GENERAL_ALGEBRAICITY"
-      ],
+      "canonical_hard_base": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+      "canonical_frozen": "frozen/h01-minimal-forward-payload-green-42eaf7d4",
+      "current": ["H01_GENERAL_ALGEBRAICITY"],
+      "next_delta": "construct H01MinimalForwardPayload for every rational Hodge class",
       "composite_remaining": 1,
       "atomic_remaining": 1
     },
     {
       "repo": "m-core-yang-mills",
       "state": "IN_PROCESS",
-      "current": [
-        "Y01_4D_IR_CLUSTERING_GAP"
-      ],
+      "canonical_hard_base": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
+      "canonical_frozen": "frozen/prefix-y01-b3b5-hardening-cd4bbfd",
+      "current": ["Y01_4D_IR_CLUSTERING_GAP"],
+      "next_delta": "B6 genuine 4D physical realization + IR/limit + spectral-transfer witness",
       "composite_remaining": 1,
       "atomic_remaining": 1
     },
     {
       "repo": "m-core-p-vs-np",
       "state": "IN_PROCESS",
-      "current": [
-        "P01_SAT_OPERATIONAL_NTM",
-        "P02_SAT_NOT_IN_P"
-      ],
+      "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
+      "canonical_frozen": "frozen/material-orientation-green-969408f2",
+      "current": ["P01_SAT_OPERATIONAL_NTM", "P02_SAT_NOT_IN_P"],
+      "next_delta": "construct MaterialOrientation by a genuine PolySAT route or LowerBoundWitness",
       "composite_remaining": 2,
       "atomic_remaining": 2
     },
     {
       "repo": "m-core-bsd",
       "state": "IN_PROCESS",
-      "current": [
-        "D01_RANK",
-        "D01_REFINED_LEADING_SHA",
-        "D01_COMPOSITE"
-      ],
+      "canonical_hard_base": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
+      "canonical_frozen": "frozen/d01-universal-firewall-v2-green-c1e7b245",
+      "current": ["D01_RANK", "D01_REFINED_LEADING_SHA", "D01_COMPOSITE"],
+      "next_delta": "realizable elliptic-curve domain -> universal rank equality -> refined leading coefficient/regulator/height/Sha",
       "composite_remaining": 1,
       "atomic_remaining": 2
     }
@@ -94,6 +100,7 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "frozen_prefix": "frozen/mcore-v22-closed-system-green-43ee611a",
-    "current": "CROSS_CHAIN_CERTIFIED_REUSE"
+    "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
+    "current": "CANONICAL_HARD_BASES_INCORPORATED"
   }
 }
