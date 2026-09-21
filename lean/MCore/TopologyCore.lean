@@ -1,4 +1,4 @@
-import Mathlib.Topology.Basic
+import Mathlib
 
 namespace MCore.Topology
 
