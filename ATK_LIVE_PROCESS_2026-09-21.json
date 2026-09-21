@@ -1,0 +1,71 @@
+{
+  "schema": "atk.live.eight-producers.v1",
+  "date": "2026-09-21",
+  "policy": {
+    "frozen_prefixes": "DO_NOT_REDO",
+    "green_transition": "CERTIFY_FREEZE_ADVANCE",
+    "red_math": "REDUCE_TO_SMALLEST_NONCIRCULAR_DELTA",
+    "user_view": "PROCESS_STATUS_ONLY"
+  },
+  "global": {
+    "material_producer_slots": 8,
+    "final_proof": "0/7",
+    "terminal_certificates": "7/7 GREEN_FROZEN"
+  },
+  "producers": [
+    {
+      "id": "RH-P1",
+      "state": "IN_PROCESS",
+      "green_prefix": "frozen/vanishing-upper-bound-green-5c66f8dc",
+      "clean_attack_commit": "2036c6b4de83539021b48dd2e2a7929d2f29bd72",
+      "current_delta": "unconditional BCF zero-residue control producing a vanishing upper bound"
+    },
+    {
+      "id": "BEAL-P1",
+      "state": "IN_PROCESS",
+      "green_prefix": "frozen/b01-conductor-level-interface-green-b6667e63",
+      "green_prefix_commit": "b6667e63a2c28c32cee0ab17714f9d772a0b4768",
+      "current_delta": "project-side exact local conductor exponent, exact lowered level, then universal CommonPrime"
+    },
+    {
+      "id": "NS-P1",
+      "state": "IN_PROCESS",
+      "green_prefix": "frozen/n01-hardened-geometry-green-04aa4c04",
+      "clean_attack_commit": "3a89530244ec18ca2bcc2017d2d06042606fd3f2",
+      "current_delta": "uniformization/direct uniform signed-depletion estimate from ActualNS"
+    },
+    {
+      "id": "PNP-P1",
+      "state": "IN_PROCESS",
+      "green_prefix": "frozen/canonical-terminal-green-e927d326",
+      "clean_attack_commit": "6dab7443dfede62021f02273f998eef4a20d5758",
+      "current_delta": "construct MaterialOrientation via genuine PolySAT route or LowerBoundWitness"
+    },
+    {
+      "id": "BSD-P1",
+      "state": "IN_PROCESS",
+      "green_prefix": "frozen/d01-universal-firewall-v2-green-c1e7b245",
+      "green_prefix_commit": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
+      "current_delta": "restrict to realizable elliptic-curve arithmetic/analytic data and prove universal rank equality"
+    },
+    {
+      "id": "BSD-P2",
+      "state": "QUEUED_AFTER_DOMAIN",
+      "current_delta": "refined leading coefficient, regulator/height and Sha identity on the same realizable domain"
+    },
+    {
+      "id": "HODGE-P1",
+      "state": "IN_PROCESS",
+      "green_prefix": "frozen/h01-minimal-forward-payload-green-42eaf7d4",
+      "green_prefix_commit": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+      "current_delta": "construct H01MinimalForwardPayload for every rational Hodge class"
+    },
+    {
+      "id": "YM-P1",
+      "state": "IN_PROCESS",
+      "green_prefix": "frozen/prefix-y01-b3b5-hardening-cd4bbfd",
+      "green_prefix_commit": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
+      "current_delta": "B6 genuine 4D physical realization plus IR/limit and spectral transfer witness"
+    }
+  ]
+}
