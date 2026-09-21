@@ -36,7 +36,7 @@ theorem certificate_to_certifiedClosed
   exact ⟨c.finalProof, c.statementMatchProof, c.quantifierMatchProof,
     c.directionalityProof, c.noCircularityProof, c.dependenciesClosedProof⟩
 
-theorem certifiedClosed_to_certificate
+def certifiedClosed_to_certificate
     {Goal : Prop} {a : ClosureAudit}
     (h : CertifiedClosed Goal a) :
     ClosureCertificate Goal where
