@@ -51,8 +51,8 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "b7caecc2db571679af4b6ee64829253dcd97cea2",
       "canonical_frozen": "frozen/prefix-n01-uniformity-b7caecc2",
-      "active_attack_head": "3a89530244ec18ca2bcc2017d2d06042606fd3f2",
-      "attack_branch": "attack/n01-uniformization-clean-20260921",
+      "active_attack_head": "0ceb0c52180dba965b8ce80255b92795ccc7e7b5",
+      "attack_branch": "attack/n01-uniformization-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
       "current": [
@@ -116,8 +116,8 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "3dee08a1fd414ebae1c657f3369d161214163006",
-      "attack_branch": "attack/material-orientation-clean-20260921",
+      "active_attack_head": "9c0e4e6de3f3d899ee55b2f945a91d37e4cf34e3",
+      "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
       "current": [
