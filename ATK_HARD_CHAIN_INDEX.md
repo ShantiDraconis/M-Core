@@ -49,3 +49,58 @@ Each problem repository has `audit/ATK_TERMINAL_PRODUCER_INDEX.md`, which is the
 ## Fail-closed rule
 
 This file links work; it does not promote mathematics. A HARD closes only after the exact producer is proved with zero `sorry`, zero `admit`, no hidden oracle/axiom, no circularity, no trivial witness, and no semantic weakening. Existing GREEN/FROZEN consumers and infrastructure are REUSE, not final-proof evidence.
+
+
+## Maximum compression / shortest-path scheduler
+
+The 21 historical counters are retained for provenance. Execution is compressed by terminal producer, not by wrapper count.
+
+### Deduplication rule
+If multiple HARD labels are downstream consumers of the same unresolved producer, attack the producer once and discharge all compatible consumers by exact local reproving/import after it closes.
+
+### Compressed producer queue
+
+1. **RH-P1 — concrete NB quantitative approximation**
+   Producer: unconditional theorem yielding `FiniteSpanApproximatesChi concreteGeneratorFamily`.
+   Reuse immediately: `FiniteSpanApproximatesChi → DNLimit=0 → DNToZero` and the existing R1 endpoint chain.
+   Do not rerun finite DN ladders or zero-limit logic.
+
+2. **BEAL-P1 — universal CommonPrime producer**
+   Producer: `∀ d : BealData, CommonPrime d.a d.b d.c`.
+   B01/B02 wrappers and certified local/exponent families are consumers/reductions. Reuse T/K frozen material; attack only uncovered residual families.
+
+3. **HODGE-P1 — general algebraicity producer**
+   Producer: `RationalHodgeConjecture D` / arbitrary-codimension algebraicity-surjectivity.
+   R3/R3a and three-residue material remain reusable reductions; no transport assumption may substitute for the producer.
+
+4. **YM-P1 — physical 4D reconstruction/gap producer**
+   Producer: genuine 4D construction + continuum/IR control + uniform clustering sufficient for positive spectral gap.
+   Reuse K/Spectral/A1/B60 firewalls; reject phantom/trivial physical interfaces.
+
+5. **PNP-P1 — orientation producer**
+   Equality lane: genuine `PolySATCertificate + SATCompletenessTransfer`.
+   Separation lane: genuine `LowerBoundWitness.not_in_p`.
+   P01/P02 are attacked through whichever producer is actually established; finite SAT evidence is not promotion evidence.
+
+6. **BSD-P1/P2 — universal arithmetic-analytic producers**
+   P1: universal `BSDRankPart`.
+   P2: refined leading-coefficient / height-Sha arithmetic obligation needed by the full endpoint.
+   Reuse K0–K14 TOTAL/FINAL_REPRO and curve-specific certificates only as compatible lemmas/evidence.
+
+7. **NS-P1 — signed-depletion producer**
+   Continue existing N01 chain, reusing XiEps/Campanato geometry:
+   `ActualNS → hDynamic_eps → WeightedLow_eps → WeightedAbsorption_eps (γ<1, parameter-independent) → ε→0/tightness → SignedDepletion`.
+   The independence certificate and Constantin–Fefferman/CZ signed far-field gain are the active analytic subproducers.
+   N02 is a downstream consumer after N01 if its exact hypotheses match.
+
+### Scheduling
+- Never attack a downstream wrapper while its sole producer is open.
+- Never rerun a frozen compatible prefix.
+- Run independent producers in parallel.
+- On GREEN producer: local compatibility proof → certify → freeze → discharge every linked consumer → decrement canonical HARD ledger.
+- On RED_INFRA: repair/rerun same producer.
+- On RED_MATH: reduce to the smallest noncircular missing lemma; preserve all previous GREEN artifacts.
+- Numerical evidence may guide attacks but cannot close a universal producer.
+
+### Current shortest-path interpretation
+The historical queue remains **10 composite + 11 atomic = 21**, but execution is now organized around the **8 material producer slots** above (RH 1, Beal 1, Hodge 1, YM 1, PNP 1 orientation slot with two alternative lanes, BSD 2, NS 1). This is an execution compression only; it does not claim that any of the 21 HARD obligations has been mathematically closed.
