@@ -13,6 +13,7 @@ theorem rho_epsilon {r : ℝ} (hr : r ≠ -1) :
     apply hr
     linarith
   field_simp [hden]
+  ring
 
 inductive Phase
   | approach | crossing | indeterminate (e : String) | collapse
