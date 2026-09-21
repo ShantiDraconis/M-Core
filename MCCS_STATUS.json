@@ -15,7 +15,9 @@
     "hard_composite_remaining": 10,
     "hard_atomic_remaining": 11,
     "progress_metric": "FROZEN_HARD/TOTAL_HARD",
-    "microtests_progress_metric": false
+    "microtests_progress_metric": false,
+    "auxiliary_frozen_count": 6,
+    "new_frozen_hard_this_cycle": 0
   },
   "queues": [
     {
@@ -89,9 +91,21 @@
       "hard_delta": 0
     },
     {
+      "repo": "m-core-p-vs-np",
+      "kind": "FROZEN_POSITIVE_PREFIX",
+      "ref": "frozen/p01-verified-relation-green-1453539c",
+      "hard_delta": 0
+    },
+    {
       "repo": "m-core-yang-mills",
       "kind": "FROZEN_INTERFACE_HARDENING",
       "ref": "frozen/y01-interface-hardening-green-be8e2f6e",
+      "hard_delta": 0
+    },
+    {
+      "repo": "navier-stokes-critical-barrier-audit",
+      "kind": "FROZEN_INTERFACE_HARDENING",
+      "ref": "frozen/n01-interface-hardening-green-8771ec59",
       "hard_delta": 0
     },
     {
@@ -109,25 +123,49 @@
   ],
   "in_flight": [
     {
-      "repo": "navier-stokes-critical-barrier-audit",
-      "target": "N01 hardened projection/coherence interface",
-      "sha": "8771ec59a23950a0685d1d40e94caf8ca1a57123",
-      "run": 35586784437
+      "repo": "m-core-riemann",
+      "target": "R01 finite-prefix firewall",
+      "sha": "bc238bcc2b15e6d773ec1497ed75cb782c171c9a",
+      "dedicated_run": 35586583811,
+      "dedicated_status": "SUCCESS",
+      "clean_repro_run": 35586583717,
+      "clean_repro_status": "IN_PROGRESS"
     },
     {
-      "repo": "m-core-riemann",
-      "target": "R01 finite-prefix firewall + repository clean reproduction",
-      "sha": "bc238bcc2b15e6d773ec1497ed75cb782c171c9a",
-      "runs": [
-        35586583811,
-        35586583717
-      ]
+      "repo": "m-core-beal",
+      "target": "B01 genuine conductor exponent semantics",
+      "sha": "e3b48ef0b726c951667b315efbc921450ad091a6",
+      "status": "OPEN_BRIDGE"
     },
     {
       "repo": "m-core-p-vs-np",
-      "target": "P01 exact bounded verifier relation",
-      "sha": "2147948ad84ac2eec105eee5bcc3c962682a3cb4",
-      "run": 35587020200
+      "target": "P01 concrete single-tape PolyNTM realization",
+      "sha": "50859a9fe3b4b4ef77ad212cd2bb570453200e0a",
+      "status": "OPEN_FORMALIZATION"
+    },
+    {
+      "repo": "m-core-yang-mills",
+      "target": "Y01 concrete 4D physical realization + IR/spectral gap",
+      "sha": "f4a5e65556485bc91f9b6473724841490cebe652",
+      "status": "OPEN_MATH"
+    },
+    {
+      "repo": "navier-stokes-critical-barrier-audit",
+      "target": "N01 ActualNS -> quantitative hDynamic_eps",
+      "sha": "04aa4c0450bba417e83c643de1eb54eb189b7c53",
+      "status": "OPEN_MATH"
+    },
+    {
+      "repo": "m-core-hodge",
+      "target": "H01 R0-R3 algebraicity residues",
+      "sha": "05920ca81da0b58ceda53553db65c25baf6f8ce8",
+      "status": "OPEN_MATH"
+    },
+    {
+      "repo": "m-core-bsd",
+      "target": "D01 universal rank/leading coefficient/Sha bridges",
+      "sha": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
+      "status": "OPEN_MATH"
     }
   ]
 }
