@@ -12,11 +12,10 @@ import MCore.SigmaClassification
 import MCore.SevenDeltasFormal
 import MCore.Attack.NS.MNavierStokes
 import MCore.Attack.NS.G5DirectCorrected
-import MCore.FinalFail.Master
 
 namespace MCore.KernelBuild
 
 def status : String :=
-  "SOURCE: kernel build surface; no endpoint promotion"
+  "SOURCE: isolated current attack surface; legacy FinalFail modules are audited separately"
 
 end MCore.KernelBuild
