@@ -146,3 +146,18 @@ When ATK resumes:
 7. Audit semantic identity and axioms.
 8. Port only uncovered mathematical delta.
 9. Never reduce OPEN_MATH counts merely because a branch/file exists.
+
+
+## Recovery materialized — 2026-09-21 late pass
+
+The following compatible prior artifacts have now been materialized onto the clean canonical attack lines rather than merely referenced:
+
+- Riemann: `frozen/nb-zero-limit-density-equivalence-green-d6a291b4` -> active RH line. This adds the certified equivalence `FiniteSpanApproximatesChi ↔ DNLimit = 0 ↔ DNToZero`.
+- Yang-Mills: `frozen/y01-uniform-integer-clustering-green-37acd577` -> active Y01 line. Hardened physical interfaces and `UniformPhysicalMassLowerBound -> UniformIntegerDistanceClustering` are recovered. `K14ClusteringAdapter.lean` is SOURCE/BUILD_PENDING.
+- P vs NP: `frozen/p01-verified-relation-green-1453539c` and `frozen/p01-component-failproof-green-9e21b631` -> active clean P01 line. Canonical encoding/witness/verifier relation is reused; legacy parser/guess/verifier component records remain rejected as vacuous. `CanonicalSATFrameMachineV2.lean` is SOURCE/BUILD_PENDING.
+- BSD: `frozen/bsd-universal-producer-countermodel-green-6258a9f9` -> active D01 line. Unrestricted quantification over arbitrary `BSDArithmeticAnalyticData` is formally refuted as an abstraction; the producer must stay on realizable elliptic-curve data.
+- Navier-Stokes: `frozen/n01-hardened-geometry-green-04aa4c04` -> active N01 line. Corrected tangential projection and quantitative critical-coherence contract are recovered.
+- Beal: the canonical B01 base already absorbs `frozen/b01-conductor-api-audit-green-e3b48ef0`; no extra port is required.
+- Hodge: the canonical H01 base already absorbs the exact variational/R3 chain including `frozen/hodge-r3-exact-variational-v10-72e61c07`; no extra port is required.
+
+These recoveries do not decrement HARD counts. They remove duplicate work and narrow the uncovered mathematical delta. Any SOURCE item still requires build/kernel/axiom/semantic validation before promotion.
