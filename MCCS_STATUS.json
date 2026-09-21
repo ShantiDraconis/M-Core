@@ -184,10 +184,10 @@
       "repo": "M-Core",
       "track": "CORE_FORMULATION",
       "state": "IN_PROCESS",
-      "canonical_hard_base": "758f775c5cbb9aed7055904aae1a959b1d8bae74",
+      "canonical_hard_base": "e6bcc70441797e7c2b371bff1a473be19a5663a4",
       "inherited_foundation": "frozen/final-fail-closed-center-hard-ee1ec8fb",
-      "active_attack_head": "5fa518dc1d2e28e403595b17933e172489d31a73",
-      "attack_branch": "attack/mcore-formulation-v2-20260921",
+      "active_attack_head": "0d999a1d2580adac0c59688d8d38c01c82838a3c",
+      "attack_branch": "attack/mcore-formulation-v2-clean-20260921",
       "source_hygiene": "PENDING_CI",
       "kernel_state": "BUILD_PENDING",
       "current": [
@@ -208,7 +208,8 @@
       "next_delta": "relation-level HARD closure: characterize when total/single-valued relational arrows induce ClosedCenterHard maps while preserving non-unique branch structure; then add an explicit typed adapter firewall between recovered Phi3 numeric indeterminacy and structural IFail rather than identifying them definitionally",
       "counts_toward_final_proof": false,
       "counts_toward_hard_remaining": false,
-      "endpoint_promotion": false
+      "endpoint_promotion": false,
+      "superseded_branch": "attack/mcore-formulation-v2-20260921"
     }
   ],
   "hub": {
