@@ -1,71 +1,99 @@
 {
-  "schema": "MCCS_STATUS_V1",
+  "schema": "MCCS_STATUS_V2",
   "updated_utc": "2026-09-21",
   "scheduler": {
-    "repos": 7,
-    "execution": "PARALLEL_ACROSS_REPOS_ONLY",
-    "within_repo": "SEQUENTIAL_BY_DEPENDENCY",
-    "adv": "ISOLATED_AFTER_DETERMINISTIC_GREEN",
-    "green_transition": "CERTIFY_FREEZE_ADVANCE",
-    "red_infra": "REPAIR_SAME_GATE",
-    "red_math": "ONE_MINIMAL_FORMAL_OBLIGATION",
-    "open_math": "PROVENANCE_SEARCH_THEN_LOCAL_REPROOF"
+    "repos": 8,
+    "problem_repos": 7,
+    "hub_repo": "M-Core",
+    "execution": "PARALLEL_ACROSS_REPOS_AND_INDEPENDENT_GATES",
+    "within_repo": "PARALLEL_WHEN_GATES_ARE_LOGICALLY_INDEPENDENT",
+    "green_transition": "CERTIFY_FREEZE_ADVANCE_IMMEDIATELY",
+    "red_infra": "REPAIR_AND_RERUN_SAME_GATE",
+    "red_math": "ISOLATE_MINIMAL_NONCIRCULAR_OBLIGATION_AND_CONTINUE",
+    "open_math": "REUSE_FROZEN_GENERIC_FIREWALLS_THEN_ATTACK_LOCAL_MATERIAL_BRIDGE",
+    "cross_chain_reuse": "PIN_FROZEN_CERTIFICATE_AND_REPROVE_GENERIC_LEMMA_LOCALLY"
   },
   "counters": {
     "hard_composite_remaining": 10,
     "hard_atomic_remaining": 11,
     "progress_metric": "FROZEN_HARD/TOTAL_HARD",
-    "microtests_progress_metric": false
+    "microtests_progress_metric": false,
+    "frozen_prefixes_do_not_decrement": true
   },
   "queues": [
     {
       "repo": "m-core-beal",
-      "priority": "P1",
-      "current": "B01",
+      "state": "IN_PROCESS",
+      "current": [
+        "B01_CONDUCTOR_EXACT_LEVEL",
+        "B02_RESIDUAL_ELIMINATION"
+      ],
       "composite_remaining": 2,
       "atomic_remaining": 2
     },
     {
       "repo": "navier-stokes-critical-barrier-audit",
-      "priority": "P0",
-      "current": "N01",
+      "state": "IN_PROCESS",
+      "current": [
+        "N01_SIGNED_DEPLETION",
+        "N02_ENDPOINT_REGULARITY"
+      ],
       "composite_remaining": 2,
       "atomic_remaining": 2
     },
     {
       "repo": "m-core-riemann",
-      "priority": "P0",
-      "current": "R01",
+      "state": "IN_PROCESS",
+      "current": [
+        "R01_ZERO_RESIDUE_DNLIMIT"
+      ],
       "composite_remaining": 1,
       "atomic_remaining": 1
     },
     {
       "repo": "m-core-hodge",
-      "priority": "P3",
-      "current": "H01",
+      "state": "IN_PROCESS",
+      "current": [
+        "H01_GENERAL_ALGEBRAICITY"
+      ],
       "composite_remaining": 1,
       "atomic_remaining": 1
     },
     {
       "repo": "m-core-yang-mills",
-      "priority": "P1",
-      "current": "Y01",
+      "state": "IN_PROCESS",
+      "current": [
+        "Y01_4D_IR_CLUSTERING_GAP"
+      ],
       "composite_remaining": 1,
       "atomic_remaining": 1
     },
     {
       "repo": "m-core-p-vs-np",
-      "priority": "P1",
-      "current": "P01",
+      "state": "IN_PROCESS",
+      "current": [
+        "P01_SAT_OPERATIONAL_NTM",
+        "P02_SAT_NOT_IN_P"
+      ],
       "composite_remaining": 2,
       "atomic_remaining": 2
     },
     {
       "repo": "m-core-bsd",
-      "priority": "P2",
-      "current": "D01",
+      "state": "IN_PROCESS",
+      "current": [
+        "D01_RANK",
+        "D01_REFINED_LEADING_SHA",
+        "D01_COMPOSITE"
+      ],
       "composite_remaining": 1,
       "atomic_remaining": 2
     }
-  ]
+  ],
+  "hub": {
+    "repo": "M-Core",
+    "state": "IN_PROCESS",
+    "frozen_prefix": "frozen/mcore-v22-closed-system-green-43ee611a",
+    "current": "CROSS_CHAIN_CERTIFIED_REUSE"
+  }
 }
