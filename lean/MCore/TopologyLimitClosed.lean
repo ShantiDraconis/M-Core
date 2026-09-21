@@ -1,5 +1,4 @@
-import Mathlib.Topology.Instances.Real
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+import Mathlib
 
 namespace MCore.LimitClosed
 
@@ -20,7 +19,6 @@ def kerC : Phase → String
   | .collapse => "ker non-trivial - information loss"
   | _ => "ker trivial - expression preserved"
 
-/-- These are the exact remaining limit statements; no theorem is fabricated. -/
 def TendstoRhoTarget : Prop :=
   Filter.Tendsto rho Filter.atTop (nhdsWithin 1 (Set.Iio 1))
 
