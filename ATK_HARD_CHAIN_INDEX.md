@@ -107,9 +107,9 @@ This index incorporates certified prefixes; it does not promote unresolved mathe
 M-Core itself now advances in parallel with the seven FINAL-PROOF chains.
 
 - Track: `CORE_FORMULATION`
-- Base: `758f775c5cbb9aed7055904aae1a959b1d8bae74`
-- Active branch: `attack/mcore-formulation-v2-20260921`
-- Active SOURCE head: `5fa518dc1d2e28e403595b17933e172489d31a73`
+- Base: `e6bcc70441797e7c2b371bff1a473be19a5663a4`
+- Active branch: `attack/mcore-formulation-v2-clean-20260921`
+- Active SOURCE head: `0d999a1d2580adac0c59688d8d38c01c82838a3c`
 - Kernel state: `BUILD_PENDING`
 - Endpoint credit: **0** — this track never counts as a Millennium proof by itself.
 - HARD-counter effect: **0** — the historical 10 composite + 11 atomic obligations are unchanged.
