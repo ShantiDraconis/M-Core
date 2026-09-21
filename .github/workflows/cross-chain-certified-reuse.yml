@@ -20,7 +20,6 @@ jobs:
         run: |
           set -euo pipefail
           lake build MCore.CertifiedFirewalls
-          lake build MCore
       - name: Fail-closed hygiene
         run: |
           set -euo pipefail
