@@ -33,7 +33,7 @@ theorem obstruction_assignment_total (p : ProblemId) :
 /-- The current seven obstruction constructors are pairwise assigned by problem.
 This theorem is only classification of the formal vocabulary. -/
 theorem obstruction_assignment_injective :
-    Function.Injective obstructionOf := by
+    ∀ ⦃a b : ProblemId⦄, obstructionOf a = obstructionOf b → a = b := by
   intro a b h
   cases a <;> cases b <;> simp [obstructionOf] at h ⊢
 
@@ -86,7 +86,7 @@ theorem slotOf_range (p : ProblemId) :
     3 ≤ slotOf p ∧ slotOf p < 10 := by
   cases p <;> decide
 
-theorem slotOf_injective : Function.Injective slotOf := by
+theorem slotOf_injective : ∀ ⦃a b : ProblemId⦄, slotOf a = slotOf b → a = b := by
   intro a b h
   cases a <;> cases b <;> simp [slotOf] at h ⊢
 
