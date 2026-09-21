@@ -1,0 +1,53 @@
+{
+  "schema": "NO_FINDINGS_GREEN_SHAS_CERT_V1",
+  "date": "2026-09-22",
+  "repository": "ShantiDraconis/M-Core",
+  "certification": "NO_FINDINGS_IN_SCOPE",
+  "finding_count": 0,
+  "promotion_rule": "Only SHAs with explicit successful CI/kernel evidence are included. RED, SUPERSEDED-only, provenance-only, merge-only, frozen-only, and chain-covered intermediates are excluded unless the SHA itself has explicit successful CI/kernel evidence.",
+  "entries": [
+    {
+      "sha": "c3910589cd1865b4adfbe790938a1e77884ebfcd",
+      "status": "KERNEL_CI_CERTIFIED",
+      "scope": "FINAL_FAIL closed-center HARD",
+      "run": 35652843838,
+      "canonical": true,
+      "audit_result": "NO_FINDINGS_IN_SCOPE"
+    },
+    {
+      "sha": "6fe567daa4007c20cf28564b54d6d39d0448ed48",
+      "status": "KERNEL_CI_CERTIFIED",
+      "scope": "FINAL_FAIL Projective Brain v1",
+      "run": 35655817985,
+      "canonical": false,
+      "audit_result": "NO_FINDINGS_IN_SCOPE"
+    },
+    {
+      "sha": "bf17e3a44eace986f7e68f06846b8131a40d0133",
+      "status": "KERNEL_CI_CERTIFIED_SUPERSEDED_ARCHITECTURE",
+      "scope": "FINAL_FAIL Projective Brain v1",
+      "run": 35655922368,
+      "canonical": false,
+      "audit_result": "NO_FINDINGS_IN_SCOPE"
+    },
+    {
+      "sha": "2d47aa595f031d384162fd10e74ce0481602c11d",
+      "status": "KERNEL_CI_CERTIFIED_CANONICAL",
+      "scope": "FINAL_FAIL Fundamental Indeterminacy Core v1",
+      "run": 35657230894,
+      "canonical": true,
+      "audit_result": "NO_FINDINGS_IN_SCOPE"
+    },
+    {
+      "sha": "4a21f2a79720730ddecbd58fd9a8257c6cce46e0",
+      "status": "CI_CERTIFIED",
+      "scope": "M-Core Read-Only Interface v1",
+      "run": 35657590922,
+      "canonical": true,
+      "audit_result": "NO_FINDINGS_IN_SCOPE"
+    }
+  ],
+  "green_count": 5,
+  "exclusions_policy": "No excluded SHA is upgraded by this certificate.",
+  "semantic_boundary": "NO_FINDINGS_IN_SCOPE means the cited automated audit/kernel/CI scope produced no unresolved finding for that SHA. It is not a claim of global correctness, mathematical endpoint proof, production security, physical capability, or absence of issues outside the cited scope."
+}
