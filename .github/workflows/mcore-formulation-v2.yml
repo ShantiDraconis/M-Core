@@ -1,0 +1,68 @@
+name: M-Core formulation v2
+
+on:
+  push:
+    branches:
+      - attack/mcore-formulation-v2-clean-20260921
+  pull_request:
+    paths:
+      - 'lean/MCore/FinalFail/ClosedCenterHard.lean'
+      - 'lean/MCore/FinalFail/FundamentalIndeterminacy.lean'
+      - 'lean/MCore/FinalFail/RelationalHardAtom.lean'
+      - 'lean/MCore/FinalFail/RelationalCenterBridge.lean'
+      - 'lean/MCore/FinalFail/Master.lean'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  formulation-v2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: leanprover/lean-action@v1
+        with:
+          build: false
+          test: false
+          lint: false
+
+      - name: Fail-closed source hygiene
+        run: |
+          set -euo pipefail
+          files=(
+            lean/MCore/FinalFail/ClosedCenterHard.lean
+            lean/MCore/FinalFail/FundamentalIndeterminacy.lean
+            lean/MCore/FinalFail/RelationalHardAtom.lean
+            lean/MCore/FinalFail/RelationalCenterBridge.lean
+            lean/MCore/FinalFail/Master.lean
+          )
+          if grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${files[@]}"; then
+            exit 1
+          fi
+          if grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' "${files[@]}"; then
+            exit 1
+          fi
+          if grep -q 'import MCore.FinalFail.BrainKernel' lean/MCore/FinalFail/Master.lean; then
+            exit 1
+          fi
+
+      - name: Build formulation
+        run: |
+          set -euo pipefail
+          lake build MCore.FinalFail.RelationalCenterBridge MCore.FinalFail.Master
+
+      - name: Axiom audit
+        run: |
+          set -euo pipefail
+          cat >/tmp/MCoreFormulationAudit.lean <<'EOF'
+          import MCore.FinalFail.RelationalCenterBridge
+          #print axioms MCore.FinalFail.RelationalHardAtom.failAt_iff_fundamentalIndeterminacy
+          #print axioms MCore.FinalFail.RelationalHardAtom.determinedAt_iff_centerDetermined
+          #print axioms MCore.FinalFail.RelationalHardAtom.failAt_iff_IFail
+          #print axioms MCore.FinalFail.RelationalHardAtom.determinedAt_not_failAt
+          EOF
+          lake env lean /tmp/MCoreFormulationAudit.lean 2>&1 | tee /tmp/mcore-formulation-v2.log
+          if grep -q 'sorryAx' /tmp/mcore-formulation-v2.log; then exit 1; fi
+          echo "MCORE_FORMULATION_V2=GREEN_IF_JOB_SUCCEEDS"
