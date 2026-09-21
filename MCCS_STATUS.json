@@ -42,16 +42,19 @@
         "B01_CONDUCTOR_EXACT_LEVEL",
         "B02_RESIDUAL_ELIMINATION"
       ],
-      "next_delta": "genuine Frey/local-conductor semantics + exact lowered level -> universal CommonPrime",
+      "next_delta": "T60 odd local arithmetic packet -> genuine minimal-model/multiplicative-reduction conductor exponent + exact lowered level -> residual universal CommonPrime families",
       "composite_remaining": 2,
-      "atomic_remaining": 2
+      "atomic_remaining": 2,
+      "recovered_provenance": [
+        "canonical base already absorbs frozen/b01-conductor-api-audit-green-e3b48ef0"
+      ]
     },
     {
       "repo": "navier-stokes-critical-barrier-audit",
       "state": "IN_PROCESS",
       "canonical_hard_base": "b7caecc2db571679af4b6ee64829253dcd97cea2",
       "canonical_frozen": "frozen/prefix-n01-uniformity-b7caecc2",
-      "active_attack_head": "0ceb0c52180dba965b8ce80255b92795ccc7e7b5",
+      "active_attack_head": "1fbec755edf9dc83e726ab57e3a3f255cba373c5",
       "attack_branch": "attack/n01-uniformization-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
@@ -59,25 +62,31 @@
         "N01_SIGNED_DEPLETION",
         "N02_ENDPOINT_REGULARITY"
       ],
-      "next_delta": "single positive parameter-independent signed-depletion constant from ActualNS",
+      "next_delta": "quantitative coherence -> kernel estimate + one positive parameter-independent signed-depletion constant from ActualNS; then N02 endpoint regularity",
       "composite_remaining": 2,
-      "atomic_remaining": 2
+      "atomic_remaining": 2,
+      "recovered_provenance": [
+        "frozen/n01-hardened-geometry-green-04aa4c04"
+      ]
     },
     {
       "repo": "m-core-riemann",
       "state": "IN_PROCESS",
       "canonical_hard_base": "5c66f8dca03834f24a61a9b1219e7af9d4892dd6",
       "canonical_frozen": "frozen/vanishing-upper-bound-green-5c66f8dc",
-      "active_attack_head": "63619d032316d09ddd4155b22f944019db41825e",
+      "active_attack_head": "47b0b7da65a00d9096ed108989d5676037f6be93",
       "attack_branch": "attack/bcf-zero-residue-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
       "current": [
         "R01_ZERO_RESIDUE_DNLIMIT"
       ],
-      "next_delta": "unconditional BCF/zero-residue control yielding VanishingUpperBound",
+      "next_delta": "construct FiniteSpanApproximatesChi for the concrete generator family (certified equivalent to DNLimit=0 and DNToZero); BCF/zero-residue control remains one route",
       "composite_remaining": 1,
-      "atomic_remaining": 1
+      "atomic_remaining": 1,
+      "recovered_provenance": [
+        "frozen/nb-zero-limit-density-equivalence-green-d6a291b4"
+      ]
     },
     {
       "repo": "m-core-hodge",
@@ -93,30 +102,39 @@
       ],
       "next_delta": "construct H01UniversalForwardPayload on the intended geometric semantics",
       "composite_remaining": 1,
-      "atomic_remaining": 1
+      "atomic_remaining": 1,
+      "recovered_provenance": [
+        "canonical base already absorbs frozen/hodge-r3-exact-variational-v10-72e61c07 and earlier R3/R3a chain"
+      ]
     },
     {
       "repo": "m-core-yang-mills",
       "state": "IN_PROCESS",
       "canonical_hard_base": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
       "canonical_frozen": "frozen/prefix-y01-b3b5-hardening-cd4bbfd",
-      "active_attack_head": "9d3f2bfe2e191c97f4ffab7471c94d9ce3b070fd",
+      "active_attack_head": "d8a5e95ef2eadd1524c5c6a33af4a2a7d5e57bc1",
       "attack_branch": "attack/b6-terminal-witness-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
       "current": [
         "Y01_4D_IR_CLUSTERING_GAP"
       ],
-      "next_delta": "construct genuine B6TerminalWitness from 4D physical realization + IR/limit + spectral-transfer data",
+      "next_delta": "construct genuine uniform physical mass lower bound / 4D realization, then OS-reconstruction and spectral transfer; integer-distance clustering -> K14 clustering is already recovered",
       "composite_remaining": 1,
-      "atomic_remaining": 1
+      "atomic_remaining": 1,
+      "recovered_provenance": [
+        "frozen/y01-uniform-integer-clustering-green-37acd577"
+      ],
+      "source_delta": [
+        "lean/MCore/YangMills/A1/K14ClusteringAdapter.lean: SOURCE_BUILD_PENDING"
+      ]
     },
     {
       "repo": "m-core-p-vs-np",
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "9c0e4e6de3f3d899ee55b2f945a91d37e4cf34e3",
+      "active_attack_head": "a9e94da1868399ce03662f115fee5bf579aa861d",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
@@ -124,16 +142,23 @@
         "P01_SAT_OPERATIONAL_NTM",
         "P02_SAT_NOT_IN_P"
       ],
-      "next_delta": "construct MaterialOrientation by a genuine PolySAT route or LowerBoundWitness",
+      "next_delta": "finish a concrete polynomial-time single-tape PolyNTMRealization of SATBits circuitBitEncoding; canonical encoding + finite witness + verified relation are recovered, legacy component records are fail-proofed; after P01, P02 genuine SAT not-in-P lower bound remains",
       "composite_remaining": 2,
-      "atomic_remaining": 2
+      "atomic_remaining": 2,
+      "recovered_provenance": [
+        "frozen/p01-verified-relation-green-1453539c",
+        "frozen/p01-component-failproof-green-9e21b631"
+      ],
+      "source_delta": [
+        "lean/MCore/Real/CanonicalSATFrameMachineV2.lean: SOURCE_BUILD_PENDING"
+      ]
     },
     {
       "repo": "m-core-bsd",
       "state": "IN_PROCESS",
       "canonical_hard_base": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
       "canonical_frozen": "frozen/d01-universal-firewall-v2-green-c1e7b245",
-      "active_attack_head": "7c24f3797f6b373c00f86d6a6475eaf37d023e6a",
+      "active_attack_head": "1377e2e799533e9e0447e401771bb8c10179db41",
       "attack_branch": "attack/d01-realizable-domain-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
@@ -142,16 +167,19 @@
         "D01_REFINED_LEADING_SHA",
         "D01_COMPOSITE"
       ],
-      "next_delta": "instantiate a genuine realizable elliptic-curve family; prove rank equality, then refined leading coefficient/regulator/height/Sha",
+      "next_delta": "instantiate genuine elliptic-curve realizable families and prove BSDRankPart on their image; unrestricted forall BSDArithmeticAnalyticData is certified false as an abstraction; then refined leading coefficient/regulator/height/Sha identity on the same domain",
       "composite_remaining": 1,
-      "atomic_remaining": 2
+      "atomic_remaining": 2,
+      "recovered_provenance": [
+        "frozen/bsd-universal-producer-countermodel-green-6258a9f9"
+      ]
     }
   ],
   "hub": {
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CLOSED_CENTER_HARD_FOUNDATION_GREEN_FROZEN + SEVEN_CLEAN_ATTACKS"
+    "current": "CLOSED_CENTER_HARD_FOUNDATION_GREEN_FROZEN + SEVEN CLEAN ATTACKS + CERTIFIED PREFIX RECOVERY MATERIALIZED"
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
