@@ -64,12 +64,12 @@ theorem terminal_chain_closure {Prefix Bridge Endpoint : Prop}
 structure AuditedTerminalChain (Prefix Bridge Endpoint : Prop) where
   firewall : Firewall
   firewallClosed : FirewallClosed firewall
-  prefix : ClosedPrefix Prefix Bridge
-  bridge : MinimalOpenBridge Bridge Endpoint
+  closedPrefix : ClosedPrefix Prefix Bridge
+  openBridge : MinimalOpenBridge Bridge Endpoint
 
 theorem audited_terminal_chain_closure {Prefix Bridge Endpoint : Prop}
     (h : AuditedTerminalChain Prefix Bridge Endpoint) : Endpoint :=
-  terminal_chain_closure h.prefix h.bridge
+  terminal_chain_closure h.closedPrefix h.openBridge
 
 structure OpenTerminalChain (Prefix Bridge Endpoint : Prop) where
   certifiedPrefix : Prefix

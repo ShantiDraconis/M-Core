@@ -6,7 +6,9 @@ inductive Fin3 where
 
 structure ClosedTriad where
   Carrier : Type
-  start middle finish : Carrier
+  start : Carrier
+  middle : Carrier
+  finish : Carrier
   startClosed : Prop
   middleClosed : Prop
   finishClosed : Prop
