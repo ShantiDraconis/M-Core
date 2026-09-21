@@ -1,0 +1,38 @@
+{
+  "certificate_scope": "UNIFIED_TERMINAL_ARCHITECTURE",
+  "certifies": [
+    "Lean build of MCore.UnifiedTerminalLogic and MCore.KernelBuild at the frozen source commit.",
+    "Source hygiene for sorry/admit/sorryAx on the terminal-logic source.",
+    "Terminal-logic axiom audit for the audited theorems.",
+    "Seven terminal backbones are frozen with infrastructureRemaining = 0.",
+    "Fail-closed finalProofCount = 0."
+  ],
+  "certifying_runs": [
+    {
+      "conclusion": "success",
+      "id": 35637269122,
+      "workflow": "certify-unified-terminal-logic"
+    }
+  ],
+  "does_not_certify": [
+    "Any of the seven mathematical terminal producers.",
+    "Any Millennium/Beal endpoint proof."
+  ],
+  "fail_closed_rules": {
+    "admit_allowed": false,
+    "hidden_axiom_promotion_allowed": false,
+    "proxy_to_endpoint_promotion_allowed": false,
+    "sorry_allowed": false,
+    "vacuous_witness_promotion_allowed": false
+  },
+  "final_proof_global": "0/7",
+  "generated_date": "2026-09-21",
+  "mathematical_endpoint_status": "OPEN_0_OF_7",
+  "next_open_delta": "Attack the seven terminal mathematical producers only.",
+  "problem": "M-Core / Unified Terminal Logic",
+  "repository": "ShantiDraconis/M-Core",
+  "schema": "atk.terminal.frozen-certificate.v1",
+  "source_frozen_branch": "frozen/unified-terminal-logic-green-038a530d",
+  "source_frozen_commit": "038a530d2b87cf92c05bfacb7592a68a854642eb",
+  "source_status": "GREEN_FROZEN"
+}
