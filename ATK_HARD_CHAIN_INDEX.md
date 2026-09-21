@@ -100,3 +100,28 @@ Totals: 10 composite + 11 atomic = 21.
 ## Fail-closed rule
 
 This index incorporates certified prefixes; it does not promote unresolved mathematics. A HARD closes only after the exact producer is kernel-checked with zero `sorry`, zero `admit`, no hidden oracle/axiom, no circularity, no trivial witness, and no semantic weakening.
+
+
+## Parallel M-Core formulation track
+
+M-Core itself now advances in parallel with the seven FINAL-PROOF chains.
+
+- Track: `CORE_FORMULATION`
+- Base: `758f775c5cbb9aed7055904aae1a959b1d8bae74`
+- Active branch: `attack/mcore-formulation-v2-20260921`
+- Active SOURCE head: `5fa518dc1d2e28e403595b17933e172489d31a73`
+- Kernel state: `BUILD_PENDING`
+- Endpoint credit: **0** — this track never counts as a Millennium proof by itself.
+- HARD-counter effect: **0** — the historical 10 composite + 11 atomic obligations are unchanged.
+
+Current formulation delta:
+
+1. `ClosedCenterHard` remains the frozen START ↔ CENTER ↔ FINISH semantic foundation.
+2. `RelationalCenterBridge` identifies, under an explicit admissible identity branch,
+   `RelationalHardAtom.FailAt` with `FundamentalIndeterminacy` and `IFail`.
+3. `DeterminedAt` is identified with `CenterDetermined` on the same induced center.
+4. `Master.lean` is repaired to use the relational HARD core directly rather than a dangling `BrainKernel` import.
+5. The next formulation gate is relation-level HARD closure: state the exact totality/single-valuedness hypotheses under which relational arrows induce the four `ClosedCenterHard` maps without destroying genuine branch multiplicity.
+6. After that, recovered numeric/Phi3 indeterminacy may connect to structural `IFail` only through an explicit typed adapter theorem; there is no definitional identification of numeric 0/0 with structural branching.
+
+The formulation track is governed by the same fail-closed rules: no `sorry`, no `admit`, no hidden axiom/oracle, no endpoint promotion, and no semantic weakening.
