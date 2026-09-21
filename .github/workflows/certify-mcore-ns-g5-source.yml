@@ -22,7 +22,7 @@ jobs:
           lake update
           lake exe cache get
       - name: Build current kernel surface
-        run: lake build MCore
+        run: lake build MCore.TopologyCore MCore.SpanCospanCore MCore.ResolutionPredicate MCore.ExactGapLedger MCore.RecoveryFirewall MCore.DeltaIsolation MCore.TopologyLimitClosed MCore.ErrorTheoryClosed MCore.PoincareRealImport MCore.HistoricalFull MCore.SigmaClassification MCore.SevenDeltasFormal MCore.SevenParallelAttack MCore.Attack.NS.MNavierStokes MCore.Attack.NS.G5DirectCorrected MCore.KernelBuild
       - name: Kernel audit current surface
         run: |
           python3 scripts/kernel_audit.py
