@@ -1,0 +1,16 @@
+{
+  "backbone_status": "GREEN_FROZEN",
+  "canonical_source_commit": "038a530d2b87cf92c05bfacb7592a68a854642eb",
+  "canonical_source_git_blob_sha1": "795e5857ce37dfeb7998ce2240072e99f5e7a0c9",
+  "canonical_source_path": "lean/MCore/UnifiedTerminalLogic.lean",
+  "certifying_workflow_run": 35637269122,
+  "endpoint_status": "OPEN",
+  "final_proof_count_at_source": 0,
+  "frozen_backbone_branch": "frozen/unified-terminal-logic-green-038a530d",
+  "infrastructure_remaining": 0,
+  "note": "This file separates metadata for one terminal producer. It does not prove the producer or the endpoint.",
+  "problem": "navier-stokes",
+  "producer_class": "control",
+  "schema": "mcore.unified-terminal.producer-spec.v1",
+  "statement": "theta<1 + terminal a in L1 + variable-coefficient Gronwall/semantic adapter"
+}

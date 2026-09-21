@@ -1,0 +1,19 @@
+{
+  "certificate_scope": "INFRASTRUCTURE_REUSE_ONLY",
+  "checks": {
+    "axiom_audit": "PASS",
+    "build": "PASS",
+    "fail_closed_boundary": "PASS",
+    "source_hygiene": "PASS"
+  },
+  "final_proof_count": "0/7",
+  "mathematical_endpoint_proved": false,
+  "problem": "navier-stokes",
+  "producer_spec_sha256": "16d7c06b9028f70dde12f6f375e767a1b83854b2a4ce6dad99b947f09d3ed4ef",
+  "promotion_rule": "Only an actual HardCertificate with producerProof may close the endpoint.",
+  "schema": "mcore.unified-terminal.infrastructure-certificate.v1",
+  "source_commit": "038a530d2b87cf92c05bfacb7592a68a854642eb",
+  "source_git_blob_sha1": "795e5857ce37dfeb7998ce2240072e99f5e7a0c9",
+  "status": "CERTIFIED_GREEN_BACKBONE",
+  "workflow_run": 35637269122
+}
