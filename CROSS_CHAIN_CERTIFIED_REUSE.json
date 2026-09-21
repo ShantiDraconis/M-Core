@@ -1,0 +1,146 @@
+{
+  "schema": "MCORE_CROSS_CHAIN_CERTIFIED_REUSE_V1",
+  "date": "2026-09-21",
+  "policy": {
+    "allowed": "Reuse audit logic, theorem schemas, proof patterns, and locally rederived generic lemmas.",
+    "forbidden": "Do not use a theorem specific to one problem as a proof dependency for another problem's material theorem.",
+    "promotion": "A target repo must locally compile/reprove the reused generic lemma before it can support promotion.",
+    "progress_metric": "FROZEN_HARD/TOTAL_HARD"
+  },
+  "sources": [
+    {
+      "id": "BEAL_CONDUCTOR_API_FIREWALL",
+      "repo": "ShantiDraconis/m-core-beal",
+      "frozen_branch": "frozen/b01-conductor-api-audit-green-e3b48ef0",
+      "sha": "e3b48ef0b726c951667b315efbc921450ad091a6",
+      "reusable": [
+        "API_EXISTENCE_CHECK",
+        "NO_THEOREM_BY_NAME_ASSUMPTION",
+        "LIBRARY_BOUNDARY"
+      ]
+    },
+    {
+      "id": "NS_UNIFORMITY_FIREWALL",
+      "repo": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+      "frozen_branch": "frozen/prefix-n01-uniformity-b7caecc2",
+      "sha": "b7caecc2db571679af4b6ee64829253dcd97cea2",
+      "reusable": [
+        "POINTWISE_NOT_UNIFORM",
+        "QUANTIFIER_ORDER"
+      ]
+    },
+    {
+      "id": "NS_HARDENED_GEOMETRY",
+      "repo": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+      "frozen_branch": "frozen/n01-hardened-geometry-green-04aa4c04",
+      "sha": "04aa4c0450bba417e83c643de1eb54eb189b7c53",
+      "reusable": [
+        "NO_VACUOUS_GEOMETRY",
+        "TYPED_INTERFACE"
+      ]
+    },
+    {
+      "id": "RH_FINITE_PREFIX_FIREWALL",
+      "repo": "ShantiDraconis/m-core-riemann",
+      "frozen_branch": "frozen/r01-finite-prefix-firewall-green-bc238bcc",
+      "sha": "bc238bcc2b15e6d773ec1497ed75cb782c171c9a",
+      "reusable": [
+        "FINITE_NOT_ASYMPTOTIC",
+        "FINITE_NOT_UNIVERSAL"
+      ]
+    },
+    {
+      "id": "HODGE_QUANTIFIER_FIREWALL",
+      "repo": "ShantiDraconis/m-core-hodge",
+      "frozen_branch": "frozen/h01-quantifier-firewall-green-e194a1c8",
+      "sha": "e194a1c8acc9075ef70ee1146f256573444fe6fe",
+      "reusable": [
+        "EXISTS_NOT_FORALL",
+        "SPECIAL_CASE_NOT_UNIVERSAL",
+        "QUANTIFIER_MATCH"
+      ]
+    },
+    {
+      "id": "YM_INTERFACE_HARDENING",
+      "repo": "ShantiDraconis/m-core-yang-mills",
+      "frozen_branch": "frozen/y01-interface-hardening-green-be8e2f6e",
+      "sha": "be8e2f6e6ca3100084a2908a4ebf8de3acfd9eb7",
+      "reusable": [
+        "NO_PHANTOM_FIELDS",
+        "NO_ZERO_WITNESS",
+        "PARAMETER_USAGE"
+      ]
+    },
+    {
+      "id": "PNP_VERIFIED_RELATION",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "frozen_branch": "frozen/p01-verified-relation-green-1453539c",
+      "sha": "1453539c13ba5224d1b84198f162075741a12a98",
+      "reusable": [
+        "VERIFIED_WITNESS",
+        "RELATION_CORRECTNESS",
+        "OPERATIONAL_SEMANTICS"
+      ]
+    },
+    {
+      "id": "PNP_COMPONENT_FAILPROOF",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "frozen_branch": "frozen/p01-component-failproof-green-9e21b631",
+      "sha": "9e21b631cd56bf49376b9e4a391b3cde45af60da",
+      "reusable": [
+        "NONEMPTY_NOT_ENOUGH",
+        "COMPONENT_SEMANTIC_FIELDS"
+      ]
+    },
+    {
+      "id": "BSD_UNIVERSAL_FIREWALL",
+      "repo": "ShantiDraconis/m-core-bsd",
+      "frozen_branch": "frozen/d01-universal-firewall-green-6fb0fe59",
+      "sha": "6fb0fe59d5fb86cbfc4b6089214862cad3861aab",
+      "reusable": [
+        "CASE_NOT_UNIVERSAL",
+        "CURVE_SPECIFIC_NOT_GLOBAL",
+        "UNIVERSALIZATION_CHECK"
+      ]
+    }
+  ],
+  "target_application": {
+    "m-core-beal": [
+      "HODGE_QUANTIFIER_FIREWALL",
+      "RH_FINITE_PREFIX_FIREWALL",
+      "BSD_UNIVERSAL_FIREWALL",
+      "PNP_VERIFIED_RELATION"
+    ],
+    "navier-stokes-critical-barrier-audit": [
+      "YM_INTERFACE_HARDENING",
+      "PNP_COMPONENT_FAILPROOF",
+      "HODGE_QUANTIFIER_FIREWALL"
+    ],
+    "m-core-riemann": [
+      "HODGE_QUANTIFIER_FIREWALL",
+      "RH_FINITE_PREFIX_FIREWALL",
+      "BSD_UNIVERSAL_FIREWALL"
+    ],
+    "m-core-hodge": [
+      "PNP_VERIFIED_RELATION",
+      "BSD_UNIVERSAL_FIREWALL",
+      "RH_FINITE_PREFIX_FIREWALL"
+    ],
+    "m-core-yang-mills": [
+      "NS_UNIFORMITY_FIREWALL",
+      "HODGE_QUANTIFIER_FIREWALL",
+      "PNP_COMPONENT_FAILPROOF"
+    ],
+    "m-core-p-vs-np": [
+      "HODGE_QUANTIFIER_FIREWALL",
+      "BSD_UNIVERSAL_FIREWALL",
+      "YM_INTERFACE_HARDENING"
+    ],
+    "m-core-bsd": [
+      "HODGE_QUANTIFIER_FIREWALL",
+      "RH_FINITE_PREFIX_FIREWALL",
+      "PNP_VERIFIED_RELATION",
+      "YM_INTERFACE_HARDENING"
+    ]
+  }
+}
