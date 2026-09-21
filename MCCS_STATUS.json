@@ -140,17 +140,21 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "15748f5cad1a5d5eadc2977d2f6076ff75c98e21",
+      "active_attack_head": "80fbfce82e3ef09e89a2df317e18ec4f8c20c645",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
       "current": [
-        "P01_CANONICAL_DECODER_INVERSE",
-        "P01_SLOT_PARSER_EXACT_SPEC",
+        "P01_DECODER_INVERSE_SOURCE",
+        "P01_SLOT_ACCEPT_EXACT_SPEC_SOURCE",
+        "P01_TAG_CONSUMER_SOURCE",
+        "P01_VAR_PAYLOAD_CONSUMER_SOURCE",
+        "P01_TAPE_LAYOUT_INIT_SOURCE",
+        "P01_TOMBSTONE_SLOT_LOG_SOURCE",
         "P01_CANONICAL_SINGLE_TAPE_NTM",
         "P02_SAT_NOT_IN_P"
       ],
-      "next_delta": "Kernel/CI validate decoder inverse + exact slot parser. Then implement a TM (Fin (stateCount+1)) (Option Bool) whose acceptance realizes slotAccept with a polynomial bound and total halting; package it as CanonicalRecursiveParserMachineCertificate. After that compose witness guessing + verified relation into CanonicalSATMachineClosure. P02 SAT not-in-P remains independent OPEN_MATH.",
+      "next_delta": "Implement the slot-log push/pop tape machines and compose init + tag consumer + var payload consumer + slot-log updates into one TM (Fin (stateCount+1)) (Option Bool). Prove total halting and polynomial runtime against the exact slotAccept specification, then package CanonicalRecursiveParserMachineCertificate. No CI/kernel promotion until live status exists.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -158,11 +162,14 @@
         "frozen/p01-component-failproof-green-9e21b631"
       ],
       "source_delta": [
-        "CanonicalCircuitBitsInverse.lean: exact decoder inverse SOURCE_BUILD_PENDING",
-        "CanonicalSATSlotParserSpec.lean: slotAccept <-> exact canonical encoding <-> decodeCircuit SOURCE_BUILD_PENDING",
-        "CanonicalSATFrameMachineV2.lean: frame protocol SOURCE_BUILD_PENDING",
-        "P01RecursiveFiniteControlFrontier.lean: canonical operational target SOURCE_BUILD_PENDING",
-        ".github/workflows/atk-p01-clean.yml: fail-closed build/axiom/expected-open gate"
+        "CanonicalCircuitBitsInverse.lean: exact decode inverse",
+        "CanonicalSATSlotParserSpec.lean: slotAccept <-> exact encoding <-> decodeCircuit",
+        "CanonicalSATTagConsumerMachine.lean: 13-state consuming tag machine",
+        "CanonicalSATVarPayloadMachine.lean: 3-state unary payload consumer; no Nat in control",
+        "CanonicalSATParserTapeLayout.lean: blank-delimited input/work layout",
+        "CanonicalSATParserInitMachine.lean: finite-control initialization to slots=1",
+        "CanonicalSATSlotLog.lean: true active slot / false tombstone work-log semantics",
+        ".github/workflows/atk-p01-clean.yml: expanded fail-closed build/axiom gate"
       ],
       "rejected_shortcuts": [
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
@@ -243,7 +250,7 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CANONICAL 7/7 GREEN_FROZEN + 7 FINAL-PROOF ATTACKS + MCORE FORMULATION 2/4 GREEN, 1/4 SOURCE_BUILD_PENDING, 1/4 OPEN + P01 EXACT SLOT SPEC SOURCE_BUILD_PENDING"
+    "current": "CANONICAL 7/7 GREEN_FROZEN + 7 FINAL-PROOF ATTACKS + MCORE FORMULATION 2/4 GREEN, 1/4 SOURCE_BUILD_PENDING, 1/4 OPEN + P01 OPERATIONAL COMPONENTS SOURCE_BUILD_PENDING"
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
