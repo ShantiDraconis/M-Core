@@ -1,0 +1,42 @@
+name: certify-unified-terminal-logic
+
+on:
+  push:
+    branches: [attack/unified-terminal-logic-20260921]
+  workflow_dispatch:
+
+jobs:
+  unified-terminal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean 4.19
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.19.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Bootstrap
+        run: |
+          lake update
+          lake exe cache get
+      - name: Build unified terminal logic
+        run: |
+          lake build MCore.UnifiedTerminalLogic MCore.KernelBuild
+      - name: Source hygiene
+        run: |
+          ! grep -R -n -E '\bsorry\b|\badmit\b|sorryAx' lean/MCore/UnifiedTerminalLogic.lean
+      - name: Axiom audit
+        run: |
+          cat > /tmp/UnifiedAudit.lean <<'EOF'
+          import MCore.UnifiedTerminalLogic
+          #print axioms MCore.UnifiedTerminalLogic.hardCertificate_closes_endpoint
+          #print axioms MCore.UnifiedTerminalLogic.reuse
+          #print axioms MCore.UnifiedTerminalLogic.all_backbones_frozen
+          #print axioms MCore.UnifiedTerminalLogic.all_infrastructure_zero
+          EOF
+          lake env lean /tmp/UnifiedAudit.lean 2>&1 | tee /tmp/unified-audit.log
+          if grep -E 'sorryAx' /tmp/unified-audit.log; then exit 1; fi
+      - name: Fail-closed boundary
+        run: |
+          grep -q 'finalProofCount : Nat := 0' lean/MCore/UnifiedTerminalLogic.lean
+          echo "UNIFIED_TERMINAL_LOGIC=GREEN_SOURCE_IF_BUILD_PASSES"
+          echo "FINAL_PROOF=0/7"
