@@ -1,5 +1,5 @@
 {
-  "schema": "MCCS_STATUS_V4",
+  "schema": "MCCS_STATUS_V5",
   "updated_utc": "2026-09-21",
   "scheduler": {
     "repos": 8,
@@ -25,7 +25,8 @@
     "progress_metric": "FROZEN_HARD/TOTAL_HARD",
     "microtests_progress_metric": false,
     "frozen_prefixes_do_not_decrement": true,
-    "final_proof": "0/7"
+    "final_proof": "0/7",
+    "closed_center_hard_foundation_green_frozen": 1
   },
   "queues": [
     {
@@ -37,7 +38,10 @@
       "attack_branch": "attack/b01-exact-conductor-contract-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
-      "current": ["B01_CONDUCTOR_EXACT_LEVEL", "B02_RESIDUAL_ELIMINATION"],
+      "current": [
+        "B01_CONDUCTOR_EXACT_LEVEL",
+        "B02_RESIDUAL_ELIMINATION"
+      ],
       "next_delta": "genuine Frey/local-conductor semantics + exact lowered level -> universal CommonPrime",
       "composite_remaining": 2,
       "atomic_remaining": 2
@@ -51,7 +55,10 @@
       "attack_branch": "attack/n01-uniformization-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
-      "current": ["N01_SIGNED_DEPLETION", "N02_ENDPOINT_REGULARITY"],
+      "current": [
+        "N01_SIGNED_DEPLETION",
+        "N02_ENDPOINT_REGULARITY"
+      ],
       "next_delta": "single positive parameter-independent signed-depletion constant from ActualNS",
       "composite_remaining": 2,
       "atomic_remaining": 2
@@ -65,7 +72,9 @@
       "attack_branch": "attack/bcf-zero-residue-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
-      "current": ["R01_ZERO_RESIDUE_DNLIMIT"],
+      "current": [
+        "R01_ZERO_RESIDUE_DNLIMIT"
+      ],
       "next_delta": "unconditional BCF/zero-residue control yielding VanishingUpperBound",
       "composite_remaining": 1,
       "atomic_remaining": 1
@@ -79,7 +88,9 @@
       "attack_branch": "attack/h01-universal-producer-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
-      "current": ["H01_GENERAL_ALGEBRAICITY"],
+      "current": [
+        "H01_GENERAL_ALGEBRAICITY"
+      ],
       "next_delta": "construct H01UniversalForwardPayload on the intended geometric semantics",
       "composite_remaining": 1,
       "atomic_remaining": 1
@@ -93,7 +104,9 @@
       "attack_branch": "attack/b6-terminal-witness-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
-      "current": ["Y01_4D_IR_CLUSTERING_GAP"],
+      "current": [
+        "Y01_4D_IR_CLUSTERING_GAP"
+      ],
       "next_delta": "construct genuine B6TerminalWitness from 4D physical realization + IR/limit + spectral-transfer data",
       "composite_remaining": 1,
       "atomic_remaining": 1
@@ -107,7 +120,10 @@
       "attack_branch": "attack/material-orientation-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
-      "current": ["P01_SAT_OPERATIONAL_NTM", "P02_SAT_NOT_IN_P"],
+      "current": [
+        "P01_SAT_OPERATIONAL_NTM",
+        "P02_SAT_NOT_IN_P"
+      ],
       "next_delta": "construct MaterialOrientation by a genuine PolySAT route or LowerBoundWitness",
       "composite_remaining": 2,
       "atomic_remaining": 2
@@ -121,7 +137,11 @@
       "attack_branch": "attack/d01-realizable-domain-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "BUILD_PENDING",
-      "current": ["D01_RANK", "D01_REFINED_LEADING_SHA", "D01_COMPOSITE"],
+      "current": [
+        "D01_RANK",
+        "D01_REFINED_LEADING_SHA",
+        "D01_COMPOSITE"
+      ],
       "next_delta": "instantiate a genuine realizable elliptic-curve family; prove rank equality, then refined leading coefficient/regulator/height/Sha",
       "composite_remaining": 1,
       "atomic_remaining": 2
@@ -131,6 +151,19 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "SEVEN_CLEAN_ATTACKS_ABOVE_CANONICAL_HARD_BASES"
+    "current": "CLOSED_CENTER_HARD_FOUNDATION_GREEN_FROZEN + SEVEN_CLEAN_ATTACKS"
+  },
+  "hard_foundation": {
+    "state": "GREEN_FROZEN",
+    "model": "START <-> CENTER <-> FINISH via two oriented forces",
+    "source_commit": "c3910589cd1865b4adfbe790938a1e77884ebfcd",
+    "main_merge_commit": "6c9de849df210cd35063c0cf7f74333cf4eadfe6",
+    "workflow_run": 35652843838,
+    "workflow_job": 106509145638,
+    "certificate_branch": "cert/final-fail-closed-center-hard-c3910589",
+    "frozen_branch": "frozen/final-fail-closed-center-hard-ee1ec8fb",
+    "certificate_sha256": "9d3a64ba4af8deedf66757dd723ec5173b6d17649483d1b86fe90bc18a769747",
+    "semantic_rule": "The four maps Start->Center, Center->Start, Center->Finish, Finish->Center must be proved by each concrete application; the foundation manufactures none of them.",
+    "endpoint_promotion": false
   }
 }
