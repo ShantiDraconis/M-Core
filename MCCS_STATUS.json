@@ -67,5 +67,67 @@
       "composite_remaining": 1,
       "atomic_remaining": 2
     }
+  ],
+  "promotion_protocol": {
+    "schema": "ATK_SEMANTIC_PROMOTION_V1",
+    "frozen_hard_requires": [
+      "KERNEL_GREEN",
+      "AXIOM_GREEN",
+      "CIRCULARITY_GREEN",
+      "PROVENANCE_GREEN",
+      "SEMANTIC_EQUIVALENCE_GREEN",
+      "NONTRIVIALITY_GREEN",
+      "CLEAN_REPRO_GREEN"
+    ],
+    "auxiliary_green_counts_as_progress": false
+  },
+  "auxiliary_frozen": [
+    {
+      "repo": "m-core-p-vs-np",
+      "kind": "FROZEN_FAILPROOF",
+      "ref": "frozen/p01-component-failproof-green-9e21b631",
+      "hard_delta": 0
+    },
+    {
+      "repo": "m-core-yang-mills",
+      "kind": "FROZEN_INTERFACE_HARDENING",
+      "ref": "frozen/y01-interface-hardening-green-be8e2f6e",
+      "hard_delta": 0
+    },
+    {
+      "repo": "m-core-hodge",
+      "kind": "FROZEN_FIREWALL",
+      "ref": "frozen/h01-quantifier-firewall-green-e194a1c8",
+      "hard_delta": 0
+    },
+    {
+      "repo": "m-core-bsd",
+      "kind": "FROZEN_FIREWALL",
+      "ref": "frozen/d01-universal-firewall-green-6fb0fe59",
+      "hard_delta": 0
+    }
+  ],
+  "in_flight": [
+    {
+      "repo": "navier-stokes-critical-barrier-audit",
+      "target": "N01 hardened projection/coherence interface",
+      "sha": "8771ec59a23950a0685d1d40e94caf8ca1a57123",
+      "run": 35586784437
+    },
+    {
+      "repo": "m-core-riemann",
+      "target": "R01 finite-prefix firewall + repository clean reproduction",
+      "sha": "bc238bcc2b15e6d773ec1497ed75cb782c171c9a",
+      "runs": [
+        35586583811,
+        35586583717
+      ]
+    },
+    {
+      "repo": "m-core-p-vs-np",
+      "target": "P01 exact bounded verifier relation",
+      "sha": "2147948ad84ac2eec105eee5bcc3c962682a3cb4",
+      "run": 35587020200
+    }
   ]
 }
