@@ -1,0 +1,35 @@
+{
+  "schema": "MCORE_FUNDAMENTAL_INDETERMINACY_CORE_CERT_V1",
+  "date": "2026-09-21",
+  "repository": "ShantiDraconis/M-Core",
+  "source_branch": "attack/final-fail-indeterminacy-core-v1-20260921",
+  "source_commit": "2d47aa595f031d384162fd10e74ce0481602c11d",
+  "toolchain": "leanprover/lean4:v4.19.0",
+  "workflow_run": 35657230894,
+  "workflow_job": 106523770137,
+  "regression_run": 35657230921,
+  "status": "GREEN",
+  "checks": {
+    "source_hygiene": "PASS",
+    "kernel_compile": "PASS",
+    "axiom_footprint": "PASS",
+    "sorry": 0,
+    "admit": 0,
+    "new_axiom_declarations": 0
+  },
+  "certified_results": [
+    "FundamentalIndeterminacy implies not CenterDetermined",
+    "CenterDetermined excludes FundamentalIndeterminacy",
+    "FundamentalIndeterminacy is invariant under admissibility-preserving coordinate equivalence",
+    "reference directions extinction/identity/escape are explicitly non-exhaustive",
+    "RelationalHardAtom preserves multiple admissible continuations",
+    "FailAt implies not DeterminedAt",
+    "closed-center HARD regression remains GREEN"
+  ],
+  "scope": {
+    "core_only": true,
+    "contains_executable_brain": false,
+    "open_problem_endpoint_promotion": false,
+    "final_proof": "0/7"
+  }
+}
