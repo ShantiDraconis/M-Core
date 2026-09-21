@@ -125,3 +125,23 @@ Current formulation delta:
 6. After that, recovered numeric/Phi3 indeterminacy may connect to structural `IFail` only through an explicit typed adapter theorem; there is no definitional identification of numeric 0/0 with structural branching.
 
 The formulation track is governed by the same fail-closed rules: no `sorry`, no `admit`, no hidden axiom/oracle, no endpoint promotion, and no semantic weakening.
+
+
+### PNP/P01 canonical operational frontier — current cut
+
+The P01 target is not an abstract witness relation anymore. The following are already available/reused:
+- canonical Circuit bit encoding;
+- finite SAT witness semantics;
+- verified witness correctness;
+- short-witness bound;
+- verified SATBits relation;
+- finite tag/unary parser fragments;
+- frame-stack source implementation.
+
+The remaining P01 HARD is to compile that relation into the repository's hardened machine model:
+`PolyNTMRealization (SATBits circuitBitEncoding)` with finite control `Fin (n+1)`, alphabet `Option Bool`, canonical input tape, polynomial runtime and exact soundness/completeness.
+
+Rejected shortcut:
+- `copilot/worksat-realization-foundations/lean/MCore/Real/SATRealization.lean` is not compatible with the hardened canonical model because it embeds arbitrary CNF values in machine states and `String/List Bool` values in tape symbols. It is provenance/negative control only, not a P01 producer.
+
+Active clean P01 head: `0c89ecaca4449e1b551970a13a38f4e4d3d55a9a`.
