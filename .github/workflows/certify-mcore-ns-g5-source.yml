@@ -21,8 +21,8 @@ jobs:
         run: |
           lake update
           lake exe cache get
-      - name: Compile current kernel surface
-        run: lake env lean lean/MCore/KernelBuild.lean
+      - name: Build current kernel surface
+        run: lake build MCoreAudit
       - name: Kernel audit current surface
         run: |
           python3 scripts/kernel_audit.py
