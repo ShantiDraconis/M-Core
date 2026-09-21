@@ -55,7 +55,7 @@ def VariableCoefficientGronwallTarget : Prop :=
     IntervalIntegrable a volume t0 T →
     (∀ t, t ∈ Set.Ioo t0 T → deriv y t ≤ 2 * a t * y t) →
     ∀ t, t ∈ Set.Icc t0 T,
-      y t ≤ y t0 * Real.exp (2 * ∫ s in t0..t, a s)
+      y t ≤ y t0 * Real.exp (2 * (∫ s in t0 .. t, a s))
 
 structure SemanticAdapter where
   actualNS : Prop
