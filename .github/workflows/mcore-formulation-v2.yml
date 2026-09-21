@@ -9,8 +9,8 @@ on:
       - 'lean/MCore/FinalFail/ClosedCenterHard.lean'
       - 'lean/MCore/FinalFail/FundamentalIndeterminacy.lean'
       - 'lean/MCore/FinalFail/RelationalHardAtom.lean'
-      - 'lean/MCore/FinalFail/RelationalCenterBridge.lean
-      - 'lean/MCore/FinalFail/RelationalClosedCenterBridge.lean''
+      - 'lean/MCore/FinalFail/RelationalCenterBridge.lean'
+      - 'lean/MCore/FinalFail/RelationalClosedCenterBridge.lean'
       - 'lean/MCore/FinalFail/Master.lean'
   workflow_dispatch:
 
