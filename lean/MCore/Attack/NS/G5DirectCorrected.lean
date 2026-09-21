@@ -1,5 +1,4 @@
-import Mathlib.Analysis.Calculus.Deriv.Basic
-import Mathlib.MeasureTheory.Integral.IntervalIntegral
+import Mathlib
 import Mathlib.Analysis.ODE.Gronwall
 
 noncomputable section
@@ -34,7 +33,6 @@ structure G5Witness (f : TimeFuncs) (nu t0 T : ℝ)
   htheta_lt_one : theta < 1
   haL1 : IntervalIntegrable a volume t0 T
 
-/-- The algebraic G5-3 step only. No claim about z' is used. -/
 theorem G5_to_Gronwall
     {f : TimeFuncs} {nu t0 T : ℝ}
     (bal : BalanceIdentity f nu)
@@ -48,10 +46,8 @@ theorem G5_to_Gronwall
   linarith
 
 /--
-Exact G5-4 formal target.  Mathlib 4.19's ODE/Gronwall theorem is stated for
-a constant coefficient K; it does not directly supply this variable-coefficient
-L1 version.  Therefore this proposition remains a formal-library bridge, not a
-mathematical promotion.
+Exact formal target for the variable-coefficient Gronwall step.
+Kept as a proposition only; no theorem is claimed.
 -/
 def VariableCoefficientGronwallTarget : Prop :=
   ∀ (y a : ℝ → ℝ) (t0 T : ℝ),
@@ -59,19 +55,15 @@ def VariableCoefficientGronwallTarget : Prop :=
     IntervalIntegrable a volume t0 T →
     (∀ t, t ∈ Set.Ioo t0 T → deriv y t ≤ 2 * a t * y t) →
     ∀ t, t ∈ Set.Icc t0 T,
-      y t ≤ y t0 * Real.exp (2 * ∫ s in t0..t, a s)
+      y t ≤ y t0 * Real.exp (2 * intervalIntegral a t0 t)
 
-/--
-Semantic adapter to the real M-Navier-Stokes definitions.
-This M-Core repository does not pretend that its abstract TimeFuncs are already
-the concrete maximal-solution trajectory.
--/
 structure SemanticAdapter where
   actualNS : Prop
   terminalFlexibleG1 : Prop
-  actual_to_balance : actualNS → ∃ (f : TimeFuncs) (nu t0 T : ℝ), BalanceIdentity f nu
+  actual_to_balance :
+    actualNS → ∃ (f : TimeFuncs) (nu t0 T : ℝ), BalanceIdentity f nu
   witness_to_terminal :
-    (∃ (f : TimeFuncs) (nu t0 T : ℝ), G5Witness f nu t0 T) →
+    (∃ (f : TimeFuncs) (nu t0 T : ℝ), Nonempty (G5Witness f nu t0 T)) →
       terminalFlexibleG1
 
 def adapterStatus : String :=
