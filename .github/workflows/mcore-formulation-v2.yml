@@ -59,7 +59,7 @@ jobs:
         run: |
           set -euo pipefail
           cat >/tmp/MCoreFormulationAudit.lean <<'EOF'
-          import MCore.FinalFail.RelationalCenterBridge
+          import MCore.FinalFail.RelationalClosedCenterBridge
           #print axioms MCore.FinalFail.RelationalHardAtom.failAt_iff_fundamentalIndeterminacy
           #print axioms MCore.FinalFail.RelationalHardAtom.determinedAt_iff_centerDetermined
           #print axioms MCore.FinalFail.RelationalHardAtom.failAt_iff_IFail
