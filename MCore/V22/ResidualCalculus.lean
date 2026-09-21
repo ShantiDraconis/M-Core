@@ -1,4 +1,5 @@
 import MCore.V22.BidirectionalClosure
+import Mathlib.Order.RelClasses
 
 namespace MCore.V22
 
@@ -22,19 +23,17 @@ def Closed (r : S.Residual) : Prop :=
 structure Step (before after : S.Residual) : Prop where
   decreases : S.smaller after before
 
-private theorem acc_irrefl
-    (x : S.Residual) (hx : Acc S.smaller x) :
+private theorem relation_irrefl
+    (x : S.Residual) :
     ¬ S.smaller x x := by
+  letI : WellFounded S.smaller := S.wellFounded
   intro hxx
-  induction hx with
-  | intro y ih =>
-      have hy : Acc S.smaller y := ih y hxx
-      exact acc_irrefl y hy hxx
+  exact (WellFounded.asymmetric x x hxx) hxx
 
 theorem step_irrefl {r : S.Residual} :
     ¬ Step S r r := by
   intro h
-  exact acc_irrefl r (S.wellFounded.apply r) h.decreases
+  exact relation_irrefl (S := S) r h.decreases
 
 theorem no_step_from_closed {r : S.Residual}
     (h : Closed S r) :
