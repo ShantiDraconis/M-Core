@@ -9,6 +9,18 @@
   },
   "sources": [
     {
+      "id": "MCORE_V22_CLOSED_SYSTEM",
+      "repo": "ShantiDraconis/M-Core",
+      "frozen_branch": "frozen/mcore-v22-closed-system-green-43ee611a",
+      "sha": "43ee611a4bb56930d1d1fe92b33f5541d4ff208c",
+      "reusable": [
+        "CLOSURE_AUDIT",
+        "EXACT_BLOCKER_REGISTRY",
+        "RESIDUAL_DECOMPOSITION",
+        "NO_CIRCULAR_PROMOTION"
+      ]
+    },
+    {
       "id": "BEAL_CONDUCTOR_API_FIREWALL",
       "repo": "ShantiDraconis/m-core-beal",
       "frozen_branch": "frozen/b01-conductor-api-audit-green-e3b48ef0",
@@ -36,7 +48,8 @@
       "sha": "04aa4c0450bba417e83c643de1eb54eb189b7c53",
       "reusable": [
         "NO_VACUOUS_GEOMETRY",
-        "TYPED_INTERFACE"
+        "TYPED_INTERFACE",
+        "CONSTANT_DEPENDENCY"
       ]
     },
     {
@@ -52,8 +65,8 @@
     {
       "id": "HODGE_QUANTIFIER_FIREWALL",
       "repo": "ShantiDraconis/m-core-hodge",
-      "frozen_branch": "frozen/h01-quantifier-firewall-green-e194a1c8",
-      "sha": "e194a1c8acc9075ef70ee1146f256573444fe6fe",
+      "frozen_branch": "frozen/h01-quantifier-firewall-v2-green-05920ca8",
+      "sha": "05920ca81da0b58ceda53553db65c25baf6f8ce8",
       "reusable": [
         "EXISTS_NOT_FORALL",
         "SPECIAL_CASE_NOT_UNIVERSAL",
@@ -63,40 +76,32 @@
     {
       "id": "YM_INTERFACE_HARDENING",
       "repo": "ShantiDraconis/m-core-yang-mills",
-      "frozen_branch": "frozen/y01-interface-hardening-green-be8e2f6e",
-      "sha": "be8e2f6e6ca3100084a2908a4ebf8de3acfd9eb7",
+      "frozen_branch": "frozen/y01-interface-hardening-v2-green-f4a5e655",
+      "sha": "f4a5e65556485bc91f9b6473724841490cebe652",
       "reusable": [
         "NO_PHANTOM_FIELDS",
         "NO_ZERO_WITNESS",
-        "PARAMETER_USAGE"
+        "PARAMETER_USAGE",
+        "TYPED_PHYSICAL_INTERFACE"
       ]
     },
     {
-      "id": "PNP_VERIFIED_RELATION",
+      "id": "PNP_OPERATIONAL_PREFIX",
       "repo": "ShantiDraconis/m-core-p-vs-np",
-      "frozen_branch": "frozen/p01-verified-relation-green-1453539c",
-      "sha": "1453539c13ba5224d1b84198f162075741a12a98",
+      "frozen_branch": "frozen/p01-operational-prefix-green-50859a9f",
+      "sha": "50859a9fe3b4b4ef77ad212cd2bb570453200e0a",
       "reusable": [
         "VERIFIED_WITNESS",
         "RELATION_CORRECTNESS",
-        "OPERATIONAL_SEMANTICS"
-      ]
-    },
-    {
-      "id": "PNP_COMPONENT_FAILPROOF",
-      "repo": "ShantiDraconis/m-core-p-vs-np",
-      "frozen_branch": "frozen/p01-component-failproof-green-9e21b631",
-      "sha": "9e21b631cd56bf49376b9e4a391b3cde45af60da",
-      "reusable": [
-        "NONEMPTY_NOT_ENOUGH",
-        "COMPONENT_SEMANTIC_FIELDS"
+        "OPERATIONAL_SEMANTICS",
+        "NONEMPTY_NOT_ENOUGH"
       ]
     },
     {
       "id": "BSD_UNIVERSAL_FIREWALL",
       "repo": "ShantiDraconis/m-core-bsd",
-      "frozen_branch": "frozen/d01-universal-firewall-green-6fb0fe59",
-      "sha": "6fb0fe59d5fb86cbfc4b6089214862cad3861aab",
+      "frozen_branch": "frozen/d01-universal-firewall-v2-green-c1e7b245",
+      "sha": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
       "reusable": [
         "CASE_NOT_UNIVERSAL",
         "CURVE_SPECIFIC_NOT_GLOBAL",
@@ -142,5 +147,6 @@
       "PNP_VERIFIED_RELATION",
       "YM_INTERFACE_HARDENING"
     ]
-  }
+  },
+  "updated_utc": "2026-09-21"
 }
