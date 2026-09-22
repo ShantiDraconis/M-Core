@@ -1,57 +1,46 @@
 {
   "P01": {
     "prefix": "fc20887e556091a4775080ab23ee1ff61917040e",
-    "state": "GREEN_FROZEN_CERTIFIED_PARTIAL",
-    "runs": [
-      "35700922856 SUCCESS",
-      "35700922859 SUCCESS"
-    ],
-    "pending_ATK": [
-      "SlotParserMachineSimulationCertificate",
-      "CanonicalRecursiveParserOperationalGap",
-      "CanonicalSATMachineClosure",
-      "p01_final_certificate"
-    ]
+    "state": "GREEN_FROZEN_CERTIFIED",
+    "runs": ["35700922856 SUCCESS","35700922859 SUCCESS"],
+    "pending_ATK": ["SlotParserMachineSimulationCertificate","CanonicalRecursiveParserOperationalGap","CanonicalSATMachineClosure","p01_final_certificate"],
+    "endpoint_status": "OPEN",
+    "prefix_status": "GREEN_FROZEN_CERTIFIED"
   },
   "P02": {
     "frontier": "ef89f6a29c29223e5442b14a6e59304ac0b1c47d",
-    "state": "OPEN_MATH",
-    "required_proof_object": "∀ candidate : PolyDTMCandidate, ∃ x, ¬ candidate.CorrectAt SAT x",
-    "components": {
-      "G2.0": "OPEN",
-      "G2.1": "OPEN_MATH",
-      "G2.2": "BLOCKED_G2.1",
-      "G2.3": "BLOCKED_G2.2"
-    }
+    "frontier_status": "FORMALIZED",
+    "endpoint_status": "OPEN_MATH",
+    "required_proof_object": "forall M: PolyDTMCandidate, exists x_M, Valid x_M and |x_M| <= poly(|M|) and (SAT x_M <-> not acceptsWithinBound M x_M) with canonical encoding fidelity",
+    "G2.0": {
+      "status": "SOURCE_KERNEL_PENDING",
+      "role": "normalization",
+      "description": "Normalizes explicit polynomial time bounds while preserving CorrectAt; does NOT establish effective enumerability and does NOT produce G2.1",
+      "produces_G2_1": false,
+      "source_sha": "d72e53bc7f667c75a432226a23adc59a255c5652"
+    },
+    "G2.1": {
+      "status": "OPEN_MATH",
+      "role": "terminal producer",
+      "description": "Contains essentially the heart of P vs NP. Constructing for every PolyDTMCandidate M a canonical SAT instance x_M is extraordinary mathematical advance. Not ordinary technical sequence.",
+      "blocks": ["G2.2","G2.3"]
+    },
+    "G2.2": {"status":"BLOCKED_BY_G2.1","role":"contradiction","blocked_by":"G2.1"},
+    "G2.3": {"status":"BLOCKED_BY_G2.2","role":"FailureGenerator","blocked_by":"G2.2","note":"BLOCKED_BY_G2.1 transitively"},
+    "route_policy": "G2.0 -> G2.1 -> G2.2 -> G2.3 must NOT be treated as ordinary technical sequence. G2.1 is terminal producer."
   },
-  "G3": {
-    "status": "OPEN_CONSTRUCTION"
-  },
-  "MCORE": {
-    "hub": "11adcd32806606cfdd667d062b37d5c19f786f95",
-    "state": "GREEN_FROZEN_SCAFFOLD"
-  },
-  "OS": {
-    "state": "GREEN_FROZEN",
-    "hardware_secure_boot_claimed": false
-  },
-  "HUB": {
-    "state": "GREEN_FROZEN_SCAFFOLD",
-    "production_crypto_verified": false
-  },
-  "BRAIN": {
-    "policy": "OBSERVE_REASON_ABSTAIN",
-    "state": "GREEN"
-  },
-  "APP": {
-    "state": "NOT_CONNECTED"
-  },
-  "ELYON": {
-    "base": "483f6bdc06b74a0239481085e25c9a9fdccb1a8f",
-    "audit": "0f71ffea68ed52691201144140fb1a342d03b8d7",
-    "run": "35378862267 SUCCESS",
-    "state": "SEALED_CLOSED",
-    "review": "REVIEW_PENDING"
-  },
-  "FINAL_PROOF": "0/7"
+  "G3": {"status":"OPEN_CONSTRUCTION","endpoint":"OPEN"},
+  "MCORE": {"hub":"11adcd32...","state":"GREEN_FROZEN_SCAFFOLD"},
+  "OS": {"state":"GREEN_FROZEN","hardware_secure_boot_claimed":false},
+  "HUB": {"state":"GREEN_FROZEN_SCAFFOLD","production_crypto_verified":false},
+  "BRAIN": {"policy":"OBSERVE_REASON_ABSTAIN","state":"GREEN"},
+  "APP": {"state":"NOT_CONNECTED"},
+  "ELYON": {"base":"483f6bdc06b74a0239481085e25c9a9fdccb1a8f","state":"SEALED_CLOSED","review":"REVIEW_PENDING"},
+  "FINAL_PROOF": "0/7",
+  "P03": {"status":"OPEN_MATH"},
+  "P04": {"status":"OPEN_MATH"},
+  "P05": {"status":"OPEN_MATH"},
+  "P06": {"status":"OPEN_MATH"},
+  "P07": {"status":"OPEN_MATH"},
+  "issuance_policy": "final_proof=0/7 must remain explicit, no language of solved problem"
 }
