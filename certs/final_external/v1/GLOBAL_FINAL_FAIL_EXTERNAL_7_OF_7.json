@@ -1,0 +1,68 @@
+{
+  "schema": "mcore.global-final-fail-external.v1",
+  "state": "GLOBAL_FINAL_FAIL_EXTERNAL_CANDIDATE",
+  "process_closed_count": 7,
+  "process_total": 7,
+  "all_processes_closed": true,
+  "proof_claimed": false,
+  "final_proof": "0/7",
+  "problems": {
+    "P_VS_NP": {
+      "source_repo": "ShantiDraconis/m-core-p-vs-np",
+      "source_sha": "815dfb08e719b80e82cc35a5e01988064a0b3496",
+      "run": 35722796449,
+      "frozen": "frozen/final-fail-external-green-815dfb08",
+      "cert": "cert/final-fail-external-815dfb08-run35722796449",
+      "cert_tip": "0fc0c0ea5b40b12d10ac27e74fadfb832294c525"
+    },
+    "RIEMANN": {
+      "source_repo": "ShantiDraconis/m-core-riemann",
+      "source_sha": "27ac66f4f0bdf8edc0e8c3ab1f11b52ccd279b1b",
+      "run": 35731884171,
+      "frozen": "frozen/final-fail-external-green-27ac66f4",
+      "cert": "cert/final-fail-external-27ac66f4-run35731884171",
+      "cert_tip": "bc4780383fa7835b3ffc105ab1232476b81b97b9"
+    },
+    "BEAL": {
+      "source_repo": "ShantiDraconis/m-core-beal",
+      "source_sha": "3d8da613f46201c8750df3c5f2ea96ce144a1770",
+      "run": 35731887129,
+      "frozen": "frozen/final-fail-external-green-3d8da613",
+      "cert": "cert/final-fail-external-3d8da613-run35731887129",
+      "cert_tip": "2249ef10346f134b040d2cbf532ab3815ac9b65f"
+    },
+    "HODGE": {
+      "source_repo": "ShantiDraconis/m-core-hodge",
+      "source_sha": "9bb0b72ce769746c1808b7cd49d68e63211d739e",
+      "run": 35731892187,
+      "frozen": "frozen/final-fail-external-green-9bb0b72c",
+      "cert": "cert/final-fail-external-9bb0b72c-run35731892187",
+      "cert_tip": "8e8f9fca8bdff2f3050cdd1b1dfa1f0ccc1d004c"
+    },
+    "BSD": {
+      "source_repo": "ShantiDraconis/m-core-bsd",
+      "source_sha": "6968cf38fd2db811143041c1bf6484eabea69290",
+      "run": 35731896565,
+      "frozen": "frozen/final-fail-external-green-6968cf38",
+      "cert": "cert/final-fail-external-6968cf38-run35731896565",
+      "cert_tip": "5756cfa38a66099412d0a3dc93eb73a71e4fe77f"
+    },
+    "YANG_MILLS": {
+      "source_repo": "ShantiDraconis/m-core-yang-mills",
+      "source_sha": "4f770f4c87bba94ee71fd0e83861b2257c672657",
+      "run": 35731899720,
+      "frozen": "frozen/final-fail-external-green-4f770f4c",
+      "cert": "cert/final-fail-external-4f770f4c-run35731899720",
+      "cert_tip": "17c13cdc1bdac8cb8ceba10342bea934b801cb52"
+    },
+    "NAVIER_STOKES": {
+      "source_repo": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+      "source_sha": "28d375b6a1fbc4ae8179695929040dc9a6793f35",
+      "run": 35731921453,
+      "frozen": "frozen/final-fail-external-green-28d375b6",
+      "cert": "cert/final-fail-external-28d375b6-run35731921453",
+      "cert_tip": "856be9955d38182bdf96766284bd88e6f9a27074"
+    }
+  },
+  "policy": "Seven audit/process lanes are closed and externalized under FINAL_FAIL. No mathematical endpoint theorem is manufactured or claimed."
+}
