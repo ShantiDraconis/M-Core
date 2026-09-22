@@ -108,5 +108,29 @@
         ]
       }
     }
+  },
+  "open_gaps": [
+    "P01ConstructionGap",
+    "G21Pointwise"
+  ],
+  "instruction_to_system": {
+    "mode": "INTERFACE_ONLY_FAIL_CLOSED",
+    "rule": "Do not attempt to prove P≠NP and do not fabricate inhabitants for P01ConstructionGap or G21Pointwise.",
+    "certified_source_rule": "No sorry, admit, axiom, opaque placeholder, or hidden endpoint assumption may be added to certified Lean source.",
+    "p01": "Keep P01ConstructionGap := Nonempty P01MachineConstruction open until a concrete finite-control NTM construction with halting, polynomial bound, and SAT correctness is supplied.",
+    "g21": "Keep G21Pointwise as the exact open lower-bound proposition. Reuse the already-certified equivalence to P02Target / SAT not in P; do not attempt to manufacture a FailureGenerator.",
+    "final_external": "Reuse FinalExternalTwoGap.lean conditionally. While either open gap is uninhabited, FINAL_ROOT must remain null and FINAL_EXTERNAL_ISSUED must remain false.",
+    "scratch_policy": "If an exploratory template with sorry is ever used, it must stay outside the certified source/CI path and must not be labeled GREEN/FROZEN/CERTIFIED."
+  },
+  "interface_status": {
+    "p01_file": "lean/MCore/Real/P01FinalCertificate.lean",
+    "p01_gap": "P01ConstructionGap",
+    "p01_state": "OPEN_IMPLEMENTATION",
+    "g21_file": "lean/MCore/Real/P02G21G22Attack.lean",
+    "g21_gap": "G21Pointwise",
+    "g21_state": "OPEN_MATH",
+    "final_external_file": "lean/MCore/Real/FinalExternalTwoGap.lean",
+    "final_external_state": "GREEN_FROZEN_CERTIFIED_REDUCTION",
+    "additional_math_producers_after_two_gaps": 0
   }
 }
