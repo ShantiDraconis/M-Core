@@ -1,0 +1,45 @@
+{
+  "schema": "MCORE_RECIPROCAL_PAIR_13_17_V1_CERT",
+  "date": "2026-09-22",
+  "repository": "ShantiDraconis/M-Core",
+  "source_sha": "89cf9683251493e3b97b893e8cf48addf2b2128a",
+  "workflow": "Reciprocal Pair 13-17",
+  "workflow_run": 35702124594,
+  "conclusion": "success",
+  "status": "KERNEL_CI_CERTIFIED",
+  "audit_result": "NO_FINDINGS_IN_SCOPE",
+  "state": "GREEN_RECIPROCAL_PAIR_13_17",
+  "semantics": "EXACT_PUBLIC_RECIPROCAL_TRANSFORMATION",
+  "endpoints": [
+    "13/1",
+    "17/1"
+  ],
+  "orientations": [
+    "13/17",
+    "17/13"
+  ],
+  "exact_closure": "221/221 represents 1",
+  "symmetric_invariant": "458/221",
+  "theorem_names": [
+    "MCore.endpoint_projection_forward",
+    "MCore.endpoint_projection_reverse",
+    "MCore.reciprocal_closure_represents_one",
+    "MCore.reciprocal_closure_exact",
+    "MCore.symmetric_invariant_exact",
+    "MCore.orientation_pair_exact",
+    "MCore.reciprocalPublicInvariant13_17_exact"
+  ],
+  "proof_boundary": {
+    "arithmetic_equality_13_eq_17": false,
+    "password": false,
+    "private_key": false,
+    "entropy": false,
+    "cryptographic_strength_claim": false
+  },
+  "hygiene": {
+    "sorry": false,
+    "admit": false,
+    "explicit_axiom": false
+  },
+  "claim_boundary": "Certifies the exact formal reciprocal transformation and invariant in the cited Lean kernel compile scope. It is public mathematical context, not a cryptographic secret or security primitive."
+}
