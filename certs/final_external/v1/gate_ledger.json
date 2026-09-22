@@ -7,8 +7,7 @@
       "35700922859 SUCCESS"
     ],
     "pending_ATK": [
-      "Source-check states 16/17 to accept/reject/rewind",
-      "Full parser simulation from certified macro phases to exact slotAccept behavior",
+      "Compose certified parser phases into SlotParserMachineSimulationCertificate",
       "CanonicalRecursiveParserOperationalGap",
       "CanonicalSATMachineClosure",
       "p01_final_certificate"
@@ -45,6 +44,14 @@
       "certificate_branch": "cert/p01-leaf-state14-15-return-72aa7be3-run35714475319",
       "certificate_commit": "8b6360e9f334e4a11084f6ddd833123975b02190",
       "run": "35714475319 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED"
+    },
+    "leaf_source": {
+      "source_sha": "93f1321f53aa93e18c7dcbf8a8a04e2844a15cbe",
+      "frozen_branch": "frozen/p01-leaf-source-green-93f1321f",
+      "certificate_branch": "cert/p01-leaf-source-93f1321f-run35720074676",
+      "certificate_commit": "6f24ad42f651e1ef33a9ece7cbe8e867a2643c40",
+      "run": "35720074676 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED"
     }
   },
