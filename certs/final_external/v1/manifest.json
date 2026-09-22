@@ -4,15 +4,7 @@
   "name": "ELYON_FINAL_EXTERNAL",
   "version": "v1.0.0",
   "alias": "elyon",
-  "scope": [
-    "MCORE",
-    "AINUM",
-    "OS",
-    "HUB",
-    "BRAIN",
-    "APP",
-    "ELYON"
-  ],
+  "scope": ["MCORE","AINUM","OS","HUB","BRAIN","APP","ELYON"],
   "infra_state": "READY_FOR_FREEZE",
   "math_state": "OPEN_MATH",
   "final_proof": {
@@ -45,19 +37,8 @@
     "P01": {
       "prefix": "fc20887e556091a4775080ab23ee1ff61917040e",
       "state": "GREEN_FROZEN_CERTIFIED",
-      "runs": [
-        "35700922856 SUCCESS",
-        "35700922859 SUCCESS"
-      ],
-      "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
-      "certificate_branch": "cert/p01-parser-components-fc20887e-run35700922856",
-      "certificate_commit": "2043a76bc04157c4c6c74ef5fc82ad28c1852f45",
-      "pending_ATK": [
-        "SlotParserMachineSimulationCertificate",
-        "CanonicalRecursiveParserOperationalGap",
-        "CanonicalSATMachineClosure",
-        "p01_final_certificate"
-      ]
+      "runs": ["35700922856 SUCCESS","35700922859 SUCCESS"],
+      "pending_ATK": ["SlotParserMachineSimulationCertificate","CanonicalRecursiveParserOperationalGap","CanonicalSATMachineClosure","p01_final_certificate"]
     },
     "P02": {
       "frontier": "ef89f6a29c29223e5442b14a6e59304ac0b1c47d",
@@ -65,7 +46,7 @@
       "pending_ATK": "proof object real: ∀ candidate : PolyDTMCandidate, ∃ x, ¬ candidate.CorrectAt SAT x"
     },
     "MCORE_HUB": {
-      "hub_anchor": "11adcd32806606cfdd667d062b37d5c19f786f95",
+      "hub_anchor": "11adcd32...",
       "state": "GREEN_FROZEN_SCAFFOLD"
     }
   },
@@ -74,7 +55,7 @@
     "quorum": "UNSET",
     "evidence_policy": "UNSET",
     "status": "REVIEW_PENDING",
-    "notes": "Must be defined by human authority. Cannot be chosen by technical validator."
+    "notes": "Must be defined by human authority. Cannot be chosen by technical validator. Evidence must be GPG/Sigstore + PR comment + APPROVED_BY_HUMAN tag in review.json"
   },
   "production": {
     "app": {
@@ -92,12 +73,7 @@
     },
     "hardware_attestation": {
       "status": "UNSET",
-      "allowed_values": [
-        "UNSET",
-        "OUT_OF_SCOPE_FOR_V1",
-        "TPM2_ATTESTED",
-        "SECURE_BOOT_ATTESTED"
-      ],
+      "allowed_values": ["UNSET","OUT_OF_SCOPE_FOR_V1","TPM2_ATTESTED","SECURE_BOOT_ATTESTED"],
       "current_claim": "hardware_secure_boot_claimed=false"
     }
   },
@@ -110,36 +86,14 @@
     "status": "OPEN_CONSTRUCTION",
     "notes": "Fail-closed until formalization"
   },
-  "artifacts_required": [
-    "manifest.json",
-    "README.md",
-    "SHA256SUMS",
-    "provenance.json",
-    "gate_ledger.json",
-    "axiom_footprint.json",
-    "reproducibility.md",
-    "signature.bundle / .asc",
-    "status.json",
-    "revocation.json"
-  ],
+  "artifacts_required": ["manifest.json","README.md","SHA256SUMS","provenance.json","gate_ledger.json","axiom_footprint.json","reproducibility.md","signature.bundle / .asc","status.json","revocation.json"],
   "toolchain": {
     "normative": "Lean 4.19 + lake",
-    "policy": "Other tools only included if effectively used in final package and recorded exactly in provenance.json."
+    "policy": "Other tools (Python, OS runner, Coq/Agda/Isabelle) only included if effectively used in final package. Must be recorded in provenance.json with exact versions."
   },
   "axiom_policy": {
-    "allowed_when_present": [
-      "propext",
-      "Classical.choice",
-      "Quot.sound"
-    ],
-    "forbidden": [
-      "sorryAx",
-      "sorry",
-      "admit",
-      "custom theorem-carrying axioms",
-      "hidden oracle",
-      "circularity"
-    ],
+    "allowed_when_present": ["propext","Classical.choice","Quot.sound"],
+    "forbidden": ["sorryAx","sorry","admit","custom theorem-carrying axioms","hidden oracle","circularity"],
     "audit_required": true
   },
   "brain_policy": {
@@ -157,9 +111,14 @@
     "prize_policy": "Technical certificate does not declare prize recognition. Clay/Beal claims separate."
   },
   "root": {
-    "derivation": "deterministic hash of exact layer/certificate anchors after all required anchors are frozen",
+    "derivation": "deterministic hash of SHAs/hashes of all layers and certs: hash(MCORE)+hash(AINUM)+hash(OS)+hash(HUB)+hash(BRAIN)+hash(APP)+hash(ELYON)+hashes(P01..P07 certs)",
     "value": null,
-    "status": "UNSET_UNTIL_FREEZE"
+    "status": "PREPARATORY_ROOT_IN_SEPARATE_FILE; FINAL_ROOT_NULL_UNTIL_ISSUANCE_GATES",
+    "FINAL_ROOT": null,
+    "PREPARATORY_ROOT": null,
+    "derivation_final": "hash(MCORE)+hash(AINUM)+hash(OS)+hash(HUB)+hash(BRAIN)+hash(APP)+hash(ELYON)+hashes(P01..P07) + production crypto + hardware + human_review + final frozen anchors",
+    "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload hashes immutable package files and excludes SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
+    "preparatory_root_location": "PREPARATORY_ROOT"
   },
   "timestamps": {
     "created_at": null,
@@ -170,11 +129,19 @@
   "versioning": {
     "v1": "immutable after freeze",
     "future": "SUPERSEDES previous with explicit reason",
-    "revocation": "status.json / revocation.json with REVOKED / SUPERSEDED / INVALIDATED"
+    "revocation": "status.json / revocation.json in same path, with REVOKED / SUPERSEDED / INVALIDATED"
   },
   "issuance_gate": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "condition": "human_review resolved AND production.app resolved AND production.crypto resolved AND hardware_attestation resolved AND G3 formalized AND all infrastructure gates satisfy v1 release policy",
-    "current": "BLOCKED_FAIL_CLOSED"
-  }
+    "condition": "human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND G3 != OPEN_CONSTRUCTION AND all infra GREEN+FROZEN AND math_state explicitly declared as OPEN_MATH 0/7",
+    "current": "BLOCKED - 5 blocker classes fail-closed: human_review, app, crypto, hardware, G3",
+    "public_status": "PREPARATORY_NOT_ISSUED"
+  },
+  "package_state": "PREPARATORY",
+  "public_status": "PREPARATORY_NOT_ISSUED",
+  "public_label": "PREPARATORY / non-issued infrastructure record - NOT A CLAIM OF ISSUED CERTIFICATE",
+  "maximum_auto_state": "REVIEW_PENDING",
+  "package_state_policy": "PACKAGE_SHA256SUMS can be calculated now. FINAL_ROOT must remain null while any issuance prerequisite UNSET",
+  "package_revision": "v1.1-preparatory",
+  "freeze_state": "FROZEN_PREPARATORY"
 }
