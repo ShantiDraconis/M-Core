@@ -219,10 +219,10 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "3690ab0593358d065930b36ec1e7a67852a88fa0",
+      "active_attack_head": "614f88fe020fd05b9b251a6a2283301acf7ff733",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
-      "kernel_state": "GREEN_FROZEN_CERTIFIED_INTEGRATED_PARSER_LEAF_PREFIX",
+      "kernel_state": "GREEN_FROZEN_CERTIFIED_P01_ADVANCED_PREFIX_AND_FINAL_EXTERNAL_TWO_GAP_PIPELINE",
       "current": [
         "P01_PARSER_COMPONENTS_GREEN_FROZEN",
         "P01_PARSER_MACRO_GREEN_FROZEN",
@@ -230,19 +230,21 @@
         "P01_LEAF_POP_GREEN_FROZEN",
         "P01_LEAF_STATE14_15_GREEN_FROZEN",
         "P01_LEAF_SOURCE_GREEN_FROZEN",
+        "P01_TERMINAL_BRANCHES_GREEN_FROZEN_CERTIFIED",
+        "P01_PHASE_MACROS_GLOBAL_SLOTLOG_GREEN_FROZEN_CERTIFIED",
         "P01_TM_TO_NTM_INTEGRATION_PREFIX_GREEN_FROZEN",
         "P01_FULL_SIMULATION_OPEN",
         "P01_INTEGRATED_NTM_COMPOSITION_OPEN",
         "P02_G2_0_GREEN_FROZEN_CERTIFIED",
-        "P02_SEMANTIC_DIAGONAL_TRANSFORMER_GREEN_FROZEN",
-        "P02_LITERAL_FIXED_POINT_FIREWALL_GREEN_FROZEN",
-        "P02_G2_1_OPEN_MATH",
-        "G3_TYPED_NORMALIZED_CONTRACT_GREEN_FROZEN",
-        "G3_SOURCE_FIDELITY_OPEN",
+        "P02_G2_1_LITERAL_ROUTE_CLOSED_BY_FALSIFICATION",
+        "P02_G2_1_POINTWISE_OPEN_MATH",
+        "P02_G2_2_WIRING_GREEN_FROZEN_CERTIFIED",
+        "P02_FINAL_OPEN_MATH",
         "G3_FORMAL_EXTERNAL_CONTRACT_CLOSED_GREEN_FROZEN_CERTIFIED",
-        "G3_COOK_CMI_SOURCE_FIDELITY_UNFORMALIZED_OPEN_AUDIT"
+        "FINAL_EXTERNAL_INTEGRATION_GREEN_FROZEN_CERTIFIED",
+        "FINAL_EXTERNAL_TWO_GAP_REDUCTION_GREEN_FROZEN_CERTIFIED"
       ],
-      "next_delta": "Construct one no-hypothesis SlotParserMachineSimulationCertificate using the frozen integrated parser/leaf chain; then compose a fixed-control witness-guess + verifier NTM. P02 remains the independent SAT not-in-P theorem.",
+      "next_delta": "P01: close the no-hypothesis global parser simulation / P01MachineConstruction and compose the fixed-control witness-guesser + verifier NTM. P02: supply the exact G21Pointwise / FailureGenerator producer, equivalent to SAT not in P. FinalExternalTwoGap is already certified, so no third mathematical producer remains.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -265,7 +267,13 @@
         "frozen/g3-normalized-ntm-two-way-green-77070515",
         "frozen/g3-normalized-four-way-green-3f04da00",
         "frozen/g3-normalized-contract-green-f2cafea7",
-        "frozen/p02-literal-fixed-point-countermodel-green-9d6dd957"
+        "frozen/p02-literal-fixed-point-countermodel-green-9d6dd957",
+        "frozen/p01-terminal-branches-green-f9add608",
+        "frozen/p01-phase-macros-green-614f88fe",
+        "frozen/p01-global-slotlog-spec-green-614f88fe",
+        "frozen/p02-g2-2-wiring-green-38db71b4",
+        "frozen/final-external-integration-green-c102d9d4",
+        "frozen/final-external-two-gap-green-b406b806"
       ],
       "source_delta": [
         "Exact decoder inverse and slotAccept semantics: GREEN",
@@ -280,8 +288,8 @@
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
-      "p01_state": "INTEGRATED_PARSER_LEAF_PREFIX GREEN_FROZEN_CERTIFIED / GLOBAL PARSER SIMULATION OPEN / INTEGRATED WITNESS+VERIFIER NTM OPEN / P01 HARD OPEN",
-      "p02_state": "G2_0 + SEMANTIC_DIAGONAL + LITERAL_FIXED_POINT FIREWALL GREEN_FROZEN_CERTIFIED / LITERAL FIXED-POINT ROUTE CLOSED_BY_FALSIFICATION at 17c04b62 (run 35721158651) / COUNTERMODEL GREEN_FROZEN_CERTIFIED at 9d6dd957 (run 35721311898) / G2.2 FAILURE_GENERATOR OPEN_MATH / G2.3 BLOCKED_BY_G2.2",
+      "p01_state": "PARSER/LEAF + TERMINAL BRANCHES + PHASE MACROS/GLOBAL SLOTLOG GREEN_FROZEN_CERTIFIED / GLOBAL PARSER SIMULATION OPEN / INTEGRATED WITNESS+VERIFIER NTM OPEN / P01 HARD OPEN",
+      "p02_state": "G2_0 GREEN_FROZEN_CERTIFIED / G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION / G2.1 pointwise producer OPEN_MATH / G2.2 wiring GREEN_FROZEN_CERTIFIED at 38db71b4 (run 35722282451) / P02 FINAL OPEN_MATH",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
         "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
@@ -635,6 +643,50 @@
           "CanonicalSATMachineClosure",
           "P01 HARD"
         ]
+      },
+      "p01_terminal_branches": {
+        "source_sha": "f9add60881d709ce8320cb54a4d52f26d829b8f5",
+        "frozen_branch": "frozen/p01-terminal-branches-green-f9add608",
+        "certificate_branch": "cert/p01-terminal-branches-f9add608-run35722846538",
+        "run": 35722846538,
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "p01_global_slotlog_spec": {
+        "source_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+        "frozen_branch": "frozen/p01-global-slotlog-spec-green-614f88fe",
+        "certificate_branch": "cert/p01-global-slotlog-spec-614f88fe-run35723570545",
+        "run": 35723570545,
+        "state": "GREEN_FROZEN_CERTIFIED_SUBGATE",
+        "limitation": "does not by itself inhabit Nonempty P01MachineConstruction"
+      },
+      "p02_g22_wiring": {
+        "source_sha": "38db71b416906e5b7138774842e91d3e367aad09",
+        "frozen_branch": "frozen/p02-g2-2-wiring-green-38db71b4",
+        "certificate_branch": "cert/p02-g2-2-wiring-38db71b4-run35722282451",
+        "run": 35722282451,
+        "state": "GREEN_FROZEN_CERTIFIED_WIRING",
+        "limitation": "G21Pointwise remains the exact OPEN_MATH producer; G2.2 adds no independent endpoint proof"
+      },
+      "final_external_integration": {
+        "source_sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
+        "frozen_branch": "frozen/final-external-integration-green-c102d9d4",
+        "certificate_branch": "cert/final-external-integration-c102d9d4-run35722252805",
+        "run": 35722252805,
+        "state": "GREEN_FROZEN_CERTIFIED_PIPELINE",
+        "endpoint_credit": 0
+      },
+      "final_external_two_gap": {
+        "source_sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+        "frozen_branch": "frozen/final-external-two-gap-green-b406b806",
+        "certificate_branch": "cert/final-external-two-gap-b406b806-run35722743845",
+        "run": 35722743845,
+        "theorem": "MCore.Real.FinalExternalTwoGap.final_external_two_gap_closes",
+        "state": "GREEN_FROZEN_CERTIFIED_REDUCTION",
+        "exact_remaining": [
+          "P01ConstructionGap",
+          "G21Pointwise"
+        ],
+        "endpoint_credit": 0
       }
     },
     {
@@ -728,12 +780,18 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "7/7 terminal frontier packages verified + G3 formal contract CLOSED + G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION + P01 integrated parser/leaf prefix GREEN_FROZEN_CERTIFIED at 3690ab05 + global parser simulation/integrated SAT NTM OPEN + G2.2 SAT FailureGenerator OPEN_MATH + FINAL_PROOF 0/7",
+    "current": "7/7 terminal frontier packages verified + G3 formal contract CLOSED + P01 parser/leaf, terminal branches and phase/global-slotlog subgates GREEN_FROZEN_CERTIFIED through 614f88fe (run 35723570545) + P02 G2.2 wiring GREEN_FROZEN_CERTIFIED at 38db71b4 (run 35722282451) + FinalExternal integration c102d9d4 (run 35722252805) and two-gap reduction b406b806 (run 35722743845) GREEN_FROZEN_CERTIFIED. Exact remaining producers: P01ConstructionGap and G21Pointwise/SAT not in P. FINAL_ROOT null; FINAL_EXTERNAL not issued; FINAL_PROOF 0/7.",
     "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit.",
     "final_external_math_gate": {
-      "g1_p01": "OPEN_IMPLEMENTATION",
-      "g2_p02": "OPEN_MATH_EQ_SAT_NOT_IN_P",
+      "g1_p01": "OPEN_IMPLEMENTATION_GLOBAL_P01_CONSTRUCTION",
+      "g2_p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
+      "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
       "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "two_gap_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "exact_remaining_producers": [
+        "P01ConstructionGap",
+        "G21Pointwise"
+      ],
       "final_external_issued": false,
       "final_root": null
     }
