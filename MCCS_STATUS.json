@@ -242,7 +242,7 @@
         "G3_FORMAL_EXTERNAL_CONTRACT_CLOSED_GREEN_FROZEN_CERTIFIED",
         "G3_COOK_CMI_SOURCE_FIDELITY_UNFORMALIZED_OPEN_AUDIT"
       ],
-      "next_delta": "P01: compose certified parser phases into SlotParserMachineSimulationCertificate, then integrated SAT NTM construction. P02: attack only genuine G2.1 fixed-point/universal failure producer; naive two-constant literal fixed point is certified blocked. G3: typed normalized contract is GREEN; remaining delta is source-fidelity to the chosen external Cook/CMI convention, not the internal four-way model bridge.",
+      "next_delta": "P01: compose certified parser phases into SlotParserMachineSimulationCertificate, then integrated SAT NTM construction. P02: literal fixed-point route is now formally DISPROVED; attack only a genuinely different G2.1 producer/reduction. G3: typed normalized contract is GREEN; only exact source-fidelity remains open.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -264,7 +264,8 @@
         "frozen/g3-normalized-dtm-two-way-green-26e721ab",
         "frozen/g3-normalized-ntm-two-way-green-77070515",
         "frozen/g3-normalized-four-way-green-3f04da00",
-        "frozen/g3-normalized-contract-green-f2cafea7"
+        "frozen/g3-normalized-contract-green-f2cafea7",
+        "frozen/p02-literal-fixed-point-countermodel-green-9d6dd957"
       ],
       "source_delta": [
         "Exact decoder inverse and slotAccept semantics: GREEN",
@@ -280,7 +281,7 @@
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
       "p01_state": "ALL_DISCOVERED_PARSER_PREFIXES_GREEN_FROZEN + TM_TO_NTM_INTEGRATION_PREFIX_GREEN_FROZEN / FULL_SIMULATION_OPEN / INTEGRATED_NTM_COMPOSITION_OPEN",
-      "p02_state": "G2_0_GREEN_FROZEN / SEMANTIC_TRANSFORMER_GREEN_FROZEN / LITERAL_FIXED_POINT_FIREWALL_GREEN_FROZEN / G2_1_OPEN_MATH / G2_2_G2_3_BLOCKED",
+      "p02_state": "G2_0_GREEN_FROZEN / SEMANTIC_TRANSFORMER_GREEN_FROZEN / LITERAL_FIXED_POINT_FIREWALL_GREEN_FROZEN / LITERAL_FIXED_POINT_COUNTERMODEL_GREEN_FROZEN_DISPROVE / G2_1_OPEN_MATH / G2_2_G2_3_BLOCKED",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
         "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
@@ -528,6 +529,15 @@
         "state": "UNFORMALIZED_OPEN_AUDIT",
         "reason": "The existing proof matches the internal canonical model to an independently defined normalized Cook-style machine model. The repository does not contain independent formal predicates officialP/officialNP extracted from the Cook/CMI source against which source fidelity could be proved.",
         "endpoint_credit": 0
+      },
+      "p02_literal_countermodel": {
+        "source_sha": "9d6dd9575a61782c70137abff348356f805bc654",
+        "frozen_branch": "frozen/p02-literal-fixed-point-countermodel-green-9d6dd957",
+        "certificate_branch": "cert/p02-literal-fixed-point-countermodel-9d6dd957-run35721311898",
+        "certificate_commit": "cb1e30ec759f6ccb6f9f813693164fb945a287cb",
+        "run": 35721311898,
+        "state": "GREEN_FROZEN_CERTIFIED_DISPROVE_ROUTE",
+        "effect": "naive literal fixed-point route is formally refuted; G2.1 remains OPEN_MATH"
       }
     },
     {
