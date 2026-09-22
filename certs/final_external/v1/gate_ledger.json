@@ -1,0 +1,57 @@
+{
+  "P01": {
+    "prefix": "fc20887e556091a4775080ab23ee1ff61917040e",
+    "state": "GREEN_FROZEN_CERTIFIED_PARTIAL",
+    "runs": [
+      "35700922856 SUCCESS",
+      "35700922859 SUCCESS"
+    ],
+    "pending_ATK": [
+      "SlotParserMachineSimulationCertificate",
+      "CanonicalRecursiveParserOperationalGap",
+      "CanonicalSATMachineClosure",
+      "p01_final_certificate"
+    ]
+  },
+  "P02": {
+    "frontier": "ef89f6a29c29223e5442b14a6e59304ac0b1c47d",
+    "state": "OPEN_MATH",
+    "required_proof_object": "∀ candidate : PolyDTMCandidate, ∃ x, ¬ candidate.CorrectAt SAT x",
+    "components": {
+      "G2.0": "OPEN",
+      "G2.1": "OPEN_MATH",
+      "G2.2": "BLOCKED_G2.1",
+      "G2.3": "BLOCKED_G2.2"
+    }
+  },
+  "G3": {
+    "status": "OPEN_CONSTRUCTION"
+  },
+  "MCORE": {
+    "hub": "11adcd32806606cfdd667d062b37d5c19f786f95",
+    "state": "GREEN_FROZEN_SCAFFOLD"
+  },
+  "OS": {
+    "state": "GREEN_FROZEN",
+    "hardware_secure_boot_claimed": false
+  },
+  "HUB": {
+    "state": "GREEN_FROZEN_SCAFFOLD",
+    "production_crypto_verified": false
+  },
+  "BRAIN": {
+    "policy": "OBSERVE_REASON_ABSTAIN",
+    "state": "GREEN"
+  },
+  "APP": {
+    "state": "NOT_CONNECTED"
+  },
+  "ELYON": {
+    "base": "483f6bdc06b74a0239481085e25c9a9fdccb1a8f",
+    "audit": "0f71ffea68ed52691201144140fb1a342d03b8d7",
+    "run": "35378862267 SUCCESS",
+    "state": "SEALED_CLOSED",
+    "review": "REVIEW_PENDING"
+  },
+  "FINAL_PROOF": "0/7"
+}
