@@ -4,7 +4,7 @@
   "version": "v1.0.0",
   "issuance": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "reason": "Fail-closed: the dedicated two-gap exploratory branch builds successfully, but it still contains exactly two explicit open sorries: P01ConstructionGap remains OPEN_IMPLEMENTATION and G21Pointwise remains OPEN_MATH (equivalent to canonical SAT not in P). No final root or certificate is issued.",
+    "reason": "Fail-closed: the exact two-gap attempt builds GREEN, including recovered P01 global/binary-head parser deltas, but exactly two explicit exploratory sorries remain: P01ConstructionGap is OPEN_IMPLEMENTATION and G21Pointwise is OPEN_MATH. The generic certificate gate correctly rejects the branch; FINAL_EXTERNAL remains non-issued.",
     "infra_state": "READY_FOR_FREEZE",
     "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
     "release_state": "SEALED_CLOSED",
@@ -107,15 +107,18 @@
     "repository": "ShantiDraconis/m-core-p-vs-np",
     "branch": "attack/final-external-two-gap-attempt-20260922",
     "stable_base_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
-    "attempt_head_sha": "2aac88ed0b8e363e5e9dee390b3a67a3d03b2180",
-    "run": 35725542156,
-    "status": "SUCCESS",
+    "attempt_head_sha": "098d29d69c6aa51daca85e8cfc68e4f6e6c310a5",
+    "run": 35726002619,
+    "status": "BUILD_GREEN_EXPLORATORY",
     "open_sorry_count": 2,
     "p01": "OPEN_IMPLEMENTATION",
     "p02": "OPEN_MATH",
     "FINAL_ROOT": null,
     "FINAL_EXTERNAL_ISSUED": false,
     "final_proof": "0/7",
-    "package_hash_note": "Exploratory attack branch record; frozen preparatory package hashes are not reissued by this attempt."
+    "package_hash_note": "Exploratory attack branch record; frozen preparatory package hashes are not reissued by this attempt.",
+    "p01_recovered_binary_head": "GREEN",
+    "certificate_gate_run": 35726002639,
+    "certificate_gate": "FAIL_CLOSED_EXPECTED_ON_SORRY"
   }
 }
