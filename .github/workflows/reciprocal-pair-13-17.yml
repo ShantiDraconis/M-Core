@@ -19,10 +19,8 @@ jobs:
           build: false
           test: false
           lint: false
-      - name: Resolve dependencies
-        run: lake update
-      - name: Build reciprocal pair
-        run: lake build MCore.ReciprocalPair
+      - name: Kernel-only compile
+        run: lean MCore/ReciprocalPair.lean
       - name: Hygiene
         run: |
           ! grep -R -nE '\bsorry\b|\badmit\b|^[[:space:]]*axiom[[:space:]]' MCore/ReciprocalPair.lean
