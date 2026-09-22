@@ -32,7 +32,10 @@
     "active_problem_attacks": 7,
     "active_core_formulation_tracks": 1,
     "active_tracks_total": 8,
-    "mcore_formulation_endpoint_credit": 0
+    "mcore_formulation_endpoint_credit": 0,
+    "p_vs_np_two_gap": "0/2",
+    "p_vs_np_endpoint": "OPEN",
+    "p_vs_np_external_math_certified": false
   },
   "queues": [
     {
@@ -793,7 +796,33 @@
         "G21Pointwise"
       ],
       "final_external_issued": false,
-      "final_root": null
+      "final_root": null,
+      "two_gap_progress": "0/2",
+      "p_vs_np_endpoint": "OPEN",
+      "p_vs_np_external_math_certified": false,
+      "final_root_math": null,
+      "global_7_problems": "0/7"
+    },
+    "taxonomy": {
+      "final_external_two_gap": {
+        "progress": "0/2",
+        "p01": "OPEN_IMPLEMENTATION",
+        "g21": "OPEN_MATH",
+        "closed_condition": "P01ConstructionGap AND G21Pointwise"
+      },
+      "p_vs_np_endpoint": {
+        "state": "OPEN",
+        "endpoint_credit_global": 0
+      },
+      "global_7_problems": {
+        "final_proof": "0/7",
+        "rule": "P01 and G21 are internal producers of the single P vs NP endpoint; closing both changes global credit from 0/7 to 1/7, not 2/7."
+      },
+      "roots": {
+        "preparatory_root": "4cdaf7b62ee2ff85676c7dcd98fb6dfe965fa8afd4abccf19ba6aedb42878f24",
+        "final_root_math": null,
+        "final_root": null
+      }
     }
   },
   "hard_foundation": {
