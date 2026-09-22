@@ -150,7 +150,7 @@
         "P01_BINARY_RETURN_REWIND_GREEN_FROZEN",
         "P01_LEAF_POP_GREEN_FROZEN",
         "P01_LEAF_STATE14_15_GREEN_FROZEN",
-        "P01_SOURCE_CHECK_16_17_OPEN",
+        "P01_LEAF_SOURCE_GREEN_FROZEN",
         "P01_FULL_SIMULATION_OPEN",
         "P01_NTM_COMPOSITION_OPEN",
         "P02_G2_0_GREEN_FROZEN_CERTIFIED",
@@ -158,7 +158,7 @@
         "G3_EXTERNAL_SCAFFOLD_GREEN_FROZEN",
         "G3_CONCRETE_CONTRACT_OPEN"
       ],
-      "next_delta": "Reuse frozen/p01-leaf-state14-15-return-green-72aa7be3. Attack only source-check states 16/17 to accept/reject/rewind and then compose the already-certified leaf/binary macros into SlotParserMachineSimulationCertificate.",
+      "next_delta": "Reuse frozen/p01-leaf-source-green-93f1321f. Compose certified initialization/head/macro/binary/leaf-source paths into SlotParserMachineSimulationCertificate; then attack only integrated NTM SAT composition.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -172,7 +172,8 @@
         "frozen/g3-cook-cmi-provenance-green-f29f5984",
         "frozen/p01-leaf-pop-green-26e721ab",
         "frozen/p01-leaf-pop-green-eb492843",
-        "frozen/p01-leaf-state14-15-return-green-72aa7be3"
+        "frozen/p01-leaf-state14-15-return-green-72aa7be3",
+        "frozen/p01-leaf-source-green-93f1321f"
       ],
       "source_delta": [
         "Exact decoder inverse and slotAccept semantics: GREEN",
@@ -187,7 +188,7 @@
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
-      "p01_state": "PARSER_COMPONENTS_GREEN_FROZEN / PARSER_MACRO_GREEN_FROZEN / BINARY_RETURN_REWIND_GREEN_FROZEN / LEAF_POP_GREEN_FROZEN / LEAF_STATE14_15_GREEN_FROZEN / SOURCE_CHECK_16_17_OPEN / FULL_SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
+      "p01_state": "PARSER_COMPONENTS_GREEN_FROZEN / PARSER_MACRO_GREEN_FROZEN / BINARY_RETURN_REWIND_GREEN_FROZEN / LEAF_POP_GREEN_FROZEN / LEAF_STATE14_15_GREEN_FROZEN / LEAF_SOURCE_GREEN_FROZEN / FULL_SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
       "p02_state": "G2_0 + SEMANTIC_DIAGONAL + LITERAL_FIXED_POINT_FIREWALL GREEN_FROZEN / G2_1 OPEN_MATH / G2_2 BLOCKED / G2_3 BLOCKED",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
@@ -289,6 +290,14 @@
         "certificate_branch": "cert/p01-leaf-state14-15-return-72aa7be3-run35714475319",
         "certificate_commit": "8b6360e9f334e4a11084f6ddd833123975b02190",
         "run": 35714475319,
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "frozen_leaf_source": {
+        "source_sha": "93f1321f53aa93e18c7dcbf8a8a04e2844a15cbe",
+        "frozen_branch": "frozen/p01-leaf-source-green-93f1321f",
+        "certificate_branch": "cert/p01-leaf-source-93f1321f-run35720074676",
+        "certificate_commit": "6f24ad42f651e1ef33a9ece7cbe8e867a2643c40",
+        "run": 35720074676,
         "state": "GREEN_FROZEN_CERTIFIED"
       }
     },
