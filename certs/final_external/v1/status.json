@@ -55,9 +55,14 @@
     "P03..P07": "OPEN_MATH",
     "G3": "CLOSED_GREEN_FROZEN_CERTIFIED",
     "FINAL_EXTERNAL_MATH_INPUTS": "EXACT_TWO_PRODUCERS_REMAIN_P01ConstructionGap_AND_G21Pointwise",
-    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED"
+    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED",
+    "FINAL_EXTERNAL_TWO_GAP_PROGRESS": "0/2",
+    "P_VS_NP_ENDPOINT": "OPEN",
+    "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+    "FINAL_ROOT_MATH": null,
+    "GLOBAL_7_PROBLEMS_FINAL_PROOF": "0/7"
   },
-  "package_revision": "v1.3-preparatory",
+  "package_revision": "v1.3.1-preparatory",
   "freeze_state": "FROZEN_PREPARATORY",
   "math_terminal_boundary": {
     "record": "MATH_TERMINAL_BOUNDARY_20260922.json",
@@ -100,6 +105,22 @@
       }
     },
     "interface_policy": "INTERFACE_ONLY_FAIL_CLOSED_NO_PROOF_FABRICATION",
-    "certified_source_policy": "NO_SORRY_ADMIT_AXIOM_PLACEHOLDERS"
+    "certified_source_policy": "NO_SORRY_ADMIT_AXIOM_PLACEHOLDERS",
+    "taxonomy": "TWO_GAP_0_OF_2__P_VS_NP_ENDPOINT_OPEN__GLOBAL_0_OF_7"
+  },
+  "taxonomy": {
+    "FINAL_EXTERNAL_TWO_GAP": {
+      "progress": "0/2",
+      "P01ConstructionGap": "OPEN_IMPLEMENTATION",
+      "G21Pointwise": "OPEN_MATH"
+    },
+    "P_VS_NP_ENDPOINT": "OPEN",
+    "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+    "FINAL_ROOT_MATH": null,
+    "GLOBAL_7_PROBLEMS": {
+      "FINAL_PROOF": "0/7"
+    },
+    "FINAL_ROOT": null,
+    "FINAL_EXTERNAL_ISSUED": false
   }
 }
