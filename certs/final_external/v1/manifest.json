@@ -29,7 +29,15 @@
       "P07": "OPEN_MATH",
       "G3": "CLOSED_GREEN_FROZEN_CERTIFIED"
     },
-    "claim_policy": "NO_CLAIM_OF_P_NP_CLAY_BEAL_SOLVED"
+    "claim_policy": "NO_CLAIM_OF_P_NP_CLAY_BEAL_SOLVED",
+    "taxonomy": {
+      "FINAL_EXTERNAL_TWO_GAP": "0/2",
+      "P_VS_NP_ENDPOINT": "OPEN",
+      "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+      "FINAL_ROOT_MATH": null,
+      "GLOBAL_7_PROBLEMS": "0/7",
+      "rule": "Two internal P vs NP producers count as one global problem endpoint only after both close."
+    }
   },
   "release_state": "SEALED_CLOSED",
   "max_machine_state": "REVIEW_PENDING",
@@ -166,7 +174,9 @@
     "PREPARATORY_ROOT": null,
     "derivation_final": "hash(MCORE)+hash(AINUM)+hash(OS)+hash(HUB)+hash(BRAIN)+hash(APP)+hash(ELYON)+hashes(P01..P07) + production crypto + hardware + human_review + final frozen anchors",
     "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload includes MATH_TERMINAL_BOUNDARY_20260922.json and immutable preparatory package files, excluding SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
-    "preparatory_root_location": "PREPARATORY_ROOT"
+    "preparatory_root_location": "PREPARATORY_ROOT",
+    "FINAL_ROOT_MATH": null,
+    "linked_preparatory_root": "4cdaf7b62ee2ff85676c7dcd98fb6dfe965fa8afd4abccf19ba6aedb42878f24"
   },
   "timestamps": {
     "created_at": null,
@@ -182,7 +192,7 @@
   "issuance_gate": {
     "FINAL_EXTERNAL_ISSUED": false,
     "condition": "P01ConstructionGap closed AND G21Pointwise closed AND G3 CLOSED AND human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND all required infra GREEN+FROZEN",
-    "current": "BLOCKED fail-closed: P01ConstructionGap OPEN_IMPLEMENTATION; G21Pointwise OPEN_MATH; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
+    "current": "BLOCKED fail-closed: P01ConstructionGap OPEN_IMPLEMENTATION; G21Pointwise OPEN_MATH; P_VS_NP_ENDPOINT OPEN; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
     "public_status": "PREPARATORY_NOT_ISSUED"
   },
   "package_state": "PREPARATORY",
@@ -190,6 +200,6 @@
   "public_label": "PREPARATORY / non-issued infrastructure record - NOT A CLAIM OF ISSUED CERTIFICATE",
   "maximum_auto_state": "REVIEW_PENDING",
   "package_state_policy": "PACKAGE_SHA256SUMS can be calculated now. FINAL_ROOT must remain null while any issuance prerequisite UNSET",
-  "package_revision": "v1.3-preparatory",
-  "freeze_state": "FROZEN_PREPARATORY"
+  "package_revision": "v1.3.1-preparatory",
+  "freeze_state": "FROZEN_PREPARATORY_PENDING_REHASH"
 }
