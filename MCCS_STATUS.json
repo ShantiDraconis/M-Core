@@ -216,33 +216,25 @@
     },
     {
       "repo": "m-core-p-vs-np",
-      "state": "IN_PROCESS",
+      "state": "FINAL_FAIL_EXTERNAL_CLOSED",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "eb49284311029102ae1e47d80091c0d15aed7352",
+      "active_attack_head": "815dfb08e719b80e82cc35a5e01988064a0b3496",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
-      "kernel_state": "GREEN_PREFIX_REUSED_PLUS_PARSER_MACRO",
+      "kernel_state": "FINAL_FAIL_EXTERNAL_GREEN_FROZEN_CERTIFIED",
       "current": [
-        "P01_PARSER_COMPONENTS_GREEN_FROZEN",
-        "P01_PARSER_MACRO_GREEN_FROZEN",
-        "P01_BINARY_RETURN_REWIND_GREEN_FROZEN",
-        "P01_LEAF_POP_GREEN_FROZEN",
-        "P01_LEAF_STATE14_15_GREEN_FROZEN",
-        "P01_LEAF_SOURCE_GREEN_FROZEN",
-        "P01_TM_TO_NTM_INTEGRATION_PREFIX_GREEN_FROZEN",
-        "P01_FULL_SIMULATION_OPEN",
-        "P01_INTEGRATED_NTM_COMPOSITION_OPEN",
+        "P01_CERTIFIED_LINEAGE_PRESERVED",
+        "P01_PROCESS_CLOSED_BY_FINAL_FAIL_RECORD",
         "P02_G2_0_GREEN_FROZEN_CERTIFIED",
-        "P02_SEMANTIC_DIAGONAL_TRANSFORMER_GREEN_FROZEN",
-        "P02_LITERAL_FIXED_POINT_FIREWALL_GREEN_FROZEN",
-        "P02_G2_1_OPEN_MATH",
-        "G3_TYPED_NORMALIZED_CONTRACT_GREEN_FROZEN",
-        "G3_SOURCE_FIDELITY_OPEN",
-        "G3_FORMAL_EXTERNAL_CONTRACT_CLOSED_GREEN_FROZEN_CERTIFIED",
-        "G3_COOK_CMI_SOURCE_FIDELITY_UNFORMALIZED_OPEN_AUDIT"
+        "P02_G2_1_LITERAL_CLOSED_BY_FALSIFICATION",
+        "P02_G2_1_POINTWISE_RECORDED_UNRESOLVED_IN_FINAL_FAIL",
+        "P02_G2_2_WIRING_GREEN_FROZEN_CERTIFIED",
+        "G3_NORMALIZED_EXTERNAL_CONTRACT_GREEN_FROZEN_CERTIFIED",
+        "FINAL_EXTERNAL_INTEGRATION_GREEN_FROZEN_CERTIFIED",
+        "FINAL_FAIL_EXTERNAL_GREEN_FROZEN_CERTIFIED"
       ],
-      "next_delta": "P01: compose certified parser phases into SlotParserMachineSimulationCertificate, then integrated SAT NTM construction. P02: literal fixed-point route is now formally DISPROVED; attack only a genuinely different G2.1 producer/reduction. G3: typed normalized contract is GREEN; only exact source-fidelity remains open.",
+      "next_delta": "EXTERNALIZATION COMPLETE FOR FINAL_FAIL RECORD. Do not reopen falsified literal fixed-point route or rerun frozen subgates. Mathematical proof endpoint remains a separate claim class.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -547,6 +539,19 @@
         "state": "CLOSED_BY_FALSIFICATION",
         "scope": "literal semanticDiagonalBits fixed-point route only",
         "endpoint_credit": 0
+      },
+      "final_fail_external": {
+        "source_sha": "815dfb08e719b80e82cc35a5e01988064a0b3496",
+        "source_file": "lean/MCore/Real/FinalExternalFailClosure.lean",
+        "frozen_branch": "frozen/final-fail-external-green-815dfb08",
+        "certificate_branch": "cert/final-fail-external-815dfb08-run35722796449",
+        "certificate_tip": "0fc0c0ea5b40b12d10ac27e74fadfb832294c525",
+        "certificate_sha256": "98c2d1ec51bcebba7a3805c218bf4b5d7a5353182ed63b00fa83296e34ca9438",
+        "run": 35722796449,
+        "state": "GREEN_FROZEN_CERTIFIED",
+        "process_closed": true,
+        "proof_claimed": false,
+        "endpoint_credit": 0
       }
     },
     {
@@ -640,8 +645,8 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "7/7 terminal frontier packages verified + G3 formal contract CLOSED + G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION + P01 integrated SAT NTM and G2.2 genuine SAT FailureGenerator remain OPEN + FINAL_PROOF 0/7",
-    "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit."
+    "current": "7/7 terminal frontier packages verified + P-vs-NP FINAL_FAIL_EXTERNAL process CLOSED/GREEN/FROZEN/CERTIFIED at 815dfb08 + no P-vs-NP theorem claim promoted + FINAL_PROOF remains 0/7",
+    "verification_note": "P-vs-NP FINAL_FAIL externalization is an audit/process closure. It records falsified and unresolved terminal routes without manufacturing FinalExternalGap or OfficialPneqNP."
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
