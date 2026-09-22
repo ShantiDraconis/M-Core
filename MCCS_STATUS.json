@@ -238,7 +238,9 @@
         "P02_LITERAL_FIXED_POINT_FIREWALL_GREEN_FROZEN",
         "P02_G2_1_OPEN_MATH",
         "G3_TYPED_NORMALIZED_CONTRACT_GREEN_FROZEN",
-        "G3_SOURCE_FIDELITY_OPEN"
+        "G3_SOURCE_FIDELITY_OPEN",
+        "G3_FORMAL_EXTERNAL_CONTRACT_CLOSED_GREEN_FROZEN_CERTIFIED",
+        "G3_COOK_CMI_SOURCE_FIDELITY_UNFORMALIZED_OPEN_AUDIT"
       ],
       "next_delta": "P01: compose certified parser phases into SlotParserMachineSimulationCertificate, then integrated SAT NTM construction. P02: attack only genuine G2.1 fixed-point/universal failure producer; naive two-constant literal fixed point is certified blocked. G3: typed normalized contract is GREEN; remaining delta is source-fidelity to the chosen external Cook/CMI convention, not the internal four-way model bridge.",
       "composite_remaining": 2,
@@ -288,7 +290,7 @@
         "repository_certificate_run": 35700922859,
         "state": "GREEN_FROZEN_PREFIX"
       },
-      "g3_state": "TYPED_NORMALIZED_CONTRACT_GREEN_FROZEN_CERTIFIED / EXTERNAL_SOURCE_FIDELITY_OPEN",
+      "g3_state": "FORMAL_G3_EXTERNAL_CONTRACT CLOSED / GREEN_FROZEN_CERTIFIED at f2cafea7; Cook normalized P/NP two-way match proved. Independent Cook/CMI source-fidelity identification remains UNFORMALIZED/OPEN_AUDIT and is not endpoint proof credit.",
       "frozen_parser_macro": {
         "source_sha": "db716cec19ddbba552f5b91f865089abd4eea9e5",
         "frozen_branch": "frozen/p01-parser-macro-green-db716cec",
@@ -508,6 +510,24 @@
           "state": "GREEN_FROZEN_CERTIFIED_TYPED_CONTRACT",
           "note": "closes repository G3Gap for the normalized Cook-style formal model; does not certify complete fidelity to every Cook/CMI prose convention"
         }
+      },
+      "g3_formal_contract": {
+        "source_sha": "f2cafea7a74f3ef8ad4140943515622545c9f1d8",
+        "source_file": "lean/MCore/Real/CookNormalizedG3Contract.lean",
+        "theorem": "MCore.Real.CookNormalizedG3Contract.cook_normalized_g3_contract_closed",
+        "p_match_theorem": "MCore.Real.CookNormalizedG3Contract.cook_normalized_contract_p_match",
+        "np_match_theorem": "MCore.Real.CookNormalizedG3Contract.cook_normalized_contract_np_match",
+        "frozen_branch": "frozen/g3-normalized-contract-green-f2cafea7",
+        "certificate_branch": "cert/g3-normalized-contract-f2cafea7-run35719428075",
+        "run": 35719428075,
+        "state": "GREEN_FROZEN_CERTIFIED_CLOSED"
+      },
+      "g3_source_fidelity": {
+        "provenance_source": "MCore.Real.OfficialCookSource.cookCMISource",
+        "selected_model": "MCore.Real.CookNormalizedMachineModel.cookNormalizedModel",
+        "state": "UNFORMALIZED_OPEN_AUDIT",
+        "reason": "The existing proof matches the internal canonical model to an independently defined normalized Cook-style machine model. The repository does not contain independent formal predicates officialP/officialNP extracted from the Cook/CMI source against which source fidelity could be proved.",
+        "endpoint_credit": 0
       }
     },
     {
@@ -601,8 +621,8 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CANONICAL 7/7 GREEN_FROZEN + P01 parser/leaf/TM→NTM prefixes GREEN_FROZEN, full simulation/integrated NTM OPEN + P02 G2.0/transformer/firewall GREEN_FROZEN, G2.1 OPEN_MATH + G3 normalized typed contract GREEN_FROZEN, source-fidelity OPEN + FINAL_PROOF 0/7",
-    "verification_note": "Terminal certificates certify frozen reductions/frontiers/countermodels only. None is endpoint proof credit."
+    "current": "CANONICAL 7/7 TERMINAL FRONTIER CERTIFICATE PACKAGES VERIFIED + P vs NP G3 FORMAL CONTRACT CLOSED at f2cafea7 + Cook/CMI source-fidelity remains unformalized + P01/P02 mathematical endpoints remain OPEN + FINAL_PROOF 0/7",
+    "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit."
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
