@@ -1,0 +1,58 @@
+{
+  "schema": "elyon.final-external.v1.2-preparatory",
+  "package_state": "PREPARATORY",
+  "public_status": "PREPARATORY_NOT_ISSUED",
+  "FINAL_EXTERNAL_ISSUED": false,
+  "FINAL_ROOT": null,
+  "final_proof": "0/7",
+  "policy": "fail-closed",
+  "scope": "criticism-response / G2.1 hardening / no-promotion firewall",
+  "p_vs_np_formalization": {
+    "repository": "ShantiDraconis/m-core-p-vs-np",
+    "branch": "attack/elyon-v12-failclosed-criticism-20260922",
+    "head_sha": "b3b3b4e37dcec1ac6ab5ef175a38ae30ae223df0",
+    "source_file": "lean/MCore/Real/ElyonFailClosedV12.lean",
+    "dedicated_ci_run": "35710384545",
+    "dedicated_ci_status": "SUCCESS",
+    "umbrella_certificate_run": "35710384520",
+    "umbrella_certificate_status": "IN_PROCESS_AT_RECORD_TIME"
+  },
+  "g2_0": {
+    "initial_green_sha": "77ed82750762fa3057c96f340254f522681ccdee",
+    "certified_sha": "d72e53bc7f667c75a432226a23adc59a255c5652",
+    "status": "GREEN_FROZEN_CERTIFIED",
+    "modified_by_v1_2": false
+  },
+  "g2_1": {
+    "status": "OPEN_MATH",
+    "normative_statement": "G21Pointwise over PolyDTMCandidate",
+    "string_surrogate_for_machine": false,
+    "polynomial_payload": "OPTIONAL_STRONGER_ROUTE_NOT_PROMOTION",
+    "automatic_promotion": false
+  },
+  "g2_2": {
+    "status": "CONDITIONAL_GREEN",
+    "blocked_by": "G2.1"
+  },
+  "g3": {
+    "status": "FORMALIZED_GREEN_OPEN_EXTERNAL_MATCH",
+    "automatic_promotion": false
+  },
+  "external_criticism": {
+    "truth_policy": "external scientific claims are documentary/evidence inputs, never axioms",
+    "primary_source": {
+      "title": "Regularity of asymptotically axisymmetric solutions to the 3D Navier-Stokes equations with analytic forcing",
+      "authors": ["Peter Constantin", "Mihaela Ignatova", "Vlad Vicol"],
+      "arxiv": "2609.20803v1",
+      "date": "2026-09-17"
+    },
+    "scope_note": "The cited result is conditional on specific structural hypotheses; this package does not promote the journalistic paraphrase to an unrestricted theorem."
+  },
+  "issuance_firewall": {
+    "disqualifying_component_blocks_promotion": true,
+    "g3_open_blocks_promotion": true,
+    "human_review_unset_blocks_promotion": true,
+    "final_root_remains_null_until_full_issuance_evidence": true
+  },
+  "claim_policy": "NO_CLAIM_OF_P_VS_NP_SOLVED; NO_CLAIM_OF_NAVIER_STOKES_PROOF_IMPORT; NO_CLAIM_OF_FINAL_EXTERNAL_ISSUANCE"
+}
