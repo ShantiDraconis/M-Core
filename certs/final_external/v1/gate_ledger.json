@@ -87,7 +87,11 @@
       "blocks": [
         "G2.2",
         "G2.3"
-      ]
+      ],
+      "route_status": {
+        "naive_literal_fixed_point": "DISPROVED_GREEN_FROZEN",
+        "genuine_self_reference_or_other_lower_bound_route": "OPEN"
+      }
     },
     "G2.2": {
       "status": "BLOCKED_BY_G2.1",
@@ -135,6 +139,15 @@
         "state": "GREEN_FROZEN_CERTIFIED",
         "effect": "naive literal fixed-point route is fail-closed; genuine G2.1 remains OPEN_MATH"
       }
+    },
+    "literal_fixed_point_countermodel": {
+      "source_sha": "9d6dd9575a61782c70137abff348356f805bc654",
+      "frozen_branch": "frozen/p02-literal-fixed-point-countermodel-green-9d6dd957",
+      "certificate_branch": "cert/p02-literal-fixed-point-countermodel-9d6dd957-run35721311898",
+      "certificate_commit": "cb1e30ec759f6ccb6f9f813693164fb945a287cb",
+      "run": "35721311898 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED_DISPROVE_ROUTE",
+      "conclusion": "the naive two-constant literal fixed-point strategy is not a universal G2.1 producer"
     }
   },
   "G3": {
