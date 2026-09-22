@@ -140,7 +140,7 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+      "active_attack_head": "26e721ab25425d62312945200baa9c127910d320",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "GREEN_PREFIX_REUSED_PLUS_PARSER_MACRO",
@@ -148,15 +148,17 @@
         "P01_PARSER_COMPONENTS_GREEN_FROZEN",
         "P01_PARSER_MACRO_GREEN_FROZEN",
         "P01_BINARY_RETURN_REWIND_GREEN_FROZEN",
-        "P01_LEAF_POP_RETURN_OPEN",
+        "P01_LEAF_POP_GREEN_FROZEN",
+        "P01_LEAF_RETURN_OPEN",
         "P01_FULL_SIMULATION_OPEN",
         "P01_NTM_COMPOSITION_OPEN",
         "P02_G2_0_GREEN_FROZEN_CERTIFIED",
         "P02_G2_1_OPEN_MATH",
+        "G3_SOURCE_PROVENANCE_GREEN_FROZEN",
         "G3_EXTERNAL_SCAFFOLD_GREEN_FROZEN",
-        "G3_CONCRETE_CONTRACT_OPEN"
+        "G3_MODEL_MATCH_OPEN"
       ],
-      "next_delta": "P01: certify existing leaf-pop source and complete leaf return/full simulation; P02: G2.1 only; G3: provenance and external scaffold are GREEN/FROZEN, construct only OfficialComplexityModel selection plus two-way polynomial model match.",
+      "next_delta": "P01: prove state14/15 leaf return to source-check/accept-reject-rewind, then full parser simulation and NTM composition. P02: G2.1 only. G3: provenance/scaffold frozen, prove external model equivalence.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -167,7 +169,8 @@
         "frozen/p02-g2-0-normalization-green-d72e53bc",
         "frozen/g3-external-contract-scaffold-green-97a95327",
         "frozen/p01-binary-return-rewind-green-f29f5984",
-        "frozen/g3-cook-cmi-provenance-green-f29f5984"
+        "frozen/g3-cook-cmi-provenance-green-f29f5984",
+        "frozen/p01-leaf-pop-green-26e721ab"
       ],
       "source_delta": [
         "Exact decoder inverse and slotAccept semantics: GREEN",
@@ -239,6 +242,14 @@
         "certificate_commit": "81a8ce7ee18bce83a6f5048f5e5f0dc62edfd45f",
         "run": 35710913408,
         "state": "GREEN_FROZEN_CERTIFIED_PROVENANCE_ONLY"
+      },
+      "frozen_leaf_pop": {
+        "source_sha": "26e721ab25425d62312945200baa9c127910d320",
+        "frozen_branch": "frozen/p01-leaf-pop-green-26e721ab",
+        "certificate_branch": "cert/p01-leaf-pop-26e721ab-run35713981438",
+        "certificate_commit": "11682c2313ba69b7c090460690b96fb85412d8f2",
+        "run": 35713981438,
+        "state": "GREEN_FROZEN_CERTIFIED"
       }
     },
     {
