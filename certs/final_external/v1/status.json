@@ -1,0 +1,14 @@
+{
+  "schema": "elyon.final-external.v1.0.0",
+  "certificate": "ELYON_FINAL_EXTERNAL",
+  "version": "v1.0.0",
+  "issuance": {
+    "FINAL_EXTERNAL_ISSUED": false,
+    "reason": "Fail-closed: human_review=UNSET, app=UNSET, production_crypto=UNSET, hardware_attestation=UNSET, G3=OPEN_CONSTRUCTION",
+    "infra_state": "READY_FOR_FREEZE",
+    "math_state": "OPEN_MATH",
+    "release_state": "SEALED_CLOSED",
+    "max_machine_state": "REVIEW_PENDING"
+  },
+  "final_proof": "0/7"
+}
