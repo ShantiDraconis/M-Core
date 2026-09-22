@@ -83,11 +83,21 @@
       "state": "GREEN_FROZEN_CERTIFIED_SCAFFOLD"
     },
     "remaining": [
-      "Concrete ExternalProvenance selection",
-      "Concrete P model equivalence adapter",
-      "Concrete NP model equivalence adapter",
+      "Construct externally selected OfficialComplexityModel",
+      "Prove deterministic polynomial-time two-way simulation/internal P ↔ selected external P",
+      "Prove nondeterministic polynomial-time two-way simulation/internal NP ↔ selected external NP",
       "Construct G3ExternalContract"
-    ]
+    ],
+    "provenance": {
+      "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+      "file": "lean/MCore/Real/OfficialCookSource.lean",
+      "object": "MCore.Real.OfficialCookSource.cookCMISource",
+      "frozen_branch": "frozen/g3-cook-cmi-provenance-green-f29f5984",
+      "certificate_branch": "cert/g3-cook-cmi-provenance-f29f5984-run35710913408",
+      "certificate_commit": "81a8ce7ee18bce83a6f5048f5e5f0dc62edfd45f",
+      "run": "35710913408 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED_PROVENANCE_ONLY"
+    }
   },
   "MCORE": {
     "hub": "11adcd32...",
