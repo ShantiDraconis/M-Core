@@ -201,5 +201,5 @@
   "maximum_auto_state": "REVIEW_PENDING",
   "package_state_policy": "PACKAGE_SHA256SUMS can be calculated now. FINAL_ROOT must remain null while any issuance prerequisite UNSET",
   "package_revision": "v1.3.1-preparatory",
-  "freeze_state": "FROZEN_PREPARATORY_PENDING_REHASH"
+  "freeze_state": "FROZEN_PREPARATORY"
 }
