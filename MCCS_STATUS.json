@@ -140,22 +140,30 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "fc20887e556091a4775080ab23ee1ff61917040e",
+      "active_attack_head": "db716cec19ddbba552f5b91f865089abd4eea9e5",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
-      "kernel_state": "GREEN_PREFIX_REUSED",
+      "kernel_state": "GREEN_PREFIX_REUSED_PLUS_PARSER_MACRO",
       "current": [
         "P01_PARSER_COMPONENTS_GREEN_FROZEN",
-        "P01_SLOT_PARSER_MACHINE_SIMULATION_OPEN",
-        "P01_CANONICAL_SAT_MACHINE_CLOSURE_OPEN",
-        "P02_SAT_NOT_IN_P_OPEN_MATH"
+        "P01_PARSER_MACRO_GREEN_FROZEN",
+        "P01_FULL_SIMULATION_OPEN",
+        "P01_NTM_COMPOSITION_OPEN",
+        "P02_G2_0_GREEN_FROZEN_CERTIFIED",
+        "P02_G2_1_OPEN_MATH",
+        "G3_EXTERNAL_SCAFFOLD_GREEN_FROZEN",
+        "G3_CONCRETE_CONTRACT_OPEN"
       ],
-      "next_delta": "Construct a kernel-checked inhabitant of SlotParserMachineSimulationCertificate: prove parserMachine total halting under parserTimeBound and exact acceptance iff slotAccept. This yields CanonicalRecursiveParserMachineCertificate / RecursiveParserOperationalGap. Then compose nondeterministic witness generation + verified relation to CanonicalSATMachineClosure. P02 remains the independent universal lower-bound producer over every PolyDTMCandidate.",
+      "next_delta": "Reuse frozen/p01-parser-macro-green-db716cec and attack only the remaining full parser simulation / NTM composition. Keep P02 G2.0 d72e53bc frozen; attack only G2.1 OPEN_MATH. Reuse frozen/g3-external-contract-scaffold-green-97a95327 and construct only concrete sourced G3ExternalContract/model equivalence.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
         "frozen/p01-verified-relation-green-1453539c",
-        "frozen/p01-component-failproof-green-9e21b631"
+        "frozen/p01-component-failproof-green-9e21b631",
+        "frozen/p01-parser-components-green-fc20887e",
+        "frozen/p01-parser-macro-green-db716cec",
+        "frozen/p02-g2-0-normalization-green-d72e53bc",
+        "frozen/g3-external-contract-scaffold-green-97a95327"
       ],
       "source_delta": [
         "Exact decoder inverse and slotAccept semantics: GREEN",
@@ -170,8 +178,8 @@
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
-      "p01_state": "SOURCE_MACHINE_DEFINED / SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
-      "p02_state": "EXACT_FRONTIER_PROVED / LOWER_BOUND_OPEN_MATH",
+      "p01_state": "PARSER_COMPONENTS_GREEN_FROZEN / PARSER_MACRO_GREEN_FROZEN / FULL_SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
+      "p02_state": "G2_0_GREEN_FROZEN_CERTIFIED / G2_1_OPEN_MATH / G2_2_BLOCKED / G2_3_BLOCKED",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
         "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
@@ -180,6 +188,35 @@
         "p01_clean_run": 35700922856,
         "repository_certificate_run": 35700922859,
         "state": "GREEN_FROZEN_PREFIX"
+      },
+      "g3_state": "EXTERNAL_SCAFFOLD_GREEN_FROZEN_CERTIFIED / CONCRETE_CONTRACT_OPEN",
+      "frozen_parser_macro": {
+        "source_sha": "db716cec19ddbba552f5b91f865089abd4eea9e5",
+        "frozen_branch": "frozen/p01-parser-macro-green-db716cec",
+        "certificate_branch": "cert/p01-parser-macro-db716cec-run35709328356",
+        "certificate_commit": "b0ff13266c2615dd38e38b722a0485911a6f32a2",
+        "run": 35709328356,
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "g3_scaffold": {
+        "source_sha": "97a95327360c3d4fc29dae1453330974e5f30519",
+        "frozen_branch": "frozen/g3-external-contract-scaffold-green-97a95327",
+        "certificate_branch": "cert/g3-external-contract-scaffold-97a95327-run35707370601",
+        "certificate_commit": "8a0ecfcad1fd3806f16abb481010ce5631a5055d",
+        "run": 35707370601,
+        "state": "GREEN_FROZEN_CERTIFIED_SCAFFOLD"
+      },
+      "g20_canonical": {
+        "source_sha": "d72e53bc7f667c75a432226a23adc59a255c5652",
+        "frozen_branch": "frozen/p02-g2-0-normalization-green-d72e53bc",
+        "certificate_branch": "cert/p02-g2-0-normalization-d72e53bc-run35707286302",
+        "certificate_commit": "3c244256a4cf46b9e43b0934495eb7298fdbfda8",
+        "runs": [
+          35707286302,
+          35707286255
+        ],
+        "state": "GREEN_FROZEN_CERTIFIED",
+        "historical_equivalent": "77ed82750762fa3057c96f340254f522681ccdee"
       }
     },
     {
@@ -256,7 +293,7 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CANONICAL 7/7 GREEN_FROZEN + P01 PARSER COMPONENT PREFIX GREEN_FROZEN at fc20887e + P01 SIMULATION/NTM CLOSURE OPEN + P02 OPEN_MATH + FINAL_PROOF 0/7"
+    "current": "CANONICAL 7/7 GREEN_FROZEN + P01 parser components/macros GREEN_FROZEN + P01 full simulation/NTM composition OPEN + P02 G2.0 GREEN_FROZEN, G2.1 OPEN_MATH + G3 scaffold GREEN_FROZEN, concrete contract OPEN + FINAL_PROOF 0/7"
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
