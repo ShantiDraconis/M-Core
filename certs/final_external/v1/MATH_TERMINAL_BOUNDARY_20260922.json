@@ -2,7 +2,7 @@
   "schema": "mcore.final-external.math-boundary.v1",
   "date": "2026-09-22",
   "source_of_truth": "M-Core/MCCS_STATUS.json",
-  "source_of_truth_commit": "09dc7e4b6aa57f98f15f110639bde0ac3680ded0",
+  "source_of_truth_commit": "5510df7110faf602595550088e3a2f6989581d2c",
   "p_vs_np": {
     "repository": "ShantiDraconis/m-core-p-vs-np",
     "P01": {
@@ -15,8 +15,31 @@
         "run": 35721236027,
         "status": "GREEN_FROZEN_CERTIFIED_SCAFFOLD"
       },
-      "exact_missing": "Nonempty P01MachineConstruction",
-      "endpoint_credit": 0
+      "exact_missing": "P01ConstructionGap / Nonempty P01MachineConstruction (global parser simulation plus integrated fixed-control SAT NTM closure)",
+      "endpoint_credit": 0,
+      "latest_certified_subgates": {
+        "integrated_parser_leaf_chain": {
+          "source_sha": "3690ab0593358d065930b36ec1e7a67852a88fa0",
+          "frozen_branch": "frozen/p01-integrated-parser-leaf-chain-green-3690ab05",
+          "certificate_branch": "cert/p01-integrated-parser-leaf-chain-3690ab05-run35722427864",
+          "run": 35722427864,
+          "status": "GREEN_FROZEN_CERTIFIED_SUBGATE"
+        },
+        "terminal_branches": {
+          "source_sha": "f9add60881d709ce8320cb54a4d52f26d829b8f5",
+          "frozen_branch": "frozen/p01-terminal-branches-green-f9add608",
+          "certificate_branch": "cert/p01-terminal-branches-f9add608-run35722846538",
+          "run": 35722846538,
+          "status": "GREEN_FROZEN_CERTIFIED"
+        },
+        "global_slotlog_spec": {
+          "source_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+          "frozen_branch": "frozen/p01-global-slotlog-spec-green-614f88fe",
+          "certificate_branch": "cert/p01-global-slotlog-spec-614f88fe-run35723570545",
+          "run": 35723570545,
+          "status": "GREEN_FROZEN_CERTIFIED_SUBGATE"
+        }
+      }
     },
     "P02": {
       "state": "OPEN_MATH",
@@ -39,7 +62,17 @@
         "theorem": "g21_iff_g22",
         "status": "GREEN_VERIFIED_EQUIVALENCE"
       },
-      "endpoint_credit": 0
+      "endpoint_credit": 0,
+      "g22_wiring": {
+        "source_sha": "38db71b416906e5b7138774842e91d3e367aad09",
+        "frozen_branch": "frozen/p02-g2-2-wiring-green-38db71b4",
+        "certificate_branch": "cert/p02-g2-2-wiring-38db71b4-run35722282451",
+        "run": 35722282451,
+        "status": "GREEN_FROZEN_CERTIFIED_WIRING",
+        "theorem": "g21_iff_g22",
+        "meaning": "G2.2 is a certified consequence/equivalent wiring of the exact G21Pointwise lower-bound producer and is not an independent mathematical producer."
+      },
+      "exact_missing": "G21Pointwise, equivalent to P02Target / Nonempty FailureGenerator(SATBits circuitBitEncoding) / SAT not in P"
     },
     "G3": {
       "state": "CLOSED_GREEN_FROZEN_CERTIFIED",
@@ -49,10 +82,31 @@
     }
   },
   "final_external": {
-    "FinalExternalInputs": "BLOCKED_BY_P01_AND_P02",
+    "FinalExternalInputs": "REDUCED_TO_EXACTLY_TWO_MATHEMATICAL_PRODUCERS",
     "FINAL_ROOT": null,
     "FINAL_EXTERNAL_ISSUED": false,
     "final_proof": "0/7",
-    "fail_closed": true
+    "fail_closed": true,
+    "two_gap_pipeline": {
+      "integration": {
+        "source_sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
+        "frozen_branch": "frozen/final-external-integration-green-c102d9d4",
+        "certificate_branch": "cert/final-external-integration-c102d9d4-run35722252805",
+        "run": 35722252805,
+        "status": "GREEN_FROZEN_CERTIFIED_PIPELINE"
+      },
+      "reduction": {
+        "source_sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+        "frozen_branch": "frozen/final-external-two-gap-green-b406b806",
+        "certificate_branch": "cert/final-external-two-gap-b406b806-run35722743845",
+        "run": 35722743845,
+        "theorem": "MCore.Real.FinalExternalTwoGap.final_external_two_gap_closes",
+        "status": "GREEN_FROZEN_CERTIFIED_REDUCTION",
+        "exact_remaining": [
+          "P01ConstructionGap",
+          "G21Pointwise"
+        ]
+      }
+    }
   }
 }
