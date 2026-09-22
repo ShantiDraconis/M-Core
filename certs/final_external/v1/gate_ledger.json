@@ -7,13 +7,21 @@
       "35700922859 SUCCESS"
     ],
     "pending_ATK": [
-      "SlotParserMachineSimulationCertificate",
+      "Full parser simulation from macro phases to exact slotAccept behavior",
       "CanonicalRecursiveParserOperationalGap",
       "CanonicalSATMachineClosure",
       "p01_final_certificate"
     ],
     "endpoint_status": "OPEN",
-    "prefix_status": "GREEN_FROZEN_CERTIFIED"
+    "prefix_status": "GREEN_FROZEN_CERTIFIED",
+    "parser_macro": {
+      "source_sha": "db716cec19ddbba552f5b91f865089abd4eea9e5",
+      "frozen_branch": "frozen/p01-parser-macro-green-db716cec",
+      "certificate_branch": "cert/p01-parser-macro-db716cec-run35709328356",
+      "certificate_commit": "b0ff13266c2615dd38e38b722a0485911a6f32a2",
+      "run": "35709328356 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED"
+    }
   },
   "P02": {
     "frontier": "ef89f6a29c29223e5442b14a6e59304ac0b1c47d",
@@ -56,7 +64,21 @@
   },
   "G3": {
     "status": "OPEN_CONSTRUCTION",
-    "endpoint": "OPEN"
+    "endpoint": "OPEN",
+    "scaffold": {
+      "source_sha": "97a95327360c3d4fc29dae1453330974e5f30519",
+      "frozen_branch": "frozen/g3-external-contract-scaffold-green-97a95327",
+      "certificate_branch": "cert/g3-external-contract-scaffold-97a95327-run35707370601",
+      "certificate_commit": "8a0ecfcad1fd3806f16abb481010ce5631a5055d",
+      "run": "35707370601 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED_SCAFFOLD"
+    },
+    "remaining": [
+      "Concrete ExternalProvenance selection",
+      "Concrete P model equivalence adapter",
+      "Concrete NP model equivalence adapter",
+      "Construct G3ExternalContract"
+    ]
   },
   "MCORE": {
     "hub": "11adcd32...",
