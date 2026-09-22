@@ -1,0 +1,66 @@
+{
+  "schema": "RECIPROCAL_13_17_CROSS_REPO_MASTER_V1",
+  "date": "2026-09-22",
+  "canonical_math": {
+    "repository": "ShantiDraconis/M-Core",
+    "source_sha": "89cf9683251493e3b97b893e8cf48addf2b2128a",
+    "workflow_run": 35702124594,
+    "certificate_pin": "61c7254f1a15ce9bc1b2c405831e03f302f09d4e",
+    "certificate_sha256": "82a03550279a90ea38b4d342a5174fa6dab712b07b4143107ed1adac5365cfde",
+    "frozen_branch": "frozen/reciprocal-pair-13-17-61c7254f",
+    "state": "GREEN_FROZEN"
+  },
+  "operational_context": {
+    "repository": "ShantiDraconis/NIPAH-research-HUB",
+    "source_sha": "be919a2cd4a9b9c55766129115943f1b65ed4890",
+    "workflow_run": 35702331280,
+    "certificate_pin": "181d466fd4ba8765b5c02692dddda841b561c5fd",
+    "certificate_sha256": "5d275c0229d055e6e10b8842d104d5fbf9551156852beb7865aa5a9b88f033fc",
+    "frozen_branch": "frozen/reciprocal-context-13-17-181d466f",
+    "state": "GREEN_FROZEN"
+  },
+  "system_binding": {
+    "repository": "ShantiDraconis/zero-ai-00",
+    "source_sha": "92276f6600338ada67a6182e851a5ecb0fa50b8e",
+    "workflow_run": 35702450919,
+    "certificate_pin": "deb1f25fc66bc770111a1dc5e97d5fd5fae89dca",
+    "certificate_sha256": "cf91584f06a5808f47972a5898b4f795481501863bd72a7bd9fd550329bdacbe",
+    "frozen_branch": "frozen/reciprocal-binding-13-17-deb1f25f",
+    "state": "GREEN_FROZEN"
+  },
+  "exact_invariant": {
+    "endpoints": [
+      "13/1",
+      "17/1"
+    ],
+    "transformation": [
+      "13/17",
+      "17/13"
+    ],
+    "multiplicative_closure": "1",
+    "symmetric_invariant": "458/221",
+    "domain_class": "C2"
+  },
+  "semantic_boundary": {
+    "arithmetic_claim_13_eq_17": false,
+    "public_context": true,
+    "password": false,
+    "private_key": false,
+    "entropy": false,
+    "key_derivation": false,
+    "cryptographic_strength_claim": false
+  },
+  "production": {
+    "formal_chain_certified": true,
+    "activation_enabled": false,
+    "production_ready": false,
+    "production_crypto_verified": false,
+    "hardware_attestation_verified": false,
+    "human_release_required": true
+  },
+  "invariants": {
+    "FINAL_PROOF": "0/7",
+    "endpoint_promotion": false,
+    "automatic_release": false
+  }
+}
