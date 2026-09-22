@@ -1,27 +1,39 @@
-# Reproducibility — ELYON_FINAL_EXTERNAL v1.0.0
+# Reproducibility - v1.0.0 - PREPARATORY_NOT_ISSUED
 
-## Toolchain lock
+## Estados normativos
+package_state: PREPARATORY
+public_status: PREPARATORY_NOT_ISSUED
+infra_state: READY_FOR_FREEZE
+math_state: OPEN_MATH
+final_proof: 0/7
+release_state: SEALED_CLOSED
+maximum_auto_state: REVIEW_PENDING
+FINAL_EXTERNAL_ISSUED: false
 
-Lean 4.19 is normative. Exact Lake, runner, and any additional tools actually used in the final package must be recorded in `provenance.json`.
+## Hashes em dois niveis - correcao normativa
+- PACKAGE_SHA256SUMS: calculavel agora sobre arquivos preparatorios
+- PREPARATORY_ROOT: hash deterministico dos arquivos preparatorios, gerado por freeze.sh
+- FINAL_ROOT: DEVE CONTINUAR NULL enquanto APP, producao crypto/hardware, revisao humana e anchors finais congelados contiverem UNSET. Nao calcular root final contendo strings UNSET.
 
-## Freeze policy
+## Freeze.sh correto - fail-closed
+1 validar JSON/schema
+2 rejeitar sorry/admit/sorryAx
+3 verificar SHA/branches/runs
+4 calcular SHA256SUMS
+5 gerar PREPARATORY_ROOT
+6 NAO gerar FINAL_ROOT enquanto UNSET
+7 NAO mudar FINAL_EXTERNAL_ISSUED para true
+8 quando gates satisfeitos: calcular FINAL_ROOT, provenance final, assinar, REVIEW_PENDING
+9 somente evidencia humana valida produz APPROVED/ISSUED
 
-Every GREEN component used by the final package must be pinned by exact SHA and have immutable freeze/certificate references according to the repository policy.
+Proximo estado: PREPARATORY_PACKAGE -> HASHED -> REPRODUCIBILITY_AUDITED -> FROZEN_PREPARATORY
+NAO -> FINAL_EXTERNAL_ISSUED
 
-## Axiom audit
+## Rota P02 corrigida
+G2.0 FORMAL_INFRA / normalization - normaliza bounds; nao prova enumerabilidade efetiva e nao produz G2.1
+G2.1 OPEN_MATH / terminal producer - coracao P vs NP
+G2.2 BLOCKED_BY_G2.1
+G2.3 BLOCKED_BY_G2.2
 
-Forbidden: `sorryAx`, `sorry`, `admit`, theorem-carrying custom axioms, hidden oracles, and circular proof dependencies.
-
-Allowed when genuinely required and reported: `propext`, `Classical.choice`, `Quot.sound`.
-
-## Package hashes
-
-`freeze.sh` generates `SHA256SUMS` over the preparatory package after all required UNSET release fields have been resolved.
-
-## Root derivation
-
-The final root must be computed deterministically from the exact frozen anchors of MCORE, AINUM, OS, HUB, BRAIN, APP, ELYON and the included certificate hashes. No placeholder anchor may participate in an issued root.
-
-## Timestamps
-
-`created_at`, `approved_at`, and `published_at` are independent timestamps.
+## Root canonicalization
+`SHA256SUMS` hashes the immutable payload files, including `freeze.sh`, but excludes `SHA256SUMS` and `PREPARATORY_ROOT`. `PREPARATORY_ROOT = SHA256(raw bytes of SHA256SUMS)`. No payload file is mutated after hashing.
