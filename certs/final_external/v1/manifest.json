@@ -1,0 +1,180 @@
+{
+  "schema": "elyon.final-external.v1.0.0",
+  "certificate_type": "INFRASTRUCTURE_CERTIFIED",
+  "name": "ELYON_FINAL_EXTERNAL",
+  "version": "v1.0.0",
+  "alias": "elyon",
+  "scope": [
+    "MCORE",
+    "AINUM",
+    "OS",
+    "HUB",
+    "BRAIN",
+    "APP",
+    "ELYON"
+  ],
+  "infra_state": "READY_FOR_FREEZE",
+  "math_state": "OPEN_MATH",
+  "final_proof": {
+    "numerator": 0,
+    "denominator": 7,
+    "display": "0/7",
+    "terminal_status": {
+      "P01": "GREEN_FROZEN_CERTIFIED_PARTIAL - SlotParserMachineSimulationCertificate UNSET, CanonicalRecursiveParserOperationalGap UNSET, CanonicalSATMachineClosure UNSET, p01_final_certificate UNSET",
+      "P02": "OPEN_MATH - frontier ef89f6a29c29223e5442b14a6e59304ac0b1c47d formalized, lower bound universal UNSET",
+      "P03": "OPEN_MATH",
+      "P04": "OPEN_MATH",
+      "P05": "OPEN_MATH",
+      "P06": "OPEN_MATH",
+      "P07": "OPEN_MATH",
+      "G3": "OPEN_CONSTRUCTION"
+    },
+    "claim_policy": "NO_CLAIM_OF_P_NP_CLAY_BEAL_SOLVED"
+  },
+  "release_state": "SEALED_CLOSED",
+  "max_machine_state": "REVIEW_PENDING",
+  "anchors": {
+    "ELYON": {
+      "base": "483f6bdc06b74a0239481085e25c9a9fdccb1a8f",
+      "audit": "0f71ffea68ed52691201144140fb1a342d03b8d7",
+      "run": "35378862267",
+      "run_status": "SUCCESS",
+      "state": "SEALED_CLOSED",
+      "role": "official_anchor_v1_until_explicit_revision"
+    },
+    "P01": {
+      "prefix": "fc20887e556091a4775080ab23ee1ff61917040e",
+      "state": "GREEN_FROZEN_CERTIFIED",
+      "runs": [
+        "35700922856 SUCCESS",
+        "35700922859 SUCCESS"
+      ],
+      "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
+      "certificate_branch": "cert/p01-parser-components-fc20887e-run35700922856",
+      "certificate_commit": "2043a76bc04157c4c6c74ef5fc82ad28c1852f45",
+      "pending_ATK": [
+        "SlotParserMachineSimulationCertificate",
+        "CanonicalRecursiveParserOperationalGap",
+        "CanonicalSATMachineClosure",
+        "p01_final_certificate"
+      ]
+    },
+    "P02": {
+      "frontier": "ef89f6a29c29223e5442b14a6e59304ac0b1c47d",
+      "status": "FORMALIZED_FRONTIER_OPEN_LOWER_BOUND",
+      "pending_ATK": "proof object real: ∀ candidate : PolyDTMCandidate, ∃ x, ¬ candidate.CorrectAt SAT x"
+    },
+    "MCORE_HUB": {
+      "hub_anchor": "11adcd32806606cfdd667d062b37d5c19f786f95",
+      "state": "GREEN_FROZEN_SCAFFOLD"
+    }
+  },
+  "human_review": {
+    "authority": "UNSET",
+    "quorum": "UNSET",
+    "evidence_policy": "UNSET",
+    "status": "REVIEW_PENDING",
+    "notes": "Must be defined by human authority. Cannot be chosen by technical validator."
+  },
+  "production": {
+    "app": {
+      "app_repository": "UNSET",
+      "app_commit": "UNSET",
+      "app_pass_test": "UNSET",
+      "current_state": "NOT_CONNECTED"
+    },
+    "crypto": {
+      "crypto_provider": "UNSET",
+      "public_key_or_key_id": "UNSET",
+      "algorithm": "UNSET",
+      "attestation": "UNSET",
+      "current_state": "GREEN_FROZEN_SCAFFOLD production_crypto_verified=false"
+    },
+    "hardware_attestation": {
+      "status": "UNSET",
+      "allowed_values": [
+        "UNSET",
+        "OUT_OF_SCOPE_FOR_V1",
+        "TPM2_ATTESTED",
+        "SECURE_BOOT_ATTESTED"
+      ],
+      "current_claim": "hardware_secure_boot_claimed=false"
+    }
+  },
+  "G3": {
+    "statement": "UNSET",
+    "repository": "UNSET",
+    "namespace": "UNSET",
+    "source_file": "UNSET",
+    "closure_condition": "UNSET",
+    "status": "OPEN_CONSTRUCTION",
+    "notes": "Fail-closed until formalization"
+  },
+  "artifacts_required": [
+    "manifest.json",
+    "README.md",
+    "SHA256SUMS",
+    "provenance.json",
+    "gate_ledger.json",
+    "axiom_footprint.json",
+    "reproducibility.md",
+    "signature.bundle / .asc",
+    "status.json",
+    "revocation.json"
+  ],
+  "toolchain": {
+    "normative": "Lean 4.19 + lake",
+    "policy": "Other tools only included if effectively used in final package and recorded exactly in provenance.json."
+  },
+  "axiom_policy": {
+    "allowed_when_present": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden": [
+      "sorryAx",
+      "sorry",
+      "admit",
+      "custom theorem-carrying axioms",
+      "hidden oracle",
+      "circularity"
+    ],
+    "audit_required": true
+  },
+  "brain_policy": {
+    "v1": "OBSERVE_REASON_ABSTAIN",
+    "change_requires": "explicit policy version bump"
+  },
+  "publication": {
+    "canonical": "Zenodo",
+    "mirror_optional": "Figshare",
+    "destination": "M-Core/certs/final_external/v1/",
+    "mirror": "Genesis_Elyon/certs/final_external/v1/",
+    "optional_mirror": "zero-ai-00/certs/",
+    "license_code": "MIT / Apache-2.0",
+    "license_docs": "CC-BY-4.0",
+    "prize_policy": "Technical certificate does not declare prize recognition. Clay/Beal claims separate."
+  },
+  "root": {
+    "derivation": "deterministic hash of exact layer/certificate anchors after all required anchors are frozen",
+    "value": null,
+    "status": "UNSET_UNTIL_FREEZE"
+  },
+  "timestamps": {
+    "created_at": null,
+    "approved_at": null,
+    "published_at": null,
+    "policy": "three separate timestamps"
+  },
+  "versioning": {
+    "v1": "immutable after freeze",
+    "future": "SUPERSEDES previous with explicit reason",
+    "revocation": "status.json / revocation.json with REVOKED / SUPERSEDED / INVALIDATED"
+  },
+  "issuance_gate": {
+    "FINAL_EXTERNAL_ISSUED": false,
+    "condition": "human_review resolved AND production.app resolved AND production.crypto resolved AND hardware_attestation resolved AND G3 formalized AND all infrastructure gates satisfy v1 release policy",
+    "current": "BLOCKED_FAIL_CLOSED"
+  }
+}
