@@ -281,7 +281,7 @@
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
       "p01_state": "ALL_DISCOVERED_PARSER_PREFIXES_GREEN_FROZEN + TM_TO_NTM_INTEGRATION_PREFIX_GREEN_FROZEN / FULL_SIMULATION_OPEN / INTEGRATED_NTM_COMPOSITION_OPEN",
-      "p02_state": "G2_0_GREEN_FROZEN / SEMANTIC_TRANSFORMER_GREEN_FROZEN / LITERAL_FIXED_POINT_FIREWALL_GREEN_FROZEN / LITERAL_FIXED_POINT_COUNTERMODEL_GREEN_FROZEN_DISPROVE / G2_1_OPEN_MATH / G2_2_G2_3_BLOCKED",
+      "p02_state": "G2_0 + SEMANTIC_DIAGONAL + LITERAL_FIXED_POINT FIREWALL GREEN_FROZEN_CERTIFIED / LITERAL FIXED-POINT ROUTE CLOSED_BY_FALSIFICATION at 17c04b62 (run 35721158651) / COUNTERMODEL GREEN_FROZEN_CERTIFIED at 9d6dd957 (run 35721311898) / G2.2 FAILURE_GENERATOR OPEN_MATH / G2.3 BLOCKED_BY_G2.2",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
         "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
@@ -534,10 +534,19 @@
         "source_sha": "9d6dd9575a61782c70137abff348356f805bc654",
         "frozen_branch": "frozen/p02-literal-fixed-point-countermodel-green-9d6dd957",
         "certificate_branch": "cert/p02-literal-fixed-point-countermodel-9d6dd957-run35721311898",
-        "certificate_commit": "cb1e30ec759f6ccb6f9f813693164fb945a287cb",
         "run": 35721311898,
         "state": "GREEN_FROZEN_CERTIFIED_DISPROVE_ROUTE",
-        "effect": "naive literal fixed-point route is formally refuted; G2.1 remains OPEN_MATH"
+        "endpoint_credit": 0
+      },
+      "p02_g21_falsification": {
+        "source_sha": "17c04b62d03946aab4573894833f087ade25bc33",
+        "source_file": "lean/MCore/Real/P02LiteralFixedPointCountermodel.lean",
+        "frozen_branch": "frozen/p02-g2-1-literal-fixed-point-falsified-17c04b62",
+        "certificate_branch": "cert/p02-g2-1-literal-fixed-point-falsified-17c04b62-run35721158651",
+        "run": 35721158651,
+        "state": "CLOSED_BY_FALSIFICATION",
+        "scope": "literal semanticDiagonalBits fixed-point route only",
+        "endpoint_credit": 0
       }
     },
     {
@@ -631,7 +640,7 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "CANONICAL 7/7 TERMINAL FRONTIER CERTIFICATE PACKAGES VERIFIED + P vs NP G3 FORMAL CONTRACT CLOSED at f2cafea7 + Cook/CMI source-fidelity remains unformalized + P01/P02 mathematical endpoints remain OPEN + FINAL_PROOF 0/7",
+    "current": "7/7 terminal frontier packages verified + G3 formal contract CLOSED + G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION + P01 integrated SAT NTM and G2.2 genuine SAT FailureGenerator remain OPEN + FINAL_PROOF 0/7",
     "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit."
   },
   "hard_foundation": {
