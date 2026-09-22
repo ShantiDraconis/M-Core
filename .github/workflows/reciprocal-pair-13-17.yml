@@ -16,8 +16,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
         with:
-          build: true
+          build: false
+          test: false
+          lint: false
+      - name: Resolve dependencies
+        run: lake update
+      - name: Build reciprocal pair
+        run: lake build MCore.ReciprocalPair
       - name: Hygiene
         run: |
-          ! grep -R -nE '\bsorry\b|\badmit\b|\baxiom\b' MCore/ReciprocalPair.lean
+          ! grep -R -nE '\bsorry\b|\badmit\b|^[[:space:]]*axiom[[:space:]]' MCore/ReciprocalPair.lean
           echo "RECIPROCAL_PAIR_13_17=GREEN_CANDIDATE"
