@@ -43,30 +43,30 @@ def closure13_17 : ExactFraction := ExactFraction.mul forward13_17 reverse17_13
 
 theorem endpoint_projection_forward :
     forward13_17 = ⟨13, 17⟩ := by
-  decide
+  rfl
 
 theorem endpoint_projection_reverse :
     reverse17_13 = ⟨17, 13⟩ := by
-  decide
+  rfl
 
 /-- (13/17)(17/13) has equal numerator and denominator: exact closure at 1. -/
 theorem reciprocal_closure_represents_one :
     ExactFraction.representsOne closure13_17 := by
-  decide
+  rfl
 
 theorem reciprocal_closure_exact :
     closure13_17 = ⟨221, 221⟩ := by
-  decide
+  rfl
 
 /-- 13/17 + 17/13 = 458/221 exactly, before any decimal approximation. -/
 theorem symmetric_invariant_exact :
     symmetric13_17 = ⟨458, 221⟩ := by
-  decide
+  rfl
 
 /-- Swapping the two endpoints swaps the two orientations exactly. -/
 theorem orientation_pair_exact :
     (forward13_17, reverse17_13) = (⟨13, 17⟩, ⟨17, 13⟩) := by
-  decide
+  rfl
 
 /--
 The formal relation is a quotient transformation, not the false arithmetic
@@ -88,6 +88,6 @@ def reciprocalPublicInvariant13_17 : ReciprocalPublicInvariant where
 theorem reciprocalPublicInvariant13_17_exact :
     reciprocalPublicInvariant13_17 =
       ⟨⟨13, 17⟩, ⟨17, 13⟩, ⟨458, 221⟩, ⟨221, 221⟩⟩ := by
-  decide
+  rfl
 
 end MCore
