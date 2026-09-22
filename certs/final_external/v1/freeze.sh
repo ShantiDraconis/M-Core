@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# ELYON_FINAL_EXTERNAL v1.0.0 / package revision v1.1-preparatory
+# ELYON_FINAL_EXTERNAL v1.0.0 / package revision v1.3-preparatory
 # FAIL-CLOSED PREPARATORY freeze. Never emits FINAL_ROOT or ISSUED.
 PACKAGE_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$PACKAGE_DIR"
 echo "[freeze.sh] $PACKAGE_DIR - PREPARATORY_NOT_ISSUED"
-JSON_FILES=(manifest.json status.json provenance.json gate_ledger.json axiom_footprint.json revocation.json)
-PAYLOAD=(manifest.json README.md provenance.json gate_ledger.json axiom_footprint.json reproducibility.md status.json revocation.json freeze.sh)
+JSON_FILES=(manifest.json status.json provenance.json gate_ledger.json axiom_footprint.json revocation.json MATH_TERMINAL_BOUNDARY_20260922.json)
+PAYLOAD=(manifest.json README.md provenance.json gate_ledger.json axiom_footprint.json reproducibility.md status.json MATH_TERMINAL_BOUNDARY_20260922.json revocation.json freeze.sh)
 
 echo "[1/8] JSON syntax"
 for f in "${JSON_FILES[@]}"; do python3 -m json.tool "$f" >/dev/null; done
@@ -41,13 +41,16 @@ echo "[4/8] Blocker classes remain fail-closed"
 python3 <<'PY2'
 import json
 m=json.load(open('manifest.json'))
+b=json.load(open('MATH_TERMINAL_BOUNDARY_20260922.json'))
 blockers=[]
+if 'P01ConstructionGap' in b.get('open_gaps', []): blockers.append('P01ConstructionGap')
+if 'G21Pointwise' in b.get('open_gaps', []): blockers.append('G21Pointwise')
 if m['human_review']['authority']=='UNSET': blockers.append('human_review')
 if m['production']['app']['app_repository']=='UNSET': blockers.append('app')
 if m['production']['crypto']['crypto_provider']=='UNSET': blockers.append('crypto')
 if m['production']['hardware_attestation']['status']=='UNSET': blockers.append('hardware')
-if m['G3']['status']=='OPEN_CONSTRUCTION': blockers.append('G3')
-assert blockers==['human_review','app','crypto','hardware','G3'], blockers
+assert m['G3']['status']=='CLOSED_GREEN_FROZEN_CERTIFIED'
+assert blockers==['P01ConstructionGap','G21Pointwise','human_review','app','crypto','hardware'], blockers
 print('blockers:', blockers)
 PY2
 
