@@ -107,7 +107,12 @@
           "G21Pointwise"
         ]
       }
-    }
+    },
+    "FINAL_ROOT_MATH": null,
+    "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+    "two_gap_progress": "0/2",
+    "p_vs_np_endpoint": "OPEN",
+    "global_final_proof": "0/7"
   },
   "open_gaps": [
     "P01ConstructionGap",
@@ -132,5 +137,26 @@
     "final_external_file": "lean/MCore/Real/FinalExternalTwoGap.lean",
     "final_external_state": "GREEN_FROZEN_CERTIFIED_REDUCTION",
     "additional_math_producers_after_two_gaps": 0
+  },
+  "taxonomy": {
+    "FINAL_EXTERNAL_TWO_GAP": {
+      "progress": "0/2",
+      "P01ConstructionGap": "OPEN_IMPLEMENTATION",
+      "G21Pointwise": "OPEN_MATH"
+    },
+    "P_VS_NP_ENDPOINT": "OPEN",
+    "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+    "FINAL_ROOT_MATH": null,
+    "GLOBAL_7_PROBLEMS": {
+      "FINAL_PROOF": "0/7",
+      "p_vs_np_endpoint_credit": 0
+    },
+    "FINAL_ROOT": null,
+    "FINAL_EXTERNAL_ISSUED": false,
+    "transition_rules": {
+      "p01_only": "TwoGap 1/2; P_VS_NP_ENDPOINT remains OPEN; GLOBAL remains 0/7",
+      "p01_and_g21": "TwoGap 2/2; P_VS_NP_ENDPOINT CLOSED; P_VS_NP_EXTERNAL_MATH_CERTIFIED true; GLOBAL becomes 1/7",
+      "global_seven": "Only seven distinct problem endpoints can produce 7/7; internal subgates do not count separately."
+    }
   }
 }
