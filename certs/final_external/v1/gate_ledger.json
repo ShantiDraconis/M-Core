@@ -7,9 +7,9 @@
       "35700922859 SUCCESS"
     ],
     "pending_ATK": [
-      "State14/state15 leaf return to source-check and exact accept/reject/rewind",
-      "Full parser simulation to exact slotAccept behavior",
+      "Compose certified parser macro + binary return/rewind + leaf-pop into full SlotParserMachineSimulationCertificate",
       "CanonicalRecursiveParserOperationalGap",
+      "Integrated canonical SAT NTM construction",
       "CanonicalSATMachineClosure",
       "p01_final_certificate"
     ],
@@ -35,7 +35,6 @@
       "source_sha": "26e721ab25425d62312945200baa9c127910d320",
       "frozen_branch": "frozen/p01-leaf-pop-green-26e721ab",
       "certificate_branch": "cert/p01-leaf-pop-26e721ab-run35713981438",
-      "certificate_commit": "11682c2313ba69b7c090460690b96fb85412d8f2",
       "run": "35713981438 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED"
     }
@@ -77,7 +76,23 @@
       "blocked_by": "G2.2",
       "note": "BLOCKED_BY_G2.1 transitively"
     },
-    "route_policy": "G2.0 -> G2.1 -> G2.2 -> G2.3 must NOT be treated as ordinary technical sequence. G2.1 is terminal producer."
+    "route_policy": "G2.0 -> G2.1 -> G2.2 -> G2.3 must NOT be treated as ordinary technical sequence. G2.1 is terminal producer.",
+    "semantic_diagonal_transformer": {
+      "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+      "frozen_branch": "frozen/p02-semantic-diagonal-transformer-green-f29f5984",
+      "certificate_branch": "cert/p02-semantic-diagonal-transformer-f29f5984-run35710913464",
+      "run": "35710913464 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED",
+      "boundary": "does not prove self-reference/fixed-point existence"
+    },
+    "literal_fixed_point_firewall": {
+      "source_sha": "26e721ab25425d62312945200baa9c127910d320",
+      "frozen_branch": "frozen/p02-literal-fixed-point-firewall-green-26e721ab",
+      "certificate_branch": "cert/p02-literal-fixed-point-firewall-26e721ab-run35713976797",
+      "run": "35713976797 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED",
+      "conclusion": "naive two-constant literal fixed-point route cannot be universal G2.1 producer"
+    }
   },
   "G3": {
     "status": "OPEN_CONSTRUCTION",
@@ -91,10 +106,9 @@
       "state": "GREEN_FROZEN_CERTIFIED_SCAFFOLD"
     },
     "remaining": [
-      "Construct externally selected OfficialComplexityModel",
-      "Prove deterministic polynomial-time two-way simulation/internal P ↔ selected external P",
-      "Prove nondeterministic polynomial-time two-way simulation/internal NP ↔ selected external NP",
-      "Construct G3ExternalContract"
+      "Full concrete P model-equivalence theorem",
+      "Full concrete NP model-equivalence theorem",
+      "Construct final G3ExternalContract from the sourced adapters"
     ],
     "provenance": {
       "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
@@ -105,6 +119,20 @@
       "certificate_commit": "81a8ce7ee18bce83a6f5048f5e5f0dc62edfd45f",
       "run": "35710913408 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED_PROVENANCE_ONLY"
+    },
+    "cook_provenance": {
+      "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+      "frozen_branch": "frozen/g3-cook-cmi-provenance-green-f29f5984",
+      "certificate_branch": "cert/g3-cook-cmi-provenance-f29f5984-run35710913408",
+      "run": "35710913408 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED"
+    },
+    "normalized_dtm_two_way": {
+      "source_sha": "26e721ab25425d62312945200baa9c127910d320",
+      "frozen_branch": "frozen/g3-normalized-dtm-two-way-green-26e721ab",
+      "certificate_branch": "cert/g3-normalized-dtm-two-way-26e721ab-run35713976730",
+      "run": "35713976730 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED"
     }
   },
   "MCORE": {
