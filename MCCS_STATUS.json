@@ -156,7 +156,7 @@
         "G3_EXTERNAL_SCAFFOLD_GREEN_FROZEN",
         "G3_CONCRETE_CONTRACT_OPEN"
       ],
-      "next_delta": "Reuse frozen/p01-binary-return-rewind-green-f29f5984. Prove only the leaf state-13 pop-search and its no-active/active return paths, then compose with db716cec macro and f29f5984 binary roundtrip into full parser simulation. Do not reopen G2.0 or G3 scaffold.",
+      "next_delta": "P01: certify existing leaf-pop source and complete leaf return/full simulation; P02: G2.1 only; G3: provenance and external scaffold are GREEN/FROZEN, construct only OfficialComplexityModel selection plus two-way polynomial model match.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -166,7 +166,8 @@
         "frozen/p01-parser-macro-green-db716cec",
         "frozen/p02-g2-0-normalization-green-d72e53bc",
         "frozen/g3-external-contract-scaffold-green-97a95327",
-        "frozen/p01-binary-return-rewind-green-f29f5984"
+        "frozen/p01-binary-return-rewind-green-f29f5984",
+        "frozen/g3-cook-cmi-provenance-green-f29f5984"
       ],
       "source_delta": [
         "Exact decoder inverse and slotAccept semantics: GREEN",
@@ -192,7 +193,7 @@
         "repository_certificate_run": 35700922859,
         "state": "GREEN_FROZEN_PREFIX"
       },
-      "g3_state": "EXTERNAL_SCAFFOLD_GREEN_FROZEN_CERTIFIED / CONCRETE_CONTRACT_OPEN",
+      "g3_state": "COOK_CMI_SOURCE_PROVENANCE_GREEN_FROZEN / EXTERNAL_SCAFFOLD_GREEN_FROZEN / EXTERNAL_MODEL_OPEN / MODEL_MATCH_OPEN",
       "frozen_parser_macro": {
         "source_sha": "db716cec19ddbba552f5b91f865089abd4eea9e5",
         "frozen_branch": "frozen/p01-parser-macro-green-db716cec",
@@ -228,6 +229,16 @@
         "certificate_commit": "cab90e15d5347163b5bbc5536ec2bb28e9efff06",
         "run": 35710913516,
         "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "g3_source_provenance": {
+        "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+        "source_file": "lean/MCore/Real/OfficialCookSource.lean",
+        "source_object": "MCore.Real.OfficialCookSource.cookCMISource",
+        "frozen_branch": "frozen/g3-cook-cmi-provenance-green-f29f5984",
+        "certificate_branch": "cert/g3-cook-cmi-provenance-f29f5984-run35710913408",
+        "certificate_commit": "81a8ce7ee18bce83a6f5048f5e5f0dc62edfd45f",
+        "run": 35710913408,
+        "state": "GREEN_FROZEN_CERTIFIED_PROVENANCE_ONLY"
       }
     },
     {
