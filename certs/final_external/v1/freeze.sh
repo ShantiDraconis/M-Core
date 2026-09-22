@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# ELYON_FINAL_EXTERNAL v1.0.0 / package revision v1.3-preparatory
+# ELYON_FINAL_EXTERNAL v1.0.0 / package revision v1.3.1-preparatory
 # FAIL-CLOSED PREPARATORY freeze. Never emits FINAL_ROOT or ISSUED.
 PACKAGE_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$PACKAGE_DIR"
@@ -50,6 +50,9 @@ if m['production']['app']['app_repository']=='UNSET': blockers.append('app')
 if m['production']['crypto']['crypto_provider']=='UNSET': blockers.append('crypto')
 if m['production']['hardware_attestation']['status']=='UNSET': blockers.append('hardware')
 assert m['G3']['status']=='CLOSED_GREEN_FROZEN_CERTIFIED'
+assert m['final_proof']['taxonomy']['FINAL_EXTERNAL_TWO_GAP']=='0/2'
+assert m['final_proof']['taxonomy']['P_VS_NP_ENDPOINT']=='OPEN'
+assert m['final_proof']['taxonomy']['GLOBAL_7_PROBLEMS']=='0/7'
 assert blockers==['P01ConstructionGap','G21Pointwise','human_review','app','crypto','hardware'], blockers
 print('blockers:', blockers)
 PY2
