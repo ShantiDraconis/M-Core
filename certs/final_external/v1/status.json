@@ -57,7 +57,7 @@
     "FINAL_EXTERNAL_MATH_INPUTS": "EXACT_TWO_PRODUCERS_REMAIN_P01ConstructionGap_AND_G21Pointwise",
     "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED"
   },
-  "package_revision": "v1.2-preparatory",
+  "package_revision": "v1.3-preparatory",
   "freeze_state": "FROZEN_PREPARATORY",
   "math_terminal_boundary": {
     "record": "MATH_TERMINAL_BOUNDARY_20260922.json",
@@ -65,7 +65,7 @@
     "p01": "OPEN_IMPLEMENTATION_P01_CONSTRUCTION",
     "p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
     "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
-    "latest_main_record_commit": "54538c3097eba08835d2d84650375830b796de63",
+    "latest_main_record_commit": "2df65e9c2e10ba8f920751b1202b161322425925",
     "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
     "two_gap_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
     "exact_remaining_producers": [
@@ -98,6 +98,8 @@
         "run": 35722743845,
         "frozen_branch": "frozen/final-external-two-gap-green-b406b806"
       }
-    }
+    },
+    "interface_policy": "INTERFACE_ONLY_FAIL_CLOSED_NO_PROOF_FABRICATION",
+    "certified_source_policy": "NO_SORRY_ADMIT_AXIOM_PLACEHOLDERS"
   }
 }
