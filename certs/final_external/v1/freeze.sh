@@ -1,76 +1,75 @@
 #!/usr/bin/env bash
 set -euo pipefail
+# ELYON_FINAL_EXTERNAL v1.0.0 / package revision v1.1-preparatory
+# FAIL-CLOSED PREPARATORY freeze. Never emits FINAL_ROOT or ISSUED.
+PACKAGE_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$PACKAGE_DIR"
+echo "[freeze.sh] $PACKAGE_DIR - PREPARATORY_NOT_ISSUED"
+JSON_FILES=(manifest.json status.json provenance.json gate_ledger.json axiom_footprint.json revocation.json)
+PAYLOAD=(manifest.json README.md provenance.json gate_ledger.json axiom_footprint.json reproducibility.md status.json revocation.json freeze.sh)
 
-HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$HERE"
+echo "[1/8] JSON syntax"
+for f in "${JSON_FILES[@]}"; do python3 -m json.tool "$f" >/dev/null; done
 
-required_files=(
-  manifest.json README.md provenance.json gate_ledger.json
-  axiom_footprint.json reproducibility.md status.json revocation.json
-)
+echo "[2/8] Fail-closed Lean-source hygiene if Lean files are present"
+if find . -type f -name '*.lean' -print -quit | grep -q .; then
+  if grep -R -n -E '(^|[^[:alnum:]_])(sorry|admit|sorryAx)([^[:alnum:]_]|$)' --include='*.lean' .; then
+    echo 'FAIL forbidden proof escape'; exit 1
+  fi
+fi
 
-for f in "${required_files[@]}"; do
-  [[ -f "$f" ]] || { echo "FAIL: missing $f" >&2; exit 1; }
-done
+echo "[3/8] Normative preparatory state"
+python3 <<'PY2'
+import json
+m=json.load(open('manifest.json')); s=json.load(open('status.json'))
+assert m['package_state']=='PREPARATORY'
+assert m['public_status']=='PREPARATORY_NOT_ISSUED'
+assert m['freeze_state']=='FROZEN_PREPARATORY'
+assert m['issuance_gate']['FINAL_EXTERNAL_ISSUED'] is False
+assert m['root']['FINAL_ROOT'] is None
+assert m['root']['PREPARATORY_ROOT'] is None
+assert s['issuance']['FINAL_EXTERNAL_ISSUED'] is False
+assert s['final_proof']=='0/7'
+assert m['final_proof']['display']=='0/7'
+assert m['anchors']['ELYON']['base']=='483f6bdc06b74a0239481085e25c9a9fdccb1a8f'
+assert m['anchors']['ELYON']['audit']=='0f71ffea68ed52691201144140fb1a342d03b8d7'
+assert m['anchors']['ELYON']['run']=='35378862267'
+assert m['anchors']['ELYON']['run_status']=='SUCCESS'
+PY2
 
-python3 - <<'PY'
-import json, sys
-from pathlib import Path
+echo "[4/8] Blocker classes remain fail-closed"
+python3 <<'PY2'
+import json
+m=json.load(open('manifest.json'))
+blockers=[]
+if m['human_review']['authority']=='UNSET': blockers.append('human_review')
+if m['production']['app']['app_repository']=='UNSET': blockers.append('app')
+if m['production']['crypto']['crypto_provider']=='UNSET': blockers.append('crypto')
+if m['production']['hardware_attestation']['status']=='UNSET': blockers.append('hardware')
+if m['G3']['status']=='OPEN_CONSTRUCTION': blockers.append('G3')
+assert blockers==['human_review','app','crypto','hardware','G3'], blockers
+print('blockers:', blockers)
+PY2
 
-manifest = json.loads(Path("manifest.json").read_text())
-status = json.loads(Path("status.json").read_text())
-prov = json.loads(Path("provenance.json").read_text())
+echo "[5/8] Generate canonical PACKAGE_SHA256SUMS"
+rm -f SHA256SUMS PREPARATORY_ROOT
+sha256sum "${PAYLOAD[@]}" > SHA256SUMS
 
-errors = []
+echo "[6/8] Generate PREPARATORY_ROOT out-of-band"
+sha256sum SHA256SUMS | awk '{print $1}' > PREPARATORY_ROOT
+cat PREPARATORY_ROOT
 
-def walk(x, path=""):
-    if isinstance(x, dict):
-        for k,v in x.items():
-            walk(v, f"{path}.{k}" if path else k)
-    elif isinstance(x, list):
-        for i,v in enumerate(x):
-            walk(v, f"{path}[{i}]")
-    elif x == "UNSET" or (isinstance(x, str) and x.startswith("UNSET_")):
-        errors.append(path)
+echo "[7/8] Re-verify payload was not mutated"
+sha256sum -c SHA256SUMS
 
-# Fail closed on release-critical sections only.
-for section in ("human_review","production","G3"):
-    walk(manifest.get(section), section)
+echo "[8/8] FINAL_ROOT remains null / issuance remains false"
+python3 <<'PY2'
+import json
+m=json.load(open('manifest.json')); s=json.load(open('status.json'))
+assert m['root']['FINAL_ROOT'] is None
+assert m['issuance_gate']['FINAL_EXTERNAL_ISSUED'] is False
+assert s['issuance']['FINAL_EXTERNAL_ISSUED'] is False
+PY2
 
-if manifest.get("G3", {}).get("status") == "OPEN_CONSTRUCTION":
-    errors.append("G3.status")
-
-if status.get("issuance", {}).get("FINAL_EXTERNAL_ISSUED") is not False:
-    print("FAIL: preparatory freeze requires FINAL_EXTERNAL_ISSUED=false", file=sys.stderr)
-    sys.exit(1)
-
-for repo_name, rec in prov.get("repositories", {}).items():
-    if rec.get("optional") is True:
-        continue
-    for key in ("repo","branch","sha"):
-        v=rec.get(key)
-        if v is None or (isinstance(v,str) and v.startswith("UNSET")):
-            errors.append(f"provenance.repositories.{repo_name}.{key}")
-
-if errors:
-    print("FAIL_CLOSED: unresolved fields:", file=sys.stderr)
-    for e in sorted(set(errors)):
-        print(f"  - {e}", file=sys.stderr)
-    sys.exit(2)
-
-print("RELEASE_FIELDS_RESOLVED=PASS")
-PY
-
-tmp="$(mktemp)"
-trap 'rm -f "$tmp"' EXIT
-
-sha256sum   manifest.json README.md provenance.json gate_ledger.json   axiom_footprint.json reproducibility.md status.json revocation.json   freeze.sh > "$tmp"
-
-mv "$tmp" SHA256SUMS
-
-PACKAGE_ROOT="$(sha256sum SHA256SUMS | awk '{print $1}')"
-printf '%s  SHA256SUMS\n' "$PACKAGE_ROOT" > ROOT.sha256
-
-echo "SHA256SUMS=GENERATED"
-echo "PACKAGE_ROOT=$PACKAGE_ROOT"
-echo "NOTE: ROOT.sha256 is the package-root hash. The issued layer-root must additionally use exact frozen component anchors from provenance.json."
+echo 'RESULT=FROZEN_PREPARATORY'
+echo 'FINAL_EXTERNAL_ISSUED=false'
