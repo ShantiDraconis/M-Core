@@ -8,7 +8,7 @@
     ],
     "pending_ATK": [
       "Compose certified parser phases into SlotParserMachineSimulationCertificate",
-      "CanonicalRecursiveParserOperationalGap",
+      "Construct integrated fixed-control SAT NTM using certified parser TM→NTM prefix + finite witness generation/verifier relation",
       "CanonicalSATMachineClosure",
       "p01_final_certificate"
     ],
@@ -53,6 +53,14 @@
       "certificate_commit": "6f24ad42f651e1ef33a9ece7cbe8e867a2643c40",
       "run": "35720074676 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED"
+    },
+    "integration_prefix": {
+      "source_sha": "ada18eeddb72490e44a9c6033d63690a416a7f0b",
+      "frozen_branch": "frozen/p01-integration-prefix-green-ada18eed",
+      "certificate_branch": "cert/p01-integration-prefix-ada18eed-run35699864579",
+      "certificate_commit": "d909103f75087f41711c697aca400e53df4a4b82",
+      "run": "35699864579 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED_PREFIX"
     }
   },
   "P02": {
@@ -108,10 +116,29 @@
       "run": "35713976797 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED",
       "conclusion": "naive two-constant literal fixed-point route cannot be universal G2.1 producer"
+    },
+    "supporting_certificates": {
+      "semantic_diagonal_transformer": {
+        "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+        "frozen_branch": "frozen/p02-semantic-diagonal-transformer-green-f29f5984",
+        "certificate_branch": "cert/p02-semantic-diagonal-transformer-f29f5984-run35710913464",
+        "certificate_commit": "321a1ad6f0205eb2795939655ed802a9114de480",
+        "run": "35710913464 SUCCESS",
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "literal_fixed_point_firewall": {
+        "source_sha": "26e721ab25425d62312945200baa9c127910d320",
+        "frozen_branch": "frozen/p02-literal-fixed-point-firewall-green-26e721ab",
+        "certificate_branch": "cert/p02-literal-fixed-point-firewall-26e721ab-run35713976797",
+        "certificate_commit": "01de3cf83d79338db8b9d4740c37719d3b9cca4c",
+        "run": "35713976797 SUCCESS",
+        "state": "GREEN_FROZEN_CERTIFIED",
+        "effect": "naive literal fixed-point route is fail-closed; genuine G2.1 remains OPEN_MATH"
+      }
     }
   },
   "G3": {
-    "status": "OPEN_CONSTRUCTION",
+    "status": "OPEN_SOURCE_FIDELITY",
     "endpoint": "OPEN",
     "scaffold": {
       "source_sha": "97a95327360c3d4fc29dae1453330974e5f30519",
@@ -121,35 +148,42 @@
       "run": "35707370601 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED_SCAFFOLD"
     },
-    "remaining": [
-      "Full concrete P model-equivalence theorem",
-      "Full concrete NP model-equivalence theorem",
-      "Construct final G3ExternalContract from the sourced adapters"
-    ],
-    "provenance": {
-      "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
-      "file": "lean/MCore/Real/OfficialCookSource.lean",
-      "object": "MCore.Real.OfficialCookSource.cookCMISource",
+    "cook_cmi_provenance": {
       "frozen_branch": "frozen/g3-cook-cmi-provenance-green-f29f5984",
-      "certificate_branch": "cert/g3-cook-cmi-provenance-f29f5984-run35710913408",
       "certificate_commit": "81a8ce7ee18bce83a6f5048f5e5f0dc62edfd45f",
-      "run": "35710913408 SUCCESS",
-      "state": "GREEN_FROZEN_CERTIFIED_PROVENANCE_ONLY"
-    },
-    "cook_provenance": {
-      "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
-      "frozen_branch": "frozen/g3-cook-cmi-provenance-green-f29f5984",
-      "certificate_branch": "cert/g3-cook-cmi-provenance-f29f5984-run35710913408",
       "run": "35710913408 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED"
     },
     "normalized_dtm_two_way": {
-      "source_sha": "26e721ab25425d62312945200baa9c127910d320",
       "frozen_branch": "frozen/g3-normalized-dtm-two-way-green-26e721ab",
-      "certificate_branch": "cert/g3-normalized-dtm-two-way-26e721ab-run35713976730",
+      "certificate_commit": "ffadd26536e73d9b58f63cba5e2d3b381693e595",
       "run": "35713976730 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED"
-    }
+    },
+    "normalized_ntm_two_way": {
+      "frozen_branch": "frozen/g3-normalized-ntm-two-way-green-77070515",
+      "certificate_commit": "0320de1f6993adcc5a06e5d3ba1da2963ed9aed5",
+      "run": "35715054272 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED"
+    },
+    "normalized_four_way": {
+      "frozen_branch": "frozen/g3-normalized-four-way-green-3f04da00",
+      "certificate_commit": "0fda1584b6a2ed22610c6dbd7140f004423dbc30",
+      "run": "35715387641 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED"
+    },
+    "normalized_typed_contract": {
+      "source_sha": "f2cafea7a74f3ef8ad4140943515622545c9f1d8",
+      "frozen_branch": "frozen/g3-normalized-contract-green-f2cafea7",
+      "certificate_branch": "cert/g3-normalized-contract-f2cafea7-run35719428075",
+      "certificate_commit": "b1879a0342416b29d0f4890aa08ddfc45f1dda0c",
+      "run": "35719428075 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED_TYPED_CONTRACT"
+    },
+    "remaining": [
+      "External source-fidelity theorem tying the normalized Cook-style formal model to the exact selected Cook/CMI convention",
+      "Keep no stronger claim than the provenance and normalization theorem actually proves"
+    ]
   },
   "MCORE": {
     "hub": "11adcd32...",
