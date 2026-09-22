@@ -15,7 +15,7 @@
         "run": 35721236027,
         "status": "GREEN_FROZEN_CERTIFIED_SCAFFOLD"
       },
-      "exact_missing": "P01ConstructionGap / Nonempty P01MachineConstruction (global parser simulation plus integrated fixed-control SAT NTM closure)",
+      "exact_missing": "P01ConstructionGap / Nonempty P01MachineConstruction (binary-head/global-slotlog parser delta now certified; integrated fixed-control SAT NTM closure still missing)",
       "endpoint_credit": 0,
       "latest_certified_subgates": {
         "integrated_parser_leaf_chain": {
@@ -37,6 +37,15 @@
           "frozen_branch": "frozen/p01-global-slotlog-spec-green-614f88fe",
           "certificate_branch": "cert/p01-global-slotlog-spec-614f88fe-run35723570545",
           "run": 35723570545,
+          "status": "GREEN_FROZEN_CERTIFIED_SUBGATE"
+        },
+        "binary_head": {
+          "source_sha": "9d987dc8161bfc7bcb371d4624532356fe32a89f",
+          "frozen_branch": "frozen/p01-binary-head-green-9d987dc8",
+          "certificate_branch": "cert/p01-binary-head-9d987dc8-run35729194014",
+          "run": 35729194014,
+          "certificate_run": 35729193992,
+          "certificate_tip": "730dfc9640aef4865f42ce1918b8c0bd4f03e323",
           "status": "GREEN_FROZEN_CERTIFIED_SUBGATE"
         }
       }
