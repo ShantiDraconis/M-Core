@@ -547,7 +547,60 @@
         "state": "CLOSED_BY_FALSIFICATION",
         "scope": "literal semanticDiagonalBits fixed-point route only",
         "endpoint_credit": 0
-      }
+      },
+      "p01_hard_scaffold": {
+        "source_sha": "9d6dd9575a61782c70137abff348356f805bc654",
+        "frozen_branch": "frozen/p01-hard-scaffold-green-9d6dd957",
+        "certificate_branch": "cert/p01-hard-scaffold-9d6dd957-run35721236027",
+        "certificate_commit": "44b9787d6c7c8ec02366849424cc09183931f825",
+        "run": 35721236027,
+        "state": "GREEN_FROZEN_CERTIFIED_SCAFFOLD",
+        "limitation": "P01MachineConstruction inhabitant remains OPEN; scaffold itself is not SATInNPGap"
+      },
+      "p01_leaf_source_rewind": {
+        "source_sha": "325e83cb",
+        "frozen_branch": "frozen/p01-leaf-source-rewind-green-325e83cb",
+        "certificate_branch": "cert/p01-leaf-source-rewind-325e83cb-run35719744729",
+        "run": 35719744729,
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "p02_g21_g22_equivalence": {
+        "source_sha": "3ec5e116dde0969e82272ed9ca37e6e92c36c5e1",
+        "branch": "attack/g21-g22-only-20260922",
+        "runs": [
+          35708473916,
+          35708311362
+        ],
+        "state": "GREEN_VERIFIED_EQUIVALENCE",
+        "theorem": "g21_iff_g22",
+        "meaning": "G2.2 is not an independent technical gate; it is equivalent to the P02 target / SAT not in P",
+        "endpoint_credit": 0
+      },
+      "remaining_terminal_producers": [
+        {
+          "gate": "P01",
+          "proposition": "SATInNPGap circuitBitEncoding",
+          "exact_open_payload": "Nonempty P01MachineConstruction",
+          "state": "OPEN_IMPLEMENTATION",
+          "reusable_frozen": [
+            "parser components",
+            "parser macro",
+            "binary return/rewind",
+            "leaf pop",
+            "leaf state14/15",
+            "leaf source",
+            "leaf source rewind",
+            "witness guesser/spec"
+          ]
+        },
+        {
+          "gate": "P02",
+          "proposition": "Nonempty (FailureGenerator (SATBits circuitBitEncoding))",
+          "equivalent_to": "¬ InP (SATBits circuitBitEncoding)",
+          "state": "OPEN_MATH",
+          "note": "This is the substantive P vs NP lower bound; no certified witness exists in the repository."
+        }
+      ]
     },
     {
       "repo": "m-core-bsd",
@@ -640,8 +693,15 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "7/7 terminal frontier packages verified + G3 formal contract CLOSED + G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION + P01 integrated SAT NTM and G2.2 genuine SAT FailureGenerator remain OPEN + FINAL_PROOF 0/7",
-    "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit."
+    "current": "G3 FORMAL CONTRACT CLOSED. P01 HARD scaffold and all recovered parser subgates GREEN/FROZEN/CERTIFIED, but P01MachineConstruction inhabitant OPEN. G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION; G2.2 is verified equivalent to SAT not in P and remains OPEN_MATH. FINAL_EXTERNAL cannot be issued without these two producers. FINAL_PROOF 0/7.",
+    "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit.",
+    "final_external_math_gate": {
+      "g1_p01": "OPEN_IMPLEMENTATION",
+      "g2_p02": "OPEN_MATH_EQ_SAT_NOT_IN_P",
+      "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "final_external_issued": false,
+      "final_root": null
+    }
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
