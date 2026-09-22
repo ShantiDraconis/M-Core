@@ -1,0 +1,12 @@
+{
+  "schema": "elyon.revocation.v1.0.0",
+  "revocations": [],
+  "policy": {
+    "states": [
+      "REVOKED",
+      "SUPERSEDED",
+      "INVALIDATED"
+    ],
+    "immutability": "Old versions are immutable. A later version SUPERSEDES an earlier version with an explicit reason."
+  }
+}
