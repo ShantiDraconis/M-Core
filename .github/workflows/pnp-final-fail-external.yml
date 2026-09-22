@@ -1,0 +1,56 @@
+name: PNP FINAL_FAIL external incorporation
+
+on:
+  push:
+    branches:
+      - final/pnp-final-fail-external-20260922
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate external record
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          p="certs/final_external/v1/PNP_FINAL_FAIL_EXTERNAL.json"
+          x=json.load(open(p))
+          assert x["process_state"] == "FINAL_FAIL_EXTERNAL_CLOSED"
+          assert x["process_closed"] is True
+          assert x["proof_claimed"] is False
+          assert x["final_external_proof_issued"] is False
+          assert x["source_sha"] == "815dfb08e719b80e82cc35a5e01988064a0b3496"
+          assert x["validating_run"] == 35722796449
+          assert x["validating_run_status"] == "SUCCESS"
+          assert x["integrated_lineage"]["g21_literal"]["state"] == "CLOSED_BY_FALSIFICATION"
+          assert x["integrated_lineage"]["g22_wiring"]["state"] == "GREEN_FROZEN_CERTIFIED"
+          assert x["integrated_lineage"]["final_external_integration"]["state"] == "GREEN_FROZEN_CERTIFIED"
+          PY
+
+      - name: Validate hub status
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          x=json.load(open("MCCS_STATUS.json"))
+          q=next(q for q in x["queues"] if q["repo"]=="m-core-p-vs-np")
+          f=q["final_fail_external"]
+          assert q["state"] == "FINAL_FAIL_EXTERNAL_CLOSED"
+          assert f["state"] == "GREEN_FROZEN_CERTIFIED"
+          assert f["process_closed"] is True
+          assert f["proof_claimed"] is False
+          assert f["run"] == 35722796449
+          assert x["counters"]["final_proof"] == "0/7"
+          PY
+
+      - name: Boundary
+        run: |
+          echo "PNP_FINAL_FAIL_EXTERNAL=GREEN_IF_JOB_SUCCEEDS"
+          echo "PROCESS_CLOSED=true"
+          echo "PROOF_CLAIMED=false"
