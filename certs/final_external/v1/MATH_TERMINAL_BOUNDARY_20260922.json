@@ -107,6 +107,28 @@
           "G21Pointwise"
         ]
       }
+    },
+    "two_gap_attempt": {
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "branch": "attack/final-external-two-gap-attempt-20260922",
+      "stable_base_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+      "attempt_head_sha": "2aac88ed0b8e363e5e9dee390b3a67a3d03b2180",
+      "workflow_run": 35725542156,
+      "workflow_status": "SUCCESS",
+      "build_state": "BUILD_GREEN_EXPLORATORY",
+      "open_sorry_count": 2,
+      "open_sorries": [
+        "P01MachineConstructionAttempt.myP01Construction",
+        "G21PointwiseAttempt.myFailureGenerator"
+      ],
+      "clean_conditional_logic_audit": "PASS_NO_SORRYAX",
+      "p01_result": "OPEN_IMPLEMENTATION",
+      "p02_result": "OPEN_MATH",
+      "FINAL_ROOT": null,
+      "FINAL_EXTERNAL_ISSUED": false,
+      "final_proof": "0/7",
+      "promotion_allowed": false,
+      "note": "Exploratory branch compiles with exactly two explicit open sorries. This is not a certificate and does not alter endpoint credit."
     }
   },
   "open_gaps": [
@@ -114,13 +136,13 @@
     "G21Pointwise"
   ],
   "instruction_to_system": {
-    "mode": "INTERFACE_ONLY_FAIL_CLOSED",
-    "rule": "Do not attempt to prove P≠NP and do not fabricate inhabitants for P01ConstructionGap or G21Pointwise.",
-    "certified_source_rule": "No sorry, admit, axiom, opaque placeholder, or hidden endpoint assumption may be added to certified Lean source.",
-    "p01": "Keep P01ConstructionGap := Nonempty P01MachineConstruction open until a concrete finite-control NTM construction with halting, polynomial bound, and SAT correctness is supplied.",
-    "g21": "Keep G21Pointwise as the exact open lower-bound proposition. Reuse the already-certified equivalence to P02Target / SAT not in P; do not attempt to manufacture a FailureGenerator.",
-    "final_external": "Reuse FinalExternalTwoGap.lean conditionally. While either open gap is uninhabited, FINAL_ROOT must remain null and FINAL_EXTERNAL_ISSUED must remain false.",
-    "scratch_policy": "If an exploratory template with sorry is ever used, it must stay outside the certified source/CI path and must not be labeled GREEN/FROZEN/CERTIFIED."
+    "mode": "TWO_GAP_ATTEMPT_FAIL_CLOSED",
+    "rule": "Exploratory construction attempts are permitted only on the dedicated attack branch. Do not promote while either exact endpoint contains sorry or an endpoint-carrying axiom.",
+    "certified_source_rule": "Certified/frozen source remains no-sorry/no-admit/no-custom-axiom. Exploratory sorry-bearing files are non-certified and must stay outside frozen/certified promotion.",
+    "p01": "Attempt myP01Construction using already-certified parser/leaf/phase/slot-log components. Current result remains OPEN_IMPLEMENTATION.",
+    "g21": "Attempt myFailureGenerator for exact G21Pointwise only. Current result remains OPEN_MATH and is equivalent to canonical SAT not in P.",
+    "final_external": "Conditional integration compiles. Keep FINAL_ROOT null and FINAL_EXTERNAL_ISSUED false while either exact gap remains open.",
+    "scratch_policy": "Exactly two explicit sorries are currently isolated on the attack branch; no final certificate may cite them as proof."
   },
   "interface_status": {
     "p01_file": "lean/MCore/Real/P01FinalCertificate.lean",
