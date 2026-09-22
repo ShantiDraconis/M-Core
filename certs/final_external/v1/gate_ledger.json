@@ -7,7 +7,8 @@
       "35700922859 SUCCESS"
     ],
     "pending_ATK": [
-      "Full parser simulation from macro phases to exact slotAccept behavior",
+      "Leaf state-13 pop-search and active/no-active return proof",
+      "Full parser simulation from certified macro phases to exact slotAccept behavior",
       "CanonicalRecursiveParserOperationalGap",
       "CanonicalSATMachineClosure",
       "p01_final_certificate"
@@ -20,6 +21,14 @@
       "certificate_branch": "cert/p01-parser-macro-db716cec-run35709328356",
       "certificate_commit": "b0ff13266c2615dd38e38b722a0485911a6f32a2",
       "run": "35709328356 SUCCESS",
+      "state": "GREEN_FROZEN_CERTIFIED"
+    },
+    "binary_return_rewind": {
+      "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+      "frozen_branch": "frozen/p01-binary-return-rewind-green-f29f5984",
+      "certificate_branch": "cert/p01-binary-return-rewind-f29f5984-run35710913516",
+      "certificate_commit": "cab90e15d5347163b5bbc5536ec2bb28e9efff06",
+      "run": "35710913516 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED"
     }
   },
