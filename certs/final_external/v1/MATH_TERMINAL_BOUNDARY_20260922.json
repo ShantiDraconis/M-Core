@@ -1,0 +1,58 @@
+{
+  "schema": "mcore.final-external.math-boundary.v1",
+  "date": "2026-09-22",
+  "source_of_truth": "M-Core/MCCS_STATUS.json",
+  "source_of_truth_commit": "09dc7e4b6aa57f98f15f110639bde0ac3680ded0",
+  "p_vs_np": {
+    "repository": "ShantiDraconis/m-core-p-vs-np",
+    "P01": {
+      "state": "OPEN_IMPLEMENTATION",
+      "target": "SATInNPGap circuitBitEncoding",
+      "scaffold": {
+        "source_sha": "9d6dd9575a61782c70137abff348356f805bc654",
+        "frozen_branch": "frozen/p01-hard-scaffold-green-9d6dd957",
+        "certificate_branch": "cert/p01-hard-scaffold-9d6dd957-run35721236027",
+        "run": 35721236027,
+        "status": "GREEN_FROZEN_CERTIFIED_SCAFFOLD"
+      },
+      "exact_missing": "Nonempty P01MachineConstruction",
+      "endpoint_credit": 0
+    },
+    "P02": {
+      "state": "OPEN_MATH",
+      "target": "Nonempty (FailureGenerator (SATBits circuitBitEncoding))",
+      "equivalent_to": "¬ InP (SATBits circuitBitEncoding)",
+      "g21_literal_fixed_point": {
+        "state": "CLOSED_BY_FALSIFICATION",
+        "source_sha": "17c04b62d03946aab4573894833f087ade25bc33",
+        "run": 35721158651,
+        "frozen_branch": "frozen/p02-g2-1-literal-fixed-point-falsified-17c04b62",
+        "certificate_branch": "cert/p02-g2-1-literal-fixed-point-falsified-17c04b62-run35721158651"
+      },
+      "countermodel": {
+        "source_sha": "9d6dd9575a61782c70137abff348356f805bc654",
+        "run": 35721311898,
+        "status": "GREEN_FROZEN_CERTIFIED_DISPROVE_ROUTE"
+      },
+      "g21_g22_equivalence": {
+        "source_sha": "3ec5e116dde0969e82272ed9ca37e6e92c36c5e1",
+        "theorem": "g21_iff_g22",
+        "status": "GREEN_VERIFIED_EQUIVALENCE"
+      },
+      "endpoint_credit": 0
+    },
+    "G3": {
+      "state": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "source_sha": "f2cafea7a74f3ef8ad4140943515622545c9f1d8",
+      "run": 35719428075,
+      "theorem": "MCore.Real.CookNormalizedG3Contract.cook_normalized_g3_contract_closed"
+    }
+  },
+  "final_external": {
+    "FinalExternalInputs": "BLOCKED_BY_P01_AND_P02",
+    "FINAL_ROOT": null,
+    "FINAL_EXTERNAL_ISSUED": false,
+    "final_proof": "0/7",
+    "fail_closed": true
+  }
+}
