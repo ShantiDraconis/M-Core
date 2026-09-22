@@ -1,39 +1,58 @@
-# ELYON_FINAL_EXTERNAL v1.0.0
+# ELYON_FINAL_EXTERNAL v1.0.0 - PREPARATORY (package revision v1.1-preparatory)
+## INFRASTRUCTURE_CERTIFIED - PREPARATORY_NOT_ISSUED
 
-Schema: `elyon.final-external.v1.0.0`  
-Type: `INFRASTRUCTURE_CERTIFIED`
+Status publico: PREPARATORY / non-issued infrastructure record
+Nao e certificado emitido. certificate_type pode continuar INFRASTRUCTURE_CERTIFIED mas FINAL_EXTERNAL_ISSUED=false
 
-This preparatory package certifies infrastructure state only. It makes no claim that P vs NP, any Clay Millennium problem, Beal, or any other terminal mathematical problem has been solved.
+Este pacote e um registro preparatorio de infraestrutura da cadeia:
+MCORE + AINUM + OS + HUB + BRAIN + APP + ELYON
 
-## Current state
+### Estado normativo congelavel agora
+package_state:       PREPARATORY
+infra_state:         READY_FOR_FREEZE
+math_state:          OPEN_MATH
+final_proof:         0/7
+release_state:       SEALED_CLOSED
+maximum_auto_state:  REVIEW_PENDING
+FINAL_EXTERNAL_ISSUED: false
+public_status:       PREPARATORY_NOT_ISSUED
 
-- `final_proof = 0/7`
-- `infra_state = READY_FOR_FREEZE`
-- `math_state = OPEN_MATH`
-- `release_state = SEALED_CLOSED`
-- maximum machine state: `REVIEW_PENDING`
-- `FINAL_EXTERNAL_ISSUED = false`
+P01_PREFIX:          GREEN_FROZEN_CERTIFIED - fc20887e...
+P01_ENDPOINT:        OPEN
+P02_FRONTIER:        FORMALIZED - ef89f6a2...
+P02_ENDPOINT:        OPEN_MATH
+P03..P07:            OPEN_MATH
+G3:                  OPEN_CONSTRUCTION
 
-## Anchors
+### Correcao 2 - Rota P02 correta
+G2.0  FORMAL_INFRA / normalization - normaliza bounds; NAO prova enumerabilidade efetiva e NAO produz G2.1
+G2.1  OPEN_MATH / terminal producer - coracao de P vs NP
+G2.2  BLOCKED_BY_G2.1
+G2.3  BLOCKED_BY_G2.2
 
-- ELYON base: `483f6bdc06b74a0239481085e25c9a9fdccb1a8f`
-- ELYON audit: `0f71ffea68ed52691201144140fb1a342d03b8d7`
-- ELYON audit run: `35378862267 SUCCESS`
-- P01 parser prefix: `fc20887e556091a4775080ab23ee1ff61917040e`
-- P01 runs: `35700922856 SUCCESS`, `35700922859 SUCCESS`
-- P02 frontier: `ef89f6a29c29223e5442b14a6e59304ac0b1c47d`
-- M-Core hub anchor: `11adcd32806606cfdd667d062b37d5c19f786f95`
+G2.0 -> G2.1 -> G2.2 -> UniversalFailure -> SAT nao em P NAO e sequencia tecnica ordinaria.
 
-## Fail-closed unresolved fields
+### Hashes em dois niveis
+- PACKAGE_SHA256SUMS: calculavel agora sobre arquivos preparatorios
+- PREPARATORY_ROOT: calculavel agora por freeze.sh
+- FINAL_ROOT: deve continuar null porque derivacao inclui APP, crypto/hardware producao, revisao humana e anchors finais. Nao calcular root final contendo UNSET.
 
-Human review authority/quorum/evidence policy remain UNSET.
+### Freeze.sh correto (fail-closed)
+1 validar JSON/schema
+2 rejeitar sorry/admit/sorryAx
+3 verificar SHA/branches/runs
+4 calcular SHA256SUMS do pacote preparatorio
+5 gerar PREPARATORY_ROOT
+6 NAO gerar FINAL_ROOT enquanto UNSET
+7 NAO mudar FINAL_EXTERNAL_ISSUED para true
+8 quando gates satisfeitos: calcular FINAL_ROOT, provenance final, assinar, REVIEW_PENDING
+9 somente evidencia humana valida produz APPROVED/ISSUED
 
-APP repository/commit/PASS test remain UNSET.
+Proximo estado sem decisao humana:
+PREPARATORY_PACKAGE -> HASHED -> REPRODUCIBILITY_AUDITED -> FROZEN_PREPARATORY
+NAO -> FINAL_EXTERNAL_ISSUED
 
-Production crypto provider/public key or key ID/algorithm/attestation remain UNSET.
-
-Hardware attestation remains UNSET or must be explicitly set to OUT_OF_SCOPE_FOR_V1.
-
-G3 statement/repository/namespace/source file/closure condition remain UNSET.
-
-The package must remain non-issued until the release policy is satisfied.
+### Freeze snapshot
+freeze_state: FROZEN_PREPARATORY
+PREPARATORY_ROOT: stored in `PREPARATORY_ROOT` to avoid self-reference
+FINAL_ROOT: null
