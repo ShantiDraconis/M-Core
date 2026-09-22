@@ -140,13 +140,15 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "db716cec19ddbba552f5b91f865089abd4eea9e5",
+      "active_attack_head": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "GREEN_PREFIX_REUSED_PLUS_PARSER_MACRO",
       "current": [
         "P01_PARSER_COMPONENTS_GREEN_FROZEN",
         "P01_PARSER_MACRO_GREEN_FROZEN",
+        "P01_BINARY_RETURN_REWIND_GREEN_FROZEN",
+        "P01_LEAF_POP_RETURN_OPEN",
         "P01_FULL_SIMULATION_OPEN",
         "P01_NTM_COMPOSITION_OPEN",
         "P02_G2_0_GREEN_FROZEN_CERTIFIED",
@@ -154,7 +156,7 @@
         "G3_EXTERNAL_SCAFFOLD_GREEN_FROZEN",
         "G3_CONCRETE_CONTRACT_OPEN"
       ],
-      "next_delta": "Reuse frozen/p01-parser-macro-green-db716cec and attack only the remaining full parser simulation / NTM composition. Keep P02 G2.0 d72e53bc frozen; attack only G2.1 OPEN_MATH. Reuse frozen/g3-external-contract-scaffold-green-97a95327 and construct only concrete sourced G3ExternalContract/model equivalence.",
+      "next_delta": "Reuse frozen/p01-binary-return-rewind-green-f29f5984. Prove only the leaf state-13 pop-search and its no-active/active return paths, then compose with db716cec macro and f29f5984 binary roundtrip into full parser simulation. Do not reopen G2.0 or G3 scaffold.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -163,7 +165,8 @@
         "frozen/p01-parser-components-green-fc20887e",
         "frozen/p01-parser-macro-green-db716cec",
         "frozen/p02-g2-0-normalization-green-d72e53bc",
-        "frozen/g3-external-contract-scaffold-green-97a95327"
+        "frozen/g3-external-contract-scaffold-green-97a95327",
+        "frozen/p01-binary-return-rewind-green-f29f5984"
       ],
       "source_delta": [
         "Exact decoder inverse and slotAccept semantics: GREEN",
@@ -178,7 +181,7 @@
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
-      "p01_state": "PARSER_COMPONENTS_GREEN_FROZEN / PARSER_MACRO_GREEN_FROZEN / FULL_SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
+      "p01_state": "PARSER_COMPONENTS_GREEN_FROZEN / PARSER_MACRO_GREEN_FROZEN / BINARY_RETURN_REWIND_GREEN_FROZEN / LEAF_POP_RETURN_OPEN / FULL_SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
       "p02_state": "G2_0_GREEN_FROZEN_CERTIFIED / G2_1_OPEN_MATH / G2_2_BLOCKED / G2_3_BLOCKED",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
@@ -217,6 +220,14 @@
         ],
         "state": "GREEN_FROZEN_CERTIFIED",
         "historical_equivalent": "77ed82750762fa3057c96f340254f522681ccdee"
+      },
+      "frozen_binary_return": {
+        "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+        "frozen_branch": "frozen/p01-binary-return-rewind-green-f29f5984",
+        "certificate_branch": "cert/p01-binary-return-rewind-f29f5984-run35710913516",
+        "certificate_commit": "cab90e15d5347163b5bbc5536ec2bb28e9efff06",
+        "run": 35710913516,
+        "state": "GREEN_FROZEN_CERTIFIED"
       }
     },
     {
