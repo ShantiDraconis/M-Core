@@ -140,17 +140,17 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "75d2c6376dde3854ae553b0ec9ac1c9488c11943",
+      "active_attack_head": "fc20887e556091a4775080ab23ee1ff61917040e",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
-      "kernel_state": "BUILD_PENDING",
+      "kernel_state": "GREEN_PREFIX_REUSED",
       "current": [
-        "P01_FIN25_SINGLE_TAPE_MACHINE_SOURCE",
-        "P01_PARSER_SIMULATION_GAP",
-        "P01_MACHINE_LEVEL_WITNESS_GUESS_AND_VERIFY",
-        "P02_UNIVERSAL_FAILURE_SAT_TARGET"
+        "P01_PARSER_COMPONENTS_GREEN_FROZEN",
+        "P01_SLOT_PARSER_MACHINE_SIMULATION_OPEN",
+        "P01_CANONICAL_SAT_MACHINE_CLOSURE_OPEN",
+        "P02_SAT_NOT_IN_P_OPEN_MATH"
       ],
-      "next_delta": "P01: prove SlotParserMachineSimulationCertificate for the concrete Fin25 TM, then implement genuine machine-level nondeterministic witness generation and verification to obtain CanonicalSATMachineClosure. P02: construct UniversalFailure (SATBits circuitBitEncoding), equivalently prove SATTarget not in hardened InP. This is the unresolved P vs NP lower-bound object; no existing repository abstraction closes it.",
+      "next_delta": "Construct a kernel-checked inhabitant of SlotParserMachineSimulationCertificate: prove parserMachine total halting under parserTimeBound and exact acceptance iff slotAccept. This yields CanonicalRecursiveParserMachineCertificate / RecursiveParserOperationalGap. Then compose nondeterministic witness generation + verified relation to CanonicalSATMachineClosure. P02 remains the independent universal lower-bound producer over every PolyDTMCandidate.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -158,18 +158,29 @@
         "frozen/p01-component-failproof-green-9e21b631"
       ],
       "source_delta": [
-        "CanonicalSATRecursiveParserMachine.lean: concrete TM (Fin 25) (Option Bool), blank none, quadratic bound",
-        "CanonicalSATRecursiveParserSimulation.lean: parser closure reduced exactly to halts + realizes_slotAccept",
-        "CanonicalSATSlotParserSpec.lean: slotAccept <-> exists exact canonical encoding <-> decodeCircuit",
-        "P02ExactFrontier.lean: P02 <-> not InP(SATTarget); P01+P02 -> PneqNP",
-        "PR #16 opened as draft for live CI evidence; connector currently returns no workflow runs"
+        "Exact decoder inverse and slotAccept semantics: GREEN",
+        "Finite-control tag/VAR consumers: GREEN",
+        "Single-tape layout/init/slot-log machines: GREEN",
+        "Concrete parserMachine TM (Fin 25) (Option Bool): GREEN source/build",
+        "Initialization/path/budget proof chain: GREEN source/build",
+        "Exact P02 terminal frontier: GREEN statement only",
+        "No P01/P02 endpoint promoted"
       ],
       "rejected_shortcuts": [
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
       "p01_state": "SOURCE_MACHINE_DEFINED / SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
-      "p02_state": "EXACT_FRONTIER_PROVED / LOWER_BOUND_OPEN_MATH"
+      "p02_state": "EXACT_FRONTIER_PROVED / LOWER_BOUND_OPEN_MATH",
+      "frozen_parser_prefix": {
+        "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
+        "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
+        "certificate_branch": "cert/p01-parser-components-fc20887e-run35700922856",
+        "certificate_commit": "2043a76bc04157c4c6c74ef5fc82ad28c1852f45",
+        "p01_clean_run": 35700922856,
+        "repository_certificate_run": 35700922859,
+        "state": "GREEN_FROZEN_PREFIX"
+      }
     },
     {
       "repo": "m-core-bsd",
@@ -245,7 +256,7 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "P01 CONCRETE FIN25 TM SOURCE + EXACT SIMULATION GAP OPEN; P02 EXACTLY REDUCED TO UNIVERSAL FAILURE / SAT NOT-IN-P OPEN_MATH; NO FINAL_PROOF PROMOTION"
+    "current": "CANONICAL 7/7 GREEN_FROZEN + P01 PARSER COMPONENT PREFIX GREEN_FROZEN at fc20887e + P01 SIMULATION/NTM CLOSURE OPEN + P02 OPEN_MATH + FINAL_PROOF 0/7"
   },
   "hard_foundation": {
     "state": "GREEN_FROZEN",
