@@ -4,22 +4,30 @@
   "name": "ELYON_FINAL_EXTERNAL",
   "version": "v1.0.0",
   "alias": "elyon",
-  "scope": ["MCORE","AINUM","OS","HUB","BRAIN","APP","ELYON"],
+  "scope": [
+    "MCORE",
+    "AINUM",
+    "OS",
+    "HUB",
+    "BRAIN",
+    "APP",
+    "ELYON"
+  ],
   "infra_state": "READY_FOR_FREEZE",
-  "math_state": "OPEN_MATH",
+  "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
   "final_proof": {
     "numerator": 0,
     "denominator": 7,
     "display": "0/7",
     "terminal_status": {
-      "P01": "GREEN_FROZEN_CERTIFIED_PARTIAL - SlotParserMachineSimulationCertificate UNSET, CanonicalRecursiveParserOperationalGap UNSET, CanonicalSATMachineClosure UNSET, p01_final_certificate UNSET",
-      "P02": "OPEN_MATH - frontier ef89f6a29c29223e5442b14a6e59304ac0b1c47d formalized, lower bound universal UNSET",
+      "P01": "OPEN_IMPLEMENTATION - certified through parser/leaf, terminal branches and global-slotlog; exact open payload P01ConstructionGap / Nonempty P01MachineConstruction",
+      "P02": "OPEN_MATH - G2.1 literal route CLOSED_BY_FALSIFICATION; G2.2 wiring GREEN_FROZEN_CERTIFIED; exact open payload G21Pointwise ≃ P02Target ≃ SAT not in P",
       "P03": "OPEN_MATH",
       "P04": "OPEN_MATH",
       "P05": "OPEN_MATH",
       "P06": "OPEN_MATH",
       "P07": "OPEN_MATH",
-      "G3": "OPEN_CONSTRUCTION"
+      "G3": "CLOSED_GREEN_FROZEN_CERTIFIED"
     },
     "claim_policy": "NO_CLAIM_OF_P_NP_CLAY_BEAL_SOLVED"
   },
@@ -35,15 +43,25 @@
       "role": "official_anchor_v1_until_explicit_revision"
     },
     "P01": {
-      "prefix": "fc20887e556091a4775080ab23ee1ff61917040e",
-      "state": "GREEN_FROZEN_CERTIFIED",
-      "runs": ["35700922856 SUCCESS","35700922859 SUCCESS"],
-      "pending_ATK": ["SlotParserMachineSimulationCertificate","CanonicalRecursiveParserOperationalGap","CanonicalSATMachineClosure","p01_final_certificate"]
+      "prefix": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+      "state": "GREEN_FROZEN_CERTIFIED_ADVANCED_PREFIX",
+      "runs": [
+        "35722427864 SUCCESS integrated parser/leaf",
+        "35722846538 SUCCESS terminal branches",
+        "35723570545 SUCCESS phase/global-slotlog"
+      ],
+      "pending_ATK": [
+        "P01ConstructionGap",
+        "Nonempty P01MachineConstruction"
+      ]
     },
     "P02": {
-      "frontier": "ef89f6a29c29223e5442b14a6e59304ac0b1c47d",
-      "status": "FORMALIZED_FRONTIER_OPEN_LOWER_BOUND",
-      "pending_ATK": "proof object real: ∀ candidate : PolyDTMCandidate, ∃ x, ¬ candidate.CorrectAt SAT x"
+      "frontier": "38db71b416906e5b7138774842e91d3e367aad09",
+      "status": "G2_2_WIRING_GREEN_FROZEN_CERTIFIED__G21_POINTWISE_OPEN_MATH",
+      "runs": [
+        "35722282451 SUCCESS"
+      ],
+      "pending_ATK": "G21Pointwise / P02Target / Nonempty FailureGenerator(SATBits circuitBitEncoding), equivalent to SAT not in P"
     },
     "MCORE_HUB": {
       "hub_anchor": "11adcd32...",
@@ -73,27 +91,57 @@
     },
     "hardware_attestation": {
       "status": "UNSET",
-      "allowed_values": ["UNSET","OUT_OF_SCOPE_FOR_V1","TPM2_ATTESTED","SECURE_BOOT_ATTESTED"],
+      "allowed_values": [
+        "UNSET",
+        "OUT_OF_SCOPE_FOR_V1",
+        "TPM2_ATTESTED",
+        "SECURE_BOOT_ATTESTED"
+      ],
       "current_claim": "hardware_secure_boot_claimed=false"
     }
   },
   "G3": {
-    "statement": "UNSET",
-    "repository": "UNSET",
-    "namespace": "UNSET",
-    "source_file": "UNSET",
-    "closure_condition": "UNSET",
-    "status": "OPEN_CONSTRUCTION",
-    "notes": "Fail-closed until formalization"
+    "statement": "G3ExternalContract for the normalized Cook-style external model",
+    "repository": "ShantiDraconis/m-core-p-vs-np",
+    "namespace": "MCore.Real.CookNormalizedG3Contract",
+    "source_file": "lean/MCore/Real/CookNormalizedG3Contract.lean",
+    "closure_condition": "cook_normalized_g3_contract_closed",
+    "source_sha": "f2cafea7a74f3ef8ad4140943515622545c9f1d8",
+    "run": 35719428075,
+    "status": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "notes": "Formal normalized external contract closed. Independent exhaustive fidelity to every Cook/CMI prose convention is a separate audit statement and is not endpoint proof credit."
   },
-  "artifacts_required": ["manifest.json","README.md","SHA256SUMS","provenance.json","gate_ledger.json","axiom_footprint.json","reproducibility.md","signature.bundle / .asc","status.json","revocation.json"],
+  "artifacts_required": [
+    "manifest.json",
+    "README.md",
+    "SHA256SUMS",
+    "provenance.json",
+    "gate_ledger.json",
+    "axiom_footprint.json",
+    "reproducibility.md",
+    "signature.bundle / .asc",
+    "MATH_TERMINAL_BOUNDARY_20260922.json",
+    "status.json",
+    "revocation.json"
+  ],
   "toolchain": {
     "normative": "Lean 4.19 + lake",
     "policy": "Other tools (Python, OS runner, Coq/Agda/Isabelle) only included if effectively used in final package. Must be recorded in provenance.json with exact versions."
   },
   "axiom_policy": {
-    "allowed_when_present": ["propext","Classical.choice","Quot.sound"],
-    "forbidden": ["sorryAx","sorry","admit","custom theorem-carrying axioms","hidden oracle","circularity"],
+    "allowed_when_present": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden": [
+      "sorryAx",
+      "sorry",
+      "admit",
+      "custom theorem-carrying axioms",
+      "hidden oracle",
+      "circularity"
+    ],
     "audit_required": true
   },
   "brain_policy": {
@@ -117,7 +165,7 @@
     "FINAL_ROOT": null,
     "PREPARATORY_ROOT": null,
     "derivation_final": "hash(MCORE)+hash(AINUM)+hash(OS)+hash(HUB)+hash(BRAIN)+hash(APP)+hash(ELYON)+hashes(P01..P07) + production crypto + hardware + human_review + final frozen anchors",
-    "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload hashes immutable package files and excludes SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
+    "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload includes MATH_TERMINAL_BOUNDARY_20260922.json and immutable preparatory package files, excluding SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
     "preparatory_root_location": "PREPARATORY_ROOT"
   },
   "timestamps": {
@@ -133,8 +181,8 @@
   },
   "issuance_gate": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "condition": "human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND G3 != OPEN_CONSTRUCTION AND all infra GREEN+FROZEN AND math_state explicitly declared as OPEN_MATH 0/7",
-    "current": "BLOCKED - 5 blocker classes fail-closed: human_review, app, crypto, hardware, G3",
+    "condition": "P01ConstructionGap closed AND G21Pointwise closed AND G3 CLOSED AND human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND all required infra GREEN+FROZEN",
+    "current": "BLOCKED fail-closed: P01ConstructionGap OPEN_IMPLEMENTATION; G21Pointwise OPEN_MATH; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
     "public_status": "PREPARATORY_NOT_ISSUED"
   },
   "package_state": "PREPARATORY",
@@ -142,6 +190,6 @@
   "public_label": "PREPARATORY / non-issued infrastructure record - NOT A CLAIM OF ISSUED CERTIFICATE",
   "maximum_auto_state": "REVIEW_PENDING",
   "package_state_policy": "PACKAGE_SHA256SUMS can be calculated now. FINAL_ROOT must remain null while any issuance prerequisite UNSET",
-  "package_revision": "v1.1-preparatory",
-  "freeze_state": "FROZEN_PREPARATORY"
+  "package_revision": "v1.3-preparatory",
+  "freeze_state": "FROZEN_PREPARATORY_PENDING_REHASH"
 }
