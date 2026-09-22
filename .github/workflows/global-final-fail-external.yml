@@ -1,0 +1,44 @@
+name: GLOBAL FINAL_FAIL external 7 of 7
+
+on:
+  push:
+    branches:
+      - final/global-final-fail-external-7of7-20260922
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-global:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate global 7 of 7 record
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          p="certs/final_external/v1/GLOBAL_FINAL_FAIL_EXTERNAL_7_OF_7.json"
+          x=json.load(open(p))
+          assert x["schema"] == "mcore.global-final-fail-external.v1"
+          assert x["process_closed_count"] == 7
+          assert x["process_total"] == 7
+          assert x["all_processes_closed"] is True
+          assert x["proof_claimed"] is False
+          assert x["final_proof"] == "0/7"
+          expected={"P_VS_NP","RIEMANN","BEAL","HODGE","BSD","YANG_MILLS","NAVIER_STOKES"}
+          assert set(x["problems"]) == expected
+          for name,p in x["problems"].items():
+              assert len(p["source_sha"]) == 40
+              assert p["run"] > 0
+              assert p["frozen"].startswith("frozen/final-fail-external-green-")
+              assert p["cert"].startswith("cert/final-fail-external-")
+              assert len(p["cert_tip"]) == 40
+          PY
+      - name: Boundary
+        run: |
+          echo "GLOBAL_FINAL_FAIL_EXTERNAL=GREEN_IF_JOB_SUCCEEDS"
+          echo "PROCESS_CLOSED=7/7"
+          echo "PROOF_CLAIMED=false"
+          echo "FINAL_PROOF=0/7"
