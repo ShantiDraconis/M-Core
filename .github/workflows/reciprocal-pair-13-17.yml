@@ -1,0 +1,23 @@
+name: Reciprocal Pair 13-17
+
+on:
+  push:
+    branches:
+      - formal/reciprocal-pair-13-17-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true
+      - name: Hygiene
+        run: |
+          ! grep -R -nE '\bsorry\b|\badmit\b|\baxiom\b' MCore/ReciprocalPair.lean
+          echo "RECIPROCAL_PAIR_13_17=GREEN_CANDIDATE"
