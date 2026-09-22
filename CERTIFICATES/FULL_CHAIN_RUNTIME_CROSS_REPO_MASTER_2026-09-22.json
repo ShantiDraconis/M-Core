@@ -1,0 +1,86 @@
+{
+  "schema": "FULL_CHAIN_RUNTIME_CROSS_REPO_MASTER_V1",
+  "date": "2026-09-22",
+  "repository": "ShantiDraconis/M-Core",
+  "predecessor_no_findings_master": "a1fc1f2c761366f599576c81fbb88dd6df028388",
+  "integration_certificate": {
+    "repository": "ShantiDraconis/zero-ai-00",
+    "source_sha": "3991234958c2c8c324db8234ec26dfb9200f394f",
+    "workflow_run": 35699014139,
+    "conclusion": "success",
+    "certificate_commit": "0c91d090792ce2bd396f7edb25b5e6a2b258c621",
+    "certificate_sha256": "3b0f27341eb3802bde95983903effb70d1f6326c64c9d9f57d15699fed50a7fd",
+    "frozen_branch": "frozen/full-chain-v1-0c91d090",
+    "state": "GREEN_FROZEN_INTEGRATION_SCAFFOLD"
+  },
+  "chain": [
+    {
+      "layer": "MCORE",
+      "repository": "ShantiDraconis/M-Core",
+      "pin": "e77ab366364f117e74131acef7af5f7f23a8d789",
+      "role": "FORMAL_READONLY_INTERFACE"
+    },
+    {
+      "layer": "AINUM",
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "pin": "4bc9b0e4f0b99fff98dd2254b8a3bf87b291c096",
+      "role": "INDETERMINACY_EVIDENCE"
+    },
+    {
+      "layer": "OS",
+      "repository": "ShantiDraconis/metaos-operational-system",
+      "pin": "d22c1bc95964ce38d67ed801ec78c5e8d32e7eec",
+      "role": "RESTRICTED_KERNEL"
+    },
+    {
+      "layer": "HUB",
+      "repository": "ShantiDraconis/NIPAH-research-HUB",
+      "pin": "6c154c02aa1015c98641b25ccadb2cb0d50af5ea",
+      "role": "FAIL_CLOSED_3_OF_4_TRUST_GATE"
+    },
+    {
+      "layer": "BRAIN",
+      "repository": "ShantiDraconis/zero-ai-00",
+      "pin": "e1d39e498eb44691a9a0fa601d18d680e56e4e26",
+      "role": "OBSERVE_REASON_ABSTAIN"
+    },
+    {
+      "layer": "APP",
+      "repository": "ShantiDraconis/zero-ai-00",
+      "pin": "3504dfb526e1444a495f85def88eebaa313d7394",
+      "role": "LOCAL_FAIL_CLOSED_SANDBOX"
+    },
+    {
+      "layer": "ELYON",
+      "repository": "ShantiDraconis/Genesis_Elyon",
+      "pin": "0f71ffea68ed52691201144140fb1a342d03b8d7",
+      "role": "EXTERNAL_HUMAN_REVIEW_SEAL"
+    }
+  ],
+  "executable_chain": "MCORE -> AINUM -> OS -> HUB -> BRAIN -> APP -> ELYON",
+  "execution_scope": "LOCAL_NON_SIDE_EFFECTING_INTEGRATION_HARNESS",
+  "verified": {
+    "full_chain_ci": true,
+    "app_sandbox_regression": true,
+    "typed_brain_contract": true,
+    "unsigned_hub_draft": true,
+    "revocable_safe_capabilities": true,
+    "final_state": "SEALED_CLOSED",
+    "no_external_side_effects": true
+  },
+  "blockers": [
+    "HUB_PRODUCTION_CRYPTO_NOT_VERIFIED",
+    "OS_HARDWARE_ATTESTATION_NOT_VERIFIED",
+    "ELYON_HUMAN_REVIEW_NOT_PERFORMED"
+  ],
+  "invariants": {
+    "FINAL_PROOF": "0/7",
+    "endpoint_promotion": false,
+    "hub_automatic_release": false,
+    "elyon_automatic_approval": false,
+    "app_external_execution": false,
+    "app_self_replication": false
+  },
+  "production_ready": false,
+  "claim_boundary": "The pinned integration chain executes and passes CI as a local fail-closed harness. This master does not certify production cryptography, hardware attestation, autonomous external execution, or mathematical endpoint proofs."
+}
