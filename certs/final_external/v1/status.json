@@ -4,9 +4,9 @@
   "version": "v1.0.0",
   "issuance": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "reason": "Fail-closed: P01 SATInNPGap remains OPEN_IMPLEMENTATION and P02 FailureGenerator(SAT) remains OPEN_MATH (equivalent to SAT not in P). G3 formal contract is CLOSED. Product/human issuance gates remain governed separately by this package.",
+    "reason": "Fail-closed: the mathematical pipeline is now GREEN/FROZEN/CERTIFIED through the FinalExternalTwoGap reduction, so only two mathematical producers remain: P01ConstructionGap and G21Pointwise (equivalent to SAT not in P). G3 and G2.2 wiring are closed. Product/human issuance gates remain governed separately.",
     "infra_state": "READY_FOR_FREEZE",
-    "math_state": "OPEN_MATH",
+    "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
     "release_state": "SEALED_CLOSED",
     "max_machine_state": "REVIEW_PENDING",
     "public_status": "PREPARATORY_NOT_ISSUED",
@@ -37,7 +37,7 @@
   "hash_levels": {
     "PACKAGE_SHA256SUMS": "CALCULABLE_NOW_over_preparatory_files",
     "PREPARATORY_ROOT": "SEE_PREPARATORY_ROOT_FILE",
-    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_until_P01_and_P02_and_all_release_gates_close"
+    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_until_P01ConstructionGap_and_G21Pointwise_and_all_release_gates_close"
   },
   "normative_state": {
     "ELYON_FINAL_EXTERNAL": "v1.0.0",
@@ -48,21 +48,56 @@
     "release_state": "SEALED_CLOSED",
     "maximum_auto_state": "REVIEW_PENDING",
     "FINAL_EXTERNAL_ISSUED": false,
-    "P01_PREFIX": "GREEN_FROZEN_CERTIFIED",
-    "P01_ENDPOINT": "OPEN_IMPLEMENTATION",
-    "P02_FRONTIER": "G2.1_LITERAL_FIXED_POINT_CLOSED_BY_FALSIFICATION",
-    "P02_ENDPOINT": "OPEN_MATH_FAILURE_GENERATOR_EQ_SAT_NOT_IN_P",
+    "P01_PREFIX": "GREEN_FROZEN_CERTIFIED_THROUGH_TERMINAL_BRANCHES_AND_GLOBAL_SLOTLOG",
+    "P01_ENDPOINT": "OPEN_IMPLEMENTATION_P01_CONSTRUCTION",
+    "P02_FRONTIER": "G2_1_LITERAL_CLOSED_BY_FALSIFICATION__G2_2_WIRING_GREEN_FROZEN_CERTIFIED",
+    "P02_ENDPOINT": "OPEN_MATH_G21_POINTWISE_EQ_FAILURE_GENERATOR_EQ_SAT_NOT_IN_P",
     "P03..P07": "OPEN_MATH",
     "G3": "CLOSED_GREEN_FROZEN_CERTIFIED",
-    "FINAL_EXTERNAL_MATH_INPUTS": "BLOCKED_BY_P01_AND_P02"
+    "FINAL_EXTERNAL_MATH_INPUTS": "EXACT_TWO_PRODUCERS_REMAIN_P01ConstructionGap_AND_G21Pointwise",
+    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED"
   },
-  "package_revision": "v1.1-preparatory",
+  "package_revision": "v1.2-preparatory",
   "freeze_state": "FROZEN_PREPARATORY",
   "math_terminal_boundary": {
     "record": "MATH_TERMINAL_BOUNDARY_20260922.json",
     "frozen_branch": "frozen/final-external-math-boundary-442d11aa",
-    "p01": "OPEN_IMPLEMENTATION",
-    "p02": "OPEN_MATH_EQ_SAT_NOT_IN_P",
-    "g3": "CLOSED_GREEN_FROZEN_CERTIFIED"
+    "p01": "OPEN_IMPLEMENTATION_P01_CONSTRUCTION",
+    "p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
+    "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "latest_main_record_commit": "54538c3097eba08835d2d84650375830b796de63",
+    "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "two_gap_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "exact_remaining_producers": [
+      "P01ConstructionGap",
+      "G21Pointwise"
+    ],
+    "certified_delta": {
+      "p01_terminal_branches": {
+        "source_sha": "f9add60881d709ce8320cb54a4d52f26d829b8f5",
+        "run": 35722846538,
+        "frozen_branch": "frozen/p01-terminal-branches-green-f9add608"
+      },
+      "p01_global_slotlog_spec": {
+        "source_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+        "run": 35723570545,
+        "frozen_branch": "frozen/p01-global-slotlog-spec-green-614f88fe"
+      },
+      "p02_g2_2_wiring": {
+        "source_sha": "38db71b416906e5b7138774842e91d3e367aad09",
+        "run": 35722282451,
+        "frozen_branch": "frozen/p02-g2-2-wiring-green-38db71b4"
+      },
+      "final_external_integration": {
+        "source_sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
+        "run": 35722252805,
+        "frozen_branch": "frozen/final-external-integration-green-c102d9d4"
+      },
+      "final_external_two_gap": {
+        "source_sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+        "run": 35722743845,
+        "frozen_branch": "frozen/final-external-two-gap-green-b406b806"
+      }
+    }
   }
 }
