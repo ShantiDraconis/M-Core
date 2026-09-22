@@ -219,10 +219,10 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "eb49284311029102ae1e47d80091c0d15aed7352",
+      "active_attack_head": "3690ab0593358d065930b36ec1e7a67852a88fa0",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
-      "kernel_state": "GREEN_PREFIX_REUSED_PLUS_PARSER_MACRO",
+      "kernel_state": "GREEN_FROZEN_CERTIFIED_INTEGRATED_PARSER_LEAF_PREFIX",
       "current": [
         "P01_PARSER_COMPONENTS_GREEN_FROZEN",
         "P01_PARSER_MACRO_GREEN_FROZEN",
@@ -242,7 +242,7 @@
         "G3_FORMAL_EXTERNAL_CONTRACT_CLOSED_GREEN_FROZEN_CERTIFIED",
         "G3_COOK_CMI_SOURCE_FIDELITY_UNFORMALIZED_OPEN_AUDIT"
       ],
-      "next_delta": "P01: compose certified parser phases into SlotParserMachineSimulationCertificate, then integrated SAT NTM construction. P02: literal fixed-point route is now formally DISPROVED; attack only a genuinely different G2.1 producer/reduction. G3: typed normalized contract is GREEN; only exact source-fidelity remains open.",
+      "next_delta": "Construct one no-hypothesis SlotParserMachineSimulationCertificate using the frozen integrated parser/leaf chain; then compose a fixed-control witness-guess + verifier NTM. P02 remains the independent SAT not-in-P theorem.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -280,7 +280,7 @@
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
-      "p01_state": "ALL_DISCOVERED_PARSER_PREFIXES_GREEN_FROZEN + TM_TO_NTM_INTEGRATION_PREFIX_GREEN_FROZEN / FULL_SIMULATION_OPEN / INTEGRATED_NTM_COMPOSITION_OPEN",
+      "p01_state": "INTEGRATED_PARSER_LEAF_PREFIX GREEN_FROZEN_CERTIFIED / GLOBAL PARSER SIMULATION OPEN / INTEGRATED WITNESS+VERIFIER NTM OPEN / P01 HARD OPEN",
       "p02_state": "G2_0 + SEMANTIC_DIAGONAL + LITERAL_FIXED_POINT FIREWALL GREEN_FROZEN_CERTIFIED / LITERAL FIXED-POINT ROUTE CLOSED_BY_FALSIFICATION at 17c04b62 (run 35721158651) / COUNTERMODEL GREEN_FROZEN_CERTIFIED at 9d6dd957 (run 35721311898) / G2.2 FAILURE_GENERATOR OPEN_MATH / G2.3 BLOCKED_BY_G2.2",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
@@ -600,7 +600,42 @@
           "state": "OPEN_MATH",
           "note": "This is the substantive P vs NP lower bound; no certified witness exists in the repository."
         }
-      ]
+      ],
+      "p01_integrated_parser_leaf_chain": {
+        "source_sha": "3690ab0593358d065930b36ec1e7a67852a88fa0",
+        "frozen_branch": "frozen/p01-integrated-parser-leaf-chain-green-3690ab05",
+        "certificate_branch": "cert/p01-integrated-parser-leaf-chain-3690ab05-run35722427864",
+        "certificate_commit": "1fa201ff0b580e75650357e24d175b5a1c5f9226",
+        "primary_run": 35722427864,
+        "regression_runs": [
+          35722427842,
+          35722427859,
+          35722427863,
+          35722427865,
+          35722427901,
+          35722431242,
+          35722431275,
+          35722431278,
+          35722431316,
+          35722431762
+        ],
+        "state": "GREEN_FROZEN_CERTIFIED_SUBGATE",
+        "sha256": "d55aa15106498a26b81b93c37e75450e03d3af64dc9f61cf490bf9af5ebd6a5e",
+        "closes": [
+          "parser macro chain",
+          "binary return/rewind chain",
+          "leaf-pop chain",
+          "leaf state14/15 chain",
+          "leaf-source return/accept/reject chain"
+        ],
+        "does_not_close": [
+          "SlotParserMachineSimulationCertificate",
+          "CanonicalRecursiveParserOperationalGap",
+          "integrated SAT NTM",
+          "CanonicalSATMachineClosure",
+          "P01 HARD"
+        ]
+      }
     },
     {
       "repo": "m-core-bsd",
@@ -693,7 +728,7 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "G3 FORMAL CONTRACT CLOSED. P01 HARD scaffold and all recovered parser subgates GREEN/FROZEN/CERTIFIED, but P01MachineConstruction inhabitant OPEN. G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION; G2.2 is verified equivalent to SAT not in P and remains OPEN_MATH. FINAL_EXTERNAL cannot be issued without these two producers. FINAL_PROOF 0/7.",
+    "current": "7/7 terminal frontier packages verified + G3 formal contract CLOSED + G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION + P01 integrated parser/leaf prefix GREEN_FROZEN_CERTIFIED at 3690ab05 + global parser simulation/integrated SAT NTM OPEN + G2.2 SAT FailureGenerator OPEN_MATH + FINAL_PROOF 0/7",
     "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit.",
     "final_external_math_gate": {
       "g1_p01": "OPEN_IMPLEMENTATION",
