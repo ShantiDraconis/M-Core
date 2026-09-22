@@ -140,7 +140,7 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
-      "active_attack_head": "26e721ab25425d62312945200baa9c127910d320",
+      "active_attack_head": "bb65456b7198d71c127d07e47de288a902654033",
       "attack_branch": "attack/material-orientation-clean-v2-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "GREEN_PREFIX_REUSED_PLUS_PARSER_MACRO",
@@ -149,16 +149,18 @@
         "P01_PARSER_MACRO_GREEN_FROZEN",
         "P01_BINARY_RETURN_REWIND_GREEN_FROZEN",
         "P01_LEAF_POP_GREEN_FROZEN",
-        "P01_LEAF_RETURN_OPEN",
         "P01_FULL_SIMULATION_OPEN",
         "P01_NTM_COMPOSITION_OPEN",
         "P02_G2_0_GREEN_FROZEN_CERTIFIED",
+        "P02_SEMANTIC_DIAGONAL_TRANSFORMER_GREEN_FROZEN",
+        "P02_LITERAL_FIXED_POINT_FIREWALL_GREEN_FROZEN",
         "P02_G2_1_OPEN_MATH",
-        "G3_SOURCE_PROVENANCE_GREEN_FROZEN",
         "G3_EXTERNAL_SCAFFOLD_GREEN_FROZEN",
-        "G3_MODEL_MATCH_OPEN"
+        "G3_COOK_PROVENANCE_GREEN_FROZEN",
+        "G3_NORMALIZED_DTM_TWO_WAY_GREEN_FROZEN",
+        "G3_CONCRETE_MODEL_EQUIVALENCE_OPEN"
       ],
-      "next_delta": "P01: prove state14/15 leaf return to source-check/accept-reject-rewind, then full parser simulation and NTM composition. P02: G2.1 only. G3: provenance/scaffold frozen, prove external model equivalence.",
+      "next_delta": "P01: compose certified leaf-pop + binary-return/rewrite macros into full SlotParserMachineSimulationCertificate, then integrated NTM composition. P02: naive semantic transformer and literal fixed-point route are certified insufficient; attack only genuine non-literal G2.1 producer. G3: Cook provenance and normalized DTM two-way adapter are GREEN; prove remaining full P/NP model equivalence/contract only.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -185,8 +187,8 @@
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
-      "p01_state": "PARSER_COMPONENTS_GREEN_FROZEN / PARSER_MACRO_GREEN_FROZEN / BINARY_RETURN_REWIND_GREEN_FROZEN / LEAF_POP_RETURN_OPEN / FULL_SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
-      "p02_state": "G2_0_GREEN_FROZEN_CERTIFIED / G2_1_OPEN_MATH / G2_2_BLOCKED / G2_3_BLOCKED",
+      "p01_state": "PARSER_COMPONENTS/MACRO/BINARY_RETURN/LEAF_POP GREEN_FROZEN / FULL_SIMULATION_OPEN / NTM_COMPOSITION_OPEN",
+      "p02_state": "G2_0 + SEMANTIC_DIAGONAL + LITERAL_FIXED_POINT_FIREWALL GREEN_FROZEN / G2_1 OPEN_MATH / G2_2 BLOCKED / G2_3 BLOCKED",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
         "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
@@ -196,7 +198,7 @@
         "repository_certificate_run": 35700922859,
         "state": "GREEN_FROZEN_PREFIX"
       },
-      "g3_state": "COOK_CMI_SOURCE_PROVENANCE_GREEN_FROZEN / EXTERNAL_SCAFFOLD_GREEN_FROZEN / EXTERNAL_MODEL_OPEN / MODEL_MATCH_OPEN",
+      "g3_state": "EXTERNAL_SCAFFOLD + COOK_PROVENANCE + NORMALIZED_DTM_TWO_WAY GREEN_FROZEN / FULL MODEL EQUIVALENCE OPEN",
       "frozen_parser_macro": {
         "source_sha": "db716cec19ddbba552f5b91f865089abd4eea9e5",
         "frozen_branch": "frozen/p01-parser-macro-green-db716cec",
@@ -247,8 +249,37 @@
         "source_sha": "26e721ab25425d62312945200baa9c127910d320",
         "frozen_branch": "frozen/p01-leaf-pop-green-26e721ab",
         "certificate_branch": "cert/p01-leaf-pop-26e721ab-run35713981438",
-        "certificate_commit": "11682c2313ba69b7c090460690b96fb85412d8f2",
         "run": 35713981438,
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "p02_semantic_diagonal": {
+        "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+        "frozen_branch": "frozen/p02-semantic-diagonal-transformer-green-f29f5984",
+        "certificate_branch": "cert/p02-semantic-diagonal-transformer-f29f5984-run35710913464",
+        "run": 35710913464,
+        "state": "GREEN_FROZEN_CERTIFIED",
+        "limitation": "semantic transformer only; literal fixed point existence not proved"
+      },
+      "p02_fixed_point_firewall": {
+        "source_sha": "26e721ab25425d62312945200baa9c127910d320",
+        "frozen_branch": "frozen/p02-literal-fixed-point-firewall-green-26e721ab",
+        "certificate_branch": "cert/p02-literal-fixed-point-firewall-26e721ab-run35713976797",
+        "run": 35713976797,
+        "state": "GREEN_FROZEN_CERTIFIED",
+        "conclusion": "naive literal fixed-point route is blocked for candidates correct on canonical constant encodings"
+      },
+      "g3_cook_provenance": {
+        "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
+        "frozen_branch": "frozen/g3-cook-cmi-provenance-green-f29f5984",
+        "certificate_branch": "cert/g3-cook-cmi-provenance-f29f5984-run35710913408",
+        "run": 35710913408,
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "g3_normalized_dtm_two_way": {
+        "source_sha": "26e721ab25425d62312945200baa9c127910d320",
+        "frozen_branch": "frozen/g3-normalized-dtm-two-way-green-26e721ab",
+        "certificate_branch": "cert/g3-normalized-dtm-two-way-26e721ab-run35713976730",
+        "run": 35713976730,
         "state": "GREEN_FROZEN_CERTIFIED"
       }
     },
