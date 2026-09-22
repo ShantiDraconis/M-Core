@@ -48,7 +48,7 @@
     "release_state": "SEALED_CLOSED",
     "maximum_auto_state": "REVIEW_PENDING",
     "FINAL_EXTERNAL_ISSUED": false,
-    "P01_PREFIX": "GREEN_FROZEN_CERTIFIED_THROUGH_TERMINAL_BRANCHES_AND_GLOBAL_SLOTLOG",
+    "P01_PREFIX": "GREEN_FROZEN_CERTIFIED_THROUGH_TERMINAL_BRANCHES_GLOBAL_SLOTLOG_AND_BINARY_HEAD",
     "P01_ENDPOINT": "OPEN_IMPLEMENTATION_P01_CONSTRUCTION",
     "P02_FRONTIER": "G2_1_LITERAL_CLOSED_BY_FALSIFICATION__G2_2_WIRING_GREEN_FROZEN_CERTIFIED",
     "P02_ENDPOINT": "OPEN_MATH_G21_POINTWISE_EQ_FAILURE_GENERATOR_EQ_SAT_NOT_IN_P",
@@ -98,6 +98,14 @@
         "source_sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
         "run": 35722743845,
         "frozen_branch": "frozen/final-external-two-gap-green-b406b806"
+      },
+      "p01_binary_head": {
+        "source_sha": "9d987dc8161bfc7bcb371d4624532356fe32a89f",
+        "run": 35729194014,
+        "certificate_run": 35729193992,
+        "frozen_branch": "frozen/p01-binary-head-green-9d987dc8",
+        "certificate_branch": "cert/p01-binary-head-9d987dc8-run35729194014",
+        "certificate_tip": "730dfc9640aef4865f42ce1918b8c0bd4f03e323"
       }
     },
     "interface_policy": "INTERFACE_ONLY_FAIL_CLOSED_NO_PROOF_FABRICATION",
