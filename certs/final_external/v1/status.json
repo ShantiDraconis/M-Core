@@ -4,7 +4,7 @@
   "version": "v1.0.0",
   "issuance": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "reason": "Fail-closed: the mathematical pipeline is now GREEN/FROZEN/CERTIFIED through the FinalExternalTwoGap reduction, so only two mathematical producers remain: P01ConstructionGap and G21Pointwise (equivalent to SAT not in P). G3 and G2.2 wiring are closed. Product/human issuance gates remain governed separately.",
+    "reason": "Fail-closed: the dedicated two-gap exploratory branch builds successfully, but it still contains exactly two explicit open sorries: P01ConstructionGap remains OPEN_IMPLEMENTATION and G21Pointwise remains OPEN_MATH (equivalent to canonical SAT not in P). No final root or certificate is issued.",
     "infra_state": "READY_FOR_FREEZE",
     "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
     "release_state": "SEALED_CLOSED",
@@ -55,7 +55,8 @@
     "P03..P07": "OPEN_MATH",
     "G3": "CLOSED_GREEN_FROZEN_CERTIFIED",
     "FINAL_EXTERNAL_MATH_INPUTS": "EXACT_TWO_PRODUCERS_REMAIN_P01ConstructionGap_AND_G21Pointwise",
-    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED"
+    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED",
+    "FINAL_EXTERNAL_TWO_GAP_ATTEMPT": "BUILD_GREEN_EXPLORATORY__EXACTLY_2_OPEN_SORRIES__NO_PROMOTION"
   },
   "package_revision": "v1.3-preparatory",
   "freeze_state": "FROZEN_PREPARATORY",
@@ -101,5 +102,20 @@
     },
     "interface_policy": "INTERFACE_ONLY_FAIL_CLOSED_NO_PROOF_FABRICATION",
     "certified_source_policy": "NO_SORRY_ADMIT_AXIOM_PLACEHOLDERS"
+  },
+  "two_gap_attempt": {
+    "repository": "ShantiDraconis/m-core-p-vs-np",
+    "branch": "attack/final-external-two-gap-attempt-20260922",
+    "stable_base_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+    "attempt_head_sha": "2aac88ed0b8e363e5e9dee390b3a67a3d03b2180",
+    "run": 35725542156,
+    "status": "SUCCESS",
+    "open_sorry_count": 2,
+    "p01": "OPEN_IMPLEMENTATION",
+    "p02": "OPEN_MATH",
+    "FINAL_ROOT": null,
+    "FINAL_EXTERNAL_ISSUED": false,
+    "final_proof": "0/7",
+    "package_hash_note": "Exploratory attack branch record; frozen preparatory package hashes are not reissued by this attempt."
   }
 }
