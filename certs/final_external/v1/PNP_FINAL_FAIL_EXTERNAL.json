@@ -1,0 +1,43 @@
+{
+  "schema": "mcore.pnp.final-fail-external.v1",
+  "repository": "ShantiDraconis/m-core-p-vs-np",
+  "process_state": "FINAL_FAIL_EXTERNAL_CLOSED",
+  "process_closed": true,
+  "proof_claimed": false,
+  "final_external_proof_issued": false,
+  "source_sha": "815dfb08e719b80e82cc35a5e01988064a0b3496",
+  "source_file": "lean/MCore/Real/FinalExternalFailClosure.lean",
+  "validating_run": 35722796449,
+  "validating_run_status": "SUCCESS",
+  "frozen_branch": "frozen/final-fail-external-green-815dfb08",
+  "certificate_branch": "cert/final-fail-external-815dfb08-run35722796449",
+  "certificate_tip": "0fc0c0ea5b40b12d10ac27e74fadfb832294c525",
+  "certificate_sha256": "98c2d1ec51bcebba7a3805c218bf4b5d7a5353182ed63b00fa83296e34ca9438",
+  "integrated_lineage": {
+    "g21_literal": {
+      "state": "CLOSED_BY_FALSIFICATION",
+      "source_sha": "17c04b62d03946aab4573894833f087ade25bc33",
+      "run": 35721158651
+    },
+    "g22_wiring": {
+      "state": "GREEN_FROZEN_CERTIFIED",
+      "source_sha": "38db71b416906e5b7138774842e91d3e367aad09",
+      "run": 35722282451
+    },
+    "final_external_integration": {
+      "state": "GREEN_FROZEN_CERTIFIED",
+      "source_sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
+      "run": 35722252805
+    },
+    "g3_normalized_contract": {
+      "state": "GREEN_FROZEN_CERTIFIED",
+      "source_sha": "f2cafea7a74f3ef8ad4140943515622545c9f1d8",
+      "run": 35719428075
+    }
+  },
+  "unresolved_mathematical_producers_recorded_in_final_fail": [
+    "P01MachineConstruction / SATInNPGap circuitBitEncoding",
+    "G21Pointwise universal deterministic SAT failure"
+  ],
+  "policy": "Externalize the terminal fail/audit record without fabricating FinalExternalGap or an OfficialPneqNP theorem."
+}
