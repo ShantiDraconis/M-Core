@@ -1,0 +1,118 @@
+{
+  "schema": "mcore.final-proof.p-vs-np.audit.v1",
+  "clean_lane": {
+    "mcore_base_commit": "7208ac7b152970915b2d15f4ab0141560528d583",
+    "mcore_branch": "final-proof-p01-construction",
+    "preparatory_root": "1651ac0cf58b81ce2038019c548fbd7132487aa0ad3a2e29b934adf6e3bf88d9",
+    "pvsnp_branch": "final-proof-p01-construction",
+    "pvsnp_reuse_head": "9d987dc8161bfc7bcb371d4624532356fe32a89f",
+    "forbidden_fail_lane": [
+      "c6e93506b3c5d0e52f9a35ef837c63b86c0ef20c",
+      "ebfcfa18ecfae88bbe57c0f9cf5fb71597103434"
+    ]
+  },
+  "gates": {
+    "GATE1_P01": {
+      "state": "OPEN",
+      "hard_new_content": true,
+      "exact_target": "P01ConstructionGap = Nonempty P01MachineConstruction",
+      "subpayloads": [
+        "no-hypothesis SlotParserMachineSimulationCertificate / global parser simulation",
+        "integrated fixed-control parser -> witness guess -> verifier NTM",
+        "polynomial time bound + total halting + accepts_iff SATBits"
+      ],
+      "reused_certified_prefix": {
+        "binary_head_global_slotlog": "9d987dc8161bfc7bcb371d4624532356fe32a89f",
+        "binary_head_run": 35729194014,
+        "phase_global_slotlog": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+        "phase_global_slotlog_run": 35723570545,
+        "terminal_branches": "f9add60881d709ce8320cb54a4d52f26d829b8f5",
+        "terminal_branches_run": 35722846538,
+        "integrated_parser_leaf": "3690ab0593358d065930b36ec1e7a67852a88fa0",
+        "integrated_parser_leaf_run": 35722427864
+      }
+    },
+    "GATE2_G21": {
+      "state": "OPEN_MATH",
+      "hard_new_content": true,
+      "exact_target": "G21Pointwise",
+      "equivalent_targets": [
+        "P02Target",
+        "Nonempty (FailureGenerator (SATBits circuitBitEncoding))",
+        "¬ InP (SATBits circuitBitEncoding)"
+      ],
+      "invalid_route": "literal semanticDiagonalBits fixed-point route CLOSED_BY_FALSIFICATION",
+      "reusable_wiring": "38db71b416906e5b7138774842e91d3e367aad09"
+    },
+    "GATE3_ENDPOINT": {
+      "state": "INTEGRATION_HARNESS_READY",
+      "hard_new_content": false,
+      "lean_reduction": "FinalExternalTwoGap.final_external_two_gap_closes",
+      "certified_source": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+      "certified_run": 35722743845,
+      "missing_until_gates_1_2": "materialize math endpoint record and FINAL_ROOT_MATH"
+    },
+    "GATE4_EMISSION": {
+      "state": "HARNESS_PARTIAL",
+      "hard_new_content": false,
+      "fail_harness_reusable": true,
+      "missing": "proof-lane-specific issuance workflow/root policy",
+      "policy_note": "Do not reuse ELYON FINAL_EXTERNAL_ISSUED semantics unchanged: current v1.3.1 also requires human/app/crypto/hardware. Math certificate should carry FINAL_ROOT_MATH and P_VS_NP_EXTERNAL_MATH_CERTIFIED independently."
+    }
+  },
+  "tests": {
+    "T1": {
+      "state": "MISSING_HARD_CONTENT",
+      "gate": "P01"
+    },
+    "T2": {
+      "state": "HARNESS_REUSABLE",
+      "source": "manifest/status/provenance JSON structure"
+    },
+    "T3": {
+      "state": "HARNESS_REUSABLE",
+      "source": "freeze.sh SHA256SUMS generation/check"
+    },
+    "T4": {
+      "state": "NEEDS_PROOF_LANE_ADAPTER",
+      "source": "PREPARATORY_ROOT/frozen branch machinery reusable"
+    },
+    "T5": {
+      "state": "MISSING_HARD_CONTENT",
+      "gate": "G21Pointwise"
+    },
+    "T6": {
+      "state": "HARNESS_REUSABLE",
+      "source": "provenance.json structure"
+    },
+    "T7": {
+      "state": "NEEDS_PROOF_LANE_ADAPTER",
+      "source": "SHA256SUMS/root/frozen machinery reusable"
+    },
+    "T8": {
+      "state": "LEAN_INTEGRATION_ALREADY_CERTIFIED",
+      "source_sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+      "run": 35722743845
+    },
+    "T9": {
+      "state": "NEEDS_PROOF_LANE_EMISSION_POLICY",
+      "note": "math certification can be emitted after 2/2; existing ELYON product issuance has additional non-math gates"
+    }
+  },
+  "conclusion": {
+    "new_mathematical_or_machine_content": [
+      "T1",
+      "T5"
+    ],
+    "reuse_with_adaptation": [
+      "T2",
+      "T3",
+      "T4",
+      "T6",
+      "T7",
+      "T8",
+      "T9"
+    ],
+    "exact_two_hard_producers": true
+  }
+}
