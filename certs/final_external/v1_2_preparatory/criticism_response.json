@@ -15,7 +15,7 @@
     "dedicated_ci_run": "35710384545",
     "dedicated_ci_status": "SUCCESS",
     "umbrella_certificate_run": "35710384520",
-    "umbrella_certificate_status": "IN_PROCESS_AT_RECORD_TIME"
+    "umbrella_certificate_status": "SUCCESS"
   },
   "g2_0": {
     "initial_green_sha": "77ed82750762fa3057c96f340254f522681ccdee",
