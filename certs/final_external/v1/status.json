@@ -4,11 +4,44 @@
   "version": "v1.0.0",
   "issuance": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "reason": "Fail-closed: human_review=UNSET, app=UNSET, production_crypto=UNSET, hardware_attestation=UNSET, G3=OPEN_CONSTRUCTION",
+    "reason": "Fail-closed: five blocker classes remain: human_review=UNSET, app=UNSET, production_crypto=UNSET, hardware_attestation=UNSET, G3=OPEN_CONSTRUCTION",
     "infra_state": "READY_FOR_FREEZE",
     "math_state": "OPEN_MATH",
     "release_state": "SEALED_CLOSED",
-    "max_machine_state": "REVIEW_PENDING"
+    "max_machine_state": "REVIEW_PENDING",
+    "public_status": "PREPARATORY_NOT_ISSUED",
+    "next_possible_without_human": ["PREPARATORY_PACKAGE","HASHED","REPRODUCIBILITY_AUDITED","FROZEN_PREPARATORY"],
+    "not_possible": "FINAL_EXTERNAL_ISSUED"
   },
-  "final_proof": "0/7"
+  "human_review": {"authority":"UNSET","quorum":"UNSET","evidence_policy":"UNSET"},
+  "production": {"app":"UNSET","crypto":"UNSET","hardware":"UNSET"},
+  "G3": "OPEN_CONSTRUCTION",
+  "final_proof": "0/7",
+  "note": "This artifact can exist now as preparatory schema/manifest, but must NOT receive FINAL_EXTERNAL=ISSUED until release gates satisfied",
+  "package_state": "PREPARATORY",
+  "public_status": "PREPARATORY_NOT_ISSUED",
+  "public_label": "PREPARATORY / non-issued infrastructure record",
+  "hash_levels": {
+    "PACKAGE_SHA256SUMS": "CALCULABLE_NOW_over_preparatory_files",
+    "PREPARATORY_ROOT": "SEE_PREPARATORY_ROOT_FILE",
+    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_while_UNSET_exists"
+  },
+  "normative_state": {
+    "ELYON_FINAL_EXTERNAL": "v1.0.0",
+    "package_state": "PREPARATORY",
+    "infra_state": "READY_FOR_FREEZE",
+    "math_state": "OPEN_MATH",
+    "final_proof": "0/7",
+    "release_state": "SEALED_CLOSED",
+    "maximum_auto_state": "REVIEW_PENDING",
+    "FINAL_EXTERNAL_ISSUED": false,
+    "P01_PREFIX": "GREEN_FROZEN_CERTIFIED",
+    "P01_ENDPOINT": "OPEN",
+    "P02_FRONTIER": "FORMALIZED",
+    "P02_ENDPOINT": "OPEN_MATH",
+    "P03..P07": "OPEN_MATH",
+    "G3": "OPEN_CONSTRUCTION"
+  },
+  "package_revision": "v1.1-preparatory",
+  "freeze_state": "FROZEN_PREPARATORY"
 }
