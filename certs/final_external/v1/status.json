@@ -4,18 +4,31 @@
   "version": "v1.0.0",
   "issuance": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "reason": "Fail-closed: five blocker classes remain: human_review=UNSET, app=UNSET, production_crypto=UNSET, hardware_attestation=UNSET, G3=OPEN_CONSTRUCTION",
+    "reason": "Fail-closed: P01 SATInNPGap remains OPEN_IMPLEMENTATION and P02 FailureGenerator(SAT) remains OPEN_MATH (equivalent to SAT not in P). G3 formal contract is CLOSED. Product/human issuance gates remain governed separately by this package.",
     "infra_state": "READY_FOR_FREEZE",
     "math_state": "OPEN_MATH",
     "release_state": "SEALED_CLOSED",
     "max_machine_state": "REVIEW_PENDING",
     "public_status": "PREPARATORY_NOT_ISSUED",
-    "next_possible_without_human": ["PREPARATORY_PACKAGE","HASHED","REPRODUCIBILITY_AUDITED","FROZEN_PREPARATORY"],
+    "next_possible_without_human": [
+      "PREPARATORY_PACKAGE",
+      "HASHED",
+      "REPRODUCIBILITY_AUDITED",
+      "FROZEN_PREPARATORY"
+    ],
     "not_possible": "FINAL_EXTERNAL_ISSUED"
   },
-  "human_review": {"authority":"UNSET","quorum":"UNSET","evidence_policy":"UNSET"},
-  "production": {"app":"UNSET","crypto":"UNSET","hardware":"UNSET"},
-  "G3": "OPEN_CONSTRUCTION",
+  "human_review": {
+    "authority": "UNSET",
+    "quorum": "UNSET",
+    "evidence_policy": "UNSET"
+  },
+  "production": {
+    "app": "UNSET",
+    "crypto": "UNSET",
+    "hardware": "UNSET"
+  },
+  "G3": "FORMAL_CONTRACT_CLOSED_GREEN_FROZEN_CERTIFIED",
   "final_proof": "0/7",
   "note": "This artifact can exist now as preparatory schema/manifest, but must NOT receive FINAL_EXTERNAL=ISSUED until release gates satisfied",
   "package_state": "PREPARATORY",
@@ -24,7 +37,7 @@
   "hash_levels": {
     "PACKAGE_SHA256SUMS": "CALCULABLE_NOW_over_preparatory_files",
     "PREPARATORY_ROOT": "SEE_PREPARATORY_ROOT_FILE",
-    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_while_UNSET_exists"
+    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_until_P01_and_P02_and_all_release_gates_close"
   },
   "normative_state": {
     "ELYON_FINAL_EXTERNAL": "v1.0.0",
@@ -36,12 +49,20 @@
     "maximum_auto_state": "REVIEW_PENDING",
     "FINAL_EXTERNAL_ISSUED": false,
     "P01_PREFIX": "GREEN_FROZEN_CERTIFIED",
-    "P01_ENDPOINT": "OPEN",
-    "P02_FRONTIER": "FORMALIZED",
-    "P02_ENDPOINT": "OPEN_MATH",
+    "P01_ENDPOINT": "OPEN_IMPLEMENTATION",
+    "P02_FRONTIER": "G2.1_LITERAL_FIXED_POINT_CLOSED_BY_FALSIFICATION",
+    "P02_ENDPOINT": "OPEN_MATH_FAILURE_GENERATOR_EQ_SAT_NOT_IN_P",
     "P03..P07": "OPEN_MATH",
-    "G3": "OPEN_CONSTRUCTION"
+    "G3": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "FINAL_EXTERNAL_MATH_INPUTS": "BLOCKED_BY_P01_AND_P02"
   },
   "package_revision": "v1.1-preparatory",
-  "freeze_state": "FROZEN_PREPARATORY"
+  "freeze_state": "FROZEN_PREPARATORY",
+  "math_terminal_boundary": {
+    "record": "MATH_TERMINAL_BOUNDARY_20260922.json",
+    "frozen_branch": "frozen/final-external-math-boundary-442d11aa",
+    "p01": "OPEN_IMPLEMENTATION",
+    "p02": "OPEN_MATH_EQ_SAT_NOT_IN_P",
+    "g3": "CLOSED_GREEN_FROZEN_CERTIFIED"
+  }
 }
