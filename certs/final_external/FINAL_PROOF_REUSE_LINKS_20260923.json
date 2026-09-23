@@ -3,7 +3,7 @@
   "date": "2026-09-23",
   "final_external_package": "certs/final_external/v1",
   "frozen_package_mutation": false,
-  "note": "This linkage file is outside the immutable v1 payload. It records reusable source artifacts and must be incorporated only by an explicit package revision/re-hash.",
+  "note": "This linkage file is outside the immutable v1 payload. It records reusable source artifacts and must be incorporated only by an explicit package revision/re-hash. Current session SHAs/runs are linked as provenance only; frozen v1 payload remains unchanged.",
   "global_manifest": "final-proof/all_relevant_files.json",
   "pnp_reuse_ledger": "final-proof/pnp_reuse_chain.json",
   "final_proof_registry": "lean/MCore/FinalProofRegistry.lean",
@@ -20,5 +20,12 @@
   "current_external_state": "PREPARATORY_NOT_ISSUED",
   "FINAL_EXTERNAL_ISSUED": false,
   "FINAL_ROOT": null,
-  "FINAL_PROOF": "0/7"
+  "FINAL_PROOF": "0/7",
+  "pnp_session_advances": "final-proof/PNP_SESSION_ADVANCES_20260923.json",
+  "pnp_source_head": "d6675e40f03dd58d0e8a95ce50a7ab410bb9cefb",
+  "gap_discovery_runs": [
+    35874646162,
+    35876979261,
+    35877903171
+  ]
 }
