@@ -48,7 +48,25 @@
         "P01ConstructionGap",
         "G21Pointwise"
       ],
-      "state": "OPEN_MATH_TWO_EXACT_PRODUCERS"
+      "state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
+      "source_ref": "d6675e40f03dd58d0e8a95ce50a7ab410bb9cefb",
+      "session_advances": "final-proof/PNP_SESSION_ADVANCES_20260923.json",
+      "preserved_certificate_runs": [
+        35876979297,
+        35877902750,
+        35880156256,
+        35880163384,
+        35880167760,
+        35880174238,
+        35880202588,
+        35880207230,
+        35880219377
+      ],
+      "gap_discovery_runs": [
+        35874646162,
+        35876979261,
+        35877903171
+      ]
     },
     "BSD": {
       "source_repo": "ShantiDraconis/m-core-bsd",
