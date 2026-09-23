@@ -1,0 +1,74 @@
+name: Final Proof Miner
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: final-proof-miner
+  cancel-in-progress: false
+
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run global endpoint miner
+        run: python3 scripts/final_proof_miner.py
+
+      - name: Lean kernel audit when available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f lakefile.lean ] || [ -f lakefile.toml ]; then
+            if command -v lake >/dev/null 2>&1; then
+              lake build
+            else
+              echo "Lean project detected but lake is unavailable on runner" | tee evidence/kernel_audit.txt
+            fi
+          else
+            echo "No Lean lakefile in this repository; kernel audit not applicable here." | tee evidence/kernel_audit.txt
+          fi
+
+      - name: Reject placeholders in Lean sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          if find . -name '*.lean' -type f | grep -q .; then
+            if grep -RInE '\b(sorry|admit|sorryAx)\b' --include='*.lean' .; then
+              echo "FAIL_CLOSED: Lean placeholder detected" | tee evidence/hygiene_status.txt
+              exit 1
+            fi
+          fi
+          echo "HYGIENE_GREEN" | tee evidence/hygiene_status.txt
+
+      - name: Upload evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-proof-evidence
+          path: evidence/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit refreshed evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "final-proof-miner[bot]"
+          git config user.email "final-proof-miner[bot]@users.noreply.github.com"
+          git add evidence/
+          if git diff --cached --quiet; then
+            echo "No evidence changes"
+            exit 0
+          fi
+          git commit -m "evidence: refresh FINAL_PROOF dependency mining"
+          git push
