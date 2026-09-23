@@ -1,3 +1,5 @@
+import Mathlib
+
 namespace MCore.FinalFail
 
 inductive ProblemId where
