@@ -100,8 +100,15 @@
   },
   "final_proof_slot": {
     "slot": "P_VS_NP",
-    "current_state": "LINKED_REUSE_FAIL_CLOSED",
+    "current_state": "LINKED_REUSE_FAIL_CLOSED__ALL_CURRENT_CHECKPOINTS_ATTACHED",
     "credit": 0,
     "blocker_rule": "Credit only after imported/referenced sources yield actual inhabitants of P01ConstructionGap and G21Pointwise under the current official types and pass kernel+axiom audit."
-  }
+  },
+  "session_advances_20260923": "final-proof/PNP_SESSION_ADVANCES_20260923.json",
+  "latest_source_head": "d6675e40f03dd58d0e8a95ce50a7ab410bb9cefb",
+  "latest_verified_gap_discovery_runs": [
+    35874646162,
+    35876979261,
+    35877903171
+  ]
 }
