@@ -6,7 +6,6 @@ import MCore.FinalFail.TriadicObstructionCalculus
 import MCore.FinalFail.ClosedCenterHard
 import MCore.FinalFail.FundamentalIndeterminacy
 import MCore.FinalFail.RelationalHardAtom
-import MCore.FinalFail.BrainKernel
 import MCore.FinalFail.Attack.Beal
 import MCore.FinalFail.Attack.NavierStokes
 
