@@ -90,7 +90,7 @@
     {
       "slot": "P_VS_NP",
       "repo": "ShantiDraconis/m-core-p-vs-np",
-      "pinned_head": "95963a2f6408606f4f691f49647b2dc75f156289",
+      "pinned_head": "d6675e40f03dd58d0e8a95ce50a7ab410bb9cefb",
       "canonical": [
         "audit/ORIENTED_WITNESS_BOUNDARY.md",
         "lean/MCore/BackwardAudit/OrientedWitnessBoundary.lean",
@@ -117,7 +117,14 @@
           "sha": "38db71b416906e5b7138774842e91d3e367aad09",
           "run": 35722282451
         }
-      }
+      },
+      "session_advances": "final-proof/PNP_SESSION_ADVANCES_20260923.json",
+      "reuse_ledger": "final-proof/pnp_reuse_chain.json",
+      "gap_discovery_runs": [
+        35874646162,
+        35876979261,
+        35877903171
+      ]
     },
     {
       "slot": "BSD",
