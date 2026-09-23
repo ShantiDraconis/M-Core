@@ -1,0 +1,206 @@
+{
+  "schema": "mcore.pnp-session-advances.v1",
+  "date": "2026-09-23",
+  "source_repo": "ShantiDraconis/m-core-p-vs-np",
+  "purpose": "Attach all verified/reusable P vs NP session checkpoints to the M-Core FINAL_PROOF chain without promoting OPEN_MATH.",
+  "policy": {
+    "no_terminal_promotion_without_kernel_producer": true,
+    "preserve_existing_green_frozen_certified": true,
+    "g2_1_literal_fixed_point": "CLOSED_BY_FALSIFICATION"
+  },
+  "active_lineage": [
+    {
+      "sha": "1e5dcaed43c54ea233cf9bdd2314297989c83d40",
+      "role": "P02 Kleene bridge direct fixed-point flip application",
+      "state": "SOURCE"
+    },
+    {
+      "sha": "0ab58667a0fbd84d5f74f32d84980ca24c6216a8",
+      "role": "exact two-producer workflow on MCore.Real.*",
+      "state": "INFRA_GREEN_PARTIAL"
+    },
+    {
+      "sha": "2a507b7b2836251b8c17f8c90da6471e850f7924",
+      "role": "disambiguated fixed-point flip field application",
+      "state": "SOURCE"
+    },
+    {
+      "sha": "9f87dbc976cc4439f6a87b703a92b3c4cc3968e0",
+      "role": "inactive transition guard-prefix patch",
+      "state": "SOURCE"
+    },
+    {
+      "sha": "d6675e40f03dd58d0e8a95ce50a7ab410bb9cefb",
+      "role": "transition-case membership normalization",
+      "state": "SOURCE"
+    }
+  ],
+  "p01_checkpoints": [
+    {
+      "sha": "9d987dc8161bfc7bcb371d4624532356fe32a89f",
+      "role": "binary-head clean"
+    },
+    {
+      "sha": "0ff71d49edd9457025377fe6eaf041bea8bd2171",
+      "role": "P01 hard realization checkpoint"
+    },
+    {
+      "sha": "93f1321f53aa93e18c7dcbf8a8a04e2844a15cbe",
+      "role": "leaf/source"
+    },
+    {
+      "sha": "28ad994cf81cf0a4e46dd17da27daabf0c5b4804",
+      "role": "T1-A global parser"
+    },
+    {
+      "sha": "9e3ad0dc3942d50c7831f76348f55d5f6920584a",
+      "role": "witness bound normalization"
+    },
+    {
+      "sha": "6e6d0889b7e308a4eacbc5cd17719c44f2ab0b51",
+      "role": "physical realization layer integrated"
+    },
+    {
+      "sha": "dfb3e60dc37e96f46a3ca071c428456634ec6dca",
+      "role": "targeted P01 construction validation"
+    }
+  ],
+  "t5_a1_checkpoints": [
+    {
+      "sha": "39da55deeaf9f5ad35f69d69c3d4858250baa748",
+      "role": "transition soundness"
+    },
+    {
+      "sha": "30707e68367460041a3106211f3150db38c236cd",
+      "role": "bounded execution close-contract"
+    },
+    {
+      "sha": "75b106838b800fea03b383d2059bb087556b46f2",
+      "role": "bounded execution final-correctness lane"
+    },
+    {
+      "sha": "336f84953560d63e924546fe597ab7aa7aa5631e",
+      "role": "bounded computation integration"
+    },
+    {
+      "sha": "8e31a49b9be2fd9950e65d5c401ceba3a177a765",
+      "role": "tableau completeness close lane"
+    },
+    {
+      "sha": "d6675e40f03dd58d0e8a95ce50a7ab410bb9cefb",
+      "role": "latest tableau transition membership patch"
+    }
+  ],
+  "t5_a2_p02_checkpoints": [
+    {
+      "sha": "3485380f801f261ed8f11f543685cf61687f4316",
+      "role": "strength reduction"
+    },
+    {
+      "sha": "e4a39df7d111edcb87a0f649308a8180b353d541",
+      "role": "semantic self-embedding lane"
+    },
+    {
+      "sha": "7983b0cbf307ebd54fa0bede1951e6214a20afaf",
+      "role": "A2 close-contract"
+    },
+    {
+      "sha": "0c755ac3c701b6db0c27d8971a2eca90a91118f7",
+      "role": "universal-existence lane"
+    },
+    {
+      "sha": "7aedf7bd13a64f2bcfe7f7dc781c3f20fbde4d73",
+      "role": "clock failure lane"
+    },
+    {
+      "sha": "f3dc5354a6f8a652fbcda941b4f0a0e6213ddd30",
+      "role": "semantic mismatch algebra"
+    },
+    {
+      "sha": "a5635895dee4d7736778ce0104dfbe7016f6487a",
+      "role": "candidate coding"
+    },
+    {
+      "sha": "8fff59efc44d1c8d5ee37190eca56ed9a5278d6f",
+      "role": "diagonal compiler lane"
+    },
+    {
+      "sha": "2f91cd23c78c58640eaf66eb7b4aae8ba70e5091",
+      "role": "total semantic counterexample lane"
+    },
+    {
+      "sha": "5f8a0aa2c6ca41d77515e3bf97bd1fa53138679d",
+      "role": "Kleene build lane"
+    },
+    {
+      "sha": "0f6bcd5243ee499dc3e182b81ea98459858b6883",
+      "role": "E1 partrec"
+    },
+    {
+      "sha": "b6b6821b337ae70ef958d461a44156d2345d3336",
+      "role": "E2 audit"
+    },
+    {
+      "sha": "3e856e0ce77f773b95a7920d11babc653233a824",
+      "role": "E2 semantic totality"
+    },
+    {
+      "sha": "270282a55e18588dce3e7a8a9a72db2cda277d98",
+      "role": "universal witness chain plumbing"
+    }
+  ],
+  "downstream": [
+    {
+      "sha": "93e897adc526d50edae9a3a399ac2ea2194b44f0",
+      "role": "G3 model-match lane",
+      "state": "GREEN"
+    },
+    {
+      "sha": "cdb56436899222f2ea8c367a632c0ce6059caca7",
+      "role": "FINAL_EXTERNAL live lane",
+      "state": "READY_CONDITIONAL"
+    },
+    {
+      "sha": "098d29d69c6aa51daca85e8cfc68e4f6e6c310a5",
+      "role": "FINAL_EXTERNAL two-gap attempt",
+      "state": "READY_CONDITIONAL"
+    },
+    {
+      "sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
+      "role": "FINAL_EXTERNAL integration",
+      "state": "GREEN_FROZEN_CERTIFIED"
+    },
+    {
+      "sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+      "role": "FINAL_EXTERNAL two-gap wiring",
+      "state": "GREEN_FROZEN_CERTIFIED"
+    }
+  ],
+  "verified_runs": {
+    "gap_discovery": [
+      35874646162,
+      35876979261,
+      35877903171
+    ],
+    "certificate_success": [
+      35876979297,
+      35877902750,
+      35880156256,
+      35880163384,
+      35880167760,
+      35880174238,
+      35880202588,
+      35880207230,
+      35880219377
+    ]
+  },
+  "terminal_state": {
+    "P01ConstructionGap": "OPEN_MATH_CORE",
+    "G21Pointwise": "OPEN_MATH_CORE",
+    "P02Target": "READY_CONDITIONAL_ON_G21",
+    "G3": "GREEN",
+    "FINAL_EXTERNAL": "READY_CONDITIONAL",
+    "FINAL_PROOF_P_VS_NP": "OPEN"
+  },
+  "consumer_chain": "P01ConstructionGap + G21Pointwise -> P02Target -> FinalExternalGap -> OfficialPneqNP -> FINAL_PROOF[P_VS_NP]"
+}
