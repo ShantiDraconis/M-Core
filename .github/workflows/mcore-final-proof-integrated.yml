@@ -67,16 +67,14 @@ jobs:
         run: |
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
-          export LEAN_PATH="lean${LEAN_PATH:+:$LEAN_PATH}"
-          lake env lean lean/MCore/FinalProofRegistry.lean
+          lake build MCore.FinalProofRegistry
 
       - name: Kernel check FINAL_PROOF firewall
         shell: bash
         run: |
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
-          export LEAN_PATH="lean${LEAN_PATH:+:$LEAN_PATH}"
-          lake env lean lean/MCore/FinalProofFirewall.lean
+          lake build MCore.FinalProofFirewall
 
       - name: Reject Lean placeholders
         shell: bash
