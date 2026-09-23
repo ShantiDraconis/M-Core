@@ -1,4 +1,5 @@
 name: M-Core Full Chain Archive Audit
+# current-chain rerun marker
 
 on:
   push:
