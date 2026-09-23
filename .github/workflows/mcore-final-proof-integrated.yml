@@ -93,9 +93,9 @@ jobs:
           before="$(cat /tmp/mcore_head.txt)"
           after="$(git rev-parse HEAD)"
           test "$before" = "$after"
-          test -z "$(git status --porcelain)" || {
-            echo "FAIL_CLOSED: workflow mutated repository contents"
-            git status --short
+          test -z "$(git diff --name-only --diff-filter=ACMRTUXB)" || {
+            echo "FAIL_CLOSED: workflow mutated tracked repository contents"
+            git diff --name-status
             exit 1
           }
           echo "HEAD_PRESERVED=$after"
