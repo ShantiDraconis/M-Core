@@ -1,5 +1,7 @@
 name: Final Proof Miner
 
+# M-Core sources live under lean/; lakefile.lean sets srcDir accordingly.
+
 on:
   push:
     branches: [ main ]
