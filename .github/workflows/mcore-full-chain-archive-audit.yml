@@ -37,10 +37,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          test -z "$(git status --porcelain)" || {
+            echo "FAIL_CLOSED: checkout is not clean before evidence generation"
+            git status --short
+            exit 1
+          }
           mkdir -p evidence/full-chain
           git rev-parse HEAD | tee evidence/full-chain/HEAD
-          git status --porcelain | tee evidence/full-chain/worktree.txt
-          test ! -s evidence/full-chain/worktree.txt
+          : > evidence/full-chain/worktree.txt
 
       - name: Validate all JSON manifests and certificates
         shell: bash
