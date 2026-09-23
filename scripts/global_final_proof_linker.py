@@ -9,6 +9,8 @@ OUT=ROOT/"evidence"
 OUT.mkdir(exist_ok=True)
 
 cfg=json.loads(SRC.read_text())
+pnp_reuse_path=ROOT/"final-proof"/"pnp_reuse_chain.json"
+pnp_reuse=json.loads(pnp_reuse_path.read_text()) if pnp_reuse_path.exists() else None
 chains=[]
 for c in cfg["chains"]:
     local_refs=[]
@@ -39,6 +41,7 @@ report={
   "chains":chains,
   "final_fail":cfg["final_fail"],
   "final_external":cfg["final_external"],
+  "pnp_reuse_chain":pnp_reuse,
   "policy":"Cross-repository evidence linkage is not proof promotion. A slot closes only after the terminal theorem is kernel-checked and linked through the official consumer."
 }
 payload=json.dumps(report,indent=2,sort_keys=True)
