@@ -22,8 +22,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run global endpoint miner
+      - name: Run endpoint miner
         run: python3 scripts/final_proof_miner.py
+
+      - name: Link all seven FINAL_PROOF chains
+        run: python3 scripts/global_final_proof_linker.py
 
       - name: Lean kernel audit when available
         shell: bash
