@@ -28,19 +28,25 @@ jobs:
       - name: Link all seven FINAL_PROOF chains
         run: python3 scripts/global_final_proof_linker.py
 
-      - name: Lean kernel audit when available
+      - name: Install Lean toolchain
         shell: bash
         run: |
           set -euo pipefail
-          if [ -f lakefile.lean ] || [ -f lakefile.toml ]; then
-            if command -v lake >/dev/null 2>&1; then
-              lake build
-            else
-              echo "Lean project detected but lake is unavailable on runner" | tee evidence/kernel_audit.txt
-            fi
-          else
-            echo "No Lean lakefile in this repository; kernel audit not applicable here." | tee evidence/kernel_audit.txt
-          fi
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Lean kernel audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake build MCore.FinalProofRegistry MCore.FinalProofFirewall
+          lake build
+          {
+            echo "KERNEL_BUILD_GREEN"
+            echo "toolchain=$(cat lean-toolchain)"
+          } | tee evidence/kernel_audit.txt
 
       - name: Reject placeholders in Lean sources
         shell: bash
