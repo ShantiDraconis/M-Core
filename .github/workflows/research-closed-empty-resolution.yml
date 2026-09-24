@@ -1,0 +1,41 @@
+name: Closed Empty Resolution Lane
+
+on:
+  push:
+    branches:
+      - research/closed-empty-external-20260924
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: false
+          test: false
+          lint: false
+      - name: Reject placeholders
+        run: |
+          set -euo pipefail
+          files=(
+            lean/MCore/Real/Resolution.lean
+            lean/MCore/Real/E.lean
+            lean/MCore/Real/RealProducer.lean
+            lean/MCore/Real/RealProducerWitness.lean
+            lean/MCore/Real/EXTERNAL_CERTIFICATE.lean
+          )
+          ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${files[@]}"
+          ! grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' "${files[@]}"
+      - name: Kernel build
+        run: |
+          set -euo pipefail
+          lake build MCore.Real.Resolution
+          lake build MCore.Real.E
+          lake build MCore.Real.RealProducer
+          lake build MCore.Real.RealProducerWitness
+          lake build MCore.Real.EXTERNAL_CERTIFICATE
