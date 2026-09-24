@@ -36,6 +36,7 @@ jobs:
             lean/MCore/Real/Claim3PersistentFamily.lean
             lean/MCore/Real/Claim4NormalizedProgress.lean
             lean/MCore/Real/P02RestrictionFamilyAudit.lean
+            lean/MCore/Real/Claim6CNFDeficitAudit.lean
             lean/MCore/Real/SevenRealProducer.lean
             lean/MCore/Real/SevenExternalCertificate.lean
           )
@@ -50,6 +51,7 @@ jobs:
           lake build MCore.Real.Claim3PersistentFamily
           lake build MCore.Real.Claim4NormalizedProgress
           lake build MCore.Real.P02RestrictionFamilyAudit
+          lake build MCore.Real.Claim6CNFDeficitAudit
           lake build MCore.Real.BridgeSeven
           lake build MCore.Real.SevenRealProducer
           lake build MCore.Real.SevenExternalCertificate
