@@ -1,0 +1,6 @@
+A14NonImplication
+STATE: CLOSED_BY_COUNTERMODEL
+THEOREMS:
+- A14_alone_not_sufficient_for_covering
+- A14_alone_not_sufficient_for_testDefect
+- A14_alone_not_sufficient_for_joint_decay
