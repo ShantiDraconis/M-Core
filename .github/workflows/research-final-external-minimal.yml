@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - research/seven-certs-final-20260924
+      - seven-bridge/claim5-6
   workflow_dispatch:
 
 permissions:
