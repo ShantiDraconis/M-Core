@@ -32,29 +32,25 @@ theorem literal_var_mem_cnfVarList
     {f : CNF} {c : Clause} {l : Literal}
     (hc : c ∈ f) (hl : l ∈ c) :
     l.var ∈ cnfVarList f := by
-  unfold cnfVarList
-  simpa using (show l.var ∈ (f.flatMap fun clause => clause.map Literal.var) from by
-    simp
-    exact ⟨c, hc, l, hl, rfl⟩)
+  simp [cnfVarList]
+  exact ⟨c, hc, l, hl, rfl⟩
 
 /-- cnfVarList is monotone under append. -/
 theorem cnfVarList_left_subset_append
     (a b : CNF) :
     ∀ v, v ∈ cnfVarList a → v ∈ cnfVarList (a ++ b) := by
   intro v hv
-  unfold cnfVarList at *
-  simpa [List.flatMap_append] using (show v ∈
-      (a.flatMap fun clause => clause.map Literal.var) ++
-      (b.flatMap fun clause => clause.map Literal.var) from Or.inl (by simpa using hv))
+  simp [cnfVarList] at hv ⊢
+  rcases hv with ⟨c, hc, l, hl, hvar⟩
+  exact ⟨c, by simp [hc], l, hl, hvar⟩
 
 theorem cnfVarList_right_subset_append
     (a b : CNF) :
     ∀ v, v ∈ cnfVarList b → v ∈ cnfVarList (a ++ b) := by
   intro v hv
-  unfold cnfVarList at *
-  simpa [List.flatMap_append] using (show v ∈
-      (a.flatMap fun clause => clause.map Literal.var) ++
-      (b.flatMap fun clause => clause.map Literal.var) from Or.inr (by simpa using hv))
+  simp [cnfVarList] at hv ⊢
+  rcases hv with ⟨c, hc, l, hl, hvar⟩
+  exact ⟨c, by simp [hc], l, hl, hvar⟩
 
 #print axioms MCore.Real.Claim7VariableCoverage.literal_var_mem_cnfVarList
 #print axioms MCore.Real.Claim7VariableCoverage.cnfVarList_left_subset_append
