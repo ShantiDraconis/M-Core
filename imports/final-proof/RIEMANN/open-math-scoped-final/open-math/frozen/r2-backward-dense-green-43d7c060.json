@@ -1,0 +1,10 @@
+{
+  "certificate": "r2-backward-dense-green-43d7c060",
+  "group": "R2",
+  "problem": "RIEMANN",
+  "declared_state": "GREEN",
+  "role": "FROZEN_SCOPED_EVIDENCE",
+  "proves_riemann_hypothesis": false,
+  "source_artifact_attached": false,
+  "kernel_verification": null
+}
