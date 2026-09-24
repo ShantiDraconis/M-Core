@@ -14,13 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-        with:
-          build: false
-          test: false
-          lint: false
-      - run: |
+      - name: Install Lean toolchain
+        run: |
           set -euo pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+      - name: Kernel gate final external branch
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
           files=(
             lean/MCore/Research/FinalExternalBranch.lean
             research/final-external/manifest.json
