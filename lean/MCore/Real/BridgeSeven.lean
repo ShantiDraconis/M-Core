@@ -49,7 +49,7 @@ def claim4_leavesZeroFree_no_progress_norm
     This is the audit theorem rerun by that commit; no SHA/run metadata is used as proof. -/
 def claim5_allCNF_universal_deficit_refuted :
     ¬ (∀ (t : MCore.C9.FormulaTree),
-        MCore.CircuitK1.IsCNF t →
+        MCore.Real.IsCNF t →
         ∀ ρ : MCore.CircuitK1.Restriction,
           MCore.C10.RestrictionProgress ρ t →
             ¬ MCore.C11.PaysOff 1 1 ρ t) :=
