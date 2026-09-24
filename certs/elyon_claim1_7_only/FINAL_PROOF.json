@@ -1,0 +1,25 @@
+{
+  "schema": "elyon.claim1-7-only.final-proof.v1",
+  "state": "SOURCE_PENDING_KERNEL_REVALIDATION",
+  "scope": "CLAIM1_TO_CLAIM7_ONLY",
+  "source_certificate_sha": "5885f5504e48b62dec8d565b0e437d1481617afa",
+  "prior_green_sha": "de908fa5be992820389422374d02b6bdc4f1a68a",
+  "prior_green_run": 36043017699,
+  "endpoint": "MCore.Real.SevenCertificateBridge.canonicalFinalProof",
+  "chain": [
+    "canonicalSevenGreenEvidence",
+    "canonicalResolutionPath",
+    "canonicalRealProducer",
+    "canonicalExternalCertificate",
+    "canonicalFinalRoot",
+    "canonicalFinalProof"
+  ],
+  "exclusions": [
+    "P01ConstructionGap",
+    "G21Pointwise",
+    "P02Target",
+    "FinalExternalTwoGap",
+    "unrelated proof lanes"
+  ],
+  "issuance_rule": "Promote to GREEN_FROZEN_CERTIFIED only if the post-certificate kernel run for this exact branch succeeds."
+}
