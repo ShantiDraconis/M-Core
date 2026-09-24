@@ -1,0 +1,46 @@
+name: ELYON Claim1-7 Only
+
+on:
+  push:
+    branches:
+      - elyon/claim1-7-only-20260924
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  claim1-7-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean toolchain
+        run: |
+          set -euo pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+      - name: Verify isolated source set
+        run: |
+          set -euo pipefail
+          files=(
+            lean/MCore/Real/BridgeSeven.lean
+            lean/MCore/Real/SevenRealProducer.lean
+            lean/MCore/Real/SevenExternalCertificate.lean
+            lean/MCore/Real/FinalChain.lean
+            certs/elyon_claim1_7_only/manifest.json
+          )
+          for f in "${files[@]}"; do test -f "$f"; done
+          ! grep -nER '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)'             lean/MCore/Real/BridgeSeven.lean             lean/MCore/Real/SevenRealProducer.lean             lean/MCore/Real/SevenExternalCertificate.lean             lean/MCore/Real/FinalChain.lean
+      - name: Kernel build Claim1-7 external chain
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build MCore.Real.BridgeSeven
+          lake build MCore.Real.SevenRealProducer
+          lake build MCore.Real.SevenExternalCertificate
+          lake build MCore.Real.FinalChain
