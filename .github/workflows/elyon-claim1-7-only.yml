@@ -61,9 +61,9 @@ jobs:
           ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' lean/MCore/Real/Claim1To7Only.lean
           ! grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' lean/MCore/Real/Claim1To7Only.lean
 
-      - name: Kernel check Claim1-7 only
+      - name: Kernel build Claim1-7 only
         shell: bash
         run: |
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
-          lake env lean lean/MCore/Real/Claim1To7Only.lean
+          lake build MCore.Real.Claim1To7Only
