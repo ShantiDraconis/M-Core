@@ -19,16 +19,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache Lean dependencies and build
+      - name: Cache Lean toolchain and packages
         uses: actions/cache@v4
         with:
           path: |
             ~/.elan
             .lake/packages
-            .lake/build
-          key: elyon-claim1-7-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.lean') }}
+          key: elyon-claim1-7-light-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.lean') }}
           restore-keys: |
-            elyon-claim1-7-${{ runner.os }}-
+            elyon-claim1-7-light-${{ runner.os }}-
 
       - name: Install Lean toolchain
         shell: bash
@@ -48,6 +47,8 @@ jobs:
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
           if [ ! -d .lake/packages/mathlib ]; then
+            lake update
+          else
             lake update
           fi
 
