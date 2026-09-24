@@ -1,0 +1,10 @@
+{
+  "certificate": "nb-zero-limit-density-equivalence-green-d6a291b4",
+  "group": "AGGREGATE",
+  "problem": "RIEMANN",
+  "declared_state": "GREEN",
+  "role": "FROZEN_SCOPED_EVIDENCE",
+  "proves_riemann_hypothesis": false,
+  "source_artifact_attached": false,
+  "kernel_verification": null
+}
