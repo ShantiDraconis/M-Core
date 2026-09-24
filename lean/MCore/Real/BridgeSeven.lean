@@ -23,8 +23,16 @@ def claim2b_persistentBranchingDeficit_excludes_payoff :=
 
 /-- Claim3 theorem term from the exact f0a9fcd1 source state.
     The commit itself was an import fix; this theorem is present in that certified source state. -/
-def claim3_persistentFamily_excludes_eventual_payoff :=
+def claim3_persistentFamily_excludes_eventual_payoff
+    {α β : Nat}
+    {f : Nat → MCore.C9.FormulaTree}
+    (h : MCore.Real.Claim3PersistentFamily.PersistentBranchingDeficitFamily α β f) :
+    ∃ n0 : Nat, ∀ n : Nat, n0 ≤ n →
+      ∀ ρ : MCore.CircuitK1.Restriction,
+        MCore.C10.RestrictionProgress ρ (f n) →
+          ¬ MCore.C11.PaysOff α β ρ (f n) :=
   MCore.Real.Claim3PersistentFamily.persistentFamily_excludes_eventual_payoff
+    (α := α) (β := β) (f := f) h
 
 /-- The seven source certificates must eventually be represented by seven
     concrete Lean predicates.  This structure does not assert any of them. -/
