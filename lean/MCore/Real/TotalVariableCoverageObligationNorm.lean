@@ -357,15 +357,13 @@ private theorem occurs_simplify_imp
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
         simp_all [OccursInput] <;>
-        split <;>
-        simp_all [OccursInput]
+        aesop
   | or a b iha ihb =>
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
         simp_all [OccursInput] <;>
-        split <;>
-        simp_all [OccursInput]
+        aesop
 
 private theorem fixed_var_not_occurs_restrict
     (ρ : Restriction) (v : Nat) (t : Circuit)
