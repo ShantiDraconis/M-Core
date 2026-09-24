@@ -43,7 +43,7 @@ jobs:
         run: |
           set -euo pipefail
           cd imports/final-proof/RIEMANN/open-math-scoped-final/open-math
-          "$HOME/.elan/bin/lake" build Riemann.scoped.FinalClaim
+          "$HOME/.elan/bin/lake" build Riemann.scoped.FinalProof Riemann.scoped.FinalClaim
 
       - name: Check refuted route
         shell: bash
