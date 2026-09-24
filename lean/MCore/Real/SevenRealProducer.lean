@@ -22,4 +22,16 @@ structure RealProducer (C : CertificateClaims) where
   evidence : E C endpoint
   path : ResolutionPath C .indeterminate (.resolved endpoint)
 
+/-- Construct a producer only from already inhabited evidence and
+    an actual resolution path. No evidence is synthesized here. -/
+def buildRealProducer
+    {C : CertificateClaims}
+    {r : ℝ}
+    (e : E C r)
+    (p : ResolutionPath C .indeterminate (.resolved r)) :
+    RealProducer C where
+  endpoint := r
+  evidence := e
+  path := p
+
 end MCore.Real.SevenCertificateBridge
