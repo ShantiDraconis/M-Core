@@ -43,6 +43,7 @@ jobs:
             lean/MCore/Real/TotalVariableCoverageObligationNorm.lean
             lean/MCore/Real/SevenRealProducer.lean
             lean/MCore/Real/SevenExternalCertificate.lean
+            lean/MCore/Real/FinalChain.lean
           )
           for f in "${lean_files[@]}"; do test -f "$f"; done
           ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${lean_files[@]}"
@@ -61,3 +62,4 @@ jobs:
           lake build MCore.Real.BridgeSeven
           lake build MCore.Real.SevenRealProducer
           lake build MCore.Real.SevenExternalCertificate
+          lake build MCore.Real.FinalChain
