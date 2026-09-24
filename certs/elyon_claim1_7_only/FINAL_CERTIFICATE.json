@@ -1,0 +1,36 @@
+{
+  "schema": "elyon.claim1-7-only.certificate.v1",
+  "certificate": "ELYON_CLAIM1_7_FINAL",
+  "scope": "CLAIM1_TO_CLAIM7_ONLY",
+  "issued": true,
+  "state": "GREEN_FROZEN_CERTIFIED",
+  "source_branch": "elyon/claim1-7-only-20260924",
+  "source_sha": "de908fa5be992820389422374d02b6bdc4f1a68a",
+  "source_run": 36043017699,
+  "kernel_result": "SUCCESS",
+  "frozen_branch": "frozen/elyon-claim1-7-green-de908fa5",
+  "certified_branch": "cert/elyon-claim1-7-run36043017699",
+  "endpoint": "MCore.Real.SevenCertificateBridge.canonicalFinalProof",
+  "chain": [
+    "Claim1",
+    "Claim2",
+    "Claim3",
+    "Claim4",
+    "Claim5",
+    "Claim6",
+    "Claim7",
+    "SevenGreenEvidenceConcrete",
+    "RealProducer",
+    "EXTERNAL_CERTIFICATE",
+    "FINAL_ROOT",
+    "FINAL_PROOF"
+  ],
+  "exclusions": [
+    "P01ConstructionGap",
+    "G21Pointwise",
+    "P02Target",
+    "FinalExternalTwoGap",
+    "unrelated proof lanes"
+  ],
+  "note": "Scoped certificate for the isolated Claim1-7 chain. It does not modify or claim issuance of the separate global ELYON_FINAL_EXTERNAL package."
+}
