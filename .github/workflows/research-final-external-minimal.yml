@@ -5,6 +5,7 @@ on:
     branches:
       - research/seven-certs-final-20260924
       - seven-bridge/claim5-6
+      - seven-bridge/claim7-coverage
   workflow_dispatch:
 
 permissions:
@@ -37,6 +38,7 @@ jobs:
             lean/MCore/Real/Claim4NormalizedProgress.lean
             lean/MCore/Real/P02RestrictionFamilyAudit.lean
             lean/MCore/Real/Claim6CNFDeficitAudit.lean
+            lean/MCore/Real/Claim7VariableCoverage.lean
             lean/MCore/Real/SevenRealProducer.lean
             lean/MCore/Real/SevenExternalCertificate.lean
           )
@@ -52,6 +54,7 @@ jobs:
           lake build MCore.Real.Claim4NormalizedProgress
           lake build MCore.Real.P02RestrictionFamilyAudit
           lake build MCore.Real.Claim6CNFDeficitAudit
+          lake build MCore.Real.Claim7VariableCoverage
           lake build MCore.Real.BridgeSeven
           lake build MCore.Real.SevenRealProducer
           lake build MCore.Real.SevenExternalCertificate
