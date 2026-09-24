@@ -732,14 +732,11 @@ private theorem coverageCore_clauses_nonempty
   simp [coverageClauses] at hc
   rcases hc with rfl | rfl <;> simp
 
-/-- TARGET2c: restricting any payload variable forces normalized progress in its coverage core. -/
-theorem restricted_coverage_var_implies_core_progress
+private theorem restricted_core_var_implies_core_progress
     (ρ : Restriction) (payload : CNF) (v : Nat)
-    (hv : v ∈ cnfVarList payload)
+    (hvcore : v ∈ cnfVarList (coverageCore payload))
     (hfixed : ρ v ≠ none) :
     RestrictionProgressNorm ρ (cnfCircuitNorm (coverageCore payload)) := by
-  have hvcore : v ∈ cnfVarList (coverageCore payload) :=
-    payload_var_mem_coverageCore hv
   have hvraw :
       v ∈ ((coverageCore payload).flatMap fun clause => clause.map Literal.var) :=
     Claim7VariableCoverage.mem_eraseDups_iff.mp hvcore
@@ -773,7 +770,46 @@ theorem restricted_coverage_var_implies_core_progress
     (MCore.CircuitC2.simplify (cnfCircuitNorm (coverageCore payload))) hfixed)
     hoccRestrict
 
+/-- TARGET2c: restricting any payload variable forces normalized progress in its coverage core. -/
+theorem restricted_coverage_var_implies_core_progress
+    (ρ : Restriction) (payload : CNF) (v : Nat)
+    (hv : v ∈ cnfVarList payload)
+    (hfixed : ρ v ≠ none) :
+    RestrictionProgressNorm ρ (cnfCircuitNorm (coverageCore payload)) := by
+  exact restricted_core_var_implies_core_progress ρ payload v
+    (payload_var_mem_coverageCore hv) hfixed
+
 #print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.restricted_coverage_var_implies_core_progress
+
+private theorem cnfVarList_append_mem_split
+    {a b : CNF} {v : Nat}
+    (hv : v ∈ cnfVarList (a ++ b)) :
+    v ∈ cnfVarList a ∨ v ∈ cnfVarList b := by
+  have hraw :
+      v ∈ ((a ++ b).flatMap fun clause => clause.map Literal.var) :=
+    Claim7VariableCoverage.mem_eraseDups_iff.mp hv
+  rw [List.flatMap_append] at hraw
+  rcases List.mem_append.mp hraw with ha | hb
+  · exact Or.inl (Claim7VariableCoverage.mem_eraseDups_iff.mpr ha)
+  · exact Or.inr (Claim7VariableCoverage.mem_eraseDups_iff.mpr hb)
+
+/-- TARGET3: progress on payload ++ coverageCore forces progress on coverageCore. -/
+theorem coverageCore_progress_of_padded_progress
+    (ρ : Restriction) (payload : CNF)
+    (hpad :
+      RestrictionProgressNorm ρ
+        (cnfCircuitNorm (payload ++ coverageCore payload))) :
+    RestrictionProgressNorm ρ (cnfCircuitNorm (coverageCore payload)) := by
+  obtain ⟨v, hv, hfixed⟩ :=
+    progressNorm_implies_restricted_var ρ
+      (payload ++ coverageCore payload) hpad
+  rcases cnfVarList_append_mem_split hv with hvPayload | hvCore
+  · exact restricted_coverage_var_implies_core_progress
+      ρ payload v hvPayload hfixed
+  · exact restricted_core_var_implies_core_progress
+      ρ payload v hvCore hfixed
+
+#print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.coverageCore_progress_of_padded_progress
 
 /-- Normalized core-aware progress. Both payload+core and core are measured only
 after canonical normalization, so representation-only simplification is excluded. -/
