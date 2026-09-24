@@ -844,6 +844,19 @@ theorem totalVariableCoverageObligationNorm_unfold
 
 #print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.totalVariableCoverageObligationNorm_unfold
 
+
+/-- TARGET4: the total-variable coverage obligation is inhabited by the TARGET3 bridge. -/
+theorem totalVariableCoverageObligationNorm
+    (payload : CNF) :
+    TotalVariableCoverageObligationNorm payload := by
+  unfold TotalVariableCoverageObligationNorm
+  unfold CoreAwareProgressCoverageNorm
+  intro ρ hpad
+  unfold CoreAwareProgressNorm
+  exact ⟨hpad, coverageCore_progress_of_padded_progress ρ payload hpad⟩
+
+#print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.totalVariableCoverageObligationNorm
+
 end P02Lane4TotalVariableCoverageNorm
 end Real
 end MCore
