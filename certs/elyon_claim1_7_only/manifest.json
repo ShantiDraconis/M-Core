@@ -1,0 +1,34 @@
+{
+  "schema": "elyon.claim1-7-only.v1",
+  "scope": "CLAIM1_TO_CLAIM7_ONLY",
+  "source_final_chain_sha": "e7f317db45fc944226d9dce6223de45ad05bc01c",
+  "source_final_chain_run": 36024920522,
+  "include": [
+    "MCore.Real.BridgeSeven",
+    "MCore.Real.SevenRealProducer",
+    "MCore.Real.SevenExternalCertificate",
+    "MCore.Real.FinalChain"
+  ],
+  "exclude": [
+    "P01ConstructionGap",
+    "G21Pointwise",
+    "P02Target",
+    "FinalExternalTwoGap",
+    "all unrelated proof lanes"
+  ],
+  "endpoint_chain": [
+    "Claim1",
+    "Claim2",
+    "Claim3",
+    "Claim4",
+    "Claim5",
+    "Claim6",
+    "Claim7",
+    "SevenGreenEvidenceConcrete",
+    "RealProducer",
+    "EXTERNAL_CERTIFICATE",
+    "FINAL_ROOT",
+    "FINAL_PROOF"
+  ],
+  "policy": "No cross-lane imports or promotion from unrelated producers. This lane certifies only the concrete Claim1-7 chain already kernel-checked at the pinned source."
+}
