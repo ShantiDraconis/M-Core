@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# ELYON_FINAL_EXTERNAL v1.0.0 / package revision v1.3.1-preparatory
+# ELYON_FINAL_EXTERNAL v1.0.0 / package revision v1.3.2-preparatory
 # FAIL-CLOSED PREPARATORY freeze. Never emits FINAL_ROOT or ISSUED.
 PACKAGE_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$PACKAGE_DIR"
