@@ -1,0 +1,88 @@
+name: P01 T1D Recovery Parallel
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - atk/p01-t1d-recovery-workflow-20260924
+    paths:
+      - 'imports/pnp/**'
+      - '.github/workflows/p01-t1d-recovery-parallel.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-recovery:
+    name: T1D-0 Source Recovery Gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require indexed witness proof source
+        shell: bash
+        run: |
+          set -euo pipefail
+          f="$(find imports/pnp -type f -name 'P01WitnessIndexedReadProof.lean' -print -quit)"
+          test -n "$f" || { echo "::error::P01WitnessIndexedReadProof.lean not recovered"; exit 1; }
+          grep -n 'witnessSeek_run_state' "$f"
+          if grep -nE '^[[:space:]]*simp[[:space:]]*$' "$f"; then
+            echo "::warning::bare simp present; inspect witnessSeek_run_state for recursive simp"
+          fi
+
+  physical-verifier:
+    name: T1D-1 Physical Verifier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+      - name: Build physical verifier
+        run: |
+          set -euo pipefail
+          test -f imports/pnp/44e3327a/lean/MCore/Real/P01FullVerifierPhysical.lean
+          grep -nE 'physical_execInstr_refines|physical_runProgram_refines|physical_eq_logical_global|PhysicalVerifierRealization' imports/pnp/44e3327a/lean/MCore/Real/P01FullVerifierPhysical.lean
+          lake build
+
+  integrated-machine:
+    name: T1D-2 Integrated Machine
+    needs: [source-recovery, physical-verifier]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+      - name: Build integrated P01 machine
+        run: |
+          set -euo pipefail
+          test -f imports/pnp/44e3327a/lean/MCore/Real/P01IntegratedMachine.lean
+          grep -n 'P01MachineConstruction' imports/pnp/44e3327a/lean/MCore/Real/P01IntegratedMachine.lean
+          lake build
+
+  construction-close:
+    name: T1D-3 P01 Construction Close
+    needs: integrated-machine
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+      - name: Close P01 without hypothesis
+        run: |
+          set -euo pipefail
+          f=imports/pnp/44e3327a/lean/MCore/Real/P01ConstructionClose.lean
+          test -f "$f"
+          grep -n 'p01_closed_no_hypothesis' "$f"
+          lake build
+
+  hygiene:
+    name: T1D-4 Fail-Closed Hygiene
+    needs: construction-close
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject proof placeholders in P01 lane
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '\b(sorry|admit)\b' imports/pnp/44e3327a/lean/MCore/Real/P01*.lean; then
+            echo "::error::proof placeholder detected"
+            exit 1
+          fi
+          echo "T1D GREEN candidate: source + physical + integrated + close + hygiene passed"
