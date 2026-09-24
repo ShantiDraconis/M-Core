@@ -16,9 +16,9 @@
   "final_root": "MCore.Real.Claim1To7Only.canonicalFinalRoot",
   "final_proof": "MCore.Real.Claim1To7Only.canonicalFinalProof",
   "policy": "Claim-only endpoints; nothing outside Claim1-Claim7 is promoted.",
-  "source_sha": "9bf5ac6337066c65619b9d0d69599e87466f1720",
-  "source_run": 36047053367,
+  "source_sha": "3e8e0d42c95c2834bdec902380d05aa00b2fb4cf",
+  "source_run": 36047343661,
   "kernel_result": "SUCCESS",
-  "frozen_branch": "frozen/elyon-claim1-7-final-green-9bf5ac63",
-  "certified_branch": "cert/elyon-claim1-7-final-run36047053367"
+  "frozen_branch": "frozen/elyon-claim1-7-final-green-3e8e0d42",
+  "certified_branch": "cert/elyon-claim1-7-final-run36047343661"
 }
