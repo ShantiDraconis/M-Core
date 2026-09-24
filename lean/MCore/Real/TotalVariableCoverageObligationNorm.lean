@@ -10,18 +10,33 @@ open P02BoundedComputationEncoding
 open Claim4NormalizedProgress
 open Claim7VariableCoverage
 
+private theorem mem_zipIdx_of_mem
+    {α : Type} (x : α) :
+    ∀ (l : List α) (n : Nat), x ∈ l → ∃ i : Nat, (x, i) ∈ l.zipIdx n := by
+  intro l
+  induction l with
+  | nil =>
+      intro n hx
+      simp at hx
+  | cons a as ih =>
+      intro n hx
+      simp only [List.mem_cons] at hx
+      rcases hx with rfl | hx
+      · exact ⟨n, by simp⟩
+      · obtain ⟨i, hi⟩ := ih (n + 1) hx
+        exact ⟨i, by simp [hi]⟩
+
 /-- Every payload variable is copied into the total-variable coverage core. -/
 theorem payload_var_mem_coverageCore
     {payload : CNF} {v : Nat}
     (hv : v ∈ cnfVarList payload) :
     v ∈ cnfVarList (coverageCore payload) := by
-  have hi : ∃ i : Nat, (v, i) ∈ (cnfVarList payload).zipIdx := by
-    simpa using (List.mem_zipIdx.mpr hv)
-  rcases hi with ⟨i, hi⟩
+  obtain ⟨i, hi⟩ :=
+    mem_zipIdx_of_mem v (cnfVarList payload) 0 hv
   apply Claim7VariableCoverage.mem_eraseDups_iff.mpr
   simp only [coverageCore, List.mem_flatMap]
   refine ⟨(v, i), hi, ?_⟩
-  simp [coverageClauses, cnfVarList]
+  simp [coverageClauses]
 
 #print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.payload_var_mem_coverageCore
 
