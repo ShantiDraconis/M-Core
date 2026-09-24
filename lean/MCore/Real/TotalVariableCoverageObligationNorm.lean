@@ -351,31 +351,38 @@ private theorem occurs_simplify_imp
   | not t ih =>
       simp only [MCore.CircuitC2.simplify]
       cases h : MCore.CircuitC2.simplify t with
-      | input i =>
-          simp_all [OccursInput]
-      | const cb =>
-          cases cb <;> simp_all [OccursInput]
-      | not c =>
-          simp_all [OccursInput]
-      | and c d =>
-          simp_all [OccursInput]
-      | or c d =>
-          simp_all [OccursInput]
+      | input i => simp_all [OccursInput]
+      | const cb => cases cb <;> simp_all [OccursInput]
+      | not c => simp_all [OccursInput]
+      | and c d => simp_all [OccursInput]
+      | or c d => simp_all [OccursInput]
   | and a b iha ihb =>
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a with
       | input ia =>
           cases hb : MCore.CircuitC2.simplify b with
           | input ib =>
-              simp_all [OccursInput]
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
           | const cb =>
               cases cb <;> simp_all [OccursInput]
           | not c =>
-              simp_all [OccursInput]
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
           | and c d =>
-              simp_all [OccursInput]
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
           | or c d =>
-              simp_all [OccursInput]
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
       | const ca =>
           cases ca <;>
             cases hb : MCore.CircuitC2.simplify b with
@@ -386,40 +393,103 @@ private theorem occurs_simplify_imp
             | or c d => simp_all [OccursInput]
       | not c =>
           cases hb : MCore.CircuitC2.simplify b with
-          | input ib => simp_all [OccursInput]
-          | const cb => cases cb <;> simp_all [OccursInput]
-          | not d => simp_all [OccursInput]
-          | and d e => simp_all [OccursInput]
-          | or d e => simp_all [OccursInput]
+          | input ib =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | const cb =>
+              cases cb <;> simp_all [OccursInput]
+          | not d =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | and d e =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | or d e =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
       | and c d =>
           cases hb : MCore.CircuitC2.simplify b with
-          | input ib => simp_all [OccursInput]
-          | const cb => cases cb <;> simp_all [OccursInput]
-          | not e => simp_all [OccursInput]
-          | and e f => simp_all [OccursInput]
-          | or e f => simp_all [OccursInput]
+          | input ib =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | const cb =>
+              cases cb <;> simp_all [OccursInput]
+          | not e =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | and e f =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | or e f =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
       | or c d =>
           cases hb : MCore.CircuitC2.simplify b with
-          | input ib => simp_all [OccursInput]
-          | const cb => cases cb <;> simp_all [OccursInput]
-          | not e => simp_all [OccursInput]
-          | and e f => simp_all [OccursInput]
-          | or e f => simp_all [OccursInput]
+          | input ib =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | const cb =>
+              cases cb <;> simp_all [OccursInput]
+          | not e =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | and e f =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | or e f =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
   | or a b iha ihb =>
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a with
       | input ia =>
           cases hb : MCore.CircuitC2.simplify b with
           | input ib =>
-              simp_all [OccursInput]
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
           | const cb =>
               cases cb <;> simp_all [OccursInput]
           | not c =>
-              simp_all [OccursInput]
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
           | and c d =>
-              simp_all [OccursInput]
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
           | or c d =>
-              simp_all [OccursInput]
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
       | const ca =>
           cases ca <;>
             cases hb : MCore.CircuitC2.simplify b with
@@ -430,25 +500,76 @@ private theorem occurs_simplify_imp
             | or c d => simp_all [OccursInput]
       | not c =>
           cases hb : MCore.CircuitC2.simplify b with
-          | input ib => simp_all [OccursInput]
-          | const cb => cases cb <;> simp_all [OccursInput]
-          | not d => simp_all [OccursInput]
-          | and d e => simp_all [OccursInput]
-          | or d e => simp_all [OccursInput]
+          | input ib =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | const cb =>
+              cases cb <;> simp_all [OccursInput]
+          | not d =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | and d e =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | or d e =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
       | and c d =>
           cases hb : MCore.CircuitC2.simplify b with
-          | input ib => simp_all [OccursInput]
-          | const cb => cases cb <;> simp_all [OccursInput]
-          | not e => simp_all [OccursInput]
-          | and e f => simp_all [OccursInput]
-          | or e f => simp_all [OccursInput]
+          | input ib =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | const cb =>
+              cases cb <;> simp_all [OccursInput]
+          | not e =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | and e f =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | or e f =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
       | or c d =>
           cases hb : MCore.CircuitC2.simplify b with
-          | input ib => simp_all [OccursInput]
-          | const cb => cases cb <;> simp_all [OccursInput]
-          | not e => simp_all [OccursInput]
-          | and e f => simp_all [OccursInput]
-          | or e f => simp_all [OccursInput]
+          | input ib =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | const cb =>
+              cases cb <;> simp_all [OccursInput]
+          | not e =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | and e f =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
+          | or e f =>
+              intro h
+              rcases h with h | h
+              · exact Or.inl (iha h)
+              · exact Or.inr (ihb h)
 
 private theorem fixed_var_not_occurs_restrict
     (ρ : Restriction) (v : Nat) (t : Circuit)
