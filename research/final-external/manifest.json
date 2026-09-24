@@ -1,0 +1,10 @@
+{
+  "schema": "mcore.final-external-research.v1",
+  "branch": "research/single-45bf2597-final-20260924",
+  "mode": "SINGLE_PRODUCER",
+  "source_anchor": "45bf2597",
+  "endpoint": "FinalExternalGap",
+  "required_producers": 1,
+  "final_root": null,
+  "issued": false
+}
