@@ -24,8 +24,8 @@ def coverageClauses (base i v : Nat) : CNF :=
 
 def coverageCore (payload : CNF) : CNF :=
   let base := cnfVarBound payload
-  ((cnfVarList payload).enum.flatMap
-    (fun vi => coverageClauses base vi.1 vi.2))
+  ((cnfVarList payload).zipIdx.flatMap
+    (fun vi => coverageClauses base vi.2 vi.1))
 
 /-- v4.19 compatibility: eraseDups preserves membership. -/
 private theorem mem_eraseDups_loop_iff
