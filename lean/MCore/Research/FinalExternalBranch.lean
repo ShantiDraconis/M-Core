@@ -1,5 +1,3 @@
-import MCore
-
 namespace MCore.Research
 
 inductive FinalExternalMode where
