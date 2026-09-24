@@ -1,4 +1,4 @@
-# ELYON_FINAL_EXTERNAL v1.0.0 - PREPARATORY (package revision v1.1-preparatory)
+# ELYON_FINAL_EXTERNAL v1.0.0 - PREPARATORY (package revision v1.3.2-preparatory)
 ## INFRASTRUCTURE_CERTIFIED - PREPARATORY_NOT_ISSUED
 
 Status publico: PREPARATORY / non-issued infrastructure record
@@ -56,3 +56,19 @@ NAO -> FINAL_EXTERNAL_ISSUED
 freeze_state: FROZEN_PREPARATORY
 PREPARATORY_ROOT: stored in `PREPARATORY_ROOT` to avoid self-reference
 FINAL_ROOT: null
+
+
+### Seven-bridge FinalChain kernel evidence
+- source SHA: e7f317db45fc944226d9dce6223de45ad05bc01c
+- run: 36024920522 SUCCESS
+- module: MCore.Real.FinalChain
+- canonicalFinalRoot: GREEN_KERNEL
+- canonicalFinalProof: GREEN_KERNEL
+- axiom footprint: propext, Classical.choice, Quot.sound
+- sorryAx: none
+- bypass: none
+- frozen: frozen/final-chain-green-e7f317db
+- certificate: cert/final-chain-run36024920522
+
+Scope boundary: this is a kernel-checked auxiliary seven-certificate chain. It does not, by itself, change the separate official P01ConstructionGap / G21Pointwise P-vs-NP endpoint status or the global 0/7 prize taxonomy.
+
