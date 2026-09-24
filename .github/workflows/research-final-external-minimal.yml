@@ -1,5 +1,5 @@
 name: research final external minimal
-# trigger: claim7 target1 rerun
+# trigger: claim7 target1 zipIdx
 
 on:
   push:
