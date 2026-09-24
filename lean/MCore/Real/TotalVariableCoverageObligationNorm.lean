@@ -353,17 +353,27 @@ private theorem occurs_simplify_imp
       cases h : MCore.CircuitC2.simplify t <;>
         simp_all [OccursInput]
   | and a b iha ihb =>
+      have hmap :
+          OccursInput v (MCore.CircuitC2.simplify a) ∨
+              OccursInput v (MCore.CircuitC2.simplify b) →
+            OccursInput v a ∨ OccursInput v b :=
+        map_or_imp iha ihb
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
         simp_all [OccursInput] <;>
-        aesop
+        assumption
   | or a b iha ihb =>
+      have hmap :
+          OccursInput v (MCore.CircuitC2.simplify a) ∨
+              OccursInput v (MCore.CircuitC2.simplify b) →
+            OccursInput v a ∨ OccursInput v b :=
+        map_or_imp iha ihb
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
         simp_all [OccursInput] <;>
-        aesop
+        assumption
 
 private theorem fixed_var_not_occurs_restrict
     (ρ : Restriction) (v : Nat) (t : Circuit)
