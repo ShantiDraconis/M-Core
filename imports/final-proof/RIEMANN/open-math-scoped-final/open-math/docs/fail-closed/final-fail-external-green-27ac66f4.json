@@ -1,0 +1,10 @@
+{
+  "certificate": "final-fail-external-green-27ac66f4",
+  "problem": "RIEMANN",
+  "state": "GREEN",
+  "role": "FAIL_CLOSED_WITNESS",
+  "imported_into_final_claim": false,
+  "claim": "DNLimit=0 -> RiemannHypothesis is not currently available as a certified implication",
+  "proves_riemann_hypothesis": false,
+  "policy": "DO_NOT_IMPORT_INTO_FINAL_SCOPED_CLAIM"
+}
