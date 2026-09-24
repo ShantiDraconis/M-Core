@@ -60,7 +60,7 @@ private theorem mem_eraseDups_loop_iff
           simp [hbnot]
         · simp [hab]
 
-private theorem mem_eraseDups_iff
+theorem mem_eraseDups_iff
     {α : Type} [BEq α] [LawfulBEq α] {a : α} {l : List α} :
     a ∈ l.eraseDups ↔ a ∈ l := by
   unfold List.eraseDups
