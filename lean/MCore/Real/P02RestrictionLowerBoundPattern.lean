@@ -1,17 +1,58 @@
 import MCore.C11.BranchingCost
+import MCore.Real.P02BoundedComputationEncoding
+import MCore.Real.CanonicalSATBoundary
+import MCore.Real.CanonicalCircuitBits
+import MCore.Real.P02TerminalFrontier
 
 namespace MCore
 namespace Real
 namespace P02RestrictionLowerBoundPattern
 
 open C9 C10 C11 CircuitK1
+open P02BoundedComputationEncoding
 
-/-- Exact amortized structural drop used by C11. -/
+/-- Normalized Boolean constructors used only by the P02 Lane-4 CNF bridge. -/
+def smartAnd : Circuit → Circuit → Circuit
+  | .const true, y => y
+  | x, .const true => x
+  | .const false, _ => .const false
+  | _, .const false => .const false
+  | x, y => .and x y
+
+def smartOr : Circuit → Circuit → Circuit
+  | .const false, y => y
+  | x, .const false => x
+  | .const true, _ => .const true
+  | _, .const true => .const true
+  | x, y => .or x y
+
+def clauseCircuitNorm : Clause → Circuit
+  | [] => .const false
+  | [l] => literalCircuit l
+  | l :: ls => smartOr (literalCircuit l) (clauseCircuitNorm ls)
+
+def cnfCircuitNorm : CNF → Circuit
+  | [] => .const true
+  | [clause] => clauseCircuitNorm clause
+  | clause :: rest => smartAnd (clauseCircuitNorm clause) (cnfCircuitNorm rest)
+
+/-- Local Lane-4 normalized dynamics: the initial formula is simplified before
+the restriction is applied, so representation-only simplification cannot count
+as progress. -/
+def DNorm (ρ : Restriction) (t : FormulaTree) : FormulaTree :=
+  simplify (restrict ρ (simplify t))
+
+def RestrictionProgressNorm (ρ : Restriction) (t : FormulaTree) : Prop :=
+  DNorm ρ t ≠ simplify t
+
+def amortizedDropNorm (ρ : Restriction) (t : FormulaTree) : Nat :=
+  CircuitK1.size (simplify t) - CircuitK1.size (DNorm ρ t)
+
+/-- Exact amortized structural drop used by C11, evaluated on the canonical
+Circuit view of a CNF. -/
 def amortizedDrop (α β : Nat) (ρ : Restriction) (t : FormulaTree) : Nat :=
   Potential α β t - Potential α β (D ρ t)
 
-/-- C11 PaysOff is exactly the regime where the number of fixed branching bits
-is strictly smaller than the certified potential drop. -/
 theorem paysOff_implies_costBits_lt_amortizedDrop
     (α β : Nat) (ρ : Restriction) (t : FormulaTree)
     (h : PaysOff α β ρ t) :
@@ -19,9 +60,6 @@ theorem paysOff_implies_costBits_lt_amortizedDrop
   unfold PaysOff amortizedDrop at *
   omega
 
-/-- Separation-oriented local pattern: every progressing restriction fails to
-amortize its branching bits. This is intentionally the opposite orientation
-from C11 PaysOff. -/
 def PersistentBranchingDeficit
     (α β : Nat) (t : FormulaTree) : Prop :=
   ∀ ρ : Restriction,
@@ -39,23 +77,343 @@ theorem persistentBranchingDeficit_excludes_payoff
   have hle := h ρ hprog
   omega
 
-/-- Family-level candidate obstruction for the fourth P02 lane.  Unlike the
-old diagonal lanes, this statement contains no self-code or fixed-point
-equation. -/
-def PersistentBranchingDeficitFamily
-    (α β : Nat) (f : Nat → FormulaTree) : Prop :=
-  ∀ n : Nat, 0 < n → PersistentBranchingDeficit α β (f n)
+/-- Canonical CNF variable bound: one plus the largest variable identifier. -/
+def clauseVarBound (c : Clause) : Nat :=
+  c.foldl (fun acc l => max acc (l.var + 1)) 0
 
-/-- Exact frontier for using this pattern as a P02 route.  The missing theorem
-must connect a persistent branching deficit for a SAT-complete family to
-non-membership in the hardened deterministic polynomial-time model. -/
-def RestrictionLowerBoundTransfer : Prop :=
-  ∀ f : Nat → FormulaTree,
-    PersistentBranchingDeficitFamily 1 1 f →
-      True
+def cnfVarBound (f : CNF) : Nat :=
+  f.foldl (fun acc c => max acc (clauseVarBound c)) 0
+
+/-- General bounded CNF family over the repository's canonical CNF type.
+This is useful as an ambient family, but is not claimed to satisfy a persistent
+deficit universally. -/
+def GeneralCNFFamily
+    (clauseBound : Nat → Nat) (n : Nat) (f : CNF) : Prop :=
+  cnfVarBound f ≤ n ∧ f.length ≤ clauseBound n
+
+/-- A hard subfamily is a predicate on the canonical CNF type, refined by the
+same explicit size envelope used by the reduction. -/
+def HardCNFSubfamily
+    (IsHardCNF : CNF → Prop)
+    (clauseBound : Nat → Nat)
+    (n : Nat) (f : CNF) : Prop :=
+  IsHardCNF f ∧ GeneralCNFFamily clauseBound n f
+
+/-- A single canonical CNF has a uniform local branching deficit of at least c. -/
+def DeficitAtLeast (c : Nat) (f : CNF) : Prop :=
+  ∀ ρ : Restriction,
+    RestrictionProgress ρ (cnfCircuit f) →
+      amortizedDrop 1 1 ρ (cnfCircuit f) ≤
+        costBits ρ (cnfCircuit f) ∧
+      c ≤ costBits ρ (cnfCircuit f) -
+        amortizedDrop 1 1 ρ (cnfCircuit f)
+
+/-- Representation-invariant Lane-4 deficit: only restriction-induced
+progress after normalization is counted. -/
+def DeficitAtLeastNorm (c : Nat) (f : CNF) : Prop :=
+  ∀ ρ : Restriction,
+    RestrictionProgressNorm ρ (cnfCircuitNorm f) →
+      amortizedDropNorm ρ (cnfCircuitNorm f) ≤
+        costBits ρ (cnfCircuitNorm f) ∧
+      c ≤ costBits ρ (cnfCircuitNorm f) -
+        amortizedDropNorm ρ (cnfCircuitNorm f)
+
+theorem simplify_cnfCircuitNorm_idem (f : CNF) :
+    simplify (cnfCircuitNorm f) = cnfCircuitNorm f := by
+  induction f with
+  | nil => rfl
+  | cons c cs ih =>
+      cases cs with
+      | nil =>
+          cases c with
+          | nil => rfl
+          | cons l ls =>
+              cases ls with
+              | nil =>
+                  cases l with
+                  | mk v p =>
+                      cases p <;> rfl
+              | cons l2 ls2 =>
+                  simp [cnfCircuitNorm, clauseCircuitNorm, smartOr, smartAnd, simplify]
+      | cons c2 cs2 =>
+          simp [cnfCircuitNorm, smartAnd, ih, simplify]
+
+theorem leavesZeroFree_no_progress_norm (f : CNF) :
+    ¬ RestrictionProgressNorm leavesZeroFree (cnfCircuitNorm f) := by
+  intro h
+  apply h
+  unfold RestrictionProgressNorm DNorm
+  rw [simplify_cnfCircuitNorm_idem]
+  induction cnfCircuitNorm f with
+  | input i => rfl
+  | const b => rfl
+  | not t ih => simp [restrict, simplify, ih, leavesZeroFree]
+  | and a b iha ihb => simp [restrict, simplify, iha, ihb, leavesZeroFree]
+  | or a b iha ihb => simp [restrict, simplify, iha, ihb, leavesZeroFree]
+
+/-- Hard canonical-CNF subfamily.  The hardness predicate is not a new syntax:
+it is a semantic/quantitative filter on the repository's existing CNF type. -/
+def HardCNFSubfamilyWithMargin
+    (c : Nat)
+    (clauseBound : Nat → Nat)
+    (n : Nat) (f : CNF) : Prop :=
+  GeneralCNFFamily clauseBound n f ∧ DeficitAtLeast c f
+
+theorem hardCNF_excludes_payoff
+    {c : Nat} {f : CNF}
+    (hc : 0 < c)
+    (h : DeficitAtLeast c f) :
+    ∀ ρ : Restriction,
+      RestrictionProgress ρ (cnfCircuit f) →
+        ¬ PaysOff 1 1 ρ (cnfCircuit f) := by
+  intro ρ hprog hpay
+  have hdef := (h ρ hprog).1
+  have hlt :=
+    paysOff_implies_costBits_lt_amortizedDrop
+      1 1 ρ (cnfCircuit f) hpay
+  omega
+
+/-- Uniform positive deficit on every progressing restriction of every member
+of a parametrized canonical-CNF family. -/
+def UniformPersistentDeficit
+    (Family : Nat → CNF → Prop) : Prop :=
+  ∃ (c n0 : Nat), 0 < c ∧
+    ∀ n : Nat, n0 ≤ n →
+      ∀ f : CNF, Family n f →
+        ∀ ρ : Restriction,
+          RestrictionProgress ρ (cnfCircuit f) →
+            amortizedDrop 1 1 ρ (cnfCircuit f) ≤
+              costBits ρ (cnfCircuit f) ∧
+            c ≤ costBits ρ (cnfCircuit f) -
+              amortizedDrop 1 1 ρ (cnfCircuit f)
+
+abbrev PersistentBranchingDeficitFamily :=
+  UniformPersistentDeficit
+
+theorem hardSubfamily_has_uniform_deficit
+    {c : Nat} (hc : 0 < c)
+    (clauseBound : Nat → Nat) :
+    UniformPersistentDeficit
+      (HardCNFSubfamilyWithMargin c clauseBound) := by
+  refine ⟨c, 0, hc, ?_⟩
+  intro n hn f hf ρ hprog
+  exact hf.2 ρ hprog
+
+theorem uniformPersistentDeficit_excludes_eventual_payoff
+    {Family : Nat → CNF → Prop}
+    (h : UniformPersistentDeficit Family) :
+    ∃ n0 : Nat, ∀ n : Nat, n0 ≤ n →
+      ∀ f : CNF, Family n f →
+        ∀ ρ : Restriction,
+          RestrictionProgress ρ (cnfCircuit f) →
+            ¬ PaysOff 1 1 ρ (cnfCircuit f) := by
+  rcases h with ⟨c, n0, hc, h⟩
+  refine ⟨n0, ?_⟩
+  intro n hn f hf ρ hprog hpay
+  have hdef := (h n hn f hf ρ hprog).1
+  have hlt :=
+    paysOff_implies_costBits_lt_amortizedDrop
+      1 1 ρ (cnfCircuit f) hpay
+  omega
+
+/-- A restriction is core-dominated when it gives progress on the padded
+formula and independently gives progress on the hard core.  This excludes the
+vacuous empty-core counterexample and records the exact guard needed by the
+inheritance theorem. -/
+def CoreDominatedProgress
+    (ρ : Restriction)
+    (f core : CNF) : Prop :=
+  RestrictionProgress ρ (cnfCircuit (f ++ core)) ∧
+  RestrictionProgress ρ (cnfCircuit core)
+
+/-- Guarded deficit inheritance.  Unlike raw append inheritance, this only
+claims inheritance for restrictions whose progress is witnessed on the core. -/
+def CoreDominatedDeficitInheritance
+    (core : Nat → CNF)
+    (c : Nat) : Prop :=
+  ∀ (n : Nat) (f : CNF) (ρ : Restriction),
+    DeficitAtLeast c (core n) →
+    CoreDominatedProgress ρ f (core n) →
+      amortizedDrop 1 1 ρ (cnfCircuit (f ++ core n)) ≤
+        costBits ρ (cnfCircuit (f ++ core n)) ∧
+      c ≤ costBits ρ (cnfCircuit (f ++ core n)) -
+        amortizedDrop 1 1 ρ (cnfCircuit (f ++ core n))
+
+/-- A usable hard-core family for the guarded padding route. -/
+structure HardCoreFamily where
+  core : Nat → CNF
+  margin : Nat
+  margin_pos : 0 < margin
+  satisfiable :
+    ∀ n, SATLanguage (cnfCircuit (core n))
+  deficit :
+    ∀ n, DeficitAtLeast margin (core n)
+  dominated_inherits :
+    CoreDominatedDeficitInheritance core margin
+
+/-- Polynomial SAT reduction into a parametrized family of canonical CNFs. -/
+structure SATReductionIntoFamily
+    (Family : Nat → CNF → Prop) where
+  reduce : BitString → CNF
+  parameter : BitString → Nat
+  parameterBound : Nat → Nat
+  parameter_poly : CanonicalFinalProof.PolynomialTimeBound parameterBound
+  parameter_le : ∀ x, parameter x ≤ parameterBound x.length
+  lands : ∀ x, Family (parameter x) (reduce x)
+  correct :
+    ∀ x,
+      CanonicalSATBoundary.SATBits
+          CanonicalCircuitBits.circuitBitEncoding x ↔
+        SATLanguage (cnfCircuit (reduce x))
+
+/-- Exact dominance obligation needed by the guarded route: every restriction
+that makes progress on the padded output must also make progress on the core. -/
+def CoreProgressDominates
+    (payload core : CNF) : Prop :=
+  ∀ ρ : Restriction,
+    RestrictionProgress ρ (cnfCircuit (payload ++ core)) →
+      RestrictionProgress ρ (cnfCircuit core)
+
+/-- Core-aware progress is intentionally separate from C10.RestrictionProgress.
+It cannot replace the original notion globally. -/
+def CoreAwareProgress
+    (ρ : Restriction)
+    (payload core : CNF) : Prop :=
+  RestrictionProgress ρ (cnfCircuit (payload ++ core)) ∧
+  RestrictionProgress ρ (cnfCircuit core)
+
+def CoreAwareProgressCoverage
+    (payload core : CNF) : Prop :=
+  ∀ ρ : Restriction,
+    RestrictionProgress ρ (cnfCircuit (payload ++ core)) →
+      CoreAwareProgress ρ payload core
+
+theorem coreAwareCoverage_implies_coreProgressDominates
+    {payload core : CNF}
+    (h : CoreAwareProgressCoverage payload core) :
+    CoreProgressDominates payload core := by
+  intro ρ hprog
+  exact (h ρ hprog).2
+
+theorem coreProgressDominates_to_coreDominated
+    {payload core : CNF}
+    (h : CoreProgressDominates payload core) :
+    ∀ ρ : Restriction,
+      RestrictionProgress ρ (cnfCircuit (payload ++ core)) →
+        CoreDominatedProgress ρ payload core := by
+  intro ρ hprog
+  exact ⟨hprog, h ρ hprog⟩
+
+/-- Variables occurring in the canonical CNF payload. -/
+def cnfVarList (f : CNF) : List Nat :=
+  (f.flatMap fun clause => clause.map Literal.var).eraseDups
+
+/-- Symmetric coupling gadget for a payload variable v.  Two fresh auxiliaries
+ensure that either Boolean value of v extends to a satisfying assignment:
+(v ∨ a_v) ∧ (¬v ∨ b_v). -/
+def coverageClauses (base i v : Nat) : CNF :=
+  [ [pos v, pos (base + 2 * i)]
+  , [neg v, pos (base + 2 * i + 1)] ]
+
+/-- Total-variable coverage core: every payload variable occurs in both
+polarities, coupled to fresh auxiliaries.  This layer is semantic/coverage
+infrastructure only; no deficit claim is attached here. -/
+def coverageCore (payload : CNF) : CNF :=
+  let base := cnfVarBound payload
+  ((cnfVarList payload).zipWithIndex.flatMap
+    (fun vi => coverageClauses base vi.2 vi.1))
+
+/-- The coverage core is satisfiable by the all-true assignment. -/
+theorem coverageCore_sat (payload : CNF) :
+    SATLanguage (cnfCircuit (coverageCore payload)) := by
+  rw [satLanguage_cnfCircuit_iff]
+  refine ⟨fun _ => true, ?_⟩
+  unfold coverageCore
+  simp [evalCNF, evalClause, evalLiteral, coverageClauses]
+
+/-- Nonempty whenever the payload has at least one syntactic CNF variable. -/
+theorem coverageCore_nonempty
+    (payload : CNF)
+    (h : cnfVarList payload ≠ []) :
+    coverageCore payload ≠ [] := by
+  unfold coverageCore
+  cases hv : (cnfVarList payload).zipWithIndex with
+  | nil =>
+      have : cnfVarList payload = [] := by
+        simpa using hv
+      exact (h this).elim
+  | cons x xs =>
+      simp [coverageClauses]
+
+/-- Exact remaining coverage obligation for the total-variable gadget.
+Because C10 progress also observes simplification, membership of every payload
+variable in the core is necessary but not by itself used as a proof here. -/
+def TotalVariableCoverageObligation (payload : CNF) : Prop :=
+  CoreAwareProgressCoverage payload (coverageCore payload)
+
+
+/-- Reduction specialized to the hard-core construction.  Besides semantic
+correctness, it must expose that every progressing restriction relevant to the
+lower-bound argument is core-dominated. -/
+structure SATReductionIntoCoreDominatedFamily
+    (H : HardCoreFamily)
+    (Family : Nat → CNF → Prop) extends SATReductionIntoFamily Family where
+  payload : BitString → CNF
+  reduce_eq :
+    ∀ x, reduce x = payload x ++ H.core (parameter x)
+  progress_coverage :
+    ∀ x,
+      CoreAwareProgressCoverage (payload x) (H.core (parameter x))
+  progress_dominance :
+    ∀ x,
+      CoreProgressDominates (payload x) (H.core (parameter x)) := by
+    intro x
+    exact coreAwareCoverage_implies_coreProgressDominates
+      (progress_coverage x)
+  every_progress_core_dominated :
+    ∀ x ρ,
+      RestrictionProgress ρ (cnfCircuit (reduce x)) →
+      CoreDominatedProgress ρ (payload x) (H.core (parameter x)) := by
+    intro x ρ hprog
+    rw [reduce_eq x] at hprog
+    exact coreProgressDominates_to_coreDominated
+      (progress_dominance x) ρ hprog
+
+/-- Explicit simulation obligation: a polynomial DTM for canonical SAT must
+induce a restriction-tree procedure on the hard family. The theorem carrying
+the exponential lower bound belongs here; it is not inferred from C11 alone. -/
+structure DTMToRestrictionTreeAdapter
+    (Family : Nat → CNF → Prop) where
+  deficit_excludes_poly_sat :
+    Nonempty (SATReductionIntoFamily Family) →
+    UniformPersistentDeficit Family →
+    ¬ CanonicalFinalProof.InP
+      (CanonicalSATBoundary.SATBits
+        CanonicalCircuitBits.circuitBitEncoding)
+
+def RestrictionLowerBoundTransfer
+    (Family : Nat → CNF → Prop) : Prop :=
+  Nonempty (SATReductionIntoFamily Family) ∧
+  Nonempty (DTMToRestrictionTreeAdapter Family) ∧
+  UniformPersistentDeficit Family
+
+theorem transfer_closes_p02
+    {Family : Nat → CNF → Prop}
+    (h : RestrictionLowerBoundTransfer Family) :
+    P02TerminalFrontier.P02Target := by
+  rcases h with ⟨hRed, hAdapter, hDeficit⟩
+  rcases hAdapter with ⟨A⟩
+  exact P02TerminalFrontier.p02_target_iff_sat_not_in_p.mpr
+    (A.deficit_excludes_poly_sat hRed hDeficit)
 
 #print axioms MCore.Real.P02RestrictionLowerBoundPattern.paysOff_implies_costBits_lt_amortizedDrop
 #print axioms MCore.Real.P02RestrictionLowerBoundPattern.persistentBranchingDeficit_excludes_payoff
+#print axioms MCore.Real.P02RestrictionLowerBoundPattern.hardCNF_excludes_payoff
+#print axioms MCore.Real.P02RestrictionLowerBoundPattern.hardSubfamily_has_uniform_deficit
+#print axioms MCore.Real.P02RestrictionLowerBoundPattern.uniformPersistentDeficit_excludes_eventual_payoff
+#print axioms MCore.Real.P02RestrictionLowerBoundPattern.coreAwareCoverage_implies_coreProgressDominates
+#print axioms MCore.Real.P02RestrictionLowerBoundPattern.coreProgressDominates_to_coreDominated
+#print axioms MCore.Real.P02RestrictionLowerBoundPattern.transfer_closes_p02
 
 end P02RestrictionLowerBoundPattern
 end Real
