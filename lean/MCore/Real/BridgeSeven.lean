@@ -20,6 +20,11 @@ def claim2a_paysOff_implies_costBits_lt_amortizedDrop :=
 def claim2b_persistentBranchingDeficit_excludes_payoff :=
   MCore.Real.P02RestrictionLowerBoundPattern.persistentBranchingDeficit_excludes_payoff
 
+/-- Claim3 theorem term from the exact f0a9fcd1 source state.
+    The commit itself was an import fix; this theorem is present in that certified source state. -/
+def claim3_persistentFamily_excludes_eventual_payoff :=
+  MCore.Real.P02RestrictionLowerBoundPattern.persistentFamily_excludes_eventual_payoff
+
 /-- The seven source certificates must eventually be represented by seven
     concrete Lean predicates.  This structure does not assert any of them. -/
 structure CertificateClaims where
