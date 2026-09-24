@@ -117,3 +117,8 @@ M-Core/
 ```
 
 The formal development must keep theorem status explicit: `PROVED`, `CONDITIONAL`, `DEFINITION/INTERFACE`, `NUMERICAL_EVIDENCE`, or `OPEN`.
+
+## DOI / Scientific record
+
+- DOI: [10.6084/m9.figshare.33990856](https://doi.org/10.6084/m9.figshare.33990856)
+- Author ORCID: [0009-0006-6874-3910](https://orcid.org/0009-0006-6874-3910)
