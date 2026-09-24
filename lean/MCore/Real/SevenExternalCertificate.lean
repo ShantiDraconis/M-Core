@@ -4,34 +4,31 @@ namespace MCore.Real.SevenCertificateBridge
 
 /-- The external chain is type-identical to a genuine producer.
     These aliases do not manufacture an inhabitant. -/
-abbrev EXTERNAL_GAP (C : CertificateClaims) : Type :=
-  RealProducer C
+abbrev EXTERNAL_GAP : Type :=
+  RealProducer
 
-abbrev EXTERNAL_CERTIFICATE (C : CertificateClaims) : Type :=
-  EXTERNAL_GAP C
+abbrev EXTERNAL_CERTIFICATE : Type :=
+  EXTERNAL_GAP
 
-abbrev FINAL_ROOT (C : CertificateClaims) : Type :=
-  EXTERNAL_CERTIFICATE C
+abbrev FINAL_ROOT : Type :=
+  EXTERNAL_CERTIFICATE
 
-abbrev FINAL_PROOF (C : CertificateClaims) : Type :=
-  FINAL_ROOT C
+abbrev FINAL_PROOF : Type :=
+  FINAL_ROOT
 
 def issueExternalCertificate
-    {C : CertificateClaims}
-    (p : RealProducer C) :
-    EXTERNAL_CERTIFICATE C :=
+    (p : RealProducer) :
+    EXTERNAL_CERTIFICATE :=
   p
 
 def toFinalRoot
-    {C : CertificateClaims}
-    (c : EXTERNAL_CERTIFICATE C) :
-    FINAL_ROOT C :=
+    (c : EXTERNAL_CERTIFICATE) :
+    FINAL_ROOT :=
   c
 
 def toFinalProof
-    {C : CertificateClaims}
-    (r : FINAL_ROOT C) :
-    FINAL_PROOF C :=
+    (r : FINAL_ROOT) :
+    FINAL_PROOF :=
   r
 
 end MCore.Real.SevenCertificateBridge
