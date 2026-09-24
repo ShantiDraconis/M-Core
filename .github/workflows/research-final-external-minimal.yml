@@ -1,0 +1,32 @@
+name: research final external minimal
+
+on:
+  push:
+    branches:
+      - research/single-45bf2597-final-20260924
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  minimal-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: false
+          test: false
+          lint: false
+      - run: |
+          set -euo pipefail
+          files=(
+            lean/MCore/Research/FinalExternalBranch.lean
+            research/final-external/manifest.json
+            research/final-external/status.json
+          )
+          for f in "${files[@]}"; do test -f "$f"; done
+          ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' lean/MCore/Research/FinalExternalBranch.lean
+          ! grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' lean/MCore/Research/FinalExternalBranch.lean
+          lake build MCore.Research.FinalExternalBranch
