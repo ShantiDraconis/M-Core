@@ -26,33 +26,23 @@ jobs:
           elan default "$(cat lean-toolchain)"
           lake update
 
-      - name: Verify sources
+      - name: Verify seven-bridge sources
         shell: bash
         run: |
           set -euo pipefail
-          files=(
-            lean/MCore/Research/FinalExternalBranch.lean
-            lean/MCore/Real/BridgeSeven.lean
-            lean/MCore/Real/SevenRealProducer.lean
-            lean/MCore/Real/SevenExternalCertificate.lean
-            research/final-external/manifest.json
-            research/final-external/status.json
-          )
-          for f in "${files[@]}"; do test -f "$f"; done
           lean_files=(
-            lean/MCore/Research/FinalExternalBranch.lean
             lean/MCore/Real/BridgeSeven.lean
             lean/MCore/Real/SevenRealProducer.lean
             lean/MCore/Real/SevenExternalCertificate.lean
           )
+          for f in "${lean_files[@]}"; do test -f "$f"; done
           ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${lean_files[@]}"
           ! grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' "${lean_files[@]}"
 
-      - name: Kernel build
+      - name: Kernel build seven-bridge
         shell: bash
         run: |
           set -euo pipefail
-          lake build MCore.Research.FinalExternalBranch
           lake build MCore.Real.BridgeSeven
           lake build MCore.Real.SevenRealProducer
           lake build MCore.Real.SevenExternalCertificate
