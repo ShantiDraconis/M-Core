@@ -1,0 +1,10 @@
+{
+  "certificate": "nb14-limit-green-9d6c36d",
+  "group": "NB_CORE",
+  "problem": "RIEMANN",
+  "declared_state": "GREEN",
+  "role": "FROZEN_SCOPED_EVIDENCE",
+  "proves_riemann_hypothesis": false,
+  "source_artifact_attached": false,
+  "kernel_verification": null
+}
