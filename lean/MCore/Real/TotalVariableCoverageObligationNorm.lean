@@ -151,6 +151,282 @@ theorem progressNorm_implies_restricted_var
 
 #print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.progressNorm_implies_restricted_var
 
+/-- Syntactic occurrence of an input variable in a circuit. -/
+private def OccursInput (v : Nat) : Circuit → Prop
+  | .input i => i = v
+  | .const _ => False
+  | .not c => OccursInput v c
+  | .and a b => OccursInput v a ∨ OccursInput v b
+  | .or a b => OccursInput v a ∨ OccursInput v b
+
+private def NonConstCircuit : Circuit → Prop
+  | .const _ => False
+  | _ => True
+
+private theorem literalCircuit_nonconst (l : Literal) :
+    NonConstCircuit (literalCircuit l) := by
+  cases l with
+  | mk v p =>
+      cases p <;> simp [literalCircuit, NonConstCircuit]
+
+private theorem occurs_literalCircuit_self (l : Literal) :
+    OccursInput l.var (literalCircuit l) := by
+  cases l with
+  | mk v p =>
+      cases p <;> simp [literalCircuit, OccursInput]
+
+private theorem smartOr_nonconst
+    (x y : Circuit)
+    (hx : NonConstCircuit x) (hy : NonConstCircuit y) :
+    NonConstCircuit (smartOr x y) := by
+  cases x <;> cases y <;>
+    simp_all [NonConstCircuit, smartOr]
+
+private theorem smartAnd_nonconst
+    (x y : Circuit)
+    (hx : NonConstCircuit x) (hy : NonConstCircuit y) :
+    NonConstCircuit (smartAnd x y) := by
+  cases x <;> cases y <;>
+    simp_all [NonConstCircuit, smartAnd]
+
+private theorem occurs_smartOr_left
+    (v : Nat) (x y : Circuit)
+    (hx : NonConstCircuit x) (hy : NonConstCircuit y)
+    (ho : OccursInput v x) :
+    OccursInput v (smartOr x y) := by
+  cases x <;> cases y <;>
+    simp_all [NonConstCircuit, OccursInput, smartOr]
+
+private theorem occurs_smartOr_right
+    (v : Nat) (x y : Circuit)
+    (hx : NonConstCircuit x) (hy : NonConstCircuit y)
+    (ho : OccursInput v y) :
+    OccursInput v (smartOr x y) := by
+  cases x <;> cases y <;>
+    simp_all [NonConstCircuit, OccursInput, smartOr]
+
+private theorem occurs_smartAnd_left
+    (v : Nat) (x y : Circuit)
+    (hx : NonConstCircuit x) (hy : NonConstCircuit y)
+    (ho : OccursInput v x) :
+    OccursInput v (smartAnd x y) := by
+  cases x <;> cases y <;>
+    simp_all [NonConstCircuit, OccursInput, smartAnd]
+
+private theorem occurs_smartAnd_right
+    (v : Nat) (x y : Circuit)
+    (hx : NonConstCircuit x) (hy : NonConstCircuit y)
+    (ho : OccursInput v y) :
+    OccursInput v (smartAnd x y) := by
+  cases x <;> cases y <;>
+    simp_all [NonConstCircuit, OccursInput, smartAnd]
+
+private theorem clauseCircuitNorm_nonconst
+    (c : Clause) (hne : c ≠ []) :
+    NonConstCircuit (clauseCircuitNorm c) := by
+  induction c with
+  | nil => exact False.elim (hne rfl)
+  | cons l ls ih =>
+      cases ls with
+      | nil =>
+          simpa [clauseCircuitNorm] using literalCircuit_nonconst l
+      | cons l2 ls2 =>
+          exact smartOr_nonconst
+            (literalCircuit l) (clauseCircuitNorm (l2 :: ls2))
+            (literalCircuit_nonconst l)
+            (ih (by simp))
+
+private theorem occurs_clauseCircuitNorm_of_mem
+    (v : Nat) (c : Clause) (hne : c ≠ [])
+    {l : Literal} (hl : l ∈ c) (hvar : l.var = v) :
+    OccursInput v (clauseCircuitNorm c) := by
+  induction c with
+  | nil => simp at hl
+  | cons a as ih =>
+      simp only [List.mem_cons] at hl
+      cases as with
+      | nil =>
+          have hal : l = a := by
+            cases hl with
+            | inl h => exact h
+            | inr h => simp at h
+          subst l
+          simpa [clauseCircuitNorm, hvar] using occurs_literalCircuit_self a
+      | cons b bs =>
+          have htailne : (b :: bs) ≠ [] := by simp
+          have hleftnc := literalCircuit_nonconst a
+          have hrightnc := clauseCircuitNorm_nonconst (b :: bs) htailne
+          cases hl with
+          | inl hal =>
+              subst l
+              exact occurs_smartOr_left v
+                (literalCircuit a) (clauseCircuitNorm (b :: bs))
+                hleftnc hrightnc
+                (by simpa [hvar] using occurs_literalCircuit_self a)
+          | inr htail =>
+              exact occurs_smartOr_right v
+                (literalCircuit a) (clauseCircuitNorm (b :: bs))
+                hleftnc hrightnc
+                (ih htailne htail hvar)
+
+private theorem cnfCircuitNorm_nonconst
+    (f : CNF)
+    (hne : ∀ c : Clause, c ∈ f → c ≠ []) :
+    NonConstCircuit (cnfCircuitNorm f) := by
+  induction f with
+  | nil =>
+      simp [cnfCircuitNorm, NonConstCircuit]
+  | cons c cs ih =>
+      cases cs with
+      | nil =>
+          simpa [cnfCircuitNorm] using clauseCircuitNorm_nonconst c (hne c (by simp))
+      | cons c2 cs2 =>
+          have hc : NonConstCircuit (clauseCircuitNorm c) :=
+            clauseCircuitNorm_nonconst c (hne c (by simp))
+          have htail : ∀ d : Clause, d ∈ (c2 :: cs2) → d ≠ [] := by
+            intro d hd
+            exact hne d (by simp [hd])
+          exact smartAnd_nonconst
+            (clauseCircuitNorm c) (cnfCircuitNorm (c2 :: cs2))
+            hc (ih htail)
+
+private theorem occurs_cnfCircuitNorm_of_mem
+    (v : Nat) (f : CNF)
+    (hne : ∀ c : Clause, c ∈ f → c ≠ [])
+    {c : Clause} (hc : c ∈ f)
+    {l : Literal} (hl : l ∈ c) (hvar : l.var = v) :
+    OccursInput v (cnfCircuitNorm f) := by
+  induction f with
+  | nil => simp at hc
+  | cons d ds ih =>
+      simp only [List.mem_cons] at hc
+      cases ds with
+      | nil =>
+          have hcd : c = d := by
+            cases hc with
+            | inl h => exact h
+            | inr h => simp at h
+          subst c
+          simpa [cnfCircuitNorm] using
+            occurs_clauseCircuitNorm_of_mem v d (hne d (by simp)) hl hvar
+      | cons d2 ds2 =>
+          have hdnc : NonConstCircuit (clauseCircuitNorm d) :=
+            clauseCircuitNorm_nonconst d (hne d (by simp))
+          have htail : ∀ e : Clause, e ∈ (d2 :: ds2) → e ≠ [] := by
+            intro e he
+            exact hne e (by simp [he])
+          have htailnc : NonConstCircuit (cnfCircuitNorm (d2 :: ds2)) :=
+            cnfCircuitNorm_nonconst (d2 :: ds2) htail
+          cases hc with
+          | inl hcd =>
+              subst c
+              exact occurs_smartAnd_left v
+                (clauseCircuitNorm d) (cnfCircuitNorm (d2 :: ds2))
+                hdnc htailnc
+                (occurs_clauseCircuitNorm_of_mem v d (hne d (by simp)) hl hvar)
+          | inr hctail =>
+              exact occurs_smartAnd_right v
+                (clauseCircuitNorm d) (cnfCircuitNorm (d2 :: ds2))
+                hdnc htailnc
+                (ih htail hctail hl hvar)
+
+private theorem occurs_simplify_imp
+    (v : Nat) (t : Circuit) :
+    OccursInput v (MCore.CircuitC2.simplify t) → OccursInput v t := by
+  induction t with
+  | input i => simp [MCore.CircuitC2.simplify, OccursInput]
+  | const b => simp [MCore.CircuitC2.simplify, OccursInput]
+  | not t ih =>
+      simp only [MCore.CircuitC2.simplify]
+      cases h : MCore.CircuitC2.simplify t <;>
+        simp_all [OccursInput]
+  | and a b iha ihb =>
+      simp only [MCore.CircuitC2.simplify]
+      cases ha : MCore.CircuitC2.simplify a <;>
+        cases hb : MCore.CircuitC2.simplify b <;>
+        simp_all [OccursInput]
+  | or a b iha ihb =>
+      simp only [MCore.CircuitC2.simplify]
+      cases ha : MCore.CircuitC2.simplify a <;>
+        cases hb : MCore.CircuitC2.simplify b <;>
+        simp_all [OccursInput]
+
+private theorem fixed_var_not_occurs_restrict
+    (ρ : Restriction) (v : Nat) (t : Circuit)
+    (hfixed : ρ v ≠ none) :
+    ¬ OccursInput v (MCore.CircuitK1.restrict ρ t) := by
+  induction t with
+  | input i =>
+      cases hri : ρ i with
+      | none =>
+          intro ho
+          have hiv : i = v := by
+            simpa [MCore.CircuitK1.restrict, hri, OccursInput] using ho
+          subst i
+          exact hfixed hri
+      | some b =>
+          simp [MCore.CircuitK1.restrict, hri, OccursInput]
+  | const b =>
+      simp [MCore.CircuitK1.restrict, OccursInput]
+  | not t ih =>
+      simpa [MCore.CircuitK1.restrict, OccursInput] using ih
+  | and a b iha ihb =>
+      simp [MCore.CircuitK1.restrict, OccursInput, iha, ihb]
+  | or a b iha ihb =>
+      simp [MCore.CircuitK1.restrict, OccursInput, iha, ihb]
+
+private theorem coverageCore_clauses_nonempty
+    (payload : CNF) :
+    ∀ c : Clause, c ∈ coverageCore payload → c ≠ [] := by
+  intro c hc
+  simp only [coverageCore, List.mem_flatMap] at hc
+  rcases hc with ⟨vi, _hvi, hc⟩
+  simp [coverageClauses] at hc
+  rcases hc with rfl | rfl <;> simp
+
+/-- TARGET2c: restricting any payload variable forces normalized progress in its coverage core. -/
+theorem restricted_coverage_var_implies_core_progress
+    (ρ : Restriction) (payload : CNF) (v : Nat)
+    (hv : v ∈ cnfVarList payload)
+    (hfixed : ρ v ≠ none) :
+    RestrictionProgressNorm ρ (cnfCircuitNorm (coverageCore payload)) := by
+  have hvcore : v ∈ cnfVarList (coverageCore payload) :=
+    payload_var_mem_coverageCore hv
+  have hvraw :
+      v ∈ ((coverageCore payload).flatMap fun clause => clause.map Literal.var) :=
+    Claim7VariableCoverage.mem_eraseDups_iff.mp hvcore
+  simp only [List.mem_flatMap, List.mem_map] at hvraw
+  rcases hvraw with ⟨c, hc, l, hl, hvar⟩
+  have horig : OccursInput v (cnfCircuitNorm (coverageCore payload)) :=
+    occurs_cnfCircuitNorm_of_mem v (coverageCore payload)
+      (coverageCore_clauses_nonempty payload) hc hl hvar
+  intro heq
+  have hsimp :
+      MCore.CircuitC2.simplify (cnfCircuitNorm (coverageCore payload)) =
+        cnfCircuitNorm (coverageCore payload) :=
+    simplify_cnfCircuitNorm_idem (coverageCore payload)
+  have hres :
+      DNorm ρ (cnfCircuitNorm (coverageCore payload)) =
+        cnfCircuitNorm (coverageCore payload) := by
+    exact heq.trans hsimp
+  have hoccD : OccursInput v (DNorm ρ (cnfCircuitNorm (coverageCore payload))) := by
+    rw [hres]
+    exact horig
+  unfold DNorm at hoccD
+  have hoccRestrict :
+      OccursInput v
+        (MCore.CircuitK1.restrict ρ
+          (MCore.CircuitC2.simplify (cnfCircuitNorm (coverageCore payload)))) :=
+    occurs_simplify_imp v
+      (MCore.CircuitK1.restrict ρ
+        (MCore.CircuitC2.simplify (cnfCircuitNorm (coverageCore payload))))
+      hoccD
+  exact (fixed_var_not_occurs_restrict ρ v
+    (MCore.CircuitC2.simplify (cnfCircuitNorm (coverageCore payload))) hfixed)
+    hoccRestrict
+
+#print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.restricted_coverage_var_implies_core_progress
+
 /-- Normalized core-aware progress. Both payload+core and core are measured only
 after canonical normalization, so representation-only simplification is excluded. -/
 def CoreAwareProgressNorm
