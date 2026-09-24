@@ -1,0 +1,10 @@
+{
+  "certificate": "vanishing-upper-bound-green-5c66f8dc",
+  "group": "AGGREGATE",
+  "problem": "RIEMANN",
+  "declared_state": "GREEN",
+  "role": "FROZEN_SCOPED_EVIDENCE",
+  "proves_riemann_hypothesis": false,
+  "source_artifact_attached": false,
+  "kernel_verification": null
+}
