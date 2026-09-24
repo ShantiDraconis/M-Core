@@ -1,5 +1,5 @@
 name: research final external minimal
-# trigger: claim7 coverage rerun
+# trigger: claim7 coverage rerun 2
 
 on:
   push:
