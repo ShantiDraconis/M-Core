@@ -33,6 +33,30 @@ theorem canonicalClaim1To7 :
     canonicalSevenGreenEvidence.cert_45bf2597
   ⟩
 
+/-- Claim-only external certificate: exactly the seven kernel-checked claims. -/
+abbrev EXTERNAL_CERTIFICATE : Prop :=
+  Claim1To7Evidence canonicalSevenEndpoint
+
+/-- Claim-only final root. No unrelated producer or lane is admitted. -/
+abbrev FINAL_ROOT : Prop :=
+  EXTERNAL_CERTIFICATE
+
+/-- Claim-only final proof endpoint. It contains exactly Claim1 through Claim7. -/
+abbrev FINAL_PROOF : Prop :=
+  FINAL_ROOT
+
+theorem canonicalExternalCertificate : EXTERNAL_CERTIFICATE :=
+  canonicalClaim1To7
+
+theorem canonicalFinalRoot : FINAL_ROOT :=
+  canonicalExternalCertificate
+
+theorem canonicalFinalProof : FINAL_PROOF :=
+  canonicalFinalRoot
+
 #print axioms MCore.Real.Claim1To7Only.canonicalClaim1To7
+#print axioms MCore.Real.Claim1To7Only.canonicalExternalCertificate
+#print axioms MCore.Real.Claim1To7Only.canonicalFinalRoot
+#print axioms MCore.Real.Claim1To7Only.canonicalFinalProof
 
 end MCore.Real.Claim1To7Only
