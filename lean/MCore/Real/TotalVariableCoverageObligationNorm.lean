@@ -41,7 +41,7 @@ theorem payload_var_mem_coverageCore
   apply Claim7VariableCoverage.mem_eraseDups_iff.mpr
   simp only [List.mem_flatMap]
   refine ⟨[pos v, pos (cnfVarBound payload + 2 * i)], hclause, ?_⟩
-  simp
+  simp [pos]
 
 #print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.payload_var_mem_coverageCore
 
