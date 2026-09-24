@@ -1,34 +1,17 @@
 {
-  "schema": "elyon.claim1-7-only.v1",
+  "schema": "elyon.claim1-7-only.v2",
   "scope": "CLAIM1_TO_CLAIM7_ONLY",
-  "source_final_chain_sha": "e7f317db45fc944226d9dce6223de45ad05bc01c",
-  "source_final_chain_run": 36024920522,
-  "include": [
-    "MCore.Real.BridgeSeven",
-    "MCore.Real.SevenRealProducer",
-    "MCore.Real.SevenExternalCertificate",
-    "MCore.Real.FinalChain"
-  ],
-  "exclude": [
-    "P01ConstructionGap",
-    "G21Pointwise",
-    "P02Target",
-    "FinalExternalTwoGap",
-    "all unrelated proof lanes"
-  ],
-  "endpoint_chain": [
+  "source_claim_green_sha": "de908fa5be992820389422374d02b6bdc4f1a68a",
+  "source_claim_green_run": 36043017699,
+  "claim_source": "MCore.Real.Claim1To7Only.canonicalClaim1To7",
+  "claims": [
     "Claim1",
     "Claim2",
     "Claim3",
     "Claim4",
     "Claim5",
     "Claim6",
-    "Claim7",
-    "SevenGreenEvidenceConcrete",
-    "RealProducer",
-    "EXTERNAL_CERTIFICATE",
-    "FINAL_ROOT",
-    "FINAL_PROOF"
+    "Claim7"
   ],
-  "policy": "No cross-lane imports or promotion from unrelated producers. This lane certifies only the concrete Claim1-7 chain already kernel-checked at the pinned source."
+  "policy": "This lane contains and certifies only Claim1 through Claim7 evidence. No external, producer, root, P01, G21, P02Target, or unrelated lane is part of this certificate."
 }
