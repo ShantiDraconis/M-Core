@@ -27,38 +27,53 @@ def coverageCore (payload : CNF) : CNF :=
   ((cnfVarList payload).enum.flatMap
     (fun vi => coverageClauses base vi.1 vi.2))
 
+/-- v4.19 compatibility: eraseDups preserves membership. -/
+private theorem mem_eraseDups_loop_iff
+    {α : Type} [BEq α] [LawfulBEq α] (a : α) :
+    ∀ (l acc : List α),
+      a ∈ List.eraseDups.loop l acc ↔ a ∈ l ∨ a ∈ acc := by
+  intro l
+  induction l with
+  | nil =>
+      intro acc
+      simp [List.eraseDups.loop]
+  | cons b bs ih =>
+      intro acc
+      simp only [List.eraseDups.loop]
+      split <;> simp_all [ih]
+
+private theorem mem_eraseDups_iff
+    {α : Type} [BEq α] [LawfulBEq α] {a : α} {l : List α} :
+    a ∈ l.eraseDups ↔ a ∈ l := by
+  unfold List.eraseDups
+  rw [mem_eraseDups_loop_iff]
+  simp
+
 /-- Every literal variable occurring in a payload is recorded by cnfVarList. -/
 theorem literal_var_mem_cnfVarList
     {f : CNF} {c : Clause} {l : Literal}
     (hc : c ∈ f) (hl : l ∈ c) :
     l.var ∈ cnfVarList f := by
-  have hflat : l.var ∈ f.flatMap (fun clause => clause.map Literal.var) := by
-    simp
-    exact ⟨c, hc, l, hl, rfl⟩
-  simpa [cnfVarList] using hflat
+  apply mem_eraseDups_iff.mpr
+  simp
+  exact ⟨c, hc, l, hl, rfl⟩
 
 /-- cnfVarList is monotone under append. -/
 theorem cnfVarList_left_subset_append
     (a b : CNF) :
     ∀ v, v ∈ cnfVarList a → v ∈ cnfVarList (a ++ b) := by
   intro v hv
-  have hva : v ∈ a.flatMap (fun clause => clause.map Literal.var) := by
-    simpa [cnfVarList] using hv
-  have hab : v ∈ (a ++ b).flatMap (fun clause => clause.map Literal.var) := by
-    rw [List.flatMap_append]
-    exact List.mem_append.mpr (Or.inl hva)
-  simpa [cnfVarList] using hab
+  apply mem_eraseDups_iff.mpr
+  rw [List.flatMap_append]
+  exact List.mem_append.mpr (Or.inl (mem_eraseDups_iff.mp hv))
 
 theorem cnfVarList_right_subset_append
     (a b : CNF) :
     ∀ v, v ∈ cnfVarList b → v ∈ cnfVarList (a ++ b) := by
   intro v hv
-  have hvb : v ∈ b.flatMap (fun clause => clause.map Literal.var) := by
-    simpa [cnfVarList] using hv
-  have hab : v ∈ (a ++ b).flatMap (fun clause => clause.map Literal.var) := by
-    rw [List.flatMap_append]
-    exact List.mem_append.mpr (Or.inr hvb)
-  simpa [cnfVarList] using hab
+  apply mem_eraseDups_iff.mpr
+  rw [List.flatMap_append]
+  exact List.mem_append.mpr (Or.inr (mem_eraseDups_iff.mp hv))
 
 #print axioms MCore.Real.Claim7VariableCoverage.literal_var_mem_cnfVarList
 #print axioms MCore.Real.Claim7VariableCoverage.cnfVarList_left_subset_append
