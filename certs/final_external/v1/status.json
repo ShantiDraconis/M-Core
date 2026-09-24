@@ -4,7 +4,7 @@
   "version": "v1.0.0",
   "issuance": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "reason": "Fail-closed: the mathematical pipeline is now GREEN/FROZEN/CERTIFIED through the FinalExternalTwoGap reduction, so only two mathematical producers remain: P01ConstructionGap and G21Pointwise (equivalent to SAT not in P). G3 and G2.2 wiring are closed. Product/human issuance gates remain governed separately.",
+    "reason": "Fail-closed: the concrete seven-certificate FinalChain is GREEN_KERNEL/FROZEN/CERTIFIED, but the official P-vs-NP endpoint taxonomy still requires P01ConstructionGap and G21Pointwise; product/human issuance gates also remain unset.",
     "infra_state": "READY_FOR_FREEZE",
     "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
     "release_state": "SEALED_CLOSED",
@@ -62,7 +62,7 @@
     "FINAL_ROOT_MATH": null,
     "GLOBAL_7_PROBLEMS_FINAL_PROOF": "0/7"
   },
-  "package_revision": "v1.3.1-preparatory",
+  "package_revision": "v1.3.2-preparatory",
   "freeze_state": "FROZEN_PREPARATORY",
   "math_terminal_boundary": {
     "record": "MATH_TERMINAL_BOUNDARY_20260922.json",
@@ -122,5 +122,20 @@
     },
     "FINAL_ROOT": null,
     "FINAL_EXTERNAL_ISSUED": false
+  },
+  "seven_bridge_final_chain": {
+    "state": "GREEN_KERNEL_FROZEN_CERTIFIED",
+    "source_sha": "e7f317db45fc944226d9dce6223de45ad05bc01c",
+    "run": "36024920522 SUCCESS",
+    "final_root_theorem": "MCore.Real.SevenCertificateBridge.canonicalFinalRoot",
+    "final_proof_theorem": "MCore.Real.SevenCertificateBridge.canonicalFinalProof",
+    "axiom_footprint": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sorryAx": false,
+    "bypass": "NONE",
+    "official_p_vs_np_endpoint_effect": "NONE_UNTIL_P01ConstructionGap_AND_G21Pointwise_OFFICIAL_CONSUMERS_CLOSE"
   }
 }
