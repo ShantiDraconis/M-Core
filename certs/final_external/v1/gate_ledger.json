@@ -238,5 +238,35 @@
   "P07": {
     "status": "OPEN_MATH"
   },
-  "issuance_policy": "final_proof=0/7 must remain explicit, no language of solved problem"
+  "issuance_policy": "final_proof=0/7 must remain explicit, no language of solved problem",
+  "SEVEN_BRIDGE_FINAL_CHAIN": {
+    "status": "GREEN_KERNEL_FROZEN_CERTIFIED",
+    "source_sha": "e7f317db45fc944226d9dce6223de45ad05bc01c",
+    "run": "36024920522 SUCCESS",
+    "frozen_branch": "frozen/final-chain-green-e7f317db",
+    "certificate_branch": "cert/final-chain-run36024920522",
+    "chain": [
+      "canonicalSevenGreenEvidence",
+      "canonicalResolutionStep",
+      "canonicalResolutionPath",
+      "canonicalRealProducer",
+      "canonicalExternalCertificate",
+      "canonicalFinalRoot",
+      "canonicalFinalProof"
+    ],
+    "axiom_footprint": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sorryAx": false,
+    "bypass": "NONE",
+    "scope_boundary": "Auxiliary seven-certificate chain only; does not overwrite P01/P02 official endpoint states."
+  },
+  "CLAIM7_TOTAL_VARIABLE_COVERAGE": {
+    "status": "GREEN_KERNEL_FROZEN_CERTIFIED",
+    "source_sha": "5440bc62845fc2f4111b32590ae1729cbf18017e",
+    "run": "36021899040 SUCCESS",
+    "theorem": "MCore.Real.P02Lane4TotalVariableCoverageNorm.totalVariableCoverageObligationNorm"
+  }
 }
