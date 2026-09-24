@@ -4,6 +4,7 @@ import MCore.C11.BranchingCost
 import MCore.Real.P02RestrictionLowerBoundPattern
 import MCore.Real.Claim3PersistentFamily
 import MCore.Real.Claim4NormalizedProgress
+import MCore.Real.P02RestrictionFamilyAudit
 
 namespace MCore.Real.SevenCertificateBridge
 
@@ -43,6 +44,16 @@ def claim4_leavesZeroFree_no_progress_norm
         MCore.CircuitK1.leavesZeroFree
         (MCore.Real.Claim4NormalizedProgress.cnfCircuitNorm f) :=
   MCore.Real.Claim4NormalizedProgress.leavesZeroFree_no_progress_norm f
+
+/-- Claim5 theorem term from source state 003dd377.
+    This is the audit theorem rerun by that commit; no SHA/run metadata is used as proof. -/
+def claim5_allCNF_universal_deficit_refuted :
+    ¬ (∀ (t : MCore.C9.FormulaTree),
+        MCore.CircuitK1.IsCNF t →
+        ∀ ρ : MCore.CircuitK1.Restriction,
+          MCore.C10.RestrictionProgress ρ t →
+            ¬ MCore.C11.PaysOff 1 1 ρ t) :=
+  MCore.Real.P02RestrictionFamilyAudit.allCNF_universal_deficit_refuted
 
 /-- The seven source certificates must eventually be represented by seven
     concrete Lean predicates.  This structure does not assert any of them. -/
