@@ -1,0 +1,10 @@
+{
+  "certificate": "nb12-nesting-green-7c2d8d3",
+  "group": "NB_CORE",
+  "problem": "RIEMANN",
+  "declared_state": "GREEN",
+  "role": "FROZEN_SCOPED_EVIDENCE",
+  "proves_riemann_hypothesis": false,
+  "source_artifact_attached": false,
+  "kernel_verification": null
+}
