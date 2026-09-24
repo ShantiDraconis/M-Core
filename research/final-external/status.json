@@ -1,0 +1,12 @@
+{
+  "state": "CLOSED_EMPTY",
+  "build": "BUILD_PENDING",
+  "producers": {
+    "present": 0,
+    "required": 0
+  },
+  "endpoint": "PRESENT",
+  "final_root": null,
+  "proof_claim": "NONE",
+  "bypass": "NONE"
+}
