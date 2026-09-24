@@ -1,6 +1,7 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Logic.Relation
 import MCore.C11.BranchingCost
+import MCore.Real.P02RestrictionLowerBoundPattern
 
 namespace MCore.Real.SevenCertificateBridge
 
@@ -10,6 +11,14 @@ def claim1_branchingCost_exact :
     ∀ (ρ : MCore.CircuitK1.Restriction) (t : MCore.C9.FormulaTree),
       MCore.C11.BranchingCost ρ t = 2 ^ MCore.C11.costBits ρ t :=
   MCore.C11.branchingCost_exact
+
+/-- Claim2 theorem terms imported from the exact source commit 24464291.
+    These expose only the kernel-checked local implications proved by that source. -/
+def claim2a_paysOff_implies_costBits_lt_amortizedDrop :=
+  MCore.Real.P02RestrictionLowerBoundPattern.paysOff_implies_costBits_lt_amortizedDrop
+
+def claim2b_persistentBranchingDeficit_excludes_payoff :=
+  MCore.Real.P02RestrictionLowerBoundPattern.persistentBranchingDeficit_excludes_payoff
 
 /-- The seven source certificates must eventually be represented by seven
     concrete Lean predicates.  This structure does not assert any of them. -/
