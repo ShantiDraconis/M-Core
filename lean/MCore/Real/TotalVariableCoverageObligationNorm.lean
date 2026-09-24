@@ -142,7 +142,7 @@ theorem progressNorm_implies_restricted_var
   have hfree : ∀ v : Nat, v ∈ cnfVarList f → ρ v = none := by
     intro v hv
     cases hρ : ρ v with
-    | none => exact hρ
+    | none => rfl
     | some b =>
         exfalso
         apply hex
