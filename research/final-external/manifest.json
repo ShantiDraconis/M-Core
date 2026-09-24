@@ -1,0 +1,10 @@
+{
+  "schema": "mcore.final-external-research.v1",
+  "branch": "research/closed-empty-external-20260924",
+  "mode": "CLOSED_EMPTY",
+  "source_anchor": "CLOSED_EMPTY_0_OF_0",
+  "endpoint": "FinalExternalGap",
+  "required_producers": 0,
+  "final_root": null,
+  "issued": false
+}
