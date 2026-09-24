@@ -31,11 +31,11 @@ def cnfCircuitNorm : CNF → Circuit
   | [clause] => clauseCircuitNorm clause
   | clause :: rest => smartAnd (clauseCircuitNorm clause) (cnfCircuitNorm rest)
 
-def DNorm (ρ : Restriction) (t : FormulaTree) : FormulaTree :=
+def DNorm (ρ : Restriction) (t : Circuit) : Circuit :=
   MCore.CircuitC2.simplify
     (MCore.CircuitK1.restrict ρ (MCore.CircuitC2.simplify t))
 
-def RestrictionProgressNorm (ρ : Restriction) (t : FormulaTree) : Prop :=
+def RestrictionProgressNorm (ρ : Restriction) (t : Circuit) : Prop :=
   DNorm ρ t ≠ MCore.CircuitC2.simplify t
 
 theorem simplify_cnfCircuitNorm_idem (f : CNF) :
