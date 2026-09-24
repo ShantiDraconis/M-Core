@@ -267,15 +267,16 @@ private theorem occurs_clauseCircuitNorm_of_mem
               exact occurs_smartOr_right v
                 (literalCircuit a) (clauseCircuitNorm (b :: bs))
                 hleftnc hrightnc
-                (ih htailne htail hvar)
+                (ih htailne htail)
 
 private theorem cnfCircuitNorm_nonconst
     (f : CNF)
+    (hfn : f ≠ [])
     (hne : ∀ c : Clause, c ∈ f → c ≠ []) :
     NonConstCircuit (cnfCircuitNorm f) := by
   induction f with
   | nil =>
-      simp [cnfCircuitNorm, NonConstCircuit]
+      exact False.elim (hfn rfl)
   | cons c cs ih =>
       cases cs with
       | nil =>
@@ -288,7 +289,7 @@ private theorem cnfCircuitNorm_nonconst
             exact hne d (by simp [hd])
           exact smartAnd_nonconst
             (clauseCircuitNorm c) (cnfCircuitNorm (c2 :: cs2))
-            hc (ih htail)
+            hc (ih (by simp) htail)
 
 private theorem occurs_cnfCircuitNorm_of_mem
     (v : Nat) (f : CNF)
@@ -316,7 +317,7 @@ private theorem occurs_cnfCircuitNorm_of_mem
             intro e he
             exact hne e (by simp [he])
           have htailnc : NonConstCircuit (cnfCircuitNorm (d2 :: ds2)) :=
-            cnfCircuitNorm_nonconst (d2 :: ds2) htail
+            cnfCircuitNorm_nonconst (d2 :: ds2) (by simp) htail
           cases hc with
           | inl hcd =>
               subst c
@@ -328,7 +329,16 @@ private theorem occurs_cnfCircuitNorm_of_mem
               exact occurs_smartAnd_right v
                 (clauseCircuitNorm d) (cnfCircuitNorm (d2 :: ds2))
                 hdnc htailnc
-                (ih htail hctail hl hvar)
+                (ih htail hctail)
+
+private theorem map_or_imp
+    {P Q P' Q' : Prop}
+    (hp : P → P') (hq : Q → Q') :
+    P ∨ Q → P' ∨ Q' := by
+  intro h
+  cases h with
+  | inl hp0 => exact Or.inl (hp hp0)
+  | inr hq0 => exact Or.inr (hq hq0)
 
 private theorem occurs_simplify_imp
     (v : Nat) (t : Circuit) :
@@ -344,12 +354,14 @@ private theorem occurs_simplify_imp
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
-        simp_all [OccursInput]
+        simp_all [OccursInput] <;>
+        exact map_or_imp iha ihb
   | or a b iha ihb =>
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
-        simp_all [OccursInput]
+        simp_all [OccursInput] <;>
+        exact map_or_imp iha ihb
 
 private theorem fixed_var_not_occurs_restrict
     (ρ : Restriction) (v : Nat) (t : Circuit)
