@@ -32,6 +32,7 @@ jobs:
           set -euo pipefail
           lean_files=(
             lean/MCore/Real/BridgeSeven.lean
+            lean/MCore/Real/Claim3PersistentFamily.lean
             lean/MCore/Real/SevenRealProducer.lean
             lean/MCore/Real/SevenExternalCertificate.lean
           )
@@ -43,6 +44,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          lake build MCore.Real.Claim3PersistentFamily
           lake build MCore.Real.BridgeSeven
           lake build MCore.Real.SevenRealProducer
           lake build MCore.Real.SevenExternalCertificate
