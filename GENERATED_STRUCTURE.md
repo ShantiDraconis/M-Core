@@ -123,3 +123,88 @@ PRIMITIVE_LAWS: 1
 EXTRA_AXIOMS: 0
 BYPASS: NONE
 ```
+## Triadic payload carried by every operation
+
+Every generated operation carries three components:
+
+```text
+OpState := (R, I, U)
+```
+
+where:
+
+- `R` = real component
+- `I` = imaginary component
+- `U` = indeterminate component
+
+This is a representation of the operation's state, not an additional arithmetic axiom.
+
+### Dominant pole
+
+For an operation state `x = (R,I,U)`, its dominant pole is the component with maximal weight:
+
+```text
+pole(x) := argmax {R, I, U}
+```
+
+A tie is itself indeterminate until the dynamics breaks it; no arbitrary winner is inserted.
+
+### Evolution toward the dominant pole
+
+The primitive evolution `0/1 -> 1/1` acts on the triadic payload by preserving the three-component decomposition while moving the state toward its current dominant pole:
+
+```text
+(R,I,U)_0 -> (R,I,U)_1
+```
+
+subject only to:
+
+```text
+dominance_after >= dominance_before
+```
+
+for the selected pole.
+
+No numerical rate, metric, addition law, multiplication law, or probability law is assumed here.
+
+### Generated classifications
+
+```text
+RealDominant          := R > I and R > U
+ImaginaryDominant     := I > R and I > U
+IndeterminateDominant := U > R and U > I
+Tied                  := no unique maximum
+```
+
+### Generated behavior classes
+
+```text
+real-polarizing
+imaginary-polarizing
+indeterminate-polarizing
+tied/undetermined
+terminal-at-dominant-pole
+```
+
+### Compatibility with the primitive transition
+
+The primitive law remains:
+
+```text
+0/1 -> 1/1
+```
+
+The triadic payload describes what each operation carries while undergoing that transition. It does not replace the primitive law and does not by itself introduce standard complex arithmetic or probability theory.
+
+### Formal boundary
+
+Still not assumed:
+
+- standard complex-number multiplication
+- standard field laws
+- a norm or metric
+- probabilities summing to one
+- continuity
+- convergence rates
+
+Those require explicit definitions before they can be proved.
