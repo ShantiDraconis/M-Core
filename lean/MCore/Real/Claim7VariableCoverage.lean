@@ -43,13 +43,34 @@ private theorem mem_eraseDups_loop_iff
       split <;> rename_i h
       · rw [ih]
         have hbmem : b ∈ acc := List.mem_of_elem_eq_true h
-        simp [hbmem]
+        constructor
+        · intro ha
+          rcases ha with hbs | hacc
+          · exact Or.inr (Or.inl hbs)
+          · exact Or.inr (Or.inr hacc)
+        · intro ha
+          rcases ha with (hab | hbs) | hacc
+          · subst b
+            exact Or.inr hbmem
+          · exact Or.inl hbs
+          · exact Or.inr hacc
       · rw [ih]
         have hbnot : b ∉ acc := by
           intro hb
           have heq : acc.elem b = true := List.elem_eq_true_of_mem hb
-          simp [heq] at h
-        simp [hbnot]
+          rw [h] at heq
+          contradiction
+        constructor
+        · intro ha
+          rcases ha with hbs | hab | hacc
+          · exact Or.inr (Or.inl hbs)
+          · exact Or.inl hab
+          · exact Or.inr (Or.inr hacc)
+        · intro ha
+          rcases ha with (hab | hbs) | hacc
+          · exact Or.inr (Or.inl hab)
+          · exact Or.inl hbs
+          · exact Or.inr (Or.inr hacc)
 
 private theorem mem_eraseDups_iff
     {α : Type} [BEq α] [LawfulBEq α] {a : α} {l : List α} :
