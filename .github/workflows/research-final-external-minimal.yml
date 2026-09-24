@@ -33,6 +33,7 @@ jobs:
           lean_files=(
             lean/MCore/Real/BridgeSeven.lean
             lean/MCore/Real/Claim3PersistentFamily.lean
+            lean/MCore/Real/Claim4NormalizedProgress.lean
             lean/MCore/Real/SevenRealProducer.lean
             lean/MCore/Real/SevenExternalCertificate.lean
           )
@@ -45,6 +46,7 @@ jobs:
         run: |
           set -euo pipefail
           lake build MCore.Real.Claim3PersistentFamily
+          lake build MCore.Real.Claim4NormalizedProgress
           lake build MCore.Real.BridgeSeven
           lake build MCore.Real.SevenRealProducer
           lake build MCore.Real.SevenExternalCertificate
