@@ -33,7 +33,7 @@ jobs:
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
 
-      - name: Verify scoped issuance
+      - name: Verify audit package
         shell: bash
         run: |
           set -euo pipefail
@@ -41,6 +41,10 @@ jobs:
           test -f certs/elyon_claim1_7_only/manifest.json
           test -f certs/elyon_claim1_7_only/CLAIM1_7_CERTIFICATE.json
           test -f certs/elyon_claim1_7_only/FINAL_ISSUANCE.json
+          test -f certs/elyon_claim1_7_only/AUDIT_MANIFEST.json
+          test -f certs/elyon_claim1_7_only/SHA256SUMS
+          test -f certs/elyon_claim1_7_only/REPRODUCE.md
+          sha256sum -c certs/elyon_claim1_7_only/SHA256SUMS
           ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' lean/MCore/Real/Claim1To7Only.lean
           ! grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' lean/MCore/Real/Claim1To7Only.lean
 
