@@ -1,7 +1,15 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Logic.Relation
+import MCore.C11.BranchingCost
 
 namespace MCore.Real.SevenCertificateBridge
+
+/-- Claim1 is imported from the exact source commit 1b7ce6f8.
+    This is a theorem term, not SHA/run metadata. -/
+def claim1_branchingCost_exact :
+    ∀ (ρ : MCore.CircuitK1.Restriction) (t : MCore.C9.FormulaTree),
+      MCore.C11.BranchingCost ρ t = 2 ^ MCore.C11.costBits ρ t :=
+  MCore.C11.branchingCost_exact
 
 /-- The seven source certificates must eventually be represented by seven
     concrete Lean predicates.  This structure does not assert any of them. -/
