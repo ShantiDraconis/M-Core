@@ -1,0 +1,15 @@
+{
+  "schema": "elyon.claim1-7-only.issuance.v1",
+  "scope": "CLAIM1_TO_CLAIM7_ONLY",
+  "state": "ISSUED_PENDING_REVALIDATION",
+  "validated_sha": "c6bae576cfd5ae10628144c9c32deef8dcd94434",
+  "validated_run": 36047829057,
+  "kernel_result": "SUCCESS",
+  "external_certificate": "MCore.Real.Claim1To7Only.canonicalExternalCertificate",
+  "final_root": "MCore.Real.Claim1To7Only.canonicalFinalRoot",
+  "final_proof": "MCore.Real.Claim1To7Only.canonicalFinalProof",
+  "frozen_branch": "frozen/elyon-claim1-7-final-green-c6bae576",
+  "certified_branch": "cert/elyon-claim1-7-final-run36047829057",
+  "final_pointer": "final/elyon-claim1-7-certified",
+  "policy": "Issuance is scoped only to Claim1 through Claim7 and does not assert the status of the global ELYON package."
+}
