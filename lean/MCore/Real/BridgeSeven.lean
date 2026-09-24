@@ -5,6 +5,7 @@ import MCore.Real.P02RestrictionLowerBoundPattern
 import MCore.Real.Claim3PersistentFamily
 import MCore.Real.Claim4NormalizedProgress
 import MCore.Real.P02RestrictionFamilyAudit
+import MCore.Real.Claim6CNFDeficitAudit
 
 namespace MCore.Real.SevenCertificateBridge
 
@@ -54,6 +55,15 @@ def claim5_allCNF_universal_deficit_refuted :
           MCore.C10.RestrictionProgress ρ t →
             ¬ MCore.C11.PaysOff 1 1 ρ t) :=
   MCore.Real.P02RestrictionFamilyAudit.allCNF_universal_deficit_refuted
+
+/-- Claim6 theorem term from source state 7732c120.
+    This is the second audit theorem kernel-checked by that regression gate. -/
+def claim6_oneClauseCore_not_deficit
+    (c : Nat) :
+    ¬ MCore.Real.Claim6CNFDeficitAudit.DeficitAtLeast
+        c
+        MCore.Real.Claim6CNFDeficitAudit.oneClauseCore :=
+  MCore.Real.Claim6CNFDeficitAudit.oneClauseCore_not_deficit c
 
 /-- The seven source certificates must eventually be represented by seven
     concrete Lean predicates.  This structure does not assert any of them. -/
