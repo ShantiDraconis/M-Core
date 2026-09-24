@@ -10,6 +10,16 @@ open P02BoundedComputationEncoding
 open Claim4NormalizedProgress
 open Claim7VariableCoverage
 
+/-- Every payload variable is copied into the total-variable coverage core. -/
+theorem payload_var_mem_coverageCore
+    {payload : CNF} {v : Nat}
+    (hv : v ∈ cnfVarList payload) :
+    v ∈ cnfVarList (coverageCore payload) := by
+  simp [coverageCore, coverageClauses, cnfVarList] at *
+  exact hv
+
+#print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.payload_var_mem_coverageCore
+
 /-- Normalized core-aware progress. Both payload+core and core are measured only
 after canonical normalization, so representation-only simplification is excluded. -/
 def CoreAwareProgressNorm
