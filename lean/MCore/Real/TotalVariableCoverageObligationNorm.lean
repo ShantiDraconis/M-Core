@@ -15,8 +15,13 @@ theorem payload_var_mem_coverageCore
     {payload : CNF} {v : Nat}
     (hv : v ∈ cnfVarList payload) :
     v ∈ cnfVarList (coverageCore payload) := by
-  simp [coverageCore, coverageClauses, cnfVarList] at *
-  exact hv
+  have hi : ∃ i : Nat, (v, i) ∈ (cnfVarList payload).zipIdx := by
+    simpa using (List.mem_zipIdx.mpr hv)
+  rcases hi with ⟨i, hi⟩
+  apply Claim7VariableCoverage.mem_eraseDups_iff.mpr
+  simp only [coverageCore, List.mem_flatMap]
+  refine ⟨(v, i), hi, ?_⟩
+  simp [coverageClauses, cnfVarList]
 
 #print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.payload_var_mem_coverageCore
 
