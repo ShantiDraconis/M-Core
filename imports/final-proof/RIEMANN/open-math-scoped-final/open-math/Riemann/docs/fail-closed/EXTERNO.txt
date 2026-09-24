@@ -1,0 +1,5 @@
+27ac66f4 | final-fail-external
+Scope: fail-closed witness.
+Current certified boundary does not provide DNLimit=0 -> RiemannHypothesis.
+DO NOT IMPORT INTO FinalClaim.
+RIEMANN_HYPOTHESIS CLAIMS: 0
