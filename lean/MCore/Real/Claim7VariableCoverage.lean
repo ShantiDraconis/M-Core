@@ -27,39 +27,38 @@ def coverageCore (payload : CNF) : CNF :=
   ((cnfVarList payload).enum.flatMap
     (fun vi => coverageClauses base vi.1 vi.2))
 
-/-- Membership preservation for eraseDups, using the kernel-checked library lemma. -/
-private theorem mem_eraseDups_iff
-    {α : Type} [BEq α] [LawfulBEq α] {a : α} {l : List α} :
-    a ∈ l.eraseDups ↔ a ∈ l :=
-  List.mem_eraseDups
-
 /-- Every literal variable occurring in a payload is recorded by cnfVarList. -/
 theorem literal_var_mem_cnfVarList
     {f : CNF} {c : Clause} {l : Literal}
     (hc : c ∈ f) (hl : l ∈ c) :
     l.var ∈ cnfVarList f := by
-  apply mem_eraseDups_iff.mpr
-  simp
-  exact ⟨c, hc, l, hl, rfl⟩
+  have hflat : l.var ∈ f.flatMap (fun clause => clause.map Literal.var) := by
+    simp
+    exact ⟨c, hc, l, hl, rfl⟩
+  simpa [cnfVarList] using hflat
 
 /-- cnfVarList is monotone under append. -/
 theorem cnfVarList_left_subset_append
     (a b : CNF) :
     ∀ v, v ∈ cnfVarList a → v ∈ cnfVarList (a ++ b) := by
   intro v hv
-  apply mem_eraseDups_iff.mpr
-  simp only [List.flatMap_append, List.mem_append]
-  left
-  exact mem_eraseDups_iff.mp hv
+  have hva : v ∈ a.flatMap (fun clause => clause.map Literal.var) := by
+    simpa [cnfVarList] using hv
+  have hab : v ∈ (a ++ b).flatMap (fun clause => clause.map Literal.var) := by
+    rw [List.flatMap_append]
+    exact List.mem_append.mpr (Or.inl hva)
+  simpa [cnfVarList] using hab
 
 theorem cnfVarList_right_subset_append
     (a b : CNF) :
     ∀ v, v ∈ cnfVarList b → v ∈ cnfVarList (a ++ b) := by
   intro v hv
-  apply mem_eraseDups_iff.mpr
-  simp only [List.flatMap_append, List.mem_append]
-  right
-  exact mem_eraseDups_iff.mp hv
+  have hvb : v ∈ b.flatMap (fun clause => clause.map Literal.var) := by
+    simpa [cnfVarList] using hv
+  have hab : v ∈ (a ++ b).flatMap (fun clause => clause.map Literal.var) := by
+    rw [List.flatMap_append]
+    exact List.mem_append.mpr (Or.inr hvb)
+  simpa [cnfVarList] using hab
 
 #print axioms MCore.Real.Claim7VariableCoverage.literal_var_mem_cnfVarList
 #print axioms MCore.Real.Claim7VariableCoverage.cnfVarList_left_subset_append
