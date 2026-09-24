@@ -1,9 +1,7 @@
 {
-  "schema": "elyon.claim1-7-only.v2",
+  "schema": "elyon.claim1-7-only.v3",
   "scope": "CLAIM1_TO_CLAIM7_ONLY",
-  "source_claim_green_sha": "de908fa5be992820389422374d02b6bdc4f1a68a",
-  "source_claim_green_run": 36043017699,
-  "claim_source": "MCore.Real.Claim1To7Only.canonicalClaim1To7",
+  "source": "MCore.Real.Claim1To7Only",
   "claims": [
     "Claim1",
     "Claim2",
@@ -13,5 +11,8 @@
     "Claim6",
     "Claim7"
   ],
-  "policy": "This lane contains and certifies only Claim1 through Claim7 evidence. No external, producer, root, P01, G21, P02Target, or unrelated lane is part of this certificate."
+  "external_certificate": "MCore.Real.Claim1To7Only.canonicalExternalCertificate",
+  "final_root": "MCore.Real.Claim1To7Only.canonicalFinalRoot",
+  "final_proof": "MCore.Real.Claim1To7Only.canonicalFinalProof",
+  "policy": "All three endpoints are aliases/theorems over Claim1To7Evidence only. No P01, G21, P02Target, FinalExternalTwoGap, unrelated producer, or external lane is part of this package."
 }
