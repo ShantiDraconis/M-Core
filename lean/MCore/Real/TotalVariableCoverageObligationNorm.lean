@@ -341,39 +341,30 @@ private theorem map_or_imp
   | inr hq0 => exact Or.inr (hq hq0)
 
 private theorem occurs_simplify_imp
-    (v : Nat) :
-    ∀ t : Circuit,
-      OccursInput v (MCore.CircuitC2.simplify t) → OccursInput v t
-  | .input i => by
+    (v : Nat) (t : Circuit) :
+    OccursInput v (MCore.CircuitC2.simplify t) → OccursInput v t := by
+  induction t with
+  | input i =>
       simp [MCore.CircuitC2.simplify, OccursInput]
-  | .const b => by
+  | const b =>
       simp [MCore.CircuitC2.simplify, OccursInput]
-  | .not t => by
-      have ih :
-          OccursInput v (MCore.CircuitC2.simplify t) → OccursInput v t :=
-        occurs_simplify_imp v t
+  | not t ih =>
       simp only [MCore.CircuitC2.simplify]
       cases h : MCore.CircuitC2.simplify t <;>
         simp_all [OccursInput]
-  | .and a b => by
-      have hmap :
-          OccursInput v (MCore.CircuitC2.simplify a) ∨
-              OccursInput v (MCore.CircuitC2.simplify b) →
-            OccursInput v a ∨ OccursInput v b :=
-        map_or_imp (occurs_simplify_imp v a) (occurs_simplify_imp v b)
+  | and a b iha ihb =>
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
+        simp_all [OccursInput] <;>
+        split <;>
         simp_all [OccursInput]
-  | .or a b => by
-      have hmap :
-          OccursInput v (MCore.CircuitC2.simplify a) ∨
-              OccursInput v (MCore.CircuitC2.simplify b) →
-            OccursInput v a ∨ OccursInput v b :=
-        map_or_imp (occurs_simplify_imp v a) (occurs_simplify_imp v b)
+  | or a b iha ihb =>
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
+        simp_all [OccursInput] <;>
+        split <;>
         simp_all [OccursInput]
 
 private theorem fixed_var_not_occurs_restrict
