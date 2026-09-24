@@ -14,17 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Lean toolchain
+
+      - name: Install Lean toolchain and dependencies
+        shell: bash
         run: |
           set -euo pipefail
-          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Resolve dependencies
-        run: |
-          set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          elan default "$(cat lean-toolchain)"
           lake update
+
       - name: Verify Claim1-7 source
+        shell: bash
         run: |
           set -euo pipefail
           test -f lean/MCore/Real/Claim1To7Only.lean
@@ -32,8 +35,10 @@ jobs:
           test -f certs/elyon_claim1_7_only/CLAIM1_7_CERTIFICATE.json
           ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' lean/MCore/Real/Claim1To7Only.lean
           ! grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' lean/MCore/Real/Claim1To7Only.lean
-      - name: Kernel build Claim1-7 only
+
+      - name: Kernel check Claim1-7 only
+        shell: bash
         run: |
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
-          lake build MCore.Real.Claim1To7Only
+          lake env lean lean/MCore/Real/Claim1To7Only.lean
