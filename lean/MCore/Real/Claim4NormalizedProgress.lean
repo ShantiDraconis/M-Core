@@ -38,6 +38,43 @@ def DNorm (ρ : Restriction) (t : Circuit) : Circuit :=
 def RestrictionProgressNorm (ρ : Restriction) (t : Circuit) : Prop :=
   DNorm ρ t ≠ MCore.CircuitC2.simplify t
 
+theorem simplify_literalCircuit_idem (l : Literal) :
+    MCore.CircuitC2.simplify (literalCircuit l) = literalCircuit l := by
+  cases l with
+  | mk v p =>
+      cases p <;> rfl
+
+theorem simplify_smartOr_of_fixed
+    (x y : Circuit)
+    (hx : MCore.CircuitC2.simplify x = x)
+    (hy : MCore.CircuitC2.simplify y = y) :
+    MCore.CircuitC2.simplify (smartOr x y) = smartOr x y := by
+  cases x <;> cases y <;>
+    simp_all [smartOr, MCore.CircuitC2.simplify] <;>
+    split <;> simp_all [MCore.CircuitC2.simplify]
+
+theorem simplify_smartAnd_of_fixed
+    (x y : Circuit)
+    (hx : MCore.CircuitC2.simplify x = x)
+    (hy : MCore.CircuitC2.simplify y = y) :
+    MCore.CircuitC2.simplify (smartAnd x y) = smartAnd x y := by
+  cases x <;> cases y <;>
+    simp_all [smartAnd, MCore.CircuitC2.simplify] <;>
+    split <;> simp_all [MCore.CircuitC2.simplify]
+
+theorem simplify_clauseCircuitNorm_idem (c : Clause) :
+    MCore.CircuitC2.simplify (clauseCircuitNorm c) = clauseCircuitNorm c := by
+  induction c with
+  | nil => rfl
+  | cons l ls ih =>
+      cases ls with
+      | nil =>
+          simpa [clauseCircuitNorm] using simplify_literalCircuit_idem l
+      | cons l2 ls2 =>
+          exact simplify_smartOr_of_fixed
+            (literalCircuit l) (clauseCircuitNorm (l2 :: ls2))
+            (simplify_literalCircuit_idem l) ih
+
 theorem simplify_cnfCircuitNorm_idem (f : CNF) :
     MCore.CircuitC2.simplify (cnfCircuitNorm f) = cnfCircuitNorm f := by
   induction f with
@@ -45,38 +82,26 @@ theorem simplify_cnfCircuitNorm_idem (f : CNF) :
   | cons c cs ih =>
       cases cs with
       | nil =>
-          cases c with
-          | nil => rfl
-          | cons l ls =>
-              cases ls with
-              | nil =>
-                  cases l with
-                  | mk v p =>
-                      cases p <;> rfl
-              | cons l2 ls2 =>
-                  simp [cnfCircuitNorm, clauseCircuitNorm, smartOr, smartAnd,
-                    MCore.CircuitC2.simplify]
+          simpa [cnfCircuitNorm] using simplify_clauseCircuitNorm_idem c
       | cons c2 cs2 =>
-          simp [cnfCircuitNorm, smartAnd, ih, MCore.CircuitC2.simplify]
+          exact simplify_smartAnd_of_fixed
+            (clauseCircuitNorm c) (cnfCircuitNorm (c2 :: cs2))
+            (simplify_clauseCircuitNorm_idem c) ih
+
+theorem restrict_leavesZeroFree_id (c : Circuit) :
+    MCore.CircuitK1.restrict MCore.CircuitK1.leavesZeroFree c = c := by
+  induction c with
+  | input i => rfl
+  | const b => rfl
+  | not c ih => simp [MCore.CircuitK1.restrict, ih]
+  | and a b iha ihb => simp [MCore.CircuitK1.restrict, iha, ihb]
+  | or a b iha ihb => simp [MCore.CircuitK1.restrict, iha, ihb]
 
 theorem leavesZeroFree_no_progress_norm (f : CNF) :
     ¬ RestrictionProgressNorm MCore.CircuitK1.leavesZeroFree (cnfCircuitNorm f) := by
   intro h
   apply h
-  unfold RestrictionProgressNorm DNorm
-  rw [simplify_cnfCircuitNorm_idem]
-  induction cnfCircuitNorm f with
-  | input i => rfl
-  | const b => rfl
-  | not t ih =>
-      simp [MCore.CircuitK1.restrict, MCore.CircuitC2.simplify, ih,
-        MCore.CircuitK1.leavesZeroFree]
-  | and a b iha ihb =>
-      simp [MCore.CircuitK1.restrict, MCore.CircuitC2.simplify, iha, ihb,
-        MCore.CircuitK1.leavesZeroFree]
-  | or a b iha ihb =>
-      simp [MCore.CircuitK1.restrict, MCore.CircuitC2.simplify, iha, ihb,
-        MCore.CircuitK1.leavesZeroFree]
+  simp [DNorm, simplify_cnfCircuitNorm_idem, restrict_leavesZeroFree_id]
 
 #print axioms MCore.Real.Claim4NormalizedProgress.leavesZeroFree_no_progress_norm
 
