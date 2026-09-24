@@ -176,7 +176,13 @@
     "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload includes MATH_TERMINAL_BOUNDARY_20260922.json and immutable preparatory package files, excluding SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
     "preparatory_root_location": "PREPARATORY_ROOT",
     "FINAL_ROOT_MATH": null,
-    "linked_preparatory_root": "4cdaf7b62ee2ff85676c7dcd98fb6dfe965fa8afd4abccf19ba6aedb42878f24"
+    "linked_preparatory_root": "4cdaf7b62ee2ff85676c7dcd98fb6dfe965fa8afd4abccf19ba6aedb42878f24",
+    "math_artifact_final_root": {
+      "theorem": "MCore.Real.SevenCertificateBridge.canonicalFinalRoot",
+      "source_sha": "e7f317db45fc944226d9dce6223de45ad05bc01c",
+      "run": "36024920522 SUCCESS",
+      "status": "GREEN_KERNEL_AUXILIARY_NOT_RELEASE_ROOT"
+    }
   },
   "timestamps": {
     "created_at": null,
@@ -192,7 +198,7 @@
   "issuance_gate": {
     "FINAL_EXTERNAL_ISSUED": false,
     "condition": "P01ConstructionGap closed AND G21Pointwise closed AND G3 CLOSED AND human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND all required infra GREEN+FROZEN",
-    "current": "BLOCKED fail-closed: P01ConstructionGap OPEN_IMPLEMENTATION; G21Pointwise OPEN_MATH; P_VS_NP_ENDPOINT OPEN; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
+    "current": "BLOCKED fail-closed: mathematical auxiliary FinalChain is GREEN_KERNEL, but official P01ConstructionGap and G21Pointwise endpoint gates remain open; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
     "public_status": "PREPARATORY_NOT_ISSUED"
   },
   "package_state": "PREPARATORY",
@@ -200,6 +206,34 @@
   "public_label": "PREPARATORY / non-issued infrastructure record - NOT A CLAIM OF ISSUED CERTIFICATE",
   "maximum_auto_state": "REVIEW_PENDING",
   "package_state_policy": "PACKAGE_SHA256SUMS can be calculated now. FINAL_ROOT must remain null while any issuance prerequisite UNSET",
-  "package_revision": "v1.3.1-preparatory",
-  "freeze_state": "FROZEN_PREPARATORY"
+  "package_revision": "v1.3.2-preparatory",
+  "freeze_state": "FROZEN_PREPARATORY",
+  "math_artifacts": {
+    "seven_bridge_final_chain": {
+      "state": "GREEN_KERNEL_FROZEN_CERTIFIED",
+      "scope": "AUXILIARY_SEVEN_CERTIFICATE_CHAIN",
+      "source_sha": "e7f317db45fc944226d9dce6223de45ad05bc01c",
+      "run": "36024920522 SUCCESS",
+      "frozen_branch": "frozen/final-chain-green-e7f317db",
+      "certificate_branch": "cert/final-chain-run36024920522",
+      "terminal_theorem": "MCore.Real.SevenCertificateBridge.canonicalFinalProof",
+      "final_root_theorem": "MCore.Real.SevenCertificateBridge.canonicalFinalRoot",
+      "axiom_footprint": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "sorryAx": false,
+      "bypass": "NONE",
+      "note": "Kernel-checked concrete seven-certificate chain. This artifact does not by itself discharge the separate official P01ConstructionGap/G21Pointwise P-vs-NP endpoint or global 7-problem prize taxonomy."
+    },
+    "claim7_total_variable_coverage": {
+      "state": "GREEN_KERNEL_FROZEN_CERTIFIED",
+      "source_sha": "5440bc62845fc2f4111b32590ae1729cbf18017e",
+      "run": "36021899040 SUCCESS",
+      "theorem": "MCore.Real.P02Lane4TotalVariableCoverageNorm.totalVariableCoverageObligationNorm",
+      "frozen_branch": "frozen/seven-bridge-target4-green-5440bc62",
+      "certificate_branch": "cert/seven-bridge-target4-run36021899040"
+    }
+  }
 }
