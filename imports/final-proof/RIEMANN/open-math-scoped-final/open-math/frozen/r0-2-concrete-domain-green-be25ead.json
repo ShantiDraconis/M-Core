@@ -1,0 +1,10 @@
+{
+  "certificate": "r0-2-concrete-domain-green-be25ead",
+  "group": "R0_BASE",
+  "problem": "RIEMANN",
+  "declared_state": "GREEN",
+  "role": "FROZEN_SCOPED_EVIDENCE",
+  "proves_riemann_hypothesis": false,
+  "source_artifact_attached": false,
+  "kernel_verification": null
+}
