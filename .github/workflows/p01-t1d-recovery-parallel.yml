@@ -50,7 +50,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p lean
+          # Historical T1-D base from m-core-p-vs-np@cf885872.
+          cp -a imports/pnp/cf885872/lean/. lean/
+          # Overlay every other recovered snapshot, preserving newer M-Core work.
           while IFS= read -r d; do
+            [ "$d" = "imports/pnp/cf885872/lean" ] && continue
             cp -a "$d"/. lean/
           done < <(find imports/pnp -mindepth 2 -maxdepth 2 -type d -name lean | sort)
           test -f lean/MCore/Real/P01FullVerifierPhysical.lean
@@ -84,7 +88,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p lean
+          # Historical T1-D base from m-core-p-vs-np@cf885872.
+          cp -a imports/pnp/cf885872/lean/. lean/
+          # Overlay every other recovered snapshot, preserving newer M-Core work.
           while IFS= read -r d; do
+            [ "$d" = "imports/pnp/cf885872/lean" ] && continue
             cp -a "$d"/. lean/
           done < <(find imports/pnp -mindepth 2 -maxdepth 2 -type d -name lean | sort)
           test -f lean/MCore/Real/P01IntegratedMachine.lean
@@ -113,7 +121,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p lean
+          # Historical T1-D base from m-core-p-vs-np@cf885872.
+          cp -a imports/pnp/cf885872/lean/. lean/
+          # Overlay every other recovered snapshot, preserving newer M-Core work.
           while IFS= read -r d; do
+            [ "$d" = "imports/pnp/cf885872/lean" ] && continue
             cp -a "$d"/. lean/
           done < <(find imports/pnp -mindepth 2 -maxdepth 2 -type d -name lean | sort)
           test -f lean/MCore/Real/P01ConstructionClose.lean
