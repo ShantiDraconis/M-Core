@@ -14,19 +14,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-        with:
-          build: false
-          test: false
-          lint: false
-      - run: |
+
+      - name: Install Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          elan default "$(cat lean-toolchain)"
+          lake update
+
+      - name: Verify sources
+        shell: bash
+        run: |
           set -euo pipefail
           files=(
             lean/MCore/Research/FinalExternalBranch.lean
+            lean/MCore/Real/BridgeSeven.lean
+            lean/MCore/Real/SevenRealProducer.lean
+            lean/MCore/Real/SevenExternalCertificate.lean
             research/final-external/manifest.json
             research/final-external/status.json
           )
           for f in "${files[@]}"; do test -f "$f"; done
-          ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' lean/MCore/Research/FinalExternalBranch.lean
-          ! grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' lean/MCore/Research/FinalExternalBranch.lean
+          lean_files=(
+            lean/MCore/Research/FinalExternalBranch.lean
+            lean/MCore/Real/BridgeSeven.lean
+            lean/MCore/Real/SevenRealProducer.lean
+            lean/MCore/Real/SevenExternalCertificate.lean
+          )
+          ! grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${lean_files[@]}"
+          ! grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' "${lean_files[@]}"
+
+      - name: Kernel build
+        shell: bash
+        run: |
+          set -euo pipefail
           lake build MCore.Research.FinalExternalBranch
+          lake build MCore.Real.BridgeSeven
+          lake build MCore.Real.SevenRealProducer
+          lake build MCore.Real.SevenExternalCertificate
