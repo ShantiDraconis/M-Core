@@ -341,27 +341,40 @@ private theorem map_or_imp
   | inr hq0 => exact Or.inr (hq hq0)
 
 private theorem occurs_simplify_imp
-    (v : Nat) (t : Circuit) :
-    OccursInput v (MCore.CircuitC2.simplify t) → OccursInput v t := by
-  induction t with
-  | input i => simp [MCore.CircuitC2.simplify, OccursInput]
-  | const b => simp [MCore.CircuitC2.simplify, OccursInput]
-  | not t ih =>
+    (v : Nat) :
+    ∀ t : Circuit,
+      OccursInput v (MCore.CircuitC2.simplify t) → OccursInput v t
+  | .input i => by
+      simp [MCore.CircuitC2.simplify, OccursInput]
+  | .const b => by
+      simp [MCore.CircuitC2.simplify, OccursInput]
+  | .not t => by
+      have ih :
+          OccursInput v (MCore.CircuitC2.simplify t) → OccursInput v t :=
+        occurs_simplify_imp v t
       simp only [MCore.CircuitC2.simplify]
       cases h : MCore.CircuitC2.simplify t <;>
         simp_all [OccursInput]
-  | and a b iha ihb =>
+  | .and a b => by
+      have hmap :
+          OccursInput v (MCore.CircuitC2.simplify a) ∨
+              OccursInput v (MCore.CircuitC2.simplify b) →
+            OccursInput v a ∨ OccursInput v b :=
+        map_or_imp (occurs_simplify_imp v a) (occurs_simplify_imp v b)
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
-        simp_all [OccursInput] <;>
-        exact map_or_imp iha ihb
-  | or a b iha ihb =>
+        simp_all [OccursInput]
+  | .or a b => by
+      have hmap :
+          OccursInput v (MCore.CircuitC2.simplify a) ∨
+              OccursInput v (MCore.CircuitC2.simplify b) →
+            OccursInput v a ∨ OccursInput v b :=
+        map_or_imp (occurs_simplify_imp v a) (occurs_simplify_imp v b)
       simp only [MCore.CircuitC2.simplify]
       cases ha : MCore.CircuitC2.simplify a <;>
         cases hb : MCore.CircuitC2.simplify b <;>
-        simp_all [OccursInput] <;>
-        exact map_or_imp iha ihb
+        simp_all [OccursInput]
 
 private theorem fixed_var_not_occurs_restrict
     (ρ : Restriction) (v : Nat) (t : Circuit)
