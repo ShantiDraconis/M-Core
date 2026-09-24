@@ -1,0 +1,10 @@
+{
+  "certificate": "nb10-distance-green-5ed1df6",
+  "group": "NB_CORE",
+  "problem": "RIEMANN",
+  "declared_state": "GREEN",
+  "role": "FROZEN_SCOPED_EVIDENCE",
+  "proves_riemann_hypothesis": false,
+  "source_artifact_attached": false,
+  "kernel_verification": null
+}
