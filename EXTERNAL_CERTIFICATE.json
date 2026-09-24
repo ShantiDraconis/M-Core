@@ -1,0 +1,27 @@
+{
+  "schema": "mcore.external-certificate.v1",
+  "branch": "research/closed-empty-external-20260924",
+  "open_math": "CLOSED",
+  "primitive": {
+    "number": "0/0",
+    "identity": "I",
+    "states": 3,
+    "law": "0/1 -> 1/1"
+  },
+  "operation_payload": {
+    "components": [
+      "R",
+      "I",
+      "U"
+    ],
+    "dominant_pole": true,
+    "tail": "infinitesimal-not-yet-formalized-as-Lean-term"
+  },
+  "producers": [],
+  "external_gap": "BLOCKED_BY_PRODUCER",
+  "external_certificate": "NOT_ISSUED",
+  "final_root": "BLOCKED_BY_EXTERNAL_CERTIFICATE",
+  "final_proof": "BLOCKED_BY_FINAL_ROOT",
+  "bypass": "NONE",
+  "proof_claim": "NONE"
+}
