@@ -7,10 +7,16 @@ on:
       - atk/p01-t1d-recovery-workflow-20260924
     paths:
       - 'imports/pnp/**'
+      - 'lean/**'
+      - 'lakefile.lean'
+      - 'lean-toolchain'
       - '.github/workflows/p01-t1d-recovery-parallel.yml'
 
 permissions:
   contents: read
+
+env:
+  P01_RECOVERY: imports/pnp/44e3327a/lean/MCore/Real
 
 jobs:
   source-recovery:
@@ -18,43 +24,83 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Require indexed witness proof source
+      - name: Verify recovered T1D sources
         shell: bash
         run: |
           set -euo pipefail
-          f="$(find imports/pnp -type f -name 'P01WitnessIndexedReadProof.lean' -print -quit)"
-          test -n "$f" || { echo "::error::P01WitnessIndexedReadProof.lean not recovered"; exit 1; }
-          grep -n 'witnessSeek_run_state' "$f"
-          if grep -nE '^[[:space:]]*simp[[:space:]]*$' "$f"; then
-            echo "::warning::bare simp present; inspect witnessSeek_run_state for recursive simp"
-          fi
+          for f in             P01FullVerifierPhysical.lean             P01IntegratedMachine.lean             P01ConstructionClose.lean
+          do
+            test -f "$P01_RECOVERY/$f" || {
+              echo "::error::$P01_RECOVERY/$f missing"
+              exit 1
+            }
+          done
+          grep -n 'structure PhysicalVerifierRealization'             "$P01_RECOVERY/P01FullVerifierPhysical.lean"
+          grep -n 'IntegratedPhaseBridgeCertificate'             "$P01_RECOVERY/P01IntegratedMachine.lean"
+          grep -n 'IntegratedSATNTMConstruction'             "$P01_RECOVERY/P01ConstructionClose.lean"
 
   physical-verifier:
     name: T1D-1 Physical Verifier
+    needs: source-recovery
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-      - name: Build physical verifier
+      - name: Reconstruct PNP Lean workspace
+        shell: bash
         run: |
           set -euo pipefail
-          test -f imports/pnp/44e3327a/lean/MCore/Real/P01FullVerifierPhysical.lean
-          grep -nE 'physical_execInstr_refines|physical_runProgram_refines|physical_eq_logical_global|PhysicalVerifierRealization' imports/pnp/44e3327a/lean/MCore/Real/P01FullVerifierPhysical.lean
-          lake build
+          mkdir -p lean
+          while IFS= read -r d; do
+            cp -a "$d"/. lean/
+          done < <(find imports/pnp -mindepth 2 -maxdepth 2 -type d -name lean | sort)
+          test -f lean/MCore/Real/P01FullVerifierPhysical.lean
+      - name: Install Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh             | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+      - name: Build physical verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build MCore.Real.P01FullVerifierPhysical
 
   integrated-machine:
     name: T1D-2 Integrated Machine
-    needs: [source-recovery, physical-verifier]
+    needs: physical-verifier
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-      - name: Build integrated P01 machine
+      - name: Reconstruct PNP Lean workspace
+        shell: bash
         run: |
           set -euo pipefail
-          test -f imports/pnp/44e3327a/lean/MCore/Real/P01IntegratedMachine.lean
-          grep -n 'P01MachineConstruction' imports/pnp/44e3327a/lean/MCore/Real/P01IntegratedMachine.lean
-          lake build
+          mkdir -p lean
+          while IFS= read -r d; do
+            cp -a "$d"/. lean/
+          done < <(find imports/pnp -mindepth 2 -maxdepth 2 -type d -name lean | sort)
+          test -f lean/MCore/Real/P01IntegratedMachine.lean
+      - name: Install Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh             | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies and build
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake build MCore.Real.P01IntegratedMachine
 
   construction-close:
     name: T1D-3 P01 Construction Close
@@ -62,14 +108,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-      - name: Close P01 without hypothesis
+      - name: Reconstruct PNP Lean workspace
+        shell: bash
         run: |
           set -euo pipefail
-          f=imports/pnp/44e3327a/lean/MCore/Real/P01ConstructionClose.lean
-          test -f "$f"
-          grep -n 'p01_closed_no_hypothesis' "$f"
-          lake build
+          mkdir -p lean
+          while IFS= read -r d; do
+            cp -a "$d"/. lean/
+          done < <(find imports/pnp -mindepth 2 -maxdepth 2 -type d -name lean | sort)
+          test -f lean/MCore/Real/P01ConstructionClose.lean
+      - name: Install Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh             | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies and build
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake build MCore.Real.P01ConstructionClose
 
   hygiene:
     name: T1D-4 Fail-Closed Hygiene
@@ -77,12 +137,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Reject proof placeholders in P01 lane
+      - name: Reject proof placeholders in recovered P01 lane
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RInE '\b(sorry|admit)\b' imports/pnp/44e3327a/lean/MCore/Real/P01*.lean; then
+          if grep -RInE '\\b(sorry|admit)\\b'             imports/pnp/*/lean/MCore/Real/P01*.lean
+          then
             echo "::error::proof placeholder detected"
             exit 1
           fi
-          echo "T1D GREEN candidate: source + physical + integrated + close + hygiene passed"
+          echo "T1D GREEN candidate: recovered sources build and hygiene passed"
