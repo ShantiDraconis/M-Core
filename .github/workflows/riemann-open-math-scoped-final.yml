@@ -2,57 +2,61 @@ name: riemann-open-math-scoped-final
 
 on:
   push:
-    branches: [open-math-scoped-final]
-    paths:
-      - 'imports/final-proof/RIEMANN/open-math-scoped-final/open-math/**'
-      - '.github/workflows/riemann-open-math-scoped-final.yml'
+    branches:
+      - open-math-scoped-final
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
-  scoped-final:
-    runs-on: ubuntu-24.04
-    defaults:
-      run:
-        working-directory: imports/final-proof/RIEMANN/open-math-scoped-final/open-math
+  scoped_final:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install pinned Lean
+      - name: Install Lean
+        shell: bash
         run: |
+          set -euo pipefail
+          cd imports/final-proof/RIEMANN/open-math-scoped-final/open-math
           curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
 
-      - name: Resolve pinned dependencies
+      - name: Resolve dependencies
+        shell: bash
         run: |
+          set -euo pipefail
+          cd imports/final-proof/RIEMANN/open-math-scoped-final/open-math
           "$HOME/.elan/bin/lake" update
           "$HOME/.elan/bin/lake" exe cache get
 
-      - name: Fail-closed source firewall
+      - name: Source firewall
+        shell: bash
         run: |
+          set -euo pipefail
+          cd imports/final-proof/RIEMANN/open-math-scoped-final/open-math
           ! grep -RniE '(^|[^[:alnum:]_])(sorry|admit|sorryAx|native_decide|unsafe|cheat|bypass)([^[:alnum:]_]|$)' Riemann --include='*.lean'
           ! grep -RniE '^[[:space:]]*(@\[[^]]*\][[:space:]]*)?(axiom|constant|constants)[[:space:]]' Riemann --include='*.lean'
           ! grep -RniE 'theorem[[:space:]]+(FINAL_PROOF|RiemannHypothesis)' Riemann/scoped
 
-      - name: Build scoped final claim
-        run: "$HOME/.elan/bin/lake" build Riemann.scoped.FinalClaim
-
-      - name: Build countermodel-closed route
-        run: "$HOME/.elan/bin/lake" env lean Riemann/refuted-routes/A14NonImplication.lean
-
-      - name: Minimal certification
-        run: bash certifica.sh
-
-      - name: Scoped result
+      - name: Build scoped claim
+        shell: bash
         run: |
-          echo "R0=GREEN_6"
-          echo "NB=GREEN_7"
-          echo "AGGREG=GREEN_3"
-          echo "R2=GREEN_2"
-          echo "FINAL_SCOPED_CLAIM=GREEN"
+          set -euo pipefail
+          cd imports/final-proof/RIEMANN/open-math-scoped-final/open-math
+          "$HOME/.elan/bin/lake" build Riemann.scoped.FinalClaim
+
+      - name: Check refuted route
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd imports/final-proof/RIEMANN/open-math-scoped-final/open-math
+          "$HOME/.elan/bin/lake" env lean Riemann/refuted-routes/A14NonImplication.lean
+
+      - name: Certify scoped result
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd imports/final-proof/RIEMANN/open-math-scoped-final/open-math
+          bash certifica.sh
+          echo "RIEMANN_OPEN_MATH_SCOPED_FINAL=GREEN"
           echo "RIEMANN_HYPOTHESIS_CLAIMS=0"
-          echo "A14=CLOSED_BY_COUNTERMODEL_3"
-          echo "EXTERNAL_FAIL_CLOSED=27ac66f4"
