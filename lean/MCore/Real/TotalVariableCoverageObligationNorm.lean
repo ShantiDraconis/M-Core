@@ -33,10 +33,15 @@ theorem payload_var_mem_coverageCore
     v ∈ cnfVarList (coverageCore payload) := by
   obtain ⟨i, hi⟩ :=
     mem_zipIdx_of_mem v (cnfVarList payload) 0 hv
+  have hclause :
+      [pos v, pos (cnfVarBound payload + 2 * i)] ∈ coverageCore payload := by
+    simp only [coverageCore, List.mem_flatMap]
+    refine ⟨(v, i), hi, ?_⟩
+    simp [coverageClauses]
   apply Claim7VariableCoverage.mem_eraseDups_iff.mpr
-  simp only [coverageCore, List.mem_flatMap]
-  refine ⟨(v, i), hi, ?_⟩
-  simp [coverageClauses]
+  simp only [List.mem_flatMap]
+  refine ⟨[pos v, pos (cnfVarBound payload + 2 * i)], hclause, ?_⟩
+  simp
 
 #print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.payload_var_mem_coverageCore
 
