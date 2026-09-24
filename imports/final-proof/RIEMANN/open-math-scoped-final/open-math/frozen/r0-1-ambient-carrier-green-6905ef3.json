@@ -1,0 +1,10 @@
+{
+  "certificate": "r0-1-ambient-carrier-green-6905ef3",
+  "group": "R0_BASE",
+  "problem": "RIEMANN",
+  "declared_state": "GREEN",
+  "role": "FROZEN_SCOPED_EVIDENCE",
+  "proves_riemann_hypothesis": false,
+  "source_artifact_attached": false,
+  "kernel_verification": null
+}
