@@ -40,6 +40,7 @@ jobs:
             lean/MCore/Real/P02RestrictionFamilyAudit.lean
             lean/MCore/Real/Claim6CNFDeficitAudit.lean
             lean/MCore/Real/Claim7VariableCoverage.lean
+            lean/MCore/Real/TotalVariableCoverageObligationNorm.lean
             lean/MCore/Real/SevenRealProducer.lean
             lean/MCore/Real/SevenExternalCertificate.lean
           )
@@ -56,6 +57,7 @@ jobs:
           lake build MCore.Real.P02RestrictionFamilyAudit
           lake build MCore.Real.Claim6CNFDeficitAudit
           lake build MCore.Real.Claim7VariableCoverage
+          lake build MCore.Real.TotalVariableCoverageObligationNorm
           lake build MCore.Real.BridgeSeven
           lake build MCore.Real.SevenRealProducer
           lake build MCore.Real.SevenExternalCertificate
