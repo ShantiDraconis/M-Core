@@ -1,0 +1,18 @@
+{
+  "schema": "elyon.claim1-7-only.certificate.v2",
+  "certificate": "ELYON_CLAIM1_7",
+  "state": "SOURCE_PENDING_KERNEL_REVALIDATION",
+  "claims": [
+    "Claim1",
+    "Claim2",
+    "Claim3",
+    "Claim4",
+    "Claim5",
+    "Claim6",
+    "Claim7"
+  ],
+  "theorem": "MCore.Real.Claim1To7Only.canonicalClaim1To7",
+  "prior_green_sha": "de908fa5be992820389422374d02b6bdc4f1a68a",
+  "prior_green_run": 36043017699,
+  "policy": "Claim-only certificate. Nothing outside Claim1-Claim7 is promoted by this artifact."
+}
