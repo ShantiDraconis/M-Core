@@ -37,3 +37,15 @@ G2.3 BLOCKED_BY_G2.2
 
 ## Root canonicalization
 `SHA256SUMS` hashes the immutable payload files, including `freeze.sh`, but excludes `SHA256SUMS` and `PREPARATORY_ROOT`. `PREPARATORY_ROOT = SHA256(raw bytes of SHA256SUMS)`. No payload file is mutated after hashing.
+
+
+## Kernel FinalChain evidence
+- SHA: e7f317db45fc944226d9dce6223de45ad05bc01c
+- Run: 36024920522 SUCCESS
+- Build: lake build MCore.Real.FinalChain
+- Final theorem: MCore.Real.SevenCertificateBridge.canonicalFinalProof
+- Axioms: propext, Classical.choice, Quot.sound
+- sorryAx: none
+- bypass: none
+
+This evidence is recorded without changing FINAL_EXTERNAL_ISSUED or release FINAL_ROOT. Those remain fail-closed while official endpoint and release gates remain open/UNSET.
