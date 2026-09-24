@@ -34,6 +34,15 @@ def claim3_persistentFamily_excludes_eventual_payoff
   MCore.Real.Claim3PersistentFamily.persistentFamily_excludes_eventual_payoff
     (α := α) (β := β) (f := f) h
 
+/-- Claim4 theorem term from source state 519e6868.
+    The wrapper is fully typed to avoid implicit-argument inference failures. -/
+def claim4_leavesZeroFree_no_progress_norm
+    (f : MCore.Real.P02BoundedComputationEncoding.CNF) :
+    ¬ MCore.Real.P02RestrictionLowerBoundPattern.RestrictionProgressNorm
+        MCore.CircuitK1.leavesZeroFree
+        (MCore.Real.P02RestrictionLowerBoundPattern.cnfCircuitNorm f) :=
+  MCore.Real.P02RestrictionLowerBoundPattern.leavesZeroFree_no_progress_norm f
+
 /-- The seven source certificates must eventually be represented by seven
     concrete Lean predicates.  This structure does not assert any of them. -/
 structure CertificateClaims where
