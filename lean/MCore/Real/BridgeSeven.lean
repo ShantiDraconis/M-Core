@@ -109,24 +109,20 @@ theorem canonicalSevenGreenEvidence :
   · constructor
     · intro hpay
       exact
-        MCore.Real.P02RestrictionLowerBoundPattern
-          .paysOff_implies_costBits_lt_amortizedDrop
+        MCore.Real.P02RestrictionLowerBoundPattern.paysOff_implies_costBits_lt_amortizedDrop
           canonicalSevenEndpoint.α canonicalSevenEndpoint.β
           canonicalSevenEndpoint.ρ canonicalSevenEndpoint.circuit hpay
     · intro hdef hprog
       exact
-        MCore.Real.P02RestrictionLowerBoundPattern
-          .persistentBranchingDeficit_excludes_payoff
+        MCore.Real.P02RestrictionLowerBoundPattern.persistentBranchingDeficit_excludes_payoff
           canonicalSevenEndpoint.α canonicalSevenEndpoint.β
           canonicalSevenEndpoint.circuit hdef
           canonicalSevenEndpoint.ρ hprog
   · intro hfamily
     exact
-      MCore.Real.Claim3PersistentFamily
-        .persistentFamily_excludes_eventual_payoff hfamily
+      MCore.Real.Claim3PersistentFamily.persistentFamily_excludes_eventual_payoff hfamily
   · exact
-      MCore.Real.Claim4NormalizedProgress
-        .leavesZeroFree_no_progress_norm canonicalSevenEndpoint.payload
+      MCore.Real.Claim4NormalizedProgress.leavesZeroFree_no_progress_norm canonicalSevenEndpoint.payload
   · refine ⟨rfl, rfl, ?_, ?_, ?_⟩
     · exact
         MCore.Real.P02RestrictionFamilyAudit.reducibleExample_isCNF
@@ -139,8 +135,7 @@ theorem canonicalSevenGreenEvidence :
       MCore.Real.Claim6CNFDeficitAudit.oneClauseCore_not_deficit
         canonicalSevenEndpoint.deficitC
   · exact
-      MCore.Real.P02Lane4TotalVariableCoverageNorm
-        .totalVariableCoverageObligationNorm canonicalSevenEndpoint.payload
+      MCore.Real.P02Lane4TotalVariableCoverageNorm.totalVariableCoverageObligationNorm canonicalSevenEndpoint.payload
 
 /-- Resolution criterion for a concrete endpoint. -/
 def E (ep : SevenEndpoint) : Prop :=
