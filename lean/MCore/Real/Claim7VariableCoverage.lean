@@ -40,7 +40,25 @@ private theorem mem_eraseDups_loop_iff
   | cons b bs ih =>
       intro acc
       simp only [List.eraseDups.loop]
-      split <;> simp_all [ih]
+      split
+      · rename_i h
+        have hbmem : b ∈ acc := List.mem_of_elem_eq_true h
+        rw [ih]
+        by_cases hab : a = b
+        · subst b
+          simp [hbmem]
+        · simp [hab]
+      · rename_i h
+        have hbnot : b ∉ acc := by
+          intro hb
+          have heq : acc.elem b = true := List.elem_eq_true_of_mem hb
+          rw [h] at heq
+          contradiction
+        rw [ih]
+        by_cases hab : a = b
+        · subst b
+          simp [hbnot]
+        · simp [hab]
 
 private theorem mem_eraseDups_iff
     {α : Type} [BEq α] [LawfulBEq α] {a : α} {l : List α} :
