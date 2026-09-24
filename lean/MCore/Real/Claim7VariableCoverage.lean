@@ -27,57 +27,11 @@ def coverageCore (payload : CNF) : CNF :=
   ((cnfVarList payload).enum.flatMap
     (fun vi => coverageClauses base vi.1 vi.2))
 
-/-- v4.19 compatibility: eraseDups preserves membership. -/
-private theorem mem_eraseDups_loop_iff
-    {α : Type} [BEq α] [LawfulBEq α] (a : α) :
-    ∀ (l acc : List α),
-      a ∈ List.eraseDups.loop l acc ↔ a ∈ l ∨ a ∈ acc := by
-  intro l
-  induction l with
-  | nil =>
-      intro acc
-      simp [List.eraseDups.loop]
-  | cons b bs ih =>
-      intro acc
-      simp only [List.eraseDups.loop]
-      split <;> rename_i h
-      · rw [ih]
-        have hbmem : b ∈ acc := List.mem_of_elem_eq_true h
-        constructor
-        · intro ha
-          rcases ha with hbs | hacc
-          · exact Or.inr (Or.inl hbs)
-          · exact Or.inr (Or.inr hacc)
-        · intro ha
-          rcases ha with (hab | hbs) | hacc
-          · subst b
-            exact Or.inr hbmem
-          · exact Or.inl hbs
-          · exact Or.inr hacc
-      · rw [ih]
-        have hbnot : b ∉ acc := by
-          intro hb
-          have heq : acc.elem b = true := List.elem_eq_true_of_mem hb
-          rw [h] at heq
-          contradiction
-        constructor
-        · intro ha
-          rcases ha with hbs | hab | hacc
-          · exact Or.inr (Or.inl hbs)
-          · exact Or.inl hab
-          · exact Or.inr (Or.inr hacc)
-        · intro ha
-          rcases ha with (hab | hbs) | hacc
-          · exact Or.inr (Or.inl hab)
-          · exact Or.inl hbs
-          · exact Or.inr (Or.inr hacc)
-
+/-- Membership preservation for eraseDups, using the kernel-checked library lemma. -/
 private theorem mem_eraseDups_iff
     {α : Type} [BEq α] [LawfulBEq α] {a : α} {l : List α} :
-    a ∈ l.eraseDups ↔ a ∈ l := by
-  unfold List.eraseDups
-  rw [mem_eraseDups_loop_iff]
-  simp
+    a ∈ l.eraseDups ↔ a ∈ l :=
+  List.mem_eraseDups
 
 /-- Every literal variable occurring in a payload is recorded by cnfVarList. -/
 theorem literal_var_mem_cnfVarList
