@@ -137,12 +137,18 @@ theorem progressNorm_implies_restricted_var
     (ρ : Restriction) (f : CNF)
     (hprogress : RestrictionProgressNorm ρ (cnfCircuitNorm f)) :
     ∃ v : Nat, v ∈ cnfVarList f ∧ ρ v ≠ none := by
-  by_contra hnone
-  have hfree : ∀ v : Nat, v ∈ cnfVarList f → ρ v = none := by
-    intro v hv
-    by_contra hne
-    exact hnone ⟨v, hv, hne⟩
-  exact (no_restricted_var_implies_no_progress_norm ρ f hfree) hprogress
+  classical
+  by_cases hex : ∃ v : Nat, v ∈ cnfVarList f ∧ ρ v ≠ none
+  · exact hex
+  · have hfree : ∀ v : Nat, v ∈ cnfVarList f → ρ v = none := by
+      intro v hv
+      cases hρ : ρ v with
+      | none => exact hρ
+      | some b =>
+          have hne : ρ v ≠ none := by simp [hρ]
+          exact False.elim (hex ⟨v, hv, hne⟩)
+    exact False.elim
+      ((no_restricted_var_implies_no_progress_norm ρ f hfree) hprogress)
 
 #print axioms MCore.Real.P02Lane4TotalVariableCoverageNorm.progressNorm_implies_restricted_var
 
