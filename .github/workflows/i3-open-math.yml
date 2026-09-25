@@ -6,6 +6,7 @@ on:
     paths:
       - 'lean/MCore/OpenMath/I3Tristable.lean'
       - 'lean/MCore/OpenMath/IRegime.lean'
+      - 'lean/MCore/OpenMath/IEnriched.lean'
       - 'open-math/i3-tristable/**'
       - '.github/workflows/i3-open-math.yml'
   workflow_dispatch:
@@ -31,12 +32,13 @@ jobs:
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
           lake env lean lean/MCore/OpenMath/IRegime.lean
-          lake env lean lean/MCore/OpenMath/I3Tristable.lean\n          lake env lean lean/MCore/OpenMath/IEnriched.lean
+          lake env lean lean/MCore/OpenMath/I3Tristable.lean
+          lake env lean lean/MCore/OpenMath/IEnriched.lean
       - name: Fail closed on placeholders
         shell: bash
         run: |
           set -euo pipefail
-          if grep -nE '\\b(sorry|admit|sorryAx)\\b' lean/MCore/OpenMath/IRegime.lean lean/MCore/OpenMath/I3Tristable.lean lean/MCore/OpenMath/IEnriched.lean; then
+          if grep -nE '\b(sorry|admit|sorryAx)\b' lean/MCore/OpenMath/IRegime.lean lean/MCore/OpenMath/I3Tristable.lean lean/MCore/OpenMath/IEnriched.lean; then
             exit 1
           fi
           echo I3_HYGIENE_GREEN
