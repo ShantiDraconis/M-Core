@@ -1,0 +1,39 @@
+name: ProofEngine RNCB gate
+
+on:
+  push:
+    branches: [atk/proof-engine-rncb]
+    paths:
+      - 'lean/MCore/ProofEngine/**'
+      - 'lean/MCore/ProofEngine.lean'
+      - '.github/workflows/proof-engine-rncb.yml'
+  pull_request:
+    paths:
+      - 'lean/MCore/ProofEngine/**'
+      - 'lean/MCore/ProofEngine.lean'
+      - '.github/workflows/proof-engine-rncb.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof-engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Build ProofEngine aggregate
+        run: lake build MCore.ProofEngine
+      - name: Reject proof escapes
+        run: |
+          PAT='(:=[[:space:]]*sorry([^[:alnum:]_]|$)|by[[:space:]]+sorry([^[:alnum:]_]|$)|^[[:space:]]*sorry([^[:alnum:]_]|$)|^[[:space:]]*(axiom|constant)[[:space:]])'
+          if grep -RInE "$PAT" lean/MCore/ProofEngine lean/MCore/ProofEngine.lean; then
+            echo 'proof escape found'
+            exit 1
+          fi
