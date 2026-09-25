@@ -40,7 +40,8 @@ lemma sqrt_three_sq : (Real.sqrt 3) ^ 2 = 3 := by
 theorem omega_sq :
     omega ^ 2 = (-1 / 2 : ℂ) - (Real.sqrt 3 / 2 : ℝ) * Complex.I := by
   rw [omega]
-  apply Complex.ext <;> simp [pow_two, sqrt_three_sq] <;> ring
+  have hs : (Real.sqrt 3) ^ 2 = 3 := sqrt_three_sq
+  apply Complex.ext <;> simp [pow_two] <;> nlinarith
 
 theorem omega_equilibrium : 1 + omega + omega ^ 2 = 0 := by
   rw [omega_sq, omega]
