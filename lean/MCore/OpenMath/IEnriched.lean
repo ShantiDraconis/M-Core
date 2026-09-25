@@ -41,9 +41,10 @@ theorem limit_resolution_compatible
         (nhdsWithin a {a}ᶜ) (nhds 0) := by
   constructor
   · rfl
-  · simpa [ofLimit, quotientFlow, Real.norm_eq_abs] using
-      (tendsto_abs_nhds_zero.mpr (by
-        simpa only [sub_zero] using hlim.sub_const L))
+  · have hsub : Filter.Tendsto (fun x => f x / g x - L)
+        (nhdsWithin a {a}ᶜ) (nhds 0) := by
+      simpa using hlim.sub_const L
+    simpa [ofLimit, quotientFlow] using hsub.abs
 
 /-- Fail-closed L'Hospital bridge: the analytic theorem is supplied as a proved
 classical limit hypothesis; this layer certifies preservation by the enriched state.
