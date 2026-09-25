@@ -77,3 +77,4 @@ theorem certificate_ready_implies_logic_refutation
   exact BSDClosureLogicRefutation A w
 
 end MCore.BSDLogic
+
