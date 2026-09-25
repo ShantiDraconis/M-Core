@@ -40,11 +40,7 @@ lemma sqrt_three_sq : (Real.sqrt 3) ^ 2 = 3 := by
 theorem omega_sq :
     omega ^ 2 = (-1 / 2 : ℂ) - (Real.sqrt 3 / 2 : ℝ) * Complex.I := by
   rw [omega]
-  rw [pow_two]
-  push_cast
-  rw [Complex.I_mul_I]
-  norm_num [sqrt_three_sq]
-  ring
+  apply Complex.ext <;> simp [pow_two, sqrt_three_sq] <;> ring
 
 theorem omega_equilibrium : 1 + omega + omega ^ 2 = 0 := by
   rw [omega_sq, omega]
@@ -72,7 +68,7 @@ theorem omega_ne_one : omega ≠ 1 := by
   rw [h] at he
   norm_num at he
 
-def certifiedRoot : TristableRoot where
+noncomputable def certifiedRoot : TristableRoot where
   omega := omega
   cube_eq_one := omega_cube
   nontrivial := omega_ne_one
