@@ -34,15 +34,18 @@ jobs:
           lake env lean lean/MCore/OpenMath/IRegime.lean
           lake env lean lean/MCore/OpenMath/I3Tristable.lean
           lake env lean lean/MCore/OpenMath/IEnriched.lean
-          cat > /tmp/I3AxiomAudit.lean <<'EOF'
-          import MCore.OpenMath.I3Tristable
-          import MCore.OpenMath.IEnriched
+          cp lean/MCore/OpenMath/I3Tristable.lean /tmp/I3AxiomAudit.lean
+          cat >> /tmp/I3AxiomAudit.lean <<'EOF'
           #print axioms MCore.OpenMath.I3.i3_final_theorem
+          EOF
+          lake env lean /tmp/I3AxiomAudit.lean
+          cp lean/MCore/OpenMath/IEnriched.lean /tmp/IEnrichedAxiomAudit.lean
+          cat >> /tmp/IEnrichedAxiomAudit.lean <<'EOF'
           #print axioms MCore.OpenMath.IEnriched.limit_resolution_compatible
           #print axioms MCore.OpenMath.IEnriched.lHospital_resolution_bridge
           #print axioms MCore.OpenMath.IEnriched.observables_complete
           EOF
-          lake env lean /tmp/I3AxiomAudit.lean
+          lake env lean /tmp/IEnrichedAxiomAudit.lean
       - name: Fail closed on placeholders
         shell: bash
         run: |
