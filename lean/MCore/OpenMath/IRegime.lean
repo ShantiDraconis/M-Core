@@ -1,1 +1,25 @@
-namespace MCore.OpenMath.I\n\n/-- Indexing regime for the I-family. The indeterminate constructor is symbolic,\nnot the result of evaluating zero divided by zero in an ambient field. -/\ninductive Regime where\n  | finite (n : Nat)\n  | infinite\n  | indeterminate\n  deriving DecidableEq, Repr\n\nabbrev I3 : Regime := .finite 3\nabbrev I10 : Regime := .finite 10\nabbrev IInfinite : Regime := .infinite\nabbrev IZeroDivZero : Regime := .indeterminate\n\n@[simp] theorem I3_is_finite : I3 = .finite 3 := rfl\n@[simp] theorem I10_is_finite : I10 = .finite 10 := rfl\n@[simp] theorem IInfinite_is_infinite : IInfinite = .infinite := rfl\n@[simp] theorem IZeroDivZero_is_indeterminate : IZeroDivZero = .indeterminate := rfl\n\ntheorem regimes_distinct :\n    I3 ≠ IInfinite ∧ I3 ≠ IZeroDivZero ∧ IInfinite ≠ IZeroDivZero := by\n  decide\n\nend MCore.OpenMath.I\n
+namespace MCore.OpenMath.I
+
+/-- Indexing regime for the I-family. The indeterminate constructor is symbolic,
+not the result of evaluating zero divided by zero in an ambient field. -/
+inductive Regime where
+  | finite (n : Nat)
+  | infinite
+  | indeterminate
+  deriving DecidableEq, Repr
+
+abbrev I3 : Regime := .finite 3
+abbrev I10 : Regime := .finite 10
+abbrev IInfinite : Regime := .infinite
+abbrev IZeroDivZero : Regime := .indeterminate
+
+@[simp] theorem I3_is_finite : I3 = .finite 3 := rfl
+@[simp] theorem I10_is_finite : I10 = .finite 10 := rfl
+@[simp] theorem IInfinite_is_infinite : IInfinite = .infinite := rfl
+@[simp] theorem IZeroDivZero_is_indeterminate : IZeroDivZero = .indeterminate := rfl
+
+theorem regimes_distinct :
+    I3 ≠ IInfinite ∧ I3 ≠ IZeroDivZero ∧ IInfinite ≠ IZeroDivZero := by
+  decide
+
+end MCore.OpenMath.I
