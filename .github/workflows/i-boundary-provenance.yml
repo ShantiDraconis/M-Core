@@ -5,6 +5,7 @@ on:
     branches: [formal/i-boundary-provenance]
     paths:
       - 'MCore/IBoundaryProvenance.lean'
+      - 'MCore/BSDLogicOpenMath.lean'
       - '.github/workflows/i-boundary-provenance.yml'
   workflow_dispatch:
 
@@ -23,8 +24,8 @@ jobs:
       - name: Reject proof escapes
         run: |
           set -euo pipefail
-          FILE=MCore/IBoundaryProvenance.lean
-          if grep -nE '^[[:space:]]*(sorry|admit|axiom|axiomatization)([[:space:]]|$)' "$FILE"; then
+          FILES='MCore/IBoundaryProvenance.lean MCore/BSDLogicOpenMath.lean'
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom|axiomatization)([[:space:]]|$)' $FILES; then
             exit 1
           fi
       - name: Kernel check
