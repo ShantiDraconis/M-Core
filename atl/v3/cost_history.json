@@ -1,0 +1,8 @@
+{
+  "schema":"atl.cost-history.v1",
+  "mode":"heuristic_until_calibrated",
+  "minimum_samples_for_empirical":20,
+  "default":{"cycles":1.0,"failure_probability":0.5},
+  "by_kind":{},
+  "samples":[]
+}
