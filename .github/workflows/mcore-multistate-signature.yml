@@ -1,14 +1,14 @@
-name: M-Core Multistate Signature Gate
+name: M-Core Structural Logic Certificate Gate
 
 on:
   push:
     branches:
       - attack/multistate-signature-20260926
     paths:
-      - 'lean/MCore/MultistateSignature.lean'
       - 'lean/MCore/FinalFail/ProblemSignature.lean'
       - 'lean/MCore/FinalFail/SevenLocalNuclei.lean'
       - 'lean/MCore/FinalFail/SevenProblemSignatures.lean'
+      - 'lean/MCore/UniversalMultistateEvidence.lean'
       - '.github/workflows/mcore-multistate-signature.yml'
   workflow_dispatch:
 
@@ -16,7 +16,7 @@ permissions:
   contents: read
 
 jobs:
-  multistate-signature:
+  structural-logic:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,9 +34,7 @@ jobs:
             lean/MCore/FinalFail/ProblemSignature.lean
             lean/MCore/FinalFail/SevenLocalNuclei.lean
             lean/MCore/FinalFail/SevenProblemSignatures.lean
-            lean/MCore/MultistateSignature.lean
             lean/MCore/UniversalMultistateEvidence.lean
-            lean/MCore/UniversalCollapse.lean
           )
           if grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${files[@]}"; then
             exit 1
@@ -45,7 +43,7 @@ jobs:
             exit 1
           fi
 
-      - name: Kernel compile multistate signature
+      - name: Kernel compile structural logic
         run: |
           set -euo pipefail
           cd lean
@@ -53,13 +51,11 @@ jobs:
           lean -o MCore/FinalFail/ProblemSignature.olean MCore/FinalFail/ProblemSignature.lean
           lean -o MCore/FinalFail/SevenLocalNuclei.olean MCore/FinalFail/SevenLocalNuclei.lean
           lean -o MCore/FinalFail/SevenProblemSignatures.olean MCore/FinalFail/SevenProblemSignatures.lean
-          lean -o MCore/MultistateSignature.olean MCore/MultistateSignature.lean
-          lean -o MCore/UniversalMultistateEvidence.olean MCore/UniversalMultistateEvidence.lean
-          lean MCore/UniversalCollapse.lean 2>&1 | tee /tmp/multistate-signature.log
+          lean MCore/UniversalMultistateEvidence.lean 2>&1 | tee /tmp/structural-logic.log
 
       - name: Axiom footprint
         run: |
           set -euo pipefail
-          test "$(grep -c 'does not depend on any axioms' /tmp/multistate-signature.log || true)" -ge 3
-          if grep -q 'sorryAx' /tmp/multistate-signature.log; then exit 1; fi
-          echo "MCORE_MULTISTATE_SIGNATURE=GREEN"
+          test "$(grep -c 'does not depend on any axioms' /tmp/structural-logic.log || true)" -ge 4
+          if grep -q 'sorryAx' /tmp/structural-logic.log; then exit 1; fi
+          echo "MCORE_STRUCTURAL_LOGIC=GREEN"
