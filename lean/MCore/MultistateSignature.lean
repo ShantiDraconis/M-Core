@@ -63,9 +63,9 @@ theorem distinct_problems_have_distinct_signatures
     {p q : ProblemId} (hpq : p ≠ q) (st : ClosureStage) :
     (manifest p st).signature ≠ (manifest q st).signature := by
   intro h
-  apply hpq
-  apply signature_assignment_injective
-  simpa [manifest] using h
+  have hs : signatureOf p = signatureOf q := by
+    simpa [manifest] using h
+  exact hpq (signature_assignment_injective hs)
 
 /-- Main architectural theorem:
 there is one common numeric 0/1/2 structure, and every tracked problem realizes
