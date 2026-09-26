@@ -19,12 +19,15 @@ jobs:
           lake update
           lake exe cache get || true
       - name: Compile multistate signature
-        run: lake env lean lean/MCore/FinalFail/UniversalMultiStateSignature.lean
+        working-directory: lean
+        run: lake env lean MCore/FinalFail/UniversalMultiStateSignature.lean
       - name: Compile master
-        run: lake env lean lean/MCore/FinalFail/Master.lean
+        working-directory: lean
+        run: lake env lean MCore/FinalFail/Master.lean
       - name: Axiom audit
+        working-directory: lean
         run: |
-          lake env lean lean/MCore/FinalFail/UniversalMultiStateSignature.lean 2>&1 | tee /tmp/multistate.log
+          lake env lean MCore/FinalFail/UniversalMultiStateSignature.lean 2>&1 | tee /tmp/multistate.log
           if grep -E 'sorryAx|axiom' /tmp/multistate.log; then
             if grep -E 'sorryAx' /tmp/multistate.log; then exit 1; fi
           fi
