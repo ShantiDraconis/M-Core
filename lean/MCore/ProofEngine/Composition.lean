@@ -6,7 +6,7 @@ namespace MCore.ProofEngine
 structure Producer (P Q : Prop) where
   run : P → Q
 
-def Producer.id (P : Prop) : Producer P P := ⟨id⟩
+def Producer.id (P : Prop) : Producer P P := ⟨fun h => h⟩
 
 def Producer.comp {P Q R : Prop}
     (g : Producer Q R) (f : Producer P Q) : Producer P R :=
