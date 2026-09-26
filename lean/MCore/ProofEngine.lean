@@ -4,3 +4,6 @@ import MCore.ProofEngine.Composition
 import MCore.ProofEngine.Registry
 import MCore.ProofEngine.ScientificBoundary
 import MCore.ProofEngine.NegativeEngine
+import MCore.ProofEngine.CanonicalGraph
+import MCore.ProofEngine.Promotion
+import MCore.ProofEngine.CostModel
