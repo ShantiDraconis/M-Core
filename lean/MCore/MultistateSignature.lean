@@ -5,118 +5,85 @@ namespace MCore.MultistateSignature
 
 open MCore.FinalFail
 
-/-- Canonical 0/1/2 closure stage. -/
+/-- Canonical closure stages shared by every problem. -/
 inductive ClosureStage where
   | c0
   | open
   | c2
   deriving DecidableEq, Repr
 
-/-- Small injective codes for every signature coordinate. -/
-def codeDirectionality : Directionality → Nat
-  | .inward => 0
-  | .outward => 1
-  | .bidirectional => 2
+/-- The universal multistate number is the same 0/1/2 structural coordinate
+for every problem.  It is not a problem identifier. -/
+def structuralNumber : ClosureStage → Nat
+  | .c0 => 0
+  | .open => 1
+  | .c2 => 2
 
-def codeLocality : Locality → Nat
-  | .local => 0
-  | .global => 1
-  | .localToGlobal => 2
-
-def codeObstruction : ObstructionKind → Nat
-  | .primitive => 0
-  | .transfer => 1
-  | .algebraicity => 2
-  | .complexity => 3
-  | .rank => 4
-  | .residue => 5
-  | .spectral => 6
-
-def codeClosure : ClosureKind → Nat
-  | .vanishing => 0
-  | .positivity => 1
-  | .emptiness => 2
-
-def codeScalar : ScalarGeometry → Nat
-  | .discrete => 0
-  | .real => 1
-  | .complex => 2
-  | .mixed => 3
-
-def codeBool : Bool → Nat
-  | false => 0
-  | true => 1
-
-/-- Mixed-radix code of a ProblemSignature.
-The chosen bases are strictly larger than each coordinate range. -/
-def signatureNumber (s : ProblemSignature) : Nat :=
-  codeDirectionality s.direction
-  + 3 * (codeLocality s.locality
-  + 3 * (codeObstruction s.obstruction
-  + 7 * (codeClosure s.closure
-  + 3 * (codeScalar s.scalar
-  + 4 * (codeBool s.hasCompression
-  + 2 * codeBool s.hasRetraction)))))
-
-/-- The same signature number observed in the 0/open/2 closure stages.
-The stage tag is part of the state; the invariant numeric signature is preserved. -/
-structure MultistateNumber where
-  signature : ProblemSignature
+/-- A manifestation is the universal 0/1/2 coordinate together with the
+problem-specific signature in which that coordinate is realized. -/
+structure Manifestation where
+  problem : ProblemId
+  stage : ClosureStage
   number : Nat
-  state : ClosureStage
-  invariant : number = signatureNumber signature
+  signature : ProblemSignature
+  number_is_structural : number = structuralNumber stage
+  signature_is_problem : signature = signatureOf problem
 
-def atStage (s : ProblemSignature) (st : ClosureStage) : MultistateNumber where
-  signature := s
-  number := signatureNumber s
-  state := st
-  invariant := rfl
+def manifest (p : ProblemId) (st : ClosureStage) : Manifestation where
+  problem := p
+  stage := st
+  number := structuralNumber st
+  signature := signatureOf p
+  number_is_structural := rfl
+  signature_is_problem := rfl
 
-/-- Every tracked problem has a canonical multistate numeric signature. -/
-def numberOfProblem (p : ProblemId) : Nat :=
-  signatureNumber (signatureOf p)
-
-def stateOfProblem (p : ProblemId) (st : ClosureStage) : MultistateNumber :=
-  atStage (signatureOf p) st
-
-theorem state_preserves_number (p : ProblemId) (a b : ClosureStage) :
-    (stateOfProblem p a).number = (stateOfProblem p b).number := by
+/-- Every problem sees exactly the same 0/1/2 numeric skeleton. -/
+theorem same_structural_number
+    (p q : ProblemId) (st : ClosureStage) :
+    (manifest p st).number = (manifest q st).number := by
   rfl
 
-theorem problem_has_three_states (p : ProblemId) :
-    ∃ n : Nat,
-      (stateOfProblem p .c0).number = n ∧
-      (stateOfProblem p .open).number = n ∧
-      (stateOfProblem p .c2).number = n := by
-  exact ⟨numberOfProblem p, rfl, rfl, rfl⟩
+/-- The manifestations can differ even though the structural number is shared:
+their problem signatures remain problem-specific. -/
+theorem manifestation_signature
+    (p : ProblemId) (st : ClosureStage) :
+    (manifest p st).signature = signatureOf p := by
+  rfl
 
-/-- A signature can be recovered from its number on the finite tracked problem set:
-different tracked problems cannot share the same numeric signature. -/
-theorem numberOfProblem_injective : Function.Injective numberOfProblem := by
-  intro a b h
+/-- Each tracked problem realizes the full common 0 -> 1 -> 2 structure. -/
+theorem problem_realizes_three_state_structure (p : ProblemId) :
+    (manifest p .c0).number = 0 ∧
+    (manifest p .open).number = 1 ∧
+    (manifest p .c2).number = 2 := by
+  exact ⟨rfl, rfl, rfl⟩
+
+/-- Distinct problems may manifest the same structural state differently.
+The common number does not collapse distinct repository-level signatures. -/
+theorem distinct_problems_have_distinct_signatures
+    {p q : ProblemId} (hpq : p ≠ q) (st : ClosureStage) :
+    (manifest p st).signature ≠ (manifest q st).signature := by
+  intro h
+  apply hpq
   apply signature_assignment_injective
-  cases a <;> cases b <;> simp [numberOfProblem, signatureNumber, signatureOf,
-    codeDirectionality, codeLocality, codeObstruction, codeClosure, codeScalar, codeBool] at h ⊢
+  simpa [manifest] using h
 
 /-- Main architectural theorem:
-every tracked problem carries one invariant number across the C0/O/C2 states,
-and that number uniquely identifies its repository-level signature among the
-tracked problems. -/
-theorem universal_multistate_signature :
+there is one common numeric 0/1/2 structure, and every tracked problem realizes
+that structure through its own distinct signature. -/
+theorem universal_multistate_manifestation :
     ∀ p : ProblemId,
-      ∃ n : Nat,
-        (stateOfProblem p .c0).number = n ∧
-        (stateOfProblem p .open).number = n ∧
-        (stateOfProblem p .c2).number = n ∧
-        (∀ q : ProblemId, numberOfProblem q = n → q = p) := by
+      (manifest p .c0).number = 0 ∧
+      (manifest p .open).number = 1 ∧
+      (manifest p .c2).number = 2 ∧
+      (∀ st : ClosureStage,
+        (manifest p st).signature = signatureOf p) := by
   intro p
-  refine ⟨numberOfProblem p, rfl, rfl, rfl, ?_⟩
-  intro q hq
-  exact numberOfProblem_injective hq
+  exact ⟨rfl, rfl, rfl, fun _ => rfl⟩
 
-#print axioms state_preserves_number
-#print axioms problem_has_three_states
-#print axioms numberOfProblem_injective
-#print axioms universal_multistate_signature
+#print axioms same_structural_number
+#print axioms manifestation_signature
+#print axioms problem_realizes_three_state_structure
+#print axioms distinct_problems_have_distinct_signatures
+#print axioms universal_multistate_manifestation
 
 end MCore.MultistateSignature
