@@ -1,0 +1,61 @@
+name: M-Core Multistate Signature Gate
+
+on:
+  push:
+    branches:
+      - attack/multistate-signature-20260926
+    paths:
+      - 'lean/MCore/MultistateSignature.lean'
+      - 'lean/MCore/FinalFail/ProblemSignature.lean'
+      - 'lean/MCore/FinalFail/SevenLocalNuclei.lean'
+      - 'lean/MCore/FinalFail/SevenProblemSignatures.lean'
+      - '.github/workflows/mcore-multistate-signature.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  multistate-signature:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lean 4.19.0
+        run: |
+          set -euo pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.19.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Fail-closed source hygiene
+        run: |
+          set -euo pipefail
+          files=(
+            lean/MCore/FinalFail/ProblemSignature.lean
+            lean/MCore/FinalFail/SevenLocalNuclei.lean
+            lean/MCore/FinalFail/SevenProblemSignatures.lean
+            lean/MCore/MultistateSignature.lean
+          )
+          if grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${files[@]}"; then
+            exit 1
+          fi
+          if grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' "${files[@]}"; then
+            exit 1
+          fi
+
+      - name: Kernel compile multistate signature
+        run: |
+          set -euo pipefail
+          cd lean
+          export LEAN_PATH="$PWD"
+          lean -o MCore/FinalFail/ProblemSignature.olean MCore/FinalFail/ProblemSignature.lean
+          lean -o MCore/FinalFail/SevenLocalNuclei.olean MCore/FinalFail/SevenLocalNuclei.lean
+          lean -o MCore/FinalFail/SevenProblemSignatures.olean MCore/FinalFail/SevenProblemSignatures.lean
+          lean MCore/MultistateSignature.lean 2>&1 | tee /tmp/multistate-signature.log
+
+      - name: Axiom footprint
+        run: |
+          set -euo pipefail
+          test "$(grep -c 'does not depend on any axioms' /tmp/multistate-signature.log || true)" -ge 4
+          if grep -q 'sorryAx' /tmp/multistate-signature.log; then exit 1; fi
+          echo "MCORE_MULTISTATE_SIGNATURE=GREEN"
