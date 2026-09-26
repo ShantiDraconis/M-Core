@@ -1,0 +1,5 @@
+{
+  "schema": "mcore.proof-engine.cost-history.v1",
+  "samples": [],
+  "calibration": "heuristic_until_empirical_samples_exist"
+}
