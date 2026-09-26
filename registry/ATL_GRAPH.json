@@ -1,0 +1,12 @@
+{
+  "schema": "mcore.proof-engine.graph.v1",
+  "policy": {
+    "persisted": ["primitive", "log"],
+    "derived": ["dependencies", "consumers", "replacement_route", "source_green", "build_green", "kernel_green", "semantic_green", "scientific_green"],
+    "replacement_route": "list[node_id]",
+    "open_math": "classification_not_promotion_state",
+    "unfold_bound": 5,
+    "retry_limit": 3
+  },
+  "nodes": []
+}
