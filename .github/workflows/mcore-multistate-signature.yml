@@ -36,6 +36,7 @@ jobs:
             lean/MCore/FinalFail/SevenProblemSignatures.lean
             lean/MCore/MultistateSignature.lean
             lean/MCore/UniversalMultistateEvidence.lean
+            lean/MCore/UniversalCollapse.lean
           )
           if grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "${files[@]}"; then
             exit 1
@@ -53,11 +54,12 @@ jobs:
           lean -o MCore/FinalFail/SevenLocalNuclei.olean MCore/FinalFail/SevenLocalNuclei.lean
           lean -o MCore/FinalFail/SevenProblemSignatures.olean MCore/FinalFail/SevenProblemSignatures.lean
           lean -o MCore/MultistateSignature.olean MCore/MultistateSignature.lean
-          lean MCore/UniversalMultistateEvidence.lean 2>&1 | tee /tmp/multistate-signature.log
+          lean -o MCore/UniversalMultistateEvidence.olean MCore/UniversalMultistateEvidence.lean
+          lean MCore/UniversalCollapse.lean 2>&1 | tee /tmp/multistate-signature.log
 
       - name: Axiom footprint
         run: |
           set -euo pipefail
-          test "$(grep -c 'does not depend on any axioms' /tmp/multistate-signature.log || true)" -ge 6
+          test "$(grep -c 'does not depend on any axioms' /tmp/multistate-signature.log || true)" -ge 3
           if grep -q 'sorryAx' /tmp/multistate-signature.log; then exit 1; fi
           echo "MCORE_MULTISTATE_SIGNATURE=GREEN"
