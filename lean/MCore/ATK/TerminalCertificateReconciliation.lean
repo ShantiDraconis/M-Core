@@ -45,8 +45,8 @@ def terminalReconciliations : List TerminalReconciliation := [
     locatedCertificate := "ATK_TERMINAL_YANG_MILLS_dc5b45c4 + K12-K30 + SpectralCore/Concrete/Exclusion/Mathlib + B60ConcretePhysicalAdapter"
     status := .infrastructureOnly },
   { problem := "NAVIER_STOKES"
-    terminalStatement := "G1-G4 analytic producers / ActualNS to signed depletion and endpoint"
-    locatedCertificate := "N01 + XiEps + G1 geometry + deterministic parameter chain"
+    terminalStatement := "NS_DELTA: ActualNS -> genuine G1Bridge / IndependentClosureContract, i.e. derive XiEps/signed depletion with non-circular coercive gain from actual NS dynamics; downstream enstrophy -> critical L3 -> ESS endpoint is conditional transport"
+    locatedCertificate := "ATK_TERMINAL_NAVIER_STOKES_04aa4c04 + N01/XiEps + G1 geometry + G1G4ClosureBlueprint + GlobalRegularityFromG1"
     status := .infrastructureOnly }
 ]
 
