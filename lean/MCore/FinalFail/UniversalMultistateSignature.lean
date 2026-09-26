@@ -154,6 +154,119 @@ theorem manifestation_evidence_from_structure
   { manifestation := A
     problem_matches := A.correctGapShape }
 
+
+/-- Endpoint-only formulation: it records the closed start and terminal target,
+but does not expose the intermediate material state or its closure mechanism. -/
+structure ATKEndpointFormulation where
+  Start : Type
+  End : Type
+  startClosed : Start → Prop
+  endClosed : End → Prop
+
+/-- Route-complete ATK formulation.  It refines an endpoint formulation by
+making the intermediate state, traction, contraction and terminal gap shape
+explicit. -/
+structure ATKRouteFormulation extends ATKEndpointFormulation where
+  OpenState : Type
+  reach : Start → OpenState → Prop
+  preimage : OpenState → End → Prop
+  gapShape : ATKGapShape
+
+/-- The explicit route data omitted by an endpoint-only statement. -/
+structure ATKMissingRouteParameters (E : ATKEndpointFormulation) where
+  OpenState : Type
+  reach : E.Start → OpenState → Prop
+  preimage : OpenState → E.End → Prop
+  gapShape : ATKGapShape
+
+/-- Every route-complete formulation projects to an endpoint statement while
+retaining additional typed data that the endpoint projection itself does not
+store.  This is the precise formal sense in which ATK "adds missing
+parameters": it enriches the representation, not the truth value of the
+external conjecture. -/
+def ATKRouteFormulation.endpoint
+    (R : ATKRouteFormulation) : ATKEndpointFormulation :=
+  { Start := R.Start
+    End := R.End
+    startClosed := R.startClosed
+    endClosed := R.endClosed }
+
+def ATKRouteFormulation.routeParameters
+    (R : ATKRouteFormulation) :
+    ATKMissingRouteParameters R.endpoint :=
+  { OpenState := R.OpenState
+    reach := R.reach
+    preimage := R.preimage
+    gapShape := R.gapShape }
+
+/-- Certificate for the structural claim itself.
+
+It says that one problem-specific manifestation:
+1. preserves the universal C0/O/C2 skeleton,
+2. carries its own mathematical value type,
+3. has a typed F1-F8 closure mode,
+4. exposes the intermediate route data that an endpoint-only projection omits.
+
+It deliberately carries no field asserting the terminal conjecture. -/
+structure ATKStructuralLogicCertificate where
+  manifestation : ATKManifestation
+  endpoint : ATKEndpointFormulation
+  route : ATKRouteFormulation
+  sameStart : route.Start = endpoint.Start
+  sameEnd : route.End = endpoint.End
+  shapeMatches :
+    route.gapShape = gapShapeOfATKProblem manifestation.problem
+
+/-- A formulation-gap certificate records the exact enrichment supplied by the
+ATK representation without claiming that the problem-specific inhabitant
+exists. -/
+structure ATKFormulationGapCertificate where
+  problem : ATKProblem
+  endpoint : ATKEndpointFormulation
+  route : ATKRouteFormulation
+  endpointIsProjection : route.endpoint = endpoint
+  missingParameters : ATKMissingRouteParameters endpoint
+  sameGapShape :
+    missingParameters.gapShape = gapShapeOfATKProblem problem
+
+/-- Any route-complete ATK description canonically certifies the corresponding
+representation gap of its endpoint-only projection. -/
+def certify_formulation_gap
+    (p : ATKProblem)
+    (R : ATKRouteFormulation)
+    (hshape : R.gapShape = gapShapeOfATKProblem p) :
+    ATKFormulationGapCertificate :=
+  { problem := p
+    endpoint := R.endpoint
+    route := R
+    endpointIsProjection := rfl
+    missingParameters := R.routeParameters
+    sameGapShape := hshape }
+
+/-- Meta-theorem of the ATK programme:
+within this formalism, a route-complete description strictly contains the
+typed intermediate data used to state how closure is supposed to occur.
+Therefore ATK can certify its own architectural enrichment independently of
+whether the external mathematical inhabitant is known. -/
+theorem atk_structural_logic_certifiable
+    (p : ATKProblem)
+    (R : ATKRouteFormulation)
+    (hshape : R.gapShape = gapShapeOfATKProblem p) :
+    Nonempty ATKFormulationGapCertificate :=
+  ⟨certify_formulation_gap p R hshape⟩
+
+/-- Firewall: certifying the architecture does not manufacture a terminal
+mathematical witness.  This theorem intentionally states only the distinction
+between "route represented" and "inhabitant supplied". -/
+inductive ATKClaimLayer
+  | structuralLogic
+  | terminalMathematics
+  deriving DecidableEq
+
+theorem structural_logic_is_not_terminal_claim :
+    ATKClaimLayer.structuralLogic ≠ ATKClaimLayer.terminalMathematics := by
+  decide
+
 /-- Structural universality does not collapse problem-specific mathematical
 claims.  It classifies their architecture only; each terminal theorem still
 requires its own problem-specific mathematical inhabitant. -/
@@ -194,6 +307,8 @@ theorem poincare_signature :
 #print axioms MCore.FinalFail.manifestation_gap_shape
 #print axioms MCore.FinalFail.atk_multistate_manifestation_theorem
 #print axioms MCore.FinalFail.manifestation_evidence_from_structure
+#print axioms MCore.FinalFail.atk_structural_logic_certifiable
+#print axioms MCore.FinalFail.structural_logic_is_not_terminal_claim
 #print axioms MCore.FinalFail.structural_theorem_firewall
 
 end MCore.FinalFail
