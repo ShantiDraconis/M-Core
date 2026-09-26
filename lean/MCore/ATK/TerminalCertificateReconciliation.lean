@@ -25,8 +25,8 @@ def terminalReconciliations : List TerminalReconciliation := [
     locatedCertificate := "K8 + NB0-NB16 + zero-limit density reduction + BCF unconditional decomposition"
     status := .infrastructureOnly },
   { problem := "BEAL"
-    terminalStatement := "forall d : BealData, CommonPrime d.a d.b d.c"
-    locatedCertificate := "K6-K10 + T3-T60 + GCD/CommonPrime equivalence + F6 transport"
+    terminalStatement := "UniversalTripleGCDLowerBound := forall d : BealData, 1 < gcd(d.a, gcd(d.b,d.c))"
+    locatedCertificate := "ATK_TERMINAL_BEAL_73f1fd7b + K6-K10 + T3-T61 + GCD/CommonPrime equivalence + F6 transport"
     status := .infrastructureOnly },
   { problem := "P_VS_NP"
     terminalStatement := "concrete LowerBoundWitness with genuine not_in_p"
