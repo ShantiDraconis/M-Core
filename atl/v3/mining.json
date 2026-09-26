@@ -1,0 +1,11 @@
+{
+  "schema":"atl.mining-policy.v1",
+  "detectors":[
+    {"id":"MINER_DIALECTICA","shapes":["forall_exists","exists_forall"]},
+    {"id":"MINER_MODULUS","shapes":["forall_epsilon_exists_delta"]},
+    {"id":"MINER_RATE","shapes":["forall_nat_exists_nat"]},
+    {"id":"MINER_NUMERIC","shapes":["numeric_equality_with_effective_bounds"]},
+    {"id":"MINER_STRUCTURAL","shapes":["structural"],"default_classification":"MINING_NOT_APPLICABLE"}
+  ],
+  "rule":"EGC_MINED requires an audited formal extraction theorem; literature or shape classification alone cannot emit it."
+}
