@@ -4,123 +4,140 @@ import MCore.FinalFail.SevenProblemSignatures
 namespace MCore.FinalFail
 
 /--
-A single number-valued object with three distinguished states.
-The states are the common structural coordinates 0 -> 1 -> 2.
+The common structural signature only.
+
+Every problem is represented through the same three structural sites:
+start -> middle -> finish. This does not identify the mathematical objects
+living at those sites.
 -/
-structure MultiStateNumber where
-  value : Fin3 → Nat
-  start_eq_zero : value .start = 0
-  middle_eq_one : value .middle = 1
-  finish_eq_two : value .finish = 2
+structure CommonMultiStateShape where
+  State : Type
+  start : State
+  middle : State
+  finish : State
+  start_ne_middle : start ≠ middle
+  middle_ne_finish : middle ≠ finish
+  start_ne_finish : start ≠ finish
 
-/-- Canonical common 0/1/2 multistate number. -/
-def canonicalMultiStateNumber : MultiStateNumber where
-  value
-    | .start => 0
-    | .middle => 1
-    | .finish => 2
-  start_eq_zero := rfl
-  middle_eq_one := rfl
-  finish_eq_two := rfl
-
-theorem canonical_multistate_values :
-    canonicalMultiStateNumber.value .start = 0 ∧
-    canonicalMultiStateNumber.value .middle = 1 ∧
-    canonicalMultiStateNumber.value .finish = 2 := by
-  exact ⟨rfl, rfl, rfl⟩
-
-theorem canonical_multistate_injective :
-    Function.Injective canonicalMultiStateNumber.value := by
-  intro a b h
-  cases a <;> cases b <;> simp [canonicalMultiStateNumber] at h ⊢
+/-- Canonical common 0/1/2 shape used only as structural coordinates. -/
+def canonical012Shape : CommonMultiStateShape where
+  State := Fin3
+  start := .start
+  middle := .middle
+  finish := .finish
+  start_ne_middle := by decide
+  middle_ne_finish := by decide
+  start_ne_finish := by decide
 
 /--
-Per-problem adapter.  The 0/1/2 object is shared; the terminal digit and the
-qualitative ProblemSignature identify the problem-specific terminal class.
-This is a structural adapter only and does not assert endpoint closure.
+A problem-specific manifestation.
+
+Scalar and object are intentionally local to the problem. Two problems
+need not have the same scalar type or the same mathematical object. What is
+shared is only the three-state shape and its transport geometry.
 -/
-structure ProblemMultiStateAdapter where
-  problem : ProblemId
-  multistate : MultiStateNumber
-  multistate_is_canonical : multistate = canonicalMultiStateNumber
-  terminalDigit : Nat
-  terminalDigit_eq : terminalDigit = slotOf problem
-  terminalDigit_range : 3 ≤ terminalDigit ∧ terminalDigit < 10
+structure ProblemMultiStateManifestation (p : ProblemId) where
+  Scalar : Type
+  object : Scalar
+  stateValue : Fin3 → Scalar
+  shape : CommonMultiStateShape
+  shape_is_common : shape = canonical012Shape
   signature : ProblemSignature
-  signature_eq : signature = signatureOf problem
-
-def problemMultiStateAdapter (p : ProblemId) : ProblemMultiStateAdapter where
-  problem := p
-  multistate := canonicalMultiStateNumber
-  multistate_is_canonical := rfl
-  terminalDigit := slotOf p
-  terminalDigit_eq := rfl
-  terminalDigit_range := slotOf_range p
-  signature := signatureOf p
-  signature_eq := rfl
+  signature_eq : signature = signatureOf p
 
 /--
-Main structural theorem:
-there exists one common multistate number whose states are 0,1,2 and which
-admits a signature-preserving adapter for every active problem.
+A family of concrete manifestations, one different object per problem,
+all respecting the same structural 0/1/2 shape.
 -/
-theorem exists_multistate_number_in_every_problem :
-    ∃ N : MultiStateNumber,
-      N.value .start = 0 ∧
-      N.value .middle = 1 ∧
-      N.value .finish = 2 ∧
+structure CrossProblemMultiStateFamily where
+  manifestation : ∀ p : ProblemId, ProblemMultiStateManifestation p
+
+/--
+The common structure is inherited by every member of a supplied family.
+No equality between problem-specific objects is asserted.
+-/
+theorem every_manifestation_has_common_shape
+    (F : CrossProblemMultiStateFamily)
+    (p : ProblemId) :
+    (F.manifestation p).shape = canonical012Shape :=
+  (F.manifestation p).shape_is_common
+
+/--
+Each manifestation also preserves the already-audited qualitative signature
+of its own problem.
+-/
+theorem every_manifestation_preserves_problem_signature
+    (F : CrossProblemMultiStateFamily)
+    (p : ProblemId) :
+    (F.manifestation p).signature = signatureOf p :=
+  (F.manifestation p).signature_eq
+
+/--
+Exact theorem matching the intended claim:
+
+IF each problem supplies its own mathematical manifestation, THEN there exists
+a cross-problem family in which every manifestation has the same multistate
+shape while retaining its problem-specific object and signature.
+
+This closes the structural transport theorem, not the individual OPEN_MATH
+producer of any problem.
+-/
+theorem exists_common_signature_from_problem_manifestations
+    (H : ∀ p : ProblemId, Nonempty (ProblemMultiStateManifestation p)) :
+    ∃ F : CrossProblemMultiStateFamily,
       ∀ p : ProblemId,
-        ∃ A : ProblemMultiStateAdapter,
-          A.problem = p ∧
-          A.multistate = N ∧
-          A.terminalDigit = slotOf p ∧
-          A.signature = signatureOf p := by
-  refine ⟨canonicalMultiStateNumber, rfl, rfl, rfl, ?_⟩
+        (F.manifestation p).shape = canonical012Shape ∧
+        (F.manifestation p).signature = signatureOf p := by
+  choose M hM using H
+  let F : CrossProblemMultiStateFamily :=
+    { manifestation := fun p => M p }
+  refine ⟨F, ?_⟩
   intro p
-  refine ⟨problemMultiStateAdapter p, rfl, rfl, rfl, rfl⟩
+  exact ⟨(M p).shape_is_common, (M p).signature_eq⟩
 
 /--
-The terminal numeric signature is unique across the seven problem ids.
+The seven problem-specific signatures remain distinct. Sharing the multistate
+shape therefore does not collapse the mathematical problems into one object.
 -/
-theorem terminal_digit_signature_injective :
+theorem problem_specific_signatures_remain_distinct :
+    Function.Injective signatureOf :=
+  signature_assignment_injective
+
+/-- Likewise, the terminal slots remain problem-specific. -/
+theorem problem_specific_terminal_slots_remain_distinct :
     Function.Injective slotOf :=
   slotOf_injective
 
 /--
-The qualitative signature is also unique across the seven active problem ids.
+A full structural signature consists of the shared shape plus the local
+qualitative signature. Since the common component is identical, uniqueness is
+carried by the problem-specific signature.
 -/
-theorem qualitative_signature_injective :
-    Function.Injective signatureOf :=
-  signature_assignment_injective
+def structuralSignature (p : ProblemId) :
+    CommonMultiStateShape × ProblemSignature :=
+  (canonical012Shape, signatureOf p)
 
-/--
-Combined signature: common 0/1/2 dynamics plus problem-specific terminal
-digit and qualitative signature.
--/
-def fullMultiStateSignature (p : ProblemId) :
-    Nat × ProblemSignature :=
-  (slotOf p, signatureOf p)
-
-theorem full_multistate_signature_injective :
-    Function.Injective fullMultiStateSignature := by
+theorem structural_signature_injective :
+    Function.Injective structuralSignature := by
   intro a b h
-  have hdigit : slotOf a = slotOf b := congrArg Prod.fst h
-  exact slotOf_injective hdigit
+  have hs : signatureOf a = signatureOf b := congrArg Prod.snd h
+  exact signature_assignment_injective hs
 
 /--
-Fail-closed scope marker: this theorem closes the universal structural
-signature layer only.  It does not discharge any mathematical Core proposition
-of the seven individual problems.
+Fail-closed status: the generic structural theorem is proved, but existence of
+a concrete manifestation for each named problem must come from that problem's
+own certified adapter.
 -/
-def universalMultiStateSignatureLayerClosed : Bool := true
+def universalMultiStateStructureTheoremClosed : Bool := true
 
-theorem universal_multistate_signature_layer_closed :
-    universalMultiStateSignatureLayerClosed = true := by
+theorem universal_multistate_structure_theorem_closed :
+    universalMultiStateStructureTheoremClosed = true := by
   rfl
 
-#print axioms MCore.FinalFail.exists_multistate_number_in_every_problem
-#print axioms MCore.FinalFail.canonical_multistate_injective
-#print axioms MCore.FinalFail.full_multistate_signature_injective
-#print axioms MCore.FinalFail.universal_multistate_signature_layer_closed
+#print axioms MCore.FinalFail.every_manifestation_has_common_shape
+#print axioms MCore.FinalFail.exists_common_signature_from_problem_manifestations
+#print axioms MCore.FinalFail.problem_specific_signatures_remain_distinct
+#print axioms MCore.FinalFail.structural_signature_injective
+#print axioms MCore.FinalFail.universal_multistate_structure_theorem_closed
 
 end MCore.FinalFail
