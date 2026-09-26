@@ -22,6 +22,6 @@ jobs:
           lake build MCore.FinalFail.UniversalMultistateSignature
           if grep -n -E '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' lean/MCore/FinalFail/UniversalMultistateSignature.lean; then exit 1; fi
           if grep -n -E '^[[:space:]]*(axiom|constant|constants)[[:space:]]' lean/MCore/FinalFail/UniversalMultistateSignature.lean; then exit 1; fi
-          printf 'import MCore.FinalFail.UniversalMultistateSignature\n#print axioms MCore.FinalFail.manifestations_structurally_equivalent\n#print axioms MCore.FinalFail.universal_multistate_structure_exists\n#print axioms MCore.FinalFail.manifestation_gap_shape\n' > MultistateAxiomAudit.lean
+          printf 'import MCore.FinalFail.UniversalMultistateSignature\n#print axioms MCore.FinalFail.manifestations_structurally_equivalent\n#print axioms MCore.FinalFail.universal_multistate_structure_exists\n#print axioms MCore.FinalFail.manifestation_gap_shape\n#print axioms MCore.FinalFail.atk_multistate_manifestation_theorem\n#print axioms MCore.FinalFail.manifestation_evidence_from_structure\n#print axioms MCore.FinalFail.structural_theorem_firewall\n' > MultistateAxiomAudit.lean
           lake env lean MultistateAxiomAudit.lean 2>&1 | tee MultistateAxiomAudit.log
           if grep -E 'sorryAx' MultistateAxiomAudit.log; then exit 1; fi
