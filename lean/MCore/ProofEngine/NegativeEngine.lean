@@ -33,7 +33,7 @@ structure NegativeInstantiation
 
 def NegativeInstantiation.rejectTarget
     {A A' T T' : Prop} {p : NegativeProducer A A'}
-    (i : NegativeInstantiation p) : T → ¬ T' :=
+    (i : NegativeInstantiation (T := T) (T' := T') p) : T → ¬ T' :=
   fun hT hT' => p.reject (i.targetToSource hT) (i.sourceRejectedFromTarget hT')
 
 /-- Provenance record for the certified P-vs-NP G2.1 literal fixed-point
