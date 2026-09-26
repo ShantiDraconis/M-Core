@@ -189,6 +189,62 @@ theorem same_number_different_manifestation_possible :
   · decide
 
 /--
+Evidence carried by the atlas: the universal structure is witnessed by the
+problem-specific terminal statements already recorded in ExactGapLedger.
+
+This theorem proves only that each manifestation is paired with a ledger entry
+whose problem-name/terminal shape matches the atlas classification.  It is
+evidence for the common architecture, not a proof of the open endpoint.
+-/
+def atlasProblemName : AtlasProblemId -> String
+  | .riemann => "RIEMANN"
+  | .yangMills => "YANG_MILLS"
+  | .pVsNP => "P_VS_NP"
+  | .beal => "BEAL"
+  | .navierStokes => "NAVIER_STOKES"
+  | .hodge => "HODGE"
+  | .bsd => "BSD"
+  | .poincare => "POINCARE"
+
+def atlasResolutionShape : AtlasProblemId -> ResolutionShape
+  | .riemann => .bridgeAndVanishing
+  | .yangMills => .positivity
+  | .pVsNP => .separation
+  | .beal => .nonexistence
+  | .navierStokes => .vanishing
+  | .hodge => .quotientZero
+  | .bsd => .equality
+  | .poincare => .elimination
+
+def ledgerEvidenceFor (p : AtlasProblemId) : Prop :=
+  ∃ g ∈ exactGaps,
+    g.problem = atlasProblemName p /\
+    g.resolution = atlasResolutionShape p
+
+theorem ledger_evidence_for_all_manifestations :
+    ∀ p : AtlasProblemId, ledgerEvidenceFor p := by
+  intro p
+  cases p <;>
+    simp [ledgerEvidenceFor, exactGaps, atlasProblemName, atlasResolutionShape]
+
+/--
+Combined theorem: one universal number-structure, distinct manifestations,
+and explicit ledger evidence for every manifestation.
+-/
+theorem universal_multistate_theorem_with_evidence :
+    ∃ N : UniversalNumberStructure,
+      (N.c0 = 0 /\ N.openState = 1 /\ N.c2 = 2) /\
+      (∀ p : AtlasProblemId,
+        (manifestationOf p).number = N /\
+        ledgerEvidenceFor p) := by
+  refine ⟨universalNumber, universal_number_is_zero_one_two, ?_⟩
+  intro p
+  exact ⟨rfl, ledger_evidence_for_all_manifestations p⟩
+
+#print axioms MCore.FinalFail.ledger_evidence_for_all_manifestations
+#print axioms MCore.FinalFail.universal_multistate_theorem_with_evidence
+
+/--
 Important firewall: classification and numerical encoding do not discharge any
 OPEN_MATH producer.
 -/
