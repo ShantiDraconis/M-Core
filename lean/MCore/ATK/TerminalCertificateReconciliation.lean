@@ -21,8 +21,8 @@ structure TerminalReconciliation where
 
 def terminalReconciliations : List TerminalReconciliation := [
   { problem := "RIEMANN"
-    terminalStatement := "unconditional DNLimit = 0 / weighted modular bilinear decay"
-    locatedCertificate := "K8 + NB0-NB16 + zero-limit density reduction"
+    terminalStatement := "ZERO_RESIDUE_SUM_UNCONDITIONAL_CONTROL -> BCFZeroResidueControl -> VanishingUpperBound -> DNLimit = 0"
+    locatedCertificate := "K8 + NB0-NB16 + zero-limit density reduction + BCF unconditional decomposition"
     status := .infrastructureOnly },
   { problem := "BEAL"
     terminalStatement := "forall d : BealData, CommonPrime d.a d.b d.c"
