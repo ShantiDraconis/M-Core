@@ -14,6 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+      - name: Resolve dependencies
+        run: lake update
       - name: Kernel contracts
         run: |
           set -euo pipefail
