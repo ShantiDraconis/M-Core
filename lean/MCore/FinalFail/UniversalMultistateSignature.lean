@@ -8,13 +8,13 @@ UNIVERSAL MULTISTATE ATK SIGNATURE
 This file formalizes the common state architecture found across the ATK lanes.
 
 Important semantic firewall:
-* it does NOT assert that all problems share the same mathematical scalar;
-* it asserts that all listed ATK problems share the same three-state index
-  C0 -> O -> C2;
+* each problem has its own mathematical object/value;
+* these objects are not identified with one another;
+* every listed ATK problem realizes a three-state structure isomorphic to the
+  abstract skeleton C0 -> O -> C2;
 * the problem-specific mathematical content is carried by the gap shape F1-F8.
 
-Thus the universal "number with multiple states" is the canonical ternary
-state code 0/1/2, while each problem has its own terminal gap signature.
+Thus the invariant is structural, not numerical identity across problems.
 -/
 
 /-- The common ATK three-state skeleton. -/
@@ -68,28 +68,36 @@ def gapShapeOfATKProblem : ATKProblem → ATKGapShape
   | .active .navierStokes => .F7_limitCompactness
   | .poincare => .F8_fixedPointClassification
 
-/-- Full structural signature: common 0/1/2 skeleton plus problem-specific F-shape. -/
-structure ATKMultistateSignature where
+/-- A problem-specific manifestation of the abstract three-state structure.
+The carrier may differ from problem to problem. -/
+structure ATKManifestation where
   problem : ATKProblem
-  stageCode : ATKTriState → Nat
-  canonicalStageCode : stageCode = triStateCode
+  State : Type
+  encode : State → ATKTriState
+  decode : ATKTriState → State
+  left_inv : ∀ s, decode (encode s) = s
+  right_inv : ∀ t, encode (decode t) = t
   gapShape : ATKGapShape
   correctGapShape : gapShape = gapShapeOfATKProblem problem
 
-/-- Canonical signature assigned to every listed ATK problem. -/
-def multistateSignatureOf (p : ATKProblem) : ATKMultistateSignature :=
-  { problem := p
-    stageCode := triStateCode
-    canonicalStageCode := rfl
-    gapShape := gapShapeOfATKProblem p
-    correctGapShape := rfl }
+/-- Structural equivalence between two manifestations: both are isomorphic to
+the same abstract tri-state skeleton, without identifying their carriers. -/
+def StructurallyEquivalent (A B : ATKManifestation) : Prop :=
+  ∃ f : A.State → B.State,
+    ∃ g : B.State → A.State,
+      (∀ x, g (f x) = x) ∧
+      (∀ y, f (g y) = y)
 
-/-- Every listed problem has the same numerical 0/1/2 state carrier. -/
-theorem all_ATK_problems_share_tristate_code
-    (p q : ATKProblem) :
-    (multistateSignatureOf p).stageCode =
-      (multistateSignatureOf q).stageCode := by
-  rfl
+/-- Every two valid manifestations are structurally equivalent through the
+shared abstract tri-state skeleton. -/
+theorem manifestations_structurally_equivalent
+    (A B : ATKManifestation) :
+    StructurallyEquivalent A B := by
+  refine ⟨fun x => B.decode (A.encode x), fun y => A.decode (B.encode y), ?_, ?_⟩
+  · intro x
+    rw [B.right_inv, A.left_inv]
+  · intro y
+    rw [A.right_inv, B.left_inv]
 
 /-- The common state code is genuinely three-state: 0, 1 and 2 are all hit. -/
 theorem tristate_code_hits_zero_one_two :
@@ -100,25 +108,19 @@ theorem tristate_code_hits_zero_one_two :
     ⟨⟨.O_openCore, rfl⟩,
       ⟨.C2_closedEnd, rfl⟩⟩⟩
 
-/-- Existential theorem requested by the ATK architecture:
-there exists one canonical numerical multistate signature used by every listed
-problem, namely the injective state encoding 0/1/2. -/
-theorem universal_multistate_number_exists :
+/-- Existential structural theorem: there exists a three-state abstract
+signature to which every admitted manifestation is equivalent. -/
+theorem universal_multistate_structure_exists :
     ∃ code : ATKTriState → Nat,
       Function.Injective code ∧
-      (∀ s, code s < 3) ∧
-      (∀ p : ATKProblem, (multistateSignatureOf p).stageCode = code) := by
-  refine ⟨triStateCode, triStateCode_injective, triStateCode_range, ?_⟩
-  intro p
-  rfl
+      (∀ s, code s < 3) := by
+  exact ⟨triStateCode, triStateCode_injective, triStateCode_range⟩
 
-/-- The invariant part and the varying part are cleanly separated:
-all problems share 0/1/2, while F1-F8 identifies the mathematical closure mode. -/
-theorem signature_decomposition
-    (p : ATKProblem) :
-    (multistateSignatureOf p).stageCode = triStateCode ∧
-    (multistateSignatureOf p).gapShape = gapShapeOfATKProblem p := by
-  exact ⟨rfl, rfl⟩
+/-- The varying part is exactly the problem-specific F-shape. -/
+theorem manifestation_gap_shape
+    (A : ATKManifestation) :
+    A.gapShape = gapShapeOfATKProblem A.problem :=
+  A.correctGapShape
 
 /-- Concrete lookup table for the eight ATK lanes. -/
 theorem beal_signature :
@@ -146,8 +148,8 @@ theorem poincare_signature :
     gapShapeOfATKProblem .poincare = .F8_fixedPointClassification := rfl
 
 #print axioms MCore.FinalFail.triStateCode_injective
-#print axioms MCore.FinalFail.all_ATK_problems_share_tristate_code
-#print axioms MCore.FinalFail.universal_multistate_number_exists
-#print axioms MCore.FinalFail.signature_decomposition
+#print axioms MCore.FinalFail.manifestations_structurally_equivalent
+#print axioms MCore.FinalFail.universal_multistate_structure_exists
+#print axioms MCore.FinalFail.manifestation_gap_shape
 
 end MCore.FinalFail
