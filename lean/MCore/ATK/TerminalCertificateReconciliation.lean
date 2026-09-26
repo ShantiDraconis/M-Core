@@ -37,8 +37,8 @@ def terminalReconciliations : List TerminalReconciliation := [
     locatedCertificate := "K7-K14 + plectic/KR2 + TOTAL_GREEN + BSD_FinalArtifactSchema; audit chain only, both mathematical deltas remain open"
     status := .infrastructureOnly },
   { problem := "HODGE"
-    terminalStatement := "RationalHodgeConjecture D / pointwise algebraicity"
-    locatedCertificate := "K0-K26 + R3/R3a + reduction/endpoint compression"
+    terminalStatement := "ConcreteAlgebraicityPayload := RationalHodgeConjecture D := PointwiseHodgeAlgebraicity D"
+    locatedCertificate := "ATK_TERMINAL_HODGE_f4918c01 + K0-K26 + R3/R3a + reduction/endpoint compression"
     status := .infrastructureOnly },
   { problem := "YANG_MILLS"
     terminalStatement := "genuine 4D realization yielding positive spectral mass gap"
