@@ -40,3 +40,4 @@ jobs:
           lake build MCore.FinalFail.UniversalMultiStateSignature MCore.FinalFail.UnifiedOpenMathClosure MCore.FinalFail.SevenMathematicalCores 2>&1 | tee /tmp/multistate.log
           if grep -q 'sorryAx' /tmp/multistate.log; then exit 1; fi
           echo 'UNIVERSAL_MULTISTATE_SIGNATURE=GREEN'
+
