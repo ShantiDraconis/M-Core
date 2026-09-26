@@ -2,19 +2,22 @@ import MCore.ProofEngine.Registry
 
 namespace MCore.ProofEngine
 
-structure ScientificEvidence (S : Prop) where
-  proof : Option S
-  refutation : Option (Not S)
+inductive ScientificEvidence (S : Prop)
+  | unknown
+  | proved (proof : S)
+  | disproved (refutation : ¬ S)
+  | conflict (proof : S) (refutation : ¬ S)
 
-def CanIssue {S : Prop} (e : ScientificEvidence S) : Prop :=
-  e.proof.isSome ∧ e.refutation.isNone
+def CanIssue {S : Prop} : ScientificEvidence S → Prop
+  | .proved _ => True
+  | _ => False
 
-theorem empty_cannot_issue (S : Prop) :
-    ¬ CanIssue (ScientificEvidence.mk (S := S) none none) := by
+theorem unknown_cannot_issue (S : Prop) :
+    ¬ CanIssue (ScientificEvidence.unknown (S := S)) := by
   simp [CanIssue]
 
 theorem conflict_cannot_issue {S : Prop} (hS : S) (hnS : ¬ S) :
-    ¬ CanIssue (ScientificEvidence.mk (some hS) (some hnS)) := by
+    ¬ CanIssue (ScientificEvidence.conflict hS hnS) := by
   simp [CanIssue]
 
 end MCore.ProofEngine
