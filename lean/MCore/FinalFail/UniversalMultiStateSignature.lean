@@ -93,99 +93,100 @@ def producerStateOf : AtlasProblemId -> ProducerState
   | .poincare => .historicallyProven
   | _ => .openMath
 
-/-- Canonical ordinal for the atlas problem itself. -/
-def AtlasProblemId.code : AtlasProblemId -> Nat
-  | .riemann => 0
-  | .yangMills => 1
-  | .pVsNP => 2
-  | .beal => 3
-  | .navierStokes => 4
-  | .hodge => 5
-  | .bsd => 6
-  | .poincare => 7
+/--
+The universal multistate number-structure.  This is the SAME structural object
+for every problem.  It is not a problem identifier.
+
+Its invariant skeleton is 0 -> 1 -> 2:
+  0 = closed input boundary C0
+  1 = tensioned/open middle O
+  2 = closed terminal boundary C2
+
+The problem-specific mathematics enters only through the manifestation fields
+below.
+-/
+structure UniversalNumberStructure where
+  c0 : Nat := 0
+  openState : Nat := 1
+  c2 : Nat := 2
+  c0_lt_open : c0 < openState
+  open_lt_c2 : openState < c2
+
+def universalNumber : UniversalNumberStructure :=
+  {
+    c0 := 0
+    openState := 1
+    c2 := 2
+    c0_lt_open := by decide
+    open_lt_c2 := by decide
+  }
 
 /--
-The multistate signature.  The three stages are common to every problem; the
-F-form and terminal observable identify what must collapse at C2.
+A manifestation is how the SAME universal number-structure appears inside one
+problem.  The carrier/observable and terminal law vary by problem; the 0/1/2
+architecture is shared.
 -/
-structure MultiStateSignature where
+structure MultiStateManifestation where
   problem : AtlasProblemId
-  c0 : MultiStateStage := .c0Closed
-  o : MultiStateStage := .openCore
-  c2 : MultiStateStage := .c2Closed
+  number : UniversalNumberStructure
   form : GapForm
   observable : String
   producer : ProducerState
-  deriving Repr
 
-def multistateSignatureOf (p : AtlasProblemId) : MultiStateSignature :=
-  { problem := p
+def manifestationOf (p : AtlasProblemId) : MultiStateManifestation :=
+  {
+    problem := p
+    number := universalNumber
     form := gapFormOf p
     observable := terminalObservable p
-    producer := producerStateOf p }
+    producer := producerStateOf p
+  }
+
+/-- Every problem manifests the exact same universal number-structure. -/
+theorem same_universal_number_structure (p : AtlasProblemId) :
+    (manifestationOf p).number = universalNumber := rfl
+
+/-- The shared number has the invariant 0 -> 1 -> 2 architecture. -/
+theorem universal_number_is_zero_one_two :
+    universalNumber.c0 = 0 /\
+    universalNumber.openState = 1 /\
+    universalNumber.c2 = 2 := by
+  decide
 
 /--
-A compact natural-number signature.
-
-Digits/blocks:
-  problem-code | F-code | C0 | O | C2 | producer-state
-
-The coding constants are deliberately separated enough that exhaustive kernel
-checking can establish injectivity for the finite atlas.
+The problems remain different because their manifestations can have different
+F-forms and observables even though they share the same universal number.
 -/
-def signatureNumber (p : AtlasProblemId) : Nat :=
-  p.code * 100000 +
-  (gapFormOf p).code * 1000 +
-  MultiStateStage.code .c0Closed * 100 +
-  MultiStateStage.code .openCore * 10 +
-  MultiStateStage.code .c2Closed +
-  match producerStateOf p with
-  | .openMath => 0
-  | .historicallyProven => 1
-
-/-- Every problem has the same 0 -> 1 -> 2 multistate skeleton. -/
-theorem common_three_state_skeleton (p : AtlasProblemId) :
-    (multistateSignatureOf p).c0.code = 0 /\
-    (multistateSignatureOf p).o.code = 1 /\
-    (multistateSignatureOf p).c2.code = 2 := by
-  cases p <;> decide
-
-/-- Every problem has a canonical multistate number. -/
-theorem multistate_number_exists (p : AtlasProblemId) :
-    exists n : Nat, n = signatureNumber p := by
-  exact ⟨signatureNumber p, rfl⟩
-
-/-- The number determines the problem inside this atlas. -/
-theorem signatureNumber_injective :
-    Function.Injective signatureNumber := by
-  intro a b h
-  cases a <;> cases b <;> simp [signatureNumber, AtlasProblemId.code,
-    gapFormOf, GapForm.code, producerStateOf] at h ⊢
-
-/-- The full structural signature is likewise problem-identifying. -/
-theorem multistateSignature_injective :
-    Function.Injective multistateSignatureOf := by
-  intro a b h
-  have hp : (multistateSignatureOf a).problem =
-      (multistateSignatureOf b).problem :=
-    congrArg MultiStateSignature.problem h
-  simpa [multistateSignatureOf] using hp
+theorem manifestations_share_number
+    (p q : AtlasProblemId) :
+    (manifestationOf p).number = (manifestationOf q).number := by
+  rfl
 
 /--
 Meta-theorem requested by the multistate attack:
-all atlas problems admit one common state architecture and each has a canonical
-numerical signature identifying its terminal behavior.
+there EXISTS one universal three-state number-structure, and every problem in
+the atlas is a manifestation of that same structure.
 -/
 theorem universal_multistate_signature :
-    forall p : AtlasProblemId,
-      exists n : Nat,
-        n = signatureNumber p /\
-        (multistateSignatureOf p).c0.code = 0 /\
-        (multistateSignatureOf p).o.code = 1 /\
-        (multistateSignatureOf p).c2.code = 2 := by
-  intro p
-  refine ⟨signatureNumber p, rfl, ?_⟩
-  exact common_three_state_skeleton p
+    exists N : UniversalNumberStructure,
+      (N.c0 = 0 /\ N.openState = 1 /\ N.c2 = 2) /\
+      forall p : AtlasProblemId,
+        (manifestationOf p).number = N := by
+  refine ⟨universalNumber, ?_, ?_⟩
+  · exact universal_number_is_zero_one_two
+  · intro p
+    rfl
+
+/--
+Problem individuality is carried by the manifestation, not by a different
+universal number.
+-/
+theorem same_number_different_manifestation_possible :
+    (manifestationOf .riemann).number = (manifestationOf .hodge).number /\
+    (manifestationOf .riemann).form ≠ (manifestationOf .hodge).form := by
+  constructor
+  · rfl
+  · decide
 
 /--
 Important firewall: classification and numerical encoding do not discharge any
@@ -194,14 +195,14 @@ OPEN_MATH producer.
 theorem signature_does_not_promote_open_math
     (p : AtlasProblemId)
     (h : producerStateOf p = .openMath) :
-    (multistateSignatureOf p).producer = .openMath := by
+    (manifestationOf p).producer = .openMath := by
   simpa [multistateSignatureOf] using h
 
-#print axioms MCore.FinalFail.common_three_state_skeleton
-#print axioms MCore.FinalFail.multistate_number_exists
-#print axioms MCore.FinalFail.signatureNumber_injective
-#print axioms MCore.FinalFail.multistateSignature_injective
+#print axioms MCore.FinalFail.same_universal_number_structure
+#print axioms MCore.FinalFail.universal_number_is_zero_one_two
+#print axioms MCore.FinalFail.manifestations_share_number
 #print axioms MCore.FinalFail.universal_multistate_signature
+#print axioms MCore.FinalFail.same_number_different_manifestation_possible
 #print axioms MCore.FinalFail.signature_does_not_promote_open_math
 
 end MCore.FinalFail
