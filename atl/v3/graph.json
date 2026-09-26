@@ -1,0 +1,49 @@
+{
+  "schema":"atl.graph.v3",
+  "graph_version":3,
+  "nodes":[
+    {
+      "id":"mcore.finalfail.minimal_open_bridge",
+      "area":"GLOBAL",
+      "kind":"BRIDGE",
+      "version":1,
+      "formal_statement":"MCore.FinalFail.MinimalOpenBridge",
+      "semantic_statement":"Architecture-relative equivalence between an explicit open bridge and an endpoint; does not inhabit the bridge.",
+      "source_files":["lean/MCore/FinalFail/MinimalOpenBridge.lean"],
+      "theorem_names":[],
+      "repo":"ShantiDraconis/M-Core",
+      "branch":"main",
+      "commit":"5cccc1c58cea962a86d49a453ae63628eab3af30",
+      "policy":"classical_ok",
+      "statement_hash":null,
+      "superseded_by":null
+    },
+    {
+      "id":"mcore.finalproof.firewall",
+      "area":"GLOBAL",
+      "kind":"GATE",
+      "version":1,
+      "formal_statement":"MCore.FinalProof.FinalProofReady",
+      "semantic_statement":"Fail-closed registry firewall; current readiness must be derived from audited problem slots.",
+      "source_files":["lean/MCore/FinalProofFirewall.lean","lean/MCore/FinalProofRegistry.lean"],
+      "theorem_names":["MCore.FinalProof.finalProof_not_ready"],
+      "repo":"ShantiDraconis/M-Core",
+      "branch":"main",
+      "commit":"5cccc1c58cea962a86d49a453ae63628eab3af30",
+      "policy":"classical_ok",
+      "statement_hash":null,
+      "superseded_by":null
+    }
+  ],
+  "edges":[
+    {"from":"mcore.finalfail.minimal_open_bridge","to":"mcore.finalproof.firewall","relation":"VALIDATES"}
+  ],
+  "log":[
+    {
+      "ts":"2026-09-26T00:00:00Z",
+      "node":"mcore.finalfail.minimal_open_bridge",
+      "kind":"PROVENANCE",
+      "data":{"source":"ATK_RECOVERY_INDEX.md","rule":"GREEN_INFRA != GREEN_MATH"}
+    }
+  ]
+}
