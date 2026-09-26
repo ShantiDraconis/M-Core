@@ -33,8 +33,8 @@ def terminalReconciliations : List TerminalReconciliation := [
     locatedCertificate := "C1-C12 + K6-K10 + canonical SAT + P01/P02 plumbing + certified G3/ExternalModelMatch + endpoint compression"
     status := .infrastructureOnly },
   { problem := "BSD"
-    terminalStatement := "forall d, BSDRankPart d (+ full coefficient obligations)"
-    locatedCertificate := "K7-K14 + plectic/KR2 + TOTAL_GREEN"
+    terminalStatement := "BSD_RANK_DELTA: forall realizable E/Q, ord_{s=1} L(E,s) = rank E(Q); BSD_REFINED_DELTA: leading coefficient = period * regulator * |Sha| * local factors / torsion^2"
+    locatedCertificate := "K7-K14 + plectic/KR2 + TOTAL_GREEN + BSD_FinalArtifactSchema; audit chain only, both mathematical deltas remain open"
     status := .infrastructureOnly },
   { problem := "HODGE"
     terminalStatement := "RationalHodgeConjecture D / pointwise algebraicity"
