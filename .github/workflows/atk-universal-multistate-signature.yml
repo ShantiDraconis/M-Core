@@ -1,0 +1,30 @@
+name: atk-universal-multistate-signature
+
+on:
+  push:
+    branches: [attack/universal-multistate-signature-20260926]
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Prepare
+        run: |
+          lake update
+          lake exe cache get || true
+      - name: Compile multistate signature
+        run: lake env lean lean/MCore/FinalFail/UniversalMultiStateSignature.lean
+      - name: Compile master
+        run: lake env lean lean/MCore/FinalFail/Master.lean
+      - name: Axiom audit
+        run: |
+          lake env lean lean/MCore/FinalFail/UniversalMultiStateSignature.lean 2>&1 | tee /tmp/multistate.log
+          if grep -E 'sorryAx|axiom' /tmp/multistate.log; then
+            if grep -E 'sorryAx' /tmp/multistate.log; then exit 1; fi
+          fi
