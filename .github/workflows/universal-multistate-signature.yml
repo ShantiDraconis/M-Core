@@ -1,0 +1,36 @@
+name: Universal Multistate Signature
+
+on:
+  push:
+    branches:
+      - attack/universal-multistate-signature
+    paths:
+      - 'lean/MCore/FinalFail/UniversalMultiStateSignature.lean'
+      - '.github/workflows/universal-multistate-signature.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  multistate-signature:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: false
+          test: false
+          lint: false
+      - name: Source hygiene
+        run: |
+          set -euo pipefail
+          file=lean/MCore/FinalFail/UniversalMultiStateSignature.lean
+          if grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "$file"; then exit 1; fi
+          if grep -nE '^[[:space:]]*(axiom|constant|constants)[[:space:]]' "$file"; then exit 1; fi
+      - name: Kernel compile
+        run: |
+          set -euo pipefail
+          lake build MCore.FinalFail.UniversalMultiStateSignature 2>&1 | tee /tmp/multistate.log
+          if grep -q 'sorryAx' /tmp/multistate.log; then exit 1; fi
+          echo 'UNIVERSAL_MULTISTATE_SIGNATURE=GREEN'
