@@ -1,0 +1,42 @@
+name: ATL v3 canonical gate
+on:
+  push:
+    branches: [ "infra/atl-v3-canonical-20260926" ]
+    paths:
+      - "atl/v3/**"
+      - "lean/MCore/ATL/V3/**"
+      - ".github/workflows/atl-v3-canonical.yml"
+  workflow_dispatch:
+
+jobs:
+  atl-v3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+      - name: Kernel contracts
+        run: |
+          set -euo pipefail
+          lake env lean lean/MCore/ATL/V3/Core.lean
+          lake env lean lean/MCore/ATL/V3/Promotion.lean
+          lake env lean lean/MCore/ATL/V3/Mining.lean
+          lake env lean lean/MCore/ATL/V3/Certificate.lean
+          lake env lean lean/MCore/ATL/V3/Master.lean
+      - name: Python syntax
+        run: |
+          python3 -m py_compile atl/v3/router.py atl/v3/firewall.py atl/v3/gate_batch.py
+      - name: Canonical graph parse
+        run: |
+          python3 - <<'PY'
+          import json
+          for p in ["atl/v3/graph.json","atl/v3/cost_history.json","atl/v3/mining.json","atl/v3/schema/atl_graph.schema.json"]:
+              json.load(open(p))
+              print("OK", p)
+          PY
+      - name: Static firewall (expected fail-closed until statement hashes are frozen)
+        run: |
+          set +e
+          python3 atl/v3/firewall.py atl/v3/graph.json .
+          rc=$?
+          echo "firewall_rc=$rc"
+          test "$rc" -eq 1
