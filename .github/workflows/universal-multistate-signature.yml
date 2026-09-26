@@ -6,6 +6,7 @@ on:
       - attack/universal-multistate-signature
     paths:
       - 'lean/MCore/FinalFail/UniversalMultiStateSignature.lean'
+      - 'lean/MCore/FinalFail/UnifiedOpenMathClosure.lean'
       - '.github/workflows/universal-multistate-signature.yml'
   workflow_dispatch:
 
@@ -35,6 +36,6 @@ jobs:
       - name: Kernel compile
         run: |
           set -euo pipefail
-          lake build MCore.FinalFail.UniversalMultiStateSignature 2>&1 | tee /tmp/multistate.log
+          lake build MCore.FinalFail.UniversalMultiStateSignature MCore.FinalFail.UnifiedOpenMathClosure 2>&1 | tee /tmp/multistate.log
           if grep -q 'sorryAx' /tmp/multistate.log; then exit 1; fi
           echo 'UNIVERSAL_MULTISTATE_SIGNATURE=GREEN'
