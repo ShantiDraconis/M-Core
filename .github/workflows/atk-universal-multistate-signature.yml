@@ -1,0 +1,27 @@
+name: atk-universal-multistate-signature
+
+on:
+  push:
+    branches:
+      - atk/universal-multistate-signature-20260926
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: false
+          test: false
+          lint: false
+      - name: Build universal multistate signature
+        run: |
+          set -euo pipefail
+          lake build MCore.FinalFail.UniversalMultistateSignature
+          if grep -n -E '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' lean/MCore/FinalFail/UniversalMultistateSignature.lean; then exit 1; fi
+          if grep -n -E '^[[:space:]]*(axiom|constant|constants)[[:space:]]' lean/MCore/FinalFail/UniversalMultistateSignature.lean; then exit 1; fi
+          printf 'import MCore.FinalFail.UniversalMultistateSignature\n#print axioms MCore.FinalFail.universal_multistate_number_exists\n#print axioms MCore.FinalFail.signature_decomposition\n' > MultistateAxiomAudit.lean
+          lake env lean MultistateAxiomAudit.lean 2>&1 | tee MultistateAxiomAudit.log
+          if grep -E 'sorryAx' MultistateAxiomAudit.log; then exit 1; fi
