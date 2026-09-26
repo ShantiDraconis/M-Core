@@ -38,8 +38,8 @@ inductive EdgeKind where
   deriving DecidableEq, Repr
 
 structure Edge where
-  from : String
-  to : String
+  fromId : String
+  toId : String
   relation : EdgeKind
   deriving Repr
 
