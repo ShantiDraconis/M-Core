@@ -8,6 +8,7 @@ import MCore.FinalFail.FundamentalIndeterminacy
 import MCore.FinalFail.RelationalHardAtom
 import MCore.FinalFail.Attack.Beal
 import MCore.FinalFail.Attack.NavierStokes
+import MCore.FinalFail.UniversalMultiStateSignature
 
 namespace MCore.FinalFail
 
