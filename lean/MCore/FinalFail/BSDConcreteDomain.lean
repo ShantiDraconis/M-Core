@@ -2,6 +2,7 @@ import MCore.FinalFail.Semantic.BSD
 import Mathlib.AlgebraicGeometry.EllipticCurve.LFunction
 import Mathlib.NumberTheory.Height.EllipticCurve
 import Mathlib.LinearAlgebra.Dimension.Finrank
+import Mathlib.Analysis.Analytic.Order
 
 namespace MCore.FinalFail.Semantic
 
@@ -70,6 +71,25 @@ which would also see torsion. -/
 noncomputable def EllipticCurveQ.mordellWeilRank (E : EllipticCurveQ) : Nat :=
   Module.finrank ℤ E.Points
 
+/-- Rank-side BSD producer for one genuine elliptic curve.
+
+The continuation is required to be analytic everywhere and to agree with the
+formal Hasse--Weil L-series on a fixed right half-plane.  Thus its order at
+s = 1 cannot be supplied independently of the curve/L-series source. -/
+structure BSDRankProducerFor (E : EllipticCurveQ) where
+  finiteGeneration : MordellWeilFiniteGeneration E
+  continuation : ℂ → ℂ
+  analytic : ∀ z : ℂ, AnalyticAt ℂ continuation z
+  agreesOnRightHalfPlane :
+    ∀ s : ℂ, 2 < s.re → continuation s = E.LSeries s
+  rankEquality :
+    analyticOrderAt continuation (1 : ℂ) =
+      (E.mordellWeilRank : ℕ∞)
+
+/-- Universal rank-side producer.  No inhabitant is constructed here. -/
+def BSDRankProducer : Prop :=
+  ∀ E : EllipticCurveQ, Nonempty (BSDRankProducerFor E)
+
 /-- Counter-audit object: merely attaching two natural numbers to a genuine
 curve is still too weak to represent BSD rank data. -/
 structure BSDNaiveRankPair (E : EllipticCurveQ) where
@@ -89,9 +109,7 @@ theorem naiveRankPair_is_trivially_inhabited (E : EllipticCurveQ) :
 /-!
 Remaining material BSD binding:
 
-* prove the Mordell--Weil finite-generation obligation for E(Q); the Z-rank itself is now canonically defined as Module.finrank Z E.Points;
-* construct/certify analytic continuation of E.LSeries to s = 1 and its
-  order of vanishing there;
+* inhabit BSDRankProducer: finite generation + genuine analytic continuation of the bound E.LSeries + analyticOrderAt/rank equality;
 * bind the refined arithmetic factors (period, regulator, Sha, Tamagawa,
   torsion) to the same curve and convention;
 * then prove the rank and refined identities.
