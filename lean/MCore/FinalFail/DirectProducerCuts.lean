@@ -48,8 +48,8 @@ def directProducerCuts : List DirectProducerCut := [
     reduction := "constant-Qbar R2 is endpoint-equivalent to the payload, but the abstract payload is vacuously inhabited on an empty-variety model (Hodge audit run 36493536443 SUCCESS); genuine geometry binding is material"
     state := .openMath },
   { problem := .bsd
-    target := "BSDRankProducer + refined period/regulator/Sha/Tamagawa/torsion producer on the same EllipticCurveQ domain"
-    reduction := "BSDRankProducer now requires finite generation of the actual rational-point group, a globally analytic continuation agreeing with the bound Mathlib LSeries on Re(s)>2, and analyticOrderAt(1)=Module.finrank Z E(Q); arbitrary rank pairs are rejected"
+    target := "BSDRankProducer + refined period/regulator/Sha/Tamagawa producer on the same EllipticCurveQ domain"
+    reduction := "curve/LSeries, Z-rank, and torsion order are now canonical from the same genuine E/Q; BSDRankProducer requires finite generation, global analytic continuation agreeing with the bound Mathlib LSeries on Re(s)>2, and analyticOrderAt(1)=Module.finrank Z E(Q); period/regulator/Sha/Tamagawa remain material"
     state := .openMath },
   { problem := .yangMills
     target := "genuine 4D physical-model binding + B60ConcretePhysicalAdapter/K30 transfer"
