@@ -49,7 +49,7 @@ def directProducerCuts : List DirectProducerCut := [
     state := .openMath },
   { problem := .bsd
     target := "BSDRankProducer + refined period/regulator/Sha/Tamagawa producer on the same EllipticCurveQ domain"
-    reduction := "curve/LSeries, Z-rank, and torsion order are now canonical from the same genuine E/Q; BSDRankProducer requires finite generation, global analytic continuation agreeing with the bound Mathlib LSeries on Re(s)>2, and analyticOrderAt(1)=Module.finrank Z E(Q); period/regulator/Sha/Tamagawa remain material"
+    reduction := "curve/LSeries, Z-rank, and torsion order are canonical from the same genuine E/Q; Mathlib descent reduces Mordell-Weil finite generation to MWTwoDescentFinite = finite index of 2E(Q) in E(Q); BSDRankProducer then adds genuine analytic continuation and analyticOrderAt(1)=Module.finrank Z E(Q); period/regulator/Sha/Tamagawa remain material"
     state := .openMath },
   { problem := .yangMills
     target := "genuine 4D physical-model binding + B60ConcretePhysicalAdapter/K30 transfer"
