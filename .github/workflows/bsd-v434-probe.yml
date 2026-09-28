@@ -1,0 +1,49 @@
+name: BSD Mathlib v4.34 Probe
+
+on:
+  push:
+    branches:
+      - atk/bsd-mathlib-v434-probe
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bsd-v434:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout probe branch
+        uses: actions/checkout@v4
+
+      - name: Install pinned Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve v4.34 dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Kernel-check BSD concrete rank producer
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build MCore.FinalFail.BSDConcreteDomain
+
+      - name: Reject placeholders
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '\\b(sorry|admit|sorryAx)\\b' --include='*.lean' lean/MCore/FinalFail/BSDConcreteDomain.lean; then
+            echo "FAIL_CLOSED: placeholder detected"
+            exit 1
+          fi
+          echo "BSD_V434_PROBE_GREEN"
