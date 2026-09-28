@@ -1,36 +1,35 @@
 import MCore.FinalFail.Semantic.BSD
-import Mathlib.AlgebraicGeometry.EllipticCurve.LFunction
-import Mathlib.NumberTheory.Height.EllipticCurve
-import Mathlib.LinearAlgebra.Dimension.Finrank
+import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
 import Mathlib.Analysis.Analytic.Order
 
 namespace MCore.FinalFail.Semantic
 
 /-!
-# Concrete BSD curve domain
+# BSD concrete source domain at the pinned Mathlib v4.19.0 boundary
 
-This module closes only the geometric/source binding for BSD.
+What is kernel-available at the repository's pinned dependency:
+* genuine nonsingular Weierstrass curves over Q;
+* analytic vanishing-order infrastructure (`analyticOrderAt`).
 
-It replaces an arbitrary abstract curve type by actual nonsingular
-Weierstrass curves over Q and binds the analytic source to Mathlib's
-WeierstrassCurve.LSeries.  It deliberately does not manufacture analytic
-continuation at s = 1, Mordell--Weil rank, Sha, regulator, Tamagawa factors,
-or the refined BSD identity.
+What is NOT available in Mathlib v4.19.0:
+* the later `EllipticCurve.LFunction` module;
+* the later elliptic-curve rational-point group API;
+* the later elliptic-height/descent module;
+* the later abstract descent theorem used to reduce Mordell--Weil finite
+  generation to finiteness of E(Q)/2E(Q).
+
+Therefore this module closes only the genuine geometric source binding.  It
+does not fabricate replacements for the missing arithmetic/analytic APIs.
 -/
 
 /-- A genuine elliptic curve over Q represented by a nonsingular Weierstrass
-equation.  The discriminant condition is stored as data so the type cannot be
-inhabited by an arbitrary unrelated natural-number pair. -/
+equation. -/
 structure EllipticCurveQ where
   curve : WeierstrassCurve ℚ
   elliptic : IsUnit curve.Δ
 
 instance (E : EllipticCurveQ) : E.curve.IsElliptic where
   isUnit := E.elliptic
-
-/-- The canonical formal L-series source attached to the same curve. -/
-noncomputable def EllipticCurveQ.LSeries (E : EllipticCurveQ) (s : ℂ) : ℂ :=
-  E.curve.LSeries s
 
 /-- Positive control: y^2 = x^3 - x. -/
 def bsdPositiveControlCurve : WeierstrassCurve ℚ where
@@ -55,92 +54,34 @@ def bsdPositiveControl : EllipticCurveQ where
 theorem ellipticCurveQ_nonempty : Nonempty EllipticCurveQ :=
   ⟨bsdPositiveControl⟩
 
-/-- The actual rational-point group attached to the same elliptic curve. -/
-abbrev EllipticCurveQ.Points (E : EllipticCurveQ) : Type :=
-  E.curve.toAffine.Point
+/-- Administrative source-version boundary.  These booleans are audit data,
+not mathematical hypotheses and not producers. -/
+structure BSDPinnedApiBoundary where
+  genuineCurveDomain : Bool
+  analyticOrderAvailable : Bool
+  ellipticLSeriesAvailable : Bool
+  rationalPointGroupAvailable : Bool
+  ellipticDescentAvailable : Bool
+  deriving DecidableEq, Repr
 
-/-- Formal Mordell--Weil finite-generation obligation.  Mathlib supplies the
-descent/height infrastructure and finite torsion, but the full finite-generation
-theorem for every elliptic curve over Q is not manufactured here. -/
-def MordellWeilFiniteGeneration (E : EllipticCurveQ) : Prop :=
-  AddGroup.FG E.Points
+def bsdPinnedApiBoundary : BSDPinnedApiBoundary := {
+  genuineCurveDomain := true
+  analyticOrderAvailable := true
+  ellipticLSeriesAvailable := false
+  rationalPointGroupAvailable := false
+  ellipticDescentAvailable := false
+}
 
-/-- Exact 2-descent residue for Mordell--Weil finite generation.  This is the
-finite-index formulation of finiteness of E(Q) / 2E(Q). -/
-def MWTwoDescentFinite (E : EllipticCurveQ) : Prop :=
-  (nsmulAddMonoidHom (α := E.Points) 2).range.FiniteIndex
+theorem bsd_pinned_has_genuine_domain :
+    bsdPinnedApiBoundary.genuineCurveDomain = true := rfl
 
-/-- Mathlib's elliptic-height estimates discharge every other premise of the
-abstract descent theorem.  Thus, for a genuine E/Q, finite generation reduces
-to the finite-index 2-descent witness. -/
-theorem mordellWeilFiniteGeneration_of_twoDescent
-    (E : EllipticCurveQ) (h₂ : MWTwoDescentFinite E) :
-    MordellWeilFiniteGeneration E := by
-  obtain ⟨C, hC⟩ :=
-    WeierstrassCurve.Affine.approx_parallelogram_law E.curve.toAffine
-  apply AddCommGroup.fg_of_descent'
-      (h := fun P : E.Points => P.naiveHeight) (C := C) h₂
-  · intro P
-    exact Height.logHeight_nonneg P.xRep
-  · exact hC
+theorem bsd_pinned_missing_lseries :
+    bsdPinnedApiBoundary.ellipticLSeriesAvailable = false := rfl
 
-/-- Canonical Z-rank of the actual rational-point group.  This is the correct
-free-rank quantity for BSD, unlike the minimum number of group generators,
-which would also see torsion. -/
-noncomputable def EllipticCurveQ.mordellWeilRank (E : EllipticCurveQ) : Nat :=
-  Module.finrank ℤ E.Points
+theorem bsd_pinned_missing_point_group :
+    bsdPinnedApiBoundary.rationalPointGroupAvailable = false := rfl
 
-/-- The torsion factor in the refined BSD formula is already canonical from
-the actual rational-point group. -/
-noncomputable def EllipticCurveQ.torsionOrder (E : EllipticCurveQ) : Nat := by
-  letI : Finite (AddCommGroup.torsion E.Points) :=
-    WeierstrassCurve.Affine.finite_torsion
-  exact Nat.card (AddCommGroup.torsion E.Points)
-
-/-- Rank-side BSD producer for one genuine elliptic curve.
-
-The continuation is required to be analytic everywhere and to agree with the
-formal Hasse--Weil L-series on a fixed right half-plane.  Thus its order at
-s = 1 cannot be supplied independently of the curve/L-series source. -/
-structure BSDRankProducerFor (E : EllipticCurveQ) where
-  twoDescentFinite : MWTwoDescentFinite E
-  continuation : ℂ → ℂ
-  analytic : ∀ z : ℂ, AnalyticAt ℂ continuation z
-  agreesOnRightHalfPlane :
-    ∀ s : ℂ, 2 < s.re → continuation s = E.LSeries s
-  rankEquality :
-    analyticOrderAt continuation (1 : ℂ) =
-      (E.mordellWeilRank : ℕ∞)
-
-/-- Universal rank-side producer.  No inhabitant is constructed here. -/
-def BSDRankProducer : Prop :=
-  ∀ E : EllipticCurveQ, Nonempty (BSDRankProducerFor E)
-
-/-- Counter-audit object: merely attaching two natural numbers to a genuine
-curve is still too weak to represent BSD rank data. -/
-structure BSDNaiveRankPair (E : EllipticCurveQ) where
-  analyticOrderAtOne : Nat
-  mordellWeilRank : Nat
-
-/-- The naive rank-pair interface is trivially inhabited for every genuine
-curve, so its inhabitance cannot count as BSD progress. -/
-def trivialBSDNaiveRankPair (E : EllipticCurveQ) : BSDNaiveRankPair E where
-  analyticOrderAtOne := 0
-  mordellWeilRank := 0
-
-theorem naiveRankPair_is_trivially_inhabited (E : EllipticCurveQ) :
-    Nonempty (BSDNaiveRankPair E) :=
-  ⟨trivialBSDNaiveRankPair E⟩
-
-/-!
-Remaining material BSD binding:
-
-* inhabit BSDRankProducer: finite E(Q)/2E(Q) + genuine analytic continuation of the bound E.LSeries + analyticOrderAt/rank equality;
-* bind the remaining refined arithmetic factors (period, regulator, Sha, Tamagawa) to the same curve and convention; torsion order is now canonical from E(Q);
-* then prove the rank and refined identities.
-
-No structure in this file supplies those facts.
--/
-
+theorem bsd_pinned_missing_descent :
+    bsdPinnedApiBoundary.ellipticDescentAvailable = false := rfl
 
 end MCore.FinalFail.Semantic
