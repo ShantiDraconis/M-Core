@@ -71,6 +71,13 @@ which would also see torsion. -/
 noncomputable def EllipticCurveQ.mordellWeilRank (E : EllipticCurveQ) : Nat :=
   Module.finrank ℤ E.Points
 
+/-- The torsion factor in the refined BSD formula is already canonical from
+the actual rational-point group. -/
+noncomputable def EllipticCurveQ.torsionOrder (E : EllipticCurveQ) : Nat := by
+  letI : Finite (AddCommGroup.torsion E.Points) :=
+    WeierstrassCurve.Affine.finite_torsion
+  exact Nat.card (AddCommGroup.torsion E.Points)
+
 /-- Rank-side BSD producer for one genuine elliptic curve.
 
 The continuation is required to be analytic everywhere and to agree with the
@@ -110,8 +117,7 @@ theorem naiveRankPair_is_trivially_inhabited (E : EllipticCurveQ) :
 Remaining material BSD binding:
 
 * inhabit BSDRankProducer: finite generation + genuine analytic continuation of the bound E.LSeries + analyticOrderAt/rank equality;
-* bind the refined arithmetic factors (period, regulator, Sha, Tamagawa,
-  torsion) to the same curve and convention;
+* bind the remaining refined arithmetic factors (period, regulator, Sha, Tamagawa) to the same curve and convention; torsion order is now canonical from E(Q);
 * then prove the rank and refined identities.
 
 No structure in this file supplies those facts.
