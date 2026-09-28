@@ -35,12 +35,12 @@ def directProducerCuts : List DirectProducerCut := [
     reduction := "CommonPrime ↔ nontrivial CommonDivisor is proved; conductor/level route has not produced the universal divisor"
     state := .openMath },
   { problem := .pVsNP
-    target := "genuine LowerBoundWitness on the fixed official model (or genuine PolySATCertificate + completeness transfer)"
-    reduction := "MaterialOrientation is the exact two-sided material cut; materialOrientationBuilt = false on the frozen base"
+    target := "genuine not_in_p proof for a fixed NP language in the official model (separation orientation)"
+    reduction := "LowerBoundWitness packages language + in_np + not_in_p; on the selected separation lane the irreducible material field is not_in_p"
     state := .openMath },
   { problem := .navierStokes
-    target := "ActualNS → G1Bridge / strict signed-depletion producer"
-    reduction := "bulk + tail + strict budget → signed depletion is proved; deriving those certificates from ActualNS remains open"
+    target := "NSProducerFirst.ActualNSToSignedGain on genuine flow-derived EnstrophyData"
+    reduction := "G1Bridge and DynamicCriticalGeometry are too abstract/trivially inhabitable; producer-first target is the signed PDE estimate stretch ≤ theta*nu*z + C*y^2 with theta<1"
     state := .openMath },
   { problem := .hodge
     target := "ConcreteAlgebraicityPayload / universal R2 cycle production"
