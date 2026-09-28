@@ -1,4 +1,4 @@
-import MCore.FinalFail.ExactGapLedger
+import MCore.FinalFail.AcceptedInhabitants
 
 namespace MCore.FinalProof
 
