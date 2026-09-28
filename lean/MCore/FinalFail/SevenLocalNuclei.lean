@@ -4,7 +4,7 @@ namespace MCore.FinalFail
 
 inductive ProblemId where
   | beal | navierStokes | hodge | pVsNP | bsd | riemann | yangMills
-  deriving DecidableEq
+  deriving DecidableEq, Repr
 
 /-- Concrete obstruction vocabulary extracted from the current terminal HARDs.
 These are types/relations, not claims that the corresponding open problem is solved. -/
