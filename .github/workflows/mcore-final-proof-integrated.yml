@@ -94,14 +94,22 @@ jobs:
           after="$(git rev-parse HEAD)"
           test "$before" = "$after"
           changed="$(git diff --name-only --diff-filter=ACMRTUXB || true)"
-          unexpected="$(printf '%s\n' "$changed" | sed '/^$/d' | grep -Ev '^(evidence/(GLOBAL_LINK_ROOT_SHA256|ROOT_SHA256|dependency_report\.json|family_index\.json|global_final_proof_links\.json))
- || true)"
+          unexpected=""
+          while IFS= read -r path; do
+            case "$path" in
+              ""|evidence/GLOBAL_LINK_ROOT_SHA256|evidence/ROOT_SHA256|evidence/dependency_report.json|evidence/family_index.json|evidence/global_final_proof_links.json)
+                ;;
+              *)
+                unexpected="$unexpected $path"
+                ;;
+            esac
+          done <<< "$changed"
           test -z "$unexpected" || {
             echo "FAIL_CLOSED: workflow mutated non-evidence tracked repository contents"
-            printf '%s\n' "$unexpected"
+            echo "$unexpected"
             git diff --name-status
             exit 1
           }
           echo "HEAD_PRESERVED=$after"
           echo "EVIDENCE_REFRESH_ALLOWED"
-          printf '%s\n' "$changed"
+          printf '%s\\n' "$changed"
