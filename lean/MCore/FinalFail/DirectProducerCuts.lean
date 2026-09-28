@@ -51,8 +51,8 @@ def directProducerCuts : List DirectProducerCut := [
     reduction := "the unrestricted abstract forall is counter-audited; rank, refined identity, and Sha finiteness remain material"
     state := .openMath },
   { problem := .yangMills
-    target := "B60ConcretePhysicalAdapter with genuine 4D realization, IR/limit control, non-vacuum physical state, and K30 transfer witness"
-    reduction := "B3/B4/B5 legacy interfaces are insufficient; B60 is the fail-closed physical min-cut"
+    target := "genuine 4D physical-model binding + B60ConcretePhysicalAdapter/K30 transfer"
+    reduction := "B60 alone admits a degenerate Unit/True model (YM audit run 36493055781 SUCCESS); material progress requires binding C/F/D/H/G/O to a genuine 4D Yang-Mills realization"
     state := .openMath }
 ]
 
