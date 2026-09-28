@@ -1,4 +1,5 @@
 import MCore.FinalFail.AcceptedInhabitants
+import MCore.FinalFail.BoundaryAtoms
 
 namespace MCore.FinalFail
 
