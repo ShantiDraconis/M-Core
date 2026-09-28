@@ -1,5 +1,6 @@
 import MCore.FinalFail.BoundaryAtoms
 import Mathlib.NumberTheory.LSeries.RiemannZeta
+import Mathlib.NumberTheory.LSeries.Nonvanishing
 
 namespace MCore.FinalFail.Semantic
 
@@ -24,6 +25,14 @@ theorem offCriticalZero_refutes_RH
     (w : RiemannOffCriticalZero) : ¬ RiemannHypothesis := by
   intro h
   exact w.offCriticalLine (h w.s w.zero w.nontrivial w.notPole)
+
+/-- Every selected off-critical zero lies strictly to the left of Re(s)=1,
+because zeta is nonzero on the closed half-plane Re(s) >= 1. -/
+theorem RiemannOffCriticalZero.re_lt_one
+    (w : RiemannOffCriticalZero) : w.s.re < 1 := by
+  apply lt_of_not_ge
+  intro h
+  exact (riemannZeta_ne_zero_of_one_le_re h) w.zero
 
 
 /-- Exact logical extraction: because Mathlib defines RH as a universal
