@@ -1,4 +1,4 @@
-import MCore.FinalFail.EnabledInhabitants
+import MCore.FinalFail.SemanticParallel
 
 namespace MCore.FinalProof
 
