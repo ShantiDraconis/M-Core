@@ -1,5 +1,7 @@
 import MCore.FinalFail.Semantic.BSD
 import Mathlib.AlgebraicGeometry.EllipticCurve.LFunction
+import Mathlib.NumberTheory.Height.EllipticCurve
+import Mathlib.LinearAlgebra.Dimension.Finrank
 
 namespace MCore.FinalFail.Semantic
 
@@ -52,6 +54,22 @@ def bsdPositiveControl : EllipticCurveQ where
 theorem ellipticCurveQ_nonempty : Nonempty EllipticCurveQ :=
   ⟨bsdPositiveControl⟩
 
+/-- The actual rational-point group attached to the same elliptic curve. -/
+abbrev EllipticCurveQ.Points (E : EllipticCurveQ) : Type :=
+  E.curve.toAffine.Point
+
+/-- Formal Mordell--Weil finite-generation obligation.  Mathlib supplies the
+descent/height infrastructure and finite torsion, but the full finite-generation
+theorem for every elliptic curve over Q is not manufactured here. -/
+def MordellWeilFiniteGeneration (E : EllipticCurveQ) : Prop :=
+  AddGroup.FG E.Points
+
+/-- Canonical Z-rank of the actual rational-point group.  This is the correct
+free-rank quantity for BSD, unlike the minimum number of group generators,
+which would also see torsion. -/
+noncomputable def EllipticCurveQ.mordellWeilRank (E : EllipticCurveQ) : Nat :=
+  Module.finrank ℤ E.Points
+
 /-- Counter-audit object: merely attaching two natural numbers to a genuine
 curve is still too weak to represent BSD rank data. -/
 structure BSDNaiveRankPair (E : EllipticCurveQ) where
@@ -71,7 +89,7 @@ theorem naiveRankPair_is_trivially_inhabited (E : EllipticCurveQ) :
 /-!
 Remaining material BSD binding:
 
-* define/certify the actual Mordell--Weil rank of E(Q);
+* prove the Mordell--Weil finite-generation obligation for E(Q); the Z-rank itself is now canonically defined as Module.finrank Z E.Points;
 * construct/certify analytic continuation of E.LSeries to s = 1 and its
   order of vanishing there;
 * bind the refined arithmetic factors (period, regulator, Sha, Tamagawa,
