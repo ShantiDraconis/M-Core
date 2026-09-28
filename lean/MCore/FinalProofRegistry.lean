@@ -1,4 +1,4 @@
-import MCore.FinalFail.AcceptedInhabitants
+import MCore.FinalFail.EnabledInhabitants
 
 namespace MCore.FinalProof
 
