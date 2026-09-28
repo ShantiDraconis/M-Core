@@ -1,5 +1,4 @@
 import MCore.FinalFail.Semantic.BSD
-import MCore.FinalFail.BSDDescentProbe
 import Mathlib.AlgebraicGeometry.EllipticCurve.LFunction
 import Mathlib.NumberTheory.Height.EllipticCurve
 import Mathlib.LinearAlgebra.Dimension.Finrank
@@ -66,6 +65,25 @@ theorem for every elliptic curve over Q is not manufactured here. -/
 def MordellWeilFiniteGeneration (E : EllipticCurveQ) : Prop :=
   AddGroup.FG E.Points
 
+/-- Exact 2-descent residue for Mordell--Weil finite generation.  This is the
+finite-index formulation of finiteness of E(Q) / 2E(Q). -/
+def MWTwoDescentFinite (E : EllipticCurveQ) : Prop :=
+  (nsmulAddMonoidHom (α := E.Points) 2).range.FiniteIndex
+
+/-- Mathlib's elliptic-height estimates discharge every other premise of the
+abstract descent theorem.  Thus, for a genuine E/Q, finite generation reduces
+to the finite-index 2-descent witness. -/
+theorem mordellWeilFiniteGeneration_of_twoDescent
+    (E : EllipticCurveQ) (h₂ : MWTwoDescentFinite E) :
+    MordellWeilFiniteGeneration E := by
+  obtain ⟨C, hC⟩ :=
+    WeierstrassCurve.Affine.approx_parallelogram_law E.curve.toAffine
+  apply AddCommGroup.fg_of_descent'
+      (h := fun P : E.Points => P.naiveHeight) (C := C) h₂
+  · intro P
+    exact Height.logHeight_nonneg P.xRep
+  · exact hC
+
 /-- Canonical Z-rank of the actual rational-point group.  This is the correct
 free-rank quantity for BSD, unlike the minimum number of group generators,
 which would also see torsion. -/
@@ -85,7 +103,7 @@ The continuation is required to be analytic everywhere and to agree with the
 formal Hasse--Weil L-series on a fixed right half-plane.  Thus its order at
 s = 1 cannot be supplied independently of the curve/L-series source. -/
 structure BSDRankProducerFor (E : EllipticCurveQ) where
-  finiteGeneration : MordellWeilFiniteGeneration E
+  twoDescentFinite : MWTwoDescentFinite E
   continuation : ℂ → ℂ
   analytic : ∀ z : ℂ, AnalyticAt ℂ continuation z
   agreesOnRightHalfPlane :
@@ -117,7 +135,7 @@ theorem naiveRankPair_is_trivially_inhabited (E : EllipticCurveQ) :
 /-!
 Remaining material BSD binding:
 
-* inhabit BSDRankProducer: finite generation + genuine analytic continuation of the bound E.LSeries + analyticOrderAt/rank equality;
+* inhabit BSDRankProducer: finite E(Q)/2E(Q) + genuine analytic continuation of the bound E.LSeries + analyticOrderAt/rank equality;
 * bind the remaining refined arithmetic factors (period, regulator, Sha, Tamagawa) to the same curve and convention; torsion order is now canonical from E(Q);
 * then prove the rank and refined identities.
 
