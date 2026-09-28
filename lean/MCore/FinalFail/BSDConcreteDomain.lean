@@ -52,21 +52,34 @@ def bsdPositiveControl : EllipticCurveQ where
 theorem ellipticCurveQ_nonempty : Nonempty EllipticCurveQ :=
   ⟨bsdPositiveControl⟩
 
-/-- After the source binding, the remaining rank-side data must be attached to
-an actual curve, not supplied as an arbitrary pair of naturals.  Correctness of
-these two quantities is intentionally not asserted here; the missing APIs /
-proofs are the next material frontier. -/
-structure BSDCurveRankInterface (E : EllipticCurveQ) where
+/-- Counter-audit object: merely attaching two natural numbers to a genuine
+curve is still too weak to represent BSD rank data. -/
+structure BSDNaiveRankPair (E : EllipticCurveQ) where
   analyticOrderAtOne : Nat
   mordellWeilRank : Nat
 
-def BSDCurveRankEquality {E : EllipticCurveQ}
-    (d : BSDCurveRankInterface E) : Prop :=
-  d.analyticOrderAtOne = d.mordellWeilRank
+/-- The naive rank-pair interface is trivially inhabited for every genuine
+curve, so its inhabitance cannot count as BSD progress. -/
+def trivialBSDNaiveRankPair (E : EllipticCurveQ) : BSDNaiveRankPair E where
+  analyticOrderAtOne := 0
+  mordellWeilRank := 0
 
-/-- This is only the remaining typed obligation after fixing a genuine curve
-source.  No inhabitant is provided. -/
-def BSDConcreteRankProducer : Prop :=
-  ∀ E : EllipticCurveQ, ∃ d : BSDCurveRankInterface E, BSDCurveRankEquality d
+theorem naiveRankPair_is_trivially_inhabited (E : EllipticCurveQ) :
+    Nonempty (BSDNaiveRankPair E) :=
+  ⟨trivialBSDNaiveRankPair E⟩
+
+/-!
+Remaining material BSD binding:
+
+* define/certify the actual Mordell--Weil rank of E(Q);
+* construct/certify analytic continuation of E.LSeries to s = 1 and its
+  order of vanishing there;
+* bind the refined arithmetic factors (period, regulator, Sha, Tamagawa,
+  torsion) to the same curve and convention;
+* then prove the rank and refined identities.
+
+No structure in this file supplies those facts.
+-/
+
 
 end MCore.FinalFail.Semantic
