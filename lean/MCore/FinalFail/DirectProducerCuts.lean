@@ -1,4 +1,5 @@
 import MCore.FinalFail.SemanticParallel
+import MCore.FinalFail.BSDConcreteDomain
 
 namespace MCore.FinalFail.Semantic
 
@@ -47,8 +48,8 @@ def directProducerCuts : List DirectProducerCut := [
     reduction := "constant-Qbar R2 is endpoint-equivalent to the payload, but the abstract payload is vacuously inhabited on an empty-variety model (Hodge audit run 36493536443 SUCCESS); genuine geometry binding is material"
     state := .openMath },
   { problem := .bsd
-    target := "realizable elliptic-curve rank equality + refined leading-coefficient formula + Sha finiteness on the same domain"
-    reduction := "the unrestricted abstract forall is counter-audited; rank, refined identity, and Sha finiteness remain material"
+    target := "for every genuine EllipticCurveQ: actual Mordell-Weil rank binding + analytic continuation/order at s=1 for the bound Mathlib LSeries + refined period/regulator/Sha/Tamagawa/torsion identity"
+    reduction := "the geometric source domain is now bound to nonsingular WeierstrassCurve Q and proved nonempty; arbitrary rank pairs remain trivially inhabitable and are explicitly rejected"
     state := .openMath },
   { problem := .yangMills
     target := "genuine 4D physical-model binding + B60ConcretePhysicalAdapter/K30 transfer"
