@@ -48,8 +48,8 @@ def directProducerCuts : List DirectProducerCut := [
     reduction := "constant-Qbar R2 is endpoint-equivalent to the payload, but the abstract payload is vacuously inhabited on an empty-variety model (Hodge audit run 36493536443 SUCCESS); genuine geometry binding is material"
     state := .openMath },
   { problem := .bsd
-    target := "BSDRankProducer + refined period/regulator/Sha/Tamagawa producer on the same EllipticCurveQ domain"
-    reduction := "curve/LSeries, Z-rank, and torsion order are canonical from the same genuine E/Q; Mathlib descent reduces Mordell-Weil finite generation to MWTwoDescentFinite = finite index of 2E(Q) in E(Q); BSDRankProducer then adds genuine analytic continuation and analyticOrderAt(1)=Module.finrank Z E(Q); period/regulator/Sha/Tamagawa remain material"
+    target := "on genuine EllipticCurveQ: bind the curve's L-series and rational-point group, then produce rank equality and the refined period/regulator/Sha/Tamagawa/torsion identity"
+    reduction := "the pinned Mathlib v4.19 kernel now binds a genuine nonempty elliptic-curve domain and has analyticOrderAt, but lacks the later EllipticCurve.LFunction, rational-point-group/height, and descent APIs; those source bindings are SOURCE_VERSION_BLOCKED before the material BSD equalities"
     state := .openMath },
   { problem := .yangMills
     target := "genuine 4D physical-model binding + B60ConcretePhysicalAdapter/K30 transfer"
