@@ -2,6 +2,8 @@ import MCore.FinalFail.AcceptedInhabitants
 
 namespace MCore.FinalFail
 
+universe u v
+
 /-!
 # Enabled accepted inhabitants
 
