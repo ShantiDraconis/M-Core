@@ -4,7 +4,6 @@ import MCore.FinalFail.Semantic.PvsNP
 import MCore.FinalFail.Semantic.NavierStokes
 import MCore.FinalFail.Semantic.Hodge
 import MCore.FinalFail.Semantic.BSD
-import MCore.FinalFail.Semantic.BSDCanonical
 import MCore.FinalFail.Semantic.YangMills
 import MCore.FinalFail.AcceptedSemanticActivation
 
