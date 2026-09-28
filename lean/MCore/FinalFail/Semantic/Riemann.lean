@@ -25,4 +25,35 @@ theorem offCriticalZero_refutes_RH
   intro h
   exact w.offCriticalLine (h w.s w.zero w.nontrivial w.notPole)
 
+
+/-- Exact logical extraction: because Mathlib defines RH as a universal
+statement over all nontrivial zeros, its negation is equivalent (classically)
+to the existence of a concrete nontrivial zero off the critical line. -/
+theorem not_riemannHypothesis_iff_nonempty_offCriticalZero :
+    (¬ RiemannHypothesis) ↔ Nonempty RiemannOffCriticalZero := by
+  constructor
+  · intro hNotRH
+    classical
+    by_contra hNoWitness
+    apply hNotRH
+    intro s hZero hNontrivial hNotPole
+    by_contra hOff
+    exact hNoWitness ⟨{
+      s := s
+      zero := hZero
+      nontrivial := hNontrivial
+      notPole := hNotPole
+      offCriticalLine := hOff
+    }⟩
+  · rintro ⟨w⟩
+    exact offCriticalZero_refutes_RH w
+
+/-- In the accepted-hypothesis world used by the ATK programme, an explicit
+accepted negation of RH therefore yields the exact semantic target, not merely
+a syntactic boundary atom.  This theorem remains conditional on hNotRH. -/
+theorem accepted_not_RH_produces_semantic_inhabitant
+    (hNotRH : ¬ RiemannHypothesis) :
+    Nonempty RiemannOffCriticalZero :=
+  not_riemannHypothesis_iff_nonempty_offCriticalZero.mp hNotRH
+
 end MCore.FinalFail.Semantic
