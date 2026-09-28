@@ -1,0 +1,43 @@
+{
+  "ExternalModelMatch": [],
+  "FINAL_EXTERNAL_ISSUED": [
+    "FINAL_ROOT"
+  ],
+  "FINAL_PROOF": [
+    "FINAL_EXTERNAL_ISSUED"
+  ],
+  "FINAL_ROOT": [
+    "FinalExternalCertificate"
+  ],
+  "FinalExternalCertificate": [
+    "OfficialPneqNP"
+  ],
+  "FinalExternalLiveTwoProducer": [
+    "P01ConstructionGap",
+    "P02Target",
+    "ExternalModelMatch"
+  ],
+  "G21Pointwise": [
+    "universal_witness_exists_no_hypothesis"
+  ],
+  "OfficialPneqNP": [],
+  "P01ConstructionGap": [
+    "p01_closed_no_hypothesis"
+  ],
+  "P01MachineConstruction": [],
+  "P02SelfCodeExistence": [],
+  "P02Target": [
+    "G21Pointwise"
+  ],
+  "SameInputClosure": [
+    "diagonalCompilerV2"
+  ],
+  "diagonalCompilerV2": [],
+  "final_external_live_two_producer_closed": [],
+  "p01_closed_no_hypothesis": [
+    "P01MachineConstruction"
+  ],
+  "universal_witness_exists_no_hypothesis": [
+    "SameInputClosure"
+  ]
+}

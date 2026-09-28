@@ -1,0 +1,268 @@
+{
+  "ExternalModelMatch": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json",
+      "final-proof/pnp_prior_formalization_reuse.json",
+      "final-proof/premio_final_crosswalk_20260923.json"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "FINAL_EXTERNAL_ISSUED": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json",
+      ".github/workflows/elyon-final-external-preparatory-freeze.yml",
+      "certs/final_external/FINAL_PROOF_REUSE_LINKS_20260923.json",
+      "certs/final_external/v1/manifest.json",
+      "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json",
+      "certs/final_external/v1/status.json",
+      "certs/final_external/v1/README.md",
+      "certs/final_external/v1/reproducibility.md"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": true
+  },
+  "FINAL_PROOF": {
+    "declarations": [],
+    "references": [
+      "ATK_HARD_CHAIN_INDEX.md",
+      "FINAL_CLOSURE_REPORT.md",
+      "FINAL_FAIL_MATHEMATICS.md",
+      "final-proof/pnp_reuse_chain.json",
+      "final-proof/endpoints.json",
+      "final-proof/global_sources.json",
+      "final-proof/premio_final_crosswalk_20260923.json",
+      "final-proof/all_relevant_files.json",
+      "EXPORTS/README.md",
+      "certificado-runner/03_certificado_final_if_existed.md",
+      "lean/MCore/FinalFail/ExactGapLedger.lean",
+      ".github/workflows/final-proof-miner.yml",
+      ".github/workflows/mcore-full-chain-archive-audit.yml",
+      ".github/workflows/mcore-final-proof-integrated.yml",
+      "certs/semantic_frontier/ATK_SEMANTIC_FRONTIER_0OF7_GREEN_299eeda5.md",
+      "certs/final_external/FINAL_PROOF_REUSE_LINKS_20260923.json",
+      "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json",
+      "certs/final_external/v1/status.json",
+      "certs/final_external/v1/gate_ledger.json",
+      "imports/pnp/current/agents/00-orchestrator.md",
+      "imports/pnp/current/agents/08-final-external-integrator.md"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": true
+  },
+  "FINAL_ROOT": {
+    "declarations": [],
+    "references": [
+      "MCCS_STATUS.json",
+      "final-proof/endpoints.json",
+      ".github/workflows/elyon-final-external-preparatory-freeze.yml",
+      "certs/final_external/FINAL_PROOF_REUSE_LINKS_20260923.json",
+      "certs/final_external/v1/manifest.json",
+      "certs/final_external/v1/provenance.json",
+      "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json",
+      "certs/final_external/v1/status.json",
+      "certs/final_external/v1/README.md",
+      "certs/final_external/v1/reproducibility.md",
+      "imports/pnp/current/agents/00-orchestrator.md",
+      "imports/pnp/current/agents/08-final-external-integrator.md"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": true
+  },
+  "FinalExternalCertificate": {
+    "declarations": [],
+    "references": [
+      "final-proof/pnp_reuse_chain.json",
+      "final-proof/endpoints.json",
+      "final-proof/pnp_prior_formalization_reuse.json",
+      "final-proof/all_relevant_files.json",
+      "certs/final_external/FINAL_PROOF_REUSE_LINKS_20260923.json",
+      "imports/pnp/current/agents/08-final-external-integrator.md",
+      "imports/pnp/c102d9d4/lean/MCore/Real/FinalExternalCertificate.lean",
+      "imports/pnp/b406b806/lean/MCore/Real/FinalExternalTwoGap.lean"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "FinalExternalGap": {
+    "declarations": [
+      {
+        "file": "imports/pnp/c102d9d4/lean/MCore/Real/FinalExternalCertificate.lean",
+        "kind": "def"
+      }
+    ],
+    "references": [
+      "final-proof/pnp_reuse_chain.json",
+      "final-proof/endpoints.json",
+      "final-proof/premio_final_crosswalk_20260923.json",
+      "imports/pnp/c102d9d4/lean/MCore/Real/FinalExternalCertificate.lean",
+      "imports/pnp/b406b806/lean/MCore/Real/FinalExternalTwoGap.lean"
+    ],
+    "state": "FOUND",
+    "unsafe_reference": false
+  },
+  "FinalExternalLiveTwoProducer": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json",
+      "imports/pnp/current/agents/08-final-external-integrator.md"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "G21Pointwise": {
+    "declarations": [
+      {
+        "file": "imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean",
+        "kind": "def"
+      }
+    ],
+    "references": [
+      "MCCS_STATUS.json",
+      "final-proof/pnp_reuse_chain.json",
+      "final-proof/endpoints.json",
+      "final-proof/global_sources.json",
+      "final-proof/pnp_prior_formalization_reuse.json",
+      "final-proof/premio_final_crosswalk_20260923.json",
+      "final-proof/all_relevant_files.json",
+      "lean/MCore/FinalProofRegistry.lean",
+      "certs/final_external/FINAL_PROOF_REUSE_LINKS_20260923.json",
+      "certs/final_external/v1/manifest.json",
+      "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json",
+      "certs/final_external/v1/status.json",
+      "imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean",
+      "imports/pnp/b406b806/lean/MCore/Real/FinalExternalTwoGap.lean"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": true
+  },
+  "OfficialPneqNP": {
+    "declarations": [],
+    "references": [
+      "final-proof/pnp_reuse_chain.json",
+      "final-proof/endpoints.json",
+      "final-proof/premio_final_crosswalk_20260923.json",
+      "imports/pnp/c102d9d4/lean/MCore/Real/FinalExternalCertificate.lean",
+      "imports/pnp/b406b806/lean/MCore/Real/FinalExternalTwoGap.lean"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "P01ConstructionGap": {
+    "declarations": [],
+    "references": [
+      "MCCS_STATUS.json",
+      "final-proof/pnp_reuse_chain.json",
+      "final-proof/endpoints.json",
+      "final-proof/global_sources.json",
+      "final-proof/premio_final_crosswalk_20260923.json",
+      "final-proof/all_relevant_files.json",
+      "lean/MCore/FinalProofRegistry.lean",
+      "certs/final_external/FINAL_PROOF_REUSE_LINKS_20260923.json",
+      "certs/final_external/v1/manifest.json",
+      "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json",
+      "certs/final_external/v1/status.json",
+      "imports/pnp/b406b806/lean/MCore/Real/FinalExternalTwoGap.lean"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": true
+  },
+  "P01MachineConstruction": {
+    "declarations": [],
+    "references": [
+      "MCCS_STATUS.json",
+      "final-proof/pnp_reuse_chain.json",
+      "final-proof/endpoints.json",
+      "final-proof/premio_final_crosswalk_20260923.json",
+      "certs/final_external/v1/manifest.json",
+      "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json",
+      "imports/pnp/44e3327a/lean/MCore/Real/P01ConstructionClose.lean",
+      "imports/pnp/current/agents/02-t1-machine-construction.md"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": true
+  },
+  "P02SelfCodeExistence": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json",
+      "imports/pnp/current/agents/06-self-code-universal-witness.md"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "P02Target": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json",
+      "final-proof/pnp_prior_formalization_reuse.json",
+      "final-proof/premio_final_crosswalk_20260923.json",
+      "certs/final_external/v1/manifest.json",
+      "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json",
+      "imports/pnp/current/agents/07-g21-p02-target.md",
+      "imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean",
+      "imports/pnp/b406b806/lean/MCore/Real/FinalExternalTwoGap.lean"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": true
+  },
+  "SameInputClosure": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "diagonalCompilerV2": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "final_external_certificate": {
+    "declarations": [
+      {
+        "file": "imports/pnp/c102d9d4/lean/MCore/Real/FinalExternalCertificate.lean",
+        "kind": "theorem"
+      }
+    ],
+    "references": [
+      "final-proof/pnp_reuse_chain.json",
+      "final-proof/endpoints.json",
+      "imports/pnp/c102d9d4/lean/MCore/Real/FinalExternalCertificate.lean"
+    ],
+    "state": "FOUND",
+    "unsafe_reference": false
+  },
+  "final_external_live_two_producer_closed": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "p01_closed_no_hypothesis": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json",
+      "imports/pnp/current/agents/02-t1-machine-construction.md"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  },
+  "universal_witness_exists_no_hypothesis": {
+    "declarations": [],
+    "references": [
+      "final-proof/endpoints.json",
+      "imports/pnp/current/agents/06-self-code-universal-witness.md"
+    ],
+    "state": "REFERENCED_ONLY",
+    "unsafe_reference": false
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "consumer": "FINAL_PROOF[BEAL]",
+    "repo": "ShantiDraconis/m-core-beal",
+    "slot": "BEAL",
+    "terminal_producer": "\u2200 d : BealData, CommonPrime d.a d.b d.c"
+  },
+  {
+    "consumer": "FINAL_PROOF[HODGE]",
+    "repo": "ShantiDraconis/m-core-hodge",
+    "slot": "HODGE",
+    "terminal_producer": "RationalHodgeConjecture D"
+  },
+  {
+    "consumer": "FINAL_PROOF[YANG_MILLS]",
+    "repo": "ShantiDraconis/m-core-yang-mills",
+    "slot": "YANG_MILLS",
+    "terminal_producer": "genuine 4D physical realization + OS/Hamiltonian reconstruction + positive spectral mass gap"
+  },
+  {
+    "consumer": "FINAL_PROOF[RIEMANN]",
+    "repo": "ShantiDraconis/m-core-riemann",
+    "slot": "RIEMANN",
+    "terminal_producer": "unconditional DN vanishing estimate \u2192 DNLimit = 0 \u2192 R1ExternalBridge \u2192 RH"
+  },
+  {
+    "consumer": "certs/final_external/v1 \u2192 FINAL_PROOF[P_VS_NP]",
+    "repo": "ShantiDraconis/m-core-p-vs-np",
+    "slot": "P_VS_NP",
+    "terminal_producer": "P01ConstructionGap + G21Pointwise / genuine not_in_p lower-bound producer"
+  },
+  {
+    "consumer": "FINAL_PROOF[BSD]",
+    "repo": "ShantiDraconis/m-core-bsd",
+    "slot": "BSD",
+    "terminal_producer": "\u2200 d : BSDArithmeticAnalyticData, BSDRankPart d + remaining leading-coefficient obligations"
+  },
+  {
+    "consumer": "FINAL_PROOF[NAVIER_STOKES]",
+    "repo": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+    "slot": "NAVIER_STOKES",
+    "terminal_producer": "legitimate compensator + independent quantitative budget + signed far-field cancellation with positive scale gain"
+  }
+]

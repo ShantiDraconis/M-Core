@@ -1,0 +1,2 @@
+KERNEL_BUILD_GREEN
+toolchain=leanprover/lean4:v4.19.0

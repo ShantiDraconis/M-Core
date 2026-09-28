@@ -1,0 +1,288 @@
+{
+  "chains": [
+    {
+      "consumer": "FINAL_PROOF[BEAL]",
+      "final_fail": "BEAL",
+      "mcore_linked_from": [
+        "MCCS_STATUS.json",
+        "ATK_HARD_CHAIN_INDEX.md",
+        "lean/MCore/FinalFail/ExactGapLedger.lean"
+      ],
+      "pinned_head": "d039136fe260d626fbf0974a3413d222e13d43f8",
+      "promotion": "BLOCKED",
+      "repo": "ShantiDraconis/m-core-beal",
+      "slot": "BEAL",
+      "source_files": [
+        "FRONTIER.yaml",
+        "lean/MCore/BealSpecification.lean",
+        "lean/MCore/K8.lean",
+        "lean/MCore/GCDSignature.lean",
+        "lean/MCore/BackwardAudit/WithoutOracle.lean"
+      ],
+      "state": "OPEN_MATH",
+      "terminal_producer": "\u2200 d : BealData, CommonPrime d.a d.b d.c"
+    },
+    {
+      "consumer": "FINAL_PROOF[HODGE]",
+      "final_fail": "HODGE",
+      "mcore_linked_from": [
+        "MCCS_STATUS.json",
+        "ATK_HARD_CHAIN_INDEX.md",
+        "lean/MCore/FinalFail/ExactGapLedger.lean"
+      ],
+      "pinned_head": "f0fffbe0eed8bfaf0bd060317fa13f648b3790fd",
+      "promotion": "BLOCKED",
+      "repo": "ShantiDraconis/m-core-hodge",
+      "slot": "HODGE",
+      "source_files": [
+        "FRONTIER.yaml",
+        "lean/MCore/Hodge.lean",
+        "lean/MCore/HodgeReduction.lean",
+        "audit/ALGEBRAICITY_SURJECTIVITY_RESIDUE.md",
+        "audit/EndpointCompression.lean",
+        "audit/FinalEndpoint.lean",
+        "lean/MCore/ATK_HARD_HODGE_GENERAL.lean"
+      ],
+      "state": "OPEN_MATH",
+      "terminal_producer": "RationalHodgeConjecture D"
+    },
+    {
+      "consumer": "FINAL_PROOF[YANG_MILLS]",
+      "final_fail": "YANG_MILLS",
+      "mcore_linked_from": [
+        "MCCS_STATUS.json",
+        "lean/MCore/FinalFail/ExactGapLedger.lean"
+      ],
+      "pinned_head": "645b299959f02902c7e6245855d3b5da9a951139",
+      "promotion": "BLOCKED",
+      "repo": "ShantiDraconis/m-core-yang-mills",
+      "slot": "YANG_MILLS",
+      "source_files": [
+        "FRONTIER.yaml",
+        "lean/MCore/PureMathFrontier.md",
+        "lean/MCore/K13.lean",
+        "lean/MCore/K14.lean",
+        "lean/MCore/PhysicalGapScaling.lean",
+        "lean/MCore/YangMills/A1/FrontierDecomposition.lean",
+        "lean/MCore/YangMills/A1/FrontierDecompositionV2.lean",
+        "lean/MCore/YangMills/A1/B60ConcretePhysicalAdapter.lean"
+      ],
+      "state": "OPEN_MATH",
+      "terminal_producer": "genuine 4D physical realization + OS/Hamiltonian reconstruction + positive spectral mass gap"
+    },
+    {
+      "consumer": "FINAL_PROOF[RIEMANN]",
+      "final_fail": "RIEMANN",
+      "mcore_linked_from": [
+        "MCCS_STATUS.json",
+        "lean/MCore/FinalFail/ExactGapLedger.lean"
+      ],
+      "pinned_head": "ad3011f14bdab32161205e053fa925bc8c851ad4",
+      "promotion": "BLOCKED",
+      "repo": "ShantiDraconis/m-core-riemann",
+      "slot": "RIEMANN",
+      "source_files": [
+        "lean/MCore/K8.lean",
+        "research/r2/DNLimitZeroAttack.md",
+        "lean/MCore/RH/NB/ZeroLimitFrontier.lean",
+        "audit/R2_ZERO_RESIDUE_OBSTRUCTION.md",
+        "audit/R1_BAEZ_DUARTE_INTERFACE.json",
+        "FRONTIER.yaml"
+      ],
+      "state": "OPEN_MATH",
+      "terminal_producer": "unconditional DN vanishing estimate \u2192 DNLimit = 0 \u2192 R1ExternalBridge \u2192 RH"
+    },
+    {
+      "consumer": "certs/final_external/v1 \u2192 FINAL_PROOF[P_VS_NP]",
+      "final_fail": "P_VS_NP",
+      "mcore_linked_from": [
+        "MCCS_STATUS.json",
+        "lean/MCore/FinalFail/ExactGapLedger.lean",
+        "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json"
+      ],
+      "pinned_head": "95963a2f6408606f4f691f49647b2dc75f156289",
+      "promotion": "BLOCKED",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "slot": "P_VS_NP",
+      "source_files": [
+        "audit/ORIENTED_WITNESS_BOUNDARY.md",
+        "lean/MCore/BackwardAudit/OrientedWitnessBoundary.lean",
+        "audit/EndpointCompression.lean",
+        "audit/FinalEndpoint.lean",
+        "audit/PNP_RESIDUE.md",
+        "audit/PNP_FRONTIERS_SEMANTIC_AUDIT.json",
+        "lean/MCore/Real/CanonicalSATWitness.lean"
+      ],
+      "state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
+      "terminal_producer": "P01ConstructionGap + G21Pointwise / genuine not_in_p lower-bound producer"
+    },
+    {
+      "consumer": "FINAL_PROOF[BSD]",
+      "final_fail": "BSD",
+      "mcore_linked_from": [
+        "MCCS_STATUS.json",
+        "ATK_HARD_CHAIN_INDEX.md",
+        "lean/MCore/FinalFail/ExactGapLedger.lean"
+      ],
+      "pinned_head": "dfa710de6a8646640db8b7010e3e00d439091d31",
+      "promotion": "BLOCKED",
+      "repo": "ShantiDraconis/m-core-bsd",
+      "slot": "BSD",
+      "source_files": [
+        "lean/MCore/K13.lean",
+        "lean/MCore/BackwardAudit/WithoutOracle.lean",
+        "lean/MCore/K14.lean",
+        "CERTIFICATES/K14_GREEN.md",
+        "FRONTIER.yaml"
+      ],
+      "state": "OPEN_MATH",
+      "terminal_producer": "\u2200 d : BSDArithmeticAnalyticData, BSDRankPart d + remaining leading-coefficient obligations"
+    },
+    {
+      "consumer": "FINAL_PROOF[NAVIER_STOKES]",
+      "final_fail": "NAVIER_STOKES",
+      "mcore_linked_from": [
+        "MCCS_STATUS.json",
+        "lean/MCore/FinalFail/ExactGapLedger.lean"
+      ],
+      "pinned_head": "bdf538c84076cece7aae52e9d35d68c226e968d1",
+      "promotion": "BLOCKED",
+      "repo": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+      "slot": "NAVIER_STOKES",
+      "source_files": [
+        "audit/65_exact_failure_and_minimal_closure_obligations.md",
+        "audit/66_G1_maximal_closure_audit.md",
+        "G1_KAdmissible_to_SignedDepletion.lean",
+        "formal/G1/G1_DynamicCriticalGeometry.lean",
+        "formal/lean/CriticalBarrier/B2_8_SignedFlux_GapIsolation.lean",
+        "formal/lean/CriticalBarrier/B2_DeterministicParameterChain.lean",
+        "formal/lean/CriticalBarrier/CriticalTailBridge.lean"
+      ],
+      "state": "OPEN_MATH",
+      "terminal_producer": "legitimate compensator + independent quantitative budget + signed far-field cancellation with positive scale gain"
+    }
+  ],
+  "final_external": {
+    "final_root": null,
+    "issued": false,
+    "package": "certs/final_external/v1",
+    "status": "PREPARATORY_NOT_ISSUED"
+  },
+  "final_fail": {
+    "calculus": "lean/MCore/FinalFail/MinimalOpenBridge.lean",
+    "firewall": "lean/MCore/FinalFail/RecoveryFirewall.lean",
+    "ledger": "lean/MCore/FinalFail/ExactGapLedger.lean",
+    "master": "lean/MCore/FinalFail/Master.lean"
+  },
+  "final_proof": "0/7",
+  "generated_at": "2026-09-28T21:26:32.522273+00:00",
+  "pnp_reuse_chain": {
+    "final_proof_slot": {
+      "blocker_rule": "Credit only after imported/referenced sources yield actual inhabitants of P01ConstructionGap and G21Pointwise under the current official types and pass kernel+axiom audit.",
+      "credit": 0,
+      "current_state": "LINKED_REUSE_FAIL_CLOSED",
+      "slot": "P_VS_NP"
+    },
+    "policy": "Reuse exact historical artifacts. No reimplementation. Imported snapshots preserve source SHA provenance; CI-only commits are references, not mathematical promotion.",
+    "schema": "mcore.pnp-reuse-chain.v1",
+    "source_repo": "ShantiDraconis/m-core-p-vs-np",
+    "t1": {
+      "endpoint": "P01ConstructionGap",
+      "parser_simulation": {
+        "consumer": "P01ParserWitnessComposition",
+        "kind": "CI_CERT_GATE",
+        "role": "T1-A parser simulation product",
+        "sha": "fa928b119edb8609ae86eaff755dad7abcbf76d2"
+      },
+      "parser_witness": {
+        "import": "imports/pnp/d0353f8a/lean/MCore/Real/P01ParserWitnessComposition.lean",
+        "kind": "LEAN_SOURCE",
+        "role": "T1-B parser+witness composition",
+        "sha": "d0353f8af06d50f6a1e66bf77f8056f7309e0fd9"
+      },
+      "physical_control_shuttle": {
+        "kind": "CI_CERT_GATE",
+        "role": "T1-D physical verifier control/shuttle gate",
+        "sha": "2e2dc84b56d9db9e26105b895e618d13db7095d3"
+      },
+      "physical_primitives": {
+        "kind": "CI_CERT_GATE",
+        "role": "T1-D physical verifier primitives gate",
+        "sha": "9b66447c67d8a4db1e8f1599339c2ad4581d9f7e"
+      },
+      "terminal_integration": {
+        "important_boundary": "P01FullVerifierPhysical still defines PhysicalVerifierGap := Nonempty PhysicalVerifierRealization; P01ConstructionClose maps a genuine P01MachineConstruction to SATInNPGap.",
+        "imports": [
+          "imports/pnp/44e3327a/lean/MCore/Real/P01FullVerifierPhysical.lean",
+          "imports/pnp/44e3327a/lean/MCore/Real/P01IntegratedMachine.lean",
+          "imports/pnp/44e3327a/lean/MCore/Real/P01ConstructionClose.lean"
+        ],
+        "kind": "LEAN_SOURCE_SET",
+        "role": "T1-D terminal integration snapshot",
+        "sha": "44e3327a893710060c34d7ad149c16c9d66d316d"
+      },
+      "verifier_composition": {
+        "import": "imports/pnp/85d1031d/lean/MCore/Real/P01VerifierComposition.lean",
+        "kind": "LEAN_SOURCE",
+        "role": "T1-C verifier composition",
+        "sha": "85d1031d0c78f2392f7deea083caf54b72c572cc"
+      }
+    },
+    "t5": {
+      "bounded_execution": {
+        "import": "imports/pnp/30707e68/lean/MCore/Real/P02BoundedComputationClose.lean",
+        "kind": "LEAN_SOURCE",
+        "role": "T5-A1 bounded execution",
+        "sha": "30707e68367460041a3106211f3150db38c236cd"
+      },
+      "candidate_coding": {
+        "import": "imports/pnp/a5635895/lean/MCore/Real/P02CandidateCodingFrontier.lean",
+        "important_boundary": "CandidateCodingGap := Nonempty CandidateCodingInterface",
+        "kind": "LEAN_SOURCE",
+        "role": "candidate coding / decode round-trip frontier",
+        "sha": "a5635895dee4d7736778ce0104dfbe7016f6487a"
+      },
+      "endpoint": "G21Pointwise",
+      "semantic_mismatch": {
+        "import": "imports/pnp/f3dc5354/lean/MCore/Real/P02SemanticMismatchAlgebra.lean",
+        "kind": "LEAN_SOURCE",
+        "role": "semantic mismatch algebra",
+        "sha": "f3dc5354a6f8a652fbcda941b4f0a0e6213ddd30"
+      },
+      "strength_reduction": {
+        "kind": "CI_CERT_GATE",
+        "role": "T5-A2 strength reduction gate",
+        "sha": "3485380f801f261ed8f11f543685cf61687f4316"
+      }
+    },
+    "terminal": {
+      "chain": "P01ConstructionGap + G21Pointwise -> FinalExternalGap -> OfficialPneqNP -> FINAL_PROOF[P_VS_NP]",
+      "g21_wiring": {
+        "imports": [
+          "imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean",
+          "imports/pnp/c102d9d4/lean/MCore/Real/FinalExternalCertificate.lean"
+        ],
+        "kind": "LEAN_SOURCE_SET",
+        "sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
+        "theorems": [
+          "g21_pointwise_iff_p02_target",
+          "g21_iff_g22",
+          "p01_g21_closes_internal",
+          "final_external_certificate",
+          "final_external_gap_closes"
+        ]
+      },
+      "two_gap": {
+        "import": "imports/pnp/b406b806/lean/MCore/Real/FinalExternalTwoGap.lean",
+        "kind": "LEAN_SOURCE",
+        "sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+        "theorems": [
+          "final_external_gap_of_two_gap",
+          "final_external_two_gap_closes"
+        ]
+      }
+    }
+  },
+  "policy": "Cross-repository evidence linkage is not proof promotion. A slot closes only after the terminal theorem is kernel-checked and linked through the official consumer.",
+  "schema": "mcore.global-final-proof-link-report.v1"
+}
