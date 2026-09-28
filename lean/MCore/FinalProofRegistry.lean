@@ -1,4 +1,4 @@
-import MCore.FinalFail.SemanticParallel
+import MCore.FinalFail.DirectProducerCuts
 
 namespace MCore.FinalProof
 
