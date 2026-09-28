@@ -5,7 +5,12 @@ namespace MCore.FinalFail.Semantic
 /-- Concrete admissible Beal datum, with the Diophantine equation stored as
 evidence rather than as an ambient hypothesis. -/
 structure BealEquationData where
-  a b c x y z : ℕ
+  a : ℕ
+  b : ℕ
+  c : ℕ
+  x : ℕ
+  y : ℕ
+  z : ℕ
   a_pos : 0 < a
   b_pos : 0 < b
   c_pos : 0 < c
