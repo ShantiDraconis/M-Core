@@ -97,7 +97,7 @@ jobs:
           unexpected=""
           while IFS= read -r path; do
             case "$path" in
-              ""|evidence/GLOBAL_LINK_ROOT_SHA256|evidence/ROOT_SHA256|evidence/dependency_report.json|evidence/family_index.json|evidence/global_final_proof_links.json)
+              ""|evidence/GLOBAL_LINK_ROOT_SHA256|evidence/ROOT_SHA256|evidence/dependency_report.json|evidence/endpoint_states.json|evidence/family_index.json|evidence/global_final_proof_links.json)
                 ;;
               *)
                 unexpected="$unexpected $path"
