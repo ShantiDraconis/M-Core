@@ -67,16 +67,16 @@ universe u
 a concrete target type.  Constructing this bridge is where the genuine
 mathematical content must live. -/
 structure BoundaryInterpretation
-    (p : ProblemId) (Target : Type u) where
+    (p : ProblemId) (Target : Sort u) where
   realize : BoundaryAtom p → Target
 
 def realizeBoundary
-    {p : ProblemId} {Target : Type u}
+    {p : ProblemId} {Target : Sort u}
     (I : BoundaryInterpretation p Target) : Target :=
   I.realize (boundaryAtom p)
 
 theorem interpretedBoundary_nonempty
-    {p : ProblemId} {Target : Type u}
+    {p : ProblemId} {Target : Sort u}
     (I : BoundaryInterpretation p Target) :
     Nonempty Target :=
   ⟨realizeBoundary I⟩
@@ -87,7 +87,7 @@ an interpretation is exactly as strong (at the level of inhabitance) as
 producing the classical target itself.  The formal atom therefore cannot make
 the external mathematics easier by itself. -/
 theorem nonempty_boundaryInterpretation_iff_nonempty_target
-    {p : ProblemId} {Target : Type u} :
+    {p : ProblemId} {Target : Sort u} :
     Nonempty (BoundaryInterpretation p Target) ↔ Nonempty Target := by
   constructor
   · rintro ⟨I⟩
