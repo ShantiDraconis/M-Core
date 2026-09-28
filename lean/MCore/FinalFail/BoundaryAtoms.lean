@@ -81,4 +81,18 @@ theorem interpretedBoundary_nonempty
     Nonempty Target :=
   ⟨realizeBoundary I⟩
 
+
+/-- Semantic firewall: because every BoundaryAtom is already inhabited, producing
+an interpretation is exactly as strong (at the level of inhabitance) as
+producing the classical target itself.  The formal atom therefore cannot make
+the external mathematics easier by itself. -/
+theorem nonempty_boundaryInterpretation_iff_nonempty_target
+    {p : ProblemId} {Target : Type u} :
+    Nonempty (BoundaryInterpretation p Target) ↔ Nonempty Target := by
+  constructor
+  · rintro ⟨I⟩
+    exact ⟨I.realize (boundaryAtom p)⟩
+  · rintro ⟨t⟩
+    exact ⟨{ realize := fun _ => t }⟩
+
 end MCore.FinalFail
