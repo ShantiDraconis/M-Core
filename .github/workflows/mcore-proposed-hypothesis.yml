@@ -1,0 +1,74 @@
+name: M-Core Proposed Hypothesis
+
+on:
+  push:
+    branches:
+      - 'attack/proposed-hypothesis-*'
+    paths:
+      - 'lean/MCore/FinalFail/ProposedHypothesis.lean'
+      - '.github/workflows/mcore-proposed-hypothesis.yml'
+  pull_request:
+    paths:
+      - 'lean/MCore/FinalFail/ProposedHypothesis.lean'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proposed-hypothesis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fail-closed source hygiene
+        shell: bash
+        run: |
+          set -euo pipefail
+          f=lean/MCore/FinalFail/ProposedHypothesis.lean
+          if grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "$f"; then
+            echo "FAIL_CLOSED: placeholder in $f"; exit 1
+          fi
+          if grep -nE '^[[:space:]]*(axiom|constant|constants|opaque)[[:space:]]' "$f"; then
+            echo "FAIL_CLOSED: axiom-like declaration in $f"; exit 1
+          fi
+          echo "HYGIENE_GREEN"
+
+      - name: Install Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve Lean dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake update
+          lake exe cache get
+
+      - name: Kernel check ProposedHypothesis
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build MCore.FinalFail.ProposedHypothesis 2>&1 | tee /tmp/proposed.log
+
+      - name: Axiom footprint
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean lean/MCore/FinalFail/ProposedHypothesis.lean 2>&1 | tee /tmp/axioms.log
+          grep -q "enableAll' depends on axioms" /tmp/axioms.log
+          if grep -q 'sorryAx' /tmp/axioms.log; then
+            echo "FAIL_CLOSED: sorryAx in footprint"; exit 1
+          fi
+          # Only the three standard Lean/Mathlib axioms are allowed.
+          extra=$(tr -d '\n' < /tmp/axioms.log \
+            | grep -oE 'depends on axioms: \[[^]]*\]' \
+            | sed -E 's/.*\[(.*)\]/\1/' | tr ',' '\n' | tr -d ' ' \
+            | grep -vE '^(propext|Classical\.choice|Quot\.sound)$' || true)
+          if [ -n "$extra" ]; then
+            echo "FAIL_CLOSED: unexpected axioms: $extra"; exit 1
+          fi
+          echo "PROPOSED_HYPOTHESIS_KERNEL=GREEN"
