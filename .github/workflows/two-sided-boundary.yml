@@ -1,0 +1,46 @@
+name: ATK Two-Sided Boundary
+
+on:
+  push:
+    branches:
+      - atk/two-sided-boundary-meet-20260929
+    paths:
+      - 'lean/MCore/FinalFail/TwoSidedBoundary.lean'
+      - '.github/workflows/two-sided-boundary.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Kernel build
+        run: lake build MCore.FinalFail.TwoSidedBoundary
+      - name: Axiom audit
+        run: |
+          cat > TwoSidedBoundaryAxiomAudit.lean <<'EOF'
+          import MCore.FinalFail.TwoSidedBoundary
+          #print axioms MCore.FinalFail.TwoSidedBoundary.enableMeet
+          #print axioms MCore.FinalFail.TwoSidedBoundary.meet_exact_equality
+          #print axioms MCore.FinalFail.TwoSidedBoundary.execute_meet_agrees
+          #print axioms MCore.FinalFail.TwoSidedBoundary.unconditionalDualCount_eq_zero
+          EOF
+          lake env lean TwoSidedBoundaryAxiomAudit.lean | tee TwoSidedBoundaryAxiomAudit.log
+          if grep -F 'sorryAx' TwoSidedBoundaryAxiomAudit.log; then exit 1; fi
+      - name: Reject proof escapes
+        run: |
+          set -euo pipefail
+          if grep -nE '^[[:space:]]*(sorry|axiom|admit)[[:space:]]' lean/MCore/FinalFail/TwoSidedBoundary.lean; then
+            echo "proof escape found"
+            exit 1
+          fi
