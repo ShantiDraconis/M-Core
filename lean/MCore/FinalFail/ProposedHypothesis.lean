@@ -33,7 +33,7 @@ place, every inhabitant the M-Core stack knows how to consume:
 
 ## Fail-closed rules (unchanged)
 
-* No `axiom`, `sorry`, `admit`, oracle or fabricated witness.
+* No postulated constants, placeholder proofs, oracles or fabricated witnesses.
 * Every result below takes `H : ProposedHypothesis M` as an argument; nothing
   here is an `unconditionalProducer`, and `unconditionalCount` stays `0`.
 * `FinalProof.registry` is not touched; `provedCount` stays `0`.
