@@ -1,0 +1,74 @@
+name: Master Terminal Manifest
+
+on:
+  push:
+    branches:
+      - atk/master-terminal-manifest-20260930
+    paths:
+      - 'master-terminal/**'
+      - 'scripts/master_terminal_manifest.py'
+      - '.github/workflows/master-terminal-manifest.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'master-terminal/**'
+      - 'scripts/master_terminal_manifest.py'
+      - '.github/workflows/master-terminal-manifest.yml'
+  workflow_dispatch:
+    inputs:
+      require_done:
+        description: 'Fail unless all seven terminal inhabitants are closed'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: master-terminal-manifest-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Fail-Closed Manifest Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout M-Core
+        uses: actions/checkout@v4
+
+      - name: Validate JSON syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m json.tool master-terminal/owned_repositories.json >/dev/null
+          python3 -m json.tool master-terminal/manifest.json >/dev/null
+
+      - name: Validate fail-closed global state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/master_terminal_manifest.py
+          python3 scripts/master_terminal_manifest.py --json | tee /tmp/master-terminal-status.json
+
+      - name: Optional hard DONE gate
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.require_done }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/master_terminal_manifest.py --require-done
+
+      - name: Publish job summary
+        shell: bash
+        run: |
+          {
+            echo '## Master Terminal Manifest'
+            echo
+            echo 'A GREEN audit means the manifest is internally consistent and fail-closed.'
+            echo 'It does not mean the mathematical endpoints are proved.'
+            echo
+            echo '```json'
+            cat /tmp/master-terminal-status.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
