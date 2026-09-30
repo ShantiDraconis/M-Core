@@ -8,10 +8,13 @@ namespace MCore.FinalFail.Semantic
 
 Forward-only ledger after the semantic frontier audit.
 
-Each entry names the smallest currently admissible material producer.  These are
+Each entry names the smallest currently admissible material producer. These are
 not wrappers around BoundaryAtom and are not promoted by accepted hypotheses.
 The only way to move an entry from OPEN_MATH is to construct the named target
 (or a strictly stronger object with a kernel-checked projection to it).
+
+This file is aligned to the canonical per-repository GATE_LEDGER.json frontiers
+audited through 2026-09-29.
 -/
 
 inductive DirectProducerState where
@@ -28,32 +31,32 @@ structure DirectProducerCut where
 
 def directProducerCuts : List DirectProducerCut := [
   { problem := .riemann
-    target := "RiemannOffCriticalZero"
-    reduction := "¬RiemannHypothesis ↔ Nonempty RiemannOffCriticalZero; unconditional witness still absent"
+    target := "FiniteSpanApproximatesChi concreteGeneratorFamily"
+    reduction := "m-core-riemann freezes finiteSpanApproximatesChi_iff_DNLimit_eq_zero; this is also equivalent along the certified DNToZero chain. The concrete finite-span density inhabitant remains OPEN_MATH."
     state := .openMath },
   { problem := .beal
-    target := "GCDLowerBoundProducer: ∀ d : BealData, 1 < gcd(d.a, gcd(d.b,d.c))"
-    reduction := "m-core-beal proves this scalar producer ↔ CommonDivisor ↔ CommonPrime on the positive Beal domain; the universal gcd lower bound itself remains open"
+    target := "GCDLowerBoundProducer: ∀ d : BealData, 1 < Nat.gcd d.a (Nat.gcd d.b d.c)"
+    reduction := "m-core-beal freezes bealConjecture_iff_gcdLowerBoundProducer and the CommonDivisor/CommonPrime projections on the positive Beal domain; the universal scalar gcd lower bound remains OPEN_MATH."
     state := .openMath },
   { problem := .pVsNP
-    target := "P01ConstructionGap ∧ G21Pointwise; P01 local evalStep frontier is now only the input-node 000++encodeNat(i) preserving witness read, followed by global evalRun lift and final parser→guess→verifier NTM integration"
-    reduction := "P01 finite-frame evaluator is GREEN_FROZEN at f70ab88b/run 36508950379; cursor/frame primitives and all five finite tags const-false/const-true/NOT/AND/OR are GREEN_FROZEN at 6707aa0e/run 36552792426. The existing indexed witness reader is destructive, so the sole remaining local evalStep producer is a fixed unary-index-driven reader that restores the witness exactly. G21Pointwise remains independently OPEN_MATH and equivalent to SAT∉P on the bound official lane"
+    target := "P01ConstructionGap ∧ G21Pointwise"
+    reduction := "P01 is compressed to Nonempty P01MachineConstruction: close the preserving unary indexed witness read for input tag 000, lift the complete physical evalStep refinement to global evalRun, and compose parser+witness+verifier into one fixed finite-control NTM with polynomial HaltsWithin and AcceptsWithin ↔ SATBits. G21Pointwise remains independently OPEN_MATH and endpoint-equivalent to the bound SAT∉P lane."
     state := .openMath },
   { problem := .navierStokes
     target := "NSProducerFirst.ActualNSToSignedGainCore on genuine flow-derived EnstrophyData"
-    reduction := "NS run 36496747228 proves, for nonnegative viscosity, SignedGainCertificate is inhabitance-equivalent to SignedGainCore; the material core keeps only theta<1 and stretch ≤ theta*nu*z + C*y^2, while theta≥0 and C≥0 are reconstructed by max-normalization"
+    reduction := "The frozen signed-gain core keeps exactly theta < 1 and stretch(t) ≤ theta*nu*z(t) + C*y(t)^2; all normalization and downstream differential consequences are certified. The PDE-derived producer from ActualNS remains OPEN_MATH."
     state := .openMath },
   { problem := .hodge
-    target := "genuine Hodge geometry/cycle binding + ConcreteAlgebraicityPayload"
-    reduction := "constant-Qbar R2 is endpoint-equivalent to the payload, but the abstract payload is vacuously inhabited on an empty-variety model (Hodge audit run 36493536443 SUCCESS); genuine geometry binding is material"
+    target := "ConcreteAlgebraicityPayload"
+    reduction := "m-core-hodge freezes trivial_qbar_r2_payload_iff_concrete_payload and H01MinimalForwardPayload as a sufficient forward route. The universal ConcreteAlgebraicityPayload inhabitant itself remains OPEN_MATH."
     state := .openMath },
   { problem := .bsd
-    target := "on genuine EllipticCurveQ: bind the curve's L-series and rational-point group, then produce rank equality and the refined period/regulator/Sha/Tamagawa/torsion identity"
-    reduction := "the pinned Mathlib v4.19 kernel now binds a genuine nonempty elliptic-curve domain and has analyticOrderAt, but lacks the later EllipticCurve.LFunction, rational-point-group/height, and descent APIs; those source bindings are SOURCE_VERSION_BLOCKED before the material BSD equalities"
+    target := "realizable elliptic-curve domain + universal rank equality + refined leading-coefficient identity on that same domain"
+    reduction := "The abstract BSDArithmeticAnalyticData universal contract is rejected by a certified firewall because it admits unrelated Nat data. Progress requires binding genuine elliptic-curve arithmetic/analytic data first, then proving BSD rank equality and the refined formula on that realizable domain."
     state := .openMath },
   { problem := .yangMills
-    target := "genuine 4D physical-model binding + B60ConcretePhysicalAdapter/K30 transfer"
-    reduction := "B60 alone admits a degenerate Unit/True model (YM audit run 36493055781 SUCCESS); material progress requires binding C/F/D/H/G/O to a genuine 4D Yang-Mills realization"
+    target := "Nonempty (B60ConcretePhysicalAdapter C F D H G O)"
+    reduction := "The frozen B3-B5 hardening blocks phantom witnesses; B60ConcretePhysicalAdapter is the current sufficient material producer tying the regulated 4D construction to the same physical Hilbert/Hamiltonian/K30 data. No B60 inhabitant is currently supplied."
     state := .openMath }
 ]
 
