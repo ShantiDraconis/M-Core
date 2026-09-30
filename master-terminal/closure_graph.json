@@ -1,0 +1,431 @@
+{
+  "schema": "mcore.canonical-terminal-closure-graph.v1",
+  "generated_at": "2026-09-30",
+  "policy": {
+    "forward_only": true,
+    "equivalent_edges_do_not_reduce_open_math": true,
+    "terminal_credit_requires_material_inhabitant": true,
+    "final_root_requires_all_seven": true
+  },
+  "lanes": [
+    {
+      "slot": "RIEMANN",
+      "nodes": [
+        {
+          "id": "RH_FINITE_SPAN",
+          "kind": "open_producer",
+          "label": "FiniteSpanApproximatesChi concreteGeneratorFamily"
+        },
+        {
+          "id": "RH_DN_ZERO",
+          "kind": "equivalent_target",
+          "label": "DNLimit = 0"
+        },
+        {
+          "id": "RH_FINAL",
+          "kind": "terminal",
+          "label": "RH final external/root"
+        }
+      ],
+      "edges": [
+        {
+          "from": "RH_FINITE_SPAN",
+          "to": "RH_DN_ZERO",
+          "kind": "equivalence",
+          "theorem": "finiteSpanApproximatesChi_iff_DNLimit_eq_zero"
+        },
+        {
+          "from": "RH_DN_ZERO",
+          "to": "RH_FINAL",
+          "kind": "projection",
+          "note": "existing frozen terminal pipeline"
+        }
+      ],
+      "open_nodes": [
+        "RH_FINITE_SPAN"
+      ]
+    },
+    {
+      "slot": "P_VS_NP",
+      "nodes": [
+        {
+          "id": "P01_RAW_TOTAL",
+          "kind": "implementation_producer",
+          "label": "RawDecodeNoneFailClosed"
+        },
+        {
+          "id": "P01_GLOBAL_CORE",
+          "kind": "implementation_bridge",
+          "label": "CheckedVerifierGlobalCore"
+        },
+        {
+          "id": "P01",
+          "kind": "terminal_subproducer",
+          "label": "P01ConstructionGap"
+        },
+        {
+          "id": "G21",
+          "kind": "open_producer",
+          "label": "G21Pointwise"
+        },
+        {
+          "id": "P02",
+          "kind": "equivalent_target",
+          "label": "P02Target"
+        },
+        {
+          "id": "PNP_FINAL",
+          "kind": "terminal",
+          "label": "PneqNP / FinalExternal"
+        }
+      ],
+      "edges": [
+        {
+          "from": "P01_RAW_TOTAL",
+          "to": "P01_GLOBAL_CORE",
+          "kind": "projection",
+          "theorem": "RawDecodeNoneFailClosed.toGlobalCore"
+        },
+        {
+          "from": "P01_GLOBAL_CORE",
+          "to": "P01",
+          "kind": "projection",
+          "theorem": "p01ConstructionGap_of_core"
+        },
+        {
+          "from": "G21",
+          "to": "P02",
+          "kind": "equivalence",
+          "theorem": "g21_pointwise_iff_p02_target"
+        },
+        {
+          "from": "P01",
+          "to": "PNP_FINAL",
+          "kind": "composition_input"
+        },
+        {
+          "from": "G21",
+          "to": "PNP_FINAL",
+          "kind": "composition_input",
+          "theorem": "P01_G21_to_internal_final"
+        }
+      ],
+      "open_nodes": [
+        "P01_RAW_TOTAL",
+        "G21"
+      ]
+    },
+    {
+      "slot": "BSD",
+      "nodes": [
+        {
+          "id": "BSD_REALIZABLE_DATA",
+          "kind": "model_binding",
+          "label": "genuine elliptic-curve arithmetic/analytic state"
+        },
+        {
+          "id": "BSD_RANK",
+          "kind": "open_producer",
+          "label": "universal rank equality on realizable data"
+        },
+        {
+          "id": "BSD_REFINED",
+          "kind": "open_producer",
+          "label": "refined leading-coefficient law + finite Sha on same data"
+        },
+        {
+          "id": "BSD_GROUNDED",
+          "kind": "composition",
+          "label": "GroundedBSDHabitant"
+        },
+        {
+          "id": "BSD_FINAL",
+          "kind": "terminal",
+          "label": "BSD FinalExternal"
+        }
+      ],
+      "edges": [
+        {
+          "from": "BSD_REALIZABLE_DATA",
+          "to": "BSD_GROUNDED",
+          "kind": "composition_input"
+        },
+        {
+          "from": "BSD_RANK",
+          "to": "BSD_GROUNDED",
+          "kind": "composition_input"
+        },
+        {
+          "from": "BSD_REFINED",
+          "to": "BSD_GROUNDED",
+          "kind": "composition_input"
+        },
+        {
+          "from": "BSD_GROUNDED",
+          "to": "BSD_FINAL",
+          "kind": "projection",
+          "theorem": "finalExternal_of_grounded"
+        }
+      ],
+      "open_nodes": [
+        "BSD_REALIZABLE_DATA",
+        "BSD_RANK",
+        "BSD_REFINED"
+      ]
+    },
+    {
+      "slot": "HODGE",
+      "nodes": [
+        {
+          "id": "H0",
+          "kind": "producer",
+          "label": "CodimensionZeroAlgebraicityPayload"
+        },
+        {
+          "id": "H1",
+          "kind": "producer",
+          "label": "Lefschetz11ConcreteLaw"
+        },
+        {
+          "id": "HGE2",
+          "kind": "open_producer",
+          "label": "HigherCodimH01ForwardPayload / R1-R2-R3 per class"
+        },
+        {
+          "id": "H_POS",
+          "kind": "composition",
+          "label": "HodgePositiveTerminalProducer"
+        },
+        {
+          "id": "H_FINAL",
+          "kind": "terminal",
+          "label": "Hodge FinalExternal/FINAL_ROOT"
+        }
+      ],
+      "edges": [
+        {
+          "from": "H0",
+          "to": "H_POS",
+          "kind": "composition_input"
+        },
+        {
+          "from": "H1",
+          "to": "H_POS",
+          "kind": "composition_input",
+          "theorem": "codimOnePayload_of_concrete_lefschetz"
+        },
+        {
+          "from": "HGE2",
+          "to": "H_POS",
+          "kind": "composition_input",
+          "theorem": "higherCodimConcrete_of_h01"
+        },
+        {
+          "from": "H_POS",
+          "to": "H_FINAL",
+          "kind": "projection"
+        }
+      ],
+      "open_nodes": [
+        "HGE2"
+      ]
+    },
+    {
+      "slot": "YANG_MILLS",
+      "nodes": [
+        {
+          "id": "YM_CONSTRUCTION",
+          "kind": "open_producer",
+          "label": "genuine regulated 4D construction and A1 invariances"
+        },
+        {
+          "id": "YM_IR",
+          "kind": "open_producer",
+          "label": "uniform clustering -> infrared block"
+        },
+        {
+          "id": "YM_LIMIT",
+          "kind": "open_producer",
+          "label": "regulated-gap limit control"
+        },
+        {
+          "id": "YM_PHYSICAL",
+          "kind": "open_producer",
+          "label": "physical excitation/domain/orthogonality"
+        },
+        {
+          "id": "YM_K30",
+          "kind": "open_producer",
+          "label": "K30 spectral transfer witness"
+        },
+        {
+          "id": "YM_B60",
+          "kind": "composition",
+          "label": "B60/FinalExternal concrete physical adapter"
+        },
+        {
+          "id": "YM_FINAL",
+          "kind": "terminal",
+          "label": "K14 positive mass-gap final root"
+        }
+      ],
+      "edges": [
+        {
+          "from": "YM_CONSTRUCTION",
+          "to": "YM_B60",
+          "kind": "composition_input"
+        },
+        {
+          "from": "YM_IR",
+          "to": "YM_B60",
+          "kind": "composition_input"
+        },
+        {
+          "from": "YM_LIMIT",
+          "to": "YM_B60",
+          "kind": "composition_input"
+        },
+        {
+          "from": "YM_PHYSICAL",
+          "to": "YM_B60",
+          "kind": "composition_input"
+        },
+        {
+          "from": "YM_K30",
+          "to": "YM_B60",
+          "kind": "composition_input"
+        },
+        {
+          "from": "YM_B60",
+          "to": "YM_FINAL",
+          "kind": "projection",
+          "theorem": "FINAL_ROOT_of_fields"
+        }
+      ],
+      "open_nodes": [
+        "YM_CONSTRUCTION",
+        "YM_IR",
+        "YM_LIMIT",
+        "YM_PHYSICAL",
+        "YM_K30"
+      ]
+    },
+    {
+      "slot": "BEAL",
+      "nodes": [
+        {
+          "id": "BEAL_GCD",
+          "kind": "open_producer",
+          "label": "GCDLowerBoundProducer"
+        },
+        {
+          "id": "BEAL_COMMON",
+          "kind": "equivalent_target",
+          "label": "CommonDivisor/CommonPrime producer"
+        },
+        {
+          "id": "BEAL_FINAL",
+          "kind": "terminal",
+          "label": "Beal FinalExternal/FINAL_ROOT"
+        },
+        {
+          "id": "BEAL_T35",
+          "kind": "alternative_producer",
+          "label": "T35GlobalEliminationBridge"
+        },
+        {
+          "id": "BEAL_T42",
+          "kind": "alternative_producer",
+          "label": "T42FinalProofBundle"
+        }
+      ],
+      "edges": [
+        {
+          "from": "BEAL_GCD",
+          "to": "BEAL_COMMON",
+          "kind": "equivalence",
+          "theorem": "bealConjecture_iff_gcdLowerBoundProducer"
+        },
+        {
+          "from": "BEAL_GCD",
+          "to": "BEAL_FINAL",
+          "kind": "projection",
+          "theorem": "FINAL_ROOT_of_gcdLowerBound"
+        },
+        {
+          "from": "BEAL_T35",
+          "to": "BEAL_FINAL",
+          "kind": "projection",
+          "theorem": "finalExternal_of_global_elimination"
+        },
+        {
+          "from": "BEAL_T42",
+          "to": "BEAL_FINAL",
+          "kind": "projection",
+          "theorem": "FINAL_ROOT_of_T42_bundle"
+        }
+      ],
+      "open_nodes": [
+        "BEAL_GCD"
+      ]
+    },
+    {
+      "slot": "NAVIER_STOKES",
+      "nodes": [
+        {
+          "id": "NS_RAW",
+          "kind": "open_producer",
+          "label": "G5RawDecomposition from ActualNS"
+        },
+        {
+          "id": "NS_THETA",
+          "kind": "open_producer",
+          "label": "ThetaSubcritical: theta < 1"
+        },
+        {
+          "id": "NS_L1",
+          "kind": "open_producer",
+          "label": "DefectIntervalL1"
+        },
+        {
+          "id": "NS_WITNESS",
+          "kind": "composition",
+          "label": "G5DirectWitness"
+        },
+        {
+          "id": "NS_G5",
+          "kind": "terminal",
+          "label": "G5DirectProducer / G5NSBridge"
+        }
+      ],
+      "edges": [
+        {
+          "from": "NS_RAW",
+          "to": "NS_WITNESS",
+          "kind": "composition_input"
+        },
+        {
+          "from": "NS_THETA",
+          "to": "NS_WITNESS",
+          "kind": "composition_input"
+        },
+        {
+          "from": "NS_L1",
+          "to": "NS_WITNESS",
+          "kind": "composition_input"
+        },
+        {
+          "from": "NS_WITNESS",
+          "to": "NS_G5",
+          "kind": "projection",
+          "theorem": "raw_plus_two_hard_obligations_closes_G5"
+        }
+      ],
+      "open_nodes": [
+        "NS_RAW",
+        "NS_THETA",
+        "NS_L1"
+      ]
+    }
+  ]
+}
