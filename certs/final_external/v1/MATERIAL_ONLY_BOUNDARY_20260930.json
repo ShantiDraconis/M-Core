@@ -72,7 +72,15 @@
       "construct one kernel-clean P01VerifierPhase prepPhase.layout from a self-contained verifier source",
       "then apply p01_of_verifier; no further integration/wiring theorem is required"
     ],
-    "endpoint": "P01ConstructionGap"
+    "endpoint": "P01ConstructionGap",
+    "structural_mincut_certificate": {
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "branch": "atk/p01-verifier-phase-mincut-clean-20260930",
+      "source_sha": "c51a35617f6b94ed42d626c50e68ab08e7f6c393",
+      "theorem": "MCore.Real.P01VerifierPhaseMinCutStructural.p01ConstructionGap_of_verifierPhase",
+      "run": 36785624773,
+      "state": "GREEN_KERNEL_AXIOM_AUDITED"
+    }
   },
   "p_vs_np_final_external": {
     "material_blockers": [
