@@ -31,6 +31,10 @@ jobs:
         run: lake build MCore.UniversalTerminalClosure
       - name: Build producer calculus
         run: lake build MCore.ProducerCalculus
+      - name: Validate forward-only closure graph
+        run: |
+          python3 -m json.tool master-terminal/closure_graph.json >/dev/null
+          python3 scripts/closure_graph_audit.py
       - name: Validate wrapper equivalence registry
         run: |
           python3 -m json.tool master-terminal/wrapper_equivalence_registry.json >/dev/null
