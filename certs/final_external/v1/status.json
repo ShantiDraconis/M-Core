@@ -17,7 +17,7 @@
       "FROZEN_PREPARATORY"
     ],
     "not_possible": "FINAL_EXTERNAL_ISSUED",
-    "mechanical_state": "P01_MECHANICAL_CLOSURE_PENDING"
+    "mechanical_state": "P01_VERIFIER_PHASE_MINCUT_PENDING"
   },
   "human_review": {
     "authority": "UNSET",
@@ -50,7 +50,7 @@
     "maximum_auto_state": "REVIEW_PENDING",
     "FINAL_EXTERNAL_ISSUED": false,
     "P01_PREFIX": "GREEN_FROZEN_CERTIFIED_THROUGH_TERMINAL_BRANCHES_AND_GLOBAL_SLOTLOG",
-    "P01_ENDPOINT": "MECHANICAL_PENDING_P01_CONSTRUCTION",
+    "P01_ENDPOINT": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE",
     "P02_FRONTIER": "G2_1_LITERAL_CLOSED_BY_FALSIFICATION__G2_2_WIRING_GREEN_FROZEN_CERTIFIED",
     "P02_ENDPOINT": "OPEN_MATH_G21_POINTWISE_EQ_FAILURE_GENERATOR_EQ_SAT_NOT_IN_P",
     "P03..P07": "OPEN_MATH",
@@ -62,7 +62,7 @@
     "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
     "FINAL_ROOT_MATH": null,
     "GLOBAL_7_PROBLEMS_FINAL_PROOF": "0/7",
-    "FINAL_EXTERNAL_MECHANICAL_INPUTS": "P01ConstructionGap"
+    "FINAL_EXTERNAL_MECHANICAL_INPUTS": "P01VerifierPhase prepPhase.layout -> P01ConstructionGap"
   },
   "package_revision": "v1.3.1-preparatory",
   "freeze_state": "FROZEN_PREPARATORY",
@@ -76,7 +76,7 @@
       "G21Pointwise"
     ],
     "mechanical_blockers": [
-      "P01ConstructionGap"
+      "P01VerifierPhase prepPhase.layout"
     ],
     "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
     "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
@@ -87,7 +87,7 @@
     "FINAL_EXTERNAL_TWO_GAP": {
       "operational_progress": "0/2",
       "material_progress": "0/1",
-      "P01ConstructionGap": "MECHANICAL_PENDING",
+      "P01ConstructionGap": "MECHANICAL_DERIVABLE_FROM_SINGLE_VERIFIER_PHASE",
       "G21Pointwise": "OPEN_MATH"
     },
     "P_VS_NP_ENDPOINT": "OPEN",
