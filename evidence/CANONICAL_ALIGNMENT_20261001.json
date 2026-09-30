@@ -1,0 +1,95 @@
+{
+  "schema": "mcore.canonical-alignment.v1",
+  "date": "2026-10-01",
+  "rule": "Historical branches are evidence/recovery sources. Canonical status is the material-only hub boundary plus one pinned source per lane. Never infer closure from a historical GREEN wrapper.",
+  "hub": {
+    "repository": "ShantiDraconis/M-Core",
+    "canonical_branch": "atk/material-only-final-root-20260930",
+    "status_files": [
+      "lean/MCore/FinalFail/DirectProducerCuts.lean",
+      "lean/MCore/FinalFail/MaterialProducerNormalForms.lean",
+      "lean/MCore/FinalFail/MechanicalClosure.lean",
+      "lean/MCore/FinalFail/MaterialOnlyFinalRoot.lean",
+      "lean/MCore/FinalFail/UniversalClosure.lean",
+      "certs/final_external/v1/MATERIAL_ONLY_BOUNDARY_20260930.json"
+    ]
+  },
+  "lanes": {
+    "RIEMANN": {
+      "canonical_frozen": "frozen/nb-zero-limit-density-equivalence-green-d6a291b4",
+      "source_sha": "d6a291b4563f9021f74ab63cc983d44f079472da",
+      "open_material": "FiniteSpanApproximatesChi concreteGeneratorFamily / DNLimit=0",
+      "ignore_as_closure": [
+        "finite-N numerics",
+        "BCF route labels without vanishing proof"
+      ]
+    },
+    "BEAL": {
+      "canonical_frozen": "frozen/triple-gcd-equivalence-green-73f1fd7b",
+      "source_sha": "73f1fd7b2a692ea857acaea70e18745f08878c2a",
+      "open_material": "universal gcd lower bound / primitive residual exclusion",
+      "ignore_as_closure": [
+        "CommonPrime wrappers",
+        "conductor bookkeeping without residual elimination"
+      ]
+    },
+    "NAVIER_STOKES": {
+      "canonical_frozen": "frozen/n01-hardened-geometry-green-04aa4c04",
+      "source_sha": "04aa4c0450bba417e83c643de1eb54eb189b7c53",
+      "open_material": "ActualNSToSignedGainCore with theta<1 and signed depletion on genuine flow data",
+      "ignore_as_closure": [
+        "fixed-delta wrappers",
+        "unsigned absolute estimates replacing signed gain"
+      ]
+    },
+    "HODGE": {
+      "canonical_frozen": "frozen/terminal-frontier-green-f4918c01",
+      "source_sha": "f4918c01d970658e303033c1caf7c2ee0899b342",
+      "open_material": "genuine geometry binding + ConcreteAlgebraicityPayload",
+      "ignore_as_closure": [
+        "empty-variety models",
+        "constant-Qbar payload without geometry binding"
+      ]
+    },
+    "BSD": {
+      "canonical_frozen": "frozen/bsd-universal-producer-countermodel-green-6258a9f9",
+      "source_sha": "6258a9f9a13cd90193dc7d12927ce3c044fe0da6",
+      "open_material": "genuine elliptic-curve rank equality + refined leading coefficient identity on same domain",
+      "ignore_as_closure": [
+        "unrestricted abstract BSDArithmeticAnalyticData",
+        "curve-specific numerics promoted universally"
+      ]
+    },
+    "YANG_MILLS": {
+      "canonical_frozen": "frozen/terminal-frontier-green-dc5b45c4",
+      "source_sha": "dc5b45c4b1ec9e435b76f22e156878634dfdb59c",
+      "open_material": "genuine 4D realization + uniform positive physical mass + OS/Hamiltonian spectral transfer",
+      "ignore_as_closure": [
+        "Unit/True models",
+        "phantom physical interfaces"
+      ]
+    },
+    "P_VS_NP": {
+      "canonical_material": "G21Pointwise",
+      "material_state": "OPEN_MATH",
+      "canonical_mechanical": "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
+      "mechanical_state": "PENDING",
+      "structural_branch": "atk/p01-verifier-phase-mincut-clean-20260930",
+      "structural_theorem": "MCore.Real.P01VerifierPhaseMinCutStructural.p01ConstructionGap_of_verifierPhase",
+      "already_closed": [
+        "P01WitnessPrepGlobal.prepPhase",
+        "P01IntegratedAssembly.p01_of_verifier",
+        "G2.2 wiring",
+        "G3 normalized external contract",
+        "FinalExternal integration",
+        "FinalExternalTwoGap reduction"
+      ],
+      "ignore_as_closure": [
+        "literal fixed-point route",
+        "raw candidate branches failing kernel/axiom audit",
+        "P01 wiring counted as OPEN_MATH"
+      ]
+    }
+  },
+  "convergence_rule": "Promote a lane only by constructing the pinned material core or a strictly stronger object with kernel-checked projection to it. Never reopen certified downstream wiring."
+}
