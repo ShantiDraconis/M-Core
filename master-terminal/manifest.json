@@ -59,7 +59,7 @@
         "sha": "2b00561e72422dffda8841b830e71683212aef21"
       },
       "build_state": "MATERIAL_IMPLEMENTATION_ACTIVE_NOT_TERMINAL",
-      "exact_blocker": "P01 is reduced to RawDecodeNoneFailClosed -> CheckedVerifierGlobalCore -> P01ConstructionGap, with recursive raw-failure totalization actively being kernelized. Independently G21Pointwise remains OPEN_MATH; five literal/same-input diagonal route classes are formally refuted and cannot be promoted.",
+      "exact_blocker": "A no-premise P01ConstructionGap candidate now exists on atk/p01-material-inhabitant-frontier-20260930 and is awaiting its material kernel/axiom audit. The independent G21Pointwise producer remains OPEN_MATH regardless of P01 outcome.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
@@ -82,6 +82,16 @@
         "p01_raw_totalization": "6d0de82ee7e912732302a3a98129c4fd7b742487",
         "p01_exact_verifier": "6be73fc1101b8d9cd22283adce738190996768f6",
         "g21": "49887c2f34098e7711e0a75fd66417d6a3aa3de4"
+      },
+      "p01_candidate_terminal": {
+        "branch": "atk/p01-material-inhabitant-frontier-20260930",
+        "sha": "8a80c4914d366ae0c4314ad7a21c4db48bc16522",
+        "theorem": "MCore.Real.P01TerminalCertificate.p01ConstructionGap",
+        "downstream": "MCore.Real.P01TerminalCertificate.canonicalSATMachineClosure",
+        "premise_count": 0,
+        "audit_run": 36792394294,
+        "audit_status": "QUEUED",
+        "promotion_rule": "Do not mark P01 subgate closed until p01-material-gate succeeds and #print axioms contains no sorryAx/prohibited axioms."
       }
     },
     {
