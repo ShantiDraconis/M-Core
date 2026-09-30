@@ -1,0 +1,58 @@
+name: Material Only Final Root
+
+on:
+  push:
+    branches:
+      - atk/material-only-final-root-20260930
+    paths:
+      - 'lean/MCore/FinalFail/**'
+      - '.github/workflows/material-only-final-root.yml'
+      - 'lakefile.lean'
+      - 'lean-toolchain'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  material-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Build material-only cut
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build MCore.FinalFail.MaterialOnlyFinalRoot
+          lake build MCore.FinalFail.Master
+
+      - name: Reject proof escapes
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '\\b(sorry|admit|sorryAx)\\b' --include='*.lean' lean/MCore/FinalFail; then
+            echo "FAIL_CLOSED: proof escape detected"
+            exit 1
+          fi
+          if grep -RInE '^[[:space:]]*(@\\[[^]]*\\][[:space:]]*)?(axiom|constant|constants)[[:space:]]' --include='*.lean' lean/MCore/FinalFail; then
+            echo "FAIL_CLOSED: axiom declaration detected"
+            exit 1
+          fi
+          echo "MATERIAL_ONLY_HYGIENE_GREEN"
