@@ -20,6 +20,32 @@ def canonicalGapShape : ProblemKind → GapShape
   | .beal => .F6
 
 /--
+Pure reduction data, before any mathematical terminal object is supplied.
+
+This layer can express a common structural descent without pretending that
+structural descent itself constructs the problem-specific theorem.
+-/
+structure ReductionLane where
+  State : Type
+  step : State → State
+  defect : State → Nat
+  contract : ∀ x, 0 < defect x → defect (step x) < defect x
+  freeze : ∀ x, defect x = 0 → step x = x
+
+/--
+The exact material payload missing from a reduction lane.
+
+This is where OPEN_MATH lives: extract must turn a genuinely zero-defect
+concrete state into the lane exact terminal inhabitant. certify is only
+downstream transport.
+-/
+structure Materializer (R : ReductionLane) where
+  Inhabitant : Type
+  Certificate : Type
+  extract : ∀ x, R.defect x = 0 → Inhabitant
+  certify : Inhabitant → Certificate
+
+/--
 One producer-first lane.
 
 defect, step, and contract are the shared structural mechanism.
@@ -41,6 +67,24 @@ structure ProducerLane where
   freeze : ∀ x, defect x = 0 → step x = x
   extract : ∀ x, defect x = 0 → Inhabitant
   certify : Inhabitant → Certificate
+
+namespace ReductionLane
+
+/-- Attach a genuine materializer to a structural reduction lane. -/
+def materialize
+    (R : ReductionLane)
+    (M : Materializer R) : ProducerLane where
+  State := R.State
+  Inhabitant := M.Inhabitant
+  Certificate := M.Certificate
+  step := R.step
+  defect := R.defect
+  contract := R.contract
+  freeze := R.freeze
+  extract := M.extract
+  certify := M.certify
+
+end ReductionLane
 
 namespace ProducerLane
 
@@ -185,6 +229,24 @@ theorem fixed_iff_zero
 end ProducerLane
 
 /--
+Universal structural reduction before terminal materialization.
+
+All seven lanes may share the same reduction theorem schema while retaining
+different state carriers.
+-/
+structure UniversalReductionKernel where
+  lane : ProblemKind → ReductionLane
+
+/--
+The seven problem-specific material obligations.
+
+Constructing this object is exactly the global material frontier: each field
+must provide a true terminal extractor for its own lane.
+-/
+structure UniversalMaterialization (R : UniversalReductionKernel) where
+  materializer : (p : ProblemKind) → Materializer (R.lane p)
+
+/--
 A universal producer kernel is a dependent family of seven exact lanes.
 
 The family shares one theorem schema but not one concrete state carrier,
@@ -194,9 +256,29 @@ identification from being smuggled into the universal layer.
 structure UniversalProducerKernel where
   lane : ProblemKind → ProducerLane
 
+/-- Promote the structural seven-lane reduction only after all exact
+materializers have been supplied. -/
+def UniversalReductionKernel.materialize
+    (R : UniversalReductionKernel)
+    (M : UniversalMaterialization R) :
+    UniversalProducerKernel where
+  lane := fun p => (R.lane p).materialize (M.materializer p)
+
 /-- One concrete starting state for every problem lane. -/
 structure UniversalSeed (K : UniversalProducerKernel) where
   state : (p : ProblemKind) → (K.lane p).State
+
+/-- Starting states at the pure structural-reduction layer. -/
+structure UniversalReductionSeed (R : UniversalReductionKernel) where
+  state : (p : ProblemKind) → (R.lane p).State
+
+/-- Convert a reduction seed after genuine materialization. -/
+def promoteSeed
+    (R : UniversalReductionKernel)
+    (M : UniversalMaterialization R)
+    (S : UniversalReductionSeed R) :
+    UniversalSeed (R.materialize M) where
+  state := S.state
 
 /-- Concrete inhabitant term for every lane. -/
 structure UniversalInhabitantBundle (K : UniversalProducerKernel) where
@@ -213,6 +295,19 @@ def buildInhabitantBundle
     UniversalInhabitantBundle K where
   inhabitant := fun p =>
     (K.lane p).produceInhabitant (S.state p)
+
+/--
+The exact universal resolution theorem in split form.
+
+Structural reduction and mathematical materialization are explicit separate
+inputs. Once both are present, the seven terminal inhabitants are computed.
+-/
+def resolveUniversalMaterialization
+    (R : UniversalReductionKernel)
+    (M : UniversalMaterialization R)
+    (S : UniversalReductionSeed R) :
+    UniversalInhabitantBundle (R.materialize M) :=
+  buildInhabitantBundle (R.materialize M) (promoteSeed R M S)
 
 /-- Build the abstract universal final root from the same exact producers. -/
 def buildFinalRoot
@@ -337,6 +432,7 @@ theorem no_positive_defect_self_loop
     (K.lane p).step x ≠ x :=
   (K.lane p).step_ne_self_of_positive x hpos
 
+#print axioms MCore.ATK.UniversalProducer.ReductionLane.materialize
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.step_ne_self_of_positive
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.defect_eq_zero_of_fixed
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.normalizeFuel_defect_zero
@@ -346,7 +442,10 @@ theorem no_positive_defect_self_loop
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.inhabitant_after_steps
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.certificate_after_steps
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.fixed_iff_zero
+#print axioms MCore.ATK.UniversalProducer.UniversalReductionKernel.materialize
+#print axioms MCore.ATK.UniversalProducer.promoteSeed
 #print axioms MCore.ATK.UniversalProducer.buildInhabitantBundle
+#print axioms MCore.ATK.UniversalProducer.resolveUniversalMaterialization
 #print axioms MCore.ATK.UniversalProducer.buildFinalRoot
 #print axioms MCore.ATK.UniversalProducer.issueExternalCertificate
 #print axioms MCore.ATK.UniversalProducer.universal_inhabitant_theorem
