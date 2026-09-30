@@ -129,17 +129,17 @@ theorem exact_universal_closure_iff
 
 /-- One external-release gate is kept separate from mathematics and from the
 mechanical P01 min-cut. -/
-structure FinalRootInputs (K : UniversalKernel) : Prop where
+structure FinalRootInputs
+    (K : UniversalKernel)
+    (Mechanical Release : Prop) : Prop where
   material : SevenInhabitants K.Core
-  Mechanical : Prop
-  Release : Prop
   mechanical_ok : Mechanical
   release_ok : Release
 
-structure FinalRootResult (K : UniversalKernel) : Prop where
+structure FinalRootResult
+    (K : UniversalKernel)
+    (Mechanical Release : Prop) : Prop where
   endpoints : SevenEndpoints K.Endpoint
-  Mechanical : Prop
-  Release : Prop
   mechanical_ok : Mechanical
   release_ok : Release
 
@@ -148,11 +148,10 @@ the caller supplies all seven material proofs plus mechanical and release
 proofs. -/
 theorem universal_final_root
     (K : UniversalKernel)
-    (h : FinalRootInputs K) :
-    FinalRootResult K :=
+    {Mechanical Release : Prop}
+    (h : FinalRootInputs K Mechanical Release) :
+    FinalRootResult K Mechanical Release :=
   { endpoints := universal_closure K h.material
-    Mechanical := h.Mechanical
-    Release := h.Release
     mechanical_ok := h.mechanical_ok
     release_ok := h.release_ok }
 
@@ -160,7 +159,8 @@ theorem universal_final_root
 endpoint proofs are required. -/
 theorem universal_final_root_has_all_endpoints
     (K : UniversalKernel)
-    (h : FinalRootResult K) :
+    {Mechanical Release : Prop}
+    (h : FinalRootResult K Mechanical Release) :
     ∀ p, K.Endpoint p :=
   h.endpoints.at
 
