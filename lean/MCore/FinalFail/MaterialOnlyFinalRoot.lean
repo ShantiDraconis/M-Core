@@ -25,7 +25,7 @@ structure MaterialBoundary where
   pendingMechanical : Nat
   global_exact : globalOpenProblems = 7
   direct_exact : directOpenProducers = 7
-  wiring_separate : pendingMechanical = 4
+  wiring_separate : pendingMechanical = 1
   deriving Repr
 
 def currentMaterialBoundary : MaterialBoundary :=
@@ -34,7 +34,7 @@ def currentMaterialBoundary : MaterialBoundary :=
     pendingMechanical := pendingMechanicalCount
     global_exact := openFinalProblems_eq_seven
     direct_exact := openDirectCount_eq_seven
-    wiring_separate := pendingMechanicalCount_eq_four }
+    wiring_separate := pendingMechanicalCount_eq_one }
 
 def materialMathReady : Prop :=
   producedDirectCount = 7
@@ -61,10 +61,10 @@ theorem no_wiring_gap_in_open_math :
     openFinalProblems = 7 ∧
     openDirectCount = 7 ∧
     materialProducerPlanCount = 7 ∧
-    pendingMechanicalCount = 4 := by
+    pendingMechanicalCount = 1 := by
   exact ⟨openFinalProblems_eq_seven,
     openDirectCount_eq_seven,
     materialProducerPlanCount_eq_seven,
-    pendingMechanicalCount_eq_four⟩
+    pendingMechanicalCount_eq_one⟩
 
 end MCore.FinalFail.MaterialOnly
