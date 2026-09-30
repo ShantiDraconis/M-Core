@@ -33,6 +33,9 @@ jobs:
         run: |
           python3 -m json.tool master-terminal/wrapper_equivalence_registry.json >/dev/null
           python3 scripts/wrapper_equivalence_audit.py
+      - name: Verify external issuance remains fail-closed
+        run: |
+          python3 scripts/generate_external_terminal_certificate.py --expect-blocked
       - name: Source firewall
         run: |
           set -euo pipefail
