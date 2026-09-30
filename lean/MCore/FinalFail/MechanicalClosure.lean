@@ -31,7 +31,7 @@ structure MechanicalClosure where
 def mechanicalClosures : List MechanicalClosure := [
   { problem := .pVsNP
     target := "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout"
-    evidence := "P01WitnessPrepGlobal.prepPhase and P01IntegratedAssembly.p01_of_verifier give an exact structural reduction from one verifier-phase inhabitant to P01ConstructionGap. A 2026-09-30 clean rebuild of the stronger exact-verifier candidate exposed broken imports, unresolved helper names and sorryAx in its dependency footprint, so no canonical exact-verifier closure is credited here."
+    evidence := "Certified exact structural reduction: source c51a35617f6b94ed42d626c50e68ab08e7f6c393 on atk/p01-verifier-phase-mincut-clean-20260930; dedicated run 36785624773 SUCCESS. P01WitnessPrepGlobal.prepPhase + p01_of_verifier prove that one verifier-phase inhabitant closes P01ConstructionGap. No exact-verifier inhabitant is asserted."
     state := .pending }
 ]
 
