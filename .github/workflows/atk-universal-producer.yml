@@ -39,6 +39,7 @@ jobs:
           #print axioms MCore.ATK.UniversalProducer.ProducerLane.inhabitant_after_steps
           #print axioms MCore.ATK.UniversalProducer.universal_inhabitant_theorem
           #print axioms MCore.ATK.UniversalProducer.universal_certificate_theorem
+          #print axioms MCore.ATK.UniversalProducer.no_target_from_structure_alone
           #print axioms MCore.ATK.UniversalProducer.no_positive_defect_self_loop
           EOF
           lake env lean UniversalProducerAxioms.lean | tee universal-producer-axioms.txt
