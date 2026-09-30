@@ -34,6 +34,13 @@
         "conclusion": "success",
         "classification": "CONDITIONAL_OR_EQUIVALENCE_ONLY",
         "reason": "The audited ZeroLimitFrontier proves equivalences and implications but does not construct FiniteSpanApproximatesChi."
+      },
+      "direct_terminal_audit": {
+        "branch": "atk/direct-terminal-20260930",
+        "sha": "305fd7dea65d01ca1b129acb9554c81c4fb9a8f9",
+        "run_id": 36702470850,
+        "classification": "DEFINITION_ONLY",
+        "evidence": "audit/FinalEndpoint.lean defines RiemannHypothesis/FINAL_STATEMENT and explicitly states it does not prove RH."
       }
     },
     {
@@ -95,6 +102,16 @@
         ],
         "theorem": "universal_refuted_route_conjunction",
         "warning": "The no-go firewall eliminates five route classes; it does not prove G21Pointwise."
+      },
+      "p01_no_premise_candidate": {
+        "branch": "atk/p01-material-inhabitant-frontier-20260930",
+        "sha": "8a80c4914d366ae0c4314ad7a21c4db48bc16522",
+        "theorem": "MCore.Real.P01TerminalCertificate.p01ConstructionGap",
+        "downstream": "MCore.Real.P01TerminalCertificate.canonicalSATMachineClosure",
+        "classification": "MATERIAL_CANDIDATE_PENDING_AXIOM_AUDIT",
+        "run_id": 36792394294,
+        "current_status": "QUEUED",
+        "note": "No theorem premise in source; promotion awaits successful material gate and clean #print axioms."
       }
     },
     {
@@ -121,6 +138,13 @@
         "conclusion": "success",
         "classification": "EQUIVALENT_WRAPPER_ONLY",
         "reason": "ExactFinalProducer converts GCDLowerBoundProducer or equivalent no-counterexample hypotheses into FinalExternal; it does not prove those hypotheses."
+      },
+      "direct_terminal_audit": {
+        "branch": "atk/direct-terminal-20260930",
+        "sha": "b339f0432a7ca9ee4770c5c1786a8bb20472ad14",
+        "run_id": 36702475177,
+        "classification": "EXACT_EQUIVALENCE_ONLY",
+        "evidence": "CommonDivisorProducer ↔ GCDLowerBoundProducer ↔ BealConjecture; no unconditional producer inhabitant."
       }
     },
     {
@@ -145,6 +169,13 @@
         "conclusion": "success",
         "classification": "CONDITIONAL_CONSTRUCTOR_ONLY",
         "reason": "ExactFinalProducer still takes codimension-zero, concrete Lefschetz, and higher-codimension H01 inputs; it does not inhabit them."
+      },
+      "direct_terminal_audit": {
+        "branch": "atk/direct-terminal-20260930",
+        "sha": "0600485e962c27e3993dfb771239fb2de6400ec5",
+        "run_id": 36702489659,
+        "classification": "DEFINITIONAL_REDUCTION_ONLY",
+        "evidence": "PointwiseHodgeAlgebraicity is definitionally equivalent to RationalHodgeConjecture; pointwise payload status remains openBridge."
       }
     },
     {
@@ -169,6 +200,13 @@
         "conclusion": "success",
         "classification": "CONDITIONAL_CONSTRUCTOR_ONLY",
         "reason": "finalExternal_of_fields requires construction, clustering, limit, physical excitation, and K30 transfer witnesses as inputs."
+      },
+      "direct_terminal_audit": {
+        "branch": "atk/direct-terminal-20260930",
+        "sha": "34ce6be901a84686c957b2c5877ac0053de0aaf0",
+        "run_id": 36702493694,
+        "classification": "TYPING_RESIDUE_ONLY",
+        "evidence": "endpointPropositionTyped = false; branch records the endpoint type residue and no final inhabitant."
       }
     },
     {
@@ -195,6 +233,13 @@
         "conclusion": "success",
         "classification": "CONDITIONAL_CONSTRUCTOR_ONLY",
         "reason": "ExactFinalProducer constructs FinalExternal only from GroundedBSDHabitant/field laws; no grounded habitant is constructed."
+      },
+      "direct_terminal_audit": {
+        "branch": "atk/direct-terminal-20260930",
+        "sha": "d703c37702f58f68942cea04f79a39b123b42093",
+        "run_id": 36702484242,
+        "classification": "OPEN_ALIAS_WITH_NONCERTIFICATION",
+        "evidence": "BSDOpenCore d := BSDRankPart d; k13_open_core_not_certified proves no ProofCertificate for the open node."
       }
     },
     {
