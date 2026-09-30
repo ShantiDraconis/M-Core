@@ -118,10 +118,29 @@
     {
       "slot": "NAVIER_STOKES",
       "repo": "ShantiDraconis/M-Navier-Stokes",
-      "canonical_target": "ActualNS -> material quantitative closure, or a valid blow-up inhabitant",
-      "status": "SOURCE_BINDING_REQUIRES_CURRENT_REPO_AUDIT",
+      "canonical_target": "G5DirectProducer ActualNS T trajectory",
+      "status": "GREEN_TYPED_OPEN_MATH",
       "inhabitant_state": "OPEN_MATH",
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "terminal_equivalent": [
+        {
+          "name": "G5NSBridge ActualNS T trajectory",
+          "theorem": "g5DirectProducer_iff_G5NSBridge"
+        }
+      ],
+      "sufficient_routes": [
+        "raw G5 decomposition + ThetaSubcritical + DefectIntervalL1"
+      ],
+      "decomposition_theorem": "raw_plus_two_hard_obligations_closes_G5",
+      "hard_subobligations": [
+        "ThetaSubcritical r := r.theta < 1",
+        "DefectIntervalL1 r := IntervalIntegrable r.a volume r.t0 T"
+      ],
+      "rejected_substitutes": [
+        "state-only bridge shells",
+        "documentation status strings",
+        "K4-to-theta promotion without a new theorem"
+      ]
     }
   ]
 }
