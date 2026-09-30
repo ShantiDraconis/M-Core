@@ -8,15 +8,22 @@ import MCore.FinalFail.FundamentalIndeterminacy
 import MCore.FinalFail.RelationalHardAtom
 import MCore.FinalFail.Attack.Beal
 import MCore.FinalFail.Attack.NavierStokes
+import MCore.FinalFail.MaterialOnlyFinalRoot
 
 namespace MCore.FinalFail
 
 def masterState : String :=
-  "FINAL_FAIL: closed-center HARD + fundamental branching indeterminacy + relational brain kernel active; exact gaps pinned; no endpoint promoted"
+  "FINAL_FAIL: material-only boundary active; seven OPEN_MATH producers isolated; P01 wiring moved to mechanical closure; no endpoint promoted"
 
 def brainFoundationState : String :=
   "BRAIN_V1: START<->CENTER<->FINISH; branch-preserving relations; IFail is structural non-uniqueness, not numeric 0/0"
 
 theorem master_open_count : openFinalProblems = 7 := openFinalProblems_eq_seven
+
+theorem master_material_only_boundary :
+    Semantic.openDirectCount = 7 ∧
+    Semantic.pendingMechanicalCount = 4 :=
+  ⟨Semantic.openDirectCount_eq_seven,
+    Semantic.pendingMechanicalCount_eq_four⟩
 
 end MCore.FinalFail
