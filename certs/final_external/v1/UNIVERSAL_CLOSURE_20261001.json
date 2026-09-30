@@ -1,0 +1,47 @@
+{
+  "schema": "mcore.universal-closure.v1",
+  "date": "2026-10-01",
+  "repository": "ShantiDraconis/M-Core",
+  "branch": "atk/material-only-final-root-20260930",
+  "theorem_file": "lean/MCore/FinalFail/UniversalClosure.lean",
+  "purpose": "Composition law only. Does not inhabit any unsolved mathematical producer.",
+  "new_classes": {
+    "SevenInhabitants": "field-wise seven material cores; one proof per ProblemId",
+    "SevenEndpoints": "field-wise seven endpoint proofs",
+    "UniversalKernel": "Core + Endpoint + consume : forall p, Core p -> Endpoint p",
+    "ExactUniversalKernel": "UniversalKernel + reflect : forall p, Endpoint p -> Core p",
+    "FinalRootInputs": "seven material inhabitants + mechanical proof + release proof",
+    "FinalRootResult": "seven endpoints + preserved mechanical/release proofs"
+  },
+  "new_operators": {
+    "SevenInhabitants.at": "projects exact lane core",
+    "SevenEndpoints.at": "projects exact lane endpoint",
+    "SevenInhabitants.ofForall": "packs forall-lane proofs without loss",
+    "SevenEndpoints.ofForall": "packs forall-lane endpoint proofs without loss"
+  },
+  "new_laws": {
+    "sevenInhabitants_iff_forall": "SevenInhabitants Core <-> forall p, Core p",
+    "sevenEndpoints_iff_forall": "SevenEndpoints Endpoint <-> forall p, Endpoint p",
+    "universal_closure": "SevenInhabitants K.Core -> SevenEndpoints K.Endpoint",
+    "exact_universal_closure_iff": "with reflect, SevenEndpoints K.Endpoint <-> SevenInhabitants K.Core",
+    "universal_final_root": "seven material proofs + mechanical + release -> FinalRootResult",
+    "universal_final_root_has_all_endpoints": "FinalRootResult -> forall p, K.Endpoint p"
+  },
+  "anti_noise_firewall": [
+    "No count or Boolean can manufacture a material proof field.",
+    "No accepted hypothesis is embedded in UniversalKernel.",
+    "A claimed exact reduction must provide a reverse reflect map.",
+    "Mechanical and release gates are separate from mathematical inhabitants.",
+    "Universal closure provides composition only; it does not solve any open theorem."
+  ],
+  "current_state": {
+    "material_inhabitants_produced": 0,
+    "material_inhabitants_required": 7,
+    "p01_mechanical_mincut": "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
+    "p01_mechanical_state": "PENDING_SINGLE_MINCUT",
+    "pvsnp_material_mincut": "G21Pointwise",
+    "final_root_math": null,
+    "final_root": null,
+    "final_external_issued": false
+  }
+}
