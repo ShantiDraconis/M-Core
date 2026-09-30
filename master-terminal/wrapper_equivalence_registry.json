@@ -76,6 +76,25 @@
           "P01MachineConstruction inhabitant",
           "independent G21Pointwise inhabitant"
         ]
+      },
+      "g21_frontier": {
+        "repo_branch": "atk/g21-final-integration-clean-20260930",
+        "observed_head": "49887c2f34098e7711e0a75fd66417d6a3aa3de4",
+        "canonical_live_target": "G21Pointwise",
+        "universal_witness_equivalences": [
+          "UniversalWitnessExists ↔ G21Pointwise",
+          "UniversalWitnessExists ↔ P02Target"
+        ],
+        "genuine_producer_rule": "GenuineUniversalProducer A := Nonempty A ∧ (A → UniversalWitnessExists)",
+        "no_go_firewall": [
+          "no universal literal semantic fixed point",
+          "no BoundedSameInputEquation",
+          "no UniformCompilerValueComputable",
+          "no Nonempty SameInputCore",
+          "no Nonempty ReducedProducer"
+        ],
+        "theorem": "universal_refuted_route_conjunction",
+        "warning": "The no-go firewall eliminates five route classes; it does not prove G21Pointwise."
       }
     },
     {
