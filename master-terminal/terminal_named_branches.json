@@ -1,0 +1,2098 @@
+{
+  "schema": "mcore.terminal-named-branch-index.v1",
+  "generated_at": "2026-09-30",
+  "filter": "branch name matches final|terminal|external|inhabit|producer|gap|openmath|open-math|g21|p01|g5|b60|h01|gcd|gram|dn|rank|refined",
+  "policy": "Branch names and GREEN CI never imply terminal credit. UNCLASSIFIED_REQUIRES_AUDIT is fail-closed.",
+  "repositories": [
+    {
+      "repo": "ShantiDraconis/m-core-riemann",
+      "branch_count_scanned": 140,
+      "terminal_named_count": 30,
+      "branches": [
+        {
+          "name": "atk/auto-compose-terminal-20260930",
+          "sha": "4c4f483967799a36b770695f85b36c9f19d7f421",
+          "classification": "CONDITIONAL_FINAL_PRODUCER",
+          "terminal_credit": 0,
+          "note": "Requires FiniteSpan/vanishing-upper-bound or equivalent energy input."
+        },
+        {
+          "name": "atk/delta-habitants-finalize-20260927",
+          "sha": "bce324867ae43ce0b09d73b399bafbe56defa003",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-terminal-20260930",
+          "sha": "305fd7dea65d01ca1b129acb9554c81c4fb9a8f9",
+          "classification": "DEFINITION_ONLY",
+          "terminal_credit": 0,
+          "note": "Typed endpoint only; no RH proof."
+        },
+        {
+          "name": "atk/falsified-terminal-inhabitants-20260930",
+          "sha": "cada2a2a12af29c5f9e0cae126399ea8810b3362",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/master-rh-gram-repair-20260930",
+          "sha": "7fc4acbea946f809343ed8b475d6d8195de3e543",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/producer-rh-20260928",
+          "sha": "f1825956952d2382eb379f612a2a1ff8b26ca2eb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/rh-concrete-gram-scalar-20260930",
+          "sha": "96b1deac794e38b0a16d584f06f0804db9a72d2d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/rh-gram-energy-endpoint-20260930",
+          "sha": "ac8ba3b8e51363d431ade14c94e1092e1a3b326d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/rh-gram-quadratic-identity-20260929",
+          "sha": "265fc5966da8e5723bb967decf219f5c1de4701b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/rh-terminal-density-integration-20260929",
+          "sha": "c994a84d1ecb92dc7cd28789b35dd8773126a3a6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/rh-zero-residue-unconditional-producer-20260927",
+          "sha": "5c66f8dca03834f24a61a9b1219e7af9d4892dd6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/riemann-material-producer-gate-20260928",
+          "sha": "85d77d9ad754874b250e5abd12f934c83fd2eaba",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk-rh-gram-terminal-link-20260930",
+          "sha": "56dde61838035ca74b3d1c71097c2bde54656b87",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/r2-multistate-sn-gap",
+          "sha": "2d7dbc12eeab720c4b0fad5c22bfc19ffd35b01b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/rh-multistate-sn-gap-20260926",
+          "sha": "59136ebd00ce80144caf0b6c660f2f6ced656fba",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/terminal-producer-20260921",
+          "sha": "962d14efbb934beea8169a76a34fc3a4bd3c5791",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/typed-final-endpoint-v1",
+          "sha": "7f482b6e19fc73dffe319fa1e0716a9b634b5211",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/atk-terminal-riemann-d6a291b4-20260921",
+          "sha": "8a179aee88ba3c7e794169e4e4e4100f5b5e8b32",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-fail-external-27ac66f4-run35731884171",
+          "sha": "bc4780383fa7835b3ffc105ab1232476b81b97b9",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "final/fail-external-close-20260922",
+          "sha": "27ac66f4f0bdf8edc0e8c3ab1f11b52ccd279b1b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/atk-terminal-certificate-riemann-8a179aee",
+          "sha": "8a179aee88ba3c7e794169e4e4e4100f5b5e8b32",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/final-fail-external-green-27ac66f4",
+          "sha": "27ac66f4f0bdf8edc0e8c3ab1f11b52ccd279b1b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/inhabitant-arsenal-v1-green-b8077235",
+          "sha": "b8077235831e921ebd02393c3a82bfd1d977dc85",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/producer-frontier-green-f1825956",
+          "sha": "f1825956952d2382eb379f612a2a1ff8b26ca2eb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/rh-coefficient-gram-reduction-green-0b2720d2",
+          "sha": "0b2720d2928fa0828ee3d3870fb2884f2d160433",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/rh-explicit-coefficient-producer-green-c994a84d",
+          "sha": "c994a84d1ecb92dc7cd28789b35dd8773126a3a6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/rh-gram-energy-endpoint-green-ac8ba3b8",
+          "sha": "ac8ba3b8e51363d431ade14c94e1092e1a3b326d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/stable-hole-final-green-77575ea6",
+          "sha": "77575ea682a0523dcc06e62dad69c318955aa745",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "research/pure-math-final-proof-v1",
+          "sha": "a86580468d579a056b4d4826a67c75bbc2a1c173",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "research/r2-dnlimit-zero",
+          "sha": "43d7c060192c816655343d2ba5ef94ecfbdfaf59",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        }
+      ]
+    },
+    {
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "branch_count_scanned": 300,
+      "terminal_named_count": 157,
+      "branches": [
+        {
+          "name": "agent-start/07-g21-p02-20260923",
+          "sha": "4b07874777a457b8f92c185693e19fa78b333b80",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "agent-start/08-final-external-20260923",
+          "sha": "05078de7bad88ba4e72ccb82019d1c1e5f96dcb7",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/auto-compose-terminal-20260930",
+          "sha": "63ad057d1bcbad46ab537e0a2dcf8b863322e7ac",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-p01-inhabitant-20260930",
+          "sha": "44a39b9bafb41b79f4dda048c6e30a2dfb1fea3b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-p01-inhabitant-close-20260930",
+          "sha": "9f1081338b8e4e554581fea047300e3f2beb5d7e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-p01-terminal-close-v2-20260930",
+          "sha": "ffd06cc66bbadeb68cd6d60f872dc8dac33770c8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-p01-terminal-v2-20260930",
+          "sha": "e8ab9feaa06674d0b38c3c9db8e56fd4f5e0f5cb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-terminal-20260930",
+          "sha": "5f0955a33eb3820d6f65dac2d9c62de34764ddc7",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/external-frontier-reuse-miner-v1",
+          "sha": "53dd933415667c21cbe18e8fc8901c0a6cf59ccb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/external-terminal-producer-miner-v1",
+          "sha": "78e867bb199cb807253689749fed0d62499bc8dc",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/falsified-terminal-inhabitants-20260930",
+          "sha": "400019e9b98d4e2ee79d80ddd54bb36f781db0ad",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/final-external-two-openmath-v1",
+          "sha": "fc5f2078b8fd8e9626cedf0425f1a93b64a3e51d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/final-proof-minimal-close-20260922",
+          "sha": "482ef2f2d983b9e91f1aa5b7526097203dacb6bd",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/final-proof-reuse-index-20260923",
+          "sha": "bdb1a50c82df3c73de1203ba3cc60cdda52491d6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/final-two-producer-sprint-v1",
+          "sha": "da233acadb185ab236a8fdcee153ab9245d798e3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/g21-final-integration-clean-20260930",
+          "sha": "49887c2f34098e7711e0a75fd66417d6a3aa3de4",
+          "classification": "LIVE_G21_FIREWALL_CONDITIONAL_PROMOTION",
+          "terminal_credit": 0,
+          "note": "G21 remains an explicit premise; five diagonal subclasses refuted."
+        },
+        {
+          "name": "atk/g21-same-input-core-close-20260930",
+          "sha": "4c49b1a5f7c603bba3802f8a26258d89d56f6e9e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/g21-same-input-terminal-20260930",
+          "sha": "92187b1c259cc1e696bf893b9dc7104195b7e650",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/hardened-final-boundary-20261001",
+          "sha": "a72561ede8d806c2169a96f23510742f974f50f5",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/master-p01-verifier-run-repair-20260930",
+          "sha": "2b00561e72422dffda8841b830e71683212aef21",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-p01-global-physical-verifier-20260929",
+          "sha": "09e0474a55615ea18cba9b4461c65ccad9c8248e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-p01-input-node-refinement-20260929",
+          "sha": "9c5fd11866338c3b7e17b5efc8990cd5f739433d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-p01-integrated-control-20260929",
+          "sha": "1d3ad02ea7b7d82ca5317ee30973db746630cbc1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-p01-integrated-machine-20260929",
+          "sha": "833fe0ded9676bfd19d226b8bf1dfd0aeb070bf5",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-p01-integrated-machine-v2-20260929",
+          "sha": "dfe9aec4e85a8e97bb02ed2240504d54e7f0fbc1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-p01-source-consumption-20260929",
+          "sha": "adb6db8d1943778655f63d651ed93f23f425ed47",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-p01-source-rewind-roundtrip-20260929",
+          "sha": "5674c6e512dc39d70cffb0bff73dcab3c2a5dbe4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-p01-tag-input-consumption-20260929",
+          "sha": "4eb4051ff330368627a3f30f2e080a00bd96f37d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-pnp-p01-integrated-machine-20260928",
+          "sha": "575cd996e16eda4d9bc33bebd25df6b01f50aaa4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-pnp-parser-simulation-gap-20260928",
+          "sha": "f52e32529f6059d602b450d78f4f24ce9696bcae",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-pnp-t5f-producer-20260928",
+          "sha": "419917cb8e146cd892071e6bb1424c2863ebe123",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-binary-bounded-close-20260930",
+          "sha": "ad8977745ef66669f6846ca5ae5dd84d2a21c166",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-bounded-neg-match-fix-20260930",
+          "sha": "522923f80bebd2bedd32111adedd15c8ddb29442",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-construction",
+          "sha": "dfb3e60dc37e96f46a3ca071c428456634ec6dca",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-core-decode-physical-reject-20260930",
+          "sha": "f0cb1e363f421cdc4a96b98d6cae3682bb079aa4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-core-failure-classify-20261001",
+          "sha": "2eeb99c9d6ac46267aab1ffca5900f9c252cf80c",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-direct-inhabitant-20260930",
+          "sha": "6263785f94538a9324b4b23607a2cb1181ec5bc2",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-direct-terminal-bounded-20260930",
+          "sha": "34b3cdcff9fb4953bde76901b7e18ff4c391c5ad",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-eval-cursor-20260929",
+          "sha": "ae62c6040c48342e42d6e30b7b17237c2ad0ac65",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-eval-cursor-roundtrip-20260929",
+          "sha": "1054b6bac5962d81f5c33a2b87d68f21b00d5ce0",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-evalstep-physical-refinement-20260929",
+          "sha": "8e3abccc052e631346f9decbf4db0c601080fde6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-exact-bounded-outcome-20260930",
+          "sha": "b4bfbaef42c0079dc96fcc82a1a4253eb8b83cac",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-exact-consumption-certificate-20260930",
+          "sha": "a40c7bb1d05ac875bc9d9c0fb24a87b21d0e6805",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-exact-consumption-parallel-20260930",
+          "sha": "ed9fd6a852dff73f8c48b4d8d805bb95bd4093fe",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-exact-final-close-20260930",
+          "sha": "922a608e539350f72412b6d2c1937443c07e69da",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-exact-rebuild-clean-20260930",
+          "sha": "f8ca9b2efa70e4c4d330e41626d8df65bb0c5d53",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-exact-runtime-v2-20260930",
+          "sha": "bc77580b06606fdf70729ff4e7b42fc32fd1bde0",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-final-close",
+          "sha": "6e6d0889b7e308a4eacbc5cd17719c44f2ab0b51",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-final-integration-clean-20260930",
+          "sha": "6c68258f2efaf87f4b3c2dbb06d3fd9da3a5dc0a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-frame-pop-read-20260929",
+          "sha": "7f6597a14f0fcdfd7ee53edb880dd797748d5646",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-indexed-read-certificate-20260928",
+          "sha": "5ef48618d4c3742844be0be2c7ab9d950ec92f89",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-indexed-read-global-20260928",
+          "sha": "cd3bdab1f3fc2950ac07a416c2943ae344d9a3a6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-integrated-assembly-20260929",
+          "sha": "29c6dafd47638633cfa5230196c950ecca4d0c07",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-integration-repair-20261001",
+          "sha": "311449b8f2691330d6d01e153a1eaa6964d55c00",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-material-inhabitant-frontier-20260930",
+          "sha": "8a80c4914d366ae0c4314ad7a21c4db48bc16522",
+          "classification": "MATERIAL_CANDIDATE_PENDING_AUDIT",
+          "terminal_credit": 0,
+          "note": "No-premise P01ConstructionGap candidate; terminal gate queued."
+        },
+        {
+          "name": "atk/p01-openmath-final-integrated-clean-20260930",
+          "sha": "6be73fc1101b8d9cd22283adce738190996768f6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-preserving-input-reader-20260930",
+          "sha": "81399a442327965cc913ce171410873a690e07d8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-preserving-reader-20260930",
+          "sha": "6209671176769fdbf9a3920bd3a327f030cfee43",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-preserving-unary-read-20260930",
+          "sha": "76788440eaaa9fbb0a27428e500554cd06f8080e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-preserving-unary-reader-20261001",
+          "sha": "0e59f024c30cdd796e620b8e52b7ac1977184991",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-raw-closure-final-20261001",
+          "sha": "00f7ec176892c388fe0bca336cb37207069df8c7",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-raw-closure-unified-20261001",
+          "sha": "fc21c82a1b17e3330908c76b5d1e64a983f8499d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-raw-mincut-20260930",
+          "sha": "4af7e2c3c9886c0d11c7f3c16f00f7dd671c61d5",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-real-neg-macro",
+          "sha": "167036b95b1cf424425ac90a2976a24160e8a4fb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-seq-runbranches-20260929",
+          "sha": "ad208be8520a6f38b081e6b84d0b88c6b2b0e726",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-source-cursor-invariant-20260929",
+          "sha": "50409f3fff773b7903997fe02d86d41cbf366dde",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-source-rewind-global-20260928",
+          "sha": "264fe048d355960b05d15ce354e9a7ca632b25fb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-terminal-close-20260930",
+          "sha": "6263785f94538a9324b4b23607a2cb1181ec5bc2",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-terminal-material-v2",
+          "sha": "7cf63c71281be4443114d8054a97c1f7b9121896",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-terminal-promotion-candidate-20260930",
+          "sha": "84801b9711f15aa722162bf6a8e0121030eb5693",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-terminal-sprint-v1",
+          "sha": "21117d0a836cfe7b241e6798c2de1fc960149fab",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-verifier-phase-mincut-clean-20260930",
+          "sha": "0f09a3f08af112a033bf09adc8b3c378f16c9744",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/p01-witness-prep-global-44e3327a",
+          "sha": "f0589e50767a49d1967b25816348914cdababd5f",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/pnp-material-producer-gate-20260928",
+          "sha": "8ac4dd69cc1fa39554cdec6fe637f162054c79d1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/pnp-p01-parser-reuse-20260928",
+          "sha": "f52e32529f6059d602b450d78f4f24ce9696bcae",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/pnp-rigorous-terminal-decomposition-20261001",
+          "sha": "8c90cd710450174ec08467605a162a0b90948f40",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/producer-pnp-20260928",
+          "sha": "d0f183ddaa389f773d86f442db9e504f6156fcf6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/recovery-p01-terminal-20260923",
+          "sha": "a21d747c3115dcebc702a31a522dace01d36a027",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/recovery-p02-g21-20260923",
+          "sha": "a21d747c3115dcebc702a31a522dace01d36a027",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/t1-d-terminal-construction-20260922",
+          "sha": "60d0bcc60d27a1a9fc58b8531ce3d341a0d91f8a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk-p01-bounded-global-repair-20260930",
+          "sha": "f62f36c1cbf2a6bf41ebfb4015d9d82b77a5b8f8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk-p01-exact-binary-close-20260930",
+          "sha": "ad8d3d0f79d53bc83920305f132aaad77ebdcc47",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk-p01-preserving-adapter-20260930",
+          "sha": "e08fb33c6cd015ffb657256594856fef476259d9",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/final-external-live-20260922",
+          "sha": "cdb56436899222f2ea8c367a632c0ce6059caca7",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/final-external-two-gap-attempt-20260922",
+          "sha": "098d29d69c6aa51daca85e8cfc68e4f6e6c310a5",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/g21-g22-only-20260922",
+          "sha": "3ec5e116dde0969e82272ed9ca37e6e92c36c5e1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-binary-head-clean-20260922",
+          "sha": "9d987dc8161bfc7bcb371d4624532356fe32a89f",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-hard-realization-20260922",
+          "sha": "0ff71d49edd9457025377fe6eaf041bea8bd2171",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-leaf-source-20260922",
+          "sha": "93f1321f53aa93e18c7dcbf8a8a04e2844a15cbe",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-operational-sat-20260921",
+          "sha": "50859a9fe3b4b4ef77ad212cd2bb570453200e0a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-p02-final-clean-20260921",
+          "sha": "f4e2215b65aab2bef2f16b131e3dad7105994aee",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-p02-finalize-clean-20260921",
+          "sha": "f6e9479373da1ba6bead2482da2c457c36bf6aca",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-sat-ntm-parallel-20260921",
+          "sha": "70236db0fd7174ae80ffba029bcbe73329720bd8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-t1a-global-20260922",
+          "sha": "28ad994cf81cf0a4e46dd17da27daabf0c5b4804",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/p01-witness-bound-normalization-20260922",
+          "sha": "9e3ad0dc3942d50c7831f76348f55d5f6920584a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/t5-a1-final-correctness-20260922",
+          "sha": "75b106838b800fea03b383d2059bb087556b46f2",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/t5-a1-transition-soundness-20260922",
+          "sha": "39da55deeaf9f5ad35f69d69c3d4858250baa748",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/terminal-producer-20260921",
+          "sha": "e927d32684ae9294bb97f2fa5e66f24e57e085de",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/atk-terminal-d6675e40-run35880392440",
+          "sha": "d6675e40f03dd58d0e8a95ce50a7ab410bb9cefb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/atk-terminal-p-vs-np-e927d326-20260921",
+          "sha": "8ca2065ebc829a4c8cefe91062f03677f5396031",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-external-certificate-recovery-af2464ac-run35829886265",
+          "sha": "af2464ac243c0e8680bd289db15945bf09cd2ba0",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-external-integration-c102d9d4-run35722252805",
+          "sha": "5c781d3d26425e46868f22923829f3d87d9d4938",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-external-two-gap-b406b806-run35722743845",
+          "sha": "90a9017413b98db23cbe9f1cbf24f7237773685a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-external-two-gap-recovery-064edaba-run35829905302",
+          "sha": "064edaba9f3de98da84cc01fafa455e5b672b116",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-external-two-openmath-v1-fc5f2078",
+          "sha": "fc5f2078b8fd8e9626cedf0425f1a93b64a3e51d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-fail-external-815dfb08-run35722796449",
+          "sha": "0fc0c0ea5b40b12d10ac27e74fadfb832294c525",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-proof-chain-manifest-d25d6183-run35829956811",
+          "sha": "d25d618374711434aee40895adc99f46bbe55894",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-proof-fail-attack-65dda687-run35519363274",
+          "sha": "65dda6873168597c20bca30e3243b725fddae472",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-proof-recovery-chain-a21d747c-run35829962758",
+          "sha": "a21d747c3115dcebc702a31a522dace01d36a027",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-proof-repair-checkpoint-19c7c5ea-20260923",
+          "sha": "3f3afb71708e597ba269b92ba7fc942428512ab6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-two-producer-sprint-v1-da233aca",
+          "sha": "da233acadb185ab236a8fdcee153ab9245d798e3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/g3-external-contract-scaffold-97a95327-run35707370601",
+          "sha": "8a0ecfcad1fd3806f16abb481010ce5631a5055d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/g3-normalized-external-contract-f2cafea7-run35719428075",
+          "sha": "3bb214bf4e071c1f2e1dd253f833bbbd30f4b248",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/g3-normalized-external-contract-f2cafea7-run35719428100",
+          "sha": "f2cafea7a74f3ef8ad4140943515622545c9f1d8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/open-math-start-checkpoint-v1",
+          "sha": "c9d34c14d0bdffd8296bdb2c4567d6e83452b580",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-binary-head-0ff71d49-run35731861724",
+          "sha": "88c34f0ab9de225e2347453dafb94f8619f19672",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-binary-head-9d987dc8-run35729194014",
+          "sha": "730dfc9640aef4865f42ce1918b8c0bd4f03e323",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-binary-return-rewind-f29f5984-run35710913516",
+          "sha": "cab90e15d5347163b5bbc5536ec2bb28e9efff06",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-bounded-input-certificate-97792f5e",
+          "sha": "fa8f4da3e403637adc54010cc5480f6509a770a4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-bounded-neg-ea576ccf",
+          "sha": "8aaa9ee48483ac35b0230af51b27ffb0875c4470",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-clean-source-f4e2215b-run35669003760",
+          "sha": "ab4ffd1a98d92af38447db24854a9d9ac0f9df5a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-component-failproof-9e21b631-run35586024302",
+          "sha": "8062b709d7d3c2b7ab046794afde99de1c03c2e4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-eval-local-85ee5341-run35833206203",
+          "sha": "85ee53417d3acca5c345fc72c9be9a8fce86529e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-full-checkpoint-fbd93747-run35788603616",
+          "sha": "fbd93747a31d5dbcebe59635e332dced3c679136",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-global-parser-simulation-prefix-eaf1a3af-run35736463139",
+          "sha": "fc50deb5f3f84b9f09635f7bd8ed7b2543af42f0",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-global-slotlog-spec-614f88fe-run35723570545",
+          "sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-hard-scaffold-9d6dd957-run35721236027",
+          "sha": "44b9787d6c7c8ec02366849424cc09183931f825",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-integrated-parser-leaf-chain-3690ab05-run35722427864",
+          "sha": "1fa201ff0b580e75650357e24d175b5a1c5f9226",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-integration-prefix-ada18eed-run35699864579",
+          "sha": "d909103f75087f41711c697aca400e53df4a4b82",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-pop-26e721ab-run35713981438",
+          "sha": "11682c2313ba69b7c090460690b96fb85412d8f2",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-pop-eb492843-run35720014541",
+          "sha": "e2d24a050e5b1411fa4f604b5afe2bd7fe6d2954",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-pop-operational-26e721ab-run35713981438",
+          "sha": "8510823d9544abec032d540b57b0762c4d468cc8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-pop-pr-audit-ci-5f832dd2-run35719832389",
+          "sha": "ca250a3b80fc5d4543eb27b27b62f88d62a97a23",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-pop-simulation-audit-216f9715-run35719795702",
+          "sha": "f59679daa1314403f9f1c43e51019a9a3fa25003",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-source-93f1321f-run35720074676",
+          "sha": "6f24ad42f651e1ef33a9ece7cbe8e867a2643c40",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-source-return-2221f431-run35722490794",
+          "sha": "8e927cfde49b2d3a49d38baab010dd0e584c3753",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-source-rewind-325e83cb-run35719744729",
+          "sha": "325e83cbfbb95fe50c633e3cb6827b27ae67409e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-leaf-state14-15-return-72aa7be3-run35714475319",
+          "sha": "8b6360e9f334e4a11084f6ddd833123975b02190",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-operational-prefix-50859a9f",
+          "sha": "50859a9fe3b4b4ef77ad212cd2bb570453200e0a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-parser-components-fc20887e-run35700922856",
+          "sha": "2043a76bc04157c4c6c74ef5fc82ad28c1852f45",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-parser-macro-db716cec-run35709328356",
+          "sha": "b0ff13266c2615dd38e38b722a0485911a6f32a2",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-phase-macros-614f88fe-run35723570545",
+          "sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-physical-moves-e82c0dfc-run35833209966",
+          "sha": "e82c0dfc6c38ad1b0fe260b2a1b93286edcd8262",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-physical-realization-058f574b-run35785607933",
+          "sha": "058f574bd2ad1349eb17717549ca5ad378666336",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-physical-refinement-e2d30558-run35833213528",
+          "sha": "e2d305589df4d5223a61ba25a6fded39a3b2ce11",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-t1a-fuel-semantic-8f7768a9-run35738027838",
+          "sha": "210e4cd3d0a4d3e837c38d360042492f02525cb1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-t1a-global-parser-fa928b11-run35745074597",
+          "sha": "8873988b9b18a180f5aaf95bbd51b1953aa505a3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-t1a-global-semantics-6f241c5d-run35739667497",
+          "sha": "6f241c5dab07a79da7997b6ebc33a4314fbae8c8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-t1a-global-semantics-28ad994c-run35739412964",
+          "sha": "28ad994cf81cf0a4e46dd17da27daabf0c5b4804",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-t1a-kernel-prefix-d1914bf5-run35736880724",
+          "sha": "b3ee3a0a55e07aa869e1dd4b6c431cecae0cb254",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-t1a-malformed-87c9bfef-run35737449255",
+          "sha": "f6c6a24136daf0969d9e3c21f8e6b78bf9114c45",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-t1a-runtime-61cd91aa-run35740278407",
+          "sha": "61cd91aa2a8debdbcf28068d566967a96a517ee9",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-t1a-runtime-exact-35969f08-run35740917082",
+          "sha": "35969f086079e0323ba01dd35a16bc7e58f2f46e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-terminal-branches-f9add608-run35722846538",
+          "sha": "4d0a69c8f54c67316cad9cad946dd16012de7354",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-terminal-branches-f9add608-run35722851951",
+          "sha": "24f5c2b966b90efb5e63a9a850319396cf73bd61",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-terminal-delta-v1-21117d0a",
+          "sha": "21117d0a836cfe7b241e6798c2de1fc960149fab",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/p01-verified-relation-1453539c-run35587134807",
+          "sha": "a568bad3492e8042a1f70fe666f0ce1a2a1ecaed",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        }
+      ]
+    },
+    {
+      "repo": "ShantiDraconis/m-core-bsd",
+      "branch_count_scanned": 133,
+      "terminal_named_count": 31,
+      "branches": [
+        {
+          "name": "atk/auto-compose-terminal-20260930",
+          "sha": "753a962bd18909a8a4e682856951e1189507b811",
+          "classification": "CONDITIONAL_FINAL_PRODUCER",
+          "terminal_credit": 0,
+          "note": "Requires GroundedBSDHabitant/fields."
+        },
+        {
+          "name": "atk/bsd-concrete-high-rank-domain-20260927",
+          "sha": "ceefbf4bf38705776ede7a83db1bb97124aa4fd1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-terminal-20260930",
+          "sha": "d703c37702f58f68942cea04f79a39b123b42093",
+          "classification": "OPEN_ALIAS_AUDIT",
+          "terminal_credit": 0,
+          "note": "BSDOpenCore is BSDRankPart alias and not certified."
+        },
+        {
+          "name": "atk/falsified-terminal-inhabitants-20260930",
+          "sha": "23fa13d7a614e1a341a26e4979363e4ae8ad575a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-bsd-rank-producer-20260928",
+          "sha": "13c309d45ba02a1ae01830285b24447003a03155",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-bsd-realizable-high-rank-producer-20260928",
+          "sha": "7a3bcaae1ccc926a75d4016e718b7aab95a0e6d6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-bsd-universal-rank-witness-20260928",
+          "sha": "13c309d45ba02a1ae01830285b24447003a03155",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/producer-bsd-20260928",
+          "sha": "b51963e058a4a65b1afa88b628d1d9f24b8e343d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/bsd-open-math-rank-ge2",
+          "sha": "ceefbf4bf38705776ede7a83db1bb97124aa4fd1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/bsd-universal-rank-countermodel-20260921",
+          "sha": "6258a9f9a13cd90193dc7d12927ce3c044fe0da6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/d01-rank-parallel-20260921",
+          "sha": "dfa710de6a8646640db8b7010e3e00d439091d31",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/d01-refined-parallel-20260921",
+          "sha": "dfa710de6a8646640db8b7010e3e00d439091d31",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/terminal-producer-20260921",
+          "sha": "5726424cfee8062dde4896b07e09bfd6216a866c",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "audit/KR2-final-target",
+          "sha": "1967251b57125d7d2a7de51c26f28560b3be0e27",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/KR2-program-1166ac0d-run35177717150",
+          "sha": "1166ac0dfda9b64e50b656430f2ae27ea169724b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/atk-terminal-bsd-6258a9f9-20260921",
+          "sha": "5a1bb915bd600da469dcf14db61be08092fade48",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-fail-external-6968cf38-run35731896565",
+          "sha": "5756cfa38a66099412d0a3dc93eb73a71e4fe77f",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "final/fail-external-close-20260922",
+          "sha": "6968cf38fd2db811143041c1bf6484eabea69290",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/atk-terminal-certificate-bsd-5a1bb915",
+          "sha": "5a1bb915bd600da469dcf14db61be08092fade48",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/bsd-open-math-zero-green-ceefbf4b",
+          "sha": "ceefbf4bf38705776ede7a83db1bb97124aa4fd1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/bsd-realizable-high-rank-frontier-green-7a3bcaae",
+          "sha": "7a3bcaae1ccc926a75d4016e718b7aab95a0e6d6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/bsd-realizable-high-rank-kernel-green-b51963e0",
+          "sha": "b51963e058a4a65b1afa88b628d1d9f24b8e343d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/bsd-universal-producer-countermodel-green-6258a9f9",
+          "sha": "6258a9f9a13cd90193dc7d12927ce3c044fe0da6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/final-fail-external-green-6968cf38",
+          "sha": "6968cf38fd2db811143041c1bf6484eabea69290",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/inhabitant-arsenal-v1-green-437e15a0",
+          "sha": "437e15a0983d922056d9eb05b05d180982bcbff1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/next-rank-kernel-green-13c309d4",
+          "sha": "13c309d45ba02a1ae01830285b24447003a03155",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/producer-frontier-green-c9a8a1a5",
+          "sha": "c9a8a1a51437ebf3cea5b45a0560c095a1ae3064",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/stable-hole-final-green-bf78df36",
+          "sha": "bf78df36c0571da058685ef252e30fbbbb599776",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/terminal-frontier-green-5726424c",
+          "sha": "5726424cfee8062dde4896b07e09bfd6216a866c",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen-KR2-program-green-1166ac0d",
+          "sha": "1166ac0dfda9b64e50b656430f2ae27ea169724b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "research/pure-math-final-proof-v1",
+          "sha": "0ef6b929df77326a90533b56e53dc4987f8855e6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        }
+      ]
+    },
+    {
+      "repo": "ShantiDraconis/m-core-hodge",
+      "branch_count_scanned": 218,
+      "terminal_named_count": 41,
+      "branches": [
+        {
+          "name": "atk/auto-compose-terminal-20260930",
+          "sha": "5e6a20f4b0c5d08a93446274ec61b10ad1812f8b",
+          "classification": "CONDITIONAL_FINAL_PRODUCER",
+          "terminal_credit": 0,
+          "note": "Requires h0, concrete Lefschetz, and higher-codim H01."
+        },
+        {
+          "name": "atk/direct-terminal-20260930",
+          "sha": "0600485e962c27e3993dfb771239fb2de6400ec5",
+          "classification": "DEFINITIONAL_REDUCTION_ONLY",
+          "terminal_credit": 0,
+          "note": "Pointwise algebraicity is equivalent to the open Hodge target."
+        },
+        {
+          "name": "atk/falsified-terminal-inhabitants-20260930",
+          "sha": "216db33461c855f249c1d0189922f70b45581c0a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/h01-trivial-qbar-reduction",
+          "sha": "c7a9b46b7a71c4a0f39bf50bb8821088ea270dda",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/hodge-material-producer-gate-20260928",
+          "sha": "3a869be98e53577d7d00c30e9b46531336d8fee2",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/producer-hodge-20260928",
+          "sha": "b8f09b0f34fb44c41e63ec2390d34ed5b9688165",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk-hodge-h01-terminal-link-20260930",
+          "sha": "6f7ebabee7c84840d1fb242a73b67175128775ae",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/h01-general-algebraicity-parallel-20260921",
+          "sha": "f0fffbe0eed8bfaf0bd060317fa13f648b3790fd",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/h01-minimal-forward-payload-20260921",
+          "sha": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/h01-public-reuse-compression-20260926",
+          "sha": "f7e7d93f110ca38cc0590fd633bb733605dcae98",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/h01-quantifier-firewall-20260921",
+          "sha": "05920ca81da0b58ceda53553db65c25baf6f8ce8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/h01-universal-producer-clean-20260921",
+          "sha": "3fc162842ad03cfd4be3af0204d7950a95581d75",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/terminal-producer-20260921",
+          "sha": "f4918c01d970658e303033c1caf7c2ee0899b342",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/atk-terminal-hodge-f4918c01-20260921",
+          "sha": "a4d9172f8795030dba07beff06109b20fa5fea30",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-fail-external-9bb0b72c-run35731892187",
+          "sha": "8e8f9fca8bdff2f3050cdd1b1dfa1f0ccc1d004c",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/h01-minimal-forward-payload-42eaf7d4",
+          "sha": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/h01-quantifier-firewall-e194a1c8-run35586642093",
+          "sha": "40904a37ac87a1d28512e8c88991b23e0dc5cecd",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/h01-quantifier-firewall-v2-05920ca8",
+          "sha": "05920ca81da0b58ceda53553db65c25baf6f8ce8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/hdg-final-attack-4419293f-run35232076043",
+          "sha": "df600477006e91fe9d1b044b094b93bfab7e9f46",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/hodge-unconditional-terminal-a34b34be-run36264731921",
+          "sha": "a34b34be543b284339b5eb49ea1ae04e2f3facae",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "claim/hodge-resolution-open-math",
+          "sha": "ad6e6102cf23f04b6b26495e20aa187edcb3d6c7",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "final/fail-external-close-20260922",
+          "sha": "9bb0b72ce769746c1808b7cd49d68e63211d739e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/atk-terminal-certificate-hodge-a4d9172f",
+          "sha": "a4d9172f8795030dba07beff06109b20fa5fea30",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/final-fail-external-green-9bb0b72c",
+          "sha": "9bb0b72ce769746c1808b7cd49d68e63211d739e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/h01-minimal-forward-payload-green-42eaf7d4",
+          "sha": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/h01-quantifier-firewall-green-e194a1c8",
+          "sha": "e194a1c8acc9075ef70ee1146f256573444fe6fe",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/h01-quantifier-firewall-v2-green-05920ca8",
+          "sha": "05920ca81da0b58ceda53553db65c25baf6f8ce8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/hdg-final-attack-green-4419293f",
+          "sha": "4419293fb22fdf2943e3618f3fac8b0060f117c3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/hodge-minimal-r3-h01-reuse-green-96504a1e",
+          "sha": "96504a1e0e2cfe95c2e9b2e771ead299a3108225",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/hodge-unconditional-terminal-green-a34b34be",
+          "sha": "a34b34be543b284339b5eb49ea1ae04e2f3facae",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/inhabitant-arsenal-v1-green-771e1780",
+          "sha": "771e1780b02f32bc1f4b3c066c3d9feb0287fd4d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/producer-frontier-green-af262f2f",
+          "sha": "af262f2f85e37396808a0fb1b5bc037b8ffd38de",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/stable-hole-final-green-63be7619",
+          "sha": "63be76191caf35c637e77fe6558994832a5bf8c2",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/terminal-frontier-green-f4918c01",
+          "sha": "f4918c01d970658e303033c1caf7c2ee0899b342",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "hdg-final-attack",
+          "sha": "4419293fb22fdf2943e3618f3fac8b0060f117c3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "hdg-final-attack-build",
+          "sha": "8cc6a5f004457a47e11e981cbd1852c98f2bd5c0",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "hdg-final-cert",
+          "sha": "03e2e560205103cd27e2f73befdcec8d78ee4296",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "hdg-final-frontier-build",
+          "sha": "8cc6a5f004457a47e11e981cbd1852c98f2bd5c0",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "open-math/hodge-final-certificate-chain",
+          "sha": "07a508bf627a756393a4ed22cb40e793672e0162",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "research/pure-math-final-proof-v1",
+          "sha": "d80bb0f1228d68b0b229d5f1b29e134b2fef177a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "reset/hodge-empty-final-scaffold",
+          "sha": "01cfdfc3e36aa5d0b719675e8deb514af9e95107",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        }
+      ]
+    },
+    {
+      "repo": "ShantiDraconis/m-core-yang-mills",
+      "branch_count_scanned": 161,
+      "terminal_named_count": 41,
+      "branches": [
+        {
+          "name": "atk/auto-compose-terminal-20260930",
+          "sha": "b2e18a1ff6860932b0ced5d6e29af8ac9e3d86b2",
+          "classification": "CONDITIONAL_FINAL_PRODUCER",
+          "terminal_credit": 0,
+          "note": "Requires construction/clustering/limit/physical/K30 inputs."
+        },
+        {
+          "name": "atk/b60-triviality-audit",
+          "sha": "418dceac48f19df59fb0ac8417d69a074f71d320",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/delta-habitants-finalize-20260927",
+          "sha": "b110bc2e57ca59d08eb4b2b60b4fd7415ab64003",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-terminal-20260930",
+          "sha": "34ce6be901a84686c957b2c5877ac0053de0aaf0",
+          "classification": "TYPING_RESIDUE_ONLY",
+          "terminal_credit": 0,
+          "note": "Records missing endpoint typing, no material inhabitant."
+        },
+        {
+          "name": "atk/falsified-terminal-inhabitants-20260930",
+          "sha": "d17a7605a9fbd51a70b4311182c8f3a3c14e9dfa",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-ym-b60-inhabitant-20260928",
+          "sha": "a4c79cfde5273ed1cdea82d99530ff7999048677",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-ym-b60-k30-20260928",
+          "sha": "1019f8810369af19147c4bd35540a087e89265e8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-ym-canonical-physical-inhabitant-20260928",
+          "sha": "eb2f1b242fcb6719c370d1f0f36deb2e5494d818",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/next-ym-physical-inhabitant-20260928",
+          "sha": "ecf745b23ff2c030a634742fdabb2a051d207795",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/producer-ym-20260928",
+          "sha": "a4c79cfde5273ed1cdea82d99530ff7999048677",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/ym-b60-concrete-physical-producer-20260927",
+          "sha": "a6950ed66403034fdd0cba903f7b71460666c8d4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/ym-material-producer-gate-20260928",
+          "sha": "8f571fe81d54b572d6424c3b735ab79189db86fb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk-ym-b60-terminal-link-20260930",
+          "sha": "9f2e2a6d0d417225150a318fa71b4bc8ed635707",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/b6-terminal-witness-clean-20260921",
+          "sha": "d8a5e95ef2eadd1524c5c6a33af4a2a7d5e57bc1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/hard-ym-4d-gap-theoremkernel",
+          "sha": "7393df705e371197f24fcc0e5a9a49ab7ca56c50",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/terminal-producer-20260921",
+          "sha": "dc5b45c4b1ec9e435b76f22e156878634dfdb59c",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/typed-final-endpoint-v1",
+          "sha": "bf51318ce56b9fcb3c67c692104a37ab98661666",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/y01-4d-gap-parallel-20260921",
+          "sha": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/y01-uniform-clustering-from-gap-20260921",
+          "sha": "37acd57778dd91d7dcc6f2650cd204f43c01a3a7",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/B60-adapter-boundary-a6950ed-run35539580530",
+          "sha": "a6950ed66403034fdd0cba903f7b71460666c8d4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/FinalCore-0fefa9a9",
+          "sha": "c9694b07128e7a9e076474034bf0c8a51160b7b6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/atk-terminal-yang-mills-dc5b45c4-20260921",
+          "sha": "075c2aee62cc829fe2a5ed10579e8e8475e4d4db",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-fail-external-4f770f4c-run35731899720",
+          "sha": "17c13cdc1bdac8cb8ceba10342bea934b801cb52",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/typed-final-endpoint-2b401f28-run35432825975",
+          "sha": "89800e5cfddcde8968b356f70e77381be66c0518",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "final/fail-external-close-20260922",
+          "sha": "4f770f4c87bba94ee71fd0e83861b2257c672657",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "final-core-YM",
+          "sha": "035617b9961b59c1f93b08d7192992798be2fd0e",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/B60-adapter-boundary-green-a6950ed",
+          "sha": "a6950ed66403034fdd0cba903f7b71460666c8d4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/atk-terminal-certificate-yang-mills-075c2aee",
+          "sha": "075c2aee62cc829fe2a5ed10579e8e8475e4d4db",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/b60-triviality-green-418dceac",
+          "sha": "418dceac48f19df59fb0ac8417d69a074f71d320",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/final-fail-external-green-4f770f4c",
+          "sha": "4f770f4c87bba94ee71fd0e83861b2257c672657",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/inhabitant-arsenal-v1-green-a1a04873",
+          "sha": "a1a04873b0bc46dd7084ba0805e29a0b9a1d65fc",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/next-b60-k30-kernel-green-1019f881",
+          "sha": "1019f8810369af19147c4bd35540a087e89265e8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/physical-gap-propagation-green-a4c79cfd",
+          "sha": "a4c79cfde5273ed1cdea82d99530ff7999048677",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/producer-frontier-green-4f668160",
+          "sha": "4f6681605f38c91e15539049cfb04c885bb7a19b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/terminal-frontier-green-dc5b45c4",
+          "sha": "dc5b45c4b1ec9e435b76f22e156878634dfdb59c",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/typed-final-endpoint-green-2b401f28",
+          "sha": "2b401f28942221beb36256b9d8ce9c44cc2b9c6d",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/ym-b60-triviality-firewall-green-418dceac",
+          "sha": "418dceac48f19df59fb0ac8417d69a074f71d320",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/ym-physical-inhabitant-frontier-green-ecf745b2",
+          "sha": "ecf745b23ff2c030a634742fdabb2a051d207795",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/ym-uniform-gap-to-mass-green-a4c79cfd",
+          "sha": "a4c79cfde5273ed1cdea82d99530ff7999048677",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen-FinalCore-green-0fefa9a9",
+          "sha": "0fefa9a9d04a56e52e4c92dd99eac61884ddf0e4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "research/pure-math-final-proof-v1",
+          "sha": "a78856017c7f94b029f6f5a98cb47ade91a20262",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        }
+      ]
+    },
+    {
+      "repo": "ShantiDraconis/m-core-beal",
+      "branch_count_scanned": 219,
+      "terminal_named_count": 35,
+      "branches": [
+        {
+          "name": "atk/auto-compose-terminal-20260930",
+          "sha": "a5cdee1b1d7fab66cccfdb9c75d3a7ecca49b9c4",
+          "classification": "EQUIVALENT_OR_STRONGER_INPUT_PROMOTION",
+          "terminal_credit": 0,
+          "note": "Requires GCD lower bound/T35/T42 input."
+        },
+        {
+          "name": "atk/beal-b01-local-conductor-producer-20260927",
+          "sha": "c854d84b18a179174bd86bedeebcd41fc292a3e5",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/beal-material-producer-gate-20260928",
+          "sha": "4dd1d0b70e92d16ec943c732302f67288a2ebe07",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/direct-terminal-20260930",
+          "sha": "b339f0432a7ca9ee4770c5c1786a8bb20472ad14",
+          "classification": "EQUIVALENCE_ONLY",
+          "terminal_credit": 0,
+          "note": "CommonDivisor/GCD producer equivalences, no inhabitant."
+        },
+        {
+          "name": "atk/falsified-terminal-inhabitants-20260930",
+          "sha": "47fbe7271fa9e481d3b9895dd1dd251dbb8f0db6",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "atk/producer-beal-20260928",
+          "sha": "6a93c01828afe982ba6298cd2ff4e179b949edb1",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/beal-final-math-chain-v1",
+          "sha": "7a228b8a2ae08eb59d73b064b019004c4ed937ef",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/beal-gcd-endpoint-equivalence-20260927",
+          "sha": "c77d441fc4bb0837a4afdeef18d3ccb9b1d64905",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/beal-open-math-inhabitants-v1",
+          "sha": "5507b02eeb54e4a77111b7bd1868d8350f7589da",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/t35-all-gaps-fail-proof-20260920",
+          "sha": "d9b294c8c77172ba3bab7a7fd077d55f1fcfd302",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/t36-t42-gap-frontiers-20260920",
+          "sha": "5f2e37823d44362415d852eea509c00809499aa3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/terminal-producer-20260921",
+          "sha": "28c91aead437715f7e5938908e61347e5b4543e8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "attack/triple-gcd-equivalence-20260921",
+          "sha": "73f1fd7b2a692ea857acaea70e18745f08878c2a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/atk-terminal-beal-73f1fd7b-20260921",
+          "sha": "0a0819ea3800d1a9cf40c2888eb971ad35dda188",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/beal-final-math-chain-213c5dc1",
+          "sha": "213c5dc100611578c5b7a9e5a28400d9a4fd670f",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/beal-open-math-frontier-3cc642c4",
+          "sha": "3cc642c493ab19299d9ef162570db10266d577eb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert/final-fail-external-3d8da613-run35731887129",
+          "sha": "2249ef10346f134b040d2cbf532ab3815ac9b65f",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "claim/beal-three-lane-final-v1",
+          "sha": "c4fd0f508adff4b3e53749f8dce6b7410187ea99",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "final/fail-external-close-20260922",
+          "sha": "3d8da613f46201c8750df3c5f2ea96ce144a1770",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/atk-terminal-certificate-beal-0a0819ea",
+          "sha": "0a0819ea3800d1a9cf40c2888eb971ad35dda188",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/beal-final-math-chain-green-213c5dc1",
+          "sha": "213c5dc100611578c5b7a9e5a28400d9a4fd670f",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/beal-open-math-frontier-green-3cc642c4",
+          "sha": "3cc642c493ab19299d9ef162570db10266d577eb",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/final-fail-external-green-3d8da613",
+          "sha": "3d8da613f46201c8750df3c5f2ea96ce144a1770",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/gcd-lower-bound-producer-green-d6fe130c",
+          "sha": "d6fe130c44ef91e0f8ceb6b15a6548f186e381fd",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/inhabitant-arsenal-v1-green-5b72e821",
+          "sha": "5b72e821f0305b3671b75a28a2415e6b98cdfb62",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/material-producer-common-divisor-green-4231b50f",
+          "sha": "4231b50fe9daa1c05485e2b051090b569c8da5e4",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/material-producer-refined-green-021311a8",
+          "sha": "021311a89528494e1fca527585e00716e6f6f32b",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/t23-gap-depth-green-9adaa82",
+          "sha": "9adaa8234023537c8536342f50bac86219e45de3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/t35-all-gaps-fail-proof-green-d9b294c",
+          "sha": "d9b294c8c77172ba3bab7a7fd077d55f1fcfd302",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/t36-t42-gap-ledger-green-5f2e378",
+          "sha": "5f2e37823d44362415d852eea509c00809499aa3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/terminal-producer-green-2d2d60dd",
+          "sha": "2d2d60dde21e9af41ce07e2e8d595017deef4ede",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/triple-gcd-equivalence-green-73f1fd7b",
+          "sha": "73f1fd7b2a692ea857acaea70e18745f08878c2a",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/triple-gcd-terminal-green-28c91aea",
+          "sha": "28c91aead437715f7e5938908e61347e5b4543e8",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "meta/finalproof-frontier-map-v1",
+          "sha": "5f12bdbe08be422c7943af1e419fb1588700bab3",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "research/pure-math-final-proof-v1",
+          "sha": "a592aba90040cb8dd3e1061bb0ae619218dfd9ad",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        }
+      ]
+    },
+    {
+      "repo": "ShantiDraconis/M-Navier-Stokes",
+      "branch_count_scanned": 55,
+      "terminal_named_count": 3,
+      "branches": [
+        {
+          "name": "attack/g5-direct-full-20260921",
+          "sha": "3a46cb7efb7aee0659ea6035116df8772cac7673",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "cert-final/a2-2-reconstruction",
+          "sha": "fd4b41c7efd5c0de85e17795bff9a920c166b113",
+          "classification": "UNCLASSIFIED_REQUIRES_AUDIT",
+          "terminal_credit": 0
+        },
+        {
+          "name": "frozen/g5-direct-source-green-3a46cb7e",
+          "sha": "3a46cb7efb7aee0659ea6035116df8772cac7673",
+          "classification": "TYPED_OPEN_MATH",
+          "terminal_credit": 0,
+          "note": "G5 direct producer equivalence; theta/L1/raw production remain."
+        }
+      ]
+    }
+  ]
+}
