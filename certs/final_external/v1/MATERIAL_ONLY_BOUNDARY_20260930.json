@@ -5,7 +5,7 @@
   "source_branch": "atk/material-only-final-root-20260930",
   "global": {
     "material_open_count": 7,
-    "mechanical_open_count": 4,
+    "mechanical_open_count": 1,
     "final_proof": "0/7",
     "rule": "A lane receives FINAL_PROOF credit only when its material producer is genuinely inhabited and the existing downstream consumer is kernel checked. Mechanical assembly never increments OPEN_MATH."
   },
@@ -53,27 +53,27 @@
   },
   "p_vs_np_mechanical_closure": {
     "class": "MECHANICAL_PENDING_NOT_OPEN_MATH",
-    "recovered_candidate": {
-      "target": "preserving arbitrary unary-index witness read",
-      "source_repo": "ShantiDraconis/m-core-p-vs-np",
-      "source_sha": "dfe9aec4e85a8e97bb02ed2240504d54e7f0fbc1",
-      "theorem": "preservingRead_forall",
-      "state": "RECOVERED_CANDIDATE_REQUIRES_PROMOTION_AUDIT"
-    },
-    "remaining": [
-      "link preservingRead_forall into input-node evalStep refinement",
-      "prove one global physical verifier run refining frozen evalRun",
-      "compose parser + witness guess + verifier into one fixed finite-control NTM",
-      "prove one polynomial HaltsWithin bound and AcceptsWithin iff SATBits circuitBitEncoding"
+    "exact_min_cut": "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
+    "already_closed": [
+      "P01WitnessPrepGlobal.prepPhase",
+      "P01IntegratedAssembly.p01_of_verifier",
+      "canonical checked verifier exact cubic time bound",
+      "canonical checked verifier HaltsWithin at the fixed global bound",
+      "canonical checked verifier AcceptsWithin iff VerifyBits",
+      "short-tag and truncated-unary raw fail-closed cases"
     ],
-    "endpoint": "P01ConstructionGap / Nonempty P01MachineConstruction"
+    "remaining": [
+      "prove uniform fail-closed halting/nonacceptance for every noncanonical raw source not already covered",
+      "package checkedVerifierFinMachine with that total raw+canonical theorem as P01VerifierPhase prepPhase.layout"
+    ],
+    "endpoint": "P01ConstructionGap follows immediately by p01_of_verifier"
   },
   "p_vs_np_final_external": {
     "material_blockers": [
       "G21Pointwise"
     ],
     "mechanical_blockers": [
-      "P01ConstructionGap"
+      "P01VerifierPhase prepPhase.layout"
     ],
     "wiring_closed": [
       "G2.2 wiring",
@@ -81,7 +81,7 @@
       "FinalExternal integration",
       "FinalExternalTwoGap reduction"
     ],
-    "closure_chain": "P01ConstructionGap (mechanical) + G21Pointwise (material) -> FinalExternalGap -> OfficialPneqNP -> FINAL_ROOT_MATH",
+    "closure_chain": "P01VerifierPhase prepPhase.layout (mechanical) -> P01ConstructionGap; together with G21Pointwise (material) -> FinalExternalGap -> OfficialPneqNP -> FINAL_ROOT_MATH",
     "final_root_math": null,
     "final_root": null,
     "final_external_issued": false
