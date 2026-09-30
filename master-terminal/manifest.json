@@ -51,20 +51,26 @@
       "operational_repo": "ShantiDraconis/m-core-p-vs-np",
       "canonical_producer": "P01ConstructionGap + G21Pointwise / genuine not_in_p lower-bound producer",
       "latest_observed_run": {
-        "id": 36689429136,
+        "id": 36697548972,
         "name": "certificate",
-        "conclusion": "failure",
-        "sha": "660722ee0b05a466016e83e32405c1254d216535"
+        "conclusion": "success",
+        "sha": "2b00561e72422dffda8841b830e71683212aef21"
       },
-      "build_state": "RED",
-      "exact_blocker": "P01CheckedVerifierRun.lean has type mismatches; terminal declarations still expose sorryAx",
+      "build_state": "GREEN_PREFIX_NOT_TERMINAL",
+      "exact_blocker": "Checked verifier whole-run layer now builds and its audited endpoint declarations have no sorryAx; P01ConstructionGap and G21Pointwise remain unregistered as terminal inhabitants.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
         "official_consumer_linked": false,
         "theorem": null
       },
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "additional_observed_run": {
+        "id": 36697548964,
+        "name": "fail-proof-all-gaps",
+        "conclusion": "success",
+        "sha": "2b00561e72422dffda8841b830e71683212aef21"
+      }
     },
     {
       "slot": "BSD",
