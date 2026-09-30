@@ -1,0 +1,509 @@
+{
+  "schema": "mcore.owned-repository-inventory.v1",
+  "generated_at": "2026-09-30",
+  "owner": "ShantiDraconis",
+  "count": 100,
+  "policy": "Every owned repository is inventoried. Only the seven canonical terminal lanes may contribute terminal credit; all other repositories are source/support only unless explicitly reclassified by a reviewed manifest change.",
+  "repositories": [
+    {
+      "repo": "ShantiDraconis/-millennium-bsd-hodge-yangmills-I",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/-sbfe-physics-unified",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/0-0",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/0-0-FORMAL-SUITE",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/00-limit-foundation",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/archetypes-humanity",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Archive-Mystic-Silence",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Archive-Royal-Blue",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/art-00-vision",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/axiomatic-millenium",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Beit-Hamikdash-iii",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/cardinality-and-infinity",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Ceremony-OS",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/closed-loop-engineering-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Codex_Indeterminancy",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/collapse-lemma-rh.lean",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/collatz_reverse-tree",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/complexity-collapse-pnp",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/consciousness-symbolic-model-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/continuum-fields-indeterminacy",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/copilot-cli",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/cosmic-geometry-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/creative-direction-portfolio-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/critical-bridge-formalization-private",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/cryptographic-logic-foundations",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/digital-fire-la28",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/discrete-dynamics-indeterminacy",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/dmt-timelines-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Eclectic_S",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Elyon-Public-Proof",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/emergent-complexity-N-NP",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/emergent-identity-framework",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/emergent-identity-rh",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/equations-of-unsolved-problems-book",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/federated-trivalent-manifold",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Genesis_Elyon",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/global-systems-lab",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/harappan-00-universal",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Harappan-guilds-0-0",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/harappan-unified-audit-",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/harappan-universal-dictionary",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-bsd",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-framework",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-hodge",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-lean",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-ns",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-numerics",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-pnp",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-rh",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-singularities-millennium-problems",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hawking-ym",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Heu-7-universal-framework",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/horizon-prime---framework",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Horizon_Prime_-framework",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hotel-lunar-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/hotel-terra-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/i-constant-core",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/i-foundations.lean",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/I-Framework-Nexus",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/i-theology-unified",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/identity-fields-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/indeterminate-collapse-core",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/indus-operational-mathematics",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Indus-System",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/infinite-energy-reactor-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/installations-design-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/invariance-signature-framework",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/LA-2008-R-",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/latex-library-global",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lc-rh-coercivity",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lean-audit-kit",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lean-cursor-shuttle",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lean-fin-composition",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lean-preserving-read",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lean-refinement-bridge",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lean-uniform-bounds",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lean-winwin-logic",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lighting-narrative-lab",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lighting-tech-portfolio-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/linguistic-universal-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Lunar-Hive",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Lunar-Hive-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/M-Core",
+      "role": "orchestrator",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/m-core-beal",
+      "role": "terminal_lane",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/m-core-bsd",
+      "role": "terminal_lane",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/m-core-hodge",
+      "role": "terminal_lane",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/m-core-openai-ns-audit",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "role": "terminal_lane",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/m-core-riemann",
+      "role": "terminal_lane",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/m-core-yang-mills",
+      "role": "terminal_lane",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/M-Navier-Stokes",
+      "role": "terminal_lane",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/M-private",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Marella-RWS-Evidence-Repository",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/maritimo-delta-estrela-k13",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Meta-mathematical-foundation-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/meta-mathematics-indeterminate-I",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Meta-millenium-independence-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/metalogic-infinity-00",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/metaos-operational-system",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/Millenium--core",
+      "role": "source_or_support",
+      "terminal_credit": 0
+    }
+  ]
+}
