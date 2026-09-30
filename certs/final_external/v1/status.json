@@ -4,9 +4,9 @@
   "version": "v1.0.0",
   "issuance": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "reason": "Fail-closed: the mathematical pipeline is now GREEN/FROZEN/CERTIFIED through the FinalExternalTwoGap reduction, so only two mathematical producers remain: P01ConstructionGap and G21Pointwise (equivalent to SAT not in P). G3 and G2.2 wiring are closed. Product/human issuance gates remain governed separately.",
+    "reason": "Fail-closed material-only accounting: G21Pointwise is the sole OPEN_MATH producer for the P vs NP FINAL_EXTERNAL lane. P01ConstructionGap remains a separate mechanical implementation blocker. G2.2, G3 and FinalExternalTwoGap wiring are closed.",
     "infra_state": "READY_FOR_FREEZE",
-    "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
+    "math_state": "OPEN_MATH_ONE_EXACT_PRODUCER",
     "release_state": "SEALED_CLOSED",
     "max_machine_state": "REVIEW_PENDING",
     "public_status": "PREPARATORY_NOT_ISSUED",
@@ -16,7 +16,8 @@
       "REPRODUCIBILITY_AUDITED",
       "FROZEN_PREPARATORY"
     ],
-    "not_possible": "FINAL_EXTERNAL_ISSUED"
+    "not_possible": "FINAL_EXTERNAL_ISSUED",
+    "mechanical_state": "P01_MECHANICAL_CLOSURE_PENDING"
   },
   "human_review": {
     "authority": "UNSET",
@@ -43,75 +44,50 @@
     "ELYON_FINAL_EXTERNAL": "v1.0.0",
     "package_state": "PREPARATORY",
     "infra_state": "READY_FOR_FREEZE",
-    "math_state": "OPEN_MATH",
+    "math_state": "OPEN_MATH_ONE_EXACT_PRODUCER",
     "final_proof": "0/7",
     "release_state": "SEALED_CLOSED",
     "maximum_auto_state": "REVIEW_PENDING",
     "FINAL_EXTERNAL_ISSUED": false,
     "P01_PREFIX": "GREEN_FROZEN_CERTIFIED_THROUGH_TERMINAL_BRANCHES_AND_GLOBAL_SLOTLOG",
-    "P01_ENDPOINT": "OPEN_IMPLEMENTATION_P01_CONSTRUCTION",
+    "P01_ENDPOINT": "MECHANICAL_PENDING_P01_CONSTRUCTION",
     "P02_FRONTIER": "G2_1_LITERAL_CLOSED_BY_FALSIFICATION__G2_2_WIRING_GREEN_FROZEN_CERTIFIED",
     "P02_ENDPOINT": "OPEN_MATH_G21_POINTWISE_EQ_FAILURE_GENERATOR_EQ_SAT_NOT_IN_P",
     "P03..P07": "OPEN_MATH",
     "G3": "CLOSED_GREEN_FROZEN_CERTIFIED",
-    "FINAL_EXTERNAL_MATH_INPUTS": "EXACT_TWO_PRODUCERS_REMAIN_P01ConstructionGap_AND_G21Pointwise",
-    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED",
-    "FINAL_EXTERNAL_TWO_GAP_PROGRESS": "0/2",
+    "FINAL_EXTERNAL_MATH_INPUTS": "ONE_MATERIAL_PRODUCER_G21Pointwise",
+    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED_TWO_INPUT_REDUCTION__ONE_MATERIAL_ONE_MECHANICAL",
+    "FINAL_EXTERNAL_TWO_GAP_PROGRESS": "0/2 operational blockers; 0/1 material producer",
     "P_VS_NP_ENDPOINT": "OPEN",
     "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
     "FINAL_ROOT_MATH": null,
-    "GLOBAL_7_PROBLEMS_FINAL_PROOF": "0/7"
+    "GLOBAL_7_PROBLEMS_FINAL_PROOF": "0/7",
+    "FINAL_EXTERNAL_MECHANICAL_INPUTS": "P01ConstructionGap"
   },
   "package_revision": "v1.3.1-preparatory",
   "freeze_state": "FROZEN_PREPARATORY",
   "math_terminal_boundary": {
-    "record": "MATH_TERMINAL_BOUNDARY_20260922.json",
-    "frozen_branch": "frozen/final-external-math-boundary-442d11aa",
-    "p01": "OPEN_IMPLEMENTATION_P01_CONSTRUCTION",
+    "record": "MATERIAL_ONLY_BOUNDARY_20260930.json",
+    "legacy_record": "MATH_TERMINAL_BOUNDARY_20260922.json",
+    "policy": "WIRING_IS_NOT_OPEN_MATH",
+    "p01": "MECHANICAL_PENDING_P01_CONSTRUCTION",
     "p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
-    "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
-    "latest_main_record_commit": "2df65e9c2e10ba8f920751b1202b161322425925",
-    "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
-    "two_gap_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
-    "exact_remaining_producers": [
-      "P01ConstructionGap",
+    "material_blockers": [
       "G21Pointwise"
     ],
-    "certified_delta": {
-      "p01_terminal_branches": {
-        "source_sha": "f9add60881d709ce8320cb54a4d52f26d829b8f5",
-        "run": 35722846538,
-        "frozen_branch": "frozen/p01-terminal-branches-green-f9add608"
-      },
-      "p01_global_slotlog_spec": {
-        "source_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
-        "run": 35723570545,
-        "frozen_branch": "frozen/p01-global-slotlog-spec-green-614f88fe"
-      },
-      "p02_g2_2_wiring": {
-        "source_sha": "38db71b416906e5b7138774842e91d3e367aad09",
-        "run": 35722282451,
-        "frozen_branch": "frozen/p02-g2-2-wiring-green-38db71b4"
-      },
-      "final_external_integration": {
-        "source_sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
-        "run": 35722252805,
-        "frozen_branch": "frozen/final-external-integration-green-c102d9d4"
-      },
-      "final_external_two_gap": {
-        "source_sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
-        "run": 35722743845,
-        "frozen_branch": "frozen/final-external-two-gap-green-b406b806"
-      }
-    },
-    "interface_policy": "INTERFACE_ONLY_FAIL_CLOSED_NO_PROOF_FABRICATION",
-    "certified_source_policy": "NO_SORRY_ADMIT_AXIOM_PLACEHOLDERS",
-    "taxonomy": "TWO_GAP_0_OF_2__P_VS_NP_ENDPOINT_OPEN__GLOBAL_0_OF_7"
+    "mechanical_blockers": [
+      "P01ConstructionGap"
+    ],
+    "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "two_input_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "interface_policy": "INTERFACE_ONLY_FAIL_CLOSED_NO_PROOF_FABRICATION"
   },
   "taxonomy": {
     "FINAL_EXTERNAL_TWO_GAP": {
-      "progress": "0/2",
-      "P01ConstructionGap": "OPEN_IMPLEMENTATION",
+      "operational_progress": "0/2",
+      "material_progress": "0/1",
+      "P01ConstructionGap": "MECHANICAL_PENDING",
       "G21Pointwise": "OPEN_MATH"
     },
     "P_VS_NP_ENDPOINT": "OPEN",
