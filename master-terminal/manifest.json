@@ -49,15 +49,15 @@
     {
       "slot": "P_VS_NP",
       "operational_repo": "ShantiDraconis/m-core-p-vs-np",
-      "canonical_producer": "P01ConstructionGap + G21Pointwise / genuine not_in_p lower-bound producer",
+      "canonical_producer": "P01ConstructionGap ∧ Nonempty (FailureGenerator (SATBits circuitBitEncoding)) in the hardened fixed finite-control canonical-input model",
       "latest_observed_run": {
         "id": 36697548972,
         "name": "certificate",
         "conclusion": "success",
         "sha": "2b00561e72422dffda8841b830e71683212aef21"
       },
-      "build_state": "GREEN_PREFIX_NOT_TERMINAL",
-      "exact_blocker": "Checked verifier whole-run layer now builds and its audited endpoint declarations have no sorryAx; P01ConstructionGap and G21Pointwise remain unregistered as terminal inhabitants.",
+      "build_state": "P01_MATERIAL_CANDIDATE_PENDING_CI__P02_OPEN_MATH",
+      "exact_blocker": "P01 now has a no-hypothesis material candidate theorem on the physical decoder-failure chain, but its material gate is still queued and therefore is not promoted. Independently, P02 remains the genuine lower-bound producer: one explicit canonical bitstring counterexample for every deterministic polynomial-time candidate.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
@@ -70,7 +70,32 @@
         "name": "fail-proof-all-gaps",
         "conclusion": "success",
         "sha": "2b00561e72422dffda8841b830e71683212aef21"
-      }
+      },
+      "material_subfrontier": {
+        "p01": {
+          "state": "CANDIDATE_PENDING_CI",
+          "branch": "atk/p01-material-inhabitant-frontier-20260930",
+          "sha": "8a80c4914d366ae0c4314ad7a21c4db48bc16522",
+          "theorem": "MCore.Real.P01TerminalCertificate.p01ConstructionGap",
+          "audit_run": 36792394294,
+          "audit_status": "queued",
+          "terminal_credit": 0
+        },
+        "p02": {
+          "state": "OPEN_MATH",
+          "exact_type": "Nonempty (FailureGenerator (SATBits circuitBitEncoding))",
+          "equivalent_type": "UniversalFailure (SATBits circuitBitEncoding)",
+          "hardened_boundary_branch": "atk/hardened-final-boundary-20261001",
+          "hardened_boundary_sha": "a72561ede8d806c2169a96f23510742f974f50f5",
+          "boundary_audit_run": 36792630009,
+          "boundary_audit_status": "queued",
+          "terminal_credit": 0
+        }
+      },
+      "firewalls": [
+        "Legacy arbitrary-encoder PolyDTMCandidate lower-bound target is formally uninhabited and is not admissible for terminal credit.",
+        "Literal same-input Cook-Levin fixed-point transport is blocked by a strict encoding-length theorem; that route is not an admissible P02 producer."
+      ]
     },
     {
       "slot": "BSD",
