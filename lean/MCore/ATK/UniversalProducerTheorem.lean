@@ -165,7 +165,7 @@ def normalizeFuel : Nat → L.State → L.State
       if h : L.defect x = 0 then
         x
       else
-        normalizeFuel L n (L.step x)
+        normalizeFuel n (L.step x)
 
 /-- Sufficient fuel forces the normalizer to a zero-defect state. -/
 theorem normalizeFuel_defect_zero
@@ -184,8 +184,7 @@ theorem normalizeFuel_defect_zero
           L.contract x hpos
         have hnext : L.defect (L.step x) ≤ n := by
           omega
-        change L.defect (normalizeFuel L n (L.step x)) = 0
-        exact ih (L.step x) hnext
+        simpa [normalizeFuel, hz] using ih (L.step x) hnext
 
 /-- Canonical normal form reached using exactly the initial defect as fuel. -/
 def normalize (x : L.State) : L.State :=
