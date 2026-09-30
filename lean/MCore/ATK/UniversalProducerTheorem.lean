@@ -72,6 +72,70 @@ def toStructuralCore : StructuralCore where
   contract := L.contract
 
 /--
+Fuel-bounded normalizer for one producer lane.
+
+The fuel will be instantiated by the current defect.  A zero-defect state is
+frozen; otherwise the unique forward structural step is taken.
+-/
+def normalizeFuel : Nat → L.State → L.State
+  | 0, x => x
+  | n + 1, x =>
+      if h : L.defect x = 0 then
+        x
+      else
+        L.normalizeFuel n (L.step x)
+
+/-- Sufficient fuel forces the normalizer to a zero-defect state. -/
+theorem normalizeFuel_defect_zero
+    (n : Nat) (x : L.State)
+    (hbound : L.defect x ≤ n) :
+    L.defect (L.normalizeFuel n x) = 0 := by
+  induction n generalizing x with
+  | zero =>
+      have hz : L.defect x = 0 := Nat.eq_zero_of_le_zero hbound
+      simp [normalizeFuel, hz]
+  | succ n ih =>
+      by_cases hz : L.defect x = 0
+      · simp [normalizeFuel, hz]
+      · have hpos : 0 < L.defect x := Nat.pos_of_ne_zero hz
+        have hdec : L.defect (L.step x) < L.defect x :=
+          L.contract x hpos
+        have hnext : L.defect (L.step x) ≤ n := by
+          omega
+        simp [normalizeFuel, hz, ih (L.step x) hnext]
+
+/-- Canonical normal form reached using exactly the initial defect as fuel. -/
+def normalize (x : L.State) : L.State :=
+  L.normalizeFuel (L.defect x) x
+
+theorem normalize_defect_zero
+    (x : L.State) :
+    L.defect (L.normalize x) = 0 := by
+  unfold normalize
+  exact L.normalizeFuel_defect_zero (L.defect x) x (Nat.le_refl _)
+
+/-- The canonical normal form is frozen under the lane step. -/
+theorem normalize_fixed
+    (x : L.State) :
+    L.step (L.normalize x) = L.normalize x :=
+  L.freeze (L.normalize x) (L.normalize_defect_zero x)
+
+/--
+Constructive terminal inhabitant producer.
+
+Unlike inhabitant_after_steps below, this definition returns the actual
+inhabitant term rather than only proving Nonempty.
+-/
+def produceInhabitant
+    (x : L.State) : L.Inhabitant :=
+  L.extract (L.normalize x) (L.normalize_defect_zero x)
+
+/-- Constructive terminal certificate producer. -/
+def produceCertificate
+    (x : L.State) : L.Certificate :=
+  L.certify (L.produceInhabitant x)
+
+/--
 Finite-time exact producer theorem for one lane.
 
 The result is not merely structural vanishing: the lane-specific extract
@@ -133,6 +197,49 @@ structure UniversalProducerKernel where
 /-- One concrete starting state for every problem lane. -/
 structure UniversalSeed (K : UniversalProducerKernel) where
   state : (p : ProblemKind) → (K.lane p).State
+
+/-- Concrete inhabitant term for every lane. -/
+structure UniversalInhabitantBundle (K : UniversalProducerKernel) where
+  inhabitant : (p : ProblemKind) → (K.lane p).Inhabitant
+
+/-- Concrete certificate term for every lane: the abstract universal final root. -/
+structure UniversalFinalRoot (K : UniversalProducerKernel) where
+  certificate : (p : ProblemKind) → (K.lane p).Certificate
+
+/-- Build all seven concrete inhabitants by running each lane normalizer. -/
+def buildInhabitantBundle
+    (K : UniversalProducerKernel)
+    (S : UniversalSeed K) :
+    UniversalInhabitantBundle K where
+  inhabitant := fun p =>
+    (K.lane p).produceInhabitant (S.state p)
+
+/-- Build the abstract universal final root from the same exact producers. -/
+def buildFinalRoot
+    (K : UniversalProducerKernel)
+    (S : UniversalSeed K) :
+    UniversalFinalRoot K where
+  certificate := fun p =>
+    (K.lane p).produceCertificate (S.state p)
+
+/--
+External issuance is intentionally a separate interface.
+
+The universal mathematical kernel may build the final-root payload, but an
+external certificate format/authority must provide its own issuance map.
+-/
+structure ExternalCertificateInterface
+    (K : UniversalProducerKernel) where
+  ExternalCertificate : Type
+  issue : UniversalFinalRoot K → ExternalCertificate
+
+/-- Generic external certificate issuance after the universal final root exists. -/
+def issueExternalCertificate
+    (K : UniversalProducerKernel)
+    (S : UniversalSeed K)
+    (E : ExternalCertificateInterface K) :
+    E.ExternalCertificate :=
+  E.issue (buildFinalRoot K S)
 
 /-- All seven exact terminal inhabitant types are inhabited. -/
 def AllInhabitants
@@ -232,9 +339,16 @@ theorem no_positive_defect_self_loop
 
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.step_ne_self_of_positive
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.defect_eq_zero_of_fixed
+#print axioms MCore.ATK.UniversalProducer.ProducerLane.normalizeFuel_defect_zero
+#print axioms MCore.ATK.UniversalProducer.ProducerLane.normalize_defect_zero
+#print axioms MCore.ATK.UniversalProducer.ProducerLane.produceInhabitant
+#print axioms MCore.ATK.UniversalProducer.ProducerLane.produceCertificate
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.inhabitant_after_steps
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.certificate_after_steps
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.fixed_iff_zero
+#print axioms MCore.ATK.UniversalProducer.buildInhabitantBundle
+#print axioms MCore.ATK.UniversalProducer.buildFinalRoot
+#print axioms MCore.ATK.UniversalProducer.issueExternalCertificate
 #print axioms MCore.ATK.UniversalProducer.universal_inhabitant_theorem
 #print axioms MCore.ATK.UniversalProducer.universal_certificate_theorem
 #print axioms MCore.ATK.UniversalProducer.universal_bounded_production
