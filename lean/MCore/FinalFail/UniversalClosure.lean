@@ -99,6 +99,33 @@ theorem sevenEndpoints_iff_forall
   · exact SevenEndpoints.at
   · exact SevenEndpoints.ofForall
 
+/-- A proposed stronger route is legitimate only when it projects to the
+already-pinned material core. This prevents a new symbol from being counted as
+progress merely because it resembles the endpoint. -/
+structure ProducerAdapter
+    (Core : Prop) where
+  Candidate : Prop
+  projects : Candidate → Core
+
+/-- Exact adapters additionally prove that no mathematical content was lost or
+added by the reformulation. -/
+structure ExactProducerAdapter
+    (Core : Prop) extends ProducerAdapter Core where
+  reflects : Core → Candidate
+
+theorem candidate_closes_core
+    {Core : Prop}
+    (A : ProducerAdapter Core)
+    (h : A.Candidate) :
+    Core :=
+  A.projects h
+
+theorem exact_candidate_iff_core
+    {Core : Prop}
+    (A : ExactProducerAdapter Core) :
+    A.Candidate ↔ Core :=
+  ⟨A.projects, A.reflects⟩
+
 /-- Consumer-only kernel. No field is allowed to assert a Core. -/
 structure UniversalKernel where
   Core : ProblemId → Prop
@@ -116,6 +143,26 @@ theorem universal_closure
     (h : SevenInhabitants K.Core) :
     SevenEndpoints K.Endpoint := by
   exact SevenEndpoints.ofForall (fun p => K.consume p (h.at p))
+
+/-- A family of the pre-existing local rigid nuclei aligned by ProblemId. -/
+structure UniversalNucleusFamily where
+  nucleus : ProblemId → OpenRigidNucleus
+  aligned : ∀ p, (nucleus p).problem = p
+
+def UniversalNucleusFamily.toKernel
+    (F : UniversalNucleusFamily) :
+    UniversalKernel where
+  Core := fun p => (F.nucleus p).Core
+  Endpoint := fun p => (F.nucleus p).Endpoint
+  consume := fun p => (F.nucleus p).core_to_endpoint
+
+/-- Explicit connection law: once each local nucleus has its real Core
+inhabitant, all endpoint reconstruction is pure composition. -/
+theorem universal_nucleus_closure
+    (F : UniversalNucleusFamily)
+    (h : SevenInhabitants F.toKernel.Core) :
+    SevenEndpoints F.toKernel.Endpoint :=
+  universal_closure F.toKernel h
 
 /-- Exact universal closure is logically equivalent to the seven material
 inhabitants when every lane has a checked reflection map. -/
@@ -164,7 +211,10 @@ theorem universal_final_root_has_all_endpoints
     ∀ p, K.Endpoint p :=
   h.endpoints.at
 
+#print axioms MCore.FinalFail.Universal.candidate_closes_core
+#print axioms MCore.FinalFail.Universal.exact_candidate_iff_core
 #print axioms MCore.FinalFail.Universal.universal_closure
+#print axioms MCore.FinalFail.Universal.universal_nucleus_closure
 #print axioms MCore.FinalFail.Universal.exact_universal_closure_iff
 #print axioms MCore.FinalFail.Universal.universal_final_root
 
