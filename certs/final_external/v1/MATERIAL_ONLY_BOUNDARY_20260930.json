@@ -54,19 +54,25 @@
   "p_vs_np_mechanical_closure": {
     "class": "MECHANICAL_PENDING_NOT_OPEN_MATH",
     "exact_min_cut": "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
-    "already_closed": [
+    "structurally_closed": [
       "P01WitnessPrepGlobal.prepPhase",
-      "P01IntegratedAssembly.p01_of_verifier",
-      "canonical checked verifier exact cubic time bound",
-      "canonical checked verifier HaltsWithin at the fixed global bound",
-      "canonical checked verifier AcceptsWithin iff VerifyBits",
-      "short-tag and truncated-unary raw fail-closed cases"
+      "P01IntegratedAssembly.p01_of_verifier: P01VerifierPhase prepPhase.layout -> P01ConstructionGap"
     ],
+    "candidate_not_promoted": {
+      "branch": "atk/p01-raw-mincut-20260930",
+      "workflow_run": 36784079760,
+      "state": "RED_BASE_INTEGRITY",
+      "reason": [
+        "clean build missing CanonicalSATSlotParserSpec.lean required by P01RawSourceSplit",
+        "P01ExactBoundedCircuitProducer has unresolved helper identifiers/type/budget goals",
+        "input_exact_bounded_certificate footprint reported sorryAx"
+      ]
+    },
     "remaining": [
-      "prove uniform fail-closed halting/nonacceptance for every noncanonical raw source not already covered",
-      "package checkedVerifierFinMachine with that total raw+canonical theorem as P01VerifierPhase prepPhase.layout"
+      "construct one kernel-clean P01VerifierPhase prepPhase.layout from a self-contained verifier source",
+      "then apply p01_of_verifier; no further integration/wiring theorem is required"
     ],
-    "endpoint": "P01ConstructionGap follows immediately by p01_of_verifier"
+    "endpoint": "P01ConstructionGap"
   },
   "p_vs_np_final_external": {
     "material_blockers": [
@@ -81,7 +87,7 @@
       "FinalExternal integration",
       "FinalExternalTwoGap reduction"
     ],
-    "closure_chain": "P01VerifierPhase prepPhase.layout (mechanical) -> P01ConstructionGap; together with G21Pointwise (material) -> FinalExternalGap -> OfficialPneqNP -> FINAL_ROOT_MATH",
+    "closure_chain": "kernel-clean P01VerifierPhase prepPhase.layout -> P01ConstructionGap; together with G21Pointwise -> existing FinalExternal consumer -> FINAL_ROOT_MATH",
     "final_root_math": null,
     "final_root": null,
     "final_external_issued": false
