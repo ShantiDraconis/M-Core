@@ -147,7 +147,8 @@
     "MATH_TERMINAL_BOUNDARY_20260922.json",
     "status.json",
     "revocation.json",
-    "MATERIAL_ONLY_BOUNDARY_20260930.json"
+    "MATERIAL_ONLY_BOUNDARY_20260930.json",
+    "FINAL_ROOT_CLOSURE_PLAN_20260930.json"
   ],
   "toolchain": {
     "normative": "Lean 4.19 + lake",
@@ -193,7 +194,8 @@
     "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload includes MATERIAL_ONLY_BOUNDARY_20260930.json plus legacy boundary for provenance and immutable preparatory package files, excluding SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
     "preparatory_root_location": "PREPARATORY_ROOT",
     "FINAL_ROOT_MATH": null,
-    "linked_preparatory_root": "4cdaf7b62ee2ff85676c7dcd98fb6dfe965fa8afd4abccf19ba6aedb42878f24"
+    "linked_preparatory_root": "4cdaf7b62ee2ff85676c7dcd98fb6dfe965fa8afd4abccf19ba6aedb42878f24",
+    "closure_plan": "FINAL_ROOT_CLOSURE_PLAN_20260930.json"
   },
   "timestamps": {
     "created_at": null,
