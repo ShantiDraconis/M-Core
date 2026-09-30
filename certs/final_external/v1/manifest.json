@@ -20,7 +20,7 @@
     "denominator": 7,
     "display": "0/7",
     "terminal_status": {
-      "P01": "MECHANICAL_PENDING - single min-cut P01VerifierPhase prepPhase.layout; prepPhase and generic assembly are closed",
+      "P01": "MECHANICAL_PENDING - exact min-cut is P01VerifierPhase prepPhase.layout. prepPhase + generic assembly are structurally closed; the stronger exact-verifier candidate is RED on clean reproduction and receives no closure credit.",
       "P02": "OPEN_MATH - sole P vs NP material producer G21Pointwise ≃ P02Target ≃ SAT not in P; G2.2/G2.3 wiring is derived/closed once G21 is supplied",
       "P03": "OPEN_MATH",
       "P04": "OPEN_MATH",
@@ -59,14 +59,24 @@
         "35723570545 SUCCESS phase/global-slotlog"
       ],
       "pending_ATK": [
-        "uniform fail-closed total theorem for every noncanonical raw source",
-        "package checkedVerifierFinMachine as P01VerifierPhase prepPhase.layout",
-        "apply p01_of_verifier to obtain P01ConstructionGap"
+        "produce a kernel-clean P01VerifierPhase prepPhase.layout",
+        "use P01WitnessPrepGlobal.p01_of_verifier to obtain P01ConstructionGap"
       ],
       "recovered_candidate": {
         "source_sha": "dfe9aec4e85a8e97bb02ed2240504d54e7f0fbc1",
         "theorem": "preservingRead_forall",
         "state": "RECOVERED_CANDIDATE_REQUIRES_PROMOTION_AUDIT"
+      },
+      "candidate_rejected": {
+        "branch": "atk/p01-raw-mincut-20260930",
+        "head": "4af7e2c3c9886c0d11c7f3c16f00f7dd671c61d5",
+        "run": 36784079760,
+        "state": "RED_BASE_INTEGRITY",
+        "reasons": [
+          "missing CanonicalSATSlotParserSpec",
+          "unresolved exact-producer helper identifiers/goals",
+          "sorryAx in input_exact_bounded_certificate footprint"
+        ]
       }
     },
     "P02": {
