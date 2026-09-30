@@ -7,8 +7,7 @@
       "35700922859 SUCCESS"
     ],
     "pending_ATK": [
-      "construct P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
-      "remaining theorem core: total fail-closed halting/nonacceptance for every noncanonical raw source; canonical exact cubic halting/correctness is already available",
+      "construct one kernel-clean P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
       "apply P01WitnessPrepGlobal.p01_of_verifier"
     ],
     "endpoint_status": "MECHANICAL_PENDING_VERIFIER_PHASE",
@@ -67,11 +66,11 @@
       "state": "RECOVERED_CANDIDATE_REQUIRES_PROMOTION_AUDIT"
     },
     "reduction": {
-      "prep_phase": "CLOSED: P01WitnessPrepGlobal.prepPhase",
-      "assembly": "CLOSED: P01IntegratedAssembly.p01_of_verifier",
+      "prep_phase": "STRUCTURALLY_CLOSED: P01WitnessPrepGlobal.prepPhase",
+      "assembly": "STRUCTURALLY_CLOSED: P01IntegratedAssembly.p01_of_verifier",
       "mechanical_min_cut": "P01VerifierPhase prepPhase.layout",
-      "canonical_verifier": "CLOSED on advanced P01 line at fixed cubic bound",
-      "raw_frontier": "noncanonical-source total fail-closed closure"
+      "candidate_exact_verifier": "RED_BASE_INTEGRITY: run 36784079760",
+      "promotion_rule": "No P01 closure credit until a fresh clean build and axiom audit produces the verifier-phase inhabitant."
     }
   },
   "P02": {
