@@ -1,0 +1,158 @@
+{
+  "schema": "mcore.final-root-closure-plan.v1",
+  "date": "2026-09-30",
+  "invariant": "WIRING_IS_NOT_OPEN_MATH",
+  "rules": [
+    "Only a genuine inhabitant of a material producer may decrement the seven OPEN_MATH slots.",
+    "Mechanical implementation may block an executable endpoint but never counts as mathematical OPEN_MATH.",
+    "A downstream implication/equivalence already kernel-checked is a consumer, not another gap.",
+    "FINAL_ROOT remains null until every prerequisite required by its scope is closed and audited."
+  ],
+  "p_vs_np_external": {
+    "material": {
+      "id": "PNP-M1",
+      "target": "G21Pointwise",
+      "exact_form": "forall candidate : PolyDTMCandidate, exists x : BitString, not candidate.CorrectAt SATTarget x",
+      "equivalences": [
+        "P02Target",
+        "not InP SATTarget",
+        "Nonempty (FailureGenerator (SATBits circuitBitEncoding))"
+      ],
+      "state": "OPEN_MATH",
+      "consumer": "P02G21G22Attack + FinalExternalTwoGap"
+    },
+    "mechanical": {
+      "id": "PNP-X1",
+      "target": "Nonempty (P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout)",
+      "state": "MECHANICAL_PENDING",
+      "already_linked": [
+        "P01WitnessPrepGlobal.prepPhase",
+        "P01IntegratedAssembly.p01_of_verifier",
+        "P01ConstructionGap -> SATInNPGap circuitBitEncoding"
+      ],
+      "consumer": "p01_of_verifier -> P01ConstructionGap",
+      "validation_branch": "atk/p01-verifier-phase-mincut-clean-20260930",
+      "validation_state": "CI_PENDING"
+    },
+    "downstream_closed": [
+      {
+        "name": "G2.2 wiring",
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      {
+        "name": "G3 normalized external contract",
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      {
+        "name": "FinalExternal integration",
+        "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      {
+        "name": "FinalExternalTwoGap reduction",
+        "state": "GREEN_FROZEN_CERTIFIED"
+      }
+    ],
+    "exact_chain": [
+      "PNP-X1 -> P01ConstructionGap",
+      "PNP-M1 -> G21Pointwise",
+      "P01ConstructionGap + G21Pointwise -> FinalExternalGap",
+      "FinalExternalGap -> OfficialPneqNP",
+      "OfficialPneqNP -> FINAL_ROOT_MATH[P_VS_NP]"
+    ],
+    "mathematical_open_count": 1,
+    "mechanical_open_count": 1
+  },
+  "global_material_slots": [
+    {
+      "slot": "RIEMANN",
+      "target": "FiniteSpanApproximatesChi concreteGeneratorFamily",
+      "normal_form": "DNLimit = 0 / DNToZero",
+      "exactness": "EQUIVALENT",
+      "consumer": "finiteSpanApproximatesChi_iff_DNLimit_eq_zero -> audited RH endpoint",
+      "state": "OPEN_MATH"
+    },
+    {
+      "slot": "BEAL",
+      "target": "GCDLowerBoundProducer",
+      "normal_form": "exclude every admissible primitive residual solution with gcd(a,gcd(b,c)) = 1",
+      "exactness": "EQUIVALENT",
+      "consumer": "GCDLowerBoundProducer -> CommonDivisor -> CommonPrime -> endpoint",
+      "state": "OPEN_MATH"
+    },
+    {
+      "slot": "P_VS_NP",
+      "target": "G21Pointwise",
+      "normal_form": "for each fixed polynomial deterministic candidate exhibit one SAT input on which CorrectAt fails",
+      "exactness": "EQUIVALENT",
+      "consumer": "G21Pointwise -> P02Target/not InP -> P vs NP endpoint (after mechanical P01)",
+      "state": "OPEN_MATH"
+    },
+    {
+      "slot": "NAVIER_STOKES",
+      "target": "ActualNSToSignedGainCore",
+      "normal_form": "from genuine ActualNS produce theta < 1 and stretch(t) <= theta*nu*z(t) + C*y(t)^2",
+      "exactness": "SUFFICIENT_ROUTE",
+      "consumer": "SignedGainCore -> normalized certificate -> differential depletion margin -> regularity route",
+      "state": "OPEN_MATH"
+    },
+    {
+      "slot": "HODGE",
+      "target": "genuine geometry binding + ConcreteAlgebraicityPayload",
+      "normal_form": "for each rational Hodge class produce a rational finite combination of genuine algebraic cycle classes equal to it",
+      "exactness": "ENDPOINT_EQUIVALENT_ON_INTENDED_GEOMETRY",
+      "consumer": "ConcreteAlgebraicityPayload -> Hodge endpoint",
+      "state": "OPEN_MATH"
+    },
+    {
+      "slot": "BSD",
+      "target": "genuine EllipticCurveQ binding + rank equality + refined leading-coefficient identity",
+      "normal_form": "two exact components on the same genuine curve domain: analytic rank = Mordell-Weil rank; refined period/regulator/Sha/Tamagawa/torsion formula",
+      "exactness": "SPLIT_EXACT_COMPONENTS",
+      "consumer": "rank + refined identity -> BSD endpoint",
+      "state": "OPEN_MATH"
+    },
+    {
+      "slot": "YANG_MILLS",
+      "target": "genuine 4D binding + Nonempty (B60ConcretePhysicalAdapter C F D H G O)",
+      "normal_form": "uniform positive physical mass lower bound preserved through OS/Hamiltonian reconstruction and spectral transfer",
+      "exactness": "SUFFICIENT_ROUTE",
+      "consumer": "B60ConcretePhysicalAdapter -> K30 -> positive spectral mass gap",
+      "state": "OPEN_MATH"
+    }
+  ],
+  "final_root": {
+    "p_vs_np_math_root": {
+      "value": null,
+      "closes_when": [
+        "PNP-M1 material is kernel-checked",
+        "PNP-X1 mechanical object is kernel-checked",
+        "existing downstream consumer builds and axiom audit passes"
+      ]
+    },
+    "external_root": {
+      "value": null,
+      "closes_when": [
+        "P_VS_NP FINAL_ROOT_MATH exists",
+        "human review authority/quorum/evidence policy set",
+        "production app/crypto/hardware metadata set",
+        "provenance and SHA256SUMS refreshed",
+        "final package frozen"
+      ]
+    },
+    "global_7_final_proof": {
+      "current": "0/7",
+      "closes_when": "Each of the seven material slots is genuinely inhabited and linked through its official consumer; P01 mechanical closure affects only the P_VS_NP executable lane and is not an eighth mathematical slot."
+    }
+  },
+  "issuance": {
+    "FINAL_EXTERNAL_ISSUED": false,
+    "final_action_sequence": [
+      "kernel+axiom audit terminal inputs",
+      "refresh provenance",
+      "refresh SHA256SUMS",
+      "compute FINAL_ROOT",
+      "freeze immutable final package",
+      "set FINAL_EXTERNAL_ISSUED=true"
+    ]
+  }
+}
