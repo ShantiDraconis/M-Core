@@ -50,7 +50,7 @@ if m['production']['app']['app_repository']=='UNSET': release.append('app')
 if m['production']['crypto']['crypto_provider']=='UNSET': release.append('crypto')
 if m['production']['hardware_attestation']['status']=='UNSET': release.append('hardware')
 assert material==['G21Pointwise'], material
-assert mechanical==['P01ConstructionGap'], mechanical
+assert mechanical==['P01VerifierPhase prepPhase.layout'], mechanical
 assert m['G3']['status']=='CLOSED_GREEN_FROZEN_CERTIFIED'
 assert m['final_proof']['taxonomy']['P_VS_NP_ENDPOINT']=='OPEN'
 assert m['final_proof']['taxonomy']['GLOBAL_7_PROBLEMS']=='0/7'
