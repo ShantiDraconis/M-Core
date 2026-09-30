@@ -31,20 +31,22 @@
       "operational_repo": "ShantiDraconis/m-core-riemann",
       "canonical_producer": "unconditional DN vanishing estimate -> DNLimit = 0 -> R1ExternalBridge -> RH",
       "latest_observed_run": {
-        "id": 36698030525,
-        "name": "atk-rh-gram-quadratic-master",
+        "id": 36789912106,
+        "name": "ATK exact final producer",
         "conclusion": "success",
-        "sha": "7fc4acbea946f809343ed8b475d6d8195de3e543"
+        "sha": "37d459b5181057a479f4ecb9d5cc4b23ef76b263"
       },
-      "build_state": "GREEN_PREFIX_NOT_TERMINAL",
-      "exact_blocker": "Gram quadratic identity/minimization layer now kernel-checks with no sorryAx; the terminal unconditional DN vanishing estimate remains uninhabited.",
+      "build_state": "GREEN_CONDITIONAL_FINAL_PRODUCER_NOT_TERMINAL",
+      "exact_blocker": "FiniteSpanApproximatesChi / an unconditional vanishing upper bound is still uninhabited. ExactFinalProducer only maps such an input to the final root.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
         "official_consumer_linked": false,
         "theorem": null
       },
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "live_branch": "atk/auto-compose-terminal-20260930",
+      "live_head": "37d459b5181057a479f4ecb9d5cc4b23ef76b263"
     },
     {
       "slot": "P_VS_NP",
@@ -56,8 +58,8 @@
         "conclusion": "success",
         "sha": "2b00561e72422dffda8841b830e71683212aef21"
       },
-      "build_state": "GREEN_PREFIX_NOT_TERMINAL",
-      "exact_blocker": "Checked verifier whole-run layer now builds and its audited endpoint declarations have no sorryAx; P01ConstructionGap and G21Pointwise remain unregistered as terminal inhabitants.",
+      "build_state": "MATERIAL_IMPLEMENTATION_ACTIVE_NOT_TERMINAL",
+      "exact_blocker": "P01 is reduced to RawDecodeNoneFailClosed -> CheckedVerifierGlobalCore -> P01ConstructionGap, with recursive raw-failure totalization actively being kernelized. Independently G21Pointwise remains OPEN_MATH; five literal/same-input diagonal route classes are formally refuted and cannot be promoted.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
@@ -70,6 +72,16 @@
         "name": "fail-proof-all-gaps",
         "conclusion": "success",
         "sha": "2b00561e72422dffda8841b830e71683212aef21"
+      },
+      "live_branches": {
+        "p01_raw_totalization": "atk/p01-verifier-phase-mincut-clean-20260930",
+        "p01_exact_verifier": "atk/p01-openmath-final-integrated-clean-20260930",
+        "g21": "atk/g21-final-integration-clean-20260930"
+      },
+      "live_heads": {
+        "p01_raw_totalization": "6d0de82ee7e912732302a3a98129c4fd7b742487",
+        "p01_exact_verifier": "6be73fc1101b8d9cd22283adce738190996768f6",
+        "g21": "49887c2f34098e7711e0a75fd66417d6a3aa3de4"
       }
     },
     {
@@ -77,80 +89,88 @@
       "operational_repo": "ShantiDraconis/m-core-bsd",
       "canonical_producer": "BSD rank equality plus remaining refined leading-coefficient obligations",
       "latest_observed_run": {
-        "id": 36500591219,
+        "id": 36789244630,
         "name": "certificate",
         "conclusion": "success",
-        "sha": "01e1e33c7e4bcc7cc05cc87fef5012ff3d4d8693"
+        "sha": "43cec95c23c7c8c515d8fd47c5cdd23fa3903355"
       },
-      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No terminal inhabitant is registered in the canonical M-Core final-proof registry",
+      "build_state": "GREEN_CONDITIONAL_FINAL_PRODUCER_NOT_TERMINAL",
+      "exact_blocker": "finalExternal_of_grounded is kernel-checked, but it requires a genuine GroundedBSDHabitant. Universal rankLaw, finite-Sha witness, leadingLaw, and realizable same-curve data remain inputs, not outputs.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
         "official_consumer_linked": false,
         "theorem": null
       },
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "live_branch": "atk/auto-compose-terminal-20260930",
+      "live_head": "43cec95c23c7c8c515d8fd47c5cdd23fa3903355"
     },
     {
       "slot": "HODGE",
       "operational_repo": "ShantiDraconis/m-core-hodge",
       "canonical_producer": "universal rational Hodge algebraicity / ConcreteAlgebraicityPayload producer",
       "latest_observed_run": {
-        "id": 36500238126,
+        "id": 36789233200,
         "name": "certificate",
         "conclusion": "success",
-        "sha": "e459840e7b4742415fd956dfd3fa069474635650"
+        "sha": "fe96115a58c7c0908fb8dd6c5583f4a07096d0ad"
       },
-      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No terminal inhabitant is registered in the canonical M-Core final-proof registry",
+      "build_state": "GREEN_CONDITIONAL_FINAL_PRODUCER_NOT_TERMINAL_LIVE_HEAD_PENDING",
+      "exact_blocker": "The direct route no longer needs the old span adapter, but FINAL_ROOT_of_minimal_concrete_inputs still requires codim-0 algebraicity, a concrete Lefschetz (1,1) law, and the higher-codimension H01/R1-R2-R3 producer.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
         "official_consumer_linked": false,
         "theorem": null
       },
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "live_branch": "atk/auto-compose-terminal-20260930",
+      "live_head": "24ad16154d913041c5dc8f77d8cc66611a5c07d6"
     },
     {
       "slot": "YANG_MILLS",
       "operational_repo": "ShantiDraconis/m-core-yang-mills",
       "canonical_producer": "genuine 4D physical realization + OS/Hamiltonian reconstruction + positive spectral mass gap",
       "latest_observed_run": {
-        "id": 36497349406,
+        "id": 36789922284,
         "name": "certificate",
         "conclusion": "success",
-        "sha": "eb2f1b242fcb6719c370d1f0f36deb2e5494d818"
+        "sha": "752d3b6b01df2c812ff12a71229d4c7ee6a86809"
       },
-      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No terminal physical/mass-gap inhabitant is registered in the canonical M-Core final-proof registry",
+      "build_state": "GREEN_CONDITIONAL_FINAL_PRODUCER_NOT_TERMINAL",
+      "exact_blocker": "finalExternal_of_fields is a kernel-checked constructor but still takes genuine 4D construction/A1 data, K25 infrared transfer, K27 limit control, physical excitation data, and a K30SpectralTransferWitness as inputs.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
         "official_consumer_linked": false,
         "theorem": null
       },
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "live_branch": "atk/auto-compose-terminal-20260930",
+      "live_head": "752d3b6b01df2c812ff12a71229d4c7ee6a86809"
     },
     {
       "slot": "BEAL",
       "operational_repo": "ShantiDraconis/m-core-beal",
       "canonical_producer": "forall d : BealData, CommonPrime d.a d.b d.c",
       "latest_observed_run": {
-        "id": 36494980993,
-        "name": "certificate",
+        "id": 36790010086,
+        "name": "ATK terminal auto-compose",
         "conclusion": "success",
-        "sha": "dc84a96f744a8f209ce323c9d956420f67add854"
+        "sha": "a2abcc78706095b83b858ba10482a66ff5a60473"
       },
-      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No terminal universal CommonPrime inhabitant is registered in the canonical M-Core final-proof registry",
+      "build_state": "GREEN_EQUIVALENT_FINAL_ROUTES_NOT_TERMINAL_LIVE_HEAD_PENDING",
+      "exact_blocker": "FINAL_ROOT is kernel-linked from GCDLowerBoundProducer, T35GlobalEliminationBridge, or T42FinalProofBundle, but none of those equivalent/stronger arithmetic producers is inhabited unconditionally.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
         "official_consumer_linked": false,
         "theorem": null
       },
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "live_branch": "atk/auto-compose-terminal-20260930",
+      "live_head": "c5ea75fe20596c10dd378147d7c6a2bc7b2fa2c8"
     },
     {
       "slot": "NAVIER_STOKES",
@@ -162,16 +182,18 @@
         "conclusion": "success",
         "sha": "3a46cb7efb7aee0659ea6035116df8772cac7673"
       },
-      "build_state": "STALE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No current terminal NS inhabitant is registered; existing M-Core global_sources points to an unavailable historical repository binding",
-      "source_binding": "NEEDS_REBIND_TO_OPERATIONAL_REPO",
+      "build_state": "GREEN_TYPED_OPEN_MATH",
+      "exact_blocker": "G5DirectProducer is exactly equivalent to G5NSBridge. The material missing pieces are production of G5RawDecomposition from ActualNS together with ThetaSubcritical (theta<1) and DefectIntervalL1.",
+      "source_binding": "BOUND_TO_OPERATIONAL_REPO",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
         "official_consumer_linked": false,
         "theorem": null
       },
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "live_branch": "frozen/g5-direct-source-green-3a46cb7e",
+      "live_head": "3a46cb7efb7aee0659ea6035116df8772cac7673"
     }
   ],
   "support_blockers": [
@@ -179,19 +201,21 @@
       "repo": "ShantiDraconis/0-0-FORMAL-SUITE",
       "latest_observed_runs": [
         {
-          "id": 36630287361,
-          "name": "NAND Complements CI",
-          "conclusion": "failure",
-          "sha": "1e58844e1d7bc0baa7156c22c41f57ec7754d4e1"
+          "id": 36698462265,
+          "name": "Multistate Kernel CI",
+          "conclusion": "success",
+          "sha": "79c01ad9e6c287fee494977c96ec1ad26a2ffb8d"
         },
         {
-          "id": 36621724891,
-          "name": "Multistate Kernel CI",
-          "conclusion": "failure",
-          "sha": "aff768bffac56cef6fb89d97ac28d9d8c6ac67ff"
+          "id": 36698217832,
+          "name": "NAND Complements CI",
+          "conclusion": "success",
+          "sha": "6a1a449fa63fd619ffd6e1df80505b428e76e995"
         }
       ],
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "state": "SUPPORT_GREEN",
+      "note": "Support kernels are GREEN but carry zero terminal mathematical credit."
     },
     {
       "repo": "ShantiDraconis/lean-winwin-logic",
