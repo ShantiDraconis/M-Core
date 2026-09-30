@@ -1,0 +1,101 @@
+{
+  "schema": "mcore.material-only-boundary.v1",
+  "date": "2026-09-30",
+  "policy": "WIRING_IS_NOT_OPEN_MATH",
+  "source_branch": "atk/material-only-final-root-20260930",
+  "global": {
+    "material_open_count": 7,
+    "mechanical_open_count": 4,
+    "final_proof": "0/7",
+    "rule": "A lane receives FINAL_PROOF credit only when its material producer is genuinely inhabited and the existing downstream consumer is kernel checked. Mechanical assembly never increments OPEN_MATH."
+  },
+  "material_producers": {
+    "RIEMANN": {
+      "target": "FiniteSpanApproximatesChi concreteGeneratorFamily",
+      "equivalent": [
+        "DNLimit = 0",
+        "DNToZero"
+      ],
+      "state": "OPEN_MATH"
+    },
+    "BEAL": {
+      "target": "GCDLowerBoundProducer := ∀ d : BealData, 1 < Nat.gcd d.a (Nat.gcd d.b d.c)",
+      "state": "OPEN_MATH"
+    },
+    "P_VS_NP": {
+      "target": "G21Pointwise",
+      "equivalent": [
+        "P02Target",
+        "Nonempty (FailureGenerator (SATBits circuitBitEncoding))",
+        "SAT ∉ P"
+      ],
+      "state": "OPEN_MATH"
+    },
+    "NAVIER_STOKES": {
+      "target": "ActualNSToSignedGainCore from genuine flow-derived EnstrophyData",
+      "state": "OPEN_MATH"
+    },
+    "HODGE": {
+      "target": "genuine geometry binding + ConcreteAlgebraicityPayload",
+      "equivalent": [
+        "TrivialQbarR2Payload on intended nondegenerate geometry"
+      ],
+      "state": "OPEN_MATH"
+    },
+    "BSD": {
+      "target": "genuine EllipticCurveQ binding + universal rank equality + refined leading-coefficient identity",
+      "state": "OPEN_MATH"
+    },
+    "YANG_MILLS": {
+      "target": "genuine 4D physical-model binding + Nonempty (B60ConcretePhysicalAdapter C F D H G O)",
+      "state": "OPEN_MATH"
+    }
+  },
+  "p_vs_np_mechanical_closure": {
+    "class": "MECHANICAL_PENDING_NOT_OPEN_MATH",
+    "recovered_candidate": {
+      "target": "preserving arbitrary unary-index witness read",
+      "source_repo": "ShantiDraconis/m-core-p-vs-np",
+      "source_sha": "dfe9aec4e85a8e97bb02ed2240504d54e7f0fbc1",
+      "theorem": "preservingRead_forall",
+      "state": "RECOVERED_CANDIDATE_REQUIRES_PROMOTION_AUDIT"
+    },
+    "remaining": [
+      "link preservingRead_forall into input-node evalStep refinement",
+      "prove one global physical verifier run refining frozen evalRun",
+      "compose parser + witness guess + verifier into one fixed finite-control NTM",
+      "prove one polynomial HaltsWithin bound and AcceptsWithin iff SATBits circuitBitEncoding"
+    ],
+    "endpoint": "P01ConstructionGap / Nonempty P01MachineConstruction"
+  },
+  "p_vs_np_final_external": {
+    "material_blockers": [
+      "G21Pointwise"
+    ],
+    "mechanical_blockers": [
+      "P01ConstructionGap"
+    ],
+    "wiring_closed": [
+      "G2.2 wiring",
+      "G3 normalized external contract",
+      "FinalExternal integration",
+      "FinalExternalTwoGap reduction"
+    ],
+    "closure_chain": "P01ConstructionGap (mechanical) + G21Pointwise (material) -> FinalExternalGap -> OfficialPneqNP -> FINAL_ROOT_MATH",
+    "final_root_math": null,
+    "final_root": null,
+    "final_external_issued": false
+  },
+  "issuance": {
+    "after_math_and_mechanical": [
+      "kernel and axiom audit exact terminal proof",
+      "refresh provenance and SHA256SUMS",
+      "set human review authority/quorum/evidence policy",
+      "set production app/crypto/hardware release metadata",
+      "compute FINAL_ROOT",
+      "freeze final package",
+      "set FINAL_EXTERNAL_ISSUED=true"
+    ],
+    "rule": "FINAL_ROOT and FINAL_EXTERNAL_ISSUED remain null/false until both material and mechanical blockers plus release gates close."
+  }
+}
