@@ -1,0 +1,45 @@
+name: atk-universal-producer
+
+on:
+  push:
+    branches:
+      - atk/universal-producer-theorem-20260930
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  universal-producer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          $HOME/.elan/bin/elan toolchain install "$(cat lean-toolchain)"
+      - name: Resolve dependencies
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+      - name: Source firewall
+        run: |
+          set -euo pipefail
+          FILE=lean/MCore/ATK/UniversalProducerTheorem.lean
+          ! grep -n -E '(^|[^[:alnum:]_])(sorry|admit|sorryAx|unsafe|cheat|bypass|placeholder)([^[:alnum:]_]|$)' "$FILE"
+          ! grep -n -E '^[[:space:]]*(@\[[^]]*\][[:space:]]*)?(axiom|constant|constants)[[:space:]]' "$FILE"
+      - name: Build universal producer theorem
+        run: lake build MCore.ATK.UniversalProducerTheorem
+      - name: Axiom audit
+        run: |
+          cat > UniversalProducerAxioms.lean <<'EOF'
+          import MCore.ATK.UniversalProducerTheorem
+          #print axioms MCore.ATK.UniversalProducer.ProducerLane.inhabitant_after_steps
+          #print axioms MCore.ATK.UniversalProducer.universal_inhabitant_theorem
+          #print axioms MCore.ATK.UniversalProducer.universal_certificate_theorem
+          #print axioms MCore.ATK.UniversalProducer.no_positive_defect_self_loop
+          EOF
+          lake env lean UniversalProducerAxioms.lean | tee universal-producer-axioms.txt
+          ! grep -E 'sorryAx' universal-producer-axioms.txt
