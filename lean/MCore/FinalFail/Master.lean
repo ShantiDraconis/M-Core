@@ -9,6 +9,7 @@ import MCore.FinalFail.RelationalHardAtom
 import MCore.FinalFail.Attack.Beal
 import MCore.FinalFail.Attack.NavierStokes
 import MCore.FinalFail.MaterialOnlyFinalRoot
+import MCore.FinalFail.UniversalClosure
 
 namespace MCore.FinalFail
 
@@ -25,5 +26,11 @@ theorem master_material_only_boundary :
     Semantic.pendingMechanicalCount = 1 :=
   ⟨Semantic.openDirectCount_eq_seven,
     Semantic.pendingMechanicalCount_eq_one⟩
+
+theorem master_universal_requires_seven
+    (K : Universal.UniversalKernel)
+    (h : Universal.SevenInhabitants K.Core) :
+    Universal.SevenEndpoints K.Endpoint :=
+  Universal.universal_closure K h
 
 end MCore.FinalFail
