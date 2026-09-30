@@ -50,6 +50,17 @@ jobs:
           set -euo pipefail
           bash certs/final_external/v1/freeze.sh
 
+      - name: Verify FINAL_ROOT gate fails closed while blockers remain
+        shell: bash
+        run: |
+          set +e
+          bash certs/final_external/v1/finalize_root.sh > /tmp/finalize.log 2>&1
+          rc=$?
+          cat /tmp/finalize.log
+          test "$rc" -eq 2
+          grep -F "FINAL_ROOT_BLOCKED" /tmp/finalize.log
+          test ! -e certs/final_external/v1/FINAL_ROOT
+
       - name: Reject proof escapes
         shell: bash
         run: |
