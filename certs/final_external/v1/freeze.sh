@@ -6,7 +6,7 @@ PACKAGE_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$PACKAGE_DIR"
 echo "[freeze.sh] $PACKAGE_DIR - PREPARATORY_NOT_ISSUED"
 JSON_FILES=(manifest.json status.json provenance.json gate_ledger.json axiom_footprint.json revocation.json MATH_TERMINAL_BOUNDARY_20260922.json MATERIAL_ONLY_BOUNDARY_20260930.json FINAL_ROOT_CLOSURE_PLAN_20260930.json)
-PAYLOAD=(manifest.json README.md provenance.json gate_ledger.json axiom_footprint.json reproducibility.md status.json MATH_TERMINAL_BOUNDARY_20260922.json MATERIAL_ONLY_BOUNDARY_20260930.json FINAL_ROOT_CLOSURE_PLAN_20260930.json revocation.json freeze.sh)
+PAYLOAD=(manifest.json README.md provenance.json gate_ledger.json axiom_footprint.json reproducibility.md status.json MATH_TERMINAL_BOUNDARY_20260922.json MATERIAL_ONLY_BOUNDARY_20260930.json FINAL_ROOT_CLOSURE_PLAN_20260930.json revocation.json freeze.sh finalize_root.sh)
 
 echo "[1/8] JSON syntax"
 for f in "${JSON_FILES[@]}"; do python3 -m json.tool "$f" >/dev/null; done
