@@ -149,7 +149,8 @@
     "revocation.json",
     "MATERIAL_ONLY_BOUNDARY_20260930.json",
     "FINAL_ROOT_CLOSURE_PLAN_20260930.json",
-    "finalize_root.sh"
+    "finalize_root.sh",
+    "UNIVERSAL_CLOSURE_20261001.json"
   ],
   "toolchain": {
     "normative": "Lean 4.19 + lake",
@@ -222,5 +223,12 @@
   "maximum_auto_state": "REVIEW_PENDING",
   "package_state_policy": "PACKAGE_SHA256SUMS can be calculated now. FINAL_ROOT must remain null while any issuance prerequisite UNSET",
   "package_revision": "v1.3.1-preparatory",
-  "freeze_state": "FROZEN_PREPARATORY"
+  "freeze_state": "FROZEN_PREPARATORY",
+  "universal_closure": {
+    "file": "UNIVERSAL_CLOSURE_20261001.json",
+    "lean": "MCore.FinalFail.Universal",
+    "theorem": "universal_closure",
+    "exactness_firewall": "exact_universal_closure_iff requires reflect",
+    "state": "COMPOSITION_ONLY_NO_MATERIAL_INHABITANTS_PROMOTED"
+  }
 }
