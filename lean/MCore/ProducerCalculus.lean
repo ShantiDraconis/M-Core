@@ -126,6 +126,26 @@ theorem universal_closure_from_reductions
   exact (reduce i).nonempty_forward (inhabited i)
 
 /--
+A conditional constructor alone is not terminal evidence. There is no
+universal rule turning mere inhabitance of a function type A -> P into P:
+the domain A may itself be uninhabited.
+-/
+theorem no_universal_conditional_promotion :
+    ¬ (∀ (A : Type) (P : Prop), Nonempty (A → P) → P) := by
+  intro h
+  have hf : Nonempty (Empty → False) := by
+    exact ⟨fun e => nomatch e⟩
+  exact h Empty False hf
+
+/-- The missing ingredient for a conditional constructor is exactly an inhabitant of its input type. -/
+theorem conditional_constructor_closes
+    {A : Type u} {P : Prop}
+    (f : A → P)
+    (hA : Nonempty A) :
+    P := by
+  rcases hA with ⟨a⟩
+  exact f a
+/--
 Conservation law for proposition wrappers: an equivalence P <-> Q transports
 inhabitance of their canonical wrappers in both directions and creates no
 new proof of either proposition.
@@ -144,6 +164,8 @@ theorem proposition_equivalence_conserves_wrapper
 #print axioms MCore.FinalProof.product_nonempty_iff
 #print axioms MCore.FinalProof.TerminalLane.target_of_reduction_chain
 #print axioms MCore.FinalProof.universal_closure_from_reductions
+#print axioms MCore.FinalProof.no_universal_conditional_promotion
+#print axioms MCore.FinalProof.conditional_constructor_closes
 #print axioms MCore.FinalProof.proposition_equivalence_conserves_wrapper
 
 end MCore.FinalProof
