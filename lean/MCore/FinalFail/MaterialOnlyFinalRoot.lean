@@ -1,6 +1,7 @@
 import MCore.FinalFail.ExactGapLedger
 import MCore.FinalFail.DirectProducerCuts
 import MCore.FinalFail.MechanicalClosure
+import MCore.FinalFail.MaterialProducerNormalForms
 
 namespace MCore.FinalFail.MaterialOnly
 
@@ -59,9 +60,11 @@ no purely mechanical task can reduce or increase the seven material slots. -/
 theorem no_wiring_gap_in_open_math :
     openFinalProblems = 7 ∧
     openDirectCount = 7 ∧
+    materialProducerPlanCount = 7 ∧
     pendingMechanicalCount = 4 := by
   exact ⟨openFinalProblems_eq_seven,
     openDirectCount_eq_seven,
+    materialProducerPlanCount_eq_seven,
     pendingMechanicalCount_eq_four⟩
 
 end MCore.FinalFail.MaterialOnly
