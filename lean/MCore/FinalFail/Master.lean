@@ -22,8 +22,8 @@ theorem master_open_count : openFinalProblems = 7 := openFinalProblems_eq_seven
 
 theorem master_material_only_boundary :
     Semantic.openDirectCount = 7 ∧
-    Semantic.pendingMechanicalCount = 4 :=
+    Semantic.pendingMechanicalCount = 1 :=
   ⟨Semantic.openDirectCount_eq_seven,
-    Semantic.pendingMechanicalCount_eq_four⟩
+    Semantic.pendingMechanicalCount_eq_one⟩
 
 end MCore.FinalFail
