@@ -1,18 +1,17 @@
 {
   "P01": {
     "prefix": "fc20887e556091a4775080ab23ee1ff61917040e",
-    "state": "MECHANICAL_PENDING_NOT_OPEN_MATH",
+    "state": "MECHANICAL_PENDING_SINGLE_MINCUT",
     "runs": [
       "35700922856 SUCCESS",
       "35700922859 SUCCESS"
     ],
     "pending_ATK": [
-      "link preservingRead_forall from dfe9aec4 into input-node evalStep refinement",
-      "prove global physical verifier execution refining frozen evalRun",
-      "compose parser + witness guess + physical verifier into one fixed finite-control NTM",
-      "prove global polynomial HaltsWithin and AcceptsWithin iff SATBits circuitBitEncoding"
+      "construct P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
+      "remaining theorem core: total fail-closed halting/nonacceptance for every noncanonical raw source; canonical exact cubic halting/correctness is already available",
+      "apply P01WitnessPrepGlobal.p01_of_verifier"
     ],
-    "endpoint_status": "MECHANICAL_PENDING",
+    "endpoint_status": "MECHANICAL_PENDING_VERIFIER_PHASE",
     "prefix_status": "GREEN_FROZEN_CERTIFIED",
     "parser_macro": {
       "source_sha": "db716cec19ddbba552f5b91f865089abd4eea9e5",
@@ -66,6 +65,13 @@
       "source_sha": "dfe9aec4e85a8e97bb02ed2240504d54e7f0fbc1",
       "theorem": "preservingRead_forall",
       "state": "RECOVERED_CANDIDATE_REQUIRES_PROMOTION_AUDIT"
+    },
+    "reduction": {
+      "prep_phase": "CLOSED: P01WitnessPrepGlobal.prepPhase",
+      "assembly": "CLOSED: P01IntegratedAssembly.p01_of_verifier",
+      "mechanical_min_cut": "P01VerifierPhase prepPhase.layout",
+      "canonical_verifier": "CLOSED on advanced P01 line at fixed cubic bound",
+      "raw_frontier": "noncanonical-source total fail-closed closure"
     }
   },
   "P02": {
