@@ -4,7 +4,7 @@
   "version": "v1.0.0",
   "issuance": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "reason": "Fail-closed material-only accounting: G21Pointwise is the sole OPEN_MATH producer for the P vs NP FINAL_EXTERNAL lane. P01ConstructionGap remains a separate mechanical implementation blocker. G2.2, G3 and FinalExternalTwoGap wiring are closed.",
+    "reason": "Fail-closed material-only accounting: G21Pointwise is the sole OPEN_MATH producer for the P-vs-NP FINAL_EXTERNAL lane. The sole mechanical min-cut is P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout, which maps to P01ConstructionGap through already-closed assembly wiring.",
     "infra_state": "READY_FOR_FREEZE",
     "math_state": "OPEN_MATH_ONE_EXACT_PRODUCER",
     "release_state": "SEALED_CLOSED",
@@ -38,7 +38,7 @@
   "hash_levels": {
     "PACKAGE_SHA256SUMS": "CALCULABLE_NOW_over_preparatory_files",
     "PREPARATORY_ROOT": "SEE_PREPARATORY_ROOT_FILE",
-    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_until_P01ConstructionGap_and_G21Pointwise_and_all_release_gates_close"
+    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_until_FINAL_ROOT_MATH_material_and_mechanical_blockers_and_release_gates_close"
   },
   "normative_state": {
     "ELYON_FINAL_EXTERNAL": "v1.0.0",
@@ -70,7 +70,7 @@
     "record": "MATERIAL_ONLY_BOUNDARY_20260930.json",
     "legacy_record": "MATH_TERMINAL_BOUNDARY_20260922.json",
     "policy": "WIRING_IS_NOT_OPEN_MATH",
-    "p01": "MECHANICAL_PENDING_P01_CONSTRUCTION",
+    "p01": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE",
     "p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
     "material_blockers": [
       "G21Pointwise"
