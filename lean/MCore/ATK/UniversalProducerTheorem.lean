@@ -33,6 +33,29 @@ structure ReductionLane where
   freeze : ∀ x, defect x = 0 → step x = x
 
 /--
+A terminal specification fixes the exact mathematical target before any
+materializer is allowed to act.
+
+Keeping these types outside the materializer blocks the trivial loophole of
+choosing Unit as the inhabitant/certificate after seeing the structural lane.
+-/
+structure TerminalSpec (R : ReductionLane) where
+  Inhabitant : Type
+  Certificate : Type
+  certify : Inhabitant → Certificate
+
+/--
+Material extraction for an already-fixed terminal specification.
+
+This is the exact OPEN_MATH field: zero structural defect must construct the
+predeclared inhabitant type, not a target chosen by the extractor itself.
+-/
+structure ExactMaterializer
+    (R : ReductionLane)
+    (T : TerminalSpec R) where
+  extract : ∀ x, R.defect x = 0 → T.Inhabitant
+
+/--
 The exact material payload missing from a reduction lane.
 
 This is where OPEN_MATH lives: extract must turn a genuinely zero-defect
@@ -69,6 +92,21 @@ structure ProducerLane where
   certify : Inhabitant → Certificate
 
 namespace ReductionLane
+
+/-- Attach a fixed terminal specification and its exact material extractor. -/
+def exactMaterialize
+    (R : ReductionLane)
+    (T : TerminalSpec R)
+    (M : ExactMaterializer R T) : ProducerLane where
+  State := R.State
+  Inhabitant := T.Inhabitant
+  Certificate := T.Certificate
+  step := R.step
+  defect := R.defect
+  contract := R.contract
+  freeze := R.freeze
+  extract := M.extract
+  certify := T.certify
 
 /-- Attach a genuine materializer to a structural reduction lane. -/
 def materialize
@@ -229,6 +267,23 @@ theorem fixed_iff_zero
 end ProducerLane
 
 /--
+A fully typed universal problem specification fixes both structural reductions
+and the exact terminal type of every lane before any proof producer is given.
+-/
+structure UniversalProblemSpec where
+  reduction : ProblemKind → ReductionLane
+  terminal : (p : ProblemKind) → TerminalSpec (reduction p)
+
+/--
+The seven exact material extraction obligations for a fixed universal problem
+specification.  This object cannot weaken or replace any terminal type.
+-/
+structure UniversalExactMaterialization (S : UniversalProblemSpec) where
+  materializer :
+    (p : ProblemKind) →
+      ExactMaterializer (S.reduction p) (S.terminal p)
+
+/--
 Universal structural reduction before terminal materialization.
 
 All seven lanes may share the same reduction theorem schema while retaining
@@ -256,6 +311,17 @@ identification from being smuggled into the universal layer.
 structure UniversalProducerKernel where
   lane : ProblemKind → ProducerLane
 
+/--
+Promote a fixed seven-lane problem specification only after every exact target
+has a material extractor.
+-/
+def UniversalProblemSpec.materialize
+    (S : UniversalProblemSpec)
+    (M : UniversalExactMaterialization S) :
+    UniversalProducerKernel where
+  lane := fun p =>
+    (S.reduction p).exactMaterialize (S.terminal p) (M.materializer p)
+
 /-- Promote the structural seven-lane reduction only after all exact
 materializers have been supplied. -/
 def UniversalReductionKernel.materialize
@@ -267,6 +333,18 @@ def UniversalReductionKernel.materialize
 /-- One concrete starting state for every problem lane. -/
 structure UniversalSeed (K : UniversalProducerKernel) where
   state : (p : ProblemKind) → (K.lane p).State
+
+/-- Starting states for a fixed universal problem specification. -/
+structure UniversalProblemSeed (S : UniversalProblemSpec) where
+  state : (p : ProblemKind) → (S.reduction p).State
+
+/-- Promote a fixed problem seed after exact materialization. -/
+def promoteProblemSeed
+    (S : UniversalProblemSpec)
+    (M : UniversalExactMaterialization S)
+    (seed : UniversalProblemSeed S) :
+    UniversalSeed (S.materialize M) where
+  state := seed.state
 
 /-- Starting states at the pure structural-reduction layer. -/
 structure UniversalReductionSeed (R : UniversalReductionKernel) where
@@ -308,6 +386,22 @@ def resolveUniversalMaterialization
     (S : UniversalReductionSeed R) :
     UniversalInhabitantBundle (R.materialize M) :=
   buildInhabitantBundle (R.materialize M) (promoteSeed R M S)
+
+/--
+Strict universal theorem with predeclared targets.
+
+The exact inhabitant type for every problem is fixed in UniversalProblemSpec
+before UniversalExactMaterialization is supplied.  Hence this construction
+cannot close a lane by silently replacing its terminal theorem with a trivial
+type.
+-/
+def resolveExactUniversalProblem
+    (S : UniversalProblemSpec)
+    (M : UniversalExactMaterialization S)
+    (seed : UniversalProblemSeed S) :
+    UniversalInhabitantBundle (S.materialize M) :=
+  buildInhabitantBundle
+    (S.materialize M) (promoteProblemSeed S M seed)
 
 /-- Build the abstract universal final root from the same exact producers. -/
 def buildFinalRoot
@@ -432,6 +526,7 @@ theorem no_positive_defect_self_loop
     (K.lane p).step x ≠ x :=
   (K.lane p).step_ne_self_of_positive x hpos
 
+#print axioms MCore.ATK.UniversalProducer.ReductionLane.exactMaterialize
 #print axioms MCore.ATK.UniversalProducer.ReductionLane.materialize
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.step_ne_self_of_positive
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.defect_eq_zero_of_fixed
@@ -442,10 +537,12 @@ theorem no_positive_defect_self_loop
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.inhabitant_after_steps
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.certificate_after_steps
 #print axioms MCore.ATK.UniversalProducer.ProducerLane.fixed_iff_zero
+#print axioms MCore.ATK.UniversalProducer.UniversalProblemSpec.materialize
 #print axioms MCore.ATK.UniversalProducer.UniversalReductionKernel.materialize
 #print axioms MCore.ATK.UniversalProducer.promoteSeed
 #print axioms MCore.ATK.UniversalProducer.buildInhabitantBundle
 #print axioms MCore.ATK.UniversalProducer.resolveUniversalMaterialization
+#print axioms MCore.ATK.UniversalProducer.resolveExactUniversalProblem
 #print axioms MCore.ATK.UniversalProducer.buildFinalRoot
 #print axioms MCore.ATK.UniversalProducer.issueExternalCertificate
 #print axioms MCore.ATK.UniversalProducer.universal_inhabitant_theorem
