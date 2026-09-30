@@ -1,18 +1,18 @@
 {
   "P01": {
     "prefix": "fc20887e556091a4775080ab23ee1ff61917040e",
-    "state": "GREEN_FROZEN_CERTIFIED",
+    "state": "MECHANICAL_PENDING_NOT_OPEN_MATH",
     "runs": [
       "35700922856 SUCCESS",
       "35700922859 SUCCESS"
     ],
     "pending_ATK": [
-      "Compose certified parser phases into SlotParserMachineSimulationCertificate",
-      "Construct integrated fixed-control SAT NTM using certified parser TM→NTM prefix + finite witness generation/verifier relation",
-      "CanonicalSATMachineClosure",
-      "p01_final_certificate"
+      "link preservingRead_forall from dfe9aec4 into input-node evalStep refinement",
+      "prove global physical verifier execution refining frozen evalRun",
+      "compose parser + witness guess + physical verifier into one fixed finite-control NTM",
+      "prove global polynomial HaltsWithin and AcceptsWithin iff SATBits circuitBitEncoding"
     ],
-    "endpoint_status": "OPEN",
+    "endpoint_status": "MECHANICAL_PENDING",
     "prefix_status": "GREEN_FROZEN_CERTIFIED",
     "parser_macro": {
       "source_sha": "db716cec19ddbba552f5b91f865089abd4eea9e5",
@@ -61,6 +61,11 @@
       "certificate_commit": "d909103f75087f41711c697aca400e53df4a4b82",
       "run": "35699864579 SUCCESS",
       "state": "GREEN_FROZEN_CERTIFIED_PREFIX"
+    },
+    "recovered_candidate": {
+      "source_sha": "dfe9aec4e85a8e97bb02ed2240504d54e7f0fbc1",
+      "theorem": "preservingRead_forall",
+      "state": "RECOVERED_CANDIDATE_REQUIRES_PROMOTION_AUDIT"
     }
   },
   "P02": {
@@ -81,7 +86,7 @@
       "repository_certificate_run": "35707286255 SUCCESS"
     },
     "G2.1": {
-      "status": "OPEN_MATH",
+      "status": "OPEN_MATH_SOLE_MATERIAL_PRODUCER",
       "role": "terminal producer",
       "description": "Contains essentially the heart of P vs NP. Constructing for every PolyDTMCandidate M a canonical SAT instance x_M is extraordinary mathematical advance. Not ordinary technical sequence.",
       "blocks": [
@@ -94,17 +99,15 @@
       }
     },
     "G2.2": {
-      "status": "BLOCKED_BY_G2.1",
-      "role": "contradiction",
-      "blocked_by": "G2.1"
+      "status": "DERIVED_WIRING_GREEN_FROZEN_CERTIFIED",
+      "role": "equivalent/contradiction consumer"
     },
     "G2.3": {
-      "status": "BLOCKED_BY_G2.2",
-      "role": "FailureGenerator",
-      "blocked_by": "G2.2",
-      "note": "BLOCKED_BY_G2.1 transitively"
+      "status": "DERIVED_FROM_G21_VIA_CERTIFIED_WIRING",
+      "role": "FailureGenerator packaging",
+      "note": "Not an independent material gap."
     },
-    "route_policy": "G2.0 -> G2.1 -> G2.2 -> G2.3 must NOT be treated as ordinary technical sequence. G2.1 is terminal producer.",
+    "route_policy": "Only G2.1/G21Pointwise counts as OPEN_MATH. G2.2 and G2.3 are certified wiring/packaging consumers.",
     "semantic_diagonal_transformer": {
       "source_sha": "f29f5984a92d7681887801e50ec2b6143d9f7ee4",
       "frozen_branch": "frozen/p02-semantic-diagonal-transformer-green-f29f5984",
@@ -151,8 +154,8 @@
     }
   },
   "G3": {
-    "status": "OPEN_SOURCE_FIDELITY",
-    "endpoint": "OPEN",
+    "status": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "endpoint": "CLOSED_FORMAL_CONTRACT",
     "scaffold": {
       "source_sha": "97a95327360c3d4fc29dae1453330974e5f30519",
       "frozen_branch": "frozen/g3-external-contract-scaffold-green-97a95327",
@@ -194,8 +197,7 @@
       "state": "GREEN_FROZEN_CERTIFIED_TYPED_CONTRACT"
     },
     "remaining": [
-      "External source-fidelity theorem tying the normalized Cook-style formal model to the exact selected Cook/CMI convention",
-      "Keep no stronger claim than the provenance and normalization theorem actually proves"
+      "Optional independent prose-fidelity audit only; not a mathematical endpoint blocker."
     ]
   },
   "MCORE": {
