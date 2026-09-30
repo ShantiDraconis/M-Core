@@ -29,6 +29,10 @@ jobs:
           lake exe cache get || true
       - name: Build universal closure
         run: lake build MCore.UniversalTerminalClosure
+      - name: Validate wrapper equivalence registry
+        run: |
+          python3 -m json.tool master-terminal/wrapper_equivalence_registry.json >/dev/null
+          python3 scripts/wrapper_equivalence_audit.py
       - name: Source firewall
         run: |
           set -euo pipefail
