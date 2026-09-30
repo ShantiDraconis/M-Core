@@ -14,13 +14,13 @@
     "ELYON"
   ],
   "infra_state": "READY_FOR_FREEZE",
-  "math_state": "OPEN_MATH_ONE_EXACT_PRODUCER__P01_MECHANICAL_PENDING",
+  "math_state": "OPEN_MATH_ONE_EXACT_PRODUCER__P01_SINGLE_MECHANICAL_MINCUT",
   "final_proof": {
     "numerator": 0,
     "denominator": 7,
     "display": "0/7",
     "terminal_status": {
-      "P01": "MECHANICAL_PENDING - exact operational payload P01ConstructionGap / Nonempty P01MachineConstruction; not counted as OPEN_MATH",
+      "P01": "MECHANICAL_PENDING - single min-cut P01VerifierPhase prepPhase.layout; prepPhase and generic assembly are closed",
       "P02": "OPEN_MATH - sole P vs NP material producer G21Pointwise ≃ P02Target ≃ SAT not in P; G2.2/G2.3 wiring is derived/closed once G21 is supplied",
       "P03": "OPEN_MATH",
       "P04": "OPEN_MATH",
@@ -36,7 +36,7 @@
       "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
       "FINAL_ROOT_MATH": null,
       "GLOBAL_7_PROBLEMS": "0/7",
-      "rule": "P01 is mechanical closure; G21Pointwise is the sole material P vs NP producer. Both operational inputs must close before the endpoint can issue."
+      "rule": "P01 has one mechanical verifier-phase min-cut; G21Pointwise is the sole material P vs NP producer. Both operational inputs must close before the endpoint can issue."
     }
   },
   "release_state": "SEALED_CLOSED",
@@ -59,10 +59,9 @@
         "35723570545 SUCCESS phase/global-slotlog"
       ],
       "pending_ATK": [
-        "link dfe9aec4 preservingRead_forall into input-node evalStep refinement",
-        "global physical verifier execution theorem refining frozen evalRun",
-        "one fixed finite-control parser+witness+verifier NTM",
-        "global polynomial HaltsWithin and AcceptsWithin iff SATBits circuitBitEncoding"
+        "uniform fail-closed total theorem for every noncanonical raw source",
+        "package checkedVerifierFinMachine as P01VerifierPhase prepPhase.layout",
+        "apply p01_of_verifier to obtain P01ConstructionGap"
       ],
       "recovered_candidate": {
         "source_sha": "dfe9aec4e85a8e97bb02ed2240504d54e7f0fbc1",
@@ -199,8 +198,8 @@
   },
   "issuance_gate": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "condition": "P01ConstructionGap mechanical closure complete AND G21Pointwise material producer closed AND G3 CLOSED AND human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND all required infra GREEN+FROZEN",
-    "current": "BLOCKED fail-closed: P01 mechanical closure pending; G21Pointwise OPEN_MATH; P_VS_NP_ENDPOINT OPEN; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
+    "condition": "P01VerifierPhase prepPhase.layout constructed (hence P01ConstructionGap) AND G21Pointwise material producer closed AND G3 CLOSED AND human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND all required infra GREEN+FROZEN",
+    "current": "BLOCKED fail-closed: one P01 verifier-phase mechanical min-cut pending; G21Pointwise OPEN_MATH; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
     "public_status": "PREPARATORY_NOT_ISSUED"
   },
   "package_state": "PREPARATORY",
