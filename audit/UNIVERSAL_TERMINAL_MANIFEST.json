@@ -1,0 +1,144 @@
+{
+  "schema": "ATK_UNIVERSAL_TERMINAL_MANIFEST_V1",
+  "date": "2026-10-01",
+  "policy": {
+    "forward_only": true,
+    "producer_first": true,
+    "wrapper_does_not_close": true,
+    "terminal_inhabitant_required": true,
+    "final_root_requires_all_seven": true
+  },
+  "lanes": [
+    {
+      "problem": "RIEMANN",
+      "terminal": "FiniteSpanApproximatesChi concreteGeneratorFamily",
+      "equivalent": [
+        "DNLimit = 0",
+        "DNToZero"
+      ],
+      "certified_theorems": [
+        "finiteSpanApproximatesChi_iff_DNLimit_eq_zero"
+      ],
+      "sufficient_routes": [
+        "VanishingUpperBound",
+        "BCF/zero-residue route"
+      ],
+      "rejected_as_closure": [
+        "scoped external certificate without terminal inhabitant",
+        "transport-only RH wrappers"
+      ],
+      "state": "OPEN_MATH"
+    },
+    {
+      "problem": "BEAL",
+      "terminal": "GCDLowerBoundProducer",
+      "equivalent": [
+        "CommonDivisorProducer",
+        "BealConjecture",
+        "CommonPrime producer on the positive Beal domain"
+      ],
+      "certified_theorems": [
+        "bealConjecture_iff_gcdLowerBoundProducer",
+        "bealConjecture_iff_commonDivisorProducer",
+        "commonPrime_iff_commonDivisor"
+      ],
+      "rejected_as_closure": [
+        "conductor bookkeeping alone",
+        "CommonPrime/CommonDivisor renamed wrappers without a universal witness"
+      ],
+      "state": "OPEN_MATH"
+    },
+    {
+      "problem": "P_VS_NP",
+      "terminal": "Nonempty P01MachineConstruction ∧ G21Pointwise",
+      "equivalent": [
+        "G21Pointwise ↔ P02Target",
+        "G21Pointwise ↔ G22Contradiction",
+        "G22Contradiction ↔ ¬ InP SATTarget"
+      ],
+      "p01_frontier": "PreservingUnaryReaderGap -> input 000 refinement -> global physical evalRun -> parser+witness+verifier NTM -> polynomial HaltsWithin -> AcceptsWithin iff SATBits",
+      "rejected_as_closure": [
+        "state-only phase bridge",
+        "component shell",
+        "destructive indexed witness reader",
+        "literal G2.1 fixed-point route"
+      ],
+      "state": "OPEN_MATH"
+    },
+    {
+      "problem": "NAVIER_STOKES",
+      "terminal": "ActualNSToSignedGainCore",
+      "equivalent_or_normalized": [
+        "SignedGainCore ↔ SignedGainCertificate at Nonempty level for nonnegative viscosity"
+      ],
+      "downstream": [
+        "SignedGainCertificate -> FlexibleStretchingBound",
+        "signedGain_implies_differential",
+        "positive dissipation margin for nu>0"
+      ],
+      "rejected_as_closure": [
+        "DynamicCriticalGeometry",
+        "FullChain",
+        "nonnegativity bookkeeping without PDE-derived producer"
+      ],
+      "state": "OPEN_MATH"
+    },
+    {
+      "problem": "HODGE",
+      "terminal": "ConcreteAlgebraicityPayload",
+      "equivalent": [
+        "TrivialQbarR2Payload"
+      ],
+      "certified_theorems": [
+        "trivial_qbar_r2_payload_iff_concrete_payload"
+      ],
+      "sufficient_routes": [
+        "H01MinimalForwardPayload"
+      ],
+      "rejected_as_closure": [
+        "empty-variety payload",
+        "abstract geometry shell without genuine cycle binding"
+      ],
+      "state": "OPEN_MATH"
+    },
+    {
+      "problem": "BSD",
+      "terminal": "realizable elliptic-curve domain + universal rank equality + refined leading-coefficient identity on the same domain",
+      "required_subparts": [
+        "genuine elliptic-curve arithmetic/analytic binding",
+        "rank equality",
+        "refined leading coefficient identity",
+        "Sha finiteness where required by the refined statement"
+      ],
+      "rejected_as_closure": [
+        "∀ d : BSDArithmeticAnalyticData, BSDRankPart d",
+        "BSDOpenCore alias",
+        "curve-specific or finite evidence promoted universally"
+      ],
+      "state": "OPEN_MATH"
+    },
+    {
+      "problem": "YANG_MILLS",
+      "terminal": "Nonempty (B60ConcretePhysicalAdapter C F D H G O)",
+      "downstream": [
+        "B60ConcretePhysicalAdapter -> ∃ gap, K14MassGap"
+      ],
+      "certified_theorems": [
+        "b60_adapter_closes_conditional_chain"
+      ],
+      "rejected_as_closure": [
+        "legacy B3-B5 phantom interfaces",
+        "degenerate Unit/True physical model",
+        "spectral-gap wrapper without genuine regulated 4D binding"
+      ],
+      "state": "OPEN_MATH"
+    }
+  ],
+  "universal_law": {
+    "type": "TerminalInhabitants Riemann Beal PvsNP NavierStokes Hodge BSD YangMills",
+    "iff": "AllSeven",
+    "no_escape": true,
+    "produced": 0,
+    "open": 7
+  }
+}
