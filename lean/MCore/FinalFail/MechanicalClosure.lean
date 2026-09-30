@@ -31,7 +31,7 @@ structure MechanicalClosure where
 def mechanicalClosures : List MechanicalClosure := [
   { problem := .pVsNP
     target := "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout"
-    evidence := "P01WitnessPrepGlobal.prepPhase is constructed; P01IntegratedAssembly.p01_of_verifier maps this single verifier phase directly to P01ConstructionGap. Advanced 2026-09-30 work already proves canonical exact cubic halting/correctness; remaining work is uniform fail-closed handling of noncanonical raw sources and packaging that checked verifier as the phase."
+    evidence := "P01WitnessPrepGlobal.prepPhase and P01IntegratedAssembly.p01_of_verifier give an exact structural reduction from one verifier-phase inhabitant to P01ConstructionGap. A 2026-09-30 clean rebuild of the stronger exact-verifier candidate exposed broken imports, unresolved helper names and sorryAx in its dependency footprint, so no canonical exact-verifier closure is credited here."
     state := .pending }
 ]
 
