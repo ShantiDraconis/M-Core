@@ -31,13 +31,13 @@
       "operational_repo": "ShantiDraconis/m-core-riemann",
       "canonical_producer": "unconditional DN vanishing estimate -> DNLimit = 0 -> R1ExternalBridge -> RH",
       "latest_observed_run": {
-        "id": 36640049627,
-        "name": "atk-rh-gram-quadratic",
-        "conclusion": "failure",
-        "sha": "265fc5966da8e5723bb967decf219f5c1de4701b"
+        "id": 36698030525,
+        "name": "atk-rh-gram-quadratic-master",
+        "conclusion": "success",
+        "sha": "7fc4acbea946f809343ed8b475d6d8195de3e543"
       },
-      "build_state": "RED",
-      "exact_blocker": "GramQuadratic.lean:24 unsolved goals; terminal chain still exposes sorryAx in dependent declarations",
+      "build_state": "GREEN_PREFIX_NOT_TERMINAL",
+      "exact_blocker": "Gram quadratic identity/minimization layer now kernel-checks with no sorryAx; the terminal unconditional DN vanishing estimate remains uninhabited.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
