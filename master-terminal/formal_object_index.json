@@ -1,0 +1,357 @@
+{
+  "schema": "mcore.canonical-terminal-formal-object-index.v1",
+  "generated_at": "2026-09-30",
+  "scope": "Only objects that participate directly in the current seven-lane terminal closure or its no-wrapper firewall.",
+  "objects": [
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "TerminalLane",
+      "kind": "structure",
+      "role": "pairs target Prop with concrete producer Type and projection"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "SevenLaneSystem",
+      "kind": "structure",
+      "role": "seven terminal lanes indexed by Fin 7"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "EquivalentWrapper",
+      "kind": "structure",
+      "role": "canonical neutral proposition wrapper"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "HypothesisWrapper",
+      "kind": "structure",
+      "role": "equivalent-hypothesis wrapper used to expose conserved difficulty"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "ProducerMap",
+      "kind": "structure",
+      "role": "separate witness type plus projection to target"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "ProducerReduction",
+      "kind": "structure",
+      "role": "explicit map between producer witness types"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "ProducerEquiv",
+      "kind": "structure",
+      "role": "bidirectional producer transport; preserves inhabitance"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "NeutralWrapper",
+      "kind": "structure",
+      "role": "wrap/unwrap pair proving representational neutrality"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "universal_terminal_closure",
+      "kind": "theorem",
+      "role": "all seven concrete producer inhabitants imply all seven targets"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "universal_producer_first_closure",
+      "kind": "theorem",
+      "role": "producer-map form of universal closure"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "universal_closure_from_reductions",
+      "kind": "theorem",
+      "role": "explicit upstream-reduction form of universal closure"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "wrapper_conserves_terminal_difficulty",
+      "kind": "theorem",
+      "role": "proposition wrapper is inhabitance-equivalent to target"
+    },
+    {
+      "lane": "MASTER",
+      "repo": "ShantiDraconis/M-Core",
+      "name": "proposition_equivalence_conserves_wrapper",
+      "kind": "theorem",
+      "role": "equivalent propositions do not create terminal inhabitants"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "P01MachineConstruction",
+      "kind": "structure",
+      "role": "one fixed NTM, polynomial time, total halting, exact SATBits acceptance"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "RawDecodeNoneFailClosed",
+      "kind": "structure",
+      "role": "current exact P01 raw-source min-cut"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "RawDecodeFailure",
+      "kind": "inductive",
+      "role": "exhaustive recursive reasons decodeCircuitCore fails"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "WholeDecodeFailure",
+      "kind": "inductive",
+      "role": "whole-source split into core failure or canonical prefix plus residual garbage"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "RawFailureChild",
+      "kind": "inductive",
+      "role": "five recursive raw-decoder failure transitions"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "rawFailureChild_length_lt",
+      "kind": "theorem",
+      "role": "strict descent/no-loop measure for recursive raw totalization"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "ExactBoundedCheckedCircuitRunCertificate",
+      "kind": "def",
+      "role": "exact physical cursor plus bounded circuit execution"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "circuit_exact_bounded_reject",
+      "kind": "theorem",
+      "role": "structural bounded reject producer for syntactically invalid decoded circuits"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "checkedVerifierExactTimeBound",
+      "kind": "def",
+      "role": "uniform cubic verifier envelope"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "UniversalDiagonalRouteFirewall",
+      "kind": "structure",
+      "role": "certificate of five refuted diagonal-route classes"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "GenuineUniversalProducer",
+      "kind": "def",
+      "role": "actual inhabited upstream type mapping to UniversalWitnessExists"
+    },
+    {
+      "lane": "P_VS_NP",
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "name": "universal_refuted_route_conjunction",
+      "kind": "theorem",
+      "role": "collects five no-go results without deciding G21"
+    },
+    {
+      "lane": "RIEMANN",
+      "repo": "ShantiDraconis/m-core-riemann",
+      "name": "FiniteSpanApproximatesChi",
+      "kind": "def",
+      "role": "material finite-span density target"
+    },
+    {
+      "lane": "RIEMANN",
+      "repo": "ShantiDraconis/m-core-riemann",
+      "name": "DNToZero",
+      "kind": "def",
+      "role": "defect convergence to zero"
+    },
+    {
+      "lane": "RIEMANN",
+      "repo": "ShantiDraconis/m-core-riemann",
+      "name": "finiteSpanApproximatesChi_iff_DNLimit_eq_zero",
+      "kind": "theorem",
+      "role": "exact terminal equivalence"
+    },
+    {
+      "lane": "RIEMANN",
+      "repo": "ShantiDraconis/m-core-riemann",
+      "name": "VanishingUpperBound",
+      "kind": "producer interface",
+      "role": "sufficient nonnegative majorant tending to zero"
+    },
+    {
+      "lane": "RIEMANN",
+      "repo": "ShantiDraconis/m-core-riemann",
+      "name": "finalExternal_of_normal_equation_energy",
+      "kind": "theorem",
+      "role": "conditional Gram normal-equation/energy projection to final external"
+    },
+    {
+      "lane": "BSD",
+      "repo": "ShantiDraconis/m-core-bsd",
+      "name": "GroundedBSDHabitant",
+      "kind": "structure",
+      "role": "same-curve realizable state carrying rank/Sha/leading laws"
+    },
+    {
+      "lane": "BSD",
+      "repo": "ShantiDraconis/m-core-bsd",
+      "name": "groundedHabitant_of_fields",
+      "kind": "def",
+      "role": "field-by-field constructor; does not produce the fields"
+    },
+    {
+      "lane": "BSD",
+      "repo": "ShantiDraconis/m-core-bsd",
+      "name": "finalExternal_of_grounded",
+      "kind": "def",
+      "role": "projection from grounded habitant to final external"
+    },
+    {
+      "lane": "HODGE",
+      "repo": "ShantiDraconis/m-core-hodge",
+      "name": "HigherCodimH01ForwardPayload",
+      "kind": "producer interface",
+      "role": "higher-codimension R1/R2/R3 forward production"
+    },
+    {
+      "lane": "HODGE",
+      "repo": "ShantiDraconis/m-core-hodge",
+      "name": "HodgePositiveTerminalProducer",
+      "kind": "producer",
+      "role": "codimension-split positive terminal producer"
+    },
+    {
+      "lane": "HODGE",
+      "repo": "ShantiDraconis/m-core-hodge",
+      "name": "positiveProducer_of_minimal_concrete_inputs",
+      "kind": "def",
+      "role": "combines h0 + concrete Lefschetz + H01"
+    },
+    {
+      "lane": "HODGE",
+      "repo": "ShantiDraconis/m-core-hodge",
+      "name": "higherH01_of_fields",
+      "kind": "def",
+      "role": "packages explicit per-class spread/descent/R2/R3 inputs"
+    },
+    {
+      "lane": "YANG_MILLS",
+      "repo": "ShantiDraconis/m-core-yang-mills",
+      "name": "B60ConcretePhysicalAdapter",
+      "kind": "producer interface",
+      "role": "genuine concrete physical adapter boundary"
+    },
+    {
+      "lane": "YANG_MILLS",
+      "repo": "ShantiDraconis/m-core-yang-mills",
+      "name": "finalExternal_of_fields",
+      "kind": "def",
+      "role": "field-by-field conditional constructor for exact B6.0 final object"
+    },
+    {
+      "lane": "YANG_MILLS",
+      "repo": "ShantiDraconis/m-core-yang-mills",
+      "name": "K30SpectralTransferWitness",
+      "kind": "producer input",
+      "role": "spectral transfer witness required by final adapter"
+    },
+    {
+      "lane": "BEAL",
+      "repo": "ShantiDraconis/m-core-beal",
+      "name": "GCDLowerBoundProducer",
+      "kind": "producer",
+      "role": "smallest exposed scalar arithmetic terminal producer"
+    },
+    {
+      "lane": "BEAL",
+      "repo": "ShantiDraconis/m-core-beal",
+      "name": "finalExternal_iff_gcdLowerBound",
+      "kind": "theorem",
+      "role": "exact equivalence between final external inhabitance and GCD lower bound"
+    },
+    {
+      "lane": "BEAL",
+      "repo": "ShantiDraconis/m-core-beal",
+      "name": "T35GlobalEliminationBridge",
+      "kind": "alternative producer",
+      "role": "semantic alternative route, still requires inhabitant"
+    },
+    {
+      "lane": "BEAL",
+      "repo": "ShantiDraconis/m-core-beal",
+      "name": "T42FinalProofBundle",
+      "kind": "alternative producer",
+      "role": "field-by-field alternative bundle, still requires inhabitant"
+    },
+    {
+      "lane": "NAVIER_STOKES",
+      "repo": "ShantiDraconis/M-Navier-Stokes",
+      "name": "G5RawDecomposition",
+      "kind": "structure",
+      "role": "raw signed-stretch decomposition data"
+    },
+    {
+      "lane": "NAVIER_STOKES",
+      "repo": "ShantiDraconis/M-Navier-Stokes",
+      "name": "ThetaSubcritical",
+      "kind": "def",
+      "role": "hard inequality theta < 1"
+    },
+    {
+      "lane": "NAVIER_STOKES",
+      "repo": "ShantiDraconis/M-Navier-Stokes",
+      "name": "DefectIntervalL1",
+      "kind": "def",
+      "role": "hard interval-integrability obligation"
+    },
+    {
+      "lane": "NAVIER_STOKES",
+      "repo": "ShantiDraconis/M-Navier-Stokes",
+      "name": "G5DirectWitness",
+      "kind": "structure",
+      "role": "raw decomposition plus theta and L1 hard obligations"
+    },
+    {
+      "lane": "NAVIER_STOKES",
+      "repo": "ShantiDraconis/M-Navier-Stokes",
+      "name": "G5DirectProducer",
+      "kind": "def",
+      "role": "ActualNS produces direct G5 witness"
+    },
+    {
+      "lane": "NAVIER_STOKES",
+      "repo": "ShantiDraconis/M-Navier-Stokes",
+      "name": "g5DirectProducer_iff_G5NSBridge",
+      "kind": "theorem",
+      "role": "exact equivalence to existing terminal bridge"
+    }
+  ]
+}
