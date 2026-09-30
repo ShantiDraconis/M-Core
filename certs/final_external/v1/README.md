@@ -1,58 +1,78 @@
-# ELYON_FINAL_EXTERNAL v1.0.0 - PREPARATORY (package revision v1.1-preparatory)
-## INFRASTRUCTURE_CERTIFIED - PREPARATORY_NOT_ISSUED
+# ELYON_FINAL_EXTERNAL v1.0.0 — MATERIAL-ONLY PREPARATORY
 
-Status publico: PREPARATORY / non-issued infrastructure record
-Nao e certificado emitido. certificate_type pode continuar INFRASTRUCTURE_CERTIFIED mas FINAL_EXTERNAL_ISSUED=false
+## Status
 
-Este pacote e um registro preparatorio de infraestrutura da cadeia:
-MCORE + AINUM + OS + HUB + BRAIN + APP + ELYON
+This directory is a **preparatory, non-issued** certificate package.
 
-### Estado normativo congelavel agora
-package_state:       PREPARATORY
-infra_state:         READY_FOR_FREEZE
-math_state:          OPEN_MATH
-final_proof:         0/7
-release_state:       SEALED_CLOSED
-maximum_auto_state:  REVIEW_PENDING
-FINAL_EXTERNAL_ISSUED: false
-public_status:       PREPARATORY_NOT_ISSUED
+```text
+package_state          PREPARATORY
+freeze_state           FROZEN_PREPARATORY
+FINAL_EXTERNAL_ISSUED  false
+FINAL_ROOT             null
+GLOBAL FINAL_PROOF     0/7
+```
 
-P01_PREFIX:          GREEN_FROZEN_CERTIFIED - fc20887e...
-P01_ENDPOINT:        OPEN
-P02_FRONTIER:        FORMALIZED - ef89f6a2...
-P02_ENDPOINT:        OPEN_MATH
-P03..P07:            OPEN_MATH
-G3:                  OPEN_CONSTRUCTION
+No `FINAL_ROOT` may be generated while a material, mechanical, or release blocker remains open.
 
-### Correcao 2 - Rota P02 correta
-G2.0  FORMAL_INFRA / normalization - normaliza bounds; NAO prova enumerabilidade efetiva e NAO produz G2.1
-G2.1  OPEN_MATH / terminal producer - coracao de P vs NP
-G2.2  BLOCKED_BY_G2.1
-G2.3  BLOCKED_BY_G2.2
+## P vs NP terminal boundary
 
-G2.0 -> G2.1 -> G2.2 -> UniversalFailure -> SAT nao em P NAO e sequencia tecnica ordinaria.
+The former "two mathematical gaps" description is superseded.
 
-### Hashes em dois niveis
-- PACKAGE_SHA256SUMS: calculavel agora sobre arquivos preparatorios
-- PREPARATORY_ROOT: calculavel agora por freeze.sh
-- FINAL_ROOT: deve continuar null porque derivacao inclui APP, crypto/hardware producao, revisao humana e anchors finais. Nao calcular root final contendo UNSET.
+There are exactly two **operational inputs**, of different classes:
 
-### Freeze.sh correto (fail-closed)
-1 validar JSON/schema
-2 rejeitar sorry/admit/sorryAx
-3 verificar SHA/branches/runs
-4 calcular SHA256SUMS do pacote preparatorio
-5 gerar PREPARATORY_ROOT
-6 NAO gerar FINAL_ROOT enquanto UNSET
-7 NAO mudar FINAL_EXTERNAL_ISSUED para true
-8 quando gates satisfeitos: calcular FINAL_ROOT, provenance final, assinar, REVIEW_PENDING
-9 somente evidencia humana valida produz APPROVED/ISSUED
+```text
+MATERIAL:
+  G21Pointwise
+  ↔ P02Target
+  ↔ ¬ InP SATTarget
 
-Proximo estado sem decisao humana:
-PREPARATORY_PACKAGE -> HASHED -> REPRODUCIBILITY_AUDITED -> FROZEN_PREPARATORY
-NAO -> FINAL_EXTERNAL_ISSUED
+MECHANICAL:
+  Nonempty (P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout)
+  → P01ConstructionGap
+```
 
-### Freeze snapshot
-freeze_state: FROZEN_PREPARATORY
-PREPARATORY_ROOT: stored in `PREPARATORY_ROOT` to avoid self-reference
-FINAL_ROOT: null
+Only `G21Pointwise` counts as `OPEN_MATH`.
+
+`P01VerifierPhase ...` is executable/formal machine construction. It may block the endpoint, but it is not a mathematical lower-bound conjecture.
+
+The following downstream wiring is already closed and must not be reopened:
+
+- G2.2 consequence/equivalence wiring;
+- G3 normalized external contract;
+- FinalExternal integration;
+- FinalExternalTwoGap reduction.
+
+Thus the exact consumer chain is:
+
+```text
+P01VerifierPhase
+  → P01ConstructionGap
+                         ┐
+G21Pointwise             ├→ FinalExternalGap
+                         ┘
+  → OfficialPneqNP
+  → FINAL_ROOT_MATH[P_VS_NP]
+```
+
+## Seven material slots
+
+The global `FINAL_PROOF` count remains `0/7`. Wiring does not create extra slots. The seven material targets are recorded in:
+
+- `MATERIAL_ONLY_BOUNDARY_20260930.json`
+- `FINAL_ROOT_CLOSURE_PLAN_20260930.json`
+- `lean/MCore/FinalFail/MaterialProducerNormalForms.lean`
+
+## Hash levels
+
+`freeze.sh` validates and hashes the preparatory package and generates `PREPARATORY_ROOT`.
+
+`finalize_root.sh` is the fail-closed final-root gate. It refuses to compute `FINAL_ROOT` unless:
+
+1. `FINAL_ROOT_MATH` is populated;
+2. the P01 mechanical blocker is closed;
+3. `G21Pointwise` is closed for the P-vs-NP external lane;
+4. human review authority, quorum and evidence policy are set;
+5. production app, crypto and hardware fields are set;
+6. the final payload passes deterministic hash verification.
+
+Even after `FINAL_ROOT` is computed, `FINAL_EXTERNAL_ISSUED=true` remains a separate approval/issuance action governed by the recorded human-review policy.
