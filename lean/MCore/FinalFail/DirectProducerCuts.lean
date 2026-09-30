@@ -28,16 +28,16 @@ structure DirectProducerCut where
 
 def directProducerCuts : List DirectProducerCut := [
   { problem := .riemann
-    target := "RiemannOffCriticalZero"
-    reduction := "¬RiemannHypothesis ↔ Nonempty RiemannOffCriticalZero; unconditional witness still absent"
+    target := "FiniteSpanApproximatesChi concreteGeneratorFamily"
+    reduction := "frozen theorem d6a291b4 identifies this with DNLimit = 0 and DNToZero; BCF/zero-residue/VanishingUpperBound are strategies only, not extra terminal gaps"
     state := .openMath },
   { problem := .beal
     target := "GCDLowerBoundProducer: ∀ d : BealData, 1 < gcd(d.a, gcd(d.b,d.c))"
     reduction := "m-core-beal proves this scalar producer ↔ CommonDivisor ↔ CommonPrime on the positive Beal domain; the universal gcd lower bound itself remains open"
     state := .openMath },
   { problem := .pVsNP
-    target := "P01ConstructionGap ∧ G21Pointwise; P01 local evalStep frontier is now only the input-node 000++encodeNat(i) preserving witness read, followed by global evalRun lift and final parser→guess→verifier NTM integration"
-    reduction := "P01 finite-frame evaluator is GREEN_FROZEN at f70ab88b/run 36508950379; cursor/frame primitives and all five finite tags const-false/const-true/NOT/AND/OR are GREEN_FROZEN at 6707aa0e/run 36552792426. The existing indexed witness reader is destructive, so the sole remaining local evalStep producer is a fixed unary-index-driven reader that restores the witness exactly. G21Pointwise remains independently OPEN_MATH and equivalent to SAT∉P on the bound official lane"
+    target := "G21Pointwise"
+    reduction := "G21Pointwise ↔ P02Target ↔ SAT ∉ P on the bound official lane. P01ConstructionGap is implementation/mechanical closure, not OPEN_MATH, and is tracked separately. A preserving arbitrary-index witness reader is already materialized at dfe9aec4; remaining P01 work is global evalRun refinement + parser/witness/verifier NTM integration + polynomial halting/acceptance."
     state := .openMath },
   { problem := .navierStokes
     target := "NSProducerFirst.ActualNSToSignedGainCore on genuine flow-derived EnstrophyData"
