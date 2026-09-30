@@ -165,13 +165,13 @@ def normalizeFuel : Nat → L.State → L.State
       if h : L.defect x = 0 then
         x
       else
-        L.normalizeFuel n (L.step x)
+        normalizeFuel L n (L.step x)
 
 /-- Sufficient fuel forces the normalizer to a zero-defect state. -/
 theorem normalizeFuel_defect_zero
     (n : Nat) (x : L.State)
     (hbound : L.defect x ≤ n) :
-    L.defect (L.normalizeFuel n x) = 0 := by
+    L.defect (normalizeFuel L n x) = 0 := by
   induction n generalizing x with
   | zero =>
       have hz : L.defect x = 0 := Nat.eq_zero_of_le_zero hbound
@@ -184,23 +184,24 @@ theorem normalizeFuel_defect_zero
           L.contract x hpos
         have hnext : L.defect (L.step x) ≤ n := by
           omega
-        simp [normalizeFuel, hz, ih (L.step x) hnext]
+        change L.defect (normalizeFuel L n (L.step x)) = 0
+        exact ih (L.step x) hnext
 
 /-- Canonical normal form reached using exactly the initial defect as fuel. -/
 def normalize (x : L.State) : L.State :=
-  L.normalizeFuel (L.defect x) x
+  normalizeFuel L (L.defect x) x
 
 theorem normalize_defect_zero
     (x : L.State) :
-    L.defect (L.normalize x) = 0 := by
+    L.defect (normalize L x) = 0 := by
   unfold normalize
-  exact L.normalizeFuel_defect_zero (L.defect x) x (Nat.le_refl _)
+  exact normalizeFuel_defect_zero L (L.defect x) x (Nat.le_refl _)
 
 /-- The canonical normal form is frozen under the lane step. -/
 theorem normalize_fixed
     (x : L.State) :
-    L.step (L.normalize x) = L.normalize x :=
-  L.freeze (L.normalize x) (L.normalize_defect_zero x)
+    L.step (normalize L x) = normalize L x :=
+  L.freeze (normalize L x) (normalize_defect_zero L x)
 
 /--
 Constructive terminal inhabitant producer.
@@ -210,12 +211,12 @@ inhabitant term rather than only proving Nonempty.
 -/
 def produceInhabitant
     (x : L.State) : L.Inhabitant :=
-  L.extract (L.normalize x) (L.normalize_defect_zero x)
+  L.extract (normalize L x) (normalize_defect_zero L x)
 
 /-- Constructive terminal certificate producer. -/
 def produceCertificate
     (x : L.State) : L.Certificate :=
-  L.certify (L.produceInhabitant x)
+  L.certify (produceInhabitant L x)
 
 /--
 Finite-time exact producer theorem for one lane.
