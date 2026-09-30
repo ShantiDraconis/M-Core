@@ -5,8 +5,8 @@ set -euo pipefail
 PACKAGE_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$PACKAGE_DIR"
 echo "[freeze.sh] $PACKAGE_DIR - PREPARATORY_NOT_ISSUED"
-JSON_FILES=(manifest.json status.json provenance.json gate_ledger.json axiom_footprint.json revocation.json MATH_TERMINAL_BOUNDARY_20260922.json)
-PAYLOAD=(manifest.json README.md provenance.json gate_ledger.json axiom_footprint.json reproducibility.md status.json MATH_TERMINAL_BOUNDARY_20260922.json revocation.json freeze.sh)
+JSON_FILES=(manifest.json status.json provenance.json gate_ledger.json axiom_footprint.json revocation.json MATH_TERMINAL_BOUNDARY_20260922.json MATERIAL_ONLY_BOUNDARY_20260930.json)
+PAYLOAD=(manifest.json README.md provenance.json gate_ledger.json axiom_footprint.json reproducibility.md status.json MATH_TERMINAL_BOUNDARY_20260922.json MATERIAL_ONLY_BOUNDARY_20260930.json revocation.json freeze.sh)
 
 echo "[1/8] JSON syntax"
 for f in "${JSON_FILES[@]}"; do python3 -m json.tool "$f" >/dev/null; done
@@ -41,20 +41,23 @@ echo "[4/8] Blocker classes remain fail-closed"
 python3 <<'PY2'
 import json
 m=json.load(open('manifest.json'))
-b=json.load(open('MATH_TERMINAL_BOUNDARY_20260922.json'))
-blockers=[]
-if 'P01ConstructionGap' in b.get('open_gaps', []): blockers.append('P01ConstructionGap')
-if 'G21Pointwise' in b.get('open_gaps', []): blockers.append('G21Pointwise')
-if m['human_review']['authority']=='UNSET': blockers.append('human_review')
-if m['production']['app']['app_repository']=='UNSET': blockers.append('app')
-if m['production']['crypto']['crypto_provider']=='UNSET': blockers.append('crypto')
-if m['production']['hardware_attestation']['status']=='UNSET': blockers.append('hardware')
+b=json.load(open('MATERIAL_ONLY_BOUNDARY_20260930.json'))
+material=list(b['p_vs_np_final_external']['material_blockers'])
+mechanical=list(b['p_vs_np_final_external']['mechanical_blockers'])
+release=[]
+if m['human_review']['authority']=='UNSET': release.append('human_review')
+if m['production']['app']['app_repository']=='UNSET': release.append('app')
+if m['production']['crypto']['crypto_provider']=='UNSET': release.append('crypto')
+if m['production']['hardware_attestation']['status']=='UNSET': release.append('hardware')
+assert material==['G21Pointwise'], material
+assert mechanical==['P01ConstructionGap'], mechanical
 assert m['G3']['status']=='CLOSED_GREEN_FROZEN_CERTIFIED'
-assert m['final_proof']['taxonomy']['FINAL_EXTERNAL_TWO_GAP']=='0/2'
 assert m['final_proof']['taxonomy']['P_VS_NP_ENDPOINT']=='OPEN'
 assert m['final_proof']['taxonomy']['GLOBAL_7_PROBLEMS']=='0/7'
-assert blockers==['P01ConstructionGap','G21Pointwise','human_review','app','crypto','hardware'], blockers
-print('blockers:', blockers)
+assert release==['human_review','app','crypto','hardware'], release
+print('material_blockers:', material)
+print('mechanical_blockers:', mechanical)
+print('release_blockers:', release)
 PY2
 
 echo "[5/8] Generate canonical PACKAGE_SHA256SUMS"
