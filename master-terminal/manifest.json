@@ -1,0 +1,213 @@
+{
+  "schema": "mcore.master-terminal-manifest.v1",
+  "generated_at": "2026-09-30",
+  "orchestrator": {
+    "repo": "ShantiDraconis/M-Core",
+    "base_sha": "6fcd8c9c9155d6f1f94d9ef91063a9707b7ff312",
+    "latest_observed_run": {
+      "id": 36684948944,
+      "name": "Final Proof Miner",
+      "conclusion": "success",
+      "sha": "6fcd8c9c9155d6f1f94d9ef91063a9707b7ff312"
+    }
+  },
+  "policy": {
+    "terminal_slots": 7,
+    "done_rule": "DONE iff every canonical slot has a kernel-checked terminal inhabitant, source SHA/run evidence, zero sorry/admit/sorryAx, no prohibited axiom/oracle, and linkage through the official consumer.",
+    "green_rule": "A successful build/certificate/transport workflow is evidence only and never terminal credit by itself.",
+    "non_terminal_repositories": "All repositories outside the seven terminal lanes are source/support only and contribute zero terminal credit.",
+    "fail_closed": true
+  },
+  "global": {
+    "state": "OPEN",
+    "final_proof": "0/7",
+    "terminal_inhabitants": 0,
+    "denominator": 7,
+    "final_root": null
+  },
+  "lanes": [
+    {
+      "slot": "RIEMANN",
+      "operational_repo": "ShantiDraconis/m-core-riemann",
+      "canonical_producer": "unconditional DN vanishing estimate -> DNLimit = 0 -> R1ExternalBridge -> RH",
+      "latest_observed_run": {
+        "id": 36640049627,
+        "name": "atk-rh-gram-quadratic",
+        "conclusion": "failure",
+        "sha": "265fc5966da8e5723bb967decf219f5c1de4701b"
+      },
+      "build_state": "RED",
+      "exact_blocker": "GramQuadratic.lean:24 unsolved goals; terminal chain still exposes sorryAx in dependent declarations",
+      "terminal": {
+        "nonempty": false,
+        "kernel_checked": false,
+        "official_consumer_linked": false,
+        "theorem": null
+      },
+      "terminal_credit": 0
+    },
+    {
+      "slot": "P_VS_NP",
+      "operational_repo": "ShantiDraconis/m-core-p-vs-np",
+      "canonical_producer": "P01ConstructionGap + G21Pointwise / genuine not_in_p lower-bound producer",
+      "latest_observed_run": {
+        "id": 36689429136,
+        "name": "certificate",
+        "conclusion": "failure",
+        "sha": "660722ee0b05a466016e83e32405c1254d216535"
+      },
+      "build_state": "RED",
+      "exact_blocker": "P01CheckedVerifierRun.lean has type mismatches; terminal declarations still expose sorryAx",
+      "terminal": {
+        "nonempty": false,
+        "kernel_checked": false,
+        "official_consumer_linked": false,
+        "theorem": null
+      },
+      "terminal_credit": 0
+    },
+    {
+      "slot": "BSD",
+      "operational_repo": "ShantiDraconis/m-core-bsd",
+      "canonical_producer": "BSD rank equality plus remaining refined leading-coefficient obligations",
+      "latest_observed_run": {
+        "id": 36500591219,
+        "name": "certificate",
+        "conclusion": "success",
+        "sha": "01e1e33c7e4bcc7cc05cc87fef5012ff3d4d8693"
+      },
+      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
+      "exact_blocker": "No terminal inhabitant is registered in the canonical M-Core final-proof registry",
+      "terminal": {
+        "nonempty": false,
+        "kernel_checked": false,
+        "official_consumer_linked": false,
+        "theorem": null
+      },
+      "terminal_credit": 0
+    },
+    {
+      "slot": "HODGE",
+      "operational_repo": "ShantiDraconis/m-core-hodge",
+      "canonical_producer": "universal rational Hodge algebraicity / ConcreteAlgebraicityPayload producer",
+      "latest_observed_run": {
+        "id": 36500238126,
+        "name": "certificate",
+        "conclusion": "success",
+        "sha": "e459840e7b4742415fd956dfd3fa069474635650"
+      },
+      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
+      "exact_blocker": "No terminal inhabitant is registered in the canonical M-Core final-proof registry",
+      "terminal": {
+        "nonempty": false,
+        "kernel_checked": false,
+        "official_consumer_linked": false,
+        "theorem": null
+      },
+      "terminal_credit": 0
+    },
+    {
+      "slot": "YANG_MILLS",
+      "operational_repo": "ShantiDraconis/m-core-yang-mills",
+      "canonical_producer": "genuine 4D physical realization + OS/Hamiltonian reconstruction + positive spectral mass gap",
+      "latest_observed_run": {
+        "id": 36497349406,
+        "name": "certificate",
+        "conclusion": "success",
+        "sha": "eb2f1b242fcb6719c370d1f0f36deb2e5494d818"
+      },
+      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
+      "exact_blocker": "No terminal physical/mass-gap inhabitant is registered in the canonical M-Core final-proof registry",
+      "terminal": {
+        "nonempty": false,
+        "kernel_checked": false,
+        "official_consumer_linked": false,
+        "theorem": null
+      },
+      "terminal_credit": 0
+    },
+    {
+      "slot": "BEAL",
+      "operational_repo": "ShantiDraconis/m-core-beal",
+      "canonical_producer": "forall d : BealData, CommonPrime d.a d.b d.c",
+      "latest_observed_run": {
+        "id": 36494980993,
+        "name": "certificate",
+        "conclusion": "success",
+        "sha": "dc84a96f744a8f209ce323c9d956420f67add854"
+      },
+      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
+      "exact_blocker": "No terminal universal CommonPrime inhabitant is registered in the canonical M-Core final-proof registry",
+      "terminal": {
+        "nonempty": false,
+        "kernel_checked": false,
+        "official_consumer_linked": false,
+        "theorem": null
+      },
+      "terminal_credit": 0
+    },
+    {
+      "slot": "NAVIER_STOKES",
+      "operational_repo": "ShantiDraconis/M-Navier-Stokes",
+      "canonical_producer": "ActualNS -> quantitative closure contract -> global regularity, or a valid blow-up inhabitant",
+      "latest_observed_run": {
+        "id": 35622774444,
+        "name": "certify-g5-direct-source",
+        "conclusion": "success",
+        "sha": "3a46cb7efb7aee0659ea6035116df8772cac7673"
+      },
+      "build_state": "STALE_GREEN_NOT_TERMINAL",
+      "exact_blocker": "No current terminal NS inhabitant is registered; existing M-Core global_sources points to an unavailable historical repository binding",
+      "source_binding": "NEEDS_REBIND_TO_OPERATIONAL_REPO",
+      "terminal": {
+        "nonempty": false,
+        "kernel_checked": false,
+        "official_consumer_linked": false,
+        "theorem": null
+      },
+      "terminal_credit": 0
+    }
+  ],
+  "support_blockers": [
+    {
+      "repo": "ShantiDraconis/0-0-FORMAL-SUITE",
+      "latest_observed_runs": [
+        {
+          "id": 36630287361,
+          "name": "NAND Complements CI",
+          "conclusion": "failure",
+          "sha": "1e58844e1d7bc0baa7156c22c41f57ec7754d4e1"
+        },
+        {
+          "id": 36621724891,
+          "name": "Multistate Kernel CI",
+          "conclusion": "failure",
+          "sha": "aff768bffac56cef6fb89d97ac28d9d8c6ac67ff"
+        }
+      ],
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/lean-winwin-logic",
+      "latest_observed_run": {
+        "id": 36566776384,
+        "name": "lean-ci",
+        "conclusion": "failure",
+        "sha": "41af1571ad5a4cc51e157659e1ca6700fb37f085"
+      },
+      "exact_blocker": "type mismatch; bebedor depends on sorryAx",
+      "terminal_credit": 0
+    },
+    {
+      "repo": "ShantiDraconis/i-constant-core",
+      "latest_observed_run": {
+        "id": 36340526734,
+        "name": "Direct Endpoint Rule Guard",
+        "conclusion": "failure",
+        "sha": "06a1646856993da2828a94b5c49798a76e020869"
+      },
+      "exact_blocker": "formal/DirectEndpointRule.lean failed policy guard",
+      "terminal_credit": 0
+    }
+  ]
+}
