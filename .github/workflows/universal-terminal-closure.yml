@@ -34,6 +34,7 @@ jobs:
       - name: Validate forward-only closure graph
         run: |
           python3 -m json.tool master-terminal/closure_graph.json >/dev/null
+          python3 -m json.tool master-terminal/formal_object_index.json >/dev/null
           python3 scripts/closure_graph_audit.py
       - name: Validate wrapper equivalence registry
         run: |
