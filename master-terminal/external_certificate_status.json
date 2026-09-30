@@ -1,0 +1,22 @@
+{
+  "schema": "mcore.external-terminal-certificate-status.v1",
+  "generated_at": "2026-09-30",
+  "issued": false,
+  "FINAL_EXTERNAL_ISSUED": false,
+  "FINAL_PROOF": "0/7",
+  "FINAL_ROOT": null,
+  "state": "BLOCKED_FAIL_CLOSED",
+  "reason": "No canonical terminal lane currently has a registered material inhabitant satisfying the full kernel/evidence contract.",
+  "required_for_issue": [
+    "7/7 terminal inhabitants",
+    "kernel_checked=true for every lane",
+    "official_consumer_linked=true for every lane",
+    "successful source run with immutable SHA",
+    "sorry=0",
+    "admit=0",
+    "sorryAx=0",
+    "no prohibited axioms",
+    "hidden_oracle=false"
+  ],
+  "note": "Conditional FINAL_ROOT constructors, equivalence wrappers, GREEN transport workflows, and no-go firewalls do not satisfy issuance."
+}
