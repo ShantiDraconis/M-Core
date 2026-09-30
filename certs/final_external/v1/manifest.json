@@ -14,14 +14,14 @@
     "ELYON"
   ],
   "infra_state": "READY_FOR_FREEZE",
-  "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
+  "math_state": "OPEN_MATH_ONE_EXACT_PRODUCER__P01_MECHANICAL_PENDING",
   "final_proof": {
     "numerator": 0,
     "denominator": 7,
     "display": "0/7",
     "terminal_status": {
-      "P01": "OPEN_IMPLEMENTATION - certified through parser/leaf, terminal branches and global-slotlog; exact open payload P01ConstructionGap / Nonempty P01MachineConstruction",
-      "P02": "OPEN_MATH - G2.1 literal route CLOSED_BY_FALSIFICATION; G2.2 wiring GREEN_FROZEN_CERTIFIED; exact open payload G21Pointwise ≃ P02Target ≃ SAT not in P",
+      "P01": "MECHANICAL_PENDING - exact operational payload P01ConstructionGap / Nonempty P01MachineConstruction; not counted as OPEN_MATH",
+      "P02": "OPEN_MATH - sole P vs NP material producer G21Pointwise ≃ P02Target ≃ SAT not in P; G2.2/G2.3 wiring is derived/closed once G21 is supplied",
       "P03": "OPEN_MATH",
       "P04": "OPEN_MATH",
       "P05": "OPEN_MATH",
@@ -31,12 +31,12 @@
     },
     "claim_policy": "NO_CLAIM_OF_P_NP_CLAY_BEAL_SOLVED",
     "taxonomy": {
-      "FINAL_EXTERNAL_TWO_GAP": "0/2",
+      "FINAL_EXTERNAL_TWO_GAP": "0/2 operational blockers; 0/1 material",
       "P_VS_NP_ENDPOINT": "OPEN",
       "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
       "FINAL_ROOT_MATH": null,
       "GLOBAL_7_PROBLEMS": "0/7",
-      "rule": "Two internal P vs NP producers count as one global problem endpoint only after both close."
+      "rule": "P01 is mechanical closure; G21Pointwise is the sole material P vs NP producer. Both operational inputs must close before the endpoint can issue."
     }
   },
   "release_state": "SEALED_CLOSED",
@@ -59,9 +59,16 @@
         "35723570545 SUCCESS phase/global-slotlog"
       ],
       "pending_ATK": [
-        "P01ConstructionGap",
-        "Nonempty P01MachineConstruction"
-      ]
+        "link dfe9aec4 preservingRead_forall into input-node evalStep refinement",
+        "global physical verifier execution theorem refining frozen evalRun",
+        "one fixed finite-control parser+witness+verifier NTM",
+        "global polynomial HaltsWithin and AcceptsWithin iff SATBits circuitBitEncoding"
+      ],
+      "recovered_candidate": {
+        "source_sha": "dfe9aec4e85a8e97bb02ed2240504d54e7f0fbc1",
+        "theorem": "preservingRead_forall",
+        "state": "RECOVERED_CANDIDATE_REQUIRES_PROMOTION_AUDIT"
+      }
     },
     "P02": {
       "frontier": "38db71b416906e5b7138774842e91d3e367aad09",
@@ -130,7 +137,8 @@
     "signature.bundle / .asc",
     "MATH_TERMINAL_BOUNDARY_20260922.json",
     "status.json",
-    "revocation.json"
+    "revocation.json",
+    "MATERIAL_ONLY_BOUNDARY_20260930.json"
   ],
   "toolchain": {
     "normative": "Lean 4.19 + lake",
@@ -173,7 +181,7 @@
     "FINAL_ROOT": null,
     "PREPARATORY_ROOT": null,
     "derivation_final": "hash(MCORE)+hash(AINUM)+hash(OS)+hash(HUB)+hash(BRAIN)+hash(APP)+hash(ELYON)+hashes(P01..P07) + production crypto + hardware + human_review + final frozen anchors",
-    "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload includes MATH_TERMINAL_BOUNDARY_20260922.json and immutable preparatory package files, excluding SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
+    "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload includes MATERIAL_ONLY_BOUNDARY_20260930.json plus legacy boundary for provenance and immutable preparatory package files, excluding SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
     "preparatory_root_location": "PREPARATORY_ROOT",
     "FINAL_ROOT_MATH": null,
     "linked_preparatory_root": "4cdaf7b62ee2ff85676c7dcd98fb6dfe965fa8afd4abccf19ba6aedb42878f24"
@@ -191,8 +199,8 @@
   },
   "issuance_gate": {
     "FINAL_EXTERNAL_ISSUED": false,
-    "condition": "P01ConstructionGap closed AND G21Pointwise closed AND G3 CLOSED AND human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND all required infra GREEN+FROZEN",
-    "current": "BLOCKED fail-closed: P01ConstructionGap OPEN_IMPLEMENTATION; G21Pointwise OPEN_MATH; P_VS_NP_ENDPOINT OPEN; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
+    "condition": "P01ConstructionGap mechanical closure complete AND G21Pointwise material producer closed AND G3 CLOSED AND human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND all required infra GREEN+FROZEN",
+    "current": "BLOCKED fail-closed: P01 mechanical closure pending; G21Pointwise OPEN_MATH; P_VS_NP_ENDPOINT OPEN; human_review UNSET; app UNSET; crypto UNSET; hardware UNSET",
     "public_status": "PREPARATORY_NOT_ISSUED"
   },
   "package_state": "PREPARATORY",
