@@ -25,7 +25,16 @@
         "BCF/zero-residue route"
       ],
       "inhabitant_state": "OPEN_MATH",
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "auto_compose_observed": {
+        "branch": "atk/auto-compose-terminal-20260930",
+        "sha": "37d459b5181057a479f4ecb9d5cc4b23ef76b263",
+        "run_id": 36789912106,
+        "workflow": "ATK exact final producer",
+        "conclusion": "success",
+        "classification": "CONDITIONAL_OR_EQUIVALENCE_ONLY",
+        "reason": "The audited ZeroLimitFrontier proves equivalences and implications but does not construct FiniteSpanApproximatesChi."
+      }
     },
     {
       "slot": "P_VS_NP",
@@ -48,7 +57,26 @@
         "component shells without one-machine global execution theorem"
       ],
       "inhabitant_state": "OPEN_MATH",
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "current_advanced_branch": {
+        "branch": "atk/p01-openmath-final-integrated-clean-20260930",
+        "head": "6be73fc1101b8d9cd22283adce738190996768f6",
+        "classification": "MATERIAL_IMPLEMENTATION_IN_PROGRESS",
+        "proved_prefix": [
+          "exact bounded positive circuit producer",
+          "exact bounded negative/reject producer",
+          "canonical valid verifier run adapter",
+          "decoded syntax-invalid reject adapter",
+          "uniform cubic verifier budget"
+        ],
+        "remaining": [
+          "arbitrary malformed raw-bit rejection/halting",
+          "one global checked verifier HaltsWithin/AcceptsWithin theorem for every bitstring",
+          "parser + witness guess + verifier one-machine composition",
+          "P01MachineConstruction inhabitant",
+          "independent G21Pointwise inhabitant"
+        ]
+      }
     },
     {
       "slot": "BEAL",
@@ -65,7 +93,16 @@
       "theorem": "bealConjecture_iff_gcdLowerBoundProducer",
       "instruction": "Do not count CommonPrime/CommonDivisor rewrites or conductor routes unless they actually construct the scalar GCD lower-bound producer.",
       "inhabitant_state": "OPEN_MATH",
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "auto_compose_observed": {
+        "branch": "atk/auto-compose-terminal-20260930",
+        "sha": "a92ccc7a948ce9b11c7c1089f5abb088421f9b17",
+        "run_id": 36789271667,
+        "workflow": "ATK exact final producer",
+        "conclusion": "success",
+        "classification": "EQUIVALENT_WRAPPER_ONLY",
+        "reason": "ExactFinalProducer converts GCDLowerBoundProducer or equivalent no-counterexample hypotheses into FinalExternal; it does not prove those hypotheses."
+      }
     },
     {
       "slot": "HODGE",
@@ -81,7 +118,15 @@
         "H01MinimalForwardPayload"
       ],
       "inhabitant_state": "OPEN_MATH",
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "auto_compose_observed": {
+        "branch": "atk/auto-compose-terminal-20260930",
+        "sha": "97e0bad2c0dba1265283a53f8d1842ff554e1a7d",
+        "workflow": "conditional final-root build",
+        "conclusion": "success",
+        "classification": "CONDITIONAL_CONSTRUCTOR_ONLY",
+        "reason": "ExactFinalProducer still takes codimension-zero, concrete Lefschetz, and higher-codimension H01 inputs; it does not inhabit them."
+      }
     },
     {
       "slot": "YANG_MILLS",
@@ -96,7 +141,16 @@
       ],
       "downstream": "B60ConcretePhysicalAdapter -> ∃ gap, K14MassGap",
       "inhabitant_state": "OPEN_MATH",
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "auto_compose_observed": {
+        "branch": "atk/auto-compose-terminal-20260930",
+        "sha": "5c236fb9fd7566321474b7211e4e3765f9a6b5fa",
+        "run_id": 36789110658,
+        "workflow": "ATK exact final producer",
+        "conclusion": "success",
+        "classification": "CONDITIONAL_CONSTRUCTOR_ONLY",
+        "reason": "finalExternal_of_fields requires construction, clustering, limit, physical excitation, and K30 transfer witnesses as inputs."
+      }
     },
     {
       "slot": "BSD",
@@ -113,7 +167,16 @@
         }
       ],
       "inhabitant_state": "OPEN_MATH",
-      "terminal_credit": 0
+      "terminal_credit": 0,
+      "auto_compose_observed": {
+        "branch": "atk/auto-compose-terminal-20260930",
+        "sha": "538c5e1363536d38d958901354c3a3f89e4df08d",
+        "run_id": 36774374190,
+        "workflow": "ATK exact final producer",
+        "conclusion": "success",
+        "classification": "CONDITIONAL_CONSTRUCTOR_ONLY",
+        "reason": "ExactFinalProducer constructs FinalExternal only from GroundedBSDHabitant/field laws; no grounded habitant is constructed."
+      }
     },
     {
       "slot": "NAVIER_STOKES",
