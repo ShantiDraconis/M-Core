@@ -32,7 +32,9 @@
       ],
       "consumer": "p01_of_verifier -> P01ConstructionGap",
       "validation_branch": "atk/p01-verifier-phase-mincut-clean-20260930",
-      "validation_state": "CI_PENDING"
+      "validation_state": "GREEN_KERNEL_AXIOM_AUDITED_STRUCTURAL_REDUCTION",
+      "validation_source_sha": "c51a35617f6b94ed42d626c50e68ab08e7f6c393",
+      "validation_run": 36785624773
     },
     "downstream_closed": [
       {
