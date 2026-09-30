@@ -254,7 +254,7 @@
         "P01_LEAF_SOURCE_RETURN_GREEN_FROZEN_CERTIFIED",
         "P01_BINARY_HEAD_GREEN_FROZEN_CERTIFIED"
       ],
-      "next_delta": "P01 mechanical: close the single verifier-phase min-cut; advanced GREEN base already has prepPhase, exact cubic canonical verifier halting/correctness, and malformed short/unary cases. Current exact residual is total fail-closed handling of every decodeCircuit=none raw source, then package checkedVerifierFinMachine as P01VerifierPhase and apply p01_of_verifier. P02 material: G21Pointwise remains the sole OPEN_MATH producer.",
+      "next_delta": "P01 mechanical only: construct one kernel-clean P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout, then apply p01_of_verifier. The 2026-09-30 raw-mincut clean build is RED because the stronger exact-verifier candidate has broken imports/unresolved helpers and a sorryAx footprint. Do not count that candidate as GREEN. P02 material remains solely G21Pointwise.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -302,7 +302,7 @@
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
-      "p01_state": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE_MINCUT",
+      "p01_state": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE__CANDIDATE_BASE_RED",
       "p02_state": "OPEN_MATH_SINGLE_MATERIAL_PRODUCER_G21Pointwise",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
@@ -729,12 +729,13 @@
       "material_only": {
         "material_target": "G21Pointwise",
         "mechanical_target": "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
-        "reduced_mechanical_target": "RawSourceClosure: decodeCircuit bs = none -> HaltsWithin(T) and not AcceptsWithin(T)",
-        "green_base": "14cf5d0f0611d35282f92fa5527149a8a1e542ba",
-        "raw_mincut_branch": "atk/p01-raw-mincut-20260930",
-        "raw_mincut_head": "4af7e2c3c9886c0d11c7f3c16f00f7dd671c61d5",
-        "raw_mincut_state": "CI_IN_PROGRESS",
-        "assembly_theorem": "P01WitnessPrepGlobal.p01_of_verifier"
+        "exact_structural_projection": "P01WitnessPrepGlobal.p01_of_verifier",
+        "candidate_branch": "atk/p01-raw-mincut-20260930",
+        "candidate_head": "4af7e2c3c9886c0d11c7f3c16f00f7dd671c61d5",
+        "candidate_run": 36784079760,
+        "candidate_state": "RED_BASE_INTEGRITY",
+        "candidate_failure": "missing CanonicalSATSlotParserSpec; unresolved exact-producer helpers; sorryAx footprint",
+        "rule": "P01 remains mechanical, not OPEN_MATH, but is not closed until one verifier-phase inhabitant passes clean kernel+axiom audit."
       }
     },
     {
@@ -828,10 +829,10 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "Material-only boundary active: seven mathematical producer slots only. P vs NP wiring is split into one mechanical verifier-phase min-cut and one material producer G21Pointwise. FINAL_ROOT remains null and FINAL_EXTERNAL remains non-issued.",
+    "current": "Material-only boundary active: seven mathematical producers only. P vs NP has one material blocker G21Pointwise and one mechanical blocker P01VerifierPhase. The attempted stronger P01 exact-verifier candidate failed clean reproduction and is not promoted. FINAL_ROOT remains null; FINAL_EXTERNAL remains non-issued.",
     "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit.",
     "final_external_math_gate": {
-      "g1_p01": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE_MINCUT",
+      "g1_p01": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE__BASE_INTEGRITY_OPEN",
       "g2_p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
       "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
       "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
@@ -842,7 +843,7 @@
       "mechanical_blockers": [
         "P01VerifierPhase prepPhase.layout"
       ],
-      "mechanical_reduction": "RawSourceClosure -> verifierPhaseOfRawSourceClosure -> p01_of_verifier -> P01ConstructionGap",
+      "mechanical_reduction": "P01VerifierPhase prepPhase.layout -> p01_of_verifier -> P01ConstructionGap",
       "final_external_issued": false,
       "final_root": null,
       "operational_progress": "0/2",
@@ -850,7 +851,8 @@
       "p_vs_np_endpoint": "OPEN",
       "p_vs_np_external_math_certified": false,
       "final_root_math": null,
-      "global_7_problems": "0/7"
+      "global_7_problems": "0/7",
+      "mechanical_candidate_state": "RED_BASE_INTEGRITY_RUN_36784079760"
     },
     "taxonomy": {
       "final_external_two_gap": {
