@@ -27,15 +27,17 @@ jobs:
       - name: Source firewall
         run: |
           set -euo pipefail
-          FILE=lean/MCore/ATK/UniversalProducerTheorem.lean
-          ! grep -n -E '(^|[^[:alnum:]_])(sorry|admit|sorryAx|unsafe|cheat|bypass|placeholder)([^[:alnum:]_]|$)' "$FILE"
-          ! grep -n -E '^[[:space:]]*(@\[[^]]*\][[:space:]]*)?(axiom|constant|constants)[[:space:]]' "$FILE"
+          FILES="lean/MCore/ATK/UniversalProducerTheorem.lean lean/MCore/ATK/SevenLaneSpecialization.lean"
+          ! grep -n -E '(^|[^[:alnum:]_])(sorry|admit|sorryAx|unsafe|cheat|bypass|placeholder)([^[:alnum:]_]|$)' $FILES
+          ! grep -n -E '^[[:space:]]*(@\[[^]]*\][[:space:]]*)?(axiom|constant|constants)[[:space:]]' $FILES
       - name: Build universal producer theorem
-        run: lake build MCore.ATK.UniversalProducerTheorem
+        run: |
+          lake build MCore.ATK.UniversalProducerTheorem
+          lake build MCore.ATK.SevenLaneSpecialization
       - name: Axiom audit
         run: |
           cat > UniversalProducerAxioms.lean <<'EOF'
-          import MCore.ATK.UniversalProducerTheorem
+          import MCore.ATK.SevenLaneSpecialization
           #print axioms MCore.ATK.UniversalProducer.ProducerLane.inhabitant_after_steps
           #print axioms MCore.ATK.UniversalProducer.resolveUniversalMaterialization
           #print axioms MCore.ATK.UniversalProducer.resolveExactUniversalProblem
@@ -44,6 +46,9 @@ jobs:
           #print axioms MCore.ATK.UniversalProducer.universal_certificate_theorem
           #print axioms MCore.ATK.UniversalProducer.no_target_from_structure_alone
           #print axioms MCore.ATK.UniversalProducer.no_positive_defect_self_loop
+          #print axioms MCore.ATK.UniversalProducer.resolveExactSevenInhabitants
+          #print axioms MCore.ATK.UniversalProducer.exact_seven_lane_resolution
+          #print axioms MCore.ATK.UniversalProducer.issueSevenExternalCertificate
           EOF
           lake env lean UniversalProducerAxioms.lean | tee universal-producer-axioms.txt
           ! grep -E 'sorryAx' universal-producer-axioms.txt
