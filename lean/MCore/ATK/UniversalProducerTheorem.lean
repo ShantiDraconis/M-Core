@@ -188,6 +188,33 @@ theorem universal_bounded_production
       Nonempty (K.lane p).Certificate :=
   (K.lane p).certificate_after_steps (S.state p)
 
+/-- A zero-defect structural core used to state the materialization firewall. -/
+def zeroStructuralCore : StructuralCore where
+  State := Unit
+  step := id
+  defect := fun _ => 0
+  contract := by
+    intro x h
+    omega
+
+/--
+Materialization firewall.
+
+Structural descent alone cannot manufacture an inhabitant of an arbitrary
+target type.  The proof instantiates the alleged universal constructor at the
+empty type.  Therefore every real application of the universal producer
+theorem must supply a problem-specific extraction map from zero defect to the
+exact terminal inhabitant type.
+-/
+theorem no_target_from_structure_alone :
+    ¬ (∀ (C : StructuralCore) (x : C.State) (Target : Type),
+        Nonempty Target) := by
+  intro h
+  have hempty : Nonempty Empty :=
+    h zeroStructuralCore () Empty
+  rcases hempty with ⟨e⟩
+  exact nomatch e
+
 /--
 No structural shortcut theorem.
 
@@ -211,6 +238,7 @@ theorem no_positive_defect_self_loop
 #print axioms MCore.ATK.UniversalProducer.universal_inhabitant_theorem
 #print axioms MCore.ATK.UniversalProducer.universal_certificate_theorem
 #print axioms MCore.ATK.UniversalProducer.universal_bounded_production
+#print axioms MCore.ATK.UniversalProducer.no_target_from_structure_alone
 #print axioms MCore.ATK.UniversalProducer.no_positive_defect_self_loop
 
 end MCore.ATK.UniversalProducer
