@@ -72,13 +72,18 @@
     "P_VS_NP": {
       "canonical_material": "G21Pointwise",
       "material_state": "OPEN_MATH",
-      "canonical_mechanical": "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
-      "mechanical_state": "PENDING",
+      "canonical_mechanical": "P01RawTotalizationMinCut.RawDecodeNoneFailClosed",
+      "mechanical_state": "PENDING_KERNEL_AUDIT",
       "structural_branch": "atk/p01-verifier-phase-mincut-clean-20260930",
-      "structural_theorem": "MCore.Real.P01VerifierPhaseMinCutStructural.p01ConstructionGap_of_verifierPhase",
+      "structural_theorem": "MCore.Real.P01RawTotalizationMinCut.raw_totalization_gap_closes_p01",
       "already_closed": [
         "P01WitnessPrepGlobal.prepPhase",
         "P01IntegratedAssembly.p01_of_verifier",
+        "manual finite-state relabel construction present; kernel audit pending",
+        "exact bounded circuit producer transplanted; kernel audit pending",
+        "exact bounded reject producer transplanted; kernel audit pending",
+        "exact canonical global run transplanted; kernel audit pending",
+        "semantic split exact_encoding_or_decode_none",
         "G2.2 wiring",
         "G3 normalized external contract",
         "FinalExternal integration",
@@ -88,7 +93,22 @@
         "literal fixed-point route",
         "raw candidate branches failing kernel/axiom audit",
         "P01 wiring counted as OPEN_MATH"
-      ]
+      ],
+      "mechanical_reduction_chain": [
+        "RawDecodeNoneFailClosed",
+        "RawDecodeNoneFailClosed.toGlobalCore",
+        "CheckedVerifierGlobalCoreV2.toVerifierPhase",
+        "p01ConstructionGap_of_core",
+        "P01ConstructionGap"
+      ],
+      "known_raw_rejection_components": [
+        "P01RawMalformedTag.prepared_truncated_tag_fail_closed",
+        "P01RawMalformedUnary.prepared_truncated_unary_fail_closed",
+        "P01RawResidualReject.canonical_prefix_with_residual_reaches_reject",
+        "P01RawDeadEnd.haltsWithin_succ_of_reaches_dead",
+        "P01RawDeadEnd.not_acceptsWithin_succ_of_reaches_dead"
+      ],
+      "remaining_exact": "prove decoder-failure coverage: for every bs with decodeCircuit bs = none, fixed checked verifier halts and rejects within checkedVerifierExactTimeBound bs.length"
     }
   },
   "convergence_rule": "Promote a lane only by constructing the pinned material core or a strictly stronger object with kernel-checked projection to it. Never reopen certified downstream wiring."
