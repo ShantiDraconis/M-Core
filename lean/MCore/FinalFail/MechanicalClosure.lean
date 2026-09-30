@@ -11,8 +11,11 @@ integrated assembly theorem:
 
   P01PrepPhase + P01VerifierPhase -> P01MachineConstruction.
 
-The prep phase is already inhabited on the advanced P01 line.  Therefore the
-only remaining mechanical min-cut is one verifier-phase inhabitant.
+The prep phase, canonical bounded evaluator, exact global canonical fuel and
+verifier-phase assembly are already structurally reduced on the advanced P01
+line. Therefore the only remaining mechanical min-cut is raw-source
+totalization: decoder failure must halt and reject at the same fixed global
+fuel.
 -/
 
 inductive MechanicalState where
@@ -30,8 +33,8 @@ structure MechanicalClosure where
 
 def mechanicalClosures : List MechanicalClosure := [
   { problem := .pVsNP
-    target := "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout"
-    evidence := "Certified exact structural reduction: source c51a35617f6b94ed42d626c50e68ab08e7f6c393 on atk/p01-verifier-phase-mincut-clean-20260930; dedicated run 36785624773 SUCCESS. P01WitnessPrepGlobal.prepPhase + p01_of_verifier prove that one verifier-phase inhabitant closes P01ConstructionGap. No exact-verifier inhabitant is asserted."
+    target := "P01RawTotalizationMinCut.RawDecodeNoneFailClosed"
+    evidence := "Forward-only reduction on atk/p01-verifier-phase-mincut-clean-20260930: exact_encoding_or_decode_none splits every raw BitString into canonical encodeCircuit phi or decoder failure; exact bounded canonical execution supplies halts/correct on the canonical side; RawDecodeNoneFailClosed.toGlobalCore -> p01ConstructionGap_of_core -> P01ConstructionGap. Source theorem added at f25f362c and kernel audit is required before promotion."
     state := .pending }
 ]
 
