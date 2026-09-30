@@ -46,9 +46,8 @@ def finalRootReady : Prop :=
 
 theorem material_math_not_ready :
     ¬ materialMathReady := by
-  intro h
-  have hz : producedDirectCount = 0 := producedDirectCount_eq_zero
-  omega
+  unfold materialMathReady
+  simpa [producedDirectCount_eq_zero]
 
 theorem final_root_not_ready :
     ¬ finalRootReady := by
