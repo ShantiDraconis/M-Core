@@ -1,6 +1,6 @@
 {
   "schema": "MCCS_STATUS_V5",
-  "updated_utc": "2026-09-22",
+  "updated_utc": "2026-09-30",
   "scheduler": {
     "repos": 8,
     "problem_repos": 7,
@@ -18,7 +18,7 @@
   "counters": {
     "hard_composite_remaining": 10,
     "hard_atomic_remaining": 11,
-    "material_producer_slots": 8,
+    "material_producer_slots": 7,
     "terminal_certificates_green_frozen": 7,
     "canonical_hard_bases_green_frozen": 7,
     "active_clean_attacks": 7,
@@ -33,9 +33,13 @@
     "active_core_formulation_tracks": 1,
     "active_tracks_total": 8,
     "mcore_formulation_endpoint_credit": 0,
-    "p_vs_np_two_gap": "0/2",
+    "p_vs_np_two_gap": "0/2_OPERATIONAL__0/1_MATERIAL",
     "p_vs_np_endpoint": "OPEN",
-    "p_vs_np_external_math_certified": false
+    "p_vs_np_external_math_certified": false,
+    "p_vs_np_material_producers": "0/1",
+    "p_vs_np_mechanical_min_cuts": "0/1",
+    "material_only_open_slots": 7,
+    "material_only_policy": "WIRING_IS_NOT_OPEN_MATH"
   },
   "queues": [
     {
@@ -219,7 +223,7 @@
     },
     {
       "repo": "m-core-p-vs-np",
-      "state": "IN_PROCESS",
+      "state": "IN_PROCESS_MATERIAL_PLUS_MECHANICAL_SEPARATED",
       "canonical_hard_base": "969408f2d84121667319da04680893dd2978e9a6",
       "canonical_frozen": "frozen/material-orientation-green-969408f2",
       "active_attack_head": "0ff71d49edd9457025377fe6eaf041bea8bd2171",
@@ -250,7 +254,7 @@
         "P01_LEAF_SOURCE_RETURN_GREEN_FROZEN_CERTIFIED",
         "P01_BINARY_HEAD_GREEN_FROZEN_CERTIFIED"
       ],
-      "next_delta": "P01: construct SlotParserMachineSimulationCertificate from the certified Fin-25 parser macros, including total halting under parserTimeBound and exact parserAccepting ↔ slotAccept semantics; then compose parser + fixed-control witness guesser + verifier into P01MachineConstruction. P02/G21 remains OPEN_MATH and untouched.",
+      "next_delta": "P01 mechanical: close the single verifier-phase min-cut; advanced GREEN base already has prepPhase, exact cubic canonical verifier halting/correctness, and malformed short/unary cases. Current exact residual is total fail-closed handling of every decodeCircuit=none raw source, then package checkedVerifierFinMachine as P01VerifierPhase and apply p01_of_verifier. P02 material: G21Pointwise remains the sole OPEN_MATH producer.",
       "composite_remaining": 2,
       "atomic_remaining": 2,
       "recovered_provenance": [
@@ -298,8 +302,8 @@
         "copilot/worksat-realization-foundations/SATRealization.lean: invalid for canonical P01 because SATState embeds arbitrary CNF and SATSymbol embeds String/List Bool, so control/alphabet are not fixed finite Fin/Option Bool",
         "legacy ParserMachineCertificate/WitnessGuessMachineCertificate/VerifierMachineCertificate: certified vacuous and non-promotable"
       ],
-      "p01_state": "PARSER/LEAF + TERMINAL BRANCHES + PHASE/GLOBAL SLOTLOG + BINARY HEAD GREEN_FROZEN_CERTIFIED / FULL PARSER SIMULATION IN_PROCESS / INTEGRATED WITNESS+VERIFIER NTM OPEN / P01 HARD OPEN",
-      "p02_state": "G2_0 GREEN_FROZEN_CERTIFIED / G2.1 literal fixed-point route CLOSED_BY_FALSIFICATION / G2.1 pointwise producer OPEN_MATH / G2.2 wiring GREEN_FROZEN_CERTIFIED at 38db71b4 (run 35722282451) / P02 FINAL OPEN_MATH",
+      "p01_state": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE_MINCUT",
+      "p02_state": "OPEN_MATH_SINGLE_MATERIAL_PRODUCER_G21Pointwise",
       "frozen_parser_prefix": {
         "source_sha": "fc20887e556091a4775080ab23ee1ff61917040e",
         "frozen_branch": "frozen/p01-parser-components-green-fc20887e",
@@ -721,6 +725,16 @@
         "certificate_branch": "cert/p01-binary-head-0ff71d49-run35731861724",
         "run": 35731861724,
         "state": "GREEN_FROZEN_CERTIFIED"
+      },
+      "material_only": {
+        "material_target": "G21Pointwise",
+        "mechanical_target": "P01VerifierPhase P01WitnessPrepGlobal.prepPhase.layout",
+        "reduced_mechanical_target": "RawSourceClosure: decodeCircuit bs = none -> HaltsWithin(T) and not AcceptsWithin(T)",
+        "green_base": "14cf5d0f0611d35282f92fa5527149a8a1e542ba",
+        "raw_mincut_branch": "atk/p01-raw-mincut-20260930",
+        "raw_mincut_head": "4af7e2c3c9886c0d11c7f3c16f00f7dd671c61d5",
+        "raw_mincut_state": "CI_IN_PROGRESS",
+        "assembly_theorem": "P01WitnessPrepGlobal.p01_of_verifier"
       }
     },
     {
@@ -814,21 +828,25 @@
     "repo": "M-Core",
     "state": "IN_PROCESS",
     "terminal_certificate_master": "frozen/atk-seven-terminal-certificates-42a720d9",
-    "current": "7/7 terminal frontier packages verified + P-vs-NP FinalExternalTwoGap pipeline GREEN/FROZEN/CERTIFIED + P01 binary-head macro now GREEN/FROZEN/CERTIFIED at 0ff71d49 (run 35731861724). P01 full parser simulation IN_PROCESS; integrated SAT NTM still OPEN. G21Pointwise remains OPEN_MATH. FINAL_ROOT null; FINAL_EXTERNAL not issued; GLOBAL 0/7.",
+    "current": "Material-only boundary active: seven mathematical producer slots only. P vs NP wiring is split into one mechanical verifier-phase min-cut and one material producer G21Pointwise. FINAL_ROOT remains null and FINAL_EXTERNAL remains non-issued.",
     "verification_note": "G3 repository contract is formally closed by cook_normalized_g3_contract_closed. This does not establish that cookNormalizedModel is definitionally/exhaustively faithful to every Cook/CMI prose convention. Terminal frontier certificates remain non-endpoint proof credit.",
     "final_external_math_gate": {
-      "g1_p01": "IN_PROCESS_FULL_PARSER_SIMULATION_THEN_INTEGRATED_P01_CONSTRUCTION",
+      "g1_p01": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE_MINCUT",
       "g2_p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
       "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
       "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
-      "two_gap_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
-      "exact_remaining_producers": [
-        "P01ConstructionGap",
+      "two_input_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "material_blockers": [
         "G21Pointwise"
       ],
+      "mechanical_blockers": [
+        "P01VerifierPhase prepPhase.layout"
+      ],
+      "mechanical_reduction": "RawSourceClosure -> verifierPhaseOfRawSourceClosure -> p01_of_verifier -> P01ConstructionGap",
       "final_external_issued": false,
       "final_root": null,
-      "two_gap_progress": "0/2",
+      "operational_progress": "0/2",
+      "material_progress": "0/1",
       "p_vs_np_endpoint": "OPEN",
       "p_vs_np_external_math_certified": false,
       "final_root_math": null,
@@ -836,10 +854,11 @@
     },
     "taxonomy": {
       "final_external_two_gap": {
-        "progress": "0/2",
-        "p01": "OPEN_IMPLEMENTATION",
+        "operational_progress": "0/2",
+        "material_progress": "0/1",
+        "p01": "MECHANICAL_PENDING_SINGLE_VERIFIER_PHASE",
         "g21": "OPEN_MATH",
-        "closed_condition": "P01ConstructionGap AND G21Pointwise"
+        "closed_condition": "P01 verifier phase closes mechanically AND G21Pointwise closes materially"
       },
       "p_vs_np_endpoint": {
         "state": "OPEN",
