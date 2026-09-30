@@ -6,6 +6,7 @@ on:
       - atk/material-only-final-root-20260930
     paths:
       - 'lean/MCore/FinalFail/**'
+      - 'certs/final_external/v1/**'
       - '.github/workflows/material-only-final-root.yml'
       - 'lakefile.lean'
       - 'lean-toolchain'
@@ -42,6 +43,12 @@ jobs:
           export PATH="$HOME/.elan/bin:$PATH"
           lake build MCore.FinalFail.MaterialOnlyFinalRoot
           lake build MCore.FinalFail.Master
+
+      - name: Validate preparatory external package
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash certs/final_external/v1/freeze.sh
 
       - name: Reject proof escapes
         shell: bash
