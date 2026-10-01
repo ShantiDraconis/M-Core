@@ -67,14 +67,8 @@ theorem mul_left_cancel_nonzero
     {a b c : TState} (ha : a ≠ 0)
     (h : a * b = a * c) :
     b = c := by
-  cases a with
-  | seed =>
-      exact (ha rfl).elim
-  | transit =>
-      simpa [MCore.FinalFail.MaterialAlgebra.TriState.mul] using h
-  | manifest =>
-      cases b <;> cases c <;>
-        simp_all [MCore.FinalFail.MaterialAlgebra.TriState.mul]
+  cases a <;> cases b <;> cases c <;>
+    simp_all [MCore.FinalFail.MaterialAlgebra.TriState.mul]
 
 theorem inv_eq_self (x : TState) :
     x⁻¹ = x := by
@@ -324,23 +318,15 @@ theorem proven_interior_iff (x : EState) :
     interior
       MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood x ↔
       x = .proved := by
-  cases x with
-  | refuted =>
-      simp [interior,
-        MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood]
-  | open =>
-      simp [interior,
-        MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood]
-  | proved =>
-      constructor
-      · intro _
-        rfl
-      · intro _
-        refine ⟨rfl, ?_⟩
-        intro y hy
-        cases y <;>
-          norm_num [MCore.FinalFail.MaterialCalculus.EvidenceState.code] at hy ⊢
-
+  constructor
+  · intro h
+    exact h.1
+  · intro hx
+    subst x
+    refine ⟨rfl, ?_⟩
+    intro y hy
+    cases y <;>
+      norm_num [MCore.FinalFail.MaterialCalculus.EvidenceState.code] at hy ⊢
 theorem proven_boundary_iff_not_proved (x : EState) :
     boundary
       MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood x ↔
