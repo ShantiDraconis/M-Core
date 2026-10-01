@@ -23,7 +23,7 @@ theorem constant_coherent
 
 /-- Every tri-number decomposes into its coherent mean part plus its centered part. -/
 theorem mean_center_decomposition
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     x = fun p => constant (phaseMean x) p + center x p := by
   funext p
@@ -31,7 +31,7 @@ theorem mean_center_decomposition
 
 /-- On the balanced subspace the 3-cycle Laplacian is exactly -3 times identity. -/
 theorem laplacian_eq_neg_three_of_balanced
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     {x : TriNumber α}
     (h : Balanced x) :
     laplacian x = fun p => (-3 : α) * x p := by
@@ -43,7 +43,7 @@ theorem laplacian_eq_neg_three_of_balanced
 
 /-- The centered component is therefore a -3 eigenvector of the Laplacian. -/
 theorem laplacian_center
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     laplacian (center x) =
       fun p => (-3 : α) * center x p :=
@@ -51,7 +51,7 @@ theorem laplacian_center
 
 /-- The coherent component lies in the zero eigenspace. -/
 theorem laplacian_constant_zero
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (a : α) :
     laplacian (constant a) = 0 := by
   exact coherent_implies_harmonic (constant_coherent a)
@@ -59,7 +59,7 @@ theorem laplacian_constant_zero
 /-- Spectral dichotomy for the tri-state Laplacian:
 coherent mode has eigenvalue 0, centered/balanced mode has eigenvalue -3. -/
 theorem spectral_split
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     Harmonic (constant (phaseMean x)) ∧
     Balanced (center x) ∧
@@ -73,7 +73,7 @@ theorem spectral_split
 
 /-- Rotation preserves both eigenspaces. -/
 theorem coherent_and_balanced_rotation_invariant
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     (Coherent x → Coherent (rotate x)) ∧
     (Balanced x → Balanced (rotate x)) := by
