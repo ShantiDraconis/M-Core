@@ -98,16 +98,7 @@ explicit degree-at-most-two Lagrange formula. -/
 theorem interpolate_exact (f : TState → TState) :
     ∀ x, interpolate f x = f x := by
   intro x
-  cases x with
-  | seed =>
-      cases h : f .seed <;>
-        rfl
-  | transit =>
-      cases h : f .transit <;>
-        rfl
-  | manifest =>
-      cases h : f .manifest <;>
-        rfl
+  cases x <;> simp [interpolate]
 
 /-- Functional extensional form: every endomorphism is its quadratic
 interpolant. -/
@@ -150,27 +141,33 @@ theorem affine_one_manifest_eq_rotate_twice (x : TState) :
 theorem affine_injective
     (a b : TState) (ha : a ≠ 0) :
     Function.Injective (affine a b) := by
-  change a ≠ .seed at ha
   intro x y h
-  cases a <;> cases b <;> cases x <;> cases y <;>
-    simp_all [affine,
-      MCore.FinalFail.MaterialAlgebra.TriState.mul,
-      MCore.FinalFail.MaterialAlgebra.TriState.add]
+  cases a with
+  | seed =>
+      exact False.elim (ha rfl)
+  | transit =>
+      cases b <;> cases x <;> cases y <;>
+        simp_all [affine,
+          MCore.FinalFail.MaterialAlgebra.TriState.mul,
+          MCore.FinalFail.MaterialAlgebra.TriState.add]
+  | manifest =>
+      cases b <;> cases x <;> cases y <;>
+        simp_all [affine,
+          MCore.FinalFail.MaterialAlgebra.TriState.mul,
+          MCore.FinalFail.MaterialAlgebra.TriState.add]
 
 /-- Every nonzero affine slope yields a surjective operator. -/
 theorem affine_surjective
     (a b : TState) (ha : a ≠ 0) :
     Function.Surjective (affine a b) := by
-  change a ≠ .seed at ha
   intro y
+  refine ⟨a * (y + (-b)), ?_⟩
   cases a with
   | seed =>
       exact False.elim (ha rfl)
   | transit =>
-      refine ⟨y + (-b), ?_⟩
       cases b <;> cases y <;> rfl
   | manifest =>
-      refine ⟨(.manifest : TState) * (y + (-b)), ?_⟩
       cases b <;> cases y <;> rfl
 
 theorem affine_bijective
@@ -207,20 +204,20 @@ theorem affine_injective
     Function.Injective (affine a b) := by
   intro x y h
   apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
-  · exact TriState.affine_injective a b.riemann ha
-      (congrArg (fun z : LaneVector => z.riemann) h)
-  · exact TriState.affine_injective a b.beal ha
-      (congrArg (fun z : LaneVector => z.beal) h)
-  · exact TriState.affine_injective a b.pvsnp ha
-      (congrArg (fun z : LaneVector => z.pvsnp) h)
-  · exact TriState.affine_injective a b.navierStokes ha
-      (congrArg (fun z : LaneVector => z.navierStokes) h)
-  · exact TriState.affine_injective a b.hodge ha
-      (congrArg (fun z : LaneVector => z.hodge) h)
-  · exact TriState.affine_injective a b.bsd ha
-      (congrArg (fun z : LaneVector => z.bsd) h)
-  · exact TriState.affine_injective a b.yangMills ha
-      (congrArg (fun z : LaneVector => z.yangMills) h)
+  · apply TriState.affine_injective a b.riemann ha
+    exact congrArg (fun z : LaneVector => z.riemann) h
+  · apply TriState.affine_injective a b.beal ha
+    exact congrArg (fun z : LaneVector => z.beal) h
+  · apply TriState.affine_injective a b.pvsnp ha
+    exact congrArg (fun z : LaneVector => z.pvsnp) h
+  · apply TriState.affine_injective a b.navierStokes ha
+    exact congrArg (fun z : LaneVector => z.navierStokes) h
+  · apply TriState.affine_injective a b.hodge ha
+    exact congrArg (fun z : LaneVector => z.hodge) h
+  · apply TriState.affine_injective a b.bsd ha
+    exact congrArg (fun z : LaneVector => z.bsd) h
+  · apply TriState.affine_injective a b.yangMills ha
+    exact congrArg (fun z : LaneVector => z.yangMills) h
 
 /-- Hamming geometry is invariant under a common nondegenerate affine change
 of coordinates. -/
@@ -236,7 +233,8 @@ theorem hamming_affine
         x.riemann = y.riemann := by
     constructor
     · intro h
-      exact TriState.affine_injective a b.riemann ha h
+      apply TriState.affine_injective a b.riemann ha
+      exact h
     · intro h
       exact congrArg (TriState.affine a b.riemann) h
   have hB :
@@ -245,7 +243,8 @@ theorem hamming_affine
         x.beal = y.beal := by
     constructor
     · intro h
-      exact TriState.affine_injective a b.beal ha h
+      apply TriState.affine_injective a b.beal ha
+      exact h
     · intro h
       exact congrArg (TriState.affine a b.beal) h
   have hP :
@@ -254,7 +253,8 @@ theorem hamming_affine
         x.pvsnp = y.pvsnp := by
     constructor
     · intro h
-      exact TriState.affine_injective a b.pvsnp ha h
+      apply TriState.affine_injective a b.pvsnp ha
+      exact h
     · intro h
       exact congrArg (TriState.affine a b.pvsnp) h
   have hN :
@@ -263,7 +263,8 @@ theorem hamming_affine
         x.navierStokes = y.navierStokes := by
     constructor
     · intro h
-      exact TriState.affine_injective a b.navierStokes ha h
+      apply TriState.affine_injective a b.navierStokes ha
+      exact h
     · intro h
       exact congrArg (TriState.affine a b.navierStokes) h
   have hH :
@@ -272,7 +273,8 @@ theorem hamming_affine
         x.hodge = y.hodge := by
     constructor
     · intro h
-      exact TriState.affine_injective a b.hodge ha h
+      apply TriState.affine_injective a b.hodge ha
+      exact h
     · intro h
       exact congrArg (TriState.affine a b.hodge) h
   have hD :
@@ -281,7 +283,8 @@ theorem hamming_affine
         x.bsd = y.bsd := by
     constructor
     · intro h
-      exact TriState.affine_injective a b.bsd ha h
+      apply TriState.affine_injective a b.bsd ha
+      exact h
     · intro h
       exact congrArg (TriState.affine a b.bsd) h
   have hY :
@@ -290,7 +293,8 @@ theorem hamming_affine
         x.yangMills = y.yangMills := by
     constructor
     · intro h
-      exact TriState.affine_injective a b.yangMills ha h
+      apply TriState.affine_injective a b.yangMills ha
+      exact h
     · intro h
       exact congrArg (TriState.affine a b.yangMills) h
   simp [hR, hB, hP, hN, hH, hD, hY]
