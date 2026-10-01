@@ -220,9 +220,7 @@ theorem derivative_eq_zero_iff_state_stable
     apply code_injective
     exact (derivative_eq_zero_iff f n).mp h
   · intro h
-    unfold derivative
-    rw [h]
-    simp
+    simpa [derivative, h]
 
 /-! ## 4. Dependency topology -/
 
