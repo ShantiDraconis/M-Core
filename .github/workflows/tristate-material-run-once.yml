@@ -43,6 +43,7 @@ jobs:
             lean/MCore/MaterialMath/TriState/Differential.lean
             lean/MCore/MaterialMath/TriState/MetricTopology.lean
             lean/MCore/MaterialMath/TriState/OperationalAlgebra.lean
+            lean/MCore/MaterialMath/TriState/Tripotent.lean
             lean/MCore/MaterialMath/TriState/HeatFlow.lean
             lean/MCore/MaterialMath/TriState/NoSmuggling.lean
             lean/MCore/MaterialMath/TerminalPatterns.lean
@@ -68,6 +69,7 @@ jobs:
           lake build MCore.MaterialMath.TriState.Differential
           lake build MCore.MaterialMath.TriState.MetricTopology
           lake build MCore.MaterialMath.TriState.OperationalAlgebra
+          lake build MCore.MaterialMath.TriState.Tripotent
           lake build MCore.MaterialMath.TerminalPatterns
           lake build MCore.MaterialMath.Contraction
           lake build MCore.MaterialMath.InternalTerminalProducers
@@ -86,6 +88,7 @@ jobs:
           import MCore.MaterialMath.TriState.Differential
           import MCore.MaterialMath.TriState.MetricTopology
           import MCore.MaterialMath.TriState.OperationalAlgebra
+          import MCore.MaterialMath.TriState.Tripotent
           import MCore.MaterialMath.InternalTerminalProducers
           import MCore.MaterialMath.UnconditionalRoot
           #print axioms MCore.MaterialMath.Phase3.rotate_three
@@ -98,6 +101,8 @@ jobs:
           #print axioms MCore.MaterialMath.TriDifferential.laplacian_eq_forward_add_backward
           #print axioms MCore.MaterialMath.Phase3.cyclicDistance_ultrametric
           #print axioms MCore.MaterialMath.TriAlgebra.coordinate_decomposition
+          #print axioms MCore.MaterialMath.TriPotent.I3_tripotent
+          #print axioms MCore.MaterialMath.TriPotent.I3_annihilator
           #print axioms MCore.MaterialMath.geometric_bound
           #print axioms MCore.MaterialMath.internalProducerSuite_inhabited
           #print axioms MCore.MaterialMath.unconditionalMaterialRoot_inhabited
