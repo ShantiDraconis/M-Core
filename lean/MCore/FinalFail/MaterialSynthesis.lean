@@ -46,9 +46,7 @@ theorem delta_rho
         (MaterialGeometry.TriState.rho x)
         (MaterialGeometry.TriState.rho y) =
       MaterialGeometry.TriState.delta x y := by
-  rw [MaterialDerived.TriState.rotate_eq_add_one,
-      MaterialDerived.TriState.rotate_eq_add_one]
-  exact delta_translate x y 1
+  cases x <;> cases y <;> rfl
 
 /-- The two nonzero tristable values are exactly +1 and -1. -/
 theorem nonzero_eq_one_or_neg_one
@@ -103,17 +101,21 @@ theorem smul_injective_nonzero
     Function.Injective (fun x : LaneVector =>
       MaterialDerived.SevenLaneVector.smul a x) := by
   intro x y hxy
-  have h2 := congrArg
-    (fun z : LaneVector => MaterialDerived.SevenLaneVector.smul a z)
-    hxy
-  rw [← MaterialDerived.SevenLaneVector.smul_assoc,
-      ← MaterialDerived.SevenLaneVector.smul_assoc] at h2
-  have haa : a * a = 1 :=
-    MaterialAlgebra.TriState.nonzero_square_eq_one a ha
-  rw [haa,
-      MaterialDerived.SevenLaneVector.one_smul,
-      MaterialDerived.SevenLaneVector.one_smul] at h2
-  exact h2
+  apply MaterialAlgebra.SevenLaneVector.extensionality
+  · exact MaterialDerived.TriState.mul_left_cancel_nonzero ha
+      (congrArg (fun z : LaneVector => z.riemann) hxy)
+  · exact MaterialDerived.TriState.mul_left_cancel_nonzero ha
+      (congrArg (fun z : LaneVector => z.beal) hxy)
+  · exact MaterialDerived.TriState.mul_left_cancel_nonzero ha
+      (congrArg (fun z : LaneVector => z.pvsnp) hxy)
+  · exact MaterialDerived.TriState.mul_left_cancel_nonzero ha
+      (congrArg (fun z : LaneVector => z.navierStokes) hxy)
+  · exact MaterialDerived.TriState.mul_left_cancel_nonzero ha
+      (congrArg (fun z : LaneVector => z.hodge) hxy)
+  · exact MaterialDerived.TriState.mul_left_cancel_nonzero ha
+      (congrArg (fun z : LaneVector => z.bsd) hxy)
+  · exact MaterialDerived.TriState.mul_left_cancel_nonzero ha
+      (congrArg (fun z : LaneVector => z.yangMills) hxy)
 
 /-- Multiplication by a nonzero scalar preserves equality exactly. -/
 theorem smul_eq_iff_nonzero
@@ -123,7 +125,7 @@ theorem smul_eq_iff_nonzero
         MaterialDerived.SevenLaneVector.smul a y ↔
       x = y := by
   constructor
-  · exact smul_injective_nonzero a ha
+  · exact (smul_injective_nonzero a ha) x y
   · intro h
     exact congrArg (fun z : LaneVector =>
       MaterialDerived.SevenLaneVector.smul a z) h
