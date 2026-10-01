@@ -52,7 +52,7 @@ theorem three_torsion_sq_eq_spread_product_iff
     rw [h]
     ring
 
-/-- Normalized torsion cannot exceed one in the energy normalization E=3. -/
+/-- If both states have spread 3, then the squared torsion is at most 3. -/
 theorem torsion_sq_le_one_of_spread_three
     (x y : TriNumber ℝ)
     (hx : spread x = 3)
