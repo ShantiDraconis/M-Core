@@ -67,8 +67,14 @@ theorem mul_left_cancel_nonzero
     {a b c : TState} (ha : a ≠ 0)
     (h : a * b = a * c) :
     b = c := by
-  cases a <;> cases b <;> cases c <;>
-    simp_all [MCore.FinalFail.MaterialAlgebra.TriState.mul]
+  cases a with
+  | seed =>
+      exact (ha rfl).elim
+  | transit =>
+      simpa [MCore.FinalFail.MaterialAlgebra.TriState.mul] using h
+  | manifest =>
+      cases b <;> cases c <;>
+        simp_all [MCore.FinalFail.MaterialAlgebra.TriState.mul]
 
 theorem inv_eq_self (x : TState) :
     x⁻¹ = x := by
@@ -176,13 +182,20 @@ theorem smul_assoc (a b : TState) (x : LaneVector) :
 @[simp] theorem zero_smul (x : LaneVector) :
     smul 0 x = MCore.FinalFail.MaterialAlgebra.SevenLaneVector.zero := by
   apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
-  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.riemann
-  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.beal
-  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.pvsnp
-  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.navierStokes
-  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.hodge
-  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.bsd
-  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.yangMills
+  · change 0 * x.riemann = 0
+    exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.riemann
+  · change 0 * x.beal = 0
+    exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.beal
+  · change 0 * x.pvsnp = 0
+    exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.pvsnp
+  · change 0 * x.navierStokes = 0
+    exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.navierStokes
+  · change 0 * x.hodge = 0
+    exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.hodge
+  · change 0 * x.bsd = 0
+    exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.bsd
+  · change 0 * x.yangMills = 0
+    exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.yangMills
 
 theorem cubic_scalar_identity (a : TState) (x : LaneVector) :
     smul ((a * a) * a) x = smul a x := by
@@ -311,10 +324,22 @@ theorem proven_interior_iff (x : EState) :
     interior
       MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood x ↔
       x = .proved := by
-  cases x <;>
-    simp [interior,
-      MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood,
-      MCore.FinalFail.MaterialCalculus.EvidenceState.code]
+  cases x with
+  | refuted =>
+      simp [interior,
+        MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood]
+  | open =>
+      simp [interior,
+        MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood]
+  | proved =>
+      constructor
+      · intro _
+        rfl
+      · intro _
+        refine ⟨rfl, ?_⟩
+        intro y hy
+        cases y <;>
+          norm_num [MCore.FinalFail.MaterialCalculus.EvidenceState.code] at hy ⊢
 
 theorem proven_boundary_iff_not_proved (x : EState) :
     boundary
