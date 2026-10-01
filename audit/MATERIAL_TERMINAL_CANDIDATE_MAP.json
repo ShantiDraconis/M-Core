@@ -1,0 +1,118 @@
+{
+  "schema": "atk-material-terminal-candidate-map.v1",
+  "status": "CANDIDATE_MECHANISMS_NOT_TERMINAL_PROOFS",
+  "date": "2026-10-01",
+  "material_kernel": {
+    "algebra": "MCore.MaterialMath.TriCyclicAlgebra",
+    "calculus": "MCore.MaterialMath.TriCyclicCalculus",
+    "decomposition": "MCore.MaterialMath.TriCyclicDecomposition",
+    "geometry": "MCore.MaterialMath.TriCyclicGeometry",
+    "operator_laws": "MCore.MaterialMath.OperatorLaws"
+  },
+  "laws": {
+    "F1_VANISHING": "VanishingLaw",
+    "F2_GAP": "GapLaw",
+    "F4_REALIZATION": "RealizationLaw",
+    "F5_EQUALITY": "EqualityLaw",
+    "F6_EXCLUSION": "ExclusionLaw",
+    "F7_LIMIT": "LimitLaw",
+    "F8_FIXED_POINT": "FixedPointLaw"
+  },
+  "lane_connections": [
+    {
+      "lane": "RIEMANN",
+      "class": "F1_VANISHING",
+      "material_candidate": "phase-energy vanishing / zero-limit law",
+      "terminal": "FiniteSpanApproximatesChi concreteGeneratorFamily / DNLimit = 0",
+      "missing_adapter": "prove that the concrete RH DN observable is represented by a material VanishingLaw and transport that law to DNLimit = 0",
+      "state": "OPEN_MATH"
+    },
+    {
+      "lane": "BEAL",
+      "class": "F6_EXCLUSION",
+      "material_candidate": "positive-energy exclusion / forbidden balanced degeneracy",
+      "terminal": "GCDLowerBoundProducer",
+      "missing_adapter": "associate every admissible Beal datum to a material state and prove positive phase energy forces gcd > 1",
+      "state": "OPEN_MATH"
+    },
+    {
+      "lane": "P_VS_NP",
+      "class": "F2_GAP",
+      "material_candidate": "uniform GapLaw over canonical machine/witness states",
+      "terminal": "G21Pointwise / SAT not in P",
+      "missing_adapter": "map each PolyDTMCandidate to a canonical material state family and prove a genuine uniform semantic mismatch witness",
+      "state": "OPEN_MATH"
+    },
+    {
+      "lane": "NAVIER_STOKES",
+      "class": "F7_LIMIT",
+      "material_candidate": "phase derivative + cyclic Laplacian + positive dissipation margin",
+      "terminal": "ActualNSToSignedGainCore",
+      "missing_adapter": "derive the material phase variables from genuine 3D NSE and prove theta < 1 plus the signed stretching inequality",
+      "state": "OPEN_MATH"
+    },
+    {
+      "lane": "HODGE",
+      "class": "F4_REALIZATION",
+      "material_candidate": "RealizationLaw and composition law",
+      "terminal": "ConcreteAlgebraicityPayload",
+      "missing_adapter": "construct a genuine cycle-valued realization map on every smooth-projective rational Hodge class",
+      "state": "OPEN_MATH"
+    },
+    {
+      "lane": "BSD",
+      "class": "F5_EQUALITY",
+      "material_candidate": "EqualityLaw with pullback along a genuine curve model",
+      "terminal": "rank equality + refined leading coefficient identity on same realizable domain",
+      "missing_adapter": "bind material invariants to analytic order, Mordell-Weil rank and refined arithmetic invariants on genuine elliptic curves",
+      "state": "OPEN_MATH"
+    },
+    {
+      "lane": "YANG_MILLS",
+      "class": "F2_GAP",
+      "material_candidate": "GapLaw + transverse phase radius",
+      "terminal": "Nonempty B60ConcretePhysicalAdapter",
+      "missing_adapter": "derive the tri-state spectral observable from a genuine regulated 4D physical construction and prove a uniform positive spectral gap",
+      "state": "OPEN_MATH"
+    }
+  ],
+  "new_numeric_objects": [
+    "TriNumber",
+    "FormalRatio",
+    "FormalRatio.I = formal 0/0",
+    "SingularResolution",
+    "EquilibriumMode",
+    "TransverseMode",
+    "MaterialPhaseGeometry"
+  ],
+  "new_operators": [
+    "rotate",
+    "cyclicMul",
+    "phaseDerivative",
+    "phaseLaplacian",
+    "balancedProjection",
+    "fluctuation"
+  ],
+  "new_invariants": [
+    "total",
+    "traction",
+    "repulsion",
+    "torsion",
+    "spread",
+    "phaseEnergy",
+    "euclideanSquare",
+    "transverseRadiusSq"
+  ],
+  "firewall": {
+    "TerminalMaterialAdapters": "all seven fields remain explicit obligations",
+    "does_not_claim": [
+      "RH",
+      "Beal",
+      "P != NP",
+      "Navier-Stokes global regularity",
+      "Hodge conjecture",
+      "BSD conjecture",
+      "Yang-Mills mass gap"
+    ]
+  }
+}
