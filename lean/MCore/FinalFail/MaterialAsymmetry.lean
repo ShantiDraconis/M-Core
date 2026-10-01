@@ -183,10 +183,11 @@ theorem reflection_isometry (x y : LaneVector) :
     MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming
       (reflect x) (reflect y) =
     MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming x y := by
+  have hiff : ∀ a b : TState, TriState.reflect a = TriState.reflect b ↔ a = b := by
+    intro a b
+    cases a <;> cases b <;> decide
   unfold MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming reflect
-  simp [TriState.reflect]
-  split <;> split <;> split <;> split <;> split <;> split <;> split <;>
-    simp_all
+  simp [hiff]
 
 end SevenLaneVector
 
