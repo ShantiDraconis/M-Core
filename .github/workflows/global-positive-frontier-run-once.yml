@@ -49,6 +49,8 @@ jobs:
           #print axioms MCore.FinalFail.Semantic.ym_target_iff_exists_physical_theory
           #print axioms MCore.FinalFail.Semantic.rh_excludes_offCriticalZero
           #print axioms MCore.FinalFail.Semantic.positive_rh_incompatible_with_negative_lane
+          #print axioms MCore.FinalFail.Semantic.global_positive_root_iff_components
+          #print axioms MCore.FinalFail.Semantic.positive_root_excludes_mixed_negative_root
           #print axioms MCore.FinalFail.Semantic.build_global_positive_material_root
           EOF
           lake env lean /tmp/global_positive_audit.lean | tee audit/GLOBAL_POSITIVE_FRONTIER_AXIOMS.log
