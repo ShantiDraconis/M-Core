@@ -67,24 +67,20 @@ theorem mul_left_cancel_nonzero
     {a b c : TState} (ha : a ≠ 0)
     (h : a * b = a * c) :
     b = c := by
+  have hsq : a * a = 1 :=
+    MCore.FinalFail.MaterialAlgebra.TriState.nonzero_square_eq_one a ha
   calc
-    b = (1 : TState) * b :=
+    b = 1 * b :=
       (MCore.FinalFail.MaterialAlgebra.TriState.one_mul b).symm
-    _ = (a * a⁻¹) * b := by
-      rw [MCore.FinalFail.MaterialAlgebra.TriState.mul_inv_cancel a ha]
-    _ = (a⁻¹ * a) * b := by
-      rw [MCore.FinalFail.MaterialAlgebra.TriState.mul_comm a a⁻¹]
-    _ = a⁻¹ * (a * b) :=
-      MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc _ _ _
-    _ = a⁻¹ * (a * c) := congrArg (fun t => a⁻¹ * t) h
-    _ = (a⁻¹ * a) * c :=
-      (MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc _ _ _).symm
-    _ = (a * a⁻¹) * c := by
-      rw [MCore.FinalFail.MaterialAlgebra.TriState.mul_comm a⁻¹ a]
-    _ = (1 : TState) * c := by
-      rw [MCore.FinalFail.MaterialAlgebra.TriState.mul_inv_cancel a ha]
-    _ = c := MCore.FinalFail.MaterialAlgebra.TriState.one_mul c
-
+    _ = (a * a) * b := by rw [hsq]
+    _ = a * (a * b) :=
+      MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc a a b
+    _ = a * (a * c) := congrArg (fun t => a * t) h
+    _ = (a * a) * c :=
+      (MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc a a c).symm
+    _ = 1 * c := by rw [hsq]
+    _ = c :=
+      MCore.FinalFail.MaterialAlgebra.TriState.one_mul c
 theorem inv_eq_self (x : TState) :
     x⁻¹ = x := by
   cases x <;> rfl
