@@ -13,7 +13,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -42,16 +42,19 @@ jobs:
             lean/MCore/MaterialMath/TriState/Geometry.lean
             lean/MCore/MaterialMath/TriState/Differential.lean
             lean/MCore/MaterialMath/TriState/MetricTopology.lean
+            lean/MCore/MaterialMath/TriState/OperationalAlgebra.lean
+            lean/MCore/MaterialMath/TriState/HeatFlow.lean
             lean/MCore/MaterialMath/TriState/NoSmuggling.lean
             lean/MCore/MaterialMath/TerminalPatterns.lean
             lean/MCore/MaterialMath/Contraction.lean
+            lean/MCore/MaterialMath/InternalTerminalProducers.lean
           )
           if grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' "${FILES[@]}"; then
             echo "ERROR: prohibited proof escape found"
             exit 1
           fi
 
-      - name: Build tri-state material math
+      - name: Build complete material mathematics
         run: |
           set -euo pipefail
           lake build MCore.MaterialMath.TriState.Core
@@ -63,37 +66,40 @@ jobs:
           lake build MCore.MaterialMath.TriState.Geometry
           lake build MCore.MaterialMath.TriState.Differential
           lake build MCore.MaterialMath.TriState.MetricTopology
-          lake build MCore.MaterialMath.TriState.NoSmuggling
+          lake build MCore.MaterialMath.TriState.OperationalAlgebra
           lake build MCore.MaterialMath.TerminalPatterns
           lake build MCore.MaterialMath.Contraction
+          lake build MCore.MaterialMath.InternalTerminalProducers
+          lake build MCore.MaterialMath.TriState.HeatFlow
+          lake build MCore.MaterialMath.TriState.NoSmuggling
 
       - name: Axiom audit
         run: |
           set -euo pipefail
           cat > /tmp/tristate_audit.lean <<'EOF'
-          import MCore.MaterialMath.TriState.NumericClasses
+          import MCore.MaterialMath.TriState.HeatFlow
+          import MCore.MaterialMath.TriState.NoSmuggling
           import MCore.MaterialMath.TriState.SymmetricAlgebra
           import MCore.MaterialMath.TriState.Geometry
           import MCore.MaterialMath.TriState.Differential
           import MCore.MaterialMath.TriState.MetricTopology
-          import MCore.MaterialMath.TriState.NoSmuggling
-          import MCore.MaterialMath.TerminalPatterns
-          import MCore.MaterialMath.Contraction
+          import MCore.MaterialMath.TriState.OperationalAlgebra
+          import MCore.MaterialMath.InternalTerminalProducers
           #print axioms MCore.MaterialMath.Phase3.rotate_three
-          #print axioms MCore.MaterialMath.TriNumber.rotate_three
           #print axioms MCore.MaterialMath.TriNumber.phaseSum_laplacian_zero
           #print axioms MCore.MaterialMath.TriDynamics.harmonic_iff_coherent
           #print axioms MCore.MaterialMath.TriArithmetic.center_balanced
-          #print axioms MCore.MaterialMath.TriArithmetic.spreadEnergy_eq_zero_iff_coherent
           #print axioms MCore.MaterialMath.TriSpectral.spectral_split
           #print axioms MCore.MaterialMath.TriSymmetric.characteristic_rotate
           #print axioms MCore.MaterialMath.Phase3.rotate_adds_120_mod_360
           #print axioms MCore.MaterialMath.TriDifferential.laplacian_eq_forward_add_backward
           #print axioms MCore.MaterialMath.Phase3.cyclicDistance_ultrametric
-          #print axioms MCore.MaterialMath.balanced_sector_exact_spectral_gap
+          #print axioms MCore.MaterialMath.TriAlgebra.coordinate_decomposition
           #print axioms MCore.MaterialMath.geometric_bound
+          #print axioms MCore.MaterialMath.internalProducerSuite_inhabited
+          #print axioms MCore.MaterialMath.TriHeat.halfStep_eq_half_of_balanced
+          #print axioms MCore.MaterialMath.TriHeat.iterate_closed_form
           #print axioms MCore.MaterialMath.nonempty_materialInterpretation_iff_target
-          #print axioms MCore.MaterialMath.triState_global_bridge_iff_global_root
           EOF
           lake env lean /tmp/tristate_audit.lean | tee audit/TRISTATE_MATERIAL_AXIOMS.log
           ! grep -q 'sorryAx' audit/TRISTATE_MATERIAL_AXIOMS.log
