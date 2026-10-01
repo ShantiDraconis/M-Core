@@ -569,3 +569,25 @@ Therefore:
 - both -> False.
 
 Status remains SOURCE / BUILD_PENDING until compilation.
+
+
+### Beal residual congruence attack — 2026-10-01
+
+Branch:
+`ShantiDraconis/m-core-beal@atk/beal-two-sided-resolution-20261001`
+
+New commits:
+- `a21a32c684742f73e172c98fcffad5018d987fd2` — eliminate c-even orientation for x=y=4
+- `292c0b0eb0d1dee9bd28a569c8885785c2be1003` — root import
+- `3f6d4945bec3cba24730e14529a5ad84e82a9a61` — mod-16 residue constraint
+- `f31a5a7819bb1c99b08468d8ef0d38f0e276e77b` — root import
+
+Exact new arithmetic consequences for every residual T59 candidate with x=y=4:
+1. c cannot be the unique even base.
+2. Therefore the unique even base is a or b.
+3. The equation forces c^z mod 16 = 1.
+
+This narrows the T51 twoFourPrime family before any Frey/conductor/level
+lowering input. The remaining orientations are not claimed impossible.
+
+Status: SOURCE / BUILD_PENDING until compiled.
