@@ -101,6 +101,47 @@ theorem rotate_add (x y : TriState) :
     (x + y).rotate = x.rotate + y := by
   cases x <;> cases y <;> rfl
 
+
+/-! ## 1b. Symbolic constants and subtraction -/
+
+/-- Canonical symbolic names for the three structural states. -/
+abbrev SeedConstant : TriState := .seed
+abbrev TransitConstant : TriState := .transit
+abbrev ManifestConstant : TriState := .manifest
+
+/-- Subtraction in the cyclic additive group. -/
+def sub (x y : TriState) : TriState := x + (-y)
+
+instance : Sub TriState where
+  sub := sub
+
+@[simp] theorem sub_self (x : TriState) :
+    x - x = .seed := by
+  cases x <;> rfl
+
+@[simp] theorem sub_seed (x : TriState) :
+    x - .seed = x := by
+  cases x <;> rfl
+
+theorem sub_eq_add_neg (x y : TriState) :
+    x - y = x + (-y) := rfl
+
+/-- One rotation is the discrete +1 translation. -/
+theorem orbit_step (x : TriState) :
+    x.rotate - x = .transit := by
+  cases x <;> rfl
+
+/-- Two successive rotations accumulate the manifest (=2 mod 3) displacement. -/
+theorem orbit_two_step (x : TriState) :
+    x.rotate.rotate - x = .manifest := by
+  cases x <;> rfl
+
+/-- Three rotations have zero net displacement. -/
+theorem orbit_three_step (x : TriState) :
+    x.rotate.rotate.rotate - x = .seed := by
+  rw [TriState.rotate_three]
+  exact sub_self x
+
 end TriState
 
 /-! ## 2. Seven-lane vector arithmetic -/
@@ -351,6 +392,43 @@ theorem proven_boundary_iff_not_proved
     exact ⟨proven_closure_all x,
       fun hi => hx ((proven_interior_iff x).1 hi)⟩
 
+
+/-! ## 3b. Sign laws for the discrete evidence derivative -/
+
+theorem derivative_pos_iff_code_increases
+    (f : Nat → EvidenceState) (n : Nat) :
+    0 < derivative f n ↔ code (f n) < code (f (n + 1)) := by
+  unfold derivative
+  omega
+
+theorem derivative_neg_iff_code_decreases
+    (f : Nat → EvidenceState) (n : Nat) :
+    derivative f n < 0 ↔ code (f (n + 1)) < code (f n) := by
+  unfold derivative
+  omega
+
+theorem derivative_nonneg_of_monotone_step
+    (f : Nat → EvidenceState) (n : Nat)
+    (h : code (f n) ≤ code (f (n + 1))) :
+    0 ≤ derivative f n := by
+  unfold derivative
+  omega
+
+theorem derivative_nonpos_of_antitone_step
+    (f : Nat → EvidenceState) (n : Nat)
+    (h : code (f (n + 1)) ≤ code (f n)) :
+    derivative f n ≤ 0 := by
+  unfold derivative
+  omega
+
+/-- Two-step telescoping law for the evidence derivative. -/
+theorem derivative_two_step
+    (f : Nat → EvidenceState) (n : Nat) :
+    derivative f n + derivative f (n + 1) =
+      code (f (n + 2)) - code (f n) := by
+  unfold derivative
+  omega
+
 end EvidenceState
 
 /-! ## 4. Producer/refuter polarity operators -/
@@ -387,10 +465,12 @@ def evidenceOfRefuter {P : Prop} (_ : MaterialRefuter P) : EvidenceState :=
 #print axioms MCore.FinalFail.MaterialDerived.TriState.code_add_mod_three
 #print axioms MCore.FinalFail.MaterialDerived.TriState.mul_eq_zero_iff
 #print axioms MCore.FinalFail.MaterialDerived.TriState.rotate_eq_add_one
+#print axioms MCore.FinalFail.MaterialDerived.TriState.orbit_three_step
 #print axioms MCore.FinalFail.MaterialDerived.SevenLaneVector.smul_add
 #print axioms MCore.FinalFail.MaterialDerived.EvidenceState.closure_idempotent
 #print axioms MCore.FinalFail.MaterialDerived.EvidenceState.interior_idempotent
 #print axioms MCore.FinalFail.MaterialDerived.EvidenceState.proven_boundary_iff_not_proved
+#print axioms MCore.FinalFail.MaterialDerived.EvidenceState.derivative_two_step
 #print axioms MCore.FinalFail.MaterialDerived.negateProducer
 
 end MCore.FinalFail.MaterialDerived
