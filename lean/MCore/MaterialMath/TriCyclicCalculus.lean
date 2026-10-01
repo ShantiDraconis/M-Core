@@ -64,7 +64,7 @@ theorem phaseLaplacian_of_balanced [Ring α]
   change c = s at hcs
   subst c
   subst s
-  simp [phaseLaplacian]
+  apply TriNumber.ext <;> simp [phaseLaplacian] <;> ring
 
 /-- Real spread is nonnegative. -/
 theorem spread_nonneg (x : TriNumber ℝ) :
