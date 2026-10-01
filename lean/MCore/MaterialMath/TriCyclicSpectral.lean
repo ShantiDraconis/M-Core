@@ -127,4 +127,6 @@ theorem phaseDerivative_cubic_closure
 
 end TriNumber
 
+end
+
 end MCore.MaterialMath
