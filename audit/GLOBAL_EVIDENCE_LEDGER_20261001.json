@@ -1,0 +1,173 @@
+{
+  "schema": "atk-global-evidence-ledger.v1",
+  "date": "2026-10-01",
+  "policy": {
+    "producer_first": true,
+    "forward_only": true,
+    "preserve_certified_prefixes": true,
+    "equivalence_is_not_inhabitant": true,
+    "refutation_is_firewall": true,
+    "workflow_success_is_not_mathematical_proof": true
+  },
+  "lanes": [
+    {
+      "problem": "RIEMANN",
+      "positive_target": "RiemannHypothesis",
+      "direct_frontier": "FiniteSpanApproximatesChi concreteGeneratorFamily",
+      "proved_reductions": [
+        {
+          "sha": "d6a291b4563f9021f74ab63cc983d44f079472da",
+          "theorem": "finiteSpanApproximatesChi_iff_DNLimit_eq_zero",
+          "scope": "FiniteSpanApproximatesChi <-> DNLimit=0"
+        },
+        {
+          "sha": "5c66f8dca03834f24a61a9b1219e7af9d4892dd6",
+          "scope": "VanishingUpperBound -> DNToZero -> DNLimit=0"
+        }
+      ],
+      "firewall": [
+        "off-critical-zero semantic lane is a refutation orientation, not positive RH",
+        "transport-only RH wrappers do not close the target"
+      ],
+      "inhabitant": "OPEN_MATH"
+    },
+    {
+      "problem": "BEAL",
+      "direct_frontier": "GCDLowerBoundProducer",
+      "proved_reductions": [
+        {
+          "sha": "d6fe130c44ef91e0f8ceb6b15a6548f186e381fd",
+          "theorem": "bealConjecture_iff_gcdLowerBoundProducer",
+          "runs": [36493742792, 36493742928]
+        },
+        {
+          "scope": "CommonDivisor -> prime divisor -> CommonPrime endpoint wiring",
+          "evidence": ["K6_GREEN_434d6b7", "K9_GREEN_e3b8598"]
+        }
+      ],
+      "firewall": [
+        "conductor bookkeeping alone is not closure",
+        "renamed CommonPrime/CommonDivisor wrappers without universal witness are not closure"
+      ],
+      "inhabitant": "OPEN_MATH"
+    },
+    {
+      "problem": "P_VS_NP",
+      "positive_target": "PneqNP in the canonical fixed model",
+      "direct_frontier": "P01ConstructionGap + G21Pointwise",
+      "proved_reductions": [
+        "G21Pointwise <-> P02Target",
+        "P02Target <-> SAT not in P",
+        "P02 operator/kernel structural chain GREEN at fa83d082fe219a772aa41c981e6b0fa420ff2aac, run 36831482480"
+      ],
+      "source_inhabitants": [
+        {
+          "name": "p01ConstructionGap_closed",
+          "branch": "atk/p01-raw-closure-final-20261001",
+          "sha": "4cc78949ca812817627d3867b1328cd950156353",
+          "state": "SOURCE_PRODUCED_NOT_PROMOTED_HERE"
+        }
+      ],
+      "refuted_routes": [
+        "arbitrary encoder model: smuggledEncode/every_language_inP_under_arbitrary_encode",
+        "literal G2.1 fixed-point route",
+        "finite failure evidence -> UniversalFailure"
+      ],
+      "remaining_inhabitant": "G21Pointwise / SemanticDiagonalFamily / SAT not in P",
+      "state": "P01_SOURCE_FOUND_P02_OPEN_MATH"
+    },
+    {
+      "problem": "NAVIER_STOKES",
+      "direct_frontier": "ActualNSToSignedGainCore",
+      "proved_reductions": [
+        {
+          "sha": "df808543535d34d4e8c46096b3455d76b0151fa2",
+          "run": 36496747228,
+          "scope": "SignedGainCore normalization/core"
+        },
+        {
+          "sha": "6e67a01173e2364c85bc341d95b229623272f7b0",
+          "run": 36493553756,
+          "scope": "signedGain differential inequality and positive dissipation margin"
+        }
+      ],
+      "refuted_or_invalidated": [
+        "DynamicCriticalGeometry",
+        "FullChain",
+        "nonnegativity bookkeeping without PDE-derived producer"
+      ],
+      "required_fields": [
+        "theta < 1",
+        "stretch(t) <= theta*nu*z(t) + C*y(t)^2"
+      ],
+      "inhabitant": "OPEN_MATH"
+    },
+    {
+      "problem": "HODGE",
+      "direct_frontier": "ConcreteAlgebraicityPayload",
+      "proved_reductions": [
+        {
+          "sha": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+          "theorem": "trivial_qbar_r2_payload_iff_concrete_payload"
+        },
+        "H01MinimalForwardPayload is a sufficient forward route"
+      ],
+      "firewall": [
+        "empty-variety payload",
+        "abstract geometry shell without genuine cycle binding"
+      ],
+      "inhabitant": "OPEN_MATH"
+    },
+    {
+      "problem": "BSD",
+      "direct_frontier": "genuine realizable elliptic-curve binding + rank equality + refined leading coefficient identity",
+      "proved_reductions": [
+        "K7..K14 architectural chain certified",
+        {
+          "sha": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
+          "scope": "universal-promotion firewall"
+        }
+      ],
+      "refuted_routes": [
+        "forall arbitrary BSDArithmeticAnalyticData, BSDRankPart",
+        "BSDOpenCore alias as closure",
+        "finite/curve-specific evidence promoted universally"
+      ],
+      "required_subparts": [
+        "genuine elliptic-curve arithmetic/analytic domain",
+        "analytic order = Mordell-Weil rank",
+        "refined leading-coefficient identity",
+        "Sha finiteness where required"
+      ],
+      "inhabitant": "OPEN_MATH"
+    },
+    {
+      "problem": "YANG_MILLS",
+      "direct_frontier": "Nonempty (B60ConcretePhysicalAdapter C F D H G O)",
+      "proved_reductions": [
+        {
+          "sha": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
+          "scope": "B3-B5 hardening"
+        },
+        {
+          "sha": "0352c6afb7e9255bf0fc777269984a2def047080",
+          "run": 35170322803,
+          "scope": "K21 certified downstream"
+        },
+        "b60_adapter_closes_conditional_chain"
+      ],
+      "refuted_routes": [
+        "legacy B3-B5 phantom interfaces",
+        "degenerate Unit/True physical model",
+        "spectral-gap wrapper without genuine regulated 4D binding"
+      ],
+      "inhabitant": "OPEN_MATH"
+    }
+  ],
+  "global": {
+    "positive_frontier_file": "lean/MCore/FinalFail/GlobalPositiveMaterialFrontier.lean",
+    "unconditional_terminal_inhabitants_verified": 0,
+    "source_level_partial_inhabitants": ["P_VS_NP/P01"],
+    "open_material_lanes": 7
+  }
+}
