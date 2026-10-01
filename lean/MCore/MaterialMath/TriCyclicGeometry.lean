@@ -2,6 +2,8 @@ import MCore.MaterialMath.TriCyclicDecomposition
 
 namespace MCore.MaterialMath
 
+noncomputable section
+
 namespace TriNumber
 
 /-- Ambient Euclidean square of a real tri-state. -/
