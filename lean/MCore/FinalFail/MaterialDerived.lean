@@ -363,6 +363,17 @@ theorem proven_boundary_iff_not_proved (x : EState) :
     exact ⟨proven_closure_all x,
       fun hi => hx ((proven_interior_iff x).1 hi)⟩
 
+/-- Telescoping law for two consecutive evidence derivatives. -/
+theorem derivative_two_step
+    (f : Nat → EState) (n : Nat) :
+    MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f n +
+      MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f (n + 1) =
+    MCore.FinalFail.MaterialCalculus.EvidenceState.code (f (n + 2)) -
+      MCore.FinalFail.MaterialCalculus.EvidenceState.code (f n) := by
+  unfold MCore.FinalFail.MaterialCalculus.EvidenceState.derivative
+  rw [show n + 1 + 1 = n + 2 by omega]
+  ring
+
 end EvidenceState
 
 /-! ## 4. Producer/refuter polarity operators -/
