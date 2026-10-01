@@ -741,3 +741,53 @@ for every odd prime q in one block, its multiplicity in that block must be a
 multiple of the residual odd-prime exponent.
 
 Status: SOURCE / BUILD_PENDING.
+
+
+### Beal quartic perfect-power bridge — 2026-10-01
+
+Branch:
+`ShantiDraconis/m-core-beal@atk/beal-two-sided-resolution-20261001`
+
+New commits:
+- `2196cd2aa3ce034173be723f13daaa93a29e679c` — isolated-factor valuation law and x=z=4 valuation multiples
+- `e078b55e4311dde85e1422002f17d24e79800d21` — complete symmetric valuation packet
+- `abfe43fa6d61f653172d918cae3791462b6c6abd` — root import
+- `f08a84d8d53657f343a9398861e2ee529a38ae22` — corrected bilateral closure to exact two-four residual family
+- `a51c6ac22b374794f7bfb2d28b8adf4b8518bcd2` — reconstruct odd parts of all quartic blocks as exact perfect powers
+- `5af989301a63634ebfa2313dbfdc29f465e40f24` — root import
+
+Unconditional new bridge:
+pairwise odd-prime support separation
+  -> isolated factorization multiplicities
+  -> exponent divides every odd-prime valuation
+  -> odd part is an exact residual-exponent power.
+
+For x=z=4:
+- ordCompl[2](c-a) = u^y
+- ordCompl[2](c+a) = v^y
+- ordCompl[2](c^2+a^2) = w^y
+
+For y=z=4:
+- ordCompl[2](c-b) = u^x
+- ordCompl[2](c+b) = v^x
+- ordCompl[2](c^2+b^2) = w^x
+
+No Beal endpoint, modularity, level-lowering, or equivalent open hypothesis is
+used as an argument.
+
+Bilateral local semantics:
+- positive producer: eliminate every T59 residual candidate in the two-four family;
+- negative producer: one concrete two-four residual survivor;
+- positive closes the local family only;
+- negative survivor still refutes global Beal;
+- both imply False.
+
+Next exact min-cut:
+combine the perfect-power odd parts with the already-proved 2-adic depth laws
+T19-T23 to obtain full forms
+  c-a = 2^alpha u^p,
+  c+a = 2^beta v^p,
+  c^2+a^2 = 2^gamma w^p
+(and symmetric variants), then derive a contradiction or a concrete survivor.
+
+Status: SOURCE / BUILD_PENDING.
