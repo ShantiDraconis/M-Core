@@ -385,3 +385,109 @@ No information is discarded by the flattening theorem.
 The remaining work is therefore not another global wrapper.  It is the seven
 problem-specific material producers listed above (with P01 already source-produced
 and P02 remaining the genuine P-vs-NP mathematical atom).
+
+
+# Exact strongest-reuse index — 2026-10-01
+
+Forward-only rule: these artifacts are the current maximum reusable frontiers. Do not recreate their internal reductions. Attack only the residual listed for each lane.
+
+## RIEMANN
+Reuse:
+- `frozen/rh-direct-density-integration-green-b239b00c`
+- `frozen/rh-direct-coefficient-endpoint-green-0b2720d`
+- `frozen/rh-explicit-coefficient-producer-green-c994a84d`
+- `frozen/concrete-final-36793021586-20261001`
+
+Already closed:
+- concrete NB carrier and `concreteGeneratorFamily`;
+- finite-span / `DNLimit = 0` equivalence;
+- exact coefficient-vector realization of every finite-span vector;
+- explicit-coefficient-convergence -> `DNLimit = 0`.
+
+Attack only:
+`ZERO_RESIDUE_SUM_UNCONDITIONAL_CONTROL`, or equivalently an unconditional explicit coefficient family with critical-L2 error -> 0.
+
+Do not retry:
+- undamped natural Möbius full sequence (L2 route refuted);
+- finite-N numerical extrapolation;
+- RH-conditional BCF estimates;
+- zero-density/zero-free estimates that do not eliminate every off-line residue.
+
+## P VS NP
+Reuse:
+- frozen P01 SHA `720596c0bd3900b5de25eab57b7b979d2a6aaf68`, run `36862291065`;
+- `atk/p02-only-20261001`;
+- `atk/pnp-rigorous-terminal-decomposition-20261001`.
+
+Already closed:
+P01, SAT-in-NP construction, candidate coding, clocks, operator/Kleene/universal kernels, and final composition.
+
+Attack only:
+`CandidateFailureFamily` / `EncodedP02Target` / `EncodedSATNotInP`.
+
+Do not retry:
+literal same-string fixed points, arbitrary encoders, finite-failure -> universal-lower-bound promotion.
+
+## NAVIER-STOKES
+Reuse:
+- `frozen/ns-signed-gain-core-green-df808543`;
+- `frozen/ns-signed-gain-differential-green-6e67a011`;
+- strict bulk/tail -> signed-depletion producer in `attack/ns003-strict-signed-producer-v1`.
+
+Already closed:
+bulk/tail-to-depletion algebra once `BulkAbsorption`, `ExceptionalTailControl`, and `SubcriticalBudget` are supplied; SignedGainCore downstream.
+
+Attack only:
+derive the strict signed-gain/bulk-tail hypotheses uniformly from genuine 3D NSE, i.e. inhabit `ActualNSToSignedGainCore`.
+
+## HODGE
+Reuse:
+- `cert/hodge-all-green-c5ad87d0-run36271922378`;
+- `cert/hodge-habitant-type-3dc8a3de-run36271922378`;
+- `frozen/openmath-residual-36792765735-20261001`;
+- `atk/next-hodge-genuine-geometry-binding-20260929`.
+
+Already closed:
+habitant type, payload equivalences, codimension trisection, R1/R2/R3 transport, low-codimension conditional machinery.
+
+Attack only:
+`UniversalMiddleCodimensionRealization` / genuine `HodgeHabitant`.
+
+Do not promote `HodgeAssumedCompleteClosure`: it is an assumed-complete route, not an unconditional inhabitant.
+
+## BSD
+Reuse:
+- `atk/bsd-grounded-habitant`;
+- `frozen/openmath-residual-36792769076-20261001`;
+- `BSDRigorousFrontier.lean`.
+
+Already closed:
+same-carrier data model, final composition, rigorous Sha carrier interface.
+
+Attack only:
+a genuine `RigorousGroundedBSDHabitant`: rank equality + finite Sha realization + refined leading coefficient law on the same elliptic curve.
+
+## BEAL
+Reuse:
+- `frozen/openmath-residual-36792772606-20261001`;
+- scalar nested-gcd frontier;
+- atomic B01/B02/endpoint decomposition.
+
+Already closed:
+all endpoint compression and final composition.
+
+Attack only:
+`GCDLowerBoundProducer` (logical minimum), optionally through the 12 atomic scientific obligations.
+
+## YANG-MILLS
+Reuse:
+- `frozen/ym-physical-inhabitant-frontier-green-ecf745b2`;
+- `frozen/b60-validate-36792578767-20261001`;
+- `frozen/physical-residual-36792907807-20261001`;
+- K23/K25/K27/K30 composition.
+
+Already closed:
+hardened nontrivial B3/B4/B5 interfaces and B60 -> conditional mass-gap composition.
+
+Attack only:
+the genuine `PhysicalResidual` / `B60ConcretePhysicalAdapter` inhabitant tying the regulated 4D construction to the same physical Hilbert/Hamiltonian theory and uniform positive spectral gap.
