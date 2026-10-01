@@ -502,3 +502,70 @@ with a uniform estimate on r_N^T G_N r_N and a vanishing total residual.
 
 Status of new Lean sources: SOURCE / BUILD_PENDING until independently built.
 No RH promotion.
+
+
+## Two-sided material resolution rule — 2026-10-01
+
+The project now accepts both mathematical orientations for an open endpoint,
+but not via the trivial classical proposition P or not-P.
+
+Generic kernel:
+`lean/MCore/MaterialMath/TwoSidedMaterialResolution.lean`
+commit `41cb453fa7c8dec5f43f026a1840ac9011a1bd96`.
+
+For endpoint P, define concrete producer types A and B together with
+A -> P and B -> not P.
+
+Resolution status:
+- POSITIVE_RESOLVED iff Nonempty A;
+- NEGATIVE_RESOLVED iff Nonempty B;
+- BOTH_INCONSISTENT iff both are inhabited;
+- OPEN_MATH iff neither producer is inhabited.
+
+Classical excluded middle alone does not inhabit A or B and therefore cannot
+promote an endpoint.
+
+### RH two-sided frontier
+Branch:
+`ShantiDraconis/m-core-riemann@atk/rh-two-sided-resolution-20261001`
+commit `0cdeefdc910dad58e92e7930a97aa67da7098380`.
+
+Positive producer:
+`VanishingUpperBound concreteNBData concreteGeneratorFamily`.
+
+Negative producer:
+`PersistentPositiveLowerBound concreteNBData concreteGeneratorFamily`
+with eps>0 and eps <= DN_N for every N.
+
+Consequences:
+- positive -> DNLimit=0;
+- negative -> DNLimit>0, hence DNLimit != 0;
+- both -> False.
+
+Root import was not promoted because the tool mutation was blocked; source
+remains BUILD_PENDING.
+
+### Beal two-sided frontier
+Branch:
+`ShantiDraconis/m-core-beal@atk/beal-two-sided-resolution-20261001`.
+
+Commits:
+- `832bd29e24fa4960ee5683886beb85bc5c9d09d0` — two-sided theorem
+- `a8efa26c8c67f1066f54346f1e739c3b58f605cc` — root import
+
+Positive producer:
+`GCDLowerBoundProducer`.
+
+Negative producer:
+one concrete `T59ResidualCandidate`.
+
+New theorem:
+every `T59ResidualCandidate` is a genuine Beal counterexample because its
+pairwise-primitivity forbids any common prime divisor.
+
+Therefore:
+- positive producer -> BealConjecture;
+- residual candidate -> not BealConjecture;
+- both -> False.
+
+Status remains SOURCE / BUILD_PENDING until compilation.
