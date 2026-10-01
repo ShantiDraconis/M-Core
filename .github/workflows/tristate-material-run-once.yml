@@ -56,6 +56,32 @@ jobs:
             exit 1
           fi
 
+      - name: No OPEN_MATH dependency in unconditional material core
+        run: |
+          set -euo pipefail
+          CORE_FILES=(
+            lean/MCore/MaterialMath/TriState/Core.lean
+            lean/MCore/MaterialMath/TriState/Algebra.lean
+            lean/MCore/MaterialMath/TriState/Dynamics.lean
+            lean/MCore/MaterialMath/TriState/NumericClasses.lean
+            lean/MCore/MaterialMath/TriState/Spectral.lean
+            lean/MCore/MaterialMath/TriState/SymmetricAlgebra.lean
+            lean/MCore/MaterialMath/TriState/Geometry.lean
+            lean/MCore/MaterialMath/TriState/Differential.lean
+            lean/MCore/MaterialMath/TriState/MetricTopology.lean
+            lean/MCore/MaterialMath/TriState/OperationalAlgebra.lean
+            lean/MCore/MaterialMath/TriState/Tripotent.lean
+            lean/MCore/MaterialMath/TriState/HeatFlow.lean
+            lean/MCore/MaterialMath/TerminalPatterns.lean
+            lean/MCore/MaterialMath/Contraction.lean
+            lean/MCore/MaterialMath/InternalTerminalProducers.lean
+            lean/MCore/MaterialMath/UnconditionalRoot.lean
+          )
+          if grep -nE '^import MCore\.FinalFail|RiemannHypothesis|PvsNPSeparationTarget|NavierStokesStabilizationTarget|HodgeRealizationTarget|BSDRealizableTarget|YangMills4DGapTarget|BealUniversalGCDTarget|G21Pointwise|P02Target|OPEN_MATH' "${CORE_FILES[@]}"; then
+            echo "ERROR: unconditional material core contains OPEN_MATH dependency or target"
+            exit 1
+          fi
+
       - name: Build complete material mathematics
         run: |
           set -euo pipefail
