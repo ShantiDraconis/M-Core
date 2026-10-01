@@ -137,19 +137,17 @@ theorem closedNeighborhood_eq_univ (p : Phase3) :
     · exact Or.inr (Phase3.adjacent_of_ne h.symm)
 
 /-- A phase path is a finite sequence whose successive states are adjacent
-or equal. This is the path notion induced by the cyclic graph. -/
-def IsPhasePath (xs : List Phase3) : Prop :=
-  ∀ i, i + 1 < xs.length →
-    let p := xs.get ⟨i, by omega⟩
-    let q := xs.get ⟨i + 1, by omega⟩
-    p = q ∨ Phase3.Adjacent p q
+or equal. This recursive form avoids index arithmetic in downstream proofs. -/
+def IsPhasePath : List Phase3 → Prop
+  | [] => True
+  | [_] => True
+  | p :: q :: rest =>
+      (p = q ∨ Phase3.Adjacent p q) ∧ IsPhasePath (q :: rest)
 
 /-- Every length-two list of phase states is a valid path on the triangle. -/
 theorem pair_isPhasePath (p q : Phase3) :
     IsPhasePath [p, q] := by
-  intro i hi
-  interval_cases i
-  simp [Phase3.Adjacent]
+  simp [IsPhasePath]
   by_cases h : p = q
   · exact Or.inl h
   · exact Or.inr (Phase3.adjacent_of_ne h)
