@@ -186,13 +186,20 @@ theorem affine_injective
     Function.Injective (affine a b) := by
   intro x y h
   apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
-  · exact TriState.affine_injective a b.riemann ha (congrArg LaneVector.riemann h)
-  · exact TriState.affine_injective a b.beal ha (congrArg LaneVector.beal h)
-  · exact TriState.affine_injective a b.pvsnp ha (congrArg LaneVector.pvsnp h)
-  · exact TriState.affine_injective a b.navierStokes ha (congrArg LaneVector.navierStokes h)
-  · exact TriState.affine_injective a b.hodge ha (congrArg LaneVector.hodge h)
-  · exact TriState.affine_injective a b.bsd ha (congrArg LaneVector.bsd h)
-  · exact TriState.affine_injective a b.yangMills ha (congrArg LaneVector.yangMills h)
+  · exact TriState.affine_injective a b.riemann ha
+      (congrArg (fun z : LaneVector => z.riemann) h)
+  · exact TriState.affine_injective a b.beal ha
+      (congrArg (fun z : LaneVector => z.beal) h)
+  · exact TriState.affine_injective a b.pvsnp ha
+      (congrArg (fun z : LaneVector => z.pvsnp) h)
+  · exact TriState.affine_injective a b.navierStokes ha
+      (congrArg (fun z : LaneVector => z.navierStokes) h)
+  · exact TriState.affine_injective a b.hodge ha
+      (congrArg (fun z : LaneVector => z.hodge) h)
+  · exact TriState.affine_injective a b.bsd ha
+      (congrArg (fun z : LaneVector => z.bsd) h)
+  · exact TriState.affine_injective a b.yangMills ha
+      (congrArg (fun z : LaneVector => z.yangMills) h)
 
 /-- Hamming geometry is invariant under a common nondegenerate affine change
 of coordinates. -/
@@ -202,14 +209,63 @@ theorem hamming_affine
         (affine a b x) (affine a b y) =
       MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming x y := by
   unfold MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming affine
-  have hR := TriState.affine_injective a b.riemann ha
-  have hB := TriState.affine_injective a b.beal ha
-  have hP := TriState.affine_injective a b.pvsnp ha
-  have hN := TriState.affine_injective a b.navierStokes ha
-  have hH := TriState.affine_injective a b.hodge ha
-  have hD := TriState.affine_injective a b.bsd ha
-  have hY := TriState.affine_injective a b.yangMills ha
-  simp [hR.eq_iff, hB.eq_iff, hP.eq_iff, hN.eq_iff, hH.eq_iff, hD.eq_iff, hY.eq_iff]
+  have hR :
+      TriState.affine a b.riemann x.riemann =
+          TriState.affine a b.riemann y.riemann ↔
+        x.riemann = y.riemann := by
+    constructor
+    · exact TriState.affine_injective a b.riemann ha
+    · intro h
+      exact congrArg (TriState.affine a b.riemann) h
+  have hB :
+      TriState.affine a b.beal x.beal =
+          TriState.affine a b.beal y.beal ↔
+        x.beal = y.beal := by
+    constructor
+    · exact TriState.affine_injective a b.beal ha
+    · intro h
+      exact congrArg (TriState.affine a b.beal) h
+  have hP :
+      TriState.affine a b.pvsnp x.pvsnp =
+          TriState.affine a b.pvsnp y.pvsnp ↔
+        x.pvsnp = y.pvsnp := by
+    constructor
+    · exact TriState.affine_injective a b.pvsnp ha
+    · intro h
+      exact congrArg (TriState.affine a b.pvsnp) h
+  have hN :
+      TriState.affine a b.navierStokes x.navierStokes =
+          TriState.affine a b.navierStokes y.navierStokes ↔
+        x.navierStokes = y.navierStokes := by
+    constructor
+    · exact TriState.affine_injective a b.navierStokes ha
+    · intro h
+      exact congrArg (TriState.affine a b.navierStokes) h
+  have hH :
+      TriState.affine a b.hodge x.hodge =
+          TriState.affine a b.hodge y.hodge ↔
+        x.hodge = y.hodge := by
+    constructor
+    · exact TriState.affine_injective a b.hodge ha
+    · intro h
+      exact congrArg (TriState.affine a b.hodge) h
+  have hD :
+      TriState.affine a b.bsd x.bsd =
+          TriState.affine a b.bsd y.bsd ↔
+        x.bsd = y.bsd := by
+    constructor
+    · exact TriState.affine_injective a b.bsd ha
+    · intro h
+      exact congrArg (TriState.affine a b.bsd) h
+  have hY :
+      TriState.affine a b.yangMills x.yangMills =
+          TriState.affine a b.yangMills y.yangMills ↔
+        x.yangMills = y.yangMills := by
+    constructor
+    · exact TriState.affine_injective a b.yangMills ha
+    · intro h
+      exact congrArg (TriState.affine a b.yangMills) h
+  simp [hR, hB, hP, hN, hH, hD, hY]
 
 end SevenLaneVector
 
