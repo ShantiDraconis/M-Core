@@ -170,6 +170,74 @@ theorem positive_rh_incompatible_with_negative_lane :
   exact rh_excludes_offCriticalZero hRH hW
 
 
+
+/-- Exact global frontier law: the positive material root is inhabited iff all
+seven material components are present.  This is the maximally flattened,
+information-preserving statement of the current global theorem. -/
+theorem global_positive_root_iff_components
+    (Language : Type uL)
+    (InP InNP : Language → Prop)
+    (SAT : Language)
+    (Flow : Type uF)
+    (Stabilizer : Type uS)
+    (ActualNS : Flow → Prop)
+    (Stabilizes : Stabilizer → Flow → Prop)
+    (Variety : Type uV)
+    (Class : Variety → Type uC)
+    (Cycle : Variety → Type uZ)
+    (SmoothProjective : Variety → Prop)
+    (RationalHodge : {X : Variety} → Class X → Prop)
+    (Realizes : {X : Variety} → Cycle X → Class X → Prop)
+    (Curve : Type uE)
+    (Realizable : Curve → Prop)
+    (AnalyticOrder MordellWeilRank : Curve → Int)
+    (RefinedFormula : Curve → Prop)
+    (Theory : Type uT)
+    (Genuine4D OSReconstructs PositiveMassGap : Theory → Prop) :
+    Nonempty
+        (GlobalPositiveMaterialRoot
+          Language InP InNP SAT
+          Flow Stabilizer ActualNS Stabilizes
+          Variety Class Cycle SmoothProjective RationalHodge Realizes
+          Curve Realizable AnalyticOrder MordellWeilRank RefinedFormula
+          Theory Genuine4D OSReconstructs PositiveMassGap) ↔
+      (RiemannHypothesis ∧
+       Nonempty BealUniversalGCDTarget ∧
+       Nonempty (PvsNPSeparationTarget Language InP InNP SAT) ∧
+       Nonempty
+         (NavierStokesStabilizationTarget
+           Flow Stabilizer ActualNS Stabilizes) ∧
+       Nonempty
+         (HodgeRealizationTarget
+           Variety Class Cycle SmoothProjective RationalHodge Realizes) ∧
+       Nonempty
+         (BSDRealizableTarget
+           Curve Realizable AnalyticOrder MordellWeilRank RefinedFormula) ∧
+       Nonempty
+         (YangMills4DGapTarget
+           Theory Genuine4D OSReconstructs PositiveMassGap)) := by
+  constructor
+  · rintro ⟨G⟩
+    exact ⟨
+      G.riemann,
+      G.beal,
+      G.pvsnp,
+      G.navierStokes,
+      G.hodge,
+      G.bsd,
+      G.yangMills
+    ⟩
+  · rintro ⟨hRH, hBeal, hPvsNP, hNS, hHodge, hBSD, hYM⟩
+    exact ⟨{
+      riemann := hRH
+      beal := hBeal
+      pvsnp := hPvsNP
+      navierStokes := hNS
+      hodge := hHodge
+      bsd := hBSD
+      yangMills := hYM
+    }⟩
+
 /-- Global orientation firewall: a positive seven-lane material root cannot
 coexist with the older mixed-orientation GlobalConditionalFinalRoot, because
 that root contains an off-critical Riemann interpretation. -/
@@ -276,6 +344,7 @@ theorem build_global_positive_material_root
 #print axioms MCore.FinalFail.Semantic.ym_target_iff_exists_physical_theory
 #print axioms MCore.FinalFail.Semantic.rh_excludes_offCriticalZero
 #print axioms MCore.FinalFail.Semantic.positive_rh_incompatible_with_negative_lane
+#print axioms MCore.FinalFail.Semantic.global_positive_root_iff_components
 #print axioms MCore.FinalFail.Semantic.positive_root_excludes_mixed_negative_root
 #print axioms MCore.FinalFail.Semantic.build_global_positive_material_root
 
