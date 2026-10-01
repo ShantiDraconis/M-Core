@@ -128,5 +128,25 @@
     "ns_g1_to_producerfirst_adapter": "03ad152dc61c65542003a257cbdc17399b73d948"
   },
   "expansion_ledger_commit": "34216b533a02a934aa1d9c8bd49fe7f23d637908",
-  "operator_index_commit": "996a5e36d21843d14148386aca60c70f542e9eb5"
+  "operator_index_commit": "996a5e36d21843d14148386aca60c70f542e9eb5",
+  "material_multistate": {
+    "branch": "atk/material-multistate-dynamics-20261001",
+    "commit": "1c6422658d57d86c303d50b4de494ad5018ccdd2",
+    "algebra": {
+      "combine": "closed iff both component gates are closed",
+      "open_closed": "open",
+      "closed_open": "open",
+      "open_open": "open",
+      "closed_closed": "closed"
+    },
+    "operators": {
+      "traction": "strictly decreases positive defect",
+      "contraction": "strictly decreases positive defect",
+      "repression": "nonexpansive; prunes invalid/falsified routes",
+      "torsion": "preserves defect; representation change only",
+      "excitation": "counts as progress only with ExcitationCertified and strict defect decrease"
+    },
+    "terminal_firewall": "zero defect alone cannot manufacture an arbitrary terminal inhabitant; C2 requires ExactMaterializer / MaterialClosureWitness",
+    "role": "global composition/control algebra only; does not replace any lane-specific material producer"
+  }
 }
