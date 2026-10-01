@@ -211,13 +211,13 @@ theorem secondDerivative_eq_zero_of_local_constant
     secondDerivative f n = 0 := by
   have h0 :
       MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f n = 0 :=
-    (MCore.FinalFail.MaterialCalculus.EvidenceState
-      .derivative_eq_zero_iff_state_stable f n).2 h01
+    (MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_eq_zero_iff_state_stable
+      f n).2 h01
   have h1 :
       MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f (n + 1) = 0 := by
     apply
-      (MCore.FinalFail.MaterialCalculus.EvidenceState
-        .derivative_eq_zero_iff_state_stable f (n + 1)).2
+      (MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_eq_zero_iff_state_stable
+        f (n + 1)).2
     simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using h12
   unfold secondDerivative
   rw [h0, h1]
