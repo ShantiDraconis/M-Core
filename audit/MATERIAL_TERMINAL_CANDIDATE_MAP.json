@@ -39,9 +39,15 @@
       "lane": "P_VS_NP",
       "class": "F2_GAP",
       "material_candidate": "uniform GapLaw over canonical machine/witness states",
-      "terminal": "G21Pointwise / SAT not in P",
-      "missing_adapter": "map each PolyDTMCandidate to a canonical material state family and prove a genuine uniform semantic mismatch witness",
-      "state": "OPEN_MATH"
+      "terminal": "UniversalFailure (CanonicalSATBoundary.SATBits CanonicalCircuitBits.circuitBitEncoding)",
+      "missing_adapter": "for every canonical PolyDTMCandidate, construct a same-language SAT bitstring witnessing failure at the declared polynomial bound; P01 is frozen/certified and must not be reopened",
+      "state": "OPEN_MATH_P02_ONLY",
+      "p01_provenance": {
+        "status": "CLOSED_KERNEL_GREEN_FROZEN_CERTIFIED",
+        "frozen_sha": "720596c0bd3900b5de25eab57b7b979d2a6aaf68",
+        "authoritative_run": 36862291065,
+        "authoritative_job": 110369170512
+      }
     },
     {
       "lane": "NAVIER_STOKES",
