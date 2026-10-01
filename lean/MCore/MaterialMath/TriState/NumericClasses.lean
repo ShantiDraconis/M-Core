@@ -9,25 +9,25 @@ namespace TriArithmetic
 
 /-- Arithmetic mean of the three phase values. -/
 def phaseMean
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) : α :=
   phaseSum x / 3
 
 theorem phaseMean_rotate
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     phaseMean (rotate x) = phaseMean x := by
   simp [phaseMean, phaseSum_rotate]
 
 /-- Remove the common mean component from every phase. -/
 def center
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) : TriNumber α :=
   fun p => x p - phaseMean x
 
 /-- Centering always produces a balanced tri-number. -/
 theorem center_balanced
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     Balanced (center x) := by
   unfold Balanced phaseSum center phaseMean
@@ -36,7 +36,7 @@ theorem center_balanced
 
 /-- Centering commutes with cyclic phase rotation. -/
 theorem center_rotate
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     center (rotate x) = rotate (center x) := by
   funext p
@@ -44,21 +44,21 @@ theorem center_rotate
 
 /-- Pairwise phase-spread energy. -/
 def spreadEnergy
-    {α : Type*} [LinearOrderedRing α]
+    {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) : α :=
   (x .seed - x .passage)^2 +
   (x .passage - x .manifest)^2 +
   (x .manifest - x .seed)^2
 
 theorem spreadEnergy_rotate
-    {α : Type*} [LinearOrderedRing α]
+    {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     spreadEnergy (rotate x) = spreadEnergy x := by
   simp [spreadEnergy, rotate, Phase3.rotate]
   ring
 
 theorem spreadEnergy_nonneg
-    {α : Type*} [LinearOrderedRing α]
+    {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     0 ≤ spreadEnergy x := by
   unfold spreadEnergy
@@ -66,7 +66,7 @@ theorem spreadEnergy_nonneg
 
 /-- Zero spread is exactly phase coherence. -/
 theorem spreadEnergy_eq_zero_iff_coherent
-    {α : Type*} [LinearOrderedRing α]
+    {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     spreadEnergy x = 0 ↔ Coherent x := by
   constructor
@@ -91,7 +91,7 @@ inductive Sign3 where
   deriving DecidableEq, Repr
 
 def sign3
-    {α : Type*} [LinearOrderedRing α]
+    {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (a : α) : Sign3 :=
   if a < 0 then .negative
   else if a = 0 then .zero
@@ -99,12 +99,12 @@ def sign3
 
 /-- Sign signature of the three phases. -/
 def signSignature
-    {α : Type*} [LinearOrderedRing α]
+    {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) : Phase3 → Sign3 :=
   fun p => sign3 (x p)
 
 theorem signSignature_rotate
-    {α : Type*} [LinearOrderedRing α]
+    {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
     signSignature (rotate x) =
       fun p => signSignature x (Phase3.rotate p) := by
