@@ -32,7 +32,6 @@ theorem total_phaseDerivative [AddCommGroup α] (x : TriNumber α) :
     total (phaseDerivative x) = 0 := by
   cases x
   simp [total, phaseDerivative]
-  abel
 
 theorem total_phaseLaplacian [CommRing α] (x : TriNumber α) :
     total (phaseLaplacian x) = 0 := by
@@ -61,6 +60,8 @@ theorem phaseLaplacian_of_balanced [Ring α]
     phaseLaplacian x = { manifest := 0, crossing := 0, seed := 0 } := by
   rcases x with ⟨m, c, s⟩
   rcases h with ⟨hmc, hcs⟩
+  change m = c at hmc
+  change c = s at hcs
   subst c
   subst s
   simp [phaseLaplacian]
@@ -95,6 +96,8 @@ theorem spread_eq_zero_iff_balanced (x : TriNumber ℝ) :
       nlinarith [sq_nonneg (c - s)]
     exact ⟨hmc, hcs⟩
   · rintro ⟨hmc, hcs⟩
+    change m = c at hmc
+    change c = s at hcs
     subst c
     subst s
     simp [spread]
