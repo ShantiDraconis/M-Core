@@ -791,3 +791,41 @@ T19-T23 to obtain full forms
 (and symmetric variants), then derive a contradiction or a concrete survivor.
 
 Status: SOURCE / BUILD_PENDING.
+
+
+### Beal Denes reduction frontier — 2026-10-01
+
+Branch:
+`ShantiDraconis/m-core-beal@atk/beal-two-sided-resolution-20261001`
+
+New commits:
+- `9d053566427a2d09d03876d6791ab18c7e9b7ae6` — full 2-adic times perfect-power forms
+- `140cc47566c66f589d2a8feb9be495b97b64b0f5` — pure linear powers on even-base quartic branches
+- `8a0d93dd1f2bb0df83bdd26d290f380a84fe7cd5` — pure-power parametrization and base product
+- `0f2dc1432c01d88a20762184b1d3050d46bcdd66` — reduction to X^p+Y^p=2Z^p
+- `89cd8d198a65cfede3f40fde94e78fe14aec14ef` hardened by `be42ea3bcc2a94860e1880d201ce4c23f21cccbb` — primitive nontrivial Denes adapter
+- `a5e45321393d1223411c50ab971a808ce7998cac` — exact external Darmon-Merel theorem port specification
+- `4e59c701f4b2089d547883402ec70d90c98e817b` — root imports for internal reductions/adapters
+
+Unconditional internal reduction on x=z=4 with a the unique even base:
+there exist u,v,w such that
+  c-a = u^y,
+  c+a = v^y,
+  c^2+a^2 = w^y,
+  b = u*v*w,
+with u,v coprime, yielding a positive primitive nontrivial solution
+  X^y + Y^y = 2 Z^y
+for X=u^2, Y=v^2, Z=w.
+
+External theorem evidence:
+Darmon-Merel (1997) proves that X^n+Y^n=2Z^n has no nontrivial primitive
+integer solutions for n>=3.
+
+Mechanical status:
+- internal reduction/adapters: SOURCE / BUILD_PENDING;
+- Darmon-Merel theorem: published external theorem, exact Lean port specified,
+  but no formal inhabitant imported;
+- therefore branch elimination is SCIENTIFIC_BRIDGE_READY /
+  FORMAL_EXTERNAL_IMPORT_PENDING, not GREEN.
+
+No Beal conjecture or equivalent endpoint is used as an argument.
