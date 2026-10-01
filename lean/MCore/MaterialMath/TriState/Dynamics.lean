@@ -17,7 +17,7 @@ def Harmonic
 theorem coherent_implies_harmonic
     {α : Type*} [CommRing α]
     {x : TriNumber α}
-    (h : Coherent x) :
+    (h : TriNumber.Coherent x) :
     Harmonic x := by
   rcases h with ⟨hSP, hPM⟩
   funext p
@@ -30,7 +30,7 @@ theorem harmonic_implies_coherent
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     {x : TriNumber α}
     (h : Harmonic x) :
-    Coherent x := by
+    TriNumber.Coherent x := by
   have hs := congrFun h Phase3.seed
   have hp := congrFun h Phase3.passage
   simp [Harmonic, laplacian, Phase3.rotate, Phase3.rotate2] at hs hp
@@ -39,7 +39,7 @@ theorem harmonic_implies_coherent
 theorem harmonic_iff_coherent
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     {x : TriNumber α} :
-    Harmonic x ↔ Coherent x := by
+    Harmonic x ↔ TriNumber.Coherent x := by
   constructor
   · exact harmonic_implies_coherent
   · exact coherent_implies_harmonic
@@ -48,14 +48,14 @@ theorem harmonic_iff_coherent
 theorem laplacian_is_balanced
     {α : Type*} [CommRing α]
     (x : TriNumber α) :
-    Balanced (laplacian x) := by
+    TriNumber.Balanced (TriNumber.laplacian x) := by
   exact phaseSum_laplacian_zero x
 
 /-- A scalar observable is rotation-conserved when one phase advance leaves it unchanged. -/
 def RotationConserved
     {α β : Type*}
     (F : TriNumber α → β) : Prop :=
-  ∀ x, F (rotate x) = F x
+  ∀ x, F (TriNumber.rotate x) = F x
 
 theorem phaseSum_conserved
     {α : Type*} [AddCommMonoid α] :
@@ -75,7 +75,7 @@ theorem cubicInteraction_conserved
 /-- Rotation orbit of a tri-number, written explicitly to avoid quotient machinery. -/
 def orbit3 {α : Type*} (x : TriNumber α) :
     TriNumber α × TriNumber α × TriNumber α :=
-  (x, rotate x, rotate2 x)
+  (x, TriNumber.rotate x, TriNumber.rotate2 x)
 
 /-- The orbit closes after exactly three applications at the operator level. -/
 theorem orbit_closure
@@ -93,9 +93,9 @@ theorem I3_not_harmonic :
 
 /-- Rotation preserves the distinction of the three I3 phase values. -/
 theorem I3_orbit_nondegenerate :
-    Nondegenerate I3 ∧
-    Nondegenerate (rotate I3) ∧
-    Nondegenerate (rotate2 I3) := by
+    TriNumber.Nondegenerate I3 ∧
+    TriNumber.Nondegenerate (TriNumber.rotate I3) ∧
+    TriNumber.Nondegenerate (TriNumber.rotate2 I3) := by
   exact ⟨
     I3_nondegenerate,
     nondegenerate_rotate I3_nondegenerate,
