@@ -45,6 +45,9 @@ jobs:
           set -euo pipefail
           cat > /tmp/material_derived_audit.lean <<'EOF'
           import MCore.FinalFail.MaterialDerived
+          import MCore.FinalFail.MaterialGlobalAssembly
+          import MCore.FinalFail.MaterialField
+          import MCore.FinalFail.TopologyOperatorCore
           #print axioms MCore.FinalFail.MaterialDerived.TriState.code_add_mod_three
           #print axioms MCore.FinalFail.MaterialDerived.TriState.code_mul_mod_three
           #print axioms MCore.FinalFail.MaterialDerived.TriState.mul_eq_zero_iff
