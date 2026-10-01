@@ -220,7 +220,7 @@ theorem derivative_eq_zero_iff_state_stable
     apply code_injective
     exact (derivative_eq_zero_iff f n).mp h
   · intro h
-    subst h
+    rw [h]
     simp [derivative]
 
 /-! ## 4. Dependency topology -/
