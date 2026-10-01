@@ -62,15 +62,28 @@
   },
   "navier_stokes": {
     "terminal": "ActualNSToSignedGainCore",
-    "fields": ["theta < 1", "stretch(t) <= theta*nu*z(t) + C*y(t)^2"],
+    "fields": [
+      "theta < 1",
+      "stretch(t) <= theta*nu*z(t) + C*y(t)^2"
+    ],
     "open_math": true
   },
   "hodge": {
-    "terminal": "ConcreteAlgebraicityPayload",
+    "terminal": "Nonempty (ConcreteHodgeMaterialTarget G M) on the intended nonempty graded Hodge model",
+    "hardening_commit": "f1f0f848d97c32221c2d929451b0f05b907a1ee0",
+    "required": [
+      "Nonempty G.Variety",
+      "CycleSpanAdapter G M",
+      "ConcreteAlgebraicityPayload M"
+    ],
+    "closes": "GradedRationalHodgeConjecture G",
+    "reason": "bare ConcreteAlgebraicityPayload is vacuously inhabited on the empty-variety model; the hardened target blocks that loophole",
     "open_math": true
   },
   "bsd": {
-    "terminal": "genuine elliptic-curve binding + rank equality + refined leading coefficient identity",
+    "terminal": "realizable elliptic-curve family + rank equality + refined leading-coefficient identity on the same data",
+    "known_reduction": "on a realizable domain, low-rank contract + high-rank residual reconstructs universal rank; high-rank residual remains open and does not address the refined formula",
+    "warning": "the abstract BSDArithmeticAnalyticData interface is not itself a genuine elliptic-curve model",
     "open_math": true
   },
   "yang_mills": {
