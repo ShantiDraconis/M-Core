@@ -16,3 +16,7 @@ import MCore.MaterialMath.ScalarDefectEmbedding
 import MCore.MaterialMath.ProfiledTransverseDecay
 
 import MCore.MaterialMath.TwoSidedMaterialResolution
+
+import MCore.MaterialMath.GlobalMaterialTheorem
+import MCore.MaterialMath.GlobalOpenMathLogic
+import MCore.MaterialMath.TorsionEnergyLaw
