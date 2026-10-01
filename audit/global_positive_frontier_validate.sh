@@ -20,16 +20,60 @@ for f in "$SOURCE" "${DEPENDENCY_FILES[@]}"; do
   test -f "$f" || { echo "MISSING: $f"; exit 1; }
 done
 
-# Strip comments only approximately; this is a conservative tripwire.
-if grep -nE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' "$SOURCE"; then
-  echo "ERROR: prohibited proof placeholder in $SOURCE"
-  exit 1
-fi
+python3 - "$SOURCE" "${DEPENDENCY_FILES[@]}" <<'PY'
+import re, sys
+from pathlib import Path
 
-if grep -nE '^[[:space:]]*(axiom|constant)[[:space:]]+' "$SOURCE"; then
-  echo "ERROR: explicit axiom/constant declaration in $SOURCE"
-  exit 1
-fi
+def strip_lean(text: str) -> str:
+    out=[]
+    i=0
+    depth=0
+    in_string=False
+    while i < len(text):
+        if depth:
+            if text.startswith('/-', i):
+                depth += 1; i += 2
+            elif text.startswith('-/', i):
+                depth -= 1; i += 2
+            else:
+                i += 1
+            continue
+        if in_string:
+            if text[i] == '\\':
+                i += 2
+            elif text[i] == '"':
+                in_string=False; i += 1
+            else:
+                i += 1
+            continue
+        if text.startswith('/-', i):
+            depth=1; i += 2; continue
+        if text.startswith('--', i):
+            j=text.find('\n', i)
+            if j < 0: break
+            out.append('\n'); i=j+1; continue
+        if text[i] == '"':
+            in_string=True; i += 1; continue
+        out.append(text[i]); i += 1
+    return ''.join(out)
+
+bad=False
+for name in sys.argv[1:]:
+    raw=Path(name).read_text(encoding='utf-8')
+    code=strip_lean(raw)
+    for tok in ('sorry','admit'):
+        for m in re.finditer(r'(?<![A-Za-z0-9_])'+tok+r'(?![A-Za-z0-9_])', code):
+            line=code.count('\n',0,m.start())+1
+            print(f"ERROR: {tok} token in {name}:{line}")
+            bad=True
+    for m in re.finditer(r'(?m)^\s*(axiom|constant)\s+', code):
+        line=code.count('\n',0,m.start())+1
+        print(f"ERROR: explicit {m.group(1)} declaration in {name}:{line}")
+        bad=True
+if bad:
+    sys.exit(1)
+print("[GLOBAL-POSITIVE] active Lean sources contain no sorry/admit/axiom/constant declarations")
+PY
 
 echo "[GLOBAL-POSITIVE] build"
 lake build "$MODULE" 2>&1 | tee audit/GLOBAL_POSITIVE_FRONTIER_BUILD.log
