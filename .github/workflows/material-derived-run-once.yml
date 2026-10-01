@@ -37,13 +37,15 @@ jobs:
             lean/MCore/FinalFail/MaterialProducerCalculus.lean \
             lean/MCore/FinalFail/MaterialDerived.lean \
             lean/MCore/FinalFail/MaterialGlobalAssembly.lean \
-            lean/MCore/FinalFail/MaterialField.lean
+            lean/MCore/FinalFail/MaterialField.lean \
+            lean/MCore/FinalFail/TopologyOperatorCore.lean
       - name: Build material derived
         run: |
           set -euo pipefail
           lake build MCore.FinalFail.MaterialDerived
           lake build MCore.FinalFail.MaterialGlobalAssembly
           lake build MCore.FinalFail.MaterialField
+          lake build MCore.FinalFail.TopologyOperatorCore
       - name: Axiom audit
         run: |
           set -euo pipefail
@@ -68,6 +70,8 @@ jobs:
           #print axioms MCore.FinalFail.MaterialField.TriState.fieldCertificate
           #print axioms MCore.FinalFail.MaterialField.TriState.field_characteristic_three
           #print axioms MCore.FinalFail.MaterialField.TriState.tristate_is_three_element_field_table
+          #print axioms MCore.FinalFail.Triad.bi_retraction_not_defect
+          #print axioms MCore.FinalFail.Triad.bi_retraction_implies_fixed
           EOF
           lake env lean /tmp/material_derived_audit.lean | tee audit/MATERIAL_DERIVED_AXIOMS.log
           ! grep -q 'sorryAx' audit/MATERIAL_DERIVED_AXIOMS.log
