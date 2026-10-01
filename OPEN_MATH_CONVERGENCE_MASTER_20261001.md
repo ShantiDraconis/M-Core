@@ -705,3 +705,39 @@ excluded middle alone does not inhabit either producer.
 Current status of all new central Lean sources:
 SOURCE / BUILD_PENDING until compiled.
 No open-problem endpoint is promoted merely by the global theorem.
+
+
+### Beal complete quartic odd-support min-cut — 2026-10-01
+
+Branch:
+`ShantiDraconis/m-core-beal@atk/beal-two-sided-resolution-20261001`
+
+New commits:
+- `3ff933a06c9e2af558b8c6eceba39b3e8ddc409b` — first three-block separation source
+- `5653d57a505b2dc4ec190e9523c1d403495f354d` — hardened/completed separation
+- `99c0344e943ca722bf61302457b284886d31a40b` — complete odd-prime block support packet
+- `c67eb24275469283f21b94331254d718ca25998b` — root import
+
+Unconditional quartic branch laws:
+
+For x=z=4:
+  b^y = (c-a)(c+a)(c^2+a^2).
+
+For y=z=4:
+  a^x = (c-b)(c+b)(c^2+b^2).
+
+For every odd prime p:
+- the three factors in each displayed product have pairwise disjoint p-support;
+- every odd prime dividing any factor on x=z=4 divides b;
+- every odd prime dividing any factor on y=z=4 divides a.
+
+No Beal conjecture, no modularity, no level-lowering, and no open endpoint is
+used as an argument.
+
+Next exact min-cut:
+translate pairwise odd-prime support separation + global prime-power identity
+into factorization/valuation congruences:
+for every odd prime q in one block, its multiplicity in that block must be a
+multiple of the residual odd-prime exponent.
+
+Status: SOURCE / BUILD_PENDING.
