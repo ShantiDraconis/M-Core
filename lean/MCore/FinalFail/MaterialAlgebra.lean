@@ -342,24 +342,14 @@ instance : Add SevenLaneVector where
 theorem SevenLaneVector.add_comm
     (x y : SevenLaneVector) :
     x + y = y + x := by
-  cases x with
-  | mk xr xb xp xn xh xd xy =>
-    cases y with
-    | mk yr yb yp yn yh yd yy =>
-      simp only [HAdd.hAdd, Add.add, SevenLaneVector.add]
-      congr <;> apply TriState.add_comm
+  apply SevenLaneVector.ext <;>
+    simp [SevenLaneVector.add, TriState.add_comm]
 
 theorem SevenLaneVector.add_assoc
     (x y z : SevenLaneVector) :
     (x + y) + z = x + (y + z) := by
-  cases x with
-  | mk xr xb xp xn xh xd xy =>
-    cases y with
-    | mk yr yb yp yn yh yd yy =>
-      cases z with
-      | mk zr zb zp zn zh zd zy =>
-        simp only [HAdd.hAdd, Add.add, SevenLaneVector.add]
-        congr <;> apply TriState.add_assoc
+  apply SevenLaneVector.ext <;>
+    simp [SevenLaneVector.add, TriState.add_assoc]
 
 /--
 Global frontier residual.  This theorem intentionally exposes the exact seven
