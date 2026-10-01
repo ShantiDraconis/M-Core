@@ -26,6 +26,15 @@ theorem support_eq_indicator (x : TState) :
       (if x = 0 then 0 else 1) := by
   cases x <;> rfl
 
+
+@[simp] theorem zero_add_state (x : TState) :
+    (0 : TState) + x = x := by
+  exact MCore.FinalFail.MaterialAlgebra.TriState.seed_add x
+
+@[simp] theorem add_zero_state (x : TState) :
+    x + (0 : TState) = x := by
+  exact MCore.FinalFail.MaterialAlgebra.TriState.add_seed x
+
 /-- A nonzero scalar preserves zero/nonzero status. -/
 theorem mul_eq_zero_iff_of_left_ne_zero
     (a x : TState) (ha : a ≠ 0) :
@@ -148,21 +157,16 @@ theorem coordinate_decomposition (x : LaneVector) :
       MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.hodge eHodge +
       MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.bsd eBSD +
       MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.yangMills eYangMills := by
-  apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
-  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
-      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
-      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
-      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
-      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
-      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
-      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
-      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
+  apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality <;>
+    simp only [
+      MCore.FinalFail.MaterialDerived.SevenLaneVector.smul,
+      eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
+      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add,
+      MCore.FinalFail.MaterialAlgebra.TriState.mul_one,
+      MCore.FinalFail.MaterialAlgebra.TriState.mul_zero,
+      MCore.FinalFail.MaterialLinearTopology.TriState.zero_add_state,
+      MCore.FinalFail.MaterialLinearTopology.TriState.add_zero_state
+    ]
 
 /-- The Hamming weight of a vector is its support count. -/
 theorem supportCount_eq_hamming_zero (x : LaneVector) :
@@ -173,6 +177,7 @@ theorem supportCount_eq_hamming_zero (x : LaneVector) :
   unfold MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming
   unfold MCore.FinalFail.MaterialAlgebra.SevenLaneVector.zero
   simp only [MCore.FinalFail.MaterialLinearTopology.TriState.support_eq_indicator]
+  rfl
 
 /-- Nonzero scalar multiplication preserves support/Hamming weight. -/
 theorem supportCount_smul_nonzero
@@ -202,38 +207,52 @@ theorem hamming_smul_nonzero
   have hR :
       a * x.riemann = a * y.riemann ↔ x.riemann = y.riemann := by
     constructor
-    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
-    · intro h; exact congrArg (fun z : TState => a * z) h
+    · intro h
+      exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha h
+    · intro h
+      exact congrArg (fun z : TState => a * z) h
   have hB :
       a * x.beal = a * y.beal ↔ x.beal = y.beal := by
     constructor
-    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
-    · intro h; exact congrArg (fun z : TState => a * z) h
+    · intro h
+      exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha h
+    · intro h
+      exact congrArg (fun z : TState => a * z) h
   have hP :
       a * x.pvsnp = a * y.pvsnp ↔ x.pvsnp = y.pvsnp := by
     constructor
-    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
-    · intro h; exact congrArg (fun z : TState => a * z) h
+    · intro h
+      exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha h
+    · intro h
+      exact congrArg (fun z : TState => a * z) h
   have hN :
       a * x.navierStokes = a * y.navierStokes ↔ x.navierStokes = y.navierStokes := by
     constructor
-    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
-    · intro h; exact congrArg (fun z : TState => a * z) h
+    · intro h
+      exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha h
+    · intro h
+      exact congrArg (fun z : TState => a * z) h
   have hH :
       a * x.hodge = a * y.hodge ↔ x.hodge = y.hodge := by
     constructor
-    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
-    · intro h; exact congrArg (fun z : TState => a * z) h
+    · intro h
+      exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha h
+    · intro h
+      exact congrArg (fun z : TState => a * z) h
   have hD :
       a * x.bsd = a * y.bsd ↔ x.bsd = y.bsd := by
     constructor
-    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
-    · intro h; exact congrArg (fun z : TState => a * z) h
+    · intro h
+      exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha h
+    · intro h
+      exact congrArg (fun z : TState => a * z) h
   have hY :
       a * x.yangMills = a * y.yangMills ↔ x.yangMills = y.yangMills := by
     constructor
-    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
-    · intro h; exact congrArg (fun z : TState => a * z) h
+    · intro h
+      exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha h
+    · intro h
+      exact congrArg (fun z : TState => a * z) h
   simp [hR, hB, hP, hN, hH, hD, hY]
 
 end SevenLaneVector
