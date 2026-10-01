@@ -10,11 +10,13 @@
     },
     "coq": {
       "file": "formal/coq/ATKClosure.v",
-      "status": "BUILD_PENDING"
+      "status": "BUILD_PENDING",
+      "seven_lane_file": "formal/coq/ATKSevenLanes.v"
     },
     "isabelle": {
       "file": "formal/isabelle/ATK_Closure.thy",
-      "status": "BUILD_PENDING"
+      "status": "BUILD_PENDING",
+      "seven_lane_file": "formal/isabelle/ATK_Seven_Lanes.thy"
     }
   },
   "theorem_crosswalk": [
@@ -49,8 +51,8 @@
     {
       "key": "SEVEN_LANE_NO_ESCAPE",
       "lean": "MCore.ATK.CrossProverClosure.closeSeven plus seven global_closure_projects_* theorems",
-      "coq": "TO_BE_SPECIALIZED_PER_LANE after concrete terminal types are encoded",
-      "isabelle": "TO_BE_SPECIALIZED_PER_LANE after concrete terminal types are encoded",
+      "coq": "ATKSevenLanes.SevenInhabitants + global_projects_rh/pnp/ym/ns/bsd/hodge/beal + global_iff_seven_inputs",
+      "isabelle": "seven_bundle + build_seven_projects_rh/pnp/ym/ns/bsd/hodge/beal",
       "meaning": "Global closure must project to every exact lane inhabitant."
     }
   ],
@@ -68,5 +70,12 @@
     "coq": "must compile with coqc",
     "isabelle": "must build with Isabelle session",
     "cross_language": "theorem-name correspondence is documentation, not proof transfer; each kernel must verify its own implementation"
+  },
+  "commits": {
+    "lean_cross_prover": "20836281767f9e7eb7c98d557ce58fce7ebe163f",
+    "coq_core": "823b0e2f1bff0d31c5cb3f5e2022176a75b1062f",
+    "coq_seven_lane": "95461d98edbb05cf3dcea446ced7d4f875ee621e",
+    "isabelle_core": "4d16ce57232ec0d5baa60b63443f6774aa4ae09b",
+    "isabelle_seven_lane": "732f26498e7d9d46be6b63db1c2d67f13ed6ba47"
   }
 }
