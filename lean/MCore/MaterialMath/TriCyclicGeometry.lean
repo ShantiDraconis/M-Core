@@ -102,4 +102,6 @@ structure MaterialPhaseGeometry where
   equilibrium : TriNumber ℝ := TriNumber.balancedProjection state
   transverse : TriNumber ℝ := TriNumber.fluctuation state
 
+end
+
 end MCore.MaterialMath
