@@ -591,3 +591,36 @@ This narrows the T51 twoFourPrime family before any Frey/conductor/level
 lowering input. The remaining orientations are not claimed impossible.
 
 Status: SOURCE / BUILD_PENDING until compiled.
+
+
+### Beal sharp residue frontier — 2026-10-01
+
+Branch:
+`ShantiDraconis/m-core-beal@atk/beal-two-sided-resolution-20261001`
+
+New commits:
+- `76238ac0483acf53716ca6ce66724f1f3197cbfd` — complete mod-16 residue atlas for all (4,4,p) permutations
+- `f2165138850031aa1a793e4e9aff4dd3e36f681a` — sharpen odd-prime-power conditions to base residue classes
+- `77cc78e0b04a6afe3d71ad8470723590ecc4ad66` — root import
+
+Exact consequences for T59 residual candidates in the two-four-prime family:
+
+1. x=y=4:
+   - c is not even;
+   - c^z mod 16 = 1;
+   - when z is the odd-prime exponent, c mod 16 = 1.
+
+2. x=z=4:
+   - if a is the unique even base, then b mod 16 = 1;
+   - if c is the unique even base, then b mod 16 = 15;
+   - the b-even orientation retains the automatic odd-fourth constraint.
+
+3. y=z=4:
+   - if b is the unique even base, then a mod 16 = 1;
+   - if c is the unique even base, then a mod 16 = 15;
+   - the a-even orientation retains the automatic odd-fourth constraint.
+
+These are necessary local conditions before any T60/B01 conductor or
+level-lowering mathematics. They do not eliminate the whole family.
+
+Status: SOURCE / BUILD_PENDING until compilation.
