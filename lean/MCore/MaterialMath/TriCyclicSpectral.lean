@@ -3,6 +3,8 @@ import MCore.MaterialMath.OperatorLaws
 
 namespace MCore.MaterialMath
 
+noncomputable section
+
 namespace TriNumber
 
 /-- The intrinsic transverse eigenvalue magnitude of the three-phase Laplacian. -/
