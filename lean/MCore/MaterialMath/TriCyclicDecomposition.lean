@@ -27,6 +27,7 @@ theorem balancedProjection_is_balanced (x : TriNumber ℝ) :
 theorem total_balancedProjection (x : TriNumber ℝ) :
     total (balancedProjection x) = total x := by
   simp [total, balancedProjection, mean]
+  ring
 
 theorem fluctuation_zeroSum (x : TriNumber ℝ) :
     ZeroSum (fluctuation x) := by
@@ -36,7 +37,7 @@ theorem fluctuation_zeroSum (x : TriNumber ℝ) :
 /-- Canonical direct-sum decomposition x = balanced + zero-sum fluctuation. -/
 theorem balanced_add_fluctuation (x : TriNumber ℝ) :
     add (balancedProjection x) (fluctuation x) = x := by
-  apply TriNumber.ext <;> simp [add, balancedProjection, fluctuation, mean] <;> ring
+  apply TriNumber.ext <;> simp [add, balancedProjection, fluctuation, mean]
 
 /-- Removing the mean does not change phase spread. -/
 theorem spread_fluctuation (x : TriNumber ℝ) :
