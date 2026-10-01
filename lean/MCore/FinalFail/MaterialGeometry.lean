@@ -2,9 +2,9 @@ import MCore.FinalFail.MaterialDerived
 
 namespace MCore.FinalFail.MaterialGeometry
 
-open MCore.FinalFail.MaterialAlgebra
-open MCore.FinalFail.MaterialCalculus
-open MCore.FinalFail.MaterialDerived
+abbrev TState := MCore.FinalFail.MaterialAlgebra.TriState
+abbrev LaneVector := MCore.FinalFail.MaterialAlgebra.SevenLaneVector
+abbrev EState := MCore.FinalFail.MaterialCalculus.EvidenceState
 
 /-!
 # Discrete material geometry
@@ -12,63 +12,60 @@ open MCore.FinalFail.MaterialDerived
 This module derives geometry and higher discrete calculus from the already
 kernel-checked three-state algebra and seven-lane vector carrier.
 
-It is internal mathematics of the ATK material calculus.  It does not assert
+It is internal mathematics of the ATK material calculus. It does not assert
 or manufacture an inhabitant of any external open problem.
 -/
 
 namespace TriState
 
-/-- Distinguished constants of the three-state carrier. -/
-abbrev zeroPhase : TriState := .seed
-abbrev unitPhase : TriState := .transit
-abbrev conjugatePhase : TriState := .manifest
+abbrev zeroPhase : TState := .seed
+abbrev unitPhase : TState := .transit
+abbrev conjugatePhase : TState := .manifest
 
-/-- Rotation operator rho. -/
-def rho (x : TriState) : TriState := x.rotate
+def rho (x : TState) : TState := x.rotate
 
-@[simp] theorem rho_three (x : TriState) :
+@[simp] theorem rho_three (x : TState) :
     rho (rho (rho x)) = x := by
-  exact TriState.rotate_three x
+  exact MCore.FinalFail.MaterialAlgebra.TriState.rotate_three x
 
-theorem rho_ne_self (x : TriState) :
+theorem rho_ne_self (x : TState) :
     rho x ≠ x := by
   cases x <;> decide
 
 theorem rho_injective : Function.Injective rho := by
   intro x y h
-  cases x <;> cases y <;> simp [rho, TriState.rotate] at h ⊢
+  cases x <;> cases y <;>
+    simp [rho, MCore.FinalFail.MaterialAlgebra.TriState.rotate] at h ⊢
 
 theorem rho_surjective : Function.Surjective rho := by
   intro y
   refine ⟨rho (rho y), ?_⟩
   exact rho_three y
 
-/-- Phase difference in the additive three-state group. -/
-def delta (x y : TriState) : TriState := x + (-y)
+def delta (x y : TState) : TState := x + (-y)
 
-@[simp] theorem delta_self (x : TriState) :
+@[simp] theorem delta_self (x : TState) :
     delta x x = 0 := by
-  exact TriState.add_neg x
+  exact MCore.FinalFail.MaterialAlgebra.TriState.add_neg x
 
-theorem delta_eq_zero_iff (x y : TriState) :
+theorem delta_eq_zero_iff (x y : TState) :
     delta x y = 0 ↔ x = y := by
   cases x <;> cases y <;> decide
 
-/-- Binary support indicator of a phase. -/
-def support : TriState → Nat
+def support : TState → Nat
   | .seed => 0
   | .transit => 1
   | .manifest => 1
 
-theorem support_le_one (x : TriState) :
+theorem support_le_one (x : TState) :
     support x ≤ 1 := by
   cases x <;> decide
 
-theorem support_eq_zero_iff (x : TriState) :
+theorem support_eq_zero_iff (x : TState) :
     support x = 0 ↔ x = 0 := by
   cases x <;> decide
 
-theorem support_delta_eq_zero_iff (x y : TriState) :
+theorem support_delta_eq_zero_iff (x y : TState) :
     support (delta x y) = 0 ↔ x = y := by
   rw [support_eq_zero_iff, delta_eq_zero_iff]
 
@@ -76,8 +73,7 @@ end TriState
 
 namespace SevenLaneVector
 
-/-- Coordinatewise phase rotation. -/
-def rotate (x : SevenLaneVector) : SevenLaneVector where
+def rotate (x : LaneVector) : LaneVector where
   riemann := TriState.rho x.riemann
   beal := TriState.rho x.beal
   pvsnp := TriState.rho x.pvsnp
@@ -86,13 +82,18 @@ def rotate (x : SevenLaneVector) : SevenLaneVector where
   bsd := TriState.rho x.bsd
   yangMills := TriState.rho x.yangMills
 
-@[simp] theorem rotate_three (x : SevenLaneVector) :
+@[simp] theorem rotate_three (x : LaneVector) :
     rotate (rotate (rotate x)) = x := by
-  apply SevenLaneVector.extensionality <;>
-    simp [rotate, TriState.rho, TriState.rotate_three]
+  apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
+  · exact TriState.rho_three x.riemann
+  · exact TriState.rho_three x.beal
+  · exact TriState.rho_three x.pvsnp
+  · exact TriState.rho_three x.navierStokes
+  · exact TriState.rho_three x.hodge
+  · exact TriState.rho_three x.bsd
+  · exact TriState.rho_three x.yangMills
 
-/-- Number of non-seed coordinates. -/
-def supportCount (x : SevenLaneVector) : Nat :=
+def supportCount (x : LaneVector) : Nat :=
   TriState.support x.riemann +
   TriState.support x.beal +
   TriState.support x.pvsnp +
@@ -101,7 +102,7 @@ def supportCount (x : SevenLaneVector) : Nat :=
   TriState.support x.bsd +
   TriState.support x.yangMills
 
-theorem supportCount_le_seven (x : SevenLaneVector) :
+theorem supportCount_le_seven (x : LaneVector) :
     supportCount x ≤ 7 := by
   have hR := TriState.support_le_one x.riemann
   have hB := TriState.support_le_one x.beal
@@ -114,11 +115,10 @@ theorem supportCount_le_seven (x : SevenLaneVector) :
   omega
 
 @[simp] theorem supportCount_zero :
-    supportCount SevenLaneVector.zero = 0 := by
+    supportCount MCore.FinalFail.MaterialAlgebra.SevenLaneVector.zero = 0 := by
   rfl
 
-/-- Hamming distance on the seven coordinate states. -/
-def hamming (x y : SevenLaneVector) : Nat :=
+def hamming (x y : LaneVector) : Nat :=
   (if x.riemann = y.riemann then 0 else 1) +
   (if x.beal = y.beal then 0 else 1) +
   (if x.pvsnp = y.pvsnp then 0 else 1) +
@@ -127,20 +127,21 @@ def hamming (x y : SevenLaneVector) : Nat :=
   (if x.bsd = y.bsd then 0 else 1) +
   (if x.yangMills = y.yangMills then 0 else 1)
 
-@[simp] theorem hamming_self (x : SevenLaneVector) :
+@[simp] theorem hamming_self (x : LaneVector) :
     hamming x x = 0 := by
   simp [hamming]
 
-theorem hamming_comm (x y : SevenLaneVector) :
+theorem hamming_comm (x y : LaneVector) :
     hamming x y = hamming y x := by
   simp [hamming, eq_comm]
 
-theorem hamming_le_seven (x y : SevenLaneVector) :
+theorem hamming_le_seven (x y : LaneVector) :
     hamming x y ≤ 7 := by
   unfold hamming
-  split <;> split <;> split <;> split <;> split <;> split <;> split <;> decide
+  split <;> split <;> split <;> split <;>
+    split <;> split <;> split <;> decide
 
-theorem hamming_eq_zero_iff (x y : SevenLaneVector) :
+theorem hamming_eq_zero_iff (x y : LaneVector) :
     hamming x y = 0 ↔ x = y := by
   constructor
   · intro h
@@ -166,63 +167,71 @@ theorem hamming_eq_zero_iff (x y : SevenLaneVector) :
     have hy : x.yangMills = y.yangMills := by
       by_contra hne
       simp [hr, hb, hp, hn, hh, hd, hne] at h
-    exact SevenLaneVector.extensionality hr hb hp hn hh hd hy
+    exact
+      MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
+        hr hb hp hn hh hd hy
   · intro h
     subst y
     exact hamming_self x
 
-/-- Global phase rotation preserves Hamming distance. -/
-theorem hamming_rotate (x y : SevenLaneVector) :
+theorem hamming_rotate (x y : LaneVector) :
     hamming (rotate x) (rotate y) = hamming x y := by
   unfold hamming rotate
-  simp only [TriState.rho]
-  have hiff : ∀ a b : TriState, a.rotate = b.rotate ↔ a = b := by
+  have hiff : ∀ a b : TState, TriState.rho a = TriState.rho b ↔ a = b := by
     intro a b
     constructor
     · exact TriState.rho_injective
     · intro h
-      rw [h]
+      cases h
+      rfl
   simp [hiff]
 
 end SevenLaneVector
 
 namespace EvidenceState
 
-/-- Second discrete derivative of a time-indexed evidence trajectory. -/
-def secondDerivative (f : Nat → EvidenceState) (n : Nat) : Int :=
-  derivative f (n + 1) - derivative f n
+def secondDerivative (f : Nat → EState) (n : Nat) : Int :=
+  MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f (n + 1) -
+  MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f n
 
 theorem secondDerivative_bounds
-    (f : Nat → EvidenceState) (n : Nat) :
+    (f : Nat → EState) (n : Nat) :
     -4 ≤ secondDerivative f n ∧ secondDerivative f n ≤ 4 := by
-  have h1 := derivative_bounds f (n + 1)
-  have h0 := derivative_bounds f n
+  have h1 :=
+    MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_bounds f (n + 1)
+  have h0 :=
+    MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_bounds f n
   unfold secondDerivative
   omega
 
-/-- A locally constant three-point evidence trajectory has zero second derivative. -/
 theorem secondDerivative_eq_zero_of_local_constant
-    (f : Nat → EvidenceState) (n : Nat)
+    (f : Nat → EState) (n : Nat)
     (h01 : f (n + 1) = f n)
     (h12 : f (n + 2) = f (n + 1)) :
     secondDerivative f n = 0 := by
-  unfold secondDerivative
-  have h0 : derivative f n = 0 :=
-    (derivative_eq_zero_iff_state_stable f n).2 h01
-  have h1 : derivative f (n + 1) = 0 := by
-    apply (derivative_eq_zero_iff_state_stable f (n + 1)).2
+  have h0 :
+      MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f n = 0 :=
+    (MCore.FinalFail.MaterialCalculus.EvidenceState
+      .derivative_eq_zero_iff_state_stable f n).2 h01
+  have h1 :
+      MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f (n + 1) = 0 := by
+    apply
+      (MCore.FinalFail.MaterialCalculus.EvidenceState
+        .derivative_eq_zero_iff_state_stable f (n + 1)).2
     simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using h12
+  unfold secondDerivative
   rw [h0, h1]
-  simp
+  norm_num
 
-/-- Evidence jump magnitude. -/
-def jumpMagnitude (f : Nat → EvidenceState) (n : Nat) : Nat :=
-  Int.natAbs (derivative f n)
+def jumpMagnitude (f : Nat → EState) (n : Nat) : Nat :=
+  Int.natAbs
+    (MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f n)
 
 theorem jumpMagnitude_le_two
-    (f : Nat → EvidenceState) (n : Nat) :
+    (f : Nat → EState) (n : Nat) :
     jumpMagnitude f n ≤ 2 := by
-  have h := derivative_bounds f n
+  have h :=
+    MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_bounds f n
   unfold jumpMagnitude
   omega
 
