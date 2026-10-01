@@ -29,6 +29,21 @@ def sub (x y : TState) : TState := x + (-y)
     sub x x = 0 := by
   exact MCore.FinalFail.MaterialAlgebra.TriState.add_neg x
 
+/-- Additive right cancellation in the explicit three-element group. -/
+theorem add_right_cancel
+    (a b c : TState) (h : a + c = b + c) :
+    a = b := by
+  cases a <;> cases b <;> cases c <;>
+    simp_all [MCore.FinalFail.MaterialAlgebra.TriState.add]
+
+/-- Additive left cancellation. -/
+theorem add_left_cancel
+    (a b c : TState) (h : c + a = c + b) :
+    a = b := by
+  rw [MCore.FinalFail.MaterialAlgebra.TriState.add_comm c a,
+      MCore.FinalFail.MaterialAlgebra.TriState.add_comm c b] at h
+  exact add_right_cancel a b c h
+
 /-- Square. -/
 def sq (x : TState) : TState := x * x
 
