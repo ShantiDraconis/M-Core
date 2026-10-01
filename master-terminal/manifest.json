@@ -36,8 +36,8 @@
         "conclusion": "success",
         "sha": "7fc4acbea946f809343ed8b475d6d8195de3e543"
       },
-      "build_state": "GREEN_PREFIX_NOT_TERMINAL",
-      "exact_blocker": "Gram quadratic identity/minimization layer now kernel-checks with no sorryAx; the terminal unconditional DN vanishing estimate remains uninhabited.",
+      "build_state": "CONCRETE_RESIDUAL_OPEN_MATH",
+      "exact_blocker": "Terminal transport is explicit. Material obligation is an unconditional inhabitant of MCore.RH.R0.ConcreteCoefficientResidual or equivalently ConcreteGramResidual for every epsilon > 0.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
@@ -56,8 +56,8 @@
         "conclusion": "success",
         "sha": "2b00561e72422dffda8841b830e71683212aef21"
       },
-      "build_state": "P01_MATERIAL_CANDIDATE_PENDING_CI__P02_OPEN_MATH",
-      "exact_blocker": "P01 now has a no-hypothesis material candidate theorem on the physical decoder-failure chain, but its material gate is still queued and therefore is not promoted. Independently, P02 remains the genuine lower-bound producer: one explicit canonical bitstring counterexample for every deterministic polynomial-time candidate.",
+      "build_state": "SOURCE_REPAIR_PENDING_RERUN__P01_PARTIAL__P02_OPEN_MATH",
+      "exact_blocker": "P01 source-level repairs prepared from recovered logs: RawDecodeFailureCases eliminator kind, RawSourceSplit none branch, exact bounded producer tactic/arithmetic normalization and OR child-mode normalization. Not rerun. P02 remains the genuine material lower-bound producer Nonempty (FailureGenerator (SATBits circuitBitEncoding)).",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
@@ -107,8 +107,8 @@
         "conclusion": "success",
         "sha": "01e1e33c7e4bcc7cc05cc87fef5012ff3d4d8693"
       },
-      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No terminal inhabitant is registered in the canonical M-Core final-proof registry",
+      "build_state": "MODEL_FIDELITY_OPEN_MATH",
+      "exact_blocker": "Recovered build proves K0-K14 and GroundedBSDHabitant compile, but BSDCurrentModelCollapse constructs a trivial GroundedBSDHabitant over Unit. Current interface is therefore too weak for terminal credit; a faithful elliptic-curve arithmetic realization is required.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
@@ -127,8 +127,8 @@
         "conclusion": "success",
         "sha": "e459840e7b4742415fd956dfd3fa069474635650"
       },
-      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No terminal inhabitant is registered in the canonical M-Core final-proof registry",
+      "build_state": "EXACT_RESIDUAL_OPEN_MATH",
+      "exact_blocker": "Need an inhabitant of MCore.BackwardAudit.Final.OpenMathResidual; in particular the genuine HigherCodimH01ForwardPayload for the same CycleSpanMechanics. residual_to_positiveProducer is transport only.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
@@ -147,8 +147,8 @@
         "conclusion": "success",
         "sha": "eb2f1b242fcb6719c370d1f0f36deb2e5494d818"
       },
-      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No terminal physical/mass-gap inhabitant is registered in the canonical M-Core final-proof registry",
+      "build_state": "PHYSICAL_RESIDUAL_OPEN_MATH",
+      "exact_blocker": "Need an inhabitant of MCore.YangMills.A1.Final.PhysicalResidual for one coherent physical realization, including constructionFromA1, physical excitation data, and K30SpectralTransferWitness.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
@@ -167,8 +167,8 @@
         "conclusion": "success",
         "sha": "dc84a96f744a8f209ce323c9d956420f67add854"
       },
-      "build_state": "CERTIFICATE_GREEN_NOT_TERMINAL",
-      "exact_blocker": "No terminal universal CommonPrime inhabitant is registered in the canonical M-Core final-proof registry",
+      "build_state": "EXACT_RESIDUAL_OPEN_MATH",
+      "exact_blocker": "Need an unconditional inhabitant of GCDLowerBoundProducer (OpenMathResidual). residual_closes_final is downstream transport only.",
       "terminal": {
         "nonempty": false,
         "kernel_checked": false,
