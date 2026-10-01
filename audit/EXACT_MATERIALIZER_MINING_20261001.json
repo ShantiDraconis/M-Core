@@ -94,9 +94,22 @@
           "class": "FALSIFIED_ROUTE",
           "commit": "fd745c37598f90483a1e3c39ea7f3bdc0a8be189",
           "reason": "explicit one-point countermodel satisfies directional coherence vacuously while ClosedDepletion fails"
+        },
+        {
+          "item": "Flexible bulk+tail+remainder material operator",
+          "class": "EXACT_BRIDGE",
+          "commit": "6579345a05166d3a6efd02c2315caa5da6aaf61c",
+          "laws": [
+            "stretch=bulk+tail+remainder",
+            "bulk<=cBulk*nu*z",
+            "tail<=cTail*nu*z",
+            "remainder<=a(t)*y",
+            "cBulk+cTail<1",
+            "=> y'+2*(1-cBulk-cTail)*nu*z <= 2*a(t)*y"
+          ]
         }
       ],
-      "next_exact_lemma": "derive a flow-coupled joint/strain-sensitive bulk estimate plus weighted exceptional-tail control and a strict positive budget from ActualNS; direction-only coherence is formally insufficient",
+      "next_exact_lemma": "derive from ActualNS either the strict zero-remainder bulk/tail package or the flexible package with an energy-integrable a(t); prove the singular-kernel weighted tail and a strict common budget",
       "result": "NO_PRODUCER"
     },
     "hodge": {
@@ -149,9 +162,14 @@
             "dominance/dense image",
             "universal-family endpoint adapter"
           ]
+        },
+        {
+          "item": "RelativeCycleBackend + path-groupoid laws + linear transport -> R3VariationalAlgebraicityPayload",
+          "class": "EXACT_BRIDGE",
+          "commit": "b11b0054d58596699a05702c1df902cfd7491f19"
         }
       ],
-      "next_exact_lemma": "do not attempt generic R2 shortcut; produce a nontrivial spread/descent where R2 is provable by special geometry, and for R3 build a path-matched relative-cycle bridge with DVR specialization plus cycle-class compatibility; constant-Qbar R2 is endpoint-equivalent",
+      "next_exact_lemma": "construct the actual relative-cycle backend: path-matched relative cycle extension plus cycle-class compatibility, and independently solve R2 on a nontrivial geometry; the R3 bridge itself is now closed",
       "result": "R2_ENDPOINT_HARD_CORE / R3A_GEOMETRIC_SUBGAPS"
     },
     "bsd": {
@@ -235,10 +253,21 @@
             "a3ecdbacd0b807f3f8b9ab5362a7b9927b7460dc",
             "7489360970444808c522615c8bad42b67cd6c781"
           ]
+        },
+        {
+          "item": "T59 residual candidate -> lowered-newform survivor -> five-family elimination -> residual contradiction",
+          "class": "EXACT_BRIDGE",
+          "commit": "07e1ae37c89b12838e79b890def2d12f3982d5b9"
         }
       ],
-      "next_exact_lemma": "current modular frontier: (A) FLTAt ell for odd primes ell>3 on the equal-prime branch, plus (B) eliminate every concrete T59ResidualCandidate via candidate-keyed conductor/level/newform data; either pair closes Beal through T59_beyondThree_and_residual_close_beal",
+      "next_exact_lemma": "material inputs only: FLT for prime exponents >3 on equal-prime branch; construct a genuine T59LoweredNewformBridge from Frey/conductor/level-lowering; prove residual-domain soundness; produce the five newform-elimination certificates",
       "result": "TWO_MATERIAL_BRANCHES_REMAIN"
     }
+  },
+  "last_bridge_commits": {
+    "rh_bcf_three_term": "1ff7350a4a1020273d4a4d0db1d281703b231bf7",
+    "hodge_relative_to_variational": "b11b0054d58596699a05702c1df902cfd7491f19",
+    "ns_flexible_bulk_tail": "6579345a05166d3a6efd02c2315caa5da6aaf61c",
+    "beal_t59_modular_materializer": "07e1ae37c89b12838e79b890def2d12f3982d5b9"
   }
 }
