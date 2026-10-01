@@ -35,19 +35,19 @@ structure UnconditionalMaterialRoot where
         max (Phase3.cyclicDistance p q) (Phase3.cyclicDistance q r)
   laplacianBalanced :
     ∀ x : TriNumber ℝ,
-      Balanced (laplacian x)
+      TriNumber.Balanced (TriNumber.laplacian x)
   harmonicCoherent :
     ∀ x : TriNumber ℝ,
-      Harmonic x ↔ Coherent x
+      TriDynamics.Harmonic x ↔ TriNumber.Coherent x
   centeredEigenmode :
     ∀ x : TriNumber ℝ,
-      laplacian (center x) =
-        fun p => (-3 : ℝ) * center x p
+      TriNumber.laplacian (TriArithmetic.center x) =
+        fun p => (-3 : ℝ) * TriArithmetic.center x p
   characteristicInvariant :
     ∀ (x : TriNumber ℤ) (t : ℤ),
-      characteristic (rotate x) t = characteristic x t
-  I3Balanced : Balanced I3
-  I3Nondegenerate : Nondegenerate I3
+      TriSymmetric.characteristic (TriNumber.rotate x) t = TriSymmetric.characteristic x t
+  I3Balanced : TriNumber.Balanced I3
+  I3Nondegenerate : TriNumber.Nondegenerate I3
   I3OrbitDistinct :
     I3 ≠ J3 ∧ J3 ≠ K3 ∧ K3 ≠ I3
   I3HeatClosedForm :
@@ -61,8 +61,8 @@ def I3Real : TriNumber ℝ :=
   fun p => (I3 p : ℝ)
 
 theorem I3Real_balanced :
-    Balanced I3Real := by
-  norm_num [I3Real, Balanced, phaseSum, I3]
+    TriNumber.Balanced I3Real := by
+  norm_num [I3Real, TriNumber.Balanced, TriNumber.phaseSum, I3]
 
 theorem I3Real_heat_closed_form :
     ∀ n p,
