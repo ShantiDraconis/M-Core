@@ -207,6 +207,98 @@ theorem TriState.threefold_transit :
     (.transit + .transit : TriState) + .transit = .seed := by
   rfl
 
+
+/-! ### Multiplicative completion of TriState
+
+The table below is exactly multiplication modulo three under
+seed = 0, transit = 1, manifest = 2.  This does not assert a new classical
+number system; it makes the finite algebra carried by the three labels explicit.
+-/
+
+def TriState.mul : TriState → TriState → TriState
+  | .seed, _ => .seed
+  | _, .seed => .seed
+  | .transit, y => y
+  | x, .transit => x
+  | .manifest, .manifest => .transit
+
+instance : Mul TriState where
+  mul := TriState.mul
+
+instance : Zero TriState where
+  zero := .seed
+
+instance : One TriState where
+  one := .transit
+
+@[simp] theorem TriState.zero_mul (x : TriState) :
+    (0 : TriState) * x = 0 := by
+  cases x <;> rfl
+
+@[simp] theorem TriState.mul_zero (x : TriState) :
+    x * (0 : TriState) = 0 := by
+  cases x <;> rfl
+
+@[simp] theorem TriState.one_mul (x : TriState) :
+    (1 : TriState) * x = x := by
+  cases x <;> rfl
+
+@[simp] theorem TriState.mul_one (x : TriState) :
+    x * (1 : TriState) = x := by
+  cases x <;> rfl
+
+theorem TriState.mul_comm (x y : TriState) :
+    x * y = y * x := by
+  cases x <;> cases y <;> rfl
+
+theorem TriState.mul_assoc (x y z : TriState) :
+    (x * y) * z = x * (y * z) := by
+  cases x <;> cases y <;> cases z <;> rfl
+
+theorem TriState.left_distrib (x y z : TriState) :
+    x * (y + z) = x * y + x * z := by
+  cases x <;> cases y <;> cases z <;> rfl
+
+theorem TriState.right_distrib (x y z : TriState) :
+    (x + y) * z = x * z + y * z := by
+  cases x <;> cases y <;> cases z <;> rfl
+
+def TriState.inv : TriState → TriState
+  | .seed => .seed
+  | .transit => .transit
+  | .manifest => .manifest
+
+instance : Inv TriState where
+  inv := TriState.inv
+
+@[simp] theorem TriState.inv_seed :
+    (.seed : TriState)⁻¹ = .seed := rfl
+
+@[simp] theorem TriState.inv_transit :
+    (.transit : TriState)⁻¹ = .transit := rfl
+
+@[simp] theorem TriState.inv_manifest :
+    (.manifest : TriState)⁻¹ = .manifest := rfl
+
+theorem TriState.mul_inv_cancel
+    (x : TriState) (h : x ≠ 0) :
+    x * x⁻¹ = 1 := by
+  cases x <;> simp [TriState.mul, TriState.inv] at h ⊢
+
+theorem TriState.nonzero_square_eq_one
+    (x : TriState) (h : x ≠ 0) :
+    x * x = 1 := by
+  cases x <;> simp [TriState.mul] at h ⊢
+
+theorem TriState.manifest_square :
+    (.manifest : TriState) * .manifest = .transit := by
+  rfl
+
+/-- Every state satisfies x^3 = x in the explicit three-element algebra. -/
+theorem TriState.cubic_idempotence (x : TriState) :
+    (x * x) * x = x := by
+  cases x <;> rfl
+
 /-- Product carrier of all seven material lanes. -/
 structure SevenLaneVector where
   riemann : TriState
