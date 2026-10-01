@@ -113,7 +113,25 @@ explicit degree-at-most-two Lagrange formula. -/
 theorem interpolate_exact (f : TState → TState) :
     ∀ x, interpolate f x = f x := by
   intro x
-  cases x <;> simp [interpolate]
+  cases x with
+  | seed =>
+      change (f .seed + .seed) + .seed = f .seed
+      rw [
+        MCore.FinalFail.MaterialAlgebra.TriState.add_seed,
+        MCore.FinalFail.MaterialAlgebra.TriState.add_seed
+      ]
+  | transit =>
+      change (.seed + f .transit) + .seed = f .transit
+      rw [
+        MCore.FinalFail.MaterialAlgebra.TriState.seed_add,
+        MCore.FinalFail.MaterialAlgebra.TriState.add_seed
+      ]
+  | manifest =>
+      change (.seed + .seed) + f .manifest = f .manifest
+      rw [
+        MCore.FinalFail.MaterialAlgebra.TriState.seed_add,
+        MCore.FinalFail.MaterialAlgebra.TriState.seed_add
+      ]
 
 /-- Functional extensional form: every endomorphism is its quadratic
 interpolant. -/
@@ -157,19 +175,23 @@ theorem affine_injective
     (a b : TState) (ha : a ≠ 0) :
     Function.Injective (affine a b) := by
   intro x y h
-  cases a with
-  | seed =>
-      exact False.elim (ha rfl)
-  | transit =>
-      cases b <;> cases x <;> cases y <;>
-        simp_all [affine,
-          MCore.FinalFail.MaterialAlgebra.TriState.mul,
-          MCore.FinalFail.MaterialAlgebra.TriState.add]
-  | manifest =>
-      cases b <;> cases x <;> cases y <;>
-        simp_all [affine,
-          MCore.FinalFail.MaterialAlgebra.TriState.mul,
-          MCore.FinalFail.MaterialAlgebra.TriState.add]
+  have hmul : a * x = a * y := by
+    have h' := congrArg (fun z : TState => z + (-b)) h
+    calc
+      a * x = (a * x + b) + (-b) := by
+        rw [
+          MCore.FinalFail.MaterialAlgebra.TriState.add_assoc,
+          MCore.FinalFail.MaterialAlgebra.TriState.add_neg,
+          MCore.FinalFail.MaterialAlgebra.TriState.add_seed
+        ]
+      _ = (a * y + b) + (-b) := h'
+      _ = a * y := by
+        rw [
+          MCore.FinalFail.MaterialAlgebra.TriState.add_assoc,
+          MCore.FinalFail.MaterialAlgebra.TriState.add_neg,
+          MCore.FinalFail.MaterialAlgebra.TriState.add_seed
+        ]
+  exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha hmul
 
 /-- Every nonzero affine slope yields a surjective operator. -/
 theorem affine_surjective
