@@ -113,18 +113,30 @@ Equivalent P02 forms:
 - `Nonempty CanonicalSATP02Producer`
 - `Nonempty SemanticDiagonalFamily`
 
-### P01 source inhabitant found
-Branch:
-`atk/p01-raw-closure-final-20261001`
+### P01 mechanical construction — CLOSED / FROZEN / CERTIFIED
+Authoritative frozen branch:
+`frozen/p01-verifier-phase-mincut-green-720596c0`
 
-SHA:
-`4cc78949ca812817627d3867b1328cd950156353`
+Certificate ref:
+`cert/p01-verifier-phase-mincut-green-720596c0`
 
-Theorem:
-`p01ConstructionGap_closed : P01ConstructionGap`
+Frozen SHA:
+`720596c0bd3900b5de25eab57b7b979d2a6aaf68`
+
+Authoritative run / job:
+`36862291065 / 110369170512`
+
+Producer theorem:
+`P01RawTotalizationProducer.p01ConstructionGap_closed : P01ConstructionGap`
+
+Derived canonical consequence:
+`P01PostMinCutClosure.canonical_sat_in_np_closed : SATInNPGap circuitBitEncoding`
 
 Status:
-SOURCE_PRODUCED; not promoted here as a current global certified inhabitant until exact dependency/build alignment is independently certified.
+`CLOSED_KERNEL_GREEN_FROZEN_CERTIFIED`.
+
+Forward-only rule:
+DO NOT reopen or reconstruct P01. Reuse the frozen certificate and attack only the same-language universal deterministic lower-bound producer.
 
 ### P02 certified kernel
 - validated SHA `fa83d082fe219a772aa41c981e6b0fa420ff2aac`
@@ -152,6 +164,13 @@ Validated:
    `finite_to_universal_principle_refuted`.
 
 ### Exact remaining P02 inhabitant
+Canonical form:
+```lean
+UniversalFailure
+  (CanonicalSATBoundary.SATBits CanonicalCircuitBits.circuitBitEncoding)
+```
+
+Equivalent pointwise producer form:
 ```lean
 ∀ M : PolyDTMCandidate,
   ∃ x : BitString,
@@ -160,7 +179,7 @@ Validated:
 ```
 
 State:
-P01 SOURCE FOUND; P02 OPEN_MATH.
+P01 CLOSED/FROZEN/CERTIFIED; P02 OPEN_MATH.
 
 ---
 
@@ -340,8 +359,8 @@ State: OPEN_MATH.
 Unconditional semantic terminal inhabitants verified in the seven positive lanes:
 **0 / 7**
 
-Source-level partial material inhabitant found:
-- P-vs-NP P01: `p01ConstructionGap_closed`
+Closed certified infrastructure component:
+- P-vs-NP P01: `p01ConstructionGap_closed` / frozen SHA `720596c0bd3900b5de25eab57b7b979d2a6aaf68` / run `36862291065`
 
 All other currently located objects are one of:
 - certified reductions;
