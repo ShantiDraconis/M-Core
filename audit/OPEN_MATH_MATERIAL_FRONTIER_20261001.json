@@ -36,48 +36,61 @@
     "open_math": "construct a genuine per-candidate canonical SAT counterexample / fixed-point semantic realizer"
   },
   "riemann": {
-    "terminal": "Concrete Gram scalar endpoint",
-    "equivalent": [
-      "FiniteSpanApproximatesChi concreteGeneratorFamily",
-      "DNToZero concreteGeneratorFamily",
-      "DNLimit concreteGeneratorFamily = 0",
-      "for every epsilon>0 there are N,c solving G_N c=b_N with 1-c^T b_N<epsilon^2"
+    "canonical_terminal": "Concrete Gram residual / DNToZero / FiniteSpanApproximatesChi",
+    "direct_sufficient_material": "ConcreteLogMajorantCertificate",
+    "concrete_inequality": "∃ K ≥ 0, ∀ N, DN(N) ≤ K / log(N+2)",
+    "adapter_commit": "38509bc8171af702baacc4503f52134db05709bf",
+    "downstream_closed": [
+      "logMajorant tends to zero",
+      "LogMajorantCertificate -> VanishingUpperBound",
+      "VanishingUpperBound -> DNToZero",
+      "DNToZero <-> DNLimit=0",
+      "DNLimit=0 <-> concrete Gram residual",
+      "concrete residual -> FINAL_ROOT"
     ],
-    "already_constructed": [
-      "optimal finite coefficients",
-      "Gram normal equations",
-      "exact quadratic energy identity",
-      "DN as minimum Gram energy",
-      "finite-span/zero-limit equivalence"
-    ],
-    "tristate_hardening": {
-      "commit": "95a2f3733c4acd64420c53688a0addd526c494b5",
-      "meaning": "state 2 is fixed to concrete DNToZero; arbitrary Prop-valued decay no longer counts as terminal mathematics"
-    },
-    "open_math": "prove the concrete optimal Gram defect tends to zero"
+    "strongest_analytic_attack": "ZERO_RESIDUE_SUM_UNCONDITIONAL_CONTROL via the unconditional BCF decomposition",
+    "warning": "finite-N Gram certificates and observed DN(N) log N behavior do not prove the uniform logarithmic bound",
+    "open_math": true
   },
   "beal": {
-    "terminal": "forall d : BealData, 1 < gcd(d.a, gcd(d.b,d.c))",
+    "canonical_terminal": "UniversalTripleGCDLowerBound",
+    "proposition": "∀ d : BealData, 1 < gcd(d.a, gcd(d.b,d.c))",
+    "downstream_closed": [
+      "triple gcd divides all three bases",
+      "nontrivial common divisor -> triple gcd > 1",
+      "triple gcd > 1 -> CommonDivisor",
+      "CommonDivisor <-> CommonPrime",
+      "UniversalTripleGCDLowerBound <-> BealConjecture"
+    ],
     "open_math": true
   },
   "navier_stokes": {
-    "terminal": "ActualNSToSignedGainCore",
-    "fields": [
-      "theta < 1",
-      "stretch(t) <= theta*nu*z(t) + C*y(t)^2"
+    "canonical_terminal": "ActualNSToSignedGainCore",
+    "downstream_closed": [
+      "exact Frechet derivative of regularized direction map",
+      "chain rule under differentiability",
+      "BulkAbsorption + ExceptionalTailControl + SubcriticalBudget -> theta<1 strict signed depletion",
+      "SignedGainCore -> normalized SignedGainCertificate",
+      "signed gain -> differential inequality and positive dissipation margin"
     ],
+    "deepest_analytic_residue": [
+      "O1: ActualNS -> uniform joint coherence / analytic joint law",
+      "O2: actual singular-kernel weighted exceptional-tail control",
+      "O3: nonlinear power gain yielding an energy-integrable lower-order coefficient / strict subcritical budget"
+    ],
+    "representation_note": "StrictSignedDepletionProducer and NSProducerFirst use distinct EnstrophyData representations; a canonical alignment adapter is still required before this decomposition can replace the canonical terminal type mechanically.",
     "open_math": true
   },
   "hodge": {
-    "terminal": "Nonempty (ConcreteHodgeMaterialTarget G M) on the intended nonempty graded Hodge model",
+    "terminal": "Nonempty (ConcreteHodgeMaterialTarget G M) on intended nonempty geometry",
     "hardening_commit": "f1f0f848d97c32221c2d929451b0f05b907a1ee0",
-    "required": [
-      "Nonempty G.Variety",
-      "CycleSpanAdapter G M",
-      "ConcreteAlgebraicityPayload M"
+    "formalization_residue": [
+      "R0: bind actual rational cohomology, algebraic cycles, cycle-class map and span adapter",
+      "R1: uniform spread construction depending on X,p,alpha",
+      "R2: spread -> algebraic point/cycle-production witness",
+      "R3: specialization/variational algebraicity -> concrete cycle-span payload"
     ],
-    "closes": "GradedRationalHodgeConjecture G",
-    "reason": "bare ConcreteAlgebraicityPayload is vacuously inhabited on the empty-variety model; the hardened target blocks that loophole",
+    "downstream_closed": "Concrete payload + certified boundary closes graded Hodge endpoint",
     "open_math": true
   },
   "bsd": {
@@ -87,7 +100,26 @@
     "open_math": true
   },
   "yang_mills": {
-    "terminal": "Nonempty (B60ConcretePhysicalAdapter C F D H G O)",
+    "canonical_terminal": "B60 concrete physical realization",
+    "compressed_material": "B60FieldBundle",
+    "bundle_commit": "119ba78a2feb442c33ae08b3a8639e841ff83705",
+    "fields": [
+      "stateMap and observableState",
+      "mappedStatesPhysical and observableStatesPhysical",
+      "K23ConstructiveYM4Data + K23ConstructionInputsHold",
+      "constructionFromA1",
+      "K25 clustering bridge + observable cyclicity + semigroup transfer",
+      "K27 regulated positive gap + limit control + limit witness + frontier bridge",
+      "non-vacuum physical excitation in Hamiltonian domain",
+      "K30SpectralTransferWitness"
+    ],
+    "downstream_closed": [
+      "K22 construction block from K23",
+      "K22 infrared block from K25",
+      "K22 limit block from K27",
+      "field bundle -> FinalExternalCertificate",
+      "FinalExternalCertificate -> FINAL_ROOT"
+    ],
     "open_math": true
   },
   "tristate": {
@@ -95,5 +127,13 @@
     "valid_use": "normalization, route classification, same-object invariance, adapter bookkeeping",
     "invalid_use": "derive a terminal conjecture without a problem-specific exact materializer",
     "material_rule": "each lane still needs an extract map into its fixed terminal inhabitant"
+  },
+  "last_material_compression_commits": {
+    "central_direct_cuts": "705f1a2974df9cd98e6b84ec17f1cf0d097646ac",
+    "central_registry": "62a8ebc0e3c79839f63ddcdc97f6cabc935d7e6b",
+    "rh_concrete_log_majorant": "38509bc8171af702baacc4503f52134db05709bf",
+    "ym_field_bundle": "119ba78a2feb442c33ae08b3a8639e841ff83705",
+    "hodge_hardening": "f1f0f848d97c32221c2d929451b0f05b907a1ee0",
+    "p02_effective_bridge": "72149cc18b144260c41681da9c972e6d09e2e77f"
   }
 }
