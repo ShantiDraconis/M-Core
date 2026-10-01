@@ -139,8 +139,10 @@ structure GlobalSemanticInterpretations
         Theory Genuine4D OSReconstructs PositiveMassGap)
 
 /--
-The exact conditional global final root: all seven selected semantic
-interpretations are simultaneously inhabited.
+Mixed-orientation conditional aggregation root: all seven selected semantic
+interpretations are simultaneously inhabited. The Riemann component is
+refutational (off-critical-zero), so this is NOT the positive seven-problem
+final root. Use GlobalPositiveMaterialRoot for the positive orientation.
 -/
 abbrev GlobalConditionalFinalRoot
     (Language : Type uL)
@@ -168,6 +170,41 @@ abbrev GlobalConditionalFinalRoot
     Variety Class Cycle SmoothProjective RationalHodge Realizes
     Curve Realizable AnalyticOrder MordellWeilRank RefinedFormula
     Theory Genuine4D OSReconstructs PositiveMassGap
+
+
+/-- Any inhabitant of the mixed-orientation root entails the negation of RH,
+because its Riemann field realizes an off-critical nontrivial zero. -/
+theorem globalConditionalFinalRoot_implies_not_RH
+    {Language : Type uL}
+    {InP InNP : Language → Prop}
+    {SAT : Language}
+    {Flow : Type uF}
+    {Stabilizer : Type uS}
+    {ActualNS : Flow → Prop}
+    {Stabilizes : Stabilizer → Flow → Prop}
+    {Variety : Type uV}
+    {Class : Variety → Type uC}
+    {Cycle : Variety → Type uZ}
+    {SmoothProjective : Variety → Prop}
+    {RationalHodge : {X : Variety} → Class X → Prop}
+    {Realizes : {X : Variety} → Cycle X → Class X → Prop}
+    {Curve : Type uE}
+    {Realizable : Curve → Prop}
+    {AnalyticOrder MordellWeilRank : Curve → Int}
+    {RefinedFormula : Curve → Prop}
+    {Theory : Type uT}
+    {Genuine4D OSReconstructs PositiveMassGap : Theory → Prop}
+    (G :
+      GlobalConditionalFinalRoot
+        Language InP InNP SAT
+        Flow Stabilizer ActualNS Stabilizes
+        Variety Class Cycle SmoothProjective RationalHodge Realizes
+        Curve Realizable AnalyticOrder MordellWeilRank RefinedFormula
+        Theory Genuine4D OSReconstructs PositiveMassGap) :
+    ¬ RiemannHypothesis := by
+  have hOff : Nonempty RiemannOffCriticalZero :=
+    riemann_interpretation_iff_target.mp G.riemann
+  exact not_riemannHypothesis_iff_nonempty_offCriticalZero.mpr hOff
 
 theorem globalAcceptedHypotheses_to_targets
     {Language : Type uL}
@@ -316,6 +353,7 @@ theorem global_conditional_final
   exact globalTargets_to_interpretations
     (globalAcceptedHypotheses_to_targets H)
 
+#print axioms MCore.FinalFail.Semantic.globalConditionalFinalRoot_implies_not_RH
 #print axioms MCore.FinalFail.Semantic.globalAcceptedHypotheses_to_targets
 #print axioms MCore.FinalFail.Semantic.globalTargets_to_interpretations
 #print axioms MCore.FinalFail.Semantic.global_conditional_final
