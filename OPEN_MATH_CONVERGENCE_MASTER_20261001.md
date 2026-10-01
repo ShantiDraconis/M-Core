@@ -462,3 +462,43 @@ force DN -> 0 is not promoted. A claim of that strength is effectively an RH
 closure and requires independent verification of every imported hypothesis.
 Published Bettin-Conrey-Farmer asymptotics remain conditional on RH plus a
 negative zeta-derivative moment bound.
+
+
+### RH coefficient Pythagoras frontier — 2026-10-01
+
+Branch:
+`ShantiDraconis/m-core-riemann@atk/rh-optimal-coefficient-pythagoras-20261001`
+
+Commits:
+- `b993fb9772d8f34f7dace7a362cdbb4d5f83fc70` — exact Pythagorean coefficient-error decomposition
+- `e6716fec2c4d906e1fa3227220d5c92d72e2e9cc` — root import
+- `6bfbcafd7ece8e3a1da3f2c75454b87652a471cf` — finite excess-energy audit
+- `32049f06f7bde908e6e636b6fac1b94d2903cb0d` — coefficient Gram-energy identity
+- `b7517526d4a70018580c06f4946c946dd20be3ce` — root import
+
+New exact identities:
+1. For every finite coefficient vector c,
+   ||chi-v_c||^2 = DN_N + ||P_N chi-v_c||^2.
+2. The excess over the optimum is exactly the squared projection gap.
+3. For every coefficient correction r,
+   ||v_r||^2 = r^T G_N r.
+4. Hence for c=c*+r, the correction penalty is exactly the Gram quadratic
+   energy of r.
+
+Finite N=256 evidence:
+- alpha=3/16 total error is about 3.0024 times the optimum;
+- about 66.69% of that finite error is projection-gap/correction energy;
+- raw Möbius has about 80.28% correction-energy share;
+- linear-log taper about 93.38%.
+
+Interpretation:
+simple Möbius/taper families fail mainly because they remain too far from the
+finite optimal coefficient vector. The next nontrivial analytic target is not
+another blind taper but a provable decomposition
+
+c*_N = -mu * w_N + r_N
+
+with a uniform estimate on r_N^T G_N r_N and a vanishing total residual.
+
+Status of new Lean sources: SOURCE / BUILD_PENDING until independently built.
+No RH promotion.
