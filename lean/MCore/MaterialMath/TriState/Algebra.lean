@@ -139,10 +139,10 @@ def I3 : TriNumber Int
   | .manifest => -1
 
 theorem I3_balanced : Balanced I3 := by
-  decide
+  norm_num [Balanced, phaseSum, I3]
 
 theorem I3_nondegenerate : Nondegenerate I3 := by
-  decide
+  norm_num [Nondegenerate, I3]
 
 theorem I3_rotation_period_three :
     rotate (rotate (rotate I3)) = I3 :=
