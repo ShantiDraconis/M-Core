@@ -48,6 +48,8 @@ theorem torsion_balanced_left
     torsion x y = 0 := by
   rcases x with ⟨m, c, s⟩
   rcases hx with ⟨hmc, hcs⟩
+  change m = c at hmc
+  change c = s at hcs
   subst c
   subst s
   simp [torsion]
