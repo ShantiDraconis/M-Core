@@ -1,0 +1,128 @@
+{
+  "schema": "ATK_MATERIAL_PRODUCER_OPERATOR_INDEX_V1",
+  "date": "2026-10-01",
+  "policy": {
+    "only_kernel_checked_or_build_pending_code": true,
+    "evidence_is_not_inhabitant": true,
+    "exact_terminal_projection_required": true
+  },
+  "lanes": {
+    "riemann": {
+      "producer": "ConcreteLogMajorantCertificate",
+      "operator": "concrete_log_bound_expanded_closes_FINAL_ROOT",
+      "laws": [
+        "logMajorant_tendsto_zero",
+        "logMajorant_mono_K",
+        "ConcreteLogMajorantCertificate.weakenK"
+      ],
+      "commits": [
+        "38509bc8171af702baacc4503f52134db05709bf",
+        "e9c3b340ba2852c60ca07275b717f2332497a0b7"
+      ],
+      "residue": "construct K>=0 with forall N, DN(N) <= K/log(N+2)",
+      "status": "OPEN_MATH / CODE_BUILD_PENDING"
+    },
+    "p_vs_np": {
+      "producer": "UniversalSATLowerBound / Nonempty CanonicalSATP02Producer",
+      "operator": "uniformEffectiveCoverage_iff_kleeneSATBridge; kleene_bridge_closes_not_in_p",
+      "laws": [
+        "fixed_flip_fails",
+        "KleeneSATBridge.toP02Producer",
+        "canonicalSATProducer_iff_notInP"
+      ],
+      "commits": [
+        "72149cc18b144260c41681da9c972e6d09e2e77f"
+      ],
+      "residue": "construct a genuine per-candidate canonical SAT failure input / semantic fixed-point realizer",
+      "status": "OPEN_MATH / P01_CLOSED"
+    },
+    "beal": {
+      "producer": "UniversalTripleGCDLowerBound",
+      "operator": "universalTripleGCDLowerBound_closes_beal",
+      "laws": [
+        "commonDivisor_dvd_tripleGCD",
+        "tripleGCD_common_divides",
+        "bealConjecture_iff_universalTripleGCDLowerBound"
+      ],
+      "residue": "prove forall admissible d, 1 < gcd(d.a,gcd(d.b,d.c))",
+      "status": "OPEN_MATH"
+    },
+    "navier_stokes": {
+      "producer": "ActualNS-derived G1 bulk/tail/subcritical certificates",
+      "operator": "actualNS_to_signedGainCore_of_g1",
+      "laws": [
+        "G1bc_bulk_tail_to_signed_depletion",
+        "signedGainCore_of_g1_bulk_tail",
+        "SignedGainCore.toCertificate",
+        "signedGain_implies_differential"
+      ],
+      "commits": [
+        "03ad152dc61c65542003a257cbdc17399b73d948"
+      ],
+      "residue": [
+        "ActualNS -> joint coherence / bulk absorption",
+        "ActualNS -> singular-kernel weighted exceptional-tail control",
+        "strict subcritical combined budget / energy-integrable gain"
+      ],
+      "status": "OPEN_MATH / ADAPTER_BUILD_PENDING"
+    },
+    "hodge": {
+      "producer": "H01UniversalMaterialProducer",
+      "operator": "h01UniversalMaterialProducer_closes",
+      "laws": [
+        "h01_minimal_forward_payload_closes_pointwise",
+        "h01UniversalMaterialProducer_payload",
+        "H01UniversalMaterialProducer.toMaterialTarget",
+        "concreteHodgeMaterialTarget_closes"
+      ],
+      "commits": [
+        "f1f0f848d97c32221c2d929451b0f05b907a1ee0",
+        "7e834bb99add47f2eea8af582cdd1e3f0b8f9e30"
+      ],
+      "residue": [
+        "R0 concrete geometry/cycle-class binding",
+        "R1 spread construction for each X,p,alpha",
+        "R2 algebraic point/cycle production",
+        "R3 specialization/variational algebraicity"
+      ],
+      "status": "OPEN_MATH / CODE_BUILD_PENDING"
+    },
+    "bsd": {
+      "producer": "genuine elliptic-curve model binding + high-rank residual + refined leading coefficient package",
+      "operator": "bsd_realizable_low_plus_high_closes_universal (rank part only)",
+      "laws": [
+        "bsd_rank_domain_dichotomy",
+        "bsd_realizable_universal_iff_high_given_low",
+        "all_abstract_data_high_rank_producer_false"
+      ],
+      "residue": [
+        "formal Lean model of genuine elliptic curves over Q and same-curve analytic/arithmetic invariants",
+        "analytic rank >= 2 rank equality",
+        "refined leading coefficient identity with proven Sha finiteness and normalization"
+      ],
+      "status": "MODEL_BINDING_OPEN_MATH",
+      "note": "no concrete EllipticCurveQ Lean type exists in the repository; documentation-only placeholders are not promoted"
+    },
+    "yang_mills": {
+      "producer": "B60FieldBundle",
+      "operator": "B60FieldBundle.closes_FINAL_ROOT",
+      "laws": [
+        "B60FieldBundle.toFinalExternal",
+        "finalExternal_of_fields",
+        "FINAL_ROOT_of_fields"
+      ],
+      "commits": [
+        "119ba78a2feb442c33ae08b3a8639e841ff83705"
+      ],
+      "residue": [
+        "physical state/observable maps",
+        "K23 construction inputs",
+        "K25 clustering/cyclicity/semigroup transfer",
+        "K27 positive gap and limit bridge",
+        "non-vacuum excitation",
+        "K30 spectral transfer witness"
+      ],
+      "status": "OPEN_MATH / CODE_BUILD_PENDING"
+    }
+  }
+}
