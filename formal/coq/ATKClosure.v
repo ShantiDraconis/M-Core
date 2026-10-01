@@ -66,6 +66,20 @@ Definition close_with_exact_materializer
      zero_defect := hz;
      terminal_inhabitant := extract R T M x hz |}.
 
+Definition zeroLane : ReductionLane.
+Proof.
+  refine {| State := unit;
+            step := fun x => x;
+            defect := fun _ => 0 |}.
+  - intros x Hpos. lia.
+  - intros x Hz. reflexivity.
+Defined.
+
+Definition emptyTerminal : TerminalSpec zeroLane :=
+  {| Inhabitant := Empty_set;
+     Certificate := unit;
+     certify := fun e => match e with end |}.
+
 Theorem zero_defect_not_arbitrary_terminal :
   ~ (forall (R : ReductionLane) (T : TerminalSpec R)
       (x : State R),
@@ -73,28 +87,7 @@ Theorem zero_defect_not_arbitrary_terminal :
       exists y : Inhabitant R T, True).
 Proof.
   intro H.
-  refine (let R :=
-    {| State := unit;
-       step := fun x => x;
-       defect := fun _ => 0;
-       contract := _;
-       freeze := _ |} in _).
-  - intros x Hpos. lia.
-  - intros x Hz. reflexivity.
-  set (R := {|
-    State := unit;
-    step := fun x => x;
-    defect := fun _ => 0;
-    contract := fun x Hpos => ltac:(lia);
-    freeze := fun x Hz => eq_refl
-  |}).
-  set (T := {|
-    Inhabitant := Empty_set;
-    Certificate := unit;
-    certify := fun e => match e with end
-  |} : TerminalSpec R).
-  specialize (H R T tt eq_refl).
-  destruct H as [e _].
+  destruct (H zeroLane emptyTerminal tt eq_refl) as [e _].
   destruct e.
 Qed.
 
@@ -142,6 +135,14 @@ Proof.
   intros S x Hpos Hlt.
   rewrite (torsion_preserves S x) in Hlt.
   lia.
+Qed.
+
+Theorem repression_is_nonexpansive :
+  forall (S : MaterialOperatorSystem) (x : MState S),
+    mdefect S (repression S x) <= mdefect S x.
+Proof.
+  intros S x.
+  exact (repression_nonincrease S x).
 Qed.
 
 End ATKClosure.
