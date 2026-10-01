@@ -14,3 +14,5 @@ import MCore.MaterialMath.TransverseContraction
 import MCore.MaterialMath.ScalarDefectEmbedding
 
 import MCore.MaterialMath.ProfiledTransverseDecay
+
+import MCore.MaterialMath.TwoSidedMaterialResolution
