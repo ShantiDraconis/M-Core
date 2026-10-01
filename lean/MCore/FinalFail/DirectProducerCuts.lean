@@ -55,8 +55,8 @@ def directProducerCuts : List DirectProducerCut := [
     reduction := "HighRankDomainGapClosure formally refutes blanket realizability on BSDArithmeticAnalyticData. RealizableRankFrontier proves that, once a genuine realizability predicate and valid low-rank contract are fixed, universal rank reduces to the analytic-rank≥2 residual. The refined leading-coefficient formula remains independent. Thus the abstract domain is closed negatively; the next material object must bind actual elliptic curves and their analytic/arithmetic invariants."
     state := .openMath },
   { problem := .yangMills
-    target := "field-level B60 realization: state/observable maps + physicality + K23 inputs + K25 clustering bridges + K27 regulated-gap/limit bridge + nonvacuum excitation + K30 transfer witness"
-    reduction := "ExactFinalProducer.finalExternal_of_fields already constructs the B60 FinalExternal object and FINAL_ROOT from these narrower fields; K22 construction/infrared/limit blocks are downstream and are not independent gaps. B60InhabitationMining searches existing declarations field-by-field. The material task is therefore to inhabit these fixed physical fields on one common regulated 4D model."
+    target := "A1MaterialWitnessV3 on the genuine regulated 4D construction, then a faithful transfer to the spectral/K30 layer"
+    reduction := "YMCurrentModelCollapse proves the older B60 carrier is trivially inhabitable by an unrelated Unit physical model, so B60/FieldBundle alone is not a material terminal. MaterialHardeningV3 (commit ea22910e5b737d1236fbde7ad129cc5d8c8c0b8a) requires same-construction A1PhysicalData, reflection positivity, transfer operator from the same regulated action kernel, UniformRegulatorControlV2 with m0>0, and a positive-norm regulated excitation orthogonal to the vacuum. After this genuine physical witness is built, the remaining task is a faithful adapter into the K14/K30 spectral layer; K22 blocks remain downstream."
     state := .openMath }
 ]
 
