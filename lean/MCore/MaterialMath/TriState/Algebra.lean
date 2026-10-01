@@ -81,7 +81,6 @@ theorem laplacian_rotate
     laplacian (rotate x) = rotate (laplacian x) := by
   funext p
   cases p <;> simp [laplacian, rotate, Phase3.rotate, Phase3.rotate2]
-  <;> ring
 
 /-- A balanced tri-number has vanishing total phase sum. -/
 def Balanced
