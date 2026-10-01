@@ -1,1 +1,1 @@
-trigger current-head material stack 18004b0cd13b236d5ea345e9e182c3681138875c
+trigger material stack after namespace repair
