@@ -1,0 +1,118 @@
+{
+  "schema": "ATK_SEVEN_MATERIAL_DECISION_STATUS_V1",
+  "date": "2026-10-01",
+  "global_core": {
+    "material_decision_commit": "415dd6ad63669a8370d1567bf0ccc3fdad778588",
+    "seven_lane_commit": "20f99eb4d5a866e9bb8c8716640740648c951665",
+    "rule": "A lane is materially decided only by a concrete positive object proving the statement or a concrete negative object refuting it. Open hypotheses do not count."
+  },
+  "lanes": {
+    "riemann": {
+      "statement": "classical RH on nontrivial zeta zeros in 0<Re(s)<1",
+      "positive_route": {
+        "primitive_law": "explicit BCF term inequalities -> DN log-majorant -> final root",
+        "commit": "2cd5c886fdc41945c381808b37c21904f61a07f2",
+        "inhabitant": "NOT_PRODUCED"
+      },
+      "negative_object": {
+        "type": "MCore.RH.MaterialDecision.OffCriticalZero",
+        "commit": "6325de7fd2a006bf0f758e140666252ccdc6521c",
+        "theorem": "OffCriticalZero.refutes_rh",
+        "inhabitant": "NOT_PRODUCED"
+      },
+      "decision": "OPEN"
+    },
+    "p_vs_np": {
+      "statement": "internal canonical P != NP / canonical SAT deterministic lower bound",
+      "positive_separation_side": {
+        "concrete_local_object": "CandidateFailureWitness candidate",
+        "explicit_example": "discriminatorFailureWitness on encode(not true)",
+        "commit": "17610b461142bbc683fc98622b020a25caedf681",
+        "global_universal_family": "NOT_PRODUCED"
+      },
+      "negative_easy_side": {
+        "object": "PolyDTMRealization CanonicalSAT",
+        "inhabitant": "NOT_PRODUCED"
+      },
+      "primitive_semantics_commit": "ae66fe9abfafbf216e8bdbaaee1dcdf7ac97fa6c",
+      "decision": "OPEN"
+    },
+    "navier_stokes": {
+      "statement": "global regularity versus finite-time blow-up, represented first in critical L3 observable",
+      "positive_object": {
+        "type": "UniformCriticalL3Profile",
+        "commit": "9644e3e8410a285aa895a388222990cf9db5cabd",
+        "pde_binding": "NOT_PRODUCED"
+      },
+      "negative_object": {
+        "type": "CriticalL3BlowupProfile",
+        "commit": "9644e3e8410a285aa895a388222990cf9db5cabd",
+        "pde_binding": "NOT_PRODUCED"
+      },
+      "incompatibility": "bounded_and_blowup_samples_incompatible",
+      "primitive_pde_laws_commit": "c09ac86c0bdbca7dab28d491236e55c71d25d764",
+      "decision": "OPEN"
+    },
+    "hodge": {
+      "statement": "GradedRationalHodgeConjecture G",
+      "negative_object": {
+        "type": "GradedHodgeCounterexample G",
+        "commit": "311889de3fbff95cfd0ffe5e66d5cdbe16f2f6fe",
+        "theorem": "GradedHodgeCounterexample.refutes",
+        "inhabitant": "NOT_PRODUCED"
+      },
+      "concrete_cycle_negative": {
+        "type": "ConcreteCycleSpanCounterexample G M",
+        "theorem": "no_combination_represents",
+        "promotion_to_official": "BLOCKED_UNTIL_GEOMETRIC_SPAN_IDENTIFICATION"
+      },
+      "positive_route": {
+        "relative_cycle_to_variational_commit": "b11b0054d58596699a05702c1df902cfd7491f19",
+        "inhabitant": "NOT_PRODUCED"
+      },
+      "decision": "OPEN"
+    },
+    "bsd": {
+      "statement": "BSD rank and refined identities on an actual elliptic curve over Q",
+      "abstraction_countermodel": {
+        "object": "highRankMismatchData(rank=0, analyticOrder=2)",
+        "commit": "fa5e8f4114fbdfc7c82e5de40e39d60c8a3a8f6f",
+        "scope": "REFUTES_ABSTRACT_DOMAIN_ONLY"
+      },
+      "positive_object": "UNAVAILABLE_UNTIL_CONCRETE_CURVE_MODEL_BINDING",
+      "negative_object": "UNAVAILABLE_UNTIL_CONCRETE_CURVE_MODEL_BINDING",
+      "decision": "MODEL_BINDING_OPEN"
+    },
+    "yang_mills": {
+      "statement": "positive uniform physical mass gap in same regulated/continuum construction",
+      "positive_object": {
+        "type": "UniformRegulatorControlV2 within A1MaterialWitnessV3",
+        "commit": "ea22910e5b737d1236fbde7ad129cc5d8c8c0b8a",
+        "inhabitant": "NOT_PRODUCED"
+      },
+      "negative_object": {
+        "type": "UniformGapFailureSequence C P B4",
+        "commit": "f023e2d03b9a954145e81b5a7cd3c9d37ac10a6e",
+        "inhabitant": "NOT_PRODUCED"
+      },
+      "incompatibility": "UniformGapFailureSequence.incompatible_with_uniform_mass",
+      "old_abstract_negative_firewall": "75f4bfe298d1fa6ab7ae556c35e3ad7aabc0062c",
+      "decision": "OPEN"
+    },
+    "beal": {
+      "statement": "BealConjecture",
+      "negative_object": {
+        "type": "BealData d with BealCounterexample d",
+        "source": "lean/MCore/BealSpecification.lean",
+        "theorem": "counterexample_refutes",
+        "inhabitant": "NOT_PRODUCED"
+      },
+      "positive_primitive_laws": {
+        "parity_pairwise": "T11/T12",
+        "local_prime_support_commit": "fbfad21bd642226300860b840d1283738eadb6a9",
+        "modular_composition_commit": "07e1ae37c89b12838e79b890def2d12f3982d5b9"
+      },
+      "decision": "OPEN"
+    }
+  }
+}
