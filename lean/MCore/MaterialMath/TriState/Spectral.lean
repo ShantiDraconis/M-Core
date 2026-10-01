@@ -38,7 +38,7 @@ theorem laplacian_eq_neg_three_of_balanced
   have hs : x .seed + x .passage + x .manifest = 0 := h
   funext p
   cases p <;>
-    simp [laplacian, Phase3.rotate, Phase3.rotate2] <;>
+    simp [TriNumber.laplacian, Phase3.rotate, Phase3.rotate2] <;>
     linarith
 
 /-- The centered component is therefore a -3 eigenvector of the Laplacian. -/
@@ -75,8 +75,8 @@ theorem spectral_split
 theorem coherent_and_balanced_rotation_invariant
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    (TriNumber.Coherent x → Coherent (TriNumber.rotate x)) ∧
-    (TriNumber.Balanced x → TriNumber.Balanced (TriNumber.TriNumber.rotate x)) := by
+    (TriNumber.Coherent x → TriNumber.Coherent (TriNumber.rotate x)) ∧
+    (TriNumber.Balanced x → TriNumber.Balanced (TriNumber.rotate x)) := by
   exact ⟨coherent_rotate, balanced_rotate⟩
 
 end TriSpectral
