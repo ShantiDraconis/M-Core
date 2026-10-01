@@ -298,6 +298,7 @@ theorem hamming_affine
 end SevenLaneVector
 
 #print axioms MCore.FinalFail.MaterialPolynomial.TriState.every_unary_operator_is_quadratic
+#print axioms MCore.FinalFail.MaterialPolynomial.TriState.add_right_cancel
 #print axioms MCore.FinalFail.MaterialPolynomial.TriState.affine_comp
 #print axioms MCore.FinalFail.MaterialPolynomial.TriState.affine_bijective
 #print axioms MCore.FinalFail.MaterialPolynomial.TriState.frobenius_eq_id
