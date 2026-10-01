@@ -366,3 +366,42 @@ No information is discarded by the flattening theorem.
 The remaining work is therefore not another global wrapper.  It is the seven
 problem-specific material producers listed above (with P01 already source-produced
 and P02 remaining the genuine P-vs-NP mathematical atom).
+
+
+# Certified material algebra layer
+
+Status: GREEN / FROZEN / CERTIFIED
+
+Validated SHA:
+`ed1354eacb7161e6021450acc758610cd06dc46b`
+
+Run:
+`36854907433`
+
+Frozen branch:
+`frozen/material-algebra-green-ed1354ea`
+
+Certificate:
+`CERTIFICATES/MATERIAL_ALGEBRA_GREEN_ed1354ea.md`
+on branch
+`cert/material-algebra-ed1354ea-run36854907433`
+
+Certified internal mathematics:
+- `Producer.map_comp`
+- residual conjunction/disjunction
+- Boolean defect join/meet
+- three-state cyclic addition
+- three-state multiplication modulo three table
+- additive commutativity/associativity
+- multiplicative commutativity/associativity
+- left/right distributivity
+- nonzero inverse law
+- nonzero square law
+- cubic identity `x^3 = x`
+- seven-lane vector addition
+- seven-lane additive commutativity/associativity
+- exact seven-component global frontier product reuse
+
+Scientific boundary:
+this is internal algebraic structure and bookkeeping.  It does not create
+inhabitants of the seven OPEN_MATH terminal producers.
