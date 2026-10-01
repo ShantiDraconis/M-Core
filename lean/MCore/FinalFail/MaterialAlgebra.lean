@@ -283,12 +283,26 @@ instance : Inv TriState where
 theorem TriState.mul_inv_cancel
     (x : TriState) (h : x ≠ 0) :
     x * x⁻¹ = 1 := by
-  cases x <;> simp [TriState.mul, TriState.inv] at h ⊢
+  cases x with
+  | seed =>
+      exfalso
+      exact h rfl
+  | transit =>
+      rfl
+  | manifest =>
+      rfl
 
 theorem TriState.nonzero_square_eq_one
     (x : TriState) (h : x ≠ 0) :
     x * x = 1 := by
-  cases x <;> simp [TriState.mul] at h ⊢
+  cases x with
+  | seed =>
+      exfalso
+      exact h rfl
+  | transit =>
+      rfl
+  | manifest =>
+      rfl
 
 theorem TriState.manifest_square :
     (.manifest : TriState) * .manifest = .transit := by
@@ -309,6 +323,21 @@ structure SevenLaneVector where
   bsd : TriState
   yangMills : TriState
   deriving DecidableEq, Repr
+
+/-- Structural extensionality for the seven-lane carrier. -/
+theorem SevenLaneVector.extensionality
+    {x y : SevenLaneVector}
+    (hR : x.riemann = y.riemann)
+    (hB : x.beal = y.beal)
+    (hP : x.pvsnp = y.pvsnp)
+    (hN : x.navierStokes = y.navierStokes)
+    (hH : x.hodge = y.hodge)
+    (hD : x.bsd = y.bsd)
+    (hY : x.yangMills = y.yangMills) :
+    x = y := by
+  cases x
+  cases y
+  simp_all
 
 def SevenLaneVector.zero : SevenLaneVector where
   riemann := .seed
@@ -342,14 +371,26 @@ instance : Add SevenLaneVector where
 theorem SevenLaneVector.add_comm
     (x y : SevenLaneVector) :
     x + y = y + x := by
-  apply SevenLaneVector.ext <;>
-    simp [SevenLaneVector.add, TriState.add_comm]
+  apply SevenLaneVector.extensionality
+  · exact TriState.add_comm x.riemann y.riemann
+  · exact TriState.add_comm x.beal y.beal
+  · exact TriState.add_comm x.pvsnp y.pvsnp
+  · exact TriState.add_comm x.navierStokes y.navierStokes
+  · exact TriState.add_comm x.hodge y.hodge
+  · exact TriState.add_comm x.bsd y.bsd
+  · exact TriState.add_comm x.yangMills y.yangMills
 
 theorem SevenLaneVector.add_assoc
     (x y z : SevenLaneVector) :
     (x + y) + z = x + (y + z) := by
-  apply SevenLaneVector.ext <;>
-    simp [SevenLaneVector.add, TriState.add_assoc]
+  apply SevenLaneVector.extensionality
+  · exact TriState.add_assoc x.riemann y.riemann z.riemann
+  · exact TriState.add_assoc x.beal y.beal z.beal
+  · exact TriState.add_assoc x.pvsnp y.pvsnp z.pvsnp
+  · exact TriState.add_assoc x.navierStokes y.navierStokes z.navierStokes
+  · exact TriState.add_assoc x.hodge y.hodge z.hodge
+  · exact TriState.add_assoc x.bsd y.bsd z.bsd
+  · exact TriState.add_assoc x.yangMills y.yangMills z.yangMills
 
 /--
 Global frontier residual.  This theorem intentionally exposes the exact seven
