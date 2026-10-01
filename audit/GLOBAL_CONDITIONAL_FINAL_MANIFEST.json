@@ -1,0 +1,48 @@
+{
+  "schema": "atk-global-conditional-final.v1",
+  "status": "SOURCE_BUILT_NOT_KERNEL_RUN",
+  "branch": "atk/global-hypothesis-density-20261001",
+  "theorem": "MCore.FinalFail.Semantic.global_conditional_final",
+  "source": "lean/MCore/FinalFail/GlobalConditionalFinal.lean",
+  "material_hypotheses": {
+    "riemann": [
+      "not RiemannHypothesis"
+    ],
+    "beal": [
+      "forall admissible BealEquationData, common gcd > 1"
+    ],
+    "p_vs_np": [
+      "SAT in NP",
+      "SAT not in P"
+    ],
+    "navier_stokes": [
+      "one Stabilizer",
+      "forall ActualNS flows, Stabilizes stabilizer flow"
+    ],
+    "hodge": [
+      "forall smooth projective X and rational Hodge class alpha, exists algebraic cycle Z realizing alpha"
+    ],
+    "bsd": [
+      "forall realizable E, AnalyticOrder E = MordellWeilRank E",
+      "forall realizable E, RefinedFormula E"
+    ],
+    "yang_mills": [
+      "one theory",
+      "Genuine4D theory",
+      "OSReconstructs theory",
+      "PositiveMassGap theory"
+    ]
+  },
+  "downstream": [
+    "GlobalAcceptedHypotheses",
+    "GlobalSemanticTargets",
+    "GlobalSemanticInterpretations",
+    "GlobalConditionalFinalRoot"
+  ],
+  "fail_closed": true,
+  "does_not_claim": [
+    "unconditional proof of any open problem",
+    "automatic inhabitation of any material hypothesis",
+    "external certificate issuance"
+  ]
+}
