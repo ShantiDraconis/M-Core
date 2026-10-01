@@ -44,20 +44,20 @@ theorem exhaustive (x : TriState) :
 /-- Exactly the field-table laws of the explicit three-state arithmetic. -/
 def fieldCertificate : ThreeElementFieldCertificate TriState where
   zero_ne_one := zero_ne_one
-  add_assoc := TriState.add_assoc
-  add_comm := TriState.add_comm
-  zero_add := TriState.seed_add
-  add_zero := TriState.add_seed
-  add_neg := TriState.add_neg
-  mul_assoc := TriState.mul_assoc
-  mul_comm := TriState.mul_comm
-  one_mul := TriState.one_mul
-  mul_one := TriState.mul_one
-  zero_mul := TriState.zero_mul
-  mul_zero := TriState.mul_zero
-  left_distrib := TriState.left_distrib
-  right_distrib := TriState.right_distrib
-  inv_cancel := TriState.mul_inv_cancel
+  add_assoc := MCore.FinalFail.MaterialAlgebra.TriState.add_assoc
+  add_comm := MCore.FinalFail.MaterialAlgebra.TriState.add_comm
+  zero_add := MCore.FinalFail.MaterialAlgebra.TriState.seed_add
+  add_zero := MCore.FinalFail.MaterialAlgebra.TriState.add_seed
+  add_neg := MCore.FinalFail.MaterialAlgebra.TriState.add_neg
+  mul_assoc := MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc
+  mul_comm := MCore.FinalFail.MaterialAlgebra.TriState.mul_comm
+  one_mul := MCore.FinalFail.MaterialAlgebra.TriState.one_mul
+  mul_one := MCore.FinalFail.MaterialAlgebra.TriState.mul_one
+  zero_mul := MCore.FinalFail.MaterialAlgebra.TriState.zero_mul
+  mul_zero := MCore.FinalFail.MaterialAlgebra.TriState.mul_zero
+  left_distrib := MCore.FinalFail.MaterialAlgebra.TriState.left_distrib
+  right_distrib := MCore.FinalFail.MaterialAlgebra.TriState.right_distrib
+  inv_cancel := MCore.FinalFail.MaterialAlgebra.TriState.mul_inv_cancel
 
 /-- Characteristic three in additive form. -/
 theorem field_characteristic_three (x : TriState) :
@@ -68,12 +68,12 @@ theorem field_characteristic_three (x : TriState) :
 theorem nonzero_multiplicative_exponent_two
     (x : TriState) (hx : x ≠ 0) :
     x * x = 1 := by
-  exact TriState.nonzero_square_eq_one x hx
+  exact MCore.FinalFail.MaterialAlgebra.TriState.nonzero_square_eq_one x hx
 
 /-- Frobenius x^3=x for all three elements. -/
 theorem frobenius_identity (x : TriState) :
     (x * x) * x = x := by
-  exact TriState.cubic_idempotence x
+  exact MCore.FinalFail.MaterialAlgebra.TriState.cubic_idempotence x
 
 /--
 Classification statement: the explicitly defined tristable arithmetic has
