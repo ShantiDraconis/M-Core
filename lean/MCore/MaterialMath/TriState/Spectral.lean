@@ -18,7 +18,7 @@ def constant
 theorem constant_coherent
     {α : Type*}
     (a : α) :
-    Coherent (constant a) := by
+    TriNumber.Coherent (constant a) := by
   exact ⟨rfl, rfl⟩
 
 /-- Every tri-number decomposes into its coherent mean part plus its centered part. -/
@@ -33,8 +33,8 @@ theorem mean_center_decomposition
 theorem laplacian_eq_neg_three_of_balanced
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     {x : TriNumber α}
-    (h : Balanced x) :
-    laplacian x = fun p => (-3 : α) * x p := by
+    (h : TriNumber.Balanced x) :
+    TriNumber.laplacian x = fun p => (-3 : α) * x p := by
   have hs : x .seed + x .passage + x .manifest = 0 := h
   funext p
   cases p <;>
@@ -45,7 +45,7 @@ theorem laplacian_eq_neg_three_of_balanced
 theorem laplacian_center
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    laplacian (center x) =
+    TriNumber.laplacian (center x) =
       fun p => (-3 : α) * center x p :=
   laplacian_eq_neg_three_of_balanced (center_balanced x)
 
@@ -53,7 +53,7 @@ theorem laplacian_center
 theorem laplacian_constant_zero
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (a : α) :
-    laplacian (constant a) = 0 := by
+    TriNumber.laplacian (constant a) = 0 := by
   exact coherent_implies_harmonic (constant_coherent a)
 
 /-- Spectral dichotomy for the tri-state Laplacian:
@@ -61,9 +61,9 @@ coherent mode has eigenvalue 0, centered/balanced mode has eigenvalue -3. -/
 theorem spectral_split
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    Harmonic (constant (phaseMean x)) ∧
-    Balanced (center x) ∧
-    laplacian (center x) =
+    TriDynamics.Harmonic (constant (phaseMean x)) ∧
+    TriNumber.Balanced (center x) ∧
+    TriNumber.laplacian (center x) =
       fun p => (-3 : α) * center x p := by
   exact ⟨
     coherent_implies_harmonic (constant_coherent (phaseMean x)),
@@ -75,8 +75,8 @@ theorem spectral_split
 theorem coherent_and_balanced_rotation_invariant
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    (Coherent x → Coherent (rotate x)) ∧
-    (Balanced x → Balanced (rotate x)) := by
+    (TriNumber.Coherent x → Coherent (TriNumber.rotate x)) ∧
+    (TriNumber.Balanced x → TriNumber.Balanced (TriNumber.TriNumber.rotate x)) := by
   exact ⟨coherent_rotate, balanced_rotate⟩
 
 end TriSpectral
