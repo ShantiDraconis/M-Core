@@ -174,8 +174,10 @@ theorem hamming_rotate (x y : LaneVector) :
     hamming (rotate x) (rotate y) = hamming x y := by
   have hiff : ∀ a b : TState, TriState.rho a = TriState.rho b ↔ a = b := by
     intro a b
-    cases a <;> cases b <;>
-      decide
+    constructor
+    · exact TriState.rho_injective
+    · intro h
+      exact congrArg TriState.rho h
   unfold hamming rotate
   simp [hiff]
 
