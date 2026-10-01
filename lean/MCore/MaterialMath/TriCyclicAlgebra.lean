@@ -21,6 +21,17 @@ namespace TriNumber
 
 variable {α : Type*}
 
+/-- Extensionality principle for tri-numbers. -/
+@[ext] theorem ext {x y : TriNumber α}
+    (hManifest : x.manifest = y.manifest)
+    (hCrossing : x.crossing = y.crossing)
+    (hSeed : x.seed = y.seed) :
+    x = y := by
+  cases x
+  cases y
+  simp_all
+
+
 /-- Cyclic phase rotation of order three. -/
 def rotate (x : TriNumber α) : TriNumber α where
   manifest := x.seed
