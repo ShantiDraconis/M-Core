@@ -69,18 +69,16 @@ theorem mul_left_cancel_nonzero
     b = c := by
   have hsq : a * a = 1 :=
     MCore.FinalFail.MaterialAlgebra.TriState.nonzero_square_eq_one a ha
-  calc
-    b = 1 * b :=
-      (MCore.FinalFail.MaterialAlgebra.TriState.one_mul b).symm
-    _ = (a * a) * b := by rw [hsq]
-    _ = a * (a * b) :=
-      MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc a a b
-    _ = a * (a * c) := congrArg (fun t => a * t) h
-    _ = (a * a) * c :=
-      (MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc a a c).symm
-    _ = 1 * c := by rw [hsq]
-    _ = c :=
-      MCore.FinalFail.MaterialAlgebra.TriState.one_mul c
+  have h2 : a * (a * b) = a * (a * c) :=
+    congrArg (fun t => a * t) h
+  rw [
+    ← MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc,
+    ← MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc,
+    hsq,
+    MCore.FinalFail.MaterialAlgebra.TriState.one_mul,
+    MCore.FinalFail.MaterialAlgebra.TriState.one_mul
+  ] at h2
+  exact h2
 theorem inv_eq_self (x : TState) :
     x⁻¹ = x := by
   cases x <;> rfl
@@ -322,7 +320,11 @@ theorem interior_idempotent (S : EState → Prop) :
           S z)
       refine ⟨hx.2 y hxy, ?_⟩
       intro z hyz
-      exact hx.2 z (le_trans hxy hyz)
+      have hxz :
+          MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤
+            MCore.FinalFail.MaterialCalculus.EvidenceState.code z :=
+        le_trans hxy hyz
+      exact hx.2 z hxz
 
 theorem proven_closure_all (x : EState) :
     closure
