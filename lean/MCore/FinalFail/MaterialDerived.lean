@@ -164,13 +164,25 @@ theorem smul_assoc (a b : TState) (x : LaneVector) :
 
 @[simp] theorem one_smul (x : LaneVector) :
     smul 1 x = x := by
-  apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality <;>
-    simp [smul]
+  apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.one_mul x.riemann
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.one_mul x.beal
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.one_mul x.pvsnp
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.one_mul x.navierStokes
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.one_mul x.hodge
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.one_mul x.bsd
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.one_mul x.yangMills
 
 @[simp] theorem zero_smul (x : LaneVector) :
     smul 0 x = MCore.FinalFail.MaterialAlgebra.SevenLaneVector.zero := by
-  apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality <;>
-    simp [smul, MCore.FinalFail.MaterialAlgebra.SevenLaneVector.zero]
+  apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.riemann
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.beal
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.pvsnp
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.navierStokes
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.hodge
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.bsd
+  · exact MCore.FinalFail.MaterialAlgebra.TriState.zero_mul x.yangMills
 
 theorem cubic_scalar_identity (a : TState) (x : LaneVector) :
     smul ((a * a) * a) x = smul a x := by
@@ -211,6 +223,11 @@ theorem subset_closure (S : EState → Prop) :
 theorem interior_subset (S : EState → Prop) :
     ∀ x, interior S x → S x := by
   intro x hx
+  change S x ∧
+    (∀ y,
+      MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤
+      MCore.FinalFail.MaterialCalculus.EvidenceState.code y →
+      S y) at hx
   exact hx.1
 
 theorem closure_monotone
@@ -218,6 +235,12 @@ theorem closure_monotone
     (hST : ∀ x, S x → T x) :
     ∀ x, closure S x → closure T x := by
   intro x hx
+  change ∃ y, S y ∧
+    MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤
+    MCore.FinalFail.MaterialCalculus.EvidenceState.code y at hx
+  change ∃ y, T y ∧
+    MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤
+    MCore.FinalFail.MaterialCalculus.EvidenceState.code y
   rcases hx with ⟨y, hy, hxy⟩
   exact ⟨y, hST y hy, hxy⟩
 
@@ -226,6 +249,16 @@ theorem interior_monotone
     (hST : ∀ x, S x → T x) :
     ∀ x, interior S x → interior T x := by
   intro x hx
+  change S x ∧
+    (∀ y,
+      MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤
+      MCore.FinalFail.MaterialCalculus.EvidenceState.code y →
+      S y) at hx
+  change T x ∧
+    (∀ y,
+      MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤
+      MCore.FinalFail.MaterialCalculus.EvidenceState.code y →
+      T y)
   refine ⟨hST x hx.1, ?_⟩
   intro y hxy
   exact hST y (hx.2 y hxy)
@@ -244,13 +277,29 @@ theorem interior_idempotent (S : EState → Prop) :
   intro x
   constructor
   · intro hx
-    exact hx.1
+    exact interior_subset (interior S) x hx
   · intro hx
-    refine ⟨hx, ?_⟩
-    intro y hxy
-    refine ⟨hx.2 y hxy, ?_⟩
-    intro z hyz
-    exact hx.2 z (le_trans hxy hyz)
+    change S x ∧
+      (∀ y,
+        MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤
+        MCore.FinalFail.MaterialCalculus.EvidenceState.code y →
+        S y) at hx
+    change interior S x ∧
+      (∀ y,
+        MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤
+        MCore.FinalFail.MaterialCalculus.EvidenceState.code y →
+        interior S y)
+    refine ⟨?_, ?_⟩
+    · exact hx
+    · intro y hxy
+      change S y ∧
+        (∀ z,
+          MCore.FinalFail.MaterialCalculus.EvidenceState.code y ≤
+          MCore.FinalFail.MaterialCalculus.EvidenceState.code z →
+          S z)
+      refine ⟨hx.2 y hxy, ?_⟩
+      intro z hyz
+      exact hx.2 z (le_trans hxy hyz)
 
 theorem proven_closure_all (x : EState) :
     closure
