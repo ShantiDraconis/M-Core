@@ -48,6 +48,7 @@ jobs:
             lean/MCore/MaterialMath/TerminalPatterns.lean
             lean/MCore/MaterialMath/Contraction.lean
             lean/MCore/MaterialMath/InternalTerminalProducers.lean
+            lean/MCore/MaterialMath/UnconditionalRoot.lean
           )
           if grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' "${FILES[@]}"; then
             echo "ERROR: prohibited proof escape found"
@@ -71,6 +72,7 @@ jobs:
           lake build MCore.MaterialMath.Contraction
           lake build MCore.MaterialMath.InternalTerminalProducers
           lake build MCore.MaterialMath.TriState.HeatFlow
+          lake build MCore.MaterialMath.UnconditionalRoot
           lake build MCore.MaterialMath.TriState.NoSmuggling
 
       - name: Axiom audit
@@ -85,6 +87,7 @@ jobs:
           import MCore.MaterialMath.TriState.MetricTopology
           import MCore.MaterialMath.TriState.OperationalAlgebra
           import MCore.MaterialMath.InternalTerminalProducers
+          import MCore.MaterialMath.UnconditionalRoot
           #print axioms MCore.MaterialMath.Phase3.rotate_three
           #print axioms MCore.MaterialMath.TriNumber.phaseSum_laplacian_zero
           #print axioms MCore.MaterialMath.TriDynamics.harmonic_iff_coherent
@@ -97,6 +100,8 @@ jobs:
           #print axioms MCore.MaterialMath.TriAlgebra.coordinate_decomposition
           #print axioms MCore.MaterialMath.geometric_bound
           #print axioms MCore.MaterialMath.internalProducerSuite_inhabited
+          #print axioms MCore.MaterialMath.unconditionalMaterialRoot_inhabited
+          #print axioms MCore.MaterialMath.I3Real_heat_vanishes
           #print axioms MCore.MaterialMath.TriHeat.halfStep_eq_half_of_balanced
           #print axioms MCore.MaterialMath.TriHeat.iterate_closed_form
           #print axioms MCore.MaterialMath.nonempty_materialInterpretation_iff_target
