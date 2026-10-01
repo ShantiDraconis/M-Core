@@ -11,12 +11,12 @@ namespace TriHeat
 
 /-- Fixed explicit dissipative step on real tri-numbers. -/
 def halfStep (x : TriNumber ℝ) : TriNumber ℝ :=
-  fun p => x p + (1 / 6 : ℝ) * laplacian x p
+  fun p => x p + (1 / 6 : ℝ) * TriNumber.laplacian x p
 
 /-- On the balanced sector, the explicit step is exactly multiplication by 1/2. -/
 theorem halfStep_eq_half_of_balanced
     {x : TriNumber ℝ}
-    (h : Balanced x) :
+    (h : TriNumber.Balanced x) :
     halfStep x = fun p => (1 / 2 : ℝ) * x p := by
   have hspec := laplacian_eq_neg_three_of_balanced (α := ℝ) h
   funext p
@@ -27,10 +27,10 @@ theorem halfStep_eq_half_of_balanced
 /-- The balanced sector is invariant under the dissipative step. -/
 theorem halfStep_balanced
     {x : TriNumber ℝ}
-    (h : Balanced x) :
-    Balanced (halfStep x) := by
+    (h : TriNumber.Balanced x) :
+    TriNumber.Balanced (halfStep x) := by
   rw [halfStep_eq_half_of_balanced h]
-  unfold Balanced phaseSum
+  unfold TriNumber.Balanced TriNumber.phaseSum
   have hs : x .seed + x .passage + x .manifest = 0 := h
   simp
   linarith
@@ -43,8 +43,8 @@ def iterate : Nat → TriNumber ℝ → TriNumber ℝ
 /-- Balanced data remain balanced for all iterations. -/
 theorem iterate_balanced
     {x : TriNumber ℝ}
-    (h : Balanced x) :
-    ∀ n, Balanced (iterate n x) := by
+    (h : TriNumber.Balanced x) :
+    ∀ n, TriNumber.Balanced (iterate n x) := by
   intro n
   induction n with
   | zero =>
@@ -55,7 +55,7 @@ theorem iterate_balanced
 /-- Exact closed form: every balanced mode decays by 2^{-n}. -/
 theorem iterate_closed_form
     {x : TriNumber ℝ}
-    (h : Balanced x) :
+    (h : TriNumber.Balanced x) :
     ∀ n p,
       iterate n x p = (1 / 2 : ℝ) ^ n * x p := by
   intro n
@@ -65,7 +65,7 @@ theorem iterate_closed_form
       simp [iterate]
   | succ n ih =>
       intro p
-      have hb : Balanced (iterate n x) := iterate_balanced h n
+      have hb : TriNumber.Balanced (iterate n x) := iterate_balanced h n
       have hs := congrFun (halfStep_eq_half_of_balanced hb) p
       rw [iterate, hs, ih p, pow_succ]
       ring
@@ -73,7 +73,7 @@ theorem iterate_closed_form
 /-- Each phase coordinate of a balanced mode vanishes at infinity. -/
 theorem iterate_coordinate_vanishes
     {x : TriNumber ℝ}
-    (h : Balanced x)
+    (h : TriNumber.Balanced x)
     (p : Phase3) :
     VanishesAtInfinity (fun n => iterate n x p) := by
   intro ε hε
