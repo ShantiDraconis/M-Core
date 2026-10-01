@@ -1,0 +1,192 @@
+{
+  "schema": "ATK_EXACT_MATERIALIZER_MINING_V1",
+  "date": "2026-10-01",
+  "rule": [
+    "search exact target type",
+    "search stronger theorem implying target",
+    "search frozen/certified advanced branch",
+    "search countermodel/falsification",
+    "decompose only if no producer exists",
+    "construct new lemma only after domain+quantifiers+constants+scaling+semantics audit"
+  ],
+  "lanes": {
+    "riemann": {
+      "target": "ConcreteLogMajorantCertificate or equivalent unconditional DN->0 producer",
+      "findings": [
+        {
+          "item": "LogMajorantCertificate -> FINAL_ROOT",
+          "class": "SUFFICIENT_REDUCTION"
+        },
+        {
+          "item": "ExplicitCoefficientProducer: coefficient L2 error -> DNLimit=0",
+          "class": "SUFFICIENT_REDUCTION"
+        },
+        {
+          "item": "MobiusDivisorKernel: sum_{d|n} mu(d)=indicator(n=1)",
+          "class": "STRONGER_THAN_INFRASTRUCTURE"
+        },
+        {
+          "item": "BCF/Vasyunin/Mellin material in audits without unconditional residue bound",
+          "class": "EVIDENCE_ONLY"
+        }
+      ],
+      "next_exact_lemma": "prove either ∃K≥0,∀N,DN(N)≤K/log(N+2), or an explicit coefficient family with L2 error -> 0, or ZERO_RESIDUE_SUM_UNCONDITIONAL_CONTROL",
+      "result": "NO_PRODUCER"
+    },
+    "p_vs_np": {
+      "target": "UniversalSATLowerBound / UniversalCounterexampleProducer",
+      "findings": [
+        {
+          "item": "UniversalSATLowerBound iff not-InP iff CanonicalSATP02Producer",
+          "class": "EXACT_PRODUCER_TYPE"
+        },
+        {
+          "item": "CandidateKleeneBridge + flips_of_fixed -> concrete counterexample",
+          "class": "SUFFICIENT_REDUCTION"
+        },
+        {
+          "item": "UniformEffectiveCoverage iff KleeneSATBridge",
+          "class": "EXACT_ADAPTER"
+        },
+        {
+          "item": "SemanticAlignmentCore",
+          "class": "FALSIFIED_ROUTE"
+        },
+        {
+          "item": "literal fixed-point route",
+          "class": "FALSIFIED_ROUTE"
+        }
+      ],
+      "next_exact_lemma": "for every PolyDTMCandidate M construct a CanonicalSATFixedPointRealizer whose flips_of_fixed is genuinely semantic, preserving the same M/input and polynomial encoding",
+      "result": "NO_INHABITANT"
+    },
+    "navier_stokes": {
+      "target": "ActualNS -> canonical SignedGainCore",
+      "findings": [
+        {
+          "item": "bulk+tail+strict budget -> SignedGainCore",
+          "class": "SUFFICIENT_REDUCTION"
+        },
+        {
+          "item": "G1 rich EnstrophyData -> canonical producer-first EnstrophyData",
+          "class": "EXACT_ADAPTER"
+        },
+        {
+          "item": "exact enstrophy balance + strict bulk/tail -> zero-residual differential inequality",
+          "class": "STRONGER_THAN_TARGET_DOWNSTREAM"
+        },
+        {
+          "item": "K1a exact Frechet derivative/chain rule",
+          "class": "EXACT_PROVED_COMPONENT"
+        },
+        {
+          "item": "WeightedLow constants C_abs=0.6,C_Young=50 imply gamma_effective=-35 while requiring gamma>0",
+          "class": "FALSIFIED_ROUTE",
+          "commit": "e965195e2aa7b71d1adccde01394a690f27a5106"
+        }
+      ],
+      "next_exact_lemma": "derive from ActualNS a positive bulk coefficient, weighted exceptional-tail coefficient, and strict budget cBulk+cTail<1 (or flexible theta<1 plus energy-integrable remainder) with correct singular-kernel weight",
+      "result": "NO_PRODUCER"
+    },
+    "hodge": {
+      "target": "H01UniversalMaterialProducer",
+      "findings": [
+        {
+          "item": "H01MinimalForwardPayload -> GradedAlgebraicityAt",
+          "class": "SUFFICIENT_REDUCTION"
+        },
+        {
+          "item": "R3TransportContract iff R3CombinationPayload iff R3VariationalAlgebraicityPayload",
+          "class": "EXACT_REDUCTION"
+        },
+        {
+          "item": "atomic/pathwise specialization -> R3 payload",
+          "class": "STRONGER_SUFFICIENT_BACKEND"
+        },
+        {
+          "item": "ConcreteHodgeMaterialTarget blocks empty-variety model",
+          "class": "EXACT_FIREWALL"
+        },
+        {
+          "item": "H01UniversalMaterialProducer -> hardened terminal",
+          "class": "EXACT_ADAPTER"
+        }
+      ],
+      "next_exact_lemma": "for each X,p,alpha build SpreadData + R1DescentPointContract + R2PointProductionContract and prove R3VariationalAlgebraicityPayload on the same spread",
+      "result": "NO_UNIVERSAL_INHABITANT"
+    },
+    "bsd": {
+      "target": "concrete same-curve BSD model + high-rank + refined leading coefficient",
+      "findings": [
+        {
+          "item": "abstract BSDArithmeticAnalyticData universal route",
+          "class": "FALSIFIED_ROUTE"
+        },
+        {
+          "item": "realizable low-rank + high-rank residual -> universal rank",
+          "class": "SUFFICIENT_REDUCTION"
+        },
+        {
+          "item": "documentation-only EllipticCurveQ; no concrete Lean model",
+          "class": "NO_PRODUCER"
+        },
+        {
+          "item": "rank 0/1, Iwasawa/plectic evidence and audits",
+          "class": "SPECIAL_CASE_OR_EVIDENCE"
+        }
+      ],
+      "next_exact_lemma": "define and validate a concrete EllipticCurve/Q model binding all analytic/arithmetic invariants to the same curve before proving rank>=2 and refined identity",
+      "result": "MODEL_BINDING_OPEN"
+    },
+    "yang_mills": {
+      "target": "A1MaterialWitnessV3 + faithful K14/K30 spectral transfer",
+      "findings": [
+        {
+          "item": "legacy B3/B4/B5 interfaces",
+          "class": "FALSIFIED_ROUTE"
+        },
+        {
+          "item": "B60ConcretePhysicalAdapter/old FINAL_ROOT via Unit model",
+          "class": "FALSIFIED_ROUTE"
+        },
+        {
+          "item": "HardeningV2 same-construction measure/action/kernel/transfer + uniform m0",
+          "class": "SUFFICIENT_REDUCTION"
+        },
+        {
+          "item": "A1MaterialWitnessV3 adds positive-norm vacuum-orthogonal excitation",
+          "class": "EXACT_HARDENED_TARGET"
+        }
+      ],
+      "next_exact_lemma": "construct A1MaterialWitnessV3 on a genuine regulated 4D YM model, then prove faithful Hilbert reconstruction/coverage and K30 spectral transfer preserving uniform physical mass scale",
+      "result": "NO_PHYSICAL_INHABITANT"
+    },
+    "beal": {
+      "target": "GCDLowerBoundProducer / TripleGCD>1",
+      "findings": [
+        {
+          "item": "TripleGCD>1 iff CommonDivisor/CommonPrime endpoint",
+          "class": "EXACT_REDUCTION"
+        },
+        {
+          "item": "T60 odd local arithmetic -> genuine multiplicative reduction",
+          "class": "STRONGER_AUXILIARY"
+        },
+        {
+          "item": "T52 certified level-table interface",
+          "class": "SUFFICIENT_REDUCTION_ONLY"
+        },
+        {
+          "item": "T58 five-family elimination bundle -> all lowered survivors eliminated",
+          "class": "SUFFICIENT_REDUCTION_ONLY"
+        },
+        {
+          "item": "signature-only level table / level-2-only universal promotion",
+          "class": "FALSIFIED_ROUTE"
+        }
+      ],
+      "next_exact_lemma": "either prove TripleGCD>1 directly, or construct a complete bridge from every primitive Beal counterexample into a covered lowered-newform case plus concrete five-family elimination certificates, then derive contradiction",
+      "result": "NO_TERMINAL_PRODUCER"
+    }
+  }
+}
