@@ -80,6 +80,49 @@ theorem fluctuation_rotate (x : TriNumber ℝ) :
   apply TriNumber.ext <;> simp [fluctuation, mean, total, rotate]
   all_goals ring
 
+
+/-- The balanced and transverse subspaces intersect only at zero. -/
+theorem balanced_and_zeroSum_eq_zero
+    (x : TriNumber ℝ)
+    (hb : Balanced x)
+    (hz : ZeroSum x) :
+    x = { manifest := 0, crossing := 0, seed := 0 } := by
+  rcases x with ⟨m, c, s⟩
+  rcases hb with ⟨hmc, hcs⟩
+  subst c
+  subst s
+  simp [ZeroSum, total] at hz
+  have hm : m = 0 := by linarith
+  subst m
+  rfl
+
+/-- The canonical decomposition is unique among balanced + zero-sum splits. -/
+theorem balanced_transverse_decomposition_unique
+    (x b t : TriNumber ℝ)
+    (hb : Balanced b)
+    (ht : ZeroSum t)
+    (hdecomp : add b t = x) :
+    b = balancedProjection x ∧ t = fluctuation x := by
+  have htotal : total b = total x := by
+    have h := congrArg total hdecomp
+    rcases b with ⟨bm, bc, bs⟩
+    rcases t with ⟨tm, tc, ts⟩
+    simp [add, total, ZeroSum] at h ht ⊢
+    linarith
+  rcases b with ⟨bm, bc, bs⟩
+  rcases hb with ⟨hbc, hcs⟩
+  subst bc
+  subst bs
+  have hbm : bm = mean x := by
+    simp [mean] at htotal
+    linarith
+  subst bm
+  constructor
+  · simp [balancedProjection]
+  · have hx := hdecomp
+    simp [add, balancedProjection, fluctuation] at hx ⊢
+    exact hx.symm
+
 /-- Equilibrium mode: the balanced one-dimensional part. -/
 def EquilibriumMode (x : TriNumber ℝ) : Prop :=
   Balanced x
