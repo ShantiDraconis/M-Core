@@ -660,3 +660,48 @@ into three pairwise odd-prime-disjoint blocks, preparing valuation/conductor
 information.
 
 Status: SOURCE / BUILD_PENDING until compilation.
+
+
+### Global material theorem V2 — 2026-10-01
+
+New central commits:
+- `c6c6d8728d80291d65cd8324facbc5e5cb666a1b` — canonical constants, projectors and global material kernel theorem
+- `13d927ad195abfc535de1b57c6bb41451a1a39e8` — global open-math behavior classes, bilateral protocol and closure audit
+- `ac9d43631fb4029f0cd15668bcac8afc72984683` + wording hardening `782265b6a55f44bc4d0663e910754b6a4a98616c` — exact torsion-energy Lagrange identity
+- `b23a25129efc89f677e0342e31095fc48f2c9044` — root imports
+- `a2e48b1770bee86080f13d9847e45a3f3a09716e` — global research statement
+- `64d6bbe9e20f9f3aaddc50d94c5899a92a421cdb` — V2 global certificate
+- `9204f0a08f6461051fd5db20dbede4838c18adc1` — V2 root import
+
+Canonical constants:
+- rotation order = 3;
+- transverse Laplacian magnitude = 3;
+- normalized transverse Laplacian energy = 9;
+- spread/radius factor = 3;
+- scalar defect energy factor = 6.
+
+Universal operator laws:
+- R^3 = I;
+- D = R-I;
+- L = D^2 + 3D;
+- D^3 + 3D^2 + 3D = 0;
+- L = -3 P_tr;
+- P_eq + P_tr = I;
+- P_eq and P_tr are idempotent;
+- E(x)=3||P_tr x||^2;
+- E(iota(d))=6d^2;
+- E(P_eq x + a_n P_tr x)=a_n^2 E(x).
+
+New torsion law:
+E(x)E(y) = 3 tau(x,y)^2 + 9 <P_tr x,P_tr y>^2,
+hence 3 tau^2 <= E(x)E(y), equality iff transverse fluctuations are orthogonal.
+
+Global logical rule:
+material positive producer -> endpoint;
+material negative producer -> negated endpoint;
+both -> False;
+excluded middle alone does not inhabit either producer.
+
+Current status of all new central Lean sources:
+SOURCE / BUILD_PENDING until compiled.
+No open-problem endpoint is promoted merely by the global theorem.
