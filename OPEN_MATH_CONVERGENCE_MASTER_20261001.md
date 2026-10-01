@@ -413,3 +413,52 @@ open step is a faithful semantic/physical identification with the official
 lower-bound or mass-gap observable.
 
 No open problem is promoted by this kernel alone.
+
+
+## Evidence-driven attack delta — 2026-10-01
+
+### RH: logarithmic transverse profile
+Certified finite Gram values in m-core-riemann give DN_N * log N approximately:
+0.05024, 0.04961, 0.04870, 0.04731, 0.04686, 0.04566 for N=8..256.
+
+Interpretation:
+- evidence is compatible with DN_N on a 1/log N energy scale;
+- therefore residual norm d_N is on a 1/sqrt(log N) amplitude scale;
+- uniform geometric contraction q<1 is not the natural RH model.
+
+Formal response:
+- `ProfiledTransverseDecay.lean` now proves
+  `phaseEnergy = a_n^2 * phaseEnergy(x)`
+  for arbitrary profile a_n;
+- any proved a_n -> 0 gives an F1 law;
+- this includes a future logarithmic profile without assuming it.
+
+Open analytic target remains:
+prove a genuine upper bound for the official DN/Mellin defect.
+
+### BEAL: exact surviving counterexample class
+Evidence from T11/T12/T59 in the frozen Beal residual branch proves that any
+surviving counterexample can be reduced to a concrete `T59ResidualCandidate`
+with all of:
+- positive a,b,c;
+- reduced exponents x,y,z;
+- exact equation a^x+b^y=c^z;
+- pairwise primitive bases;
+- exactly one of a,b,c even;
+- mixed reduced exponent signature;
+- exclusion of the all-four branch.
+
+Therefore all earlier non-primitive/parity/equal-prime/all-four branches are
+closed reductions and must not be attacked again.
+
+Current scientific target:
+eliminate every `T59ResidualCandidate` by genuine local conductor / modularity /
+level-lowering / newform arithmetic, or find a direct contradiction from the
+residual arithmetic conditions.
+
+### External evidence firewall
+A recent preprint claiming a quantitative Beurling-Nyman rate strong enough to
+force DN -> 0 is not promoted. A claim of that strength is effectively an RH
+closure and requires independent verification of every imported hypothesis.
+Published Bettin-Conrey-Farmer asymptotics remain conditional on RH plus a
+negative zeta-derivative moment bound.
