@@ -15,25 +15,16 @@
     "note": "P01 is a closed subgap inside the P-vs-NP lane; the lane remains OPEN_MATH only at the universal SAT lower bound."
   },
   "p_vs_np": {
-    "closed": {
-      "P01ConstructionGap": {
-        "state": "CLOSED_KERNEL_GREEN_FROZEN_CERTIFIED",
-        "sha": "720596c0bd3900b5de25eab57b7b979d2a6aaf68",
-        "run": 36862291065
-      }
-    },
-    "terminal": "UniversalSATLowerBound",
-    "equivalent": [
-      "UniversalFailure canonical SAT",
-      "Nonempty CanonicalSATP02Producer",
-      "Nonempty NormalizedAdversary",
-      "G21Pointwise",
-      "SAT not in P"
+    "p01": "CLOSED_KERNEL_GREEN_FROZEN_CERTIFIED",
+    "terminal": "UniversalSATLowerBound / UniversalFailure on canonical SAT",
+    "valid_constructive_route": "EffectiveDiagonalCompiler + CanonicalSATFixedPointRealizer.flips_of_fixed -> CandidateKleeneBridge -> universal counterexample producer",
+    "falsified_routes": [
+      "literal fixed point",
+      "SemanticAlignmentCore/output-alignment weakening"
     ],
-    "adapter_closed": {
-      "UniformEffectiveCoverage_iff_KleeneSATBridge": "72149cc18b144260c41681da9c972e6d09e2e77f"
-    },
-    "open_math": "construct a genuine per-candidate canonical SAT counterexample / fixed-point semantic realizer"
+    "semantic_alignment_countermodel_sha": "83ac4e21eb0873e9c2422b7f34f873c72ba1c5d5",
+    "effective_adapter_commit": "72149cc18b144260c41681da9c972e6d09e2e77f",
+    "open_math": true
   },
   "riemann": {
     "canonical_terminal": "Concrete Gram residual / DNToZero / FiniteSpanApproximatesChi",
@@ -67,11 +58,11 @@
   "navier_stokes": {
     "canonical_terminal": "ActualNSToSignedGainCore",
     "downstream_closed": [
-      "exact Frechet derivative of regularized direction map",
-      "chain rule under differentiability",
-      "BulkAbsorption + ExceptionalTailControl + SubcriticalBudget -> theta<1 strict signed depletion",
-      "SignedGainCore -> normalized SignedGainCertificate",
-      "signed gain -> differential inequality and positive dissipation margin"
+      "G1 bulk/tail/subcritical budget -> canonical SignedGainCore",
+      "G1 rich EnstrophyData -> NSProducerFirst.EnstrophyData projection",
+      "exact enstrophy balance + strict bulk/tail -> differential inequality with zero quadratic residual",
+      "SignedGainCore normalization -> SignedGainCertificate",
+      "signed gain -> positive dissipation margin"
     ],
     "deepest_analytic_residue": [
       "O1: ActualNS -> uniform joint coherence / analytic joint law",
@@ -82,7 +73,9 @@
     "open_math": true,
     "representation_adapter_commit": "03ad152dc61c65542003a257cbdc17399b73d948",
     "representation_adapter_status": "BUILD_PENDING",
-    "representation_adapter_result": "G1KAdmissible.EnstrophyData -> NSProducerFirst.EnstrophyData, and BulkAbsorption + ExceptionalTailControl + SubcriticalBudget -> canonical SignedGainCore with C=0"
+    "representation_adapter_result": "G1KAdmissible.EnstrophyData -> NSProducerFirst.EnstrophyData, and BulkAbsorption + ExceptionalTailControl + SubcriticalBudget -> canonical SignedGainCore with C=0",
+    "unified_branch": "atk/ns-material-unified-20261001",
+    "unified_commit": "2e4fe05d9f20a9635f179f2a146008bf604c7328"
   },
   "hodge": {
     "terminal": "Nonempty (ConcreteHodgeMaterialTarget G M) on intended nonempty geometry",
@@ -94,7 +87,9 @@
       "R3: specialization/variational algebraicity -> concrete cycle-span payload"
     ],
     "downstream_closed": "Concrete payload + certified boundary closes graded Hodge endpoint",
-    "open_math": true
+    "open_math": true,
+    "universal_material_producer_commit": "7e834bb99add47f2eea8af582cdd1e3f0b8f9e30",
+    "universal_operator": "H01UniversalMaterialProducer -> ConcreteAlgebraicityPayload -> ConcreteHodgeMaterialTarget -> GradedRationalHodgeConjecture"
   },
   "bsd": {
     "terminal": "realizable elliptic-curve family + rank equality + refined leading-coefficient identity on the same data",
@@ -103,25 +98,17 @@
     "open_math": true
   },
   "yang_mills": {
-    "canonical_terminal": "B60 concrete physical realization",
-    "compressed_material": "B60FieldBundle",
-    "bundle_commit": "119ba78a2feb442c33ae08b3a8639e841ff83705",
-    "fields": [
-      "stateMap and observableState",
-      "mappedStatesPhysical and observableStatesPhysical",
-      "K23ConstructiveYM4Data + K23ConstructionInputsHold",
-      "constructionFromA1",
-      "K25 clustering bridge + observable cyclicity + semigroup transfer",
-      "K27 regulated positive gap + limit control + limit witness + frontier bridge",
-      "non-vacuum physical excitation in Hamiltonian domain",
-      "K30SpectralTransferWitness"
-    ],
-    "downstream_closed": [
-      "K22 construction block from K23",
-      "K22 infrared block from K25",
-      "K22 limit block from K27",
-      "field bundle -> FinalExternalCertificate",
-      "FinalExternalCertificate -> FINAL_ROOT"
+    "rejected_terminal": "B60ConcretePhysicalAdapter / B60FieldBundle alone",
+    "rejection_reason": "YMCurrentModelCollapse gives a trivial Unit physical realization for every regulated construction",
+    "hardened_terminal": "A1MaterialWitnessV3 + faithful spectral transfer to K14/K30",
+    "hardening_commit": "ea22910e5b737d1236fbde7ad129cc5d8c8c0b8a",
+    "required": [
+      "A1PhysicalData on the same regulated construction",
+      "ReflectionPositivityDataV2 on the same regulated measure",
+      "PositiveTransferDataV2 from the same regulated action kernel",
+      "UniformRegulatorControlV2 with m0>0",
+      "positive-norm regulated excitation orthogonal to vacuum",
+      "faithful Hilbert/reconstruction and K30 spectral transfer"
     ],
     "open_math": true
   },
@@ -139,5 +126,7 @@
     "hodge_hardening": "f1f0f848d97c32221c2d929451b0f05b907a1ee0",
     "p02_effective_bridge": "72149cc18b144260c41681da9c972e6d09e2e77f",
     "ns_g1_to_producerfirst_adapter": "03ad152dc61c65542003a257cbdc17399b73d948"
-  }
+  },
+  "expansion_ledger_commit": "34216b533a02a934aa1d9c8bd49fe7f23d637908",
+  "operator_index_commit": "996a5e36d21843d14148386aca60c70f542e9eb5"
 }
