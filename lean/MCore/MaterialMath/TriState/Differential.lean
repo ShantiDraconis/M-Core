@@ -49,25 +49,25 @@ theorem phaseSum_backward_zero
 theorem forward_rotate
     {α : Type*} [AddGroup α]
     (x : TriNumber α) :
-    forward (rotate x) = rotate (forward x) := by
+    forward (TriNumber.rotate x) = TriNumber.rotate (forward x) := by
   funext p
   cases p <;>
-    simp [forward, rotate, Phase3.rotate]
+    simp [forward, TriNumber.rotate, Phase3.rotate]
 
 /-- Backward differentiation commutes with cyclic rotation. -/
 theorem backward_rotate
     {α : Type*} [AddGroup α]
     (x : TriNumber α) :
-    backward (rotate x) = rotate (backward x) := by
+    backward (TriNumber.rotate x) = TriNumber.rotate (backward x) := by
   funext p
   cases p <;>
-    simp [backward, rotate, Phase3.rotate, Phase3.rotate2]
+    simp [backward, TriNumber.rotate, Phase3.rotate, Phase3.rotate2]
 
 /-- Coherent states have zero forward derivative. -/
 theorem forward_eq_zero_of_coherent
     {α : Type*} [AddGroup α]
     {x : TriNumber α}
-    (h : Coherent x) :
+    (h : TriNumber.Coherent x) :
     forward x = 0 := by
   rcases h with ⟨hSP, hPM⟩
   funext p
@@ -79,7 +79,7 @@ theorem coherent_of_forward_eq_zero
     {α : Type*} [AddGroup α]
     {x : TriNumber α}
     (h : forward x = 0) :
-    Coherent x := by
+    TriNumber.Coherent x := by
   have hs := congrFun h Phase3.seed
   have hp := congrFun h Phase3.passage
   simp [forward, Phase3.rotate] at hs hp
@@ -88,7 +88,7 @@ theorem coherent_of_forward_eq_zero
 theorem forward_eq_zero_iff_coherent
     {α : Type*} [AddGroup α]
     {x : TriNumber α} :
-    forward x = 0 ↔ Coherent x := by
+    forward x = 0 ↔ TriNumber.Coherent x := by
   constructor
   · exact coherent_of_forward_eq_zero
   · exact forward_eq_zero_of_coherent
