@@ -82,6 +82,8 @@ theorem balanced_fixed_by_rotate
     FixedPoint TriNumber.rotate x := by
   rcases x with ⟨m, c, s⟩
   rcases h with ⟨hmc, hcs⟩
+  change m = c at hmc
+  change c = s at hcs
   subst c
   subst s
   rfl
