@@ -32,6 +32,7 @@ jobs:
           FILES=(
             lean/MCore/MaterialMath/TriCyclicAlgebra.lean
             lean/MCore/MaterialMath/TriCyclicCalculus.lean
+            lean/MCore/MaterialMath/TriCyclicDecomposition.lean
             lean/MCore/MaterialMath/OperatorLaws.lean
           )
           ! grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' "${FILES[@]}"
@@ -40,6 +41,7 @@ jobs:
           set -euo pipefail
           lake build MCore.MaterialMath.TriCyclicAlgebra
           lake build MCore.MaterialMath.TriCyclicCalculus
+          lake build MCore.MaterialMath.TriCyclicDecomposition
           lake build MCore.MaterialMath.OperatorLaws
       - name: Axiom audit
         run: |
@@ -53,6 +55,10 @@ jobs:
           #print axioms MCore.MaterialMath.TriNumber.spread_rotate
           #print axioms MCore.MaterialMath.TriNumber.phaseDerivative_eq_zero_iff_balanced
           #print axioms MCore.MaterialMath.TriNumber.spread_eq_zero_iff_balanced
+          #print axioms MCore.MaterialMath.TriNumber.balanced_add_fluctuation
+          #print axioms MCore.MaterialMath.TriNumber.balanced_and_zeroSum_eq_zero
+          #print axioms MCore.MaterialMath.TriNumber.balanced_transverse_decomposition_unique
+          #print axioms MCore.MaterialMath.SingularResolution.rotate_three
           #print axioms MCore.MaterialMath.rotate_periodic3
           #print axioms MCore.MaterialMath.rotate_energy_preserving
           #print axioms MCore.MaterialMath.rotate_fixed_iff_balanced
