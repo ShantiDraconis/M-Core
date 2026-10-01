@@ -28,9 +28,14 @@
         {
           "item": "BCF/Vasyunin/Mellin material in audits without unconditional residue bound",
           "class": "EVIDENCE_ONLY"
+        },
+        {
+          "item": "BCFThreeTermMajorant + ZeroResidueVanishing -> VanishingUpperBound -> DNLimit=0",
+          "class": "SUFFICIENT_REDUCTION",
+          "commit": "1ff7350a4a1020273d4a4d0db1d281703b231bf7"
         }
       ],
-      "next_exact_lemma": "prove either ∃K≥0,∀N,DN(N)≤K/log(N+2), or an explicit coefficient family with L2 error -> 0, or ZERO_RESIDUE_SUM_UNCONDITIONAL_CONTROL",
+      "next_exact_lemma": "formalize the actual BCF Lemma-2 identity into BCFThreeTermMajorant on the concrete Mellin/Hilbert model, prove logarithmicDerivative and entireRemainder terms vanish, then prove ZeroResidueVanishing unconditionally",
       "result": "NO_PRODUCER"
     },
     "p_vs_np": {
