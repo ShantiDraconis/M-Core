@@ -69,8 +69,8 @@ theorem not_adjacent_self (p : Phase3) :
     ¬ Adjacent p p := by
   intro h
   rcases h with h | h
-  · exact rotate_ne_self p h.symm.symm.symm
-  · exact rotate_ne_self p h
+  · exact rotate_ne_self p h.symm
+  · exact rotate_ne_self p h.symm
 
 /-- On the 3-cycle every distinct state is adjacent. -/
 theorem adjacent_of_ne {p q : Phase3} (h : p ≠ q) :
