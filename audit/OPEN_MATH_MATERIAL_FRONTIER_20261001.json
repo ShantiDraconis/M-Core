@@ -1,0 +1,86 @@
+{
+  "schema": "ATK_OPEN_MATH_MATERIAL_FRONTIER_V3",
+  "date": "2026-10-01",
+  "policy": {
+    "reuse_before_construct": true,
+    "wrapper_is_not_producer": true,
+    "structural_tristate_is_not_terminal_math": true,
+    "no_hidden_endpoint_assumptions": true,
+    "no_ci_triggered_by_this_audit": true
+  },
+  "global": {
+    "structural_wiring": "CLOSED",
+    "material_lanes": 7,
+    "material_producers_inhabited": 0,
+    "note": "P01 is a closed subgap inside the P-vs-NP lane; the lane remains OPEN_MATH only at the universal SAT lower bound."
+  },
+  "p_vs_np": {
+    "closed": {
+      "P01ConstructionGap": {
+        "state": "CLOSED_KERNEL_GREEN_FROZEN_CERTIFIED",
+        "sha": "720596c0bd3900b5de25eab57b7b979d2a6aaf68",
+        "run": 36862291065
+      }
+    },
+    "terminal": "UniversalSATLowerBound",
+    "equivalent": [
+      "UniversalFailure canonical SAT",
+      "Nonempty CanonicalSATP02Producer",
+      "Nonempty NormalizedAdversary",
+      "G21Pointwise",
+      "SAT not in P"
+    ],
+    "adapter_closed": {
+      "UniformEffectiveCoverage_iff_KleeneSATBridge": "72149cc18b144260c41681da9c972e6d09e2e77f"
+    },
+    "open_math": "construct a genuine per-candidate canonical SAT counterexample / fixed-point semantic realizer"
+  },
+  "riemann": {
+    "terminal": "Concrete Gram scalar endpoint",
+    "equivalent": [
+      "FiniteSpanApproximatesChi concreteGeneratorFamily",
+      "DNToZero concreteGeneratorFamily",
+      "DNLimit concreteGeneratorFamily = 0",
+      "for every epsilon>0 there are N,c solving G_N c=b_N with 1-c^T b_N<epsilon^2"
+    ],
+    "already_constructed": [
+      "optimal finite coefficients",
+      "Gram normal equations",
+      "exact quadratic energy identity",
+      "DN as minimum Gram energy",
+      "finite-span/zero-limit equivalence"
+    ],
+    "tristate_hardening": {
+      "commit": "95a2f3733c4acd64420c53688a0addd526c494b5",
+      "meaning": "state 2 is fixed to concrete DNToZero; arbitrary Prop-valued decay no longer counts as terminal mathematics"
+    },
+    "open_math": "prove the concrete optimal Gram defect tends to zero"
+  },
+  "beal": {
+    "terminal": "forall d : BealData, 1 < gcd(d.a, gcd(d.b,d.c))",
+    "open_math": true
+  },
+  "navier_stokes": {
+    "terminal": "ActualNSToSignedGainCore",
+    "fields": ["theta < 1", "stretch(t) <= theta*nu*z(t) + C*y(t)^2"],
+    "open_math": true
+  },
+  "hodge": {
+    "terminal": "ConcreteAlgebraicityPayload",
+    "open_math": true
+  },
+  "bsd": {
+    "terminal": "genuine elliptic-curve binding + rank equality + refined leading coefficient identity",
+    "open_math": true
+  },
+  "yang_mills": {
+    "terminal": "Nonempty (B60ConcretePhysicalAdapter C F D H G O)",
+    "open_math": true
+  },
+  "tristate": {
+    "structural_theorem": "C0 -> O -> C2 / common three-state signature",
+    "valid_use": "normalization, route classification, same-object invariance, adapter bookkeeping",
+    "invalid_use": "derive a terminal conjecture without a problem-specific exact materializer",
+    "material_rule": "each lane still needs an extract map into its fixed terminal inhabitant"
+  }
+}
