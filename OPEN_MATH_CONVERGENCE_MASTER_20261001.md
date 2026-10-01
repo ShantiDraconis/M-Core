@@ -1,0 +1,280 @@
+# OPEN_MATH CONVERGENCE MASTER — 2026-10-01
+
+Status: FORWARD_ONLY / EXACT_RESIDUALS / NO_DUPLICATE_SCAFFOLD
+
+This ledger separates:
+- PROVED: kernel-checked theorem or certified reduction;
+- REFUTED: route formally countered or logically invalid for the endpoint;
+- OPEN: exact missing mathematical inhabitant;
+- CANDIDATE: useful mechanism that does not yet produce the terminal object.
+
+## Global invariant
+
+The seven-lane root is structurally assembled. No global wrapper is missing.
+The only legitimate remaining work is problem-specific material extraction.
+
+The tri-state material kernel is now wired by:
+- `MCore.MaterialMath.TriStateTerminalClosure`
+- `triState_closes_global_root`
+
+This theorem is exact: a `TriNumber ℝ` closes the global root only when accompanied by the seven problem-specific `TriStateTerminalAdapters`.
+The tri-state algebra itself does not erase the OPEN_MATH obligations.
+
+## RIEMANN — F1 / VANISHING
+
+### PROVED
+- concrete NB carrier and `concreteGeneratorFamily`;
+- `FiniteSpanApproximatesChi ↔ DNLimit = 0`;
+- every finite-span vector has an exact finite coefficient vector;
+- optimal finite coefficients exist at every finite N;
+- explicit coefficient error -> 0 implies `DNLimit = 0`;
+- BCF residue identity is available as an unconditional external identity.
+
+Strongest reuse:
+- `frozen/rh-direct-density-integration-green-b239b00c`
+- `frozen/rh-direct-coefficient-endpoint-green-0b2720d`
+- `frozen/rh-explicit-coefficient-producer-green-c994a84d`
+- `frozen/concrete-final-36793021586-20261001`
+
+### REFUTED / PRUNED
+- undamped natural Möbius full sequence as the critical L2 convergent approximant;
+- finite-N numerical extrapolation to the asymptotic theorem;
+- zero-density alone as universal off-line-zero elimination;
+- zero-free-region estimates that leave 1/2 < beta < 1;
+- functional-equation symmetry alone as residue cancellation;
+- RH-conditional negative zeta-derivative moment arguments as unconditional closure.
+
+### OPEN
+`ZERO_RESIDUE_SUM_UNCONDITIONAL_CONTROL`
+
+Equivalent concrete attack form:
+construct one explicit coefficient family c_N such that
+`||chi - Σ_{n<N} c_N(n) rho_n||_2 -> 0`.
+
+Mellin form:
+`∫ |1 - zeta(1/2+it) P_N(1/2+it)|^2 /(1/4+t^2) dt -> 0`.
+
+### TRI-STATE CONNECTION
+A tri-state F1 `VanishingLaw` is useful only after proving an adapter identifying its phase-energy trajectory with the concrete DN error. That adapter remains OPEN.
+
+---
+
+## P VS NP — F2 / GAP
+
+### PROVED
+P01 mechanical construction is CLOSED/FROZEN/CERTIFIED:
+- frozen SHA `720596c0bd3900b5de25eab57b7b979d2a6aaf68`;
+- run `36862291065`;
+- SAT-in-NP side follows.
+
+P02 infrastructure proved:
+- candidate coding;
+- declared polynomial clocks;
+- operator kernel;
+- Kleene/fixed-point infrastructure;
+- failure normal forms;
+- final compression;
+- same-input hardened semantics.
+
+Strongest reuse:
+- `atk/p02-only-20261001`
+- `atk/pnp-rigorous-terminal-decomposition-20261001`
+
+### REFUTED
+- arbitrary encoder model;
+- literal same-string fixed-point route;
+- finite failure -> universal lower bound;
+- supplied lower-bound field disguised as a producer.
+
+### OPEN
+`CandidateFailureFamily`
+
+Equivalent:
+`EncodedP02Target`
+`EncodedSATNotInP`
+
+Concrete content:
+for every encoded deterministic polynomial-time SAT candidate, construct a canonical circuit on which it fails.
+
+### TRI-STATE CONNECTION
+A tri-state F2 `GapLaw` does not imply P≠NP unless an explicit reduction maps every polynomial-time candidate to an admissible tri-state whose positive phase gap yields a canonical SAT failure witness. That reduction is OPEN.
+
+---
+
+## NAVIER-STOKES — F7 / LIMIT
+
+### PROVED
+- bulk/tail algebra;
+- strict signed depletion from `BulkAbsorption + ExceptionalTailControl + SubcriticalBudget`;
+- `SignedGainCore ↔ SignedGainCertificate` at the certified interface;
+- differential coercive consequence;
+- downstream stabilization wiring.
+
+Strongest reuse:
+- `frozen/ns-signed-gain-core-green-df808543`
+- `frozen/ns-signed-gain-differential-green-6e67a011`
+- `attack/ns003-strict-signed-producer-v1`
+
+### REFUTED / PRUNED
+- amplitude-invariant fixed-delta shortcut;
+- legacy dynamic interfaces that do not derive from the PDE;
+- purely algebraic nonnegativity bookkeeping as a substitute for NSE estimates.
+
+### OPEN
+`ActualNSToSignedGainCore`
+
+Concrete missing mathematics:
+derive uniformly from genuine 3D NSE
+`theta < 1`
+and
+`stretch(t) ≤ theta * nu * z(t) + C*y(t)^2`.
+
+### TRI-STATE CONNECTION
+A tri-state F7 limit law must be derived from actual NSE observables, with phase variables explicitly defined from the velocity/vorticity field and with a proof that the phase dissipation gives the strict signed-gain budget. That PDE-to-tristate adapter is OPEN.
+
+---
+
+## HODGE — F4 / REALIZATION
+
+### PROVED
+- HodgeHabitant type;
+- concrete payload equivalences;
+- codimension trisection;
+- R1/R2/R3 transport;
+- low-codimension conditional machinery;
+- final conditional transport to the Hodge endpoint.
+
+Strongest reuse:
+- `cert/hodge-all-green-c5ad87d0-run36271922378`
+- `cert/hodge-habitant-type-3dc8a3de-run36271922378`
+- `frozen/openmath-residual-36792765735-20261001`
+
+### REFUTED / PRUNED
+- empty/trivial geometry payloads;
+- generic abstract interface with no cycle-valued realization;
+- assumed-complete closure as an unconditional proof;
+- transport that presupposes the cycle as a producer of the cycle.
+
+### OPEN
+`UniversalMiddleCodimensionRealization`
+
+Equivalent operationally to a genuine `HodgeHabitant`:
+for every admissible rational Hodge class, construct an algebraic cycle realizing it.
+
+### TRI-STATE CONNECTION
+A tri-state F4 `RealizationLaw` closes Hodge only if its source type is mapped to genuine algebraic cycles on each smooth projective variety and the realization relation is proved to be the cycle-class map. This geometry adapter is OPEN.
+
+---
+
+## BSD — F5 / EQUALITY
+
+### PROVED
+- same-carrier grounded state model;
+- rank/refined composition interfaces;
+- rigorous Sha carrier interface;
+- final transport from a rigorous grounded habitant.
+
+Strongest reuse:
+- `atk/bsd-grounded-habitant`
+- `frozen/openmath-residual-36792769076-20261001`
+- `BSDRigorousFrontier.lean`
+
+### REFUTED
+- universalization of arbitrary `BSDRankData`;
+- a bare natural number `shaOrder` as a proof of Sha finiteness;
+- cross-curve/cross-normalization promotion;
+- finite curve tables as a universal proof.
+
+### OPEN
+A genuine `RigorousGroundedBSDHabitant`:
+1. analytic order = Mordell-Weil rank;
+2. actual finite Sha carrier with cardinality tied to the state;
+3. refined leading coefficient identity;
+all on the same elliptic curve.
+
+### TRI-STATE CONNECTION
+An F5 tri-state `EqualityLaw` must be pulled back from genuine elliptic-curve invariants, not arbitrary real observables. The curve-to-tristate invariant map and the proof that equality is exactly BSD are OPEN.
+
+---
+
+## BEAL — F6 / EXCLUSION
+
+### PROVED
+- endpoint compression;
+- common-divisor/common-prime/gcd equivalences;
+- final composition;
+- B01/B02/endpoint atomic decomposition.
+
+Strongest reuse:
+- `frozen/openmath-residual-36792772606-20261001`
+
+### REFUTED / PRUNED
+- conductor bookkeeping alone;
+- renamed common-prime wrappers without a universal witness;
+- finite arithmetic search as universal closure.
+
+### OPEN
+Logical minimum:
+`GCDLowerBoundProducer`
+
+Equivalent endpoint content:
+for every admissible Beal datum,
+`1 < gcd(a,gcd(b,c))`.
+
+Scientific Frey/level-lowering route currently decomposes into 12 atomic obligations, but these are not logically mandatory if a direct proof of the gcd producer is found.
+
+### TRI-STATE CONNECTION
+An F6 `ExclusionLaw` can close Beal only after mapping every admissible triple to a tri-state and proving that coprime triples lie in a forbidden phase-energy configuration. That arithmetic adapter is OPEN.
+
+---
+
+## YANG-MILLS — F2 / GAP
+
+### PROVED
+- hardened nontrivial B3/B4/B5 interfaces;
+- regulator/volume cofinality;
+- regulated transfer operator tied to the same measure/action;
+- nonzero uniform regulated mass-scale interface;
+- K23/K25/K27/K30 composition;
+- B60 adapter -> conditional mass-gap endpoint.
+
+Strongest reuse:
+- `frozen/ym-physical-inhabitant-frontier-green-ecf745b2`
+- `frozen/b60-validate-36792578767-20261001`
+- `frozen/physical-residual-36792907807-20261001`
+
+### REFUTED / PRUNED
+- Unit/True physical models;
+- spectral gap wrapper unrelated to the regulated construction;
+- fixed-regulator gap promoted to continuum mass gap;
+- legacy B3/B4/B5 phantom interfaces.
+
+### OPEN
+Genuine `PhysicalResidual` / `B60ConcretePhysicalAdapter`:
+same regulated 4D construction -> physical Hilbert states -> reconstruction -> uniform continuum/infinite-volume control -> non-vacuum excitation -> K30 spectral transfer.
+
+### TRI-STATE CONNECTION
+A tri-state F2 gap can model the spectral geometry only after a proof that the tri-state phase energy is a faithful lower bound for the physical Hamiltonian spectrum and survives regulator/volume limits. This physical spectral adapter is OPEN.
+
+---
+
+# Global convergence
+
+PROVED:
+- all structural reductions and final composition layers needed to expose the seven exact terminals;
+- the tri-state algebra, order-three rotation, fixed-point characterization, phase energy, F1/F2/F4/F5/F6/F7/F8 abstract laws;
+- exact theorem: tri-state kernel + seven exact terminal adapters -> global positive root.
+
+REFUTED:
+- structural descent alone -> arbitrary theorem;
+- trivial target replacement;
+- problem-specific shortcut routes listed above.
+
+OPEN:
+exactly the problem-specific adapter/material theorem in each lane.
+
+Therefore the correct interpretation is:
+
+`TriNumber` provides a common algebraic language.
+`TerminalMaterialAdapters` are the seven missing mathematical bridges.
+No bridge may be replaced by a wrapper, an equivalence, a finite experiment, or an assumption carrying the endpoint itself.
