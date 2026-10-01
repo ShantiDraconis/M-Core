@@ -15,9 +15,18 @@ inductive SemanticLaneState where
   | interpretationOpen
   deriving DecidableEq, Repr
 
+/-- Logical orientation of the selected semantic target.
+A refutational lane witnesses failure of the positive conjecture rather than
+establishing it. -/
+inductive SemanticOrientation where
+  | positive
+  | refutational
+  deriving DecidableEq, Repr
+
 structure SemanticLane where
   problem : ProblemId
   target : String
+  orientation : SemanticOrientation
   modelState : SemanticLaneState
   interpretationState : SemanticLaneState
   deriving Repr
@@ -27,6 +36,7 @@ exactly that no unconditional classical inhabitant has been constructed. -/
 def semanticLanes : List SemanticLane := [
   { problem := .riemann,
     target := "RiemannOffCriticalZero",
+    orientation := .refutational,
     modelState := .concreteTargetBound,
     interpretationState := .interpretationOpen },
   { problem := .beal,
@@ -67,6 +77,16 @@ def classicalInterpretationCount : Nat :=
     (fun n lane =>
       if lane.interpretationState ≠ .interpretationOpen then n + 1 else n) 0
 
+def positiveOrientationCount : Nat :=
+  semanticLanes.foldl
+    (fun n lane =>
+      if lane.orientation = .positive then n + 1 else n) 0
+
+def refutationalOrientationCount : Nat :=
+  semanticLanes.foldl
+    (fun n lane =>
+      if lane.orientation = .refutational then n + 1 else n) 0
+
 theorem semanticLaneCount_eq_seven : semanticLaneCount = 7 := by
   decide
 
@@ -75,6 +95,14 @@ theorem concreteTargetBoundCount_eq_two : concreteTargetBoundCount = 2 := by
 
 theorem classicalInterpretationCount_eq_zero :
     classicalInterpretationCount = 0 := by
+  decide
+
+theorem positiveOrientationCount_eq_six :
+    positiveOrientationCount = 6 := by
+  decide
+
+theorem refutationalOrientationCount_eq_one :
+    refutationalOrientationCount = 1 := by
   decide
 
 end MCore.FinalFail.Semantic
