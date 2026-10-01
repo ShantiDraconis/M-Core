@@ -33,11 +33,15 @@ jobs:
       - name: Source hygiene
         run: |
           set -euo pipefail
-          ! grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' lean/MCore/FinalFail/MaterialDerived.lean
+          ! grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' \
+            lean/MCore/FinalFail/MaterialProducerCalculus.lean \
+            lean/MCore/FinalFail/MaterialDerived.lean \
+            lean/MCore/FinalFail/MaterialGlobalAssembly.lean
       - name: Build material derived
         run: |
           set -euo pipefail
           lake build MCore.FinalFail.MaterialDerived
+          lake build MCore.FinalFail.MaterialGlobalAssembly
       - name: Axiom audit
         run: |
           set -euo pipefail
@@ -48,12 +52,17 @@ jobs:
           #print axioms MCore.FinalFail.MaterialDerived.TriState.mul_eq_zero_iff
           #print axioms MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero
           #print axioms MCore.FinalFail.MaterialDerived.TriState.characteristic_three
+          #print axioms MCore.FinalFail.MaterialDerived.TriState.orbit_three_step
           #print axioms MCore.FinalFail.MaterialDerived.SevenLaneVector.smul_add
           #print axioms MCore.FinalFail.MaterialDerived.SevenLaneVector.add_smul
           #print axioms MCore.FinalFail.MaterialDerived.EvidenceState.closure_idempotent
           #print axioms MCore.FinalFail.MaterialDerived.EvidenceState.interior_idempotent
           #print axioms MCore.FinalFail.MaterialDerived.EvidenceState.proven_boundary_iff_not_proved
+          #print axioms MCore.FinalFail.MaterialDerived.EvidenceState.derivative_two_step
           #print axioms MCore.FinalFail.MaterialDerived.negateProducer
+          #print axioms MCore.FinalFail.MaterialGlobalAssembly.SevenMaterialProducers.toPositiveRoot
+          #print axioms MCore.FinalFail.MaterialGlobalAssembly.producer_root_roundtrip
+          #print axioms MCore.FinalFail.MaterialGlobalAssembly.producers_force_proved_evidence
           EOF
           lake env lean /tmp/material_derived_audit.lean | tee audit/MATERIAL_DERIVED_AXIOMS.log
           ! grep -q 'sorryAx' audit/MATERIAL_DERIVED_AXIOMS.log
