@@ -1,1 +1,1 @@
-rerun synthesis after structural rho and scalar-cancellation fixes
+synthesis strict retry after injectivity hardening
