@@ -220,8 +220,9 @@ theorem derivative_eq_zero_iff_state_stable
     apply code_injective
     exact (derivative_eq_zero_iff f n).mp h
   · intro h
+    unfold derivative
     rw [h]
-    simp [derivative]
+    simp
 
 /-! ## 4. Dependency topology -/
 
@@ -257,6 +258,8 @@ theorem provenNeighborhood_open :
   intro a b ha hab
   subst a
   cases b <;> simp [ProvenNeighborhood, code] at hab ⊢
+
+end EvidenceState
 
 /-! ## 5. Seven-lane evidence vectors -/
 
