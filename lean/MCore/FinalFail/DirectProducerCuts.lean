@@ -31,8 +31,8 @@ structure DirectProducerCut where
 
 def directProducerCuts : List DirectProducerCut := [
   { problem := .riemann
-    target := "Concrete Gram scalar endpoint: ∀ ε>0, ∃ N,c, G_N c = b_N ∧ 1 - cᵀb_N < ε²"
-    reduction := "The advanced RH branches prove this endpoint equivalent to DNLimit=0 and FiniteSpanApproximatesChi for the concrete generator family. Normal equations and optimal finite coefficients are already constructed; only the scalar defect tending to zero remains OPEN_MATH."
+    target := "LogMajorantCertificate concreteNBData concreteGeneratorFamily: ∃ K≥0, ∀ N, DN(N) ≤ K / log(N+2)"
+    reduction := "atk/rh-gram-final-closure-20261001 proves logMajorant(K,N)=K/log(N+2) tends to zero and constructs VanishingUpperBound, DNToZero, DNLimit=0 and FINAL_ROOT from this certificate. Gram normal equations, optimal coefficients and the exact Gram residual equivalence are already closed. The sole material residue on this route is the concrete uniform logarithmic upper bound."
     state := .openMath },
   { problem := .beal
     target := "GCDLowerBoundProducer: ∀ d : BealData, 1 < Nat.gcd d.a (Nat.gcd d.b d.c)"
@@ -43,20 +43,20 @@ def directProducerCuts : List DirectProducerCut := [
     reduction := "P01ConstructionGap is CLOSED_KERNEL_GREEN_FROZEN_CERTIFIED at frozen SHA 720596c0bd3900b5de25eab57b7b979d2a6aaf68 (run 36862291065), yielding canonical SAT-in-NP. The sole remaining material producer is ∀ M : PolyDTMCandidate, ∃ x, ¬ M.CorrectAt SAT x; the consolidated kernel proves equivalence with CanonicalSATP02Producer, NormalizedAdversary, G21Pointwise, and SAT∉P. UniformEffectiveCoverage is only a sufficient constructive route and still contains the genuine semantic realizer obligation."
     state := .openMath },
   { problem := .navierStokes
-    target := "NSProducerFirst.ActualNSToSignedGainCore on genuine flow-derived EnstrophyData"
-    reduction := "The frozen signed-gain core keeps exactly theta < 1 and stretch(t) ≤ theta*nu*z(t) + C*y(t)^2; all normalization and downstream differential consequences are certified. The PDE-derived producer from ActualNS remains OPEN_MATH."
+    target := "ActualNS → genuine StretchSplit + BulkAbsorption + ExceptionalTailControl + SubcriticalBudget"
+    reduction := "StrictSignedDepletionProducer already proves BulkAbsorption + ExceptionalTailControl + SubcriticalBudget ⇒ ∃ theta, 0≤theta<1 and stretch≤theta*nu*z. K1aExactFrechetProducer also closes the regularized-direction Frechet derivative and chain rule. Therefore theta<1 is downstream, not an independent gap; the material residue is deriving the bulk/tail split and strict budget from genuine Navier-Stokes dynamics."
     state := .openMath },
   { problem := .hodge
     target := "Nonempty (ConcreteHodgeMaterialTarget G M) on the intended nonempty graded Hodge model"
     reduction := "The bare ConcreteAlgebraicityPayload admits a vacuous empty-variety model. The hardened target (commit f1f0f848d97c32221c2d929451b0f05b907a1ee0) requires Nonempty G.Variety + CycleSpanAdapter G M + ConcreteAlgebraicityPayload M, projects to the prior payload, and closes the same graded Hodge endpoint without the empty-model loophole."
     state := .openMath },
   { problem := .bsd
-    target := "realizable elliptic-curve domain + universal rank equality + refined leading-coefficient identity on that same domain"
-    reduction := "The abstract BSDArithmeticAnalyticData universal contract is rejected by a certified firewall because it admits unrelated Nat data. Progress requires binding genuine elliptic-curve arithmetic/analytic data first, then proving BSD rank equality and the refined formula on that realizable domain."
+    target := "concrete elliptic-curve realizability semantics + high-rank residual + refined leading-coefficient identity on the same curve"
+    reduction := "HighRankDomainGapClosure formally refutes blanket realizability on BSDArithmeticAnalyticData. RealizableRankFrontier proves that, once a genuine realizability predicate and valid low-rank contract are fixed, universal rank reduces to the analytic-rank≥2 residual. The refined leading-coefficient formula remains independent. Thus the abstract domain is closed negatively; the next material object must bind actual elliptic curves and their analytic/arithmetic invariants."
     state := .openMath },
   { problem := .yangMills
-    target := "Nonempty (B60ConcretePhysicalAdapter C F D H G O)"
-    reduction := "The frozen B3-B5 hardening blocks phantom witnesses; B60ConcretePhysicalAdapter is the current sufficient material producer tying the regulated 4D construction to the same physical Hilbert/Hamiltonian/K30 data. No B60 inhabitant is currently supplied."
+    target := "field-level B60 realization: state/observable maps + physicality + K23 inputs + K25 clustering bridges + K27 regulated-gap/limit bridge + nonvacuum excitation + K30 transfer witness"
+    reduction := "ExactFinalProducer.finalExternal_of_fields already constructs the B60 FinalExternal object and FINAL_ROOT from these narrower fields; K22 construction/infrared/limit blocks are downstream and are not independent gaps. B60InhabitationMining searches existing declarations field-by-field. The material task is therefore to inhabit these fixed physical fields on one common regulated 4D model."
     state := .openMath }
 ]
 
