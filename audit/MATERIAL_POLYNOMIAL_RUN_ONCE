@@ -1,1 +1,1 @@
-trigger material polynomial validation retry 3
+retry polynomial material module after explicit finite normalization fixes
