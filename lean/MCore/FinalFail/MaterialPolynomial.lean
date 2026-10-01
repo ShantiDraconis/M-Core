@@ -33,8 +33,23 @@ def sub (x y : TState) : TState := x + (-y)
 theorem add_right_cancel
     (a b c : TState) (h : a + c = b + c) :
     a = b := by
-  cases a <;> cases b <;> cases c <;>
-    simp_all [MCore.FinalFail.MaterialAlgebra.TriState.add]
+  have h' := congrArg (fun t : TState => t + (-c)) h
+  have ha : (a + c) + (-c) = a := by
+    rw [
+      MCore.FinalFail.MaterialAlgebra.TriState.add_assoc,
+      MCore.FinalFail.MaterialAlgebra.TriState.add_neg,
+      MCore.FinalFail.MaterialAlgebra.TriState.add_seed
+    ]
+  have hb : (b + c) + (-c) = b := by
+    rw [
+      MCore.FinalFail.MaterialAlgebra.TriState.add_assoc,
+      MCore.FinalFail.MaterialAlgebra.TriState.add_neg,
+      MCore.FinalFail.MaterialAlgebra.TriState.add_seed
+    ]
+  calc
+    a = (a + c) + (-c) := ha.symm
+    _ = (b + c) + (-c) := h'
+    _ = b := hb
 
 /-- Additive left cancellation. -/
 theorem add_left_cancel
@@ -175,23 +190,9 @@ theorem affine_injective
     (a b : TState) (ha : a ≠ 0) :
     Function.Injective (affine a b) := by
   intro x y h
-  have hmul : a * x = a * y := by
-    have h' := congrArg (fun z : TState => z + (-b)) h
-    calc
-      a * x = (a * x + b) + (-b) := by
-        rw [
-          MCore.FinalFail.MaterialAlgebra.TriState.add_assoc,
-          MCore.FinalFail.MaterialAlgebra.TriState.add_neg,
-          MCore.FinalFail.MaterialAlgebra.TriState.add_seed
-        ]
-      _ = (a * y + b) + (-b) := h'
-      _ = a * y := by
-        rw [
-          MCore.FinalFail.MaterialAlgebra.TriState.add_assoc,
-          MCore.FinalFail.MaterialAlgebra.TriState.add_neg,
-          MCore.FinalFail.MaterialAlgebra.TriState.add_seed
-        ]
-  exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha hmul
+  have hm : a * x = a * y := by
+    exact add_right_cancel (a * x) (a * y) b h
+  exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha hm
 
 /-- Every nonzero affine slope yields a surjective operator. -/
 theorem affine_surjective
