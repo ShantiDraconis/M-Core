@@ -1,0 +1,130 @@
+{
+  "schema": "ATK_PRIMITIVE_OR_NEGATIVE_V1",
+  "date": "2026-10-01",
+  "hard_rule": {
+    "forbidden_arguments": [
+      "OpenMath",
+      "endpoint-equivalent proposition",
+      "FinalRoot as hypothesis",
+      "Payload/Producer/Bridge object whose fields already assert the missing endpoint",
+      "certificate shell with no primitive semantics"
+    ],
+    "allowed_inputs": [
+      "official observable",
+      "concrete mathematical object",
+      "identity",
+      "pointwise inequality",
+      "explicit constant",
+      "finite algebraic/geometric datum",
+      "kernel-checked negative countermodel"
+    ]
+  },
+  "lanes": {
+    "riemann": {
+      "official_observable": "zeta zeros; repository reduction uses concrete Nyman-Beurling DN observable",
+      "primitive_positive_law": {
+        "statement": "if the three concrete BCF error terms satisfy explicit A/log, Z/log, F/log bounds, then DN <= (A+Z+F)/log and FINAL_ROOT follows",
+        "commit": "2cd5c886fdc41945c381808b37c21904f61a07f2",
+        "no_endpoint_argument": true
+      },
+      "negative_object": {
+        "object": "prefixZeroThenOne",
+        "theorem": "no_finite_zero_prefix_implies_uniform_tail_bound",
+        "commit": "ad6bd6063ee846013437fb6971b28ad6b986e55e",
+        "meaning": "finite numerical data cannot entail a universal tail theorem"
+      },
+      "required_next": "derive the actual BCF term inequalities from the zeta/Mellin identity itself; especially the zero-residue term"
+    },
+    "p_vs_np": {
+      "official_observable": "language accepted by a deterministic Turing machine and polynomial worst-case runtime",
+      "negative_object": {
+        "object": "discriminatorCandidate, four-state deterministic machine",
+        "theorem": "semanticAlignmentCore_refuted",
+        "commit": "83ac4e21eb0873e9c2422b7f34f873c72ba1c5d5",
+        "meaning": "weakened output-alignment self-reference is false even for an explicit polynomial-time machine"
+      },
+      "required_next": "construct an actual SAT encoding tied to the same machine/input and prove its semantic equivalence directly; no fixed-point/alignment proposition as input"
+    },
+    "navier_stokes": {
+      "official_observable": "velocity/vorticity solution of 3D incompressible NSE; enstrophy y, palinstrophy z, vortex stretching",
+      "primitive_positive_laws": {
+        "commit": "c09ac86c0bdbca7dab28d491236e55c71d25d764",
+        "statements": [
+          "stretch=bulk+tail+remainder plus three raw bounds -> stretch <= (cBulk+cTail)nu z + a y",
+          "raw enstrophy balance -> y' + 2(1-cBulk-cTail)nu z <= 2 a y",
+          "cBulk+cTail<1 -> positive dissipation margin",
+          "raw energy bound + raw coefficient bound -> explicit time coefficient budget"
+        ],
+        "no_endpoint_argument": true
+      },
+      "negative_objects": [
+        {
+          "object": "direction-only one-point G1 countermodel",
+          "theorem": "no_universal_direction_only_bridge",
+          "commit": "fd745c37598f90483a1e3c39ea7f3bdc0a8be189"
+        },
+        {
+          "object": "WeightedLow constants C_abs=0.6, C_Young=50",
+          "theorem": "gamma_effective_eq_neg35 / current_constant_package_cannot_close_absorption",
+          "commit": "e965195e2aa7b71d1adccde01394a690f27a5106"
+        }
+      ],
+      "required_next": "derive the raw bulk/tail/remainder inequalities from the actual Biot-Savart/strain formula of an ActualNS solution"
+    },
+    "hodge": {
+      "official_observable": "rational Hodge class and algebraic-cycle class on a smooth projective variety",
+      "negative_object": {
+        "object": "toyHodgeSemanticData",
+        "theorem": "semantic_interface_does_not_force_hodge",
+        "commit": "5ce83a49295ee99387d33f6481b6cda89a750741",
+        "meaning": "an abstract semantic interface without genuine geometry does not force algebraic cycles"
+      },
+      "primitive_positive_route": {
+        "statement": "genuine path-matched relative cycles + cycle-class compatibility + ordinary local-system laws imply the exact variational transport law",
+        "commit": "b11b0054d58596699a05702c1df902cfd7491f19"
+      },
+      "required_next": "construct actual spread/Hilbert-Chow/DVR relative-cycle objects from concrete geometry; do not pass R2/R3 payloads as assumptions"
+    },
+    "bsd": {
+      "official_observable": "elliptic curve over Q, rational rank, associated L-function near s=1 and refined arithmetic invariants",
+      "negative_object": {
+        "object": "highRankMismatchData(rank=0, analyticOrder=2)",
+        "theorem": "all_abstract_data_high_rank_producer_false",
+        "commit": "fa5e8f4114fbdfc7c82e5de40e39d60c8a3a8f6f",
+        "meaning": "arbitrary Nat-valued arithmetic/analytic records cannot represent the official curve semantics"
+      },
+      "required_next": "bind a concrete elliptic curve object to rank, L-series, local factors, period, regulator, Sha, Tamagawa and torsion before deriving any rank/refined law"
+    },
+    "yang_mills": {
+      "official_observable": "nontrivial 4D quantum Yang-Mills theory with positive mass gap",
+      "negative_object": {
+        "object": "trivialPhysicalData with State=Unit",
+        "theorem": "trivial_FINAL_ROOT_for_every_construction",
+        "commit": "75f4bfe298d1fa6ab7ae556c35e3ad7aabc0062c",
+        "meaning": "old abstract B60 target can be closed by an unrelated trivial model and is therefore not faithful"
+      },
+      "required_next": "derive reflection positivity, transfer operator, nonvacuum excitation and uniform physical mass scale from the same regulated YM construction; no abstract B60 fields as assumptions"
+    },
+    "beal": {
+      "official_observable": "positive integer solution a^x+b^y=c^z with x,y,z>2 and common-prime/gcd property",
+      "negative_route_objects": [
+        {
+          "object": "synthetic surviving level-3 lowered-newform case",
+          "theorem": "T44_universal_level_two_promotion_refuted",
+          "meaning": "level-2 elimination alone cannot be promoted to all levels"
+        },
+        {
+          "object": "candidate-local level variation firewall",
+          "theorem": "T59_signature_only_exact_impossible_of_local_variation",
+          "commit": "25f5cc9b38295d559aea9d3841386a80a00bb632",
+          "meaning": "level table cannot in general depend only on exponent signature"
+        }
+      ],
+      "primitive_positive_route": {
+        "statement": "explicit candidate -> genuine Frey/local data -> exact candidate-keyed levels -> newform cases -> direct elimination",
+        "bridge_commit": "07e1ae37c89b12838e79b890def2d12f3982d5b9"
+      },
+      "required_next": "construct Frey/conductor/level/newform data from each concrete candidate and eliminate the resulting concrete cases; do not pass Survives/Eliminator as mathematical input in the final material theorem"
+    }
+  }
+}
