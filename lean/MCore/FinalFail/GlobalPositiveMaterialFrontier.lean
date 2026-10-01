@@ -169,6 +169,46 @@ theorem positive_rh_incompatible_with_negative_lane :
     riemann_interpretation_iff_target.mp hI
   exact rh_excludes_offCriticalZero hRH hW
 
+
+/-- Global orientation firewall: a positive seven-lane material root cannot
+coexist with the older mixed-orientation GlobalConditionalFinalRoot, because
+that root contains an off-critical Riemann interpretation. -/
+theorem positive_root_excludes_mixed_negative_root
+    {Language : Type uL}
+    {InP InNP : Language → Prop}
+    {SAT : Language}
+    {Flow : Type uF}
+    {Stabilizer : Type uS}
+    {ActualNS : Flow → Prop}
+    {Stabilizes : Stabilizer → Flow → Prop}
+    {Variety : Type uV}
+    {Class : Variety → Type uC}
+    {Cycle : Variety → Type uZ}
+    {SmoothProjective : Variety → Prop}
+    {RationalHodge : {X : Variety} → Class X → Prop}
+    {Realizes : {X : Variety} → Cycle X → Class X → Prop}
+    {Curve : Type uE}
+    {Realizable : Curve → Prop}
+    {AnalyticOrder MordellWeilRank : Curve → Int}
+    {RefinedFormula : Curve → Prop}
+    {Theory : Type uT}
+    {Genuine4D OSReconstructs PositiveMassGap : Theory → Prop}
+    (P :
+      GlobalPositiveMaterialRoot
+        Language InP InNP SAT
+        Flow Stabilizer ActualNS Stabilizes
+        Variety Class Cycle SmoothProjective RationalHodge Realizes
+        Curve Realizable AnalyticOrder MordellWeilRank RefinedFormula
+        Theory Genuine4D OSReconstructs PositiveMassGap) :
+    ¬ GlobalConditionalFinalRoot
+        Language InP InNP SAT
+        Flow Stabilizer ActualNS Stabilizes
+        Variety Class Cycle SmoothProjective RationalHodge Realizes
+        Curve Realizable AnalyticOrder MordellWeilRank RefinedFormula
+        Theory Genuine4D OSReconstructs PositiveMassGap := by
+  intro N
+  exact (positive_rh_incompatible_with_negative_lane P.riemann) N.riemann
+
 /-- Constructor theorem for the positive seven-lane material root.
 
 This theorem is deliberately pure composition: each mathematical field is
@@ -236,6 +276,7 @@ theorem build_global_positive_material_root
 #print axioms MCore.FinalFail.Semantic.ym_target_iff_exists_physical_theory
 #print axioms MCore.FinalFail.Semantic.rh_excludes_offCriticalZero
 #print axioms MCore.FinalFail.Semantic.positive_rh_incompatible_with_negative_lane
+#print axioms MCore.FinalFail.Semantic.positive_root_excludes_mixed_negative_root
 #print axioms MCore.FinalFail.Semantic.build_global_positive_material_root
 
 end MCore.FinalFail.Semantic
