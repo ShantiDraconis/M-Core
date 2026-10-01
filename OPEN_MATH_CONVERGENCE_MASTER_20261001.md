@@ -624,3 +624,39 @@ These are necessary local conditions before any T60/B01 conductor or
 level-lowering mathematics. They do not eliminate the whole family.
 
 Status: SOURCE / BUILD_PENDING until compilation.
+
+
+### Beal quartic prime-support frontier — 2026-10-01
+
+Branch:
+`ShantiDraconis/m-core-beal@atk/beal-two-sided-resolution-20261001`
+
+New commits:
+- `3bc746ffb109c5e863392e1ac34eef62d89fef78` — exact quartic factorization via existing T21DiffQuot
+- `74da7406d44201af71fd26d6849d51e023cb3f8e` — root import
+- `ad5d52c7d67b5e39f66e830eb5bf695e0cd588e0` + hardened `3235c9eab572b2e5bc32dee4cbbfa487189f8e63` — odd-prime separation of linear factors
+- `4a4c7e761a01859b9b96898f3b849e83122dd803` — candidate-specific odd-prime support packet
+- `f3743dd40c29b231260e846265fea7e581c44d62` — root imports
+
+Exact factorization:
+- x=z=4:
+  b^y = (c-a)(c+a)(c^2+a^2)
+- y=z=4:
+  a^x = (c-b)(c+b)(c^2+b^2)
+
+New local consequences:
+- no odd prime divides both c-a and c+a on x=z=4;
+- no odd prime divides both c-b and c+b on y=z=4;
+- every odd prime dividing c-a or c+a divides b;
+- every odd prime dividing c-b or c+b divides a.
+
+This is candidate-specific arithmetic data upstream of T60/B01 and is not
+present in the earlier generic T31-T34 radical-support package.
+
+Next exact target:
+prove odd-prime separation of the quadratic factors c^2+a^2 / c^2+b^2 from
+the corresponding linear factors. That would decompose the quartic product
+into three pairwise odd-prime-disjoint blocks, preparing valuation/conductor
+information.
+
+Status: SOURCE / BUILD_PENDING until compilation.
