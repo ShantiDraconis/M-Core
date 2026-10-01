@@ -34,6 +34,7 @@ jobs:
             lean/MCore/MaterialMath/TriCyclicCalculus.lean
             lean/MCore/MaterialMath/TriCyclicDecomposition.lean
             lean/MCore/MaterialMath/TriCyclicGeometry.lean
+            lean/MCore/MaterialMath/TriCyclicTopology.lean
             lean/MCore/MaterialMath/OperatorLaws.lean
             lean/MCore/MaterialMath/TriCyclicSpectral.lean
           )
@@ -45,6 +46,7 @@ jobs:
           lake build MCore.MaterialMath.TriCyclicCalculus
           lake build MCore.MaterialMath.TriCyclicDecomposition
           lake build MCore.MaterialMath.TriCyclicGeometry
+          lake build MCore.MaterialMath.TriCyclicTopology
           lake build MCore.MaterialMath.OperatorLaws
           lake build MCore.MaterialMath.TriCyclicSpectral
       - name: Axiom audit
@@ -66,6 +68,7 @@ jobs:
           #print axioms MCore.MaterialMath.TriNumber.spread_identity
           #print axioms MCore.MaterialMath.TriNumber.torsion_fluctuation
           #print axioms MCore.MaterialMath.TriNumber.spread_eq_three_transverseRadiusSq
+          #print axioms MCore.MaterialMath.TriNumber.productHomeomorph
           #print axioms MCore.MaterialMath.rotate_periodic3
           #print axioms MCore.MaterialMath.rotate_energy_preserving
           #print axioms MCore.MaterialMath.rotate_fixed_iff_balanced
