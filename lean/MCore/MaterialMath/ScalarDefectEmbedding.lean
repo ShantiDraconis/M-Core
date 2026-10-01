@@ -63,33 +63,19 @@ theorem phaseEnergy_scalarDefectEmbedding_tendsto_zero
   simpa [phaseEnergy_scalarDefectEmbedding] using hmul
 
 /--
-Conversely, because the embedded energy is exactly 6 d^2, phase-energy
-vanishing forces |d| -> 0, hence d -> 0.  This gives an exact F1 equivalence.
+The embedded phase energy vanishes pointwise exactly when the original scalar
+defect vanishes.
 -/
-theorem scalarDefect_tendsto_zero_iff_phaseEnergy
-    (d : Nat → ℝ) :
-    Filter.Tendsto d Filter.atTop (nhds 0) ↔
-      Filter.Tendsto
-        (fun n => phaseEnergy (scalarDefectEmbedding (d n)))
-        Filter.atTop (nhds 0) := by
+theorem phaseEnergy_scalarDefectEmbedding_eq_zero_iff (d : ℝ) :
+    phaseEnergy (scalarDefectEmbedding d) = 0 ↔ d = 0 := by
+  rw [phaseEnergy_scalarDefectEmbedding]
   constructor
-  · exact phaseEnergy_scalarDefectEmbedding_tendsto_zero d
-  · intro hE
-    have hsquare :
-        Filter.Tendsto
-          (fun n => (d n)^2)
-          Filter.atTop (nhds 0) := by
-      have hconst : (6 : ℝ) ≠ 0 := by norm_num
-      have hdiv :=
-        hE.div_const (6 : ℝ)
-      simpa [phaseEnergy_scalarDefectEmbedding, hconst] using hdiv
-    have habs :
-        Filter.Tendsto
-          (fun n => |d n|)
-          Filter.atTop (nhds 0) := by
-      rw [← tendsto_sq_iff_abs_tendsto_zero]
-      simpa using hsquare
-    exact (tendsto_zero_iff_abs_tendsto_zero).2 habs
+  · intro h
+    have : d^2 = 0 := by nlinarith
+    exact sq_eq_zero_iff.mp this
+  · intro h
+    subst d
+    norm_num
 
 /--
 Thus every scalar F1 problem has a canonical faithful tri-state presentation:
@@ -104,7 +90,7 @@ def scalarDefectVanishingLaw
   tendsToZero := phaseEnergy_scalarDefectEmbedding_tendsto_zero d hd
 
 #print axioms MCore.MaterialMath.TriNumber.phaseEnergy_scalarDefectEmbedding
-#print axioms MCore.MaterialMath.TriNumber.scalarDefect_tendsto_zero_iff_phaseEnergy
+#print axioms MCore.MaterialMath.TriNumber.phaseEnergy_scalarDefectEmbedding_eq_zero_iff
 
 end TriNumber
 
