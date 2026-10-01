@@ -20,3 +20,4 @@ import MCore.MaterialMath.TwoSidedMaterialResolution
 import MCore.MaterialMath.GlobalMaterialTheorem
 import MCore.MaterialMath.GlobalOpenMathLogic
 import MCore.MaterialMath.TorsionEnergyLaw
+import MCore.MaterialMath.GlobalMaterialTheoremV2
