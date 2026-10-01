@@ -36,12 +36,14 @@ jobs:
           ! grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' \
             lean/MCore/FinalFail/MaterialProducerCalculus.lean \
             lean/MCore/FinalFail/MaterialDerived.lean \
-            lean/MCore/FinalFail/MaterialGlobalAssembly.lean
+            lean/MCore/FinalFail/MaterialGlobalAssembly.lean \
+            lean/MCore/FinalFail/MaterialField.lean
       - name: Build material derived
         run: |
           set -euo pipefail
           lake build MCore.FinalFail.MaterialDerived
           lake build MCore.FinalFail.MaterialGlobalAssembly
+          lake build MCore.FinalFail.MaterialField
       - name: Axiom audit
         run: |
           set -euo pipefail
@@ -63,6 +65,9 @@ jobs:
           #print axioms MCore.FinalFail.MaterialGlobalAssembly.SevenMaterialProducers.toPositiveRoot
           #print axioms MCore.FinalFail.MaterialGlobalAssembly.producer_root_roundtrip
           #print axioms MCore.FinalFail.MaterialGlobalAssembly.producers_force_proved_evidence
+          #print axioms MCore.FinalFail.MaterialField.TriState.fieldCertificate
+          #print axioms MCore.FinalFail.MaterialField.TriState.field_characteristic_three
+          #print axioms MCore.FinalFail.MaterialField.TriState.tristate_is_three_element_field_table
           EOF
           lake env lean /tmp/material_derived_audit.lean | tee audit/MATERIAL_DERIVED_AXIOMS.log
           ! grep -q 'sorryAx' audit/MATERIAL_DERIVED_AXIOMS.log
