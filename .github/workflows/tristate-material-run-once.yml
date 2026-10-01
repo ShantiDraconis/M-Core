@@ -37,7 +37,10 @@ jobs:
             lean/MCore/MaterialMath/TriState/Algebra.lean
             lean/MCore/MaterialMath/TriState/Dynamics.lean
             lean/MCore/MaterialMath/TriState/NumericClasses.lean
+            lean/MCore/MaterialMath/TriState/Spectral.lean
             lean/MCore/MaterialMath/TriState/NoSmuggling.lean
+            lean/MCore/MaterialMath/TerminalPatterns.lean
+            lean/MCore/MaterialMath/Contraction.lean
           )
           if grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' "${FILES[@]}"; then
             echo "ERROR: prohibited proof escape found"
@@ -51,7 +54,10 @@ jobs:
           lake build MCore.MaterialMath.TriState.Algebra
           lake build MCore.MaterialMath.TriState.Dynamics
           lake build MCore.MaterialMath.TriState.NumericClasses
+          lake build MCore.MaterialMath.TriState.Spectral
           lake build MCore.MaterialMath.TriState.NoSmuggling
+          lake build MCore.MaterialMath.TerminalPatterns
+          lake build MCore.MaterialMath.Contraction
 
       - name: Axiom audit
         run: |
@@ -59,12 +65,17 @@ jobs:
           cat > /tmp/tristate_audit.lean <<'EOF'
           import MCore.MaterialMath.TriState.NumericClasses
           import MCore.MaterialMath.TriState.NoSmuggling
+          import MCore.MaterialMath.TerminalPatterns
+          import MCore.MaterialMath.Contraction
           #print axioms MCore.MaterialMath.Phase3.rotate_three
           #print axioms MCore.MaterialMath.TriNumber.rotate_three
           #print axioms MCore.MaterialMath.TriNumber.phaseSum_laplacian_zero
           #print axioms MCore.MaterialMath.TriDynamics.harmonic_iff_coherent
           #print axioms MCore.MaterialMath.TriArithmetic.center_balanced
           #print axioms MCore.MaterialMath.TriArithmetic.spreadEnergy_eq_zero_iff_coherent
+          #print axioms MCore.MaterialMath.TriSpectral.spectral_split
+          #print axioms MCore.MaterialMath.balanced_sector_exact_spectral_gap
+          #print axioms MCore.MaterialMath.geometric_bound
           #print axioms MCore.MaterialMath.nonempty_materialInterpretation_iff_target
           #print axioms MCore.MaterialMath.triState_global_bridge_iff_global_root
           EOF
