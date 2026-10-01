@@ -120,14 +120,33 @@ Strongest reuse:
 - legacy dynamic interfaces that do not derive from the PDE;
 - purely algebraic nonnegativity bookkeeping as a substitute for NSE estimates.
 
-### OPEN
-`ActualNSToSignedGainCore`
+### OPEN / EXTERNAL UPDATE
+Positive regularity route remains:
+`ActualNSToSignedGainCore`.
 
-Concrete missing mathematics:
-derive uniformly from genuine 3D NSE
-`theta < 1`
-and
-`stretch(t) ≤ theta * nu * z(t) + C*y(t)^2`.
+However, the official problem also admits a breakdown orientation. On 2026-09-08
+OpenAI released a Lean formalization of forced finite-time breakdown, and on
+2026-09-11 Clay stated that the problem had "apparently been settled" while
+evaluation remains ongoing.
+
+External Lean declarations:
+- `NavierStokes.Comparator.navier_stokes_breakdown_R3`
+- `NavierStokes.Comparator.navier_stokes_breakdown_periodic`
+
+Local architecture now includes:
+- `NavierStokesBreakdownTarget`
+- `NavierStokesResolutionTarget = positive ⊕ negative`
+
+Integration state:
+`EXTERNAL_FORMAL_CLOSURE_CANDIDATE / PORT_REQUIRED`.
+
+Reason:
+external toolchain is Lean 4.34.0-rc2; M-Core is Lean 4.19.0. Do not break the
+central kernel by direct import. Port or independently comparator-check the
+exact statements first.
+
+Thus `ActualNSToSignedGainCore` is no longer the only route to the official
+Navier-Stokes endpoint; it remains the live positive/unforced regularity route.
 
 ### TRI-STATE CONNECTION
 A tri-state F7 limit law must be derived from actual NSE observables, with phase variables explicitly defined from the velocity/vorticity field and with a proof that the phase dissipation gives the strict signed-gain budget. That PDE-to-tristate adapter is OPEN.
