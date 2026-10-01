@@ -141,27 +141,27 @@ def eYangMills : LaneVector where
 /-- Every seven-lane vector is the sum of its seven scalar coordinate vectors. -/
 theorem coordinate_decomposition (x : LaneVector) :
     x =
-      smul x.riemann eRiemann +
-      smul x.beal eBeal +
-      smul x.pvsnp ePvsNP +
-      smul x.navierStokes eNavierStokes +
-      smul x.hodge eHodge +
-      smul x.bsd eBSD +
-      smul x.yangMills eYangMills := by
+      MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.riemann eRiemann +
+      MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.beal eBeal +
+      MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.pvsnp ePvsNP +
+      MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.navierStokes eNavierStokes +
+      MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.hodge eHodge +
+      MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.bsd eBSD +
+      MCore.FinalFail.MaterialDerived.SevenLaneVector.smul x.yangMills eYangMills := by
   apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
-  · simp [smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
+  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
       MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
+  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
       MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
+  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
       MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
+  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
       MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
+  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
       MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
+  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
       MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
-  · simp [smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
+  · simp [MCore.FinalFail.MaterialDerived.SevenLaneVector.smul, eRiemann, eBeal, ePvsNP, eNavierStokes, eHodge, eBSD, eYangMills,
       MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add]
 
 /-- The Hamming weight of a vector is its support count. -/
@@ -177,10 +177,10 @@ theorem supportCount_eq_hamming_zero (x : LaneVector) :
 /-- Nonzero scalar multiplication preserves support/Hamming weight. -/
 theorem supportCount_smul_nonzero
     (a : TState) (x : LaneVector) (ha : a ≠ 0) :
-    MCore.FinalFail.MaterialGeometry.SevenLaneVector.supportCount (smul a x) =
+    MCore.FinalFail.MaterialGeometry.SevenLaneVector.supportCount (MCore.FinalFail.MaterialDerived.SevenLaneVector.smul a x) =
       MCore.FinalFail.MaterialGeometry.SevenLaneVector.supportCount x := by
   unfold MCore.FinalFail.MaterialGeometry.SevenLaneVector.supportCount
-  unfold smul
+  unfold MCore.FinalFail.MaterialDerived.SevenLaneVector.smul
   rw [
     MCore.FinalFail.MaterialLinearTopology.TriState.support_mul_left_nonzero a x.riemann ha,
     MCore.FinalFail.MaterialLinearTopology.TriState.support_mul_left_nonzero a x.beal ha,
@@ -195,10 +195,10 @@ theorem supportCount_smul_nonzero
 theorem hamming_smul_nonzero
     (a : TState) (x y : LaneVector) (ha : a ≠ 0) :
     MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming
-        (smul a x) (smul a y) =
+        (MCore.FinalFail.MaterialDerived.SevenLaneVector.smul a x) (MCore.FinalFail.MaterialDerived.SevenLaneVector.smul a y) =
       MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming x y := by
   unfold MCore.FinalFail.MaterialGeometry.SevenLaneVector.hamming
-  unfold smul
+  unfold MCore.FinalFail.MaterialDerived.SevenLaneVector.smul
   have hR :
       a * x.riemann = a * y.riemann ↔ x.riemann = y.riemann := by
     constructor
