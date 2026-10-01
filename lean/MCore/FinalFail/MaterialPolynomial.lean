@@ -130,21 +130,28 @@ theorem interpolate_exact (f : TState → TState) :
   intro x
   cases x with
   | seed =>
-      change (f .seed + .seed) + .seed = f .seed
-      rw [
-        MCore.FinalFail.MaterialAlgebra.TriState.add_seed,
+      simp only [
+        interpolate,
+        basis0_seed, basis1_seed, basis2_seed,
+        MCore.FinalFail.MaterialAlgebra.TriState.mul_one,
+        MCore.FinalFail.MaterialAlgebra.TriState.mul_zero,
         MCore.FinalFail.MaterialAlgebra.TriState.add_seed
       ]
   | transit =>
-      change (.seed + f .transit) + .seed = f .transit
-      rw [
+      simp only [
+        interpolate,
+        basis0_transit, basis1_transit, basis2_transit,
+        MCore.FinalFail.MaterialAlgebra.TriState.mul_zero,
+        MCore.FinalFail.MaterialAlgebra.TriState.mul_one,
         MCore.FinalFail.MaterialAlgebra.TriState.seed_add,
         MCore.FinalFail.MaterialAlgebra.TriState.add_seed
       ]
   | manifest =>
-      change (.seed + .seed) + f .manifest = f .manifest
-      rw [
-        MCore.FinalFail.MaterialAlgebra.TriState.seed_add,
+      simp only [
+        interpolate,
+        basis0_manifest, basis1_manifest, basis2_manifest,
+        MCore.FinalFail.MaterialAlgebra.TriState.mul_zero,
+        MCore.FinalFail.MaterialAlgebra.TriState.mul_one,
         MCore.FinalFail.MaterialAlgebra.TriState.seed_add
       ]
 
