@@ -92,7 +92,7 @@ theorem distinct_phases_have_unit_gap
 /-- The balanced tri-state sector carries an exact spectral gap magnitude 3:
 the Laplacian acts as -3 times identity there. -/
 theorem balanced_sector_exact_spectral_gap
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     {x : TriNumber α}
     (h : TriNumber.Balanced x) :
     TriNumber.laplacian x =
