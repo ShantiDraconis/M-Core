@@ -34,7 +34,26 @@
         "72149cc18b144260c41681da9c972e6d09e2e77f"
       ],
       "residue": "construct a genuine per-candidate canonical SAT failure input / semantic fixed-point realizer",
-      "status": "OPEN_MATH / P01_CLOSED"
+      "status": "OPEN_MATH / P01_CLOSED",
+      "refuted_routes": [
+        {
+          "route": "SemanticAlignmentCore / weakened output-alignment self-reference",
+          "refutation": "P02SemanticAlignmentCountermodel.semanticAlignmentCore_refuted",
+          "source": "83ac4e21eb0873e9c2422b7f34f873c72ba1c5d5",
+          "reason": "a concrete polynomial-time discriminator candidate admits no aligned seed"
+        },
+        {
+          "route": "literal fixed-point route",
+          "status": "CLOSED_BY_FALSIFICATION"
+        }
+      ],
+      "valid_constructive_core": {
+        "compiler": "EffectiveDiagonalCompiler",
+        "semantic_realizer": "CanonicalSATFixedPointRealizer.flips_of_fixed",
+        "per_candidate": "CandidateKleeneBridge",
+        "universal": "KleeneUniversalBridge / UniformEffectiveCoverage",
+        "exact_open_field": "for each fixed code, prove CanonicalSAT(bitsOf c) ↔ ¬ DeclaredAccepts M(bitsOf c)"
+      }
     },
     "beal": {
       "producer": "UniversalTripleGCDLowerBound",
@@ -104,23 +123,29 @@
       "note": "no concrete EllipticCurveQ Lean type exists in the repository; documentation-only placeholders are not promoted"
     },
     "yang_mills": {
-      "producer": "B60FieldBundle",
-      "operator": "B60FieldBundle.closes_FINAL_ROOT",
+      "producer": "A1MaterialWitnessV3 + faithful spectral transfer",
+      "operator": "A1MaterialWitnessV3.toV2; downstream faithful adapter still required",
       "laws": [
-        "B60FieldBundle.toFinalExternal",
-        "finalExternal_of_fields",
-        "FINAL_ROOT_of_fields"
+        "A1PhysicalData ties cutoff/volume/observables/reflection/action-kernel to the same regulated construction",
+        "ReflectionPositivityDataV2 pairing is the exact regulated-measure pairing",
+        "PositiveTransferDataV2 transferOp is the integral operator from the same regulated action kernel",
+        "UniformRegulatorControlV2 supplies m0 > 0 uniformly at small cutoff",
+        "RegulatedNonvacuumExcitation supplies positive L2 norm and vacuum orthogonality",
+        "A1MaterialWitnessV3 -> A1ScientificWitnessV2"
       ],
       "commits": [
-        "119ba78a2feb442c33ae08b3a8639e841ff83705"
+        "ea22910e5b737d1236fbde7ad129cc5d8c8c0b8a"
       ],
       "residue": [
-        "physical state/observable maps",
-        "K23 construction inputs",
-        "K25 clustering/cyclicity/semigroup transfer",
-        "K27 positive gap and limit bridge",
-        "non-vacuum excitation",
-        "K30 spectral transfer witness"
+        "construct A1MaterialWitnessV3 from a genuine 4D regulated Yang-Mills construction",
+        "prove faithful reconstruction/coverage from the regulated L2/transfer model to K14 physical Hilbert data",
+        "prove K30-compatible spectral transfer without unrelated abstract physical models"
+      ],
+      "rejected_targets": [
+        {
+          "target": "B60ConcretePhysicalAdapter / B60FieldBundle alone",
+          "reason": "YMCurrentModelCollapse constructs a trivial Unit physical model for every regulated construction"
+        }
       ],
       "status": "OPEN_MATH / CODE_BUILD_PENDING"
     }
