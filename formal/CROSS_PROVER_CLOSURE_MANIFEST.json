@@ -1,0 +1,72 @@
+{
+  "schema": "ATK_CROSS_PROVER_CLOSURE_V1",
+  "date": "2026-10-01",
+  "branch": "atk/cross-prover-terminal-closure-20261001",
+  "semantic_rule": "No prover may replace a lane-specific terminal inhabitant with structural zero defect, a wrapper, an equivalent hypothesis, or a certificate shell.",
+  "kernels": {
+    "lean": {
+      "file": "lean/MCore/ATK/CrossProverTerminalClosure.lean",
+      "status": "BUILD_PENDING"
+    },
+    "coq": {
+      "file": "formal/coq/ATKClosure.v",
+      "status": "BUILD_PENDING"
+    },
+    "isabelle": {
+      "file": "formal/isabelle/ATK_Closure.thy",
+      "status": "BUILD_PENDING"
+    }
+  },
+  "theorem_crosswalk": [
+    {
+      "key": "PAIR_CLOSED_IFF_BOTH",
+      "lean": "MCore.ATK.CrossProverClosure.pair_closed_exactly_when_both_closed",
+      "coq": "ATKClosure.combine_closed_iff",
+      "isabelle": "combine_closed_iff",
+      "meaning": "A composite material gate is closed iff both components are closed."
+    },
+    {
+      "key": "ZERO_DEFECT_NOT_TERMINAL",
+      "lean": "MCore.ATK.CrossProverClosure.zero_defect_is_not_universal_terminal_constructor",
+      "coq": "ATKClosure.zero_defect_not_arbitrary_terminal",
+      "isabelle": "semantic rule documented in locale exact_terminal; no arbitrary terminal is derived",
+      "meaning": "Zero structural defect cannot manufacture an arbitrary predeclared terminal theorem."
+    },
+    {
+      "key": "EXACT_MATERIALIZATION",
+      "lean": "MCore.ATK.MaterialMultistate.closeWithExactMaterializer",
+      "coq": "ATKClosure.close_with_exact_materializer",
+      "isabelle": "exact_terminal.close_with_exact_materializer",
+      "meaning": "Closure requires an exact terminal extractor tied to the fixed target."
+    },
+    {
+      "key": "TORSION_PRESERVES_DEFECT",
+      "lean": "MCore.ATK.MaterialMultistate.MaterialOperatorSystem.torsion_cannot_strictly_close",
+      "coq": "ATKClosure.torsion_cannot_strictly_close",
+      "isabelle": "material_operator_system.torsion_cannot_strictly_close",
+      "meaning": "Representation change alone cannot close a positive material gap."
+    },
+    {
+      "key": "SEVEN_LANE_NO_ESCAPE",
+      "lean": "MCore.ATK.CrossProverClosure.closeSeven plus seven global_closure_projects_* theorems",
+      "coq": "TO_BE_SPECIALIZED_PER_LANE after concrete terminal types are encoded",
+      "isabelle": "TO_BE_SPECIALIZED_PER_LANE after concrete terminal types are encoded",
+      "meaning": "Global closure must project to every exact lane inhabitant."
+    }
+  ],
+  "lane_terminals": {
+    "riemann": "ConcreteLogMajorantCertificate or an equivalent unconditional zero-residue control sufficient for DN->0",
+    "p_vs_np": "UniversalSATLowerBound / UniversalFailure on canonical SAT; P01 already closed",
+    "beal": "UniversalTripleGCDLowerBound",
+    "navier_stokes": "ActualNS-derived joint/bulk + weighted tail + strict subcritical budget feeding canonical SignedGainCore",
+    "hodge": "H01UniversalMaterialProducer on nonempty concrete geometry",
+    "bsd": "Concrete elliptic-curve model binding + high-rank equality + refined leading coefficient identity",
+    "yang_mills": "A1MaterialWitnessV3 + faithful physical Hilbert/K30 spectral transfer"
+  },
+  "validation_policy": {
+    "lean": "must kernel-check with Lean toolchain",
+    "coq": "must compile with coqc",
+    "isabelle": "must build with Isabelle session",
+    "cross_language": "theorem-name correspondence is documentation, not proof transfer; each kernel must verify its own implementation"
+  }
+}
