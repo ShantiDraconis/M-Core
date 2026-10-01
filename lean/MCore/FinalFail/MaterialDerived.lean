@@ -175,16 +175,16 @@ namespace EvidenceState
 
 /-- The order used by the evidence topology is exactly the integer code order. -/
 theorem le_iff_code_le (a b : EState) :
-    a ≤ b ↔ MC.EvidenceState.code a ≤ MC.EvidenceState.code b := Iff.rfl
+    a ≤ b ↔ MC.EvidenceState.MCore.FinalFail.MaterialCalculus.EvidenceState.code a ≤ MC.EvidenceState.MCore.FinalFail.MaterialCalculus.EvidenceState.code b := Iff.rfl
 
 /-- Downward closure associated with the upward-open evidence topology. -/
 def closure (S : EState → Prop) : EState → Prop :=
-  fun x => ∃ y, S y ∧ MC.EvidenceState.code x ≤ MC.EvidenceState.code y
+  fun x => ∃ y, S y ∧ MC.EvidenceState.MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤ MC.EvidenceState.MCore.FinalFail.MaterialCalculus.EvidenceState.code y
 
 /-- Interior associated with the upward-open evidence topology. -/
 def interior (S : EState → Prop) : EState → Prop :=
   fun x => S x ∧
-    ∀ y, MC.EvidenceState.code x ≤ MC.EvidenceState.code y → S y
+    ∀ y, MC.EvidenceState.MCore.FinalFail.MaterialCalculus.EvidenceState.code x ≤ MC.EvidenceState.MCore.FinalFail.MaterialCalculus.EvidenceState.code y → S y
 
 /-- Boundary = closure minus interior. -/
 def boundary (S : EState → Prop) : EState → Prop :=
