@@ -38,6 +38,10 @@ jobs:
             lean/MCore/MaterialMath/TriState/Dynamics.lean
             lean/MCore/MaterialMath/TriState/NumericClasses.lean
             lean/MCore/MaterialMath/TriState/Spectral.lean
+            lean/MCore/MaterialMath/TriState/SymmetricAlgebra.lean
+            lean/MCore/MaterialMath/TriState/Geometry.lean
+            lean/MCore/MaterialMath/TriState/Differential.lean
+            lean/MCore/MaterialMath/TriState/MetricTopology.lean
             lean/MCore/MaterialMath/TriState/NoSmuggling.lean
             lean/MCore/MaterialMath/TerminalPatterns.lean
             lean/MCore/MaterialMath/Contraction.lean
@@ -55,6 +59,10 @@ jobs:
           lake build MCore.MaterialMath.TriState.Dynamics
           lake build MCore.MaterialMath.TriState.NumericClasses
           lake build MCore.MaterialMath.TriState.Spectral
+          lake build MCore.MaterialMath.TriState.SymmetricAlgebra
+          lake build MCore.MaterialMath.TriState.Geometry
+          lake build MCore.MaterialMath.TriState.Differential
+          lake build MCore.MaterialMath.TriState.MetricTopology
           lake build MCore.MaterialMath.TriState.NoSmuggling
           lake build MCore.MaterialMath.TerminalPatterns
           lake build MCore.MaterialMath.Contraction
@@ -64,6 +72,10 @@ jobs:
           set -euo pipefail
           cat > /tmp/tristate_audit.lean <<'EOF'
           import MCore.MaterialMath.TriState.NumericClasses
+          import MCore.MaterialMath.TriState.SymmetricAlgebra
+          import MCore.MaterialMath.TriState.Geometry
+          import MCore.MaterialMath.TriState.Differential
+          import MCore.MaterialMath.TriState.MetricTopology
           import MCore.MaterialMath.TriState.NoSmuggling
           import MCore.MaterialMath.TerminalPatterns
           import MCore.MaterialMath.Contraction
@@ -74,6 +86,10 @@ jobs:
           #print axioms MCore.MaterialMath.TriArithmetic.center_balanced
           #print axioms MCore.MaterialMath.TriArithmetic.spreadEnergy_eq_zero_iff_coherent
           #print axioms MCore.MaterialMath.TriSpectral.spectral_split
+          #print axioms MCore.MaterialMath.TriSymmetric.characteristic_rotate
+          #print axioms MCore.MaterialMath.Phase3.rotate_adds_120_mod_360
+          #print axioms MCore.MaterialMath.TriDifferential.laplacian_eq_forward_add_backward
+          #print axioms MCore.MaterialMath.Phase3.cyclicDistance_ultrametric
           #print axioms MCore.MaterialMath.balanced_sector_exact_spectral_gap
           #print axioms MCore.MaterialMath.geometric_bound
           #print axioms MCore.MaterialMath.nonempty_materialInterpretation_iff_target
