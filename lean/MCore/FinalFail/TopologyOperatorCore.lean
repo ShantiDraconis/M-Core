@@ -33,6 +33,44 @@ def iterateCR (m : M) : Option M :=
 
 def isFixedPoint (m : M) : Prop := T.iterateCR m = some m
 
+
+/-- Both reconstruction channels retract on the same material region. -/
+def isBiRetractionOn (S : M → Prop) : Prop :=
+  T.isRetractionMinusOn S ∧ T.isRetractionPlusOn S
+
+theorem minus_retraction_fiber_nonempty
+    {S : M → Prop} (h : T.isRetractionMinusOn S)
+    {m : M} (hm : S m) :
+    ∃ f, T.fiberMinus m f := by
+  rcases h m hm with ⟨f, _, hC⟩
+  exact ⟨f, hC⟩
+
+theorem plus_retraction_fiber_nonempty
+    {S : M → Prop} (h : T.isRetractionPlusOn S)
+    {m : M} (hm : S m) :
+    ∃ i, T.fiberPlus m i := by
+  rcases h m hm with ⟨i, _, hC⟩
+  exact ⟨i, hC⟩
+
+/-- A genuine two-sided retraction excludes the explicit defect predicate. -/
+theorem bi_retraction_not_defect
+    {S : M → Prop} (h : T.isBiRetractionOn S)
+    {m : M} (hm : S m) :
+    ¬ T.defect m := by
+  intro hd
+  rcases h.1 m hm with ⟨f, hRf, hCf⟩
+  rcases h.2 m hm with ⟨i, hRi, hCi⟩
+  rcases hd with hMinus | hPlus
+  · exact (hMinus f hRf) hCf
+  · exact (hPlus i hRi) hCi
+
+/-- A bilateral retraction gives a fixed point of the reconstruction iteration. -/
+theorem bi_retraction_implies_fixed
+    {S : M → Prop} (h : T.isBiRetractionOn S)
+    {m : M} (hm : S m) :
+    T.isFixedPoint m :=
+  T.minus_retraction_implies_fixed h.1 hm
+
 theorem minus_retraction_implies_fixed
     {S : M → Prop} (h : T.isRetractionMinusOn S) {m : M} (hm : S m) :
     T.isFixedPoint m := by
