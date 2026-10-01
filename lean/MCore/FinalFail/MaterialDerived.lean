@@ -67,8 +67,23 @@ theorem mul_left_cancel_nonzero
     {a b c : TState} (ha : a ≠ 0)
     (h : a * b = a * c) :
     b = c := by
-  cases a <;> cases b <;> cases c <;>
-    simp_all [MCore.FinalFail.MaterialAlgebra.TriState.mul]
+  calc
+    b = (1 : TState) * b :=
+      (MCore.FinalFail.MaterialAlgebra.TriState.one_mul b).symm
+    _ = (a * a⁻¹) * b := by
+      rw [MCore.FinalFail.MaterialAlgebra.TriState.mul_inv_cancel a ha]
+    _ = (a⁻¹ * a) * b := by
+      rw [MCore.FinalFail.MaterialAlgebra.TriState.mul_comm a a⁻¹]
+    _ = a⁻¹ * (a * b) :=
+      MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc _ _ _
+    _ = a⁻¹ * (a * c) := congrArg (fun t => a⁻¹ * t) h
+    _ = (a⁻¹ * a) * c :=
+      (MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc _ _ _).symm
+    _ = (a * a⁻¹) * c := by
+      rw [MCore.FinalFail.MaterialAlgebra.TriState.mul_comm a⁻¹ a]
+    _ = (1 : TState) * c := by
+      rw [MCore.FinalFail.MaterialAlgebra.TriState.mul_inv_cancel a ha]
+    _ = c := MCore.FinalFail.MaterialAlgebra.TriState.one_mul c
 
 theorem inv_eq_self (x : TState) :
     x⁻¹ = x := by
@@ -320,9 +335,16 @@ theorem proven_interior_iff (x : EState) :
       x = .proved := by
   constructor
   · intro h
-    exact h.1
+    exact interior_subset
+      MCore.FinalFail.MaterialCalculus.EvidenceState.ProvenNeighborhood x h
   · intro hx
     subst x
+    change
+      (.proved : EState) = .proved ∧
+      (∀ y : EState,
+        MCore.FinalFail.MaterialCalculus.EvidenceState.code .proved ≤
+          MCore.FinalFail.MaterialCalculus.EvidenceState.code y →
+        y = .proved)
     refine ⟨rfl, ?_⟩
     intro y hy
     cases y <;>
