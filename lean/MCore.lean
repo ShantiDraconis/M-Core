@@ -8,3 +8,5 @@ correctly while the repository-level `MCore.lean` remains provenance.
 -/
 
 import MCore.MaterialMath.TriStateTerminalClosure
+
+import MCore.MaterialMath.TransverseContraction
