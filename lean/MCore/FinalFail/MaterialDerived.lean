@@ -102,6 +102,11 @@ theorem rotate_add (x y : TState) :
     (x + y).rotate = x.rotate + y := by
   cases x <;> cases y <;> rfl
 
+/-- The rotation orbit has exact period dividing three. -/
+theorem orbit_three_step (x : TState) :
+    x.rotate.rotate.rotate = x :=
+  MCore.FinalFail.MaterialAlgebra.TriState.rotate_three x
+
 end TriState
 
 /-! ## 2. Seven-lane vector arithmetic -/
