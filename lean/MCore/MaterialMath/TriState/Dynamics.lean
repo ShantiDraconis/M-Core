@@ -80,8 +80,8 @@ def orbit3 {α : Type*} (x : TriNumber α) :
 /-- The orbit closes after exactly three applications at the operator level. -/
 theorem orbit_closure
     {α : Type*} (x : TriNumber α) :
-    rotate (rotate2 x) = x := by
-  simpa [rotate2] using TriNumber.rotate_three x
+    TriNumber.rotate (TriNumber.rotate2 x) = x := by
+  simpa [TriNumber.rotate2] using TriNumber.rotate_three x
 
 /-- The formal I3 state is harmonic only if its three values collapse,
 which they do not. -/
