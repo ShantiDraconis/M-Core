@@ -2,13 +2,9 @@ import MCore.FinalFail.MaterialDerived
 
 namespace MCore.FinalFail.MaterialGeometry
 
-namespace MA := MCore.FinalFail.MaterialAlgebra
-namespace MC := MCore.FinalFail.MaterialCalculus
-namespace MD := MCore.FinalFail.MaterialDerived
-
-abbrev TState := MA.TriState
-abbrev LaneVector := MA.SevenLaneVector
-abbrev EState := MC.EvidenceState
+abbrev TState := MCore.FinalFail.MaterialAlgebra.TriState
+abbrev LaneVector := MCore.FinalFail.MaterialAlgebra.SevenLaneVector
+abbrev EState := MCore.FinalFail.MaterialCalculus.EvidenceState
 
 /-!
 # Discrete material geometry
@@ -30,7 +26,7 @@ def rho (x : TState) : TState := x.rotate
 
 @[simp] theorem rho_three (x : TState) :
     rho (rho (rho x)) = x := by
-  exact MA.TriState.rotate_three x
+  exact MCore.FinalFail.MaterialAlgebra.TriState.rotate_three x
 
 theorem rho_ne_self (x : TState) :
     rho x ≠ x := by
@@ -38,7 +34,7 @@ theorem rho_ne_self (x : TState) :
 
 theorem rho_injective : Function.Injective rho := by
   intro x y h
-  cases x <;> cases y <;> simp [rho, MA.TriState.rotate] at h ⊢
+  cases x <;> cases y <;> simp [rho, MCore.FinalFail.MaterialAlgebra.TriState.rotate] at h ⊢
 
 theorem rho_surjective : Function.Surjective rho := by
   intro y
@@ -49,7 +45,7 @@ def delta (x y : TState) : TState := x + (-y)
 
 @[simp] theorem delta_self (x : TState) :
     delta x x = 0 := by
-  exact MA.TriState.add_neg x
+  exact MCore.FinalFail.MaterialAlgebra.TriState.add_neg x
 
 theorem delta_eq_zero_iff (x y : TState) :
     delta x y = 0 ↔ x = y := by
@@ -87,7 +83,7 @@ def rotate (x : LaneVector) : LaneVector where
 
 @[simp] theorem rotate_three (x : LaneVector) :
     rotate (rotate (rotate x)) = x := by
-  apply MA.SevenLaneVector.extensionality
+  apply MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality
   · exact TriState.rho_three x.riemann
   · exact TriState.rho_three x.beal
   · exact TriState.rho_three x.pvsnp
@@ -118,7 +114,7 @@ theorem supportCount_le_seven (x : LaneVector) :
   omega
 
 @[simp] theorem supportCount_zero :
-    supportCount MA.SevenLaneVector.zero = 0 := by
+    supportCount MCore.FinalFail.MaterialAlgebra.SevenLaneVector.zero = 0 := by
   rfl
 
 def hamming (x y : LaneVector) : Nat :=
@@ -169,7 +165,7 @@ theorem hamming_eq_zero_iff (x y : LaneVector) :
     have hy : x.yangMills = y.yangMills := by
       by_contra hne
       simp [hr, hb, hp, hn, hh, hd, hne] at h
-    exact MA.SevenLaneVector.extensionality hr hb hp hn hh hd hy
+    exact MCore.FinalFail.MaterialAlgebra.SevenLaneVector.extensionality hr hb hp hn hh hd hy
   · intro h
     subst y
     exact hamming_self x
@@ -190,14 +186,14 @@ end SevenLaneVector
 namespace EvidenceState
 
 def secondDerivative (f : Nat → EState) (n : Nat) : Int :=
-  MC.EvidenceState.derivative f (n + 1) -
-    MC.EvidenceState.derivative f n
+  MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f (n + 1) -
+    MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f n
 
 theorem secondDerivative_bounds
     (f : Nat → EState) (n : Nat) :
     -4 ≤ secondDerivative f n ∧ secondDerivative f n ≤ 4 := by
-  have h1 := MC.EvidenceState.derivative_bounds f (n + 1)
-  have h0 := MC.EvidenceState.derivative_bounds f n
+  have h1 := MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_bounds f (n + 1)
+  have h0 := MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_bounds f n
   unfold secondDerivative
   omega
 
@@ -206,25 +202,25 @@ theorem secondDerivative_eq_zero_of_local_constant
     (h01 : f (n + 1) = f n)
     (h12 : f (n + 2) = f (n + 1)) :
     secondDerivative f n = 0 := by
-  have h0 : MC.EvidenceState.derivative f n = 0 :=
-    (MC.EvidenceState.derivative_eq_zero_iff_state_stable f n).2 h01
-  have h1 : MC.EvidenceState.derivative f (n + 1) = 0 := by
-    apply (MC.EvidenceState.derivative_eq_zero_iff_state_stable f (n + 1)).2
+  have h0 : MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f n = 0 :=
+    (MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_eq_zero_iff_state_stable f n).2 h01
+  have h1 : MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f (n + 1) = 0 := by
+    apply (MCore.FinalFail.MaterialCalculus.EvidenceState.derivative_eq_zero_iff_state_stable f (n + 1)).2
     simpa [Nat.add_assoc] using h12
   unfold secondDerivative
   rw [h0, h1]
   simp
 
 def jumpMagnitude (f : Nat → EState) (n : Nat) : Nat :=
-  Int.natAbs (MC.EvidenceState.derivative f n)
+  Int.natAbs (MCore.FinalFail.MaterialCalculus.EvidenceState.derivative f n)
 
 theorem jumpMagnitude_le_two
     (f : Nat → EState) (n : Nat) :
     jumpMagnitude f n ≤ 2 := by
-  unfold jumpMagnitude MC.EvidenceState.derivative
+  unfold jumpMagnitude MCore.FinalFail.MaterialCalculus.EvidenceState.derivative
   cases h0 : f n <;>
     cases h1 : f (n + 1) <;>
-    norm_num [MC.EvidenceState.code, h0, h1]
+    norm_num [MCore.FinalFail.MaterialCalculus.EvidenceState.code, h0, h1]
 
 end EvidenceState
 
