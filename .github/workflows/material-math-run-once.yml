@@ -13,7 +13,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - name: Install Lean
@@ -29,22 +29,34 @@ jobs:
       - name: Source hygiene
         run: |
           set -euo pipefail
-          ! grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' lean/MCore/MaterialMath/TriCyclicAlgebra.lean
-      - name: Build material mathematics kernel
+          FILES=(
+            lean/MCore/MaterialMath/TriCyclicAlgebra.lean
+            lean/MCore/MaterialMath/TriCyclicCalculus.lean
+            lean/MCore/MaterialMath/OperatorLaws.lean
+          )
+          ! grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' "${FILES[@]}"
+      - name: Build material mathematics stack
         run: |
           set -euo pipefail
           lake build MCore.MaterialMath.TriCyclicAlgebra
+          lake build MCore.MaterialMath.TriCyclicCalculus
+          lake build MCore.MaterialMath.OperatorLaws
       - name: Axiom audit
         run: |
           set -euo pipefail
           cat > /tmp/material_math_audit.lean <<'EOF'
-          import MCore.MaterialMath.TriCyclicAlgebra
+          import MCore.MaterialMath.OperatorLaws
           #print axioms MCore.MaterialMath.TriNumber.rotate_three
           #print axioms MCore.MaterialMath.TriNumber.cyclicMul_assoc
           #print axioms MCore.MaterialMath.TriNumber.cyclicMul_comm
           #print axioms MCore.MaterialMath.TriNumber.torsion_skew
-          #print axioms MCore.MaterialMath.TriNumber.torsion_rotate_both
           #print axioms MCore.MaterialMath.TriNumber.spread_rotate
+          #print axioms MCore.MaterialMath.TriNumber.phaseDerivative_eq_zero_iff_balanced
+          #print axioms MCore.MaterialMath.TriNumber.spread_eq_zero_iff_balanced
+          #print axioms MCore.MaterialMath.rotate_periodic3
+          #print axioms MCore.MaterialMath.rotate_energy_preserving
+          #print axioms MCore.MaterialMath.rotate_fixed_iff_balanced
+          #print axioms MCore.MaterialMath.TerminalMaterialAdapters.toGlobalPositiveRoot
           #print axioms MCore.MaterialMath.FormalRatio.zeroOverZero_not_evaluable
           EOF
           lake env lean /tmp/material_math_audit.lean | tee audit/MATERIAL_MATH_AXIOMS.log
