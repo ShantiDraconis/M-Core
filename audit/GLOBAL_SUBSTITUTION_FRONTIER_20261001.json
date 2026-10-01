@@ -1,0 +1,69 @@
+{
+  "schema": "atk-global-substitution-frontier.v1",
+  "date": "2026-10-01",
+  "rule": "Replace a hypothesis only with an existing no-hypothesis producer whose type is at least as strong as the target. Equivalences, wrappers, accepted hypotheses, finite evidence, axioms, and conditional theorems do not count.",
+  "lanes": [
+    {
+      "problem": "RIEMANN",
+      "current_global_field": "riemann_not_rh : ¬ RiemannHypothesis",
+      "status": "MISORIENTED_FOR_POSITIVE_RH",
+      "correct_positive_terminal": "FiniteSpanApproximatesChi concreteGeneratorFamily",
+      "certified_reduction": "FiniteSpanApproximatesChi ↔ DNLimit = 0; VanishingUpperBound -> DNToZero -> DNLimit = 0",
+      "replacement_found": false,
+      "reason": "m-core-riemann GATE_LEDGER remains OPEN_MATH; no no-hypothesis producer found"
+    },
+    {
+      "problem": "BEAL",
+      "current_global_field": "beal_common_gcd",
+      "exact_terminal": "GCDLowerBoundProducer := ∀ d : BealData, 1 < Nat.gcd d.a (Nat.gcd d.b d.c)",
+      "certified_reduction": "BealConjecture ↔ GCDLowerBoundProducer",
+      "replacement_found": false,
+      "reason": "m-core-beal endpoint remains OPEN_MATH"
+    },
+    {
+      "problem": "P_VS_NP",
+      "current_global_fields": ["pvsnp_sat_in_np", "pvsnp_sat_not_in_p"],
+      "exact_terminal": "P01ConstructionGap + G21Pointwise",
+      "known_source_progress": "m-core-p-vs-np contains a no-hypothesis P01ConstructionGap source theorem on atk/p01-raw-closure-final-20261001",
+      "p01_replacement_found": true,
+      "p01_replacement_kernel_certified_here": false,
+      "p02_replacement_found": false,
+      "reason": "G21Pointwise / SAT not in P remains OPEN_MATH"
+    },
+    {
+      "problem": "NAVIER_STOKES",
+      "current_global_field": "ns_controls",
+      "exact_terminal": "ActualNSToSignedGainCore on genuine flow-derived EnstrophyData",
+      "replacement_found": false,
+      "reason": "M-Core direct producer cut and source repo remain OPEN_MATH"
+    },
+    {
+      "problem": "HODGE",
+      "current_global_field": "hodge_realize",
+      "exact_terminal": "H01MinimalForwardPayload / ConcreteAlgebraicityPayload on genuine smooth-projective rational Hodge classes",
+      "replacement_found": false,
+      "reason": "m-core-hodge GATE_LEDGER remains OPEN_MATH"
+    },
+    {
+      "problem": "BSD",
+      "current_global_fields": ["bsd_rank", "bsd_refined"],
+      "exact_terminal": "rank equality + refined leading-coefficient identity on the same realizable elliptic-curve domain",
+      "replacement_found": false,
+      "reason": "m-core-bsd GATE_LEDGER remains OPEN_MATH; unrestricted abstract forall is explicitly rejected"
+    },
+    {
+      "problem": "YANG_MILLS",
+      "current_global_fields": ["ym_theory", "ym_genuine4D", "ym_reconstructs", "ym_positive_gap"],
+      "exact_terminal": "genuine 4D realization + OS reconstruction + positive mass gap",
+      "replacement_found": false,
+      "reason": "source repo contains no no-hypothesis B6/physical terminal producer"
+    }
+  ],
+  "summary": {
+    "fully_replaced_open_hypotheses": 0,
+    "partial_existing_source_replacements": 1,
+    "partial_lane": "P_VS_NP/P01",
+    "remaining_material_open_lanes": 7,
+    "unconditional_global_final_root": false
+  }
+}
