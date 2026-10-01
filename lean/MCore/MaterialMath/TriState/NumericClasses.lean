@@ -16,7 +16,7 @@ def phaseMean
 theorem phaseMean_rotate
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    phaseMean (rotate x) = phaseMean x := by
+    phaseMean (TriNumber.rotate x) = phaseMean x := by
   simp [phaseMean, phaseSum_rotate]
 
 /-- Remove the common mean component from every phase. -/
@@ -29,8 +29,8 @@ def center
 theorem center_balanced
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    Balanced (center x) := by
-  unfold Balanced phaseSum center phaseMean
+    TriNumber.Balanced (center x) := by
+  unfold TriNumber.Balanced phaseSum center phaseMean
   field_simp
   ring
 
@@ -38,9 +38,9 @@ theorem center_balanced
 theorem center_rotate
     {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    center (rotate x) = rotate (center x) := by
+    center (TriNumber.rotate x) = TriNumber.rotate (center x) := by
   funext p
-  simp [center, rotate, phaseMean_rotate]
+  simp [center, TriNumber.rotate, phaseMean_rotate]
 
 /-- Pairwise phase-spread energy. -/
 def spreadEnergy
@@ -53,8 +53,8 @@ def spreadEnergy
 theorem spreadEnergy_rotate
     {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    spreadEnergy (rotate x) = spreadEnergy x := by
-  simp [spreadEnergy, rotate, Phase3.rotate]
+    spreadEnergy (TriNumber.rotate x) = spreadEnergy x := by
+  simp [spreadEnergy, TriNumber.rotate, Phase3.rotate]
   ring
 
 theorem spreadEnergy_nonneg
@@ -68,18 +68,21 @@ theorem spreadEnergy_nonneg
 theorem spreadEnergy_eq_zero_iff_coherent
     {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    spreadEnergy x = 0 ↔ Coherent x := by
+    spreadEnergy x = 0 ↔ TriNumber.Coherent x := by
   constructor
   · intro h
+    unfold spreadEnergy at h
     have h1 : (x .seed - x .passage)^2 = 0 := by
       nlinarith [sq_nonneg (x .passage - x .manifest),
         sq_nonneg (x .manifest - x .seed)]
     have h2 : (x .passage - x .manifest)^2 = 0 := by
       nlinarith [sq_nonneg (x .seed - x .passage),
         sq_nonneg (x .manifest - x .seed)]
-    constructor
-    · nlinarith
-    · nlinarith
+    have hSP : x .seed = x .passage := by
+      nlinarith [sq_nonneg (x .seed - x .passage)]
+    have hPM : x .passage = x .manifest := by
+      nlinarith [sq_nonneg (x .passage - x .manifest)]
+    exact ⟨hSP, hPM⟩
   · rintro ⟨hSP, hPM⟩
     simp [spreadEnergy, hSP, hPM]
 
@@ -106,7 +109,7 @@ def signSignature
 theorem signSignature_rotate
     {α : Type*} [Ring α] [LinearOrder α] [IsStrictOrderedRing α]
     (x : TriNumber α) :
-    signSignature (rotate x) =
+    signSignature (TriNumber.rotate x) =
       fun p => signSignature x (Phase3.rotate p) := by
   rfl
 
@@ -134,7 +137,10 @@ theorem closedNeighborhood_eq_univ (p : Phase3) :
   · intro _
     by_cases h : q = p
     · exact Or.inl h
-    · exact Or.inr (Phase3.adjacent_of_ne h.symm)
+    · have hpq : p ≠ q := by
+        intro hp
+        exact h hp.symm
+      exact Or.inr (Phase3.adjacent_of_ne hpq)
 
 /-- A phase path is a finite sequence whose successive states are adjacent
 or equal. This recursive form avoids index arithmetic in downstream proofs. -/
