@@ -135,28 +135,97 @@ def smul (a : TriState) (x : SevenLaneVector) : SevenLaneVector where
 
 theorem smul_add (a : TriState) (x y : SevenLaneVector) :
     smul a (x + y) = smul a x + smul a y := by
-  apply SevenLaneVector.extensionality <;>
-    simp [smul, SevenLaneVector.add, TriState.left_distrib]
+  apply SevenLaneVector.extensionality
+  · change a * (x.riemann + y.riemann) = a * x.riemann + a * y.riemann
+    exact TriState.left_distrib _ _ _
+  · change a * (x.beal + y.beal) = a * x.beal + a * y.beal
+    exact TriState.left_distrib _ _ _
+  · change a * (x.pvsnp + y.pvsnp) = a * x.pvsnp + a * y.pvsnp
+    exact TriState.left_distrib _ _ _
+  · change a * (x.navierStokes + y.navierStokes) =
+      a * x.navierStokes + a * y.navierStokes
+    exact TriState.left_distrib _ _ _
+  · change a * (x.hodge + y.hodge) = a * x.hodge + a * y.hodge
+    exact TriState.left_distrib _ _ _
+  · change a * (x.bsd + y.bsd) = a * x.bsd + a * y.bsd
+    exact TriState.left_distrib _ _ _
+  · change a * (x.yangMills + y.yangMills) =
+      a * x.yangMills + a * y.yangMills
+    exact TriState.left_distrib _ _ _
 
 theorem add_smul (a b : TriState) (x : SevenLaneVector) :
     smul (a + b) x = smul a x + smul b x := by
-  apply SevenLaneVector.extensionality <;>
-    simp [smul, SevenLaneVector.add, TriState.right_distrib]
+  apply SevenLaneVector.extensionality
+  · change (a + b) * x.riemann = a * x.riemann + b * x.riemann
+    exact TriState.right_distrib _ _ _
+  · change (a + b) * x.beal = a * x.beal + b * x.beal
+    exact TriState.right_distrib _ _ _
+  · change (a + b) * x.pvsnp = a * x.pvsnp + b * x.pvsnp
+    exact TriState.right_distrib _ _ _
+  · change (a + b) * x.navierStokes =
+      a * x.navierStokes + b * x.navierStokes
+    exact TriState.right_distrib _ _ _
+  · change (a + b) * x.hodge = a * x.hodge + b * x.hodge
+    exact TriState.right_distrib _ _ _
+  · change (a + b) * x.bsd = a * x.bsd + b * x.bsd
+    exact TriState.right_distrib _ _ _
+  · change (a + b) * x.yangMills =
+      a * x.yangMills + b * x.yangMills
+    exact TriState.right_distrib _ _ _
 
 theorem smul_assoc (a b : TriState) (x : SevenLaneVector) :
     smul (a * b) x = smul a (smul b x) := by
-  apply SevenLaneVector.extensionality <;>
-    simp [smul, TriState.mul_assoc]
+  apply SevenLaneVector.extensionality
+  · change (a * b) * x.riemann = a * (b * x.riemann)
+    exact TriState.mul_assoc _ _ _
+  · change (a * b) * x.beal = a * (b * x.beal)
+    exact TriState.mul_assoc _ _ _
+  · change (a * b) * x.pvsnp = a * (b * x.pvsnp)
+    exact TriState.mul_assoc _ _ _
+  · change (a * b) * x.navierStokes = a * (b * x.navierStokes)
+    exact TriState.mul_assoc _ _ _
+  · change (a * b) * x.hodge = a * (b * x.hodge)
+    exact TriState.mul_assoc _ _ _
+  · change (a * b) * x.bsd = a * (b * x.bsd)
+    exact TriState.mul_assoc _ _ _
+  · change (a * b) * x.yangMills = a * (b * x.yangMills)
+    exact TriState.mul_assoc _ _ _
 
 @[simp] theorem one_smul (x : SevenLaneVector) :
     smul 1 x = x := by
-  apply SevenLaneVector.extensionality <;>
-    simp [smul]
+  apply SevenLaneVector.extensionality
+  · change (1 : TriState) * x.riemann = x.riemann
+    exact TriState.one_mul _
+  · change (1 : TriState) * x.beal = x.beal
+    exact TriState.one_mul _
+  · change (1 : TriState) * x.pvsnp = x.pvsnp
+    exact TriState.one_mul _
+  · change (1 : TriState) * x.navierStokes = x.navierStokes
+    exact TriState.one_mul _
+  · change (1 : TriState) * x.hodge = x.hodge
+    exact TriState.one_mul _
+  · change (1 : TriState) * x.bsd = x.bsd
+    exact TriState.one_mul _
+  · change (1 : TriState) * x.yangMills = x.yangMills
+    exact TriState.one_mul _
 
 @[simp] theorem zero_smul (x : SevenLaneVector) :
     smul 0 x = SevenLaneVector.zero := by
-  apply SevenLaneVector.extensionality <;>
-    simp [smul, SevenLaneVector.zero]
+  apply SevenLaneVector.extensionality
+  · change (0 : TriState) * x.riemann = (0 : TriState)
+    exact TriState.zero_mul _
+  · change (0 : TriState) * x.beal = (0 : TriState)
+    exact TriState.zero_mul _
+  · change (0 : TriState) * x.pvsnp = (0 : TriState)
+    exact TriState.zero_mul _
+  · change (0 : TriState) * x.navierStokes = (0 : TriState)
+    exact TriState.zero_mul _
+  · change (0 : TriState) * x.hodge = (0 : TriState)
+    exact TriState.zero_mul _
+  · change (0 : TriState) * x.bsd = (0 : TriState)
+    exact TriState.zero_mul _
+  · change (0 : TriState) * x.yangMills = (0 : TriState)
+    exact TriState.zero_mul _
 
 /-- Coordinatewise cubic law inherited from TriState. -/
 theorem cubic_scalar_identity (a : TriState) (x : SevenLaneVector) :
@@ -169,34 +238,43 @@ end SevenLaneVector
 
 namespace EvidenceState
 
-/-- The order used by the evidence topology is exactly the code order. -/
-theorem le_iff_code_le (a b : EvidenceState) :
-    a ≤ b ↔ code a ≤ code b := Iff.rfl
+private abbrev ecode : MaterialCalculus.EvidenceState → Int :=
+  MaterialCalculus.EvidenceState.code
+
+/-- The order used by the evidence topology is exactly the imported code order. -/
+theorem le_iff_code_le (a b : MaterialCalculus.EvidenceState) :
+    a ≤ b ↔ ecode a ≤ ecode b := Iff.rfl
 
 /-- Downward closure associated with the upward-open evidence topology. -/
-def closure (S : EvidenceState → Prop) : EvidenceState → Prop :=
-  fun x => ∃ y, S y ∧ code x ≤ code y
+def closure (S : MaterialCalculus.EvidenceState → Prop) :
+    MaterialCalculus.EvidenceState → Prop :=
+  fun x => ∃ y, S y ∧ ecode x ≤ ecode y
 
 /-- Interior associated with the upward-open evidence topology. -/
-def interior (S : EvidenceState → Prop) : EvidenceState → Prop :=
-  fun x => S x ∧ ∀ y, code x ≤ code y → S y
+def interior (S : MaterialCalculus.EvidenceState → Prop) :
+    MaterialCalculus.EvidenceState → Prop :=
+  fun x => S x ∧ ∀ y, ecode x ≤ ecode y → S y
 
 /-- Boundary = closure minus interior. -/
-def boundary (S : EvidenceState → Prop) : EvidenceState → Prop :=
+def boundary (S : MaterialCalculus.EvidenceState → Prop) :
+    MaterialCalculus.EvidenceState → Prop :=
   fun x => closure S x ∧ ¬ interior S x
 
-theorem subset_closure (S : EvidenceState → Prop) :
+theorem subset_closure
+    (S : MaterialCalculus.EvidenceState → Prop) :
     ∀ x, S x → closure S x := by
   intro x hx
   exact ⟨x, hx, le_rfl⟩
 
-theorem interior_subset (S : EvidenceState → Prop) :
+theorem interior_subset
+    (S : MaterialCalculus.EvidenceState → Prop) :
     ∀ x, interior S x → S x := by
   intro x hx
+  change S x ∧ (∀ y, ecode x ≤ ecode y → S y) at hx
   exact hx.1
 
 theorem closure_monotone
-    {S T : EvidenceState → Prop}
+    {S T : MaterialCalculus.EvidenceState → Prop}
     (hST : ∀ x, S x → T x) :
     ∀ x, closure S x → closure T x := by
   intro x hx
@@ -204,55 +282,74 @@ theorem closure_monotone
   exact ⟨y, hST y hy, hxy⟩
 
 theorem interior_monotone
-    {S T : EvidenceState → Prop}
+    {S T : MaterialCalculus.EvidenceState → Prop}
     (hST : ∀ x, S x → T x) :
     ∀ x, interior S x → interior T x := by
   intro x hx
+  change S x ∧ (∀ y, ecode x ≤ ecode y → S y) at hx
+  change T x ∧ (∀ y, ecode x ≤ ecode y → T y)
   refine ⟨hST x hx.1, ?_⟩
   intro y hxy
   exact hST y (hx.2 y hxy)
 
-theorem closure_idempotent (S : EvidenceState → Prop) :
+theorem closure_idempotent
+    (S : MaterialCalculus.EvidenceState → Prop) :
     ∀ x, closure (closure S) x ↔ closure S x := by
   intro x
   constructor
   · rintro ⟨y, ⟨z, hz, hyz⟩, hxy⟩
     exact ⟨z, hz, le_trans hxy hyz⟩
-  · intro hx
-    rcases hx with ⟨y, hy, hxy⟩
+  · rintro ⟨y, hy, hxy⟩
     exact ⟨y, ⟨y, hy, le_rfl⟩, hxy⟩
 
-theorem interior_idempotent (S : EvidenceState → Prop) :
+theorem interior_idempotent
+    (S : MaterialCalculus.EvidenceState → Prop) :
     ∀ x, interior (interior S) x ↔ interior S x := by
   intro x
   constructor
   · intro hx
+    change interior S x ∧
+      (∀ y, ecode x ≤ ecode y → interior S y) at hx
     exact hx.1
   · intro hx
-    refine ⟨hx, ?_⟩
-    intro y hxy
-    refine ⟨hx.2 y hxy, ?_⟩
-    intro z hyz
-    exact hx.2 z (le_trans hxy hyz)
+    change S x ∧ (∀ y, ecode x ≤ ecode y → S y) at hx
+    change interior S x ∧
+      (∀ y, ecode x ≤ ecode y → interior S y)
+    refine ⟨?_, ?_⟩
+    · exact hx
+    · intro y hxy
+      change S y ∧ (∀ z, ecode y ≤ ecode z → S z)
+      refine ⟨hx.2 y hxy, ?_⟩
+      intro z hyz
+      exact hx.2 z (le_trans hxy hyz)
 
-theorem proven_closure_all (x : EvidenceState) :
+private def ProvenNeighborhood :
+    MaterialCalculus.EvidenceState → Prop :=
+  fun s => s = .proved
+
+theorem proven_closure_all
+    (x : MaterialCalculus.EvidenceState) :
     closure ProvenNeighborhood x := by
   refine ⟨.proved, rfl, ?_⟩
   cases x <;> decide
 
-theorem proven_interior_iff (x : EvidenceState) :
+theorem proven_interior_iff
+    (x : MaterialCalculus.EvidenceState) :
     interior ProvenNeighborhood x ↔ x = .proved := by
-  cases x <;> simp [interior, ProvenNeighborhood, code]
+  cases x <;>
+    simp [interior, ProvenNeighborhood, ecode, MaterialCalculus.EvidenceState.code]
 
-theorem proven_boundary_iff_not_proved (x : EvidenceState) :
+theorem proven_boundary_iff_not_proved
+    (x : MaterialCalculus.EvidenceState) :
     boundary ProvenNeighborhood x ↔ x ≠ .proved := by
-  rw [boundary]
+  unfold boundary
   constructor
   · intro h hx
     subst x
     exact h.2 ((proven_interior_iff .proved).2 rfl)
   · intro hx
-    exact ⟨proven_closure_all x, fun hi => hx ((proven_interior_iff x).1 hi)⟩
+    exact ⟨proven_closure_all x,
+      fun hi => hx ((proven_interior_iff x).1 hi)⟩
 
 end EvidenceState
 
