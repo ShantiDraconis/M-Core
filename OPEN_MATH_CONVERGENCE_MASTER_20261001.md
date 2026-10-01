@@ -375,3 +375,41 @@ Hardened replacement:
 A genuine vanishing majorant now produces the hardened certificate by squeeze.
 The mathematical frontier is unchanged: prove a real quantitative decay
 estimate for the canonical S_N / DN sequence.
+
+
+## Tri-cyclic contraction proposal kernel — 2026-10-01
+
+Commits:
+- `bc7c8327950e272673cb477c45fba77e3ec2cb41` — exact transverse contraction theorem
+- `a4164561fa32e7c48ba2ffdd32ec12ab4628d37f` — root import
+- `103fde2894552a19d3e52327b6fece3f82fd7a8f` / hardened by `010be73a2670d47ce013b64f2490723d6c193a85` — scalar defect embedding
+- `f1dc2482e903359550d0aef32905d10b37a104e2` — root import
+- `370bd5e7edc82fbe01dacfea074c1d7a595b2f86` — scientific proposal document
+
+PROVED:
+1. Every real tri-state splits uniquely into balanced + zero-sum fluctuation.
+2. The transverse Laplacian has eigenvalue -3 and normalized Laplacian energy 9.
+3. For
+   `x_n = balancedProjection(x) + q^n * fluctuation(x)`
+   with `0 <= q < 1`,
+   `phaseEnergy(x_n) = (q^2)^n * phaseEnergy(x)`.
+4. Therefore the phase energy tends to zero geometrically.
+5. Every scalar defect d has canonical zero-sum embedding `(d,-d,0)`.
+6. Its phase energy is exactly `6*d^2`.
+7. Embedded phase energy is zero iff d=0.
+
+SCIENTIFIC PROPOSAL:
+For scalar-defect lanes, the tri-state representation itself is no longer an
+OPEN adapter. The remaining open mathematics is to prove that the official
+defect observable obeys a genuine contraction/vanishing estimate and that the
+existing official endpoint consumes that defect.
+
+For RH this means the open step is not "find a tri-state representation":
+DN/weighted error can be embedded canonically. The open step is prove its
+actual asymptotic contraction/vanishing.
+
+For F2 lanes, the internal positive spectral gap is also already proved; the
+open step is a faithful semantic/physical identification with the official
+lower-bound or mass-gap observable.
+
+No open problem is promoted by this kernel alone.
