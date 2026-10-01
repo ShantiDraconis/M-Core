@@ -89,9 +89,11 @@ theorem spread_eq_zero_iff_balanced (x : TriNumber ℝ) :
       have d := sq_nonneg (s - m)
       dsimp [spread] at h
       nlinarith
-    constructor
-    · nlinarith [sq_eq_zero_iff.mp h1]
-    · nlinarith [sq_eq_zero_iff.mp h2]
+    have hmc : m = c := by
+      nlinarith [sq_nonneg (m - c)]
+    have hcs : c = s := by
+      nlinarith [sq_nonneg (c - s)]
+    exact ⟨hmc, hcs⟩
   · rintro ⟨hmc, hcs⟩
     subst c
     subst s
