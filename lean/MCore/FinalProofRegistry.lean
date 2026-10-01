@@ -58,8 +58,8 @@ def registry : List SlotRecord := [
     state := .openMath },
   { slot := .yangMills
     sourceRepo := "ShantiDraconis/m-core-yang-mills"
-    sourceRef := "frozen/b60-validate-36792578767-20261001"
-    terminal := "field-level B60 realization consumed by ExactFinalProducer.finalExternal_of_fields"
+    sourceRef := "ea22910e5b737d1236fbde7ad129cc5d8c8c0b8a"
+    terminal := "A1MaterialWitnessV3 + faithful transfer to the K14/K30 physical spectral layer"
     state := .openMath }
 ]
 
