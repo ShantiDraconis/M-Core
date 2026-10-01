@@ -43,7 +43,18 @@
         "commit": "83ac4e21eb0873e9c2422b7f34f873c72ba1c5d5",
         "meaning": "weakened output-alignment self-reference is false even for an explicit polynomial-time machine"
       },
-      "required_next": "construct an actual SAT encoding tied to the same machine/input and prove its semantic equivalence directly; no fixed-point/alignment proposition as input"
+      "required_next": "construct an actual SAT encoding tied to the same machine/input and prove its semantic equivalence directly; no fixed-point/alignment proposition as input",
+      "primitive_positive_laws": {
+        "commit": "ae66fe9abfafbf216e8bdbaaee1dcdf7ac97fa6c",
+        "laws": [
+          "semanticNegationBits has a two-point image: canonical const-false or const-true encoding",
+          "every transformed output has exact length 3",
+          "every literal fixed point must be one of those two concrete encodings",
+          "a candidate correct on the two constant encodings has no literal fixed point",
+          "the explicit four-state discriminator has no literal fixed point"
+        ],
+        "meaning": "self-reference is reduced to finite concrete semantics; no fixed-point/OpenMath assumption is used"
+      }
     },
     "navier_stokes": {
       "official_observable": "velocity/vorticity solution of 3D incompressible NSE; enstrophy y, palinstrophy z, vortex stretching",
@@ -122,9 +133,26 @@
       ],
       "primitive_positive_route": {
         "statement": "explicit candidate -> genuine Frey/local data -> exact candidate-keyed levels -> newform cases -> direct elimination",
-        "bridge_commit": "07e1ae37c89b12838e79b890def2d12f3982d5b9"
+        "bridge_commit": "07e1ae37c89b12838e79b890def2d12f3982d5b9",
+        "local_support": {
+          "commit": "fbfad21bd642226300860b840d1283738eadb6a9",
+          "laws": [
+            "nontrivial divisor of a cannot divide b or c under pairwise primitiveness",
+            "nontrivial divisor of b cannot divide a or c",
+            "nontrivial divisor of c cannot divide a or b",
+            "prime 2 has unique base support from exactly-one-even parity"
+          ],
+          "meaning": "candidate-local prime support is now derived directly from arithmetic, ready for Frey discriminant/conductor calculations"
+        }
       },
       "required_next": "construct Frey/conductor/level/newform data from each concrete candidate and eliminate the resulting concrete cases; do not pass Survives/Eliminator as mathematical input in the final material theorem"
     }
+  },
+  "last_primitive_commits": {
+    "rh_explicit_bcf": "2cd5c886fdc41945c381808b37c21904f61a07f2",
+    "rh_finite_prefix_firewall": "ad6bd6063ee846013437fb6971b28ad6b986e55e",
+    "ns_raw_material_laws": "c09ac86c0bdbca7dab28d491236e55c71d25d764",
+    "beal_local_support": "fbfad21bd642226300860b840d1283738eadb6a9",
+    "p02_primitive_semantics": "ae66fe9abfafbf216e8bdbaaee1dcdf7ac97fa6c"
   }
 }
