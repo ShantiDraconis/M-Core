@@ -98,7 +98,16 @@ explicit degree-at-most-two Lagrange formula. -/
 theorem interpolate_exact (f : TState → TState) :
     ∀ x, interpolate f x = f x := by
   intro x
-  cases x <;> simp [interpolate]
+  cases x with
+  | seed =>
+      cases h : f .seed <;>
+        rfl
+  | transit =>
+      cases h : f .transit <;>
+        rfl
+  | manifest =>
+      cases h : f .manifest <;>
+        rfl
 
 /-- Functional extensional form: every endomorphism is its quadratic
 interpolant. -/
@@ -144,7 +153,9 @@ theorem affine_injective
   change a ≠ .seed at ha
   intro x y h
   cases a <;> cases b <;> cases x <;> cases y <;>
-    simp [affine] at ha h ⊢
+    simp_all [affine,
+      MCore.FinalFail.MaterialAlgebra.TriState.mul,
+      MCore.FinalFail.MaterialAlgebra.TriState.add]
 
 /-- Every nonzero affine slope yields a surjective operator. -/
 theorem affine_surjective
