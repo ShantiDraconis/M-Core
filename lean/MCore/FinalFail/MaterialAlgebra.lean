@@ -4,6 +4,8 @@ namespace MCore.FinalFail.MaterialAlgebra
 
 open MCore.FinalFail.Semantic
 
+universe u uL uF uS uV uC uZ uE uT
+
 /--
 A producer status is semantic metadata only.  It never manufactures a proof.
 The order is intentionally monotone: OPEN_MATH < CONDITIONAL < PROVED.
@@ -241,23 +243,31 @@ instance : Add SevenLaneVector where
 @[simp] theorem SevenLaneVector.zero_add
     (x : SevenLaneVector) :
     SevenLaneVector.zero + x = x := by
-  cases x
-  simp [SevenLaneVector.zero, SevenLaneVector.add]
+  cases x with
+  | mk r b p n h d y =>
+      rfl
 
 theorem SevenLaneVector.add_comm
     (x y : SevenLaneVector) :
     x + y = y + x := by
-  cases x
-  cases y
-  simp [SevenLaneVector.add, TriState.add_comm]
+  cases x with
+  | mk xr xb xp xn xh xd xy =>
+    cases y with
+    | mk yr yb yp yn yh yd yy =>
+      simp only [HAdd.hAdd, Add.add, SevenLaneVector.add]
+      congr <;> apply TriState.add_comm
 
 theorem SevenLaneVector.add_assoc
     (x y z : SevenLaneVector) :
     (x + y) + z = x + (y + z) := by
-  cases x
-  cases y
-  cases z
-  simp [SevenLaneVector.add, TriState.add_assoc]
+  cases x with
+  | mk xr xb xp xn xh xd xy =>
+    cases y with
+    | mk yr yb yp yn yh yd yy =>
+      cases z with
+      | mk zr zb zp zn zh zd zy =>
+        simp only [HAdd.hAdd, Add.add, SevenLaneVector.add]
+        congr <;> apply TriState.add_assoc
 
 /--
 Global frontier residual.  This theorem intentionally exposes the exact seven
