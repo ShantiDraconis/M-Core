@@ -1,6 +1,5 @@
 import MCore.FinalFail.MaterialDerived
 import MCore.FinalFail.MaterialGeometry
-import MCore.FinalFail.MaterialPolynomial
 
 namespace MCore.FinalFail.MaterialLinearTopology
 
@@ -203,37 +202,37 @@ theorem hamming_smul_nonzero
   have hR :
       a * x.riemann = a * y.riemann ↔ x.riemann = y.riemann := by
     constructor
-    · exact MCore.FinalFail.MaterialPolynomial.TriState.affine_injective a 0 ha
+    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
     · intro h; exact congrArg (fun z : TState => a * z) h
   have hB :
       a * x.beal = a * y.beal ↔ x.beal = y.beal := by
     constructor
-    · exact MCore.FinalFail.MaterialPolynomial.TriState.affine_injective a 0 ha
+    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
     · intro h; exact congrArg (fun z : TState => a * z) h
   have hP :
       a * x.pvsnp = a * y.pvsnp ↔ x.pvsnp = y.pvsnp := by
     constructor
-    · exact MCore.FinalFail.MaterialPolynomial.TriState.affine_injective a 0 ha
+    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
     · intro h; exact congrArg (fun z : TState => a * z) h
   have hN :
       a * x.navierStokes = a * y.navierStokes ↔ x.navierStokes = y.navierStokes := by
     constructor
-    · exact MCore.FinalFail.MaterialPolynomial.TriState.affine_injective a 0 ha
+    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
     · intro h; exact congrArg (fun z : TState => a * z) h
   have hH :
       a * x.hodge = a * y.hodge ↔ x.hodge = y.hodge := by
     constructor
-    · exact MCore.FinalFail.MaterialPolynomial.TriState.affine_injective a 0 ha
+    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
     · intro h; exact congrArg (fun z : TState => a * z) h
   have hD :
       a * x.bsd = a * y.bsd ↔ x.bsd = y.bsd := by
     constructor
-    · exact MCore.FinalFail.MaterialPolynomial.TriState.affine_injective a 0 ha
+    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
     · intro h; exact congrArg (fun z : TState => a * z) h
   have hY :
       a * x.yangMills = a * y.yangMills ↔ x.yangMills = y.yangMills := by
     constructor
-    · exact MCore.FinalFail.MaterialPolynomial.TriState.affine_injective a 0 ha
+    · exact MCore.FinalFail.MaterialDerived.TriState.mul_left_cancel_nonzero ha
     · intro h; exact congrArg (fun z : TState => a * z) h
   simp [hR, hB, hP, hN, hH, hD, hY]
 
