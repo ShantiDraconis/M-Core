@@ -125,7 +125,8 @@ theorem smul_eq_iff_nonzero
         MaterialDerived.SevenLaneVector.smul a y ↔
       x = y := by
   constructor
-  · exact (smul_injective_nonzero a ha) x y
+  · intro h
+    exact smul_injective_nonzero a ha h
   · intro h
     exact congrArg (fun z : LaneVector =>
       MaterialDerived.SevenLaneVector.smul a z) h
