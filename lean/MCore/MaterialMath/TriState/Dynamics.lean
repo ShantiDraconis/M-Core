@@ -27,7 +27,7 @@ theorem coherent_implies_harmonic
 /-- Over an ordered field, the only harmonic tri-numbers are coherent.
 Thus the kernel of the cyclic Laplacian is exactly the diagonal subspace. -/
 theorem harmonic_implies_coherent
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     {x : TriNumber α}
     (h : Harmonic x) :
     Coherent x := by
@@ -37,7 +37,7 @@ theorem harmonic_implies_coherent
   constructor <;> linarith
 
 theorem harmonic_iff_coherent
-    {α : Type*} [LinearOrderedField α]
+    {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
     {x : TriNumber α} :
     Harmonic x ↔ Coherent x := by
   constructor
@@ -81,7 +81,7 @@ def orbit3 {α : Type*} (x : TriNumber α) :
 theorem orbit_closure
     {α : Type*} (x : TriNumber α) :
     rotate (rotate2 x) = x := by
-  simpa [rotate2] using rotate_three x
+  simpa [rotate2] using TriNumber.rotate_three x
 
 /-- The formal I3 state is harmonic only if its three values collapse,
 which they do not. -/
