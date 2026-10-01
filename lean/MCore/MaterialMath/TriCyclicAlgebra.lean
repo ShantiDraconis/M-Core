@@ -84,33 +84,19 @@ theorem one_cyclicMul [CommSemiring α] (x : TriNumber α) :
 
 theorem cyclicMul_comm [CommSemiring α] (x y : TriNumber α) :
     cyclicMul x y = cyclicMul y x := by
-  cases x
-  cases y
-  simp [cyclicMul]
-  constructor <;> ring
+  apply TriNumber.ext <;> simp [cyclicMul] <;> ring
 
 theorem cyclicMul_assoc [CommSemiring α] (x y z : TriNumber α) :
     cyclicMul (cyclicMul x y) z = cyclicMul x (cyclicMul y z) := by
-  cases x
-  cases y
-  cases z
-  simp [cyclicMul]
-  constructor <;> ring
+  apply TriNumber.ext <;> simp [cyclicMul] <;> ring
 
 theorem cyclicMul_add_left [CommSemiring α] (x y z : TriNumber α) :
     cyclicMul (add x y) z = add (cyclicMul x z) (cyclicMul y z) := by
-  cases x
-  cases y
-  cases z
-  simp [cyclicMul, add]
-  constructor <;> ring
+  apply TriNumber.ext <;> simp [cyclicMul, add] <;> ring
 
 theorem rotate_cyclicMul [CommSemiring α] (x y : TriNumber α) :
     rotate (cyclicMul x y) = cyclicMul (rotate x) y := by
-  cases x
-  cases y
-  simp [rotate, cyclicMul]
-  constructor <;> ring
+  apply TriNumber.ext <;> simp [rotate, cyclicMul] <;> ring
 
 /-- Total symmetric content. -/
 def total [Add α] (x : TriNumber α) : α :=
