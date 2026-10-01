@@ -1,0 +1,38 @@
+{
+  "schema": "atk.ns-external-breakdown-import.v1",
+  "date": "2026-10-01",
+  "source_repo": "openai/NavierStokesAndEuler",
+  "source_branch": "main",
+  "source_toolchain": "leanprover/lean4:v4.34.0-rc2",
+  "local_toolchain": "leanprover/lean4:v4.19.0",
+  "source_status": "SELF_ASSESSED_FORMALIZATION",
+  "clay_status": "APPARENTLY_SETTLED_EVALUATION_ONGOING",
+  "main_results": [
+    {
+      "declaration": "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+      "orientation": "C",
+      "content": "for every nu>0, admissible smooth decaying initial data and forcing exist for which no global smooth R3 solution exists",
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "NavierStokes.Comparator.navier_stokes_breakdown_periodic",
+      "orientation": "D",
+      "content": "for every nu>0, admissible smooth periodic initial data and forcing exist for which no global smooth periodic solution exists",
+      "reported_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "local_target": "MCore.FinalFail.Semantic.NavierStokesBreakdownTarget / NavierStokesResolutionTarget",
+  "integration_state": "PORT_REQUIRED",
+  "reason": "toolchain mismatch: source 4.34.0-rc2 vs local 4.19.0",
+  "positive_route_status": "RETAINED_FOR_UNFORCED_REGULARITY_RESEARCH",
+  "negative_route_status": "EXTERNAL_FORMAL_CLOSURE_CANDIDATE",
+  "promotion_rule": "Do not mark locally CERTIFIED until theorem statements are ported or independently comparator-checked against the local target."
+}
