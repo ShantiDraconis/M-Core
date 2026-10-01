@@ -43,7 +43,15 @@ jobs:
           #print axioms MCore.FinalFail.MaterialAlgebra.Residual.and_proposition
           #print axioms MCore.FinalFail.MaterialAlgebra.Residual.or_proposition
           #print axioms MCore.FinalFail.MaterialAlgebra.TriState.rotate_three
+          #print axioms MCore.FinalFail.MaterialAlgebra.TriState.add_comm
           #print axioms MCore.FinalFail.MaterialAlgebra.TriState.add_assoc
+          #print axioms MCore.FinalFail.MaterialAlgebra.TriState.mul_comm
+          #print axioms MCore.FinalFail.MaterialAlgebra.TriState.mul_assoc
+          #print axioms MCore.FinalFail.MaterialAlgebra.TriState.left_distrib
+          #print axioms MCore.FinalFail.MaterialAlgebra.TriState.right_distrib
+          #print axioms MCore.FinalFail.MaterialAlgebra.TriState.mul_inv_cancel
+          #print axioms MCore.FinalFail.MaterialAlgebra.TriState.cubic_idempotence
+          #print axioms MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add_comm
           #print axioms MCore.FinalFail.MaterialAlgebra.SevenLaneVector.add_assoc
           #print axioms MCore.FinalFail.MaterialAlgebra.global_frontier_is_seven_component_product
           EOF
