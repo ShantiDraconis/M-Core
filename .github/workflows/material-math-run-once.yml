@@ -35,6 +35,7 @@ jobs:
             lean/MCore/MaterialMath/TriCyclicDecomposition.lean
             lean/MCore/MaterialMath/TriCyclicGeometry.lean
             lean/MCore/MaterialMath/OperatorLaws.lean
+            lean/MCore/MaterialMath/TriCyclicSpectral.lean
           )
           ! grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' "${FILES[@]}"
       - name: Build material mathematics stack
@@ -45,6 +46,7 @@ jobs:
           lake build MCore.MaterialMath.TriCyclicDecomposition
           lake build MCore.MaterialMath.TriCyclicGeometry
           lake build MCore.MaterialMath.OperatorLaws
+          lake build MCore.MaterialMath.TriCyclicSpectral
       - name: Axiom audit
         run: |
           set -euo pipefail
@@ -68,6 +70,10 @@ jobs:
           #print axioms MCore.MaterialMath.rotate_energy_preserving
           #print axioms MCore.MaterialMath.rotate_fixed_iff_balanced
           #print axioms MCore.MaterialMath.TerminalMaterialAdapters.toGlobalPositiveRoot
+          #print axioms MCore.MaterialMath.TriNumber.phaseLaplacian_zeroSum_eigen
+          #print axioms MCore.MaterialMath.TriNumber.phaseLaplacian_eq_neg_three_fluctuation
+          #print axioms MCore.MaterialMath.TriNumber.normalizedTransverseGapLaw
+          #print axioms MCore.MaterialMath.TriNumber.phaseDerivative_cubic_closure
           #print axioms MCore.MaterialMath.FormalRatio.zeroOverZero_not_evaluable
           EOF
           lake env lean /tmp/material_math_audit.lean | tee audit/MATERIAL_MATH_AXIOMS.log
