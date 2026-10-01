@@ -5,17 +5,17 @@ namespace MCore.MaterialMath
 namespace TriNumber
 
 /-- Mean phase coordinate of a real tri-number. -/
-def mean (x : TriNumber ℝ) : ℝ :=
+noncomputable def mean (x : TriNumber ℝ) : ℝ :=
   total x / 3
 
 /-- Projection onto the one-dimensional balanced mode. -/
-def balancedProjection (x : TriNumber ℝ) : TriNumber ℝ where
+noncomputable def balancedProjection (x : TriNumber ℝ) : TriNumber ℝ where
   manifest := mean x
   crossing := mean x
   seed := mean x
 
 /-- Zero-sum fluctuation around the balanced mode. -/
-def fluctuation (x : TriNumber ℝ) : TriNumber ℝ where
+noncomputable def fluctuation (x : TriNumber ℝ) : TriNumber ℝ where
   manifest := x.manifest - mean x
   crossing := x.crossing - mean x
   seed := x.seed - mean x
@@ -27,7 +27,6 @@ theorem balancedProjection_is_balanced (x : TriNumber ℝ) :
 theorem total_balancedProjection (x : TriNumber ℝ) :
     total (balancedProjection x) = total x := by
   simp [total, balancedProjection, mean]
-  ring
 
 theorem fluctuation_zeroSum (x : TriNumber ℝ) :
     ZeroSum (fluctuation x) := by
@@ -43,7 +42,6 @@ theorem balanced_add_fluctuation (x : TriNumber ℝ) :
 theorem spread_fluctuation (x : TriNumber ℝ) :
     spread (fluctuation x) = spread x := by
   simp [spread, fluctuation, mean]
-  ring
 
 /-- Balanced projection has zero spread. -/
 theorem spread_balancedProjection (x : TriNumber ℝ) :
@@ -68,7 +66,9 @@ theorem fluctuation_eq_zero_iff_balanced (x : TriNumber ℝ) :
     change c = s at hcs
     subst c
     subst s
-    simp [fluctuation, mean, total]
+    apply TriNumber.ext <;>
+      simp [fluctuation, mean, total] <;>
+      ring
 
 /-- Rotation commutes with the balanced projection. -/
 theorem balancedProjection_rotate (x : TriNumber ℝ) :
@@ -107,27 +107,26 @@ theorem balanced_transverse_decomposition_unique
     (ht : ZeroSum t)
     (hdecomp : add b t = x) :
     b = balancedProjection x ∧ t = fluctuation x := by
-  have htotal : total b = total x := by
-    have h := congrArg total hdecomp
-    rcases b with ⟨bm, bc, bs⟩
-    rcases t with ⟨tm, tc, ts⟩
-    simp [add, total, ZeroSum] at h ht ⊢
-    linarith
+  rcases x with ⟨xm, xc, xs⟩
   rcases b with ⟨bm, bc, bs⟩
+  rcases t with ⟨tm, tc, ts⟩
+  change bm = bc ∧ bc = bs at hb
   rcases hb with ⟨hbc, hcs⟩
-  change bm = bc at hbc
-  change bc = bs at hcs
   subst bc
   subst bs
-  have hbm : bm = mean x := by
-    simp [mean] at htotal
+  change tm + tc + ts = 0 at ht
+  have hm := congrArg TriNumber.manifest hdecomp
+  have hc := congrArg TriNumber.crossing hdecomp
+  have hs := congrArg TriNumber.seed hdecomp
+  simp [add] at hm hc hs
+  have hbm : bm = (xm + xc + xs) / 3 := by
     linarith
-  subst bm
   constructor
-  · simp [balancedProjection]
-  · have hx := hdecomp
-    simp [add, balancedProjection, fluctuation] at hx ⊢
-    exact hx.symm
+  · apply TriNumber.ext <;>
+      simp [balancedProjection, mean, total, hbm]
+  · apply TriNumber.ext <;>
+      simp [fluctuation, mean, total] <;>
+      linarith
 
 /-- Equilibrium mode: the balanced one-dimensional part. -/
 def EquilibriumMode (x : TriNumber ℝ) : Prop :=
@@ -150,7 +149,7 @@ namespace SingularResolution
 
 /-- Every real tri-state has a canonical singular-resolution representative:
 its zero-sum fluctuation. -/
-def ofTriNumber (x : TriNumber ℝ) : SingularResolution where
+noncomputable def ofTriNumber (x : TriNumber ℝ) : SingularResolution where
   state := TriNumber.fluctuation x
   transverse := TriNumber.fluctuation_zeroSum x
 
