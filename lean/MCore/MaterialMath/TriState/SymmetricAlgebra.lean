@@ -24,21 +24,21 @@ def e3 {α : Type*} [CommRing α] (x : TriNumber α) : α :=
 theorem e1_rotate
     {α : Type*} [CommRing α]
     (x : TriNumber α) :
-    e1 (rotate x) = e1 x := by
-  simp [e1, rotate, Phase3.rotate, add_assoc, add_comm, add_left_comm]
+    e1 (TriNumber.rotate x) = e1 x := by
+  simp [e1, TriNumber.rotate, Phase3.rotate, add_assoc, add_comm, add_left_comm]
 
 theorem e2_rotate
     {α : Type*} [CommRing α]
     (x : TriNumber α) :
-    e2 (rotate x) = e2 x := by
-  simp [e2, rotate, Phase3.rotate]
+    e2 (TriNumber.rotate x) = e2 x := by
+  simp [e2, TriNumber.rotate, Phase3.rotate]
   ring
 
 theorem e3_rotate
     {α : Type*} [CommRing α]
     (x : TriNumber α) :
-    e3 (rotate x) = e3 x := by
-  simp [e3, rotate, Phase3.rotate]
+    e3 (TriNumber.rotate x) = e3 x := by
+  simp [e3, TriNumber.rotate, Phase3.rotate]
   ring
 
 /-- Characteristic cubic associated with a tri-number. -/
@@ -51,7 +51,7 @@ def characteristic
 theorem characteristic_rotate
     {α : Type*} [CommRing α]
     (x : TriNumber α) (t : α) :
-    characteristic (rotate x) t = characteristic x t := by
+    characteristic (TriNumber.rotate x) t = characteristic x t := by
   simp [characteristic, e1_rotate, e2_rotate, e3_rotate]
 
 /-- Every phase coordinate is a root of the characteristic cubic. -/
@@ -90,7 +90,7 @@ def fingerprint
 theorem fingerprint_rotate
     {α : Type*} [CommRing α]
     (x : TriNumber α) :
-    fingerprint (rotate x) = fingerprint x := by
+    fingerprint (TriNumber.rotate x) = fingerprint x := by
   apply Fingerprint.ext <;>
   simp [fingerprint, e1_rotate, e2_rotate, e3_rotate]
 
