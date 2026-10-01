@@ -79,9 +79,9 @@ theorem spreadEnergy_eq_zero_iff_coherent
       nlinarith [sq_nonneg (x .seed - x .passage),
         sq_nonneg (x .manifest - x .seed)]
     have hSP : x .seed = x .passage := by
-      nlinarith [sq_nonneg (x .seed - x .passage)]
+      nlinarith [h1, sq_nonneg (x .seed - x .passage)]
     have hPM : x .passage = x .manifest := by
-      nlinarith [sq_nonneg (x .passage - x .manifest)]
+      nlinarith [h2, sq_nonneg (x .passage - x .manifest)]
     exact ⟨hSP, hPM⟩
   · rintro ⟨hSP, hPM⟩
     simp [spreadEnergy, hSP, hPM]
