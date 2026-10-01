@@ -83,9 +83,15 @@
           "item": "WeightedLow constants C_abs=0.6,C_Young=50 imply gamma_effective=-35 while requiring gamma>0",
           "class": "FALSIFIED_ROUTE",
           "commit": "e965195e2aa7b71d1adccde01394a690f27a5106"
+        },
+        {
+          "item": "BetaHalfCoherence(direction-only) -> ClosedDepletion universal implication",
+          "class": "FALSIFIED_ROUTE",
+          "commit": "fd745c37598f90483a1e3c39ea7f3bdc0a8be189",
+          "reason": "explicit one-point countermodel satisfies directional coherence vacuously while ClosedDepletion fails"
         }
       ],
-      "next_exact_lemma": "derive from ActualNS a positive bulk coefficient, weighted exceptional-tail coefficient, and strict budget cBulk+cTail<1 (or flexible theta<1 plus energy-integrable remainder) with correct singular-kernel weight",
+      "next_exact_lemma": "derive a flow-coupled joint/strain-sensitive bulk estimate plus weighted exceptional-tail control and a strict positive budget from ActualNS; direction-only coherence is formally insufficient",
       "result": "NO_PRODUCER"
     },
     "hodge": {
