@@ -12,3 +12,5 @@ import MCore.MaterialMath.TriStateTerminalClosure
 import MCore.MaterialMath.TransverseContraction
 
 import MCore.MaterialMath.ScalarDefectEmbedding
+
+import MCore.MaterialMath.ProfiledTransverseDecay
