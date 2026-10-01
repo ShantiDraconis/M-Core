@@ -116,10 +116,38 @@
         {
           "item": "H01UniversalMaterialProducer -> hardened terminal",
           "class": "EXACT_ADAPTER"
+        },
+        {
+          "item": "R2 hard-core constant-Qbar regression",
+          "class": "ENDPOINT_EQUIVALENT",
+          "theorem": "trivial_qbar_r2_payload_iff_concrete_payload",
+          "source_sha": "fb538a8ec6b55d63993e90fe56d8899778daa267",
+          "meaning": "a generic R2 solver already solves concrete algebraicity; do not treat R2 as auxiliary"
+        },
+        {
+          "item": "R3a bridge-valuative minimal cut",
+          "class": "SUFFICIENT_REDUCTION",
+          "source_sha": "1640233d005b7c8ef6a263712e08165f08a46ed9",
+          "open_fields": [
+            "bridge base existence tied to exact path",
+            "DVR specialization semantics",
+            "relative cycle family existence with source recovery and DVR compatibility"
+          ]
+        },
+        {
+          "item": "Hilbert/Chow proper+dense image gives basepoint reachability",
+          "class": "PROVED_INTERNAL",
+          "source_sha": "1336c1de73d7ce9dc58690837850b38d2c96bf48",
+          "remaining": [
+            "source point on concrete Hilbert/Chow component",
+            "properness/closed image",
+            "dominance/dense image",
+            "universal-family endpoint adapter"
+          ]
         }
       ],
-      "next_exact_lemma": "for each X,p,alpha build SpreadData + R1DescentPointContract + R2PointProductionContract and prove R3VariationalAlgebraicityPayload on the same spread",
-      "result": "NO_UNIVERSAL_INHABITANT"
+      "next_exact_lemma": "do not attempt generic R2 shortcut; produce a nontrivial spread/descent where R2 is provable by special geometry, and for R3 build a path-matched relative-cycle bridge with DVR specialization plus cycle-class compatibility; constant-Qbar R2 is endpoint-equivalent",
+      "result": "R2_ENDPOINT_HARD_CORE / R3A_GEOMETRIC_SUBGAPS"
     },
     "bsd": {
       "target": "concrete same-curve BSD model + high-rank + refined leading coefficient",
@@ -189,10 +217,23 @@
         {
           "item": "signature-only level table / level-2-only universal promotion",
           "class": "FALSIFIED_ROUTE"
+        },
+        {
+          "item": "T12 parity-reduced counterexample -> equal odd-prime OR all-four OR concrete T59ResidualCandidate",
+          "class": "EXACT_DECOMPOSITION",
+          "commit": "67a0f3ab4e40a3103fc0d46986a587b5817a7e28"
+        },
+        {
+          "item": "Mathlib FLT(4) eliminates all-four; Mathlib FLT(3) eliminates equal-prime ell=3",
+          "class": "EXACT_PROVED_COMPONENT",
+          "commits": [
+            "a3ecdbacd0b807f3f8b9ab5362a7b9927b7460dc",
+            "7489360970444808c522615c8bad42b67cd6c781"
+          ]
         }
       ],
-      "next_exact_lemma": "either prove TripleGCD>1 directly, or construct a complete bridge from every primitive Beal counterexample into a covered lowered-newform case plus concrete five-family elimination certificates, then derive contradiction",
-      "result": "NO_TERMINAL_PRODUCER"
+      "next_exact_lemma": "current modular frontier: (A) FLTAt ell for odd primes ell>3 on the equal-prime branch, plus (B) eliminate every concrete T59ResidualCandidate via candidate-keyed conductor/level/newform data; either pair closes Beal through T59_beyondThree_and_residual_close_beal",
+      "result": "TWO_MATERIAL_BRANCHES_REMAIN"
     }
   }
 }
