@@ -68,8 +68,9 @@ theorem bi_retraction_not_defect
 theorem bi_retraction_implies_fixed
     {S : M → Prop} (h : T.isBiRetractionOn S)
     {m : M} (hm : S m) :
-    T.isFixedPoint m :=
-  T.minus_retraction_implies_fixed h.1 hm
+    T.isFixedPoint m := by
+  rcases h.1 m hm with ⟨f, hR, hC⟩
+  simp [isFixedPoint, iterateCR, hR, hC]
 
 theorem minus_retraction_implies_fixed
     {S : M → Prop} (h : T.isRetractionMinusOn S) {m : M} (hm : S m) :
