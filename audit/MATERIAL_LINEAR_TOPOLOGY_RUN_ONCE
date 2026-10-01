@@ -1,1 +1,1 @@
-trigger material linear topology validation
+retry material linear topology after explicit smul qualification
