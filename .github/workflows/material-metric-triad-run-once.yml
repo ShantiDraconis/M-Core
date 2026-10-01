@@ -1,0 +1,73 @@
+name: Material metric triad one-shot
+
+on:
+  push:
+    branches:
+      - atk/global-material-frontier-20261001
+    paths:
+      - audit/MATERIAL_METRIC_TRIAD_RUN_ONCE
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lean
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve dependencies
+        run: |
+          set -euo pipefail
+          lake update
+          lake exe cache get
+
+      - name: Source hygiene
+        run: |
+          set -euo pipefail
+          FILES=(
+            lean/MCore/FinalFail/MaterialMetric.lean
+            lean/MCore/FinalFail/MaterialTriadBridge.lean
+          )
+          if grep -nE '\b(sorry|admit)\b|^[[:space:]]*(axiom|constant)[[:space:]]' "${FILES[@]}"; then
+            echo "ERROR: prohibited proof escape found"
+            exit 1
+          fi
+
+      - name: Build metric and triad bridge
+        run: |
+          set -euo pipefail
+          lake build MCore.FinalFail.MaterialMetric
+          lake build MCore.FinalFail.MaterialTriadBridge
+
+      - name: Axiom audit
+        run: |
+          set -euo pipefail
+          cat > /tmp/material_metric_triad_audit.lean <<'EOF'
+          import MCore.FinalFail.MaterialTriadBridge
+          #print axioms MCore.FinalFail.MaterialMetric.TriState.coordinateDist_triangle
+          #print axioms MCore.FinalFail.MaterialMetric.SevenLaneVector.hamming_triangle
+          #print axioms MCore.FinalFail.MaterialMetric.SevenLaneVector.rotate_closedBall_iff
+          #print axioms MCore.FinalFail.MaterialMetric.SevenLaneVector.reflect_closedBall_iff
+          #print axioms MCore.FinalFail.MaterialTriadBridge.lanePhaseTriad_biRetraction
+          #print axioms MCore.FinalFail.MaterialTriadBridge.lanePhaseTriad_not_defect
+          #print axioms MCore.FinalFail.MaterialTriadBridge.lanePhaseTriad_fixed
+          #print axioms MCore.FinalFail.MaterialTriadBridge.lanePhaseTriad_plusFiber_nonempty
+          EOF
+          lake env lean /tmp/material_metric_triad_audit.lean | tee audit/MATERIAL_METRIC_TRIAD_AXIOMS.log
+          ! grep -q 'sorryAx' audit/MATERIAL_METRIC_TRIAD_AXIOMS.log
+
+      - name: Upload audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: material-metric-triad-${{ github.sha }}
+          path: audit/MATERIAL_METRIC_TRIAD_AXIOMS.log
+          if-no-files-found: warn
