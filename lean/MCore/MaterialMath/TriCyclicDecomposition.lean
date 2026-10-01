@@ -64,6 +64,8 @@ theorem fluctuation_eq_zero_iff_balanced (x : TriNumber ℝ) :
   · intro h
     rcases x with ⟨m, c, s⟩
     rcases h with ⟨hmc, hcs⟩
+    change m = c at hmc
+    change c = s at hcs
     subst c
     subst s
     simp [fluctuation, mean, total]
@@ -89,6 +91,8 @@ theorem balanced_and_zeroSum_eq_zero
     x = { manifest := 0, crossing := 0, seed := 0 } := by
   rcases x with ⟨m, c, s⟩
   rcases hb with ⟨hmc, hcs⟩
+  change m = c at hmc
+  change c = s at hcs
   subst c
   subst s
   simp [ZeroSum, total] at hz
@@ -111,6 +115,8 @@ theorem balanced_transverse_decomposition_unique
     linarith
   rcases b with ⟨bm, bc, bs⟩
   rcases hb with ⟨hbc, hcs⟩
+  change bm = bc at hbc
+  change bc = bs at hcs
   subst bc
   subst bs
   have hbm : bm = mean x := by
