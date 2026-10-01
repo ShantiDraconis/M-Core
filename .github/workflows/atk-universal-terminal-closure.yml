@@ -1,0 +1,54 @@
+name: ATK Universal Terminal Closure
+
+on:
+  push:
+    branches:
+      - atk/universal-terminal-closure-20261001
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Build aligned producer cuts and universal law
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build MCore.FinalFail.DirectProducerCuts
+          lake build MCore.FinalFail.UniversalTerminalClosure
+          lake build MCore.FinalProofRegistry
+          lake build MCore.FinalProofFirewall
+          lake build
+
+      - name: Reject placeholders
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '\b(sorry|admit|sorryAx)\b' --include='*.lean' lean; then
+            echo "FAIL_CLOSED: Lean placeholder detected"
+            exit 1
+          fi
+          echo "HYGIENE_GREEN"
