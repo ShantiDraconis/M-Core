@@ -347,3 +347,31 @@ positive a,b,c; exponents x,y,z > 2; and a^x+b^y=c^z.
 No hidden gcd/common-prime assumption is present.
 Therefore `GCDLowerBoundProducer` is not definitionally or structurally
 inhabited; it remains genuine arithmetic OPEN_MATH.
+
+
+### RH multistate hardening — 2026-10-01
+
+Repository:
+`ShantiDraconis/m-core-riemann@atk/rh-multistate-decay-hardening-20261001`
+
+Commits:
+- `0ab16337c2a0c312a28c81bdc4d66aa4014e13b6` — legacy multistate decay counteraudit + hardened real decay
+- `a1495a01440ff469c5c17e493f6cb409fd56bfa4` — root import
+
+Finding:
+legacy `WeightedModularBilinearDecay` was structurally trivial because its
+`vanishes : Prop` field was unconstrained by `sequence`. Every sequence
+could inhabit it by taking `vanishes := True`.
+
+Therefore:
+- `MultistateSN` remains valid as presentation/invariance structure;
+- `close_0_1_2_from_weighted_decay` must NOT be treated as an RH proof;
+- no promotion through the legacy decay interface is allowed.
+
+Hardened replacement:
+`RealWeightedModularBilinearDecay` carries
+`Filter.Tendsto sequence Filter.atTop (nhds 0)`.
+
+A genuine vanishing majorant now produces the hardened certificate by squeeze.
+The mathematical frontier is unchanged: prove a real quantitative decay
+estimate for the canonical S_N / DN sequence.
