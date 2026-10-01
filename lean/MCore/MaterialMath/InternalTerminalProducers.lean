@@ -19,9 +19,12 @@ theorem internal_F2_positive_gap :
         (Phase3.cyclicDistance Phase3.seed p.1 : ℝ)) := by
   refine ⟨1, by norm_num, ?_⟩
   intro p
+  have hne : Phase3.seed ≠ p.1 := by
+    intro h
+    exact p.2 h.symm
   have hdist :
       Phase3.cyclicDistance Phase3.seed p.1 = 1 :=
-    Phase3.cyclicDistance_eq_one p.2
+    Phase3.cyclicDistance_eq_one hne
   norm_num [hdist]
 
 /-- Closed, unconditional F4 realization producer: every phase realizes itself. -/
