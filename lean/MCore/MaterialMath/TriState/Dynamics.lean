@@ -88,10 +88,8 @@ which they do not. -/
 theorem I3_not_harmonic :
     ¬ Harmonic I3 := by
   intro h
-  have hc : Coherent I3 :=
-    harmonic_implies_coherent (α := Int) h
-  rcases hc with ⟨hsp, _⟩
-  norm_num [I3] at hsp
+  have hs := congrFun h Phase3.seed
+  norm_num [Harmonic, laplacian, I3, Phase3.rotate, Phase3.rotate2] at hs
 
 /-- Rotation preserves the distinction of the three I3 phase values. -/
 theorem I3_orbit_nondegenerate :
