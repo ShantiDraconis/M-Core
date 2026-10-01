@@ -3,6 +3,8 @@ import MCore.FinalFail.GlobalPositiveMaterialFrontier
 
 namespace MCore.MaterialMath
 
+universe uL uF uS uV uC uZ uE uT
+
 open Filter
 open Topology
 
@@ -90,9 +92,11 @@ theorem rotate_fixed_iff_balanced (x : TriNumber α) :
   rcases x with ⟨m, c, s⟩
   constructor
   · intro h
-    simp [FixedPoint, TriNumber.rotate] at h
-    rcases h with ⟨hsm, hmc, hcs⟩
-    exact ⟨hmc, hcs⟩
+    have hm := congrArg TriNumber.manifest h
+    have hc := congrArg TriNumber.crossing h
+    have hs := congrArg TriNumber.seed h
+    simp [FixedPoint, TriNumber.rotate] at hm hc hs
+    exact ⟨hc, hs⟩
   · intro h
     exact balanced_fixed_by_rotate h
 
@@ -195,7 +199,7 @@ structure TerminalMaterialAdapters
     (Theory : Type uT)
     (Genuine4D OSReconstructs PositiveMassGap : Theory → Prop) where
   riemann :
-    K → MCore.FinalFail.Semantic.RiemannHypothesis
+    K → RiemannHypothesis
   beal :
     K → Nonempty MCore.FinalFail.Semantic.BealUniversalGCDTarget
   pvsnp :
