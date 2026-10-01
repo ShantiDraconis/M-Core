@@ -14,7 +14,7 @@ The only way to move an entry from OPEN_MATH is to construct the named target
 (or a strictly stronger object with a kernel-checked projection to it).
 
 This file is aligned to the canonical per-repository GATE_LEDGER.json frontiers
-audited through 2026-09-29.
+audited through 2026-10-01, including the post-P01 and concrete Gram frontiers.
 -/
 
 inductive DirectProducerState where
@@ -31,16 +31,16 @@ structure DirectProducerCut where
 
 def directProducerCuts : List DirectProducerCut := [
   { problem := .riemann
-    target := "FiniteSpanApproximatesChi concreteGeneratorFamily"
-    reduction := "m-core-riemann freezes finiteSpanApproximatesChi_iff_DNLimit_eq_zero; this is also equivalent along the certified DNToZero chain. The concrete finite-span density inhabitant remains OPEN_MATH."
+    target := "Concrete Gram scalar endpoint: ∀ ε>0, ∃ N,c, G_N c = b_N ∧ 1 - cᵀb_N < ε²"
+    reduction := "The advanced RH branches prove this endpoint equivalent to DNLimit=0 and FiniteSpanApproximatesChi for the concrete generator family. Normal equations and optimal finite coefficients are already constructed; only the scalar defect tending to zero remains OPEN_MATH."
     state := .openMath },
   { problem := .beal
     target := "GCDLowerBoundProducer: ∀ d : BealData, 1 < Nat.gcd d.a (Nat.gcd d.b d.c)"
     reduction := "m-core-beal freezes bealConjecture_iff_gcdLowerBoundProducer and the CommonDivisor/CommonPrime projections on the positive Beal domain; the universal scalar gcd lower bound remains OPEN_MATH."
     state := .openMath },
   { problem := .pVsNP
-    target := "P01ConstructionGap ∧ G21Pointwise"
-    reduction := "P01 is compressed to Nonempty P01MachineConstruction: close the preserving unary indexed witness read for input tag 000, lift the complete physical evalStep refinement to global evalRun, and compose parser+witness+verifier into one fixed finite-control NTM with polynomial HaltsWithin and AcceptsWithin ↔ SATBits. G21Pointwise remains independently OPEN_MATH and endpoint-equivalent to the bound SAT∉P lane."
+    target := "UniversalSATLowerBound / UniversalFailure for the canonical SAT bit-language"
+    reduction := "P01ConstructionGap is CLOSED_KERNEL_GREEN_FROZEN_CERTIFIED at frozen SHA 720596c0bd3900b5de25eab57b7b979d2a6aaf68 (run 36862291065), yielding canonical SAT-in-NP. The sole remaining material producer is ∀ M : PolyDTMCandidate, ∃ x, ¬ M.CorrectAt SAT x; the consolidated kernel proves equivalence with CanonicalSATP02Producer, NormalizedAdversary, G21Pointwise, and SAT∉P. UniformEffectiveCoverage is only a sufficient constructive route and still contains the genuine semantic realizer obligation."
     state := .openMath },
   { problem := .navierStokes
     target := "NSProducerFirst.ActualNSToSignedGainCore on genuine flow-derived EnstrophyData"
