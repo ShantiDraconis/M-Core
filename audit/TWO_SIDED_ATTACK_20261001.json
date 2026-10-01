@@ -1,0 +1,67 @@
+{
+  "schema": "ATK_TWO_SIDED_ATTACK_V1",
+  "date": "2026-10-01",
+  "core_commit": "1caad2bb740b14851f543d74f5dd08fc9892e766",
+  "semantics": {
+    "evidence_states": [
+      "open",
+      "positive(P)",
+      "negative(not P)",
+      "both(P,not P)"
+    ],
+    "both_rule": "both is representable but inhabiting it yields False in consistent logic",
+    "closure_rule": "TwoSidedClosure P Q closes Q only when both P->Q and not P->Q are independently constructed",
+    "self_target_firewall": "Nonempty (TwoSidedClosure P P) iff P",
+    "negative_self_firewall": "Nonempty (TwoSidedClosure P (not P)) iff not P"
+  },
+  "operator_semantics": {
+    "contraction": "strictly lowers positive defect",
+    "tension": "nonincreasing defect",
+    "torsion": "preserves defect; never strict progress by itself",
+    "excitation": "strict decrease only when ExcitationValid is proved"
+  },
+  "lane_strategy": {
+    "riemann": {
+      "positive_state": "RH-side consequences may be mined for explicit zeta/Mellin bounds",
+      "negative_state": "an explicit off-critical zero is a valid negative object and must be propagated into the BCF residue term",
+      "common_target": "a quantitative classifier for the BCF residue behavior, not RH itself",
+      "forbidden_shortcut": "RH or not-RH case split cannot prove RH"
+    },
+    "p_vs_np": {
+      "positive_state": "if SAT in P, inspect the concrete candidate machine and its canonical circuit semantics",
+      "negative_state": "a concrete universal-failure witness is terminal negative-side material",
+      "common_target": "candidate-indexed semantic discrepancy classification",
+      "forbidden_shortcut": "P=NP or P!=NP split does not prove P!=NP"
+    },
+    "navier_stokes": {
+      "positive_state": "global smooth solution supplies bounded official observables",
+      "negative_state": "finite-time singular solution supplies a concrete blow-up witness",
+      "common_target": "same enstrophy/stretching observable classification",
+      "forbidden_shortcut": "smooth-or-blowup split alone proves neither branch"
+    },
+    "hodge": {
+      "positive_state": "algebraic cycle realization supplies concrete cycle data",
+      "negative_state": "counterexample must be a concrete smooth projective variety plus rational Hodge class outside cycle span",
+      "common_target": "concrete cycle-span decision object",
+      "forbidden_shortcut": "Hodge or not-Hodge split cannot construct a cycle"
+    },
+    "bsd": {
+      "positive_state": "same-curve rank/refined identities produce arithmetic witness",
+      "negative_state": "counterexample must be a concrete elliptic curve and a failed official identity",
+      "common_target": "same-curve invariant comparison record",
+      "forbidden_shortcut": "BSD or not-BSD split cannot replace curve model binding"
+    },
+    "yang_mills": {
+      "positive_state": "constructive 4D theory plus positive spectral gap",
+      "negative_state": "concrete regulated/continuum model exhibiting zero gap or failure of required reconstruction",
+      "common_target": "same-construction spectral classification",
+      "forbidden_shortcut": "mass-gap or no-mass-gap split cannot replace physical construction"
+    },
+    "beal": {
+      "positive_state": "common-prime witness for each concrete solution",
+      "negative_state": "concrete primitive solution with gcd=1",
+      "common_target": "candidate arithmetic classification and Frey/local-data object",
+      "forbidden_shortcut": "Beal or not-Beal split cannot prove Beal"
+    }
+  }
+}
