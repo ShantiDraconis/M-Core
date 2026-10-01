@@ -94,6 +94,29 @@ theorem fingerprint_rotate
   apply Fingerprint.ext <;>
   simp [fingerprint, e1_rotate, e2_rotate, e3_rotate]
 
+
+/-- Exact elementary invariants of the distinguished tri-state constant I3. -/
+theorem I3_e1 : e1 I3 = 0 := by
+  norm_num [e1, I3]
+
+theorem I3_e2 : e2 I3 = -1 := by
+  norm_num [e2, I3]
+
+theorem I3_e3 : e3 I3 = 0 := by
+  norm_num [e3, I3]
+
+/-- The characteristic cubic of I3 is t^3 - t. -/
+theorem I3_characteristic (t : Int) :
+    characteristic I3 t = t^3 - t := by
+  simp [characteristic, I3_e1, I3_e2, I3_e3]
+  ring
+
+/-- Factorized form of the I3 cubic. -/
+theorem I3_characteristic_factorized (t : Int) :
+    characteristic I3 t = t * (t - 1) * (t + 1) := by
+  rw [I3_characteristic]
+  ring
+
 end TriSymmetric
 
 end MCore.MaterialMath
