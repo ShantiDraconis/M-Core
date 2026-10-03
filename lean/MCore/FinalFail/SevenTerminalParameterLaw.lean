@@ -286,18 +286,44 @@ def GlobalRefutes (M : SevenModels) : Prop :=
   BealRefutes M.beal
 
 /-- The global root is refuted exactly when at least one of the seven terminal
-predicates has a material counterexample. -/
+predicates has a material counterexample.  The proof is deliberately explicit,
+so no simplifier behavior hides the seven producer cuts. -/
 theorem not_globalCertifies_iff_globalRefutes (M : SevenModels) :
     ¬ GlobalCertifies M ↔ GlobalRefutes M := by
   classical
-  simp [GlobalCertifies, GlobalRefutes,
-    not_riemannCertifies_iff_riemannRefutes,
-    not_yangMillsCertifies_iff_yangMillsRefutes,
-    not_navierStokesCertifies_iff_navierStokesRefutes,
-    not_hodgeCertifies_iff_hodgeRefutes,
-    not_bsdCertifies_iff_bsdRefutes,
-    not_pVsNPCertifies_iff_pVsNPRefutes,
-    not_bealCertifies_iff_bealRefutes]
+  constructor
+  · intro hglobal
+    by_cases hr : RiemannCertifies M.riemann
+    · by_cases hy : YangMillsCertifies M.yangMills
+      · by_cases hn : NavierStokesCertifies M.navierStokes
+        · by_cases hh : HodgeCertifies M.hodge
+          · by_cases hd : BSDCertifies M.bsd
+            · by_cases hp : PvsNPCertifies M.pVsNP
+              · by_cases hb : BealCertifies M.beal
+                · exact False.elim (hglobal ⟨hr, hy, hn, hh, hd, hp, hb⟩)
+                · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inr
+                    ((not_bealCertifies_iff_bealRefutes M.beal).1 hb))))))
+              · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inr (Or.inl
+                  ((not_pVsNPCertifies_iff_pVsNPRefutes M.pVsNP).1 hp))))))
+            · exact Or.inr (Or.inr (Or.inr (Or.inr (Or.inl
+                ((not_bsdCertifies_iff_bsdRefutes M.bsd).1 hd)))))
+          · exact Or.inr (Or.inr (Or.inr (Or.inl
+              ((not_hodgeCertifies_iff_hodgeRefutes M.hodge).1 hh))))
+        · exact Or.inr (Or.inr (Or.inl
+            ((not_navierStokesCertifies_iff_navierStokesRefutes M.navierStokes).1 hn)))
+      · exact Or.inr (Or.inl
+          ((not_yangMillsCertifies_iff_yangMillsRefutes M.yangMills).1 hy))
+    · exact Or.inl ((not_riemannCertifies_iff_riemannRefutes M.riemann).1 hr)
+  · intro href hcert
+    rcases hcert with ⟨hr, hy, hn, hh, hd, hp, hb⟩
+    rcases href with hR | hY | hN | hH | hD | hP | hB
+    · exact ((not_riemannCertifies_iff_riemannRefutes M.riemann).2 hR) hr
+    · exact ((not_yangMillsCertifies_iff_yangMillsRefutes M.yangMills).2 hY) hy
+    · exact ((not_navierStokesCertifies_iff_navierStokesRefutes M.navierStokes).2 hN) hn
+    · exact ((not_hodgeCertifies_iff_hodgeRefutes M.hodge).2 hH) hh
+    · exact ((not_bsdCertifies_iff_bsdRefutes M.bsd).2 hD) hd
+    · exact ((not_pVsNPCertifies_iff_pVsNPRefutes M.pVsNP).2 hP) hp
+    · exact ((not_bealCertifies_iff_bealRefutes M.beal).2 hB) hb
 
 /-- A global certificate projects to every lane. -/
 theorem global_projects_all (M : SevenModels) (h : GlobalCertifies M) :
