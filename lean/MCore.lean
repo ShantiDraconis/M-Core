@@ -1,4 +1,5 @@
 import MCore.FinalProofFirewall
+import MCore.FinalFail.SevenTerminalParameterLaw
 
 /-!
 Root module for the Lake library declared with `srcDir := "lean"`.
