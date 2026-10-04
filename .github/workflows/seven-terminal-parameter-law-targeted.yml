@@ -6,6 +6,7 @@ on:
       - 'atk/seven-terminal-parameter-law'
     paths:
       - 'lean/MCore/FinalFail/SevenTerminalParameterLaw.lean'
+      - 'lean/MCore/FinalFail/ProblemSignature.lean'
       - 'lean/MCore.lean'
       - '.github/workflows/seven-terminal-parameter-law-targeted.yml'
   workflow_dispatch:
