@@ -73,7 +73,7 @@ structure RiemannModel where
   nontrivialZero : Zero → Prop
   re : Zero → ℝ
 
-def riemannDefect (M : RiemannModel) (z : M.Zero) : ℝ :=
+noncomputable def riemannDefect (M : RiemannModel) (z : M.Zero) : ℝ :=
   M.re z - ((1 : ℝ) / 2)
 
 def RiemannCertifies (M : RiemannModel) : Prop :=
@@ -86,7 +86,7 @@ theorem riemann_defect_zero_iff_critical_line
     (M : RiemannModel) (z : M.Zero) :
     riemannDefect M z = 0 ↔ M.re z = ((1 : ℝ) / 2) := by
   unfold riemannDefect
-  linarith
+  exact sub_eq_zero
 
 theorem not_riemannCertifies_iff_riemannRefutes (M : RiemannModel) :
     ¬ RiemannCertifies M ↔ RiemannRefutes M := by
@@ -200,7 +200,19 @@ theorem bsd_rank_defect_zero_iff (M : BSDModel) (E : M.Curve) :
 theorem not_bsdCertifies_iff_bsdRefutes (M : BSDModel) :
     ¬ BSDCertifies M ↔ BSDRefutes M := by
   classical
-  simp [BSDCertifies, BSDRefutes]
+  constructor
+  · intro h
+    by_contra href
+    apply h
+    intro E
+    constructor
+    · by_contra hd
+      exact href ⟨E, Or.inl hd⟩
+    · by_contra hf
+      exact href ⟨E, Or.inr hf⟩
+  · rintro ⟨E, href⟩ hcert
+    rcases hcert E with ⟨hrank, hrefined⟩
+    exact href.elim (fun h => h hrank) (fun h => h hrefined)
 
 theorem bsd_cert_refute_disjoint (M : BSDModel) :
     ¬ (BSDCertifies M ∧ BSDRefutes M) := by
