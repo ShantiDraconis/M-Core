@@ -64,6 +64,8 @@ theorem classified_preserves_twoSided
     (P : ClassifiedProblem)
     (h : HasTwoSidedDynamics P.signature) :
     HasTwoSidedDynamics P.cls.signature := by
-  simpa [BehaviorEquivalent] using h
+  have heq : P.signature = P.cls.signature := P.preserves
+  rw [← heq]
+  exact h
 
 end MCore.FinalFail
