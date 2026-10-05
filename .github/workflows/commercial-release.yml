@@ -1,0 +1,28 @@
+name: m-core-commercial-release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  commercial:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lean toolchain
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Commercial audit
+        run: |
+          chmod +x scripts/*.sh
+          ./scripts/commercial-audit.sh .
+
+      - name: Build package
+        run: |
+          ./scripts/build-package.sh
+          test -s dist/m-core-research-os-1.0.0-rc.1.zip
+          test -s dist/m-core-research-os-1.0.0-rc.1.zip.sha256
