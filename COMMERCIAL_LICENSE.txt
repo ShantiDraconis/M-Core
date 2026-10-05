@@ -1,0 +1,21 @@
+M-Core Research OS — Commercial License v1.0
+
+Copyright © 2026 ShantiDraconis. All rights reserved except as expressly granted below.
+
+1. License grant
+A purchaser receives a non-exclusive, non-transferable license to use the distributed M-Core Research OS package for personal research, internal professional work, education, software development, and formal-proof engineering.
+
+2. Redistribution
+Redistribution, resale, sublicensing, mirroring, or publication of the complete commercial package or substantial portions of it is not permitted without prior written permission.
+
+3. Research and open-math status
+The package contains formalization infrastructure, verified lemmas, experimental research artifacts, numerical evidence, conditional results, and explicitly OPEN_MATH frontiers. Purchase does not constitute a claim that any open mathematical problem has been solved.
+
+4. No warranty
+The software and research material are provided "as is", without warranty of any kind, express or implied, including merchantability, fitness for a particular purpose, or non-infringement.
+
+5. Liability
+To the maximum extent permitted by law, the copyright holder is not liable for damages arising from use of the package.
+
+6. Third-party dependencies
+Lean, Mathlib, and any other third-party dependencies remain subject to their own licenses.
