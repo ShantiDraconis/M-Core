@@ -88,3 +88,5 @@ theorem truncation_claim_is_exactly_an_extractor
 
 end KernelTruncation
 end MCore
+
+-- ATK kernel-truncation search-closure law: no target inhabitant is fabricated.
