@@ -1,0 +1,37 @@
+name: Kernel Truncation Law
+
+on:
+  push:
+    branches:
+      - work/kernel-truncation-closure-20261005
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get || true
+      - name: Build truncation law
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build MCore.KernelTruncationLaw
+      - name: Hygiene
+        run: |
+          set -euo pipefail
+          if grep -nE '\b(sorry|admit|sorryAx|axiom)\b' lean/MCore/KernelTruncationLaw.lean; then
+            exit 1
+          fi
+          echo KERNEL_TRUNCATION_LAW_GREEN
