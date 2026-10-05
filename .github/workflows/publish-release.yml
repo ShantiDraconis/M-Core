@@ -1,0 +1,59 @@
+name: publish-v1.0.0-release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Lean toolchain
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve certified tag
+        run: |
+          set -euo pipefail
+          git fetch --tags --force
+          git checkout --detach v1.0.0
+
+      - name: Rebuild tagged Lean project
+        run: |
+          set -euo pipefail
+          lake build
+
+      - name: Build tagged package
+        run: |
+          set -euo pipefail
+          VERSION="1.0.0"
+          NAME="m-core-research-os-$VERSION"
+          mkdir -p "dist/$NAME"
+          cp README.md QUICKSTART.md CHANGELOG.md COMMERCIAL_LICENSE.txt PRODUCT_RELEASE.md RELEASE_MANIFEST.json MCore.lean lakefile.lean lean-toolchain CITATION.cff "dist/$NAME/"
+          cp -R lean MCore audit certs docs "dist/$NAME/"
+          cd dist
+          zip -qr "$NAME.zip" "$NAME"
+          sha256sum "$NAME.zip" > "$NAME.zip.sha256"
+          sha256sum -c "$NAME.zip.sha256"
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view v1.0.0 >/dev/null 2>&1; then
+            echo "RELEASE: GREEN | v1.0.0 already exists"
+          else
+            gh release create v1.0.0               dist/m-core-research-os-1.0.0.zip               dist/m-core-research-os-1.0.0.zip.sha256               --title "M-Core Research OS v1.0.0"               --notes "Commercial research release with a reproduced Lean 4.19/Mathlib 4.19 build, explicit OPEN_MATH disclosure, curated package generation, and SHA256 verification. No unresolved mathematical endpoint is represented as solved."
+            echo "RELEASE: GREEN | v1.0.0 published"
+          fi
