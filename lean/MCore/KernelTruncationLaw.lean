@@ -58,15 +58,13 @@ structure TruncatedCertificate
     (smaller : StrictlySmaller)
     (n : SearchNode) where
   fixedPoint : SearchFixedPoint smaller n
-  status : ClosureStatus := .closedByTruncation
-  status_eq : status = .closedByTruncation := rfl
 
 theorem truncated_certificate_terminal
     {smaller : StrictlySmaller}
     {n : SearchNode}
     (C : TruncatedCertificate smaller n) :
-    C.status = .closedByTruncation :=
-  C.status_eq
+    truncateAtMinimalBlocker C.fixedPoint = .closedByTruncation := by
+  rfl
 
 structure TruncationClaimsTarget
     (smaller : StrictlySmaller)
@@ -88,5 +86,3 @@ theorem truncation_claim_is_exactly_an_extractor
 
 end KernelTruncation
 end MCore
-
--- ATK kernel-truncation search-closure law: no target inhabitant is fabricated.
