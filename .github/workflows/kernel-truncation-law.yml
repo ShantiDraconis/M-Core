@@ -28,6 +28,7 @@ jobs:
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
           lake build MCore.KernelTruncationLaw
+          lake build MCore.ExternalPromotionGuard
       - name: Hygiene
         run: |
           set -euo pipefail
@@ -35,3 +36,7 @@ jobs:
             exit 1
           fi
           echo KERNEL_TRUNCATION_LAW_GREEN
+      - name: External material promotion gate
+        run: |
+          set -euo pipefail
+          bash scripts/audit-external-material-gate.sh lean
