@@ -1,0 +1,21 @@
+{
+  "product": "M-Core Research OS",
+  "version": "1.0.0-rc.1",
+  "release_state": "COMMERCIAL_GATES_IN_PROGRESS",
+  "license": "COMMERCIAL_LICENSE.txt",
+  "pricing_usd": {
+    "personal_research": 99,
+    "commercial_professional": 199
+  },
+  "verified": [],
+  "open_math_disclosure": true,
+  "pending": [
+    "lean_build",
+    "package",
+    "checksum",
+    "tag",
+    "github_release",
+    "storefront_upload_and_publish"
+  ],
+  "claim_policy": "docs/COMMERCIAL_CLAIM_POLICY.md"
+}
