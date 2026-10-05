@@ -1,0 +1,11 @@
+{
+  "product_name": "M-Core Research OS",
+  "version": "1.0.0",
+  "price_usd": {
+    "personal_research": 99,
+    "commercial_professional": 199
+  },
+  "license": "COMMERCIAL_LICENSE.txt",
+  "status": "PRE_RELEASE_HANDOFF",
+  "open_math_disclosure": true
+}
