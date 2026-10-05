@@ -5,12 +5,14 @@ PKG="certs/final_external/v1"
 MANIFEST="$PKG/manifest.json"
 STATUS="$PKG/status.json"
 PREP="$PKG/PREPARATORY_ROOT"
+OUT="$PKG/FINAL_CLAIM_GATE.json"
 
-python3 - "$MANIFEST" "$STATUS" "$PREP" <<'PY'
-import json,sys,hashlib
+python3 - "$MANIFEST" "$STATUS" "$PREP" "$OUT" <<'PY'
+import json,sys
 manifest=json.load(open(sys.argv[1]))
 status=json.load(open(sys.argv[2]))
 prep=open(sys.argv[3]).read().strip()
+out_path=sys.argv[4]
 
 reasons=[]
 fp=manifest["final_proof"]["display"]
@@ -38,11 +40,7 @@ out={
   "reasons":reasons,
   "policy":"FINAL_ROOT and EXTERNAL_PROVED require 7/7 material producers plus all issuance gates; ATK/truncation status alone cannot promote external mathematics."
 }
-open("$PKG/FINAL_CLAIM_GATE.json","w").write(json.dumps(out,indent=2)+"\n")
+open(out_path,"w").write(json.dumps(out,indent=2)+"\n")
 print(json.dumps(out,indent=2))
-
-if reasons:
-    print("CLAIM_BLOCKED")
-    sys.exit(0)
-print("CLAIM_ELIGIBLE")
+print("CLAIM_BLOCKED" if reasons else "CLAIM_ELIGIBLE")
 PY
