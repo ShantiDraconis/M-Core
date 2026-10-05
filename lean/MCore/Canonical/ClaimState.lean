@@ -7,7 +7,7 @@ inductive ClaimKind
   | numericalObservation
   | interpretation
   | interface
-  deriving Repr, DecidableEq
+  deriving Repr, BEq, DecidableEq
 
 inductive ClaimState
   | certified
@@ -19,7 +19,7 @@ inductive ClaimState
   | falsified
   | superseded
   | duplicate
-  deriving Repr, DecidableEq
+  deriving Repr, BEq, DecidableEq
 
 def ClaimState.isClosed : ClaimState → Bool
   | .certified => true
