@@ -16,13 +16,38 @@ jobs:
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
-      - name: Commercial audit
+      - name: Validate commercial metadata
         run: |
-          chmod +x scripts/*.sh
-          ./scripts/commercial-audit.sh .
+          set -euo pipefail
+          test -s README.md
+          test -s QUICKSTART.md
+          test -s CHANGELOG.md
+          test -s COMMERCIAL_LICENSE.txt
+          test -s PRODUCT_RELEASE.md
+          test -s RELEASE_MANIFEST.json
+          test -s docs/COMMERCIAL_CLAIM_POLICY.md
+          test -s lean-toolchain
+          test -s lakefile.lean
+          python3 -m json.tool RELEASE_MANIFEST.json >/dev/null
+          grep -q "OPEN_MATH" docs/COMMERCIAL_CLAIM_POLICY.md
+          grep -q "does not imply" README.md
+          grep -q "OPEN" README.md
 
-      - name: Build package
+      - name: Build Lean project
         run: |
-          ./scripts/build-package.sh
-          test -s dist/m-core-research-os-1.0.0-rc.1.zip
-          test -s dist/m-core-research-os-1.0.0-rc.1.zip.sha256
+          set -euo pipefail
+          lake build
+
+      - name: Build commercial package
+        run: |
+          set -euo pipefail
+          VERSION="1.0.0-rc.1"
+          NAME="m-core-research-os-$VERSION"
+          mkdir -p "dist/$NAME"
+          cp README.md QUICKSTART.md CHANGELOG.md COMMERCIAL_LICENSE.txt PRODUCT_RELEASE.md RELEASE_MANIFEST.json MCore.lean lakefile.lean lean-toolchain CITATION.cff "dist/$NAME/"
+          cp -R lean MCore audit certs docs "dist/$NAME/"
+          cd dist
+          zip -qr "$NAME.zip" "$NAME"
+          sha256sum "$NAME.zip" > "$NAME.zip.sha256"
+          test -s "$NAME.zip"
+          test -s "$NAME.zip.sha256"
