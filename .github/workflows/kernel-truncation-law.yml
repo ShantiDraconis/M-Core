@@ -40,3 +40,9 @@ jobs:
         run: |
           set -euo pipefail
           bash scripts/audit-external-material-gate.sh lean
+
+      - name: Final claim gate
+        run: |
+          set -euo pipefail
+          bash scripts/final-claim-gate.sh
+          cat certs/final_external/v1/FINAL_CLAIM_GATE.json
