@@ -193,6 +193,155 @@ theorem full_maximal_chain
     full_eq_finalRoot OpenEndpoint ClosedEndpoint,
     full_eq_globalExternalCertificate OpenEndpoint ClosedEndpoint⟩
 
+
+/-! ## Ordered words through length three -/
+
+/-- Ordered OPEN/CLOSED symbol. Order is retained before multiplicity collapse. -/
+inductive EndpointAtom where
+  | open
+  | closed
+  deriving DecidableEq, Repr
+
+abbrev EndpointWord := List EndpointAtom
+
+def evalWord : EndpointWord → FreeEndpointState
+  | [] => freeEmpty
+  | .open :: xs =>
+      freeOpen.add (evalWord xs)
+  | .closed :: xs =>
+      freeClosed.add (evalWord xs)
+
+def wO   : EndpointWord := [.open]
+def wC   : EndpointWord := [.closed]
+
+def wOO  : EndpointWord := [.open, .open]
+def wOC  : EndpointWord := [.open, .closed]
+def wCO  : EndpointWord := [.closed, .open]
+def wCC  : EndpointWord := [.closed, .closed]
+
+def wOOO : EndpointWord := [.open, .open, .open]
+def wCCC : EndpointWord := [.closed, .closed, .closed]
+def wOOC : EndpointWord := [.open, .open, .closed]
+def wOCO : EndpointWord := [.open, .closed, .open]
+def wCOO : EndpointWord := [.closed, .open, .open]
+def wOCC : EndpointWord := [.open, .closed, .closed]
+def wCOC : EndpointWord := [.closed, .open, .closed]
+def wCCO : EndpointWord := [.closed, .closed, .open]
+
+def wOOCC : EndpointWord := [.open, .open, .closed, .closed]
+
+theorem eval_O :
+    evalWord wO = ⟨1, 0⟩ := by rfl
+
+theorem eval_C :
+    evalWord wC = ⟨0, 1⟩ := by rfl
+
+theorem eval_OO :
+    evalWord wOO = ⟨2, 0⟩ := by rfl
+
+theorem eval_OC :
+    evalWord wOC = ⟨1, 1⟩ := by rfl
+
+theorem eval_CO :
+    evalWord wCO = ⟨1, 1⟩ := by rfl
+
+theorem eval_CC :
+    evalWord wCC = ⟨0, 2⟩ := by rfl
+
+theorem eval_OOO :
+    evalWord wOOO = ⟨3, 0⟩ := by rfl
+
+theorem eval_CCC :
+    evalWord wCCC = ⟨0, 3⟩ := by rfl
+
+theorem eval_OOC :
+    evalWord wOOC = ⟨2, 1⟩ := by rfl
+
+theorem eval_OCO :
+    evalWord wOCO = ⟨2, 1⟩ := by rfl
+
+theorem eval_COO :
+    evalWord wCOO = ⟨2, 1⟩ := by rfl
+
+theorem eval_OCC :
+    evalWord wOCC = ⟨1, 2⟩ := by rfl
+
+theorem eval_COC :
+    evalWord wCOC = ⟨1, 2⟩ := by rfl
+
+theorem eval_CCO :
+    evalWord wCCO = ⟨1, 2⟩ := by rfl
+
+theorem eval_OOCC :
+    evalWord wOOCC = ⟨2, 2⟩ := by rfl
+
+/-- The 14 ordered words of lengths 1, 2 and 3 are pairwise enumerated. -/
+def wordsUpToThree : List EndpointWord :=
+  [wO, wC,
+   wOO, wOC, wCO, wCC,
+   wOOO, wOOC, wOCO, wOCC, wCOO, wCOC, wCCO, wCCC]
+
+theorem wordsUpToThree_count :
+    wordsUpToThree.length = 14 := by
+  rfl
+
+/-- Ordered paths remain distinct before quotienting. -/
+theorem OOC_ne_OCO : wOOC ≠ wOCO := by decide
+theorem OCO_ne_COO : wOCO ≠ wCOO := by decide
+theorem OCC_ne_COC : wOCC ≠ wCOC := by decide
+theorem COC_ne_CCO : wCOC ≠ wCCO := by decide
+
+/-- Their free multiplicity images coincide exactly by counts. -/
+theorem three_open_two_one_same_multiplicity :
+    evalWord wOOC = evalWord wOCO ∧
+    evalWord wOCO = evalWord wCOO := by
+  exact ⟨rfl, rfl⟩
+
+theorem three_closed_one_two_same_multiplicity :
+    evalWord wOCC = evalWord wCOC ∧
+    evalWord wCOC = evalWord wCCO := by
+  exact ⟨rfl, rfl⟩
+
+/-- Under idempotence all mixed words normalize to FULL. -/
+theorem normalize_OOC_full :
+    normalizeFree (evalWord wOOC) = .full := by rfl
+theorem normalize_OCO_full :
+    normalizeFree (evalWord wOCO) = .full := by rfl
+theorem normalize_COO_full :
+    normalizeFree (evalWord wCOO) = .full := by rfl
+theorem normalize_OCC_full :
+    normalizeFree (evalWord wOCC) = .full := by rfl
+theorem normalize_COC_full :
+    normalizeFree (evalWord wCOC) = .full := by rfl
+theorem normalize_CCO_full :
+    normalizeFree (evalWord wCCO) = .full := by rfl
+
+theorem normalize_OOO_open :
+    normalizeFree (evalWord wOOO) = .open := by rfl
+
+theorem normalize_CCC_closed :
+    normalizeFree (evalWord wCCC) = .closed := by rfl
+
+/-- FULL witness requested explicitly as OPEN+OPEN+CLOSED+CLOSED. -/
+theorem ordered_OOCC_is_freeFull22 :
+    evalWord wOOCC = freeFull22 := by
+  rfl
+
+theorem ordered_OOCC_normalizes_FULL :
+    normalizeFree (evalWord wOOCC) = .full := by
+  rfl
+
+/--
+The ordered FULL word is the maximal certificate once both endpoint payloads
+are supplied in the existing dual endpoint state.
+-/
+theorem ordered_FULL_eq_globalExternalCertificate
+    (OpenEndpoint ClosedEndpoint : Prop) :
+    FullEndpointPayload OpenEndpoint ClosedEndpoint ↔
+      GlobalExternalCertificate OpenEndpoint ClosedEndpoint :=
+  full_eq_globalExternalCertificate OpenEndpoint ClosedEndpoint
+
+
 #print axioms MCore.FinalFail.RPA.free_open_plus_closed
 #print axioms MCore.FinalFail.RPA.normalize_open_sq
 #print axioms MCore.FinalFail.RPA.normalize_closed_sq
