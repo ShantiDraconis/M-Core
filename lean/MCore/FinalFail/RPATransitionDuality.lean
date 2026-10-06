@@ -111,4 +111,75 @@ theorem global_external_no_escape
 #print axioms MCore.FinalFail.RPA.five_views_same_identity
 #print axioms MCore.FinalFail.RPA.global_external_no_escape
 
+
+/-! ## Boundary closure: beginning and end are the endpoint pair -/
+
+/--
+The endpoint is not an extra proposition beyond the transition.
+It is exactly the coexistence of beginning, end, and preserved identity.
+-/
+def BoundaryEndpoint (Begin End : Prop) : Prop :=
+  Begin ∧ End ∧ (Begin ↔ End)
+
+theorem boundaryEndpoint_iff_transition
+    (Begin End : Prop) :
+    BoundaryEndpoint Begin End ↔ Nonempty (Transition Begin End) := by
+  rw [transition_iff_source_target_identity]
+  rfl
+
+/--
+Beginning and end close the endpoint precisely when both are inhabited and
+their logical identity is preserved.
+-/
+theorem begin_end_close_endpoint
+    {Begin End : Prop}
+    (hBegin : Begin)
+    (hEnd : End)
+    (hId : Begin ↔ End) :
+    BoundaryEndpoint Begin End := by
+  exact ⟨hBegin, hEnd, hId⟩
+
+theorem endpoint_projects_begin
+    {Begin End : Prop}
+    (h : BoundaryEndpoint Begin End) : Begin :=
+  h.1
+
+theorem endpoint_projects_end
+    {Begin End : Prop}
+    (h : BoundaryEndpoint Begin End) : End :=
+  h.2.1
+
+theorem endpoint_preserves_identity
+    {Begin End : Prop}
+    (h : BoundaryEndpoint Begin End) : Begin ↔ End :=
+  h.2.2
+
+/--
+Full RPA chain with the endpoint explicitly identified as the begin/end
+boundary of the same transition.
+-/
+theorem boundary_full_chain
+    (Begin End : Prop) :
+    (BoundaryEndpoint Begin End ↔ OpenMathClosedMath Begin End) ∧
+    (OpenMathClosedMath Begin End ↔ OpenBridgeClosedBridge Begin End) ∧
+    (OpenBridgeClosedBridge Begin End ↔ Math Begin End) ∧
+    (Math Begin End ↔ FinalRoot Begin End) ∧
+    (FinalRoot Begin End ↔ GlobalExternalCertificate Begin End) := by
+  exact ⟨boundaryEndpoint_iff_transition Begin End,
+    Iff.rfl, Iff.rfl, Iff.rfl, Iff.rfl⟩
+
+/--
+No extra endpoint remains after the boundary is inhabited: every final view
+reduces to the same begin/end transition object.
+-/
+theorem endpoint_no_extra_parameter
+    (Begin End : Prop) :
+    BoundaryEndpoint Begin End ↔ GlobalExternalCertificate Begin End := by
+  exact (boundaryEndpoint_iff_transition Begin End).trans Iff.rfl
+
+#print axioms MCore.FinalFail.RPA.boundaryEndpoint_iff_transition
+#print axioms MCore.FinalFail.RPA.begin_end_close_endpoint
+#print axioms MCore.FinalFail.RPA.boundary_full_chain
+#print axioms MCore.FinalFail.RPA.endpoint_no_extra_parameter
+
 end MCore.FinalFail.RPA
