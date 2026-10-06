@@ -1,6 +1,7 @@
 import MCore.FinalFail.UniversalTerminalClosure
 import MCore.FinalFail.RPAConfirmation
 import MCore.FinalFail.RPALattice
+import MCore.FinalFail.RPALatticeCube3
 
 namespace MCore.FinalProof
 
