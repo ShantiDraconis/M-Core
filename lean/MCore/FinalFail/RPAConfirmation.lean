@@ -16,12 +16,25 @@ They do not manufacture a mathematical endpoint.  A completed confirmation
 contains both endpoint witnesses and an identity-preserving bridge.
 -/
 
+/-- The two endpoint positions are distinct even when their semantics are equivalent. -/
+inductive EndpointRole where
+  | openEndpoint
+  | closedEndpoint
+  deriving DecidableEq, Repr
+
+theorem endpoint_roles_distinct :
+    EndpointRole.openEndpoint ≠ EndpointRole.closedEndpoint := by
+  decide
+
 /-- Structural bridge between the open and closed propositions. -/
 structure RPAFrame (OpenMath ClosedMath : Prop) : Prop where
   identityPreserved : OpenMath ↔ ClosedMath
 
-/-- A certifiable RPA transition contains both ends and the bridge. -/
+/-- A certifiable RPA transition contains both endpoint witnesses and the bridge. -/
 structure RPAConfirmation (OpenMath ClosedMath : Prop) : Prop where
+  openRole : EndpointRole := .openEndpoint
+  closedRole : EndpointRole := .closedEndpoint
+  rolesDistinct : openRole ≠ closedRole
   openWitness : OpenMath
   closedWitness : ClosedMath
   frame : RPAFrame OpenMath ClosedMath
@@ -49,7 +62,7 @@ theorem open_requires_closed
   · intro h
     exact h.closedWitness
   · intro hClosed
-    exact ⟨hOpen, hClosed, hFrame⟩
+    exact ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
 /-- CLOSED alone is not an RPA confirmation: an OPEN witness is still required. -/
 theorem closed_requires_open
@@ -60,9 +73,13 @@ theorem closed_requires_open
   · intro h
     exact h.openWitness
   · intro hOpen
-    exact ⟨hOpen, hClosed, hFrame⟩
+    exact ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
 end RPAConfirmation
+
+/-- Canonical dual-endpoint state: two distinct positions, two witnesses, one preserved identity. -/
+abbrev DualEndpointState (OpenMath ClosedMath : Prop) : Prop :=
+  RPAConfirmation OpenMath ClosedMath
 
 /-- View 1: dual mathematical endpoints. -/
 abbrev OpenClosedMath (OpenMath ClosedMath : Prop) : Prop :=
@@ -83,6 +100,12 @@ abbrev FinalRoot (OpenMath ClosedMath : Prop) : Prop :=
 /-- View 5: externally auditable certificate of that root. -/
 abbrev GlobalExternalCertificate (OpenMath ClosedMath : Prop) : Prop :=
   RPAConfirmation OpenMath ClosedMath
+
+theorem dual_endpoint_state_iff_open_closed_math
+    (OpenMath ClosedMath : Prop) :
+    DualEndpointState OpenMath ClosedMath ↔
+      OpenClosedMath OpenMath ClosedMath :=
+  Iff.rfl
 
 theorem five_views_same_identity
     (OpenMath ClosedMath : Prop) :
@@ -125,8 +148,10 @@ theorem frame_plus_open_and_closed_closes
     (hOpen : OpenMath)
     (hClosed : ClosedMath) :
     GlobalExternalCertificate OpenMath ClosedMath :=
-  ⟨hOpen, hClosed, hFrame⟩
+  ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
+#print axioms MCore.FinalFail.RPA.endpoint_roles_distinct
+#print axioms MCore.FinalFail.RPA.dual_endpoint_state_iff_open_closed_math
 #print axioms MCore.FinalFail.RPA.five_views_same_identity
 #print axioms MCore.FinalFail.RPA.global_certificate_projects_open
 #print axioms MCore.FinalFail.RPA.global_certificate_projects_closed
