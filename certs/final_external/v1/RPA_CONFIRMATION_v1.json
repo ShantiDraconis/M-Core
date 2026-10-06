@@ -1,20 +1,29 @@
 {
   "schema": "MCORE-RPA-CONFIRMATION-v1",
   "status": "BUILD_PENDING",
-  "head": "a05eb67d052a6056de6028f9af4c14df6082bf33",
+  "head": "32981d6618802d7b7230dcbdee5526562ef74107",
   "module": "MCore.FinalFail.RPAConfirmation",
+  "endpoint_roles": {
+    "open": "EndpointRole.openEndpoint",
+    "closed": "EndpointRole.closedEndpoint",
+    "distinct": true
+  },
+  "dual_endpoint_state": "RPAConfirmation OpenMath ClosedMath",
   "identity": [
+    "OPEN_ENDPOINT + CLOSED_ENDPOINT",
+    "DUAL_ENDPOINT_STATE",
     "OPEN_MATH + CLOSED_MATH",
     "OPEN_BRIDGE + CLOSED_BRIDGE",
     "MATH",
     "FINAL_ROOT",
     "GLOBAL_EXTERNAL_CERTIFICATE"
   ],
-  "interpretation": "five definitional views of one confirmed RPA transition",
   "requirements": {
     "open_witness": true,
     "closed_witness": true,
+    "roles_distinct": true,
     "identity_preserved": true
   },
-  "material_promotion_rule": "No lane becomes proved unless its exact terminal endpoint witness is independently present."
+  "interpretation": "Two distinct endpoint positions coexist in one certified state; all later names are views of that same confirmed transition.",
+  "material_promotion_rule": "This certifies the RPA transition architecture only. A lane becomes materially CLOSED only when its exact terminal mathematical witness is independently kernel-verified."
 }
