@@ -1,4 +1,5 @@
 import MCore.FinalFail.UniversalTerminalClosure
+import MCore.FinalFail.RPAConfirmation
 
 namespace MCore.FinalProof
 
