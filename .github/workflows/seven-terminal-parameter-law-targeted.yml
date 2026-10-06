@@ -7,6 +7,7 @@ on:
     paths:
       - 'lean/MCore/FinalFail/SevenTerminalParameterLaw.lean'
       - 'lean/MCore/FinalFail/RPATransitionDuality.lean'
+      - 'lean/MCore/FinalFail/RPAEndpointLattice.lean'
       - 'lean/MCore/FinalFail/ProblemSignature.lean'
       - 'lean/MCore.lean'
       - '.github/workflows/seven-terminal-parameter-law-targeted.yml'
@@ -44,3 +45,4 @@ jobs:
           export PATH="$HOME/.elan/bin:$PATH"
           lake build MCore.FinalFail.SevenTerminalParameterLaw
           lake build MCore.FinalFail.RPATransitionDuality
+          lake build MCore.FinalFail.RPAEndpointLattice
