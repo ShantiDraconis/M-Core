@@ -112,74 +112,108 @@ theorem global_external_no_escape
 #print axioms MCore.FinalFail.RPA.global_external_no_escape
 
 
-/-! ## Boundary closure: beginning and end are the endpoint pair -/
+/-! ## Dual endpoint coexistence -/
+
+/-- The two endpoint positions are distinct even when their payloads are equivalent. -/
+inductive EndpointSide where
+  | open
+  | closed
+  deriving DecidableEq, Repr
+
+theorem openEndpointSide_ne_closedEndpointSide :
+    EndpointSide.open ≠ EndpointSide.closed := by
+  decide
 
 /--
-The endpoint is not an extra proposition beyond the transition.
-It is exactly the coexistence of beginning, end, and preserved identity.
+RPA confirmation state: two distinct endpoint positions coexist simultaneously,
+and the mathematical identity is preserved across them.
 -/
-def BoundaryEndpoint (Begin End : Prop) : Prop :=
-  Begin ∧ End ∧ (Begin ↔ End)
+structure DualEndpointState (OpenEndpoint ClosedEndpoint : Prop) : Prop where
+  openEndpoint : OpenEndpoint
+  closedEndpoint : ClosedEndpoint
+  preservesIdentity : OpenEndpoint ↔ ClosedEndpoint
 
-theorem boundaryEndpoint_iff_transition
-    (Begin End : Prop) :
-    BoundaryEndpoint Begin End ↔ Nonempty (Transition Begin End) := by
-  rw [transition_iff_source_target_identity]
-  rfl
+theorem dualEndpointState_iff_transition
+    (OpenEndpoint ClosedEndpoint : Prop) :
+    Nonempty (DualEndpointState OpenEndpoint ClosedEndpoint) ↔
+      Nonempty (Transition OpenEndpoint ClosedEndpoint) := by
+  constructor
+  · rintro ⟨h⟩
+    exact ⟨⟨h.openEndpoint, h.closedEndpoint, h.preservesIdentity⟩⟩
+  · rintro ⟨h⟩
+    exact ⟨⟨h.openSource, h.closedTarget, h.preservesIdentity⟩⟩
+
+theorem dualEndpointState_iff_both_and_identity
+    (OpenEndpoint ClosedEndpoint : Prop) :
+    Nonempty (DualEndpointState OpenEndpoint ClosedEndpoint) ↔
+      OpenEndpoint ∧ ClosedEndpoint ∧ (OpenEndpoint ↔ ClosedEndpoint) := by
+  constructor
+  · rintro ⟨h⟩
+    exact ⟨h.openEndpoint, h.closedEndpoint, h.preservesIdentity⟩
+  · rintro ⟨ho, hc, hid⟩
+    exact ⟨⟨ho, hc, hid⟩⟩
+
+theorem open_and_closed_coexist
+    {OpenEndpoint ClosedEndpoint : Prop}
+    (hOpen : OpenEndpoint)
+    (hClosed : ClosedEndpoint)
+    (hId : OpenEndpoint ↔ ClosedEndpoint) :
+    Nonempty (DualEndpointState OpenEndpoint ClosedEndpoint) := by
+  exact ⟨⟨hOpen, hClosed, hId⟩⟩
+
+theorem dual_state_projects_open
+    {OpenEndpoint ClosedEndpoint : Prop}
+    (h : Nonempty (DualEndpointState OpenEndpoint ClosedEndpoint)) :
+    OpenEndpoint := by
+  rcases h with ⟨s⟩
+  exact s.openEndpoint
+
+theorem dual_state_projects_closed
+    {OpenEndpoint ClosedEndpoint : Prop}
+    (h : Nonempty (DualEndpointState OpenEndpoint ClosedEndpoint)) :
+    ClosedEndpoint := by
+  rcases h with ⟨s⟩
+  exact s.closedEndpoint
 
 /--
-Beginning and end close the endpoint precisely when both are inhabited and
-their logical identity is preserved.
+The complete RPA chain is one coexistence state viewed through five interfaces.
+The two endpoint positions remain distinct throughout.
 -/
-theorem begin_end_close_endpoint
-    {Begin End : Prop}
-    (hBegin : Begin)
-    (hEnd : End)
-    (hId : Begin ↔ End) :
-    BoundaryEndpoint Begin End := by
-  exact ⟨hBegin, hEnd, hId⟩
-
-theorem endpoint_projects_begin
-    {Begin End : Prop}
-    (h : BoundaryEndpoint Begin End) : Begin :=
-  h.1
-
-theorem endpoint_projects_end
-    {Begin End : Prop}
-    (h : BoundaryEndpoint Begin End) : End :=
-  h.2.1
-
-theorem endpoint_preserves_identity
-    {Begin End : Prop}
-    (h : BoundaryEndpoint Begin End) : Begin ↔ End :=
-  h.2.2
-
-/--
-Full RPA chain with the endpoint explicitly identified as the begin/end
-boundary of the same transition.
--/
-theorem boundary_full_chain
-    (Begin End : Prop) :
-    (BoundaryEndpoint Begin End ↔ OpenMathClosedMath Begin End) ∧
-    (OpenMathClosedMath Begin End ↔ OpenBridgeClosedBridge Begin End) ∧
-    (OpenBridgeClosedBridge Begin End ↔ Math Begin End) ∧
-    (Math Begin End ↔ FinalRoot Begin End) ∧
-    (FinalRoot Begin End ↔ GlobalExternalCertificate Begin End) := by
-  exact ⟨boundaryEndpoint_iff_transition Begin End,
+theorem dual_endpoint_full_chain
+    (OpenEndpoint ClosedEndpoint : Prop) :
+    (Nonempty (DualEndpointState OpenEndpoint ClosedEndpoint) ↔
+      OpenMathClosedMath OpenEndpoint ClosedEndpoint) ∧
+    (OpenMathClosedMath OpenEndpoint ClosedEndpoint ↔
+      OpenBridgeClosedBridge OpenEndpoint ClosedEndpoint) ∧
+    (OpenBridgeClosedBridge OpenEndpoint ClosedEndpoint ↔
+      Math OpenEndpoint ClosedEndpoint) ∧
+    (Math OpenEndpoint ClosedEndpoint ↔
+      FinalRoot OpenEndpoint ClosedEndpoint) ∧
+    (FinalRoot OpenEndpoint ClosedEndpoint ↔
+      GlobalExternalCertificate OpenEndpoint ClosedEndpoint) := by
+  exact ⟨dualEndpointState_iff_transition OpenEndpoint ClosedEndpoint,
     Iff.rfl, Iff.rfl, Iff.rfl, Iff.rfl⟩
 
-/--
-No extra endpoint remains after the boundary is inhabited: every final view
-reduces to the same begin/end transition object.
--/
-theorem endpoint_no_extra_parameter
-    (Begin End : Prop) :
-    BoundaryEndpoint Begin End ↔ GlobalExternalCertificate Begin End := by
-  exact (boundaryEndpoint_iff_transition Begin End).trans Iff.rfl
+theorem dual_endpoint_eq_global_external
+    (OpenEndpoint ClosedEndpoint : Prop) :
+    Nonempty (DualEndpointState OpenEndpoint ClosedEndpoint) ↔
+      GlobalExternalCertificate OpenEndpoint ClosedEndpoint := by
+  exact (dualEndpointState_iff_transition OpenEndpoint ClosedEndpoint).trans Iff.rfl
 
-#print axioms MCore.FinalFail.RPA.boundaryEndpoint_iff_transition
-#print axioms MCore.FinalFail.RPA.begin_end_close_endpoint
-#print axioms MCore.FinalFail.RPA.boundary_full_chain
-#print axioms MCore.FinalFail.RPA.endpoint_no_extra_parameter
+/--
+Fail-closed coexistence rule: a global certificate cannot contain only one
+endpoint. It necessarily projects both OPEN_ENDPOINT and CLOSED_ENDPOINT.
+-/
+theorem global_certificate_contains_both_endpoints
+    {OpenEndpoint ClosedEndpoint : Prop}
+    (h : GlobalExternalCertificate OpenEndpoint ClosedEndpoint) :
+    OpenEndpoint ∧ ClosedEndpoint := by
+  exact global_external_no_escape h
+
+#print axioms MCore.FinalFail.RPA.openEndpointSide_ne_closedEndpointSide
+#print axioms MCore.FinalFail.RPA.dualEndpointState_iff_transition
+#print axioms MCore.FinalFail.RPA.dualEndpointState_iff_both_and_identity
+#print axioms MCore.FinalFail.RPA.dual_endpoint_full_chain
+#print axioms MCore.FinalFail.RPA.global_certificate_contains_both_endpoints
 
 end MCore.FinalFail.RPA
