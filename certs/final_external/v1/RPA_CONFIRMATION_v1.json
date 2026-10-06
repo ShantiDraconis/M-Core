@@ -1,0 +1,20 @@
+{
+  "schema": "MCORE-RPA-CONFIRMATION-v1",
+  "status": "BUILD_PENDING",
+  "head": "a05eb67d052a6056de6028f9af4c14df6082bf33",
+  "module": "MCore.FinalFail.RPAConfirmation",
+  "identity": [
+    "OPEN_MATH + CLOSED_MATH",
+    "OPEN_BRIDGE + CLOSED_BRIDGE",
+    "MATH",
+    "FINAL_ROOT",
+    "GLOBAL_EXTERNAL_CERTIFICATE"
+  ],
+  "interpretation": "five definitional views of one confirmed RPA transition",
+  "requirements": {
+    "open_witness": true,
+    "closed_witness": true,
+    "identity_preserved": true
+  },
+  "material_promotion_rule": "No lane becomes proved unless its exact terminal endpoint witness is independently present."
+}
