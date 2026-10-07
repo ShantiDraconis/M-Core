@@ -1,0 +1,42 @@
+name: CLOSED_MATH Habitant Probe
+
+on:
+  push:
+    branches:
+      - atk/closed-math-habitant-probe-20261007
+    paths:
+      - 'lean/MCore/ClosedMathHabitantProbe.lean'
+      - '.github/workflows/closed-math-habitant-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: closed-math-habitant-probe
+  cancel-in-progress: true
+
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Kernel probe
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake env lean lean/MCore/ClosedMathHabitantProbe.lean
+      - name: Hygiene
+        run: |
+          set -euo pipefail
+          if grep -nE '\\b(sorry|admit|sorryAx|axiom)\\b' lean/MCore/ClosedMathHabitantProbe.lean; then
+            echo "FAIL_CLOSED: forbidden proof escape in probe"
+            exit 1
+          fi
+          echo "PROBE_HYGIENE_GREEN"
