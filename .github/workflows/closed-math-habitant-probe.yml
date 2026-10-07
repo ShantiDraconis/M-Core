@@ -6,6 +6,7 @@ on:
       - atk/closed-math-habitant-probe-20261007
     paths:
       - 'lean/MCore/ClosedMathHabitantProbe.lean'
+      - 'lean/MCore/Habitants.lean'
       - '.github/workflows/closed-math-habitant-probe.yml'
   workflow_dispatch:
 
@@ -31,11 +32,12 @@ jobs:
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
+          lake env lean lean/MCore/Habitants.lean
           lake env lean lean/MCore/ClosedMathHabitantProbe.lean
       - name: Hygiene
         run: |
           set -euo pipefail
-          if grep -nE '\\b(sorry|admit|sorryAx|axiom)\\b' lean/MCore/ClosedMathHabitantProbe.lean; then
+          if grep -nE '\\b(sorry|admit|sorryAx|axiom)\\b' lean/MCore/Habitants.lean lean/MCore/ClosedMathHabitantProbe.lean; then
             echo "FAIL_CLOSED: forbidden proof escape in probe"
             exit 1
           fi
