@@ -1,0 +1,40 @@
+name: Global Closed Scope
+
+on:
+  push:
+    branches:
+      - atk/global-closed-scope-20261007
+    paths:
+      - 'lean/MCore/FinalFail/GlobalClosedScope.lean'
+      - '.github/workflows/global-closed-scope.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: global-closed-scope-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  closed-scope-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Kernel check CLOSED_MATH-only aggregate
+        shell: bash
+        run: |
+          lake env lean lean/MCore/FinalFail/GlobalClosedScope.lean 2>&1 | tee global-closed-scope.log
+          grep -F "'MCore.FinalFail.ClosedScope.entry_is_closed' does not depend on any axioms" global-closed-scope.log
+          grep -F "'MCore.FinalFail.ClosedScope.certify' does not depend on any axioms" global-closed-scope.log
+          grep -F "'MCore.FinalFail.ClosedScope.certify_cons' does not depend on any axioms" global-closed-scope.log
+
+      - name: Source hygiene
+        shell: bash
+        run: |
+          ! grep -nE '\\b(sorry|admit)\\b' lean/MCore/FinalFail/GlobalClosedScope.lean
