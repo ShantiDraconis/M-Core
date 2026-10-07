@@ -8,7 +8,7 @@ inductive HabitantId where
   deriving DecidableEq, Repr
 
 inductive HabitantStage where
-  | openMath | habitant | endpoint | closedMath | green | frozen | certified
+  | openMath | habitant | material | endpoint | closedMath | green | frozen | certified
   deriving DecidableEq, Repr
 
 structure Habitant where
@@ -30,7 +30,7 @@ def rh : Habitant := {
   laws := ["finiteSpanApproximatesChi_iff_DNLimit_eq_zero", "certified DNToZero transport"]
   operators := ["approximate", "bound", "limit", "transport"]
   endpointMap := "FiniteSpanApproximatesChi -> DNLimit=0 -> RH endpoint bridge"
-  stage := .habitant }
+  stage := .material }
 
 def beal : Habitant := {
   id := .beal
@@ -40,7 +40,7 @@ def beal : Habitant := {
   laws := ["bealConjecture_iff_gcdLowerBoundProducer", "commonDivisor/commonPrime projections"]
   operators := ["gcd", "project", "transport"]
   endpointMap := "GCDLowerBoundProducer -> BealConjecture"
-  stage := .habitant }
+  stage := .material }
 
 def ns : Habitant := {
   id := .ns
@@ -50,7 +50,7 @@ def ns : Habitant := {
   laws := ["theta < 1", "signed stretching bound", "signedGain downstream differential transport"]
   operators := ["decompose", "absorb", "deplete", "transport"]
   endpointMap := "ActualNSToSignedGainCore -> NS endpoint"
-  stage := .habitant }
+  stage := .material }
 
 def hodge : Habitant := {
   id := .hodge
@@ -60,7 +60,7 @@ def hodge : Habitant := {
   laws := ["trivial_qbar_r2_payload_iff_concrete_payload", "K26 minimal-cut transport"]
   operators := ["realize", "specialize", "span", "transport"]
   endpointMap := "ConcreteAlgebraicityPayload -> Hodge endpoint"
-  stage := .habitant }
+  stage := .material }
 
 def bsd : Habitant := {
   id := .bsd
@@ -70,7 +70,7 @@ def bsd : Habitant := {
   laws := ["same-domain binding", "rank equality", "refined leading coefficient identity", "Sha finiteness where required"]
   operators := ["bind", "rank", "normalize", "compare", "transport"]
   endpointMap := "BSD realizable material payload -> BSD endpoint"
-  stage := .habitant }
+  stage := .material }
 
 def ym : Habitant := {
   id := .ym
@@ -80,7 +80,7 @@ def ym : Habitant := {
   laws := ["constructionFromA1", "infraredBlock", "limitBlock", "transferWitness", "non-vacuum excitation firewall"]
   operators := ["mapState", "reconstruct", "removeRegulator", "spectralTransfer"]
   endpointMap := "B60ConcretePhysicalAdapter -> mass-gap endpoint"
-  stage := .habitant }
+  stage := .material }
 
 def pnp : Habitant := {
   id := .pnp
@@ -90,7 +90,7 @@ def pnp : Habitant := {
   laws := ["integrated parser+witness+verifier", "polynomial HaltsWithin", "AcceptsWithin iff SATBits", "G21Pointwise iff P02Target"]
   operators := ["parse", "guess", "verify", "simulate", "separate", "transport"]
   endpointMap := "P01MachineConstruction + G21Pointwise -> P != NP"
-  stage := .habitant }
+  stage := .material }
 
 def globalHabitants : List Habitant := [rh, beal, ns, hodge, bsd, ym, pnp]
 
@@ -100,8 +100,8 @@ def atomCount : Nat :=
 theorem globalHabitants_count : globalHabitants.length = 7 := by decide
 theorem globalHabitants_atomCount : atomCount = 8 := by decide
 
-theorem all_terminal_objects_are_habitants :
-    ∀ h ∈ globalHabitants, h.stage = .habitant := by
+theorem all_terminal_objects_are_material_classified :
+    ∀ h ∈ globalHabitants, h.stage = .material := by
   intro h hh
   simp [globalHabitants] at hh
   rcases hh with rfl | rfl | rfl | rfl | rfl | rfl | rfl
