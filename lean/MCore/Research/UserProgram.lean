@@ -11,6 +11,7 @@ import MCore.Research.UserProgram.C3Fourier
 import MCore.Research.UserProgram.C3Intertwiner
 import MCore.Research.UserProgram.C3LinearSectors
 import MCore.Research.UserProgram.SemanticProofCore
+import MCore.Research.UserProgram.I3VectorAlgebra
 import MCore.Research.UserProgram.BridgeFirewall
 
 namespace MCore.Research.UserProgram
