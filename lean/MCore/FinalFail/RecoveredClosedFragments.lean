@@ -1,0 +1,20 @@
+import MCore.Real.P01ParserWitnessComposition
+import MCore.Real.P01VerifierComposition
+import MCore.Real.P02SemanticMismatchAlgebra
+
+namespace MCore.FinalFail.RecoveredClosedFragments
+
+theorem witness_guess_phase_polynomial :=
+  MCore.Real.P01ParserWitnessComposition.witness_guess_phase_polynomial
+
+theorem no_semanticMismatch_iff_match :=
+  MCore.Real.P02SemanticMismatchAlgebra.no_semanticMismatch_iff_match
+
+theorem declaredSATCorrect_iff_no_semanticMismatch :=
+  MCore.Real.P02SemanticMismatchAlgebra.declaredSATCorrect_iff_no_semanticMismatch
+
+#print axioms MCore.FinalFail.RecoveredClosedFragments.witness_guess_phase_polynomial
+#print axioms MCore.FinalFail.RecoveredClosedFragments.no_semanticMismatch_iff_match
+#print axioms MCore.FinalFail.RecoveredClosedFragments.declaredSATCorrect_iff_no_semanticMismatch
+
+end MCore.FinalFail.RecoveredClosedFragments
