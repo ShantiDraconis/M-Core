@@ -7,6 +7,7 @@ import MCore.Research.UserProgram.OperatorLaws
 import MCore.Research.UserProgram.ThreeChannel
 import MCore.Research.UserProgram.I3Geometry
 import MCore.Research.UserProgram.ModeDecomposition
+import MCore.Research.UserProgram.C3Fourier
 import MCore.Research.UserProgram.BridgeFirewall
 
 namespace MCore.Research.UserProgram
