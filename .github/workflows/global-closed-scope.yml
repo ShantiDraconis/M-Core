@@ -6,6 +6,7 @@ on:
       - atk/global-closed-scope-20261007
     paths:
       - 'lean/MCore/FinalFail/GlobalClosedScope.lean'
+      - 'lean/MCore/FinalFail/RecoveredClosedFragments.lean'
       - '.github/workflows/global-closed-scope.yml'
   workflow_dispatch:
 
@@ -29,7 +30,11 @@ jobs:
       - name: Kernel check CLOSED_MATH-only aggregate
         shell: bash
         run: |
+          lake env lean lean/MCore/FinalFail/RecoveredClosedFragments.lean 2>&1 | tee recovered-fragments.log
           lake env lean lean/MCore/FinalFail/GlobalClosedScope.lean 2>&1 | tee global-closed-scope.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.witness_guess_phase_polynomial' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.no_semanticMismatch_iff_match' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.declaredSATCorrect_iff_no_semanticMismatch' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.ClosedScope.entry_is_closed' does not depend on any axioms" global-closed-scope.log
           grep -F "'MCore.FinalFail.ClosedScope.certify' does not depend on any axioms" global-closed-scope.log
           grep -F "'MCore.FinalFail.ClosedScope.certify_cons' does not depend on any axioms" global-closed-scope.log
@@ -37,4 +42,4 @@ jobs:
       - name: Source hygiene
         shell: bash
         run: |
-          ! grep -nE '\\b(sorry|admit)\\b' lean/MCore/FinalFail/GlobalClosedScope.lean
+          ! grep -nE '\\b(sorry|admit)\\b' lean/MCore/FinalFail/GlobalClosedScope.lean lean/MCore/FinalFail/RecoveredClosedFragments.lean
