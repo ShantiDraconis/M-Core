@@ -15,6 +15,7 @@ import MCore.Research.UserProgram.I3VectorAlgebra
 import MCore.Research.UserProgram.ConcreteOperators
 import MCore.Research.UserProgram.CrossOperatorLaws
 import MCore.Research.UserProgram.FlowSemantics
+import MCore.Research.UserProgram.GlobalCertificate
 import MCore.Research.UserProgram.BridgeFirewall
 
 namespace MCore.Research.UserProgram
