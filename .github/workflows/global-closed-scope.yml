@@ -35,6 +35,11 @@ jobs:
           grep -F "'MCore.FinalFail.RecoveredClosedFragments.witness_guess_phase_polynomial' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.RecoveredClosedFragments.verifier_correct' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.RecoveredClosedFragments.decode_verify_iff_satBits' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.physical_read_witness_correct' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.physical_source_end_preserved' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.integrated_phase_bridge' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.verifier_correct' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.decode_verify_iff_satBits' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.RecoveredClosedFragments.no_semanticMismatch_iff_match' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.RecoveredClosedFragments.declaredSATCorrect_iff_no_semanticMismatch' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.ClosedScope.entry_is_closed' does not depend on any axioms" global-closed-scope.log
