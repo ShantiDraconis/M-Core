@@ -33,6 +33,8 @@ jobs:
           lake env lean lean/MCore/FinalFail/RecoveredClosedFragments.lean 2>&1 | tee recovered-fragments.log
           lake env lean lean/MCore/FinalFail/GlobalClosedScope.lean 2>&1 | tee global-closed-scope.log
           grep -F "'MCore.FinalFail.RecoveredClosedFragments.witness_guess_phase_polynomial' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.verifier_correct' does not depend on any axioms" recovered-fragments.log
+          grep -F "'MCore.FinalFail.RecoveredClosedFragments.decode_verify_iff_satBits' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.RecoveredClosedFragments.no_semanticMismatch_iff_match' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.RecoveredClosedFragments.declaredSATCorrect_iff_no_semanticMismatch' does not depend on any axioms" recovered-fragments.log
           grep -F "'MCore.FinalFail.ClosedScope.entry_is_closed' does not depend on any axioms" global-closed-scope.log
