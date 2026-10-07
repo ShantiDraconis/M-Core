@@ -108,3 +108,53 @@ theorem all_terminal_objects_are_habitants :
   all_goals rfl
 
 end MCore.Habitants
+
+
+namespace MCore.Habitants
+
+inductive EndpointBridgeState where
+  | certified
+  | downstreamCertified
+  | compositeCertified
+  | packageFrontier
+  deriving DecidableEq, Repr
+
+structure EndpointBridgeRecord where
+  id : HabitantId
+  bridge : String
+  state : EndpointBridgeState
+  materialInhabited : Bool
+  deriving Repr
+
+def endpointBridges : List EndpointBridgeRecord := [
+  { id := .rh
+    bridge := "finiteSpanApproximatesChi_iff_DNLimit_eq_zero + frozen RH transport"
+    state := .certified, materialInhabited := false },
+  { id := .beal
+    bridge := "bealConjecture_iff_gcdLowerBoundProducer"
+    state := .certified, materialInhabited := false },
+  { id := .ns
+    bridge := "ActualNSToSignedGainCore -> SignedGainCertificate -> differential endpoint chain"
+    state := .downstreamCertified, materialInhabited := false },
+  { id := .hodge
+    bridge := "HodgeBackwardAudit.real_frontier_closes_endpoint"
+    state := .certified, materialInhabited := false },
+  { id := .bsd
+    bridge := "realizable EC binding + rank equality + refined leading coefficient identity"
+    state := .packageFrontier, materialInhabited := false },
+  { id := .ym
+    bridge := "MCore.YangMills.A1.b60_adapter_closes_conditional_chain"
+    state := .certified, materialInhabited := false },
+  { id := .pnp
+    bridge := "integrated_construction_gives_sat_in_np + p01_g21_closes_internal"
+    state := .compositeCertified, materialInhabited := false }
+]
+
+def endpointBridgeCount : Nat := endpointBridges.length
+def materialInhabitedCount : Nat :=
+  endpointBridges.foldl (fun n b => if b.materialInhabited then n + 1 else n) 0
+
+theorem endpointBridgeCount_eq_seven : endpointBridgeCount = 7 := by decide
+theorem materialInhabitedCount_eq_zero : materialInhabitedCount = 0 := by decide
+
+end MCore.Habitants
