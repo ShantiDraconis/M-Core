@@ -1,0 +1,13 @@
+ℹ [2/3] Replayed MCore.FinalFail.RPAConfirmation
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:157:0: 'MCore.FinalFail.RPA.endpoint_roles_distinct' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:158:0: 'MCore.FinalFail.RPA.dual_endpoint_state_iff_open_closed_math' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:159:0: 'MCore.FinalFail.RPA.five_views_same_identity' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:160:0: 'MCore.FinalFail.RPA.global_certificate_projects_open' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:161:0: 'MCore.FinalFail.RPA.global_certificate_projects_closed' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:162:0: 'MCore.FinalFail.RPA.global_certificate_preserves_identity' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:163:0: 'MCore.FinalFail.RPA.frame_plus_open_and_closed_closes' does not depend on any axioms
+ℹ [3/3] Built MCore.FinalFail.RPALattice
+info: ./././lean/MCore/FinalFail/RPALattice.lean:102:0: 'MCore.FinalFail.RPA.normalize_positive_positive_full' depends on axioms: [propext, Quot.sound]
+info: ./././lean/MCore/FinalFail/RPALattice.lean:103:0: 'MCore.FinalFail.RPA.full_iff_dual_endpoint_state' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPALattice.lean:104:0: 'MCore.FinalFail.RPA.full_iff_global_external_certificate' does not depend on any axioms
+Build completed successfully.
