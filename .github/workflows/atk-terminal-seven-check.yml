@@ -1,6 +1,10 @@
 name: ATK terminal seven interface check
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'lean/ATK/TerminalSevenInterfaces.lean'
+      - '.github/workflows/atk-terminal-seven-check.yml'
   push:
     branches:
       - atk/sync-existing-none-results-20261008
