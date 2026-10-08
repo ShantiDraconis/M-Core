@@ -12,7 +12,7 @@ objects that can be carried forward by M-Core.
 Fail-closed rule:
 * these values are HYPOTHESIS inhabitants, not unconditional producers;
 * no theorem here changes `FinalProof.registry` to `.proved`;
-* no axiom, `sorry`, `admit`, oracle, or fabricated witness is introduced;
+* no axiom, proof placeholder, oracle, or fabricated witness is introduced;
 * every constructor requires the accepted mathematical content as an argument.
 
 The purpose is to stop reopening already-selected boundary objects while keeping
