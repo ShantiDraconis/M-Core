@@ -1,0 +1,39 @@
+{
+  "schema": "elyon.provenance.v2.0.0",
+  "repositories": {
+    "M-Core": {
+      "repo": "ShantiDraconis/M-Core",
+      "branch": "atk/global-audit-20261008",
+      "sha": "SEE_GIT_COMMIT_OF_THIS_PACKAGE",
+      "workflow": ".github/workflows/atk-global-kernel-audit.yml"
+    }
+  },
+  "anchors_filled": {
+    "base": "483f6bdc06b74a0239481085e25c9a9fdccb1a8f",
+    "audit": "0f71ffea68ed52691201144140fb1a342d03b8d7",
+    "run": "35378862267",
+    "run_status": "SUCCESS",
+    "state": "SEALED_CLOSED",
+    "role": "official_anchor_v1_until_explicit_revision"
+  },
+  "toolchain": {
+    "lean": "4.19.0 (6caaee842e94)",
+    "lake": "5.0.0-6caaee8",
+    "mathlib": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+    "python": "python3 (json, hashlib) for freeze.sh",
+    "runner": "GitHub Actions ubuntu-24.04 (Ubuntu 24.04.5 LTS)"
+  },
+  "kernel_runs": [
+    37819802090,
+    37824483365,
+    37825452119,
+    37826792744,
+    37847421955
+  ],
+  "hash_levels": {
+    "PACKAGE_SHA256SUMS": "calculable now",
+    "PREPARATORY_ROOT": "SEE_PREPARATORY_ROOT_FILE",
+    "FINAL_ROOT": "MUST REMAIN NULL while any blocker exists"
+  },
+  "package_revision": "v2.0.0-preparatory"
+}

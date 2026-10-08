@@ -1,0 +1,141 @@
+{
+  "schema": "elyon.final-external.v2.0.0",
+  "certificate": "ELYON_FINAL_EXTERNAL",
+  "version": "v2.0.0",
+  "issuance": {
+    "FINAL_EXTERNAL_ISSUED": false,
+    "reason": "Fail-closed: exactly two mathematical producers remain (P01ConstructionGap, now narrowed to one P01VerifierPhase; G21Pointwise ≡ SAT ∉ P) and two governance gates (human_review, app) plus crypto (prepared, not executed).",
+    "infra_state": "READY_FOR_FREEZE",
+    "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
+    "release_state": "SEALED_CLOSED",
+    "max_machine_state": "REVIEW_PENDING",
+    "public_status": "PREPARATORY_NOT_ISSUED",
+    "next_possible_without_human": [
+      "PREPARATORY_PACKAGE",
+      "HASHED",
+      "REPRODUCIBILITY_AUDITED",
+      "FROZEN_PREPARATORY"
+    ],
+    "not_possible": "FINAL_EXTERNAL_ISSUED"
+  },
+  "human_review": {
+    "authority": "UNSET",
+    "quorum": "UNSET",
+    "evidence_policy": "UNSET"
+  },
+  "production": {
+    "app": "UNSET",
+    "crypto": "UNSET (PREPARED_NOT_EXECUTED)",
+    "hardware": "OUT_OF_SCOPE_FOR_V1"
+  },
+  "G3": {
+    "G3_CONTRACT": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "G3_SOURCE_FIDELITY": "OPEN"
+  },
+  "final_proof": "0/7",
+  "note": "This artifact can exist now as preparatory schema/manifest, but must NOT receive FINAL_EXTERNAL=ISSUED until release gates satisfied",
+  "package_state": "PREPARATORY",
+  "public_status": "PREPARATORY_NOT_ISSUED",
+  "public_label": "PREPARATORY / non-issued infrastructure record",
+  "hash_levels": {
+    "PACKAGE_SHA256SUMS": "CALCULABLE_NOW_over_preparatory_files",
+    "PREPARATORY_ROOT": "SEE_PREPARATORY_ROOT_FILE",
+    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_until_P01ConstructionGap_and_G21Pointwise_and_all_release_gates_close"
+  },
+  "normative_state": {
+    "ELYON_FINAL_EXTERNAL": "v1.0.0",
+    "package_state": "PREPARATORY",
+    "infra_state": "READY_FOR_FREEZE",
+    "math_state": "OPEN_MATH",
+    "final_proof": "0/7",
+    "release_state": "SEALED_CLOSED",
+    "maximum_auto_state": "REVIEW_PENDING",
+    "FINAL_EXTERNAL_ISSUED": false,
+    "P01_PREFIX": "GREEN_FROZEN_CERTIFIED_THROUGH_TERMINAL_BRANCHES_AND_GLOBAL_SLOTLOG",
+    "P01_ENDPOINT": "OPEN_IMPLEMENTATION_ONE_VERIFIER_PHASE_MISSING",
+    "P02_FRONTIER": "G2_1_LITERAL_CLOSED_BY_FALSIFICATION__G2_2_WIRING_GREEN_FROZEN_CERTIFIED",
+    "P02_ENDPOINT": "OPEN_MATH_G21_POINTWISE_EQ_FAILURE_GENERATOR_EQ_SAT_NOT_IN_P",
+    "P03..P07": "OPEN_MATH",
+    "G3": "G3_CONTRACT CLOSED_GREEN_FROZEN_CERTIFIED; G3_SOURCE_FIDELITY OPEN",
+    "FINAL_EXTERNAL_MATH_INPUTS": "EXACT_TWO_PRODUCERS_REMAIN_P01ConstructionGap_AND_G21Pointwise",
+    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED",
+    "FINAL_EXTERNAL_TWO_GAP_PROGRESS": "0/2",
+    "P_VS_NP_ENDPOINT": "OPEN",
+    "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+    "FINAL_ROOT_MATH": null,
+    "GLOBAL_7_PROBLEMS_FINAL_PROOF": "0/7"
+  },
+  "package_revision": "v2.0.0-preparatory",
+  "freeze_state": "FROZEN_PREPARATORY",
+  "math_terminal_boundary": {
+    "record": "MATH_TERMINAL_BOUNDARY_20261008.json",
+    "frozen_branch": "frozen/final-external-math-boundary-442d11aa",
+    "p01": "OPEN_IMPLEMENTATION_P01_CONSTRUCTION",
+    "p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
+    "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "latest_main_record_commit": "2df65e9c2e10ba8f920751b1202b161322425925",
+    "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "two_gap_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "exact_remaining_producers": [
+      "P01ConstructionGap",
+      "G21Pointwise"
+    ],
+    "certified_delta": {
+      "p01_terminal_branches": {
+        "source_sha": "f9add60881d709ce8320cb54a4d52f26d829b8f5",
+        "run": 35722846538,
+        "frozen_branch": "frozen/p01-terminal-branches-green-f9add608"
+      },
+      "p01_global_slotlog_spec": {
+        "source_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+        "run": 35723570545,
+        "frozen_branch": "frozen/p01-global-slotlog-spec-green-614f88fe"
+      },
+      "p02_g2_2_wiring": {
+        "source_sha": "38db71b416906e5b7138774842e91d3e367aad09",
+        "run": 35722282451,
+        "frozen_branch": "frozen/p02-g2-2-wiring-green-38db71b4"
+      },
+      "final_external_integration": {
+        "source_sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
+        "run": 35722252805,
+        "frozen_branch": "frozen/final-external-integration-green-c102d9d4"
+      },
+      "final_external_two_gap": {
+        "source_sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+        "run": 35722743845,
+        "frozen_branch": "frozen/final-external-two-gap-green-b406b806"
+      }
+    },
+    "interface_policy": "INTERFACE_ONLY_FAIL_CLOSED_NO_PROOF_FABRICATION",
+    "certified_source_policy": "NO_SORRY_ADMIT_AXIOM_PLACEHOLDERS",
+    "taxonomy": "TWO_GAP_0_OF_2__P_VS_NP_ENDPOINT_OPEN__GLOBAL_0_OF_7",
+    "p01_recovered_producer": {
+      "state": "RECOVERED_CONDITIONAL_PRODUCER",
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "branch": "atk/direct-p01-terminal-close-v2-20260930",
+      "commit": "ffd06cc6",
+      "inhabitant": "MCore.Real.P01WitnessPrepGlobal.prepPhase : P01PrepPhase (no sorry, no axiom)",
+      "reduction": "MCore.Real.P01WitnessPrepGlobal.p01_of_verifier : P01VerifierPhase prepPhase.layout → P01ConstructionGap",
+      "exact_missing": "Nonempty (P01VerifierPhase prepPhase.layout)",
+      "endpoint_credit": 0,
+      "reverified_by_mcore_kernel": false
+    }
+  },
+  "taxonomy": {
+    "FINAL_EXTERNAL_TWO_GAP": {
+      "progress": "0/2",
+      "P01ConstructionGap": "OPEN_IMPLEMENTATION",
+      "G21Pointwise": "OPEN_MATH"
+    },
+    "P_VS_NP_ENDPOINT": "OPEN",
+    "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+    "FINAL_ROOT_MATH": null,
+    "GLOBAL_7_PROBLEMS": {
+      "FINAL_PROOF": "0/7"
+    },
+    "FINAL_ROOT": null,
+    "FINAL_EXTERNAL_ISSUED": false
+  },
+  "supersedes": "v1.0.0"
+}

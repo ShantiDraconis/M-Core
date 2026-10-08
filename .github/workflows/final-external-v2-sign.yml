@@ -1,0 +1,68 @@
+name: FINAL_EXTERNAL v2 — Sigstore signature (manual)
+
+# Manual only.  Signs certs/final_external/v2/SHA256SUMS with cosign keyless
+# (GitHub Actions OIDC -> Fulcio short-lived certificate -> Rekor).
+# WARNING: the Rekor transparency log is PUBLIC and permanent.  The signing
+# certificate records this workflow's identity, including the repository name
+# ShantiDraconis/M-Core and the ref.  Run only if that is acceptable.
+# After a successful run, set production.crypto in a v3 package to the values
+# printed in signature-info.txt; this workflow does not edit the v2 package.
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_public_log:
+        description: "Type PUBLISH to accept that the signature goes to the public Rekor log"
+        required: true
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  sign:
+    runs-on: ubuntu-24.04
+    if: ${{ github.event.inputs.confirm_public_log == 'PUBLISH' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Re-run the v2 freeze gate
+        run: bash certs/final_external/v2/freeze.sh
+
+      - uses: sigstore/cosign-installer@v3
+
+      - name: Sign SHA256SUMS (keyless)
+        run: |
+          set -euo pipefail
+          mkdir -p sig
+          cosign sign-blob --yes --bundle sig/SHA256SUMS.sigstore.bundle certs/final_external/v2/SHA256SUMS
+          cosign verify-blob \
+            --bundle sig/SHA256SUMS.sigstore.bundle \
+            --certificate-identity "https://github.com/${GITHUB_REPOSITORY}/.github/workflows/final-external-v2-sign.yml@${GITHUB_REF}" \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            certs/final_external/v2/SHA256SUMS
+          {
+            echo "crypto_provider=sigstore-keyless (cosign)"
+            echo "public_key_or_key_id=certificate identity https://github.com/${GITHUB_REPOSITORY}/.github/workflows/final-external-v2-sign.yml@${GITHUB_REF}"
+            echo "algorithm=ECDSA_P256_SHA256"
+            echo "attestation=Rekor entry inside SHA256SUMS.sigstore.bundle"
+            echo "signed_file_sha256=$(sha256sum certs/final_external/v2/SHA256SUMS | awk '{print $1}')"
+            echo "source_sha=${GITHUB_SHA}"
+            echo "run_id=${GITHUB_RUN_ID}"
+          } > sig/signature-info.txt
+          cat sig/signature-info.txt
+
+      - name: Publish signature to results branch
+        run: |
+          set -euo pipefail
+          BR="audit-results/final-external-v2-signature-${GITHUB_SHA}"
+          git config user.name "atk-kernel-audit[bot]"
+          git config user.email "atk-kernel-audit@users.noreply.github.com"
+          mv sig /tmp/sig
+          git checkout --orphan "$BR"
+          git rm -rq --cached . >/dev/null
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -r /tmp/sig/. .
+          git add .
+          git commit -qm "FINAL_EXTERNAL v2 Sigstore signature for ${GITHUB_SHA} (run ${GITHUB_RUN_ID})"
+          git push -f origin "$BR"
