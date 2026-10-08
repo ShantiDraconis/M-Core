@@ -1,0 +1,274 @@
+{
+ "schema": "mcore.final-global.source-inventory.v1",
+ "generated_utc": "2026-10-08T18:28:20Z",
+ "method": "git ls-remote + shallow fetch of every branch tip; registry refs from lean/MCore/FinalProofRegistry.lean",
+ "totals": {
+  "repositories": 24,
+  "branches": 2138,
+  "frozen": 657,
+  "cert": 309
+ },
+ "repositories": [
+  {
+   "repository": "ShantiDraconis/M-Core",
+   "default_branch_sha": "53d58bceed3424a435eb54e01cd6d3f17324a630",
+   "branches_total": 186,
+   "frozen_branches": 67,
+   "cert_branches": 38,
+   "lane": "integrator",
+   "hygiene_scope": "protected branches (main/frozen/cert)",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/m-core-riemann",
+   "default_branch_sha": "a30d95f7fbbc6c04daa7812f37fca90dbd825eda",
+   "branches_total": 170,
+   "frozen_branches": 57,
+   "cert_branches": 5,
+   "lane": "riemann",
+   "global_registry_source_ref": "d6a291b4563f9021f74ab63cc983d44f079472da",
+   "global_registry_terminal": "FiniteSpanApproximatesChi concreteGeneratorFamily",
+   "registry_ref_vs_default": "diverged ahead=25 behind=64",
+   "hygiene_scope": "protected branches (main/frozen/cert)",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/m-core-beal",
+   "default_branch_sha": "d79343f24169403765ced3d64a28e32647d9389e",
+   "branches_total": 243,
+   "frozen_branches": 99,
+   "cert_branches": 20,
+   "lane": "beal",
+   "global_registry_source_ref": "d6fe130c44ef91e0f8ceb6b15a6548f186e381fd",
+   "global_registry_terminal": "GCDLowerBoundProducer = ∀ d : BealData, 1 < Nat.gcd d.a (Nat.gcd d.b d.c)",
+   "registry_ref_vs_default": "ahead ahead=6 behind=0",
+   "hygiene_scope": "protected branches (main/frozen/cert)",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+   "default_branch_sha": "3904224e49f7b2256d56ce19a5e11e7ddc93f524",
+   "branches_total": 145,
+   "frozen_branches": 47,
+   "cert_branches": 4,
+   "lane": "navierStokes",
+   "global_registry_source_ref": "df808543535d34d4e8c46096b3455d76b0151fa2",
+   "global_registry_terminal": "ActualNSToSignedGainCore on genuine flow-derived EnstrophyData",
+   "registry_ref_vs_default": "ahead ahead=7 behind=0",
+   "hygiene_scope": "protected branches (main/frozen/cert)",
+   "hygiene_files_with_sorry_admit_or_axiom": 16
+  },
+  {
+   "repository": "ShantiDraconis/m-core-hodge",
+   "default_branch_sha": "d06d5fca391b175f0efd52cf17e1f332a912c04f",
+   "branches_total": 249,
+   "frozen_branches": 81,
+   "cert_branches": 40,
+   "lane": "hodge",
+   "global_registry_source_ref": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+   "global_registry_terminal": "ConcreteAlgebraicityPayload",
+   "registry_ref_vs_default": "ahead ahead=158 behind=0",
+   "hygiene_scope": "protected branches (main/frozen/cert)",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/m-core-p-vs-np",
+   "default_branch_sha": "382de6a75080d30a561884fd633e943029fc1e46",
+   "branches_total": 686,
+   "frozen_branches": 214,
+   "cert_branches": 152,
+   "lane": "pVsNP",
+   "global_registry_source_ref": "a3386d52951f2e886eca9359fc218cd18014e0f0",
+   "global_registry_terminal": "Nonempty P01MachineConstruction ∧ G21Pointwise",
+   "registry_ref_vs_default": "ahead ahead=315 behind=0",
+   "hygiene_scope": "protected branches (main/frozen/cert)",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/m-core-bsd",
+   "default_branch_sha": "12be69bcd9a7359aebfa350d49b77ae4efd45adb",
+   "branches_total": 154,
+   "frozen_branches": 52,
+   "cert_branches": 16,
+   "lane": "bsd",
+   "global_registry_source_ref": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
+   "global_registry_terminal": "realizable elliptic-curve domain + universal rank equality + refined leading-coefficient identity",
+   "registry_ref_vs_default": "diverged ahead=11 behind=9",
+   "hygiene_scope": "protected branches (main/frozen/cert)",
+   "hygiene_files_with_sorry_admit_or_axiom": 3
+  },
+  {
+   "repository": "ShantiDraconis/m-core-yang-mills",
+   "default_branch_sha": "b4a5cff1c0335d719b53881dc898352f3c3ffeea",
+   "branches_total": 187,
+   "frozen_branches": 31,
+   "cert_branches": 31,
+   "lane": "yangMills",
+   "global_registry_source_ref": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
+   "global_registry_terminal": "Nonempty (B60ConcretePhysicalAdapter C F D H G O)",
+   "registry_ref_vs_default": "diverged ahead=16 behind=167",
+   "hygiene_scope": "protected branches (main/frozen/cert)",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/universal-proof-hub",
+   "default_branch_sha": "83759bc06c94a6759e0decf5e923ca33a0114f9f",
+   "branches_total": 9,
+   "frozen_branches": 3,
+   "cert_branches": 0,
+   "lane": "integracao",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 1
+  },
+  {
+   "repository": "ShantiDraconis/millennium-p-vs-np-i",
+   "default_branch_sha": "870ab93b7409e76ecdb9fa9ac7cd0a69ba12ebaf",
+   "branches_total": 14,
+   "frozen_branches": 1,
+   "cert_branches": 1,
+   "lane": "pVsNP",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 1
+  },
+  {
+   "repository": "ShantiDraconis/millennium-riemann-i",
+   "default_branch_sha": "ae79aed383c696c2ecce69e24e711d26beddd64d",
+   "branches_total": 7,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "riemann",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 45
+  },
+  {
+   "repository": "ShantiDraconis/millennium-bsd",
+   "default_branch_sha": "9b4e6929b9fb7c678726c58db40782a985202ba0",
+   "branches_total": 6,
+   "frozen_branches": 1,
+   "cert_branches": 0,
+   "lane": "bsd",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 1
+  },
+  {
+   "repository": "ShantiDraconis/millennium-hodge",
+   "default_branch_sha": "311062400e42b79cd875d8d1bb3f21976676d207",
+   "branches_total": 7,
+   "frozen_branches": 1,
+   "cert_branches": 0,
+   "lane": "hodge",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 1
+  },
+  {
+   "repository": "ShantiDraconis/millennium-yang-mills",
+   "default_branch_sha": "0ab42889ee89aa6fc2966b9aff4f10d7fc822f05",
+   "branches_total": 4,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "yangMills",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 1
+  },
+  {
+   "repository": "ShantiDraconis/millennium-mass-gap-i",
+   "default_branch_sha": "b77361decf2d5ba9b4da81999d44d98e1b2e7541",
+   "branches_total": 1,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "yangMills",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/millennium-navier-stokes-i",
+   "default_branch_sha": "c5d4b8d973252dfc223c4a911368a0bf019c3706",
+   "branches_total": 6,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "navierStokes",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 4
+  },
+  {
+   "repository": "ShantiDraconis/millennium-regularity-i",
+   "default_branch_sha": "2a2a88758e9c2caf7dd08bbf1d76a34b507dff3b",
+   "branches_total": 1,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "navierStokes",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/axiomatic-millenium",
+   "default_branch_sha": "2f3202ba1c1e5d860dbb8ea6bf2a7eb0d336ea66",
+   "branches_total": 49,
+   "frozen_branches": 3,
+   "cert_branches": 2,
+   "lane": "fundamentos",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/millennium-symbolic-program",
+   "default_branch_sha": "86570cf1e01c490f47036725d00b628b8946a048",
+   "branches_total": 1,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "fundamentos",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/symbolic-arithmetic-00",
+   "default_branch_sha": "8d7dffaba5f9e5e54de5e30fae759669582eaed0",
+   "branches_total": 1,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "fundamentos",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/proof-engineering-00",
+   "default_branch_sha": "4afa936e19a0aaaded9a118f0e005faf571920a4",
+   "branches_total": 1,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "fundamentos",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/proofs-multiprover",
+   "default_branch_sha": "3bcc472e52d765cd2d85590c10f00740478d08a0",
+   "branches_total": 2,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "auditoria",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 1
+  },
+  {
+   "repository": "ShantiDraconis/latex-library-global",
+   "default_branch_sha": "4d33304f1f438696abf23761ea49c4b0297aa79b",
+   "branches_total": 1,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "publicacao",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  },
+  {
+   "repository": "ShantiDraconis/0-0-formal-suite",
+   "default_branch_sha": "fcc67dd53fa0e6d37c0c0c2f8bf682813e8c7850",
+   "branches_total": 8,
+   "frozen_branches": 0,
+   "cert_branches": 0,
+   "lane": "auditoria",
+   "hygiene_scope": "all branch tips",
+   "hygiene_files_with_sorry_admit_or_axiom": 0
+  }
+ ]
+}

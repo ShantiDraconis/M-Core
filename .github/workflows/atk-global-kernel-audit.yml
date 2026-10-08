@@ -97,6 +97,18 @@ jobs:
           diff -q certs/final_external/v1/PREPARATORY_ROOT "$C/PREPARATORY_ROOT" >> "$OUT/freeze_sha256sums_diff.txt" 2>&1 && echo PREPARATORY_ROOT_IDENTICAL >> "$OUT/freeze_sha256sums_diff.txt" || true
           tail -3 "$OUT/freeze_sh.log"
 
+      - name: Verify FINAL_GLOBAL package when present
+        shell: bash
+        run: |
+          set -uo pipefail
+          OUT=audit-out
+          if [ -f certs/final_global/v1/verify.sh ]; then
+            if bash certs/final_global/v1/verify.sh > "$OUT/final_global_verify.log" 2>&1; then echo 0 > "$OUT/final_global_verify_rc"; else echo $? > "$OUT/final_global_verify_rc"; fi
+            tail -4 "$OUT/final_global_verify.log"
+          else
+            echo "absent" > "$OUT/final_global_verify_rc"
+          fi
+
       - name: Placeholder hygiene
         shell: bash
         run: |
@@ -125,6 +137,7 @@ jobs:
             echo "mathlib_rev=$(python3 -c "import json;print([p['rev'] for p in json.load(open('lake-manifest.json'))['packages'] if p['name']=='mathlib'][0])" 2>/dev/null || echo unknown)"
             echo "default_target_rc=$(cat $OUT/default_target_rc)"
             echo "freeze_sh_rc=$(cat $OUT/freeze_sh_rc)"
+            echo "final_global_verify_rc=$(cat $OUT/final_global_verify_rc)"
           } > "$OUT/run_metadata.txt"
           cp lake-manifest.json "$OUT/lake-manifest.json" 2>/dev/null || true
           cat "$OUT/run_metadata.txt"

@@ -1,0 +1,196 @@
+{
+ "schema": "mcore.open-math.global-status.v1",
+ "certificate": "MCORE_OPEN_MATH_GLOBAL_STATUS",
+ "version": "v1",
+ "state": "OPEN_MATH",
+ "rule": "An obligation is promoted only when a kernel-checked, axiom-policy-clean, unconditional inhabitant of the exact terminal target exists. No status was changed by hand.",
+ "totals": {
+  "lanes": 7,
+  "terminal_obligations": 8,
+  "demonstrated": 0,
+  "open": 8,
+  "final_proof": "0/7"
+ },
+ "search": {
+  "repositories": 24,
+  "branch_tips_scanned": 2138,
+  "method": "shallow fetch of every branch tip; regex for unconditional declarations whose type is a terminal target; comment-aware sorry/admit/axiom scan",
+  "unconditional_inhabitants_found": 0
+ },
+ "lanes": [
+  {
+   "lane": "pVsNP",
+   "problem": "P vs NP",
+   "source_repository": "ShantiDraconis/m-core-p-vs-np",
+   "registry_source_ref": "a3386d52951f2e886eca9359fc218cd18014e0f0",
+   "source_main": "382de6a75080d30a561884fd633e943029fc1e46",
+   "registry_ref_vs_main": "main is 315 commits ahead",
+   "semantic_binding": "parametric (Language, InP, InNP, SAT); bound to the normalized Cook-style model through the G3 contract; external source fidelity not certified (gate_ledger G3.remaining)",
+   "obligations": [
+    {
+     "id": "P01ConstructionGap",
+     "statement": "Nonempty P01MachineConstruction (finite-control NTM, halting, polynomial bound, SAT correctness)",
+     "state": "OPEN_IMPLEMENTATION",
+     "demonstrated": false,
+     "classical_status": "true and known (SAT ∈ NP, Cook 1971); open only as formalization",
+     "recovered_producers": [
+      {
+       "theorem": "MCore.Real.P01IntegratedAssembly.p01_of_phases",
+       "type": "(P : P01PrepPhase) → P01VerifierPhase P.layout → P01ConstructionGap",
+       "kind": "conditional reduction"
+      },
+      {
+       "def": "MCore.Real.P01WitnessPrepGlobal.prepPhase : P01PrepPhase",
+       "kind": "concrete inhabitant, no sorry",
+       "branch": "atk/direct-p01-terminal-close-v2-20260930",
+       "commit": "ffd06cc6",
+       "source_ci": "green (repository workflows)",
+       "reverified_by_this_audit": false
+      }
+     ],
+     "smallest_remaining_gap": "Nonempty (P01VerifierPhase prepPhase.layout) — none found in 686 branches",
+     "integrated_in_mcore_ledger": false
+    },
+    {
+     "id": "G21Pointwise",
+     "statement": "G21Pointwise ≃ P02Target ≃ Nonempty (FailureGenerator (SATBits circuitBitEncoding)) ≃ ¬ InP SAT",
+     "state": "OPEN_MATH",
+     "demonstrated": false,
+     "classical_status": "equivalent to P ≠ NP; open Millennium problem",
+     "attempts": [
+      "G21PointwiseAttempt.myFailureGenerator — sorry (attack/final-external-two-gap-attempt-20260922)"
+     ],
+     "excluded_axioms": [
+      "falsified_satLowerBoundCertificate (FALSIFIED ONLY)",
+      "MCORE_LHOSPITAL_AXIOM (temporary assumption)"
+     ],
+     "smallest_remaining_gap": "the lower bound itself"
+    }
+   ]
+  },
+  {
+   "lane": "riemann",
+   "problem": "Riemann Hypothesis",
+   "source_repository": "ShantiDraconis/m-core-riemann",
+   "registry_source_ref": "d6a291b4563f9021f74ab63cc983d44f079472da",
+   "source_main": "a30d95f7fbbc6c04daa7812f37fca90dbd825eda",
+   "registry_ref_vs_main": "diverged (25 ahead / 64 behind)",
+   "semantic_binding": "concrete (Mathlib RiemannHypothesis / riemannZeta)",
+   "orientation_conflict": "Registry terminal is the Nyman–Beurling / Báez-Duarte criterion (DN → 0, implies RH). M-Core Semantic/Riemann.lean and AcceptedInhabitants target Nonempty RiemannOffCriticalZero (¬RH). At most one can be inhabited; the lane needs a single declared orientation.",
+   "obligations": [
+    {
+     "id": "FiniteSpanApproximatesChi concreteGeneratorFamily",
+     "state": "OPEN_MATH",
+     "demonstrated": false,
+     "classical_status": "equivalent in the classical setting to RH; open",
+     "excluded_axioms": [
+      "falsified_DNLimit_eq_zero (FALSIFIED ONLY)"
+     ]
+    }
+   ],
+   "invalid_claims_found": [
+    {
+     "repository": "ShantiDraconis/millennium-riemann-i",
+     "commit": "ae79aed383",
+     "file": "src/Riemann/CollapseProof/Contradiction.lean",
+     "declaration": "theorem riemann_hypothesis : RiemannHypothesis",
+     "verdict": "CIRCULAR — depends on axioms collapse_law and I_ne_one which jointly assert the conclusion; ζ is an axiom (zetaClassical), not Mathlib's riemannZeta"
+    }
+   ]
+  },
+  {
+   "lane": "beal",
+   "problem": "Beal conjecture",
+   "source_repository": "ShantiDraconis/m-core-beal",
+   "registry_source_ref": "d6fe130c44ef91e0f8ceb6b15a6548f186e381fd",
+   "source_main": "d79343f24169403765ced3d64a28e32647d9389e",
+   "registry_ref_vs_main": "main is 6 commits ahead",
+   "semantic_binding": "concrete (ℕ arithmetic)",
+   "obligations": [
+    {
+     "id": "GCDLowerBoundProducer",
+     "statement": "∀ d : BealData, 1 < Nat.gcd d.a (Nat.gcd d.b d.c)",
+     "state": "OPEN_MATH",
+     "demonstrated": false,
+     "classical_status": "the Beal conjecture itself; open",
+     "excluded": [
+      "falsified_BealConjecture (depends on axiom falsified_bealUniversalCommonPrimeCertificate)",
+      "BealUnconditionalClaimCertificate (only conditional constructors)"
+     ]
+    }
+   ]
+  },
+  {
+   "lane": "navierStokes",
+   "problem": "Navier–Stokes existence and smoothness",
+   "source_repository": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+   "registry_source_ref": "df808543535d34d4e8c46096b3455d76b0151fa2",
+   "source_main": "3904224e49f7b2256d56ce19a5e11e7ddc93f524",
+   "registry_ref_vs_main": "main is 7 commits ahead",
+   "semantic_binding": "parametric (Flow, ActualNS, Stabilizes)",
+   "obligations": [
+    {
+     "id": "ActualNSToSignedGainCore on genuine flow-derived EnstrophyData",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "hygiene": "16 Lean files declare axioms (…_TARGET and classical results) on main, frozen/* and cert/*; nothing depending on them can enter CLOSED_MATH. The repository's own CLAIMS.md marks the targets UNRESOLVED."
+  },
+  {
+   "lane": "hodge",
+   "problem": "Hodge conjecture",
+   "source_repository": "ShantiDraconis/m-core-hodge",
+   "registry_source_ref": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+   "source_main": "d06d5fca391b175f0efd52cf17e1f332a912c04f",
+   "registry_ref_vs_main": "main is 158 commits ahead",
+   "semantic_binding": "parametric (Variety, Class, Cycle, RationalHodge, Realizes)",
+   "obligations": [
+    {
+     "id": "ConcreteAlgebraicityPayload",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "hygiene": "protected branches clean"
+  },
+  {
+   "lane": "bsd",
+   "problem": "Birch and Swinnerton-Dyer",
+   "source_repository": "ShantiDraconis/m-core-bsd",
+   "registry_source_ref": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
+   "source_main": "12be69bcd9a7359aebfa350d49b77ae4efd45adb",
+   "registry_ref_vs_main": "diverged (11 ahead / 9 behind)",
+   "semantic_binding": "parametric target; BSDConcreteDomain uses Mathlib Weierstrass curves",
+   "obligations": [
+    {
+     "id": "rank equality + refined leading-coefficient identity on a realizable elliptic-curve domain",
+     "state": "OPEN_MATH",
+     "demonstrated": false,
+     "residuals": [
+      "bsd_p1_residual (sorry, outside certified tree)",
+      "bsd_p2_residual (sorry, outside certified tree)"
+     ]
+    }
+   ]
+  },
+  {
+   "lane": "yangMills",
+   "problem": "Yang–Mills existence and mass gap",
+   "source_repository": "ShantiDraconis/m-core-yang-mills",
+   "registry_source_ref": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
+   "source_main": "b4a5cff1c0335d719b53881dc898352f3c3ffeea",
+   "registry_ref_vs_main": "diverged (16 ahead / 167 behind)",
+   "semantic_binding": "parametric (Theory, Genuine4D, OSReconstructs, PositiveMassGap)",
+   "obligations": [
+    {
+     "id": "Nonempty (B60ConcretePhysicalAdapter C F D H G O)",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "hygiene": "protected branches clean"
+  }
+ ],
+ "binding_caveat": "Five of the seven semantic targets in lean/MCore/FinalFail/Semantic are parametric in abstract predicates. An inhabitant of such a target counts as a solution only after the predicates are bound to the official problem statement; otherwise trivial instantiations exist."
+}

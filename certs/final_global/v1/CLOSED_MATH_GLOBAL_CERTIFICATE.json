@@ -1,0 +1,194 @@
+{
+ "schema": "mcore.closed-math.global.v1",
+ "certificate": "MCORE_CLOSED_MATH_GLOBAL",
+ "version": "v1",
+ "state": "GREEN_FROZEN_CERTIFIED",
+ "meaning": "Every theorem of the M-Core Lean library at the stated source is accepted by the Lean kernel, with an axiom footprint inside the published policy. CLOSED_MATH is exactly this set of proved statements. It contains NO terminal endpoint of any of the seven problems; the kernel-checked theorem MCore.FinalProof.provedCount_eq_zero states this.",
+ "source": {
+  "repository": "ShantiDraconis/M-Core",
+  "integration_branch": "atk/global-audit-20261008",
+  "commit": "9a7f1f04b718dfbe931e07599ab1d34272804fcd",
+  "frozen_branch": "frozen/closed-math-global-green-9a7f1f04",
+  "lean_tree": "34bbe53c6fb1558539c62cf70cbe2aeeab810f00",
+  "lean_tree_identical_at": [
+   "8b7099e7bb86bd305812ad57503469d5c1c027f3",
+   "5cb7cd7c85836eaf19ab9511cd040bb826f2eb0a",
+   "9a7f1f04b718dfbe931e07599ab1d34272804fcd"
+  ],
+  "main_at_audit": "53d58bceed3424a435eb54e01cd6d3f17324a630"
+ },
+ "toolchain": {
+  "lean_toolchain": "leanprover/lean4:v4.19.0",
+  "lean_version": "4.19.0 (commit 6caaee842e94, Release)",
+  "lake_version": "5.0.0-6caaee8",
+  "mathlib_rev": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+  "runner": "GitHub Actions ubuntu-24.04 (Ubuntu 24.04.5 LTS)",
+  "local_crosscheck": "Lean 4.19.0 linux release on the audit sandbox for the 13 Mathlib-free modules"
+ },
+ "kernel_runs": [
+  {
+   "run_id": 37819802090,
+   "source_sha": "8b7099e7bb86bd305812ad57503469d5c1c027f3",
+   "utc_completed": "2026-10-08T17:57:12Z",
+   "evidence_branch": "audit-results/8b7099e7bb86bd305812ad57503469d5c1c027f3",
+   "result": "SUCCESS",
+   "modules": "42/42 green",
+   "provenance_root": "harness LEAN_PATH bug (fixed in 5cb7cd7c)"
+  },
+  {
+   "run_id": 37824483365,
+   "source_sha": "5cb7cd7c85836eaf19ab9511cd040bb826f2eb0a",
+   "utc_completed": "2026-10-08T18:33:12Z",
+   "evidence_branch": "audit-results/5cb7cd7c85836eaf19ab9511cd040bb826f2eb0a",
+   "result": "SUCCESS",
+   "modules": "42/42 green",
+   "provenance_root": "4/6 (A4Scale syntax error; Admissible depends on it)"
+  },
+  {
+   "run_id": 37825452119,
+   "source_sha": "9a7f1f04b718dfbe931e07599ab1d34272804fcd",
+   "utc_completed": "2026-10-08T18:41:22Z",
+   "evidence_branch": "audit-results/9a7f1f04b718dfbe931e07599ab1d34272804fcd",
+   "evidence_commit": "d7810b867cdd58d0d016259092986244137bced7",
+   "result": "SUCCESS",
+   "modules": "42/42 green",
+   "provenance_root": "6/6 green"
+  }
+ ],
+ "scope": {
+  "lake_library": "lean/ (lean_lib MCore, srcDir = \"lean\")",
+  "modules_total": 41,
+  "modules_green": 41,
+  "default_target_green": true,
+  "provenance_tree": {
+   "path": "MCore/ (repository root, outside srcDir)",
+   "modules": 6,
+   "green": 6,
+   "theorem_declarations": 3,
+   "axiom_audited": false
+  }
+ },
+ "counts": {
+  "source_theorem_or_lemma_declarations": 169,
+  "theorem_constants": 582,
+  "with_no_axioms": 483,
+  "axiom_occurrences": {
+   "propext": 99,
+   "Quot.sound": 25,
+   "Classical.choice": 21
+  },
+  "forbidden": 0,
+  "user_axiom_declarations": 0,
+  "sorry_or_admit_in_source": 0
+ },
+ "axiom_policy": {
+  "allowed": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "forbidden": [
+   "sorryAx",
+   "sorry",
+   "admit",
+   "custom theorem-carrying axioms",
+   "hidden oracle",
+   "circularity"
+  ],
+  "result": "PASS"
+ },
+ "axiom_evidence": {
+  "tsv": "axiom_audit_run37819802090.tsv",
+  "tsv_sha256": "41b471a3b4c089d28c71a27412f17c9d7632df34802ebc2e060c4a44c015b1d9",
+  "identical_in_runs": [
+   37819802090,
+   37824483365,
+   37825452119
+  ],
+  "summary_line": "SUMMARY\ttheorems=582\tno_axioms=483\tallowed_only=99\tforbidden=0\tuser_axioms=0",
+  "theorem_constants": 582,
+  "with_no_axioms": 483,
+  "axiom_occurrences": {
+   "propext": 99,
+   "Quot.sound": 25,
+   "Classical.choice": 21
+  },
+  "forbidden": 0,
+  "user_axiom_declarations": 0
+ },
+ "repairs_integrated": [
+  {
+   "file": "lean/MCore/FinalFail/RPAConfirmation.lean",
+   "error": "Prop structure with data fields (EndpointRole)",
+   "fix": "roles recorded as proof field rolesDistinct",
+   "broke_main_since": "32981d6"
+  },
+  {
+   "file": "lean/MCore/FinalFail/RPALattice.lean",
+   "error": "match on Prop against Bool patterns",
+   "fix": "Boolean == 0; proof supplies Bool facts"
+  },
+  {
+   "file": "lean/MCore/FinalFail/ProblemSignature.lean",
+   "error": "field named with reserved keyword `class`; proof ignored P.preserves",
+   "fix": "«class»; rewrite with P.preserves"
+  },
+  {
+   "file": "lean/MCore/FinalFail/C3MaterialOperators.lean",
+   "error": "seven fields parsed as one field with six untyped binders",
+   "fix": "parenthesised field group"
+  },
+  {
+   "file": "lean/MCore/FinalFail/TypedCompressionCore.lean",
+   "error": "Set / Function.Injective used without import",
+   "fix": "import Mathlib.Data.Set.Basic"
+  },
+  {
+   "file": "MCore/A4Scale.lean (provenance)",
+   "error": "reserved token λ as bound variable",
+   "fix": "«λ» (α-renaming)"
+  }
+ ],
+ "statement_policy": "No statement was weakened; no axiom, sorry, opaque or hypothesis was added; FinalProof.registry unchanged.",
+ "content_classes": [
+  {
+   "class": "fail-closed registry accounting",
+   "examples": [
+    "MCore.FinalProof.provedCount_eq_zero",
+    "MCore.FinalProof.openMathCount_eq_seven",
+    "MCore.FinalProof.finalProof_not_ready",
+    "MCore.FinalProof.final_registry_fail_closed"
+   ]
+  },
+  {
+   "class": "exact equivalences with official statements",
+   "examples": [
+    "MCore.FinalFail.Semantic.not_riemannHypothesis_iff_nonempty_offCriticalZero",
+    "MCore.FinalFail.Semantic.offCriticalZero_refutes_RH",
+    "MCore.FinalFail.Semantic.RiemannOffCriticalZero.re_lt_one"
+   ]
+  },
+  {
+   "class": "conditional reductions (hypothesis passed as argument)",
+   "examples": [
+    "MCore.FinalFail.Semantic.accepted_not_RH_produces_semantic_inhabitant",
+    "MCore.FinalFail.Universal.terminalInhabitants_iff_allSeven",
+    "MCore.FinalFail.Universal.universal_aggregation_is_fail_closed"
+   ]
+  },
+  {
+   "class": "structural infrastructure",
+   "examples": [
+    "MCore.FinalFail.RPA.five_views_same_identity",
+    "MCore.FinalFail.RPA.all_length3_mixed_words_are_full",
+    "MCore.FinalFail.Compression.bilateral_inverse_implies_injective"
+   ]
+  }
+ ],
+ "terminal_endpoints_closed": 0,
+ "final_proof": "0/7",
+ "previously_certified_by_reference": {
+  "note": "Frozen anchors recorded in certs/final_external/v1 (P01 sub-gates, P02 G2.2 wiring, G3 normalized contract, FinalExternalTwoGap reduction) live in ShantiDraconis/m-core-p-vs-np. They are listed, not re-executed, by this audit.",
+  "record": "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json"
+ }
+}

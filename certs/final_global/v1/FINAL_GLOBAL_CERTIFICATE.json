@@ -1,0 +1,287 @@
+{
+ "schema": "mcore.final-global.v1",
+ "certificate": "MCORE_FINAL_GLOBAL",
+ "version": "v1",
+ "certificate_type": "INTEGRATION_STATE_CERTIFICATE",
+ "public_label": "Consolidated, verifiable state of the ATK programme. NOT a claim that any Millennium problem or the Beal conjecture is solved.",
+ "state": {
+  "structural_closure": "GREEN_FROZEN_CERTIFIED",
+  "structural_meaning": "All 41 M-Core library modules and 6 provenance modules elaborate in the Lean kernel; axiom footprint within policy; registry, firewall and FINAL_EXTERNAL preparatory gate reproduce.",
+  "terminal_math_closure": "OPEN",
+  "terminal_obligations": {
+   "total": 8,
+   "demonstrated": 0,
+   "open": 8
+  },
+  "final_proof": "0/7",
+  "FINAL_EXTERNAL_ISSUED": false,
+  "FINAL_ROOT": null
+ },
+ "conjectures_and_endpoints": [
+  {
+   "lane": "pVsNP",
+   "problem": "P vs NP",
+   "terminal": [
+    "P01ConstructionGap",
+    "G21Pointwise"
+   ],
+   "state": "OPEN_MATH"
+  },
+  {
+   "lane": "riemann",
+   "problem": "Riemann Hypothesis",
+   "terminal": [
+    "FiniteSpanApproximatesChi concreteGeneratorFamily"
+   ],
+   "state": "OPEN_MATH"
+  },
+  {
+   "lane": "beal",
+   "problem": "Beal conjecture",
+   "terminal": [
+    "GCDLowerBoundProducer"
+   ],
+   "state": "OPEN_MATH"
+  },
+  {
+   "lane": "navierStokes",
+   "problem": "Navier–Stokes existence and smoothness",
+   "terminal": [
+    "ActualNSToSignedGainCore on genuine flow-derived EnstrophyData"
+   ],
+   "state": "OPEN_MATH"
+  },
+  {
+   "lane": "hodge",
+   "problem": "Hodge conjecture",
+   "terminal": [
+    "ConcreteAlgebraicityPayload"
+   ],
+   "state": "OPEN_MATH"
+  },
+  {
+   "lane": "bsd",
+   "problem": "Birch and Swinnerton-Dyer",
+   "terminal": [
+    "rank equality + refined leading-coefficient identity on a realizable elliptic-curve domain"
+   ],
+   "state": "OPEN_MATH"
+  },
+  {
+   "lane": "yangMills",
+   "problem": "Yang–Mills existence and mass gap",
+   "terminal": [
+    "Nonempty (B60ConcretePhysicalAdapter C F D H G O)"
+   ],
+   "state": "OPEN_MATH"
+  }
+ ],
+ "closed_math": {
+  "file": "CLOSED_MATH_GLOBAL_CERTIFICATE.json",
+  "sha256": "f172934d83faaead7b8242e2c6aaf61c7b7397d90c7a2e6091947830b0c7a05d",
+  "frozen_branch": "frozen/closed-math-global-green-9a7f1f04",
+  "commit": "9a7f1f04b718dfbe931e07599ab1d34272804fcd",
+  "lean_tree": "34bbe53c6fb1558539c62cf70cbe2aeeab810f00",
+  "theorem_constants": 582,
+  "forbidden_axioms": 0,
+  "terminal_endpoints_closed": 0
+ },
+ "open_math": {
+  "file": "OPEN_MATH_GLOBAL_STATUS.json",
+  "sha256": "13abfd6b9a18ad043d579bdd808c837a6221e764ab5149f73c14cd890479d71a",
+  "lanes": 7,
+  "terminal_obligations": 8,
+  "demonstrated": 0,
+  "open": 8,
+  "final_proof": "0/7"
+ },
+ "recovered_material_producers": [
+  {
+   "lane": "pVsNP",
+   "obligation": "P01ConstructionGap",
+   "producer": "MCore.Real.P01WitnessPrepGlobal.prepPhase : P01PrepPhase",
+   "repository": "ShantiDraconis/m-core-p-vs-np",
+   "branch": "atk/direct-p01-terminal-close-v2-20260930",
+   "commit": "ffd06cc6",
+   "effect": "P01ConstructionGap reduces to one concrete P01VerifierPhase prepPhase.layout (via p01_of_verifier)",
+   "integrated": false,
+   "reason_not_integrated": "conditional on the missing verifier phase; promotion would require that inhabitant"
+  }
+ ],
+ "source_repositories": {
+  "file": "SOURCE_INVENTORY.json",
+  "sha256": "77176845a3efc6083c958817219f66a0a194acdc44465092e6fcf48f60354752",
+  "repositories": 24,
+  "branches": 2138,
+  "frozen": 657,
+  "cert": 309,
+  "registry_sources": {
+   "ShantiDraconis/m-core-p-vs-np": {
+    "registry_ref": "a3386d52951f2e886eca9359fc218cd18014e0f0",
+    "main": "382de6a75080d30a561884fd633e943029fc1e46",
+    "registry_vs_main": "main is 315 commits ahead"
+   },
+   "ShantiDraconis/m-core-riemann": {
+    "registry_ref": "d6a291b4563f9021f74ab63cc983d44f079472da",
+    "main": "a30d95f7fbbc6c04daa7812f37fca90dbd825eda",
+    "registry_vs_main": "diverged (25 ahead / 64 behind)"
+   },
+   "ShantiDraconis/m-core-beal": {
+    "registry_ref": "d6fe130c44ef91e0f8ceb6b15a6548f186e381fd",
+    "main": "d79343f24169403765ced3d64a28e32647d9389e",
+    "registry_vs_main": "main is 6 commits ahead"
+   },
+   "ShantiDraconis/navier-stokes-critical-barrier-audit": {
+    "registry_ref": "df808543535d34d4e8c46096b3455d76b0151fa2",
+    "main": "3904224e49f7b2256d56ce19a5e11e7ddc93f524",
+    "registry_vs_main": "main is 7 commits ahead"
+   },
+   "ShantiDraconis/m-core-hodge": {
+    "registry_ref": "42eaf7d4d639871f82eceb121ee525a6c4f30d84",
+    "main": "d06d5fca391b175f0efd52cf17e1f332a912c04f",
+    "registry_vs_main": "main is 158 commits ahead"
+   },
+   "ShantiDraconis/m-core-bsd": {
+    "registry_ref": "c1e7b245726c4c65f5f9f878acefb86460746f4a",
+    "main": "12be69bcd9a7359aebfa350d49b77ae4efd45adb",
+    "registry_vs_main": "diverged (11 ahead / 9 behind)"
+   },
+   "ShantiDraconis/m-core-yang-mills": {
+    "registry_ref": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
+    "main": "b4a5cff1c0335d719b53881dc898352f3c3ffeea",
+    "registry_vs_main": "diverged (16 ahead / 167 behind)"
+   }
+  }
+ },
+ "kernel_runs": {
+  "file": "GLOBAL_KERNEL_RUNS.md",
+  "sha256": "b7018a67740e52386a79f22326f2b98add6084f32bdfa56f833a7c5731420103",
+  "runs": [
+   37819802090,
+   37824483365,
+   37825452119
+  ],
+  "toolchain": {
+   "lean_toolchain": "leanprover/lean4:v4.19.0",
+   "lean_version": "4.19.0 (commit 6caaee842e94, Release)",
+   "lake_version": "5.0.0-6caaee8",
+   "mathlib_rev": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+   "runner": "GitHub Actions ubuntu-24.04 (Ubuntu 24.04.5 LTS)",
+   "local_crosscheck": "Lean 4.19.0 linux release on the audit sandbox for the 13 Mathlib-free modules"
+  }
+ },
+ "axiom_and_circularity_audit": {
+  "file": "GLOBAL_AXIOM_AUDIT.md",
+  "sha256": "be683e14cb9c8d2df78402f02b938495f775635d8060a23ac5ac356f79a85e45",
+  "mcore": "PASS (0 forbidden, 0 user axioms, no circularity)",
+  "sources_protected_branches": "PASS except navier-stokes-critical-barrier-audit (16 files with axiom declarations)",
+  "invalid_claim_flagged": "millennium-riemann-i: riemann_hypothesis is circular (collapse_law + I_ne_one axioms)"
+ },
+ "final_external": {
+  "package": "certs/final_external/v1",
+  "gate": "freeze.sh",
+  "result": "FROZEN_PREPARATORY (reproduced; SHA256SUMS and PREPARATORY_ROOT identical)",
+  "PREPARATORY_ROOT": "1651ac0cf58b81ce2038019c548fbd7132487aa0ad3a2e29b934adf6e3bf88d9",
+  "issued": false,
+  "blockers_file": "FINAL_EXTERNAL_BLOCKERS.md",
+  "blockers_sha256": "1985ca4414f65cd1414a2d4e3f4457940abaeaa2941b0bb30a978c3cc7fd167e",
+  "blockers": {
+   "mathematical": [
+    "P01ConstructionGap",
+    "G21Pointwise"
+   ],
+   "governance": [
+    "human_review",
+    "production.app",
+    "production.crypto",
+    "production.hardware_attestation"
+   ]
+  }
+ },
+ "dependency_graph": {
+  "nodes": [
+   "P01PrepPhase",
+   "P01VerifierPhase",
+   "P01ConstructionGap",
+   "G21Pointwise",
+   "P02Target",
+   "SAT_not_in_P",
+   "G3_contract",
+   "P_VS_NP_ENDPOINT",
+   "human_review",
+   "app",
+   "crypto",
+   "hardware",
+   "FINAL_EXTERNAL_ISSUED",
+   "RH_lane",
+   "Beal_lane",
+   "NS_lane",
+   "Hodge_lane",
+   "BSD_lane",
+   "YM_lane",
+   "GLOBAL_7"
+  ],
+  "edges": [
+   [
+    "P01PrepPhase ∧ P01VerifierPhase",
+    "P01ConstructionGap",
+    "P01IntegratedAssembly.p01_of_phases (conditional, source CI green)"
+   ],
+   [
+    "G21Pointwise",
+    "P02Target",
+    "g21_pointwise_iff_p02_target (equivalence)"
+   ],
+   [
+    "P02Target",
+    "SAT_not_in_P",
+    "p02_target_iff_sat_not_in_p (equivalence)"
+   ],
+   [
+    "P01ConstructionGap ∧ G21Pointwise",
+    "P_VS_NP_ENDPOINT",
+    "FinalExternalTwoGap.final_external_two_gap_closes (frozen b406b806)"
+   ],
+   [
+    "P01ConstructionGap ∧ G21Pointwise ∧ G3_contract ∧ human_review ∧ app ∧ crypto ∧ hardware",
+    "FINAL_EXTERNAL_ISSUED",
+    "manifest.json issuance_gate"
+   ],
+   [
+    "P_VS_NP_ENDPOINT ∧ RH_lane ∧ Beal_lane ∧ NS_lane ∧ Hodge_lane ∧ BSD_lane ∧ YM_lane",
+    "GLOBAL_7",
+    "FinalProof.FinalProofReady := provedCount = 7"
+   ]
+  ],
+  "inhabited_nodes": [
+   "P01PrepPhase",
+   "G3_contract"
+  ],
+  "open_nodes": [
+   "P01VerifierPhase",
+   "G21Pointwise",
+   "RH_lane",
+   "Beal_lane",
+   "NS_lane",
+   "Hodge_lane",
+   "BSD_lane",
+   "YM_lane",
+   "human_review",
+   "app",
+   "crypto",
+   "hardware"
+  ]
+ },
+ "discrepancies_recorded": [
+  "main build broken since 32981d6 (5 modules) — repaired on the integration branch, not on main",
+  "manifest.json linked_preparatory_root 4cdaf7b6… ≠ reproduced PREPARATORY_ROOT 1651ac0c… (frozen package, not edited)",
+  "gate_ledger.json G3 OPEN_SOURCE_FIDELITY vs manifest/status G3 CLOSED (normalized contract certified; external source fidelity not)",
+  "Riemann lane orientation conflict: registry terminal (Nyman–Beurling, RH-positive) vs M-Core semantic target (¬RH)",
+  "registry source refs stale or on side branches for 7/7 lanes (see source_repositories.registry_sources)",
+  "five of seven semantic targets are parametric in abstract predicates"
+ ],
+ "verification": {
+  "script": "verify.sh",
+  "how": "bash certs/final_global/v1/verify.sh — recomputes SHA256SUMS, checks cross-references and fail-closed invariants"
+ }
+}
