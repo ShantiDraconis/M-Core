@@ -16,12 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-        with:
-          build: false
-      - name: Check isolated seven-endpoint interface
-        run: lake env lean lean/ATK/TerminalSevenInterfaces.lean
-      - name: Reject proof holes and custom axioms in interface
+      - name: Install Lean toolchain
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:stable
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Check standalone terminal interface
+        run: lean lean/ATK/TerminalSevenInterfaces.lean
+      - name: Reject proof holes and custom axioms
         run: |
           if grep -nE '(^|[[:space:]])(sorry|admit|axiom)[[:space:]]' lean/ATK/TerminalSevenInterfaces.lean; then
             echo 'Forbidden proof hole or axiom detected'
