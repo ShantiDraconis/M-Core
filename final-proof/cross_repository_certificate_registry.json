@@ -1,0 +1,75 @@
+{
+  "schema": "atk.cross-repository-certificate-registry.v1",
+  "created": "2026-10-08",
+  "status": "SOURCE_INDEXED_TYPE_CHECK_PENDING",
+  "central_repository": "ShantiDraconis/M-Core",
+  "policy": "Forward-only; source blobs immutable; never promote conditional implications to terminal proofs.",
+  "sources": [
+    {
+      "repository": "ShantiDraconis/M-Core",
+      "ref": "main",
+      "path": "final-proof/pnp_prior_formalization_reuse.json",
+      "blob": "91378c67f2157795e9fc199bb9928870e600173b",
+      "role": "existing reuse manifest"
+    },
+    {
+      "repository": "ShantiDraconis/M-Core",
+      "ref": "main",
+      "path": "imports/pnp/recovery/7abed945/audit/EndpointCompression.lean",
+      "blob": "41f18931c0d4f106067fc61200713903933164a7",
+      "declarations": [
+        "MCore.BackwardCompression.fixed_witness_implies_final",
+        "MCore.BackwardCompression.endpoint_compression",
+        "MCore.BackwardCompression.endpoint_from_c12_open_bridge"
+      ],
+      "required": [
+        "OfficialModelMatch",
+        "FixedK10WitnessExistence"
+      ],
+      "classification": "CONDITIONAL"
+    },
+    {
+      "repository": "ShantiDraconis/M-Core",
+      "ref": "main",
+      "path": "imports/pnp/recovery/7abed945/audit/ThreeTracks.lean",
+      "blob": "63c9630d139cedc7807cf9213556c693fce5c809",
+      "declarations": [
+        "MCore.ThreeTracks.equality_start_to_final",
+        "MCore.ThreeTracks.separation_start_to_final",
+        "MCore.ThreeTracks.approximation_route"
+      ],
+      "required": [
+        "PSubsetNP",
+        "S0 or E0; or A0 and ApproximationBridge"
+      ],
+      "classification": "CONDITIONAL"
+    },
+    {
+      "repository": "ShantiDraconis/M-Core",
+      "ref": "main",
+      "path": "imports/pnp/recovery/7abed945/audit/FinalEndpoint.lean",
+      "blob": "92953adafe4433e33b44275339cf721ddb96cfa4",
+      "classification": "ENDPOINT_DEFINITIONS"
+    },
+    {
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "ref": "atk/p01-successor-cycle-20261005",
+      "path": "lean/MCore/Real/IntegratedMaterialProofs.lean",
+      "commit": "e40ff6f5d4bf7c2d4a0e41b700185bf0be7429fd",
+      "classification": "CONDITIONAL_INTEGRATION"
+    },
+    {
+      "repository": "ShantiDraconis/axiomatic-millenium",
+      "ref": "main",
+      "path": "AxiomaticMillenium.lean",
+      "classification": "GLOBAL_IMPORT_ROOT_TYPE_CHECK_PENDING"
+    }
+  ],
+  "unresolved": [
+    "Enumerate all 16 target repositories and branches from authoritative branch list",
+    "Verify Lean versions and dependencies for each source",
+    "Compare exact source/target theorem types for P01 and G21",
+    "Compile imported source proofs in a compatible environment",
+    "Obtain material witness for P≠NP terminal endpoint"
+  ]
+}
