@@ -79,7 +79,9 @@ jobs:
           mkdir -p "$P/MCore"; cp MCore/*.lean "$P/MCore/"
           : > "$OUT/provenance_build.tsv"
           for m in Core A1Amplitude A2SelfRef A3Zero A4Scale Admissible; do
-            if lake env bash -c "LEAN_PATH=\$LEAN_PATH:$PWD/$P lean -o $P/MCore/$m.olean $P/MCore/$m.lean" > "$OUT/logs/provenance.$m.log" 2>&1; then rc=0; else rc=$?; fi
+            # .provenance must come first: Lean resolves the root package dir
+            # `MCore` in the first LEAN_PATH entry that contains it.
+            if lake env bash -c "LEAN_PATH=$PWD/$P:\$LEAN_PATH lean -o $P/MCore/$m.olean $P/MCore/$m.lean" > "$OUT/logs/provenance.$m.log" 2>&1; then rc=0; else rc=$?; fi
             printf 'MCore.%s(root)\t%s\t%s\n' "$m" "$rc" "$(grep -c 'error:' "$OUT/logs/provenance.$m.log" || true)" >> "$OUT/provenance_build.tsv"
           done
           cat "$OUT/provenance_build.tsv"
