@@ -35,11 +35,10 @@ inductive CanonicalEndpointState
   deriving DecidableEq, Repr
 
 def normalizeMultiplicity (s : EndpointMultiplicity) : CanonicalEndpointState :=
-  match s.openCount = 0, s.closedCount = 0 with
-  | true, true => .empty
-  | false, true => .open
-  | true, false => .closed
-  | false, false => .full
+  if s.openCount = 0 then
+    if s.closedCount = 0 then .empty else .closed
+  else
+    if s.closedCount = 0 then .open else .full
 
 @[simp] theorem normalize_open :
     normalizeMultiplicity openAtom = .open := by
