@@ -1,0 +1,15 @@
+source_sha=ae70fb74d413385beb22a85c418c9096b6ee5a8d
+source_ref=refs/heads/atk/global-audit-20261008
+run_id=37851084289
+run_attempt=1
+workflow=ATK global kernel audit
+runner_os=Linux Ubuntu 24.04.5 LTS
+utc_completed=2026-10-08T22:12:18Z
+lean_toolchain=leanprover/lean4:v4.19.0
+lean_version=Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+lake_version=Lake version 5.0.0-6caaee8 (Lean version 4.19.0)
+mathlib_rev=c44e0c8ee63ca166450922a373c7409c5d26b00b
+default_target_rc=0
+freeze_sh_rc=0
+final_global_verify_rc=0
+freeze_v2_sh_rc=0

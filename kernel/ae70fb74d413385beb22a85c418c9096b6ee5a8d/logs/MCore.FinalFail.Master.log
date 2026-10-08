@@ -1,0 +1,15 @@
+ℹ [6659/6665] Replayed MCore.FinalFail.ClosedCenterHard
+info: ./././lean/MCore/FinalFail/ClosedCenterHard.lean:141:0: 'MCore.FinalFail.middle_has_two_admissible_branches' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/ClosedCenterHard.lean:142:0: 'MCore.FinalFail.closed_transition_preserves_closed' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/ClosedCenterHard.lean:143:0: 'MCore.FinalFail.ClosedCenterHard.start_iff_finish' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/ClosedCenterHard.lean:144:0: 'MCore.FinalFail.closed_center_terminal_chain_closure' does not depend on any axioms
+ℹ [6660/6665] Replayed MCore.FinalFail.FundamentalIndeterminacy
+info: ./././lean/MCore/FinalFail/FundamentalIndeterminacy.lean:80:0: 'MCore.FinalFail.fundamental_indeterminacy_not_determined' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/FundamentalIndeterminacy.lean:81:0: 'MCore.FinalFail.fundamental_indeterminacy_forward_invariant' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/FundamentalIndeterminacy.lean:82:0: 'MCore.FinalFail.reference_triad_is_not_exhaustive' does not depend on any axioms
+ℹ [6661/6665] Replayed MCore.FinalFail.RelationalHardAtom
+info: ./././lean/MCore/FinalFail/RelationalHardAtom.lean:60:0: 'MCore.FinalFail.RelationalHardAtom.failAt_not_determined' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RelationalHardAtom.lean:61:0: 'MCore.FinalFail.RelationalHardAtom.common_fixed_has_both_loops' does not depend on any axioms
+✔ [6664/6665] Built MCore.FinalFail.RecoveryFirewall
+✔ [6665/6665] Built MCore.FinalFail.Master
+Build completed successfully.
