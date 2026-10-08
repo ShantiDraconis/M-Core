@@ -8,9 +8,11 @@ Millennium problems share the Navier–Stokes scaling map. -/
 structure Scaling (U Λ : Type*) where
   act : Λ → U → U
 
-/-- Scale criticality means invariance under the adapter's declared scaling. -/
+/-- Scale criticality means invariance under the adapter's declared scaling.
+(`λ` is a reserved token in Lean 4, so the bound scale parameter is written
+`«λ»`; the statement is unchanged up to α-renaming.) -/
 def ScaleCritical {U Λ : Type*} (s : Scaling U Λ) (I : U → ℝ) : Prop :=
-  ∀ λ u, I (s.act λ u) = I u
+  ∀ «λ» u, I (s.act «λ» u) = I u
 
 /-- Calibration constants are data, not theorems. -/
 structure Calibration where
