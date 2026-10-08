@@ -32,9 +32,6 @@ structure RPAFrame (OpenMath ClosedMath : Prop) : Prop where
 
 /-- A certifiable RPA transition contains both endpoint witnesses and the bridge. -/
 structure RPAConfirmation (OpenMath ClosedMath : Prop) : Prop where
-  openRole : EndpointRole := .openEndpoint
-  closedRole : EndpointRole := .closedEndpoint
-  rolesDistinct : openRole ≠ closedRole
   openWitness : OpenMath
   closedWitness : ClosedMath
   frame : RPAFrame OpenMath ClosedMath
@@ -62,7 +59,7 @@ theorem open_requires_closed
   · intro h
     exact h.closedWitness
   · intro hClosed
-    exact ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+    exact ⟨hOpen, hClosed, hFrame⟩
 
 /-- CLOSED alone is not an RPA confirmation: an OPEN witness is still required. -/
 theorem closed_requires_open
@@ -73,7 +70,7 @@ theorem closed_requires_open
   · intro h
     exact h.openWitness
   · intro hOpen
-    exact ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+    exact ⟨hOpen, hClosed, hFrame⟩
 
 end RPAConfirmation
 
@@ -148,7 +145,7 @@ theorem frame_plus_open_and_closed_closes
     (hOpen : OpenMath)
     (hClosed : ClosedMath) :
     GlobalExternalCertificate OpenMath ClosedMath :=
-  ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+  ⟨hOpen, hClosed, hFrame⟩
 
 #print axioms MCore.FinalFail.RPA.endpoint_roles_distinct
 #print axioms MCore.FinalFail.RPA.dual_endpoint_state_iff_open_closed_math
