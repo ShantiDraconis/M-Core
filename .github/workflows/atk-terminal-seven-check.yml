@@ -1,0 +1,25 @@
+name: ATK terminal seven interface check
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - atk/sync-existing-none-results-20261008
+    paths:
+      - 'lean/ATK/TerminalSevenInterfaces.lean'
+      - '.github/workflows/atk-terminal-seven-check.yml'
+jobs:
+  terminal-interface:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: false
+      - name: Check isolated seven-endpoint interface
+        run: lake env lean lean/ATK/TerminalSevenInterfaces.lean
+      - name: Reject proof holes and custom axioms in interface
+        run: |
+          if grep -nE '(^|[[:space:]])(sorry|admit|axiom)[[:space:]]' lean/ATK/TerminalSevenInterfaces.lean; then
+            echo 'Forbidden proof hole or axiom detected'
+            exit 1
+          fi
