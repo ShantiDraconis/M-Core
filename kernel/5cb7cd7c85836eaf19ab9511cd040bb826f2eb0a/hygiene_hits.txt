@@ -1,0 +1,1 @@
+lean/MCore/FinalFail/AcceptedInhabitants.lean:15:* no axiom, `sorry`, `admit`, oracle, or fabricated witness is introduced;

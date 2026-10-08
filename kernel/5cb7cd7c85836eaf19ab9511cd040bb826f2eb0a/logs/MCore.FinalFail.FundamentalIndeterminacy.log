@@ -1,0 +1,10 @@
+ℹ [4/5] Replayed MCore.FinalFail.ClosedCenterHard
+info: ./././lean/MCore/FinalFail/ClosedCenterHard.lean:141:0: 'MCore.FinalFail.middle_has_two_admissible_branches' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/ClosedCenterHard.lean:142:0: 'MCore.FinalFail.closed_transition_preserves_closed' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/ClosedCenterHard.lean:143:0: 'MCore.FinalFail.ClosedCenterHard.start_iff_finish' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/ClosedCenterHard.lean:144:0: 'MCore.FinalFail.closed_center_terminal_chain_closure' does not depend on any axioms
+ℹ [5/5] Replayed MCore.FinalFail.FundamentalIndeterminacy
+info: ./././lean/MCore/FinalFail/FundamentalIndeterminacy.lean:80:0: 'MCore.FinalFail.fundamental_indeterminacy_not_determined' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/FundamentalIndeterminacy.lean:81:0: 'MCore.FinalFail.fundamental_indeterminacy_forward_invariant' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/FundamentalIndeterminacy.lean:82:0: 'MCore.FinalFail.reference_triad_is_not_exhaustive' does not depend on any axioms
+Build completed successfully.
