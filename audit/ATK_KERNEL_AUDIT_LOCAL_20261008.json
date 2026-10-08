@@ -1,0 +1,118 @@
+{
+ "schema": "atk.kernel-audit.local.v1",
+ "date": "2026-10-08",
+ "base_commit": "53d58bceed3424a435eb54e01cd6d3f17324a630",
+ "toolchain": "leanprover/lean4:v4.19.0 (plain lean, no Lake, no Mathlib)",
+ "scope": "The 14 modules under lean/ that do not import Mathlib transitively. The 28 Mathlib-dependent modules (incl. FinalProofRegistry, FinalProofFirewall) were NOT built locally: Mathlib cache is unreachable from this environment. CI must confirm them.",
+ "ci_context": "Final Proof Miner 'Lean kernel audit' step failed on every run at 465cc654 and 53d58bce (43 runs); last success at a05eb67d. Run logs not readable from here; the local errors below are in modules FinalProofRegistry imports.",
+ "errors_found_at_base": {
+  "MCore.FinalFail.RPAConfirmation": "Prop-valued structure carried EndpointRole data fields (projection rejected); reachable from FinalProofRegistry",
+  "MCore.FinalFail.RPALattice": "match on Prop `n = 0` against Bool patterns; rfl lemmas then failed; normalize_positive_positive_full left unsolved goals (sorryAx); reachable from FinalProofRegistry",
+  "MCore.FinalFail.RPALatticeCube3": "cascade from RPALattice; reachable from FinalProofRegistry",
+  "MCore.FinalFail.C3MaterialOperators": "multi-name field line rejected; orphan module (not in default build)",
+  "MCore.FinalFail.ProblemSignature": "field named with reserved keyword `class`; orphan module",
+  "MCore.FinalFail.TypedCompressionCore": "uses Set / Set.Nonempty / Function.Injective without importing Mathlib; orphan; NOT fixed here"
+ },
+ "results_after_fix": {
+  "MCore.FinalFail.TopologyOperatorCore": {
+   "compiles": true,
+   "print_axioms": {}
+  },
+  "MCore.FinalFail.C3MaterialOperators": {
+   "compiles": true,
+   "print_axioms": {}
+  },
+  "MCore.FinalFail.TriadicObstructionCalculus": {
+   "compiles": true,
+   "print_axioms": {}
+  },
+  "MCore.FinalFail.MinimalOpenBridge": {
+   "compiles": true,
+   "print_axioms": {}
+  },
+  "MCore.FinalFail.ClosedCenterHard": {
+   "compiles": true,
+   "print_axioms": {
+    "MCore.FinalFail.middle_has_two_admissible_branches": "does not depend on any axioms",
+    "MCore.FinalFail.closed_transition_preserves_closed": "does not depend on any axioms",
+    "MCore.FinalFail.ClosedCenterHard.start_iff_finish": "does not depend on any axioms",
+    "MCore.FinalFail.closed_center_terminal_chain_closure": "does not depend on any axioms"
+   }
+  },
+  "MCore.FinalFail.FundamentalIndeterminacy": {
+   "compiles": true,
+   "print_axioms": {
+    "MCore.FinalFail.fundamental_indeterminacy_not_determined": "does not depend on any axioms",
+    "MCore.FinalFail.fundamental_indeterminacy_forward_invariant": "does not depend on any axioms",
+    "MCore.FinalFail.reference_triad_is_not_exhaustive": "does not depend on any axioms"
+   }
+  },
+  "MCore.FinalFail.RelationalHardAtom": {
+   "compiles": true,
+   "print_axioms": {
+    "MCore.FinalFail.RelationalHardAtom.failAt_not_determined": "does not depend on any axioms",
+    "MCore.FinalFail.RelationalHardAtom.common_fixed_has_both_loops": "does not depend on any axioms"
+   }
+  },
+  "MCore.FinalFail.CoreIndeterminacyTests": {
+   "compiles": true,
+   "print_axioms": {
+    "MCore.FinalFail.twoBranchResolution_is_indeterminate": "does not depend on any axioms",
+    "MCore.FinalFail.singletonResolution_not_indeterminate": "does not depend on any axioms",
+    "MCore.FinalFail.toyHardAtom_center_is_fail": "does not depend on any axioms",
+    "MCore.FinalFail.toyHardAtom_left_loop_fixed": "does not depend on any axioms"
+   }
+  },
+  "MCore.FinalFail.LocalRigidNucleus": {
+   "compiles": true,
+   "print_axioms": {}
+  },
+  "MCore.FinalFail.ProblemSignature": {
+   "compiles": true,
+   "print_axioms": {}
+  },
+  "MCore.FinalFail.RPAConfirmation": {
+   "compiles": true,
+   "print_axioms": {
+    "MCore.FinalFail.RPA.endpoint_roles_distinct": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.dual_endpoint_state_iff_open_closed_math": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.five_views_same_identity": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.global_certificate_projects_open": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.global_certificate_projects_closed": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.global_certificate_preserves_identity": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.frame_plus_open_and_closed_closes": "does not depend on any axioms"
+   }
+  },
+  "MCore.FinalFail.RPALattice": {
+   "compiles": true,
+   "print_axioms": {
+    "MCore.FinalFail.RPA.normalize_positive_positive_full": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.full_iff_dual_endpoint_state": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.full_iff_global_external_certificate": "does not depend on any axioms"
+   }
+  },
+  "MCore.FinalFail.RPALatticeCube3": {
+   "compiles": true,
+   "print_axioms": {
+    "MCore.FinalFail.RPA.norm_OPEN_OPEN": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.norm_CLOSED_CLOSED": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.norm_OPEN_OPEN_OPEN": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.norm_CLOSED_CLOSED_CLOSED": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.all_length3_mixed_words_are_full": "does not depend on any axioms",
+    "MCore.FinalFail.RPA.full_word_iff_global_external_certificate": "does not depend on any axioms"
+   }
+  },
+  "MCore.FinalFail.TypedCompressionCore": {
+   "compiles": false,
+   "print_axioms": {}
+  }
+ },
+ "summary": {
+  "modules_checked": 14,
+  "compile": 13,
+  "theorems_with_print_axioms": 29,
+  "theorems_using_axioms_beyond_none": []
+ },
+ "semantic_note": "RPA.GlobalExternalCertificate OpenMath ClosedMath unfolds to (OpenMath ∧ ClosedMath ∧ (OpenMath ↔ ClosedMath)) for arbitrary Props. It certifies no conjecture; it is inhabited only when both witnesses are supplied.",
+ "certificate_package_untouched": "certs/final_external/v1 is FROZEN_PREPARATORY; axiom_footprint.json there was deliberately not edited so SHA256SUMS/PREPARATORY_ROOT stay valid."
+}

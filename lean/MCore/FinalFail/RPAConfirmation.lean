@@ -30,11 +30,14 @@ theorem endpoint_roles_distinct :
 structure RPAFrame (OpenMath ClosedMath : Prop) : Prop where
   identityPreserved : OpenMath ↔ ClosedMath
 
-/-- A certifiable RPA transition contains both endpoint witnesses and the bridge. -/
+/-- A certifiable RPA transition contains both endpoint witnesses and the bridge.
+
+The structure is `Prop`-valued, so it cannot carry `EndpointRole` data fields
+(Lean rejects data projections out of a `Prop`).  Every constructor in this
+library used the fixed roles `.openEndpoint` / `.closedEndpoint`, so the roles
+are recorded by the proof that those two fixed positions are distinct. -/
 structure RPAConfirmation (OpenMath ClosedMath : Prop) : Prop where
-  openRole : EndpointRole := .openEndpoint
-  closedRole : EndpointRole := .closedEndpoint
-  rolesDistinct : openRole ≠ closedRole
+  rolesDistinct : EndpointRole.openEndpoint ≠ EndpointRole.closedEndpoint
   openWitness : OpenMath
   closedWitness : ClosedMath
   frame : RPAFrame OpenMath ClosedMath
@@ -62,7 +65,7 @@ theorem open_requires_closed
   · intro h
     exact h.closedWitness
   · intro hClosed
-    exact ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+    exact ⟨endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
 /-- CLOSED alone is not an RPA confirmation: an OPEN witness is still required. -/
 theorem closed_requires_open
@@ -73,7 +76,7 @@ theorem closed_requires_open
   · intro h
     exact h.openWitness
   · intro hOpen
-    exact ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+    exact ⟨endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
 end RPAConfirmation
 
@@ -148,7 +151,7 @@ theorem frame_plus_open_and_closed_closes
     (hOpen : OpenMath)
     (hClosed : ClosedMath) :
     GlobalExternalCertificate OpenMath ClosedMath :=
-  ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+  ⟨endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
 #print axioms MCore.FinalFail.RPA.endpoint_roles_distinct
 #print axioms MCore.FinalFail.RPA.dual_endpoint_state_iff_open_closed_math
