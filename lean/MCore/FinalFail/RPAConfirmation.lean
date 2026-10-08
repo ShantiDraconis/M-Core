@@ -30,11 +30,15 @@ theorem endpoint_roles_distinct :
 structure RPAFrame (OpenMath ClosedMath : Prop) : Prop where
   identityPreserved : OpenMath ↔ ClosedMath
 
-/-- A certifiable RPA transition contains both endpoint witnesses and the bridge. -/
+/-- A certifiable RPA transition contains both endpoint witnesses and the bridge.
+
+`RPAConfirmation` lives in `Prop`, so Lean only admits proof fields.  The two
+endpoint positions are therefore recorded by the proof field `rolesDistinct`
+(the fixed roles `.openEndpoint` / `.closedEndpoint` are distinct) rather than by
+data fields of type `EndpointRole`, which Lean 4.19 rejects for a `Prop`
+structure ("field must be a proof").  The witnesses and bridge are unchanged. -/
 structure RPAConfirmation (OpenMath ClosedMath : Prop) : Prop where
-  openRole : EndpointRole := .openEndpoint
-  closedRole : EndpointRole := .closedEndpoint
-  rolesDistinct : openRole ≠ closedRole
+  rolesDistinct : EndpointRole.openEndpoint ≠ EndpointRole.closedEndpoint
   openWitness : OpenMath
   closedWitness : ClosedMath
   frame : RPAFrame OpenMath ClosedMath
@@ -62,7 +66,7 @@ theorem open_requires_closed
   · intro h
     exact h.closedWitness
   · intro hClosed
-    exact ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+    exact ⟨endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
 /-- CLOSED alone is not an RPA confirmation: an OPEN witness is still required. -/
 theorem closed_requires_open
@@ -73,7 +77,7 @@ theorem closed_requires_open
   · intro h
     exact h.openWitness
   · intro hOpen
-    exact ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+    exact ⟨endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
 end RPAConfirmation
 
@@ -148,7 +152,7 @@ theorem frame_plus_open_and_closed_closes
     (hOpen : OpenMath)
     (hClosed : ClosedMath) :
     GlobalExternalCertificate OpenMath ClosedMath :=
-  ⟨.openEndpoint, .closedEndpoint, endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
+  ⟨endpoint_roles_distinct, hOpen, hClosed, hFrame⟩
 
 #print axioms MCore.FinalFail.RPA.endpoint_roles_distinct
 #print axioms MCore.FinalFail.RPA.dual_endpoint_state_iff_open_closed_math

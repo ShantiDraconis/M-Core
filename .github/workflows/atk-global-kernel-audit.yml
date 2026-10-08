@@ -1,0 +1,145 @@
+name: ATK global kernel audit
+
+# Builds every Lean module under lean/MCore (not only the default target),
+# runs the generic axiom auditor (audit/kernel/AxiomAudit.lean) over all
+# modules that elaborate, re-runs certs/final_external/v1/freeze.sh on a copy,
+# and commits the raw evidence to a separate results branch
+# (audit-results/<source-sha>) so it can be read without artifact access.
+# It never edits main, frozen/*, cert/* branches or the FINAL_EXTERNAL package.
+
+on:
+  push:
+    branches: [ 'atk/global-audit-*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atk-global-kernel-audit-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Fetch Mathlib cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake exe cache get
+
+      - name: Build every module individually
+        shell: bash
+        run: |
+          set -uo pipefail
+          OUT=audit-out; mkdir -p "$OUT/logs"
+          find lean/MCore -name '*.lean' | sed 's|^lean/||; s|\.lean$||; s|/|.|g' | sort > "$OUT/modules.txt"
+          echo "MCore" >> "$OUT/modules.txt"
+          : > "$OUT/module_build.tsv"
+          while read -r m; do
+            if lake build "$m" > "$OUT/logs/$m.log" 2>&1; then rc=0; else rc=$?; fi
+            errs=$(grep -c 'error:' "$OUT/logs/$m.log" || true)
+            printf '%s\t%s\t%s\n' "$m" "$rc" "$errs" >> "$OUT/module_build.tsv"
+          done < "$OUT/modules.txt"
+          if lake build > "$OUT/logs/_default_target.log" 2>&1; then echo 0 > "$OUT/default_target_rc"; else echo $? > "$OUT/default_target_rc"; fi
+          cat "$OUT/module_build.tsv"
+
+      - name: Generic axiom audit over all green modules
+        shell: bash
+        run: |
+          set -uo pipefail
+          OUT=audit-out; AUD=.atkaudit
+          mkdir -p "$AUD/ATKAudit"
+          cp audit/kernel/AxiomAudit.lean "$AUD/ATKAudit/AxiomAudit.lean"
+          lake env bash -c "lean -o $AUD/ATKAudit/AxiomAudit.olean $AUD/ATKAudit/AxiomAudit.lean" > "$OUT/logs/_auditor_compile.log" 2>&1 || true
+          { awk -F'\t' '$2==0 && $1!="MCore" {print "import " $1}' "$OUT/module_build.tsv"; echo "import ATKAudit.AxiomAudit"; echo "#atk_axiom_audit"; } > "$AUD/Driver.lean"
+          lake env bash -c "LEAN_PATH=\$LEAN_PATH:$PWD/$AUD lean $AUD/Driver.lean" > "$OUT/axiom_audit.tsv" 2> "$OUT/logs/_axiom_audit.stderr" || true
+          cp "$AUD/Driver.lean" "$OUT/axiom_audit_driver.lean"
+          tail -1 "$OUT/axiom_audit.tsv" || true
+
+      - name: Provenance tree (repository-root MCore/, outside srcDir)
+        shell: bash
+        run: |
+          set -uo pipefail
+          OUT=audit-out; P=.provenance
+          mkdir -p "$P/MCore"; cp MCore/*.lean "$P/MCore/"
+          : > "$OUT/provenance_build.tsv"
+          for m in Core A1Amplitude A2SelfRef A3Zero A4Scale Admissible; do
+            if lake env bash -c "LEAN_PATH=\$LEAN_PATH:$PWD/$P lean -o $P/MCore/$m.olean $P/MCore/$m.lean" > "$OUT/logs/provenance.$m.log" 2>&1; then rc=0; else rc=$?; fi
+            printf 'MCore.%s(root)\t%s\t%s\n' "$m" "$rc" "$(grep -c 'error:' "$OUT/logs/provenance.$m.log" || true)" >> "$OUT/provenance_build.tsv"
+          done
+          cat "$OUT/provenance_build.tsv"
+
+      - name: Re-run FINAL_EXTERNAL freeze gate on a copy
+        shell: bash
+        run: |
+          set -uo pipefail
+          OUT=audit-out; C=.freeze-copy
+          cp -a certs/final_external/v1 "$C"
+          if (cd "$C" && bash freeze.sh) > "$OUT/freeze_sh.log" 2>&1; then echo 0 > "$OUT/freeze_sh_rc"; else echo $? > "$OUT/freeze_sh_rc"; fi
+          diff -q certs/final_external/v1/SHA256SUMS "$C/SHA256SUMS" > "$OUT/freeze_sha256sums_diff.txt" 2>&1 && echo IDENTICAL >> "$OUT/freeze_sha256sums_diff.txt" || true
+          diff -q certs/final_external/v1/PREPARATORY_ROOT "$C/PREPARATORY_ROOT" >> "$OUT/freeze_sha256sums_diff.txt" 2>&1 && echo PREPARATORY_ROOT_IDENTICAL >> "$OUT/freeze_sha256sums_diff.txt" || true
+          tail -3 "$OUT/freeze_sh.log"
+
+      - name: Placeholder hygiene
+        shell: bash
+        run: |
+          set -uo pipefail
+          OUT=audit-out
+          grep -RInE '(^|[^[:alnum:]_])(sorry|admit|sorryAx)([^[:alnum:]_]|$)' --include='*.lean' lean MCore > "$OUT/hygiene_hits.txt" || true
+          grep -RInE '^[[:space:]]*(private[[:space:]]+|noncomputable[[:space:]]+)*axiom[[:space:]]' --include='*.lean' lean MCore > "$OUT/axiom_decl_hits.txt" || true
+          wc -l "$OUT/hygiene_hits.txt" "$OUT/axiom_decl_hits.txt"
+
+      - name: Run metadata
+        shell: bash
+        run: |
+          set -uo pipefail
+          OUT=audit-out
+          {
+            echo "source_sha=${GITHUB_SHA}"
+            echo "source_ref=${GITHUB_REF}"
+            echo "run_id=${GITHUB_RUN_ID}"
+            echo "run_attempt=${GITHUB_RUN_ATTEMPT}"
+            echo "workflow=${GITHUB_WORKFLOW}"
+            echo "runner_os=${RUNNER_OS} $(lsb_release -ds 2>/dev/null || true)"
+            echo "utc_completed=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "lean_toolchain=$(cat lean-toolchain)"
+            echo "lean_version=$(lake env lean --version)"
+            echo "lake_version=$(lake --version)"
+            echo "mathlib_rev=$(python3 -c "import json;print([p['rev'] for p in json.load(open('lake-manifest.json'))['packages'] if p['name']=='mathlib'][0])" 2>/dev/null || echo unknown)"
+            echo "default_target_rc=$(cat $OUT/default_target_rc)"
+            echo "freeze_sh_rc=$(cat $OUT/freeze_sh_rc)"
+          } > "$OUT/run_metadata.txt"
+          cp lake-manifest.json "$OUT/lake-manifest.json" 2>/dev/null || true
+          cat "$OUT/run_metadata.txt"
+
+      - name: Publish evidence to results branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          BR="audit-results/${GITHUB_SHA}"
+          git config user.name "atk-kernel-audit[bot]"
+          git config user.email "atk-kernel-audit@users.noreply.github.com"
+          mv audit-out /tmp/audit-out
+          git checkout --orphan "$BR"
+          git rm -rq --cached . >/dev/null
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          mkdir -p "kernel/${GITHUB_SHA}"
+          cp -r /tmp/audit-out/. "kernel/${GITHUB_SHA}/"
+          git add kernel
+          git commit -qm "ATK global kernel audit evidence for ${GITHUB_SHA} (run ${GITHUB_RUN_ID})"
+          git push -f origin "$BR"

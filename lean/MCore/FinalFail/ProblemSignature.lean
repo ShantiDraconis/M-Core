@@ -52,8 +52,8 @@ theorem terminalDigit_bounds {n : Nat} (h : IsTerminalDigit n) :
 structure ClassifiedProblem where
   Problem : Type
   signature : ProblemSignature
-  class : DecimalClass
-  preserves : BehaviorEquivalent signature class.signature
+  «class» : DecimalClass
+  preserves : BehaviorEquivalent signature «class».signature
 
 /-- Compression/retraction duality is recorded as structure, not inferred from
     a problem name. -/
@@ -63,7 +63,9 @@ def HasTwoSidedDynamics (s : ProblemSignature) : Prop :=
 theorem classified_preserves_twoSided
     (P : ClassifiedProblem)
     (h : HasTwoSidedDynamics P.signature) :
-    HasTwoSidedDynamics P.class.signature := by
-  simpa [BehaviorEquivalent] using h
+    HasTwoSidedDynamics P.«class».signature := by
+  have hEq : P.signature = P.«class».signature := P.preserves
+  rw [← hEq]
+  exact h
 
 end MCore.FinalFail

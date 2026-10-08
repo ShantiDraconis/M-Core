@@ -6,7 +6,7 @@ structure SectorOperator (X : Type) where
   commutes : ∀ x, rotation (op x) = op (rotation x)
 
 structure SevenOperatorFamily (X : Type) where
-  T S E Q delta gamma C : SectorOperator X
+  (T S E Q delta gamma C : SectorOperator X)
 
 def MaterialC3Family (X : Type) : Prop := Nonempty (SevenOperatorFamily X)
 end MCore.FinalFail
