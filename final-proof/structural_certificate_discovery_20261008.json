@@ -1,0 +1,142 @@
+{
+  "schema": "atk.structural-discovery.v1",
+  "scope": "GitHub owner ShantiDraconis code-index search across accessible repositories; default-branch search only, not exhaustive branch traversal",
+  "status": "SOURCE_CANDIDATES_UNVERIFIED",
+  "criteria": [
+    "proof certificate structures",
+    "P01 material adapters",
+    "G21/G22 terminal bridges",
+    "external certificate dependency edges",
+    "material endpoint closure",
+    "global source provenance"
+  ],
+  "sources": [
+    {
+      "repo": "ShantiDraconis/M-Core",
+      "path": "imports/pnp/c102d9d4/lean/MCore/Real/FinalExternalCertificate.lean",
+      "role": "P01/G21 terminal certificate interface",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/M-Core",
+      "path": "imports/pnp/b406b806/lean/MCore/Real/FinalExternalTwoGap.lean",
+      "role": "two-gap bridge",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/M-Core",
+      "path": "imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean",
+      "role": "G21/G22 obligations",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "path": "lean/MCore/Material/P01Adapter.lean",
+      "role": "P01 material adapter",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/Elyon-Public-Proof",
+      "path": "lean/MCore/FinalProofRegistry.lean",
+      "role": "certificate registry",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/Elyon-Public-Proof",
+      "path": "lean/MCore/K10.lean",
+      "role": "separation witness structure",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/m-core-riemann",
+      "path": "lean/MCore/Material/Closure.lean",
+      "role": "RH bound material closure",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/axiomatic-millenium",
+      "path": "AxiomaticMillenium/SourceBinding.lean",
+      "role": "source provenance",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/axiomatic-millenium",
+      "path": "AxiomaticMillenium/GlobalOpenMathCut.lean",
+      "role": "open gap cut",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/axiomatic-millenium",
+      "path": "AxiomaticMillenium/FinalEGC.lean",
+      "role": "global endpoint contract",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "path": "CERTIFICATES/P01_FRAME_POP_READ_GREEN_7f6597a1.md",
+      "role": "P01 reader evidence",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "path": "CERTIFICATES/P01_PARSER_SIMULATION_GREEN_dfb3e60d.md",
+      "role": "P01 parser evidence",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "path": "CERTIFICATES/P01_ENCODED_EVALUATOR_GREEN_62956cc7.md",
+      "role": "P01 evaluator evidence",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    },
+    {
+      "repo": "ShantiDraconis/m-core-p-vs-np",
+      "path": "CERTIFICATES/P01_ENCODED_STACK_EVALUATOR_GREEN_f70ab88b.md",
+      "role": "P01 stack evidence",
+      "verification": "SEARCH_MATCH_ONLY",
+      "branch": "DEFAULT_BRANCH_INDEX",
+      "type_match": "NOT_CHECKED",
+      "kernel": "NOT_CHECKED"
+    }
+  ],
+  "notes": "Do not promote search hits to proofs. Resolve each source at immutable commit, compare theorem type, audit axioms, and compile."
+}
