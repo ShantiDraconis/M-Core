@@ -1,0 +1,7 @@
+crypto_provider=sigstore-keyless (cosign)
+public_key_or_key_id=certificate identity https://github.com/ShantiDraconis/M-Core/.github/workflows/final-external-sign.yml@refs/heads/sign/final-external-v3
+algorithm=ECDSA_P256_SHA256
+attestation=Rekor entry inside SHA256SUMS.sigstore.bundle
+signed_file_sha256=61219f71a7ff9408810d6c96df5114e55b758ab67650f6e9a0d11ec14854795d
+source_sha=798be087267d8cd493292dd79f2001abcd5090eb
+run_id=37922203677
