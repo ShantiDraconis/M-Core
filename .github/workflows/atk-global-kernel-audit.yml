@@ -116,12 +116,15 @@ jobs:
         run: |
           set -uo pipefail
           OUT=audit-out
-          if [ -f certs/final_global/v1/verify.sh ]; then
-            if bash certs/final_global/v1/verify.sh > "$OUT/final_global_verify.log" 2>&1; then echo 0 > "$OUT/final_global_verify_rc"; else echo $? > "$OUT/final_global_verify_rc"; fi
-            tail -4 "$OUT/final_global_verify.log"
-          else
-            echo "absent" > "$OUT/final_global_verify_rc"
-          fi
+          rcs=""
+          for v in certs/final_global/v*/verify.sh; do
+            [ -f "$v" ] || continue
+            tag=$(basename "$(dirname "$v")")
+            if bash "$v" > "$OUT/final_global_verify_$tag.log" 2>&1; then rc=0; else rc=$?; fi
+            rcs="$rcs $tag:$rc"
+            tail -3 "$OUT/final_global_verify_$tag.log"
+          done
+          echo "${rcs:-absent}" > "$OUT/final_global_verify_rc"
 
       - name: Placeholder hygiene
         shell: bash
