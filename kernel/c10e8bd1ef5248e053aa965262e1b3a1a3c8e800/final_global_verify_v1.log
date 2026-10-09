@@ -1,0 +1,19 @@
+[1/6] JSON syntax
+[2/6] Payload hashes
+CLOSED_MATH_GLOBAL_CERTIFICATE.json: OK
+OPEN_MATH_GLOBAL_STATUS.json: OK
+FINAL_GLOBAL_CERTIFICATE.json: OK
+SOURCE_INVENTORY.json: OK
+FINAL_EXTERNAL_BLOCKERS.md: OK
+GLOBAL_AXIOM_AUDIT.md: OK
+GLOBAL_KERNEL_RUNS.md: OK
+axiom_audit_run37819802090.tsv: OK
+verify.sh: OK
+[3/6] Cross-references and fail-closed invariants
+invariants OK: demonstrated 0 of 8
+[4/6] Registry in Lean source agrees (provedCount = 0, 7 openMath slots)
+[5/6] FINAL_EXTERNAL v1 preparatory gate (on a copy)
+[6/6] Result
+RESULT=FINAL_GLOBAL_INTEGRATION_STATE_VERIFIED
+TERMINAL_MATH=0/7
+FINAL_EXTERNAL_ISSUED=false

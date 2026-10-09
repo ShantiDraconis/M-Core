@@ -1,0 +1,25 @@
+[freeze.sh v2] /home/runner/work/M-Core/M-Core/.freeze-copy-all/v2 - PREPARATORY_NOT_ISSUED
+[1/9] JSON syntax
+[2/9] Fail-closed Lean-source hygiene if Lean files are present
+[3/9] Supersession of v1 is consistent and v1 is untouched
+[4/9] Normative preparatory state
+[5/9] Blockers derived from data (same rules as v1)
+blockers: ['P01ConstructionGap', 'G21Pointwise', 'human_review', 'app', 'crypto']
+[6/9] Generate canonical PACKAGE_SHA256SUMS
+[7/9] Generate PREPARATORY_ROOT out-of-band
+8632d3acdedf2becd6ab0afd22f30f30da9036026744cfb92a6349fd1e72324a
+[8/9] Re-verify payload was not mutated
+manifest.json: OK
+README.md: OK
+provenance.json: OK
+gate_ledger.json: OK
+axiom_footprint.json: OK
+reproducibility.md: OK
+status.json: OK
+MATH_TERMINAL_BOUNDARY_20261008.json: OK
+revocation.json: OK
+freeze.sh: OK
+[9/9] FINAL_ROOT remains null / issuance remains false
+RESULT=FROZEN_PREPARATORY_V2
+FINAL_EXTERNAL_ISSUED=false
+v2_PREPARATORY_ROOT_IDENTICAL
