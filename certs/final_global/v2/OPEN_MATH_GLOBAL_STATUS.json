@@ -1,0 +1,154 @@
+{
+ "schema": "mcore.open-math.global-status.v2",
+ "certificate": "MCORE_OPEN_MATH_GLOBAL_STATUS",
+ "version": "v2",
+ "rule": "A lane closes only with a kernel-checked, policy-clean, unconditional inhabitant of its terminal (all obligations for closes_when=all; one for any). No state changed by hand.",
+ "totals": {
+  "lanes": 7,
+  "lanes_closed": 0,
+  "obligations": 10,
+  "obligations_demonstrated": 1,
+  "final_proof": "0/7"
+ },
+ "lanes": [
+  {
+   "lane": "pVsNP",
+   "problem": "P vs NP",
+   "closes_when": "all",
+   "binding": "externalContract (G3 normalized Cook model; source fidelity open)",
+   "source": "ShantiDraconis/m-core-p-vs-np@b406b806 (frozen/final-external-two-gap-green-b406b806)",
+   "obligations": [
+    {
+     "id": "P01ConstructionGap",
+     "statement": "SAT ∈ NP (P01MachineConstruction)",
+     "state": "CLOSED_GREEN_FROZEN_CERTIFIED",
+     "demonstrated": true,
+     "evidence": "frozen/p01-closure-audit-green-d97a56e1, run 37913791428"
+    },
+    {
+     "id": "G21Pointwise",
+     "statement": "≡ P02Target ≡ ¬ InP SAT (P ≠ NP)",
+     "state": "OPEN_MATH",
+     "demonstrated": false,
+     "note": "Millennium problem; no inhabitant in any branch"
+    }
+   ],
+   "lane_closed": false
+  },
+  {
+   "lane": "riemann",
+   "problem": "Riemann Hypothesis",
+   "closes_when": "any",
+   "binding": "concrete (Mathlib riemannZeta / RiemannHypothesis)",
+   "source": "M-Core Semantic/RiemannDual.lean; producer ShantiDraconis/m-core-riemann@d6a291b4",
+   "obligations": [
+    {
+     "id": "prove",
+     "statement": "RiemannHypothesis ⇔ no zero with 1/2 < re s < 1",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    },
+    {
+     "id": "refute",
+     "statement": "Nonempty RiemannOffCriticalZero ⇔ a zero with 1/2 < re s < 1",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "note": "riemann_not_both: at most one side is inhabitable",
+   "lane_closed": false
+  },
+  {
+   "lane": "beal",
+   "problem": "Beal conjecture",
+   "closes_when": "any",
+   "binding": "concrete (ℕ)",
+   "source": "ShantiDraconis/m-core-beal@d6fe130c",
+   "obligations": [
+    {
+     "id": "GCDLowerBoundProducer",
+     "statement": "∀ d : BealData, 1 < gcd(a, gcd(b, c))",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "lane_closed": false
+  },
+  {
+   "lane": "navierStokes",
+   "problem": "Navier–Stokes existence and smoothness",
+   "closes_when": "any",
+   "binding": "concrete (Fefferman (A)/(C) on ℝ³)",
+   "source": "M-Core Semantic/NavierStokesClay.lean; producer navier-stokes-critical-barrier-audit@df808543",
+   "obligations": [
+    {
+     "id": "StatementA",
+     "statement": "global smooth solutions, f ≡ 0",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    },
+    {
+     "id": "StatementC",
+     "statement": "breakdown for some datum and force",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "note": "(A) and (C) are not mutually exclusive; periodic (B)/(D) not transcribed",
+   "lane_closed": false
+  },
+  {
+   "lane": "hodge",
+   "problem": "Hodge conjecture",
+   "closes_when": "any",
+   "binding": "parametric (firewall: cannot be promoted)",
+   "source": "ShantiDraconis/m-core-hodge@42eaf7d4",
+   "obligations": [
+    {
+     "id": "ConcreteAlgebraicityPayload",
+     "statement": "algebraicity of rational Hodge classes",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "lane_closed": false
+  },
+  {
+   "lane": "bsd",
+   "problem": "Birch and Swinnerton-Dyer",
+   "closes_when": "any",
+   "binding": "parametric (firewall: cannot be promoted)",
+   "source": "ShantiDraconis/m-core-bsd@a3edf620",
+   "obligations": [
+    {
+     "id": "P06.BSD.BSDTerminal",
+     "statement": "rank equality + refined identity",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "lane_closed": false
+  },
+  {
+   "lane": "yangMills",
+   "problem": "Yang–Mills existence and mass gap",
+   "closes_when": "any",
+   "binding": "parametric (firewall: cannot be promoted)",
+   "source": "ShantiDraconis/m-core-yang-mills@cd4bbfd3",
+   "obligations": [
+    {
+     "id": "B60ConcretePhysicalAdapter",
+     "statement": "4D theory with OS reconstruction and positive mass gap",
+     "state": "OPEN_MATH",
+     "demonstrated": false
+    }
+   ],
+   "lane_closed": false
+  }
+ ],
+ "search": {
+  "repositories": 24,
+  "method": "multi-line, namespace-aware declaration-header scan of every branch tip (scan_decl_headers.py) + comment-aware sorry/axiom scan",
+  "correction": "v1's scan missed P01RawTotalizationProducer.p01ConstructionGap_closed; see ERRATUM_v1.md"
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "schema": "mcore.closed-math.global.v2",
+ "certificate": "MCORE_CLOSED_MATH_GLOBAL",
+ "version": "v2",
+ "supersedes": {
+  "version": "v1",
+  "file": "../v1/CLOSED_MATH_GLOBAL_CERTIFICATE.json",
+  "sha256": "f172934d83faaead7b8242e2c6aaf61c7b7397d90c7a2e6091947830b0c7a05d",
+  "reasons": [
+   "adds cross-repository CLOSED_MATH: P01ConstructionGap (SAT ∈ NP) — see ERRATUM_v1.md",
+   "M-Core library re-audited after the registry/semantic additions (RiemannDual, NavierStokesClay, binding firewall)"
+  ]
+ },
+ "state": "GREEN_FROZEN_CERTIFIED",
+ "part_A_mcore_library": {
+  "meaning": "Every theorem of the M-Core Lean library at the stated source is accepted by the Lean kernel with axioms inside the policy.",
+  "repository": "ShantiDraconis/M-Core",
+  "commit": "33983a4cc7d1fa4869f08e453f39fc51f3d1b7f4",
+  "lean_tree": "9bd600dc6170d1c5da3432f6c539d56c60a5079c",
+  "kernel_run": {
+   "run_id": 37914524820,
+   "utc_completed": "2026-10-09T10:03:55Z",
+   "evidence_branch": "audit-results/33983a4cc7d1fa4869f08e453f39fc51f3d1b7f4",
+   "evidence_commit": "7642876fe9d178593315c87ffcba69c5b6554f3b"
+  },
+  "toolchain": {
+   "lean_toolchain": "leanprover/lean4:v4.19.0",
+   "lean_version": "4.19.0 (commit 6caaee842e94, Release)",
+   "lake_version": "5.0.0-6caaee8",
+   "mathlib_rev": "c44e0c8ee63ca166450922a373c7409c5d26b00b",
+   "runner": "GitHub Actions ubuntu-24.04 (Ubuntu 24.04.5 LTS)",
+   "local_crosscheck": "Lean 4.19.0 linux release on the audit sandbox for the 13 Mathlib-free modules"
+  },
+  "modules": "all modules of lean/MCore green + default target + 6/6 provenance modules",
+  "axiom_evidence": {
+   "tsv": "axiom_audit_run37914524820.tsv",
+   "tsv_sha256": "8de324d23c187df168316702751317292c776e33b1a322afdec34d7073d3033c",
+   "summary_line": "SUMMARY\ttheorems=620\tno_axioms=489\tallowed_only=131\tforbidden=0\tuser_axioms=0",
+   "theorem_constants": 620,
+   "with_no_axioms": 489,
+   "axiom_occurrences": {
+    "propext": 131,
+    "Quot.sound": 57,
+    "Classical.choice": 53
+   },
+   "forbidden": 0,
+   "user_axiom_declarations": 0
+  },
+  "terminal_endpoints_closed_in_library": 0
+ },
+ "part_B_cross_repository": [
+  {
+   "id": "P01ConstructionGap",
+   "lane": "pVsNP",
+   "statement": "Nonempty P01MachineConstruction — a finite-control polynomial-time NTM over Option Bool deciding SATBits circuitBitEncoding (SAT ∈ NP)",
+   "state": "CLOSED_GREEN_FROZEN_CERTIFIED",
+   "theorem": "MCore.Real.P01RawTotalizationProducer.p01ConstructionGap_closed : P01FinalCertificate.P01ConstructionGap",
+   "repository": "ShantiDraconis/m-core-p-vs-np",
+   "source_sha": "0dd09383932446ba67e673f69cd8740f85a80b87",
+   "frozen_branch": "frozen/p01-t5-poly-halting-green-0dd09383",
+   "audit": {
+    "source_sha": "d97a56e122842fb9ce28a2f3e6bfac35561b4951",
+    "frozen_branch": "frozen/p01-closure-audit-green-d97a56e1",
+    "certificate_branch": "cert/p01-closure-audit-d97a56e1-run37913791428",
+    "run": 37913791428,
+    "checks": [
+     "lake build MCore.Real.P01RawTotalizationProducer rc=0",
+     "type is exactly P01FinalCertificate.P01ConstructionGap (fail-closed elab; negative control fails)",
+     "axioms [propext, Classical.choice, Quot.sound]",
+     "42/42 statement-defining files byte-identical to origin/main 9efeb9b731a786d2dfea24c10a3895b611fe6130"
+    ]
+   },
+   "local_reverification": "151-module closure rebuilt with Lean 4.19.0 (6caaee842e94); no implemented_by / extern / unsafe / native_decide / opaque / axiom in the closure",
+   "earlier_ci": "run 36897479263 (p01-verifier-phase-mincut-clean.yml) at 15b6c360, files byte-identical (reported by session 01BbxhU3 on atk/pnp-recovery-integration-20261008)",
+   "content": "a concrete finite-control, polynomial-time NTM over alphabet Option Bool deciding the canonical CNF-SAT bit language (SAT ∈ NP side only)",
+   "endpoint_credit": 0,
+   "endpoint_credit_note": "TwoGap progress 1/2; no global credit until G21Pointwise closes (transition rule p01_only)",
+   "classification": "CLOSED_MATH (formalization of a classical result; endpoint credit 0 until G21Pointwise closes)"
+  }
+ ],
+ "previously_certified_by_reference": {
+  "note": "Frozen anchors recorded in certs/final_external/v1 (P01 sub-gates, P02 G2.2 wiring, G3 normalized contract, FinalExternalTwoGap reduction) live in ShantiDraconis/m-core-p-vs-np. They are listed, not re-executed, by this audit.",
+  "record": "certs/final_external/v1/MATH_TERMINAL_BOUNDARY_20260922.json"
+ },
+ "axiom_policy": {
+  "allowed": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "forbidden": [
+   "sorryAx",
+   "sorry",
+   "admit",
+   "custom theorem-carrying axioms",
+   "hidden oracle",
+   "circularity"
+  ],
+  "result": "PASS"
+ },
+ "final_proof": "0/7"
+}

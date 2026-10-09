@@ -1,0 +1,73 @@
+{
+ "schema": "mcore.final-global.v2",
+ "certificate": "MCORE_FINAL_GLOBAL",
+ "version": "v2",
+ "certificate_type": "INTEGRATION_STATE_CERTIFICATE",
+ "supersedes": {
+  "version": "v1",
+  "sha256": "2be78e6839db531fe40247f96b8ca5c627fef92743f03e5aa5f51fabb3a25feb",
+  "erratum": "ERRATUM_v1.md"
+ },
+ "public_label": "Consolidated, verifiable state. NOT a claim that any Millennium problem or the Beal conjecture is solved.",
+ "state": {
+  "structural_closure": "GREEN_FROZEN_CERTIFIED",
+  "terminal_math_closure": "OPEN",
+  "obligations": {
+   "total": 10,
+   "demonstrated": 1,
+   "open": 9
+  },
+  "two_gap_p_vs_np": "1/2",
+  "final_proof": "0/7",
+  "FINAL_EXTERNAL_ISSUED": false,
+  "FINAL_ROOT": null
+ },
+ "closed_math": {
+  "file": "CLOSED_MATH_GLOBAL_CERTIFICATE.json",
+  "sha256": "45ec3dabffe2a51d346f8a20c4eabc77a60359082fc8d617daf08499664630dd"
+ },
+ "open_math": {
+  "file": "OPEN_MATH_GLOBAL_STATUS.json",
+  "sha256": "7d95a10ae9eeb834dee0738c00864980a3ed980dda08e341b550de1e329757f2"
+ },
+ "final_external": {
+  "package": "certs/final_external/v3",
+  "result": "FROZEN_PREPARATORY_V3",
+  "PREPARATORY_ROOT": "61219f71a7ff9408810d6c96df5114e55b758ab67650f6e9a0d11ec14854795d",
+  "issued": false,
+  "blockers": [
+   "G21Pointwise",
+   "human_review",
+   "app",
+   "crypto"
+  ]
+ },
+ "kernel_runs": {
+  "mcore": [
+   37819802090,
+   37824483365,
+   37825452119,
+   37847421955,
+   37851084289,
+   37914524820
+  ],
+  "p01_closure_audit": 37913791428,
+  "p01_separation_audit": 37915584427
+ },
+ "lanes_line": {
+  "pVsNP": "OPEN",
+  "riemann": "OPEN",
+  "beal": "OPEN",
+  "navierStokes": "OPEN",
+  "hodge": "OPEN",
+  "bsd": "OPEN",
+  "yangMills": "OPEN"
+ },
+ "documents": {
+  "erratum": "ERRATUM_v1.md",
+  "blockers": "FINAL_EXTERNAL_BLOCKERS.md",
+  "axiom_audit": "GLOBAL_AXIOM_AUDIT.md",
+  "kernel_runs": "GLOBAL_KERNEL_RUNS.md",
+  "integrity": "SHA256SUMS + FINAL_GLOBAL_ROOT"
+ }
+}
