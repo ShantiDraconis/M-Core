@@ -1,0 +1,33 @@
+{
+  "policy": "Lean 4.19 axiom footprint",
+  "allowed": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "forbidden": [
+    "sorryAx",
+    "sorry",
+    "admit",
+    "custom theorem-carrying axioms",
+    "hidden oracle",
+    "circularity"
+  ],
+  "generated_by": "audit/kernel/AxiomAudit.lean (Lean.collectAxioms over every MCore theorem)",
+  "mcore": {
+    "scope": "M-Core lean/ library, all modules",
+    "latest_run": 37847421955,
+    "summary": "theorems=620 no_axioms=489 allowed_only=131 forbidden=0 user_axioms=0",
+    "evidence_branch": "audit-results/ecb5f51370c10f9436c9abbd9991c3476ce9e921"
+  },
+  "pvsnp_chain": {
+    "scope": "m-core-p-vs-np frozen anchors listed in MATH_TERMINAL_BOUNDARY_20261008.json",
+    "status": "BY_REFERENCE_TO_FROZEN_CERT_RUNS",
+    "reexecuted_by_this_audit": false,
+    "excluded_axioms_on_work_branches": [
+      "falsified_satLowerBoundCertificate (FALSIFIED ONLY)",
+      "MCORE_LHOSPITAL_AXIOM (temporary)"
+    ]
+  },
+  "current_footprint": "PASS for M-Core (0 forbidden); P vs NP chain recorded by reference"
+}

@@ -32,6 +32,11 @@ The registry records the current material terminal producer in each lane.
 A GREEN/FROZEN reduction or transport certificate never changes a slot to
 `proved`; only an inhabitant of the named terminal target may do that.
 
+Audit 2026-10-09: the P01 conjunct of the pVsNP terminal is inhabited
+unconditionally in the source repository (kernel-checked; axioms propext,
+Classical.choice, Quot.sound).  The slot stays `openMath` because the lane's
+terminal is the conjunction and `G21Pointwise` is open.
+
 Audit 2026-10-08: every `sourceRef` is the head of the listed frozen branch and
 defines the named terminal.  Two pins were corrected: pVsNP `a3386d52` contained
 neither `G21Pointwise` nor `P01MachineConstruction` (now `b406b806`, the frozen
@@ -67,7 +72,7 @@ def registry : List SlotRecord := [
     sourceRepo := "ShantiDraconis/m-core-p-vs-np"
     sourceRef := "b406b806da58ebe6bc1f85863ee44054ad42edb2"
     sourceBranch := "frozen/final-external-two-gap-green-b406b806"
-    terminal := "Nonempty P01MachineConstruction ∧ G21Pointwise"
+    terminal := "Nonempty P01MachineConstruction ∧ G21Pointwise — P01 conjunct CLOSED by P01RawTotalizationProducer.p01ConstructionGap_closed @0dd09383 (frozen/p01-t5-poly-halting-green-0dd09383; audit frozen/p01-closure-audit-green-d97a56e1, run 37913791428); G21Pointwise (≡ SAT ∉ P) OPEN"
     state := .openMath },
   { slot := .bsd
     sourceRepo := "ShantiDraconis/m-core-bsd"

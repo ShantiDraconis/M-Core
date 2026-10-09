@@ -1,0 +1,40 @@
+{
+  "schema": "elyon.revocation.v2.0.0",
+  "revocations": [],
+  "supersession": {
+    "v1.0.0": {
+      "state": "SUPERSEDED",
+      "by": "v2.0.0",
+      "reasons": [
+        "root.linked_preparatory_root 4cdaf7b6… was stale; the reproduced v1 PREPARATORY_ROOT is 1651ac0cf58b81ce2038019c548fbd7132487aa0ad3a2e29b934adf6e3bf88d9",
+        "G3 split into G3_CONTRACT (CLOSED_GREEN_FROZEN_CERTIFIED) and G3_SOURCE_FIDELITY (OPEN), reconciling manifest/status with gate_ledger",
+        "axiom_footprint filled from the kernel audit (was UNSET)",
+        "P01 recovered conditional producer recorded (prepPhase @ ffd06cc6); exact missing object narrowed to one P01VerifierPhase",
+        "registry pins corrected in lean/MCore/FinalProofRegistry.lean (pVsNP → b406b806, bsd → a3edf620)",
+        "hardware_attestation set to the allowed value OUT_OF_SCOPE_FOR_V1 (no hardware claim)",
+        "provenance toolchain filled from kernel runs",
+        "freeze.sh v2 derives blockers from data and checks them against the manifest instead of hard-coding the list; issuance condition text is asserted identical to v1"
+      ],
+      "note": "Recorded here, append-only; the v1 directory is not modified."
+    },
+    "v2.0.0": {
+      "status": "SUPERSEDED",
+      "by": "v3.0.0",
+      "reasons": [
+        "P01ConstructionGap is closed: P01RawTotalizationProducer.p01ConstructionGap_closed @0dd09383, re-verified (run 37913791428).",
+        "v2 listed P01 as open because the 2026-10-08 scanner missed namespace-qualified and multi-line declaration types; corrected scanner finds it.",
+        "Blockers re-derived: G21Pointwise, human_review, app, crypto. Issuance condition text unchanged (identical to v1)."
+      ],
+      "v2_preparatory_root": "8632d3acdedf2becd6ab0afd22f30f30da9036026744cfb92a6349fd1e72324a"
+    }
+  },
+  "policy": {
+    "states": [
+      "REVOKED",
+      "SUPERSEDED",
+      "INVALIDATED"
+    ],
+    "location": "M-Core/certs/final_external/v1/revocation.json and status.json",
+    "immutability": "Old versions immutable. v2 SUPERSEDES v1 with explicit reason. Revocation record append-only."
+  }
+}

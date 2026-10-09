@@ -1,0 +1,164 @@
+{
+  "schema": "elyon.final-external.v2.0.0",
+  "certificate": "ELYON_FINAL_EXTERNAL",
+  "version": "v3.0.0",
+  "issuance": {
+    "FINAL_EXTERNAL_ISSUED": false,
+    "reason": "Fail-closed: one mathematical producer remains (G21Pointwise ≡ SAT ∉ P); P01ConstructionGap is closed. Governance gates human_review, app, crypto remain UNSET.",
+    "infra_state": "READY_FOR_FREEZE",
+    "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
+    "release_state": "SEALED_CLOSED",
+    "max_machine_state": "REVIEW_PENDING",
+    "public_status": "PREPARATORY_NOT_ISSUED",
+    "next_possible_without_human": [
+      "PREPARATORY_PACKAGE",
+      "HASHED",
+      "REPRODUCIBILITY_AUDITED",
+      "FROZEN_PREPARATORY"
+    ],
+    "not_possible": "FINAL_EXTERNAL_ISSUED"
+  },
+  "human_review": {
+    "authority": "UNSET",
+    "quorum": "UNSET",
+    "evidence_policy": "UNSET"
+  },
+  "production": {
+    "app": "UNSET",
+    "crypto": "UNSET (PREPARED_NOT_EXECUTED)",
+    "hardware": "OUT_OF_SCOPE_FOR_V1"
+  },
+  "G3": {
+    "G3_CONTRACT": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "G3_SOURCE_FIDELITY": "OPEN"
+  },
+  "final_proof": "0/7",
+  "note": "This artifact can exist now as preparatory schema/manifest, but must NOT receive FINAL_EXTERNAL=ISSUED until release gates satisfied",
+  "package_state": "PREPARATORY",
+  "public_status": "PREPARATORY_NOT_ISSUED",
+  "public_label": "PREPARATORY / non-issued infrastructure record",
+  "hash_levels": {
+    "PACKAGE_SHA256SUMS": "CALCULABLE_NOW_over_preparatory_files",
+    "PREPARATORY_ROOT": "SEE_PREPARATORY_ROOT_FILE",
+    "FINAL_ROOT": "NULL_MUST_REMAIN_NULL_until_G21Pointwise_and_all_release_gates_close"
+  },
+  "normative_state": {
+    "ELYON_FINAL_EXTERNAL": "v1.0.0",
+    "package_state": "PREPARATORY",
+    "infra_state": "READY_FOR_FREEZE",
+    "math_state": "OPEN_MATH",
+    "final_proof": "0/7",
+    "release_state": "SEALED_CLOSED",
+    "maximum_auto_state": "REVIEW_PENDING",
+    "FINAL_EXTERNAL_ISSUED": false,
+    "P01_PREFIX": "GREEN_FROZEN_CERTIFIED_THROUGH_TERMINAL_BRANCHES_AND_GLOBAL_SLOTLOG",
+    "P01_ENDPOINT": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "P02_FRONTIER": "G2_1_LITERAL_CLOSED_BY_FALSIFICATION__G2_2_WIRING_GREEN_FROZEN_CERTIFIED",
+    "P02_ENDPOINT": "OPEN_MATH_G21_POINTWISE_EQ_FAILURE_GENERATOR_EQ_SAT_NOT_IN_P",
+    "P03..P07": "OPEN_MATH",
+    "G3": "G3_CONTRACT CLOSED_GREEN_FROZEN_CERTIFIED; G3_SOURCE_FIDELITY OPEN",
+    "FINAL_EXTERNAL_MATH_INPUTS": "EXACT_ONE_PRODUCER_REMAINS_G21Pointwise",
+    "FINAL_EXTERNAL_TWO_GAP_PIPELINE": "GREEN_FROZEN_CERTIFIED",
+    "FINAL_EXTERNAL_TWO_GAP_PROGRESS": "1/2",
+    "P_VS_NP_ENDPOINT": "OPEN",
+    "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+    "FINAL_ROOT_MATH": null,
+    "GLOBAL_7_PROBLEMS_FINAL_PROOF": "0/7"
+  },
+  "package_revision": "v3.0.0-preparatory",
+  "freeze_state": "FROZEN_PREPARATORY",
+  "math_terminal_boundary": {
+    "record": "MATH_TERMINAL_BOUNDARY_20261009.json",
+    "frozen_branch": "frozen/final-external-math-boundary-442d11aa",
+    "p01": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "p02": "OPEN_MATH_G21_POINTWISE_EQ_SAT_NOT_IN_P",
+    "g3": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "latest_main_record_commit": "2df65e9c2e10ba8f920751b1202b161322425925",
+    "g2_wiring": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "two_gap_reduction": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "exact_remaining_producers": [
+      "G21Pointwise"
+    ],
+    "certified_delta": {
+      "p01_terminal_branches": {
+        "source_sha": "f9add60881d709ce8320cb54a4d52f26d829b8f5",
+        "run": 35722846538,
+        "frozen_branch": "frozen/p01-terminal-branches-green-f9add608"
+      },
+      "p01_global_slotlog_spec": {
+        "source_sha": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+        "run": 35723570545,
+        "frozen_branch": "frozen/p01-global-slotlog-spec-green-614f88fe"
+      },
+      "p02_g2_2_wiring": {
+        "source_sha": "38db71b416906e5b7138774842e91d3e367aad09",
+        "run": 35722282451,
+        "frozen_branch": "frozen/p02-g2-2-wiring-green-38db71b4"
+      },
+      "final_external_integration": {
+        "source_sha": "c102d9d482d708a7a865803e94f294c6da82ed9a",
+        "run": 35722252805,
+        "frozen_branch": "frozen/final-external-integration-green-c102d9d4"
+      },
+      "final_external_two_gap": {
+        "source_sha": "b406b806da58ebe6bc1f85863ee44054ad42edb2",
+        "run": 35722743845,
+        "frozen_branch": "frozen/final-external-two-gap-green-b406b806"
+      }
+    },
+    "interface_policy": "INTERFACE_ONLY_FAIL_CLOSED_NO_PROOF_FABRICATION",
+    "certified_source_policy": "NO_SORRY_ADMIT_AXIOM_PLACEHOLDERS",
+    "taxonomy": "TWO_GAP_1_OF_2__P_VS_NP_ENDPOINT_OPEN__GLOBAL_0_OF_7",
+    "p01_recovered_producer": {
+      "state": "SUPERSEDED_BY_CLOSURE",
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "branch": "atk/direct-p01-terminal-close-v2-20260930",
+      "commit": "ffd06cc6",
+      "inhabitant": "MCore.Real.P01WitnessPrepGlobal.prepPhase : P01PrepPhase (no sorry, no axiom)",
+      "reduction": "MCore.Real.P01WitnessPrepGlobal.p01_of_verifier : P01VerifierPhase prepPhase.layout → P01ConstructionGap",
+      "exact_missing": "Nonempty (P01VerifierPhase prepPhase.layout)",
+      "endpoint_credit": 0,
+      "reverified_by_mcore_kernel": false
+    },
+    "p01_closure": {
+      "state": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "theorem": "MCore.Real.P01RawTotalizationProducer.p01ConstructionGap_closed : P01FinalCertificate.P01ConstructionGap",
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "source_sha": "0dd09383932446ba67e673f69cd8740f85a80b87",
+      "frozen_branch": "frozen/p01-t5-poly-halting-green-0dd09383",
+      "audit": {
+        "source_sha": "d97a56e122842fb9ce28a2f3e6bfac35561b4951",
+        "frozen_branch": "frozen/p01-closure-audit-green-d97a56e1",
+        "certificate_branch": "cert/p01-closure-audit-d97a56e1-run37913791428",
+        "run": 37913791428,
+        "checks": [
+          "lake build MCore.Real.P01RawTotalizationProducer rc=0",
+          "type is exactly P01FinalCertificate.P01ConstructionGap (fail-closed elab; negative control fails)",
+          "axioms [propext, Classical.choice, Quot.sound]",
+          "42/42 statement-defining files byte-identical to origin/main 9efeb9b731a786d2dfea24c10a3895b611fe6130"
+        ]
+      },
+      "local_reverification": "151-module closure rebuilt with Lean 4.19.0 (6caaee842e94); no implemented_by / extern / unsafe / native_decide / opaque / axiom in the closure",
+      "earlier_ci": "run 36897479263 (p01-verifier-phase-mincut-clean.yml) at 15b6c360, files byte-identical (reported by session 01BbxhU3 on atk/pnp-recovery-integration-20261008)",
+      "content": "a concrete finite-control, polynomial-time NTM over alphabet Option Bool deciding the canonical CNF-SAT bit language (SAT ∈ NP side only)",
+      "endpoint_credit": 0,
+      "endpoint_credit_note": "TwoGap progress 1/2; no global credit until G21Pointwise closes (transition rule p01_only)"
+    }
+  },
+  "taxonomy": {
+    "FINAL_EXTERNAL_TWO_GAP": {
+      "progress": "1/2",
+      "P01ConstructionGap": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "G21Pointwise": "OPEN_MATH"
+    },
+    "P_VS_NP_ENDPOINT": "OPEN",
+    "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+    "FINAL_ROOT_MATH": null,
+    "GLOBAL_7_PROBLEMS": {
+      "FINAL_PROOF": "0/7"
+    },
+    "FINAL_ROOT": null,
+    "FINAL_EXTERNAL_ISSUED": false
+  },
+  "supersedes": "v1.0.0"
+}

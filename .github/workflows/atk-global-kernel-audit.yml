@@ -97,19 +97,19 @@ jobs:
           diff -q certs/final_external/v1/PREPARATORY_ROOT "$C/PREPARATORY_ROOT" >> "$OUT/freeze_sha256sums_diff.txt" 2>&1 && echo PREPARATORY_ROOT_IDENTICAL >> "$OUT/freeze_sha256sums_diff.txt" || true
           tail -3 "$OUT/freeze_sh.log"
 
-      - name: Re-run FINAL_EXTERNAL v2 freeze gate on a copy when present
+      - name: Re-run every later FINAL_EXTERNAL freeze gate (v2, v3, ...) on a copy
         shell: bash
         run: |
           set -uo pipefail
           OUT=audit-out
-          if [ -f certs/final_external/v2/freeze.sh ]; then
-            C=.freeze-copy-v2; mkdir -p "$C"; cp -a certs/final_external/v1 certs/final_external/v2 "$C/"
-            if (cd "$C/v2" && bash freeze.sh) > "$OUT/freeze_v2_sh.log" 2>&1; then echo 0 > "$OUT/freeze_v2_sh_rc"; else echo $? > "$OUT/freeze_v2_sh_rc"; fi
-            cmp -s "$C/v2/PREPARATORY_ROOT" certs/final_external/v2/PREPARATORY_ROOT && echo V2_PREPARATORY_ROOT_IDENTICAL >> "$OUT/freeze_v2_sh.log"
-            tail -3 "$OUT/freeze_v2_sh.log"
-          else
-            echo absent > "$OUT/freeze_v2_sh_rc"
-          fi
+          C=.freeze-copy-all; mkdir -p "$C"; cp -a certs/final_external/v* "$C/"
+          for d in certs/final_external/v*; do
+            v=$(basename "$d"); [ "$v" = v1 ] && continue
+            [ -f "$d/freeze.sh" ] || continue
+            if (cd "$C/$v" && bash freeze.sh) > "$OUT/freeze_${v}_sh.log" 2>&1; then echo 0 > "$OUT/freeze_${v}_sh_rc"; else echo $? > "$OUT/freeze_${v}_sh_rc"; fi
+            cmp -s "$C/$v/PREPARATORY_ROOT" "$d/PREPARATORY_ROOT" && echo "${v}_PREPARATORY_ROOT_IDENTICAL" >> "$OUT/freeze_${v}_sh.log"
+            echo "::notice title=FINAL_EXTERNAL $v::rc=$(cat "$OUT/freeze_${v}_sh_rc") $(tail -2 "$OUT/freeze_${v}_sh.log" | tr '\n' ' ')"
+          done
 
       - name: Verify FINAL_GLOBAL package when present
         shell: bash
@@ -155,7 +155,7 @@ jobs:
             echo "default_target_rc=$(cat $OUT/default_target_rc)"
             echo "freeze_sh_rc=$(cat $OUT/freeze_sh_rc)"
             echo "final_global_verify_rc=$(cat $OUT/final_global_verify_rc)"
-            echo "freeze_v2_sh_rc=$(cat $OUT/freeze_v2_sh_rc)"
+            for f in $OUT/freeze_v*_sh_rc; do [ -f "$f" ] && echo "$(basename "$f" _sh_rc)_rc=$(cat "$f")"; done
           } > "$OUT/run_metadata.txt"
           cp lake-manifest.json "$OUT/lake-manifest.json" 2>/dev/null || true
           cat "$OUT/run_metadata.txt"
