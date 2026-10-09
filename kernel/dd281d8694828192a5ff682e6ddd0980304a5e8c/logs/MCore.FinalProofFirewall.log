@@ -1,0 +1,45 @@
+ℹ [6667/6673] Replayed MCore.FinalFail.RPAConfirmation
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:157:0: 'MCore.FinalFail.RPA.endpoint_roles_distinct' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:158:0: 'MCore.FinalFail.RPA.dual_endpoint_state_iff_open_closed_math' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:159:0: 'MCore.FinalFail.RPA.five_views_same_identity' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:160:0: 'MCore.FinalFail.RPA.global_certificate_projects_open' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:161:0: 'MCore.FinalFail.RPA.global_certificate_projects_closed' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:162:0: 'MCore.FinalFail.RPA.global_certificate_preserves_identity' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPAConfirmation.lean:163:0: 'MCore.FinalFail.RPA.frame_plus_open_and_closed_closes' does not depend on any axioms
+ℹ [6668/6673] Replayed MCore.FinalFail.RPALattice
+info: ./././lean/MCore/FinalFail/RPALattice.lean:102:0: 'MCore.FinalFail.RPA.normalize_positive_positive_full' depends on axioms: [propext, Quot.sound]
+info: ./././lean/MCore/FinalFail/RPALattice.lean:103:0: 'MCore.FinalFail.RPA.full_iff_dual_endpoint_state' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPALattice.lean:104:0: 'MCore.FinalFail.RPA.full_iff_global_external_certificate' does not depend on any axioms
+ℹ [6669/6673] Replayed MCore.FinalFail.RPALatticeCube3
+info: ./././lean/MCore/FinalFail/RPALatticeCube3.lean:114:0: 'MCore.FinalFail.RPA.norm_OPEN_OPEN' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPALatticeCube3.lean:115:0: 'MCore.FinalFail.RPA.norm_CLOSED_CLOSED' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPALatticeCube3.lean:116:0: 'MCore.FinalFail.RPA.norm_OPEN_OPEN_OPEN' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPALatticeCube3.lean:117:0: 'MCore.FinalFail.RPA.norm_CLOSED_CLOSED_CLOSED' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPALatticeCube3.lean:118:0: 'MCore.FinalFail.RPA.all_length3_mixed_words_are_full' does not depend on any axioms
+info: ./././lean/MCore/FinalFail/RPALatticeCube3.lean:119:0: 'MCore.FinalFail.RPA.full_word_iff_global_external_certificate' does not depend on any axioms
+ℹ [6670/6673] Replayed MCore.FinalFail.Semantic.RiemannDual
+info: ./././lean/MCore/FinalFail/Semantic/RiemannDual.lean:221:0: 'MCore.FinalFail.Semantic.riemann_prove_iff_not_refute' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ./././lean/MCore/FinalFail/Semantic/RiemannDual.lean:222:0: 'MCore.FinalFail.Semantic.riemann_not_both' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ./././lean/MCore/FinalFail/Semantic/RiemannDual.lean:223:0: 'MCore.FinalFail.Semantic.riemann_dual_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ./././lean/MCore/FinalFail/Semantic/RiemannDual.lean:224:0: 'MCore.FinalFail.Semantic.riemannZeta_one_sub_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ./././lean/MCore/FinalFail/Semantic/RiemannDual.lean:225:0: 'MCore.FinalFail.Semantic.nontrivial_zero_re_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ./././lean/MCore/FinalFail/Semantic/RiemannDual.lean:226:0: 'MCore.FinalFail.Semantic.riemann_refute_iff_zero_in_right_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: ./././lean/MCore/FinalFail/Semantic/RiemannDual.lean:227:0: 'MCore.FinalFail.Semantic.riemann_prove_iff_no_zero_in_right_strip' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ℹ [6671/6673] Replayed MCore.FinalFail.Semantic.NavierStokesClay
+info: ./././lean/MCore/FinalFail/Semantic/NavierStokesClay.lean:141:0: 'MCore.FinalFail.Semantic.NavierStokesClay.zero_datum_has_zero_solution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [6672/6673] Built MCore.FinalProofRegistry
+ℹ [6673/6673] Built MCore.FinalProofFirewall
+info: ./././lean/MCore/FinalProofFirewall.lean:22:0: 'MCore.FinalProof.registry_length_eq_seven' does not depend on any axioms
+info: ./././lean/MCore/FinalProofFirewall.lean:23:0: 'MCore.FinalProof.provedCount_eq_zero' does not depend on any axioms
+info: ./././lean/MCore/FinalProofFirewall.lean:24:0: 'MCore.FinalProof.openMathCount_eq_seven' does not depend on any axioms
+info: ./././lean/MCore/FinalProofFirewall.lean:25:0: 'MCore.FinalProof.finalProof_not_ready' depends on axioms: [propext]
+info: ./././lean/MCore/FinalProofFirewall.lean:26:0: 'MCore.FinalProof.final_registry_fail_closed' does not depend on any axioms
+info: ./././lean/MCore/FinalProofFirewall.lean:27:0: 'MCore.FinalFail.Universal.terminalInhabitants_iff_allSeven' does not depend on any axioms
+info: ./././lean/MCore/FinalProofFirewall.lean:28:0: 'MCore.FinalFail.Universal.universal_aggregation_is_fail_closed' does not depend on any axioms
+Build completed successfully.

@@ -1,0 +1,29 @@
+[freeze.sh v4] /home/runner/work/M-Core/M-Core/.freeze-copy-all/v4 - PREPARATORY_NOT_ISSUED
+[1/9] JSON syntax
+[2/9] Fail-closed Lean-source hygiene if Lean files are present
+[3/9] Supersession of v3 is consistent; v1, v2 and v3 are untouched
+[3b/9] crypto gate: offline check of the Sigstore signature of v3
+signature: VALID (offline ECDSA + identity + Rekor hash)
+[4/9] Normative preparatory state
+[5/9] Blockers derived from data (same rules as v1)
+blockers: ['G21Pointwise', 'human_review', 'app']
+[6/9] Generate canonical PACKAGE_SHA256SUMS
+[7/9] Generate PREPARATORY_ROOT out-of-band
+613488ebc3a1ccc8c26a0234fb6f61b51ec302991f2e0e527f685782e14ad6b4
+[8/9] Re-verify payload was not mutated
+manifest.json: OK
+README.md: OK
+provenance.json: OK
+gate_ledger.json: OK
+axiom_footprint.json: OK
+reproducibility.md: OK
+status.json: OK
+MATH_TERMINAL_BOUNDARY_20261009.json: OK
+revocation.json: OK
+freeze.sh: OK
+signature_v3/SHA256SUMS.sigstore.bundle: OK
+signature_v3/signature-info.txt: OK
+[9/9] FINAL_ROOT remains null / issuance remains false
+RESULT=FROZEN_PREPARATORY_V4
+FINAL_EXTERNAL_ISSUED=false
+v4_PREPARATORY_ROOT_IDENTICAL
