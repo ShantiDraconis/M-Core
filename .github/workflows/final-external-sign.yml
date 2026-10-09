@@ -18,6 +18,11 @@ on:
       confirm_public_log:
         description: "Type PUBLISH to accept that the signature goes to the public Rekor log"
         required: true
+  # Equivalent deliberate trigger while this file is not yet on the default
+  # branch (workflow_dispatch needs it there): pushing a branch named
+  # sign/final-external-<version> signs that package version.
+  push:
+    branches: [ 'sign/final-external-v*' ]
 
 permissions:
   contents: write
@@ -26,16 +31,20 @@ permissions:
 jobs:
   sign:
     runs-on: ubuntu-24.04
-    if: ${{ github.event.inputs.confirm_public_log == 'PUBLISH' }}
-    env:
-      PKG: certs/final_external/${{ github.event.inputs.version }}
+    if: ${{ github.event_name == 'push' || github.event.inputs.confirm_public_log == 'PUBLISH' }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Select package
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = push ]; then v="${GITHUB_REF_NAME#sign/final-external-}"; else v="${{ github.event.inputs.version }}"; fi
+          case "$v" in v[0-9]*) ;; *) echo "bad version '$v'"; exit 1;; esac
+          echo "PKG=certs/final_external/$v" >> "$GITHUB_ENV"
 
       - name: Re-run the package freeze gate
         run: |
           set -euo pipefail
-          case "$PKG" in certs/final_external/v[0-9]*) ;; *) echo "bad version"; exit 1;; esac
           bash "$PKG/freeze.sh"
           # what gets signed must be exactly what is committed
           git diff --exit-code -- "$PKG"
@@ -63,6 +72,7 @@ jobs:
             echo "run_id=${GITHUB_RUN_ID}"
           } > sig/signature-info.txt
           cat sig/signature-info.txt
+          echo "::notice title=Sigstore signature::$(tr '\n' ' ' < sig/signature-info.txt)"
 
       - name: Publish signature to results branch
         run: |
