@@ -5,7 +5,7 @@ pacote atual: [`certs/final_global/v2/`](../certs/final_global/v2/)
 (`bash certs/final_global/v2/verify.sh`) · errata: [`ERRATA.md`](ERRATA.md)
 
 > **Estado em uma linha:** a infraestrutura formal passa no kernel (CLOSED_MATH),
-> o lado **SAT ∈ NP (P01) está fechado e verificado**, e **nenhuma** das sete
+> o lado **SAT ∈ NP (P01) está fechado e verificado**, o pacote FINAL_EXTERNAL está assinado (Sigstore), e **nenhuma** das sete
 > conjecturas tem prova terminal: `final_proof = 0/7`. FINAL_EXTERNAL **não** foi
 > emitido.
 
@@ -17,7 +17,7 @@ pacote atual: [`certs/final_global/v2/`](../certs/final_global/v2/)
 | [`OPEN_MATH_GLOBAL_STATUS.json`](../certs/final_global/v2/OPEN_MATH_GLOBAL_STATUS.json) | 7 lanes, 10 obrigações; 1 demonstrada (P01), 0 lanes fechadas |
 | [`FINAL_GLOBAL_CERTIFICATE.json`](../certs/final_global/v2/FINAL_GLOBAL_CERTIFICATE.json) | `INTEGRATION_STATE_CERTIFICATE`: estrutural GREEN, terminal OPEN, TwoGap 1/2, 0/7 |
 | `FINAL_EXTERNAL_CERTIFICATE.json` | **não emitido** |
-| [`certs/final_external/v3`](../certs/final_external/v3/) | preparatório (`SUPERSEDES v2`). Bloqueios: `G21Pointwise`, `human_review`, `app`, `crypto` |
+| [`certs/final_external/v4`](../certs/final_external/v4/) | preparatório (`SUPERSEDES v3`). O payload v3 foi assinado com Sigstore (run `37922203677`, Rekor `3163404491`). Bloqueios: `G21Pointwise`, `human_review`, `app` |
 | [`FINAL_EXTERNAL_BLOCKERS.md`](../certs/final_global/v2/FINAL_EXTERNAL_BLOCKERS.md) | lista exata dos bloqueios e de quem pode fechar cada um |
 | [`GLOBAL_AXIOM_AUDIT.md`](../certs/final_global/v2/GLOBAL_AXIOM_AUDIT.md) · [`GLOBAL_KERNEL_RUNS.md`](../certs/final_global/v2/GLOBAL_KERNEL_RUNS.md) | auditorias |
 | [`ERRATUM_v1.md`](../certs/final_global/v2/ERRATUM_v1.md) | o que o v1 errou e por quê |

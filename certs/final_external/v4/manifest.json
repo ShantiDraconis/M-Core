@@ -1,0 +1,290 @@
+{
+  "schema": "elyon.final-external.v2.0.0",
+  "certificate_type": "INFRASTRUCTURE_CERTIFIED",
+  "name": "ELYON_FINAL_EXTERNAL",
+  "version": "v4.0.0",
+  "alias": "elyon",
+  "scope": [
+    "MCORE",
+    "AINUM",
+    "OS",
+    "HUB",
+    "BRAIN",
+    "APP",
+    "ELYON"
+  ],
+  "infra_state": "READY_FOR_FREEZE",
+  "math_state": "OPEN_MATH_TWO_EXACT_PRODUCERS",
+  "final_proof": {
+    "numerator": 0,
+    "denominator": 7,
+    "display": "0/7",
+    "terminal_status": {
+      "P01": "CLOSED_GREEN_FROZEN_CERTIFIED - P01RawTotalizationProducer.p01ConstructionGap_closed @m-core-p-vs-np 0dd09383; audit run 37913791428",
+      "P02": "OPEN_MATH - G2.1 literal route CLOSED_BY_FALSIFICATION; G2.2 wiring GREEN_FROZEN_CERTIFIED; exact open payload G21Pointwise ≃ P02Target ≃ SAT not in P",
+      "P03": "OPEN_MATH",
+      "P04": "OPEN_MATH",
+      "P05": "OPEN_MATH",
+      "P06": "OPEN_MATH",
+      "P07": "OPEN_MATH",
+      "G3": "G3_CONTRACT CLOSED_GREEN_FROZEN_CERTIFIED; G3_SOURCE_FIDELITY OPEN"
+    },
+    "claim_policy": "NO_CLAIM_OF_P_NP_CLAY_BEAL_SOLVED",
+    "taxonomy": {
+      "FINAL_EXTERNAL_TWO_GAP": "1/2",
+      "P_VS_NP_ENDPOINT": "OPEN",
+      "P_VS_NP_EXTERNAL_MATH_CERTIFIED": false,
+      "FINAL_ROOT_MATH": null,
+      "GLOBAL_7_PROBLEMS": "0/7",
+      "rule": "Two internal P vs NP producers count as one global problem endpoint only after both close."
+    }
+  },
+  "release_state": "SEALED_CLOSED",
+  "max_machine_state": "REVIEW_PENDING",
+  "anchors": {
+    "ELYON": {
+      "base": "483f6bdc06b74a0239481085e25c9a9fdccb1a8f",
+      "audit": "0f71ffea68ed52691201144140fb1a342d03b8d7",
+      "run": "35378862267",
+      "run_status": "SUCCESS",
+      "state": "SEALED_CLOSED",
+      "role": "official_anchor_v1_until_explicit_revision"
+    },
+    "P01": {
+      "prefix": "614f88fe020fd05b9b251a6a2283301acf7ff733",
+      "state": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "runs": [
+        "35722427864 SUCCESS integrated parser/leaf",
+        "35722846538 SUCCESS terminal branches",
+        "35723570545 SUCCESS phase/global-slotlog"
+      ],
+      "pending_ATK": [],
+      "recovered_producer": {
+        "state": "SUPERSEDED_BY_CLOSURE (conditional route no longer needed)",
+        "repository": "ShantiDraconis/m-core-p-vs-np",
+        "branch": "atk/direct-p01-terminal-close-v2-20260930",
+        "commit": "ffd06cc6",
+        "inhabitant": "MCore.Real.P01WitnessPrepGlobal.prepPhase : P01PrepPhase (no sorry, no axiom)",
+        "reduction": "MCore.Real.P01WitnessPrepGlobal.p01_of_verifier : P01VerifierPhase prepPhase.layout → P01ConstructionGap",
+        "exact_missing": "Nonempty (P01VerifierPhase prepPhase.layout)",
+        "endpoint_credit": 0,
+        "reverified_by_mcore_kernel": false
+      },
+      "closure": {
+        "state": "CLOSED_GREEN_FROZEN_CERTIFIED",
+        "theorem": "MCore.Real.P01RawTotalizationProducer.p01ConstructionGap_closed : P01FinalCertificate.P01ConstructionGap",
+        "repository": "ShantiDraconis/m-core-p-vs-np",
+        "source_sha": "0dd09383932446ba67e673f69cd8740f85a80b87",
+        "frozen_branch": "frozen/p01-t5-poly-halting-green-0dd09383",
+        "audit": {
+          "source_sha": "d97a56e122842fb9ce28a2f3e6bfac35561b4951",
+          "frozen_branch": "frozen/p01-closure-audit-green-d97a56e1",
+          "certificate_branch": "cert/p01-closure-audit-d97a56e1-run37913791428",
+          "run": 37913791428,
+          "checks": [
+            "lake build MCore.Real.P01RawTotalizationProducer rc=0",
+            "type is exactly P01FinalCertificate.P01ConstructionGap (fail-closed elab; negative control fails)",
+            "axioms [propext, Classical.choice, Quot.sound]",
+            "42/42 statement-defining files byte-identical to origin/main 9efeb9b731a786d2dfea24c10a3895b611fe6130"
+          ]
+        },
+        "local_reverification": "151-module closure rebuilt with Lean 4.19.0 (6caaee842e94); no implemented_by / extern / unsafe / native_decide / opaque / axiom in the closure",
+        "earlier_ci": "run 36897479263 (p01-verifier-phase-mincut-clean.yml) at 15b6c360, files byte-identical (reported by session 01BbxhU3 on atk/pnp-recovery-integration-20261008)",
+        "content": "a concrete finite-control, polynomial-time NTM over alphabet Option Bool deciding the canonical CNF-SAT bit language (SAT ∈ NP side only)",
+        "endpoint_credit": 0,
+        "endpoint_credit_note": "TwoGap progress 1/2; no global credit until G21Pointwise closes (transition rule p01_only)"
+      }
+    },
+    "P02": {
+      "frontier": "38db71b416906e5b7138774842e91d3e367aad09",
+      "status": "G2_2_WIRING_GREEN_FROZEN_CERTIFIED__G21_POINTWISE_OPEN_MATH",
+      "runs": [
+        "35722282451 SUCCESS"
+      ],
+      "pending_ATK": "G21Pointwise / P02Target / Nonempty FailureGenerator(SATBits circuitBitEncoding), equivalent to SAT not in P"
+    },
+    "MCORE_HUB": {
+      "hub_anchor": "11adcd32...",
+      "state": "GREEN_FROZEN_SCAFFOLD"
+    }
+  },
+  "human_review": {
+    "authority": "UNSET",
+    "quorum": "UNSET",
+    "evidence_policy": "UNSET",
+    "status": "REVIEW_PENDING",
+    "notes": "Must be defined by human authority. Cannot be chosen by technical validator. Evidence must be GPG/Sigstore + PR comment + APPROVED_BY_HUMAN tag in review.json"
+  },
+  "production": {
+    "app": {
+      "app_repository": "UNSET",
+      "app_commit": "UNSET",
+      "app_pass_test": "UNSET",
+      "current_state": "NOT_CONNECTED"
+    },
+    "crypto": {
+      "crypto_provider": "sigstore-keyless (cosign)",
+      "public_key_or_key_id": "Fulcio certificate identity https://github.com/ShantiDraconis/M-Core/.github/workflows/final-external-sign.yml@refs/heads/sign/final-external-v3",
+      "algorithm": "ECDSA_P256_SHA256",
+      "attestation": "Rekor hashedrekord, logIndex 3163404491, integratedTime 2026-10-09T11:11:38Z",
+      "current_state": "SIGNED_SIGSTORE_KEYLESS",
+      "prepared": {
+        "provider": "sigstore-keyless (cosign, GitHub Actions OIDC)",
+        "workflow": ".github/workflows/final-external-v2-sign.yml (workflow_dispatch only)",
+        "algorithm": "ECDSA P-256 / SHA-256 (Fulcio short-lived certificate)",
+        "transparency_log": "Rekor (public)",
+        "status": "PREPARED_NOT_EXECUTED",
+        "why_not_executed": "Signing writes the workflow identity, including the private repository name, to the public Rekor log; this is irreversible and left to the maintainer."
+      },
+      "oidc_issuer": "https://token.actions.githubusercontent.com",
+      "signed_package": "v3",
+      "signed_file": "certs/final_external/v3/SHA256SUMS",
+      "signed_file_sha256": "61219f71a7ff9408810d6c96df5114e55b758ab67650f6e9a0d11ec14854795d",
+      "signing_run": 37922203677,
+      "signing_source_sha": "798be087267d8cd493292dd79f2001abcd5090eb",
+      "bundle": "signature_v3/SHA256SUMS.sigstore.bundle",
+      "online_verification": "cosign verify-blob (certificate identity + OIDC issuer, Fulcio chain, Rekor inclusion) inside run 37922203677: success",
+      "offline_verification": "freeze.sh v4: ECDSA signature valid under the embedded certificate key (openssl), certificate SAN equals the expected identity, Rekor entry hash equals sha256(v3/SHA256SUMS). Fulcio chain and Rekor SET are not re-checked offline.",
+      "public_disclosure": "Rekor (public, permanent) records: repository ShantiDraconis/M-Core, owner, commit 798be087, ref sign/final-external-v3, run URL, repository visibility 'private'. Package contents are not published, only the hash."
+    },
+    "hardware_attestation": {
+      "status": "OUT_OF_SCOPE_FOR_V1",
+      "allowed_values": [
+        "UNSET",
+        "OUT_OF_SCOPE_FOR_V1",
+        "TPM2_ATTESTED",
+        "SECURE_BOOT_ATTESTED"
+      ],
+      "current_claim": "hardware_secure_boot_claimed=false",
+      "note": "Allowed value from the v1 policy; no hardware or secure-boot claim is made by v2."
+    }
+  },
+  "G3": {
+    "statement": "G3ExternalContract for the normalized Cook-style external model",
+    "repository": "ShantiDraconis/m-core-p-vs-np",
+    "namespace": "MCore.Real.CookNormalizedG3Contract",
+    "source_file": "lean/MCore/Real/CookNormalizedG3Contract.lean",
+    "closure_condition": "cook_normalized_g3_contract_closed",
+    "source_sha": "f2cafea7a74f3ef8ad4140943515622545c9f1d8",
+    "run": 35719428075,
+    "status": "CLOSED_GREEN_FROZEN_CERTIFIED",
+    "notes": "Formal normalized external contract closed. Independent exhaustive fidelity to every Cook/CMI prose convention is a separate audit statement and is not endpoint proof credit.",
+    "components": {
+      "G3_CONTRACT": "CLOSED_GREEN_FROZEN_CERTIFIED",
+      "G3_SOURCE_FIDELITY": "OPEN"
+    }
+  },
+  "artifacts_required": [
+    "manifest.json",
+    "README.md",
+    "SHA256SUMS",
+    "provenance.json",
+    "gate_ledger.json",
+    "axiom_footprint.json",
+    "reproducibility.md",
+    "signature.bundle / .asc",
+    "status.json",
+    "revocation.json",
+    "MATH_TERMINAL_BOUNDARY_20261008.json"
+  ],
+  "toolchain": {
+    "normative": "Lean 4.19 + lake",
+    "policy": "Other tools (Python, OS runner, Coq/Agda/Isabelle) only included if effectively used in final package. Must be recorded in provenance.json with exact versions."
+  },
+  "axiom_policy": {
+    "allowed_when_present": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "forbidden": [
+      "sorryAx",
+      "sorry",
+      "admit",
+      "custom theorem-carrying axioms",
+      "hidden oracle",
+      "circularity"
+    ],
+    "audit_required": true,
+    "footprint_file": "axiom_footprint.json"
+  },
+  "brain_policy": {
+    "v1": "OBSERVE_REASON_ABSTAIN",
+    "change_requires": "explicit policy version bump"
+  },
+  "publication": {
+    "canonical": "Zenodo",
+    "mirror_optional": "Figshare",
+    "destination": "M-Core/certs/final_external/v1/",
+    "mirror": "Genesis_Elyon/certs/final_external/v1/",
+    "optional_mirror": "zero-ai-00/certs/",
+    "license_code": "MIT / Apache-2.0",
+    "license_docs": "CC-BY-4.0",
+    "prize_policy": "Technical certificate does not declare prize recognition. Clay/Beal claims separate."
+  },
+  "root": {
+    "derivation": "deterministic hash of SHAs/hashes of all layers and certs: hash(MCORE)+hash(AINUM)+hash(OS)+hash(HUB)+hash(BRAIN)+hash(APP)+hash(ELYON)+hashes(P01..P07 certs)",
+    "value": null,
+    "status": "PREPARATORY_ROOT_IN_SEPARATE_FILE; FINAL_ROOT_NULL_UNTIL_ISSUANCE_GATES",
+    "FINAL_ROOT": null,
+    "PREPARATORY_ROOT": null,
+    "derivation_final": "hash(MCORE)+hash(AINUM)+hash(OS)+hash(HUB)+hash(BRAIN)+hash(APP)+hash(ELYON)+hashes(P01..P07) + production crypto + hardware + human_review + final frozen anchors",
+    "derivation_preparatory": "SHA256 of canonical SHA256SUMS payload; payload includes MATH_TERMINAL_BOUNDARY_20260922.json and immutable preparatory package files, excluding SHA256SUMS/PREPARATORY_ROOT to avoid self-reference",
+    "preparatory_root_location": "PREPARATORY_ROOT",
+    "FINAL_ROOT_MATH": null,
+    "linked_preparatory_root": null,
+    "supersedes_preparatory_root": "1651ac0cf58b81ce2038019c548fbd7132487aa0ad3a2e29b934adf6e3bf88d9"
+  },
+  "timestamps": {
+    "created_at": null,
+    "approved_at": null,
+    "published_at": null,
+    "policy": "three separate timestamps"
+  },
+  "versioning": {
+    "v1": "immutable after freeze",
+    "future": "SUPERSEDES previous with explicit reason",
+    "revocation": "status.json / revocation.json in same path, with REVOKED / SUPERSEDED / INVALIDATED"
+  },
+  "issuance_gate": {
+    "FINAL_EXTERNAL_ISSUED": false,
+    "condition": "P01ConstructionGap closed AND G21Pointwise closed AND G3 CLOSED AND human_review != UNSET AND production.app != UNSET AND production.crypto != UNSET AND hardware_attestation != UNSET AND all required infra GREEN+FROZEN",
+    "current": "BLOCKED fail-closed: G21Pointwise OPEN_MATH (≡ SAT ∉ P); P_VS_NP_ENDPOINT OPEN; human_review UNSET; app UNSET. P01 CLOSED; crypto SIGNED (Sigstore, v3 payload).",
+    "public_status": "PREPARATORY_NOT_ISSUED",
+    "current_blockers": [
+      "G21Pointwise",
+      "human_review",
+      "app"
+    ]
+  },
+  "package_state": "PREPARATORY",
+  "public_status": "PREPARATORY_NOT_ISSUED",
+  "public_label": "PREPARATORY / non-issued infrastructure record - NOT A CLAIM OF ISSUED CERTIFICATE",
+  "maximum_auto_state": "REVIEW_PENDING",
+  "package_state_policy": "PACKAGE_SHA256SUMS can be calculated now. FINAL_ROOT must remain null while any issuance prerequisite UNSET",
+  "package_revision": "v4.0.0-preparatory",
+  "freeze_state": "FROZEN_PREPARATORY",
+  "supersedes": {
+    "version": "v3.0.0",
+    "v3_preparatory_root": "61219f71a7ff9408810d6c96df5114e55b758ab67650f6e9a0d11ec14854795d",
+    "v3_mutated": false,
+    "v2_mutated": false,
+    "v1_mutated": false,
+    "reasons": [
+      "crypto gate: v3 payload signed with Sigstore keyless (run 37922203677, Rekor logIndex 3163404491); values recorded here.",
+      "No mathematical change: G21Pointwise remains OPEN_MATH. Issuance condition unchanged (identical to v1)."
+    ]
+  },
+  "audit": {
+    "repository": "ShantiDraconis/M-Core",
+    "branch": "atk/global-audit-20261008",
+    "final_global": "certs/final_global/v1",
+    "kernel_runs": [
+      37819802090,
+      37824483365,
+      37825452119,
+      37826792744,
+      37847421955
+    ]
+  }
+}
