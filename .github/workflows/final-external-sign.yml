@@ -37,6 +37,9 @@ jobs:
           set -euo pipefail
           case "$PKG" in certs/final_external/v[0-9]*) ;; *) echo "bad version"; exit 1;; esac
           bash "$PKG/freeze.sh"
+          # what gets signed must be exactly what is committed
+          git diff --exit-code -- "$PKG"
+          echo "::notice title=Signed payload::$PKG PREPARATORY_ROOT $(cat "$PKG/PREPARATORY_ROOT") (identical to commit $GITHUB_SHA)"
 
       - uses: sigstore/cosign-installer@v3
 
