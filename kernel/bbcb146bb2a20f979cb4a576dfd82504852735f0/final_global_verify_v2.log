@@ -1,0 +1,20 @@
+[1/7] JSON syntax
+[2/7] Payload hashes
+CLOSED_MATH_GLOBAL_CERTIFICATE.json: OK
+OPEN_MATH_GLOBAL_STATUS.json: OK
+FINAL_GLOBAL_CERTIFICATE.json: OK
+ERRATUM_v1.md: OK
+FINAL_EXTERNAL_BLOCKERS.md: OK
+GLOBAL_AXIOM_AUDIT.md: OK
+GLOBAL_KERNEL_RUNS.md: OK
+axiom_audit_run37914524820.tsv: OK
+verify.sh: OK
+[3/7] v1 is untouched and superseded by reference
+[4/7] Cross-references and fail-closed invariants
+invariants OK: lanes closed 0 | demonstrated [('pVsNP', 'P01ConstructionGap')]
+[5/7] Registry in Lean source agrees (no slot proved, 7 openMath)
+[6/7] FINAL_EXTERNAL v3 gate (on a copy) agrees with this package
+[7/7] Result
+RESULT=FINAL_GLOBAL_V2_INTEGRATION_STATE_VERIFIED
+TERMINAL_MATH=0/7  OBLIGATIONS_DEMONSTRATED=1  TWO_GAP=1/2
+FINAL_EXTERNAL_ISSUED=false
