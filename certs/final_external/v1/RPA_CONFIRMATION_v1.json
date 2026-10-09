@@ -1,7 +1,39 @@
 {
   "schema": "MCORE-RPA-CONFIRMATION-v1",
-  "status": "BUILD_PENDING",
-  "head": "32981d6618802d7b7230dcbdee5526562ef74107",
+  "status": "KERNEL_BUILD_GREEN_ON_FIX_BRANCH",
+  "status_history": [
+    {
+      "head": "32981d6618802d7b7230dcbdee5526562ef74107",
+      "status": "BUILD_PENDING"
+    },
+    {
+      "head": "53d58bceed3424a435eb54e01cd6d3f17324a630",
+      "status": "DOES_NOT_COMPILE",
+      "reason": "Prop-valued structure RPAConfirmation carried EndpointRole data fields; Lean rejects data projections out of a Prop"
+    },
+    {
+      "head": "010853f5a34989f433adaab6f262d90164793989",
+      "branch": "atk/kernel-build-fix-20261008",
+      "status": "KERNEL_BUILD_GREEN",
+      "ci_runs": [
+        {
+          "id": 37822862492,
+          "workflow": "Final Proof Miner (Lean kernel audit)",
+          "commit": "f098dd2fb009dd83fb478552d9c4c08b5df7d3b8",
+          "conclusion": "success"
+        },
+        {
+          "id": 37823657133,
+          "workflow": "ATK Universal Terminal Closure (full lake build)",
+          "commit": "010853f5a34989f433adaab6f262d90164793989",
+          "conclusion": "success"
+        }
+      ],
+      "axioms": "all RPAConfirmation theorems: no axioms (#print axioms)"
+    }
+  ],
+  "status_note": "Becomes the status of main once atk/kernel-build-fix-20261008 is merged. Structural only: no endpoint is certified.",
+  "head": "010853f5a34989f433adaab6f262d90164793989",
   "module": "MCore.FinalFail.RPAConfirmation",
   "endpoint_roles": {
     "open": "EndpointRole.openEndpoint",

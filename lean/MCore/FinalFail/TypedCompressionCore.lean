@@ -1,8 +1,13 @@
+import Mathlib.Data.Set.Basic
+
 /-!
 # Typed Projection/Fiber Core for FINAL_FAIL
 
 Axiom-free structural core recovered from the useful portion of the historical
 LRE vocabulary.  This file deliberately does not import any LRE axiom.
+
+`Set`, set-builder notation, `Set.Nonempty` and `Function.Injective` come from
+Mathlib; the file did not compile without this import.
 -/
 
 namespace MCore.FinalFail
