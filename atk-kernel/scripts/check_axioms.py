@@ -117,4 +117,19 @@ md += ["", "Escopo: estes são lemas auxiliares. Nenhum deles prova uma conjectu
        "`OPEN_MATH` continua verdadeiro para RH, P≠NP, NS, YM, BSD, Hodge e Beal."]
 open(os.path.join(REP, "report.md"), "w").write("\n".join(md) + "\n")
 print("\n".join(md))
+
+# Anotações do Actions (legíveis pela API e na interface): 1 resumo + 1 por módulo (≤ 10 por passo)
+if os.environ.get("GITHUB_ACTIONS"):
+    def esc(s):
+        return s.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    print(f"::notice title=ATK-KERNEL {state} {certified}/{len(expected)}::"
+          + esc(f"sha256 fontes {src_sha}\nlean {report['lean_version']} · mathlib v4.34.1"))
+    by_mod = {}
+    for r in rows:
+        by_mod.setdefault(r["file"], []).append(r)
+    for f, rs in by_mod.items():
+        ok = sum(r["verdict"] == "CERTIFIED" for r in rs)
+        lines = [f"{r['verdict']} {r['theorem']} [{', '.join(r['axioms']) if r['axioms'] is not None else '—'}]"
+                 + (f" ({r['reason']})" if r["reason"] else "") for r in rs]
+        print(f"::notice title={f} {ok}/{len(rs)}::" + esc("\n".join(lines)))
 sys.exit(0 if certified == len(expected) else 1)
