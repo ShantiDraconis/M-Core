@@ -1,0 +1,118 @@
+{
+  "schema": "mcore.final-proof-sources.v1",
+  "note": "Each entry names the exact tree whose inventory (scripts/proof_inventory.py, run in CI) feeds FINAL_PROOF_STRUCTURE. lanes.json is dumped from AxiomaticMillenium.sevenLaneArchitectures with #eval.",
+  "lanes_source": {
+    "repository": "ShantiDraconis/axiomatic-millenium",
+    "branch": "atk/fix-twosided-closure-build-20261008",
+    "commit": "86d341612008f9d16ad550dc2cc63434e97d23ab",
+    "declaration": "AxiomaticMillenium.sevenLaneArchitectures"
+  },
+  "problems": [
+    {
+      "id": "rh",
+      "lane": "RH",
+      "problem": "Riemann Hypothesis",
+      "endpoint": "Every non-trivial zero of the Riemann zeta function has real part 1/2.",
+      "repository": "ShantiDraconis/m-core-riemann",
+      "branch": "atk/proof-inventory-47b0b7da",
+      "commit": "f6d2ff21fc48a968c741a6de26de2ad6c1080c20",
+      "ci_run": 38151721077,
+      "toolchain": "Lean 4.19.0 + Mathlib"
+    },
+    {
+      "id": "pnp",
+      "lane": "PNP",
+      "problem": "P versus NP",
+      "endpoint": "P ≠ NP: the canonical SAT language is not decided by any polynomial-time deterministic machine (Clay asks for either answer).",
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "branch": "atk/honest-bridges-barrier-audit-20261008",
+      "commit": "9baa089b551d724d10874de66fcc3770067f208a",
+      "ci_run": 38104501562,
+      "toolchain": "Lean 4.19.0"
+    },
+    {
+      "id": "ns",
+      "lane": "NS",
+      "problem": "Navier–Stokes existence and smoothness",
+      "endpoint": "Smooth, finite-energy initial data for the 3D incompressible Navier–Stokes equations give a global smooth solution (or a breakdown example).",
+      "repository": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+      "branch": "atk/proof-inventory-1fbec755",
+      "commit": "f74a1a08d6eaef04bf24f7591bc5b51b42e84b13",
+      "ci_run": 38152909916,
+      "toolchain": "Lean 4.19.0 + Mathlib"
+    },
+    {
+      "id": "hodge",
+      "lane": "HODGE",
+      "problem": "Hodge conjecture",
+      "endpoint": "On a non-singular complex projective variety, every rational Hodge class is a rational combination of classes of algebraic cycles.",
+      "repository": "ShantiDraconis/m-core-hodge",
+      "branch": "atk/proof-inventory-3fc16284",
+      "commit": "dcf769ab738a60121fa39b02f7297887f4561ffa",
+      "ci_run": 38151185961,
+      "toolchain": "Lean 4.19.0"
+    },
+    {
+      "id": "bsd",
+      "lane": "BSD",
+      "problem": "Birch and Swinnerton-Dyer conjecture",
+      "endpoint": "For an elliptic curve E over Q, rank E(Q) equals the order of vanishing of L(E,s) at s = 1, with the refined leading-coefficient formula.",
+      "repository": "ShantiDraconis/m-core-bsd",
+      "branch": "atk/proof-inventory-1377e2e7",
+      "commit": "8cb2d7cdf63bde9d4a53408e4e49a1fea7e9896f",
+      "ci_run": 38151188611,
+      "toolchain": "Lean 4.19.0"
+    },
+    {
+      "id": "ym",
+      "lane": "YM",
+      "problem": "Yang–Mills existence and mass gap",
+      "endpoint": "For every compact simple gauge group, quantum Yang–Mills theory on R^4 exists and has a mass gap Δ > 0.",
+      "repository": "ShantiDraconis/m-core-yang-mills",
+      "branch": "atk/proof-inventory-d8a5e95e",
+      "commit": "2aec2176ab4d39697f25157dd19b8a87f804a999",
+      "ci_run": 38151179014,
+      "toolchain": "Lean 4.19.0 + Mathlib"
+    },
+    {
+      "id": "beal",
+      "lane": "BEAL",
+      "problem": "Beal conjecture",
+      "endpoint": "If A^x + B^y = C^z with positive integers and x, y, z > 2, then A, B, C have a common prime factor.",
+      "repository": "ShantiDraconis/m-core-beal",
+      "branch": "atk/proof-inventory-bfa2caa9",
+      "commit": "1094a79b89001da204ee323f37725fb84e37349d",
+      "ci_run": 38151173572,
+      "toolchain": "Lean 4.19.0"
+    }
+  ],
+  "infrastructure": [
+    {
+      "repository": "ShantiDraconis/M-Core",
+      "role": "hub: FINAL_EXTERNAL package, registry, firewall",
+      "branch": "atk/proof-inventory-ab1e4051 (tree of PR #16)",
+      "commit": "bef6948b9d13d85ef8d32cdc4f36c2c64423e219",
+      "ci_run": 38151734202,
+      "modules": "42/42",
+      "theorems": 259
+    },
+    {
+      "repository": "ShantiDraconis/axiomatic-millenium",
+      "role": "seven-lane closure architecture (lanes.json)",
+      "branch": "atk/fix-twosided-closure-build-20261008",
+      "commit": "86d341612008f9d16ad550dc2cc63434e97d23ab",
+      "ci_run": 38104503170,
+      "modules": "56/56",
+      "theorems": 213
+    },
+    {
+      "repository": "ShantiDraconis/M-Core",
+      "role": "core formulation v2 (attack/mcore-formulation-v2-clean-20260921, fixed)",
+      "branch": "atk/proof-inventory-53cab040",
+      "commit": "2b4641576738f1a0ab991077980d130bea31cee2",
+      "ci_run": 38151184357,
+      "modules": "7/7",
+      "theorems": 9
+    }
+  ]
+}

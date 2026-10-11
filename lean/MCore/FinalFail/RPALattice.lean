@@ -35,7 +35,7 @@ inductive CanonicalEndpointState
   deriving DecidableEq, Repr
 
 def normalizeMultiplicity (s : EndpointMultiplicity) : CanonicalEndpointState :=
-  match s.openCount = 0, s.closedCount = 0 with
+  match s.openCount == 0, s.closedCount == 0 with
   | true, true => .empty
   | false, true => .open
   | true, false => .closed
@@ -92,7 +92,16 @@ theorem normalize_positive_positive_full
     (hn : n ≠ 0)
     (hm : m ≠ 0) :
     normalizeMultiplicity ⟨n, m⟩ = .full := by
-  simp [normalizeMultiplicity, hn, hm]
+  have h1 : (n == 0) = false := by
+    cases n with
+    | zero => exact absurd rfl hn
+    | succ k => rfl
+  have h2 : (m == 0) = false := by
+    cases m with
+    | zero => exact absurd rfl hm
+    | succ k => rfl
+  unfold normalizeMultiplicity
+  rw [h1, h2]
 
 #print axioms MCore.FinalFail.RPA.normalize_positive_positive_full
 #print axioms MCore.FinalFail.RPA.full_iff_dual_endpoint_state

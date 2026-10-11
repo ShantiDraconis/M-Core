@@ -1,0 +1,3070 @@
+{
+ "schema": "proof-inventory.v1",
+ "generated_by": "scripts/proof_inventory.py (kernel-derived; do not edit by hand)",
+ "toolchain": "leanprover/lean4:v4.19.0",
+ "libraries": [
+  {
+   "name": "MCore",
+   "srcDir": "lean"
+  }
+ ],
+ "policy": {
+  "standard_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "theorem_status": "CLEAN = only standard axioms; USES_SORRY = depends on sorryAx; USES_PROJECT_AXIOM = depends on an axiom declared in this library",
+  "prop_status": "PROVED/REFUTED = a CLEAN theorem has exactly that Prop (or its negation) as its type; VACUOUS = the definition body ends in True; NO_PROOF_IN_LIBRARY = no theorem of that exact type exists here (this is not a claim that it is open mathematics)",
+  "scope": "closed (arity-0) Prop definitions, plus any Prop-valued definition that is vacuous"
+ },
+ "summary": {
+  "modules_total": 69,
+  "modules_ok": 68,
+  "modules_failed": 1,
+  "modules_blocked": 0,
+  "modules_outside_default_build": 4,
+  "standalone_files_total": 10,
+  "standalone_files_failed": 0,
+  "theorems_total": 426,
+  "theorems_clean": 426,
+  "theorems_using_sorry": 0,
+  "theorems_using_project_axiom": 0,
+  "theorems_nonstandard_axioms": 0,
+  "project_axioms_declared": 0,
+  "props_reported": 0,
+  "props_proved": 0,
+  "props_refuted": 0,
+  "props_vacuous": 0,
+  "props_no_proof_in_library": 0
+ },
+ "project_axioms": [],
+ "environment_groups": 1,
+ "name_clashes": [],
+ "modules": [
+  {
+   "module": "MCore",
+   "path": "lean/MCore.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.ATK_HARD_HODGE_GENERAL",
+   "path": "lean/MCore/ATK_HARD_HODGE_GENERAL.lean",
+   "status": "FAILED",
+   "in_default_build": false,
+   "first_error": "lean/MCore/ATK_HARD_HODGE_GENERAL.lean:5:7: unknown identifier 'hard_Hodge_general_algebraicity'"
+  },
+  {
+   "module": "MCore.AttackDAG.K3AlgebraAttacks",
+   "path": "lean/MCore/AttackDAG/K3AlgebraAttacks.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Audit",
+   "path": "lean/MCore/Audit.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "path": "lean/MCore/BackwardAudit/CodimOneAdapterFirewall.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "path": "lean/MCore/BackwardAudit/CodimOneLefschetz11.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.H01MinimalForwardPayload",
+   "path": "lean/MCore/BackwardAudit/H01MinimalForwardPayload.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.H01QuantifierFirewall",
+   "path": "lean/MCore/BackwardAudit/H01QuantifierFirewall.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.BackwardAudit.H01UniversalProducer",
+   "path": "lean/MCore/BackwardAudit/H01UniversalProducer.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.HypotheticalClosureOracle",
+   "path": "lean/MCore/BackwardAudit/HypotheticalClosureOracle.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.BackwardAudit.R1DescentBoundary",
+   "path": "lean/MCore/BackwardAudit/R1DescentBoundary.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R1SemanticBoundary",
+   "path": "lean/MCore/BackwardAudit/R1SemanticBoundary.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "path": "lean/MCore/BackwardAudit/R1dArithmeticIntersection.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "path": "lean/MCore/BackwardAudit/R1dBasepointFastPath.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R1dQbarPointBoundary",
+   "path": "lean/MCore/BackwardAudit/R1dQbarPointBoundary.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "path": "lean/MCore/BackwardAudit/R2AfterR3.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R2FiberAlgebraicityBoundary",
+   "path": "lean/MCore/BackwardAudit/R2FiberAlgebraicityBoundary.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R2HardCore",
+   "path": "lean/MCore/BackwardAudit/R2HardCore.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "path": "lean/MCore/BackwardAudit/R3AtomicSpecialization.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "path": "lean/MCore/BackwardAudit/R3BackTransport.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3CircularityFirewall",
+   "path": "lean/MCore/BackwardAudit/R3CircularityFirewall.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "path": "lean/MCore/BackwardAudit/R3CombinationMinimal.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3Contract",
+   "path": "lean/MCore/BackwardAudit/R3Contract.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3RelativeCycleCut",
+   "path": "lean/MCore/BackwardAudit/R3RelativeCycleCut.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3SpecializationBoundary",
+   "path": "lean/MCore/BackwardAudit/R3SpecializationBoundary.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "path": "lean/MCore/BackwardAudit/R3StandardBackend.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "path": "lean/MCore/BackwardAudit/R3aHilbertProperness.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "path": "lean/MCore/BackwardAudit/R3aMinimalBridgeValuative.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "path": "lean/MCore/BackwardAudit/R3aPathMatchedBridge.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3aSemanticRelativeCycle",
+   "path": "lean/MCore/BackwardAudit/R3aSemanticRelativeCycle.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "path": "lean/MCore/BackwardAudit/R3aUniversalFamilyBridge.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "path": "lean/MCore/BackwardAudit/R3aValuativeRelativeCycle.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.ThreeResidueEquivalenceFirewall",
+   "path": "lean/MCore/BackwardAudit/ThreeResidueEquivalenceFirewall.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.ThreeResidueFailProof",
+   "path": "lean/MCore/BackwardAudit/ThreeResidueFailProof.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "path": "lean/MCore/BackwardAudit/ThreeResidueFailProofExact.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "path": "lean/MCore/BackwardAudit/TypedVariationalGeometry.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Boundary",
+   "path": "lean/MCore/Boundary.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.FinalAttack",
+   "path": "lean/MCore/FinalAttack.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Frontier.CandidateBridge",
+   "path": "lean/MCore/Frontier/CandidateBridge.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Frontier.K3Gaps",
+   "path": "lean/MCore/Frontier/K3Gaps.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Frontier.Kummer38970A1",
+   "path": "lean/MCore/Frontier/Kummer38970A1.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Hodge",
+   "path": "lean/MCore/Hodge.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.HodgeBoundary",
+   "path": "lean/MCore/HodgeBoundary.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.HodgeDecomposition",
+   "path": "lean/MCore/HodgeDecomposition.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.HodgeReduction",
+   "path": "lean/MCore/HodgeReduction.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K0",
+   "path": "lean/MCore/K0.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K1",
+   "path": "lean/MCore/K1.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K11",
+   "path": "lean/MCore/K11.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K12",
+   "path": "lean/MCore/K12.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K13",
+   "path": "lean/MCore/K13.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K14",
+   "path": "lean/MCore/K14.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K15",
+   "path": "lean/MCore/K15.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K16",
+   "path": "lean/MCore/K16.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K17",
+   "path": "lean/MCore/K17.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K18",
+   "path": "lean/MCore/K18.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K19",
+   "path": "lean/MCore/K19.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K2",
+   "path": "lean/MCore/K2.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K20",
+   "path": "lean/MCore/K20.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K21",
+   "path": "lean/MCore/K21.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K22",
+   "path": "lean/MCore/K22.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K23",
+   "path": "lean/MCore/K23.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K24",
+   "path": "lean/MCore/K24.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K25",
+   "path": "lean/MCore/K25.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K26",
+   "path": "lean/MCore/K26.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K3",
+   "path": "lean/MCore/K3.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K4",
+   "path": "lean/MCore/K4.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K5",
+   "path": "lean/MCore/K5.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K6",
+   "path": "lean/MCore/K6.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Signature",
+   "path": "lean/MCore/Signature.lean",
+   "status": "OK",
+   "in_default_build": true
+  }
+ ],
+ "standalone_files": [
+  {
+   "path": "audit/BackwardWitnessExtraction.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/EndpointCompression.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/FinalEndpoint.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/HypotheticalClosureOracle.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/JournalCertificate.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/R1_without_oracle.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/R2_without_oracle.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/R3_without_oracle.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/repro_ALGEBRAICITY_SURJECTIVITY.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/repro_R1.lean",
+   "status": "OK"
+  }
+ ],
+ "props": [],
+ "theorems": [
+  {
+   "name": "MCore.AlgebraicityObligation.payload",
+   "module": "MCore.K22",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.AlgebraicPointData.combination_class",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.AlgebraicPointData.y_is_defined_over_Qbar",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.AlgebraicPointData.y_is_hodge",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.BackTransportLinearLaws.add",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.BackTransportLinearLaws.smul",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.BackTransportLinearLaws.zero",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.BridgeValuativeR3aExtension.dvrCompatible",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.BridgeValuativeR3aExtension.sourceFiber",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ClosureInterface.subset_closure",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.CodimOneCertificationInputs.lefschetz11",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.CodimOneCertificationInputs.spanAdapter",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.CycleClassSpecializationCompatibility.compatible",
+   "module": "MCore.BackwardAudit.R3SpecializationBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.CycleSpecializationBackTransport.cycleClass_compat",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.CycleSpecializationGeometry.cycleClass_compat",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.DirectPathwiseSpecializationData.add_compat",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.DirectPathwiseSpecializationData.cycleClass_compat",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.DirectPathwiseSpecializationData.smul_compat",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.DirectPathwiseSpecializationData.transportedAlpha_compat",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.DirectPathwiseSpecializationData.zero_compat",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.GenuineR3aExtension.geometric",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.GenuineR3aExtension.pathMatched",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.GenuineR3aExtension.source_extend",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.GenuineRelativeCycleExtension.geometric",
+   "module": "MCore.BackwardAudit.R3aSemanticRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.GenuineRelativeCycleExtension.pathMatched",
+   "module": "MCore.BackwardAudit.R3aSemanticRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.GenuineRelativeCycleExtension.source_extend",
+   "module": "MCore.BackwardAudit.R3aSemanticRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.GenuineRelativeCycleExtension.specializationCompatible",
+   "module": "MCore.BackwardAudit.R3aSemanticRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.H01LocalForwardPayload.r3",
+   "module": "MCore.BackwardAudit.H01MinimalForwardPayload",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.HilbertChowEndpointWitness.sourceRepresents",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.HilbertChowSourceWitness.represents",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.HilbertUniversalFamilyAdapter.source_is_Z",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.HilbertUniversalFamilyAdapter.target_is_hilbert_member",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.Lefschetz11ConcreteLaw.algebraic",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.Lefschetz11SemanticLaw.algebraic",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ParallelTransportLinearLaws.add",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ParallelTransportLinearLaws.smul",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ParallelTransportLinearLaws.zero",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.PathBlindHilbertBridge.source_certified",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.PathBlindHilbertBridge.target_certified",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.PathGroupoidLaws.comp_reverse",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.PathGroupoidLaws.reverse_comp",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.PathMatchedHilbertBridge.projection_certified",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.PathMatchedHilbertBridge.source_certified",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.PathMatchedHilbertBridge.target_certified",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.PerCycleRelativeExtensionData.sourceFor",
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ProperDominantComponentLaws.imageClosed",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ProperDominantComponentLaws.imageDense",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.QbarHodgePointData.y_is_defined_over_Qbar",
+   "module": "MCore.BackwardAudit.R1DescentBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.QbarHodgePointData.y_is_hodge",
+   "module": "MCore.BackwardAudit.R1DescentBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.R2FiberCycleData.combination_class",
+   "module": "MCore.BackwardAudit.R1DescentBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.R3TransportContract.transport",
+   "module": "MCore.BackwardAudit.R3Contract",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.RelativeCycleBackend.classCompatibility",
+   "module": "MCore.BackwardAudit.R3RelativeCycleCut",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.RelativeCycleBridgeBase.projection_certified",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.RelativeCycleBridgeBase.source_maps_to_y",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.RelativeCycleBridgeBase.target_maps_to_basepoint",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.RelativeCycleClassCompatibility.compatible",
+   "module": "MCore.BackwardAudit.R3RelativeCycleCut",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.RelativeCycleExtension.source_extend",
+   "module": "MCore.BackwardAudit.R3RelativeCycleCut",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ReverseTransportLaws.reverse_forward",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.SmoothProjectiveFamilyLaw.smoothProjective",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.TypePPCastCompatibility.cast_typePP",
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.TypedR2R3Package.r3",
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.TypedVariationalGeometry.fiberAtBasepoint",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.TypedVariationalGeometry.parallelTransport_comp",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.TypedVariationalGeometry.parallelTransport_refl",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.UniversalFamilyAlongBridge.source_fiber",
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.UniversalFamilyAlongBridge.target_fiber",
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.UniversalFamilyAlongMatchedBridge.source_fiber",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.UniversalFamilyAlongMatchedBridge.target_fiber",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ValuativeRelativeCycleExtension.cycleClassCompatible",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ValuativeRelativeCycleExtension.dvrCompatible",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ValuativeRelativeCycleExtension.pathMatched",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.ValuativeRelativeCycleExtension.sourceFiber",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.abstract_core_does_not_force_cycle_span_adapter",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.abstract_core_does_not_force_lefschetz11",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.adapter_counterexample_true_not_concrete",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.all_exact_three_residues_iff_concrete_payload",
+   "module": "MCore.BackwardAudit.ThreeResidueEquivalenceFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.all_exact_three_residues_iff_hodge",
+   "module": "MCore.BackwardAudit.ThreeResidueEquivalenceFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.all_exact_three_residues_yield_concrete_payload",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.all_exact_three_residues_yield_hodge",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.all_three_residues_imply_all_exact",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.all_three_residues_yield_concrete_payload",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProof",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.all_three_residues_yield_hodge",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProof",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.backTransport_transportedAlpha",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.base_algebraicity_implies_r3_combination",
+   "module": "MCore.BackwardAudit.R3CircularityFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.base_algebraicity_implies_r3_contract",
+   "module": "MCore.BackwardAudit.R3CircularityFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.base_algebraicity_implies_r3_variational",
+   "module": "MCore.BackwardAudit.R3CircularityFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.basepoint_isHodgeAlong",
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.castCohomology_addClass",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.castCohomology_smul",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.castCohomology_symm_cancel",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.castCohomology_zeroClass",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.closed_dense_is_all",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.closed_image_alone_not_surjective",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_abstract_shortcut_rejected",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_automatic_adapter_rejected",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_concrete_algebraicity",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_cycle_span_adapter_open",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_endpoint_of_certification_inputs",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_exact_inputs_identified",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_r3_of_certification_inputs",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_r3_reduction_green",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.codimOne_semantic_adapter_open",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.combination_payload_iff_variational_algebraicity",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.combination_payload_of_atomic_specialization",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.concrete_payload_yields_all_exact_three_residues",
+   "module": "MCore.BackwardAudit.ThreeResidueEquivalenceFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.counterexample_true_not_in_concrete_span",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.endpoint_family_does_not_imply_dvr_compatibility",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.endpoint_points_do_not_imply_bridge",
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.exact_fail_proof_closure_green",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.exact_r3_variational_still_open",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.exact_three_residue_package_is_repackaging",
+   "module": "MCore.BackwardAudit.ThreeResidueEquivalenceFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.exact_three_residues_at_yield_concrete_span",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.fail_proof_closure_green",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProof",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.fail_proof_residues_open",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProof",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.h01_minimal_forward_payload_closes_pointwise",
+   "module": "MCore.BackwardAudit.H01MinimalForwardPayload",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.h01_universal_forward_payload_closes_all",
+   "module": "MCore.BackwardAudit.H01UniversalProducer",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.hilbert_chow_endpoint_of_proper_dominant",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.hodgeLocus_nonempty",
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.hodgeLocus_nonempty_of_castCompatibility",
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.hypothetical_concrete_witness",
+   "module": "MCore.BackwardAudit.HypotheticalClosureOracle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.hypothetical_pointwise",
+   "module": "MCore.BackwardAudit.HypotheticalClosureOracle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.no_difficulty_reduction_certified",
+   "module": "MCore.BackwardAudit.ThreeResidueEquivalenceFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.old_atomwise_package_is_only_strong_backend",
+   "module": "MCore.BackwardAudit.ThreeResidueEquivalenceFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.old_atomwise_r3_is_strong_backend",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.path_blind_bridge_does_not_certify_exact_projection",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.path_matched_bridge_does_not_imply_valuative_cycle",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.per_input_spread_suffices",
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.proper_dominant_component_reaches",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.proper_dominant_component_reaches_basepoint",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.qbarHodgePointData_iff_target",
+   "module": "MCore.BackwardAudit.R1dQbarPointBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1_canonical_spread_not_required",
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1_descent_point_still_open",
+   "module": "MCore.BackwardAudit.R1DescentBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1_semantic_adapter_still_open",
+   "module": "MCore.BackwardAudit.R1SemanticBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1a_typed_family_interface_closed",
+   "module": "MCore.BackwardAudit.R1SemanticBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1b_gauss_manin_match_pending",
+   "module": "MCore.BackwardAudit.R1SemanticBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1c_cdk_match_pending",
+   "module": "MCore.BackwardAudit.R1SemanticBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_arithmetic_cut_exact",
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_basepoint_fast_path_proved",
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_contract_iff_qbar_intersection",
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_contract_iff_target",
+   "module": "MCore.BackwardAudit.R1dQbarPointBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_contract_of_basepoint_qbar",
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_contract_of_qbar_basepoint",
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_general_descent_still_open",
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_qbar_hodge_point_still_open",
+   "module": "MCore.BackwardAudit.R1dQbarPointBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_qbar_intersection_still_open",
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_r2_r3_yields_concrete_witness",
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_r2_r3_yields_span",
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_target_iff_qbar_intersection",
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_target_of_basepoint_qbar",
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r1d_wrapper_reduction_closed",
+   "module": "MCore.BackwardAudit.R1dQbarPointBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2ProductionYieldsFiberAlgebraicity",
+   "module": "MCore.BackwardAudit.R2FiberAlgebraicityBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_codimOne_of_lefschetz11",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_contract_iff_fiber_algebraicity",
+   "module": "MCore.BackwardAudit.R2FiberAlgebraicityBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_fiber_algebraicity_still_open",
+   "module": "MCore.BackwardAudit.R2FiberAlgebraicityBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_fiber_cycle_still_open",
+   "module": "MCore.BackwardAudit.R1DescentBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_hard_core_is_endpoint",
+   "module": "MCore.BackwardAudit.R2HardCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_nonempty_of_fiber_algebraicity",
+   "module": "MCore.BackwardAudit.R2FiberAlgebraicityBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_point_production_still_open",
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_quantifier_match",
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_solver_on_trivial_qbar_yields_original_span",
+   "module": "MCore.BackwardAudit.R2HardCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_trivial_qbar_iff_original_span",
+   "module": "MCore.BackwardAudit.R2HardCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r2_wrapper_reduction_closed",
+   "module": "MCore.BackwardAudit.R2FiberAlgebraicityBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_alpha_recovery_proved",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_atomwise_is_only_sufficient_backend",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_combination_payload_exact",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_contract_codimOne_of_lefschetz11",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_contract_iff_combination_payload",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_contract_iff_variational_algebraicity",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_contract_implies_combination_payload",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_contract_yields_concrete_span",
+   "module": "MCore.BackwardAudit.R3Contract",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_contract_yields_span",
+   "module": "MCore.BackwardAudit.R3Contract",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_finite_combination_lift_proved",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_independent_geometry_required_for_progress",
+   "module": "MCore.BackwardAudit.R3CircularityFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_no_independent_proof_present",
+   "module": "MCore.BackwardAudit.R3CircularityFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_payload_closes_transport",
+   "module": "MCore.BackwardAudit.R3SpecializationBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_quantifier_match",
+   "module": "MCore.BackwardAudit.R3Contract",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_relative_cut_reduction_proved",
+   "module": "MCore.BackwardAudit.R3RelativeCycleCut",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_relative_cycle_class_compat_open",
+   "module": "MCore.BackwardAudit.R3RelativeCycleCut",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_relative_cycle_extension_open",
+   "module": "MCore.BackwardAudit.R3RelativeCycleCut",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_specialization_payload_still_open",
+   "module": "MCore.BackwardAudit.R3SpecializationBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_specialization_types_closed",
+   "module": "MCore.BackwardAudit.R3SpecializationBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_standard_internal_reductions_proved",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_target_can_discharge_r3",
+   "module": "MCore.BackwardAudit.R3CircularityFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_transport_of_atomic_specialization",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_transport_of_backTransport_backend",
+   "module": "MCore.BackwardAudit.R3BackTransport",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_transport_of_relative_cycle_backend",
+   "module": "MCore.BackwardAudit.R3RelativeCycleCut",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_transport_of_standard_backend",
+   "module": "MCore.BackwardAudit.R3StandardBackend",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_transport_still_open",
+   "module": "MCore.BackwardAudit.R3Contract",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_variational_algebraicity_open",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3_variational_codimOne_of_lefschetz11",
+   "module": "MCore.BackwardAudit.CodimOneLefschetz11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_bridge_existence_open",
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_bridge_only_promotion_rejected",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_concrete_semantic_model_open",
+   "module": "MCore.BackwardAudit.R3aSemanticRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_dvr_semantics_open",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_endpoint_does_not_imply_bridge",
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_endpoint_only_promotion_rejected",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_exact_path_bridge_open",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_genuine_extension_open",
+   "module": "MCore.BackwardAudit.R3aSemanticRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_legacy_interface_rejected",
+   "module": "MCore.BackwardAudit.R3aSemanticRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_matched_data_to_r3a_proved",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_matched_universal_family_open",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_minimal_bridge_open",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_minimal_dvr_semantics_open",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_minimal_reduction_proved",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_minimal_relative_cycle_open",
+   "module": "MCore.BackwardAudit.R3aMinimalBridgeValuative",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_path_blind_promotion_rejected",
+   "module": "MCore.BackwardAudit.R3aPathMatchedBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_per_cycle_aggregation_proved",
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_proper_dense_reachability_proved",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_universal_family_adapter_open",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_universal_family_pullback_open",
+   "module": "MCore.BackwardAudit.R3aUniversalFamilyBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_valuative_extension_open",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.r3a_valuative_to_genuine_proved",
+   "module": "MCore.BackwardAudit.R3aValuativeRelativeCycle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.semantic_lefschetz11_does_not_force_concrete_without_adapter",
+   "module": "MCore.BackwardAudit.CodimOneAdapterFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.singletonTrueImage_closed",
+   "module": "MCore.BackwardAudit.R3aHilbertProperness",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.specializeCombination_eval",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.specializeTerms_eval",
+   "module": "MCore.BackwardAudit.R3AtomicSpecialization",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.specification_oracle_only",
+   "module": "MCore.BackwardAudit.HypotheticalClosureOracle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.spread_interface_inhabited",
+   "module": "MCore.BackwardAudit.R1SemanticBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.three_residues_at_implies_exact",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProofExact",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.three_residues_at_yield_concrete_span",
+   "module": "MCore.BackwardAudit.ThreeResidueFailProof",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.transportedAlpha_pathRefl_eq",
+   "module": "MCore.BackwardAudit.R1dBasepointFastPath",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.trivialSpreadNoQbar_hodgeLocus_nonempty",
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.trivialSpreadNoQbar_no_qbar_intersection",
+   "module": "MCore.BackwardAudit.R1dArithmeticIntersection",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.trivial_qbar_r2_payload_iff_concrete_payload",
+   "module": "MCore.BackwardAudit.R2HardCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.trivial_qbar_transportedAlpha_eq",
+   "module": "MCore.BackwardAudit.R2HardCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.trivial_spread_has_no_qbar_hodge_point",
+   "module": "MCore.BackwardAudit.R1DescentBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.type_interface_constructed",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.typed_pipeline_closes_pointwise",
+   "module": "MCore.BackwardAudit.R2AfterR3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.typed_r2_quantifier_match",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.typed_r3_quantifier_match",
+   "module": "MCore.BackwardAudit.TypedVariationalGeometry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.variational_payload_of_atomic_specialization",
+   "module": "MCore.BackwardAudit.R3CombinationMinimal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ConcreteAlgebraicityEvidence.proof",
+   "module": "MCore.K18",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ConcreteCohomologyModelEvidence.algebraicCycles",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ConcreteCohomologyModelEvidence.cycleClassMap",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ConcreteCohomologyModelEvidence.hodgeType",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ConcreteCohomologyModelEvidence.rationalCohomology",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ConcreteCycleSpanSpecification.algebraicLaws",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ConcreteCycleSpanSpecification.semanticAdapter",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CycleClassGeometryInterface.cycleClass_isTypePP",
+   "module": "MCore.K19",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CycleClassIsHodge.cycle_is_hodge",
+   "module": "MCore.Hodge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CycleCombination.eval_empty",
+   "module": "MCore.K17",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CycleCombination.eval_single",
+   "module": "MCore.K17",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CycleSpanAdapter.span_iff",
+   "module": "MCore.K15",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CycleSpanLaws.add_assoc",
+   "module": "MCore.K17",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CycleSpanLaws.add_zero",
+   "module": "MCore.K17",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CycleSpanLaws.zero_add",
+   "module": "MCore.K17",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FaithfulConcreteModelObligation.algebraicLaws",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FaithfulConcreteModelObligation.semanticAdapter",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FaithfulRationalCoefficientInterface.fraction_ext",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FaithfulRationalCoefficientInterface.ofInt_denominator",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FaithfulRationalCoefficientInterface.ofInt_numerator",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalAttackCounterexample.algebraicityFails",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalAttackCounterexample.qWitness",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FixedCodimensionHodgeData.hodge_iff",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.CandidateClosureEvidence.candidateProof",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.CandidateClosureEvidence.candidateToAlgebraicity",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.KummerPicardExternalInputs.kummerPicardFormula",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.KummerPicardExternalInputs.productPicardEqThree",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.RationalCoordinate.denominatorPositive",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.candidate_closure_yields_algebraicity",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.candidate_closure_yields_hodge",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.candidate_equivalence_hits_final_attack_firewall",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.candidate_equivalent_of_both_directions",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.candidate_frontier_hodge_open",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.candidate_frontier_payload_open",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.curve38970a1_discriminant_exact",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.curve38970a1_j_exact",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.kummer38970a1_general_hodge_still_open",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.kummer38970a1_may_not_export_hodge_proof",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.kummer38970a1_picard_eq_19",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.kummer38970a1_picard_ne_22",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.p1xp2_degree_is_twice_codimension",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.p1xp2_not_h2_divisor",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.regulator38970a1_not_hodge_algebraicity",
+   "module": "MCore.Frontier.Kummer38970A1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.spread_to_payload_given_geometric_inputs",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.spread_to_variational_given_point_theorem",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.strict_nonequivalence_impossible_of_both_directions",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.variational_of_locus_and_algebraic_point",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Frontier.variational_to_payload_given_specialization",
+   "module": "MCore.Frontier.CandidateBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.GeometryObligation.cycleClassGeometry",
+   "module": "MCore.K22",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.GradedAlgebraicityEvidence.proof",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.GradedSemanticAdapter.gradedToOld",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.GradedSemanticAdapter.oldToGraded",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.HodgeBridge.surjective_on_hodge_classes",
+   "module": "MCore.Hodge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.HodgeCertificationBoundary.geometry",
+   "module": "MCore.K20",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.HodgeCertificationBoundary.spanAdapter",
+   "module": "MCore.K20",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.HodgeClassDecomposition.hodge_iff",
+   "module": "MCore.HodgeDecomposition",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.HodgePromotionEvidence.proof",
+   "module": "MCore.HodgeBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.HodgeQuantifierFirewall.no_uniform_witness",
+   "module": "MCore.BackwardAudit.H01QuantifierFirewall",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.HodgeQuantifierFirewall.pointwise_does_not_imply_uniform",
+   "module": "MCore.BackwardAudit.H01QuantifierFirewall",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.HodgeQuantifierFirewall.pointwise_witness_exists",
+   "module": "MCore.BackwardAudit.H01QuantifierFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.K11LogicalCertificate.backward",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.K11LogicalCertificate.forward",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenBridgeFirewall.certificate_blocked",
+   "module": "MCore.K5",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenBridgeFirewall.open_status",
+   "module": "MCore.K5",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OperationFaithfulConcreteModelObligation.operationLaws",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ProofCertificate.proof",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ProofCertificate.status_proved",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCoefficientInterface.denominator_ne_zero",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCoefficientOperationLaws.add_fraction",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCoefficientOperationLaws.zero_numerator",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCycleSpanLaws.addSmul",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCycleSpanLaws.classAddAssoc",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCycleSpanLaws.classAddZero",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCycleSpanLaws.classZeroAdd",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCycleSpanLaws.coeffAddAssoc",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCycleSpanLaws.coeffAddZero",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCycleSpanLaws.coeffZeroAdd",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RationalCycleSpanLaws.zeroSmul",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RealizedConcreteModelObligation.realization",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.adapter_equivalence",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.adapter_transports_span",
+   "module": "MCore.K15",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.boundary_and_payload_imply_hodge",
+   "module": "MCore.K20",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.boundary_ne_regular",
+   "module": "MCore.K0",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.bridge_gives_pointwise",
+   "module": "MCore.HodgeReduction",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.bridge_implies_hodge",
+   "module": "MCore.Hodge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.bridge_not_certified",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.candidate_ne_provedProperty",
+   "module": "MCore.K0",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.concreteEvidence_closes",
+   "module": "MCore.K18",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.concretePayload_iff_surjectivity",
+   "module": "MCore.K18",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.concretePayload_implies_codimensionOne",
+   "module": "MCore.K19",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.concreteSurjectivity_implies_hodge",
+   "module": "MCore.K16",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.decomposed_algebraicity_still_open",
+   "module": "MCore.HodgeDecomposition",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.decomposed_implies_pointwise",
+   "module": "MCore.HodgeDecomposition",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_algebraicity_open",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_coefficient_model_redundant",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_counterexample_refutes_q_to_algebraicity",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_equivalent_payload_is_circular",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_equivalent_reformulations_circular",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_final_proof_open",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_hodge_to_algebraicity",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_hodge_to_q_and_q_to_payload_is_equivalent",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_q_to_algebraicity_implies_q_to_hodge",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fa_uncertified_cross_repo_external",
+   "module": "MCore.FinalAttack",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.fixedCodimension_implies_pointwise",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.geometryInterface_implies_cycleClassSoundness",
+   "module": "MCore.K19",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.gradedEvidence_closes",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.gradedHodge_iff_algebraicityPayload",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.gradedHodge_iff_pointwise",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_algebraicity_bridge_is_open",
+   "module": "MCore.Hodge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_iff_all_decomposed",
+   "module": "MCore.HodgeDecomposition",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_iff_concretePayload",
+   "module": "MCore.K18",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_iff_concreteSurjectivity",
+   "module": "MCore.K16",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_iff_fixedCodimension",
+   "module": "MCore.K11",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_iff_payload_at_boundary",
+   "module": "MCore.K20",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_implies_concreteSurjectivity",
+   "module": "MCore.K16",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_implies_payload_at_boundary",
+   "module": "MCore.K20",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_open_frontier_status",
+   "module": "MCore.HodgeBoundary",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.hodge_reduction_proved",
+   "module": "MCore.HodgeReduction",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k11_payload_still_open",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k12_endpoint_not_promoted",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k12_hodge_supplies_payload",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k12_noPromotion",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_adapter_still_open",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_algebraicity_still_open",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k14_payload_still_open",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k15_algebraicity_still_open",
+   "module": "MCore.K15",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k15_span_adapter_still_open",
+   "module": "MCore.K15",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k16_soundness_still_open",
+   "module": "MCore.K16",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k16_surjectivity_still_open",
+   "module": "MCore.K16",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k17_surjectivity_still_open",
+   "module": "MCore.K17",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k18_adapter_still_open",
+   "module": "MCore.K18",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k18_algebraicity_still_open",
+   "module": "MCore.K18",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k19_full_algebraicity_still_open",
+   "module": "MCore.K19",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k19_geometry_still_open",
+   "module": "MCore.K19",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k1_not_proved",
+   "module": "MCore.K1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k1_status_openBridge",
+   "module": "MCore.K1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k20_algebraicity_still_open",
+   "module": "MCore.K20",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k20_hodge_still_open",
+   "module": "MCore.K20",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k21_algebraicity_still_open",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k21_geometry_still_open",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k21_hodge_still_open",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k21_span_equivalence",
+   "module": "MCore.K21",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k22_algebraicity_open",
+   "module": "MCore.K22",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k22_closure_is_conditional",
+   "module": "MCore.K22",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k22_geometry_open",
+   "module": "MCore.K22",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k22_hodge_open",
+   "module": "MCore.K22",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k22_hodge_recovers_payload",
+   "module": "MCore.K22",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k23_algebraicity_open",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k23_closure_is_conditional",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k23_geometry_open",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k23_hodge_open",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k23_span_adapter_open",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k23_span_equivalence",
+   "module": "MCore.K23",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k24_algebraicity_open",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k24_closure_is_conditional",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k24_geometry_open",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k24_hodge_open",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k24_span_adapter_open",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k24_span_equivalence",
+   "module": "MCore.K24",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k25_algebraicity_open",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k25_closure_is_conditional",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k25_concrete_model_open",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k25_geometry_open",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k25_hodge_open",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k25_span_adapter_open",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k25_span_equivalence",
+   "module": "MCore.K25",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k26_algebraicity_terminal",
+   "module": "MCore.K26",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k26_coefficients_pruned",
+   "module": "MCore.K26",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k26_equivalent_payload_pruned",
+   "module": "MCore.K26",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k26_equivalent_reformulation_is_circular",
+   "module": "MCore.K26",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k26_hodge_still_open",
+   "module": "MCore.K26",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k26_minimal_cut",
+   "module": "MCore.K26",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k26_model_only_pruned",
+   "module": "MCore.K26",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k26_realization_does_not_remove_cut",
+   "module": "MCore.K26",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k2_node_not_proved",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k2_node_status_openBridge",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_attack_cannot_promote",
+   "module": "MCore.AttackDAG.K3AlgebraAttacks",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_attack_route_only",
+   "module": "MCore.AttackDAG.K3AlgebraAttacks",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_frontier_open",
+   "module": "MCore.Frontier.K3Gaps",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_gap_not_certified",
+   "module": "MCore.K3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_gap_not_proved",
+   "module": "MCore.K3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_gap_status_openBridge",
+   "module": "MCore.K3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k4_no_promotion",
+   "module": "MCore.K4",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k4_status_openBridge",
+   "module": "MCore.K4",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k5_openBridge_cannot_certify",
+   "module": "MCore.K5",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k6_source_open",
+   "module": "MCore.K6",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k6_target_not_certified",
+   "module": "MCore.K6",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k6_target_open",
+   "module": "MCore.K6",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.pointwise_closes_hodge",
+   "module": "MCore.HodgeReduction",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.pointwise_implies_decomposed",
+   "module": "MCore.HodgeDecomposition",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.pointwise_implies_fixedCodimension",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.pointwise_payload_open",
+   "module": "MCore.HodgeReduction",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.rationalHodge_iff_pointwise",
+   "module": "MCore.HodgeReduction",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.smul_cycleClass_in_concrete_span",
+   "module": "MCore.K17",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.zeroClass_in_concrete_span",
+   "module": "MCore.K17",
+   "axioms": [],
+   "status": "CLEAN"
+  }
+ ]
+}

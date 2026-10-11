@@ -1,0 +1,465 @@
+{
+  "schema": "mcore.final-proof-structure.v1",
+  "generated_by": "scripts/build_master_dossier.py (inputs are kernel-derived; do not edit by hand)",
+  "final_statement": "FINAL = the conjunction of the seven endpoints below. Each endpoint closes only through its exact open producer (or one genuine counterexample) on the checked tree.",
+  "final_status": {
+    "endpoints_proved": 0,
+    "endpoints_total": 7,
+    "display": "0/7",
+    "material_atoms_open": 9,
+    "FINAL_EXTERNAL_ISSUED": false,
+    "FINAL_ROOT": null
+  },
+  "verified_scaffold": {
+    "trees_checked": 7,
+    "default_builds_green": 7,
+    "theorems": 2440,
+    "theorems_standard_axioms_only": 2440,
+    "theorems_using_sorry": 0
+  },
+  "global_infrastructure": [
+    {
+      "repository": "ShantiDraconis/M-Core",
+      "role": "hub: FINAL_EXTERNAL package, registry, firewall",
+      "branch": "atk/proof-inventory-ab1e4051 (tree of PR #16)",
+      "commit": "bef6948b9d13d85ef8d32cdc4f36c2c64423e219",
+      "ci_run": 38151734202,
+      "modules": "42/42",
+      "theorems": 259
+    },
+    {
+      "repository": "ShantiDraconis/axiomatic-millenium",
+      "role": "seven-lane closure architecture (lanes.json)",
+      "branch": "atk/fix-twosided-closure-build-20261008",
+      "commit": "86d341612008f9d16ad550dc2cc63434e97d23ab",
+      "ci_run": 38104503170,
+      "modules": "56/56",
+      "theorems": 213
+    },
+    {
+      "repository": "ShantiDraconis/M-Core",
+      "role": "core formulation v2 (attack/mcore-formulation-v2-clean-20260921, fixed)",
+      "branch": "atk/proof-inventory-53cab040",
+      "commit": "2b4641576738f1a0ab991077980d130bea31cee2",
+      "ci_run": 38151184357,
+      "modules": "7/7",
+      "theorems": 9
+    }
+  ],
+  "problems": [
+    {
+      "id": "rh",
+      "problem": "Riemann Hypothesis",
+      "endpoint": "Every non-trivial zero of the Riemann zeta function has real part 1/2.",
+      "checked_tree": {
+        "repository": "ShantiDraconis/m-core-riemann",
+        "branch": "atk/proof-inventory-47b0b7da",
+        "commit": "f6d2ff21fc48a968c741a6de26de2ad6c1080c20",
+        "ci_run": 38151721077,
+        "toolchain": "Lean 4.19.0 + Mathlib"
+      },
+      "kernel": {
+        "modules": "38/43",
+        "default_build": "GREEN",
+        "default_build_failures": [],
+        "orphan_failures": [
+          "MCore.K9",
+          "MCore.RH.K9_CriterionRoutes",
+          "MCore.RH.K9_RiemannHypothesis",
+          "MCore.RH.K9_RigidityRoutes",
+          "MCore.RH.K9_ZetaBridge"
+        ],
+        "theorems": 132,
+        "theorems_standard_axioms_only": 132,
+        "theorems_using_sorry": 0,
+        "project_axioms": 0,
+        "vacuous_props": [],
+        "gaps_proved": [],
+        "gaps_refuted": [],
+        "gaps_without_proof": []
+      },
+      "closed_math": [
+        "analytic/reduction transport to the finite-span / log-majorant frontier",
+        "FiniteSpanApproximatesChi -> LogMajorant -> VanishingUpperBound -> RH endpoint transport",
+        "direct-endpoint fail-closed rule"
+      ],
+      "closed_bridges": [
+        "positive finite-span/log-majorant inhabitant -> RH terminal root",
+        "exact negative inhabitant -> RH refutation branch"
+      ],
+      "exact_open_producers": [
+        "construct coefficients c_N for the concrete generator family",
+        "prove the unconditional finite-N energy/log-majorant estimate"
+      ],
+      "exact_negative_producer": "concrete generator-family counterexample to FiniteSpanApproximatesChi",
+      "closure_requirement": "one exact positive or negative inhabitant of the finite-span/log-majorant frontier",
+      "material_atoms": 1,
+      "lane_build_state": "KERNEL_BUILD_GREEN",
+      "lane_source_ref": "AxiomaticMillenium.NoOpenMathArgumentFrontier.rhPrimitiveFrontier",
+      "endpoint_status": "OPEN",
+      "final_proof_credit": 0
+    },
+    {
+      "id": "pnp",
+      "problem": "P versus NP",
+      "endpoint": "P ≠ NP: the canonical SAT language is not decided by any polynomial-time deterministic machine (Clay asks for either answer).",
+      "checked_tree": {
+        "repository": "ShantiDraconis/m-core-p-vs-np",
+        "branch": "atk/honest-bridges-barrier-audit-20261008",
+        "commit": "9baa089b551d724d10874de66fcc3770067f208a",
+        "ci_run": 38104501562,
+        "toolchain": "Lean 4.19.0"
+      },
+      "kernel": {
+        "modules": "122/124",
+        "default_build": "GREEN",
+        "default_build_failures": [],
+        "orphan_failures": [
+          "MCore.ATK_HARD_PNP_NEXT",
+          "MCore.Real.P01PreservingUnaryReaderGlobal"
+        ],
+        "theorems": 862,
+        "theorems_standard_axioms_only": 862,
+        "theorems_using_sorry": 0,
+        "project_axioms": 0,
+        "vacuous_props": [
+          "MCore.Real.P01FullVerifierPhysicalRefinementV2.LocalPhysicalInstructionLayerClosed"
+        ],
+        "gaps_proved": [
+          "MCore.C12.Calibration.S_OfficialComplexityCalibration",
+          "MCore.Real.CanonicalSATBoundary.SATEncodingGap",
+          "MCore.Real.CanonicalSATFrameMachineV2.BlankNormalizedFrameTapeOperationalGap",
+          "MCore.Real.CanonicalSATParserAttack.RecursiveParserOperationalGap",
+          "MCore.Real.P01FullVerifierPhysicalControl.DecoderEvaluatorLocalGap",
+          "MCore.Real.P01WitnessIndexedRead.WitnessIndexedReadGap"
+        ],
+        "gaps_refuted": [],
+        "gaps_without_proof": [
+          "MCore.C10.ProgressCoverageObligation",
+          "MCore.C10.VarsNonincreaseObligation",
+          "MCore.Real.CanonicalSATFrameAttack.FrameTapeOperationalGap",
+          "MCore.Real.CanonicalSATFrameAttack.SemanticFrameTapeOperationalGap",
+          "MCore.Real.CanonicalSATNatParserAttack.RecursiveFrameOperationalGap",
+          "MCore.Real.CanonicalSATParserAttack.CanonicalRecursiveParserOperationalGap",
+          "MCore.Real.CanonicalSATVerifier.CanonicalSATOperationalGap",
+          "MCore.Real.P01FinalCertificate.P01ConstructionGap",
+          "MCore.Real.P01FullVerifierMachine.FullVerifierGap",
+          "MCore.Real.P01FullVerifierPhysical.PhysicalVerifierGap",
+          "MCore.Real.P01PreservingUnaryReaderCertificate.PreservingUnaryReaderGap",
+          "MCore.Real.P02RestrictionLowerBoundPattern.RestrictionLowerBoundTransfer",
+          "MCore.Real.SATMachineFrontier"
+        ]
+      },
+      "closed_math": [
+        "complement Cook-Levin correctness on the concrete R_M image",
+        "RangeCorrect(M,hTotal) <-> PerfectFlip(M,hTotal)",
+        "ExistsPerfectFlip <-> not RangeFailureLaw",
+        "RangeFailureLaw or ExistsPerfectFlip",
+        "RangeFailureLaw <-> FullRunAcceptanceLaw",
+        "RangeFailureLaw -> internal PneqNP transport"
+      ],
+      "closed_bridges": [
+        "RangeFailureLaw -> FullRunAcceptanceLaw -> TotalOddSemanticRecurrence -> UniversalFailure -> internal PneqNP",
+        "ExistsPerfectFlip -> not RangeFailureLaw (falsifies the current P03 route only)",
+        "CanonicalSAT in P -> ExistsPerfectFlip"
+      ],
+      "exact_open_producers": [
+        "A-branch: prove RangeFailureLaw on every total PolyDTMCandidate",
+        "B-branch: construct one real total polynomial PerfectFlip candidate",
+        "current constructive subfrontier: prove or refute BoundedSourceUnique, then build UniformRangeDecoder / physical M_flip if positive"
+      ],
+      "exact_negative_producer": "one concrete PolyDTMCandidate with hTotal and PerfectFlip",
+      "closure_requirement": "materially decide the RangeFailureLaw versus real PerfectFlip frontier; no algebraic/logical compression counts",
+      "material_atoms": 1,
+      "lane_build_state": "UNVERIFIED_SOURCE_NOT_ON_M_CORE_P_VS_NP_MAIN",
+      "lane_source_ref": "ShantiDraconis/m-core-p-vs-np P03ClosedMath + P03PerfectFlipDichotomy",
+      "endpoint_status": "OPEN",
+      "final_proof_credit": 0,
+      "lean_terminal_producers": {
+        "P01ConstructionGap": {
+          "state": "OPEN_IMPLEMENTATION",
+          "meaning": "P01ConstructionGap / Nonempty P01MachineConstruction (global parser simulation plus integrated fixed-control SAT NTM closure)"
+        },
+        "G21Pointwise": {
+          "state": "OPEN_MATH",
+          "meaning": "G21Pointwise, equivalent to P02Target / Nonempty FailureGenerator(SATBits circuitBitEncoding) / SAT not in P"
+        }
+      },
+      "lean_conditional_closure": "MCore.Real.FinalExternalTwoGap.final_external_two_gap_closes"
+    },
+    {
+      "id": "ns",
+      "problem": "Navier–Stokes existence and smoothness",
+      "endpoint": "Smooth, finite-energy initial data for the 3D incompressible Navier–Stokes equations give a global smooth solution (or a breakdown example).",
+      "checked_tree": {
+        "repository": "ShantiDraconis/navier-stokes-critical-barrier-audit",
+        "branch": "atk/proof-inventory-1fbec755",
+        "commit": "f74a1a08d6eaef04bf24f7591bc5b51b42e84b13",
+        "ci_run": 38152909916,
+        "toolchain": "Lean 4.19.0 + Mathlib"
+      },
+      "kernel": {
+        "modules": "12/13",
+        "default_build": "GREEN",
+        "default_build_failures": [],
+        "orphan_failures": [
+          "G1.FailProofAllGaps"
+        ],
+        "theorems": 217,
+        "theorems_standard_axioms_only": 217,
+        "theorems_using_sorry": 0,
+        "project_axioms": 0,
+        "vacuous_props": [],
+        "gaps_proved": [],
+        "gaps_refuted": [],
+        "gaps_without_proof": []
+      },
+      "closed_math": [
+        "Bulk/Tail decomposition interfaces and downstream signed-gain transport",
+        "fail-closed positive/negative route packaging",
+        "structural scaling/candidate estimates already separated from the material PDE estimate"
+      ],
+      "closed_bridges": [
+        "ActualNS bulk+tail producer with strict subcritical budget -> SignedGainCore",
+        "SignedGainCore -> downstream regularity route"
+      ],
+      "exact_open_producers": [
+        "derive signed Biot-Savart/CZ cancellation directly from ActualNS",
+        "produce the strict cStar < 1 budget with explicit constants",
+        "bind the estimate to genuine flow-derived EnstrophyData"
+      ],
+      "exact_negative_producer": "genuine ActualNS trajectory violating the required bulk/tail/signed-gain estimate",
+      "closure_requirement": "one genuine PDE producer or genuine trajectory obstruction; wrappers and scaling analogies do not count",
+      "material_atoms": 1,
+      "lane_build_state": "KERNEL_BUILD_GREEN",
+      "lane_source_ref": "AxiomaticMillenium.NoOpenMathArgumentFrontier.nsPrimitiveFrontier",
+      "endpoint_status": "OPEN",
+      "final_proof_credit": 0
+    },
+    {
+      "id": "hodge",
+      "problem": "Hodge conjecture",
+      "endpoint": "On a non-singular complex projective variety, every rational Hodge class is a rational combination of classes of algebraic cycles.",
+      "checked_tree": {
+        "repository": "ShantiDraconis/m-core-hodge",
+        "branch": "atk/proof-inventory-3fc16284",
+        "commit": "dcf769ab738a60121fa39b02f7297887f4561ffa",
+        "ci_run": 38151185961,
+        "toolchain": "Lean 4.19.0"
+      },
+      "kernel": {
+        "modules": "68/69",
+        "default_build": "GREEN",
+        "default_build_failures": [],
+        "orphan_failures": [
+          "MCore.ATK_HARD_HODGE_GENERAL"
+        ],
+        "theorems": 426,
+        "theorems_standard_axioms_only": 426,
+        "theorems_using_sorry": 0,
+        "project_axioms": 0,
+        "vacuous_props": [],
+        "gaps_proved": [],
+        "gaps_refuted": [],
+        "gaps_without_proof": []
+      },
+      "closed_math": [
+        "structural Hodge decomposition / quotient interfaces",
+        "ConcreteAlgebraicityPayload -> graded rational Hodge endpoint transport",
+        "abstract countermodels classified as non-terminal"
+      ],
+      "closed_bridges": [
+        "actual cycle+coefficient payload -> ConcreteHodgeMaterialTarget -> graded Hodge endpoint",
+        "genuine nonalgebraic rational Hodge class -> negative/refutation endpoint"
+      ],
+      "exact_open_producers": [
+        "construct actual algebraic cycles from genuine (X,p,alpha)",
+        "construct rational coefficients",
+        "prove the cycle-class equality to alpha using valid geometry"
+      ],
+      "exact_negative_producer": "genuine nonalgebraic rational Hodge class on an admissible variety",
+      "closure_requirement": "ConcreteAlgebraicityPayload or a genuine geometric counterexample",
+      "material_atoms": 1,
+      "lane_build_state": "KERNEL_BUILD_GREEN",
+      "lane_source_ref": "AxiomaticMillenium.NoOpenMathArgumentFrontier.hodgePrimitiveFrontier",
+      "endpoint_status": "OPEN",
+      "final_proof_credit": 0
+    },
+    {
+      "id": "bsd",
+      "problem": "Birch and Swinnerton-Dyer conjecture",
+      "endpoint": "For an elliptic curve E over Q, rank E(Q) equals the order of vanishing of L(E,s) at s = 1, with the refined leading-coefficient formula.",
+      "checked_tree": {
+        "repository": "ShantiDraconis/m-core-bsd",
+        "branch": "atk/proof-inventory-1377e2e7",
+        "commit": "8cb2d7cdf63bde9d4a53408e4e49a1fea7e9896f",
+        "ci_run": 38151188611,
+        "toolchain": "Lean 4.19.0"
+      },
+      "kernel": {
+        "modules": "26/27",
+        "default_build": "GREEN",
+        "default_build_failures": [],
+        "orphan_failures": [
+          "MCore.ATK_HARD_BSD_UNIVERSAL"
+        ],
+        "theorems": 79,
+        "theorems_standard_axioms_only": 79,
+        "theorems_using_sorry": 0,
+        "project_axioms": 0,
+        "vacuous_props": [],
+        "gaps_proved": [],
+        "gaps_refuted": [],
+        "gaps_without_proof": []
+      },
+      "closed_math": [
+        "rank/refined endpoint packaging",
+        "same-curve binding requirement",
+        "resolution-mechanism -> rank law + leading-coefficient law transport"
+      ],
+      "closed_bridges": [
+        "genuine GroundedBSDHabitant -> rank equality",
+        "same inhabitant -> refined leading-coefficient identity",
+        "genuine violating elliptic curve -> negative endpoint"
+      ],
+      "exact_open_producers": [
+        "realizable elliptic-curve domain",
+        "universal analytic-rank = arithmetic-rank theorem on that same domain",
+        "refined leading-coefficient identity with Sha/regulator/Tamagawa/period factors on that same domain"
+      ],
+      "exact_negative_producer": "genuine elliptic curve violating either rank equality or the refined formula",
+      "closure_requirement": "all three positive atoms must bind to the same realizable curve domain, or one genuine counterexample",
+      "material_atoms": 3,
+      "lane_build_state": "KERNEL_BUILD_GREEN",
+      "lane_source_ref": "AxiomaticMillenium.GlobalOpenMathCut.bsdOpenCut",
+      "endpoint_status": "OPEN",
+      "final_proof_credit": 0
+    },
+    {
+      "id": "ym",
+      "problem": "Yang–Mills existence and mass gap",
+      "endpoint": "For every compact simple gauge group, quantum Yang–Mills theory on R^4 exists and has a mass gap Δ > 0.",
+      "checked_tree": {
+        "repository": "ShantiDraconis/m-core-yang-mills",
+        "branch": "atk/proof-inventory-d8a5e95e",
+        "commit": "2aec2176ab4d39697f25157dd19b8a87f804a999",
+        "ci_run": 38151179014,
+        "toolchain": "Lean 4.19.0 + Mathlib"
+      },
+      "kernel": {
+        "modules": "58/59",
+        "default_build": "GREEN",
+        "default_build_failures": [],
+        "orphan_failures": [
+          "MCore.ATK_HARD_YM_4D_GAP"
+        ],
+        "theorems": 321,
+        "theorems_standard_axioms_only": 321,
+        "theorems_using_sorry": 0,
+        "project_axioms": 0,
+        "vacuous_props": [],
+        "gaps_proved": [],
+        "gaps_refuted": [],
+        "gaps_without_proof": []
+      },
+      "closed_math": [
+        "regulated-field structural interfaces",
+        "B60/B6-to-final transport wiring",
+        "degenerate Unit/True model identified as non-faithful terminal realization"
+      ],
+      "closed_bridges": [
+        "genuine nondegenerate physical adapter -> field bundle -> final external certificate",
+        "uniform physical mass gap + verified limit preservation -> Yang-Mills endpoint"
+      ],
+      "exact_open_producers": [
+        "construct one genuine regulated 4D gauge model",
+        "bind physical states/observables to that same construction",
+        "reflection positivity / transfer operator",
+        "uniform cutoff-independent positive spectral gap",
+        "continuum and thermodynamic limit preservation"
+      ],
+      "exact_negative_producer": "genuine physical obstruction/no-gap example for the regulated 4D target",
+      "closure_requirement": "strengthened nondegenerate B60ConcretePhysicalAdapter or genuine physical obstruction",
+      "material_atoms": 1,
+      "lane_build_state": "KERNEL_BUILD_GREEN",
+      "lane_source_ref": "AxiomaticMillenium.NoOpenMathArgumentFrontier.ymPrimitiveFrontier",
+      "endpoint_status": "OPEN",
+      "final_proof_credit": 0
+    },
+    {
+      "id": "beal",
+      "problem": "Beal conjecture",
+      "endpoint": "If A^x + B^y = C^z with positive integers and x, y, z > 2, then A, B, C have a common prime factor.",
+      "checked_tree": {
+        "repository": "ShantiDraconis/m-core-beal",
+        "branch": "atk/proof-inventory-bfa2caa9",
+        "commit": "1094a79b89001da204ee323f37725fb84e37349d",
+        "ci_run": 38151173572,
+        "toolchain": "Lean 4.19.0"
+      },
+      "kernel": {
+        "modules": "77/80",
+        "default_build": "GREEN",
+        "default_build_failures": [],
+        "orphan_failures": [
+          "MCore.ATK_HARD_BEAL_CONDUCTOR_EXACT",
+          "MCore.PostT36EConductorBridge",
+          "MCore.T36E_MASTER"
+        ],
+        "theorems": 403,
+        "theorems_standard_axioms_only": 403,
+        "theorems_using_sorry": 0,
+        "project_axioms": 0,
+        "vacuous_props": [],
+        "gaps_proved": [],
+        "gaps_refuted": [],
+        "gaps_without_proof": [
+          "MCore.T10ReducedScientificFrontier",
+          "MCore.T11PairwiseScientificFrontier",
+          "MCore.T12ParityScientificFrontier",
+          "MCore.T13ModularScientificFrontier",
+          "MCore.T14ResidueScientificFrontier",
+          "MCore.T15BaseResidueScientificFrontier",
+          "MCore.T16EightScientificFrontier",
+          "MCore.T17ClassifiedScientificFrontier",
+          "MCore.T18FullParityScientificFrontier",
+          "MCore.T19VariableTwoAdicScientificFrontier",
+          "MCore.T20TwoAdicDepthScientificFrontier",
+          "MCore.T21EqualExponentFactorScientificFrontier",
+          "MCore.T22EqualOddExponentTwoAdicScientificFrontier",
+          "MCore.T23EqualOddGapDepthScientificFrontier",
+          "MCore.T24FreyDiscriminantScientificFrontier",
+          "MCore.T25FreyTwoAdicDepthScientificFrontier",
+          "MCore.T27FreyDivisorDepthScientificFrontier",
+          "MCore.T28FreyPrimeSupportScientificFrontier",
+          "MCore.T30FreyBasePrimeSupportScientificFrontier",
+          "MCore.T31FreyRadicalSupportScientificFrontier",
+          "MCore.T32FreyC4CoprimeScientificFrontier",
+          "MCore.T33OddPrimeReductionInputScientificFrontier",
+          "MCore.T34FreyNodalCollisionScientificFrontier",
+          "MCore.T6ScientificFrontier"
+        ]
+      },
+      "closed_math": [
+        "Beal admissibility/equation interfaces",
+        "universal common-prime/gcd producer -> Beal endpoint transport",
+        "exact negative BealData counterexample type"
+      ],
+      "closed_bridges": [
+        "GCDLowerBoundProducer / universal common-prime certificate -> BealConjecture",
+        "concrete BealCounterexample -> negative/refutation certificate"
+      ],
+      "exact_open_producers": [
+        "for arbitrary admissible Beal equation under gcd(a,b,c)=1, derive a local/modular contradiction",
+        "discharge valuation, conductor, level-lowering and elimination hypotheses uniformly"
+      ],
+      "exact_negative_producer": "concrete BealData satisfying the equation/exponents with gcd(a,b,c)=1",
+      "closure_requirement": "universal arithmetic producer or one genuine numerical counterexample",
+      "material_atoms": 1,
+      "lane_build_state": "KERNEL_BUILD_GREEN",
+      "lane_source_ref": "AxiomaticMillenium.NoOpenMathArgumentFrontier.bealPrimitiveFrontier",
+      "endpoint_status": "OPEN",
+      "final_proof_credit": 0
+    }
+  ]
+}
