@@ -1,0 +1,2 @@
+lean/MCore/FinalFail/Semantic/RiemannDual.lean:31:either side of the conjecture.  No axiom, `sorry`, or hypothesis is introduced.
+lean/MCore/FinalFail/AcceptedInhabitants.lean:15:* no axiom, `sorry`, `admit`, oracle, or fabricated witness is introduced;
