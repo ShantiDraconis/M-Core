@@ -1,6 +1,6 @@
 # MASTER_INDEX — programa ATK (M-Core)
 
-Atualizado em 2026-10-09 · branch `atk/global-audit-20261008` (PR #15) ·
+Atualizado em 2026-10-11 · branch `atk/global-audit-20261008` (PR #15) ·
 pacote atual: [`certs/final_global/v2/`](../certs/final_global/v2/)
 (`bash certs/final_global/v2/verify.sh`) · errata: [`ERRATA.md`](ERRATA.md)
 
@@ -27,7 +27,7 @@ pacote atual: [`certs/final_global/v2/`](../certs/final_global/v2/)
 Formato: `ATK-[LANE]: ESTADO | SHA (origem) | RUN | CLOSED_MATH | OPEN_MATH | CERTIFICATE | DOI_READY`
 
 ```
-ATK-PVSNP: OPEN_MATH | b406b806 (redução) · 0dd09383 (P01) | 37913791428 · 37914524820 | P01 = SAT∈NP fechado; redução TwoGap; G3 contrato | G21Pointwise ≡ P≠NP | FINAL_GLOBAL v2; FINAL_EXTERNAL v3 preparatório | P01 sim (como formalização de SAT∈NP); lane não
+ATK-PVSNP: OPEN_MATH | b406b806 (redução) · 0dd09383 (P01) | 37913791428 · 37914524820 | P01 = SAT∈NP fechado; redução TwoGap; G3 contrato | G21Pointwise ≡ P≠NP | FINAL_GLOBAL v2; FINAL_EXTERNAL v4 preparatório (v3 assinado) | P01 sim (como formalização de SAT∈NP); lane não
 ATK-RH:    OPEN_MATH | d6a291b4 | 37914524820 | RiemannDual: ¬RH ⇔ zero em 1/2<Re s<1; simetria s↔1−s | provar ou refutar | FINAL_GLOBAL v2 | NÃO
 ATK-BEAL:  OPEN_MATH | d6fe130c | 37914524820 | alvo concreto em ℕ | ∀d, 1<gcd(a,gcd(b,c)) | FINAL_GLOBAL v2 | NÃO
 ATK-NS:    OPEN_MATH | df808543 | 37914524820 | enunciados (A)/(C) de Fefferman em ℝ³ | (A) ou (C) | FINAL_GLOBAL v2 | NÃO
