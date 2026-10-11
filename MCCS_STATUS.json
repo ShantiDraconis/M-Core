@@ -281,7 +281,7 @@
         "frozen/y01-uniform-integer-clustering-green-37acd577"
       ],
       "source_delta": [
-        "lean/MCore/YangMills/A1/K14ClusteringAdapter.lean: BLOCKED_BY_UniformIntegerClustering_BUILD_FAILURE"
+        "lean/MCore/YangMills/A1/K14ClusteringAdapter.lean: GREEN (builds on merged head 40e3db7b, run 38154383522)"
       ],
       "terminal_certificate": {
         "repo": "m-core-yang-mills",
@@ -861,18 +861,18 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "e6bcc70441797e7c2b371bff1a473be19a5663a4",
       "inherited_foundation": "frozen/final-fail-closed-center-hard-ee1ec8fb",
-      "active_attack_head": "993469ce840f3b3a64e4e62f00c9e151878b1a89",
+      "active_attack_head": "43b1b9d5fb314ff660dd14da80b7741c8708e469",
       "attack_branch": "attack/mcore-formulation-v2-clean-20260921",
       "source_hygiene": "PENDING_CI",
-      "kernel_state": "DEFAULT_BUILD_GREEN",
+      "kernel_state": "ALL_LIBRARY_MODULES_GREEN",
       "kernel_evidence": {
         "derived_by": "scripts/proof_inventory.py (builds every library module at the recorded head; kernel axiom audit)",
-        "head": "993469ce840f3b3a64e4e62f00c9e151878b1a89",
-        "workflow_run": 38155098183,
+        "head": "43b1b9d5fb314ff660dd14da80b7741c8708e469",
+        "workflow_run": 38156708722,
         "run_branch": "attack/mcore-formulation-v2-clean-20260921",
-        "modules_ok": "18/20",
-        "theorems_all_standard_axioms": 102,
-        "note": "Attack branch after merging fix PR #17 and #18; Proof inventory on the merged head is green (every default-build module compiles, standard axioms only).",
+        "modules_ok": "20/20",
+        "theorems_all_standard_axioms": 110,
+        "note": "Attack branch after merging #17, #18 and #20. This branch has no root module (lean/MCore.lean is absent), so there is no default build; every one of the 20 library modules compiles and every theorem uses only standard axioms. The branch workflow \"M-Core formulation v2\" (build + axiom audit) also passed: run 38156708735.",
         "previous_kernel_state": "BUILD_PENDING",
         "history": [
           {
@@ -905,20 +905,26 @@
       "endpoint_promotion": false,
       "superseded_branch": "attack/mcore-formulation-v2-20260921",
       "formulation_obligations": {
-        "green": 2,
-        "source_build_pending": 1,
+        "green": 3,
+        "source_build_pending": 0,
         "open": 1,
         "total": 4,
         "green_items": [
           "FailAt <-> FundamentalIndeterminacy <-> IFail under induced center resolution with admissible identity",
-          "DeterminedAt <-> CenterDetermined"
-        ],
-        "source_items": [
+          "DeterminedAt <-> CenterDetermined",
           "relation-level HARD closure: RelationalTotality induces proposition-level ClosedCenterHard and preserves separate FailAt; explicit RelationalFunctionalWitness supplies underlying maps without Classical.choice"
         ],
+        "source_items": [],
         "open_items": [
           "typed adapter from certified external Phi3/numeric indeterminacy to structural IFail without definitional collapse"
-        ]
+        ],
+        "promotion_evidence": {
+          "item": "relation-level HARD closure: RelationalTotality induces proposition-level ClosedCenterHard and preserves separate FailAt; explicit RelationalFunctionalWitness supplies underlying maps without Classical.choice",
+          "head": "43b1b9d5fb314ff660dd14da80b7741c8708e469",
+          "proof_inventory_run": 38156708722,
+          "formulation_workflow_run": 38156708735,
+          "axioms": "RelationalClosedCenterBridge: every theorem (start/center/finish totality and uniqueness, closedCenterHard_coexists_with_failAt, the four *_spec lemmas) depends on no axioms, so in particular not on Classical.choice"
+        }
       }
     }
   ],
