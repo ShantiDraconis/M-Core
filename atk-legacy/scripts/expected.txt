@@ -1,0 +1,15 @@
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.rh_finite_decrement
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.rh_ratio
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.rh_relative_reduction
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.rh_schur_nonnegative
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.rh_schur_antitone
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.ns_margin_example
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.ns_budget_example
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.ns_budget_identity
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.ns_margin_positive
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.ns_bulk_tail_bound
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.bsd_regulator_example
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.bsd_regulator_identity
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.bsd_recover_h22
+src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.hodge_linear_realization
+src/ATK_ExactValues.lean ATKExactValues.absorption
