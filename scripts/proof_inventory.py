@@ -175,7 +175,7 @@ def run (roots : List String) (onlyModule : Option String) : CoreM String := do
           out := out.push s!"THM\t{u}\t{m}\t{showNames (axiomsOf n)}"
     | .axiomInfo _ =>
         if let some u := userName env n then
-          out := out.push s!"AXDECL\t{u}\t{m}"
+          out := out.push s!"AXDECL\t{u}\t{m}\t{n}"
     | _ => pure ()
   for (n, (m, arity0, vac)) in propDefs.toList do
     if let some u := userName env n then
@@ -333,7 +333,9 @@ def parse_tsv(texts):
                 row["inhabited_by"] |= {x for x in parts[5].split(",") if x}
                 row["refuted_by"] |= {x for x in parts[6].split(",") if x}
             elif parts[0] == "AXDECL":
-                axdecls[(parts[1], parts[2])] = True
+                # parts[3] is the kernel name; for a private axiom it differs from the
+                # user-facing name, and theorem dependency lists use the kernel name.
+                axdecls[(parts[1], parts[2])] = parts[3] if len(parts) > 3 else parts[1]
     return thms, props, axdecls
 
 
@@ -343,6 +345,8 @@ def main():
     ap.add_argument("--out", default="inventory")
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--check-committed", action="store_true")
+    ap.add_argument("--fail-if-stale", action="store_true",
+                    help="with --check-committed: exit 1 when the committed inventory differs")
     ap.add_argument("--loose-dir", action="append", default=None,
                     help="directory of stand-alone .lean files to compile with lake env lean (default: audit)")
     a = ap.parse_args()
@@ -358,6 +362,11 @@ def main():
 
     print(f"[inventory] {len(mods)} modules; building all of them")
     failed, rc, log = build(root, mods)
+    # Lake also marks dependents of a failing module as failed; a module with no
+    # error of its own whose imports include a failing module is BLOCKED.
+    for m in sorted(failed):
+        if not failed[m] and any(d in failed and failed[d] for d in closure(m, mods) if d != m):
+            del failed[m]
     blocked = {}
     for m in mods:
         if m in failed:
@@ -390,7 +399,7 @@ def main():
     print(f"[inventory] kernel extraction: {len(groups)} environment group(s), {len(clashes)} name clash(es)")
     thms, props, axdecls = parse_tsv(texts)
 
-    pkg_axioms = {n for n, _ in axdecls}
+    pkg_axioms = {n for n, _ in axdecls} | set(axdecls.values())
     theorems = []
     for (n, mod) in sorted(thms):
         ax = thms[(n, mod)]
@@ -494,7 +503,9 @@ def main():
     old_json = jpath.read_text() if jpath.exists() else None
     jpath.write_text(new_json)
     md = render_md(inv)
-    (out / "PROOF_INVENTORY.md").write_text(md)
+    mpath = out / "PROOF_INVENTORY.md"
+    old_md = mpath.read_text() if mpath.exists() else None
+    mpath.write_text(md)
     print(f"[inventory] wrote {jpath} and PROOF_INVENTORY.md")
     print(json.dumps(summary, indent=1))
 
@@ -510,13 +521,17 @@ def main():
         for p in prop_rows:
             if p["status"] == "VACUOUS":
                 print(f"::warning::vacuous Prop definition {p['name']} ({p['module']}) ends in True")
-    if a.check_committed and old_json is not None and old_json != new_json:
-        msg = "committed inventory/PROOF_INVENTORY.json is out of date; regenerate with scripts/proof_inventory.py"
-        print(f"::warning::{msg}" if gh else f"[inventory] WARNING: {msg}")
+    stale = a.check_committed and ((old_json is not None and old_json != new_json) or
+                                   (old_md is not None and old_md != md))
+    if stale:
+        msg = "committed inventory/PROOF_INVENTORY.json/.md is out of date; regenerate with scripts/proof_inventory.py"
+        level = "error" if a.fail_if_stale else "warning"
+        print(f"::{level}::{msg}" if gh else f"[inventory] {level.upper()}: {msg}")
 
     if a.strict:
         problems = []
-        problems += [f"default-build module {r['module']} is {r['status']}" for r in modules
+        problems += [f"default-build module {r['module']} is {r['status']}: "
+                     f"{r.get('first_error') or ('blocked by ' + r.get('blocked_by', ''))}" for r in modules
                      if r["status"] != "OK" and r["in_default_build"]]
         problems += [f"{t['name']} uses sorryAx" for t in theorems if t["status"] == "USES_SORRY"]
         problems += [f"{t['name']} uses a project axiom" for t in theorems if t["status"] == "USES_PROJECT_AXIOM"]
@@ -524,6 +539,8 @@ def main():
             for p in problems[:50]:
                 print(f"::error::{p}" if gh else f"[inventory] ERROR: {p}")
             sys.exit(1)
+    if stale and a.fail_if_stale:
+        sys.exit(1)
 
 
 def render_md(inv):
