@@ -6,15 +6,15 @@ Toolchain: `leanprover/lean4:v4.19.0`
 
 | Item | Count |
 | --- | ---: |
-| modules total | 7 |
-| modules ok | 7 |
+| modules total | 20 |
+| modules ok | 20 |
 | modules failed | 0 |
 | modules blocked | 0 |
-| modules outside default build | 0 |
+| modules outside default build | 20 |
 | standalone files total | 0 |
 | standalone files failed | 0 |
-| theorems total | 9 |
-| theorems clean | 9 |
+| theorems total | 112 |
+| theorems clean | 112 |
 | theorems using sorry | 0 |
 | theorems using project axiom | 0 |
 | theorems nonstandard axioms | 0 |

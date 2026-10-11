@@ -247,6 +247,9 @@ def closure(start, mods):
     return seen
 
 
+ALL_ERRORS = {}
+
+
 def build(root: Path, mods):
     names = sorted(mods)
     r = sh(["lake", "build", *names], root)
@@ -267,14 +270,27 @@ def build(root: Path, mods):
         if mod is None:
             continue
         failed.setdefault(mod, "")
-        if failed[mod]:
-            continue
         block = [f"{m.group(1)}:{m.group(2)}:{m.group(3)}: {m.group(4)}"]
         for nxt in lines[i + 1:i + 40]:
             if stop.match(nxt):
                 break
             block.append(nxt)
-        failed[mod] = "\n".join(block)[:1500]
+        text = "\n".join(block)[:1500]
+        ALL_ERRORS.setdefault(mod, []).append(text)
+        if not failed[mod]:
+            failed[mod] = text
+    # fallback: modules Lake marked failed without a file:line error of their own
+    for i, line in enumerate(lines):
+        m = re.match(r"✖ \[\d+/\d+\] (?:Building|Compiling|Running) ([\w.«»']+)", line)
+        if m and m.group(1) in failed and not failed[m.group(1)]:
+            block = []
+            for nxt in lines[i + 1:i + 30]:
+                if re.match(r"^[✖✔⚠] ", nxt):
+                    break
+                if not nxt.startswith("trace:"):
+                    block.append(nxt)
+            if block:
+                failed[m.group(1)] = "(no file:line error) " + "\n".join(block)[:1400]
     return failed, r.returncode, log
 
 
@@ -378,7 +394,9 @@ def main():
     # Lake also marks dependents of a failing module as failed; a module with no
     # error of its own whose imports include a failing module is BLOCKED.
     for m in sorted(failed):
-        if not failed[m] and any(d in failed and failed[d] for d in closure(m, mods) if d != m):
+        own = failed[m] and not failed[m].startswith("(no file:line error)")
+        if not own and any(d in failed and failed[d] and not failed[d].startswith("(no file:line error)")
+                           for d in closure(m, mods) if d != m):
             del failed[m]
     blocked = {}
     for m in mods:
@@ -457,6 +475,8 @@ def main():
         row = {"module": m, "path": mods[m]["path"], "status": st, "in_default_build": m in default_build}
         if m in failed:
             row["first_error"] = failed[m]
+            if len(ALL_ERRORS.get(m, [])) > 1:
+                row["all_errors"] = ALL_ERRORS[m][:30]
         if m in blocked:
             row["blocked_by"] = blocked[m]
         modules.append(row)
@@ -534,8 +554,11 @@ def main():
         for p in prop_rows:
             if p["status"] == "VACUOUS":
                 print(f"::warning::vacuous Prop definition {p['name']} ({p['module']}) ends in True")
-    stale = a.check_committed and ((old_json is not None and old_json != new_json) or
-                                   (old_md is not None and old_md != md))
+    # with --fail-if-stale a missing committed copy also counts as stale, so a
+    # pull request cannot pass by deleting the generated files
+    stale = a.check_committed and (
+        (old_json != new_json if old_json is not None else a.fail_if_stale) or
+        (old_md != md if old_md is not None else a.fail_if_stale))
     if stale:
         msg = "committed inventory/PROOF_INVENTORY.json/.md is out of date; regenerate with scripts/proof_inventory.py"
         level = "error" if a.fail_if_stale else "warning"
@@ -548,6 +571,10 @@ def main():
                      if r["status"] != "OK" and r["in_default_build"]]
         problems += [f"{t['name']} uses sorryAx" for t in theorems if t["status"] == "USES_SORRY"]
         problems += [f"{t['name']} uses a project axiom" for t in theorems if t["status"] == "USES_PROJECT_AXIOM"]
+        for r in modules:
+            if r["status"] == "FAILED" and r["in_default_build"] and len(r.get("all_errors", [])) > 1:
+                for e in r["all_errors"][1:30]:
+                    problems.append(f"{r['module']} (additional error): {e}")
         if problems:
             for p in problems[:50]:
                 print("::error::" + gh_escape(p) if gh else f"[inventory] ERROR: {p}")

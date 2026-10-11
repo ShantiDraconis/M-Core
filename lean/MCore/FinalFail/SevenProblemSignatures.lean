@@ -45,7 +45,10 @@ theorem signature_obstruction_matches (p : ProblemId) :
       | .nonpositiveSpectralGap => .spectral := by
   cases p <;> rfl
 
-theorem signature_assignment_injective : Function.Injective signatureOf := by
+/-- Injectivity, stated directly: this package does not depend on Mathlib,
+which is where `Function.Injective` is defined. -/
+theorem signature_assignment_injective :
+    ∀ a b, signatureOf a = signatureOf b → a = b := by
   intro a b h
   cases a <;> cases b <;> simp [signatureOf] at h ⊢
 

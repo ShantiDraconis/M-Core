@@ -5,7 +5,7 @@
  "libraries": [
   {
    "name": "MCore",
-   "srcDir": "."
+   "srcDir": "lean"
   }
  ],
  "policy": {
@@ -19,15 +19,15 @@
   "scope": "closed (arity-0) Prop definitions, plus any Prop-valued definition that is vacuous"
  },
  "summary": {
-  "modules_total": 7,
-  "modules_ok": 7,
+  "modules_total": 20,
+  "modules_ok": 20,
   "modules_failed": 0,
   "modules_blocked": 0,
-  "modules_outside_default_build": 0,
+  "modules_outside_default_build": 20,
   "standalone_files_total": 0,
   "standalone_files_failed": 0,
-  "theorems_total": 9,
-  "theorems_clean": 9,
+  "theorems_total": 112,
+  "theorems_clean": 112,
   "theorems_using_sorry": 0,
   "theorems_using_project_axiom": 0,
   "theorems_nonstandard_axioms": 0,
@@ -43,139 +43,807 @@
  "name_clashes": [],
  "modules": [
   {
-   "module": "MCore",
-   "path": "MCore.lean",
+   "module": "MCore.FinalFail.ArtifactAttachment",
+   "path": "lean/MCore/FinalFail/ArtifactAttachment.lean",
    "status": "OK",
-   "in_default_build": true
+   "in_default_build": false
   },
   {
-   "module": "MCore.A1Amplitude",
-   "path": "MCore/A1Amplitude.lean",
+   "module": "MCore.FinalFail.Attack.Beal",
+   "path": "lean/MCore/FinalFail/Attack/Beal.lean",
    "status": "OK",
-   "in_default_build": true
+   "in_default_build": false
   },
   {
-   "module": "MCore.A2SelfRef",
-   "path": "MCore/A2SelfRef.lean",
+   "module": "MCore.FinalFail.Attack.NavierStokes",
+   "path": "lean/MCore/FinalFail/Attack/NavierStokes.lean",
    "status": "OK",
-   "in_default_build": true
+   "in_default_build": false
   },
   {
-   "module": "MCore.A3Zero",
-   "path": "MCore/A3Zero.lean",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "path": "lean/MCore/FinalFail/ClosedCenterHard.lean",
    "status": "OK",
-   "in_default_build": true
+   "in_default_build": false
   },
   {
-   "module": "MCore.A4Scale",
-   "path": "MCore/A4Scale.lean",
+   "module": "MCore.FinalFail.CoreIndeterminacyTests",
+   "path": "lean/MCore/FinalFail/CoreIndeterminacyTests.lean",
    "status": "OK",
-   "in_default_build": true
+   "in_default_build": false
   },
   {
-   "module": "MCore.Admissible",
-   "path": "MCore/Admissible.lean",
+   "module": "MCore.FinalFail.DeltaIsolation",
+   "path": "lean/MCore/FinalFail/DeltaIsolation.lean",
    "status": "OK",
-   "in_default_build": true
+   "in_default_build": false
   },
   {
-   "module": "MCore.Core",
-   "path": "MCore/Core.lean",
+   "module": "MCore.FinalFail.ExactGapLedger",
+   "path": "lean/MCore/FinalFail/ExactGapLedger.lean",
    "status": "OK",
-   "in_default_build": true
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "path": "lean/MCore/FinalFail/FundamentalIndeterminacy.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "path": "lean/MCore/FinalFail/LocalRigidNucleus.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.Master",
+   "path": "lean/MCore/FinalFail/Master.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "path": "lean/MCore/FinalFail/MinimalOpenBridge.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.ProblemSignature",
+   "path": "lean/MCore/FinalFail/ProblemSignature.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.RecoveryFirewall",
+   "path": "lean/MCore/FinalFail/RecoveryFirewall.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.RelationalCenterBridge",
+   "path": "lean/MCore/FinalFail/RelationalCenterBridge.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "path": "lean/MCore/FinalFail/RelationalClosedCenterBridge.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.RelationalHardAtom",
+   "path": "lean/MCore/FinalFail/RelationalHardAtom.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.SevenLocalNuclei",
+   "path": "lean/MCore/FinalFail/SevenLocalNuclei.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.SevenProblemSignatures",
+   "path": "lean/MCore/FinalFail/SevenProblemSignatures.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.TopologyOperatorCore",
+   "path": "lean/MCore/FinalFail/TopologyOperatorCore.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.FinalFail.TriadicObstructionCalculus",
+   "path": "lean/MCore/FinalFail/TriadicObstructionCalculus.lean",
+   "status": "OK",
+   "in_default_build": false
   }
  ],
  "standalone_files": [],
  "props": [],
  "theorems": [
   {
-   "name": "MCore.AuditRecord.amplitudeLaw",
-   "module": "MCore.Admissible",
+   "name": "MCore.FinalFail.AuditedTerminalChain.closedPrefix",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.AuditedTerminalChain.firewallClosed",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.AuditedTerminalChain.openBridge",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.BealBehaviorEquivalence.leftInverse",
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.BealBehaviorEquivalence.preservesClosure",
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.BealBehaviorEquivalence.preservesObstruction",
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.BealBehaviorEquivalence.rightInverse",
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.BealBehaviorTemplate.coreElimination",
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.CenterCoordinateEquiv.admissible_iff",
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.CenterCoordinateEquiv.leftInv",
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.CenterCoordinateEquiv.rightInv",
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClassifiedProblem.preserves",
+   "module": "MCore.FinalFail.ProblemSignature",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.center_exposes_both",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.center_iff_finish",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.center_to_finish",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.center_to_start",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.finish_of_start",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.finish_to_center",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.start_iff_center",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.start_iff_finish",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.start_of_finish",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterHard.start_to_center",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterTerminalChain.firewallClosed",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterTerminalChain.hard",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedCenterTerminalChain.startClosed",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedPrefix.certifiedPrefix",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedPrefix.prefix_to_bridge",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedTriad.compression_idempotent",
+   "module": "MCore.FinalFail.TriadicObstructionCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedTriad.compression_meets_at_middle",
+   "module": "MCore.FinalFail.TriadicObstructionCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ClosedTriad.middle_is_compression_fixed_and_retraction_branch",
+   "module": "MCore.FinalFail.TriadicObstructionCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.Complexification.zero_iff_parts_zero",
+   "module": "MCore.FinalFail.TriadicObstructionCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.DecimalClass.digit_ge_three",
+   "module": "MCore.FinalFail.ProblemSignature",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.DecimalClass.digit_lt_ten",
+   "module": "MCore.FinalFail.ProblemSignature",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.EndpointAdapter.core_to_endpoint",
+   "module": "MCore.FinalFail.RecoveryFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.EndpointAdapter.endpoint_to_core",
+   "module": "MCore.FinalFail.RecoveryFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.LocalRigidNucleus.endpoint_iff_obstruction_eliminated",
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.MinimalOpenBridge.bridge_to_endpoint",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.MinimalOpenBridge.endpoint_to_bridge",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ObstructionPresentation.endpoint_iff_closed",
+   "module": "MCore.FinalFail.TriadicObstructionCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.OpenRigidNucleus.core_to_endpoint",
+   "module": "MCore.FinalFail.SevenLocalNuclei",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.OpenTerminalChain.certifiedPrefix",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.OpenTerminalChain.downstream",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.OpenTerminalChain.firewallClosed",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.OpenTerminalChain.indispensable",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RealImaginaryCore.jointlyFaithful",
+   "module": "MCore.FinalFail.TopologyOperatorCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalFunctionalWitness.centerToFinish_spec",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalFunctionalWitness.centerToStart_spec",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalFunctionalWitness.finishToCenter_spec",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalFunctionalWitness.startToCenter_spec",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalHardAtom.common_fixed_has_both_loops",
+   "module": "MCore.FinalFail.RelationalHardAtom",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalHardAtom.determinedAt_iff_centerDetermined",
+   "module": "MCore.FinalFail.RelationalCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalHardAtom.determinedAt_not_failAt",
+   "module": "MCore.FinalFail.RelationalCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalHardAtom.failAt_iff_IFail",
+   "module": "MCore.FinalFail.RelationalCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalHardAtom.failAt_iff_fundamentalIndeterminacy",
+   "module": "MCore.FinalFail.RelationalCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalHardAtom.failAt_not_determined",
+   "module": "MCore.FinalFail.RelationalHardAtom",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalSingleValued.center_to_finish_unique",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalSingleValued.center_to_start_unique",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalSingleValued.finish_to_center_unique",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalSingleValued.start_to_center_unique",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalTotality.center_to_finish_total",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalTotality.center_to_start_total",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalTotality.closedCenterHard_coexists_with_failAt",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalTotality.finish_to_center_total",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.RelationalTotality.start_to_center_total",
+   "module": "MCore.FinalFail.RelationalClosedCenterBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.ResolvedCenter.identity_admissible",
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.TerminalNucleus.core_to_closed",
+   "module": "MCore.FinalFail.SevenLocalNuclei",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.TerminalNucleus.correctObstruction",
+   "module": "MCore.FinalFail.SevenLocalNuclei",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.Triad.minus_retraction_implies_fixed",
+   "module": "MCore.FinalFail.TopologyOperatorCore",
    "axioms": [
-    "Classical.choice",
-    "Quot.sound",
     "propext"
    ],
    "status": "CLEAN"
   },
   {
-   "name": "MCore.AuditRecord.scaleLaw",
-   "module": "MCore.Admissible",
+   "name": "MCore.FinalFail.advance_middle_finish",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.advance_start_middle",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.audited_terminal_chain_closure",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.behaviorEquivalent_refl",
+   "module": "MCore.FinalFail.ProblemSignature",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.behaviorEquivalent_symm",
+   "module": "MCore.FinalFail.ProblemSignature",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.behaviorEquivalent_trans",
+   "module": "MCore.FinalFail.ProblemSignature",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.classified_preserves_twoSided",
+   "module": "MCore.FinalFail.ProblemSignature",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.close_local_nucleus",
+   "module": "MCore.FinalFail.SevenLocalNuclei",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.close_open_terminal_chain",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.closedPrefix_produces_bridge",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.closed_center_terminal_chain_closure",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.closed_obstruction_of_endpoint",
+   "module": "MCore.FinalFail.TriadicObstructionCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.closed_transition_preserves_closed",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.determined_not_fundamentally_indeterminate",
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.endpoint_adapter_iff",
+   "module": "MCore.FinalFail.RecoveryFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.endpoint_of_closed_obstruction",
+   "module": "MCore.FinalFail.TriadicObstructionCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.family_endpoint_iff_local_obstruction_eliminated",
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.fundamental_indeterminacy_forward_invariant",
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.fundamental_indeterminacy_not_determined",
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.master_open_count",
+   "module": "MCore.FinalFail.Master",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.middle_has_two_admissible_branches",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.minimalOpenBridge_iff",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.obstruction_assignment_injective",
+   "module": "MCore.FinalFail.SevenLocalNuclei",
    "axioms": [
-    "Classical.choice",
-    "Quot.sound",
     "propext"
    ],
    "status": "CLEAN"
   },
   {
-   "name": "MCore.AuditRecord.selfRefGate",
-   "module": "MCore.Admissible",
+   "name": "MCore.FinalFail.obstruction_assignment_total",
+   "module": "MCore.FinalFail.SevenLocalNuclei",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.openFinalProblems_eq_seven",
+   "module": "MCore.FinalFail.ExactGapLedger",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.open_terminal_endpoint_iff_bridge",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.real_imaginary_ext",
+   "module": "MCore.FinalFail.TopologyOperatorCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.reference_triad_is_not_exhaustive",
+   "module": "MCore.FinalFail.FundamentalIndeterminacy",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.return_finish_middle",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.return_middle_start",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.signature_assignment_injective",
+   "module": "MCore.FinalFail.SevenProblemSignatures",
    "axioms": [
-    "Classical.choice",
-    "Quot.sound",
     "propext"
    ],
    "status": "CLEAN"
   },
   {
-   "name": "MCore.CertifiedThreshold.belowOne",
-   "module": "MCore.A4Scale",
+   "name": "MCore.FinalFail.signature_obstruction_matches",
+   "module": "MCore.FinalFail.SevenProblemSignatures",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.singletonResolution_is_determined",
+   "module": "MCore.FinalFail.CoreIndeterminacyTests",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.singletonResolution_not_indeterminate",
+   "module": "MCore.FinalFail.CoreIndeterminacyTests",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.slotOf_injective",
+   "module": "MCore.FinalFail.SevenLocalNuclei",
    "axioms": [
-    "Classical.choice",
-    "Quot.sound",
     "propext"
    ],
    "status": "CLEAN"
   },
   {
-   "name": "MCore.CertifiedThreshold.positive",
-   "module": "MCore.A4Scale",
-   "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-   ],
+   "name": "MCore.FinalFail.slotOf_range",
+   "module": "MCore.FinalFail.SevenLocalNuclei",
+   "axioms": [],
    "status": "CLEAN"
   },
   {
-   "name": "MCore.TwoPathLimitFailure.distinct",
-   "module": "MCore.A3Zero",
-   "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-   ],
+   "name": "MCore.FinalFail.start_and_finish_meet_at_middle",
+   "module": "MCore.FinalFail.ClosedCenterHard",
+   "axioms": [],
    "status": "CLEAN"
   },
   {
-   "name": "MCore.amplitude_unbounded",
-   "module": "MCore.A1Amplitude",
-   "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-   ],
+   "name": "MCore.FinalFail.terminalDigit_bounds",
+   "module": "MCore.FinalFail.ProblemSignature",
+   "axioms": [],
    "status": "CLEAN"
   },
   {
-   "name": "MCore.no_fixed_delta_gap",
-   "module": "MCore.A1Amplitude",
-   "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-   ],
+   "name": "MCore.FinalFail.terminal_chain_closure",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
    "status": "CLEAN"
   },
   {
-   "name": "MCore.no_path_independent_extension",
-   "module": "MCore.A3Zero",
-   "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-   ],
+   "name": "MCore.FinalFail.toyHardAtom_center_is_fail",
+   "module": "MCore.FinalFail.CoreIndeterminacyTests",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.toyHardAtom_left_loop_fixed",
+   "module": "MCore.FinalFail.CoreIndeterminacyTests",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.transport_core_elimination",
+   "module": "MCore.FinalFail.LocalRigidNucleus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.twoBranchResolution_is_indeterminate",
+   "module": "MCore.FinalFail.CoreIndeterminacyTests",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.FinalFail.validEndpoint_iff_witnessFree_adequate",
+   "module": "MCore.FinalFail.MinimalOpenBridge",
+   "axioms": [],
    "status": "CLEAN"
   }
  ]
