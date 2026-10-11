@@ -38,8 +38,13 @@ jobs:
         run: |
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
-          lake update
-          lake exe cache get
+          # only fetch the Mathlib cache when this tree's lakefile requires Mathlib
+          if grep -qiE 'mathlib' lakefile.*; then
+            lake update
+            lake exe cache get
+          else
+            echo "lakefile does not require Mathlib; skipping cache"
+          fi
       - name: Kernel-derived proof inventory
         shell: bash
         run: |
