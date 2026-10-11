@@ -13,3 +13,4 @@ src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.bsd_regulator_identity
 src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.bsd_recover_h22
 src/VerifiedAuxiliary.lean ATK.VerifiedAuxiliary.hodge_linear_realization
 src/ATK_ExactValues.lean ATKExactValues.absorption
+src/VerifiedAuxiliary_patched.lean ATK.VerifiedAuxiliary.hodge_linear_realization

@@ -10,3 +10,7 @@ toolchain e a mesma Mathlib que eles declaram (v4.21.0). O workflow `atk-legacy.
 | `src/ATK_ExactValues.lean` (7 `example` + `absorption`) | `87a5232d46bcf7126f3ae86a5e36aea1dfeae5741eaeafc1369ba2101346c502` |
 
 `src/lakefile.original.toml` é o lakefile original, mantido como referência.
+
+`src/VerifiedAuxiliary_patched.lean` é uma cópia com **apenas** `hodge_linear_realization` corrigido
+(o original não compila: faltava `open Matrix` para a notação `*ᵥ`, e a reescrita estava invertida).
+O relatório certifica o original e a cópia corrigida separadamente.
