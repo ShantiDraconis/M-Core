@@ -1,6 +1,8 @@
 ATK.BSD.regulator_det_identity
 ATK.BSD.regulator_two_pos
 ATK.BSD.sha_recovery
+ATK.BSD.torsion_contains_zero
+ATK.BSD.torsion_card_pos
 ATK.Beal.exponent_gcd_le_two
 ATK.Geometry.round_sphere_scalar_integral
 ATK.Hodge.linear_realization
@@ -9,11 +11,16 @@ ATK.NavierStokes.absorption
 ATK.NavierStokes.absorption_margin_pos
 ATK.NavierStokes.riccati_comparison
 ATK.NavierStokes.riccati_upper_bound
+ATK.NavierStokes.absorption_without_remainder_forces_decay
 ATK.PvsNP.p_ne_np_of_np_not_subset_ppoly
 ATK.PvsNP.p_ne_np_of_sat
 ATK.Riemann.residual_tendsto_zero
 ATK.Riemann.schur_step_monotone
 ATK.Riemann.gram_complete_square
 ATK.Riemann.gram_residual_le
+ATK.Riemann.abstract_bound_vacuous
+ATK.Riemann.bdDistSq_nonneg
+ATK.Riemann.bd_bound_tendsto
+ATK.Riemann.rh_of_bd_bound
 ATK.YangMills.weighted_cauchy_schwarz
 ATK.YangMills.effective_mass_slope_nonpos

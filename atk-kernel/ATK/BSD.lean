@@ -7,6 +7,9 @@ import Mathlib
 * `regulator_two_pos`      — se a forma de altura é definida positiva em ℝ², o regulador é > 0.
 * `sha_recovery`           — SE a fórmula BSD refinada vale para uma curva, e Ω, Reg, Π c_p, #tors ≠ 0,
                              então #Ш é determinado pelos demais termos.
+* `torsion_contains_zero`  — o ponto no infinito (zero) pertence à torção de E(ℚ).
+* `torsion_card_pos`       — #E(ℚ)_tors ≥ 1, assumindo a finitude da torção como instância explícita
+                             (finitude: Nagell–Lutz/Mazur, não disponível na Mathlib).
 
 Nada aqui prova BSD: `sha_recovery` assume a própria fórmula como hipótese.
 -/
@@ -38,8 +41,20 @@ theorem sha_recovery {L Ω R S c t : ℝ}
   rw [eq_div_iff hden, hBSD, div_mul_cancel₀ _ (pow_ne_zero 2 ht)]
   ring
 
+theorem torsion_contains_zero (W : WeierstrassCurve.Affine ℚ) :
+    (0 : W.Point) ∈ AddCommGroup.torsion W.Point :=
+  zero_mem _
+
+theorem torsion_card_pos (W : WeierstrassCurve.Affine ℚ)
+    [Finite (AddCommGroup.torsion W.Point)] :
+    0 < Nat.card (AddCommGroup.torsion W.Point) := by
+  haveI : Nonempty (AddCommGroup.torsion W.Point) := ⟨0⟩
+  exact Nat.card_pos
+
 end ATK.BSD
 
 #print axioms ATK.BSD.regulator_det_identity
 #print axioms ATK.BSD.regulator_two_pos
 #print axioms ATK.BSD.sha_recovery
+#print axioms ATK.BSD.torsion_contains_zero
+#print axioms ATK.BSD.torsion_card_pos

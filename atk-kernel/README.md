@@ -23,7 +23,7 @@ com auditoria automática de axiomas no GitHub Actions.
 Reproduz o resíduo real D_N de Nyman–Beurling/Báez-Duarte para N ≤ 300, em 40 e 60 dígitos.
 O arquivo `numerics/dn_N1500_prec45.csv` traz a tabela até N = 1500.
 
-## Teoremas (19)
+## Teoremas (26)
 
 | Arquivo | Conteúdo | Observação |
 |---|---|---|
