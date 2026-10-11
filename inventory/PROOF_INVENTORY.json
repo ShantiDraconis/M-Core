@@ -1,0 +1,182 @@
+{
+ "schema": "proof-inventory.v1",
+ "generated_by": "scripts/proof_inventory.py (kernel-derived; do not edit by hand)",
+ "toolchain": "leanprover/lean4:v4.19.0",
+ "libraries": [
+  {
+   "name": "MCore",
+   "srcDir": "."
+  }
+ ],
+ "policy": {
+  "standard_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "theorem_status": "CLEAN = only standard axioms; USES_SORRY = depends on sorryAx; USES_PROJECT_AXIOM = depends on an axiom declared in this library",
+  "prop_status": "PROVED/REFUTED = a CLEAN theorem has exactly that Prop (or its negation) as its type; VACUOUS = the definition body ends in True; NO_PROOF_IN_LIBRARY = no theorem of that exact type exists here (this is not a claim that it is open mathematics)",
+  "scope": "closed (arity-0) Prop definitions, plus any Prop-valued definition that is vacuous"
+ },
+ "summary": {
+  "modules_total": 7,
+  "modules_ok": 7,
+  "modules_failed": 0,
+  "modules_blocked": 0,
+  "modules_outside_default_build": 0,
+  "standalone_files_total": 0,
+  "standalone_files_failed": 0,
+  "theorems_total": 9,
+  "theorems_clean": 9,
+  "theorems_using_sorry": 0,
+  "theorems_using_project_axiom": 0,
+  "theorems_nonstandard_axioms": 0,
+  "project_axioms_declared": 0,
+  "props_reported": 0,
+  "props_proved": 0,
+  "props_refuted": 0,
+  "props_vacuous": 0,
+  "props_no_proof_in_library": 0
+ },
+ "project_axioms": [],
+ "environment_groups": 1,
+ "name_clashes": [],
+ "modules": [
+  {
+   "module": "MCore",
+   "path": "MCore.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.A1Amplitude",
+   "path": "MCore/A1Amplitude.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.A2SelfRef",
+   "path": "MCore/A2SelfRef.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.A3Zero",
+   "path": "MCore/A3Zero.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.A4Scale",
+   "path": "MCore/A4Scale.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Admissible",
+   "path": "MCore/Admissible.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Core",
+   "path": "MCore/Core.lean",
+   "status": "OK",
+   "in_default_build": true
+  }
+ ],
+ "standalone_files": [],
+ "props": [],
+ "theorems": [
+  {
+   "name": "MCore.AuditRecord.amplitudeLaw",
+   "module": "MCore.Admissible",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.AuditRecord.scaleLaw",
+   "module": "MCore.Admissible",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.AuditRecord.selfRefGate",
+   "module": "MCore.Admissible",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CertifiedThreshold.belowOne",
+   "module": "MCore.A4Scale",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.CertifiedThreshold.positive",
+   "module": "MCore.A4Scale",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.TwoPathLimitFailure.distinct",
+   "module": "MCore.A3Zero",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.amplitude_unbounded",
+   "module": "MCore.A1Amplitude",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.no_fixed_delta_gap",
+   "module": "MCore.A1Amplitude",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.no_path_independent_extension",
+   "module": "MCore.A3Zero",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  }
+ ]
+}
