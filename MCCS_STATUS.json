@@ -56,7 +56,17 @@
         "theorems_all_standard_axioms": 400,
         "first_error": "lean/MCore/B01ExactConductorContract.lean:17:2: Prop-valued structure B01ExactConductorContract has a data field `level` (projection rejected)",
         "note": "Default-build module B01ExactConductorContract fails, so the root module MCore is blocked. Orphans also failing: ATK_HARD_BEAL_CONDUCTOR_EXACT (checks a name that does not exist), T36E_MASTER (imports Mathlib, which this package does not require).",
-        "previous_kernel_state": "BUILD_PENDING"
+        "previous_kernel_state": "BUILD_PENDING",
+        "fix": {
+          "branch": "atk/proof-inventory-bfa2caa9",
+          "commit": "1094a79b89001da204ee323f37725fb84e37349d",
+          "workflow_run": 38151173572,
+          "conclusion": "success",
+          "modules_ok": "77/80",
+          "default_build": "GREEN",
+          "change": "B01ExactConductorContract is a Type (it carries the level as data)",
+          "effect": "becomes the queue state once this branch is merged into attack/b01-exact-conductor-contract-clean-20260921"
+        }
       },
       "current": [
         "B01_CONDUCTOR_EXACT_LEVEL",
@@ -104,7 +114,17 @@
         "theorems_all_standard_axioms": 146,
         "first_error": "MillenniumAudit/StabilizedHypothetical.lean:12:0: invalid 'import' command, it must be used in the beginning of the file",
         "note": "Default-build module StabilizedHypothetical fails, so the root module MillenniumAudit is blocked.",
-        "previous_kernel_state": "BUILD_PENDING"
+        "previous_kernel_state": "BUILD_PENDING",
+        "fix": {
+          "branch": "atk/proof-inventory-1fbec755",
+          "commit": "f74a1a08d6eaef04bf24f7591bc5b51b42e84b13",
+          "workflow_run": 38152909916,
+          "conclusion": "success",
+          "modules_ok": "12/13",
+          "default_build": "GREEN",
+          "change": "StabilizedHypothetical: import first; one field per line; two proofs repaired (K0a_totality, G1b_total_strict)",
+          "effect": "becomes the queue state once this branch is merged into attack/n01-uniformization-clean-v2-20260921"
+        }
       },
       "current": [
         "N01_SIGNED_DEPLETION",
@@ -150,7 +170,17 @@
         "theorems_all_standard_axioms": 126,
         "first_error": "lean/MCore/RH/K9_Regularization.lean:15:2: Prop-valued structure PathIndependenceCertificate has a data field `commonLimit` (outside the default build)",
         "note": "Every default-build module compiles and every theorem uses only standard axioms. The K9 route (K9_Regularization and the five modules importing it: K9, K9_CriterionRoutes, K9_RiemannHypothesis, K9_RigidityRoutes, K9_ZetaBridge) does not compile and is not imported by the root. The attack branch has since moved to fcb64a1d; that head is not checked here.",
-        "previous_kernel_state": "BUILD_PENDING"
+        "previous_kernel_state": "BUILD_PENDING",
+        "fix": {
+          "branch": "atk/proof-inventory-47b0b7da",
+          "commit": "f6d2ff21fc48a968c741a6de26de2ad6c1080c20",
+          "workflow_run": 38151721077,
+          "conclusion": "success",
+          "modules_ok": "38/43",
+          "default_build": "GREEN",
+          "change": "K9_Regularization compiles (existential common limit, keyword binder renamed); the K9 route still fails outside the default build: K9_ZetaBridge imports Mathlib.NumberTheory.LSeries.ZetaZeros, which this Mathlib does not have",
+          "effect": "becomes the queue state once this branch is merged into attack/bcf-zero-residue-clean-20260921"
+        }
       },
       "current": [
         "R01_ZERO_RESIDUE_DNLIMIT"
@@ -241,7 +271,17 @@
         "theorems_all_standard_axioms": 318,
         "first_error": "lean/MCore/YangMills/A1/UniformIntegerClustering.lean:32:32: application type mismatch",
         "note": "Default-build module UniformIntegerClustering fails; K14ClusteringAdapter (the declared source delta) and the root MCore are blocked by it.",
-        "previous_kernel_state": "BUILD_PENDING"
+        "previous_kernel_state": "BUILD_PENDING",
+        "fix": {
+          "branch": "atk/proof-inventory-d8a5e95e",
+          "commit": "2aec2176ab4d39697f25157dd19b8a87f804a999",
+          "workflow_run": 38151179014,
+          "conclusion": "success",
+          "modules_ok": "58/59",
+          "default_build": "GREEN",
+          "change": "UniformIntegerClustering rewrites the one-step bound by hcut; K14ClusteringAdapter now builds",
+          "effect": "becomes the queue state once this branch is merged into attack/b6-terminal-witness-clean-20260921"
+        }
       },
       "current": [
         "Y01_4D_IR_CLUSTERING_GAP"
@@ -846,7 +886,17 @@
         "theorems_all_standard_axioms": 4,
         "first_error": "MCore/A4Scale.lean:13:3: unexpected token 'λ'",
         "note": "Default-build module A4Scale fails; Admissible and the root MCore are blocked by it.",
-        "previous_kernel_state": "BUILD_PENDING"
+        "previous_kernel_state": "BUILD_PENDING",
+        "fix": {
+          "branch": "atk/proof-inventory-53cab040",
+          "commit": "2b4641576738f1a0ab991077980d130bea31cee2",
+          "workflow_run": 38151184357,
+          "conclusion": "success",
+          "modules_ok": "7/7",
+          "default_build": "GREEN",
+          "change": "A4Scale: binder renamed from the keyword λ",
+          "effect": "becomes the queue state once this branch is merged into attack/mcore-formulation-v2-clean-20260921"
+        }
       },
       "current": [
         "MCORE_F2_RELATIONAL_CENTER_UNIFICATION",

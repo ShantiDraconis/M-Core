@@ -1,0 +1,720 @@
+{
+ "schema": "proof-inventory.v1",
+ "generated_by": "scripts/proof_inventory.py (kernel-derived; do not edit by hand)",
+ "toolchain": "leanprover/lean4:v4.19.0",
+ "libraries": [
+  {
+   "name": "MCore",
+   "srcDir": "lean"
+  }
+ ],
+ "policy": {
+  "standard_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "theorem_status": "CLEAN = only standard axioms; USES_SORRY = depends on sorryAx; USES_PROJECT_AXIOM = depends on an axiom declared in this library",
+  "prop_status": "PROVED/REFUTED = a CLEAN theorem has exactly that Prop (or its negation) as its type; VACUOUS = the definition body ends in True; NO_PROOF_IN_LIBRARY = no theorem of that exact type exists here (this is not a claim that it is open mathematics)",
+  "scope": "closed (arity-0) Prop definitions, plus any Prop-valued definition that is vacuous"
+ },
+ "summary": {
+  "modules_total": 27,
+  "modules_ok": 26,
+  "modules_failed": 1,
+  "modules_blocked": 0,
+  "modules_outside_default_build": 4,
+  "standalone_files_total": 0,
+  "standalone_files_failed": 0,
+  "theorems_total": 79,
+  "theorems_clean": 79,
+  "theorems_using_sorry": 0,
+  "theorems_using_project_axiom": 0,
+  "theorems_nonstandard_axioms": 0,
+  "project_axioms_declared": 0,
+  "props_reported": 1,
+  "props_proved": 0,
+  "props_refuted": 0,
+  "props_vacuous": 0,
+  "props_no_proof_in_library": 1
+ },
+ "project_axioms": [],
+ "environment_groups": 1,
+ "name_clashes": [],
+ "modules": [
+  {
+   "module": "MCore",
+   "path": "lean/MCore.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.ATK_HARD_BSD_UNIVERSAL",
+   "path": "lean/MCore/ATK_HARD_BSD_UNIVERSAL.lean",
+   "status": "FAILED",
+   "in_default_build": false,
+   "first_error": "lean/MCore/ATK_HARD_BSD_UNIVERSAL.lean:5:7: unknown identifier 'hard_BSD_universal_rank_leading_Sha'"
+  },
+  {
+   "module": "MCore.AttackDAG.K3AlgebraAttacks",
+   "path": "lean/MCore/AttackDAG/K3AlgebraAttacks.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Audit",
+   "path": "lean/MCore/Audit.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BSDUniversalCountermodel",
+   "path": "lean/MCore/BSDUniversalCountermodel.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.D01RealizableDomain",
+   "path": "lean/MCore/BackwardAudit/D01RealizableDomain.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.BackwardAudit.D01UniversalFirewall",
+   "path": "lean/MCore/BackwardAudit/D01UniversalFirewall.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.BackwardAudit.HypotheticalRankPartOracle",
+   "path": "lean/MCore/BackwardAudit/HypotheticalRankPartOracle.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.BackwardAudit.WithoutOracle",
+   "path": "lean/MCore/BackwardAudit/WithoutOracle.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.Boundary",
+   "path": "lean/MCore/Boundary.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Frontier.K3Gaps",
+   "path": "lean/MCore/Frontier/K3Gaps.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K0",
+   "path": "lean/MCore/K0.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K1",
+   "path": "lean/MCore/K1.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K10",
+   "path": "lean/MCore/K10.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K11",
+   "path": "lean/MCore/K11.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K12",
+   "path": "lean/MCore/K12.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K13",
+   "path": "lean/MCore/K13.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K14",
+   "path": "lean/MCore/K14.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K2",
+   "path": "lean/MCore/K2.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K3",
+   "path": "lean/MCore/K3.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K4",
+   "path": "lean/MCore/K4.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K5",
+   "path": "lean/MCore/K5.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K6",
+   "path": "lean/MCore/K6.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K7",
+   "path": "lean/MCore/K7.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K8",
+   "path": "lean/MCore/K8.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.K9",
+   "path": "lean/MCore/K9.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MCore.Signature",
+   "path": "lean/MCore/Signature.lean",
+   "status": "OK",
+   "in_default_build": true
+  }
+ ],
+ "standalone_files": [],
+ "props": [
+  {
+   "name": "MCore.BackwardAudit.HypotheticalRankPartClosure",
+   "module": "MCore.BackwardAudit.HypotheticalRankPartOracle",
+   "closed_prop": true,
+   "status": "NO_PROOF_IN_LIBRARY",
+   "inhabited_by": [],
+   "refuted_by": []
+  }
+ ],
+ "theorems": [
+  {
+   "name": "MCore.BSDFinalAudit.k11CoreOpen",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BSDFinalAudit.k12CoreOpen",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BSDFinalAudit.k13CertificateBlocked",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BSDFinalAudit.k13CoreOpen",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BSDUniversalFirewall.finite_sample_does_not_force_universal",
+   "module": "MCore.BackwardAudit.D01UniversalFirewall",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BSDUniversalFirewall.sampled_case_passes",
+   "module": "MCore.BackwardAudit.D01UniversalFirewall",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BSDUniversalFirewall.universal_formula_fails",
+   "module": "MCore.BackwardAudit.D01UniversalFirewall",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.RankPartWitnessContract.witness",
+   "module": "MCore.BackwardAudit.WithoutOracle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.bsd_rank_part_without_oracle_still_open",
+   "module": "MCore.BackwardAudit.WithoutOracle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.hypothetical_rank_part",
+   "module": "MCore.BackwardAudit.HypotheticalRankPartOracle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.BackwardAudit.rank_witness_contract_closes",
+   "module": "MCore.BackwardAudit.WithoutOracle",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenBridgeFirewall.certificate_blocked",
+   "module": "MCore.K5",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenBridgeFirewall.open_status",
+   "module": "MCore.K5",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ProofCertificate.proof",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ProofCertificate.status_proved",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.boundary_ne_regular",
+   "module": "MCore.K0",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.bridge_not_certified",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.bsd_rank_part_on_family_apply",
+   "module": "MCore.BackwardAudit.D01RealizableDomain",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.candidate_ne_provedProperty",
+   "module": "MCore.K0",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k10_rank_equality_iff_two_directions",
+   "module": "MCore.K10",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k10_two_directions_not_certified",
+   "module": "MCore.K10",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k10_two_directions_not_proved",
+   "module": "MCore.K10",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k10_two_directions_open",
+   "module": "MCore.K10",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k11_analytic_continuation_external",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k11_functional_equation_external",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k11_modularity_external",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k11_rank_core_not_certified",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k11_rank_core_not_proved",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k11_rank_core_open",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k11_rank_equality_open",
+   "module": "MCore.K11",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k12_rank_part_iff_k8_target",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k12_rank_part_not_certified",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k12_rank_part_not_proved",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k12_rank_part_open",
+   "module": "MCore.K12",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_consume_open_core",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_open_core_iff_rank_part",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_open_core_not_certified",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_open_core_not_proved",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_open_core_status",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_upstream_k11_open",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k13_upstream_k12_open",
+   "module": "MCore.K13",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k14_chain_preserves_open_core",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k14_final_node_not_certified",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k14_final_node_open",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k14_no_false_final_certificate",
+   "module": "MCore.K14",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k1_not_proved",
+   "module": "MCore.K1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k1_status_openBridge",
+   "module": "MCore.K1",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k2_node_not_proved",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k2_node_status_openBridge",
+   "module": "MCore.K2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_attack_cannot_promote",
+   "module": "MCore.AttackDAG.K3AlgebraAttacks",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_attack_route_only",
+   "module": "MCore.AttackDAG.K3AlgebraAttacks",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_frontier_open",
+   "module": "MCore.Frontier.K3Gaps",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_gap_not_certified",
+   "module": "MCore.K3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_gap_not_proved",
+   "module": "MCore.K3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k3_gap_status_openBridge",
+   "module": "MCore.K3",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k4_no_promotion",
+   "module": "MCore.K4",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k4_status_openBridge",
+   "module": "MCore.K4",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k5_openBridge_cannot_certify",
+   "module": "MCore.K5",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k6_source_open",
+   "module": "MCore.K6",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k6_target_not_certified",
+   "module": "MCore.K6",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k6_target_open",
+   "module": "MCore.K6",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k7_obligation_not_certified",
+   "module": "MCore.K7",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k7_obligation_open",
+   "module": "MCore.K7",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k7_target_not_certified",
+   "module": "MCore.K7",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k7_target_still_open",
+   "module": "MCore.K7",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k8_consume_rank_equality",
+   "module": "MCore.K8",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k8_rank_bridge_not_certified",
+   "module": "MCore.K8",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k8_rank_bridge_not_proved",
+   "module": "MCore.K8",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k8_rank_bridge_open",
+   "module": "MCore.K8",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k9_analytic_to_arithmetic_not_certified",
+   "module": "MCore.K9",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k9_analytic_to_arithmetic_open",
+   "module": "MCore.K9",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k9_arithmetic_to_analytic_not_certified",
+   "module": "MCore.K9",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k9_arithmetic_to_analytic_open",
+   "module": "MCore.K9",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k9_equality_implies_analytic_to_arithmetic",
+   "module": "MCore.K9",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k9_equality_implies_arithmetic_to_analytic",
+   "module": "MCore.K9",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.k9_two_directions_imply_equality",
+   "module": "MCore.K9",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.rankOrderMismatchData_not_BSDRankPart",
+   "module": "MCore.BSDUniversalCountermodel",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.universal_abstract_BSDRankPart_false",
+   "module": "MCore.BSDUniversalCountermodel",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.unrestricted_not_a_valid_terminal_producer",
+   "module": "MCore.BSDUniversalCountermodel",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  }
+ ]
+}

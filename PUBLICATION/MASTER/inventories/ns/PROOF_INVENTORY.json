@@ -1,0 +1,2288 @@
+{
+ "schema": "proof-inventory.v1",
+ "generated_by": "scripts/proof_inventory.py (kernel-derived; do not edit by hand)",
+ "toolchain": "leanprover/lean4:v4.19.0",
+ "libraries": [
+  {
+   "name": "MillenniumAudit",
+   "srcDir": "."
+  },
+  {
+   "name": "G1",
+   "srcDir": "formal"
+  }
+ ],
+ "policy": {
+  "standard_axioms": [
+   "Classical.choice",
+   "Quot.sound",
+   "propext"
+  ],
+  "theorem_status": "CLEAN = only standard axioms; USES_SORRY = depends on sorryAx; USES_PROJECT_AXIOM = depends on an axiom declared in this library",
+  "prop_status": "PROVED/REFUTED = a CLEAN theorem has exactly that Prop (or its negation) as its type; VACUOUS = the definition body ends in True; NO_PROOF_IN_LIBRARY = no theorem of that exact type exists here (this is not a claim that it is open mathematics)",
+  "scope": "closed (arity-0) Prop definitions, plus any Prop-valued definition that is vacuous"
+ },
+ "summary": {
+  "modules_total": 13,
+  "modules_ok": 12,
+  "modules_failed": 1,
+  "modules_blocked": 0,
+  "modules_outside_default_build": 4,
+  "standalone_files_total": 4,
+  "standalone_files_failed": 1,
+  "theorems_total": 217,
+  "theorems_clean": 217,
+  "theorems_using_sorry": 0,
+  "theorems_using_project_axiom": 0,
+  "theorems_nonstandard_axioms": 0,
+  "project_axioms_declared": 0,
+  "props_reported": 1,
+  "props_proved": 1,
+  "props_refuted": 0,
+  "props_vacuous": 0,
+  "props_no_proof_in_library": 0
+ },
+ "project_axioms": [],
+ "environment_groups": 1,
+ "name_clashes": [],
+ "modules": [
+  {
+   "module": "G1",
+   "path": "formal/G1.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "G1.AlignmentTransport",
+   "path": "formal/G1/AlignmentTransport.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "G1.DynamicCampanato",
+   "path": "formal/G1/DynamicCampanato.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "G1.FailProofAllGaps",
+   "path": "formal/G1/FailProofAllGaps.lean",
+   "status": "FAILED",
+   "in_default_build": false,
+   "first_error": "formal/G1/FailProofAllGaps.lean:1:0: unknown module prefix 'formal'\n\nNo directory 'formal' or file 'formal.olean' in the search path entries:\n././.lake/packages/Cli/.lake/build/lib/lean\n././.lake/packages/batteries/.lake/build/lib/lean\n././.lake/packages/Qq/.lake/build/lib/lean\n././.lake/packages/aesop/.lake/build/lib/lean\n././.lake/packages/proofwidgets/.lake/build/lib/lean\n././.lake/packages/importGraph/.lake/build/lib/lean\n././.lake/packages/LeanSearchClient/.lake/build/lib/lean\n././.lake/packages/plausible/.lake/build/lib/lean\n././.lake/packages/mathlib/.lake/build/lib/lean\n././.lake/build/lib/lean\n/home/runner/.elan/toolchains/leanprover--lean4---v4.19.0/lib/lean"
+  },
+  {
+   "module": "G1.FailProofFinal",
+   "path": "formal/G1/FailProofFinal.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "path": "formal/G1/G1_DynamicCriticalGeometry.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "path": "formal/G1/G1_DynamicCriticalGeometry_Hardened.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "G1.G1_PrizeStandard_Interface",
+   "path": "formal/G1/G1_PrizeStandard_Interface.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "G1.HypothesesComplete_v2",
+   "path": "formal/G1/HypothesesComplete_v2.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "G1.WeightedLow",
+   "path": "formal/G1/WeightedLow.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "G1.XiEpsPDE",
+   "path": "formal/G1/XiEpsPDE.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MillenniumAudit",
+   "path": "MillenniumAudit.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "path": "MillenniumAudit/StabilizedHypothetical.lean",
+   "status": "OK",
+   "in_default_build": true
+  }
+ ],
+ "standalone_files": [
+  {
+   "path": "audit/multistate-proof-refutation-v1/DeltaUniformity.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/multistate-proof-refutation-v1/G1C_AxiomAudit.lean",
+   "status": "FAILED",
+   "first_error": "audit/multistate-proof-refutation-v1/G1C_AxiomAudit.lean:1:14: error: unknown constant 'closed_depletion_implies_decay'"
+  },
+  {
+   "path": "audit/multistate-proof-refutation-v1/NS_Multistate.lean",
+   "status": "OK"
+  },
+  {
+   "path": "audit/multistate-proof-refutation-v1/NearFieldTarget.lean",
+   "status": "OK"
+  }
+ ],
+ "props": [
+  {
+   "name": "G1FailProofFinal.CURRENT_ARCHITECTURE_FAIL_PROOF_PROP",
+   "module": "G1.FailProofFinal",
+   "closed_prop": true,
+   "status": "PROVED",
+   "inhabited_by": [
+    "G1FailProofFinal.CURRENT_ARCHITECTURE_FAIL_PROOF"
+   ],
+   "refuted_by": []
+  }
+ ],
+ "theorems": [
+  {
+   "name": "G1AlignmentTransport.Q_joint.hQ_nn",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.Q_joint.hZ_nn",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.RhoStarScaleCovariance.hgrad_pos",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.RhoStarScaleCovariance.hgrad_scaled",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.RhoStarScaleCovariance.homega_scaled",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.RhoStarScaleCovariance.hscale",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.TransportEstimate.hC_transport_pos",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.TransportEstimate.hnu",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.TransportEstimate.htheta",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.UniformAbsorption.hγ_lt_one",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.UniformAbsorption.hγ_pos",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.V_eff_Data.hV_eff_eq",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.V_eff_Data.homegaLinf_pos",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.alpha_eps_le_norm",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1AlignmentTransport.rhoStarScaleLaw_holds",
+   "module": "G1.AlignmentTransport",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Audit.DynamicGeometryInterface.geometry_to_signed_depletion",
+   "module": "G1.G1_PrizeStandard_Interface",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Audit.EndpointBridge.energy_enstrophy_to_L3",
+   "module": "G1.G1_PrizeStandard_Interface",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Audit.EndpointBridge.ess_endpoint",
+   "module": "G1.G1_PrizeStandard_Interface",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Audit.EnstrophyData.hy",
+   "module": "G1.G1_PrizeStandard_Interface",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Audit.EnstrophyData.hz",
+   "module": "G1.G1_PrizeStandard_Interface",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Audit.conditional_regularization",
+   "module": "G1.G1_PrizeStandard_Interface",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Audit.endpoint_composition",
+   "module": "G1.G1_PrizeStandard_Interface",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Audit.g1Closed_to_dissipation",
+   "module": "G1.G1_PrizeStandard_Interface",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.CH95AtTime.hC95",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.CriticalCoherenceAtTime.hC",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.DynamicCriticalGeometry.dynamics_to_uniform_coherence",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.DynamicCriticalGeometry.hC0",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.FullChain.hC0",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.KernelToDepletionBridge.bridge",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.KernelWeightedCoherence.hconstant",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.QuantitativeCriticalCoherenceAtTime.hC",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.QuantitativeCriticalCoherenceAtTime.holderHalf",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.QuantitativeCriticalCoherenceAtTime.hrho",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.QuantitativeCriticalCoherenceAtTime.nondegenerateRegion",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.QuantitativeKernelWeightedCoherence.constantControl",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.QuantitativeKernelWeightedCoherence.hkernelC",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.QuantitativeKernelWeightedCoherence.htransferFactor",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.RemainderCutoffFreeWitness.hC_rem_pos",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.SignedDepletionIface.hnu",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.SignedDepletionIface.hδ",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.StretchingData.hz",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.VorticityScalingData.hgrad",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.VorticityScalingData.homega",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.VorticityScalingData.hscale",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.coherenceToKernel_interface_can_ignore_constant",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.criticalCoherence_interface_admits_vacuous_witness",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.dynamic_geometry_closes_G1",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.fullChain_interface_admits_vacuous_composition",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.hDynamic_eps_Statement.hC0",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.hDynamic_eps_Statement.heps",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.hDynamic_eps_Statement.hkappa",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.hDynamic_eps_Statement.htheta",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.hardened_bridge_preserves_constant_control",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.inner_normalizedTangentialPart_eq_zero",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.normalizedTangentialPart_eq_tangentialPart_of_unit",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.quantitative_coherence_exports_bound",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.tangentialPart_add_parallel",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.tangentialPart_self_formula",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.tangentialPart_self_nonzero_of_nonunit",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.w_R_Data.hR",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.w_R_Data.hR_pos",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.w_R_Data.hgrad",
+   "module": "G1.G1_DynamicCriticalGeometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1Dynamic.xiEpsTangentialPart_orthogonal",
+   "module": "G1.G1_DynamicCriticalGeometry_Hardened",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.CampanatoIterationStep.hA",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.CampanatoIterationStep.hgamma",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.CampanatoIterationStep.hr",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.CampanatoIterationStep.hrhoStar",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.CampanatoIterationStep.step",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.DiffusionHalfContraction.half_contraction",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.DiffusionHalfContraction.hkappa",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.FarFieldAveragedBound.estimate",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.FarFieldAveragedBound.hC_far",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.FarFieldAveragedBound.homegaL2",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.FarFieldAveragedBound.hr",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.FarFieldAveragedBound.hr_le_rhoStar",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.FarFieldAveragedBound.hrhoStar",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.LocalEnergyIdentityData.hr",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.LocalEnergyIdentityData.identity",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.LocalEnergyIdentityData.no_cubic_ratio_reduction",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.LocalEnergyIdentityData.remainder_cutoff_free",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.StretchFarSignedOpenCZ.hbetaMissing",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.StretchFarSignedOpenCZ.hr",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.StretchFarSignedOpenCZ.hrhoStar",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.betaCampanato_energy_only",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.betaCampanato_eq",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.farField_linear_ratio",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.gamma_lt_half_of_barrier_condition",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.iterate_linear_barrier",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.iterate_to_half_scale",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.localEnergy_radius_formula",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.ofXiEpsPDE_PROVED_IDENTITY",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.proved_identity_interface_accepts_vacuous_pde",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1DynamicCampanato.w_R_radius_formula",
+   "module": "G1.DynamicCampanato",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1FailProofFinal.CURRENT_ARCHITECTURE_FAIL_PROOF",
+   "module": "G1.FailProofFinal",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1FailProofFinal.absorption_route_countercertificate",
+   "module": "G1.FailProofFinal",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1FailProofFinal.coherence_interface_countercertificate",
+   "module": "G1.FailProofFinal",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1FailProofFinal.dynamic_campanato_countercertificate",
+   "module": "G1.FailProofFinal",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1FailProofFinal.fullchain_interface_countercertificate",
+   "module": "G1.FailProofFinal",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1FailProofFinal.xieps_interface_countercertificate",
+   "module": "G1.FailProofFinal",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.CH95Observation.hvalue",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.CH95_conditional_G1",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.EndpointBridge.energy_enstrophy_to_L3",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.EndpointBridge.ess_endpoint",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.EnstrophyData.hy",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.EnstrophyData.hz",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.KernelToDepletionBridge.kernel_to_depletion",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.KernelWeightedCoherence.hconstant",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.conditional_G1_closure",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.depletion_to_differential",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1HypothesesV2.endpoint_chain",
+   "module": "G1.HypothesesComplete_v2",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.IntegrableCoefficient.ha_eps_eq",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.IntegrableCoefficient.hnu",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.IntegrableCoefficient.homegaL2_nn",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.SignedDepletion.depletion",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.SignedDepletion.hZ",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.SignedDepletion.hnu",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.SignedDepletion.hδ",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.WeightedAbsorptionData.hγ_lt_one",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.WeightedAbsorptionData.hγ_pos",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.WeightedLowData.hC_low",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.WeightedLowData.heta_low_nn",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.WeightedLowData.hδ",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.WeightedLowData.low_bound",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.gamma_effective_cannot_bound_positive_gamma",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.gamma_effective_eq",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.gamma_effective_lt_one",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.gamma_effective_not_pos",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1WeightedLow.two_times_06sq_times_50",
+   "module": "G1.WeightedLow",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.Cutoff.hR",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.Cutoff.hR_pos",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.Cutoff.hgrad",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.RemainderCutoffFreeWitness.hC_rem_pos",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.RemainderCutoffFreeWitness.independence_certificate",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.XiEpsPDE.R2_definition",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.XiEpsPDE.equation_holds",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.XiEpsPDE.equation_proof",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.XiEpsPDE.hR1_vanishes",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.XiEpsPDE.hR2_bound",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.XiEpsPDE.hε",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.XiEpsPDE.local_energy_identity",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.XiEpsPDE.strainXi_definition",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.magEps_unfold",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.regularizedChainMap_unfold",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.xiEps_unfold",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.xieps_record_allows_vacuous_equation",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "G1XiEpsPDE.xieps_record_allows_vacuous_local_energy_test",
+   "module": "G1.XiEpsPDE",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.AbsorptionCertificate.hCutoff",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.AbsorptionCertificate.hMotion",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.AbsorptionCertificate.hTail",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.AbsorptionCertificate.hγ1",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.AbsorptionCertificate.hγ2",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.AbsorptionCertificate.strictBudget",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.ActualNSToTwentyFive.actual",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.AubinLionsCertificate.compactnessProof",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.CompleteConditionalClosure.criticalHypothesis",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.CriticalDecomposition.hDivergence",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.CriticalDecomposition.hPressure",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.CriticalDecomposition.hVelocity",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.CriticalL3Certificate.hBound",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.CriticalL3Certificate.uniform",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.ESSEndpoint.endpoint",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.EnstrophyState.ha",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.EnstrophyState.hy",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.EnstrophyState.hz",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.G1a5_expansive_example",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.G1b_total_strict",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.G1d2_time_integral_bound",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.G2_differential",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.GronwallCertificate.hTotalA",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.GronwallCertificate.uniformBound",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.JointEvolutionCertificate.evolution",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.JointEvolutionCertificate.hDissipation",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.JointEvolutionCertificate.hq",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.K0DegenerateCertificate.hy",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.K0DegenerateCertificate.hz",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.K0DegenerateCertificate.zeroGradient",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.K0a_totality",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.K0b_degenerate_trivial",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.LerayEnergyCertificate.energy",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.LerayEnergyCertificate.hTotalGradU2",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.LowerSemicontinuityCertificate.hLimit",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.LowerSemicontinuityCertificate.hRegularized",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.LowerSemicontinuityCertificate.liminfBound",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.MonotoneNSEntropy.hDefect",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.MonotoneNSEntropy.identity",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.MonotoneNSEntropy.remainderControl",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.NonCircularMultiplier.hBound",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.NonCircularMultiplier.hIndependent",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.Perelman_like_22_25_3_1",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.PrincipalValueTailCertificate.hDenominator",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.PrincipalValueTailCertificate.hNumerator",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.PrincipalValueTailCertificate.ratioOnNonzero",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.PrincipalValueTailCertificate.tailBound",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.PrincipalValueTailCertificate.zeroBranch",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.SignedDepletion.balance",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.SignedDepletion.hθ0",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.SignedDepletion.hθ1",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.SignedDepletion.stretching",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.TypedDefectCertificate.hDefectEnergy",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.WeightedGradientControl.domination",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.WeightedGradientControl.hPalinstrophy",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.WeightedGradientControl.hWeighted",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.WeightedNegligibility.bound",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.WeightedNegligibility.hConstant",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.WeightedNoncollapseCertificate.hConstant",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.WeightedNoncollapseCertificate.noncollapse",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.dissipative_margin",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.empirical_eta_budget",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.energy_dissipation_budget",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.epsilon_positive",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.gamma_strict",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.kappa_positive",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.tail_budget_positive",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.theta_exact",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.theta_strict",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.time_coefficient_budget",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MillenniumAudit.StabilizedHypothetical.viscosity_positive",
+   "module": "MillenniumAudit.StabilizedHypothetical",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  }
+ ]
+}
