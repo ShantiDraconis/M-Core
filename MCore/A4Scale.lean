@@ -10,7 +10,7 @@ structure Scaling (U Λ : Type*) where
 
 /-- Scale criticality means invariance under the adapter's declared scaling. -/
 def ScaleCritical {U Λ : Type*} (s : Scaling U Λ) (I : U → ℝ) : Prop :=
-  ∀ λ u, I (s.act λ u) = I u
+  ∀ l u, I (s.act l u) = I u
 
 /-- Calibration constants are data, not theorems. -/
 structure Calibration where
