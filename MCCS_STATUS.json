@@ -43,30 +43,27 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "b6667e63a2c28c32cee0ab17714f9d772a0b4768",
       "canonical_frozen": "frozen/b01-conductor-level-interface-green-b6667e63",
-      "active_attack_head": "bfa2caa9b73da14d318e9b71d58a89222e9445da",
+      "active_attack_head": "5bc42deb494f21cd7bdd9587ce335ba1d6f55fa5",
       "attack_branch": "attack/b01-exact-conductor-contract-clean-20260921",
       "source_hygiene": "PASS",
-      "kernel_state": "KERNEL_BUILD_FAILED",
+      "kernel_state": "DEFAULT_BUILD_GREEN",
       "kernel_evidence": {
         "derived_by": "scripts/proof_inventory.py (builds every library module at the recorded head; kernel axiom audit)",
-        "head": "bfa2caa9b73da14d318e9b71d58a89222e9445da",
-        "workflow_run": 38103620899,
-        "run_branch": "atk/proof-inventory-bfa2caa9",
-        "modules_ok": "75/80",
-        "theorems_all_standard_axioms": 400,
-        "first_error": "lean/MCore/B01ExactConductorContract.lean:17:2: Prop-valued structure B01ExactConductorContract has a data field `level` (projection rejected)",
-        "note": "Default-build module B01ExactConductorContract fails, so the root module MCore is blocked. Orphans also failing: ATK_HARD_BEAL_CONDUCTOR_EXACT (checks a name that does not exist), T36E_MASTER (imports Mathlib, which this package does not require).",
+        "head": "5bc42deb494f21cd7bdd9587ce335ba1d6f55fa5",
+        "workflow_run": 38154377064,
+        "run_branch": "attack/b01-exact-conductor-contract-clean-20260921",
+        "modules_ok": "77/80",
+        "theorems_all_standard_axioms": 403,
+        "note": "Attack branch after merging fix PR #21; Proof inventory on the merged head is green (every default-build module compiles, standard axioms only).",
         "previous_kernel_state": "BUILD_PENDING",
-        "fix": {
-          "branch": "atk/proof-inventory-bfa2caa9",
-          "commit": "1094a79b89001da204ee323f37725fb84e37349d",
-          "workflow_run": 38151173572,
-          "conclusion": "success",
-          "modules_ok": "77/80",
-          "default_build": "GREEN",
-          "change": "B01ExactConductorContract is a Type (it carries the level as data)",
-          "effect": "becomes the queue state once this branch is merged into attack/b01-exact-conductor-contract-clean-20260921"
-        }
+        "history": [
+          {
+            "head": "bfa2caa9b73da14d318e9b71d58a89222e9445da",
+            "kernel_state": "BUILD_PENDING -> KERNEL_BUILD_FAILED",
+            "workflow_run": 38103620899,
+            "first_error": "lean/MCore/B01ExactConductorContract.lean:17:2: Prop-valued structure B01ExactConductorContract has a data field `level` (projection rejected)"
+          }
+        ]
       },
       "current": [
         "B01_CONDUCTOR_EXACT_LEVEL",
@@ -101,30 +98,27 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "b7caecc2db571679af4b6ee64829253dcd97cea2",
       "canonical_frozen": "frozen/prefix-n01-uniformity-b7caecc2",
-      "active_attack_head": "1fbec755edf9dc83e726ab57e3a3f255cba373c5",
+      "active_attack_head": "b3f5e4e67b60e552e3aa7ec0d009e9a3897b127c",
       "attack_branch": "attack/n01-uniformization-clean-v2-20260921",
       "source_hygiene": "PASS",
-      "kernel_state": "KERNEL_BUILD_FAILED",
+      "kernel_state": "DEFAULT_BUILD_GREEN",
       "kernel_evidence": {
         "derived_by": "scripts/proof_inventory.py (builds every library module at the recorded head; kernel axiom audit)",
-        "head": "1fbec755edf9dc83e726ab57e3a3f255cba373c5",
-        "workflow_run": 37958094478,
-        "run_branch": "atk/proof-inventory-1fbec755",
-        "modules_ok": "10/13",
-        "theorems_all_standard_axioms": 146,
-        "first_error": "MillenniumAudit/StabilizedHypothetical.lean:12:0: invalid 'import' command, it must be used in the beginning of the file",
-        "note": "Default-build module StabilizedHypothetical fails, so the root module MillenniumAudit is blocked.",
+        "head": "b3f5e4e67b60e552e3aa7ec0d009e9a3897b127c",
+        "workflow_run": 38154380265,
+        "run_branch": "attack/n01-uniformization-clean-v2-20260921",
+        "modules_ok": "12/13",
+        "theorems_all_standard_axioms": 217,
+        "note": "Attack branch after merging fix PR #42; Proof inventory on the merged head is green (every default-build module compiles, standard axioms only).",
         "previous_kernel_state": "BUILD_PENDING",
-        "fix": {
-          "branch": "atk/proof-inventory-1fbec755",
-          "commit": "f74a1a08d6eaef04bf24f7591bc5b51b42e84b13",
-          "workflow_run": 38152909916,
-          "conclusion": "success",
-          "modules_ok": "12/13",
-          "default_build": "GREEN",
-          "change": "StabilizedHypothetical: import first; one field per line; two proofs repaired (K0a_totality, G1b_total_strict)",
-          "effect": "becomes the queue state once this branch is merged into attack/n01-uniformization-clean-v2-20260921"
-        }
+        "history": [
+          {
+            "head": "1fbec755edf9dc83e726ab57e3a3f255cba373c5",
+            "kernel_state": "BUILD_PENDING -> KERNEL_BUILD_FAILED",
+            "workflow_run": 37958094478,
+            "first_error": "MillenniumAudit/StabilizedHypothetical.lean:12:0: invalid 'import' command, it must be used in the beginning of the file"
+          }
+        ]
       },
       "current": [
         "N01_SIGNED_DEPLETION",
@@ -157,30 +151,27 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "5c66f8dca03834f24a61a9b1219e7af9d4892dd6",
       "canonical_frozen": "frozen/vanishing-upper-bound-green-5c66f8dc",
-      "active_attack_head": "47b0b7da65a00d9096ed108989d5676037f6be93",
+      "active_attack_head": "abe9fa74e89d4bc42bf4786c19b5bc0f732c9aaa",
       "attack_branch": "attack/bcf-zero-residue-clean-20260921",
       "source_hygiene": "PASS",
       "kernel_state": "DEFAULT_BUILD_GREEN",
       "kernel_evidence": {
         "derived_by": "scripts/proof_inventory.py (builds every library module at the recorded head; kernel axiom audit)",
-        "head": "47b0b7da65a00d9096ed108989d5676037f6be93",
-        "workflow_run": 37958097550,
-        "run_branch": "atk/proof-inventory-47b0b7da",
-        "modules_ok": "37/43",
-        "theorems_all_standard_axioms": 126,
-        "first_error": "lean/MCore/RH/K9_Regularization.lean:15:2: Prop-valued structure PathIndependenceCertificate has a data field `commonLimit` (outside the default build)",
-        "note": "Every default-build module compiles and every theorem uses only standard axioms. The K9 route (K9_Regularization and the five modules importing it: K9, K9_CriterionRoutes, K9_RiemannHypothesis, K9_RigidityRoutes, K9_ZetaBridge) does not compile and is not imported by the root. The attack branch has since moved to fcb64a1d; that head is not checked here.",
+        "head": "abe9fa74e89d4bc42bf4786c19b5bc0f732c9aaa",
+        "workflow_run": 38154386919,
+        "run_branch": "attack/bcf-zero-residue-clean-20260921",
+        "modules_ok": "38/43",
+        "theorems_all_standard_axioms": 132,
+        "note": "Attack branch after merging fix PR #9; Proof inventory on the merged head is green (every default-build module compiles, standard axioms only).",
         "previous_kernel_state": "BUILD_PENDING",
-        "fix": {
-          "branch": "atk/proof-inventory-47b0b7da",
-          "commit": "f6d2ff21fc48a968c741a6de26de2ad6c1080c20",
-          "workflow_run": 38151721077,
-          "conclusion": "success",
-          "modules_ok": "38/43",
-          "default_build": "GREEN",
-          "change": "K9_Regularization compiles (existential common limit, keyword binder renamed); the K9 route still fails outside the default build: K9_ZetaBridge imports Mathlib.NumberTheory.LSeries.ZetaZeros, which this Mathlib does not have",
-          "effect": "becomes the queue state once this branch is merged into attack/bcf-zero-residue-clean-20260921"
-        }
+        "history": [
+          {
+            "head": "47b0b7da65a00d9096ed108989d5676037f6be93",
+            "kernel_state": "BUILD_PENDING -> DEFAULT_BUILD_GREEN",
+            "workflow_run": 37958097550,
+            "first_error": "lean/MCore/RH/K9_Regularization.lean:15:2: Prop-valued structure PathIndependenceCertificate has a data field `commonLimit` (outside the default build)"
+          }
+        ]
       },
       "current": [
         "R01_ZERO_RESIDUE_DNLIMIT"
@@ -258,30 +249,27 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "cd4bbfd348b607bd24ed0c6d605207b764286f58",
       "canonical_frozen": "frozen/prefix-y01-b3b5-hardening-cd4bbfd",
-      "active_attack_head": "d8a5e95ef2eadd1524c5c6a33af4a2a7d5e57bc1",
+      "active_attack_head": "40e3db7bd841f2fb8939b881f71906cbf5bbf89e",
       "attack_branch": "attack/b6-terminal-witness-clean-20260921",
       "source_hygiene": "PASS",
-      "kernel_state": "KERNEL_BUILD_FAILED",
+      "kernel_state": "DEFAULT_BUILD_GREEN",
       "kernel_evidence": {
         "derived_by": "scripts/proof_inventory.py (builds every library module at the recorded head; kernel axiom audit)",
-        "head": "d8a5e95ef2eadd1524c5c6a33af4a2a7d5e57bc1",
-        "workflow_run": 37958101180,
-        "run_branch": "atk/proof-inventory-d8a5e95e",
-        "modules_ok": "55/59",
-        "theorems_all_standard_axioms": 318,
-        "first_error": "lean/MCore/YangMills/A1/UniformIntegerClustering.lean:32:32: application type mismatch",
-        "note": "Default-build module UniformIntegerClustering fails; K14ClusteringAdapter (the declared source delta) and the root MCore are blocked by it.",
+        "head": "40e3db7bd841f2fb8939b881f71906cbf5bbf89e",
+        "workflow_run": 38154383522,
+        "run_branch": "attack/b6-terminal-witness-clean-20260921",
+        "modules_ok": "58/59",
+        "theorems_all_standard_axioms": 321,
+        "note": "Attack branch after merging fix PR #8; Proof inventory on the merged head is green (every default-build module compiles, standard axioms only).",
         "previous_kernel_state": "BUILD_PENDING",
-        "fix": {
-          "branch": "atk/proof-inventory-d8a5e95e",
-          "commit": "2aec2176ab4d39697f25157dd19b8a87f804a999",
-          "workflow_run": 38151179014,
-          "conclusion": "success",
-          "modules_ok": "58/59",
-          "default_build": "GREEN",
-          "change": "UniformIntegerClustering rewrites the one-step bound by hcut; K14ClusteringAdapter now builds",
-          "effect": "becomes the queue state once this branch is merged into attack/b6-terminal-witness-clean-20260921"
-        }
+        "history": [
+          {
+            "head": "d8a5e95ef2eadd1524c5c6a33af4a2a7d5e57bc1",
+            "kernel_state": "BUILD_PENDING -> KERNEL_BUILD_FAILED",
+            "workflow_run": 37958101180,
+            "first_error": "lean/MCore/YangMills/A1/UniformIntegerClustering.lean:32:32: application type mismatch"
+          }
+        ]
       },
       "current": [
         "Y01_4D_IR_CLUSTERING_GAP"
@@ -293,7 +281,7 @@
         "frozen/y01-uniform-integer-clustering-green-37acd577"
       ],
       "source_delta": [
-        "lean/MCore/YangMills/A1/K14ClusteringAdapter.lean: BLOCKED_BY_UniformIntegerClustering_BUILD_FAILURE"
+        "lean/MCore/YangMills/A1/K14ClusteringAdapter.lean: GREEN (builds on merged head 40e3db7b, run 38154383522)"
       ],
       "terminal_certificate": {
         "repo": "m-core-yang-mills",
@@ -873,30 +861,27 @@
       "state": "IN_PROCESS",
       "canonical_hard_base": "e6bcc70441797e7c2b371bff1a473be19a5663a4",
       "inherited_foundation": "frozen/final-fail-closed-center-hard-ee1ec8fb",
-      "active_attack_head": "53cab04081827f792c6f55f7dc5d1eb232155134",
+      "active_attack_head": "43b1b9d5fb314ff660dd14da80b7741c8708e469",
       "attack_branch": "attack/mcore-formulation-v2-clean-20260921",
       "source_hygiene": "PENDING_CI",
-      "kernel_state": "KERNEL_BUILD_FAILED",
+      "kernel_state": "ALL_LIBRARY_MODULES_GREEN",
       "kernel_evidence": {
         "derived_by": "scripts/proof_inventory.py (builds every library module at the recorded head; kernel axiom audit)",
-        "head": "53cab04081827f792c6f55f7dc5d1eb232155134",
-        "workflow_run": 37958106804,
-        "run_branch": "atk/proof-inventory-53cab040",
-        "modules_ok": "4/7",
-        "theorems_all_standard_axioms": 4,
-        "first_error": "MCore/A4Scale.lean:13:3: unexpected token 'λ'",
-        "note": "Default-build module A4Scale fails; Admissible and the root MCore are blocked by it.",
+        "head": "43b1b9d5fb314ff660dd14da80b7741c8708e469",
+        "workflow_run": 38156708722,
+        "run_branch": "attack/mcore-formulation-v2-clean-20260921",
+        "modules_ok": "20/20",
+        "theorems_all_standard_axioms": 110,
+        "note": "Attack branch after merging #17, #18 and #20. This branch has no root module (lean/MCore.lean is absent), so there is no default build; every one of the 20 library modules compiles and every theorem uses only standard axioms. The branch workflow \"M-Core formulation v2\" (build + axiom audit) also passed: run 38156708735.",
         "previous_kernel_state": "BUILD_PENDING",
-        "fix": {
-          "branch": "atk/proof-inventory-53cab040",
-          "commit": "2b4641576738f1a0ab991077980d130bea31cee2",
-          "workflow_run": 38151184357,
-          "conclusion": "success",
-          "modules_ok": "7/7",
-          "default_build": "GREEN",
-          "change": "A4Scale: binder renamed from the keyword λ",
-          "effect": "becomes the queue state once this branch is merged into attack/mcore-formulation-v2-clean-20260921"
-        }
+        "history": [
+          {
+            "head": "53cab04081827f792c6f55f7dc5d1eb232155134",
+            "kernel_state": "BUILD_PENDING -> KERNEL_BUILD_FAILED",
+            "workflow_run": 37958106804,
+            "first_error": "MCore/A4Scale.lean:13:3: unexpected token 'λ'"
+          }
+        ]
       },
       "current": [
         "MCORE_F2_RELATIONAL_CENTER_UNIFICATION",
@@ -920,20 +905,26 @@
       "endpoint_promotion": false,
       "superseded_branch": "attack/mcore-formulation-v2-20260921",
       "formulation_obligations": {
-        "green": 2,
-        "source_build_pending": 1,
+        "green": 3,
+        "source_build_pending": 0,
         "open": 1,
         "total": 4,
         "green_items": [
           "FailAt <-> FundamentalIndeterminacy <-> IFail under induced center resolution with admissible identity",
-          "DeterminedAt <-> CenterDetermined"
-        ],
-        "source_items": [
+          "DeterminedAt <-> CenterDetermined",
           "relation-level HARD closure: RelationalTotality induces proposition-level ClosedCenterHard and preserves separate FailAt; explicit RelationalFunctionalWitness supplies underlying maps without Classical.choice"
         ],
+        "source_items": [],
         "open_items": [
           "typed adapter from certified external Phi3/numeric indeterminacy to structural IFail without definitional collapse"
-        ]
+        ],
+        "promotion_evidence": {
+          "item": "relation-level HARD closure: RelationalTotality induces proposition-level ClosedCenterHard and preserves separate FailAt; explicit RelationalFunctionalWitness supplies underlying maps without Classical.choice",
+          "head": "43b1b9d5fb314ff660dd14da80b7741c8708e469",
+          "proof_inventory_run": 38156708722,
+          "formulation_workflow_run": 38156708735,
+          "axioms": "RelationalClosedCenterBridge: every theorem (start/center/finish totality and uniqueness, closedCenterHard_coexists_with_failAt, the four *_spec lemmas) depends on no axioms, so in particular not on Classical.choice"
+        }
       }
     }
   ],
