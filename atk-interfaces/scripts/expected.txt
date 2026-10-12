@@ -1,0 +1,15 @@
+lean/ATK/KernelInterfaces.lean ATK.KernelInterfaces.discharge
+lean/ATK/KernelInterfaces.lean ATK.KernelInterfaces.seven_targets
+lean/ATK/KernelInterfaces.lean ATK.KernelInterfaces.arbitrary_wrapper_is_inhabited
+lean/ATK/KernelInterfaces.lean ATK.KernelInterfaces.finite_group_has_element
+lean/ATK/Terminal/IndependentCore.lean ATK.Terminal.nonnegative_antitone_has_limit
+lean/ATK/Terminal/IndependentCore.lean ATK.Terminal.no_inhabitant_of_strict_descent
+lean/ATK/Terminal/IndependentCore.lean ATK.Terminal.finite_group_nonempty
+lean/ATK/Terminal/IndependentCore.lean ATK.Terminal.independent_terminal
+lean/ATK/Terminal/SevenEndpoints.lean ATK.Terminal.close
+lean/ATK/FinalRoot/MaterialLaws.lean ATK.FinalRoot.schur_decrease
+lean/ATK/FinalRoot/MaterialLaws.lean ATK.FinalRoot.torsion_card_positive
+lean/ATK/FinalRoot/MaterialLaws.lean ATK.FinalRoot.no_global_descent
+lean/ATK/FinalRoot/MaterialLaws.lean ATK.FinalRoot.terminal_from_independent_producer
+lean/ATK/AuditOfInterfaces.lean ATK.AuditOfInterfaces.obligation_iff
+lean/ATK/AuditOfInterfaces.lean ATK.AuditOfInterfaces.endpoint_vacuous
