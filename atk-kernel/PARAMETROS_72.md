@@ -74,3 +74,25 @@ descida) — ABERTO.
 
 ---
 Nenhum parâmetro terminal foi fechado: `OPEN_MATH = true` nas sete conjecturas.
+
+## Preenchimento de 12/10/2026 (tarde): os 39 parâmetros que estavam sem valor
+
+Tabela completa: `parametros_72_preenchidos_20261012.csv` (colunas `valor_12out_tarde`, `tipo_valor_12out`,
+`fonte_12out`). As linhas 24–28 da coluna `valor_atualizado` do CSV da outra sessão estavam deslocadas uma posição
+e foram corrigidas.
+
+| Grupo | Parâmetros | Valor obtido |
+|---|---|---|
+| BSD (calculado) | 37, 39, 58, 60 | r_an = r_alg em **64 687/64 687** curvas da base de Cremona (condutor < 10 000; postos 0–3); Ш_an é quadrado inteiro em todas (maior: 121, curva 8350c1). Runs `bsd-scan` 38261414610 e 38261987952 em m-core-bsd |
+| BSD (kernel) | 38, 59 | #E(ℚ)_tors ≥ 1 — `ATK.BSD.torsion_card_pos` (finitude da torção como hipótese) |
+| Beal (calculado) | 42 | 0 soluções primitivas: A,B,C ≤ 1000 com expoentes ≤ 100; ≤ 10 000 com expoentes ≤ 10; ≤ 30 000 com expoentes ≤ 8 (2,4·10¹⁰ pares; 2760 soluções, todas com fator comum). `m-core-beal/beal_search` |
+| Beal (kernel) | 41, 64–67 | gcd(x,y,z) ≤ 2 dado Fermat; descida ⇔ Beal (`descent_iff_beal`): sem valor independente |
+| NS (calculado) | 49–53 | estados degenerados: VERDADEIRO (ω ≡ 0 ⇒ S = 0) e não ocorrem nos dados; orçamento c_B + c_T < 1 REFUTADO sem resto (exige ≥ 2,776 / 5,672 / 11,458); ∫₀¹⁰ y² dt = 6,33·10⁵ / 2,03·10⁶ / 6,57·10⁶ |
+| P ≠ NP (kernel) | 68–71 | máquina, aceitação, tempo polinomial e semântica fixados em `ATK/Exact.lean` (TM2 da Mathlib) |
+| P ≠ NP (literatura) | 44, 72 | melhor cota incondicional: SAT ∉ DTISP(n^c, n^{o(1)}) para c < 2cos(π/7) ≈ 1,8019 (Williams) |
+| RH | 10, 47, 48 | K\* ≥ 0,942842305946176 (N = 1); D_N → 0 ⇔ RH; Burnol: liminf D_N log N ≥ Σ m_ρ²/|ρ|²; RH verificada até 3·10¹² |
+| YM | 34, 54–57 | estimativa de rede SU(3): M₀₊₊/√σ = 3,405(21) (Athenodorou–Teper 2020) — não é prova; construção 4D aberta |
+| Hodge | 40, 61–63 | codimensão 1 resolvida (Lefschetz (1,1)), exemplo concreto em P¹×P¹; codimensão ≥ 2 aberta |
+
+26 dos 39 continuam com uma parte universal **aberta**: ela é a própria conjectura (ou mais forte) e não existe
+número a calcular para ela. Os valores acima são cálculos finitos, teoremas conhecidos ou certificados do kernel.
