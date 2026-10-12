@@ -73,6 +73,16 @@ jobs:
           cat reports/report.md >> "$GITHUB_STEP_SUMMARY"
           exit $code
 
+      - name: "Portão de fechamento (meta-nível): OPEN_MATH"
+        if: always() && steps.build.outcome == 'success'
+        shell: bash
+        run: |
+          set +e
+          python3 closure/closure_gate.py
+          code=$?
+          cat reports/closure_gate.md >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+
       - name: Publicar relatórios
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,0 +1,4 @@
+{
+  "_doc": "Registro de fechamentos. Cada entrada: {\"problem\": RH|NS|Beal|PNP|BSD|YM|Hodge, \"claim\": um alvo admissível (ver closure_gate.py: TARGETS), \"decl\": nome completo de uma declaração Lean já compilada em ATK}. O portão compila `theorem _ : <alvo exato> := @decl` e audita os axiomas. Hoje não há nenhuma entrada: nenhum dos 7 problemas tem prova ou refutação.",
+  "entries": []
+}
