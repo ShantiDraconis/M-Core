@@ -1,0 +1,17 @@
+{
+  "id": "BSD-Corpo4 RegulatorPairing",
+  "problema": "BSD",
+  "alvo": "itens 37, 58, 39, 60",
+  "onde_quebra_hoje": "lei geral para posto analítico ≥ 2",
+  "proposta": {
+    "nome": "F_BSD",
+    "definicao": "Reg·#Ш·Πc_p/#tors²; ord L(E,1) = dim ker(operador p-ádico + sistema de Euler novo)",
+    "classe": "RegulatorPairing",
+    "falhas_na_base_cremona": null,
+    "argumento_geral": ""
+  },
+  "revisao": {
+    "nota": "'onde hoje falha' não procede: a varredura não falha em nenhuma das 64 687 curvas; o que falta é prova para posto ≥ 2, onde nenhum sistema de Euler conhecido funciona; o operador não está definido"
+  },
+  "veredito_esperado": "INCOMPLETA"
+}

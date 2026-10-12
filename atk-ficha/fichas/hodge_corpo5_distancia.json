@@ -1,0 +1,18 @@
+{
+  "id": "HODGE-Corpo5 distância a ciclos algébricos",
+  "problema": "HODGE",
+  "alvo": "itens 40, 61–63",
+  "onde_quebra_hoje": "codim ≥ 2",
+  "proposta": {
+    "nome": "F_Hodge",
+    "definicao": "inf_Z ‖α − [Z]‖² (via fluxo de calor em ciclos)",
+    "classe": "AlgebraicApproximation",
+    "codimensao": 2,
+    "usa_projetividade_em": "",
+    "usa_coeficientes_racionais_em": "α racional"
+  },
+  "revisao": {
+    "nota": "F_Hodge = 0 ⇔ α algébrica é reformulação equivalente (distância a um subespaço racional): não reduz o problema"
+  },
+  "veredito_esperado": "REJEITADA"
+}
