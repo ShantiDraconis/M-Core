@@ -7,3 +7,6 @@ import ATK.Beal
 import ATK.PvsNP
 import ATK.Geometry
 import ATK.LogicAudit
+import ATK.RHConvergence
+import ATK.BealDescent
+import ATK.NSControl
