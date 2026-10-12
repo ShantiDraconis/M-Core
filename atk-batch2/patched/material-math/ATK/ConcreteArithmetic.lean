@@ -13,7 +13,7 @@ theorem no_natural_descent {C : Type*} (hC : Nonempty C)
   obtain ⟨c, hc⟩ := Nat.find_spec (show ∃ n : Nat, ∃ c : C, measure c = n from by
     obtain ⟨c⟩ := hC
     exact ⟨measure c, c, rfl⟩)
-  have hlt : measure (step c) < m := by simpa [hc] using decreases c
+  have hlt : measure (step c) < m := lt_of_lt_of_eq (decreases c) hc
   have hmin : m ≤ measure (step c) := Nat.find_min' (show ∃ n : Nat, ∃ c : C, measure c = n from by
     obtain ⟨c⟩ := hC
     exact ⟨measure c, c, rfl⟩) ⟨step c, rfl⟩

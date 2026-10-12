@@ -17,7 +17,7 @@ theorem ns_producer_iff (I S : Type) [Nonempty S] (Adm : I → Prop) (Sol : I �
   · intro ⟨p⟩
     exact NS.terminal I S Adm Sol Reg p
   · intro h
-    refine ⟨⟨fun u => if hu : Adm u then Classical.choose (h u hu) else Classical.arbitrary S,
+    refine ⟨⟨fun u => if hu : Adm u then Classical.choose (h u hu) else (Classical.ofNonempty : S),
       ?_, ?_⟩⟩
     · intro u hu
       simp only [dif_pos hu]
@@ -45,7 +45,7 @@ theorem hodge_producer_iff (V Cl Cy : Type) [Nonempty Cy] (SP : V → Prop)
     exact Hodge.terminal V Cl Cy SP HC Rep p
   · intro h
     refine ⟨⟨fun x a => if hxa : SP x ∧ HC x a then Classical.choose (h x a hxa.1 hxa.2)
-      else Classical.arbitrary Cy, ?_⟩⟩
+      else (Classical.ofNonempty : Cy), ?_⟩⟩
     intro x a hx ha
     have hxa : SP x ∧ HC x a := ⟨hx, ha⟩
     simp only [dif_pos hxa]

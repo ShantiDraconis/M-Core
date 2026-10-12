@@ -12,7 +12,7 @@ Pacotes rodados **sem alteração** (`originals/`, conteúdo byte-idêntico aos 
 `patched/` contém cópias com correções **mínimas e rotuladas** (diff contra `originals/`):
 - terminal-certificates: fechamento de comentário `-!/` → `-/`; `import` movido para antes do `/-! … -/`.
 - formal-operators: `add_zero/add_comm/add_assoc` (nomes de Mathlib, ausente no projeto) → `Int.add_zero/…`.
-- material-math: hipóteses que faltavam (`BddBelow (cost '' B)`; `0 < x`, `0 < y`) e `/--` solto → `/-`.
+- material-math: prova de `no_natural_descent` (`simpa` → `lt_of_lt_of_eq`), hipóteses que faltavam (`BddBelow (cost '' B)`; `0 < x`, `0 < y`) e `/--` solto → `/-`.
   `ATK/Refutations.lean` prova no kernel que os dois enunciados **como escritos** são falsos.
 
 `appendix/` contém teoremas de auditoria (`ATK.Audit.*`) anexados ao texto na hora da compilação, sem
