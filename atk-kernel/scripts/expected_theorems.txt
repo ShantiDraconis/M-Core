@@ -8,6 +8,17 @@ ATK.BealDescent.no_primitive_of_descent
 ATK.BealDescent.beal_of_descent
 ATK.BealDescent.descent_of_beal
 ATK.BealDescent.descent_iff_beal
+ATK.Exact.RH_iff
+ATK.Exact.pd_coord
+ATK.Exact.div3_id
+ATK.Exact.identity_field_not_solution
+ATK.Exact.zero_solution
+ATK.Exact.zero_data_admissible
+ATK.Exact.beal_instance
+ATK.Exact.beal_needs_exponents_gt_two
+ATK.Exact.flt_of_beal
+ATK.Exact.P_ne_NP_iff
+ATK.Exact.inP_bit_example
 ATK.Geometry.round_sphere_scalar_integral
 ATK.Hodge.linear_realization
 ATK.Hodge.realization_unique
