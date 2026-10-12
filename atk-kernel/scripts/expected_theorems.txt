@@ -27,6 +27,17 @@ ATK.Exact.inP_bit_example
 ATK.Geometry.round_sphere_scalar_integral
 ATK.Hodge.linear_realization
 ATK.Hodge.realization_unique
+ATK.Horizon.no_last_prime
+ATK.Horizon.hasHorizon_iff_finite
+ATK.Horizon.ostrowski
+ATK.Horizon.infinity_is_not_a_finite_prime
+ATK.Horizon.exactly_one_place_at_infinity
+ATK.Horizon.product_formula_rat
+ATK.Horizon.finite_primes_alone
+ATK.Horizon.normalization_example
+ATK.Horizon.horizonPrime_isPrime
+ATK.Horizon.horizonPrime_beyond
+ATK.Horizon.horizon_transfer
 ATK.LogicAudit.rh_material_vacuous
 ATK.LogicAudit.pnp_material_vacuous
 ATK.LogicAudit.pnp_separation_schema_true
