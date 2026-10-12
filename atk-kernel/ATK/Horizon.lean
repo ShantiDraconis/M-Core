@@ -71,7 +71,7 @@ theorem infinity_is_not_a_finite_prime (p : ℕ) [Fact p.Prime] :
 /-- ℚ tem exatamente um lugar no infinito, e ele é o valor absoluto usual. -/
 theorem exactly_one_place_at_infinity :
     Nonempty (Unique (InfinitePlace ℚ)) ∧ ∀ (v : InfinitePlace ℚ) (x : ℚ), v x = |(x : ℝ)| :=
-  ⟨⟨inferInstance⟩, Rat.infinitePlace_apply⟩
+  ⟨⟨inferInstance⟩, fun v x => by simp⟩
 
 /-- Fórmula do produto para ℚ: o primo no infinito normaliza os primos finitos. -/
 theorem product_formula_rat (x : ℚ) (hx : x ≠ 0) :
@@ -82,7 +82,8 @@ theorem product_formula_rat (x : ℚ) (hx : x ≠ 0) :
     exact if_pos Rat.isReal_infinitePlace
   have hu : ∀ w : InfinitePlace ℚ, w = Rat.infinitePlace := fun w => Subsingleton.elim _ _
   have hprod : (∏ w : InfinitePlace ℚ, w x ^ w.mult) = |(x : ℝ)| := by
-    rw [Fintype.prod_unique, hu default, hm, pow_one, Rat.infinitePlace_apply]
+    rw [Fintype.prod_unique, hu default, hm, pow_one]
+    simp
   rw [hprod] at h
   exact h
 
