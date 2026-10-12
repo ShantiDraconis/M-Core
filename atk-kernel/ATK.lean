@@ -10,4 +10,4 @@ import ATK.LogicAudit
 import ATK.RHConvergence
 import ATK.BealDescent
 import ATK.NSControl
-import ATK.ExactTargets
+import ATK.Exact

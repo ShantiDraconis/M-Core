@@ -12,6 +12,11 @@ ATK.Exact.RH_iff
 ATK.Exact.pd_coord
 ATK.Exact.div3_id
 ATK.Exact.identity_field_not_solution
+ATK.Exact.pd_zero
+ATK.Exact.conv3_zero
+ATK.Exact.lap3_zero
+ATK.Exact.grad3_zero
+ATK.Exact.div3_zero
 ATK.Exact.zero_solution
 ATK.Exact.zero_data_admissible
 ATK.Exact.beal_instance

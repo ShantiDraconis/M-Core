@@ -160,6 +160,24 @@ theorem identity_field_not_solution (ν : ℝ) (u0 : R3 → R3) (f : ℝ → R3 
   have h0 := h.incompressible 0 le_rfl 0
   norm_num [div3_id] at h0
 
+/-- `∂ᵢ` de uma função nula é nula. -/
+theorem pd_zero {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F] (i : Fin 3) :
+    pd i (fun _ : R3 => (0 : F)) = fun _ => 0 := by
+  funext x
+  simp [pd]
+
+theorem conv3_zero (x : R3) : conv3 (fun _ => 0) x = 0 := by
+  simp [conv3, pd_zero, PiLp.zero_apply]
+
+theorem lap3_zero (x : R3) : lap3 (fun _ => 0) x = 0 := by
+  simp [lap3, pd_zero]
+
+theorem grad3_zero (x : R3) : grad3 (fun _ => 0) x = 0 := by
+  simp [grad3, pd_zero]
+
+theorem div3_zero (x : R3) : div3 (fun _ => 0) x = 0 := by
+  simp [div3, pd, PiLp.zero_apply]
+
 /-- O campo nulo é solução com dado nulo, energia limitada e periodicidade: as condições são
 satisfazíveis (a definição não é vazia por engano). -/
 theorem zero_solution (ν : ℝ) :
@@ -168,16 +186,23 @@ theorem zero_solution (ν : ℝ) :
   refine ⟨⟨contDiffOn_const, contDiffOn_const, ?_, ?_, fun _ => rfl⟩, ⟨0, fun t _ => ?_⟩,
     fun t _ x j => ⟨rfl, rfl⟩⟩
   · intro t _ x
-    simp [conv3, lap3, grad3, pd, derivWithin_fun_const, PiLp.zero_apply]
+    have hd : derivWithin (fun _ : ℝ => (0 : R3)) (Ici 0) t = 0 := by
+      rw [derivWithin_fun_const]
+      rfl
+    show derivWithin (fun _ : ℝ => (0 : R3)) (Ici 0) t + conv3 (fun _ => 0) x =
+      ν • lap3 (fun _ => 0) x - grad3 (fun _ => 0) x + 0
+    rw [hd, conv3_zero, lap3_zero, grad3_zero]
+    simp
   · intro t _ x
-    simp [div3, pd, PiLp.zero_apply]
-  · simp
+    exact div3_zero x
+  · show ∫⁻ x : R3, ‖(0 : R3)‖ₑ ^ 2 ≤ ENNReal.ofReal 0
+    simp
 
 /-- O dado nulo é admissível para (A) e (B). -/
 theorem zero_data_admissible :
     ContDiff ℝ ∞ (fun _ : R3 => (0 : R3)) ∧ (∀ x, div3 (fun _ => 0) x = 0) ∧
     RapidDecay (fun _ => 0) ∧ PeriodicData (fun _ => 0) := by
-  refine ⟨contDiff_const, fun x => by simp [div3, pd, PiLp.zero_apply], fun k K => ⟨0, fun x => ?_⟩,
+  refine ⟨contDiff_const, fun x => div3_zero x, fun k K => ⟨0, fun x => ?_⟩,
     fun x j => rfl⟩
   cases k with
   | zero => simp [norm_iteratedFDeriv_zero]
@@ -283,6 +308,11 @@ end
 #print axioms ATK.Exact.pd_coord
 #print axioms ATK.Exact.div3_id
 #print axioms ATK.Exact.identity_field_not_solution
+#print axioms ATK.Exact.pd_zero
+#print axioms ATK.Exact.conv3_zero
+#print axioms ATK.Exact.lap3_zero
+#print axioms ATK.Exact.grad3_zero
+#print axioms ATK.Exact.div3_zero
 #print axioms ATK.Exact.zero_solution
 #print axioms ATK.Exact.zero_data_admissible
 #print axioms ATK.Exact.beal_instance

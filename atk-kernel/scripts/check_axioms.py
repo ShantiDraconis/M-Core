@@ -138,5 +138,8 @@ if os.environ.get("GITHUB_ACTIONS"):
             names.append(f"{f} {ok}/{len(rs)}")
             lines += [f"{r['verdict']} {r['theorem']} [{', '.join(r['axioms']) if r['axioms'] is not None else '—'}]"
                       + (f" ({r['reason']})" if r["reason"] else "") for r in rs]
+            mod = os.path.basename(f)[:-len(".lean")]
+            for l in errors.get(mod, [])[:6]:
+                lines.append("ERRO " + re.sub(r"^.*?ATK/", "ATK/", l)[:300])
         print(f"::notice title={' · '.join(names)}::" + esc("\n".join(lines)))
 sys.exit(0 if certified == len(expected) else 1)
