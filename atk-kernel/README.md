@@ -5,6 +5,19 @@ Pasta independente do restante do repositório (lakefile e Mathlib próprios).
 Verificação no kernel do Lean 4 (Mathlib `v4.34.1`) dos lemas auxiliares do programa ATK,
 com auditoria automática de axiomas no GitHub Actions.
 
+## STATUS (12/10/2026)
+
+- Kernel: **85/85** teoremas certificados (axiomas só `propext`, `Classical.choice`, `Quot.sound`) e teste de escala
+  **5/5** (`scripts/scaling_check.py`, roda no CI antes do Lean).
+- **Navier–Stokes, rota interna do ATK:** a cota S ≤ θνz + C·y² (rota G5) foi provada FALSA com contraexemplo
+  (`ATK/Correcao_20261012.lean`, `AUDIT_NOTE_NS_SCALING_20261012.md`): itens 19–21 FALSE, 52 FAILED_DEPENDENCY.
+  Rota G5 arquivada.
+- **O problema do milênio de Navier–Stokes, (A)–(D) do Clay, permanece ABERTO** (`ATK/Exact.lean`, intocado).
+- Os 72 parâmetros estão todos registrados (`parametros_72_preenchidos_20261012.csv`): 34 com valor, 11 resolvidos,
+  4 falsos e 23 abertos. Os 23 abertos são 8 enunciados mínimos — RH; taxa uniforme D_N·log N; Yang–Mills com gap;
+  BSD (posto); BSD (fórmula refinada e Ш finito); Hodge em codimensão ≥ 2; Beal; SAT superpolinomial (P ≠ NP).
+  Corpus de cálculo esgotado: o que falta nesses 8 são provas, não valores. Nenhuma conjectura do milênio foi provada.
+
 ## O que roda a cada push
 
 **Job `kernel`**
@@ -23,7 +36,7 @@ com auditoria automática de axiomas no GitHub Actions.
 Reproduz o resíduo real D_N de Nyman–Beurling/Báez-Duarte para N ≤ 300, em 40 e 60 dígitos.
 O arquivo `numerics/dn_N1500_prec45.csv` traz a tabela até N = 1500.
 
-## Teoremas (26)
+## Teoremas da primeira versão (26; total atual: 85)
 
 | Arquivo | Conteúdo | Observação |
 |---|---|---|
