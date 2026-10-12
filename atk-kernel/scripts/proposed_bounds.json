@@ -1,0 +1,12 @@
+[
+  {"id": "item19", "bound": "S ≤ θνz + C·y²", "status": "REFUTADA",
+   "rhs": [{"alpha": 0, "beta": 1}, {"alpha": 2, "beta": 0}], "expected": "REJEITADA"},
+  {"id": "item20_21", "bound": "S = B + T ≤ (c_B + c_T)·ν·z", "status": "REFUTADA",
+   "rhs": [{"alpha": 0, "beta": 1}], "expected": "REJEITADA"},
+  {"id": "classica_y3", "bound": "S ≤ (ν/2)·z + C·ν⁻³·y³", "status": "TEOREMA_CLASSICO",
+   "rhs": [{"alpha": 0, "beta": 1}, {"alpha": 3, "beta": 0}], "expected": "ADMISSIVEL"},
+  {"id": "gagliardo_nirenberg", "bound": "|S| ≤ c·y^(3/4)·z^(3/4)", "status": "TEOREMA_CLASSICO",
+   "rhs": [{"alpha": "3/4", "beta": "3/4"}], "expected": "ADMISSIVEL"},
+  {"id": "proposta_y32_z12", "bound": "|S| ≤ c·y^(3/2)·z^(1/2)", "status": "REFUTADA",
+   "rhs": [{"alpha": "3/2", "beta": "1/2"}], "expected": "REJEITADA"}
+]

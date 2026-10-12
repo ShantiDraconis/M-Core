@@ -88,7 +88,7 @@ e foram corrigidas.
 | Beal (calculado) | 42 | 0 soluções primitivas: A,B,C ≤ 1000 com expoentes ≤ 100; ≤ 10 000 com expoentes ≤ 10; ≤ 30 000 com expoentes ≤ 8 (2,4·10¹⁰ pares; 1904, 365 e 491 soluções nas três faixas, todas com fator comum). `m-core-beal/beal_search` |
 | Beal (kernel) | 41, 64–67 | gcd(x,y,z) ≤ 2 dado Fermat; descida ⇔ Beal (`descent_iff_beal`): sem valor independente |
 | NS (calculado) | 49–53 | estados degenerados: VERDADEIRO (ω ≡ 0 ⇒ S = 0) e não ocorrem nos dados; ∫₀¹⁰ y² dt = 6,33·10⁵ / 2,03·10⁶ / 6,57·10⁶ |
-| NS (refutado) | 19–21, 52 | **falsos para toda a classe de soluções**: sem resto, c_B* + c_T* = +∞ (S ~ a³, νz ~ a² ao multiplicar o dado por a); com resto, S ≤ θνz + C·y² falha por escala v_λ(x) = λv(λx) de um campo localizado ((S−θνz)/y² ~ λ). Campo concreto: y = 43,4111, z = 1258,88, S = 0,111925 (`ns_data/scaling_counterexample.py`) |
+| NS (FALSE) | 19–21 (FALSE), 52 (FAILED_DEPENDENCY) | provados falsos no kernel: `ATK/Correcao_20261012.lean` (ns_19_false, ns_20_21_false, ns_52_failed, only_cubic_survives); leis de escala medidas em `ns_data/scaling_counterexample.py`; nota `AUDIT_NOTE_NS_SCALING_20261012.md` |
 | P ≠ NP (kernel) | 68–71 | máquina, aceitação, tempo polinomial e semântica fixados em `ATK/Exact.lean` (TM2 da Mathlib) |
 | P ≠ NP (literatura) | 44, 72 | melhor cota incondicional: SAT ∉ DTISP(n^c, n^{o(1)}) para c < 2cos(π/7) ≈ 1,8019 (Williams) |
 | RH | 10, 47, 48 | K\* ≥ 0,942842305946176 (N = 1); D_N → 0 ⇔ RH; Burnol: liminf D_N log N ≥ Σ m_ρ²/|ρ|²; RH verificada até 3·10¹² |

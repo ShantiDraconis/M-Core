@@ -21,6 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Teste de escala das cotas propostas (rejeita cotas subcríticas)
+        shell: bash
+        run: python3 scripts/scaling_check.py scripts/proposed_bounds.json
+
       - name: Instalar elan (gerenciador do Lean)
         shell: bash
         run: |

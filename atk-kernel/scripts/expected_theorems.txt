@@ -8,6 +8,14 @@ ATK.BealDescent.no_primitive_of_descent
 ATK.BealDescent.beal_of_descent
 ATK.BealDescent.descent_of_beal
 ATK.BealDescent.descent_iff_beal
+ATK.Correcao_20261012.exists_supercritical
+ATK.Correcao_20261012.ns_20_21_false
+ATK.Correcao_20261012.ns_20_21_no_split
+ATK.Correcao_20261012.no_quadratic_absorption
+ATK.Correcao_20261012.ns_19_false
+ATK.Correcao_20261012.ns_52_failed
+ATK.Correcao_20261012.exponent_rigidity
+ATK.Correcao_20261012.only_cubic_survives
 ATK.Exact.RH_iff
 ATK.Exact.pd_coord
 ATK.Exact.div3_id
