@@ -20,6 +20,10 @@ Todas estão verificadas aqui; nenhuma prova uma conjectura do milênio.
    Mas toda propriedade que ele tem vale para infinitos primos comuns (`horizon_transfer`): ele não sabe
    nada que os primos finitos não saibam. Por isso não pode, sozinho, resolver uma conjectura.
 
+4. **O primo no infinito em ζ.** O fator local de ζ no primo infinito é Γ_ℝ(s) = π^(−s/2)Γ(s/2); com ele,
+   Λ(s) = Γ_ℝ(s)ζ(s) satisfaz Λ(1 − s) = Λ(s) (`completed_zeta_symmetric`). É essa normalização que põe a
+   reta crítica Re s = 1/2 no centro da simetria. A simetria é teorema; a RH continua aberta.
+
 O que NÃO é defensável: que um primo "normalize" os infinitos encontrados em Navier–Stokes (itens 19–21).
 Aqueles vêm de mudança de escala contínua (λ ∈ ℝ), não de aritmética; a normalização correta ali é por
 normas críticas invariantes por escala (teoria de dados pequenos de Fujita–Kato), e dados grandes seguem
@@ -143,6 +147,19 @@ theorem horizon_transfer (Q : ℕ → Prop) (h : Germ.LiftPred Q horizonPrime) :
   rintro _ ⟨n, hn, rfl⟩
   exact ⟨Nat.prime_nth_prime n, hn⟩
 
+/-! ## 4. O primo no infinito em ζ: o fator Γ_ℝ torna a equação funcional exata -/
+
+/-- ζ(s) = Λ(s) / Γ_ℝ(s), com Γ_ℝ(s) = π^(−s/2)·Γ(s/2) o fator local no primo infinito. -/
+theorem zeta_eq_completed_div_infinite_factor {s : ℂ} (hs : s ≠ 0) :
+    riemannZeta s = completedRiemannZeta s / Complex.Gammaℝ s :=
+  riemannZeta_def_of_ne_zero hs
+
+/-- Com o fator do primo no infinito incluído, Λ(1 − s) = Λ(s): simetria em torno da reta crítica
+Re s = 1/2. (A simetria é teorema; que os zeros estejam NA reta é a hipótese de Riemann, aberta.) -/
+theorem completed_zeta_symmetric (s : ℂ) :
+    completedRiemannZeta (1 - s) = completedRiemannZeta s :=
+  completedRiemannZeta_one_sub s
+
 end ATK.Horizon
 
 #print axioms ATK.Horizon.no_last_prime
@@ -156,3 +173,5 @@ end ATK.Horizon
 #print axioms ATK.Horizon.horizonPrime_isPrime
 #print axioms ATK.Horizon.horizonPrime_beyond
 #print axioms ATK.Horizon.horizon_transfer
+#print axioms ATK.Horizon.zeta_eq_completed_div_infinite_factor
+#print axioms ATK.Horizon.completed_zeta_symmetric

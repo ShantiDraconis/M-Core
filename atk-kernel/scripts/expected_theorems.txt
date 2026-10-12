@@ -38,6 +38,8 @@ ATK.Horizon.normalization_example
 ATK.Horizon.horizonPrime_isPrime
 ATK.Horizon.horizonPrime_beyond
 ATK.Horizon.horizon_transfer
+ATK.Horizon.zeta_eq_completed_div_infinite_factor
+ATK.Horizon.completed_zeta_symmetric
 ATK.LogicAudit.rh_material_vacuous
 ATK.LogicAudit.pnp_material_vacuous
 ATK.LogicAudit.pnp_separation_schema_true
