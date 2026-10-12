@@ -85,7 +85,7 @@ e foram corrigidas.
 |---|---|---|
 | BSD (calculado) | 37, 39, 58, 60 | r_an = r_alg em **64 687/64 687** curvas da base de Cremona (condutor < 10 000; postos 0–3); Ш_an é quadrado inteiro em todas (maior: 121, curva 8350c1). Runs `bsd-scan` 38261414610 e 38261987952 em m-core-bsd |
 | BSD (kernel) | 38, 59 | #E(ℚ)_tors ≥ 1 — `ATK.BSD.torsion_card_pos` (finitude da torção como hipótese) |
-| Beal (calculado) | 42 | 0 soluções primitivas: A,B,C ≤ 1000 com expoentes ≤ 100; ≤ 10 000 com expoentes ≤ 10; ≤ 30 000 com expoentes ≤ 8 (2,4·10¹⁰ pares; 2760 soluções, todas com fator comum). `m-core-beal/beal_search` |
+| Beal (calculado) | 42 | 0 soluções primitivas: A,B,C ≤ 1000 com expoentes ≤ 100; ≤ 10 000 com expoentes ≤ 10; ≤ 30 000 com expoentes ≤ 8 (2,4·10¹⁰ pares; 1904, 365 e 491 soluções nas três faixas, todas com fator comum). `m-core-beal/beal_search` |
 | Beal (kernel) | 41, 64–67 | gcd(x,y,z) ≤ 2 dado Fermat; descida ⇔ Beal (`descent_iff_beal`): sem valor independente |
 | NS (calculado) | 49–53 | estados degenerados: VERDADEIRO (ω ≡ 0 ⇒ S = 0) e não ocorrem nos dados; orçamento c_B + c_T < 1 REFUTADO sem resto (exige ≥ 2,776 / 5,672 / 11,458); ∫₀¹⁰ y² dt = 6,33·10⁵ / 2,03·10⁶ / 6,57·10⁶ |
 | P ≠ NP (kernel) | 68–71 | máquina, aceitação, tempo polinomial e semântica fixados em `ATK/Exact.lean` (TM2 da Mathlib) |
