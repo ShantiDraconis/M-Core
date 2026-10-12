@@ -1,0 +1,17 @@
+{
+  "text_scan": "PASS",
+  "files": {
+    "ATK/UniversalContracts.lean": [],
+    "ATK.lean": []
+  },
+  "kernel": "NOT_RUN",
+  "original_semantics_integrated": false,
+  "universal_witnesses_supplied": 0,
+  "terminal_certified": 0,
+  "OPEN_MATH": true,
+  "CLOSED_MATH": false,
+  "sha256": {
+    "ATK/UniversalContracts.lean": "0938a8b2516e5f913eadf035feafc5785090e5d8437679812c8bb3f720aee38a",
+    "ATK.lean": "5814c9343f9d28902b2923c1371a6819393ce74b2b439862945a21d4437e3dc3"
+  }
+}

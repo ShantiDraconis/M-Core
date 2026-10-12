@@ -1,0 +1,12 @@
+{
+  "lane": "RH",
+  "repository": "ShantiDraconis/m-core-riemann",
+  "target": "ConcreteUniformLogDNBound",
+  "material_producer": "MISSING",
+  "semantic_bridge": "MISSING",
+  "original_import": "MISSING",
+  "kernel": "NOT_RUN",
+  "axioms": "NOT_RUN",
+  "certificate": "NOT_ISSUED",
+  "blocking_obligation": "DN must equal actual Baez-Duarte residual; bound and criterion"
+}

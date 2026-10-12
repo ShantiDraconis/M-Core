@@ -1,0 +1,26 @@
+name: ATK source and kernel verification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'ATK/**'
+      - 'ATK.lean'
+      - 'lakefile.toml'
+      - 'lean-toolchain'
+      - 'terminal_manifest.json'
+      - 'tools/audit.py'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true
+      - name: Verify and write audit certificate
+        run: python3 tools/audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atk-external-audit
+          path: certificates/EXTERNAL_AUDIT.json

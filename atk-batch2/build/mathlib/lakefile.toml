@@ -1,0 +1,12 @@
+# Projeto de trabalho (adicionado pela auditoria): o zip ATK_MATERIAL_MATH não traz lakefile nem toolchain.
+name = "atk_material_math"
+defaultTargets = ["ATK"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.34.1"
+
+[[lean_lib]]
+name = "ATK"
+globs = ["ATK.*"]

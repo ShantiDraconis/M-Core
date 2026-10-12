@@ -1,0 +1,12 @@
+{
+  "lane": "PNP",
+  "repository": "ShantiDraconis/m-core-p-vs-np",
+  "target": "SATNotInP",
+  "material_producer": "MISSING",
+  "semantic_bridge": "MISSING",
+  "original_import": "MISSING",
+  "kernel": "NOT_RUN",
+  "axioms": "NOT_RUN",
+  "certificate": "NOT_ISSUED",
+  "blocking_obligation": "machine semantics and universal polynomial lower bound"
+}

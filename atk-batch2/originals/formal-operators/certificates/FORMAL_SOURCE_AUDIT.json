@@ -1,0 +1,28 @@
+{
+  "state": "SOURCE_LOCAL",
+  "kernel": "NOT_RUN",
+  "terminal_certified": 0,
+  "open_math": true,
+  "closed_math": false,
+  "source_files": 5,
+  "forbidden_lexical_hits": {
+    "sorry": [],
+    "admit": [],
+    "axiom": [],
+    "unsafe": []
+  },
+  "sha256": {
+    ".github/workflows/verify.yml": "86bd1ed6d116c3d78a63305e188a533b2b3f481c438da33878053daf385e62e2",
+    "ATK/FormalOperators.lean": "e5608c279efe88ca17db017da75f66086fba254bf3530b74e122a030745ff6cf",
+    "ATK/KernelGates.lean": "180c7cd4c800d1eddeab0903520b5bc1659a7d3d9159c192632a6bfe505787a1",
+    "ATK/MaterialExamples.lean": "6bf6e181a93c17a6193944bddfdd4f073bbf5410801bfd16995a7ddaadc24169",
+    "ATK/TerminalTargets.lean": "31c5a3adc63145f1dc0fb29e94fcb002d8f45180d03b557ec080d4fa3293667c",
+    "ATK.lean": "36b35b0aec570b4230426e241597d03575296bed6b736c165e69bf0af1783769",
+    "EXACT_SEMANTICS.md": "b57870005eaa2714f8e994579345749d4ad362174f2c5a28248e2aa5c5fc6705",
+    "README.md": "f6c1816c89f689d274bb7c1fcc6fb58835f72cef61432a05a8ccef9215cbf38a",
+    "lakefile.toml": "72b2d419f2e8d88c1e86ddb44c49ddd9e35e36ee5d6aa47c0900751c687e6ddd",
+    "lean-toolchain": "d24fed434d3b13adfaab57724a0a7f270ea8bf1c818b5ae5cf25cbce24dd685c",
+    "terminal_manifest.json": "b6ce7b4db0cec46ae7faf383c90df66e84335195298fd830004c833c3dc7218c",
+    "tools/audit.py": "d6a9486b46455f0bd248c0553ddf6fbd135af4d592b5cf973f4df625ef00bfab"
+  }
+}

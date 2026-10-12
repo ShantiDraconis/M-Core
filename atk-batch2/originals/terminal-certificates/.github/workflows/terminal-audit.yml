@@ -1,0 +1,21 @@
+name: ATK terminal audit (fail closed)
+on:
+  workflow_dispatch:
+  push:
+    paths: ['ATK/**','ATK.lean','terminal_manifest.json','tools/**','.github/workflows/terminal-audit.yml']
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true
+      - run: python3 tools/certify.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atk-terminal-audit
+          path: |
+            certificates/*.json
+            evidence/*.log

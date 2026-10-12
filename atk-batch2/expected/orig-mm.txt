@@ -1,0 +1,6 @@
+ATK/ConcreteAnalytic.lean ATK.ConcreteAnalytic.infimum_antitone
+ATK/ConcreteArithmetic.lean ATK.ConcreteArithmetic.no_natural_descent
+ATK/ConcreteArithmetic.lean ATK.ConcreteArithmetic.common_prime_divides_third
+ATK/ConcreteSemantics.lean ATK.ConcreteSemantics.eval_conj
+ATK/ConcreteSemantics.lean ATK.ConcreteSemantics.eval_double_neg
+ATK/ConcreteSemantics.lean ATK.ConcreteSemantics.verifies_conj

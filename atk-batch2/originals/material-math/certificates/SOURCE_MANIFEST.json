@@ -1,0 +1,14 @@
+{
+  "status": "SOURCE_LOCAL",
+  "kernel": "NOT_RUN",
+  "terminal_certified": 0,
+  "open_math": true,
+  "closed_math": false,
+  "files": {
+    "README.md": "5d30a4747fb58c6df4c63d630f5e38e128225f2f772552572eb79dc596d21c2b",
+    "proofs/SEVEN_FRONTIERS.md": "7708788a84bec61f965d6e79e50e8d34c152ffae8f5d88b85bb8f96b9163a8b2",
+    "ATK/ConcreteAnalytic.lean": "3a74a37869747b0b8699cc74f6f0968a40b1c13572b1a8088cb6d6e9a20cc901",
+    "ATK/ConcreteArithmetic.lean": "570404cf220e1c3d079c41bde66f65ff49cc105b625166676b705584d10ef481",
+    "ATK/ConcreteSemantics.lean": "87b82ba44bbe0ade3ada08113ca9f986e141f42079de834ee9656151fa6e1c6b"
+  }
+}

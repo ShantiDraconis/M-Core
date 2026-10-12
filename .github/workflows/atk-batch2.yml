@@ -1,0 +1,108 @@
+name: ATK batch2 kernel check
+
+on:
+  push:
+    paths:
+      - 'atk-batch2/**'
+      - '.github/workflows/atk-batch2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    name: "Batch2 sem Mathlib — ${{ matrix.tc }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        tc: ["leanprover/lean4:v4.21.0", "leanprover/lean4:v4.34.1"]
+    env:
+      TC: ${{ matrix.tc }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar elan e toolchain da matriz
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain "$TC"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Cópias de trabalho (originais do zip + cópias corrigidas)
+        run: |
+          W=$RUNNER_TEMP/w; mkdir -p $W
+          for p in terminal-certificates exact-gate formal-operators; do cp -r atk-batch2/originals/$p $W/orig-$p; done
+          for p in terminal-certificates formal-operators; do cp -r atk-batch2/patched/$p $W/pat-$p; done
+          for d in $W/*; do
+            if [ -f $d/lean-toolchain ] && [ "$(cat $d/lean-toolchain)" != "$TC" ]; then
+              echo "$(basename $d): lean-toolchain declarado $(cat $d/lean-toolchain) -> matriz $TC"; echo "$TC" > $d/lean-toolchain
+            fi
+          done
+          lean --version
+      - name: lake build
+        continue-on-error: true
+        run: |
+          for d in orig-terminal-certificates orig-formal-operators pat-terminal-certificates pat-formal-operators; do
+            echo "=== $d"; (cd $RUNNER_TEMP/w/$d && lake build 2>&1 | tail -25) || true
+          done
+      - name: "orig-tc: ATK_TERMINAL_CERTIFICATES (original)"
+        run: python3 atk-batch2/scripts/check_batch.py orig-tc $RUNNER_TEMP/w/orig-terminal-certificates atk-batch2/expected/orig-tc.txt atk-batch2/appendix/orig-tc atk-batch2/originals/terminal-certificates atk-batch2/reports/${TC##*:}
+      - name: "orig-eg: ATK_EXACT_GATE (original)"
+        run: python3 atk-batch2/scripts/check_batch.py orig-eg $RUNNER_TEMP/w/orig-exact-gate atk-batch2/expected/orig-eg.txt atk-batch2/appendix/orig-eg atk-batch2/originals/exact-gate atk-batch2/reports/${TC##*:}
+      - name: "orig-fo: ATK_FORMAL_OPERATORS (original)"
+        run: python3 atk-batch2/scripts/check_batch.py orig-fo $RUNNER_TEMP/w/orig-formal-operators atk-batch2/expected/orig-fo.txt atk-batch2/appendix/orig-fo atk-batch2/originals/formal-operators atk-batch2/reports/${TC##*:}
+      - name: "pat-tc: TERMINAL_CERTIFICATES (cópia corrigida)"
+        run: python3 atk-batch2/scripts/check_batch.py pat-tc $RUNNER_TEMP/w/pat-terminal-certificates atk-batch2/expected/pat-tc.txt atk-batch2/appendix/pat-tc atk-batch2/originals/terminal-certificates atk-batch2/reports/${TC##*:}
+      - name: "pat-fo: FORMAL_OPERATORS (cópia corrigida)"
+        run: python3 atk-batch2/scripts/check_batch.py pat-fo $RUNNER_TEMP/w/pat-formal-operators atk-batch2/expected/pat-fo.txt atk-batch2/appendix/pat-fo atk-batch2/originals/formal-operators atk-batch2/reports/${TC##*:}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atk-batch2-core-${{ strategy.job-index }}
+          path: atk-batch2/reports/
+
+  mathlib:
+    name: "Batch2 Material Math — Mathlib v4.34.1"
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Projeto de trabalho (originais do zip)
+        run: |
+          W=$RUNNER_TEMP/mm; mkdir -p $W
+          cp atk-batch2/build/mathlib/lakefile.toml atk-batch2/build/mathlib/lean-toolchain $W/
+          cp -r atk-batch2/originals/material-math/ATK $W/ATK
+      - name: Mathlib v4.34.1 (cache)
+        run: |
+          cd $RUNNER_TEMP/mm && lean --version
+          lake exe cache get || (lake update && lake exe cache get)
+      - name: lake build (originais)
+        continue-on-error: true
+        run: cd $RUNNER_TEMP/mm && lake build 2>&1 | tail -40
+      - name: "orig-mm: ATK_MATERIAL_MATH (original)"
+        run: python3 atk-batch2/scripts/check_batch.py orig-mm $RUNNER_TEMP/mm atk-batch2/expected/orig-mm.txt atk-batch2/appendix/orig-mm atk-batch2/originals/material-math atk-batch2/reports/mathlib
+      - name: Trocar para a cópia corrigida
+        run: |
+          cd $RUNNER_TEMP/mm && rm -rf ATK _audit .lake/build
+          cp -r $GITHUB_WORKSPACE/atk-batch2/patched/material-math/ATK ATK
+      - name: lake build (cópia corrigida + refutações)
+        continue-on-error: true
+        run: cd $RUNNER_TEMP/mm && lake build 2>&1 | tail -40
+      - name: "pat-mm: MATERIAL_MATH (cópia corrigida + refutações)"
+        run: python3 atk-batch2/scripts/check_batch.py pat-mm $RUNNER_TEMP/mm atk-batch2/expected/pat-mm.txt atk-batch2/appendix/pat-mm atk-batch2/originals/material-math atk-batch2/reports/mathlib
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atk-batch2-mathlib
+          path: atk-batch2/reports/

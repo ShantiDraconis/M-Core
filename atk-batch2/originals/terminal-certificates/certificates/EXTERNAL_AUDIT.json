@@ -1,0 +1,17 @@
+{
+  "schema": "atk-terminal-audit/v1",
+  "timestamp_utc": "2026-10-12T01:03:27.755562+00:00",
+  "sources": {
+    "ATK/TerminalCertificate.lean": "c8da1655960f99a9e24bbf99d4f28840f221b0ea2ebbb0ef6f0e054e0571c89c",
+    "ATK/UniversalContracts.lean": "0938a8b2516e5f913eadf035feafc5785090e5d8437679812c8bb3f720aee38a",
+    "ATK.lean": "1089a1dd047c065b3222214beb7faffcd43e566d027242a1fbca8e58ac684ecb"
+  },
+  "marker_violations": [],
+  "lake_present": false,
+  "build": "NOT_RUN",
+  "axiom_audit": "NOT_RUN",
+  "original_imports_complete": false,
+  "terminal_certified": 0,
+  "open_math": true,
+  "closed_math": false
+}

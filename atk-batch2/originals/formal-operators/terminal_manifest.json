@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "lanes": [
+    {
+      "id": "RH",
+      "repository": "ShantiDraconis/m-core-riemann",
+      "required_semantics": "concrete DN to RH",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "NS",
+      "repository": "ShantiDraconis/m-core-openai-ns-audit",
+      "required_semantics": "3D PDE to official NS",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "YM",
+      "repository": "ShantiDraconis/m-core-yang-mills",
+      "required_semantics": "4D QFT construction and gap",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "BSD",
+      "repository": "ShantiDraconis/m-core-bsd",
+      "required_semantics": "all elliptic curves rank and leading coefficient",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "Hodge",
+      "repository": "ShantiDraconis/m-core-hodge",
+      "required_semantics": "all rational Hodge classes algebraic",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "Beal",
+      "repository": "ShantiDraconis/m-core-beal",
+      "required_semantics": "all primitive triples excluded",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "PNP",
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "required_semantics": "SAT machines universal lower bound",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    }
+  ]
+}

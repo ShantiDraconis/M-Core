@@ -1,0 +1,98 @@
+{
+  "generated_utc": "2026-10-12T00:56:40.355429+00:00",
+  "source_sha256": {
+    "ATK/KernelGates.lean": "180c7cd4c800d1eddeab0903520b5bc1659a7d3d9159c192632a6bfe505787a1",
+    "ATK/MaterialExamples.lean": "6bf6e181a93c17a6193944bddfdd4f073bbf5410801bfd16995a7ddaadc24169",
+    "ATK/TerminalTargets.lean": "31c5a3adc63145f1dc0fb29e94fcb002d8f45180d03b557ec080d4fa3293667c",
+    "ATK.lean": "8ed58a70b9dee4a64757eb743d67abb2891b44e3ce8be0d74c6ecf377768460a",
+    "lakefile.toml": "72b2d419f2e8d88c1e86ddb44c49ddd9e35e36ee5d6aa47c0900751c687e6ddd",
+    "lean-toolchain": "d24fed434d3b13adfaab57724a0a7f270ea8bf1c818b5ae5cf25cbce24dd685c"
+  },
+  "forbidden_tokens": [],
+  "checks": {
+    "lake_build": {
+      "status": "NOT_RUN",
+      "reason": "[Errno 2] No such file or directory: 'lake'"
+    },
+    "root_elaboration": {
+      "status": "NOT_RUN",
+      "reason": "[Errno 2] No such file or directory: 'lake'"
+    }
+  },
+  "lanes": [
+    {
+      "id": "RH",
+      "repository": "ShantiDraconis/m-core-riemann",
+      "required_semantics": "concrete DN to RH",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "NS",
+      "repository": "ShantiDraconis/m-core-openai-ns-audit",
+      "required_semantics": "3D PDE to official NS",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "YM",
+      "repository": "ShantiDraconis/m-core-yang-mills",
+      "required_semantics": "4D QFT construction and gap",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "BSD",
+      "repository": "ShantiDraconis/m-core-bsd",
+      "required_semantics": "all elliptic curves rank and leading coefficient",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "Hodge",
+      "repository": "ShantiDraconis/m-core-hodge",
+      "required_semantics": "all rational Hodge classes algebraic",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "Beal",
+      "repository": "ShantiDraconis/m-core-beal",
+      "required_semantics": "all primitive triples excluded",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    },
+    {
+      "id": "PNP",
+      "repository": "ShantiDraconis/m-core-p-vs-np",
+      "required_semantics": "SAT machines universal lower bound",
+      "semantic_adapter": "MISSING",
+      "material_proof": "MISSING",
+      "bridge": "MISSING",
+      "kernel": "NOT_RUN",
+      "axiom_audit": "NOT_RUN"
+    }
+  ],
+  "terminal_certified": false,
+  "OPEN_MATH": true,
+  "CLOSED_MATH": false,
+  "certificate_kind": "source-integrity-and-build-status; not an unconditional proof unless terminal_certified is true"
+}
