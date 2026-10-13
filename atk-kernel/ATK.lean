@@ -16,3 +16,5 @@ import ATK.Closure
 import ATK.Transition
 import ATK.FCNavierStokes
 import ATK.NSBridge
+import ATK.Enstrophy
+import ATK.NSLaminar
