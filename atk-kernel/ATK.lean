@@ -13,3 +13,6 @@ import ATK.NSControl
 import ATK.Exact
 import ATK.Horizon
 import ATK.Closure
+import ATK.Transition
+import ATK.FCNavierStokes
+import ATK.NSBridge

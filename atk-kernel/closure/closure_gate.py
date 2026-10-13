@@ -162,6 +162,14 @@ def main():
     gate_valid &= r["ok"]
     control_rows.append(r)
 
+    # ---------- pontes condicionais (hipótese = teorema externo) ----------
+    bridge_rows = []
+    for b in registry.get("bridges", []):
+        r = run_check(f"bridge_{b['problem']}_{b['claim']}",
+                      f"{b['hypothesis']} → {TARGETS[b['problem']][b['claim']]}", f"@{b['decl']}")
+        bridge_rows.append({**b, "accepted": r["accepted"], "reason": r["reason"],
+                            "axioms": r["axioms"]})
+
     # ---------- registro de fechamentos ----------
     entry_rows = []
     for i, ent in enumerate(entries):
@@ -193,6 +201,10 @@ def main():
             gate_valid = False
         elif acc:
             status[prob] = {"status": "FECHADO", "by": [f"{e['claim']} ← {e['decl']}" for e in acc]}
+        elif any(b["problem"] == prob and b["accepted"] for b in bridge_rows):
+            status[prob] = {"status": "CONDICIONAL", "by": [
+                f"{b['claim']} ⇐ {b['hypothesis']} (ponte {b['decl']}; externo: {b['external']})"
+                for b in bridge_rows if b["problem"] == prob and b["accepted"]]}
         else:
             status[prob] = {"status": "ABERTO", "by": None}
     closed = sum(1 for s in status.values() if s["status"] == "FECHADO")
@@ -200,7 +212,7 @@ def main():
 
     out = {"open_math": open_math, "closed": closed, "total": len(TARGETS),
            "gate_valid": gate_valid, "status": status, "controls": control_rows,
-           "entries": entry_rows, "criterion": __doc__.strip().splitlines()[0]}
+           "entries": entry_rows, "bridges": bridge_rows, "criterion": __doc__.strip().splitlines()[0]}
     json.dump(out, open(os.path.join(REP, "closure_gate.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
 
@@ -225,6 +237,10 @@ def main():
         L.append(f"| {c['label']} | {'aceitar' if c['expected'] else 'recusar'} | "
                  f"{'aceito' if c['accepted'] else 'recusado'} | {'✅' if c['ok'] else '❌'} | "
                  f"{c['reason']} |")
+    L += ["", "### Pontes condicionais (CONDICIONAL ≠ FECHADO: falta verificar o teorema externo)", ""]
+    for b in bridge_rows:
+        L.append(f"- {b['problem']} / {b['claim']}: `{b['decl']}` : `{b['hypothesis']} → alvo` — "
+                 f"{'CERTIFICADA' if b['accepted'] else 'RECUSADA'} ({b['reason']}); externo: {b['external']}")
     L += ["", f"Entradas no registro: {len(entry_rows)}"]
     for e in entry_rows:
         L.append(f"- {e['problem']} / {e['claim']} ← `{e['decl']}`: "
@@ -240,6 +256,7 @@ def main():
                  f" · portão {'VÁLIDO' if gate_valid else 'INVÁLIDO'}")
         lines = [f"{p}: {s['status']}" + (f" ({'; '.join(s['by'])})" if s["by"] else "")
                  for p, s in status.items()]
+        lines += [f"ponte {b['problem']}/{b['claim']}: {'CERTIFICADA' if b['accepted'] else 'RECUSADA'} — {b['reason']}" for b in bridge_rows]
         lines += [f"registro: {len(entry_rows)} entradas"]
         print(f"::notice title={title}::" + esc("\n".join(lines)))
         clines = [f"{'OK' if c['ok'] else 'FALHOU'} | {c['label']} | "

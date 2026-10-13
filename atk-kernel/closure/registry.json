@@ -1,4 +1,14 @@
 {
   "_doc": "Registro de fechamentos. Cada entrada: {\"problem\": RH|NS|Beal|PNP|BSD|YM|Hodge, \"claim\": um alvo admissível (ver closure_gate.py: TARGETS), \"decl\": nome completo de uma declaração Lean já compilada em ATK}. O portão compila `theorem _ : <alvo exato> := @decl` e audita os axiomas. Hoje não há nenhuma entrada: nenhum dos 7 problemas tem prova ou refutação.",
-  "entries": []
+  "entries": [],
+  "bridges": [
+    {
+      "problem": "NS",
+      "claim": "C",
+      "decl": "ATK.NSBridge.clayC_of_fc",
+      "hypothesis": "ATK.NSBridge.FCBreakdownR3",
+      "external": "openai/NavierStokesAndEuler@f9e8bc5 NavierStokes.Comparator.navier_stokes_breakdown_R3 (review: self-assessed)"
+    }
+  ],
+  "_doc_bridges": "Pontes condicionais: declaração ATK de tipo `hipótese → alvo exato`, onde a hipótese é o enunciado de um teorema externo. O portão marca CONDICIONAL; só vira FECHADO com uma entrada em `entries` (declaração de tipo exatamente o alvo), p.ex. compilada no ambiente externo."
 }
