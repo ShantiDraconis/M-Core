@@ -1,0 +1,8 @@
+lane,upstream_path,upstream_target,atk_endpoint,required_bridge,status
+RH,Problems/RiemannHypothesis/Millennium.lean,Millennium.ClayRiemannHypothesis,FiniteSpanApproximatesChi concreteGeneratorFamily,genuine density to RH with audited definitions,OPEN_MATH
+PNP,Problems/PVersusNP/Millennium.lean,Millennium.ClayPVersusNP.Formulations.NegativeBranch,P01ConstructionGap and G21Pointwise,encoding and polynomial complexity preservation plus universal lower bound,OPEN_MATH
+NS,Problems/NavierStokes/Millennium.lean,FeffermanA/B/C/D,ActualNSToSignedGainCore,faithful PDE domain and one complete branch,OPEN_MATH
+BSD,Problems/BirchSwinnertonDyer/Millennium.lean,ClayBirchSwinnertonDyer,realizable elliptic curve rank and leading coefficient,genuine arithmetic and analytic data,OPEN_MATH
+Hodge,Problems/Hodge/Millennium.lean,INCOMPLETE,ConcreteAlgebraicityPayload,repair external statement first,OPEN_MATH
+YM,Problems/YangMills/Millennium.lean,INCOMPLETE,B60ConcretePhysicalAdapter,repair external statement and construct physical theory,OPEN_MATH
+Beal,not covered,not covered,GCDLowerBoundProducer,independent formal statement and proof,OPEN_MATH
