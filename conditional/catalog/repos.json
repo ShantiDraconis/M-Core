@@ -1,0 +1,2375 @@
+[
+ {
+  "name": "atk-navier-stokes-public",
+  "visibility": "public",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "B",
+  "group_name": "Espelhos públicos ATK",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/atk-navier-stokes-public"
+ },
+ {
+  "name": "atk-beal-public",
+  "visibility": "public",
+  "problems": [
+   "beal"
+  ],
+  "group": "B",
+  "group_name": "Espelhos públicos ATK",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/atk-beal-public"
+ },
+ {
+  "name": "atk-hodge-public",
+  "visibility": "public",
+  "problems": [
+   "hodge"
+  ],
+  "group": "B",
+  "group_name": "Espelhos públicos ATK",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/atk-hodge-public"
+ },
+ {
+  "name": "atk-math-core-public",
+  "visibility": "public",
+  "problems": [],
+  "group": "B",
+  "group_name": "Espelhos públicos ATK",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/atk-math-core-public"
+ },
+ {
+  "name": "atk-yang-mills-public",
+  "visibility": "public",
+  "problems": [
+   "yang-mills"
+  ],
+  "group": "B",
+  "group_name": "Espelhos públicos ATK",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/atk-yang-mills-public"
+ },
+ {
+  "name": "atk-bsd-public",
+  "visibility": "public",
+  "problems": [
+   "bsd"
+  ],
+  "group": "B",
+  "group_name": "Espelhos públicos ATK",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/atk-bsd-public"
+ },
+ {
+  "name": "atk-riemann-public",
+  "visibility": "public",
+  "problems": [
+   "riemann"
+  ],
+  "group": "B",
+  "group_name": "Espelhos públicos ATK",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/atk-riemann-public"
+ },
+ {
+  "name": "atk-p-vs-np-public",
+  "visibility": "public",
+  "problems": [
+   "p-vs-np"
+  ],
+  "group": "B",
+  "group_name": "Espelhos públicos ATK",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/atk-p-vs-np-public"
+ },
+ {
+  "name": "M-Core",
+  "visibility": "private",
+  "problems": [],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Registro central: FinalProofRegistry (7 lanes, todos openMath) + atk-kernel com 19 lemas auxiliares.",
+  "url": "https://github.com/ShantiDraconis/M-Core"
+ },
+ {
+  "name": "m-core-bsd",
+  "visibility": "private",
+  "problems": [
+   "bsd"
+  ],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Lane BSD. Terminal: domínio realizável + igualdade de posto + fórmula refinada.",
+  "url": "https://github.com/ShantiDraconis/m-core-bsd"
+ },
+ {
+  "name": "i-theology-unified",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/i-theology-unified"
+ },
+ {
+  "name": "m-core-p-vs-np",
+  "visibility": "private",
+  "problems": [
+   "p-vs-np"
+  ],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Lane P vs NP. Terminal: P01MachineConstruction ∧ G21Pointwise.",
+  "url": "https://github.com/ShantiDraconis/m-core-p-vs-np"
+ },
+ {
+  "name": "m-core-beal",
+  "visibility": "private",
+  "problems": [
+   "beal"
+  ],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Lane Beal. Terminal: GCDLowerBoundProducer.",
+  "url": "https://github.com/ShantiDraconis/m-core-beal"
+ },
+ {
+  "name": "m-core-hodge",
+  "visibility": "private",
+  "problems": [
+   "hodge"
+  ],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Lane Hodge. Terminal: ConcreteAlgebraicityPayload.",
+  "url": "https://github.com/ShantiDraconis/m-core-hodge"
+ },
+ {
+  "name": "m-core-yang-mills",
+  "visibility": "private",
+  "problems": [
+   "yang-mills"
+  ],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Lane Yang–Mills. Terminal: B60ConcretePhysicalAdapter.",
+  "url": "https://github.com/ShantiDraconis/m-core-yang-mills"
+ },
+ {
+  "name": "m-core-riemann",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Lane RH (Nyman–Beurling/Báez-Duarte). Terminal: FiniteSpanApproximatesChi / majorante de D_N.",
+  "url": "https://github.com/ShantiDraconis/m-core-riemann"
+ },
+ {
+  "name": "m-core-openai-ns-audit",
+  "visibility": "private",
+  "problems": [],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Kernel NS no formato atk-kernel + CI de axiomas (modelo deste monorepo).",
+  "url": "https://github.com/ShantiDraconis/m-core-openai-ns-audit"
+ },
+ {
+  "name": "atk-certified-priority-record",
+  "visibility": "private",
+  "problems": [],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Registro de prioridade/autoria.",
+  "url": "https://github.com/ShantiDraconis/atk-certified-priority-record"
+ },
+ {
+  "name": "axiomatic-millenium",
+  "visibility": "private",
+  "problems": [],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "GlobalOpenMathCut (importado no atk-math-core-public).",
+  "url": "https://github.com/ShantiDraconis/axiomatic-millenium"
+ },
+ {
+  "name": "navier-stokes-critical-barrier-audit",
+  "visibility": "private",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "A",
+  "group_name": "Núcleo canônico (M-Core + 7 lanes)",
+  "note": "Lane NS. Terminal: ActualNSToSignedGainCore em EnstrophyData genuína.",
+  "url": "https://github.com/ShantiDraconis/navier-stokes-critical-barrier-audit"
+ },
+ {
+  "name": "millennium-poincare-classical",
+  "visibility": "private",
+  "problems": [
+   "poincare"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-poincare-classical"
+ },
+ {
+  "name": "millennium-bsd",
+  "visibility": "private",
+  "problems": [
+   "bsd"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-bsd"
+ },
+ {
+  "name": "0-0-FORMAL-SUITE",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/0-0-FORMAL-SUITE"
+ },
+ {
+  "name": "universal-proof-hub",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal-proof-hub"
+ },
+ {
+  "name": "proofs-multiprover",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/proofs-multiprover"
+ },
+ {
+  "name": "millennium-poincare-symbolic",
+  "visibility": "private",
+  "problems": [
+   "poincare"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-poincare-symbolic"
+ },
+ {
+  "name": "millennium-p-vs-np-I",
+  "visibility": "private",
+  "problems": [
+   "p-vs-np"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-p-vs-np-I"
+ },
+ {
+  "name": "millennium-hodge",
+  "visibility": "private",
+  "problems": [
+   "hodge"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-hodge"
+ },
+ {
+  "name": "millennium-riemann-I",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-riemann-I"
+ },
+ {
+  "name": "millennium-navier-stokes-I",
+  "visibility": "private",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-navier-stokes-I"
+ },
+ {
+  "name": "millennium-yang-mills",
+  "visibility": "private",
+  "problems": [
+   "yang-mills"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-yang-mills"
+ },
+ {
+  "name": "M-Navier-Stokes",
+  "visibility": "private",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/M-Navier-Stokes"
+ },
+ {
+  "name": "metaos-operational-system",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/metaos-operational-system"
+ },
+ {
+  "name": "lean-audit-kit",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lean-audit-kit"
+ },
+ {
+  "name": "zero-engine-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/zero-engine-00"
+ },
+ {
+  "name": "tiago-fagliari-creative-technical-portfolio",
+  "visibility": "public",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/tiago-fagliari-creative-technical-portfolio"
+ },
+ {
+  "name": "millennium-research-os",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-research-os"
+ },
+ {
+  "name": "indus-operational-mathematics",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/indus-operational-mathematics"
+ },
+ {
+  "name": "horizon-prime---framework",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/horizon-prime---framework"
+ },
+ {
+  "name": "The-Proof-Log",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/The-Proof-Log"
+ },
+ {
+  "name": "Marella-RWS-Evidence-Repository",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Marella-RWS-Evidence-Repository"
+ },
+ {
+  "name": "00-limit-foundation",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/00-limit-foundation"
+ },
+ {
+  "name": "lean-winwin-logic",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lean-winwin-logic"
+ },
+ {
+  "name": "lean-refinement-bridge",
+  "visibility": "public",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lean-refinement-bridge"
+ },
+ {
+  "name": "lean-uniform-bounds",
+  "visibility": "public",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lean-uniform-bounds"
+ },
+ {
+  "name": "lean-cursor-shuttle",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lean-cursor-shuttle"
+ },
+ {
+  "name": "lean-fin-composition",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lean-fin-composition"
+ },
+ {
+  "name": "lean-preserving-read",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lean-preserving-read"
+ },
+ {
+  "name": "open-math-scoped-final",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/open-math-scoped-final"
+ },
+ {
+  "name": "-millennium-bsd-hodge-yangmills-I",
+  "visibility": "private",
+  "problems": [
+   "hodge",
+   "bsd",
+   "yang-mills"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/-millennium-bsd-hodge-yangmills-I"
+ },
+ {
+  "name": "millennium-symbolic-program",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-symbolic-program"
+ },
+ {
+  "name": "i-constant-core",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/i-constant-core"
+ },
+ {
+  "name": "riemann-offcritical-zero-certifier",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/riemann-offcritical-zero-certifier"
+ },
+ {
+  "name": "stationary-photon-moving-geometry",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/stationary-photon-moving-geometry"
+ },
+ {
+  "name": "Millennium",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Millennium"
+ },
+ {
+  "name": "zero-ai-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/zero-ai-00"
+ },
+ {
+  "name": "NIPAH-research-HUB",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/NIPAH-research-HUB"
+ },
+ {
+  "name": "Universe-0-0",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Universe-0-0"
+ },
+ {
+  "name": "Elyon-Public-Proof",
+  "visibility": "public",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Elyon-Public-Proof"
+ },
+ {
+  "name": "Genesis_Elyon",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Genesis_Elyon"
+ },
+ {
+  "name": "mishkan-iii-core",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/mishkan-iii-core"
+ },
+ {
+  "name": "universal-emergent-logic-",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal-emergent-logic-"
+ },
+ {
+  "name": "harappan-unified-audit-",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/harappan-unified-audit-"
+ },
+ {
+  "name": "Millenium--core",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Millenium--core"
+ },
+ {
+  "name": "zeta-i-formal.lean",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/zeta-i-formal.lean"
+ },
+ {
+  "name": "millennium-engineering-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-engineering-00"
+ },
+ {
+  "name": "proof-engineering-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/proof-engineering-00"
+ },
+ {
+  "name": "millennium-regularity-I",
+  "visibility": "private",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-regularity-I"
+ },
+ {
+  "name": "millennium-mass-gap-I",
+  "visibility": "private",
+  "problems": [
+   "yang-mills"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-mass-gap-I"
+ },
+ {
+  "name": "harappan-universal-dictionary",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/harappan-universal-dictionary"
+ },
+ {
+  "name": "harappan-00-universal",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/harappan-00-universal"
+ },
+ {
+  "name": "0-0",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/0-0"
+ },
+ {
+  "name": "meta-mathematics-indeterminate-I",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/meta-mathematics-indeterminate-I"
+ },
+ {
+  "name": "Horizon_Prime_-framework",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Horizon_Prime_-framework"
+ },
+ {
+  "name": "Harappan-guilds-0-0",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Harappan-guilds-0-0"
+ },
+ {
+  "name": "lc-rh-coercivity",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lc-rh-coercivity"
+ },
+ {
+  "name": "riemann-transverse-stability-program",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/riemann-transverse-stability-program"
+ },
+ {
+  "name": "Riemann-multistate-program",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Riemann-multistate-program"
+ },
+ {
+  "name": "riemann-indeterminacy",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/riemann-indeterminacy"
+ },
+ {
+  "name": "Riemann-unity-zero",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Riemann-unity-zero"
+ },
+ {
+  "name": "Riemann-energy-proofline",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Riemann-energy-proofline"
+ },
+ {
+  "name": "millennium-riemann-classical",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-riemann-classical"
+ },
+ {
+  "name": "millennium-birch-swinnerton-dyer-classical",
+  "visibility": "private",
+  "problems": [
+   "bsd"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-birch-swinnerton-dyer-classical"
+ },
+ {
+  "name": "millennium-yang-mills-classical",
+  "visibility": "private",
+  "problems": [
+   "yang-mills"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-yang-mills-classical"
+ },
+ {
+  "name": "millennium-p-vs-np-classical",
+  "visibility": "private",
+  "problems": [
+   "p-vs-np"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-p-vs-np-classical"
+ },
+ {
+  "name": "millennium-hodge-classical",
+  "visibility": "private",
+  "problems": [
+   "hodge"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-hodge-classical"
+ },
+ {
+  "name": "sfh-formalization-lab",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/sfh-formalization-lab"
+ },
+ {
+  "name": "complexity-collapse-pnp",
+  "visibility": "private",
+  "problems": [
+   "p-vs-np"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/complexity-collapse-pnp"
+ },
+ {
+  "name": "critical-bridge-formalization-private",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/critical-bridge-formalization-private"
+ },
+ {
+  "name": "pi-border-primes",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/pi-border-primes"
+ },
+ {
+  "name": "M-private",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/M-private"
+ },
+ {
+  "name": "orion",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/orion"
+ },
+ {
+  "name": "Meta-millenium-independence-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Meta-millenium-independence-00"
+ },
+ {
+  "name": "Trans",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Trans"
+ },
+ {
+  "name": "federated-trivalent-manifold",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/federated-trivalent-manifold"
+ },
+ {
+  "name": "navier-stokes-noncircular",
+  "visibility": "private",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/navier-stokes-noncircular"
+ },
+ {
+  "name": "navier-stokes-critical-L3",
+  "visibility": "private",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/navier-stokes-critical-L3"
+ },
+ {
+  "name": "Meta-mathematical-foundation-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Meta-mathematical-foundation-00"
+ },
+ {
+  "name": "projeto-0-0",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/projeto-0-0"
+ },
+ {
+  "name": "maritimo-delta-estrela-k13",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/maritimo-delta-estrela-k13"
+ },
+ {
+  "name": "digital-fire-la28",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/digital-fire-la28"
+ },
+ {
+  "name": "ussf-millennium-locks",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/ussf-millennium-locks"
+ },
+ {
+  "name": "lighting-narrative-lab",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lighting-narrative-lab"
+ },
+ {
+  "name": "tiefc-audit-lab",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/tiefc-audit-lab"
+ },
+ {
+  "name": "seet-r-off-lab-",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/seet-r-off-lab-"
+ },
+ {
+  "name": "LA-2008-R-",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/LA-2008-R-"
+ },
+ {
+  "name": "indeterminate-collapse-core",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/indeterminate-collapse-core"
+ },
+ {
+  "name": "Spectrally-Guided",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Spectrally-Guided"
+ },
+ {
+  "name": "Parque-do-Bixiga-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Parque-do-Bixiga-00"
+ },
+ {
+  "name": "collatz_reverse-tree",
+  "visibility": "private",
+  "problems": [
+   "collatz"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/collatz_reverse-tree"
+ },
+ {
+  "name": "Oral-substrate-br",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Oral-substrate-br"
+ },
+ {
+  "name": "S5-Core-Private",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/S5-Core-Private"
+ },
+ {
+  "name": "continuum-fields-indeterminacy",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/continuum-fields-indeterminacy"
+ },
+ {
+  "name": "equations-of-unsolved-problems-book",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/equations-of-unsolved-problems-book"
+ },
+ {
+  "name": "cardinality-and-infinity",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/cardinality-and-infinity"
+ },
+ {
+  "name": "discrete-dynamics-indeterminacy",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/discrete-dynamics-indeterminacy"
+ },
+ {
+  "name": "Indus-System",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Indus-System"
+ },
+ {
+  "name": "S5-BIO-SHIELD-",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/S5-BIO-SHIELD-"
+ },
+ {
+  "name": "Codex_Indeterminancy",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Codex_Indeterminancy"
+ },
+ {
+  "name": "invariance-signature-framework",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/invariance-signature-framework"
+ },
+ {
+  "name": "riemann-transverse-signature",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/riemann-transverse-signature"
+ },
+ {
+  "name": "structural-signature-calculus",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/structural-signature-calculus"
+ },
+ {
+  "name": "olympic-symbolic-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-symbolic-00"
+ },
+ {
+  "name": "The-Legal-Playbook-Script",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/The-Legal-Playbook-Script"
+ },
+ {
+  "name": "Psychological-Warfare-Vault",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Psychological-Warfare-Vault"
+ },
+ {
+  "name": "The-Vessel-Logos-Admin",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/The-Vessel-Logos-Admin"
+ },
+ {
+  "name": "Network-Investment-Fund",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Network-Investment-Fund"
+ },
+ {
+  "name": "The-America-Call-LA2028-Master",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/The-America-Call-LA2028-Master"
+ },
+ {
+  "name": "The-Crew-Voice-Archive-",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/The-Crew-Voice-Archive-"
+ },
+ {
+  "name": "The-Consortium-of-Redemption",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/The-Consortium-of-Redemption"
+ },
+ {
+  "name": "System-Integrity-Audit",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/System-Integrity-Audit"
+ },
+ {
+  "name": "Protocol-Vessel-Control",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Protocol-Vessel-Control"
+ },
+ {
+  "name": "Archive-Mystic-Silence",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Archive-Mystic-Silence"
+ },
+ {
+  "name": "Archive-Royal-Blue",
+  "visibility": "private",
+  "problems": [],
+  "group": "K",
+  "group_name": "Jurídico, negócios e arquivos pessoais",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Archive-Royal-Blue"
+ },
+ {
+  "name": "Singulariity",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Singulariity"
+ },
+ {
+  "name": "UMA",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/UMA"
+ },
+ {
+  "name": "cryptographic-logic-foundations",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/cryptographic-logic-foundations"
+ },
+ {
+  "name": "Beit-Hamikdash-iii",
+  "visibility": "public",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Beit-Hamikdash-iii"
+ },
+ {
+  "name": "The-Algebra-of-Ideterminate-I",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/The-Algebra-of-Ideterminate-I"
+ },
+ {
+  "name": "metalogic-infinity-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/metalogic-infinity-00"
+ },
+ {
+  "name": "I-Framework-Nexus",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/I-Framework-Nexus"
+ },
+ {
+  "name": "Lunar-Hive",
+  "visibility": "public",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Lunar-Hive"
+ },
+ {
+  "name": "Eclectic_S",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Eclectic_S"
+ },
+ {
+  "name": "Lunar-Hive-00",
+  "visibility": "public",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Lunar-Hive-00"
+ },
+ {
+  "name": "Universal-translation-0-0",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Universal-translation-0-0"
+ },
+ {
+  "name": "universal",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal"
+ },
+ {
+  "name": "Ceremony-OS",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Ceremony-OS"
+ },
+ {
+  "name": "umi-master",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/umi-master"
+ },
+ {
+  "name": "umi-core-axioms",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/umi-core-axioms"
+ },
+ {
+  "name": "unified-millennium-invariant",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/unified-millennium-invariant"
+ },
+ {
+  "name": "emergent-identity-rh",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/emergent-identity-rh"
+ },
+ {
+  "name": "riemann-coercivity-program",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/riemann-coercivity-program"
+ },
+ {
+  "name": "TABP-weighted-irregular-sampling",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/TABP-weighted-irregular-sampling"
+ },
+ {
+  "name": "Omega-completa",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Omega-completa"
+ },
+ {
+  "name": "emergent-complexity-N-NP",
+  "visibility": "private",
+  "problems": [
+   "p-vs-np"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/emergent-complexity-N-NP"
+ },
+ {
+  "name": "universal-arithmetic-stability",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal-arithmetic-stability"
+ },
+ {
+  "name": "universal-0-5-emergent-identity",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal-0-5-emergent-identity"
+ },
+ {
+  "name": "emergent-identity-framework",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/emergent-identity-framework"
+ },
+ {
+  "name": "Millenium-delta-unified-frame",
+  "visibility": "public",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Millenium-delta-unified-frame"
+ },
+ {
+  "name": "Millennium-rh-energy-torus-quantum",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Millennium-rh-energy-torus-quantum"
+ },
+ {
+  "name": "Heu-7-universal-framework",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Heu-7-universal-framework"
+ },
+ {
+  "name": "hawking-singularities-millennium-problems",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-singularities-millennium-problems"
+ },
+ {
+  "name": "hawking-numerics",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-numerics"
+ },
+ {
+  "name": "hawking-lean",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-lean"
+ },
+ {
+  "name": "hawking-ym",
+  "visibility": "private",
+  "problems": [
+   "yang-mills"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-ym"
+ },
+ {
+  "name": "hawking-hodge",
+  "visibility": "private",
+  "problems": [
+   "hodge"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-hodge"
+ },
+ {
+  "name": "hawking-bsd",
+  "visibility": "private",
+  "problems": [
+   "bsd"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-bsd"
+ },
+ {
+  "name": "hawking-pnp",
+  "visibility": "private",
+  "problems": [
+   "p-vs-np"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-pnp"
+ },
+ {
+  "name": "hawking-ns",
+  "visibility": "private",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-ns"
+ },
+ {
+  "name": "hawking-rh",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-rh"
+ },
+ {
+  "name": "hawking-framework",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hawking-framework"
+ },
+ {
+  "name": "universe-00-ci-templates",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universe-00-ci-templates"
+ },
+ {
+  "name": "unified-classical-foundations",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/unified-classical-foundations"
+ },
+ {
+  "name": "millennium-hypothesi",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-hypothesi"
+ },
+ {
+  "name": "millennium-navier-stokes-classical",
+  "visibility": "private",
+  "problems": [
+   "navier-stokes"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-navier-stokes-classical"
+ },
+ {
+  "name": "copilot-cli",
+  "visibility": "public-fork",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/copilot-cli"
+ },
+ {
+  "name": "millennium-limit-unification",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-limit-unification"
+ },
+ {
+  "name": "millennium-classical-parameters",
+  "visibility": "private",
+  "problems": [],
+  "group": "D",
+  "group_name": "Programas Millennium unificados e meta",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/millennium-classical-parameters"
+ },
+ {
+  "name": "quantum-axioms-lab",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/quantum-axioms-lab"
+ },
+ {
+  "name": "universal-sustainable-engineering",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal-sustainable-engineering"
+ },
+ {
+  "name": "psychology-symbolic-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/psychology-symbolic-00"
+ },
+ {
+  "name": "cosmic-geometry-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/cosmic-geometry-00"
+ },
+ {
+  "name": "global-systems-lab",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/global-systems-lab"
+ },
+ {
+  "name": "archetypes-humanity",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/archetypes-humanity"
+ },
+ {
+  "name": "sacred-texts-mirror",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/sacred-texts-mirror"
+ },
+ {
+  "name": "art-00-vision",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/art-00-vision"
+ },
+ {
+  "name": "universal-archive",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal-archive"
+ },
+ {
+  "name": "universe-archives-00-",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universe-archives-00-"
+ },
+ {
+  "name": "universe-archives-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universe-archives-00"
+ },
+ {
+  "name": "olympic-livebook-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-livebook-00"
+ },
+ {
+  "name": "olympic-operations-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-operations-00"
+ },
+ {
+  "name": "olympic-architecture-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-architecture-00"
+ },
+ {
+  "name": "olympic-costumes-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-costumes-00"
+ },
+ {
+  "name": "olympic-choreography-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-choreography-00"
+ },
+ {
+  "name": "olympic-video-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-video-00"
+ },
+ {
+  "name": "olympic-lighting-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-lighting-00"
+ },
+ {
+  "name": "olympic-score-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-score-00"
+ },
+ {
+  "name": "olympic-rituals-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-rituals-00"
+ },
+ {
+  "name": "olympic-dramaturgy-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-dramaturgy-00"
+ },
+ {
+  "name": "olympic-00-core",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-00-core"
+ },
+ {
+  "name": "olympic-show-prototype-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-show-prototype-00"
+ },
+ {
+  "name": "olympic-00-chama",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/olympic-00-chama"
+ },
+ {
+  "name": "urban-lighting-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/urban-lighting-00"
+ },
+ {
+  "name": "installations-design-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/installations-design-00"
+ },
+ {
+  "name": "creative-direction-portfolio-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/creative-direction-portfolio-00"
+ },
+ {
+  "name": "stage-management-portfolio-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/stage-management-portfolio-00"
+ },
+ {
+  "name": "sound-tech-portfolio-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/sound-tech-portfolio-00"
+ },
+ {
+  "name": "lighting-tech-portfolio-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/lighting-tech-portfolio-00"
+ },
+ {
+  "name": "urban-future-architecture-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/urban-future-architecture-00"
+ },
+ {
+  "name": "closed-loop-engineering-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/closed-loop-engineering-00"
+ },
+ {
+  "name": "infinite-energy-reactor-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/infinite-energy-reactor-00"
+ },
+ {
+  "name": "Zero--OS",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/Zero--OS"
+ },
+ {
+  "name": "i-foundations.lean",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/i-foundations.lean"
+ },
+ {
+  "name": "collapse-lemma-rh.lean",
+  "visibility": "private",
+  "problems": [
+   "riemann"
+  ],
+  "group": "C",
+  "group_name": "Millennium por problema (histórico/exploratório)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/collapse-lemma-rh.lean"
+ },
+ {
+  "name": "water-cycles-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/water-cycles-00"
+ },
+ {
+  "name": "ship-zero-waste-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/ship-zero-waste-00"
+ },
+ {
+  "name": "hotel-terra-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hotel-terra-00"
+ },
+ {
+  "name": "hotel-lunar-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "J",
+  "group_name": "Engenharia, sistemas e laboratórios",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/hotel-lunar-00"
+ },
+ {
+  "name": "siamese-consciousness-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/siamese-consciousness-00"
+ },
+ {
+  "name": "identity-fields-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/identity-fields-00"
+ },
+ {
+  "name": "dmt-timelines-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/dmt-timelines-00"
+ },
+ {
+  "name": "consciousness-symbolic-model-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/consciousness-symbolic-model-00"
+ },
+ {
+  "name": "linguistic-universal-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/linguistic-universal-00"
+ },
+ {
+  "name": "symbolic-grammar-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-grammar-00"
+ },
+ {
+  "name": "phonology-ancestral-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/phonology-ancestral-00"
+ },
+ {
+  "name": "universal-education-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal-education-00"
+ },
+ {
+  "name": "tanakh-mirror-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/tanakh-mirror-00"
+ },
+ {
+  "name": "tupi-hebrew-bridge-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/tupi-hebrew-bridge-00"
+ },
+ {
+  "name": "primordial-language-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "H",
+  "group_name": "Linguagem, história e textos",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/primordial-language-00"
+ },
+ {
+  "name": "symbolic-chemistry-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-chemistry-00"
+ },
+ {
+  "name": "symbolic-biology-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-biology-00"
+ },
+ {
+  "name": "symbolic-metamathematics-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-metamathematics-00"
+ },
+ {
+  "name": "symbolic-automata-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-automata-00"
+ },
+ {
+  "name": "symbolic-complexity-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-complexity-00"
+ },
+ {
+  "name": "symbolic-quantum-computing",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-quantum-computing"
+ },
+ {
+  "name": "quantum-field-symbolic-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/quantum-field-symbolic-00"
+ },
+ {
+  "name": "quantum-spacetime-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/quantum-spacetime-00"
+ },
+ {
+  "name": "symbolic-cosmology-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-cosmology-00"
+ },
+ {
+  "name": "symbolic-gravitational-collapse-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-gravitational-collapse-00"
+ },
+ {
+  "name": "symbolic-balance-field-equation",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-balance-field-equation"
+ },
+ {
+  "name": "symbolic-topology-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-topology-00"
+ },
+ {
+  "name": "symbolic-analysis-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-analysis-00"
+ },
+ {
+  "name": "symbolic-arithmetic-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-arithmetic-00"
+ },
+ {
+  "name": "symbolic-collapse-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-collapse-00"
+ },
+ {
+  "name": "symbolic-linguistics-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/symbolic-linguistics-00"
+ },
+ {
+  "name": "music-harmonic-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "I",
+  "group_name": "Arte, espetáculo e portfólio",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/music-harmonic-00"
+ },
+ {
+  "name": "-sbfe-physics-unified",
+  "visibility": "private",
+  "problems": [],
+  "group": "G",
+  "group_name": "Ciência simbólica (série -00)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/-sbfe-physics-unified"
+ },
+ {
+  "name": "latex-library-global",
+  "visibility": "private",
+  "problems": [],
+  "group": "E",
+  "group_name": "Lean, verificação formal e ferramentas",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/latex-library-global"
+ },
+ {
+  "name": "universal-indeterminate-constant-I",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/universal-indeterminate-constant-I"
+ },
+ {
+  "name": "zero-game-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/zero-game-00"
+ },
+ {
+  "name": "zero-codex-archive-00",
+  "visibility": "private",
+  "problems": [],
+  "group": "F",
+  "group_name": "Fundações próprias (indeterminação, 0-0, I, identidade emergente)",
+  "note": "",
+  "url": "https://github.com/ShantiDraconis/zero-codex-archive-00"
+ }
+]

@@ -23,7 +23,7 @@ com auditoria automática de axiomas no GitHub Actions.
 Reproduz o resíduo real D_N de Nyman–Beurling/Báez-Duarte para N ≤ 300, em 40 e 60 dígitos.
 O arquivo `numerics/dn_N1500_prec45.csv` traz a tabela até N = 1500.
 
-## Teoremas (19)
+## Teoremas (47 = 19 lemas auxiliares + 14 condicionais + 14 de regimes)
 
 | Arquivo | Conteúdo | Observação |
 |---|---|---|
@@ -36,4 +36,26 @@ O arquivo `numerics/dn_N1500_prec45.csv` traz a tabela até N = 1500.
 | `PvsNP` | P⊆P/poly ∧ NP⊄P/poly ⇒ P≠NP; SAT∈NP ∧ SAT∉P ⇒ P≠NP | só a forma lógica, sem máquinas de Turing |
 | `Geometry` | ∫R dV = 12π²a na S³ redonda | identidade algébrica |
 
-Nenhum destes lemas prova uma conjectura do milênio: `OPEN_MATH = true`.
+### Condicionais (`ATK/Conditional/`)
+
+Molde: PONTE (literatura, não formalizada) → HIPÓTESE ABERTA → ENUNCIADO. Ambas entram como
+argumentos explícitos; detalhes em `scripts/conditionals.json`.
+
+| Arquivo | Teorema principal | Enunciado |
+|---|---|---|
+| `Conditional/Riemann` | `riemann_conditional` (+ `DN_nonneg`, `DN_tendsto_zero`) | `RiemannHypothesis` da Mathlib |
+| `Conditional/Beal` | `beal_conditional` (+ `beal_iff_gcdLowerBound`, `exponent_gcd_le_two`, `one_lt_gcd_iff`) | enunciado elementar completo |
+| `Conditional/NavierStokes` | `ns_conditional` | relativo a `NSModel` |
+| `Conditional/PvsNP` | `pvsnp_conditional` (+ `pneNP_iff_sat_not_in_P`) | relativo a `ComplexityModel` |
+| `Conditional/Hodge` | `hodge_conditional` | relativo a `HodgeModel` |
+| `Conditional/BSD` | `bsd_conditional` (+ `bsd_rank_conditional`) | relativo a `BSDModel` |
+| `Conditional/YangMills` | `ym_conditional` | relativo a `YMModel` |
+
+### Regimes do gateway (`ATK/Regimes.lean`)
+
+Núcleo incondicional `W_strictMono` (W = W₀ + 10⁻⁶·t, independente de Seff — `W_ignores_Seff`),
+classificação dos regimes vácuo/suave/crítico/explosão, histerese sem flapping, custo de
+tunelamento, gatilhos H1 (RH) e H3 (BSD, forma correta) e ruído. Camada de simulação: não
+toca `OPEN_MATH`.
+
+Nenhum destes teoremas prova uma conjectura do milênio: `OPEN_MATH = true`.

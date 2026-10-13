@@ -43,7 +43,7 @@ for log in sorted(glob.glob(os.path.join(REP, "audit_*.log"))):
 
 # proibições textuais extras (sorry/admit/axiom declarados)
 src_flags = {}
-for f in sorted(glob.glob(os.path.join(ROOT, "ATK", "*.lean"))):
+for f in sorted(glob.glob(os.path.join(ROOT, "ATK", "**", "*.lean"), recursive=True)):
     code = re.sub(r"/-.*?-/", "", open(f, encoding="utf-8").read(), flags=re.S)
     code = re.sub(r"--.*", "", code)
     flags = [w for w in ("sorry", "admit") if re.search(rf"\b{w}\b", code)]
@@ -53,7 +53,8 @@ for f in sorted(glob.glob(os.path.join(ROOT, "ATK", "*.lean"))):
         src_flags[os.path.relpath(f, ROOT)] = flags
 
 def module_file(thm):
-    return f"ATK/{thm.split('.')[1]}.lean"
+    # ATK.X.thm -> ATK/X.lean ; ATK.Conditional.X.thm -> ATK/Conditional/X.lean
+    return "/".join(thm.split(".")[:-1]) + ".lean"
 
 rows, certified = [], 0
 for thm in expected:
@@ -75,7 +76,7 @@ for thm in expected:
                  "axioms": ax, "verdict": verdict, "reason": why})
 
 sha = hashlib.sha256()
-for f in sorted(glob.glob(os.path.join(ROOT, "ATK", "*.lean"))) + [os.path.join(ROOT, "ATK.lean")]:
+for f in sorted(glob.glob(os.path.join(ROOT, "ATK", "**", "*.lean"), recursive=True)) + [os.path.join(ROOT, "ATK.lean")]:
     sha.update(open(f, "rb").read())
 src_sha = sha.hexdigest()
 
@@ -106,6 +107,29 @@ md = [f"## ATK-KERNEL: {state} — {certified}/{len(expected)} teoremas",
 for r in rows:
     ax = "—" if r["axioms"] is None else (", ".join(r["axioms"]) or "nenhum")
     md.append(f"| `{r['theorem']}` | {'✅' if r['verdict']=='CERTIFIED' else '❌'} {r['verdict']} | {ax} | {r['reason']} |")
+cond_path = os.path.join(ROOT, "scripts", "conditionals.json")
+conditionals = json.load(open(cond_path, encoding="utf-8")) if os.path.exists(cond_path) else []
+verdict_of = {r["theorem"]: r["verdict"] for r in rows}
+if conditionals:
+    md += ["", "### Problemas em forma condicional: PONTE → ABERTA → ENUNCIADO",
+           "",
+           "Pontes e hipóteses abertas entram como argumentos explícitos (não como `axiom`).",
+           "",
+           "| Problema | Teorema | Veredito | Ponte (literatura) | Hipótese aberta | Fidelidade |",
+           "|---|---|---|---|---|---|"]
+    for c in conditionals:
+        v = verdict_of.get(c["theorem"], "NOT_LISTED")
+        md.append(f"| {c['problem']} | `{c['theorem']}` | {'✅' if v == 'CERTIFIED' else '❌'} {v} | "
+                  + "<br>".join(c["bridge"]) + " | " + "<br>".join(c["open"]) + f" | {c['fidelity']} |")
+report["conditionals"] = [dict(c, verdict=verdict_of.get(c["theorem"], "NOT_LISTED")) for c in conditionals]
+closed = sum(1 for c in conditionals if verdict_of.get(c["theorem"]) == "CERTIFIED")
+report["status"] = {"CONDITIONALS_CLOSED": f"{closed}/{len(conditionals)}",
+                    "OPEN_MATH": True, "CLOSED_MATH": False}
+if conditionals:
+    md += ["", f"`CONDITIONALS_CLOSED = {closed}/{len(conditionals)}` · `OPEN_MATH = true` · `CLOSED_MATH = false`",
+           "", "Um condicional certificado prova *hipótese aberta → enunciado*; o problema só fecha "
+           "quando a hipótese aberta for provada."]
+json.dump(report, open(os.path.join(REP, "report.json"), "w"), indent=2, ensure_ascii=False)
 if errors:
     md += ["", "### Erros de compilação (primeiras linhas)"]
     for mod, errs in errors.items():
@@ -113,7 +137,8 @@ if errors:
         md.append("```")
         md += errs
         md.append("```")
-md += ["", "Escopo: estes são lemas auxiliares. Nenhum deles prova uma conjectura do milênio; "
+md += ["", "Escopo: lemas auxiliares e teoremas CONDICIONAIS. Nenhum deles prova uma conjectura; "
+       "cada condicional só fecha o problema se a hipótese aberta for provada. "
        "`OPEN_MATH` continua verdadeiro para RH, P≠NP, NS, YM, BSD, Hodge e Beal."]
 open(os.path.join(REP, "report.md"), "w").write("\n".join(md) + "\n")
 print("\n".join(md))

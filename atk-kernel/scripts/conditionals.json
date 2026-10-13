@@ -1,0 +1,65 @@
+[
+  {
+    "problem": "Hipótese de Riemann",
+    "theorem": "ATK.Conditional.Riemann.riemann_conditional",
+    "target": "RiemannHypothesis (definição da Mathlib)",
+    "fidelity": "OFICIAL",
+    "bridge": ["BaezDuarteCriterion: D_N → 0 ⇒ RH (Nyman 1950, Beurling 1955, Báez-Duarte 2003)"],
+    "open": ["UniformLogBound: ∃ K, ∀ N, D_N ≤ K / log(N+2)"],
+    "lane": "m-core-riemann"
+  },
+  {
+    "problem": "Navier–Stokes (Clay, caso A)",
+    "theorem": "ATK.Conditional.NavierStokes.ns_conditional",
+    "target": "ClayStatementA M",
+    "fidelity": "PARAMÉTRICA (NSModel)",
+    "bridge": ["EnstrophyBlowupCriterion: solução não global ⇒ ‖∇u‖² ilimitada antes de T* (Leray 1934)"],
+    "open": ["EnstrophyAPrioriBound: enstrofia limitada em todo [0, T) onde a solução suave existe"],
+    "lane": "navier-stokes-critical-barrier-audit"
+  },
+  {
+    "problem": "P vs NP",
+    "theorem": "ATK.Conditional.PvsNP.pvsnp_conditional",
+    "target": "M.P ≠ M.NP",
+    "fidelity": "PARAMÉTRICA (ComplexityModel)",
+    "bridge": ["CookLevin: SAT ∈ NP e SAT é NP-difícil (Cook 1971, Levin 1973)"],
+    "open": ["SATNotInP: SAT ∉ P (equivalente a P ≠ NP dada a ponte — pneNP_iff_sat_not_in_P)"],
+    "lane": "m-core-p-vs-np"
+  },
+  {
+    "problem": "Conjectura de Hodge",
+    "theorem": "ATK.Conditional.Hodge.hodge_conditional",
+    "target": "HodgeConjecture M",
+    "fidelity": "PARAMÉTRICA (HodgeModel)",
+    "bridge": ["KnownCases: p ≤ 1 ou p ≥ dim X − 1 (Lefschetz (1,1) 1924 + Lefschetz difícil)"],
+    "open": ["MiddleCodimension: 2 ≤ p ≤ dim X − 2 (primeiro caso: dim 4, p = 2)"],
+    "lane": "m-core-hodge"
+  },
+  {
+    "problem": "Birch e Swinnerton-Dyer",
+    "theorem": "ATK.Conditional.BSD.bsd_conditional",
+    "target": "BSDFull M (posto + fórmula refinada)",
+    "fidelity": "PARAMÉTRICA (BSDModel)",
+    "bridge": ["GrossZagierKolyvagin: posto analítico ≤ 1 ⇒ posto = posto analítico (1986–89, + BCDT 2001)"],
+    "open": ["RankOpen: o mesmo para posto analítico ≥ 2", "RefinedOpen: Ш finito e fórmula do termo líder"],
+    "lane": "m-core-bsd"
+  },
+  {
+    "problem": "Yang–Mills e gap de massa",
+    "theorem": "ATK.Conditional.YangMills.ym_conditional",
+    "target": "ClayYM M",
+    "fidelity": "PARAMÉTRICA (YMModel)",
+    "bridge": ["OSReconstruction: OS ⇒ Wightman; clustering de taxa m ⇒ gap ≥ m (Osterwalder–Schrader 1973/75)"],
+    "open": ["ConstructiveYM4D: medida euclidiana 4D com axiomas OS e clustering exponencial, para todo G compacto simples"],
+    "lane": "m-core-yang-mills"
+  },
+  {
+    "problem": "Conjectura de Beal (não é do milênio)",
+    "theorem": "ATK.Conditional.Beal.beal_conditional",
+    "target": "BealConjecture (enunciado elementar completo)",
+    "fidelity": "OFICIAL",
+    "bridge": ["FermatLastTheorem (Wiles 1995, Taylor–Wiles 1995; definido na Mathlib, prova em formalização)"],
+    "open": ["GCDLowerBoundSmallExponents: gcd(a,b,c) > 1 para soluções com gcd(x,y,z) ≤ 2"],
+    "lane": "m-core-beal"
+  }
+]
