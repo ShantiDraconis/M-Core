@@ -53,8 +53,14 @@ for f in sorted(glob.glob(os.path.join(ROOT, "ATK", "**", "*.lean"), recursive=T
         src_flags[os.path.relpath(f, ROOT)] = flags
 
 def module_file(thm):
-    # ATK.X.thm -> ATK/X.lean ; ATK.Conditional.X.thm -> ATK/Conditional/X.lean
-    return "/".join(thm.split(".")[:-1]) + ".lean"
+    # ATK.X.thm -> ATK/X.lean ; ATK.Conditional.X.thm -> ATK/Conditional/X.lean ;
+    # ATK.X.Sub.thm (namespace interno) -> ATK/X.lean  (prefixo mais longo que existe)
+    parts = thm.split(".")
+    for k in range(len(parts) - 1, 1, -1):
+        cand = "/".join(parts[:k]) + ".lean"
+        if os.path.exists(os.path.join(ROOT, cand)):
+            return cand
+    return "/".join(parts[:-1]) + ".lean"
 
 rows, certified = [], 0
 for thm in expected:

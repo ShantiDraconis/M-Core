@@ -173,7 +173,9 @@
       "M-Core fix/ns-scaling-false atk-kernel/README (12/10): 8 enunciados mínimos abertos; nenhuma conjectura do milênio provada",
       "m-core-p-vs-np atk/p01-closure-audit-20261013-pnp-reduction 56a0e7a (13/10 16:12): SAT ∈ NP incondicional no modelo; P ≠ NP reduzido a G2.1",
       "Busca em 32 repositórios / 2210 branches / 4858 arquivos Lean (PROOF_SEARCH.md): nenhuma obrigação O1–O8 fechada; único resultado sem hipóteses = P01 (SAT ∈ NP no modelo do lane)",
-      "Mapa de descarga de hipóteses (HYPOTHESIS_MAP.md): 491 condicionais limpos, 334 hipóteses, 6 descargas genuínas (cadeia P01 + T59AllFourEliminator via FLT(4) da Mathlib)"
+      "Mapa de descarga de hipóteses (HYPOTHESIS_MAP.md): 491 condicionais limpos, 334 hipóteses, 6 descargas genuínas (cadeia P01 + T59AllFourEliminator via FLT(4) da Mathlib)",
+      "2.440 teoremas do FINAL_PROOF_STRUCTURE classificados no commit verificado pelo CI (THEOREMS_2440.md): 653 campos de estrutura, 19 condicionais → alvo, 0 descarregados; enunciados finais NO_PROOF_IN_LIBRARY no relatório de props do kernel",
+      "ATK/Indeterminacy.lean (50 teoremas certificados): teoria dos pontos de 3 estados; RH_I_iff mostra que a constante I não altera RH — infraestrutura, nenhuma obrigação fechada"
     ]
   }
 }

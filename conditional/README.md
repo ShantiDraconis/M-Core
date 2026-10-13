@@ -92,6 +92,31 @@ A sexta é nova: no lane Beal, `T59_allFourEliminator_proved` fecha o ramo do ex
 FLT(4) da Mathlib, e Beal fica reduzido a **FLT para primos > 3** + **`T59ResidualEliminator`**.
 Com isso a ponte B2 passou a `PARCIAL_NO_MODELO_DO_LANE`. Nenhuma obrigação aberta O1–O8 caiu.
 
+## Os 2.440 teoremas auditados — `THEOREMS_2440.md`
+
+Os 2.440 teoremas do `FINAL_PROOF_STRUCTURE` (inventários do kernel, um por lane) foram localizados
+um a um no commit exato que o CI verificou e classificados pela forma lógica. Todos são CLEAN no
+kernel. Mas **653 (27%) são projeções de campos `Prop` de estruturas** — hipóteses empacotadas, não
+provas —, 299 são refutações/firewalls, 235 são fatos de registro, 141 são equivalências e só
+**19 são condicionais que concluem um alvo; nenhum deles tem as hipóteses provadas pelos outros
+2.440**. Os enunciados finais aparecem no relatório de proposições do próprio kernel como
+`NO_PROOF_IN_LIBRARY`. Usados juntos, os 2.440 entregam as pontes e a infraestrutura dos modelos;
+não produzem nenhuma das obrigações O1–O8.
+
+## Indeterminações como pontos de 3 estados — `ATK/Indeterminacy.lean` · `INDETERMINACY.md`
+
+A proposta do autor (cada indeterminação é um ponto com 3 estados; interações são pontos; o estado
+é medido por L'Hôpital e a medida é uma constante) está formalizada e **certificada: 50 teoremas**.
+Ponto = germe `a·tᵐ`; estados `zero / finito / infinito` pela ordem `m`; produto, quociente e
+inverso fecham; no estado finito o quociente mede a constante `a/b`; L'Hôpital mede `0/0` como
+`f'(0)/g'(0)`; `0⁰` mede a multiplicidade como `e^(−mc)`; `0/0` sozinho tem os 3 estados e qualquer
+valor real. A constante `I = 0 ⊘ 0` existe numa extensão de ℝ, é absorvente, sem cancelamento e
+não forma anel. Lógica de 4 estados sem explosão; `ClosedMath P ↔ P`.
+
+O mesmo arquivo prova os limites: `RH_I_iff` (RH na extensão com `I` é RH — `I` não move zeros) e
+`monotona_nao_basta` (decrescer não dá `D_N → 0`). Por isso o módulo é infraestrutura e não muda o
+portão.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -161,6 +186,9 @@ README.md                    este arquivo
 CATALOG.md                   os 251 repositórios agrupados por função e por problema
 SOURCES.md                   de onde veio cada arquivo (repo + SHA)
 PROOF_SEARCH.md              busca de provas em 32 repositórios e 2.210 branches
+THEOREMS_2440.md             os 2.440 teoremas auditados, um a um: forma, hipóteses, obrigação
+theorems_2440.json           dados (lane, nome, arquivo, linha, conclusão, hipóteses, forma)
+INDETERMINACY.md             a teoria dos pontos de 3 estados e o que o kernel provou dela
 proof_search.json            dados da busca (por repositório, categoria e problema)
 HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
 hypothesis_map.json          dados do mapa
@@ -169,11 +197,14 @@ catalog/                     repos.txt (lista), repos.json (classificação)
 scripts/build_catalog.py     regera o catálogo
 scripts/proof_scan.py        o scanner da busca de provas
 scripts/hyp_map.py           o mapa de descarga de hipóteses
+scripts/thm2440.py           classifica os 2.440 teoremas no commit verificado pelo CI
+scripts/report2440.py        gera THEOREMS_2440.md
 atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.34.1)
   ATK/*.lean                 19 lemas auxiliares do M-Core (inalterados)
   ATK/Conditional/*.lean     7 condicionais (14 teoremas)
   ATK/Regimes.lean           10 formas do gateway (14 teoremas; não toca OPEN_MATH)
   ATK/ClosedMath.lean        teorema-mestre + firewall (4 teoremas)
+  ATK/Indeterminacy.lean     pontos de 3 estados, L'Hôpital, I = 0⊘0, 4 estados (50 teoremas)
   scripts/obligations.json   as 20 obrigações e a regra do portão de CLOSED_MATH
   scripts/check_axioms.py    auditoria: CERTIFIED só com axiomas padrão e sem sorry/admit/axiom
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional
@@ -184,7 +215,7 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
 ## Como verificar
 
 O CI (`.github/workflows/atk-kernel.yml`) baixa a Mathlib pré-compilada, compila tudo e
-gera `reports/report.md` com o veredito de cada um dos 51 teoremas, a tabela dos condicionais, o estado das 20 obrigações e o portão de CLOSED_MATH.
+gera `reports/report.md` com o veredito de cada um dos 101 teoremas, a tabela dos condicionais, o estado das 20 obrigações e o portão de CLOSED_MATH.
 Localmente:
 
 ```
