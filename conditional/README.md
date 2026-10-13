@@ -84,6 +84,14 @@ As únicas 3 sem hipóteses são o P01 (SAT ∈ NP no modelo do lane). O `rieman
 `millennium-riemann-I` depende dos axiomas `collapse_law` e `I_ne_one`, que juntos já são a própria RH.
 Nenhuma das obrigações O1–O8 está fechada em nenhum lugar.
 
+## Mapa de descarga de hipóteses — `HYPOTHESIS_MAP.md`
+
+Das 334 hipóteses usadas pelos 491 teoremas condicionais limpos dos seus repositórios, só 6 já
+estão provadas em algum branch. Cinco são da cadeia do P01 (SAT ∈ NP no modelo do lane P vs NP).
+A sexta é nova: no lane Beal, `T59_allFourEliminator_proved` fecha o ramo do expoente 4 com o
+FLT(4) da Mathlib, e Beal fica reduzido a **FLT para primos > 3** + **`T59ResidualEliminator`**.
+Com isso a ponte B2 passou a `PARCIAL_NO_MODELO_DO_LANE`. Nenhuma obrigação aberta O1–O8 caiu.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -103,7 +111,7 @@ reproduzida em cada relatório do CI):
 
 | Tipo | Quantas | O que é | Estado |
 |---|---|---|---|
-| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | provados no papel, não formalizados (B4 parcial no modelo do lane P vs NP) |
+| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | provados no papel, não formalizados (B2 e B4 parciais nos modelos dos lanes) |
 | ABERTA (O1–O8) | 8 | as hipóteses abertas dos condicionais | `OPEN_MATH` |
 | LIGAÇÃO (L1–L5) | 5 | construir na Mathlib os objetos reais de NS, P vs NP, Hodge, BSD e Yang–Mills | não existem na Mathlib |
 
@@ -154,10 +162,13 @@ CATALOG.md                   os 251 repositórios agrupados por função e por p
 SOURCES.md                   de onde veio cada arquivo (repo + SHA)
 PROOF_SEARCH.md              busca de provas em 32 repositórios e 2.210 branches
 proof_search.json            dados da busca (por repositório, categoria e problema)
+HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
+hypothesis_map.json          dados do mapa
 BACKWARD_ORACLE_PROTOCOL.md  política fail-closed (copiada do m-core-openai-ns-audit)
 catalog/                     repos.txt (lista), repos.json (classificação)
 scripts/build_catalog.py     regera o catálogo
 scripts/proof_scan.py        o scanner da busca de provas
+scripts/hyp_map.py           o mapa de descarga de hipóteses
 atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.34.1)
   ATK/*.lean                 19 lemas auxiliares do M-Core (inalterados)
   ATK/Conditional/*.lean     7 condicionais (14 teoremas)

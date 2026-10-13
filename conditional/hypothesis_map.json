@@ -1,0 +1,1876 @@
+{
+ "conditionals": 491,
+ "distinct_hypotheses": 334,
+ "discharged": 8,
+ "genuine_discharges": [
+  {
+   "type": "SATInNPGap circuitBitEncoding",
+   "count": 21,
+   "problems": {
+    "pvsnp": 21
+   },
+   "examples": [
+    "m-core::atk-kernel-check::imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean::p01_g21_closes_internal",
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/P02TerminalFrontier.lean::p01_p02_close_internal_separation",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02FinalAttack.lean::P01_D3_to_internal_final"
+   ],
+   "discharged_by": [
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p01-post-mincut-advance-20261001",
+     "path": "lean/MCore/Real/P01PostMinCutClosure.lean",
+     "name": "canonical_sat_in_np_closed",
+     "kind": "theorem"
+    }
+   ]
+  },
+  {
+   "type": "T59AllFourEliminator",
+   "count": 2,
+   "problems": {
+    "beal": 2
+   },
+   "examples": [
+    "m-core-beal::atk/beal-parity-to-t59-partition-20261001::lean/MCore/T59ParityPartition.lean::T59_three_branch_elimination_closes_beal",
+    "m-core-beal::atk/beal-parity-to-t59-partition-20261001::lean/MCore/T59ParityPartition.lean::T59_residual_is_only_remaining_branch"
+   ],
+   "discharged_by": [
+    {
+     "repo": "m-core-beal",
+     "branch": "atk/beal-parity-to-t59-partition-20261001",
+     "path": "lean/MCore/T59ParityPartition.lean",
+     "name": "T59_allFourEliminator_proved",
+     "kind": "theorem"
+    }
+   ]
+  },
+  {
+   "type": "P01PrepPhase",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk-missing-material-types-20260930::lean/MCore/Real/P01IntegratedAssembly.lean::p01_of_phases",
+    "m-core-p-vs-np::atk/p01-core-decode-physical-reject-20260930::lean/MCore/Real/P01IntegratedAssembly.lean::p01_of_phases"
+   ],
+   "discharged_by": [
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p01-core-decode-physical-reject-20260930",
+     "path": "lean/MCore/Real/P01MaterialInhabitantFrontier.lean",
+     "name": "prep_phase_inhabited",
+     "kind": "theorem",
+     "via": "Nonempty"
+    },
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p01-material-inhabitant-frontier-20260930",
+     "path": "lean/MCore/Real/P01MaterialInhabitantFrontier.lean",
+     "name": "prep_phase_inhabited",
+     "kind": "theorem",
+     "via": "Nonempty"
+    },
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p02-material-inhabitant-20261007",
+     "path": "lean/MCore/Real/PNPMaterialVerifierFrontier.lean",
+     "name": "prep_phase_is_material",
+     "kind": "theorem",
+     "via": "Nonempty"
+    }
+   ]
+  },
+  {
+   "type": "CoreDecodeFailurePhysicalReject",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-core-decode-physical-reject-20260930::lean/MCore/Real/P01RawVerifierFromCoreReject.lean::p01_of_core_decode_failure_physical_reject",
+    "m-core-p-vs-np::atk/p01-material-inhabitant-frontier-20260930::lean/MCore/Real/P01RawVerifierFromCoreReject.lean::p01_of_core_decode_failure_physical_reject"
+   ],
+   "discharged_by": [
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p01-core-decode-physical-reject-20260930",
+     "path": "lean/MCore/Real/P01CoreDecodeFailurePhysical.lean",
+     "name": "core_decode_failure_physical_reject",
+     "kind": "theorem"
+    },
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p01-material-inhabitant-frontier-20260930",
+     "path": "lean/MCore/Real/P01CoreDecodeFailurePhysical.lean",
+     "name": "coreDecodeFailurePhysicalReject",
+     "kind": "theorem"
+    }
+   ]
+  },
+  {
+   "type": "InNP CanonicalSAT",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p02-equality-composition-unified::lean/MCore/Real/P02TotalCandidateFailureMinCut.lean::totalSemanticFailureProducer_closes_internal_endpoint",
+    "m-core-p-vs-np::cert/p02-semantic-negation-reduction-d543fdcc-run37356246807::lean/MCore/Real/P02TotalCandidateFailureMinCut.lean::totalSemanticFailureProducer_closes_internal_endpoint"
+   ],
+   "discharged_by": [
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p02-equality-composition-unified",
+     "path": "lean/MCore/Real/P02TwoSidedExactnessAudit.lean",
+     "name": "canonicalSAT_inNP",
+     "kind": "theorem"
+    }
+   ]
+  },
+  {
+   "type": "P01ConstructionGap",
+   "count": 1,
+   "problems": {
+    "pvsnp": 1
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/P012/P012Interpretation.lean::real_two_producers_close_internal"
+   ],
+   "discharged_by": [
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p01-material-inhabitant-frontier-20260930",
+     "path": "lean/MCore/Real/P01TerminalCertificate.lean",
+     "name": "p01ConstructionGap",
+     "kind": "theorem"
+    },
+    {
+     "repo": "m-core-p-vs-np",
+     "branch": "atk/p01-terminal-promotion-candidate-20260930",
+     "path": "lean/MCore/Real/P01TerminalMaterialCertificate.lean",
+     "name": "p01_closed_no_hypothesis",
+     "kind": "theorem"
+    }
+   ]
+  }
+ ],
+ "false_positives": [
+  {
+   "type": "Type",
+   "count": 1,
+   "problems": {
+    "hodge": 1
+   },
+   "examples": [
+    "m-core::atk-kernel-check::atk-kernel/ATK/LogicAudit.lean::hodge_material_vacuous"
+   ],
+   "discharged_by": [
+    {
+     "repo": "m-core-riemann",
+     "branch": "atk/auto-compose-terminal-20260930",
+     "path": "lean/MCore/RH/R2/FinalExternal.lean",
+     "name": "FINAL_EXTERNAL",
+     "kind": "def"
+    },
+    {
+     "repo": "m-core-riemann",
+     "branch": "atk/auto-compose-terminal-20260930",
+     "path": "research/r2/FinalExternal.lean",
+     "name": "FINAL_EXTERNAL",
+     "kind": "def"
+    },
+    {
+     "repo": "m-core-beal",
+     "branch": "atk/auto-compose-terminal-20260930",
+     "path": "lean/MCore/B01DenseScientificFrontier.lean",
+     "name": "B01DenseFrontier",
+     "kind": "def"
+    }
+   ]
+  },
+  {
+   "type": "RiemannHypothesis",
+   "count": 1,
+   "problems": {
+    "riemann": 1
+   },
+   "examples": [
+    "m-core-riemann::atk/rh-material-recovery-20261007::lean/MCore/RH/R0/ConditionalLogRate.lean::RH_and_logRate_imply_ConcreteUniformLogDNBound"
+   ],
+   "discharged_by": [
+    {
+     "repo": "millennium-riemann-i",
+     "branch": "atk-rh-g21-mold",
+     "path": "src/Riemann/CollapseProof/Contradiction.lean",
+     "name": "riemann_hypothesis",
+     "kind": "theorem"
+    },
+    {
+     "repo": "millennium-riemann-i",
+     "branch": "atk/label-circular-rh-20261008",
+     "path": "src/Riemann/CollapseProof/Contradiction.lean",
+     "name": "riemann_hypothesis",
+     "kind": "theorem"
+    }
+   ]
+  }
+ ],
+ "open_hypotheses_top": [
+  {
+   "type": "G21Pointwise",
+   "count": 12,
+   "problems": {
+    "pvsnp": 12
+   },
+   "examples": [
+    "m-core::atk-kernel-check::imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean::p01_g21_closes_internal",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/P012/P012Interpretation.lean::real_two_producers_close_internal",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02G21G22Attack.lean::p01_g21_closes_internal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "BackwardAudit.Lefschetz11ConcreteLaw M",
+   "count": 12,
+   "problems": {
+    "hodge": 12
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialFrontier.lean::concretePayload_of_materialProducers",
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialFrontier.lean::concretePayload_of_h01_split",
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeMaterialFrontier.lean::concretePayload_of_materialProducers"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "D3KleeneSATBridge",
+   "count": 11,
+   "problems": {
+    "pvsnp": 11
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02KleeneBridge.lean::kleene_sat_bridge_closes_G21",
+    "m-core-p-vs-np::agent-start/04-p02-self-embedding-20260923::lean/MCore/Real/P02KleeneBridge.lean::kleene_sat_bridge_closes_G21",
+    "m-core-p-vs-np::atk/egc-hardening-v1-20260926::lean/MCore/Real/P02KleeneBridge.lean::kleene_sat_bridge_closes_G21"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "KleeneUniversalBridge",
+   "count": 10,
+   "problems": {
+    "pvsnp": 10
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p02-consolidated-kernel-20261001::lean/MCore/Real/P02KleeneUniversalBridge.lean::kleene_bridge_implies_universal_failure",
+    "m-core-p-vs-np::atk/p02-consolidated-kernel-20261001::lean/MCore/Real/P02KleeneUniversalBridge.lean::kleene_bridge_closes_internal_endpoint",
+    "m-core-p-vs-np::atk/p02-e1-c1-left-validate-20261004::lean/MCore/Real/P02KleeneUniversalBridge.lean::kleene_bridge_implies_universal_failure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "CodimZeroConcretePayload M",
+   "count": 9,
+   "problems": {
+    "hodge": 9
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialFrontier.lean::concretePayload_of_materialProducers",
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeMaterialFrontier.lean::concretePayload_of_materialProducers",
+    "m-core-hodge::atk/hodge-closed-math-line-20261007::lean/MCore/HodgeClosedMathLine.lean::closed_material_producers_to_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HigherCodimConcretePayload M",
+   "count": 9,
+   "problems": {
+    "hodge": 9
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialFrontier.lean::concretePayload_of_materialProducers",
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeMaterialFrontier.lean::concretePayload_of_materialProducers",
+    "m-core-hodge::atk/hodge-closed-math-line-20261007::lean/MCore/HodgeClosedMathLine.lean::closed_material_producers_to_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeMaterialMincut G M",
+   "count": 9,
+   "problems": {
+    "hodge": 9
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialMincut.lean::material_mincut_closes_payload",
+    "m-core-hodge::atk-kernel-check::lean/P05/Hodge/HodgeFormalRealization.lean::formalRealization_plus_material_closes",
+    "m-core-hodge::atk-kernel-check::lean/P05/Hodge/HodgeInfrastructureComplete.lean::infrastructure_plus_material_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "CycleSpanMechanics G",
+   "count": 9,
+   "problems": {
+    "hodge": 9
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeOpenClosedDuality.lean::any_open_closed_duality_inhabitant_closes",
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeRatioCollapse.lean::normalized_ratio_inhabitant_closes",
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeTerminalCycle.lean::any_terminal_inhabitant_closes_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeConstructiveMaterial G M",
+   "count": 8,
+   "problems": {
+    "hodge": 8
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeExactRemaining.lean::HodgeConstructiveMaterial.toConcretePayload",
+    "m-core-hodge::atk/hodge-closed-math-line-20261007::lean/MCore/HodgeClosedMathLine.lean::closed_constructive_material_to_payload",
+    "m-core-hodge::frozen/hodge-closed-math-r2-green-9fa007d2::lean/MCore/HodgeClosedMathLine.lean::closed_constructive_material_to_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "G22Contradiction",
+   "count": 7,
+   "problems": {
+    "pvsnp": 7
+   },
+   "examples": [
+    "m-core::atk-kernel-check::imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean::g22_implies_g21",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02G21G22Attack.lean::g22_implies_g21",
+    "m-core-p-vs-np::atk-kernel-check::audit/ATK_EXACT_OPEN_PROOF_FRONTIER_20261009.lean::g22_implies_g21"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "Beal",
+   "count": 6,
+   "problems": {
+    "beal": 6
+   },
+   "examples": [
+    "m-core::atk-kernel-check::atk-kernel/ATK/Exact.lean::flt_of_beal",
+    "atk-beal-public::status/condicional-20261013::audit/lean/ATK/Exact.lean::flt_of_beal",
+    "atk-bsd-public::status/condicional-20261013::audit/lean/ATK/Exact.lean::flt_of_beal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "FailureGenerator language",
+   "count": 6,
+   "problems": {
+    "pvsnp": 6
+   },
+   "examples": [
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/FailProofAllGaps.lean::failure_generator_implies_universal_failure",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/FailProofAllGaps.lean::failure_generator_implies_universal_failure",
+    "m-core-p-vs-np::atk-kernel-check::audit/ATK_UNIFIED_SOURCE_BATCH04_20261009.lean::failure_generator_implies_universal_failure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "MCoreRHCertificate",
+   "count": 6,
+   "problems": {
+    "riemann": 6
+   },
+   "examples": [
+    "m-core-riemann::atk/auto-compose-terminal-20260930::lean/MCore/RH/K9_RiemannHypothesis.lean::mcore_riemann_hypothesis_of_certificate",
+    "m-core-riemann::atk/cert-repair-rh-b8077235::lean/MCore/RH/K9_RiemannHypothesis.lean::mcore_riemann_hypothesis_of_certificate",
+    "m-core-riemann::atk/first-real-open-math-20261005::lean/MCore/RH/K9_RiemannHypothesis.lean::mcore_riemann_hypothesis_of_certificate"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "FirstRealOpenMath",
+   "count": 6,
+   "problems": {
+    "beal": 6
+   },
+   "examples": [
+    "m-core-beal::atk/beal-full-toolchain-20261006::lean/MCore/OpenMath/ForcingKernel.lean::close_from_first_real_open_math",
+    "m-core-beal::atk/beal-q10-primitive-exclusion-20261006::lean/MCore/OpenMath/ForcingKernel.lean::close_from_first_real_open_math",
+    "m-core-beal::atk/first-real-open-math-20261005::lean/MCore/OpenMath/ForcingKernel.lean::close_from_first_real_open_math"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeCertificationBoundary G M",
+   "count": 6,
+   "problems": {
+    "hodge": 6
+   },
+   "examples": [
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/FinalAttack.lean::fa_hodge_to_algebraicity",
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/K20.lean::hodge_implies_payload_at_boundary",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/FinalAttack.lean::fa_hodge_to_algebraicity"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "GradedRationalHodgeConjecture G",
+   "count": 6,
+   "problems": {
+    "hodge": 6
+   },
+   "examples": [
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/K20.lean::hodge_implies_payload_at_boundary",
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/K22.lean::k22_hodge_recovers_payload",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/K20.lean::hodge_implies_payload_at_boundary"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "∀(X:G.Variety)(p:Nat)(α:G.CohomologyQ X(2 * p)),BackwardAudit.H01MinimalForwardPayload G M X p α",
+   "count": 6,
+   "problems": {
+    "hodge": 6
+   },
+   "examples": [
+    "m-core-hodge::atk/hodge-closed-math-line-20261007::lean/MCore/HodgeClosedMathLine.lean::closed_universalForward_to_payload",
+    "m-core-hodge::frozen/hodge-closed-math-r2-green-9fa007d2::lean/MCore/HodgeClosedMathLine.lean::closed_universalForward_to_payload",
+    "m-core-hodge::frozen/hodge-direct-cycle-mincut-green-ddccc613::lean/MCore/HodgeClosedMathLine.lean::closed_universalForward_to_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeR2MaterialProducer G M",
+   "count": 6,
+   "problems": {
+    "hodge": 6
+   },
+   "examples": [
+    "m-core-hodge::atk/hodge-closed-math-line-20261007::lean/MCore/HodgeClosedMathLine.lean::HodgeR2MaterialProducer.toConcretePayload",
+    "m-core-hodge::frozen/hodge-closed-math-r2-green-9fa007d2::lean/MCore/HodgeClosedMathLine.lean::HodgeR2MaterialProducer.toConcretePayload",
+    "m-core-hodge::frozen/hodge-direct-cycle-mincut-green-ddccc613::lean/MCore/HodgeClosedMathLine.lean::HodgeR2MaterialProducer.toConcretePayload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "CommonPrimeWitnessContract",
+   "count": 5,
+   "problems": {
+    "beal": 5
+   },
+   "examples": [
+    "m-core::atk-kernel-check::imports/final-proof/BEAL/d039136f/lean/MCore/BackwardAudit/WithoutOracle.lean::witness_contract_closes_beal",
+    "m-core-beal::atk-kernel-check::lean/MCore/BackwardAudit/WithoutOracle.lean::witness_contract_closes_beal",
+    "m-core-beal::atk/beal-material-producer-gate-20260928::lean/MCore/BackwardAudit/BealMaterialProducerGate.lean::commonPrimeWitness_is_endpoint_projection"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "∀ d:BealData,CommonPrime d.a d.b d.c",
+   "count": 5,
+   "problems": {
+    "beal": 5
+   },
+   "examples": [
+    "m-core::atk-kernel-check::imports/final-proof/BEAL/d039136f/lean/MCore/K8.lean::closeBeal_from_commonPrime_witnesses",
+    "m-core-beal::atk-kernel-check::lean/MCore/K8.lean::closeBeal_from_commonPrime_witnesses",
+    "atk-beal-public::main::imports/m-core-beal/lean/MCore/K8.lean::closeBeal_from_commonPrime_witnesses"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeLastBit M",
+   "count": 5,
+   "problems": {
+    "hodge": 5
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/Hodge_FinalGlobalExternalCertificate.lean::hodge_final_root_of_last_bit",
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeLastBitFrontier.lean::hodge_last_bit_closes_terminal",
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeFinalGlobalExternalCertificate.lean::hodge_final_root_of_last_bit"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "P02Target",
+   "count": 5,
+   "problems": {
+    "pvsnp": 5
+   },
+   "examples": [
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/P02TerminalFrontier.lean::p01_p02_close_internal_separation",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02TerminalFrontier.lean::p01_p02_close_internal_separation",
+    "m-core-p-vs-np::atk/p02-after-p01-20261001::lean/MCore/Real/P02AfterP01Frontier.lean::p02_closes_internal_after_frozen_p01"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "CycleSpanAdapter G M",
+   "count": 4,
+   "problems": {
+    "hodge": 4
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialFrontier.lean::concretePayload_of_h01_split",
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/BackwardAudit/H01TerminalLink.lean::h01_family_closes_concrete_payload",
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeMaterialFrontier.lean::concretePayload_of_h01_split"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "RHClosure DN",
+   "count": 4,
+   "problems": {
+    "riemann": 4
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/RH_MaterialClosure.lean::closure_produces_bound",
+    "m-core-riemann::atk-kernel-check::lean/MCore/Material/Closure.lean::closure_produces_bound",
+    "atk-certified-priority-record::main::snapshots/m-core-riemann/lean/MCore/Material/Closure.lean::closure_produces_bound"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "¬ InP language",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/CanonicalFinalProof.lean::not_in_p_implies_universal_failure",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/CanonicalFinalProof.lean::not_in_p_implies_universal_failure",
+    "atk-certified-priority-record::main::snapshots/Elyon-Public-Proof/lean/MCore/Real/CanonicalFinalProof.lean::not_in_p_implies_universal_failure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "InNP language",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/CanonicalFinalProof.lean::target_failure_implies_p_ne_np",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/CanonicalFinalProof.lean::target_failure_implies_p_ne_np",
+    "atk-certified-priority-record::main::snapshots/Elyon-Public-Proof/lean/MCore/Real/CanonicalFinalProof.lean::target_failure_implies_p_ne_np"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "UniversalFailure language",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/CanonicalFinalProof.lean::target_failure_implies_p_ne_np",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/CanonicalFinalProof.lean::target_failure_implies_p_ne_np",
+    "atk-certified-priority-record::main::snapshots/Elyon-Public-Proof/lean/MCore/Real/CanonicalFinalProof.lean::target_failure_implies_p_ne_np"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "SeparationCertificate",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/CanonicalFinalProof.lean::separation_certificate_closes",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/CanonicalFinalProof.lean::separation_certificate_closes",
+    "atk-certified-priority-record::main::snapshots/Elyon-Public-Proof/lean/MCore/Real/CanonicalFinalProof.lean::separation_certificate_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "SATInternalClosure",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/CanonicalSATBoundary.lean::sat_internal_closure_implies_p_ne_np",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/CanonicalSATBoundary.lean::sat_internal_closure_implies_p_ne_np",
+    "atk-certified-priority-record::main::snapshots/Elyon-Public-Proof/lean/MCore/Real/CanonicalSATBoundary.lean::sat_internal_closure_implies_p_ne_np"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "PNPFinalPair",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core::cert/elyon-claim1-7-audit-run36049892790::lean/MCore/Real/P02TerminalFrontier.lean::pnp_final_pair_closes",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02TerminalFrontier.lean::pnp_final_pair_closes",
+    "atk-certified-priority-record::main::snapshots/Elyon-Public-Proof/lean/MCore/Real/P02TerminalFrontier.lean::pnp_final_pair_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "V0EquationToCommonDivisor",
+   "count": 4,
+   "problems": {
+    "beal": 4
+   },
+   "examples": [
+    "m-core-beal::atk/auto-compose-terminal-20260930::lean/MCore/V012.lean::T1_v0_to_beal",
+    "m-core-beal::cert/v012-t012-3dc9b61::lean/MCore/V012.lean::T1_v0_to_beal",
+    "m-core-beal::frozen/t3-t4-green-d5689d1::lean/MCore/V012.lean::T1_v0_to_beal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "UniversalSATFailure",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core-p-vs-np::atk-kernel-check::audit/ATK_UNIFIED_SOURCE_BATCH04_20261009.lean::universal_sat_failure_implies_sat_not_in_p",
+    "m-core-p-vs-np::atk-kernel-check::lean/MCore/Real/FinalProof.lean::universal_sat_failure_implies_sat_not_in_p",
+    "atk-certified-priority-record::main::snapshots/m-core-p-vs-np/audit/ATK_UNIFIED_SOURCE_BATCH04_20261009.lean::universal_sat_failure_implies_sat_not_in_p"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "SATLowerBoundCertificate",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core-p-vs-np::atk-kernel-check::audit/ATK_UNIFIED_SOURCE_BATCH04_20261009.lean::sat_not_in_p_of_lower_bound_certificate",
+    "m-core-p-vs-np::atk-kernel-check::lean/MCore/Real/FinalProof.lean::sat_not_in_p_of_lower_bound_certificate",
+    "atk-certified-priority-record::main::snapshots/m-core-p-vs-np/audit/ATK_UNIFIED_SOURCE_BATCH04_20261009.lean::sat_not_in_p_of_lower_bound_certificate"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "TotalCandidateAcceptanceAlignmentCore",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02ComplementTableauDiagonal.lean::alignment_core_implies_universal_failure",
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02ComplementTableauDiagonal.lean::alignment_core_closes_internal_endpoint",
+    "m-core-p-vs-np::atk/p02-kernel-port-audit-20261001::lean/MCore/Real/P02ComplementTableauDiagonal.lean::alignment_core_implies_universal_failure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "TotalCandidateSameInputCore",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02CookLevinSameInputCore.lean::sameInputCore_implies_universal_failure",
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02CookLevinSameInputCore.lean::sameInputCore_closes_internal_endpoint",
+    "m-core-p-vs-np::atk/p02-kernel-port-audit-20261001::lean/MCore/Real/P02CookLevinSameInputCore.lean::sameInputCore_implies_universal_failure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "TotalCandidateKleeneBridge",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p02-consolidated-kernel-20261001::lean/MCore/Real/P02TotalCandidateKleeneReduction.lean::total_candidate_kleene_implies_universal_failure",
+    "m-core-p-vs-np::atk/p02-consolidated-kernel-20261001::lean/MCore/Real/P02TotalCandidateKleeneReduction.lean::total_candidate_kleene_closes_internal_endpoint",
+    "m-core-p-vs-np::atk/p02-e1-c1-left-validate-20261004::lean/MCore/Real/P02TotalCandidateKleeneReduction.lean::total_candidate_kleene_implies_universal_failure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "TotalOddSemanticRecurrence",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p02-e1-c1-left-validate-20261004::lean/MCore/Real/P02OddSemanticRecurrence.lean::totalOddRecurrence_implies_universalFailure",
+    "m-core-p-vs-np::atk/p02-e1-c1-left-validate-20261004::lean/MCore/Real/P02OddSemanticRecurrence.lean::totalOddRecurrence_closes_internal_endpoint",
+    "m-core-p-vs-np::audit/p02-odd-semantic-recurrence-dac7a413::lean/MCore/Real/P02OddSemanticRecurrence.lean::totalOddRecurrence_implies_universalFailure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "MCore.Real.P02BehavioralAlignment.TotalBehavioralAlignmentProducer",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p02-e1-c1-left-validate-20261004::lean/P02/LANE4/AdvancedCertificateReuse.lean::t10_closes_internal_endpoint",
+    "m-core-p-vs-np::atk/p02-e1-c1-left-validate-20261004::lean/P02/LANE4/AdvancedCertificateReuse.lean::t10_to_g21",
+    "m-core-p-vs-np::atk/p02-lane4-terminal-densify-20261003::lean/P02/LANE4/AdvancedCertificateReuse.lean::t10_closes_internal_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "TotalSemanticFailureProducer",
+   "count": 4,
+   "problems": {
+    "pvsnp": 4
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p02-equality-composition-unified::lean/MCore/Real/P02TotalCandidateFailureMinCut.lean::totalSemanticFailureProducer_implies_universalFailure",
+    "m-core-p-vs-np::atk/p02-equality-composition-unified::lean/MCore/Real/P02TotalCandidateFailureMinCut.lean::totalSemanticFailureProducer_closes_internal_endpoint",
+    "m-core-p-vs-np::cert/p02-semantic-negation-reduction-d543fdcc-run37356246807::lean/MCore/Real/P02TotalCandidateFailureMinCut.lean::totalSemanticFailureProducer_implies_universalFailure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "RHAdapterObligations",
+   "count": 3,
+   "problems": {
+    "riemann": 3
+   },
+   "examples": [
+    "m-core::atk-kernel-check::imports/final-proof/RIEMANN/ad3011f1/lean/MCore/K8.lean::rh_endpoint_of_adapter",
+    "m-core-riemann::atk/auto-compose-terminal-20260930::lean/MCore/K8.lean::rh_endpoint_of_adapter",
+    "m-core-riemann::audit/r0-4-chi-memlp::lean/MCore/K8.lean::rh_endpoint_of_adapter"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "Stabilizer",
+   "count": 3,
+   "problems": {
+    "navier-stokes": 3
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ns_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ns_produces_semantic_inhabitant",
+    "atk-math-core-public::status/condicional-20261013::audit/Vacuity.lean::ns_target_no_flows"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "¬ RiemannHypothesis",
+   "count": 3,
+   "problems": {
+    "riemann": 3
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/Semantic/Riemann.lean::accepted_not_RH_produces_semantic_inhabitant",
+    "m-core::frozen/assumed-semantic-7of7-green-f6c0d9fc::lean/MCore/FinalFail/Semantic/Riemann.lean::accepted_not_RH_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/Semantic/Riemann.lean::accepted_not_RH_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "CodimZeroH01Producer G M",
+   "count": 3,
+   "problems": {
+    "hodge": 3
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialFrontier.lean::concretePayload_of_h01_split",
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeMaterialFrontier.lean::concretePayload_of_h01_split",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/HodgeMaterialFrontier.lean::concretePayload_of_h01_split"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HigherH01Producer G M",
+   "count": 3,
+   "problems": {
+    "hodge": 3
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialFrontier.lean::concretePayload_of_h01_split",
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeMaterialFrontier.lean::concretePayload_of_h01_split",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/HodgeMaterialFrontier.lean::concretePayload_of_h01_split"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeConcreteInhabitant G M",
+   "count": 3,
+   "problems": {
+    "hodge": 3
+   },
+   "examples": [
+    "m-core::atk/global-material-audit-20261008::ATK/recovered-sources/20261009/HodgeMaterialInhabitant.lean::HodgeConcreteInhabitant.toConcretePayload",
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeMaterialInhabitant.lean::HodgeConcreteInhabitant.toConcretePayload",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/HodgeMaterialInhabitant.lean::HodgeConcreteInhabitant.toConcretePayload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "D.GeneratorFamily",
+   "count": 3,
+   "problems": {
+    "riemann": 3
+   },
+   "examples": [
+    "m-core-riemann::atk-rh-gram-terminal-link-20260930::lean/MCore/RH/NB/ExplicitCoefficientProducer.lean::finiteSpanApproximatesChi_of_coefficient_error_tendsto_zero",
+    "m-core-riemann::atk-rh-gram-terminal-link-20260930::lean/MCore/RH/NB/ZeroLimitFrontier.lean::finiteSpanApproximatesChi_of_DNToZero",
+    "m-core-riemann::research/nb-zero-limit-frontier::lean/MCore/RH/NB/ZeroLimitFrontier.lean::finiteSpanApproximatesChi_of_dense"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "ConcreteVanishingUpperBound",
+   "count": 3,
+   "problems": {
+    "riemann": 3
+   },
+   "examples": [
+    "m-core-riemann::atk/rh-material-recovery-20261007::lean/MCore/RH/R0/ConcreteVanishingProducer.lean::concreteVanishingUpperBound_to_FiniteSpanApproximatesChi",
+    "m-core-riemann::atk/rh-material-recovery-20261007::lean/MCore/RH/R0/RHKernelEntry.lean::rh_kernel_entry_FiniteSpan",
+    "m-core-riemann::open-math/rh-gap-20261004::lean/MCore/RH/R0/RHKernelEntry.lean::rh_kernel_entry_FiniteSpan"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "ConcreteLogRate",
+   "count": 3,
+   "problems": {
+    "riemann": 3
+   },
+   "examples": [
+    "m-core-riemann::atk/rh-material-recovery-20261007::lean/MCore/RH/R0/ConditionalLogRate.lean::concreteLogRate_implies_ConcreteUniformLogDNBound",
+    "m-core-riemann::atk/rh-material-recovery-20261007::lean/MCore/RH/R0/ConditionalLogRate.lean::RH_and_logRate_imply_ConcreteUniformLogDNBound",
+    "m-core-riemann::atk/rh-material-recovery-20261007::lean/MCore/RH/R0/ConditionalLogRate.lean::OfficialSpecRH_and_logRate_imply_ConcreteUniformLogDNBound"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "T3RawEquationDivisorBridge",
+   "count": 3,
+   "problems": {
+    "beal": 3
+   },
+   "examples": [
+    "m-core-beal::atk/auto-compose-terminal-20260930::lean/MCore/V012.lean::T3_closes_beal",
+    "m-core-beal::frozen/t3-t4-green-d5689d1::lean/MCore/V012.lean::T3_closes_beal",
+    "m-core-beal::frozen/t5-green-c836311::lean/MCore/V012.lean::T3_closes_beal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "ConcreteModelObligation G M",
+   "count": 3,
+   "problems": {
+    "hodge": 3
+   },
+   "examples": [
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/K22.lean::k22_hodge_recovers_payload",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/K22.lean::k22_hodge_recovers_payload",
+    "atk-hodge-public::main::imports/m-core-hodge/lean/MCore/K22.lean::k22_hodge_recovers_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "GeometryObligation G M",
+   "count": 3,
+   "problems": {
+    "hodge": 3
+   },
+   "examples": [
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/K22.lean::k22_hodge_recovers_payload",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/K22.lean::k22_hodge_recovers_payload",
+    "atk-hodge-public::main::imports/m-core-hodge/lean/MCore/K22.lean::k22_hodge_recovers_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "MCore.CodimensionOneAlgebraicityPayload M",
+   "count": 3,
+   "problems": {
+    "hodge": 3
+   },
+   "examples": [
+    "m-core-hodge::atk/auto-compose-terminal-20260930::lean/MCore/BackwardAudit/HodgeCodimTrisection.lean::concretePayload_of_trisection",
+    "m-core-hodge::atk/auto-compose-terminal-20260930::lean/MCore/BackwardAudit/HodgeHigherCodimUnconditionalClaim.lean::higher_certificate_closes_concrete_payload",
+    "m-core-hodge::atk/auto-compose-terminal-20260930::lean/MCore/BackwardAudit/HodgeResidualCodimSplit.lean::concretePayload_of_codimOne_and_residual"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "UniversalWitnessExists",
+   "count": 3,
+   "problems": {
+    "pvsnp": 3
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02UniversalWitnessChain.lean::universalWitnessExists_to_g21Pointwise",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02UniversalWitnessChain.lean::p01_universalWitness_closes_internal",
+    "m-core-p-vs-np::attack/t5-a2-strength-reduction-20260922::lean/MCore/Real/P02T5A2StrengthReduction.lean::universal_witness_implies_g21_pointwise"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "Producer Theory Physical MassGap",
+   "count": 2,
+   "problems": {
+    "yang-mills": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::atk-batch2/originals/terminal-certificates/ATK/UniversalContracts.lean::terminal",
+    "m-core::atk-kernel-check::atk-batch2/patched/terminal-certificates/ATK/UniversalContracts.lean::terminal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "Tendsto bdDistSq atTop(𝓝 0)→ RiemannHypothesis",
+   "count": 2,
+   "problems": {
+    "riemann": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::atk-kernel/ATK/Riemann.lean::rh_of_bd_bound",
+    "m-core-riemann::atk-kernel-check::atk-kernel/ATK/Riemann.lean::rh_of_bd_bound"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "ConcreteBDUniformLogBound",
+   "count": 2,
+   "problems": {
+    "riemann": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::atk-kernel/ATK/Riemann.lean::rh_of_bd_bound",
+    "m-core-riemann::atk-kernel-check::atk-kernel/ATK/Riemann.lean::rh_of_bd_bound"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "∀ d:BealEquationData,1 < Nat.gcd d.a(Nat.gcd d.b d.c)",
+   "count": 2,
+   "problems": {
+    "beal": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_beal_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_beal_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "∀ u,ActualNS u → Stabilizes component u",
+   "count": 2,
+   "problems": {
+    "navier-stokes": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ns_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ns_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "∀ X,SmoothProjective X → ∀ α:Class X,RationalHodge α → ∃ Z:Cycle X,Realizes Z α",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_hodge_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_hodge_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "∀ E,Realizable E → AnalyticOrder E = MordellWeilRank E",
+   "count": 2,
+   "problems": {
+    "bsd": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_bsd_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_bsd_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "∀ E,Realizable E → RefinedFormula E",
+   "count": 2,
+   "problems": {
+    "bsd": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_bsd_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_bsd_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "Theory",
+   "count": 2,
+   "problems": {
+    "yang-mills": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ym_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ym_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "Genuine4D theory",
+   "count": 2,
+   "problems": {
+    "yang-mills": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ym_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ym_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "OSReconstructs theory",
+   "count": 2,
+   "problems": {
+    "yang-mills": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ym_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ym_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "PositiveMassGap theory",
+   "count": 2,
+   "problems": {
+    "yang-mills": 2
+   },
+   "examples": [
+    "m-core::atk-kernel-check::lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ym_produces_semantic_inhabitant",
+    "atk-math-core-public::main::imports/M-Core/lean/MCore/FinalFail/AcceptedSemanticActivation.lean::accepted_ym_produces_semantic_inhabitant"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "GrossZagierKolyvagin M",
+   "count": 2,
+   "problems": {
+    "bsd": 2
+   },
+   "examples": [
+    "m-core::conditional::atk-kernel/ATK/Conditional/BSD.lean::bsd_rank_conditional",
+    "m-core::conditional::atk-kernel/ATK/Conditional/BSD.lean::bsd_conditional"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "RankOpen M",
+   "count": 2,
+   "problems": {
+    "bsd": 2
+   },
+   "examples": [
+    "m-core::conditional::atk-kernel/ATK/Conditional/BSD.lean::bsd_rank_conditional",
+    "m-core::conditional::atk-kernel/ATK/Conditional/BSD.lean::bsd_conditional"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "CriticalLineWeightedErrorRate",
+   "count": 2,
+   "problems": {
+    "riemann": 2
+   },
+   "examples": [
+    "m-core-riemann::atk/rh-material-recovery-20261007::lean/MCore/RH/R0/CriticalLineWeightedErrorRate.lean::CriticalLineWeightedErrorRate.toUniformLogDNBound",
+    "m-core-riemann::atk/terminal-parameter-law-20261003::lean/MCore/RH/R0/ForensicMaterialAssembly.lean::uniformLogDNBound_of_weightedCriticalLineRate"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "UniversalTripleGCDLowerBound",
+   "count": 2,
+   "problems": {
+    "beal": 2
+   },
+   "examples": [
+    "m-core-beal::atk/auto-compose-terminal-20260930::lean/MCore/Attack/GCDTerminalProducer.lean::universalTripleGCDLowerBound_closes_beal",
+    "m-core-beal::atk/beal-material-producer-gate-20260928::lean/MCore/Attack/GCDTerminalProducer.lean::universalTripleGCDLowerBound_closes_beal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "BealExternalProofPayload",
+   "count": 2,
+   "problems": {
+    "beal": 2
+   },
+   "examples": [
+    "m-core-beal::atk/auto-compose-terminal-20260930::lean/MCore/BealFinalExternalCertificate.lean::BealExternalProofPayload.closes",
+    "m-core-beal::atk/auto-compose-terminal-20260930::lean/MCore/FinalRoot.lean::FINAL_PROOF_of_external_proof"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "BealUniversalCommonPrimeCertificate",
+   "count": 2,
+   "problems": {
+    "beal": 2
+   },
+   "examples": [
+    "m-core-beal::atk/auto-compose-terminal-20260930::lean/MCore/BealFinalMathematicalChain.lean::universalCommonPrime_closes_beal",
+    "m-core-beal::atk/auto-compose-terminal-20260930::lean/MCore/BealOpenMathInhabitants.lean::beal_endpoint_is_logically_sufficient"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "T59FLTBeyondThree",
+   "count": 2,
+   "problems": {
+    "beal": 2
+   },
+   "examples": [
+    "m-core-beal::atk/beal-parity-to-t59-partition-20261001::lean/MCore/T59ModularMaterializer.lean::T59_modular_materializer_closes_beal",
+    "m-core-beal::atk/beal-parity-to-t59-partition-20261001::lean/MCore/T59ParityPartition.lean::T59_beyondThree_and_residual_close_beal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "T59EqualOddPrimeEliminator",
+   "count": 2,
+   "problems": {
+    "beal": 2
+   },
+   "examples": [
+    "m-core-beal::atk/beal-parity-to-t59-partition-20261001::lean/MCore/T59ParityPartition.lean::T59_three_branch_elimination_closes_beal",
+    "m-core-beal::atk/beal-parity-to-t59-partition-20261001::lean/MCore/T59ParityPartition.lean::T59_residual_is_only_remaining_branch"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "T59ResidualEliminator",
+   "count": 2,
+   "problems": {
+    "beal": 2
+   },
+   "examples": [
+    "m-core-beal::atk/beal-parity-to-t59-partition-20261001::lean/MCore/T59ParityPartition.lean::T59_three_branch_elimination_closes_beal",
+    "m-core-beal::atk/beal-parity-to-t59-partition-20261001::lean/MCore/T59ParityPartition.lean::T59_beyondThree_and_residual_close_beal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "AllThreeResidues M",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/BackwardAudit/ThreeResidueFailProof.lean::all_three_residues_yield_concrete_payload",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/BackwardAudit/ThreeResidueFailProof.lean::all_three_residues_yield_concrete_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "AllExactThreeResidues M",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-hodge-h01-terminal-link-20260930::lean/MCore/BackwardAudit/ThreeResidueFailProofExact.lean::all_exact_three_residues_yield_concrete_payload",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/BackwardAudit/ThreeResidueFailProofExact.lean::all_exact_three_residues_yield_concrete_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeOpenMath M ∨ HodgeClosedMath M ∨ HodgeNegativeOpenMath M",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeOpenClosedDuality.lean::any_open_closed_duality_inhabitant_closes",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/BackwardAudit/HodgeOpenClosedDuality.lean::any_open_closed_duality_inhabitant_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeRatioSemantics M .oneOverOne ∨ HodgeRatioSemantics M .twoOverTwo",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeRatioCollapse.lean::normalized_ratio_inhabitant_closes",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/BackwardAudit/HodgeRatioCollapse.lean::normalized_ratio_inhabitant_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeTerminalNode",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeTerminalCycle.lean::any_terminal_inhabitant_closes_endpoint",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/BackwardAudit/HodgeTerminalCycle.lean::any_terminal_inhabitant_closes_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeTerminalSemantics M n",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeTerminalCycle.lean::any_terminal_inhabitant_closes_endpoint",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/BackwardAudit/HodgeTerminalCycle.lean::any_terminal_inhabitant_closes_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "Fin 3",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeThreeWayCore.lean::hodge_three_way_any_inhabited_closes",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/BackwardAudit/HodgeThreeWayCore.lean::hodge_three_way_any_inhabited_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeTriStateSemantics M i",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/BackwardAudit/HodgeThreeWayCore.lean::hodge_three_way_any_inhabited_closes",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/BackwardAudit/HodgeThreeWayCore.lean::hodge_three_way_any_inhabited_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeGeometricBackend G M",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/HodgeGeometricBackends.lean::HodgeGeometricBackend.toConcretePayload",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/HodgeGeometricBackends.lean::HodgeGeometricBackend.toConcretePayload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "MCore.CycleSpanMechanics G",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/Material/TerminalAdapter.lean::terminal_inhabitant_is_sufficient",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/Material/TerminalAdapter.lean::terminal_inhabitant_is_sufficient"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "MCore.BackwardAudit.HodgeTerminalNode",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/Material/TerminalAdapter.lean::terminal_inhabitant_is_sufficient",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/Material/TerminalAdapter.lean::terminal_inhabitant_is_sufficient"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "MCore.BackwardAudit.HodgeTerminalSemantics M n",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/MCore/Material/TerminalAdapter.lean::terminal_inhabitant_is_sufficient",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/MCore/Material/TerminalAdapter.lean::terminal_inhabitant_is_sufficient"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "ConcreteInhabitantSkeleton G M",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/P05/Hodge/ConcreteInhabitantSkeleton.lean::ConcreteInhabitantSkeleton.toConcretePayload",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/P05/Hodge/ConcreteInhabitantSkeleton.lean::ConcreteInhabitantSkeleton.toConcretePayload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeFormalRealization G M",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/P05/Hodge/HodgeFormalRealization.lean::formalRealization_plus_material_closes",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/P05/Hodge/HodgeFormalRealization.lean::formalRealization_plus_material_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "HodgeInfrastructureComplete G M",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk-kernel-check::lean/P05/Hodge/HodgeInfrastructureComplete.lean::infrastructure_plus_material_closes",
+    "atk-certified-priority-record::main::snapshots/m-core-hodge/lean/P05/Hodge/HodgeInfrastructureComplete.lean::infrastructure_plus_material_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "CodimensionZeroAlgebraicityPayload M",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk/auto-compose-terminal-20260930::lean/MCore/BackwardAudit/HodgeCodimTrisection.lean::concretePayload_of_trisection",
+    "m-core-hodge::atk/auto-compose-terminal-20260930::lean/MCore/BackwardAudit/HodgeHigherCodimUnconditionalClaim.lean::higher_certificate_closes_concrete_payload"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "∀(X:G.Variety)(p:Nat)(alpha:G.CohomologyQ X(2 * p)),H01MinimalForwardPayload G M X p alpha",
+   "count": 2,
+   "problems": {
+    "hodge": 2
+   },
+   "examples": [
+    "m-core-hodge::atk/hodge-closed-math-line-20261007::lean/MCore/BackwardAudit/HodgeRecoveredMaterialBridge.lean::recovered_universalForward_closes_concrete",
+    "m-core-hodge::atk/hodge-material-recovery-20261007::lean/MCore/BackwardAudit/HodgeRecoveredMaterialBridge.lean::recovered_universalForward_closes_concrete"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "PNPTarget",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "navier-stokes-critical-barrier-audit::a2.1-weightedIBP::formal/lean/CriticalBarrier/ClosureTargetTree.lean::PNP_chain",
+    "atk-certified-priority-record::main::snapshots/navier-stokes-critical-barrier-audit/formal/lean/CriticalBarrier/ClosureTargetTree.lean::PNP_chain"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "P.CookLevin",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "navier-stokes-critical-barrier-audit::a2.1-weightedIBP::formal/lean/CriticalBarrier/ClosureTargetTree.lean::PNP_chain",
+    "atk-certified-priority-record::main::snapshots/navier-stokes-critical-barrier-audit/formal/lean/CriticalBarrier/ClosureTargetTree.lean::PNP_chain"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "P.SATnotP",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "navier-stokes-critical-barrier-audit::a2.1-weightedIBP::formal/lean/CriticalBarrier/ClosureTargetTree.lean::PNP_chain",
+    "atk-certified-priority-record::main::snapshots/navier-stokes-critical-barrier-audit/formal/lean/CriticalBarrier/ClosureTargetTree.lean::PNP_chain"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "FinalProofEvidenceClosure",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/FinalProofEvidencePromotion.lean::evidenceClosure_real_gaps",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/FinalProofEvidencePromotion.lean::evidenceClosure_closes_internal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "D3SemanticSelfReference",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02FinalAttack.lean::D3_to_G21Pointwise",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02FinalAttack.lean::P01_D3_to_internal_final"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "Producer",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02FinalProofProducer.lean::Producer.toG21",
+    "m-core-p-vs-np::atk/g21-final-integration-clean-20260930::lean/MCore/Real/P02FinalProofProducer.lean::Producer.toG21"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "G21SemanticRoot",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02G21ExpandedTree.lean::semanticRoot_to_g21",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02G21ExpandedTree.lean::semanticRoot_full_downstream"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "UniformCookLevinSameInputBridge",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02KleeneCookLevinBridge.lean::uniformCookLevinBridge_closes_G21",
+    "m-core-p-vs-np::atk/g21-final-integration-clean-20260930::lean/MCore/Real/P02KleeneCookLevinBridge.lean::uniformCookLevinBridge_closes_G21"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "SameInputClosure",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02SameInputClosure.lean::sameInputClosure_to_g21Pointwise",
+    "m-core-p-vs-np::cert/final-proof-repair-checkpoint-19c7c5ea-20260923::lean/MCore/Real/P02SameInputClosure.lean::sameInputClosure_to_g21Pointwise"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "UniversalWitnessFamily",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02UniversalWitnessDetailed.lean::universalWitnessFamily_to_g21",
+    "m-core-p-vs-np::cert/final-proof-repair-checkpoint-19c7c5ea-20260923::lean/MCore/Real/P02UniversalWitnessDetailed.lean::universalWitnessFamily_to_g21"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "UniversalWitnessFamilyGap",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Real/P02UniversalWitnessDetailed.lean::universalWitnessFamilyGap_to_g21",
+    "m-core-p-vs-np::cert/final-proof-repair-checkpoint-19c7c5ea-20260923::lean/MCore/Real/P02UniversalWitnessDetailed.lean::universalWitnessFamilyGap_to_g21"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "ExactTwoGapClosure",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Research/FinalProofGapLedger.lean::exactTwoGapClosure_producers",
+    "m-core-p-vs-np::agent-start/01-head9f87-408849::lean/MCore/Research/FinalProofGapLedger.lean::exactTwoGapClosure_internal"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "SemanticSelfQuotation",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::agent-start/04-p02-self-embedding-20260923::lean/MCore/Real/SemanticSelfQuotation.lean::SemanticSelfQuotation.closesG21",
+    "m-core-p-vs-np::atk/next-pnp-parser-simulation-20260928::lean/MCore/Real/SemanticSelfQuotation.lean::SemanticSelfQuotation.closesG21"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "MinimalSeparationInhabitant",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk-kernel-check::lean/MCore/MinimalInhabitant.lean::minimalSeparationInhabitant_closes",
+    "atk-certified-priority-record::main::snapshots/m-core-p-vs-np/lean/MCore/MinimalInhabitant.lean::minimalSeparationInhabitant_closes"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "P01VerifierPhase P.layout",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk-missing-material-types-20260930::lean/MCore/Real/P01IntegratedAssembly.lean::p01_of_phases",
+    "m-core-p-vs-np::atk/p01-core-decode-physical-reject-20260930::lean/MCore/Real/P01IntegratedAssembly.lean::p01_of_phases"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "P01VerifierPhase prepPhase.layout",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk-missing-material-types-20260930::lean/MCore/Real/P01WitnessPrepGlobal.lean::p01_of_verifier",
+    "m-core-p-vs-np::atk-p01-bounded-global-repair-20260930::lean/MCore/Real/P01WitnessPrepGlobal.lean::p01_of_verifier"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "¬ InP(SATBits circuitBitEncoding)",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-closure-audit-20261013-pnp-reduction::lean/MCore/Real/PNPAfterP01.lean::pneqnp_of_sat_not_in_p",
+    "m-core-p-vs-np::atk/pnp-self-theorem-circularity-audit-20260926::audit/PNP_SELF_THEOREM_CIRCULARITY_AUDIT_20260926.lean::sat_not_in_p_to_universalFailure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "RawVerifierMaterialCore",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-core-decode-physical-reject-20260930::lean/MCore/Real/P01MaterialInhabitantFrontier.lean::p01_of_raw_material_core",
+    "m-core-p-vs-np::atk/p01-material-inhabitant-frontier-20260930::lean/MCore/Real/P01MaterialInhabitantFrontier.lean::p01_of_raw_material_core"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "OrbitResidualCore",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02DiagonalOrbitCore.lean::orbit_residual_core_closes_internal_endpoint",
+    "m-core-p-vs-np::atk/p02-kernel-port-audit-20261001::lean/MCore/Real/P02DiagonalOrbitCore.lean::orbit_residual_core_closes_internal_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "ExplicitClockCounterexampleProducer",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02ExplicitClockNormalForm.lean::explicit_clock_producer_implies_universal_failure",
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02ExplicitClockNormalForm.lean::explicit_clock_producer_closes_internal_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "NormalizedCounterexampleProducer",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02FailureNormalForms.lean::normalizedProducer_implies_universal_failure",
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02FailureNormalForms.lean::normalizedProducer_closes_internal_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "FiniteDescriptorFailure",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02FiniteDescriptorReduction.lean::finiteDescriptorFailure_implies_universalFailure",
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02FiniteDescriptorReduction.lean::finiteDescriptorFailure_closes_internal_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "TotalCandidateSemanticCore",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02TotalCandidateSemanticCore.lean::total_semantic_core_implies_universal_failure",
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02TotalCandidateSemanticCore.lean::total_semantic_core_closes_internal_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "UniversalCounterexampleProducer",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02UniversalFailureMinCut.lean::producer_implies_universal_failure",
+    "m-core-p-vs-np::atk/p01-post-mincut-advance-20261001::lean/MCore/Real/P02UniversalFailureMinCut.lean::producer_closes_internal_endpoint"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "A → FailureGenerator(SATBits circuitBitEncoding)",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-real-neg-macro::lean/MCore/Real/P02OpenMathClosure.lean::closure_generator_enables_pneqnp",
+    "m-core-p-vs-np::atk/p01-real-neg-macro::lean/MCore/Real/P02OpenMathClosure.lean::closure_enables_pneqnp"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "B → FailureGenerator(SATBits circuitBitEncoding)",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-real-neg-macro::lean/MCore/Real/P02OpenMathClosure.lean::closure_generator_enables_pneqnp",
+    "m-core-p-vs-np::atk/p01-real-neg-macro::lean/MCore/Real/P02OpenMathClosure.lean::closure_enables_pneqnp"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "ClosureResult A B",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-real-neg-macro::lean/MCore/Real/P02OpenMathClosure.lean::closure_generator_enables_pneqnp",
+    "m-core-p-vs-np::atk/p01-real-neg-macro::lean/MCore/Real/P02OpenMathClosure.lean::closure_enables_pneqnp"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "PNP_Habitant",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p01-real-neg-macro::lean/MCore/Real/PNPHabitant.lean::p_ne_np_of_habitant",
+    "m-core-p-vs-np::atk/p01-real-neg-macro::lean/MCore/Real/PNPHabitant.lean::lower_bound_is_universal_failure"
+   ],
+   "discharged_by": null
+  },
+  {
+   "type": "P01Side",
+   "count": 2,
+   "problems": {
+    "pvsnp": 2
+   },
+   "examples": [
+    "m-core-p-vs-np::atk/p02-consolidated-kernel-20261001::lean/MCore/Real/P02FinalCompression.lean::canonical_p02_operator_closes",
+    "m-core-p-vs-np::atk/p02-consolidated-kernel-20261001::lean/MCore/Real/P02FinalCompression.lean::final_open_math_closes"
+   ],
+   "discharged_by": null
+  }
+ ],
+ "listed_files_2": {
+  "files": [
+   {
+    "theorems": 23,
+    "holes": true,
+    "axioms_in_file": [],
+    "axioms_in_branch": 246,
+    "section_vars": false,
+    "targets": [],
+    "repo": "millennium-riemann-i",
+    "path": "MillenniumRiemann/Theorems.lean",
+    "ref": "main"
+   },
+   {
+    "theorems": 0,
+    "holes": false,
+    "axioms_in_file": [],
+    "axioms_in_branch": 0,
+    "section_vars": false,
+    "targets": [],
+    "repo": "millennium-p-vs-np-i",
+    "path": "FinalProof.lean",
+    "ref": "main"
+   },
+   {
+    "theorems": 3,
+    "holes": true,
+    "axioms_in_file": [],
+    "axioms_in_branch": 33,
+    "section_vars": false,
+    "targets": [],
+    "repo": "millennium-navier-stokes-i",
+    "path": "src/lean/global_existence.lean",
+    "ref": "main"
+   },
+   {
+    "theorems": 3,
+    "holes": false,
+    "axioms_in_file": [],
+    "axioms_in_branch": 0,
+    "section_vars": false,
+    "targets": [],
+    "repo": "millennium-bsd",
+    "path": "formal/DirectEndpointRule.lean",
+    "ref": "main"
+   },
+   {
+    "theorems": 11,
+    "holes": false,
+    "axioms_in_file": [],
+    "axioms_in_branch": 0,
+    "section_vars": true,
+    "targets": [],
+    "repo": "millennium-hodge",
+    "path": "formal/HodgeMaterialProgram.lean",
+    "ref": "main"
+   },
+   {
+    "theorems": 3,
+    "holes": false,
+    "axioms_in_file": [],
+    "axioms_in_branch": 0,
+    "section_vars": false,
+    "targets": [],
+    "repo": "millennium-yang-mills",
+    "path": "formal/DirectEndpointRule.lean",
+    "ref": "main"
+   },
+   {
+    "theorems": 12,
+    "holes": false,
+    "axioms_in_file": [
+     "collapse_classical_limit"
+    ],
+    "axioms_in_branch": 1,
+    "section_vars": false,
+    "targets": [],
+    "repo": "universal-proof-hub",
+    "path": "src/lean/collapse-numerical-classical.lean",
+    "ref": "main"
+   },
+   {
+    "theorems": 31,
+    "holes": true,
+    "axioms_in_file": [],
+    "axioms_in_branch": 0,
+    "section_vars": false,
+    "targets": [],
+    "repo": "proofs-multiprover",
+    "path": "lean4/ProofsMultiprover/Basic.lean",
+    "ref": "main"
+   }
+  ],
+  "branches": [
+   {
+    "repo": "m-core",
+    "branch": "atk/external-reference-bridges-20261013",
+    "lean_changed": 1,
+    "closing": [],
+    "conditional": 0,
+    "equiv": 0,
+    "neg": 0,
+    "holes_files": 0,
+    "axiom_files": 0
+   },
+   {
+    "repo": "m-core",
+    "branch": "atk/public-millennium-interface-20261013",
+    "lean_changed": 1,
+    "closing": [],
+    "conditional": 0,
+    "equiv": 0,
+    "neg": 0,
+    "holes_files": 0,
+    "axiom_files": 0
+   },
+   {
+    "repo": "m-core-p-vs-np",
+    "branch": "atk/g21-final-integration-clean-20260930",
+    "lean_changed": 163,
+    "closing": [],
+    "conditional": 35,
+    "equiv": 7,
+    "neg": 0,
+    "holes_files": 8,
+    "axiom_files": 0
+   },
+   {
+    "repo": "m-core-riemann",
+    "branch": "atk/rh-zero-residue-unconditional-producer-20260927",
+    "lean_changed": 31,
+    "closing": [],
+    "conditional": 3,
+    "equiv": 0,
+    "neg": 0,
+    "holes_files": 0,
+    "axiom_files": 0
+   },
+   {
+    "repo": "m-core-yang-mills",
+    "branch": "atk/ym-b60-concrete-physical-producer-20260927",
+    "lean_changed": 42,
+    "closing": [],
+    "conditional": 0,
+    "equiv": 0,
+    "neg": 0,
+    "holes_files": 0,
+    "axiom_files": 0
+   },
+   {
+    "repo": "axiomatic-millenium",
+    "branch": "formal/official-model-obligation-v1",
+    "lean_changed": 2,
+    "closing": [],
+    "conditional": 0,
+    "equiv": 0,
+    "neg": 0,
+    "holes_files": 0,
+    "axiom_files": 0
+   }
+  ]
+ }
+}
