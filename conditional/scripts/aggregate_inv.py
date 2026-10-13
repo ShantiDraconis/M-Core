@@ -170,9 +170,10 @@ if len(other_stmts) > 200:
     L.append(f"| … | | | ({len(other_stmts) - 200} a mais em inventory.json) | | |")
 L += ["", "## Vazios e sem acesso", "",
       "**Vazios (sem nenhum commit):** " + ", ".join(a for a, b, c in missing if c.startswith("vazio")) + ".", "",
-      "**Sem acesso nesta sessão** (privados não anexados; os nomes indicam arte, arquivo pessoal/jurídico, "
-      "arquitetura, idiomas, cultura etc.). Podem ser incluídos sob pedido: "
-      + ", ".join(a for a, b, c in missing if c.startswith("sem acesso")) + ".", ""]
+      ("**Sem acesso nesta sessão** (privados não anexados): "
+       + ", ".join(a for a, b, c in missing if c.startswith("sem acesso")) + "."
+       if any(c.startswith("sem acesso") for a, b, c in missing)
+       else "**Sem acesso nesta sessão:** nenhum — todos os repositórios com commits foram anexados e varridos."), ""]
 L += ["## Linguagens (todos os repositórios varridos)", "", "| Linguagem/formato | Arquivos distintos |", "|---|---|"]
 for k, v in lang_tot.most_common(30):
     L.append(f"| {k} | {v} |")
