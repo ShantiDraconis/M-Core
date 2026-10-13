@@ -85,7 +85,10 @@ theorem ycrit_optimal {C₀ ν l : ℝ} (hC : 0 < C₀) (hν : 0 < ν) (hl : 0 �
     (2 * (1 - 3 / 4) * ν * l) / (27 * C₀ ^ 4 / (32 * (3 / 4) ^ 3 * ν ^ 3)) =
       (ν ^ 2 * Real.sqrt l / (2 * C₀ ^ 2)) ^ 2 := by
   have hs : Real.sqrt l ^ 2 = l := Real.sq_sqrt hl
-  rw [div_pow, mul_pow, hs]
+  have hR : (ν ^ 2 * Real.sqrt l / (2 * C₀ ^ 2)) ^ 2 = ν ^ 4 * l / (4 * C₀ ^ 4) := by
+    rw [div_pow, mul_pow, hs]
+    ring
+  rw [hR]
   field_simp
   ring
 
