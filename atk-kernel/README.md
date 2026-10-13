@@ -23,7 +23,7 @@ com auditoria automática de axiomas no GitHub Actions.
 Reproduz o resíduo real D_N de Nyman–Beurling/Báez-Duarte para N ≤ 300, em 40 e 60 dígitos.
 O arquivo `numerics/dn_N1500_prec45.csv` traz a tabela até N = 1500.
 
-## Teoremas (47 = 19 lemas auxiliares + 14 condicionais + 14 de regimes)
+## Teoremas (51 = 19 lemas auxiliares + 14 condicionais + 14 de regimes + 4 de ClosedMath)
 
 | Arquivo | Conteúdo | Observação |
 |---|---|---|
@@ -57,5 +57,12 @@ Núcleo incondicional `W_strictMono` (W = W₀ + 10⁻⁶·t, independente de Se
 classificação dos regimes vácuo/suave/crítico/explosão, histerese sem flapping, custo de
 tunelamento, gatilhos H1 (RH) e H3 (BSD, forma correta) e ruído. Camada de simulação: não
 toca `OPEN_MATH`.
+
+### ClosedMath (`ATK/ClosedMath.lean`)
+
+Teorema-mestre `closedMath_of_obligations : Bridges M → OpenObligations M → SevenStatements M`,
+a versão oficial `closedMathFaithful_of_obligations` (RH ∧ Beal) e dois testes de firewall
+(modelos de brinquedo). `CLOSED_MATH` é calculado pelo portão `ATK/ClosedMathGate.lean`
+(regra em `scripts/obligations.json`); hoje o portão está ausente.
 
 Nenhum destes teoremas prova uma conjectura do milênio: `OPEN_MATH = true`.

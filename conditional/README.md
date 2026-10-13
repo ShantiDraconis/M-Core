@@ -57,6 +57,35 @@ problema real depois que os campos da interface forem ligados aos objetos verdad
 - **Navier–Stokes.** A comparação de Riccati certificada em `ATK.NavierStokes` dá só cota local;
   não basta para a hipótese aberta.
 
+## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
+
+`CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
+`atk-kernel/ATK/ClosedMathGate.lean` com `theorem closed_math` **sem hipóteses**, compilado,
+dependendo só de `propext`, `Classical.choice` e `Quot.sound`, sem `sorry`/`admit`/`axiom`, e
+enunciado sobre os modelos genuínos (revisão humana das ligações L1–L5). Hoje esse arquivo não
+existe, então `CLOSED_MATH = false`.
+
+O caminho está pronto no teorema-mestre (verificado):
+
+```
+closedMath_of_obligations : Bridges M → OpenObligations M → SevenStatements M
+```
+
+Para fechar, faltam **20 obrigações** (lista completa em `atk-kernel/scripts/obligations.json`,
+reproduzida em cada relatório do CI):
+
+| Tipo | Quantas | O que é | Estado |
+|---|---|---|---|
+| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | provados no papel, não formalizados |
+| ABERTA (O1–O8) | 8 | as hipóteses abertas dos condicionais | `OPEN_MATH` |
+| LIGAÇÃO (L1–L5) | 5 | construir na Mathlib os objetos reais de NS, P vs NP, Hodge, BSD e Yang–Mills | não existem na Mathlib |
+
+**Firewall (verificado):**
+- `ns_toy_model_vacuous` e `pnp_toy_model_vacuous` provam os enunciados de NS e P vs NP em
+  modelos de brinquedo. Isso mostra que fechar um enunciado paramétrico sem a ligação L não vale nada.
+- Teste fora do projeto: `axiom fake_rh : RiemannHypothesis` compila, mas `#print axioms` lista
+  `fake_rh` e a auditoria reprova. Axioma não fecha problema.
+
 ## Camada de regimes do gateway (v5.1) — `ATK/Regimes.lean`
 
 As 10 formas do gateway viraram teoremas: 1 núcleo incondicional, a classificação dos
@@ -103,6 +132,8 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/*.lean                 19 lemas auxiliares do M-Core (inalterados)
   ATK/Conditional/*.lean     7 condicionais (14 teoremas)
   ATK/Regimes.lean           10 formas do gateway (14 teoremas; não toca OPEN_MATH)
+  ATK/ClosedMath.lean        teorema-mestre + firewall (4 teoremas)
+  scripts/obligations.json   as 20 obrigações e a regra do portão de CLOSED_MATH
   scripts/check_axioms.py    auditoria: CERTIFIED só com axiomas padrão e sem sorry/admit/axiom
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional
   numerics/                  D_N de Báez-Duarte (N ≤ 1500)
@@ -112,7 +143,7 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
 ## Como verificar
 
 O CI (`.github/workflows/atk-kernel.yml`) baixa a Mathlib pré-compilada, compila tudo e
-gera `reports/report.md` com o veredito de cada um dos 47 teoremas e a tabela dos condicionais.
+gera `reports/report.md` com o veredito de cada um dos 51 teoremas, a tabela dos condicionais, o estado das 20 obrigações e o portão de CLOSED_MATH.
 Localmente:
 
 ```

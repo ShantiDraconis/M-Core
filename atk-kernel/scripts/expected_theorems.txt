@@ -45,3 +45,7 @@ ATK.Regimes.nao_RH_de_suspeita
 ATK.Regimes.falhaH3_iff
 ATK.Regimes.L_zero_preve_posto_positivo
 ATK.Regimes.ruido_W_monotono
+ATK.ClosedMath.closedMath_of_obligations
+ATK.ClosedMath.closedMathFaithful_of_obligations
+ATK.ClosedMath.ns_toy_model_vacuous
+ATK.ClosedMath.pnp_toy_model_vacuous

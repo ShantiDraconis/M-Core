@@ -123,12 +123,34 @@ if conditionals:
                   + "<br>".join(c["bridge"]) + " | " + "<br>".join(c["open"]) + f" | {c['fidelity']} |")
 report["conditionals"] = [dict(c, verdict=verdict_of.get(c["theorem"], "NOT_LISTED")) for c in conditionals]
 closed = sum(1 for c in conditionals if verdict_of.get(c["theorem"]) == "CERTIFIED")
+
+# Portão de CLOSED_MATH: só um teorema SEM hipóteses, certificado, no arquivo do portão.
+obl_path = os.path.join(ROOT, "scripts", "obligations.json")
+obl = json.load(open(obl_path, encoding="utf-8")) if os.path.exists(obl_path) else {}
+gate = obl.get("gate") or {}
+gate_file, gate_thm = gate.get("file"), gate.get("theorem")
+gate_present = bool(gate_file) and os.path.exists(os.path.join(ROOT, gate_file))
+gate_ok = (gate_present and status.get(gate_file) == "OK" and gate_thm in axioms
+           and set(axioms[gate_thm]) <= ALLOWED and gate_file not in src_flags)
+obligations = obl.get("obligations", [])
 report["status"] = {"CONDITIONALS_CLOSED": f"{closed}/{len(conditionals)}",
-                    "OPEN_MATH": True, "CLOSED_MATH": False}
-if conditionals:
-    md += ["", f"`CONDITIONALS_CLOSED = {closed}/{len(conditionals)}` · `OPEN_MATH = true` · `CLOSED_MATH = false`",
-           "", "Um condicional certificado prova *hipótese aberta → enunciado*; o problema só fecha "
-           "quando a hipótese aberta for provada."]
+                    "OPEN_MATH": not gate_ok, "CLOSED_MATH": gate_ok,
+                    "GATE_FILE_PRESENT": gate_present,
+                    "OBLIGATIONS_OPEN": sum(1 for o in obligations if o["status"] != "CLOSED"),
+                    "OBLIGATIONS_TOTAL": len(obligations)}
+report["obligations"] = obligations
+md += ["", f"`CONDITIONALS_CLOSED = {closed}/{len(conditionals)}` · "
+       f"`OPEN_MATH = {str(not gate_ok).lower()}` · `CLOSED_MATH = {str(gate_ok).lower()}`",
+       "",
+       f"Portão: `{gate_file}` → `{gate_thm}` "
+       + ("presente" if gate_present else "AUSENTE (nenhuma prova sem hipóteses foi fornecida)") + ".",
+       "Um condicional certificado prova *hipótese aberta → enunciado*; o problema só fecha "
+       "quando a hipótese aberta for provada."]
+if obligations:
+    md += ["", f"### Obrigações para CLOSED_MATH ({report['status']['OBLIGATIONS_OPEN']}/{len(obligations)} em aberto)",
+           "", "| Id | Problema | Tipo | Proposição Lean | Estado | Referência |", "|---|---|---|---|---|---|"]
+    for o in obligations:
+        md.append(f"| {o['id']} | {o['problem']} | {o['kind']} | `{o['lean']}` | {o['status']} | {o['ref']} |")
 json.dump(report, open(os.path.join(REP, "report.json"), "w"), indent=2, ensure_ascii=False)
 if errors:
     md += ["", "### Erros de compilação (primeiras linhas)"]

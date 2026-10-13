@@ -1,0 +1,31 @@
+{
+  "gate": {
+    "file": "ATK/ClosedMathGate.lean",
+    "theorem": "ATK.ClosedMathGate.closed_math",
+    "rule": "CLOSED_MATH = true só se este arquivo existir, compilar, e o teorema (sem hipóteses, sobre os modelos genuínos) depender apenas de propext, Classical.choice e Quot.sound, sem sorry/admit/axiom na fonte."
+  },
+  "obligations": [
+    {"id": "B1", "problem": "Riemann", "kind": "PONTE", "lean": "ATK.Conditional.Riemann.BaezDuarteCriterion", "status": "PUBLICADA_NAO_FORMALIZADA", "ref": "Nyman 1950; Beurling 1955; Báez-Duarte 2003"},
+    {"id": "B2", "problem": "Beal", "kind": "PONTE", "lean": "FermatLastTheorem", "status": "PUBLICADA_NAO_FORMALIZADA", "ref": "Wiles 1995; Taylor–Wiles 1995 (formalização em andamento: ImperialCollegeLondon/FLT)"},
+    {"id": "B3", "problem": "Navier–Stokes", "kind": "PONTE", "lean": "ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion", "status": "PUBLICADA_NAO_FORMALIZADA", "ref": "Leray 1934 + teoria local clássica"},
+    {"id": "B4", "problem": "P vs NP", "kind": "PONTE", "lean": "ATK.Conditional.PvsNP.CookLevin", "status": "PUBLICADA_NAO_FORMALIZADA", "ref": "Cook 1971; Levin 1973"},
+    {"id": "B5", "problem": "Hodge", "kind": "PONTE", "lean": "ATK.Conditional.Hodge.KnownCases", "status": "PUBLICADA_NAO_FORMALIZADA", "ref": "Lefschetz (1,1) 1924; Lefschetz difícil"},
+    {"id": "B6", "problem": "BSD", "kind": "PONTE", "lean": "ATK.Conditional.BSD.GrossZagierKolyvagin", "status": "PUBLICADA_NAO_FORMALIZADA", "ref": "Gross–Zagier 1986; Kolyvagin 1988–89; Breuil–Conrad–Diamond–Taylor 2001"},
+    {"id": "B7", "problem": "Yang–Mills", "kind": "PONTE", "lean": "ATK.Conditional.YangMills.OSReconstruction", "status": "PUBLICADA_NAO_FORMALIZADA", "ref": "Osterwalder–Schrader 1973/75"},
+
+    {"id": "O1", "problem": "Riemann", "kind": "ABERTA", "lean": "ATK.Conditional.Riemann.UniformLogBound", "status": "OPEN_MATH", "ref": "∃K ∀N, D_N ≤ K/log(N+2) — mais forte que RH"},
+    {"id": "O2", "problem": "Beal", "kind": "ABERTA", "lean": "ATK.Conditional.Beal.GCDLowerBoundSmallExponents", "status": "OPEN_MATH", "ref": "gcd(a,b,c) > 1 quando gcd(x,y,z) ≤ 2"},
+    {"id": "O3", "problem": "Navier–Stokes", "kind": "ABERTA", "lean": "ATK.Conditional.NavierStokes.EnstrophyAPrioriBound", "status": "OPEN_MATH", "ref": "cota a priori da enstrofia"},
+    {"id": "O4", "problem": "P vs NP", "kind": "ABERTA", "lean": "ATK.Conditional.PvsNP.SATNotInP", "status": "OPEN_MATH", "ref": "SAT ∉ P (equivalente a P ≠ NP dada B4)"},
+    {"id": "O5", "problem": "Hodge", "kind": "ABERTA", "lean": "ATK.Conditional.Hodge.MiddleCodimension", "status": "OPEN_MATH", "ref": "2 ≤ p ≤ dim X − 2"},
+    {"id": "O6", "problem": "BSD", "kind": "ABERTA", "lean": "ATK.Conditional.BSD.RankOpen", "status": "OPEN_MATH", "ref": "posto analítico ≥ 2"},
+    {"id": "O7", "problem": "BSD", "kind": "ABERTA", "lean": "ATK.Conditional.BSD.RefinedOpen", "status": "OPEN_MATH", "ref": "Ш finito + fórmula do termo líder"},
+    {"id": "O8", "problem": "Yang–Mills", "kind": "ABERTA", "lean": "ATK.Conditional.YangMills.ConstructiveYM4D", "status": "OPEN_MATH", "ref": "construção 4D com axiomas OS e clustering exponencial"},
+
+    {"id": "L1", "problem": "Navier–Stokes", "kind": "LIGAÇÃO", "lean": "ATK.Conditional.NavierStokes.NSModel", "status": "NAO_EXISTE_NA_MATHLIB", "ref": "soluções suaves/fracas de NS em ℝ³ e enstrofia, a partir de objetos da Mathlib"},
+    {"id": "L2", "problem": "P vs NP", "kind": "LIGAÇÃO", "lean": "ATK.Conditional.PvsNP.ComplexityModel", "status": "NAO_EXISTE_NA_MATHLIB", "ref": "classe NP, SAT e reduções de Karp sobre máquinas de Turing (a Mathlib tem TM2ComputableInPolyTime)"},
+    {"id": "L3", "problem": "Hodge", "kind": "LIGAÇÃO", "lean": "ATK.Conditional.Hodge.HodgeModel", "status": "NAO_EXISTE_NA_MATHLIB", "ref": "cohomologia racional e decomposição de Hodge de variedades projetivas complexas"},
+    {"id": "L4", "problem": "BSD", "kind": "LIGAÇÃO", "lean": "ATK.Conditional.BSD.BSDModel", "status": "NAO_EXISTE_NA_MATHLIB", "ref": "função L de E/ℚ e posto de Mordell–Weil (a Mathlib tem curvas de Weierstrass)"},
+    {"id": "L5", "problem": "Yang–Mills", "kind": "LIGAÇÃO", "lean": "ATK.Conditional.YangMills.YMModel", "status": "NAO_EXISTE_NA_MATHLIB", "ref": "axiomas OS/Wightman e o espectro do Hamiltoniano"}
+  ]
+}

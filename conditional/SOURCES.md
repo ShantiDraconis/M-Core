@@ -16,15 +16,16 @@ Repositórios lidos em 2026-10-13 (HEAD da branch padrão). Nenhum foi alterado.
 
 ## Alterações em arquivos copiados
 
-- `atk-kernel/ATK.lean`: passa a importar `ATK.Conditional` e `ATK.Regimes`.
-- `atk-kernel/scripts/expected_theorems.txt`: +14 condicionais e +14 de regimes (47 no total).
-- `atk-kernel/scripts/check_axioms.py`: lê subpastas de `ATK/` e acrescenta a tabela dos condicionais.
+- `atk-kernel/ATK.lean`: passa a importar `ATK.Conditional`, `ATK.Regimes` e `ATK.ClosedMath`.
+- `atk-kernel/scripts/expected_theorems.txt`: +14 condicionais, +14 de regimes e +4 de ClosedMath (51 no total).
+- `atk-kernel/scripts/check_axioms.py`: lê subpastas de `ATK/`, acrescenta a tabela dos condicionais, o livro-razão das obrigações e calcula `CLOSED_MATH` pelo portão.
 - `.github/workflows/atk-kernel.yml`: audita também `ATK/Conditional/*.lean`.
 
 ## Arquivos novos
 
 - `atk-kernel/ATK/Conditional.lean` e `atk-kernel/ATK/Conditional/*.lean` (7 arquivos).
 - `atk-kernel/ATK/Regimes.lean` (10 formas do gateway v5.1, a partir do texto enviado em 2026-10-13).
-- `atk-kernel/scripts/conditionals.json`.
+- `atk-kernel/ATK/ClosedMath.lean` (teorema-mestre, obrigações e firewall).
+- `atk-kernel/scripts/conditionals.json` e `atk-kernel/scripts/obligations.json`.
 - `atk-kernel/lake-manifest.json` (fixa Mathlib v4.34.1, commit `d13f23b`).
 - `README.md`, `CATALOG.md`, `catalog/`, `scripts/build_catalog.py`, este arquivo.
