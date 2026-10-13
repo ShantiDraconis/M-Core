@@ -79,7 +79,7 @@
       "lean": "ATK.Conditional.Beal.GCDLowerBoundSmallExponents",
       "status": "OPEN_MATH",
       "ref": "gcd(a,b,c) > 1 quando gcd(x,y,z) ≤ 2 — na forma do lane: T59ResidualEliminator (domínio residual misto)",
-      "progress": "Incondicional (BealReduction, BealPartial): Beal ⟺ nenhuma solução dois a dois coprima; caso a = b; todo triplo com 3 ∣ mdc(x,y,z) ou 4 ∣ mdc(x,y,z) sem usar a ponte B2. O2 (mdc(x,y,z) ≤ 2) inalterada: OPEN_MATH. BealResidual: Beal ⟺ excluir soluções dois a dois coprimas com 3 ∤ mdc(x,y,z) e 4 ∤ mdc(x,y,z). BealFourFourTwo (via not_fermat_42 da Mathlib): sem solução quando 4 ∣ x, 4 ∣ y, 2 ∣ z — cobre triplos com mdc = 2 como (4,4,6); Beal ⟺ ExclusaoResidual442. O2 inalterada: OPEN_MATH."
+      "progress": "Incondicional (BealReduction, BealPartial): Beal ⟺ nenhuma solução dois a dois coprima; caso a = b; todo triplo com 3 ∣ mdc(x,y,z) ou 4 ∣ mdc(x,y,z) sem usar a ponte B2. O2 (mdc(x,y,z) ≤ 2) inalterada: OPEN_MATH. BealResidual: Beal ⟺ excluir soluções dois a dois coprimas com 3 ∤ mdc(x,y,z) e 4 ∤ mdc(x,y,z). BealFourFourTwo (via not_fermat_42 da Mathlib): sem solução quando 4 ∣ x, 4 ∣ y, 2 ∣ z — cobre triplos com mdc = 2 como (4,4,6); Beal ⟺ ExclusaoResidual442. FermatRightTriangle (descida, 11 teoremas): x⁴ − y⁴ ≠ z², área de triângulo pitagórico não é quadrado, 1 não é congruente. BealFermatDescent: sem solução quando 4 ∣ x, 2 ∣ y, 4 ∣ z ou 2 ∣ x, 4 ∣ y, 4 ∣ z; Beal ⟺ ExclusaoResidualDescida. Cobertura do domínio mdc ≤ 2 com expoentes 3..200: ≈ 4,9% (resto ≈ 95% aberto). O2 inalterada: OPEN_MATH."
     },
     {
       "id": "O3",
