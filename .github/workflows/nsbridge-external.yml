@@ -1,0 +1,110 @@
+name: NS (C) — certificado externo (openai/NavierStokesAndEuler)
+
+# Só roda por disparo manual: compilar o repositório externo custa horas de Actions.
+# O que faz:
+#   1. compila no kernel do Lean (toolchain e Mathlib DELES) o teorema
+#      NavierStokes.Comparator.navier_stokes_breakdown_R3 e audita seus axiomas;
+#   2. instala no MESMO ambiente os arquivos ATK (Exact, BealDescent, NSBridge) com um shim que
+#      importa as definições DELES (NavierStokes.ComparatorDefinitions) no lugar da cópia verbatim;
+#   3. compila `atk_clayC_certified : ATK.Exact.ClayC := clayC_of_fc navier_stokes_breakdown_R3`
+#      e audita os axiomas. Se passar, existe uma declaração de tipo EXATAMENTE ClayC verificada
+#      pelo kernel (no ambiente Lean v4.34.0-rc2 deles).
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "commit de openai/NavierStokesAndEuler"
+        default: "f9e8bc5"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  external:
+    name: Build externo + certificado ClayC
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clonar repositório externo
+        shell: bash
+        run: |
+          git clone https://github.com/openai/NavierStokesAndEuler ext
+          cd ext
+          git checkout "${{ inputs.ref }}"
+          git log -1 --format='%H %cd %s' | tee ../ext_commit.txt
+          cat lean-toolchain
+          sha256sum NavierStokes/ComparatorDefinitions.lean ComparatorChallenges/NavierStokes.lean
+
+      - name: Instalar elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Mathlib (cache oficial)
+        working-directory: ext
+        shell: bash
+        run: lake exe cache get
+
+      - name: Compilar NavierStokes.ComparatorSolution (fechamento de dependências)
+        working-directory: ext
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout 320m lake build NavierStokes.ComparatorSolution 2>&1 | tail -n 300
+
+      - name: Instalar ponte ATK no ambiente externo
+        shell: bash
+        run: |
+          mkdir -p ext/ATK
+          cp atk-kernel/ATK/BealDescent.lean atk-kernel/ATK/Exact.lean atk-kernel/ATK/NSBridge.lean ext/ATK/
+          printf 'import NavierStokes.ComparatorDefinitions\n' > ext/ATK/FCNavierStokes.lean
+          cat > ext/ATK/Certificate.lean <<'EOF'
+          import ATK.NSBridge
+          import NavierStokes.ComparatorSolution
+
+          /-- Declaração de tipo EXATAMENTE `ATK.Exact.ClayC`, obtida da prova externa pela ponte ATK. -/
+          theorem atk_clayC_certified : ATK.Exact.ClayC :=
+            ATK.NSBridge.clayC_of_fc NavierStokes.Comparator.navier_stokes_breakdown_R3
+
+          #print axioms NavierStokes.Comparator.navier_stokes_breakdown_R3
+          #print axioms atk_clayC_certified
+          EOF
+          sed -i 's/^          //' ext/ATK/Certificate.lean
+          printf '\n[[lean_lib]]\nname = "ATK"\nglobs = ["ATK.+"]\n' >> ext/lakefile.toml
+
+      - name: Certificado no kernel
+        working-directory: ext
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build ATK.NSBridge 2>&1 | tail -n 100
+          lake env lean ATK/Certificate.lean 2>&1 | tee ../certificate.log
+          python3 - <<'PY'
+          import re, sys
+          t = open("../certificate.log").read()
+          ok = True
+          for name in ["NavierStokes.Comparator.navier_stokes_breakdown_R3", "atk_clayC_certified"]:
+              m = re.search(rf"'{re.escape(name)}' depends on axioms: \[([^\]]*)\]", t, re.S)
+              ax = sorted(a.strip() for a in m.group(1).replace("\n", " ").split(",")) if m else None
+              good = ax is not None and set(ax) <= {"propext", "Classical.choice", "Quot.sound"}
+              ok &= good
+              print(f"::notice title={name}::{'OK' if good else 'FALHOU'} axiomas={ax}")
+          if "error" in t:
+              ok = False
+              print("::error title=certificado::erro de compilação")
+          sys.exit(0 if ok else 1)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nsbridge-external
+          path: |
+            ext_commit.txt
+            certificate.log

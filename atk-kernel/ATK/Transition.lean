@@ -100,12 +100,9 @@ theorem pipeline_iff (P : Prop) : Nonempty (Pipeline P) ↔ P := by
   · rintro ⟨π⟩
     exact π.closes
   · intro h
-    exact ⟨{ X := Unit, top := inferInstance, K := univ, D := fun _ => 0,
-      compact := isCompact_univ, nonempty := univ_nonempty,
-      lsc := lowerSemicontinuous_const.lowerSemicontinuousOn _,
-      nonneg := fun _ _ => le_rfl,
-      approx := fun ε hε => ⟨(), mem_univ _, hε⟩,
-      bridge := fun _ => h }⟩
+    refine ⟨⟨Unit, inferInstance, univ, (fun _ => 0), isCompact_univ, univ_nonempty,
+      lowerSemicontinuous_const.lowerSemicontinuousOn _, (fun _ _ => le_rfl),
+      (fun ε hε => ⟨(), mem_univ _, hε⟩), (fun _ => h)⟩⟩
 
 /-- **Engenharia das constantes:** ao longo de uma cadeia de transportes as constantes se
 multiplicam. -/
