@@ -1,0 +1,429 @@
+{
+ "date": "2026-10-13",
+ "repos": 32,
+ "branches": 2210,
+ "lean_files": 4858,
+ "findings": 688,
+ "by_category": {
+  "EQUIVALÊNCIA": 108,
+  "NEGAÇÃO": 39,
+  "CONDICIONAL": 492,
+  "BURACO (sorry/?_)": 27,
+  "AUDITORIA DE VACUIDADE": 7,
+  "AXIOMA": 12,
+  "SEM HIPÓTESES": 3
+ },
+ "by_problem": {
+  "beal": {
+   "EQUIVALÊNCIA": 59,
+   "NEGAÇÃO": 14,
+   "CONDICIONAL": 74,
+   "AXIOMA": 2,
+   "BURACO (sorry/?_)": 1
+  },
+  "bsd": {
+   "CONDICIONAL": 9,
+   "NEGAÇÃO": 1
+  },
+  "pvsnp": {
+   "EQUIVALÊNCIA": 43,
+   "CONDICIONAL": 242,
+   "BURACO (sorry/?_)": 19,
+   "NEGAÇÃO": 10,
+   "AUDITORIA DE VACUIDADE": 2,
+   "AXIOMA": 1,
+   "SEM HIPÓTESES": 3
+  },
+  "hodge": {
+   "CONDICIONAL": 111,
+   "NEGAÇÃO": 1,
+   "AUDITORIA DE VACUIDADE": 1
+  },
+  "riemann": {
+   "CONDICIONAL": 35,
+   "NEGAÇÃO": 12,
+   "EQUIVALÊNCIA": 6,
+   "BURACO (sorry/?_)": 5,
+   "AUDITORIA DE VACUIDADE": 2,
+   "AXIOMA": 9
+  },
+  "navier-stokes": {
+   "CONDICIONAL": 16,
+   "NEGAÇÃO": 1,
+   "BURACO (sorry/?_)": 2
+  },
+  "yang-mills": {
+   "CONDICIONAL": 5,
+   "AUDITORIA DE VACUIDADE": 2
+  }
+ },
+ "unconditional_candidates": [
+  {
+   "repo": "m-core-p-vs-np",
+   "name": "p01ConstructionGap",
+   "conclusion": "P01ConstructionGap",
+   "branch": "atk/p01-material-inhabitant-frontier-20260930",
+   "path": "lean/MCore/Real/P01TerminalCertificate.lean",
+   "category": "SEM HIPÓTESES"
+  },
+  {
+   "repo": "m-core-p-vs-np",
+   "name": "p01_closed_no_hypothesis",
+   "conclusion": "P01ConstructionGap",
+   "branch": "atk/p01-terminal-promotion-candidate-20260930",
+   "path": "lean/MCore/Real/P01TerminalMaterialCertificate.lean",
+   "category": "SEM HIPÓTESES"
+  },
+  {
+   "repo": "m-core-p-vs-np",
+   "name": "",
+   "conclusion": "P01MachineConstruction",
+   "branch": "work/pnp-minimal-separation-20261005",
+   "path": "lean/MCore/PNPMaterialAtoms.lean",
+   "category": "SEM HIPÓTESES"
+  },
+  {
+   "repo": "millennium-riemann-i",
+   "name": "riemann_hypothesis",
+   "conclusion": "RiemannHypothesis",
+   "branch": "atk-rh-g21-mold",
+   "path": "src/Riemann/CollapseProof/Contradiction.lean",
+   "category": "AXIOMA"
+  },
+  {
+   "repo": "millennium-riemann-i",
+   "name": "riemann_hypothesis",
+   "conclusion": "RiemannHypothesis",
+   "branch": "atk/label-circular-rh-20261008",
+   "path": "src/Riemann/CollapseProof/Contradiction.lean",
+   "category": "AXIOMA"
+  }
+ ],
+ "repos_detail": [
+  {
+   "repo": "-millennium-bsd-hodge-yangmills-i",
+   "branches": 2,
+   "lean_files": 10,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "atk-beal-public",
+   "branches": 2,
+   "lean_files": 20,
+   "findings": 9,
+   "by_category": {
+    "EQUIVALÊNCIA": 3,
+    "NEGAÇÃO": 3,
+    "CONDICIONAL": 3
+   },
+   "closure_claims": 0
+  },
+  {
+   "repo": "atk-bsd-public",
+   "branches": 2,
+   "lean_files": 7,
+   "findings": 6,
+   "by_category": {
+    "CONDICIONAL": 5,
+    "NEGAÇÃO": 1
+   },
+   "closure_claims": 0
+  },
+  {
+   "repo": "atk-certified-priority-record",
+   "branches": 1,
+   "lean_files": 466,
+   "findings": 67,
+   "by_category": {
+    "CONDICIONAL": 47,
+    "NEGAÇÃO": 6,
+    "EQUIVALÊNCIA": 8,
+    "BURACO (sorry/?_)": 5,
+    "AUDITORIA DE VACUIDADE": 1
+   },
+   "closure_claims": 2
+  },
+  {
+   "repo": "atk-hodge-public",
+   "branches": 2,
+   "lean_files": 12,
+   "findings": 3,
+   "by_category": {
+    "CONDICIONAL": 3
+   },
+   "closure_claims": 0
+  },
+  {
+   "repo": "atk-math-core-public",
+   "branches": 2,
+   "lean_files": 21,
+   "findings": 11,
+   "by_category": {
+    "CONDICIONAL": 8,
+    "NEGAÇÃO": 2,
+    "EQUIVALÊNCIA": 1
+   },
+   "closure_claims": 0
+  },
+  {
+   "repo": "atk-navier-stokes-public",
+   "branches": 2,
+   "lean_files": 12,
+   "findings": 1,
+   "by_category": {
+    "CONDICIONAL": 1
+   },
+   "closure_claims": 1
+  },
+  {
+   "repo": "atk-p-vs-np-public",
+   "branches": 2,
+   "lean_files": 7,
+   "findings": 6,
+   "by_category": {
+    "EQUIVALÊNCIA": 2,
+    "CONDICIONAL": 4
+   },
+   "closure_claims": 0
+  },
+  {
+   "repo": "atk-riemann-public",
+   "branches": 2,
+   "lean_files": 8,
+   "findings": 7,
+   "by_category": {
+    "CONDICIONAL": 3,
+    "EQUIVALÊNCIA": 2,
+    "NEGAÇÃO": 2
+   },
+   "closure_claims": 0
+  },
+  {
+   "repo": "atk-yang-mills-public",
+   "branches": 2,
+   "lean_files": 2,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "axiomatic-millenium",
+   "branches": 50,
+   "lean_files": 96,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 6
+  },
+  {
+   "repo": "elyon-public-proof",
+   "branches": 1,
+   "lean_files": 120,
+   "findings": 16,
+   "by_category": {
+    "CONDICIONAL": 11,
+    "NEGAÇÃO": 2,
+    "EQUIVALÊNCIA": 3
+   },
+   "closure_claims": 1
+  },
+  {
+   "repo": "m-core-beal",
+   "branches": 246,
+   "lean_files": 367,
+   "findings": 111,
+   "by_category": {
+    "EQUIVALÊNCIA": 49,
+    "CONDICIONAL": 55,
+    "NEGAÇÃO": 5,
+    "AXIOMA": 1,
+    "BURACO (sorry/?_)": 1
+   },
+   "closure_claims": 1
+  },
+  {
+   "repo": "m-core-bsd",
+   "branches": 158,
+   "lean_files": 227,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 1
+  },
+  {
+   "repo": "m-core-hodge",
+   "branches": 252,
+   "lean_files": 323,
+   "findings": 71,
+   "by_category": {
+    "CONDICIONAL": 69,
+    "NEGAÇÃO": 1,
+    "AUDITORIA DE VACUIDADE": 1
+   },
+   "closure_claims": 1
+  },
+  {
+   "repo": "m-core-p-vs-np",
+   "branches": 696,
+   "lean_files": 1410,
+   "findings": 256,
+   "by_category": {
+    "CONDICIONAL": 202,
+    "EQUIVALÊNCIA": 30,
+    "BURACO (sorry/?_)": 14,
+    "NEGAÇÃO": 5,
+    "AUDITORIA DE VACUIDADE": 1,
+    "AXIOMA": 1,
+    "SEM HIPÓTESES": 3
+   },
+   "closure_claims": 3
+  },
+  {
+   "repo": "m-core-riemann",
+   "branches": 175,
+   "lean_files": 391,
+   "findings": 31,
+   "by_category": {
+    "CONDICIONAL": 22,
+    "NEGAÇÃO": 3,
+    "BURACO (sorry/?_)": 5,
+    "EQUIVALÊNCIA": 1
+   },
+   "closure_claims": 1
+  },
+  {
+   "repo": "m-core-yang-mills",
+   "branches": 190,
+   "lean_files": 227,
+   "findings": 4,
+   "by_category": {
+    "CONDICIONAL": 2,
+    "AUDITORIA DE VACUIDADE": 2
+   },
+   "closure_claims": 1
+  },
+  {
+   "repo": "m-core",
+   "branches": 215,
+   "lean_files": 609,
+   "findings": 69,
+   "by_category": {
+    "CONDICIONAL": 46,
+    "AUDITORIA DE VACUIDADE": 2,
+    "NEGAÇÃO": 9,
+    "EQUIVALÊNCIA": 9,
+    "AXIOMA": 3
+   },
+   "closure_claims": 7
+  },
+  {
+   "repo": "millennium-bsd",
+   "branches": 6,
+   "lean_files": 3,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "millennium-hodge",
+   "branches": 7,
+   "lean_files": 10,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "millennium-mass-gap-i",
+   "branches": 1,
+   "lean_files": 0,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "millennium-navier-stokes-i",
+   "branches": 6,
+   "lean_files": 10,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "millennium-p-vs-np-i",
+   "branches": 14,
+   "lean_files": 17,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "millennium-regularity-i",
+   "branches": 1,
+   "lean_files": 0,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "millennium-riemann-i",
+   "branches": 8,
+   "lean_files": 77,
+   "findings": 7,
+   "by_category": {
+    "AXIOMA": 7
+   },
+   "closure_claims": 0
+  },
+  {
+   "repo": "millennium-symbolic-program",
+   "branches": 1,
+   "lean_files": 1,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "millennium-yang-mills",
+   "branches": 4,
+   "lean_files": 9,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "navier-stokes-critical-barrier-audit",
+   "branches": 148,
+   "lean_files": 382,
+   "findings": 13,
+   "by_category": {
+    "CONDICIONAL": 11,
+    "BURACO (sorry/?_)": 2
+   },
+   "closure_claims": 1
+  },
+  {
+   "repo": "proof-engineering-00",
+   "branches": 1,
+   "lean_files": 0,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "proofs-multiprover",
+   "branches": 2,
+   "lean_files": 3,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  },
+  {
+   "repo": "universal-proof-hub",
+   "branches": 9,
+   "lean_files": 11,
+   "findings": 0,
+   "by_category": {},
+   "closure_claims": 0
+  }
+ ]
+}

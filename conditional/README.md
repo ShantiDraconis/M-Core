@@ -75,6 +75,15 @@ Os 8 enunciados abertos do seu README são as mesmas 8 obrigações O1–O8 daqu
 P01, a ponte B4 passou a `PARCIAL_NO_MODELO_DO_LANE`: falta a NP-dificuldade e ligar o modelo do
 lane (Lean 4.19) a este kernel (Lean 4.34.1).
 
+## Busca de provas em todos os repositórios — `PROOF_SEARCH.md`
+
+Varri 32 repositórios, 2.210 branches e 4.858 arquivos Lean atrás de qualquer prova que feche uma
+obrigação. Das 688 declarações que concluem um alvo, 492 são condicionais, 108 são equivalências,
+39 negações, 27 têm `sorry`/`exact ?_`, 12 dependem de `axiom` e 7 são auditorias de vacuidade.
+As únicas 3 sem hipóteses são o P01 (SAT ∈ NP no modelo do lane). O `riemann_hypothesis` do
+`millennium-riemann-I` depende dos axiomas `collapse_law` e `I_ne_one`, que juntos já são a própria RH.
+Nenhuma das obrigações O1–O8 está fechada em nenhum lugar.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -143,9 +152,12 @@ numérico de Re s fora de ½ marca *suspeita*, não refutação — só um zero 
 README.md                    este arquivo
 CATALOG.md                   os 251 repositórios agrupados por função e por problema
 SOURCES.md                   de onde veio cada arquivo (repo + SHA)
+PROOF_SEARCH.md              busca de provas em 32 repositórios e 2.210 branches
+proof_search.json            dados da busca (por repositório, categoria e problema)
 BACKWARD_ORACLE_PROTOCOL.md  política fail-closed (copiada do m-core-openai-ns-audit)
 catalog/                     repos.txt (lista), repos.json (classificação)
 scripts/build_catalog.py     regera o catálogo
+scripts/proof_scan.py        o scanner da busca de provas
 atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.34.1)
   ATK/*.lean                 19 lemas auxiliares do M-Core (inalterados)
   ATK/Conditional/*.lean     7 condicionais (14 teoremas)

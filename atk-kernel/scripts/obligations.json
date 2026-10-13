@@ -171,7 +171,8 @@
     "sources": [
       "M-Core main 6df7dfc e branches atk/external-reference-bridges-20261013, atk/public-millennium-interface-20261013, fix/ns-scaling-false, atk-kernel-check: FinalProofRegistry com 7/7 slots openMath, 0 proved",
       "M-Core fix/ns-scaling-false atk-kernel/README (12/10): 8 enunciados mínimos abertos; nenhuma conjectura do milênio provada",
-      "m-core-p-vs-np atk/p01-closure-audit-20261013-pnp-reduction 56a0e7a (13/10 16:12): SAT ∈ NP incondicional no modelo; P ≠ NP reduzido a G2.1"
+      "m-core-p-vs-np atk/p01-closure-audit-20261013-pnp-reduction 56a0e7a (13/10 16:12): SAT ∈ NP incondicional no modelo; P ≠ NP reduzido a G2.1",
+      "Busca em 32 repositórios / 2210 branches / 4858 arquivos Lean (PROOF_SEARCH.md): nenhuma obrigação O1–O8 fechada; único resultado sem hipóteses = P01 (SAT ∈ NP no modelo do lane)"
     ]
   }
 }
