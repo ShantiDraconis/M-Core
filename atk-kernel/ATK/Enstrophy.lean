@@ -89,6 +89,8 @@ theorem ycrit_optimal {C₀ ν l : ℝ} (hC : 0 < C₀) (hν : 0 < ν) (hl : 0 �
     rw [div_pow, mul_pow, hs]
     ring
   rw [hR]
+  have hC' : C₀ ≠ 0 := hC.ne'
+  have hν' : ν ≠ 0 := hν.ne'
   field_simp
   ring
 
