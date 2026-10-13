@@ -24,3 +24,5 @@ import ATK.ObligationsClosed
 import ATK.BealFourFourTwo
 import ATK.FermatRightTriangle
 import ATK.BealFermatDescent
+import ATK.CongruentCurve
+import ATK.QuarticResidues

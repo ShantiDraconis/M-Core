@@ -281,3 +281,15 @@ ATK.BealFermatDescent.descida_iff_pairwise
 ATK.BealFermatDescent.beal_iff_residual_descida_pairwise
 ATK.BealFermatDescent.exemplos_descida
 ATK.BealFermatDescent.exemplos_descida_novos
+ATK.CongruentCurve.y_eq_zero
+ATK.CongruentCurve.rational_points
+ATK.CongruentCurve.rational_points_iff
+ATK.CongruentCurve.E_equation_iff
+ATK.CongruentCurve.E_nonsingular
+ATK.CongruentCurve.E_point_cases
+ATK.CongruentCurve.E_torsion_points
+ATK.QuarticResidues.fourth_pow_emod_sixteen
+ATK.QuarticResidues.fourth_pow_emod_five
+ATK.QuarticResidues.sum_two_fourth_pow_emod_sixteen
+ATK.QuarticResidues.sum_two_fourth_pow_emod_four_ne_three
+ATK.QuarticResidues.no_congruence_obstruction
