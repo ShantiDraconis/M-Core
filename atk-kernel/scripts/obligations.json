@@ -10,8 +10,10 @@
       "problem": "Riemann",
       "kind": "PONTE",
       "lean": "ATK.Conditional.Riemann.BaezDuarteCriterion",
-      "status": "PUBLICADA_NAO_FORMALIZADA",
-      "ref": "Nyman 1950; Beurling 1955; Báez-Duarte 2003"
+      "status": "PROVADA_NO_KERNEL",
+      "ref": "Nyman 1950; Beurling 1955; Báez-Duarte 2003",
+      "proof": "ATK.BaezDuarteBridge.baezDuarteCriterion : BaezDuarteCriterion (ATK/ZetaStrip.lean, ATK/MellinRho.lean, ATK/BaezDuarteBridge.lean; axiomas padrão)",
+      "proof_theorem": "ATK.ObligationsClosed.B1"
     },
     {
       "id": "B2",
@@ -68,7 +70,7 @@
       "lean": "ATK.Conditional.Riemann.UniformLogBound",
       "status": "OPEN_MATH",
       "ref": "∃K ∀N, D_N ≤ K/log(N+2) — mais forte que RH",
-      "progress": "Incondicional (RiemannConcrete, RiemannFaithful): D_N decrescente, D_0 = 1, D_1 < 1, D_N → D_∞ = inf D_N ≤ D_1 < 1, integrandos integráveis (definição fiel). O1 ⟺ inf_N D_N = 0 ⟺ dissipação total. Status inalterado: OPEN_MATH."
+      "progress": "Incondicional (RiemannConcrete, RiemannFaithful): D_N decrescente, D_0 = 1, D_1 < 1, D_N → D_∞ = inf D_N ≤ D_1 < 1, integrandos integráveis (definição fiel). O1 ⟺ inf_N D_N = 0 ⟺ dissipação total. Status inalterado: OPEN_MATH. Com B1 provada: inf_N D_N = 0 ⇒ RH sem pontes (ATK.BaezDuarteBridge.riemann_of_iInf_zero); D_N só pode estar nos estados zero/finito (RiemannStates)."
     },
     {
       "id": "O2",
@@ -77,7 +79,7 @@
       "lean": "ATK.Conditional.Beal.GCDLowerBoundSmallExponents",
       "status": "OPEN_MATH",
       "ref": "gcd(a,b,c) > 1 quando gcd(x,y,z) ≤ 2 — na forma do lane: T59ResidualEliminator (domínio residual misto)",
-      "progress": "Incondicional (BealReduction, BealPartial): Beal ⟺ nenhuma solução dois a dois coprima; caso a = b; todo triplo com 3 ∣ mdc(x,y,z) ou 4 ∣ mdc(x,y,z) sem usar a ponte B2. O2 (mdc(x,y,z) ≤ 2) inalterada: OPEN_MATH."
+      "progress": "Incondicional (BealReduction, BealPartial): Beal ⟺ nenhuma solução dois a dois coprima; caso a = b; todo triplo com 3 ∣ mdc(x,y,z) ou 4 ∣ mdc(x,y,z) sem usar a ponte B2. O2 (mdc(x,y,z) ≤ 2) inalterada: OPEN_MATH. BealResidual: Beal ⟺ excluir soluções dois a dois coprimas com 3 ∤ mdc(x,y,z) e 4 ∤ mdc(x,y,z)."
     },
     {
       "id": "O3",
@@ -179,7 +181,8 @@
       "2.440 teoremas do FINAL_PROOF_STRUCTURE classificados no commit verificado pelo CI (THEOREMS_2440.md): 653 campos de estrutura, 19 condicionais → alvo, 0 descarregados; enunciados finais NO_PROOF_IN_LIBRARY no relatório de props do kernel",
       "ATK/Indeterminacy.lean (50 teoremas certificados): teoria dos pontos de 3 estados; RH_I_iff mostra que a constante I não altera RH — infraestrutura, nenhuma obrigação fechada",
       "Inventário mestre (INVENTORY.md): 148 repositórios, 3.522 branches, Lean+Coq+Agda+Isabelle; 20 afirmações diretas sem hipótese revisadas uma a uma (firewalls, P01, alvos vácuos, axiomas importados); nenhuma obrigação O1–O8 fechada",
-      "ATK/IndeterminacyStates (34), RiemannConcrete (11), RiemannFaithful (25), BealReduction (12), BealPartial (12): 94 teoremas novos certificados; nenhuma obrigação O1–O8 fechada; CLOSED_MATH continua calculado = false"
+      "ATK/IndeterminacyStates (34), RiemannConcrete (11), RiemannFaithful (25), BealReduction (12), BealPartial (12): 94 teoremas novos certificados; nenhuma obrigação O1–O8 fechada; CLOSED_MATH continua calculado = false",
+      "Ponte B1 (Nyman–Beurling–Báez-Duarte, direção D_N → 0 ⇒ RH) formalizada e certificada: ZetaStrip (14), MellinRho (10), BaezDuarteBridge (22); RiemannStates (9), BealResidual (5). A rota de Riemann depende agora só de O1; CLOSED_MATH continua calculado = false"
     ]
   }
 }

@@ -139,6 +139,22 @@ gate_present = bool(gate_file) and os.path.exists(os.path.join(ROOT, gate_file))
 gate_ok = (gate_present and status.get(gate_file) == "OK" and gate_thm in axioms
            and set(axioms[gate_thm]) <= ALLOWED and gate_file not in src_flags)
 obligations = obl.get("obligations", [])
+# Estado das obrigações é CALCULADO: CLOSED só com teorema certificado cujo enunciado na fonte é
+# literalmente a proposição da obrigação (`theorem <nome> : <lean>`). Declarar "CLOSED" à mão não vale.
+for o in obligations:
+    p = o.get("proof_theorem")
+    ok = False
+    if p and verdict_of.get(p) == "CERTIFIED":
+        src_path = os.path.join(ROOT, module_file(p))
+        short = p.split(".")[-1]
+        src = open(src_path, encoding="utf-8").read() if os.path.exists(src_path) else ""
+        pat = r"theorem\s+" + re.escape(short) + r"\s*:\s*" + re.escape(o["lean"]) + r"\s*:="
+        ok = re.search(pat, src) is not None
+    if ok:
+        o["status"] = "CLOSED"
+        o["closed_by"] = p
+    elif o["status"] == "CLOSED":
+        o["status"] = "CLAIM_WITHOUT_CERTIFIED_PROOF"
 report["status"] = {"CONDITIONALS_CLOSED": f"{closed}/{len(conditionals)}",
                     "OPEN_MATH": not gate_ok, "CLOSED_MATH": gate_ok,
                     "GATE_FILE_PRESENT": gate_present,

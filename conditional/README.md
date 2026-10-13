@@ -129,6 +129,19 @@ O mesmo arquivo prova os limites: `RH_I_iff` (RH na extensão com `I` é RH — 
 `monotona_nao_basta` (decrescer não dá `D_N → 0`). Por isso o módulo é infraestrutura e não muda o
 portão.
 
+## Ponte B1 provada: `D_N → 0 ⇒ RH` — `RIEMANN_BRIDGE.md`
+
+`ATK.BaezDuarteBridge.baezDuarteCriterion : BaezDuarteCriterion` está **certificado** (axiomas
+padrão). A implicação de Nyman–Beurling–Báez-Duarte deixou de ser hipótese: ζ na faixa crítica por
+`∫_1^∞ {t} t^{-s-1} dt` e princípio da identidade (`ZetaStrip`), Mellin de `{1/(k t)}`
+(`MellinRho`), estimativa de Cauchy–Schwarz e equação funcional (`BaezDuarteBridge`). O auditor
+marca a obrigação B1 como `CLOSED` por cálculo. A rota de Riemann depende agora só de **O1**
+(`inf_N D_N = 0`), que continua aberta e é equivalente à própria RH.
+
+Também novos: `RiemannStates` (9 — `D_N` só pode estar nos estados `zero`/`finito`; limite em
+`[0,1)`) e `BealResidual` (5 — Beal ⟺ excluir soluções dois a dois coprimas com `3 ∤ mdc(x,y,z)`
+e `4 ∤ mdc(x,y,z)`).
+
 ## Sete estados, dissipação e resultados incondicionais novos (94 teoremas)
 
 Detalhes em `INDETERMINACY.md` §7–§10. Todos certificados com axiomas padrão:
@@ -242,6 +255,12 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/RiemannFaithful.lean   integrabilidade, D_0 = 1, D_1 < 1 (25 teoremas)
   ATK/BealReduction.lean     Beal ⟺ exclusão primitiva; caso a = b (12 teoremas)
   ATK/BealPartial.lean       Beal com 3 ou 4 dividindo os expoentes, via FLT3/FLT4 (12 teoremas)
+  ATK/BealResidual.lean      Beal ⟺ domínio residual exato (5 teoremas)
+  ATK/RiemannStates.lean     7 estados aplicados a D_N: só zero/finito (9 teoremas)
+  ATK/ZetaStrip.lean         ∫_1^∞ {t} t^{-s-1} = 1/(s−1) − ζ(s)/s em Re s > 0 (14 teoremas)
+  ATK/MellinRho.lean         Mellin de {1/(k t)} = −k^{−s} ζ(s)/s na faixa (10 teoremas)
+  ATK/BaezDuarteBridge.lean  ponte B1: D_N → 0 ⇒ RiemannHypothesis da Mathlib (22 teoremas)
+  ATK/ObligationsClosed.lean obrigações fechadas por teorema (B1) — lidas pelo auditor
   scripts/obligations.json   as 20 obrigações e a regra do portão de CLOSED_MATH
   scripts/check_axioms.py    auditoria: CERTIFIED só com axiomas padrão e sem sorry/admit/axiom
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional
