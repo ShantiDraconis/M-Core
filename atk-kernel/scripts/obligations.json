@@ -70,7 +70,7 @@
       "lean": "ATK.Conditional.Riemann.UniformLogBound",
       "status": "OPEN_MATH",
       "ref": "∃K ∀N, D_N ≤ K/log(N+2) — mais forte que RH",
-      "progress": "Incondicional (RiemannConcrete, RiemannFaithful): D_N decrescente, D_0 = 1, D_1 < 1, D_N → D_∞ = inf D_N ≤ D_1 < 1, integrandos integráveis (definição fiel). O1 ⟺ inf_N D_N = 0 ⟺ dissipação total. Status inalterado: OPEN_MATH. Com B1 provada: inf_N D_N = 0 ⇒ RH sem pontes (ATK.BaezDuarteBridge.riemann_of_iInf_zero); D_N só pode estar nos estados zero/finito (RiemannStates)."
+      "progress": "Incondicional (RiemannConcrete, RiemannFaithful): D_N decrescente, D_0 = 1, D_1 < 1, D_N → D_∞ = inf D_N ≤ D_1 < 1, integrandos integráveis (definição fiel). O1 ⟺ inf_N D_N = 0 ⟺ dissipação total. Status inalterado: OPEN_MATH. Com B1 provada: inf_N D_N = 0 ⇒ RH sem pontes (ATK.BaezDuarteBridge.riemann_of_iInf_zero); D_N só pode estar nos estados zero/finito (RiemannStates). Geometria da faixa (ZetaSimetria, incondicional): zeros invariantes pela tensão s↦1−s, pelo espelho e pela torção s↦1−s̄; ζ(σ) < 0 em (0,1) (eixo real e o neutro 1/2 sem zeros); extremos fechados conhecidos: Re s ≥ 1 sem zeros e Re s ≤ 0 só com triviais. RH ⟺ [a,∞) livre ∀a>1/2 ⟺ (−∞,b] livre ∀b<1/2 ⟺ todo zero fixo pela torção (riemann_iff_fim/_inicio/_torcao). Equivalências, não progresso no limite a↓1/2."
     },
     {
       "id": "O2",

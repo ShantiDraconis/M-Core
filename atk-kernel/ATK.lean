@@ -21,3 +21,7 @@ import ATK.ZetaStrip
 import ATK.MellinRho
 import ATK.BaezDuarteBridge
 import ATK.ObligationsClosed
+import ATK.ZetaSimetria
+import ATK.IFormas
+import ATK.IAlgebra
+import ATK.IGeometria

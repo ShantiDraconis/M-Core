@@ -135,6 +135,15 @@ A obrigação O1 fica reduzida, sem perda, a **`inf_N D_N = 0`**, que é equival
 
 O que resta de Beal: excluir soluções dois a dois coprimas com `3 ∤ mdc(x,y,z)` e `4 ∤ mdc(x,y,z)`.
 
+## 11. A teoria de `I` completa (`I_THEORY.md`)
+
+O levantamento de todas as leis propostas sobre `I` e os quatro módulos novos (`IFormas`,
+`IAlgebra`, `IGeometria`, `ZetaSimetria`, 186 teoremas) estão em `I_THEORY.md`. Em resumo: o
+conteúdo rigoroso de "`I = 0/0`" é que o conjunto de valores de `0/0` é `[−∞, +∞]` inteiro; as
+álgebras com `I` absorvente são consistentes só sem inverso aditivo e sem `0·I = 0` junto com
+distributividade; e a geometria "extremos fechados → meio" aplicada a ζ dá equivalências exatas
+com RH, com os extremos `Re s ≥ 1` e `Re s ≤ 0` provados e o meio em aberto.
+
 ## Próximo passo que de fato aproximaria um fechamento
 
 Usar a medida por ordem onde ela tem conteúdo: na rota de Riemann, `D_N` é um ponto do tipo

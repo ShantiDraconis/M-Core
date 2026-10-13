@@ -162,6 +162,27 @@ Detalhes em `INDETERMINACY.md` §7–§10. Todos certificados com axiomas padrã
 
 Nenhuma obrigação O1–O8 foi fechada por esses resultados; `CLOSED_MATH` continua `false`.
 
+## A teoria de `I` materializada — `I_THEORY.md` (186 teoremas)
+
+Levantamento de **tudo** o que os repositórios propõem sobre `I` (4.922 arquivos em 79 repositórios,
+586 leis/hipóteses deduplicadas em `catalog/ilaws/`, cada uma com fonte e veredito) e formalização
+do que é verdadeiro:
+
+- `ATK/IFormas.lean` (53): `I` como conjunto de valores das formas indeterminadas —
+  `0/0`, `0·∞`, `∞−∞` valem **qualquer** ponto de `[−∞,+∞]`; `∞/∞`, `1^∞`, `0^0`, `∞^0` valem
+  exatamente `[0,+∞]`; as sete oscilam; as determinadas (`∞+∞`, `a/∞`, `0^∞`…) têm valor único.
+- `ATK/IAlgebra.lean` (34): quais álgebras de `I` são consistentes (meadow absorvente com
+  distributividade total; modelo multiestado de conjuntos) e quais são **inconsistentes** (PAX/`K_I`,
+  P1, `I_invariant`, o triângulo absorção + `0·I = 0` + distributividade); Δ só existe nos hiper-reais.
+- `ATK/IGeometria.lean` (56): início fechado e fim fechado convergem ao **mesmo** neutro `1/2`,
+  meio-abertos ao vazio; tensão, compressão, tração, torção, rigidez do neutro, o torque `𝕋` do
+  acervo, lógica K3 com o neutro `N ↦ 1/2`.
+- `ATK/ZetaSimetria.lean` (43): a mesma geometria nos zeros de ζ — extremos fechados `Re s ≥ 1` e
+  `Re s ≤ 0` livres de zeros não triviais, **`ζ(σ) < 0` em `(0,1)`** (o neutro `1/2` não é zero),
+  simetria por tensão/espelho/torção, quartetos, e **RH ⟺ o fim fechado chega ao meio ⟺ o início
+  fechado chega ao meio ⟺ todo zero é fixo pela torção**. Os extremos provados são `a = 1`, `b = 0`;
+  o limite `a ↓ 1/2` é a própria RH (O1), aberta.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -236,16 +257,19 @@ inventory.json               dados (por repositório; declarações sem hipótes
 THEOREMS_2440.md             os 2.440 teoremas auditados, um a um: forma, hipóteses, obrigação
 theorems_2440.json           dados (lane, nome, arquivo, linha, conclusão, hipóteses, forma)
 INDETERMINACY.md             a teoria dos pontos de 3 estados e o que o kernel provou dela
+I_THEORY.md                  a teoria de I: levantamento (586 leis), o que foi certificado/refutado
 proof_search.json            dados da busca (por repositório, categoria e problema)
 HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
 hypothesis_map.json          dados do mapa
 BACKWARD_ORACLE_PROTOCOL.md  política fail-closed (copiada do m-core-openai-ns-audit)
 catalog/                     repos.txt (lista), repos.json (classificação)
+catalog/ilaws/               catálogos A–D das leis de I propostas no acervo, com fonte e veredito
 scripts/build_catalog.py     regera o catálogo
 scripts/proof_scan.py        o scanner da busca de provas
 scripts/hyp_map.py           o mapa de descarga de hipóteses
 scripts/inventory_scan.py    varredura multilíngue de um repositório (todos os branches)
 scripts/aggregate_inv.py     gera INVENTORY.md
+scripts/i_scan.py            coleta os arquivos sobre I em todos os branches
 scripts/thm2440.py           classifica os 2.440 teoremas no commit verificado pelo CI
 scripts/report2440.py        gera THEOREMS_2440.md
 atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.34.1)
@@ -265,6 +289,10 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/MellinRho.lean         Mellin de {1/(k t)} = −k^{−s} ζ(s)/s na faixa (10 teoremas)
   ATK/BaezDuarteBridge.lean  ponte B1: D_N → 0 ⇒ RiemannHypothesis da Mathlib (22 teoremas)
   ATK/ObligationsClosed.lean obrigações fechadas por teorema (B1) — lidas pelo auditor
+  ATK/ZetaSimetria.lean      extremos fechados, ζ(σ)<0, simetrias, RH ⟺ processos ao meio (43)
+  ATK/IFormas.lean           as 7 formas indeterminadas e seus conjuntos de valores (53)
+  ATK/IAlgebra.lean          álgebras de I: impossibilidades e modelos consistentes (34)
+  ATK/IGeometria.lean        neutro, tensão, compressão, torção, torque, K3 (56)
   scripts/obligations.json   as 20 obrigações e a regra do portão de CLOSED_MATH
   scripts/check_axioms.py    auditoria: CERTIFIED só com axiomas padrão e sem sorry/admit/axiom
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional
