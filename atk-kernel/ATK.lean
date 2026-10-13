@@ -26,3 +26,7 @@ import ATK.FermatRightTriangle
 import ATK.BealFermatDescent
 import ATK.CongruentCurve
 import ATK.QuarticResidues
+import ATK.ZetaSimetria
+import ATK.IFormas
+import ATK.IAlgebra
+import ATK.IGeometria

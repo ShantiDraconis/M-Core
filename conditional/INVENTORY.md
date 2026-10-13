@@ -7,17 +7,17 @@ Varredura de **todos os branches** de cada repositório acessível da conta (blo
 | | |
 |---|---|
 | Repositórios no catálogo | 250 |
-| Varridos (todos os branches) | **148** |
-| Vazios (sem nenhum commit) | 13 |
-| Sem acesso nesta sessão (privados não anexados) | 89 |
-| Branches varridos | 3522 |
-| Arquivos distintos (por conteúdo) | 34085 |
-| Lean / Coq / Agda / Isabelle | 7842 / 696 / 231 / 457 |
-| Python (+notebooks) / LaTeX | 5229 / 2133 |
-| Declarações Lean que concluem um alvo | 829 |
+| Varridos (todos os branches) | **224** |
+| Vazios (sem nenhum commit) | 26 |
+| Sem acesso nesta sessão (privados não anexados) | 0 |
+| Branches varridos | 4086 |
+| Arquivos distintos (por conteúdo) | 65049 |
+| Lean / Coq / Agda / Isabelle | 8423 / 791 / 253 / 493 |
+| Python (+notebooks) / LaTeX | 6963 / 2300 |
+| Declarações Lean que concluem um alvo | 834 |
 | …sem hipótese explícita, sem sorry/axiom no próprio arquivo | 135: 115 equivalências (↔) + 20 afirmações diretas, revisadas abaixo |
-| Enunciados-alvo em Coq/Agda/Isabelle | 546 (447 em arquivos com escapatória) |
-| Alegações textuais de fechamento (`CLOSED_MATH = true`, `state := .proved`…) | 31 em 13 repositórios |
+| Enunciados-alvo em Coq/Agda/Isabelle | 552 (453 em arquivos com escapatória) |
+| Alegações textuais de fechamento (`CLOSED_MATH = true`, `state := .proved`…) | 32 em 14 repositórios |
 
 ## Veredito
 
@@ -51,16 +51,20 @@ Nenhum arquivo, em nenhuma linguagem, em nenhum branch, contém um termo sem hip
 | Heu-7-universal-framework | 7 | 153 | 29 | 0 | 26 | 56 | 88 | 5 | 2 | 8 | 0 |
 | m-core-yang-mills | 190 | 227 | 0 | 0 | 0 | 9 | 0 | 4 | 2 | 0 | 1 |
 | sfh-formalization-lab | 33 | 33 | 6 | 5 | 6 | 53 | 10 | 4 | 0 | 0 | 0 |
+| universal | 12 | 134 | 35 | 0 | 1 | 32 | 11 | 3 | 0 | 0 | 0 |
 | riemann-transverse-stability-program | 6 | 22 | 2 | 1 | 1 | 28 | 38 | 3 | 2 | 0 | 0 |
 | Riemann-multistate-program | 13 | 13 | 4 | 0 | 3 | 66 | 31 | 3 | 0 | 0 | 0 |
 | atk-hodge-public | 2 | 12 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 |
 | unified-classical-foundations | 3 | 96 | 68 | 0 | 15 | 41 | 4 | 2 | 0 | 10 | 0 |
 | Riemann-energy-proofline | 15 | 33 | 17 | 0 | 11 | 59 | 57 | 2 | 0 | 6 | 0 |
+| harappan-universal-dictionary | 17 | 4 | 4 | 1 | 4 | 44 | 5 | 2 | 0 | 5 | 0 |
 | 0-0-FORMAL-SUITE | 8 | 41 | 0 | 0 | 0 | 0 | 8 | 1 | 0 | 0 | 0 |
 | cryptographic-logic-foundations | 4 | 34 | 10 | 0 | 7 | 21 | 0 | 1 | 0 | 3 | 0 |
 | hawking-singularities-millennium-problems | 1 | 21 | 13 | 0 | 3 | 18 | 20 | 1 | 0 | 3 | 0 |
 | atk-navier-stokes-public | 2 | 12 | 0 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 1 |
+| harappan-00-universal | 80 | 227 | 38 | 13 | 18 | 1029 | 102 | 0 | 0 | 0 | 0 |
 | m-core-bsd | 158 | 227 | 0 | 0 | 0 | 23 | 0 | 0 | 0 | 0 | 1 |
+| mishkan-iii-core | 86 | 176 | 4 | 0 | 3 | 24 | 0 | 0 | 0 | 0 | 1 |
 | M-private | 75 | 160 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 |
 | Millenium--core | 14 | 114 | 0 | 0 | 1 | 51 | 27 | 0 | 0 | 0 | 0 |
 | Meta-millenium-independence-00 | 6 | 112 | 0 | 0 | 0 | 8 | 53 | 0 | 0 | 0 | 0 |
@@ -89,20 +93,26 @@ Nenhum arquivo, em nenhuma linguagem, em nenhum branch, contém um termo sem hip
 | lean-audit-kit | 2 | 14 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | collatz_reverse-tree | 67 | 12 | 9 | 8 | 9 | 278 | 14 | 0 | 0 | 14 | 0 |
 | meta-mathematics-indeterminate-I | 3 | 12 | 0 | 0 | 0 | 0 | 15 | 0 | 0 | 0 | 0 |
+| LA-2008-R- | 19 | 11 | 1 | 2 | 1 | 208 | 37 | 0 | 0 | 0 | 0 |
 | universal-proof-hub | 9 | 11 | 1 | 1 | 1 | 6 | 6 | 0 | 0 | 0 | 0 |
 | -millennium-bsd-hodge-yangmills-I | 2 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Lunar-Hive | 28 | 10 | 0 | 0 | 0 | 9 | 0 | 0 | 0 | 0 | 0 |
 | millennium-hodge | 7 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | millennium-navier-stokes-I | 6 | 10 | 2 | 0 | 2 | 32 | 3 | 0 | 0 | 0 | 0 |
 | UMA | 3 | 9 | 8 | 2 | 5 | 62 | 9 | 0 | 0 | 0 | 0 |
+| digital-fire-la28 | 15 | 9 | 6 | 5 | 5 | 8 | 0 | 0 | 0 | 0 | 0 |
 | millennium-yang-mills | 4 | 9 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Oral-substrate-br | 27 | 8 | 2 | 1 | 2 | 29 | 5 | 0 | 0 | 8 | 0 |
+| stationary-photon-moving-geometry | 1 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Riemann-unity-zero | 40 | 7 | 2 | 2 | 2 | 115 | 121 | 0 | 0 | 10 | 0 |
 | emergent-identity-rh | 1 | 7 | 5 | 0 | 5 | 4 | 11 | 0 | 0 | 0 | 0 |
 | Harappan-guilds-0-0 | 8 | 6 | 4 | 3 | 2 | 12 | 8 | 0 | 0 | 0 | 0 |
 | navier-stokes-critical-L3 | 2 | 6 | 0 | 0 | 0 | 0 | 12 | 0 | 0 | 0 | 0 |
 | millennium-poincare-symbolic | 5 | 5 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | 0 | 0 |
 | indus-operational-mathematics | 4 | 4 | 3 | 3 | 3 | 112 | 58 | 0 | 0 | 0 | 0 |
+| olympic-symbolic-00 | 103 | 4 | 4 | 0 | 1 | 138 | 2 | 0 | 0 | 1 | 0 |
+| orion | 5 | 4 | 3 | 1 | 3 | 8 | 4 | 0 | 0 | 0 | 0 |
+| zero-engine-00 | 75 | 4 | 0 | 0 | 0 | 55 | 0 | 0 | 0 | 0 | 0 |
 | complexity-collapse-pnp | 2 | 3 | 1 | 0 | 1 | 5 | 0 | 0 | 0 | 0 | 0 |
 | millennium-bsd | 6 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | proofs-multiprover | 2 | 3 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -125,7 +135,7 @@ Nenhum arquivo, em nenhuma linguagem, em nenhum branch, contém um termo sem hip
 | riemann-indeterminacy | 5 | 1 | 1 | 0 | 1 | 9 | 42 | 0 | 0 | 0 | 0 |
 | seet-r-off-lab- | 13 | 1 | 1 | 1 | 1 | 16 | 0 | 0 | 0 | 5 | 0 |
 
-Outros 51 repositórios varridos não têm arquivo de assistente de prova nem alegação de fechamento (documentação, dados, código de aplicação): -sbfe-physics-unified, 0-0, Beit-Hamikdash-iii, Codex_Indeterminancy, Horizon_Prime_-framework, I-Framework-Nexus, Indus-System, Millenium-delta-unified-frame, NIPAH-research-HUB, S5-BIO-SHIELD-, The-Proof-Log, Zero--OS, archetypes-humanity, cardinality-and-infinity, closed-loop-engineering-00, consciousness-symbolic-model-00, cosmic-geometry-00, discrete-dynamics-indeterminacy, dmt-timelines-00, equations-of-unsolved-problems-book, global-systems-lab, hawking-bsd, hawking-framework, hawking-hodge, hawking-lean, hawking-ns, hawking-numerics, hawking-pnp, hawking-rh, hawking-ym, latex-library-global, lean-cursor-shuttle, lean-fin-composition, lean-preserving-read, lean-refinement-bridge, lean-uniform-bounds, metalogic-infinity-00, millennium-engineering-00, millennium-hypothesi, millennium-mass-gap-I, millennium-regularity-I, millennium-research-os, proof-engineering-00, quantum-axioms-lab, symbolic-analysis-00, symbolic-arithmetic-00, symbolic-complexity-00, symbolic-metamathematics-00, symbolic-topology-00, tiago-fagliari-creative-technical-portfolio, tiefc-audit-lab.
+Outros 117 repositórios varridos não têm arquivo de assistente de prova nem alegação de fechamento (documentação, dados, código de aplicação): -sbfe-physics-unified, 0-0, Beit-Hamikdash-iii, Codex_Indeterminancy, Horizon_Prime_-framework, I-Framework-Nexus, Indus-System, Marella-RWS-Evidence-Repository, Millenium-delta-unified-frame, NIPAH-research-HUB, Parque-do-Bixiga-00, S5-BIO-SHIELD-, The-Legal-Playbook-Script, The-Proof-Log, Zero--OS, archetypes-humanity, art-00-vision, cardinality-and-infinity, closed-loop-engineering-00, collapse-lemma-rh.lean, consciousness-symbolic-model-00, cosmic-geometry-00, creative-direction-portfolio-00, discrete-dynamics-indeterminacy, dmt-timelines-00, equations-of-unsolved-problems-book, global-systems-lab, hawking-bsd, hawking-framework, hawking-hodge, hawking-lean, hawking-ns, hawking-numerics, hawking-pnp, hawking-rh, hawking-ym, hotel-lunar-00, hotel-terra-00, i-foundations.lean, identity-fields-00, infinite-energy-reactor-00, installations-design-00, latex-library-global, lean-cursor-shuttle, lean-fin-composition, lean-preserving-read, lean-refinement-bridge, lean-uniform-bounds, lighting-narrative-lab, lighting-tech-portfolio-00, linguistic-universal-00, maritimo-delta-estrela-k13, metalogic-infinity-00, metaos-operational-system, millennium-engineering-00, millennium-hypothesi, millennium-mass-gap-I, millennium-regularity-I, millennium-research-os, music-harmonic-00, olympic-00-chama, olympic-00-core, olympic-architecture-00, olympic-choreography-00, olympic-costumes-00, olympic-dramaturgy-00, olympic-lighting-00, olympic-livebook-00, olympic-operations-00, olympic-rituals-00, olympic-score-00, olympic-show-prototype-00, olympic-video-00, phonology-ancestral-00, primordial-language-00, proof-engineering-00, psychology-symbolic-00, quantum-axioms-lab, quantum-field-symbolic-00, quantum-spacetime-00, sacred-texts-mirror, ship-zero-waste-00, siamese-consciousness-00, sound-tech-portfolio-00, stage-management-portfolio-00, symbolic-analysis-00, symbolic-arithmetic-00, symbolic-automata-00, symbolic-balance-field-equation, symbolic-biology-00, symbolic-chemistry-00, symbolic-collapse-00, symbolic-complexity-00, symbolic-cosmology-00, symbolic-grammar-00, symbolic-gravitational-collapse-00, symbolic-linguistics-00, symbolic-metamathematics-00, symbolic-quantum-computing, symbolic-topology-00, tanakh-mirror-00, tiago-fagliari-creative-technical-portfolio, tiefc-audit-lab, tupi-hebrew-bridge-00, universal-archive, universal-education-00, universal-sustainable-engineering, universe-00-ci-templates, universe-archives-00, universe-archives-00-, urban-future-architecture-00, urban-lighting-00, water-cycles-00, zero-ai-00, zero-codex-archive-00, zero-game-00, zeta-i-formal.lean.
 
 ## Afirmações diretas sem hipótese explícita — revisão uma a uma
 
@@ -159,7 +169,7 @@ As outras 115 são equivalências (`Alvo ↔ Reformulação`): transportam o pro
 
 ## Coq/Rocq, Agda, Isabelle — enunciados que mencionam os problemas
 
-447 dos 546 estão em arquivos com `Admitted`/`Axiom`/`Parameter`/`postulate`/`sorry`. Os demais foram lidos: são condicionais (`CookLevin → SATnotP → PneqNP`, `StoneLemma ⟶ P_neq_NP`), equivalências (`RiemannHypothesis ↔ …`), enunciados `True`, contas sobre definições locais (`Omega S_cl p ≥ 3`) ou registros de autoria. Nenhum prova um enunciado oficial.
+453 dos 552 estão em arquivos com `Admitted`/`Axiom`/`Parameter`/`postulate`/`sorry`. Os demais foram lidos: são condicionais (`CookLevin → SATnotP → PneqNP`, `StoneLemma ⟶ P_neq_NP`), equivalências (`RiemannHypothesis ↔ …`), enunciados `True`, contas sobre definições locais (`Omega S_cl p ≥ 3`) ou registros de autoria. Nenhum prova um enunciado oficial.
 
 | Repositório | Linguagem | Nome | Enunciado | Escapatórias no arquivo | Onde |
 |---|---|---|---|---|---|
@@ -755,45 +765,45 @@ postulate | `attack/poincare-f7-f8-multistate-20260926`:`agda/UnificationTheorem
 | Millennium | Coq/Rocq | `RH_delta_formulation` | `: RiemannHypothesis <-> (forall s, non_trivial_zero s -> delta_RH s = 0)` | Parameter | `attack/poincare-f7-f8-multistate-20260926`:`src/coq/Millennium/RH.v` |
 | Millennium | Coq/Rocq | `rh_solved_iff_hypothesis` | `: solved rhProblem <-> RiemannHypothesis` | Parameter | `attack/poincare-f7-f8-multistate-20260926`:`src/coq/Millennium/RH.v` |
 | Millennium | Coq/Rocq | `YM_delta_formulation` | `: YMMassGap <-> (forall ym, valid_ym_theory ym -> delta_YM ym = 0)` | Axiom, Parameter | `attack/poincare-f7-f8-multistate-20260926`:`src/coq/Millennium/YangMills.v` |
-| … | | | (346 a mais em inventory.json) | | |
+| … | | | (352 a mais em inventory.json) | | |
 
 ## Vazios e sem acesso
 
-**Vazios (sem nenhum commit):** invariance-signature-framework, riemann-transverse-signature, structural-signature-calculus, Lunar-Hive-00, umi-master, umi-core-axioms, unified-millennium-invariant, riemann-coercivity-program, TABP-weighted-irregular-sampling, Omega-completa, emergent-identity-framework, millennium-limit-unification, universal-indeterminate-constant-I.
+**Vazios (sem nenhum commit):** projeto-0-0, invariance-signature-framework, riemann-transverse-signature, structural-signature-calculus, Psychological-Warfare-Vault, The-Vessel-Logos-Admin, Network-Investment-Fund, The-America-Call-LA2028-Master, The-Crew-Voice-Archive-, The-Consortium-of-Redemption, System-Integrity-Audit, Protocol-Vessel-Control, Archive-Mystic-Silence, Archive-Royal-Blue, Lunar-Hive-00, Ceremony-OS, umi-master, umi-core-axioms, unified-millennium-invariant, riemann-coercivity-program, TABP-weighted-irregular-sampling, Omega-completa, universal-0-5-emergent-identity, emergent-identity-framework, millennium-limit-unification, universal-indeterminate-constant-I.
 
-**Sem acesso nesta sessão** (privados não anexados; os nomes indicam arte, arquivo pessoal/jurídico, arquitetura, idiomas, cultura etc.). Podem ser incluídos sob pedido: metaos-operational-system, zero-engine-00, Marella-RWS-Evidence-Repository, stationary-photon-moving-geometry, zero-ai-00, mishkan-iii-core, zeta-i-formal.lean, harappan-universal-dictionary, harappan-00-universal, orion, projeto-0-0, maritimo-delta-estrela-k13, digital-fire-la28, lighting-narrative-lab, LA-2008-R-, Parque-do-Bixiga-00, olympic-symbolic-00, The-Legal-Playbook-Script, Psychological-Warfare-Vault, The-Vessel-Logos-Admin, Network-Investment-Fund, The-America-Call-LA2028-Master, The-Crew-Voice-Archive-, The-Consortium-of-Redemption, System-Integrity-Audit, Protocol-Vessel-Control, Archive-Mystic-Silence, Archive-Royal-Blue, universal, Ceremony-OS, universal-0-5-emergent-identity, universe-00-ci-templates, universal-sustainable-engineering, psychology-symbolic-00, sacred-texts-mirror, art-00-vision, universal-archive, universe-archives-00-, universe-archives-00, olympic-livebook-00, olympic-operations-00, olympic-architecture-00, olympic-costumes-00, olympic-choreography-00, olympic-video-00, olympic-lighting-00, olympic-score-00, olympic-rituals-00, olympic-dramaturgy-00, olympic-00-core, olympic-show-prototype-00, olympic-00-chama, urban-lighting-00, installations-design-00, creative-direction-portfolio-00, stage-management-portfolio-00, sound-tech-portfolio-00, lighting-tech-portfolio-00, urban-future-architecture-00, infinite-energy-reactor-00, i-foundations.lean, collapse-lemma-rh.lean, water-cycles-00, ship-zero-waste-00, hotel-terra-00, hotel-lunar-00, siamese-consciousness-00, identity-fields-00, linguistic-universal-00, symbolic-grammar-00, phonology-ancestral-00, universal-education-00, tanakh-mirror-00, tupi-hebrew-bridge-00, primordial-language-00, symbolic-chemistry-00, symbolic-biology-00, symbolic-automata-00, symbolic-quantum-computing, quantum-field-symbolic-00, quantum-spacetime-00, symbolic-cosmology-00, symbolic-gravitational-collapse-00, symbolic-balance-field-equation, symbolic-collapse-00, symbolic-linguistics-00, music-harmonic-00, zero-game-00, zero-codex-archive-00.
+**Sem acesso nesta sessão:** nenhum — todos os repositórios com commits foram anexados e varridos.
 
 ## Linguagens (todos os repositórios varridos)
 
 | Linguagem/formato | Arquivos distintos |
 |---|---|
-| Markdown | 10617 |
-| Lean | 7842 |
-| Python | 5099 |
-| LaTeX | 2133 |
-| YAML | 1940 |
-| JSON | 1469 |
-| (sem extensão) | 960 |
-| Coq/Rocq | 696 |
-| Shell | 602 |
-| Isabelle | 457 |
-| .txt | 395 |
-| Agda | 231 |
-| CSV | 189 |
-| TOML | 155 |
-| Jupyter | 130 |
-| .pyc | 128 |
-| .png | 126 |
-| .bib | 118 |
+| Markdown | 30230 |
+| Lean | 8423 |
+| Python | 6786 |
+| YAML | 5608 |
+| JSON | 5257 |
+| LaTeX | 2300 |
+| (sem extensão) | 1193 |
+| Coq/Rocq | 791 |
+| Shell | 658 |
+| Isabelle | 493 |
+| .txt | 487 |
+| CSV | 483 |
+| Agda | 253 |
+| Jupyter | 177 |
+| TOML | 166 |
+| .md" | 149 |
+| .png | 146 |
+| .pyc | 134 |
+| .bib | 124 |
+| .cff | 106 |
 | .tsx | 94 |
-| .cff | 92 |
-| .sha256 | 70 |
-| C/C++ | 59 |
-| .log | 57 |
-| .pdf | 44 |
-| JS/TS | 39 |
-| HTML | 37 |
-| .hpp | 24 |
-| .tikz | 22 |
-| .css | 19 |
-| .svg | 17 |
+| .sha256 | 85 |
+| C/C++ | 80 |
+| .log | 58 |
+| .yml" | 57 |
+| .json" | 55 |
+| .pdf | 48 |
+| HTML | 42 |
+| JS/TS | 41 |
+| .py" | 36 |
