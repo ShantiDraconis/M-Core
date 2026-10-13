@@ -129,6 +129,22 @@ O mesmo arquivo prova os limites: `RH_I_iff` (RH na extensão com `I` é RH — 
 `monotona_nao_basta` (decrescer não dá `D_N → 0`). Por isso o módulo é infraestrutura e não muda o
 portão.
 
+## Sete estados, dissipação e resultados incondicionais novos (94 teoremas)
+
+Detalhes em `INDETERMINACY.md` §7–§10. Todos certificados com axiomas padrão:
+
+- `ATK/IndeterminacyStates.lean` (34): 7 estados (`zero`, `finito`, `+∞`, `−∞`, `oscila`,
+  `indeterminado`, `foraDominio`), ordem de informação, tabelas de composição corretas e monótonas,
+  `0/0` realiza 5 estados, L'Hôpital preserva estado, teorema de dissipação total.
+- `ATK/RiemannConcrete.lean` (11) + `ATK/RiemannFaithful.lean` (25): para a família concreta de
+  Báez-Duarte, `D_N` decresce, `D_0 = 1`, **`D_1 < 1`**, `D_N → inf D_N < 1`, e todo integrando é
+  integrável (a definição formal é a distância verdadeira). O1 ⟺ `inf_N D_N = 0`.
+- `ATK/BealReduction.lean` (12) + `ATK/BealPartial.lean` (12): **Beal ⟺ nenhuma solução dois a dois
+  coprima**; caso `a = b`; Beal para todo triplo de expoentes com `3 ∣ mdc` ou `4 ∣ mdc`
+  (FLT(3), FLT(4) da Mathlib), sem a ponte de Fermat geral.
+
+Nenhuma obrigação O1–O8 foi fechada por esses resultados; `CLOSED_MATH` continua `false`.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -221,6 +237,11 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/Regimes.lean           10 formas do gateway (14 teoremas; não toca OPEN_MATH)
   ATK/ClosedMath.lean        teorema-mestre + firewall (4 teoremas)
   ATK/Indeterminacy.lean     pontos de 3 estados, L'Hôpital, I = 0⊘0, 4 estados (50 teoremas)
+  ATK/IndeterminacyStates.lean  7 estados, composição, dissipação total (34 teoremas)
+  ATK/RiemannConcrete.lean   D_N decrescente e convergente; O1 ⟺ inf D_N = 0 (11 teoremas)
+  ATK/RiemannFaithful.lean   integrabilidade, D_0 = 1, D_1 < 1 (25 teoremas)
+  ATK/BealReduction.lean     Beal ⟺ exclusão primitiva; caso a = b (12 teoremas)
+  ATK/BealPartial.lean       Beal com 3 ou 4 dividindo os expoentes, via FLT3/FLT4 (12 teoremas)
   scripts/obligations.json   as 20 obrigações e a regra do portão de CLOSED_MATH
   scripts/check_axioms.py    auditoria: CERTIFIED só com axiomas padrão e sem sorry/admit/axiom
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional

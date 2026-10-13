@@ -87,6 +87,54 @@ de cada obrigação O1–O8. A teoria dos 3 estados descreve e mede indetermina�
 contém, por si, nenhuma informação sobre onde estão os zeros de ζ, sobre MDC de soluções de Beal ou
 sobre regularidade de Navier–Stokes — e o kernel mostrou isso formalmente para o caso de Riemann.
 
+## 7. Sete estados, refinamento e leis de composição (`ATK/IndeterminacyStates.lean`, 34 teoremas)
+
+`Estado7 = zero | finito | +∞ | −∞ | oscila | indeterminado | foraDominio`, com semântica
+`Comporta l f e` sobre um filtro (`zero ⟺ f → 0`, `finito ⟺ f → L ≠ 0`, …).
+
+- `classificacao_exaustiva` / `classificacao_exclusiva`: todo germe tem um estado, e os estados
+  informativos são mutuamente exclusivos (filtro não trivial).
+- `refina` é uma ordem parcial de informação (`indeterminado` ⊑ tudo), monotonicamente
+  compatível com `Comporta` (`comporta_de_refina`).
+- Tabelas `mulTab`, `divTab` **corretas** (`mulTab_correta`, `divTab_correta`) e **monótonas**;
+  `formas_indeterminadas` lista exatamente as entradas sem lei (`0·∞`, `0/0`, `∞/∞`, …).
+- `zero_div_zero_cinco_faces`: `0/0` realiza `zero`, `finito`, `+∞`, `−∞` **e** `oscila`
+  (com `sinalAlt t = (−1)^⌊1/t⌋`) — prova de que nenhuma regra sem ordem resolve `0/0`.
+- `lhopital_preserva_estado`: derivar germes `a tᵐ` preserva a classe que a medida determina.
+
+## 8. Dissipação total (mesmo arquivo)
+
+- `dissipacao_total`: `D ≥ 0`, `D_{n+1} ≤ D_n − δ_n`, `Σ δ_n = D_0` ⇒ `D_n → 0`.
+- `dissipacao_iff_limite_zero`: para `D` decrescente, `Σ (D_n − D_{n+1}) = D_0 ⟺ D_n → 0`.
+- `riemann_de_dissipacao`: com a ponte de Báez-Duarte, dissipação total da família concreta ⇒ RH.
+
+## 9. A família concreta de Báez-Duarte (`RiemannConcrete` 11 + `RiemannFaithful` 25 teoremas)
+
+Fatos **incondicionais** sobre `D_N = inf_c ∫_{(0,∞)} (χ − Σ_{k≤N} c_k {1/(k t)})² dt`:
+
+| teorema | conteúdo |
+|---|---|
+| `DN_antitone` | `D_{N+1} ≤ D_N` |
+| `DN_zero_eq_one` | `D_0 = 1` exatamente |
+| `DN_one_lt_one`, `primeiro_delta_pos` | `D_1 < 1`: o primeiro passo de dissipação é **estrito** (`⟨χ, ρ_1⟩ = ∫_0^1 {1/t} dt > 0`) |
+| `DN_tendsto_iInf` | `D_N` converge para `D_∞ = inf_N D_N`, e `D_∞ ≤ D_1 < 1` |
+| `integrable_residual` | **fidelidade**: para todo `N, c` o integrando é integrável — a integral nunca usa o valor-lixo 0 |
+| `O1_iff_iInf_zero`, `O1_iff_dissipacao` | O1 ⟺ `D_∞ = 0` ⟺ dissipação total |
+
+A obrigação O1 fica reduzida, sem perda, a **`inf_N D_N = 0`**, que é equivalente a RH.
+
+## 10. Beal: redução primitiva e casos incondicionais (`BealReduction` 12 + `BealPartial` 12)
+
+- Lei de propagação: um primo que divide dois dos termos `a, b, c` divide o terceiro.
+- `beal_iff_primitive`, `beal_iff_pairwise`, `beal_iff_gcdOne`: **Beal ⟺ nenhuma solução dois a
+  dois coprima** (o produtor `C_Beal` é exatamente equivalente ao enunciado oficial).
+- `beal_diagonal`: Beal vale para `a = b`.
+- `beal_mdc_expoentes` (via `fermatLastTheoremThree/Four` da Mathlib): Beal vale para **todo**
+  triplo de expoentes com `3 ∣ mdc(x,y,z)` ou `4 ∣ mdc(x,y,z)` — p.ex. `(3,6,9)`, `(4,8,12)` —
+  sem a ponte B2 (FLT geral).
+
+O que resta de Beal: excluir soluções dois a dois coprimas com `3 ∤ mdc(x,y,z)` e `4 ∤ mdc(x,y,z)`.
+
 ## Próximo passo que de fato aproximaria um fechamento
 
 Usar a medida por ordem onde ela tem conteúdo: na rota de Riemann, `D_N` é um ponto do tipo
