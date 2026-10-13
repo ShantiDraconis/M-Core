@@ -254,3 +254,9 @@ ATK.BaezDuarteBridge.riemann_of_iInf_zero
 ATK.BaezDuarteBridge.riemann_of_not_finito
 ATK.BaezDuarteBridge.riemann_of_uniformLogBound
 ATK.ObligationsClosed.B1
+ATK.BealFourFourTwo.sem_solucao_442
+ATK.BealFourFourTwo.beal_442
+ATK.BealFourFourTwo.residual_iff_residual442
+ATK.BealFourFourTwo.beal_iff_residual442
+ATK.BealFourFourTwo.exemplos_442
+ATK.BealFourFourTwo.exemplos_442_fora_do_caso_mdc
