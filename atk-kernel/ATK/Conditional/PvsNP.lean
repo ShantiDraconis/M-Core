@@ -11,7 +11,9 @@ Forma condicional:
   `CookLevin M SAT → SATNotInP M SAT → M.P ≠ M.NP`
 
 * `CookLevin` (PONTE; Cook 1971, Levin 1973): SAT ∈ NP e toda L ∈ NP reduz a SAT.
-  No M-Core, a parte "SAT ∈ NP" é o lane P01 (`P01MachineConstruction`).
+  No modelo do lane `m-core-p-vs-np`, a parte "SAT ∈ NP" foi FECHADA (P01, 09/10/2026;
+  `PNPAfterP01.sat_in_np`, branch `atk/p01-closure-audit-20261013-pnp-reduction`). Lá, P ≠ NP
+  fica reduzido a G2.1 = SAT ∉ P — a mesma hipótese aberta deste arquivo.
 * `SATNotInP` (ABERTA; lane G21Pointwise do M-Core).
 
 Também certificado: dada a ponte, `P ≠ NP ↔ SAT ∉ P` — a hipótese aberta é exatamente o

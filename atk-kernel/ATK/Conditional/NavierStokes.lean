@@ -15,9 +15,10 @@ Forma condicional:
   suave não é global, existe T > 0 até onde ela existe e a enstrofia ‖∇u‖²₂ é ilimitada
   em [0, T).
 * `EnstrophyAPrioriBound` (ABERTA): enquanto a solução suave existe em [0, T), a enstrofia
-  é limitada lá. O lane `navier-stokes-critical-barrier-audit` (`ActualNSToSignedGainCore`)
-  é uma rota proposta para esta cota; a comparação de Riccati em `ATK.NavierStokes`
-  só dá cota LOCAL e não basta.
+  é limitada lá. A rota interna G5 do lane (`ActualNSToSignedGainCore`, S ≤ θνz + C·y²) foi
+  REFUTADA em 12/10/2026 por escala (M-Core, branch `fix/ns-scaling-false`, `ns_19_false`):
+  só a cota cúbica sobrevive, e ela dá regularidade local. A comparação de Riccati em
+  `ATK.NavierStokes` também é só local. A hipótese continua aberta.
 -/
 
 namespace ATK.Conditional.NavierStokes

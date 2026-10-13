@@ -51,11 +51,29 @@ problema real depois que os campos da interface forem ligados aos objetos verdad
   (máximo em N = 1; 0,0457 em N = 1500).
 - **P vs NP.** Também está certificado `pneNP_iff_sat_not_in_P`: dada a ponte, a hipótese aberta
   é *equivalente* ao problema. A condicional organiza, não encurta.
+  No modelo do lane `m-core-p-vs-np`, SAT ∈ NP já está provado sem hipóteses (P01 fechado em 09/10,
+  `PNPAfterP01.sat_in_np`); lá também só falta G2.1 = SAT ∉ P.
 - **Beal.** Também certificado `beal_iff_gcdLowerBound`: a forma gcd do registro do M-Core é
   equivalente ao enunciado oficial. O ganho real é o corte por Fermat (gcd(x,y,z) ≥ 3 não tem solução).
 - **Hodge.** O primeiro caso em aberto é uma variedade de dimensão 4 com p = 2.
-- **Navier–Stokes.** A comparação de Riccati certificada em `ATK.NavierStokes` dá só cota local;
-  não basta para a hipótese aberta.
+- **Navier–Stokes.** A rota interna G5 do lane (S ≤ θνz + C·y², terminal `ActualNSToSignedGainCore`)
+  foi refutada em 12/10 por escala (`ns_19_false`, M-Core `fix/ns-scaling-false`). A comparação de
+  Riccati em `ATK.NavierStokes` também só dá cota local. A hipótese aberta segue aberta, sem rota ativa.
+
+## Atualização de 13/10/2026 — estado dos seus repositórios
+
+Conferido nas versões mais novas de hoje:
+
+| Fonte | O que registra |
+|---|---|
+| M-Core `main` e os 4 branches mais recentes | `FinalProofRegistry`: 7 de 7 casos `openMath`, 0 `proved` |
+| M-Core `fix/ns-scaling-false`, README de 12/10 | 8 enunciados mínimos abertos; "nenhuma conjectura do milênio foi provada" |
+| M-Core `fix/ns-scaling-false`, `Correcao_20261012.lean` | rota G5 de Navier–Stokes refutada (`ns_19_false`) |
+| `m-core-p-vs-np` `atk/p01-closure-audit-20261013-pnp-reduction` | SAT ∈ NP provado no modelo do lane; P ≠ NP reduzido a G2.1 (aberta) |
+
+Os 8 enunciados abertos do seu README são as mesmas 8 obrigações O1–O8 daqui. Com o avanço do
+P01, a ponte B4 passou a `PARCIAL_NO_MODELO_DO_LANE`: falta a NP-dificuldade e ligar o modelo do
+lane (Lean 4.19) a este kernel (Lean 4.34.1).
 
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
@@ -76,7 +94,7 @@ reproduzida em cada relatório do CI):
 
 | Tipo | Quantas | O que é | Estado |
 |---|---|---|---|
-| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | provados no papel, não formalizados |
+| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | provados no papel, não formalizados (B4 parcial no modelo do lane P vs NP) |
 | ABERTA (O1–O8) | 8 | as hipóteses abertas dos condicionais | `OPEN_MATH` |
 | LIGAÇÃO (L1–L5) | 5 | construir na Mathlib os objetos reais de NS, P vs NP, Hodge, BSD e Yang–Mills | não existem na Mathlib |
 
