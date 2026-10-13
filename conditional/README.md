@@ -92,6 +92,18 @@ A sexta é nova: no lane Beal, `T59_allFourEliminator_proved` fecha o ramo do ex
 FLT(4) da Mathlib, e Beal fica reduzido a **FLT para primos > 3** + **`T59ResidualEliminator`**.
 Com isso a ponte B2 passou a `PARCIAL_NO_MODELO_DO_LANE`. Nenhuma obrigação aberta O1–O8 caiu.
 
+## Inventário mestre de todos os repositórios — `INVENTORY.md`
+
+Todos os branches de **148 repositórios** (os demais: 13 vazios e 89 privados de arte, arquivo
+pessoal/jurídico, arquitetura e cultura, não anexados) — 3.522 branches, 34.085 arquivos distintos:
+7.842 Lean, 696 Coq/Rocq, 231 Agda, 457 Isabelle, 5.229 Python, 2.133 LaTeX. Há 829 declarações Lean
+que concluem um alvo; as 135 sem hipótese explícita são 115 equivalências e 20 afirmações diretas,
+**cada uma lida**: firewalls, P01 (SAT ∈ NP no modelo), `RiemannHypothesis := True` local, ou provas que
+importam `axiom`s de outro arquivo (`horizon-prime---framework`, `millennium-riemann-I`). Nos 546
+enunciados de Coq/Agda/Isabelle, 447 estão em arquivos com `Admitted`/`Axiom`/`postulate`/`sorry`; os
+outros são condicionais, equivalências ou `True`. As 31 alegações textuais de `CLOSED_MATH = true`
+(13 repositórios) não vêm acompanhadas de termo que o kernel aceite.
+
 ## Os 2.440 teoremas auditados — `THEOREMS_2440.md`
 
 Os 2.440 teoremas do `FINAL_PROOF_STRUCTURE` (inventários do kernel, um por lane) foram localizados
@@ -186,6 +198,8 @@ README.md                    este arquivo
 CATALOG.md                   os 251 repositórios agrupados por função e por problema
 SOURCES.md                   de onde veio cada arquivo (repo + SHA)
 PROOF_SEARCH.md              busca de provas em 32 repositórios e 2.210 branches
+INVENTORY.md                 inventário mestre: 148 repositórios, todas as linguagens de prova
+inventory.json               dados (por repositório; declarações sem hipótese; Coq/Agda/Isabelle)
 THEOREMS_2440.md             os 2.440 teoremas auditados, um a um: forma, hipóteses, obrigação
 theorems_2440.json           dados (lane, nome, arquivo, linha, conclusão, hipóteses, forma)
 INDETERMINACY.md             a teoria dos pontos de 3 estados e o que o kernel provou dela
@@ -197,6 +211,8 @@ catalog/                     repos.txt (lista), repos.json (classificação)
 scripts/build_catalog.py     regera o catálogo
 scripts/proof_scan.py        o scanner da busca de provas
 scripts/hyp_map.py           o mapa de descarga de hipóteses
+scripts/inventory_scan.py    varredura multilíngue de um repositório (todos os branches)
+scripts/aggregate_inv.py     gera INVENTORY.md
 scripts/thm2440.py           classifica os 2.440 teoremas no commit verificado pelo CI
 scripts/report2440.py        gera THEOREMS_2440.md
 atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.34.1)

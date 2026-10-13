@@ -175,7 +175,8 @@
       "Busca em 32 repositórios / 2210 branches / 4858 arquivos Lean (PROOF_SEARCH.md): nenhuma obrigação O1–O8 fechada; único resultado sem hipóteses = P01 (SAT ∈ NP no modelo do lane)",
       "Mapa de descarga de hipóteses (HYPOTHESIS_MAP.md): 491 condicionais limpos, 334 hipóteses, 6 descargas genuínas (cadeia P01 + T59AllFourEliminator via FLT(4) da Mathlib)",
       "2.440 teoremas do FINAL_PROOF_STRUCTURE classificados no commit verificado pelo CI (THEOREMS_2440.md): 653 campos de estrutura, 19 condicionais → alvo, 0 descarregados; enunciados finais NO_PROOF_IN_LIBRARY no relatório de props do kernel",
-      "ATK/Indeterminacy.lean (50 teoremas certificados): teoria dos pontos de 3 estados; RH_I_iff mostra que a constante I não altera RH — infraestrutura, nenhuma obrigação fechada"
+      "ATK/Indeterminacy.lean (50 teoremas certificados): teoria dos pontos de 3 estados; RH_I_iff mostra que a constante I não altera RH — infraestrutura, nenhuma obrigação fechada",
+      "Inventário mestre (INVENTORY.md): 148 repositórios, 3.522 branches, Lean+Coq+Agda+Isabelle; 20 afirmações diretas sem hipótese revisadas uma a uma (firewalls, P01, alvos vácuos, axiomas importados); nenhuma obrigação O1–O8 fechada"
     ]
   }
 }
