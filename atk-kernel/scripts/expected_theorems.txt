@@ -293,3 +293,5 @@ ATK.QuarticResidues.fourth_pow_emod_five
 ATK.QuarticResidues.sum_two_fourth_pow_emod_sixteen
 ATK.QuarticResidues.sum_two_fourth_pow_emod_four_ne_three
 ATK.QuarticResidues.no_congruence_obstruction
+ATK.CongruentCurve.point_of_fermatM42
+ATK.CongruentCurve.fermatM42_iff_point

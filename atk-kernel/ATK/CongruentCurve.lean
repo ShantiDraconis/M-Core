@@ -12,9 +12,17 @@ todos os pontos racionais da curva do número congruente `1`, no próprio objeto
   `x ∈ {0, 1, −1}`;
 * `E`: a curva como `WeierstrassCurve ℚ` (`a₄ = −1`, demais coeficientes `0`);
 * `E_point_cases`: todo `P : E.toAffine.Point` é `O` ou um dos três pontos de 2-torção;
-* `E_torsion_points`: os três pontos são de fato pontos não singulares de `E`.
+* `E_torsion_points`: os três pontos são de fato pontos não singulares de `E`;
+* `point_of_fermatM42`: o mapa explícito `(a, b, c) ↦ (a²/b², ac/b³)` leva uma solução de
+  `a⁴ − b⁴ = c²` (`b, c ≠ 0`) a um ponto racional de `E` com `y ≠ 0`;
+* `fermatM42_iff_point`: soluções de `a⁴ − b⁴ = c²` ⟺ pontos de `E` com `y ≠ 0`.
 
-Logo `E(ℚ)` é finito com 4 pontos: posto 0 e torção `ℤ/2 × ℤ/2`.
+Logo `E(ℚ)` é finito com 4 pontos (posto 0, com os três pontos de 2-torção). A Mathlib não define
+posto, e o isomorfismo de grupo `E(ℚ) ≅ ℤ/2 × ℤ/2` não é formalizado aqui.
+
+Sobre `fermatM42_iff_point`: os dois lados são falsos (`not_fermat_4m4`, `y_eq_zero`), então o
+conteúdo útil é o mapa de `point_of_fermatM42` (→) e o triângulo de área 1 de `y_eq_zero` (←),
+não o "⟺" em si.
 
 Prova: um ponto `(x, y)` com `y ≠ 0` daria o triângulo retângulo racional de catetos
 `(x² − 1)/y`, `2x/y`, hipotenusa `(x² + 1)/y` e área `(x³ − x)/y² = 1`, contra
@@ -104,6 +112,33 @@ theorem E_torsion_points :
     E_nonsingular ((E_equation_iff 1 0).mpr (by norm_num)),
     E_nonsingular ((E_equation_iff (-1) 0).mpr (by norm_num))⟩
 
+/-- **Solução ⇒ ponto**: `a⁴ − b⁴ = c²` com `b, c ≠ 0` dá o ponto racional `(a²/b², ac/b³)` de
+`y² = x³ − x`, com `y ≠ 0`. -/
+theorem point_of_fermatM42 {a b c : ℤ} (hb : b ≠ 0) (hc : c ≠ 0) (h : a ^ 4 - b ^ 4 = c ^ 2) :
+    ((a * c : ℚ) / b ^ 3) ^ 2 = ((a : ℚ) ^ 2 / b ^ 2) ^ 3 - (a : ℚ) ^ 2 / b ^ 2 ∧
+      (a * c : ℚ) / b ^ 3 ≠ 0 := by
+  have hb' : (b : ℚ) ≠ 0 := by exact_mod_cast hb
+  have hq : (a : ℚ) ^ 4 - (b : ℚ) ^ 4 = (c : ℚ) ^ 2 := by exact_mod_cast h
+  have hu : (b : ℚ) * (b : ℚ)⁻¹ = 1 := mul_inv_cancel₀ hb'
+  have ha : a ≠ 0 := FermatM42.a_ne_zero ⟨hb, hc, h⟩
+  refine ⟨?_, div_ne_zero (mul_ne_zero (by exact_mod_cast ha) (by exact_mod_cast hc))
+    (pow_ne_zero 3 hb')⟩
+  linear_combination (-(a : ℚ) ^ 2 * ((b : ℚ)⁻¹) ^ 6) * hq +
+    (-(a : ℚ) ^ 2 * ((b : ℚ)⁻¹) ^ 2 * ((b : ℚ) * (b : ℚ)⁻¹ + 1) *
+      ((b : ℚ) ^ 2 * ((b : ℚ)⁻¹) ^ 2 + 1)) * hu
+
+/-- Soluções de `a⁴ − b⁴ = c²` (`b, c ≠ 0`) ⟺ pontos racionais de `y² = x³ − x` com `y ≠ 0`.
+(→ pelo mapa explícito; ← pelo triângulo de área 1. Os dois lados são vazios.) -/
+theorem fermatM42_iff_point :
+    (∃ a b c : ℤ, b ≠ 0 ∧ c ≠ 0 ∧ a ^ 4 - b ^ 4 = c ^ 2) ↔
+      (∃ x y : ℚ, y ≠ 0 ∧ y ^ 2 = x ^ 3 - x) := by
+  constructor
+  · rintro ⟨a, b, c, hb, hc, h⟩
+    obtain ⟨h1, h2⟩ := point_of_fermatM42 hb hc h
+    exact ⟨_, _, h2, h1⟩
+  · rintro ⟨x, y, hy, h⟩
+    exact absurd (y_eq_zero h) hy
+
 end ATK.CongruentCurve
 
 #print axioms ATK.CongruentCurve.y_eq_zero
@@ -113,3 +148,5 @@ end ATK.CongruentCurve
 #print axioms ATK.CongruentCurve.E_nonsingular
 #print axioms ATK.CongruentCurve.E_point_cases
 #print axioms ATK.CongruentCurve.E_torsion_points
+#print axioms ATK.CongruentCurve.point_of_fermatM42
+#print axioms ATK.CongruentCurve.fermatM42_iff_point
