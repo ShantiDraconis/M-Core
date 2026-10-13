@@ -233,6 +233,19 @@ def main():
     open(os.path.join(REP, "closure_gate.md"), "w", encoding="utf-8").write(md)
     print(md)
     print(f"OPEN_MATH={'true' if open_math else 'false'}  GATE_VALID={gate_valid}")
+    if os.environ.get("GITHUB_ACTIONS"):
+        def esc(s):
+            return s.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        title = (f"OPEN_MATH={'true' if open_math else 'false'} · fechados {closed}/{len(TARGETS)}"
+                 f" · portão {'VÁLIDO' if gate_valid else 'INVÁLIDO'}")
+        lines = [f"{p}: {s['status']}" + (f" ({'; '.join(s['by'])})" if s["by"] else "")
+                 for p, s in status.items()]
+        lines += [f"registro: {len(entry_rows)} entradas"]
+        print(f"::notice title={title}::" + esc("\n".join(lines)))
+        clines = [f"{'OK' if c['ok'] else 'FALHOU'} | {c['label']} | "
+                  f"{'aceito' if c['accepted'] else 'recusado'} | {c['reason']} | "
+                  f"axiomas={c['axioms']}" for c in control_rows]
+        print("::notice title=Controles do portão de fechamento::" + esc("\n".join(clines)))
     return 0 if gate_valid else 1
 
 
