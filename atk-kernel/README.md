@@ -27,7 +27,7 @@ com auditoria automática de axiomas no GitHub Actions.
 Reproduz o resíduo real D_N de Nyman–Beurling/Báez-Duarte para N ≤ 300, em 40 e 60 dígitos.
 O arquivo `numerics/dn_N1500_prec45.csv` traz a tabela até N = 1500.
 
-## Teoremas (110 certificados; tabela abaixo = núcleo original)
+## Teoremas (139 certificados; tabela abaixo = núcleo original)
 
 | Arquivo | Conteúdo | Observação |
 |---|---|---|
@@ -42,6 +42,8 @@ O arquivo `numerics/dn_N1500_prec45.csv` traz a tabela até N = 1500.
 
 | `Exact` | enunciados oficiais: RH (Mathlib), NS (A)–(D) de Fefferman, Beal, P/NP com `TM2` | sanidade das definições |
 | `Horizon` | não há primo final; Ostrowski; fórmula do produto; fator Γ_ℝ de ζ | o "primo no infinito" é o lugar arquimediano |
+| `Transition` | a bandeira não é operador; `Pipeline P ↔ P`; constantes de transporte multiplicam; linha crítica R = C√E/ν: dentro aprisiona, sobre a linha só com Z limitado (barreira de Grönwall; t³ escapa do argumento ingênuo), além não controla (modelo E=(2+t)²); R invariante pelas simetrias | sobre funções que satisfazem a desigualdade crítica |
+| `NSBridge` (+ `FCNavierStokes`) | operadores ATK = operadores intrínsecos da Mathlib; `clayC_of_fc`: o enunciado (C) da OpenAI/Formal Conjectures implica `ATK.Exact.ClayC` | condicional à prova externa (workflow manual `nsbridge-external`) |
 | `Closure` | fechamento = decisão; (A) ∨ (C) de NS é teorema (reescala); falsificadores de RH/NS/Beal/P≠NP; contraexemplo de RH só em 0 < Re s < 1; leis AGOT de extração/transporte e seus contraexemplos | nenhuma conjectura decidida |
 
-Nenhum destes lemas prova uma conjectura do milênio: `OPEN_MATH = true` (portão: 0/7 fechados; BSD, YM e Hodge nem são enunciáveis na Mathlib v4.34.1).
+Nenhum destes lemas prova uma conjectura do milênio: `OPEN_MATH = true` (portão: 0/7 fechados, NS CONDICIONAL por (C); BSD, YM e Hodge nem são enunciáveis na Mathlib v4.34.1).
