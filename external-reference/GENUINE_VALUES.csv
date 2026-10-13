@@ -1,0 +1,10 @@
+lane,object,quantity,exact,classification
+RH,"f2(x)=frac(1/(2x))-(1/2)frac(1/x)",b1,ln(2)/2,GENUINE_L2_GENERATOR
+RH,"f2(x)",G11,ln(2)/4,GENUINE_GRAM
+RH,"span(f2)",D1,1-ln(2),GENUINE_FINITE_SPAN_RESIDUAL
+NS,"u=(exp(-t)sin(z),0,0) on 2pi torus; nu=1",y0,2*pi^3,GENUINE_EXPLICIT_SOLUTION
+NS,"same",Z0_squared,4*pi^3,GENUINE_EXPLICIT_SOLUTION
+NS,"same",stretch,0,GENUINE_EXPLICIT_SOLUTION
+BSD,"E:y^2=x^3-x; P=(0,0); Q=(1,0)",height_P_height_Q_pairing,0,GENUINE_TORSION_NOT_FREE_BASIS
+HODGE,"X=P2(C); H=hyperplane",intersection_H_squared,1,GENUINE_CYCLE_CLASS
+BEAL,"3^3+6^3=3^5",gcd,3,GENUINE_INTEGER_SOLUTION
