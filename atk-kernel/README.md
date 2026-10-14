@@ -66,3 +66,15 @@ a versão oficial `closedMathFaithful_of_obligations` (RH ∧ Beal) e dois teste
 (regra em `scripts/obligations.json`); hoje o portão está ausente.
 
 Nenhum destes teoremas prova uma conjectura do milênio: `OPEN_MATH = true`.
+
+## ATK-Ω / ATK-I / ATK-RH (branch atk/rh-rho-independent)
+
+| Arquivo | Conteúdo | O que NÃO é |
+| --- | --- | --- |
+| `ATK/RhoIndependente.lean` | ρ_m é função escada; independência linear de {ρ_m : m ≥ 2} em ℝ | não decide D_N → 0 |
+| `ATK/OmegaEstados.lean` | álgebra de estados Todo/Nada/I, involução, idempotência, `detectarZero_iff`, indicadores GREEN/OPEN, "inversão não certifica" | não altera flags |
+| `ATK/OmegaContracao.lean` | teorema de contração acoplada (norma ∞, versão perturbada), redução 8→7, contraexemplo diag(1,1/2), certificação condicional | A e a fidelidade são hipóteses |
+| `ATK/OmegaClasses.lean` | classes R, P, N, Y, B, H, E, T: leis de fechamento e exemplos calculados | T é interface, não a prova de Perelman |
+| `ATK/OmegaGramRho.lean` | Gram de ρ definida positiva, equações normais, completar o quadrado, erro mínimo, cota de truncamento | produto interno de L² entra como hipótese `DetectsSteps` |
+
+Estado: 0/8 produtores terminais. `OPEN_MATH=true`, `CLOSED_MATH=false`.

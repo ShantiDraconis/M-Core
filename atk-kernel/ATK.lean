@@ -81,3 +81,7 @@ import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes
 import ATK.IMathPonte
 import ATK.RhoIndependente
+import ATK.OmegaEstados
+import ATK.OmegaContracao
+import ATK.OmegaClasses
+import ATK.OmegaGramRho
