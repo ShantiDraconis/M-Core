@@ -18,6 +18,8 @@ Só `propext`, `Classical.choice`, `Quot.sound`. **B3 continua aberta**; **CLOSE
 false**.
 -/
 
+set_option autoImplicit false
+
 open MeasureTheory Real Filter Topology Set
 open ATK.LigacaoNS (E3)
 open ATK.NSFourierBase ATK.NSPicard

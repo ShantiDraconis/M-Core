@@ -28,6 +28,8 @@ Só `propext`, `Classical.choice`, `Quot.sound`. Nada aqui é sobre a ponte em s
 aberta** e **CLOSED_MATH continua false**.
 -/
 
+set_option autoImplicit false
+
 open MeasureTheory Real
 open ATK.LigacaoNS (E3)
 
