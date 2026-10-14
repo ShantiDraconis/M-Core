@@ -42,7 +42,7 @@ são equivalentes ao mesmo payload.
 
 | # | Alvo | Tipo | O que exige | Efeito |
 |---|---|---|---|---|
-| 1 | Necessidade de Báez-Duarte: RH ⇒ `D_N → 0` | teorema publicado | Plancherel–Mellin em L²(0,∞); convergência de Σμ(n)n^{-s} em Re s > 1/2 sob RH; cotas de 1/ζ sob RH | obrigação de RH ⟺ RH no kernel; fecha as formas ⟺ de `RHConvergence` |
+| 1 | Necessidade de Báez-Duarte: RH ⇒ `D_N → 0` | teorema publicado | **feito**: Plancherel L¹∩L², Plancherel de Mellin, fórmula espectral de `D_N`, convergência dominada, mollificador de Möbius (`NecessidadeBD`). **Falta**: RH ⇒ `EntradasNecessidade` (Littlewood: Σμ(n)n^{-s} converge em Re s > 1/2 com cota polinomial em t; Lindelöf para ζ(½+it); `J(ε) → 0` pelo produto de Hadamard) | obrigação de RH ⟺ RH no kernel; fecha as formas ⟺ de `RHConvergence` |
 | 2 | B4 Cook–Levin + L2 | teorema publicado + modelo | P/NP com máquinas de Turing da Mathlib; redução de SAT; portar a prova de SAT ∈ NP do lane (P01) | O4 vira exatamente P ≠ NP com modelo genuíno |
 | 3 | B3 Leray + L1 | teorema publicado + modelo | espaços de Bochner, projetor de Leray, desigualdade de energia | O3 com modelo genuíno |
 | 4 | B6 Gross–Zagier–Kolyvagin + L4 | teorema publicado + modelo | função L de curvas elípticas, posto, pontos de Heegner | O6/O7 com modelo genuíno |
@@ -52,6 +52,14 @@ são equivalentes ao mesmo payload.
 
 O FLT para p ≥ 5 saiu do caminho crítico (B2 dispensada); continua útil para a forma gcd de Beal
 e é objeto do projeto FLT do Imperial College.
+
+### Estado do item 1 (`ATK/NecessidadeBD.lean`, 18 teoremas, kernel local)
+
+* incondicional: `|ζ(½+iτ)|²/|½+iτ|²` integrável em ℝ (`integrable_zeta_sq`); para todo
+  `ε > 1/2`, `inf_N D_N ≤ (1/2π) ∫ |1 − ζ(s)/ζ(s+ε)|²/|s|²` (`iInf_DN_le_J_of_gt_half`);
+* `rh_iff_DN_of_entradas`: (RH ⇒ `EntradasNecessidade`) ⇒ (RH ⟺ `D_N → 0`);
+* `rh_of_entradas`: `EntradasNecessidade` ⇒ RH — as entradas têm a força de RH; o que falta é
+  a análise clássica sob RH (Titchmarsh cap. 14), não um passo de Plancherel.
 
 ## 4. O que não conta como fechamento
 
