@@ -44,10 +44,16 @@ jobs:
         shell: bash
         continue-on-error: true
         run: |
-          set -o pipefail
+          set +e
           lake build 2>&1 | tee reports/build.log
+          rc=${PIPESTATUS[0]}
           n=$(grep -c "Built NavierStokes" reports/build.log || true)
-          echo "::notice title=prova da OpenAI compilada no CI::$n módulos NavierStokes compilados do código-fonte nesta execução (0 = artefatos baixados)"
+          echo "::notice title=prova da OpenAI compilada no CI::$n módulos NavierStokes compilados do código-fonte nesta execução (0 = artefatos baixados); lake build saiu com $rc"
+          # os logs brutos não são legíveis de fora; os primeiros erros vão como anotações
+          grep -E "^error: |: error" reports/build.log | head -8 | while IFS= read -r l; do
+            echo "::error title=lake build::${l:0:900}"
+          done
+          exit $rc
 
       - name: Auditoria por arquivo
         shell: bash
@@ -60,6 +66,9 @@ jobs:
               echo FAIL > "reports/status_${r}.txt"
             fi
             cat "reports/audit_${r}.log"
+            grep -E ": error" "reports/audit_${r}.log" | head -4 | while IFS= read -r l; do
+              echo "::error title=auditoria ${f}::${l:0:900}"
+            done
           done
           cp lake-manifest.json reports/ || true
 

@@ -53,18 +53,18 @@ def divergence (v : ℝ^n → ℝ^n) (x : ℝ^n) : ℝ := (fderiv ℝ v x).trace
 local notation "∇⬝" => divergence
 
 /-- The divergence of a vector field is $0$ at points where `fderiv` has its junk value. -/
-@[simp, category API, AMS 35]
+@[simp]
 theorem divergence_of_not_differentiableAt {v : ℝ^n → ℝ^n} {x : ℝ^n}
     (hv : ¬ DifferentiableAt ℝ v x) : ∇⬝ v x = 0 := by
   simp [divergence, fderiv_zero_of_not_differentiableAt hv]
 
 /-- The divergence of the zero vector field is zero. -/
-@[simp, category API, AMS 35]
+@[simp]
 theorem divergence_zero (x : ℝ^n) : ∇⬝ (0 : ℝ^n → ℝ^n) x = 0 := by
   simp [divergence]
 
 /-- The divergence of a constant vector field is zero. -/
-@[simp, category API, AMS 35]
+@[simp]
 theorem divergence_const (c : ℝ^n) (x : ℝ^n) :
     ∇⬝ (fun _ : ℝ^n => c) x = 0 := by
   simp [divergence]
