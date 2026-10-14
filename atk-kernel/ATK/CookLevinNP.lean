@@ -580,7 +580,7 @@ theorem saida_gerador (w : List Bool) :
     (fun l => Finset.le_sup (f := fun l => emp (D.M.tm.m l)) (Finset.mem_univ l))
   obtain ⟨ho, -⟩ := hg Ef (fun _ _ => rfl)
   simp only [gerador, sem, hs, List.nil_append]
-  rw [ho, reducao, codCNF_renomeia', formulaD, preD]
+  rw [ho, reducao, codCNF_renomeia_cc, formulaD, preD]
 
 theorem distintos_regs (L : ℕ) : Distintos (regs L) := by
   constructor <;> simp [regs, Fin.ext_iff]

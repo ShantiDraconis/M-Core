@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de f891ff153ceb84a80fe059546595bcf8912eef13466d2fcc88a76a2dc7763f0e
+# axiomas por teorema — congelamento de 58eb166797a72df1745460471ceb1bf181d704fe2e5f8c8e8a325ce83339847e
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1457,7 +1457,7 @@ ATK.CookLevinLacos.one_le_custo_seqC	propext, Quot.sound
 ATK.CookLevinLacos.custo_seqC_append	propext, Classical.choice, Quot.sound
 ATK.CookLevinLacos.seqC_acum	propext, Quot.sound
 ATK.CookLevinLacos.sum_range_list	propext, Classical.choice, Quot.sound
-ATK.CookLevinLacos.sum_flatMap'	VER CI
+ATK.CookLevinLacos.sum_flatMap_sum	propext
 ATK.CookLevinLacos.sum_expoentes	propext, Classical.choice, Quot.sound
 ATK.CookLevinLacos.le_natDegree_of_mem_expoentes	propext, Classical.choice, Quot.sound
 ATK.CookLevinLacos.sem_zeros	propext, Classical.choice, Quot.sound
@@ -1518,7 +1518,7 @@ ATK.CookLevinGerador.geraU_litX	propext, Classical.choice, Quot.sound
 ATK.CookLevinGerador.geraU_litY	propext, Classical.choice, Quot.sound
 ATK.CookLevinGerador.geraU_litZ	propext, Classical.choice, Quot.sound
 ATK.CookLevinGerador.geraU_cla	propext, Classical.choice, Quot.sound
-ATK.CookLevinGerador.codCNF_renomeia'	VER CI
+ATK.CookLevinGerador.codCNF_renomeia_cc	propext, Classical.choice, Quot.sound
 ATK.CookLevinGerador.geraU_noMax	propext, Classical.choice, Quot.sound
 ATK.CookLevinGerador.geraU_umSo	propext, Classical.choice, Quot.sound
 ATK.CookLevinGerador.gx	propext, Classical.choice, Quot.sound

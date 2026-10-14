@@ -187,7 +187,7 @@ theorem geraU_cla {lits : List (Cmd R)} {C : Cla K} {E₀ : Env R} {S : List (Fi
 /-- Cláusula codificada (com renomeação). -/
 noncomputable def cc (C : Cla K) : List Bool := (C.flatMap fun ℓ => codLiteral (ren ℓ)) ++ [true, true]
 
-theorem codCNF_renomeia' (φ : List (Cla K)) : codCNF (renomeia φ) = φ.flatMap cc :=
+theorem codCNF_renomeia_cc (φ : List (Cla K)) : codCNF (renomeia φ) = φ.flatMap cc :=
   codCNF_renomeia φ
 
 /-- "No máximo um" impresso sobre uma lista de índices. -/
@@ -929,7 +929,7 @@ end ATK.CookLevinGerador
 #print axioms ATK.CookLevinGerador.geraU_litY
 #print axioms ATK.CookLevinGerador.geraU_litZ
 #print axioms ATK.CookLevinGerador.geraU_cla
-#print axioms ATK.CookLevinGerador.codCNF_renomeia'
+#print axioms ATK.CookLevinGerador.codCNF_renomeia_cc
 #print axioms ATK.CookLevinGerador.geraU_noMax
 #print axioms ATK.CookLevinGerador.geraU_umSo
 #print axioms ATK.CookLevinGerador.gx

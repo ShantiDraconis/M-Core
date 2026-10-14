@@ -334,13 +334,13 @@ theorem sum_range_list (f : ℕ → ℕ) : ∀ n, ((List.range n).map f).sum = �
   | n + 1 => by rw [List.range_succ, List.map_append, List.sum_append, sum_range_list f n,
       Finset.sum_range_succ]; simp
 
-theorem sum_flatMap' {α : Type*} (f : α → List ℕ) : ∀ l : List α,
+theorem sum_flatMap_sum {α : Type*} (f : α → List ℕ) : ∀ l : List α,
     (l.flatMap f).sum = (l.map fun a => (f a).sum).sum
   | [] => by simp
-  | a :: l => by rw [List.flatMap_cons, List.sum_append, sum_flatMap' f l]; simp
+  | a :: l => by rw [List.flatMap_cons, List.sum_append, sum_flatMap_sum f l]; simp
 
 theorem sum_expoentes (P : Polynomial ℕ) (v : ℕ) : ((expoentes P).map fun k => v ^ k).sum = P.eval v := by
-  rw [Polynomial.eval_eq_sum_range, ← sum_range_list, expoentes, List.map_flatMap, sum_flatMap']
+  rw [Polynomial.eval_eq_sum_range, ← sum_range_list, expoentes, List.map_flatMap, sum_flatMap_sum]
   congr 1
   refine List.map_congr_left (fun k _ => ?_)
   simp [List.map_replicate, List.sum_replicate]
@@ -1038,7 +1038,7 @@ end ATK.CookLevinLacos
 #print axioms ATK.CookLevinLacos.custo_seqC_append
 #print axioms ATK.CookLevinLacos.seqC_acum
 #print axioms ATK.CookLevinLacos.sum_range_list
-#print axioms ATK.CookLevinLacos.sum_flatMap'
+#print axioms ATK.CookLevinLacos.sum_flatMap_sum
 #print axioms ATK.CookLevinLacos.sum_expoentes
 #print axioms ATK.CookLevinLacos.le_natDegree_of_mem_expoentes
 #print axioms ATK.CookLevinLacos.sem_zeros

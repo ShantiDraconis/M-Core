@@ -1455,7 +1455,7 @@ ATK.CookLevinLacos.one_le_custo_seqC
 ATK.CookLevinLacos.custo_seqC_append
 ATK.CookLevinLacos.seqC_acum
 ATK.CookLevinLacos.sum_range_list
-ATK.CookLevinLacos.sum_flatMap'
+ATK.CookLevinLacos.sum_flatMap_sum
 ATK.CookLevinLacos.sum_expoentes
 ATK.CookLevinLacos.le_natDegree_of_mem_expoentes
 ATK.CookLevinLacos.sem_zeros
@@ -1516,7 +1516,7 @@ ATK.CookLevinGerador.geraU_litX
 ATK.CookLevinGerador.geraU_litY
 ATK.CookLevinGerador.geraU_litZ
 ATK.CookLevinGerador.geraU_cla
-ATK.CookLevinGerador.codCNF_renomeia'
+ATK.CookLevinGerador.codCNF_renomeia_cc
 ATK.CookLevinGerador.geraU_noMax
 ATK.CookLevinGerador.geraU_umSo
 ATK.CookLevinGerador.gx

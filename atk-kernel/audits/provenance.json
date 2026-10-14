@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "f891ff153ceb84a80fe059546595bcf8912eef13466d2fcc88a76a2dc7763f0e",
+  "sources_sha256": "58eb166797a72df1745460471ceb1bf181d704fe2e5f8c8e8a325ce83339847e",
   "files": {
     "ATK/AlgebraTerminal.lean": "ab045c0a40a165fbe781e2c2e58eee54e1b79e6164a635016bf98a4959b2823b",
     "ATK/BDDistSqPort.lean": "3d209211337b561728bb8823cf8074c2a9539c832783e57d59398ae88b0d3c3f",
@@ -34,9 +34,9 @@
     "ATK/CongruentCurve.lean": "8b9d99a5469398f96d5f391c2d66493dc4e6ced3d4cd3d7d498e568e83846d78",
     "ATK/ContracaoDN.lean": "d7d2a018cc9fd69d8ca99c8e260b2a4b34681e050683861b91ebf5cfd289e8ec",
     "ATK/CookLevinBase.lean": "8240cd58a4cf9cae7589afd906aa48417624427c4381af6e220e417e9df92600",
-    "ATK/CookLevinGerador.lean": "c9df87a5f972041d79ff7e3e99e05f5e6aab4b21901d8d9864e868a378749dd4",
-    "ATK/CookLevinLacos.lean": "74adfe18ed3ca79985810cf9787aa6f20b1fba12571f8ba8a2f8fe90377454a4",
-    "ATK/CookLevinNP.lean": "fde670733473e89bdb9e716566f1378578c62977de0c8b917b10bbda4768c7c5",
+    "ATK/CookLevinGerador.lean": "67da7751f715b0e0fc2be259ab9a7e86d1788a395dc108d43164246dd88e0a1a",
+    "ATK/CookLevinLacos.lean": "3870f4a92eb0abc8e2c53d30d02201f3a439e2b277ea3d76cabf8b160a84e0e1",
+    "ATK/CookLevinNP.lean": "a26cca2c6d2158b4cf2a2c9694e6c972544228582e990f0aef42bb6535e0b21b",
     "ATK/CookLevinReducao.lean": "92eba3a30e9ca6883ec298e8598f4eb3371213111d6d6a3fc3fe6e6ae5e84582",
     "ATK/CookLevinTableau.lean": "1a47f6b4dc45d5920ce651c7c29284bc82abbb1e41c9ed6ab468a2b624858b7b",
     "ATK/EspectralDN.lean": "752914e1bc8e260f831e9b05d5c0b4bd5ca9b22fbc2bf557f90db329853e8e4a",
@@ -114,6 +114,6 @@
   "expected_theorems": 1601,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "8caa88caeeda1640a90a10908a764dbfd7825e61",
+  "commit_at_freeze": "70029451a7c064e27d4aab8bd0890a5c9abed73e",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
