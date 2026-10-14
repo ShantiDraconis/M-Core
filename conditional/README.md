@@ -183,6 +183,22 @@ do que é verdadeiro:
   fechado chega ao meio ⟺ todo zero é fixo pela torção**. Os extremos provados são `a = 1`, `b = 0`;
   o limite `a ↓ 1/2` é a própria RH (O1), aberta.
 
+## As lacunas, problema a problema — `LACUNAS.md` (54 teoremas)
+
+Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um problema):
+
+- **Riemann** (`ATK/ZetaRetangulo.lean`): `ζ(s) ≠ 0` se `|s − 1| < 2·Re s`; **nenhum zero na faixa
+  com `|Im s| < √3/2` — RH vale até essa altura**.
+- **Beal** (`ATK/BealFLT.lean`): com o Último Teorema de Fermat, **Beal ⟺ excluir soluções dois a
+  dois coprimas com `mdc(x,y,z) ∈ {1, 2}`**.
+- **P vs NP** (`ATK/Shannon.lean`): contagem de Shannon — existe função de `n` bits sem circuito com
+  `≤ 2^n/(8n)` portas e existe família fora de `P/poly`; falta exibir uma em NP.
+- **Navier–Stokes** (`ATK/NSPequeno.lean`): da desigualdade de enstrofia, dados pequenos ⇒ sem
+  explosão e decaimento a zero; falta o modelo e o caso de dados grandes.
+- **Yang–Mills** (`ATK/YMToy.lean`): rede solúvel com gap `m(β) = log coth β > 0` que fecha quando
+  `β → ∞` — a dificuldade do limite contínuo, em miniatura.
+- **BSD, Hodge**: sem fundações na Mathlib; nada honesto a acrescentar ainda.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -258,6 +274,7 @@ THEOREMS_2440.md             os 2.440 teoremas auditados, um a um: forma, hipót
 theorems_2440.json           dados (lane, nome, arquivo, linha, conclusão, hipóteses, forma)
 INDETERMINACY.md             a teoria dos pontos de 3 estados e o que o kernel provou dela
 I_THEORY.md                  a teoria de I: levantamento (586 leis), o que foi certificado/refutado
+LACUNAS.md                   cada problema: fronteira certificada, lemas de caminho, lacuna exata
 proof_search.json            dados da busca (por repositório, categoria e problema)
 HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
 hypothesis_map.json          dados do mapa
@@ -293,6 +310,11 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/IFormas.lean           as 7 formas indeterminadas e seus conjuntos de valores (53)
   ATK/IAlgebra.lean          álgebras de I: impossibilidades e modelos consistentes (34)
   ATK/IGeometria.lean        neutro, tensão, compressão, torção, torque, K3 (56)
+  ATK/ZetaRetangulo.lean     região sem zeros |s−1| < 2 Re s; RH até a altura √3/2 (16)
+  ATK/BealFLT.lean           com FLT, Beal ⟺ caso mdc(x,y,z) ∈ {1,2} (10)
+  ATK/Shannon.lean           contagem de Shannon; família fora de P/poly (9)
+  ATK/NSPequeno.lean         enstrofia: dados pequenos ⇒ sem explosão, decaimento (3)
+  ATK/YMToy.lean             rede solúvel: gap de massa e seu fechamento no contínuo (16)
   scripts/obligations.json   as 20 obrigações e a regra do portão de CLOSED_MATH
   scripts/check_axioms.py    auditoria: CERTIFIED só com axiomas padrão e sem sorry/admit/axiom
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional
