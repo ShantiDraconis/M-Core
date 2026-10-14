@@ -23,7 +23,7 @@
       "lean": "FermatLastTheorem",
       "status": "PARCIAL_NO_MODELO_DO_LANE",
       "ref": "Wiles 1995; Taylor–Wiles 1995 (formalização em andamento: ImperialCollegeLondon/FLT) — FLT(3) e FLT(4) já estão na Mathlib; no lane Beal (m-core-beal atk/beal-parity-to-t59-partition-20261001, T59_beyondThree_and_residual_close_beal) a ponte necessária cai para FLT em primos > 3 — no kernel (ATK.BridgeReduction.flt_iff_primos_ge_cinco): FermatLastTheorem ⟺ FLT(p) para todo primo p ≥ 5; a ponte efetiva é só FLTPrimosGeCinco. Teorema-mestre reduzido: closedMath_of_restantes (6 pontes restantes + 8 obrigações); RH ∧ Beal sem pontes: closedMathFaithful_sem_pontes (O1 + ExclusaoResidualDescida).",
-      "progress": " Fichas.flt_iff_primos_ge_cinco: FermatLastTheorem ⟺ FLT para todo primo p ≥ 5 (FLT(3), FLT(4) da Mathlib). BridgeReduction: o mesmo resultado no teorema-mestre — pontes_iff_restantes (7 pontes ⟺ 6), closedMath_of_restantes, closedMathFaithful_sem_pontes."
+      "progress": " Fichas.flt_iff_primos_ge_cinco: FermatLastTheorem ⟺ FLT para todo primo p ≥ 5 (FLT(3), FLT(4) da Mathlib). BridgeReduction: o mesmo resultado no teorema-mestre — pontes_iff_restantes (7 pontes ⟺ 6), closedMath_of_restantes, closedMathFaithful_sem_pontes. atk-flt (Lean 4.35, Mathlib 089be84, flt-regular b8a5f23; CI ATK-FLT CERTIFIED 13/13, flt-regular compilado do código-fonte): FLT(5), FLT(7) e FLT para todo primo ímpar regular; Beal sem hipóteses quando 3, 4, 5 ou 7 divide mdc(x,y,z) (ATK.BealRegular.beal_iff_residual3457). A ponte B2 só é necessária quando os primos ímpares do mdc são todos irregulares e 4 ∤ mdc."
     },
     {
       "id": "B3",
