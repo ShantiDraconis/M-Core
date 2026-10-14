@@ -150,6 +150,13 @@ for o in obligations:
         src = open(src_path, encoding="utf-8").read() if os.path.exists(src_path) else ""
         pat = r"theorem\s+" + re.escape(short) + r"\s*:\s*" + re.escape(o["lean"]) + r"\s*:="
         ok = re.search(pat, src) is not None
+        if ok:  # o tipo elaborado tem de ser a proposição oficial (bloqueia sombreamento de nomes)
+            try:
+                sys.path.insert(0, os.path.join(ROOT, "scripts"))
+                import universal_green as _ug
+                ok, _why = _ug.typecheck(ROOT, module_file(p), p, "_root_." + o["lean"], _ug.default_runner(ROOT))
+            except Exception:
+                ok = False
     if ok:
         o["status"] = "CLOSED"
         o["closed_by"] = p
@@ -180,7 +187,18 @@ try:
     import universal_green
     ug = universal_green.compute(ROOT, report, axioms, status)
     report["universal_green"] = ug["summary"]
+    if gate_ok and not ug["final_root_gate"]["ok"]:
+        gate_ok = False
+        report["status"]["OPEN_MATH"], report["status"]["CLOSED_MATH"] = True, False
+        md += ["", "Portão de CLOSED_MATH **rejeitado**: " + ug["final_root_gate"]["reason"] + "."]
     md += [""] + ug["md"]
+    if os.environ.get("ATK_ENSAIO", "1") == "1":
+        import verificar_fiacao
+        import ensaio_universal_green
+        fia = verificar_fiacao.run(ROOT)
+        ens = ensaio_universal_green.run()
+        report["fiacao"], report["ensaio"] = fia, ens
+        md += [""] + verificar_fiacao.markdown(fia) + [""] + ensaio_universal_green.markdown(ens)
     json.dump(ug, open(os.path.join(REP, "universal_green.json"), "w"), indent=2, ensure_ascii=False)
 except Exception as exc:  # o relatório principal não depende deste cálculo
     md += ["", f"Verde universal: não calculado ({exc})."]
@@ -210,6 +228,13 @@ if os.environ.get("GITHUB_ACTIONS"):
               f"FINAL_ROOT {u['FINAL_ROOT'] or 'null'}::"
               + esc(f"pontes no kernel {u['BRIDGES_IN_KERNEL']} · produtores abertos {u['PRODUCERS_OPEN']} · "
                     f"ligações abertas {u['LINKINGS_OPEN']} · verde fiel {str(u['UNIVERSAL_GREEN_FIEL']).lower()}"))
+        fia, ens = report.get("fiacao") or {}, report.get("ensaio") or {}
+        if fia.get("ran"):
+            print(f"::notice title=FIAÇÃO {fia['templates_ok']} · faltam {fia['n_missing']} termos::"
+                  + esc(", ".join(fia["missing_terms"])))
+        if ens.get("ran"):
+            print(f"::notice title=ENSAIO DO PORTÃO {ens['passed']}::"
+                  + esc("; ".join(f"{r['id']}={'ok' if r['passed'] else 'FALHOU'}" for r in ens["scenarios"])))
     by_mod = {}
     for r in rows:
         by_mod.setdefault(r["file"], []).append(r)

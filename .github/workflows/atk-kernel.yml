@@ -52,7 +52,8 @@ jobs:
         shell: bash
         run: |
           : > reports/file_status.txt
-          for f in ATK/*.lean ATK/Conditional/*.lean; do
+          for f in ATK/*.lean ATK/Conditional/*.lean ATK/Terminal/*.lean; do
+            [ -e "$f" ] || continue
             m=${f#ATK/}; m=${m%.lean}; m=${m//\//_}
             if lake env lean "$f" > "reports/audit_${m}.log" 2>&1; then
               echo "$f OK" >> reports/file_status.txt

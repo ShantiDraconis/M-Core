@@ -236,7 +236,13 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   (`RH ∧ Beal ⟺ IsEmpty ZeroFora ∧ ExclusaoResidualDescida`, sem hipóteses), e
   `ns_depende_do_modelo`/`pnp_depende_do_modelo` (as ligações L1–L5 são necessárias).
 - `scripts/terminal_gates.json` + `scripts/universal_green.py`: os 7 portões terminais; o auditor
-  calcula `UNIVERSAL_GREEN` e `FINAL_ROOT` a cada push. Hoje: `false`, `null`, 0/7.
+  calcula `UNIVERSAL_GREEN` e `FINAL_ROOT` a cada push, checando o **tipo elaborado** de cada portão.
+  Hoje: `false`, `null`, 0/7.
+- `terminal-templates/` + `scripts/verificar_fiacao.py`: a última milha ligada — 9/9 modelos de portão
+  compilam com as peças ausentes; faltam exatamente **19** termos (produtores, pontes, ligações).
+- `scripts/ensaio_universal_green.py`: ensaio de ponta a ponta com enunciados de brinquedo — 10/10
+  (acende com provas válidas; bloqueia `sorry`, sombreamento, hipóteses, axiomas, enunciado trocado).
+- `scripts/instalar_portao.py`: instala um portão só se for prova genuína; hoje recusa as 9 linhas.
 
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
@@ -374,7 +380,11 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   scripts/obligations.json   as 20 obrigações e a regra do portão de CLOSED_MATH
   scripts/check_axioms.py    auditoria: CERTIFIED só com axiomas padrão e sem sorry/admit/axiom
   scripts/terminal_gates.json os 7 portões terminais (enunciado literal sem hipóteses)
-  scripts/universal_green.py calcula UNIVERSAL_GREEN e FINAL_ROOT (fail-closed)
+  scripts/universal_green.py calcula UNIVERSAL_GREEN e FINAL_ROOT (fail-closed, tipo elaborado)
+  scripts/verificar_fiacao.py confere a fiação dos portões; lista os 19 termos que faltam
+  scripts/ensaio_universal_green.py ensaio de ponta a ponta do portão (enunciados de brinquedo)
+  scripts/instalar_portao.py instala um portão terminal só se for prova genuína
+  terminal-templates/        os 9 modelos de portão (RH … YM, VerdeFiel, ClosedMathGate)
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional
   numerics/                  D_N de Báez-Duarte (N ≤ 1500)
 .github/workflows/           CI: compila, roda #print axioms por arquivo e publica a tabela

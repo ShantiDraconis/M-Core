@@ -1,16 +1,21 @@
 {
-  "rule": "UNIVERSAL_GREEN = true só se, para cada uma das 7 linhas, o arquivo do portão existir, compilar, declarar literalmente `theorem <nome> : <enunciado> :=` (sem hipóteses), o teorema depender só de propext, Classical.choice e Quot.sound, a fonte não tiver sorry/admit/axiom e, nas linhas paramétricas, a ligação (L1–L5) estiver CLOSED. FINAL_ROOT = SHA-256 do certificado terminal só se UNIVERSAL_GREEN e o portão de CLOSED_MATH estiverem verdes; caso contrário null. Nada disto é escrito à mão: o auditor calcula.",
+  "rule": "UNIVERSAL_GREEN = true só se, para cada uma das 7 linhas, o arquivo do portão existir, compilar, declarar literalmente `theorem <nome> : <enunciado> :=` (sem hipóteses), o teorema depender só de propext, Classical.choice e Quot.sound, a fonte não tiver sorry/admit/axiom, o tipo elaborado do teorema for definicionalmente o enunciado oficial (`example : _root_.<enunciado> := <teorema>` compila — bloqueia sombreamento de nomes) e, nas linhas paramétricas, a ligação (L1–L5) estiver CLOSED. FINAL_ROOT = SHA-256 do certificado terminal só se UNIVERSAL_GREEN e o portão de CLOSED_MATH estiverem verdes; caso contrário null. Nada disto é escrito à mão: o auditor calcula.",
   "final_root": {
     "gate_file": "ATK/ClosedMathGate.lean",
     "gate_theorem": "ATK.ClosedMathGate.closed_math",
     "structure": "ATK.FinalRoot.Raiz",
-    "reduction": "ATK.FinalRoot.raiz_de_produtores"
+    "reduction": "ATK.FinalRoot.raiz_de_produtores",
+    "statement": "ATK.FinalRoot.Raiz modelos",
+    "statement_root": "_root_.ATK.FinalRoot.Raiz _root_.ATK.ClosedMathGate.modelos",
+    "template": "terminal-templates/ClosedMathGate.lean.tpl"
   },
   "universal_green_fiel": {
     "gate_file": "ATK/Terminal/VerdeFiel.lean",
     "gate_theorem": "ATK.Terminal.VerdeFiel.verde_fiel",
     "statement": "ATK.FinalRoot.VerdeFiel",
-    "exact_form": "ATK.FinalRoot.verde_fiel_iff"
+    "exact_form": "ATK.FinalRoot.verde_fiel_iff",
+    "statement_root": "_root_.ATK.FinalRoot.VerdeFiel",
+    "template": "terminal-templates/VerdeFiel.lean.tpl"
   },
   "lines": [
     {
@@ -20,11 +25,17 @@
       "statement": "RiemannHypothesis",
       "gate_file": "ATK/Terminal/RH.lean",
       "gate_theorem": "ATK.Terminal.RH.terminal",
-      "bridges": ["B1"],
-      "obligations": ["O1"],
+      "bridges": [
+        "B1"
+      ],
+      "obligations": [
+        "O1"
+      ],
       "producer": "IsEmpty ATK.ForaDaLinha.ZeroFora",
       "producer_equivalence": "ATK.ForaDaLinha.riemann_iff_vazio",
-      "linking": null
+      "linking": null,
+      "statement_root": "_root_.RiemannHypothesis",
+      "template": "terminal-templates/RH.lean.tpl"
     },
     {
       "id": "Beal",
@@ -33,76 +44,114 @@
       "statement": "ATK.Conditional.Beal.BealConjecture",
       "gate_file": "ATK/Terminal/Beal.lean",
       "gate_theorem": "ATK.Terminal.Beal.terminal",
-      "bridges": ["B2", "B8"],
-      "obligations": ["O2"],
+      "bridges": [
+        "B2",
+        "B8"
+      ],
+      "obligations": [
+        "O2"
+      ],
       "producer": "ATK.BealCompleto.ExclusaoResidualFinal",
       "producer_equivalence": "ATK.BealCompleto.beal_teorema_completo",
-      "linking": null
+      "linking": null,
+      "statement_root": "_root_.ATK.Conditional.Beal.BealConjecture",
+      "template": "terminal-templates/Beal.lean.tpl"
     },
     {
       "id": "NS",
       "problem": "Navier–Stokes",
       "faithful": false,
-      "statement": "ATK.Conditional.NavierStokes.ClayStatementA M.ns",
+      "statement": "ClayStatementA modeloGenuino",
       "gate_file": "ATK/Terminal/NS.lean",
       "gate_theorem": "ATK.Terminal.NS.terminal",
-      "bridges": ["B3"],
-      "obligations": ["O3"],
+      "bridges": [
+        "B3"
+      ],
+      "obligations": [
+        "O3"
+      ],
       "producer": "ATK.Conditional.NavierStokes.EnstrophyAPrioriBound M.ns",
       "producer_equivalence": null,
-      "linking": "L1"
+      "linking": "L1",
+      "statement_root": "_root_.ATK.Conditional.NavierStokes.ClayStatementA _root_.ATK.Terminal.NS.modeloGenuino",
+      "template": "terminal-templates/NS.lean.tpl"
     },
     {
       "id": "PNP",
       "problem": "P vs NP",
       "faithful": false,
-      "statement": "ATK.Conditional.PvsNP.PneNP M.cx",
+      "statement": "PneNP modeloGenuino",
       "gate_file": "ATK/Terminal/PNP.lean",
       "gate_theorem": "ATK.Terminal.PNP.terminal",
-      "bridges": ["B4"],
-      "obligations": ["O4"],
+      "bridges": [
+        "B4"
+      ],
+      "obligations": [
+        "O4"
+      ],
       "producer": "ATK.Conditional.PvsNP.SATNotInP M.cx M.sat",
       "producer_equivalence": null,
-      "linking": "L2"
+      "linking": "L2",
+      "statement_root": "_root_.ATK.Conditional.PvsNP.PneNP _root_.ATK.Terminal.PNP.modeloGenuino",
+      "template": "terminal-templates/PNP.lean.tpl"
     },
     {
       "id": "Hodge",
       "problem": "Hodge",
       "faithful": false,
-      "statement": "ATK.Conditional.Hodge.HodgeConjecture M.hodge",
+      "statement": "HodgeConjecture modeloGenuino",
       "gate_file": "ATK/Terminal/Hodge.lean",
       "gate_theorem": "ATK.Terminal.Hodge.terminal",
-      "bridges": ["B5"],
-      "obligations": ["O5"],
+      "bridges": [
+        "B5"
+      ],
+      "obligations": [
+        "O5"
+      ],
       "producer": "ATK.Conditional.Hodge.MiddleCodimension M.hodge",
       "producer_equivalence": null,
-      "linking": "L3"
+      "linking": "L3",
+      "statement_root": "_root_.ATK.Conditional.Hodge.HodgeConjecture _root_.ATK.Terminal.Hodge.modeloGenuino",
+      "template": "terminal-templates/Hodge.lean.tpl"
     },
     {
       "id": "BSD",
       "problem": "BSD",
       "faithful": false,
-      "statement": "ATK.Conditional.BSD.BSDFull M.bsd",
+      "statement": "BSDFull modeloGenuino",
       "gate_file": "ATK/Terminal/BSD.lean",
       "gate_theorem": "ATK.Terminal.BSD.terminal",
-      "bridges": ["B6"],
-      "obligations": ["O6", "O7"],
+      "bridges": [
+        "B6"
+      ],
+      "obligations": [
+        "O6",
+        "O7"
+      ],
       "producer": "ATK.Conditional.BSD.RankOpen M.bsd ∧ ATK.Conditional.BSD.RefinedOpen M.bsd",
       "producer_equivalence": null,
-      "linking": "L4"
+      "linking": "L4",
+      "statement_root": "_root_.ATK.Conditional.BSD.BSDFull _root_.ATK.Terminal.BSD.modeloGenuino",
+      "template": "terminal-templates/BSD.lean.tpl"
     },
     {
       "id": "YM",
       "problem": "Yang–Mills",
       "faithful": false,
-      "statement": "ATK.Conditional.YangMills.ClayYM M.ym",
+      "statement": "ClayYM modeloGenuino",
       "gate_file": "ATK/Terminal/YM.lean",
       "gate_theorem": "ATK.Terminal.YM.terminal",
-      "bridges": ["B7"],
-      "obligations": ["O8"],
+      "bridges": [
+        "B7"
+      ],
+      "obligations": [
+        "O8"
+      ],
       "producer": "ATK.Conditional.YangMills.ConstructiveYM4D M.ym",
       "producer_equivalence": null,
-      "linking": "L5"
+      "linking": "L5",
+      "statement_root": "_root_.ATK.Conditional.YangMills.ClayYM _root_.ATK.Terminal.YM.modeloGenuino",
+      "template": "terminal-templates/YM.lean.tpl"
     }
   ]
 }

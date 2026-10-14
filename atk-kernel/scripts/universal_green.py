@@ -6,7 +6,9 @@ Para cada uma das 7 linhas de `scripts/terminal_gates.json`, a linha só é verd
   2. a fonte declara literalmente `theorem <nome> : <enunciado> :=` (sem hipóteses);
   3. `#print axioms <teorema>` ⊆ {propext, Classical.choice, Quot.sound};
   4. a fonte não tem sorry/admit/axiom fora de comentários;
-  5. nas linhas paramétricas, a ligação (L1–L5) está CLOSED no relatório do auditor.
+  5. o TIPO elaborado do teorema é o enunciado oficial: `example : _root_.<enunciado> := <teorema>`
+     compila num arquivo à parte (bloqueia sombreamento de nomes no namespace do portão);
+  6. nas linhas paramétricas, a ligação (L1–L5) está CLOSED no relatório do auditor.
 UNIVERSAL_GREEN = as 7 linhas verdes. FINAL_ROOT = SHA-256 do certificado terminal só se
 UNIVERSAL_GREEN e o portão de CLOSED_MATH estiverem verdes; senão `null`.
 
@@ -17,6 +19,8 @@ import hashlib
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
@@ -55,7 +59,34 @@ def _flags(path):
     return flags
 
 
-def _gate(root, axioms, fstatus, gate_file, gate_thm, statement):
+def default_runner(root):
+    """Compila um arquivo com `lake env lean` (None se não houver lake)."""
+    if shutil.which("lake") is None:
+        return None
+
+    def run(path):
+        p = subprocess.run(["lake", "env", "lean", path], cwd=root, capture_output=True, text=True,
+                           timeout=900)
+        return p.returncode, p.stdout + p.stderr
+    return run
+
+
+def typecheck(root, gate_file, gate_thm, statement_root, runner):
+    """`example : <enunciado oficial com _root_> := <teorema>` precisa compilar."""
+    if runner is None:
+        return False, "verificação de tipo indisponível (sem Lean)"
+    mod = gate_file[:-len(".lean")].replace("/", ".")
+    d = os.path.join(root, "reports")
+    os.makedirs(d, exist_ok=True)
+    path = os.path.join(d, "VerificaPortao_" + gate_thm.replace(".", "_") + ".lean")
+    open(path, "w", encoding="utf-8").write(
+        f"import {mod}\n\nexample : {statement_root} := _root_.{gate_thm}\n")
+    code, log = runner(path)
+    ok = code == 0 and ": error" not in log
+    return ok, "" if ok else "o tipo do teorema não é o enunciado oficial (sombreamento ou enunciado diferente)"
+
+
+def _gate(root, axioms, fstatus, gate_file, gate_thm, statement, statement_root=None, runner=None):
     path = os.path.join(root, gate_file)
     present = os.path.exists(path)
     compiled = present and fstatus.get(gate_file) == "OK"
@@ -68,7 +99,14 @@ def _gate(root, axioms, fstatus, gate_file, gate_thm, statement):
     ax = axioms.get(gate_thm)
     certified = ax is not None and set(ax) <= ALLOWED
     flags = _flags(path) if present else []
-    ok = present and compiled and literal and certified and not flags
+    pre = present and compiled and literal and certified and not flags
+    typed, twhy = False, "não verificado"
+    if pre:
+        if statement_root:
+            typed, twhy = typecheck(root, gate_file, gate_thm, statement_root, runner)
+        else:
+            typed, twhy = False, "sem enunciado oficial registrado"
+    ok = pre and typed
     if not present:
         why = "portão ausente (nenhuma prova sem hipóteses foi fornecida)"
     elif not compiled:
@@ -79,14 +117,16 @@ def _gate(root, axioms, fstatus, gate_file, gate_thm, statement):
         why = "axiomas fora do padrão ou sem #print axioms"
     elif flags:
         why = "fonte com " + ", ".join(flags)
+    elif not typed:
+        why = twhy
     else:
         why = ""
     return {"file": gate_file, "theorem": gate_thm, "present": present, "compiled": compiled,
-            "literal": literal, "certified": certified, "flags": flags, "ok": ok, "reason": why,
-            "axioms": ax}
+            "literal": literal, "certified": certified, "flags": flags, "typed": typed, "ok": ok,
+            "reason": why, "axioms": ax}
 
 
-def compute(root, report=None, axioms=None, fstatus=None):
+def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
     rep = os.path.join(root, "reports")
     gates = json.load(open(os.path.join(root, "scripts", "terminal_gates.json"), encoding="utf-8"))
     if report is None:
@@ -96,6 +136,8 @@ def compute(root, report=None, axioms=None, fstatus=None):
         axioms = _axioms_from_logs(rep)
     if fstatus is None:
         fstatus = _file_status(rep)
+    if runner == "default":
+        runner = default_runner(root)
     obl = {o["id"]: o for o in report.get("obligations", [])}
     if not obl:
         op = os.path.join(root, "scripts", "obligations.json")
@@ -107,7 +149,8 @@ def compute(root, report=None, axioms=None, fstatus=None):
 
     lines = []
     for ln in gates["lines"]:
-        g = _gate(root, axioms, fstatus, ln["gate_file"], ln["gate_theorem"], ln["statement"])
+        g = _gate(root, axioms, fstatus, ln["gate_file"], ln["gate_theorem"], ln["statement"],
+                  ln.get("statement_root"), runner)
         link_ok = ln["linking"] is None or st(ln["linking"]) == "CLOSED"
         green = g["ok"] and link_ok
         lines.append({
@@ -119,10 +162,12 @@ def compute(root, report=None, axioms=None, fstatus=None):
             "linking": None if ln["linking"] is None else {"id": ln["linking"], "status": st(ln["linking"])},
         })
     fiel = gates["universal_green_fiel"]
-    gf = _gate(root, axioms, fstatus, fiel["gate_file"], fiel["gate_theorem"], fiel["statement"])
+    gf = _gate(root, axioms, fstatus, fiel["gate_file"], fiel["gate_theorem"], fiel["statement"],
+               fiel.get("statement_root"), runner)
     fr = gates["final_root"]
-    gr = _gate(root, axioms, fstatus, fr["gate_file"], fr["gate_theorem"], None)
-    closed_math = bool(report.get("status", {}).get("CLOSED_MATH", False))
+    gr = _gate(root, axioms, fstatus, fr["gate_file"], fr["gate_theorem"], fr.get("statement"),
+               fr.get("statement_root"), runner)
+    closed_math = bool(report.get("status", {}).get("CLOSED_MATH", False)) and gr["ok"]
     n_green = sum(l["green"] for l in lines)
     universal = n_green == len(lines)
     fiel_green = gf["ok"] or all(l["green"] for l in lines if l["faithful"])
