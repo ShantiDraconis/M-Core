@@ -38,3 +38,4 @@ import ATK.NSPequeno
 import ATK.YMToy
 import ATK.ZetaRegiao
 import ATK.CongruentBijection
+import ATK.BridgeReduction
