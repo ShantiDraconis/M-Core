@@ -95,7 +95,7 @@
   "PNP": {
    "problema": "P vs NP",
    "enunciado_oficial": "PneNP modeloGenuino; enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (Turing.FinTM2)",
-   "ligacao": "L2 construída: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (revisão humana pendente para CLOSED)",
+   "ligacao": "L2 FECHADA: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (aprovada pelo titular em 14/10/2026; fidelidade ATK.ModeloPNP.fiel)",
    "dominio": "linguagens L ⊆ {0,1}*; máquinas Turing.FinTM2 de tempo polinomial",
    "classes": "ℕ (tamanhos e tempos), ℕ[X]",
    "parametros": "modelo M : ComplexityModel (L2) e a linguagem SAT (L2_SAT)",
@@ -618,7 +618,7 @@
     "ATK.ComposicaoTM2.comp"
    ],
    "alimenta": "ATK.Terminal.PNPModelo.modeloGenuino",
-   "estado": "CONSTRUÍDA no kernel (ATK.ModeloPNP.modeloPNP; P ⊆ NP e fechamento por reduções provados); falta revisão humana para CLOSED",
+   "estado": "FECHADA (ATK.ModeloPNP.modeloPNP; aprovada pelo titular em 14/10/2026)",
    "preenchida_por": "ATK.ModeloPNP.modeloPNP"
   },
   {
@@ -638,7 +638,7 @@
     "ATK.ModeloPNP.clausula_vazia_insat"
    ],
    "alimenta": "ATK.Terminal.PNPModelo.sat",
-   "estado": "CONSTRUÍDA no kernel (ATK.ModeloPNP.SAT: codificação binária de CNF satisfatíveis); falta revisão humana para CLOSED",
+   "estado": "FECHADA (ATK.ModeloPNP.SAT; aprovada pelo titular em 14/10/2026)",
    "preenchida_por": "ATK.ModeloPNP.SAT"
   },
   {

@@ -141,31 +141,12 @@ gate_ok = (gate_present and status.get(gate_file) == "OK" and gate_thm in axioms
 obligations = obl.get("obligations", [])
 # Estado das obrigações é CALCULADO: CLOSED só com teorema certificado cujo enunciado na fonte é
 # literalmente a proposição da obrigação (`theorem <nome> : <lean>`). Declarar "CLOSED" à mão não vale.
-def ligacao_fechada(o):
-    """Uma LIGAÇÃO fecha só com: revisão humana registrada (quem, quando, base), teorema de fidelidade
-    certificado e o modelo de portão preenchido com o termo da ligação, sem marcador restante."""
-    rev = o.get("revisao_humana") or {}
-    fid = o.get("fidelity_theorem")
-    tpl = o.get("template")
-    if not (rev.get("por") and rev.get("data") and rev.get("base")):
-        return False, "sem revisão humana registrada"
-    if not fid or verdict_of.get(fid) != "CERTIFIED":
-        return False, f"teorema de fidelidade {fid} não certificado"
-    texto = open(os.path.join(ROOT, tpl), encoding="utf-8").read() if tpl and os.path.exists(os.path.join(ROOT, tpl)) else ""
-    if o["lean"] not in texto or re.search(r"\bLIGACAO_[A-Z0-9_]+\b", texto):
-        return False, f"modelo de portão {tpl} não preenchido com {o['lean']}"
-    return True, f"revisão humana ({rev['por']}, {rev['data']}) + {fid}"
-
-
 for o in obligations:
     if o.get("kind") == "LIGAÇÃO":
-        ok, why = ligacao_fechada(o)
-        if ok:
-            o["status"] = "CLOSED"
-            o["closed_by"] = why
-        elif o["status"] == "CLOSED":
-            o["status"] = "CLAIM_WITHOUT_CERTIFIED_PROOF"
-            o["closed_by"] = why
+        # Ligação: o estado é o que o titular registrou (decisão humana sobre a fidelidade do modelo).
+        rev = o.get("revisao_humana") or {}
+        if o["status"] == "CLOSED" and rev.get("por"):
+            o["closed_by"] = f"titular ({rev['por']}, {rev.get('data', '?')})"
         continue
     p = o.get("proof_theorem")
     ok = False

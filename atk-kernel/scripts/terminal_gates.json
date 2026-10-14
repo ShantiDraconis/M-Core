@@ -116,7 +116,7 @@
       "linking": "L2",
       "statement_root": "_root_.ATK.Conditional.PvsNP.PneNP _root_.ATK.Terminal.PNPModelo.modeloGenuino",
       "template": "terminal-templates/PNP.lean.tpl",
-      "statement_note": "ligação L2 construída: modeloGenuino := ATK.ModeloPNP.modeloPNP (P, NP sobre Turing.FinTM2; reduções de Karp; P ⊆ NP e fechamento provados via ATK.ComposicaoTM2.comp); sat := ATK.ModeloPNP.SAT; PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP por definição (ATK.ModeloPNP.fiel). Falta revisão humana para CLOSED.",
+      "statement_note": "ligação L2 construída: modeloGenuino := ATK.ModeloPNP.modeloPNP (P, NP sobre Turing.FinTM2; reduções de Karp; P ⊆ NP e fechamento provados via ATK.ComposicaoTM2.comp); sat := ATK.ModeloPNP.SAT; PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP por definição (ATK.ModeloPNP.fiel). Ligação fechada pelo titular em 14/10/2026.",
       "refutation_gate_file": "ATK/Terminal/PNPRefutacao.lean",
       "refutation_gate_theorem": "ATK.Terminal.PNPRefutacao.refutacao",
       "refutation_statement": "¬ (PneNP modeloGenuino)",

@@ -82,7 +82,7 @@ def compute(root, report):
     constr = [o["id"] for o in ligs if o.get("status") in ("CONSTRUIDA_NO_KERNEL", "CLOSED")]
     put("T7", "PARCIAL" if ug else "OPEN",
         f"{2 + len(constr)}/7 linhas com enunciado oficial ou ligação construída (RH, Beal"
-        + "".join(f", {i}" for i in constr) + f"); ligações não fechadas (sem revisão humana) {links}")
+        + "".join(f", {i}" for i in constr) + f"); ligações abertas {links}")
     put("T8", "GREEN" if ug.get("UNIVERSAL_GREEN") else "OPEN",
         f"linhas verdes {ug.get('LINES_GREEN', '?')}; resolvidas (provadas + refutadas) {ug.get('RESOLVED', '?')}; "
         f"termos que faltam: prova {fia.get('n_missing', '?')}, refutação {fia.get('n_missing_refutation', '?')}")

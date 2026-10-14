@@ -240,7 +240,7 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   Hoje: `false`, `null`, 0/7.
 - `terminal-templates/` + `scripts/verificar_fiacao.py`: a última milha ligada — 21/21 modelos de
   portão compilam com as peças ausentes; rota da prova: faltam **16** termos; rota da refutação: 10.
-- `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22): **ligação L2 construída** — composição
+- `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22): **ligação L2 construída e fechada** — composição
   de máquinas `FinTM2` em tempo polinomial (`comp`, ausente da Mathlib), `P ⊆ NP`, reduções de Karp
   com P fechada por elas, SAT e `modeloPNP` com `PneNP modeloPNP ↔ P ≠ NP`.
 - `ATK/Termos.lean` + `scripts/termos.json` + `scripts/termos.py` (39 teoremas): as **25

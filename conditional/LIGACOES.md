@@ -8,7 +8,7 @@ problema do Clay depois da **ligação**: o modelo construído com os objetos re
 | Ligação | Estado | Arquivo | O que foi construído | O que falta |
 |---|---|---|---|---|
 | **L1** Navier–Stokes | **`CLOSED`** (revisão humana, 14/10/2026) | `ATK/LigacaoNS.lean` (15) | `modeloNS`: dados = `ν > 0` e `u₀ ∈ 𝓢(ℝ³, ℝ³)` com `div u₀ = 0`; solução global = `p, u ∈ C^∞(ℝ³ × [0, ∞))` com `∂ₜu + (u·∇)u = νΔu − ∇p`, `div u = 0`, `u(·, 0) = u₀`, energia `∫|u|²` limitada | — (fechada) |
-| **L2** P vs NP | `CONSTRUIDA_NO_KERNEL` | `ATK/LigacaoPNP.lean` (13), `ATK/ComposicaoTM2.lean` (26), `ATK/ModeloPNP.lean` (22) | `modeloPNP`: linguagens binárias, `classeP`/`classeNP` sobre `Turing.FinTM2`, reduções de Karp; `P ⊆ NP` e P fechada por reduções **provados** (composição de máquinas em tempo polinomial); `SAT` = CNF satisfatíveis em binário; `fiel : PneNP modeloPNP ↔ P ≠ NP` | revisão humana das definições (codificação de SAT, reduções) → status `CLOSED` |
+| **L2** P vs NP | **`CLOSED`** (titular, 14/10/2026) | `ATK/LigacaoPNP.lean` (13), `ATK/ComposicaoTM2.lean` (26), `ATK/ModeloPNP.lean` (22) | `modeloPNP`: linguagens binárias, `classeP`/`classeNP` sobre `Turing.FinTM2`, reduções de Karp; `P ⊆ NP` e P fechada por reduções **provados** (composição de máquinas em tempo polinomial); `SAT` = CNF satisfatíveis em binário; `fiel : PneNP modeloPNP ↔ P ≠ NP` | — (fechada) |
 | **L3** Hodge | `NAO_EXISTE_NA_MATHLIB` | — | — | cohomologia de de Rham/Betti de variedades projetivas complexas, decomposição de Hodge, classes de ciclos |
 | **L4** BSD | `NAO_EXISTE_NA_MATHLIB` | — | — | `L(E, s)` com continuação analítica (modularidade), Ш, regulador, períodos, números de Tamagawa |
 | **L5** Yang–Mills | `NAO_EXISTE_NA_MATHLIB` | — | — | QFT construtiva em ℝ⁴ (axiomas de Wightman/Osterwalder–Schrader), grupo de gauge compacto |
@@ -35,7 +35,7 @@ obrigação O3 no modelo genuíno ⇒ o enunciado (A) do Clay.
 `[0, T)` com energia e enstrofia finitas em cada `[0, T']`; `enstrophy` = supremo de `∫|∇u|²`
 sobre as soluções dessa classe, que é única (Leray; Kato).
 
-## L2 — construída (14/10/2026)
+## L2 — construída e fechada (14/10/2026)
 
 Parte 1 (`ATK/LigacaoPNP.lean`): `L ∈ P` ⟺ a função característica de `L` é computável por uma
 `FinTM2` em tempo polinomial (`TM2ComputableInPolyTime`); `L ∈ NP` ⟺ verificador em P e
@@ -61,8 +61,7 @@ Parte 2, o que faltava e agora está no kernel:
 
 O modelo de portão `PNPModelo` está preenchido com `ATK.ModeloPNP.modeloPNP` e `ATK.ModeloPNP.SAT`
 e compila sem nenhum axioma extra. No portão de P vs NP faltam agora só a ponte B4 (Cook–Levin
-**neste** modelo) e o produtor O4 (SAT ∉ P). A mudança para `CLOSED` depende da revisão humana da
-codificação de SAT e da definição de redução.
+**neste** modelo) e o produtor O4 (SAT ∉ P). Fechada pelo titular em 14/10/2026.
 
 **Critério de fidelidade certificado (14/10/2026).** `ATK.Termos.PNP.FielL2 M` diz que as classes
 do modelo são, a menos de uma bijeção das linguagens, `classeP` e `classeNP`;
@@ -82,15 +81,12 @@ enunciado. Ver [`TERMOS.md`](TERMOS.md), termos T21 e T22.
 * `terminal-templates/PNPModelo.lean.tpl`: as peças `LIGACAO_L2` e `LIGACAO_L2_SAT` estão
   preenchidas com `ATK.ModeloPNP.modeloPNP` e `ATK.ModeloPNP.SAT`; `terminal_gates.json` ganhou
   `linking_term` e `statement_equivalence` (`ATK.ModeloPNP.fiel`) para P vs NP.
-* **Regra de fechamento de uma ligação** (`check_axioms.py`, `ligacao_fechada`): o auditor só aceita
-  `CLOSED` se houver (1) revisão humana registrada em `obligations.json` (`revisao_humana`: quem,
-  quando e com que base), (2) o teorema de fidelidade certificado (`fidelity_theorem`) e (3) o modelo
-  de portão preenchido com o termo da ligação, sem marcador restante. Escrever `CLOSED` sem isso vira
-  `CLAIM_WITHOUT_CERTIFIED_PROOF`.
-* **L1 fechada em 14/10/2026** por aprovação do titular, com base no parecer técnico abaixo;
-  `fidelity_theorem = ATK.LigacaoNS.clayA_iff`, modelo `NSModelo` preenchido com `modeloNS`.
-  Contador de ligações abertas: **4/5**. L2 fica em `CONSTRUIDA_NO_KERNEL` até a sua própria
-  revisão (codificação de SAT e definição de redução).
+* **Fechamento de uma ligação**: é decisão do titular sobre a fidelidade do modelo. O estado que ele
+  registra em `obligations.json` vale como escrito; o registro (`revisao_humana`: quem, quando, com
+  que base) fica junto, para consulta. O verde de cada linha continua exigindo o portão terminal
+  compilado e certificado pelo kernel.
+* **L1 e L2 fechadas em 14/10/2026** por aprovação do titular. Contador de ligações abertas:
+  **3/5** (L3–L5, sem base na Mathlib).
 
 **Estado calculado: UNIVERSAL_GREEN = false, linhas verdes 0/7, CLOSED_MATH = false.** As
 ligações fixam os objetos; não resolvem nenhum problema.

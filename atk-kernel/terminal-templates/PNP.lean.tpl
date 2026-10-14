@@ -4,9 +4,9 @@ import ATK.Terminal.PNPModelo
 /-!
 # Portão terminal de P ≠ NP — MODELO (não compilado; vira `ATK/Terminal/PNP.lean`)
 
-1. **Ligação L2**: `modeloGenuino` com linguagens sobre um alfabeto finito, P e NP definidos por
-   máquinas de Turing de tempo polinomial (a Mathlib tem `Turing.TM2ComputableInPolyTime`, mas ainda
-   não a composição de máquinas, necessária para `P_closed_under_red`), e `sat` = SAT.
+1. **Ligação L2** — fechada (titular, 14/10/2026): `modeloGenuino := ATK.ModeloPNP.modeloPNP`
+   (P e NP sobre `Turing.FinTM2`, reduções de Karp; `P ⊆ NP` e P fechada por reduções provados com
+   `ATK.ComposicaoTM2.comp`) e `sat := ATK.ModeloPNP.SAT`; `ATK.ModeloPNP.fiel`.
 2. **Ponte B4**: Cook–Levin sobre esse modelo.
 3. **Produtor O4**: SAT ∉ P.
 -/

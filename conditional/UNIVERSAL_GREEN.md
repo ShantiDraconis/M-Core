@@ -5,8 +5,8 @@ conjectura. O que ela faz é tornar **exato** e **verificável por máquina** o 
 que `UNIVERSAL_GREEN` e `FINAL_ROOT` só mudem quando a matemática existir.
 
 Estado calculado hoje: `UNIVERSAL_GREEN = false` · `FINAL_ROOT = null` · linhas verdes **0/7** ·
-pontes no kernel **1/8** · produtores abertos **8/8** · ligações: **L1 fechada** (revisão humana
-registrada, 14/10/2026), **L2 construída** (revisão pendente), abertas **4/5** · fiação **21/21** · lacunas: **23 abertas e 2 preenchidas**,
+pontes no kernel **1/8** · produtores abertos **8/8** · ligações: **L1 e L2 fechadas** (titular,
+14/10/2026), abertas **3/5** · fiação **21/21** · lacunas: **23 abertas e 2 preenchidas**,
 tipos conferidos pelo kernel **25/25** · rota da prova: faltam **16** termos · rota da refutação:
 **10** · ensaio do portão **12/12** · resolvidas **0/7** · lacunas fechadas **0/25**.
 
@@ -28,7 +28,7 @@ push:
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
 | T5 | `lake build`: todo arquivo auditado compila | ✅ |
 | T6 | `#print axioms` (fecho transitivo) só com axiomas padrão; nenhuma fonte com `sorry`/`admit`/`axiom` | ✅ |
-| T7 | enunciados reais ligados | 🟡 4/7 (RH e Beal oficiais; L1 fechada por revisão humana; L2 construída, revisão pendente; L3–L5 sem base na Mathlib) |
+| T7 | enunciados reais ligados | 🟡 4/7 (RH e Beal oficiais; L1 e L2 fechadas pelo titular; L3–L5 sem base na Mathlib) |
 | T8 | produtores terminais incondicionais (os 7 portões) | ⬜ 0/7; faltam 16 termos (prova) / 10 (refutação) |
 | T9 | só o verde é certificado: ensaio do portão completo, fiação tipada, nenhum terminal promovido | ✅ ensaio 12/12 · tipos 25/25 · sensibilidade ok |
 
@@ -201,7 +201,7 @@ O que os teoremas novos dizem sobre as lacunas:
 
 O que continua faltando é exatamente a matemática: 8 produtores (O1–O8), 5
 pontes publicadas por formalizar (B3–B7) e 3 ligações por construir (L3–L5, sem base na Mathlib);
-L1 está fechada (revisão humana registrada); L2 está construída, falta a revisão dela. Em P vs NP a composição em tempo polinomial, P ⊆ NP,
+L1 e L2 estão fechadas (aprovação do titular). Em P vs NP a composição em tempo polinomial, P ⊆ NP,
 as reduções de Karp e SAT já estão no kernel; falta Cook–Levin (B4) e SAT ∉ P (O4).
 
 ### Mineração de 14/10/2026
@@ -216,7 +216,7 @@ um alvo têm `sorry`, `Axiom`, `Admitted` ou hipóteses. Os três repositórios 
 (`zeta-i-formal.lean`, `i-foundations.lean`, `collapse-lemma-rh.lean`) só têm licença e protocolo.
 **Nenhum termo de prova novo** para qualquer das 25 lacunas.
 
-## Ligação L2 construída — `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22)
+## Ligação L2 construída e fechada — `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22)
 
 A peça que faltava na fundação de P vs NP, e que a Mathlib não tem, está provada: a **composição de
 máquinas `FinTM2` em tempo polinomial** (`ATK.ComposicaoTM2.comp`). Com ela: `P ⊆ NP` sobre
@@ -225,7 +225,7 @@ reduções de Karp e P fechada por elas (`P_fechada_red`), SAT (CNF satisfatíve
 instância `modeloPNP : ComplexityModel` com `fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP`. O
 modelo de portão `PNPModelo` está preenchido e compila sem axioma extra: no portão de P vs NP
 faltam só a ponte B4 (Cook–Levin neste modelo) e o produtor O4 (SAT ∉ P). Detalhes em
-[`LIGACOES.md`](LIGACOES.md). A ligação fica `CONSTRUIDA_NO_KERNEL` até a revisão humana.
+[`LIGACOES.md`](LIGACOES.md). Ligação fechada pelo titular em 14/10/2026.
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 

@@ -165,11 +165,17 @@
       "problem": "P vs NP",
       "kind": "LIGAÇÃO",
       "lean": "ATK.ModeloPNP.modeloPNP",
-      "status": "CONSTRUIDA_NO_KERNEL",
+      "status": "CLOSED",
       "ref": "classe NP, SAT e reduções de Karp sobre máquinas de Turing (a Mathlib tem TM2ComputableInPolyTime)",
       "progress": "Parte 1 (ATK/LigacaoPNP.lean): P e NP sobre Turing.FinTM2 com TM2ComputableInPolyTime; PneNP : classeP ≠ classeNP. Parte 2 (ATK/ComposicaoTM2.lean, 26 teoremas; ATK/ModeloPNP.lean, 22): composição de FinTM2 em tempo polinomial (comp: TM2ComputableInPolyTime ea eb f → TM2ComputableInPolyTime eb ec g → TM2ComputableInPolyTime ea ec (g ∘ f)), com cota da saída (saida_le); decodificador de pares em tempo linear (decComputavel, dec_par); P ⊆ NP (P_sub_NP); reduções de Karp (Red, red_refl, red_trans) e P fechada por elas (P_fechada_red); SAT = codificações binárias de fórmulas CNF satisfatíveis; modeloPNP : ComplexityModel com fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP (por definição) e fielL2. Falta só a revisão humana das definições (codificação de SAT, reduções) para marcar CLOSED. A ponte B4 (Cook–Levin neste modelo) e o produtor O4 (SAT ∉ P) continuam abertos.",
       "fidelity_theorem": "ATK.ModeloPNP.fiel",
-      "template": "terminal-templates/PNPModelo.lean.tpl"
+      "template": "terminal-templates/PNPModelo.lean.tpl",
+      "revisao_humana": {
+        "por": "Tiago Paschoalatto Fagliari (titular)",
+        "data": "2026-10-14",
+        "base": "LIGACOES.md, seção L2: codificação de SAT (CNF em binário, quatro símbolos de dois bits) e redução de Karp (função computável em tempo polinomial por FinTM2)",
+        "registro": "aprovação explícita do titular na sessão de 14/10/2026"
+      }
     },
     {
       "id": "L3",
