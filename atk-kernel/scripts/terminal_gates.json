@@ -1,5 +1,5 @@
 {
-  "rule": "UNIVERSAL_GREEN = true só se, para cada uma das 7 linhas, o arquivo do portão existir, compilar, declarar literalmente `theorem <nome> : <enunciado> :=` (sem hipóteses), o teorema depender só de propext, Classical.choice e Quot.sound, a fonte não tiver sorry/admit/axiom, o tipo elaborado do teorema for definicionalmente o enunciado oficial (`example : _root_.<enunciado> := <teorema>` compila — bloqueia sombreamento de nomes) e, nas linhas paramétricas, a ligação (L1–L5) estiver CLOSED. FINAL_ROOT = SHA-256 do certificado terminal só se UNIVERSAL_GREEN e o portão de CLOSED_MATH estiverem verdes; caso contrário null. Nada disto é escrito à mão: o auditor calcula.",
+  "rule": "UNIVERSAL_GREEN = true só se, para cada uma das 7 linhas, o arquivo do portão existir, compilar, declarar literalmente `theorem <nome> : <enunciado> :=` (sem hipóteses), o teorema depender só de propext, Classical.choice e Quot.sound, a fonte não tiver sorry/admit/axiom, o tipo elaborado do teorema for definicionalmente o enunciado oficial (`example : _root_.<enunciado> := <teorema>` compila — bloqueia sombreamento de nomes) e, nas linhas paramétricas, a ligação (L1–L5) estiver CLOSED. FINAL_ROOT = SHA-256 do certificado terminal só se UNIVERSAL_GREEN e o portão de CLOSED_MATH estiverem verdes; caso contrário null. Nada disto é escrito à mão: o auditor calcula. RESOLUÇÃO: o Clay (e a conjectura de Beal) aceitam também a refutação; cada linha tem um portão de refutação (`theorem refutacao : ¬ <enunciado>`) com as mesmas exigências. Estado por linha: PROVADA, REFUTADA, ABERTA, ou INCONSISTENTE (prova e refutação certificadas ao mesmo tempo — só possível com base inconsistente; zera o verde e a raiz). UNIVERSAL_GREEN continua sendo as 7 PROVADAS; RESOLVIDAS conta provadas + refutadas.",
   "final_root": {
     "gate_file": "ATK/ClosedMathGate.lean",
     "gate_theorem": "ATK.ClosedMathGate.closed_math",
@@ -35,7 +35,13 @@
       "producer_equivalence": "ATK.ForaDaLinha.riemann_iff_vazio",
       "linking": null,
       "statement_root": "_root_.RiemannHypothesis",
-      "template": "terminal-templates/RH.lean.tpl"
+      "template": "terminal-templates/RH.lean.tpl",
+      "refutation_gate_file": "ATK/Terminal/RHRefutacao.lean",
+      "refutation_gate_theorem": "ATK.Terminal.RHRefutacao.refutacao",
+      "refutation_statement": "¬ RiemannHypothesis",
+      "refutation_statement_root": "¬ (_root_.RiemannHypothesis)",
+      "refutation_meaning": "um zero não trivial fora da reta crítica (RH falsa)",
+      "refutation_template": "terminal-templates/RHRefutacao.lean.tpl"
     },
     {
       "id": "Beal",
@@ -55,7 +61,13 @@
       "producer_equivalence": "ATK.BealCompleto.beal_teorema_completo",
       "linking": null,
       "statement_root": "_root_.ATK.Conditional.Beal.BealConjecture",
-      "template": "terminal-templates/Beal.lean.tpl"
+      "template": "terminal-templates/Beal.lean.tpl",
+      "refutation_gate_file": "ATK/Terminal/BealRefutacao.lean",
+      "refutation_gate_theorem": "ATK.Terminal.BealRefutacao.refutacao",
+      "refutation_statement": "¬ ATK.Conditional.Beal.BealConjecture",
+      "refutation_statement_root": "¬ (_root_.ATK.Conditional.Beal.BealConjecture)",
+      "refutation_meaning": "uma solução aˣ + bʸ = cᶻ com x, y, z > 2 e bases coprimas (contraexemplo de Beal)",
+      "refutation_template": "terminal-templates/BealRefutacao.lean.tpl"
     },
     {
       "id": "NS",
@@ -73,10 +85,18 @@
       "producer": "ATK.Conditional.NavierStokes.EnstrophyAPrioriBound M.ns",
       "producer_equivalence": null,
       "linking": "L1",
-      "statement_root": "_root_.ATK.Conditional.NavierStokes.ClayStatementA _root_.ATK.Terminal.NS.modeloGenuino",
+      "statement_root": "_root_.ATK.Conditional.NavierStokes.ClayStatementA _root_.ATK.Terminal.NSModelo.modeloGenuino",
       "template": "terminal-templates/NS.lean.tpl",
       "linking_term": "ATK.LigacaoNS.modeloNS",
-      "statement_equivalence": "ATK.LigacaoNS.clayA_iff"
+      "statement_equivalence": "ATK.LigacaoNS.clayA_iff",
+      "refutation_gate_file": "ATK/Terminal/NSRefutacao.lean",
+      "refutation_gate_theorem": "ATK.Terminal.NSRefutacao.refutacao",
+      "refutation_statement": "¬ (ClayStatementA modeloGenuino)",
+      "refutation_statement_root": "¬ (_root_.ATK.Conditional.NavierStokes.ClayStatementA _root_.ATK.Terminal.NSModelo.modeloGenuino)",
+      "refutation_meaning": "¬(A) no modelo genuíno: existe dado de Schwartz sem solução global suave de energia limitada — implica o enunciado (C) do Clay (colapso, com f = 0)",
+      "linking_module": "ATK/Terminal/NSModelo.lean",
+      "linking_template": "terminal-templates/NSModelo.lean.tpl",
+      "refutation_template": "terminal-templates/NSRefutacao.lean.tpl"
     },
     {
       "id": "PNP",
@@ -94,9 +114,17 @@
       "producer": "ATK.Conditional.PvsNP.SATNotInP M.cx M.sat",
       "producer_equivalence": null,
       "linking": "L2",
-      "statement_root": "_root_.ATK.Conditional.PvsNP.PneNP _root_.ATK.Terminal.PNP.modeloGenuino",
+      "statement_root": "_root_.ATK.Conditional.PvsNP.PneNP _root_.ATK.Terminal.PNPModelo.modeloGenuino",
       "template": "terminal-templates/PNP.lean.tpl",
-      "statement_note": "enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (classeP ≠ classeNP sobre Turing.FinTM2); falta a instância ComplexityModel (L2 parte 2) para preencher modeloGenuino"
+      "statement_note": "enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (classeP ≠ classeNP sobre Turing.FinTM2); falta a instância ComplexityModel (L2 parte 2) para preencher modeloGenuino",
+      "refutation_gate_file": "ATK/Terminal/PNPRefutacao.lean",
+      "refutation_gate_theorem": "ATK.Terminal.PNPRefutacao.refutacao",
+      "refutation_statement": "¬ (PneNP modeloGenuino)",
+      "refutation_statement_root": "¬ (_root_.ATK.Conditional.PvsNP.PneNP _root_.ATK.Terminal.PNPModelo.modeloGenuino)",
+      "refutation_meaning": "P = NP no modelo genuíno",
+      "linking_module": "ATK/Terminal/PNPModelo.lean",
+      "linking_template": "terminal-templates/PNPModelo.lean.tpl",
+      "refutation_template": "terminal-templates/PNPRefutacao.lean.tpl"
     },
     {
       "id": "Hodge",
@@ -114,8 +142,16 @@
       "producer": "ATK.Conditional.Hodge.MiddleCodimension M.hodge",
       "producer_equivalence": null,
       "linking": "L3",
-      "statement_root": "_root_.ATK.Conditional.Hodge.HodgeConjecture _root_.ATK.Terminal.Hodge.modeloGenuino",
-      "template": "terminal-templates/Hodge.lean.tpl"
+      "statement_root": "_root_.ATK.Conditional.Hodge.HodgeConjecture _root_.ATK.Terminal.HodgeModelo.modeloGenuino",
+      "template": "terminal-templates/Hodge.lean.tpl",
+      "refutation_gate_file": "ATK/Terminal/HodgeRefutacao.lean",
+      "refutation_gate_theorem": "ATK.Terminal.HodgeRefutacao.refutacao",
+      "refutation_statement": "¬ (HodgeConjecture modeloGenuino)",
+      "refutation_statement_root": "¬ (_root_.ATK.Conditional.Hodge.HodgeConjecture _root_.ATK.Terminal.HodgeModelo.modeloGenuino)",
+      "refutation_meaning": "uma classe de Hodge racional que não é algébrica",
+      "linking_module": "ATK/Terminal/HodgeModelo.lean",
+      "linking_template": "terminal-templates/HodgeModelo.lean.tpl",
+      "refutation_template": "terminal-templates/HodgeRefutacao.lean.tpl"
     },
     {
       "id": "BSD",
@@ -134,8 +170,16 @@
       "producer": "ATK.Conditional.BSD.RankOpen M.bsd ∧ ATK.Conditional.BSD.RefinedOpen M.bsd",
       "producer_equivalence": null,
       "linking": "L4",
-      "statement_root": "_root_.ATK.Conditional.BSD.BSDFull _root_.ATK.Terminal.BSD.modeloGenuino",
-      "template": "terminal-templates/BSD.lean.tpl"
+      "statement_root": "_root_.ATK.Conditional.BSD.BSDFull _root_.ATK.Terminal.BSDModelo.modeloGenuino",
+      "template": "terminal-templates/BSD.lean.tpl",
+      "refutation_gate_file": "ATK/Terminal/BSDRefutacao.lean",
+      "refutation_gate_theorem": "ATK.Terminal.BSDRefutacao.refutacao",
+      "refutation_statement": "¬ (BSDFull modeloGenuino)",
+      "refutation_statement_root": "¬ (_root_.ATK.Conditional.BSD.BSDFull _root_.ATK.Terminal.BSDModelo.modeloGenuino)",
+      "refutation_meaning": "uma curva elíptica sobre ℚ que viola BSD",
+      "linking_module": "ATK/Terminal/BSDModelo.lean",
+      "linking_template": "terminal-templates/BSDModelo.lean.tpl",
+      "refutation_template": "terminal-templates/BSDRefutacao.lean.tpl"
     },
     {
       "id": "YM",
@@ -153,8 +197,16 @@
       "producer": "ATK.Conditional.YangMills.ConstructiveYM4D M.ym",
       "producer_equivalence": null,
       "linking": "L5",
-      "statement_root": "_root_.ATK.Conditional.YangMills.ClayYM _root_.ATK.Terminal.YM.modeloGenuino",
-      "template": "terminal-templates/YM.lean.tpl"
+      "statement_root": "_root_.ATK.Conditional.YangMills.ClayYM _root_.ATK.Terminal.YMModelo.modeloGenuino",
+      "template": "terminal-templates/YM.lean.tpl",
+      "refutation_gate_file": "ATK/Terminal/YMRefutacao.lean",
+      "refutation_gate_theorem": "ATK.Terminal.YMRefutacao.refutacao",
+      "refutation_statement": "¬ (ClayYM modeloGenuino)",
+      "refutation_statement_root": "¬ (_root_.ATK.Conditional.YangMills.ClayYM _root_.ATK.Terminal.YMModelo.modeloGenuino)",
+      "refutation_meaning": "a negação do enunciado de Yang–Mills no modelo genuíno (sem teoria 4D com gap)",
+      "linking_module": "ATK/Terminal/YMModelo.lean",
+      "linking_template": "terminal-templates/YMModelo.lean.tpl",
+      "refutation_template": "terminal-templates/YMRefutacao.lean.tpl"
     }
   ]
 }

@@ -2,7 +2,8 @@
 """Instala um portão terminal — só se ele for uma prova genuína.
 
 Uso: python3 scripts/instalar_portao.py LINHA
-LINHA ∈ RH, Beal, NS, PNP, Hodge, BSD, YM, VerdeFiel, ClosedMathGate
+LINHA ∈ RH, Beal, NS, PNP, Hodge, BSD, YM (prova), <Linha>Refutacao (refutação), <Linha>Modelo (ligação),
+        VerdeFiel, ClosedMathGate
 
 Recusa (sem tocar em nada) se:
   * o arquivo do portão não existe (mostra o modelo e as peças que faltam);
@@ -32,6 +33,12 @@ def entry(gates, line):
     for ln in gates["lines"]:
         if ln["id"] == line:
             return ln
+        if line == ln["id"] + "Refutacao":
+            return {"gate_file": ln["refutation_gate_file"], "gate_theorem": ln["refutation_gate_theorem"],
+                    "statement_root": ln["refutation_statement_root"], "template": ln["refutation_template"]}
+        if line == ln["id"] + "Modelo" and ln.get("linking_module"):
+            return {"gate_file": ln["linking_module"], "gate_theorem": None, "statement_root": None,
+                    "template": ln["linking_template"]}
     return None
 
 
@@ -73,13 +80,14 @@ def main(argv):
     if p.returncode != 0 or ": error" in log:
         print(f"RECUSADO — {gfile} não compila. Nada instalado.\n" + "\n".join(log.splitlines()[:10]))
         return 4
-    if gthm not in axioms or not set(axioms[gthm]) <= ug.ALLOWED:
-        print(f"RECUSADO — axiomas de {gthm}: {axioms.get(gthm)}. Nada instalado.")
-        return 4
-    ok, why = ug.typecheck(root, gfile, gthm, e["statement_root"], ug.default_runner(root))
-    if not ok:
-        print(f"RECUSADO — {why}. Nada instalado.")
-        return 5
+    if gthm is not None:  # módulos de ligação (…Modelo) não têm teorema terminal
+        if gthm not in axioms or not set(axioms[gthm]) <= ug.ALLOWED:
+            print(f"RECUSADO — axiomas de {gthm}: {axioms.get(gthm)}. Nada instalado.")
+            return 4
+        ok, why = ug.typecheck(root, gfile, gthm, e["statement_root"], ug.default_runner(root))
+        if not ok:
+            print(f"RECUSADO — {why}. Nada instalado.")
+            return 5
     atk = os.path.join(root, "ATK.lean")
     if f"import {mod}\n" not in open(atk, encoding="utf-8").read():
         open(atk, "a", encoding="utf-8").write(f"import {mod}\n")
@@ -88,8 +96,12 @@ def main(argv):
     new = [n for n in re.findall(r"^#print axioms (\S+)", src, re.M) if n not in have]
     if new:
         open(exp, "a", encoding="utf-8").write("".join(n + "\n" for n in new))
-    print(f"INSTALADO — {gthm} : {e['statement_root']} (axiomas {axioms[gthm]}). "
-          "O CI recalcula UNIVERSAL_GREEN e FINAL_ROOT.")
+    if gthm is None:
+        print(f"INSTALADO — módulo de ligação {mod}. A ligação só conta como fechada depois da revisão "
+              "humana (status CLOSED em scripts/obligations.json).")
+    else:
+        print(f"INSTALADO — {gthm} : {e['statement_root']} (axiomas {axioms[gthm]}). "
+              "O CI recalcula UNIVERSAL_GREEN e FINAL_ROOT.")
     return 0
 
 

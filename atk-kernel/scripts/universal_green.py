@@ -152,10 +152,19 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
         g = _gate(root, axioms, fstatus, ln["gate_file"], ln["gate_theorem"], ln["statement"],
                   ln.get("statement_root"), runner)
         link_ok = ln["linking"] is None or st(ln["linking"]) == "CLOSED"
-        green = g["ok"] and link_ok
+        rg = None
+        if ln.get("refutation_gate_file"):
+            rg = _gate(root, axioms, fstatus, ln["refutation_gate_file"], ln["refutation_gate_theorem"],
+                       ln.get("refutation_statement"), ln.get("refutation_statement_root"), runner)
+        proved = g["ok"] and link_ok
+        refuted = bool(rg and rg["ok"]) and link_ok
+        estado = ("INCONSISTENTE" if proved and refuted else "PROVADA" if proved
+                  else "REFUTADA" if refuted else "ABERTA")
+        green = proved and not refuted
         lines.append({
             "id": ln["id"], "problem": ln["problem"], "faithful": ln["faithful"],
-            "statement": ln["statement"], "green": green, "gate": g,
+            "statement": ln["statement"], "green": green, "gate": g, "estado": estado,
+            "refutation_gate": rg, "refutation_meaning": ln.get("refutation_meaning"),
             "bridges": [{"id": b, "status": st(b)} for b in ln["bridges"]],
             "obligations": [{"id": o, "status": st(o)} for o in ln["obligations"]],
             "producer": ln["producer"], "producer_equivalence": ln["producer_equivalence"],
@@ -169,10 +178,12 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
                fr.get("statement_root"), runner)
     closed_math = bool(report.get("status", {}).get("CLOSED_MATH", False)) and gr["ok"]
     n_green = sum(l["green"] for l in lines)
-    universal = n_green == len(lines)
+    n_refuted = sum(l["estado"] == "REFUTADA" for l in lines)
+    n_incons = sum(l["estado"] == "INCONSISTENTE" for l in lines)
+    universal = n_green == len(lines) and n_incons == 0
     fiel_green = gf["ok"] or all(l["green"] for l in lines if l["faithful"])
     final_root = None
-    if universal and closed_math:
+    if universal and closed_math and n_incons == 0:
         payload = {"sources_sha256": report.get("sources_sha256"),
                    "gates": sorted((l["gate"]["theorem"], tuple(l["gate"]["axioms"] or ())) for l in lines),
                    "closed_math": fr["gate_theorem"], "commit": report.get("commit")}
@@ -188,6 +199,8 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
         "UNIVERSAL_GREEN": universal, "UNIVERSAL_GREEN_FIEL": fiel_green,
         "FINAL_ROOT": final_root, "CLOSED_MATH": closed_math,
         "LINES_GREEN": f"{n_green}/{len(lines)}",
+        "RESOLVED": f"{n_green + n_refuted}/{len(lines)}",
+        "REFUTED": n_refuted, "INCONSISTENT": n_incons,
         "BRIDGES_IN_KERNEL": f"{proved_b}/{len(bridges)}",
         "PRODUCERS_OPEN": f"{open_o}/{len(obligs)}",
         "LINKINGS_OPEN": f"{open_l}/{len(links)}",
@@ -197,9 +210,10 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
           "",
           f"Linhas verdes: **{summary['LINES_GREEN']}** · pontes no kernel: {summary['BRIDGES_IN_KERNEL']} · "
           f"produtores abertos: {summary['PRODUCERS_OPEN']} · ligações abertas: {summary['LINKINGS_OPEN']} · "
-          f"verde fiel (RH ∧ Beal): `{str(fiel_green).lower()}`",
+          f"verde fiel (RH ∧ Beal): `{str(fiel_green).lower()}` · resolvidas (provadas + refutadas): "
+          f"{summary['RESOLVED']}" + (f" · **INCONSISTENTES: {n_incons}**" if n_incons else ""),
           "",
-          "| Linha | Enunciado | Portão terminal | Pontes | Produtor (o que falta) | Ligação | Verde |",
+          "| Linha | Enunciado | Portão terminal | Pontes | Produtor (o que falta) | Ligação | Estado |",
           "|---|---|---|---|---|---|---|"]
     for l in lines:
         g = l["gate"]
@@ -207,11 +221,13 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
                   + ", ".join(f"{b['id']} {b['status']}" for b in l["bridges"]) + " | "
                   + f"`{l['producer']}` (" + ", ".join(f"{o['id']} {o['status']}" for o in l["obligations"]) + ") | "
                   + (f"{l['linking']['id']} {l['linking']['status']}" if l["linking"] else "—")
-                  + f" | {'✅' if l['green'] else '❌'} |")
+                  + " | " + {"PROVADA": "✅ PROVADA", "REFUTADA": "🔻 REFUTADA", "INCONSISTENTE": "⚠️ INCONSISTENTE"}.get(l["estado"], "❌ ABERTA") + " |")
     md += ["", f"Raiz final: `{fr['gate_theorem']}` — {gr['reason'] or 'OK'}; redução certificada "
            f"`{fr['reduction']}`. Verde fiel: `{fiel['gate_theorem']}` — {gf['reason'] or 'OK'}; forma exata "
            f"`{fiel['exact_form']}`.",
-           "O estado é calculado: só um teorema terminal sem hipóteses, certificado, acende uma linha."]
+           "O estado é calculado: só um teorema terminal sem hipóteses, certificado, acende uma linha. "
+           "Cada linha também aceita a **refutação** (`theorem refutacao : ¬ <enunciado>` em "
+           "`ATK/Terminal/<Linha>Refutacao.lean`, mesmas exigências): conta como RESOLVIDA, não como verde."]
     return {"summary": summary, "lines": lines, "fiel": gf, "final_root_gate": gr, "md": md}
 
 

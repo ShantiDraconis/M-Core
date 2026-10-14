@@ -39,7 +39,10 @@ def registry():
                       "statement": f"Alvo{k}", "statement_root": f"_root_.Alvo{k}",
                       "gate_file": f"ATK/Terminal/{k}.lean", "gate_theorem": f"ATK.Terminal.{k}.terminal",
                       "bridges": [], "obligations": [], "producer": "—", "producer_equivalence": None,
-                      "linking": LINKING.get(k)})
+                      "linking": LINKING.get(k),
+                      "refutation_gate_file": f"ATK/Terminal/{k}Refutacao.lean",
+                      "refutation_gate_theorem": f"ATK.Terminal.{k}Refutacao.refutacao",
+                      "refutation_statement": f"¬ Alvo{k}", "refutation_statement_root": f"¬ (_root_.Alvo{k})"})
     return {"rule": "ensaio", "lines": lines,
             "final_root": {"gate_file": "ATK/ClosedMathGate.lean", "gate_theorem": "ATK.ClosedMathGate.closed_math",
                            "statement": "AlvoFinal", "statement_root": "_root_.AlvoFinal",
@@ -98,10 +101,24 @@ SCENARIOS = [
      {"UNIVERSAL_GREEN": False, "red": "YM"}),
     ("sem_raiz", "sete linhas verdes, sem o portão de CLOSED_MATH", {"ATK/ClosedMathGate.lean": None}, None,
      {"UNIVERSAL_GREEN": True, "root": False}),
+    ("refutada", "YM refutado (`¬ AlvoYM` com `AlvoYM := 1 + 1 = 3`): resolvida, não verde",
+     {"Alvos.lean": ALVOS.replace("def AlvoYM : Prop := 1 + 1 = 2", "def AlvoYM : Prop := 1 + 1 = 3"),
+      "ATK/Terminal/YM.lean": None,
+      "ATK/Terminal/YMRefutacao.lean": ("import Alvos\n\nnamespace ATK.Terminal.YMRefutacao\n\n"
+                                         "theorem refutacao : ¬ AlvoYM := by unfold AlvoYM; decide\n\n"
+                                         "end ATK.Terminal.YMRefutacao\n\n#print axioms ATK.Terminal.YMRefutacao.refutacao\n")},
+     None, {"UNIVERSAL_GREEN": False, "red": "YM", "resolved": "7/7", "estado": ("YM", "REFUTADA")}),
+    ("refutacao_axioma", "refutação de RH por um axioma próprio (rejeitada) com a prova ausente",
+     {"ATK/Terminal/RH.lean": None,
+      "ATK/Terminal/RHRefutacao.lean": ("import Alvos\n\naxiom falso : False\n\nnamespace ATK.Terminal.RHRefutacao\n\n"
+                                         "theorem refutacao : ¬ AlvoRH := falso.elim\n\n"
+                                         "end ATK.Terminal.RHRefutacao\n\n#print axioms ATK.Terminal.RHRefutacao.refutacao\n")},
+     None, {"UNIVERSAL_GREEN": False, "red": "RH", "resolved": "6/7", "estado": ("RH", "ABERTA")}),
 ]
 
-ORDER = ["Alvos.lean"] + [f"ATK/Terminal/{k}.lean" for k in IDS] + ["ATK/Terminal/VerdeFiel.lean",
-                                                                  "ATK/ClosedMathGate.lean"]
+ORDER = (["Alvos.lean"] + [f"ATK/Terminal/{k}.lean" for k in IDS]
+         + [f"ATK/Terminal/{k}Refutacao.lean" for k in IDS]
+         + ["ATK/Terminal/VerdeFiel.lean", "ATK/ClosedMathGate.lean"])
 
 
 def make_runner(lean, tmp):
@@ -171,8 +188,13 @@ def run(lean=None):
                 passed = passed and ((s["FINAL_ROOT"] is not None) == expect["root"])
             if "red" in expect:
                 passed = passed and red == [expect["red"]] and s["FINAL_ROOT"] is None
+            if "resolved" in expect:
+                passed = passed and s["RESOLVED"] == expect["resolved"]
+            if "estado" in expect:
+                k, e = expect["estado"]
+                passed = passed and any(l["id"] == k and l["estado"] == e for l in res["lines"])
             results.append({"id": sid, "description": desc, "UNIVERSAL_GREEN": s["UNIVERSAL_GREEN"],
-                            "LINES_GREEN": s["LINES_GREEN"], "FINAL_ROOT": s["FINAL_ROOT"], "red": red,
+                            "LINES_GREEN": s["LINES_GREEN"], "RESOLVED": s["RESOLVED"], "FINAL_ROOT": s["FINAL_ROOT"], "red": red,
                             "reasons": reasons, "passed": passed})
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
@@ -185,12 +207,12 @@ def markdown(res):
         return [f"Ensaio do portão: não executado ({res.get('reason')})."]
     md = [f"### Ensaio do portão (enunciados de brinquedo) — {res['passed']} cenários corretos",
           "",
-          "| Cenário | Situação | `UNIVERSAL_GREEN` | Linhas | `FINAL_ROOT` | Motivo do vermelho | Esperado |",
+          "| Cenário | Situação | `UNIVERSAL_GREEN` | Linhas verdes / resolvidas | `FINAL_ROOT` | Motivo | Esperado |",
           "|---|---|---|---|---|---|---|"]
     for r in res["scenarios"]:
         why = "; ".join(f"{k}: {v}" for k, v in r["reasons"].items()) or "—"
         root = (r["FINAL_ROOT"][:16] + "…") if r["FINAL_ROOT"] else "null"
-        md.append(f"| `{r['id']}` | {r['description']} | `{str(r['UNIVERSAL_GREEN']).lower()}` | {r['LINES_GREEN']} | "
+        md.append(f"| `{r['id']}` | {r['description']} | `{str(r['UNIVERSAL_GREEN']).lower()}` | {r['LINES_GREEN']} / {r['RESOLVED']} | "
                   f"`{root}` | {why} | {'✅' if r['passed'] else '❌'} |")
     md += ["", "O ensaio usa fatos triviais (`AlvoRH := 2 + 2 = 4`, …) no lugar das conjecturas: mostra que a "
            "máquina acende quando há provas válidas e bloqueia `sorry`, sombreamento de nomes, hipóteses, "

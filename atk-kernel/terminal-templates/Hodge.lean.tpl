@@ -1,4 +1,5 @@
 import ATK.FinalRoot
+import ATK.Terminal.HodgeModelo
 
 /-!
 # Portão terminal de Hodge — MODELO (não compilado; vira `ATK/Terminal/Hodge.lean`)
@@ -13,9 +14,7 @@ A composição ponte + produtor → enunciado já está certificada (`ATK.Condit
 
 namespace ATK.Terminal.Hodge
 
-open ATK.Conditional.Hodge
-
-noncomputable def modeloGenuino : HodgeModel.{0, 0} := LIGACAO_L3
+open ATK.Conditional.Hodge ATK.Terminal.HodgeModelo
 
 theorem ponte : KnownCases modeloGenuino := PROVA_DA_PONTE_B5
 

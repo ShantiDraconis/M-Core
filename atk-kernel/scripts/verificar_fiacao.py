@@ -18,7 +18,11 @@ import sys
 import tempfile
 
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
-ORDER = ["RH", "Beal", "NS", "PNP", "Hodge", "BSD", "YM", "VerdeFiel", "ClosedMathGate"]
+LINHAS = ["RH", "Beal", "NS", "PNP", "Hodge", "BSD", "YM"]
+MODELOS = ["NSModelo", "PNPModelo", "HodgeModelo", "BSDModelo", "YMModelo"]
+ORDER = MODELOS + LINHAS + [k + "Refutacao" for k in LINHAS] + ["VerdeFiel", "ClosedMathGate"]
+PROVA = set(MODELOS + LINHAS)                   # rota da prova (verde)
+REFUTACAO = set(MODELOS + [k + "Refutacao" for k in LINHAS])   # rota da refutação (resolução)
 PH = re.compile(r"\b(PROVA_[A-Z0-9_]+|LIGACAO_[A-Z0-9_]+)\b")
 
 
@@ -55,8 +59,11 @@ def run(root, timeout=900):
             rows.append({"template": name, "holes": holes, "compiled": p.returncode == 0 and not errors,
                          "extra_axioms": extra, "ok": ok, "errors": errors})
         n_ok = sum(r["ok"] for r in rows)
+        prova = [m for m in missing if m.split(":")[0] in PROVA]
+        refut = [m for m in missing if m.split(":")[0] in REFUTACAO]
         return {"ran": True, "ok": n_ok == len(rows), "templates_ok": f"{n_ok}/{len(rows)}",
-                "missing_terms": missing, "n_missing": len(missing), "rows": rows}
+                "missing_terms": prova, "n_missing": len(prova),
+                "missing_refutation": refut, "n_missing_refutation": len(refut), "rows": rows}
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
@@ -65,12 +72,13 @@ def markdown(res):
     if not res.get("ran"):
         return [f"Fiação dos portões: não verificada ({res.get('reason')})."]
     md = [f"### Fiação dos portões terminais — {res['templates_ok']} modelos compilam; "
-          f"faltam exatamente **{res['n_missing']}** termos",
+          f"rota da prova: faltam exatamente **{res['n_missing']}** termos; rota da refutação: "
+          f"{res.get('n_missing_refutation', '?')} termos",
           "",
           "| Modelo | Peças ausentes | Compila com as peças = `sorry` | Axiomas extras |",
           "|---|---|---|---|"]
     for r in res["rows"]:
-        md.append(f"| `{r['template']}` | " + (", ".join(f"`{h}`" for h in r["holes"]) or "nenhuma (só depende dos outros portões)")
+        md.append(f"| `{r['template']}` | " + (", ".join(f"`{h}`" for h in r["holes"]) or ("nenhuma (ligação construída)" if r["template"].endswith("Modelo") else "nenhuma (só depende dos outros portões)"))
                   + f" | {'✅' if r['compiled'] else '❌ ' + '; '.join(r['errors'])} | "
                   + (", ".join(r["extra_axioms"]) or "nenhum") + " |")
     md += ["", "Com as peças trocadas por `sorry`, a única fonte de axioma fora do padrão é `sorryAx`: "

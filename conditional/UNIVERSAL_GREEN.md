@@ -5,8 +5,8 @@ conjectura. O que ela faz é tornar **exato** e **verificável por máquina** o 
 que `UNIVERSAL_GREEN` e `FINAL_ROOT` só mudem quando a matemática existir.
 
 Estado calculado hoje: `UNIVERSAL_GREEN = false` · `FINAL_ROOT = null` · linhas verdes **0/7** ·
-pontes no kernel **1/8** · produtores abertos **8/8** · ligações abertas **5/5** · fiação **9/9**
-(faltam **19** termos) · ensaio do portão **10/10**.
+pontes no kernel **1/8** · produtores abertos **8/8** · ligações abertas **5/5** · fiação **21/21**
+(rota da prova: faltam **18** termos) · ensaio do portão **12/12** · resolvidas **0/7**.
 
 ## As duas metas e o plano T1–T9 — `scripts/plano.py`
 
@@ -67,6 +67,26 @@ fusão campo a campo do JSON, sem conflito de conteúdo): `CongruentBijection`, 
 * `ObrigacoesMinimas.closedMath_minimo` dispensa a ponte B2 (Beal entra pela forma residual de
   descida), o mesmo que `FinalRoot.verde_fiel_iff` mostra para a parte fiel.
 * `NecessidadeBD`: a direção RH ⇒ `D_N → 0` reduzida a duas entradas analíticas nomeadas.
+
+## Resolução: prova **ou** refutação
+
+O Clay aceita como solução tanto a prova quanto a refutação (para Navier–Stokes, `¬(A)` implica o
+enunciado (C), colapso com `f = 0`); o mesmo vale para RH, P vs NP, Hodge, BSD e para Beal. O
+auditor agora reconhece as duas rotas:
+
+* cada linha tem um portão de **refutação** `ATK/Terminal/<Linha>Refutacao.lean ::
+  theorem refutacao : ¬ <enunciado>`, com as mesmas exigências (sem hipóteses, axiomas padrão,
+  tipo elaborado = negação do enunciado oficial);
+* estado por linha: **PROVADA**, **REFUTADA**, **ABERTA** ou **INCONSISTENTE** (prova e refutação
+  certificadas ao mesmo tempo — só possível com base inconsistente; zera o verde e a raiz);
+* `UNIVERSAL_GREEN` continua sendo as 7 linhas PROVADAS; o novo contador **RESOLVIDAS** soma
+  provadas e refutadas.
+
+As ligações viraram módulos próprios (`terminal-templates/<Linha>Modelo.lean.tpl`), usados pelos dois
+portões, de modo que prova e refutação falam do mesmo objeto. Fiação: **21/21 modelos de portão
+compilam**; rota da prova: faltam **18** termos; rota da refutação: **12** (7 refutações + 5 termos de
+ligação). Ensaio do portão: **12/12** (inclui "linha refutada conta como resolvida, não como verde" e
+"refutação por axioma próprio é rejeitada").
 
 ## A árvore
 

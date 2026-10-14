@@ -61,3 +61,26 @@ Falta, para a instância `ComplexityModel` (e então B4/O4 sobre o objeto real):
 
 **Estado calculado: UNIVERSAL_GREEN = false, linhas verdes 0/7, CLOSED_MATH = false.** As
 ligações fixam os objetos; não resolvem nenhum problema.
+
+## Revisão técnica da L1 contra o texto oficial (14/10/2026)
+
+Conferência de `ATK/LigacaoNS.lean` com Fefferman, *Existence and smoothness of the Navier–Stokes
+equation* (Clay, 2000), caso (A):
+
+| texto oficial | no kernel | parecer |
+|---|---|---|
+| `ν > 0`, `n = 3`, `f ≡ 0` | `Admissivel`: `0 < ν`; `E3 = EuclideanSpace ℝ (Fin 3)`; força ausente | fiel |
+| (4) `\|∂^α u°(x)\| ≤ C_{αK}(1+\|x\|)^{−K}` para todo `α, K` | `u°` é uma `SchwartzMap E3 E3` | fiel (é a definição da classe de Schwartz; implica `u°` suave) |
+| `div u° = 0` | `∀ x, div u₀ x = 0` com `div` por `fderiv` | fiel |
+| (1) `∂ₜu + (u·∇)u = νΔu − ∇p` para `t ≥ 0` | `NSEq` para `t > 0`; `conv`, `lap`, `grad` coordenada a coordenada | fiel: em `t = 0` a derivada bilateral não existe para funções só definidas em `t ≥ 0`; a forma unilateral segue por continuidade de (6) |
+| (2) `div u = 0` para `t ≥ 0` | `∀ x, ∀ t ≥ 0, div (fatia U t) x = 0` | fiel |
+| (3) `u(x, 0) = u°(x)` | `∀ x, U (x, 0) = u₀ x` | fiel |
+| (6) `p, u ∈ C^∞(ℝ³ × [0, ∞))` | `ContDiffOn ℝ ∞` em `univ ×ˢ Ici 0` | fiel (suavidade até a fronteira `t = 0`) |
+| (7) `∫\|u(x,t)\|² dx < C` para todo `t ≥ 0` | `∃ C, ∀ t ≥ 0, Integrable ∧ ∫ ≤ C` | fiel (`< C` e `≤ C` são equivalentes trocando `C`; a integrabilidade é implícita no texto) |
+| quantificadores de (A) | `clayA_iff`: `∀ ν > 0, ∀ u° ∈ 𝓢, div u° = 0 → ∃ U P, SolucaoGlobal` | fiel |
+
+Observações: (i) `SmoothOn` e `enstrophy` não fazem parte do enunciado (A); servem à ponte B3 e
+à obrigação O3, e quem formalizar B3 terá de prová-la sobre estas definições; (ii) o Clay também
+aceita como solução a refutação: `¬ ClayStatementA modeloNS` implica o enunciado (C) (colapso,
+tomando `f = 0`), e por isso existe o portão `NSRefutacao`. **Parecer: a L1 é fiel ao caso (A).**
+A mudança de `CONSTRUIDA_NO_KERNEL` para `CLOSED` fica para a revisão humana do titular.

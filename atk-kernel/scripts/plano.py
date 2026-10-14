@@ -79,7 +79,8 @@ def compute(root, report):
     put("T7", "PARCIAL" if ug else "OPEN",
         f"2/7 linhas com enunciado oficial (RH, Beal); ligações abertas {links}")
     put("T8", "GREEN" if ug.get("UNIVERSAL_GREEN") else "OPEN",
-        f"linhas verdes {ug.get('LINES_GREEN', '?')}; termos que faltam {fia.get('n_missing', '?')}")
+        f"linhas verdes {ug.get('LINES_GREEN', '?')}; resolvidas (provadas + refutadas) {ug.get('RESOLVED', '?')}; "
+        f"termos que faltam: prova {fia.get('n_missing', '?')}, refutação {fia.get('n_missing_refutation', '?')}")
     consistent = bool(ug) and ug.get("UNIVERSAL_GREEN") == (ug.get("LINES_GREEN") == "7/7")
     gate_ok = bool(ens.get("ok")) and consistent
     put("T9", "GREEN" if gate_ok else "OPEN",

@@ -234,8 +234,10 @@ if os.environ.get("GITHUB_ACTIONS"):
                     f"ligações abertas {u['LINKINGS_OPEN']} · verde fiel {str(u['UNIVERSAL_GREEN_FIEL']).lower()}"))
         fia, ens = report.get("fiacao") or {}, report.get("ensaio") or {}
         if fia.get("ran"):
-            print(f"::notice title=FIAÇÃO {fia['templates_ok']} · faltam {fia['n_missing']} termos::"
-                  + esc(", ".join(fia["missing_terms"])))
+            print(f"::notice title=FIAÇÃO {fia['templates_ok']} · prova: faltam {fia['n_missing']} termos · "
+                  f"refutação: {fia.get('n_missing_refutation', '?')}::"
+                  + esc("prova: " + ", ".join(fia["missing_terms"])
+                        + "\nrefutação: " + ", ".join(fia.get("missing_refutation", []))))
         pl = report.get("plano")
         if pl:
             cnt = " · ".join(f"{k} {v}" for k, v in sorted(pl["contagem"].items()))

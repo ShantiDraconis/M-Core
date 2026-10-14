@@ -1,4 +1,5 @@
 import ATK.FinalRoot
+import ATK.Terminal.YMModelo
 
 /-!
 # Portão terminal de YM — MODELO (não compilado; vira `ATK/Terminal/YM.lean`)
@@ -13,9 +14,7 @@ A composição ponte + produtor → enunciado já está certificada (`ATK.Condit
 
 namespace ATK.Terminal.YM
 
-open ATK.Conditional.YangMills
-
-noncomputable def modeloGenuino : YMModel.{0, 0, 0} := LIGACAO_L5
+open ATK.Conditional.YangMills ATK.Terminal.YMModelo
 
 theorem ponte : OSReconstruction modeloGenuino := PROVA_DA_PONTE_B7
 

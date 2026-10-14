@@ -1,5 +1,5 @@
 import ATK.FinalRoot
-import ATK.LigacaoNS
+import ATK.Terminal.NSModelo
 
 /-!
 # Portão terminal de NS — MODELO (não compilado; vira `ATK/Terminal/NS.lean`)
@@ -16,9 +16,7 @@ A composição ponte + produtor → enunciado já está certificada (`ATK.Condit
 
 namespace ATK.Terminal.NS
 
-open ATK.Conditional.NavierStokes
-
-noncomputable def modeloGenuino : NSModel.{0} := ATK.LigacaoNS.modeloNS
+open ATK.Conditional.NavierStokes ATK.Terminal.NSModelo
 
 theorem ponte : EnstrophyBlowupCriterion modeloGenuino := PROVA_DA_PONTE_B3
 

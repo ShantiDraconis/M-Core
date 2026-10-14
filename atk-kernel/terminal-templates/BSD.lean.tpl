@@ -1,4 +1,5 @@
 import ATK.FinalRoot
+import ATK.Terminal.BSDModelo
 
 /-!
 # Portão terminal de BSD — MODELO (não compilado; vira `ATK/Terminal/BSD.lean`)
@@ -11,9 +12,7 @@ import ATK.FinalRoot
 
 namespace ATK.Terminal.BSD
 
-open ATK.Conditional.BSD
-
-noncomputable def modeloGenuino : BSDModel.{0} := LIGACAO_L4
+open ATK.Conditional.BSD ATK.Terminal.BSDModelo
 
 theorem ponte : GrossZagierKolyvagin modeloGenuino := PROVA_DA_PONTE_B6
 

@@ -17,12 +17,12 @@ namespace ATK.ClosedMathGate
 
 /-- Os modelos genuínos das cinco linhas paramétricas (ligações L1–L5). -/
 noncomputable def modelos : ATK.ClosedMath.Models where
-  ns := ATK.Terminal.NS.modeloGenuino
-  cx := ATK.Terminal.PNP.modeloGenuino
-  sat := ATK.Terminal.PNP.sat
-  hodge := ATK.Terminal.Hodge.modeloGenuino
-  bsd := ATK.Terminal.BSD.modeloGenuino
-  ym := ATK.Terminal.YM.modeloGenuino
+  ns := ATK.Terminal.NSModelo.modeloGenuino
+  cx := ATK.Terminal.PNPModelo.modeloGenuino
+  sat := ATK.Terminal.PNPModelo.sat
+  hodge := ATK.Terminal.HodgeModelo.modeloGenuino
+  bsd := ATK.Terminal.BSDModelo.modeloGenuino
+  ym := ATK.Terminal.YMModelo.modeloGenuino
 
 theorem closed_math : ATK.FinalRoot.Raiz modelos :=
   ⟨ATK.Terminal.RH.terminal, ATK.Terminal.Beal.terminal, ATK.Terminal.NS.terminal,

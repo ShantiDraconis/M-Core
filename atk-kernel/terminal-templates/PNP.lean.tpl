@@ -1,4 +1,5 @@
 import ATK.FinalRoot
+import ATK.Terminal.PNPModelo
 
 /-!
 # Portão terminal de P ≠ NP — MODELO (não compilado; vira `ATK/Terminal/PNP.lean`)
@@ -12,11 +13,7 @@ import ATK.FinalRoot
 
 namespace ATK.Terminal.PNP
 
-open ATK.Conditional.PvsNP
-
-noncomputable def modeloGenuino : ComplexityModel.{0} := LIGACAO_L2
-
-noncomputable def sat : modeloGenuino.Lang := LIGACAO_L2_SAT
+open ATK.Conditional.PvsNP ATK.Terminal.PNPModelo
 
 theorem ponte : CookLevin modeloGenuino sat := PROVA_DA_PONTE_B4
 
