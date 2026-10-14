@@ -51,3 +51,4 @@ import ATK.ModelosSete
 import ATK.Triadico
 import ATK.FinalRoot
 import ATK.CongruentBijection
+import ATK.BridgeReduction
