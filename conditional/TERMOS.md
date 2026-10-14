@@ -120,7 +120,7 @@ Enunciado oficial no portão: ATK.Conditional.Beal.BealConjecture. Ligação: ne
 
 ## NS — Navier–Stokes 3D (Clay, caso A)
 
-Enunciado oficial no portão: ClayStatementA modeloGenuino ⟺ (A) do Clay (ATK.LigacaoNS.clayA_iff). Ligação: L1 construída: ATK.LigacaoNS.modeloNS (revisão humana pendente para CLOSED). Mathlib: sem teoria de soluções de NS; L1 construída sobre Schwartz, fderiv e Lebesgue.
+Enunciado oficial no portão: ClayStatementA modeloGenuino ⟺ (A) do Clay (ATK.LigacaoNS.clayA_iff). Ligação: L1 FECHADA: ATK.LigacaoNS.modeloNS (revisão humana do titular em 14/10/2026; fidelidade ATK.LigacaoNS.clayA_iff). Mathlib: sem teoria de soluções de NS; L1 construída sobre Schwartz, fderiv e Lebesgue.
 
 | Componente (domínio da linha) | Conteúdo |
 |---|---|
@@ -149,7 +149,7 @@ Enunciado oficial no portão: ClayStatementA modeloGenuino ⟺ (A) do Clay (ATK.
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.NavierStokes.ns_conditional`; `ATK.LigacaoNS.clayA_iff` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.NS.fecha`; `ATK.Termos.NS.colapso_de_refutacao` |
-| 19 · Dependências | `ATK/Termos.lean`; L1 construída: ATK.LigacaoNS.modeloNS (revisão humana pendente para CLOSED) |
+| 19 · Dependências | `ATK/Termos.lean`; L1 FECHADA: ATK.LigacaoNS.modeloNS (revisão humana do titular em 14/10/2026; fidelidade ATK.LigacaoNS.clayA_iff) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.NS.terminal` |
 | 23 · Certificado Lean | teorema publicado; falta formalizar · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/NS.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -164,7 +164,7 @@ Enunciado oficial no portão: ClayStatementA modeloGenuino ⟺ (A) do Clay (ATK.
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.NavierStokes.ns_conditional`; `ATK.LigacaoNS.clayA_iff` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.NS.fecha`; `ATK.Termos.NS.fecha_oficial` |
-| 19 · Dependências | `ATK/Termos.lean`; L1 construída: ATK.LigacaoNS.modeloNS (revisão humana pendente para CLOSED) |
+| 19 · Dependências | `ATK/Termos.lean`; L1 FECHADA: ATK.LigacaoNS.modeloNS (revisão humana do titular em 14/10/2026; fidelidade ATK.LigacaoNS.clayA_iff) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.NS.terminal` |
 | 23 · Certificado Lean | ABERTA — problema em aberto · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/NS.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -179,7 +179,7 @@ Enunciado oficial no portão: ClayStatementA modeloGenuino ⟺ (A) do Clay (ATK.
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.NavierStokes.ns_conditional`; `ATK.LigacaoNS.clayA_iff` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.NS.refutacao_iff`; `ATK.Termos.NS.colapso_de_refutacao`; `ATK.Termos.NS.refutacao_nega_produtor` |
-| 19 · Dependências | `ATK/Termos.lean`; L1 construída: ATK.LigacaoNS.modeloNS (revisão humana pendente para CLOSED) |
+| 19 · Dependências | `ATK/Termos.lean`; L1 FECHADA: ATK.LigacaoNS.modeloNS (revisão humana do titular em 14/10/2026; fidelidade ATK.LigacaoNS.clayA_iff) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.NSRefutacao.refutacao` |
 | 23 · Certificado Lean | ABERTA — nenhum contraexemplo conhecido · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/NSRefutacao.lean.tpl` · `atk-kernel/scripts/termos.json` |

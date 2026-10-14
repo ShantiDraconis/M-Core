@@ -64,7 +64,7 @@
   "NS": {
    "problema": "Navier–Stokes 3D (Clay, caso A)",
    "enunciado_oficial": "ClayStatementA modeloGenuino ⟺ (A) do Clay (ATK.LigacaoNS.clayA_iff)",
-   "ligacao": "L1 construída: ATK.LigacaoNS.modeloNS (revisão humana pendente para CLOSED)",
+   "ligacao": "L1 FECHADA: ATK.LigacaoNS.modeloNS (revisão humana do titular em 14/10/2026; fidelidade ATK.LigacaoNS.clayA_iff)",
    "dominio": "ℝ³ × [0, ∞); velocidade u, pressão p; dado de Schwartz de divergência nula; ν > 0",
    "classes": "ℝ",
    "parametros": "modelo M : NSModel (L1)",

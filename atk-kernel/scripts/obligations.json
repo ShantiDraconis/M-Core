@@ -148,9 +148,17 @@
       "problem": "Navier–Stokes",
       "kind": "LIGAÇÃO",
       "lean": "ATK.LigacaoNS.modeloNS",
-      "status": "CONSTRUIDA_NO_KERNEL",
+      "status": "CLOSED",
       "ref": "soluções suaves/fracas de NS em ℝ³ e enstrofia, a partir de objetos da Mathlib",
-      "progress": "Modelo genuíno construído (ATK/LigacaoNS.lean, 15 teoremas): dados = ν > 0 e u₀ na classe de Schwartz 𝓢(ℝ³,ℝ³) com div u₀ = 0 (condição (4) do Clay); solução global = p, u ∈ C^∞(ℝ³×[0,∞)) com ∂ₜu + (u·∇)u = νΔu − ∇p, div u = 0, u(·,0) = u₀ e energia ∫|u|² limitada (integrável); clayA_iff: ClayStatementA modeloNS ⟺ enunciado (A) do Clay. Testes: dado nulo admissível com solução global (zero_global); x ↦ x não admissível (div = 3); u = t·v, p = −⟨v,x⟩ resolve (1)–(2) mas viola a energia (fluxo_sem_energia); dado constante v ≠ 0 não tem solução global (global_nao_trivial, contraste com ns_toy_model_vacuous); clay_ns_condicional: B3 + O3 no modelo genuíno ⇒ Clay (A). Falta só a revisão humana das definições para marcar CLOSED (o auditor conta ligação fechada só com status CLOSED)."
+      "progress": "Modelo genuíno construído (ATK/LigacaoNS.lean, 15 teoremas): dados = ν > 0 e u₀ na classe de Schwartz 𝓢(ℝ³,ℝ³) com div u₀ = 0 (condição (4) do Clay); solução global = p, u ∈ C^∞(ℝ³×[0,∞)) com ∂ₜu + (u·∇)u = νΔu − ∇p, div u = 0, u(·,0) = u₀ e energia ∫|u|² limitada (integrável); clayA_iff: ClayStatementA modeloNS ⟺ enunciado (A) do Clay. Testes: dado nulo admissível com solução global (zero_global); x ↦ x não admissível (div = 3); u = t·v, p = −⟨v,x⟩ resolve (1)–(2) mas viola a energia (fluxo_sem_energia); dado constante v ≠ 0 não tem solução global (global_nao_trivial, contraste com ns_toy_model_vacuous); clay_ns_condicional: B3 + O3 no modelo genuíno ⇒ Clay (A). Falta só a revisão humana das definições para marcar CLOSED (o auditor conta ligação fechada só com status CLOSED).",
+      "fidelity_theorem": "ATK.LigacaoNS.clayA_iff",
+      "template": "terminal-templates/NSModelo.lean.tpl",
+      "revisao_humana": {
+        "por": "Tiago Paschoalatto Fagliari (titular)",
+        "data": "2026-10-14",
+        "base": "parecer técnico em LIGACOES.md (revisão da L1 contra o texto oficial do Clay, caso A: dados de Schwartz, suavidade até t = 0, equação para t > 0, divergência nula, condição inicial, energia limitada)",
+        "registro": "aprovação explícita do titular na sessão de 14/10/2026"
+      }
     },
     {
       "id": "L2",
@@ -159,7 +167,9 @@
       "lean": "ATK.ModeloPNP.modeloPNP",
       "status": "CONSTRUIDA_NO_KERNEL",
       "ref": "classe NP, SAT e reduções de Karp sobre máquinas de Turing (a Mathlib tem TM2ComputableInPolyTime)",
-      "progress": "Parte 1 (ATK/LigacaoPNP.lean): P e NP sobre Turing.FinTM2 com TM2ComputableInPolyTime; PneNP : classeP ≠ classeNP. Parte 2 (ATK/ComposicaoTM2.lean, 26 teoremas; ATK/ModeloPNP.lean, 22): composição de FinTM2 em tempo polinomial (comp: TM2ComputableInPolyTime ea eb f → TM2ComputableInPolyTime eb ec g → TM2ComputableInPolyTime ea ec (g ∘ f)), com cota da saída (saida_le); decodificador de pares em tempo linear (decComputavel, dec_par); P ⊆ NP (P_sub_NP); reduções de Karp (Red, red_refl, red_trans) e P fechada por elas (P_fechada_red); SAT = codificações binárias de fórmulas CNF satisfatíveis; modeloPNP : ComplexityModel com fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP (por definição) e fielL2. Falta só a revisão humana das definições (codificação de SAT, reduções) para marcar CLOSED. A ponte B4 (Cook–Levin neste modelo) e o produtor O4 (SAT ∉ P) continuam abertos."
+      "progress": "Parte 1 (ATK/LigacaoPNP.lean): P e NP sobre Turing.FinTM2 com TM2ComputableInPolyTime; PneNP : classeP ≠ classeNP. Parte 2 (ATK/ComposicaoTM2.lean, 26 teoremas; ATK/ModeloPNP.lean, 22): composição de FinTM2 em tempo polinomial (comp: TM2ComputableInPolyTime ea eb f → TM2ComputableInPolyTime eb ec g → TM2ComputableInPolyTime ea ec (g ∘ f)), com cota da saída (saida_le); decodificador de pares em tempo linear (decComputavel, dec_par); P ⊆ NP (P_sub_NP); reduções de Karp (Red, red_refl, red_trans) e P fechada por elas (P_fechada_red); SAT = codificações binárias de fórmulas CNF satisfatíveis; modeloPNP : ComplexityModel com fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP (por definição) e fielL2. Falta só a revisão humana das definições (codificação de SAT, reduções) para marcar CLOSED. A ponte B4 (Cook–Levin neste modelo) e o produtor O4 (SAT ∉ P) continuam abertos.",
+      "fidelity_theorem": "ATK.ModeloPNP.fiel",
+      "template": "terminal-templates/PNPModelo.lean.tpl"
     },
     {
       "id": "L3",

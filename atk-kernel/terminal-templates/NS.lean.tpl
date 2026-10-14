@@ -4,11 +4,11 @@ import ATK.Terminal.NSModelo
 /-!
 # Portão terminal de NS — MODELO (não compilado; vira `ATK/Terminal/NS.lean`)
 
-Faltam três coisas, nesta ordem:
+Faltam duas coisas (a ligação L1 já está fechada):
 1. **Ligação L1** — preenchida: `modeloGenuino := ATK.LigacaoNS.modeloNS`, construído com os
    objetos reais (dados de Schwartz em ℝ³, soluções `C^∞` de energia limitada, enstrofia);
-   `ATK.LigacaoNS.clayA_iff`: `ClayStatementA modeloNS` ⟺ enunciado (A) do Clay. Falta só a
-   revisão humana para o status `CLOSED` em `obligations.json`.
+   `ATK.LigacaoNS.clayA_iff`: `ClayStatementA modeloNS` ⟺ enunciado (A) do Clay. **Fechada**
+   (`CLOSED`) pela revisão humana do titular em 14/10/2026.
 2. **Ponte B3**: o teorema publicado, formalizado sobre `modeloGenuino`.
 3. **Produtor O3**: a matemática nova.
 A composição ponte + produtor → enunciado já está certificada (`ATK.Conditional.NavierStokes`).

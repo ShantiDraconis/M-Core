@@ -7,7 +7,7 @@ problema do Clay depois da **ligação**: o modelo construído com os objetos re
 
 | Ligação | Estado | Arquivo | O que foi construído | O que falta |
 |---|---|---|---|---|
-| **L1** Navier–Stokes | `CONSTRUIDA_NO_KERNEL` | `ATK/LigacaoNS.lean` (15) | `modeloNS`: dados = `ν > 0` e `u₀ ∈ 𝓢(ℝ³, ℝ³)` com `div u₀ = 0`; solução global = `p, u ∈ C^∞(ℝ³ × [0, ∞))` com `∂ₜu + (u·∇)u = νΔu − ∇p`, `div u = 0`, `u(·, 0) = u₀`, energia `∫|u|²` limitada | revisão humana das definições → status `CLOSED` |
+| **L1** Navier–Stokes | **`CLOSED`** (revisão humana, 14/10/2026) | `ATK/LigacaoNS.lean` (15) | `modeloNS`: dados = `ν > 0` e `u₀ ∈ 𝓢(ℝ³, ℝ³)` com `div u₀ = 0`; solução global = `p, u ∈ C^∞(ℝ³ × [0, ∞))` com `∂ₜu + (u·∇)u = νΔu − ∇p`, `div u = 0`, `u(·, 0) = u₀`, energia `∫|u|²` limitada | — (fechada) |
 | **L2** P vs NP | `CONSTRUIDA_NO_KERNEL` | `ATK/LigacaoPNP.lean` (13), `ATK/ComposicaoTM2.lean` (26), `ATK/ModeloPNP.lean` (22) | `modeloPNP`: linguagens binárias, `classeP`/`classeNP` sobre `Turing.FinTM2`, reduções de Karp; `P ⊆ NP` e P fechada por reduções **provados** (composição de máquinas em tempo polinomial); `SAT` = CNF satisfatíveis em binário; `fiel : PneNP modeloPNP ↔ P ≠ NP` | revisão humana das definições (codificação de SAT, reduções) → status `CLOSED` |
 | **L3** Hodge | `NAO_EXISTE_NA_MATHLIB` | — | — | cohomologia de de Rham/Betti de variedades projetivas complexas, decomposição de Hodge, classes de ciclos |
 | **L4** BSD | `NAO_EXISTE_NA_MATHLIB` | — | — | `L(E, s)` com continuação analítica (modularidade), Ш, regulador, períodos, números de Tamagawa |
@@ -82,8 +82,15 @@ enunciado. Ver [`TERMOS.md`](TERMOS.md), termos T21 e T22.
 * `terminal-templates/PNPModelo.lean.tpl`: as peças `LIGACAO_L2` e `LIGACAO_L2_SAT` estão
   preenchidas com `ATK.ModeloPNP.modeloPNP` e `ATK.ModeloPNP.SAT`; `terminal_gates.json` ganhou
   `linking_term` e `statement_equivalence` (`ATK.ModeloPNP.fiel`) para P vs NP.
-* O auditor só conta uma ligação como fechada com status `CLOSED`. L1 e L2 ficam em
-  `CONSTRUIDA_NO_KERNEL` até a revisão humana; por isso o contador de ligações continua 5/5.
+* **Regra de fechamento de uma ligação** (`check_axioms.py`, `ligacao_fechada`): o auditor só aceita
+  `CLOSED` se houver (1) revisão humana registrada em `obligations.json` (`revisao_humana`: quem,
+  quando e com que base), (2) o teorema de fidelidade certificado (`fidelity_theorem`) e (3) o modelo
+  de portão preenchido com o termo da ligação, sem marcador restante. Escrever `CLOSED` sem isso vira
+  `CLAIM_WITHOUT_CERTIFIED_PROOF`.
+* **L1 fechada em 14/10/2026** por aprovação do titular, com base no parecer técnico abaixo;
+  `fidelity_theorem = ATK.LigacaoNS.clayA_iff`, modelo `NSModelo` preenchido com `modeloNS`.
+  Contador de ligações abertas: **4/5**. L2 fica em `CONSTRUIDA_NO_KERNEL` até a sua própria
+  revisão (codificação de SAT e definição de redução).
 
 **Estado calculado: UNIVERSAL_GREEN = false, linhas verdes 0/7, CLOSED_MATH = false.** As
 ligações fixam os objetos; não resolvem nenhum problema.
