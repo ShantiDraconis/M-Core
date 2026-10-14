@@ -39,3 +39,6 @@ import ATK.YMToy
 import ATK.ZetaRegiao
 import ATK.ForaDaLinha
 import ATK.Fichas
+import ATK.TeoremaGlobal
+import ATK.FreyBealResidual
+import ATK.FatoresQuarticos

@@ -588,3 +588,14 @@ ATK.Fichas.fichaYM
 ATK.Fichas.fichaPNP
 ATK.Fichas.fichaBSD
 ATK.Fichas.fichaNS
+ATK.TeoremaGlobal.integracao
+ATK.TeoremaGlobal.integracao_sem_conteudo
+ATK.TeoremaGlobal.teorema_global
+ATK.TeoremaGlobal.global_oficial
+ATK.TeoremaGlobal.global_oficial_iff
+ATK.TeoremaGlobal.rh_obrigacao_mais_fraca
+ATK.TeoremaGlobal.teorema_global_de_antigo
+ATK.FreyBeal.frey_c₄
+ATK.FreyBeal.contraexemplo_da_frey
+ATK.FatoresQuarticos.fatoracao_quarta
+ATK.FatoresQuarticos.divisor_comum_fatores
