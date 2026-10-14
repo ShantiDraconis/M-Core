@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "33ac3245c342223d016590bf3b222720d875761e96bd1401878056fca324cf41",
+  "sources_sha256": "e165b2128baf03e81a458686973229aa48841a45b69a3b0f68d926dca3762375",
   "files": {
     "ATK/AlgebraTerminal.lean": "ab045c0a40a165fbe781e2c2e58eee54e1b79e6164a635016bf98a4959b2823b",
     "ATK/BDDistSqPort.lean": "3d209211337b561728bb8823cf8074c2a9539c832783e57d59398ae88b0d3c3f",
@@ -48,6 +48,17 @@
     "ATK/IAlgebra.lean": "6bb09f5400b619a5d2631a23c8dd0e16ff2fc5e25d160f71529589a7932fbc98",
     "ATK/IFormas.lean": "eebd0df759a9cb30a9164971ab3a39cf0a7d0ac0b4fcfe0490cc68f3d106390f",
     "ATK/IGeometria.lean": "9f2d5eca9a7f61dd0fefb90b7794d8cc261c3e97db799fca2807bfe43aa40ab3",
+    "ATK/IMath/Algebra/Absorbing.lean": "0bd60192a7ce4a66143c0fc221c2694bf519d3658fe21ad92ecc14b248757115",
+    "ATK/IMath/Analysis/Germ.lean": "a01fe713c794341f0e47de865c7dba59aef9df073ec36871b9e735be9ccdcc3a",
+    "ATK/IMath/Arithmetic/Collapse.lean": "c633aee7cb02de718c62f660dad37317a03527a66f380292cc1cf299e0615954",
+    "ATK/IMath/Arithmetic/Division.lean": "680d21f5682b87a331117b1c5cdeec67eb3a66d6bb222eca9a589741b785aa7a",
+    "ATK/IMath/Certificates/Core.lean": "5759d822334fec814fe8efac367b557bc79b15b2b7790716746d9d02f6a8bcb5",
+    "ATK/IMath/Core/Embeddings.lean": "703242f5c2137776d4c0260a76450c238ac5c6e822db6c426393dee21835b02d",
+    "ATK/IMath/Core/Expr.lean": "50f2766839d64dd942f6e44c48635137826a103e81d08a6e58968bad5e2aca22",
+    "ATK/IMath/Core/Phi3.lean": "e375b5e5ee3985bad9e6feaa229df0284c611585c0ec683da7ddaea3833c2936",
+    "ATK/IMath/Geometry/Point.lean": "dbd72ea6a519c4c43b30219aed5bc4026741a81d8d988fda4660b524d89dd635",
+    "ATK/IMath/Refinement/Realization.lean": "4d075bbe829f0f50c1d180b3522c01b5888a9fc54cfbc862c5e5036f375282f9",
+    "ATK/IMathPonte.lean": "5bf3bc93de77ec4f3791199be6358daf4fdc7628d436920fae56a9e339b1cb13",
     "ATK/Indeterminacy.lean": "9fc0a38993d4846610033b2a38e63894b463a738633a142520561e209bd88f57",
     "ATK/IndeterminacyStates.lean": "1a4c9ee6bd9b773c76e53ba812e1c920a6ecb2c4616f0a96179f6af279bc8a8e",
     "ATK/LigacaoBSD.lean": "0a686c591736ca9719b84c1f2b9369bf044aec5dd5e964465773ca0f3477b704",
@@ -88,12 +99,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "0580918d8ccd0bd1047c73dbcf7ce5d790fa3f60a5f4ddf827bdd73f5079d334"
+    "ATK.lean": "19dc68a10f5893cef3c26e8844601e19f25dcf770a14d717ac041706f21c1fe2"
   },
-  "n_files": 87,
-  "expected_theorems": 1257,
+  "n_files": 98,
+  "expected_theorems": 1281,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "39032e5c1783a4088d73ab3d5393b60981e4ea99",
+  "commit_at_freeze": "3ebe24b44ea5c339eb201ac59cae2f7dfba05649",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
