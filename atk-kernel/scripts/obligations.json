@@ -21,7 +21,8 @@
       "kind": "PONTE",
       "lean": "FermatLastTheorem",
       "status": "PARCIAL_NO_MODELO_DO_LANE",
-      "ref": "Wiles 1995; Taylor–Wiles 1995 (formalização em andamento: ImperialCollegeLondon/FLT) — FLT(3) e FLT(4) já estão na Mathlib; no lane Beal (m-core-beal atk/beal-parity-to-t59-partition-20261001, T59_beyondThree_and_residual_close_beal) a ponte necessária cai para FLT em primos > 3"
+      "ref": "Wiles 1995; Taylor–Wiles 1995 (formalização em andamento: ImperialCollegeLondon/FLT) — FLT(3) e FLT(4) já estão na Mathlib; no lane Beal (m-core-beal atk/beal-parity-to-t59-partition-20261001, T59_beyondThree_and_residual_close_beal) a ponte necessária cai para FLT em primos > 3",
+      "progress": " Fichas.flt_iff_primos_ge_cinco: FermatLastTheorem ⟺ FLT para todo primo p ≥ 5 (FLT(3), FLT(4) da Mathlib)."
     },
     {
       "id": "B3",
@@ -70,7 +71,7 @@
       "lean": "ATK.Conditional.Riemann.UniformLogBound",
       "status": "OPEN_MATH",
       "ref": "∃K ∀N, D_N ≤ K/log(N+2) — mais forte que RH",
-      "progress": "Incondicional (RiemannConcrete, RiemannFaithful): D_N decrescente, D_0 = 1, D_1 < 1, D_N → D_∞ = inf D_N ≤ D_1 < 1, integrandos integráveis (definição fiel). O1 ⟺ inf_N D_N = 0 ⟺ dissipação total. Status inalterado: OPEN_MATH. Com B1 provada: inf_N D_N = 0 ⇒ RH sem pontes (ATK.BaezDuarteBridge.riemann_of_iInf_zero); D_N só pode estar nos estados zero/finito (RiemannStates). Geometria da faixa (ZetaSimetria, incondicional): zeros invariantes pela tensão s↦1−s, pelo espelho e pela torção s↦1−s̄; ζ(σ) < 0 em (0,1) (eixo real e o neutro 1/2 sem zeros); extremos fechados conhecidos: Re s ≥ 1 sem zeros e Re s ≤ 0 só com triviais. RH ⟺ [a,∞) livre ∀a>1/2 ⟺ (−∞,b] livre ∀b<1/2 ⟺ todo zero fixo pela torção (riemann_iff_fim/_inicio/_torcao). Equivalências, não progresso no limite a↓1/2. Região sem zeros (ZetaRetangulo): ζ(s) ≠ 0 se |s−1| < 2·Re s; nenhum zero na faixa com |Im s| < √3/2 (riemannAte_raiz: RH até essa altura). Lacuna: todas as alturas. Região sem zeros em toda altura (ZetaRegiao, via desigualdade 3–4–1 da Mathlib): todo zero não trivial s tem c(t) < Re s < 1 − c(t), c(t) = 1/(256(9+4|t|)^4(3+3|t|)) (faixa_estreitada). A região de de la Vallée Poussin (c/log|t|) é mais forte; c = 1/2 é RH."
+      "progress": "Incondicional (RiemannConcrete, RiemannFaithful): D_N decrescente, D_0 = 1, D_1 < 1, D_N → D_∞ = inf D_N ≤ D_1 < 1, integrandos integráveis (definição fiel). O1 ⟺ inf_N D_N = 0 ⟺ dissipação total. Status inalterado: OPEN_MATH. Com B1 provada: inf_N D_N = 0 ⇒ RH sem pontes (ATK.BaezDuarteBridge.riemann_of_iInf_zero); D_N só pode estar nos estados zero/finito (RiemannStates). Geometria da faixa (ZetaSimetria, incondicional): zeros invariantes pela tensão s↦1−s, pelo espelho e pela torção s↦1−s̄; ζ(σ) < 0 em (0,1) (eixo real e o neutro 1/2 sem zeros); extremos fechados conhecidos: Re s ≥ 1 sem zeros e Re s ≤ 0 só com triviais. RH ⟺ [a,∞) livre ∀a>1/2 ⟺ (−∞,b] livre ∀b<1/2 ⟺ todo zero fixo pela torção (riemann_iff_fim/_inicio/_torcao). Equivalências, não progresso no limite a↓1/2. Região sem zeros (ZetaRetangulo): ζ(s) ≠ 0 se |s−1| < 2·Re s; nenhum zero na faixa com |Im s| < √3/2 (riemannAte_raiz: RH até essa altura). Lacuna: todas as alturas. Região sem zeros em toda altura (ZetaRegiao, via desigualdade 3–4–1 da Mathlib): todo zero não trivial s tem c(t) < Re s < 1 − c(t), c(t) = 1/(256(9+4|t|)^4(3+3|t|)) (faixa_estreitada). A região de de la Vallée Poussin (c/log|t|) é mais forte; c = 1/2 é RH. Anti-produto (ForaDaLinha): RH ⟺ não há zero fora da linha; um zero fora da linha evita a reta, o eixo real, |Im| < √3/2 e as bordas c(t); vem em quarteto de 4 zeros distintos; e condensa: força D_N ≥ m(ρ)² > 0 para todo N (D_N no estado finito)."
     },
     {
       "id": "O2",

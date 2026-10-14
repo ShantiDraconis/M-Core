@@ -37,3 +37,5 @@ import ATK.Shannon
 import ATK.NSPequeno
 import ATK.YMToy
 import ATK.ZetaRegiao
+import ATK.ForaDaLinha
+import ATK.Fichas
