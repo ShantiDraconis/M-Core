@@ -82,3 +82,4 @@ import ATK.Compilador
 import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes
 import ATK.IMathPonte
+import ATK.IPortadores
