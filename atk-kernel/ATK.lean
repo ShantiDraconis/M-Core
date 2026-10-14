@@ -78,6 +78,7 @@ import ATK.NSPlancherel
 import ATK.NSLocal
 import ATK.NSMaximal
 import ATK.NSEnergia
+import ATK.NSContinua
 import ATK.LigacaoPNP
 import ATK.Termos
 import ATK.CapturaRH
