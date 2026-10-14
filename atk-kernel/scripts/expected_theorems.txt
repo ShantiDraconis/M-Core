@@ -702,7 +702,7 @@ ATK.BorderPrimes.borda_pi314T
 ATK.ObrigacoesMinimas.parametricas_de_restantes
 ATK.ObrigacoesMinimas.minimas_de_originais
 ATK.ObrigacoesMinimas.closedMath_minimo
-ATK.ObrigacoesMinimas.closedMath_of_restantes'
+ATK.ObrigacoesMinimas.closedMath_of_restantes_min
 ATK.ObrigacoesMinimas.O1_implica_minima
 ATK.ObrigacoesMinimas.rh_obrigacao_suficiente
 ATK.ObrigacoesMinimas.rh_obrigacao_iff_iInf

@@ -71,7 +71,7 @@ theorem closedMath_minimo {M : Models} (hB : PontesParametricas M) (hO : Obrigac
     ATK.Conditional.YangMills.ym_conditional hB.osterwalderSchrader hO.ym⟩
 
 /-- O teorema-mestre mínimo recupera o anterior. -/
-theorem closedMath_of_restantes' {M : Models} (hB : PontesRestantes M) (hO : OpenObligations M) :
+theorem closedMath_of_restantes_min {M : Models} (hB : PontesRestantes M) (hO : OpenObligations M) :
     SevenStatements M :=
   closedMath_minimo (parametricas_de_restantes hB) (minimas_de_originais hB.fermatPrimos hO)
 
@@ -122,7 +122,7 @@ end ATK.ObrigacoesMinimas
 #print axioms ATK.ObrigacoesMinimas.parametricas_de_restantes
 #print axioms ATK.ObrigacoesMinimas.minimas_de_originais
 #print axioms ATK.ObrigacoesMinimas.closedMath_minimo
-#print axioms ATK.ObrigacoesMinimas.closedMath_of_restantes'
+#print axioms ATK.ObrigacoesMinimas.closedMath_of_restantes_min
 #print axioms ATK.ObrigacoesMinimas.O1_implica_minima
 #print axioms ATK.ObrigacoesMinimas.rh_obrigacao_suficiente
 #print axioms ATK.ObrigacoesMinimas.rh_obrigacao_iff_iInf
