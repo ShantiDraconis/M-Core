@@ -10,7 +10,7 @@ problema do Clay depois da **ligação**: o modelo construído com os objetos re
 | **L1** Navier–Stokes | **`CLOSED`** (revisão humana, 14/10/2026) | `ATK/LigacaoNS.lean` (15) | `modeloNS`: dados = `ν > 0` e `u₀ ∈ 𝓢(ℝ³, ℝ³)` com `div u₀ = 0`; solução global = `p, u ∈ C^∞(ℝ³ × [0, ∞))` com `∂ₜu + (u·∇)u = νΔu − ∇p`, `div u = 0`, `u(·, 0) = u₀`, energia `∫|u|²` limitada | — (fechada) |
 | **L2** P vs NP | **`CLOSED`** (titular, 14/10/2026) | `ATK/LigacaoPNP.lean` (13), `ATK/ComposicaoTM2.lean` (26), `ATK/ModeloPNP.lean` (22) | `modeloPNP`: linguagens binárias, `classeP`/`classeNP` sobre `Turing.FinTM2`, reduções de Karp; `P ⊆ NP` e P fechada por reduções **provados** (composição de máquinas em tempo polinomial); `SAT` = CNF satisfatíveis em binário; `fiel : PneNP modeloPNP ↔ P ≠ NP` | — (fechada) |
 | **L3** Hodge | `NAO_EXISTE_NA_MATHLIB` | — | — | cohomologia de de Rham/Betti de variedades projetivas complexas, decomposição de Hodge, classes de ciclos |
-| **L4** BSD | `NAO_EXISTE_NA_MATHLIB` | — | — | `L(E, s)` com continuação analítica (modularidade), Ш, regulador, períodos, números de Tamagawa |
+| **L4** BSD | `PARTE_DO_POSTO_NO_KERNEL` | `ATK/LigacaoBSD.lean` (4) | `ClayBSD`: sobre `WeierstrassCurve.LSeries` da Mathlib, para toda `E/ℚ` existe `F` inteira = `L(E, s)` em `Re s > 3/2` com `ord_{s=1} F = rank E(ℚ)` (o enunciado oficial do Clay); `posto_iff`: `BSDRank modeloPosto ⟺ ClayBSD` sob modularidade e Mordell–Weil (hipóteses explícitas) | a fórmula refinada (`Ω_E`, regulador de Néron–Tate, `Ш`, Tamagawa, torção), exigida pelo portão `BSDFull` |
 | **L5** Yang–Mills | `NAO_EXISTE_NA_MATHLIB` | — | — | QFT construtiva em ℝ⁴ (axiomas de Wightman/Osterwalder–Schrader), grupo de gauge compacto |
 
 ## L1 — por que é o enunciado (A) do Clay
@@ -62,6 +62,25 @@ Parte 2, o que faltava e agora está no kernel:
 O modelo de portão `PNPModelo` está preenchido com `ATK.ModeloPNP.modeloPNP` e `ATK.ModeloPNP.SAT`
 e compila sem nenhum axioma extra. No portão de P vs NP faltam agora só a ponte B4 (Cook–Levin
 **neste** modelo) e o produtor O4 (SAT ∉ P). Fechada pelo titular em 14/10/2026.
+
+## L4 — a parte do posto (14/10/2026)
+
+A Mathlib v4.34.1 já define a função L de uma curva de Weierstrass sobre um corpo de números
+(`WeierstrassCurve.LFunction`/`LSeries`), com o fator local certo em cada primo a partir do modelo
+minimal e do tipo de redução. Com ela, o **enunciado oficial do Clay** — a expansão de `L(E, s)` em
+`s = 1` é `c (s − 1)^r + …` com `c ≠ 0` e `r = rank E(ℚ)` — fica escrito sem objeto novo
+(`ATK.LigacaoBSD.ClayBSD`). Provado: a continuação é única (`continuacao_unica`), a ordem não
+depende da escolha, e `L(E, 1) = 0 ⟺ posto > 0` (`zero_iff_posto_pos`).
+
+O modelo paramétrico usa postos em `ℕ`; a ponte entre os dois (`posto_iff`) usa a modularidade
+(existência da continuação, com ordem finita) e o teorema de Mordell–Weil (posto finito). São
+teoremas publicados que não estão na Mathlib e entram como hipóteses explícitas.
+
+O que falta para a L4 inteira é a **fórmula refinada**, que o nosso portão (`BSDFull`) exige junto
+com o posto: período real, regulador de Néron–Tate, `Ш` (cohomologia de Galois), números de
+Tamagawa e torção. Observação de fidelidade: a descrição oficial do Clay enuncia como problema a
+parte do posto; a fórmula refinada aparece como observação. Alinhar o portão de BSD ao enunciado do
+Clay (só o posto) é uma decisão do titular.
 
 **Critério de fidelidade certificado (14/10/2026).** `ATK.Termos.PNP.FielL2 M` diz que as classes
 do modelo são, a menos de uma bijeção das linguagens, `classeP` e `classeNP`;

@@ -10,7 +10,7 @@ Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/t
 - Tipos conferidos pelo kernel: **25/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
 - Fechadas: **0/25**. Preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo genuíno (falta ainda a revisão humana para `CLOSED`).
 
-Fontes do kernel: SHA-256 `972898dd0b87f2779d2527329c00d3e527c726ff65884deef0f0a5ba5c98e142`.
+Fontes do kernel: SHA-256 `adc6ece638225c6a623ae7d5fb94bcfb5dfb122a78d7517e4ab7ae98aba979ad`.
 
 ## Os 24 componentes
 
@@ -363,7 +363,7 @@ Enunciado oficial no portão: HodgeConjecture modeloGenuino. Ligação: L3 abert
 
 ## BSD — Birch e Swinnerton-Dyer
 
-Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 aberta. Mathlib: tem WeierstrassCurve; falta L(E, s) e o posto de Mordell–Weil.
+Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente. Mathlib: tem WeierstrassCurve.LFunction/LSeries (fatores locais por modelo minimal e tipo de redução), alturas e cohomologia contínua; faltam modularidade e Mordell–Weil.
 
 | Componente (domínio da linha) | Conteúdo |
 |---|---|
@@ -392,7 +392,7 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 aberta. Mathl
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.BSD.bsd_rank_conditional`; `ATK.Conditional.BSD.bsd_conditional` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.BSD.fecha`; `ATK.Termos.BSD.decomposicao` |
-| 19 · Dependências | `ATK/Termos.lean`; L4 aberta |
+| 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.BSD.terminal` |
 | 23 · Certificado Lean | teorema publicado; falta formalizar · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/BSD.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -407,7 +407,7 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 aberta. Mathl
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.BSD.bsd_rank_conditional`; `ATK.Conditional.BSD.bsd_conditional` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.BSD.fecha`; `ATK.Termos.BSD.decomposicao` |
-| 19 · Dependências | `ATK/Termos.lean`; L4 aberta |
+| 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.BSD.terminal` |
 | 23 · Certificado Lean | ABERTA — problema em aberto · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/BSD.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -422,7 +422,7 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 aberta. Mathl
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.BSD.bsd_rank_conditional`; `ATK.Conditional.BSD.bsd_conditional` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.BSD.fecha`; `ATK.Termos.BSD.decomposicao` |
-| 19 · Dependências | `ATK/Termos.lean`; L4 aberta |
+| 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.BSD.terminal` |
 | 23 · Certificado Lean | ABERTA — problema em aberto · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/BSD.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -437,7 +437,7 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 aberta. Mathl
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.BSD.bsd_rank_conditional`; `ATK.Conditional.BSD.bsd_conditional` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.BSD.refutacao_iff`; `ATK.Termos.BSD.refutacao_posto` |
-| 19 · Dependências | `ATK/Termos.lean`; L4 aberta |
+| 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.BSDRefutacao.refutacao` |
 | 23 · Certificado Lean | ABERTA — nenhum contraexemplo conhecido · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/BSDRefutacao.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -451,10 +451,10 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 aberta. Mathl
 | 3 · Tipo matemático | dado: estrutura BSDModel.{0} |
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.BSD.bsd_rank_conditional`; `ATK.Conditional.BSD.bsd_conditional` |
 | 17 · Hipóteses | o modelo tem de satisfazer o critério de fidelidade da ligação |
-| 18 · Lemas (certificados, do termo) | — (dado; critério na linha) |
-| 19 · Dependências | `ATK/Termos.lean`; L4 aberta |
+| 18 · Lemas (certificados, do termo) | `ATK.LigacaoBSD.continuacao_unica`; `ATK.LigacaoBSD.zero_iff_posto_pos`; `ATK.LigacaoBSD.posto_iff` |
+| 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.BSDModelo.modeloGenuino` |
-| 23 · Certificado Lean | ABERTA — Mathlib sem L(E, s) e sem posto de Mordell–Weil · tipo conferido pelo kernel |
+| 23 · Certificado Lean | PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff); falta a fórmula refinada (Ω_E, regulador, Ш, Tamagawa, torção) · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/BSDModelo.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
 ## YM — Yang–Mills e gap de massa

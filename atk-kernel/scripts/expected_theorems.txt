@@ -1143,3 +1143,7 @@ ATK.ModeloPNP.clausula_vazia_insat
 ATK.ModeloPNP.modeloPNP
 ATK.ModeloPNP.fiel
 ATK.ModeloPNP.fielL2
+ATK.LigacaoBSD.continuacao_unica
+ATK.LigacaoBSD.ordem_bem_definida
+ATK.LigacaoBSD.zero_iff_posto_pos
+ATK.LigacaoBSD.posto_iff

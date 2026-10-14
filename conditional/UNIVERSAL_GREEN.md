@@ -227,6 +227,13 @@ modelo de portão `PNPModelo` está preenchido e compila sem axioma extra: no po
 faltam só a ponte B4 (Cook–Levin neste modelo) e o produtor O4 (SAT ∉ P). Detalhes em
 [`LIGACOES.md`](LIGACOES.md). Ligação fechada pelo titular em 14/10/2026.
 
+## Ligação L4, parte do posto — `ATK/LigacaoBSD.lean` (4)
+
+O enunciado de BSD do Clay está no kernel sobre os objetos da Mathlib (`WeierstrassCurve.LSeries`,
+`E(ℚ)`): `ClayBSD`. A ponte para o modelo paramétrico (`posto_iff`) usa modularidade e Mordell–Weil
+como hipóteses explícitas. Falta a fórmula refinada, exigida pelo portão `BSDFull`; ver
+[`LIGACOES.md`](LIGACOES.md).
+
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 
 A obrigação proposta como "próxima" na rota de Riemann foi testada no kernel, sobre a família

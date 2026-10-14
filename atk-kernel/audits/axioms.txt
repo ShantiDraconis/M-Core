@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 972898dd0b87f2779d2527329c00d3e527c726ff65884deef0f0a5ba5c98e142
+# axiomas por teorema — congelamento de adc6ece638225c6a623ae7d5fb94bcfb5dfb122a78d7517e4ab7ae98aba979ad
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1145,3 +1145,7 @@ ATK.ModeloPNP.clausula_vazia_insat	propext
 ATK.ModeloPNP.modeloPNP	propext, Classical.choice, Quot.sound
 ATK.ModeloPNP.fiel	propext, Classical.choice, Quot.sound
 ATK.ModeloPNP.fielL2	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSD.continuacao_unica	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSD.ordem_bem_definida	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSD.zero_iff_posto_pos	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSD.posto_iff	propext, Classical.choice, Quot.sound

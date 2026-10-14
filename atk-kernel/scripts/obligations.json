@@ -189,9 +189,10 @@
       "id": "L4",
       "problem": "BSD",
       "kind": "LIGAÇÃO",
-      "lean": "ATK.Conditional.BSD.BSDModel",
-      "status": "NAO_EXISTE_NA_MATHLIB",
-      "ref": "função L de E/ℚ e posto de Mordell–Weil (a Mathlib tem curvas de Weierstrass)"
+      "lean": "ATK.LigacaoBSD.modeloPosto",
+      "status": "PARTE_DO_POSTO_NO_KERNEL",
+      "ref": "função L de E/ℚ e posto de Mordell–Weil (a Mathlib tem curvas de Weierstrass)",
+      "progress": "Parte do posto (ATK/LigacaoBSD.lean, 4 teoremas): sobre WeierstrassCurve.LSeries da Mathlib (fatores locais por modelo minimal e tipo de redução) e o grupo E(ℚ), ClayBSD = para toda E/ℚ elíptica existe F inteira com F = L(E,s) em Re s > 3/2 e ord_{s=1} F = posto de Mordell–Weil (enunciado oficial do Clay); continuação única (continuacao_unica), corolário L(E,1) = 0 ⟺ posto > 0 (zero_iff_posto_pos); modeloPosto com posto_iff: BSDRank modeloPosto ⟺ ClayBSD, sob Modularidade e MordellWeil (teoremas publicados, hipóteses explícitas). Falta: a fórmula refinada (Ω_E, regulador de Néron–Tate, Ш, Tamagawa, torção), exigida pelo portão BSDFull."
     },
     {
       "id": "L5",

@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "972898dd0b87f2779d2527329c00d3e527c726ff65884deef0f0a5ba5c98e142",
+  "sources_sha256": "adc6ece638225c6a623ae7d5fb94bcfb5dfb122a78d7517e4ab7ae98aba979ad",
   "files": {
     "ATK/AlgebraTerminal.lean": "ab045c0a40a165fbe781e2c2e58eee54e1b79e6164a635016bf98a4959b2823b",
     "ATK/BDDistSqPort.lean": "3d209211337b561728bb8823cf8074c2a9539c832783e57d59398ae88b0d3c3f",
@@ -49,6 +49,7 @@
     "ATK/IGeometria.lean": "9f2d5eca9a7f61dd0fefb90b7794d8cc261c3e97db799fca2807bfe43aa40ab3",
     "ATK/Indeterminacy.lean": "9fc0a38993d4846610033b2a38e63894b463a738633a142520561e209bd88f57",
     "ATK/IndeterminacyStates.lean": "1a4c9ee6bd9b773c76e53ba812e1c920a6ecb2c4616f0a96179f6af279bc8a8e",
+    "ATK/LigacaoBSD.lean": "0a686c591736ca9719b84c1f2b9369bf044aec5dd5e964465773ca0f3477b704",
     "ATK/LigacaoNS.lean": "3f3783fc28394feb2d42b2bc6a0b8960ccf9b72217ed4e23560578be20bddf76",
     "ATK/LigacaoPNP.lean": "a677ff4783b1f6a638a95fb4e2dbd29bcdf5dd98c905a971d3ca3fc6740e8cdf",
     "ATK/LimitesUm.lean": "f4469d901afe359dcdf3a1fc774b76b2e560893c23a63d90a2d046fcef0facbc",
@@ -84,12 +85,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "e1187180fcc876f3e9593387dc1389877ce3bc5d7faaa52bf70dc494c6aee383"
+    "ATK.lean": "b1b1abb99630cc6a393acf46decd95240c9f209a58cdd2a3903ac729d73d079d"
   },
-  "n_files": 83,
-  "expected_theorems": 1145,
+  "n_files": 84,
+  "expected_theorems": 1149,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "d089505addf1a8bb73ca64987667aa5772cd6e72",
+  "commit_at_freeze": "effa220c7743fc6d781f273ec96a1084ae243a32",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

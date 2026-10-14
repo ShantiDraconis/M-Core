@@ -157,7 +157,7 @@
   "BSD": {
    "problema": "Birch e Swinnerton-Dyer",
    "enunciado_oficial": "BSDFull modeloGenuino",
-   "ligacao": "L4 aberta",
+   "ligacao": "L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente",
    "dominio": "curvas elípticas E/ℚ; grupo de Mordell–Weil E(ℚ); L(E, s)",
    "classes": "ℤ, ℚ, ℝ, ℂ",
    "parametros": "modelo M : BSDModel (L4)",
@@ -178,7 +178,7 @@
    "contraexemplos": [
     "ATK.BSD.sha_recovery isola #Ш só supondo a fórmula (não é prova)"
    ],
-   "mathlib": "tem WeierstrassCurve; falta L(E, s) e o posto de Mordell–Weil",
+   "mathlib": "tem WeierstrassCurve.LFunction/LSeries (fatores locais por modelo minimal e tipo de redução), alturas e cohomologia contínua; faltam modularidade e Mordell–Weil",
    "leis": [
     "ATK.Conditional.BSD.bsd_rank_conditional",
     "ATK.Conditional.BSD.bsd_conditional"
@@ -669,9 +669,13 @@
    "lean_type": "ATK.Termos.Ligacoes.L4",
    "tipo_matematico": "dado: estrutura BSDModel.{0}",
    "enunciado": "curvas elípticas sobre ℚ com posto de Mordell–Weil, L(E, s), regulador, Ш, c_p e torção",
-   "teoremas": [],
+   "teoremas": [
+    "ATK.LigacaoBSD.continuacao_unica",
+    "ATK.LigacaoBSD.zero_iff_posto_pos",
+    "ATK.LigacaoBSD.posto_iff"
+   ],
    "alimenta": "ATK.Terminal.BSDModelo.modeloGenuino",
-   "estado": "ABERTA — Mathlib sem L(E, s) e sem posto de Mordell–Weil"
+   "estado": "PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff); falta a fórmula refinada (Ω_E, regulador, Ш, Tamagawa, torção)"
   },
   {
    "id": "T25",
