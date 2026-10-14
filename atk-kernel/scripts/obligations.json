@@ -182,7 +182,8 @@
       "problem": "Hodge",
       "kind": "LIGAÇÃO",
       "lean": "ATK.Conditional.Hodge.HodgeModel",
-      "status": "NAO_EXISTE_NA_MATHLIB",
+      "status": "BLOQUEADA_POR_MATHLIB",
+      "bloqueio": "cohomologia racional de variedades, tipos (p,q)/Dolbeault, decomposição de Hodge, mapa de classe de ciclo (conditional/BLOQUEIOS.md)",
       "ref": "cohomologia racional e decomposição de Hodge de variedades projetivas complexas"
     },
     {
@@ -199,7 +200,8 @@
       "problem": "Yang–Mills",
       "kind": "LIGAÇÃO",
       "lean": "ATK.Conditional.YangMills.YMModel",
-      "status": "NAO_EXISTE_NA_MATHLIB",
+      "status": "BLOQUEADA_POR_MATHLIB",
+      "bloqueio": "fibrados principais com conexão, axiomas de Wightman/OS e reconstrução, Yang–Mills quântica 4D (conditional/BLOQUEIOS.md)",
       "ref": "axiomas OS/Wightman e o espectro do Hamiltoniano"
     }
   ],
