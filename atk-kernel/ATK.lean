@@ -93,5 +93,7 @@ import ATK.TranscodificadoresFC
 import ATK.PostoLivre
 import ATK.Externo.FCBSD
 import ATK.IntegracaoFCBSD
+import ATK.Externo.FCNavierStokes
+import ATK.IntegracaoFCNS
 import ATK.IPortadores
 import ATK.IPortadoresMenores
