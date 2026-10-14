@@ -31,3 +31,8 @@ Status: SOURCE_INSPECTED; KERNEL_NOT_RUN; UPSTREAM_NOT_SUBMITTED.
 - Candidate declarations extracted into new ATK branch: 1
 - Kernel validations performed in this step: 0
 - Mathlib upstream pull requests submitted: 0
+
+## See also
+
+Kernel-certified candidates from the current `M-Core` `conditional` branch, with blob SHAs, CI runs
+and a Mathlib master overlap check: `CERTIFIED_CANDIDATES_20261014.md`.
