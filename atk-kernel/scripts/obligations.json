@@ -114,7 +114,7 @@
       "lean": "ATK.Conditional.BSD.RankOpen",
       "status": "OPEN_MATH",
       "ref": "posto analítico ≥ 2",
-      "progress": "CongruentCurve (via FermatRightTriangle.one_not_congruent): para E : y² = x³ − x como WeierstrassCurve ℚ da Mathlib, E(ℚ) = {O, (0,0), (1,0), (−1,0)} — posto 0 e torção ℤ/2 × ℤ/2 desta curva. Caso de uma curva só; não toca O6/O7 nem a ligação L4: OPEN_MATH."
+      "progress": "CongruentCurve (via FermatRightTriangle.one_not_congruent): para E : y² = x³ − x como WeierstrassCurve ℚ da Mathlib, E(ℚ) = {O, (0,0), (1,0), (−1,0)} — posto 0 e torção ℤ/2 × ℤ/2 desta curva. Caso de uma curva só; não toca O6/O7 nem a ligação L4: OPEN_MATH. CongruentBijection (só álgebra, sem descida): para todo n ≠ 0, triângulos racionais de área n ⟷ pontos de y² = x³ − n²x com y ≠ 0, com as duas composições = identidade; para n = 1, 'não congruente' ⟺ 'todo ponto tem y = 0' (não circular: E_point_cases depende de one_not_congruent). Não decide nenhum n novo; O6/O7 inalteradas: OPEN_MATH."
     },
     {
       "id": "O7",

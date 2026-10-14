@@ -553,3 +553,11 @@ ATK.ZetaRegiao.A_ge
 ATK.ZetaRegiao.A_neg
 ATK.ZetaRegiao.regiao_sem_zeros
 ATK.ZetaRegiao.faixa_estreitada
+ATK.CongruentBijection.sub_ne_zero_de_triangulo
+ATK.CongruentBijection.ponto_de_triangulo
+ATK.CongruentBijection.triangulo_de_ponto
+ATK.CongruentBijection.ponto_de_triangulo_de_ponto
+ATK.CongruentBijection.triangulo_de_ponto_de_triangulo
+ATK.CongruentBijection.congruente_iff_ponto
+ATK.CongruentBijection.um_nao_congruente_iff_y_eq_zero
+ATK.CongruentBijection.um_congruente_iff_ponto_E
