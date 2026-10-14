@@ -16,8 +16,8 @@ Com a composição de máquinas em tempo polinomial (`ATK.ComposicaoTM2.comp`):
 * `modeloPNP`: a instância `ComplexityModel` com as classes de `ATK.LigacaoPNP`, e
   `fiel`: `PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP` (é o enunciado oficial, por definição).
 
-Nada aqui decide P vs NP. A ponte B4 (Cook–Levin sobre este modelo) e o produtor O4 (SAT ∉ P)
-continuam abertos.
+Nada aqui decide P vs NP. A ponte B4 (Cook–Levin sobre este modelo) está provada em
+`ATK.CookLevinFinal.cookLevin`; o produtor O4 (SAT ∉ P) continua aberto.
 -/
 
 open Turing Computability StateTransition Function
