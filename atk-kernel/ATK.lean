@@ -70,6 +70,7 @@ import ATK.NecessidadeBD
 import ATK.LigacaoNS
 import ATK.NSFourierBase
 import ATK.NSPicard
+import ATK.NSRegular
 import ATK.LigacaoPNP
 import ATK.Termos
 import ATK.CapturaRH
