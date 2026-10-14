@@ -655,7 +655,7 @@ ATK.ValleePoussin.evita_log
 ATK.ValleePoussin.m_ge_log
 ATK.ValleePoussin.piso_DN_log
 ATK.AlgebraTerminal.Intervalo.mem_def
-ATK.AlgebraTerminal.Intervalo.ext'
+ATK.AlgebraTerminal.Intervalo.ext_lohi
 ATK.AlgebraTerminal.Intervalo.lo_mem
 ATK.AlgebraTerminal.Intervalo.hi_mem
 ATK.AlgebraTerminal.Intervalo.eq_of_mem_iff

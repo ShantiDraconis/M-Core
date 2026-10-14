@@ -43,7 +43,7 @@ def Mem (x : ℝ) (A : Intervalo) : Prop := x ∈ Icc (A.lo : ℝ) (A.hi : ℝ)
 
 theorem mem_def {x : ℝ} {A : Intervalo} : Mem x A ↔ (A.lo : ℝ) ≤ x ∧ x ≤ A.hi := Iff.rfl
 
-theorem ext' {A B : Intervalo} (h1 : A.lo = B.lo) (h2 : A.hi = B.hi) : A = B := by
+theorem ext_lohi {A B : Intervalo} (h1 : A.lo = B.lo) (h2 : A.hi = B.hi) : A = B := by
   cases A; cases B; cases h1; cases h2; rfl
 
 theorem lo_mem (A : Intervalo) : Mem A.lo A := ⟨le_rfl, by exact_mod_cast A.le⟩
@@ -56,7 +56,7 @@ theorem eq_of_mem_iff {A B : Intervalo} (h : ∀ x : ℝ, Mem x A ↔ Mem x B) :
   have h2 := (h B.lo).2 B.lo_mem
   have h3 := (h A.hi).1 A.hi_mem
   have h4 := (h B.hi).2 B.hi_mem
-  apply ext'
+  apply ext_lohi
   · have : (A.lo : ℝ) = B.lo := le_antisymm h2.1 h1.1
     exact_mod_cast this
   · have : (A.hi : ℝ) = B.hi := le_antisymm h3.2 h4.2
@@ -212,14 +212,14 @@ theorem mem_mul_iff {z : ℝ} {A B : Intervalo} :
 
 /-! ## Leis -/
 
-theorem add_comm (A B : Intervalo) : A + B = B + A := ext' (by simp [_root_.add_comm]) (by simp [_root_.add_comm])
+theorem add_comm (A B : Intervalo) : A + B = B + A := ext_lohi (by simp [_root_.add_comm]) (by simp [_root_.add_comm])
 
 theorem add_assoc (A B C : Intervalo) : A + B + C = A + (B + C) :=
-  ext' (by simp [_root_.add_assoc]) (by simp [_root_.add_assoc])
+  ext_lohi (by simp [_root_.add_assoc]) (by simp [_root_.add_assoc])
 
-theorem add_zero (A : Intervalo) : A + ponto 0 = A := ext' (by simp [ponto]) (by simp [ponto])
+theorem add_zero (A : Intervalo) : A + ponto 0 = A := ext_lohi (by simp [ponto]) (by simp [ponto])
 
-theorem neg_neg (A : Intervalo) : - -A = A := ext' (by simp) (by simp)
+theorem neg_neg (A : Intervalo) : - -A = A := ext_lohi (by simp) (by simp)
 
 theorem mul_comm (A B : Intervalo) : A * B = B * A := by
   apply eq_of_mem_iff; intro z
@@ -397,12 +397,12 @@ end Cert
 
 /-- **Modelo A** (margem de absorção): `1 − 1/4 − 1/3 = [5/12, 5/12]`. -/
 theorem modelo_A_margem : ponto 1 - ponto (1 / 4) - ponto (1 / 3) = ponto (5 / 12) :=
-  ext' (by simp [ponto]; norm_num) (by simp [ponto]; norm_num)
+  ext_lohi (by simp [ponto]; norm_num) (by simp [ponto]; norm_num)
 
 /-- **Modelo A** (amplificação): `[5/12]⁻¹ = [12/5]`. -/
 theorem modelo_A_amplificacao :
     inv (ponto (5 / 12)) (Or.inl (by simp [ponto])) = ponto (12 / 5) :=
-  ext' (by simp [inv, ponto]) (by simp [inv, ponto])
+  ext_lohi (by simp [inv, ponto]) (by simp [inv, ponto])
 
 /-- Intervalo `[0,24; 0,26]`. -/
 def cB : Intervalo := ⟨24 / 100, 26 / 100, by norm_num⟩
@@ -411,13 +411,13 @@ def cT : Intervalo := ⟨32 / 100, 35 / 100, by norm_num⟩
 
 /-- **Modelo B** (incerteza): `1 − [0,24; 0,26] − [0,32; 0,35] = [0,39; 0,44]`. -/
 theorem modelo_B_margem : ponto 1 - cB - cT = ⟨39 / 100, 44 / 100, by norm_num⟩ :=
-  ext' (by simp [ponto, cB, cT]; norm_num) (by simp [ponto, cB, cT]; norm_num)
+  ext_lohi (by simp [ponto, cB, cT]; norm_num) (by simp [ponto, cB, cT]; norm_num)
 
 /-- **Modelo B** (amplificação): `[0,39; 0,44]⁻¹ = [25/11, 100/39]`. -/
 theorem modelo_B_amplificacao :
     inv ⟨39 / 100, 44 / 100, by norm_num⟩ (Or.inl (by norm_num)) =
       ⟨25 / 11, 100 / 39, by norm_num⟩ :=
-  ext' (by norm_num [inv]) (by norm_num [inv])
+  ext_lohi (by norm_num [inv]) (by norm_num [inv])
 
 /-- A margem real fica garantida em `[0,39; 0,44]` para quaisquer constantes nos intervalos. -/
 theorem margem_certificada {b t : ℝ} (hb : Mem b cB) (ht : Mem t cT) :
@@ -439,7 +439,7 @@ theorem leis_satisfeitas :
 end ATK.AlgebraTerminal
 
 #print axioms ATK.AlgebraTerminal.Intervalo.mem_def
-#print axioms ATK.AlgebraTerminal.Intervalo.ext'
+#print axioms ATK.AlgebraTerminal.Intervalo.ext_lohi
 #print axioms ATK.AlgebraTerminal.Intervalo.lo_mem
 #print axioms ATK.AlgebraTerminal.Intervalo.hi_mem
 #print axioms ATK.AlgebraTerminal.Intervalo.eq_of_mem_iff
