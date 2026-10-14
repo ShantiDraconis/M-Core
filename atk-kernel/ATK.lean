@@ -85,3 +85,4 @@ import ATK.OmegaEstados
 import ATK.OmegaContracao
 import ATK.OmegaClasses
 import ATK.OmegaGramRho
+import ATK.OmegaGramL2

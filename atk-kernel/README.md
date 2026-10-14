@@ -78,3 +78,4 @@ Nenhum destes teoremas prova uma conjectura do milênio: `OPEN_MATH = true`.
 | `ATK/OmegaGramRho.lean` | Gram de ρ definida positiva, equações normais, completar o quadrado, erro mínimo, cota de truncamento | produto interno de L² entra como hipótese `DetectsSteps` |
 
 Estado: 0/8 produtores terminais. `OPEN_MATH=true`, `CLOSED_MATH=false`.
+| `ATK/OmegaGramL2.lean` | **incondicional**: a matriz de Gram de ρ_{m_i} em L²(0,1) é definida positiva (`gramL2_posDef`); descarrega `DetectsSteps` no caso real | não decide D_N → 0 |

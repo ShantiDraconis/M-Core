@@ -1429,3 +1429,15 @@ ATK.OmegaGramRho.minimizer_unique
 ATK.OmegaGramRho.telescoping
 ATK.OmegaGramRho.truncation_bound
 ATK.OmegaGramRho.fract_mul_fract_mem
+ATK.OmegaGramL2.measurable_rho
+ATK.OmegaGramL2.abs_rho_le_one
+ATK.OmegaGramL2.step_subset
+ATK.OmegaGramL2.volume_step
+ATK.OmegaGramL2.floor_inv_of_mem_step
+ATK.OmegaGramL2.comb_eq_stepVal_on_step
+ATK.OmegaGramL2.integrableOn_rho_mul
+ATK.OmegaGramL2.integrableOn_comb_sq
+ATK.OmegaGramL2.integral_sq_pos
+ATK.OmegaGramL2.quad_gramL2
+ATK.OmegaGramL2.gramL2_posDef
+ATK.OmegaGramL2.gramL2_eq_gram_of_integral
