@@ -197,7 +197,8 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   explosão e decaimento a zero; falta o modelo e o caso de dados grandes.
 - **Yang–Mills** (`ATK/YMToy.lean`): rede solúvel com gap `m(β) = log coth β > 0` que fecha quando
   `β → ∞` — a dificuldade do limite contínuo, em miniatura.
-- **BSD, Hodge**: sem fundações na Mathlib; nada honesto a acrescentar ainda.
+- **BSD**: `E(ℚ)` de `y² = x³ − x` tem exatamente 4 pontos (módulo paralelo `CongruentCurve`); o caso
+  geral precisa de L-funções (L4). **Hodge**: sem fundações na Mathlib (L3).
 
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 

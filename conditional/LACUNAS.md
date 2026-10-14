@@ -35,9 +35,13 @@ conjectura — ou uma redução que encolhe o caso que falta.
    * `beal_iff_mdc_pequeno_pairwise`: **com FLT, Beal ⟺ nenhuma solução dois a dois coprima com
      `g ∈ {1, 2}`**; `beal_mdc_primo_de_flt`: cada primo `p` com `FLT(p)` provado exclui `p ∣ g`
      já hoje.
-3. Lacuna: o caso `g ∈ {1, 2}` (onde nenhum caso de Fermat ajuda) — p.ex. assinaturas como
-   `(3, 4, 5)` ou `(4, 6, 10)`. A formalização completa de Fermat (projeto de Buzzard, em andamento)
-   tornaria a redução incondicional.
+   Em paralelo, na mesma conta (`BealFourFourTwo`, `FermatRightTriangle`, `BealFermatDescent`):
+   descida de Fermat `x⁴ − y⁴ ≠ z²` e exclusão **incondicional** das assinaturas `(4k, 4l, 2m)`,
+   `(4k, 2l, 4m)`, `(2k, 4l, 4m)` — casos com `g = 2` como `(4, 4, 6)`; cobertura ≈ 4,8 % dos
+   triplos com `g ≤ 2` e expoentes de 3 a 200.
+3. Lacuna: o resto do caso `g ∈ {1, 2}` (onde nenhum caso de Fermat ajuda) — p.ex. `(3, 4, 5)`.
+   A formalização completa de Fermat (projeto de Buzzard, em andamento) tornaria a redução a
+   `g ∈ {1, 2}` incondicional.
 
 ## P vs NP
 
@@ -77,12 +81,15 @@ conjectura — ou uma redução que encolhe o caso que falta.
 
 ## BSD e Hodge
 
-Sem progresso honesto possível agora: as fundações não existem na Mathlib. BSD precisa de
-L-funções de curvas elípticas e Mordell–Weil (L4; a lei de grupo das curvas já existe); Hodge precisa
-de teoria de Hodge e ciclos algébricos (L3). Primeiros alvos quando houver base: Mordell–Weil fraco;
-teorema de Lefschetz (1,1) (Hodge em codimensão 1).
+* BSD — em paralelo, na mesma conta (`CongruentCurve`, via `FermatRightTriangle`): para
+  `E : y² = x³ − x` como `WeierstrassCurve ℚ` da Mathlib, **`E(ℚ)` tem exatamente 4 pontos**
+  (posto 0, 2-torção completa) — o primeiro cálculo de Mordell–Weil de uma curva concreta no kernel.
+  A conjectura em geral precisa de L-funções de curvas elípticas e de Mordell–Weil (L4), ausentes da
+  Mathlib; O6/O7 seguem abertas.
+* Hodge: precisa de teoria de Hodge e ciclos algébricos (L3), ausentes da Mathlib. Primeiro alvo
+  quando houver base: teorema de Lefschetz (1,1) (Hodge em codimensão 1).
 
 ## Contagem
 
 Novos nesta etapa: 54 teoremas (`ZetaRetangulo` 16, `BealFLT` 10, `Shannon` 9, `NSPequeno` 3,
-`YMToy` 16). Total esperado no CI: 496.
+`YMToy` 16). Total esperado no CI (com os módulos paralelos de Beal/Fermat/curva congruente): 537.
