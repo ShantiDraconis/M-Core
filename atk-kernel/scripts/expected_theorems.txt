@@ -699,3 +699,14 @@ ATK.BorderPrimes.kMin_minimo
 ATK.BorderPrimes.kMin_le_bertrand
 ATK.BorderPrimes.borda_pi100T
 ATK.BorderPrimes.borda_pi314T
+ATK.ObrigacoesMinimas.parametricas_de_restantes
+ATK.ObrigacoesMinimas.minimas_de_originais
+ATK.ObrigacoesMinimas.closedMath_minimo
+ATK.ObrigacoesMinimas.closedMath_of_restantes'
+ATK.ObrigacoesMinimas.O1_implica_minima
+ATK.ObrigacoesMinimas.rh_obrigacao_suficiente
+ATK.ObrigacoesMinimas.rh_obrigacao_iff_iInf
+ATK.ObrigacoesMinimas.beal_obrigacao_iff
+ATK.ObrigacoesMinimas.pnp_obrigacao_iff
+ATK.ObrigacoesMinimas.hodge_obrigacao_iff
+ATK.ObrigacoesMinimas.bsd_obrigacao_iff

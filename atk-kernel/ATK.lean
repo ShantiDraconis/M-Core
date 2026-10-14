@@ -49,3 +49,4 @@ import ATK.BridgeReduction
 import ATK.BDDistSqPort
 import ATK.HypothesisCalculus
 import ATK.BorderPrimes
+import ATK.ObrigacoesMinimas
