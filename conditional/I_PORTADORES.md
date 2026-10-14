@@ -40,8 +40,19 @@ fonte **não compila como está**: usa padrões literais `real 0` sobre `ℝ` e 
 `J`) como padrões. O arquivo usa a semântica pretendida, escrita nos comentários da fonte e no
 catálogo (`0 ⊗ I = 0`, `0·I = 1`), com `if a = 0` no lugar do padrão literal.
 
+## Portadores menores (`ATK/IPortadoresMenores.lean`, 19 teoremas)
+
+| Portador | Veredito | Teoremas |
+|---|---|---|
+| **Rodas** `ℝ × ℝ` (`lean/WheelTheory.lean`) | QUOCIENTE: `toRI` (denominador nulo ↦ `I`, senão `a/b`) preserva `+` e `·` em **todos** os pares. A relação `∼` da fonte **não é transitiva** (`[1,1] ∼ [0,0] ∼ [2,1]`, `[1,1] ≁ [2,1]`), por isso `wheel_setoid` ficou com `sorry`; o núcleo de `toRI` é a equivalência certa. Não é a roda de Carlström (`1/0` e `0/0` caem no mesmo ponto); a inversão só passa fora do denominador nulo | `Roda.toRI_add`, `toRI_mul`, `equiv_nao_transitiva`, `equivK_equivalence`, `equiv_grosseira`, `toRI_um_zero_eq_zero_zero`, `toRI_inv_falha` |
+| **Multiestado** (`MultiStateI.lean`) | COMPATÍVEL no contexto `standard`: `I − I`, `I/I`, `I/0` resolvem para `I`, o valor de `RI`. INCOMPATÍVEL no contexto `limit`: `I − I ↦ 0`, `I/I ↦ 1` | `Multiestado.standard_eq_RI`, `limit_difere_de_RI` |
+| **Lógica `{T, F, I}`** (livro, cap. 1) | EQUIVALENTE à K3 de `ATK.IGeometria` (`I ↦ N`), preservando `¬`, `∧`, `∨`; a `→` da tabela é a de Kleene. Com designado `{T}` a explosão **vale** (o "Controlled Indeterminacy" do capítulo não se sustenta nessa leitura); só com `{T, I}` (lógica LP) ela falha | `LogicaI.paraK3_bijective`, `paraK3_neg`, `paraK3_conj`, `paraK3_disj`, `imp_eq_kleene`, `explosao_vale_designado_T`, `explosao_falha_designado_TI` |
+
+Fidelidade: no multiestado, a `resolve` da fonte usa `sorry` no caso residual; aqui esse caso devolve
+`none`. Rodas e lógica são transcritas da fonte.
+
 ## Limites
 
-Nada aqui toca uma obrigação O1–O8. `UNIVERSAL_GREEN = false`, `CLOSED_MATH = false`. Os
-portadores menores do catálogo (ExtendedOperations, multiestado, rodas, ultrapotência, lógica
-`{T, F, I}`) não foram comparados.
+Nada aqui toca uma obrigação O1–O8. `UNIVERSAL_GREEN = false`, `CLOSED_MATH = false`. Ainda não
+comparados: ExtendedOperations (Lean, `0·I = 0_I`) e, só em prosa no livro, o `ExtendedReal` de
+hardware e a ultrapotência com `I`.

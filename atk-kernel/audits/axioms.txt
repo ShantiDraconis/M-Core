@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de e75b73810e552ea9e2cd4041189faf8e576cf1dcb0f40e93113518f210cd9ccb
+# axiomas por teorema — congelamento de f891ff153ceb84a80fe059546595bcf8912eef13466d2fcc88a76a2dc7763f0e
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1414,6 +1414,25 @@ ATK.IPortadores.FLEX.iso_mul	VER CI
 ATK.IPortadores.FLEX.iso_bijective	VER CI
 ATK.IPortadores.FLEX.incompativel	VER CI
 ATK.IPortadores.PAX_inconsistente	VER CI
+ATK.IPortadoresMenores.Roda.equiv_nao_transitiva	VER CI
+ATK.IPortadoresMenores.Roda.toRI_add	VER CI
+ATK.IPortadoresMenores.Roda.toRI_mul	VER CI
+ATK.IPortadoresMenores.Roda.equivK_equivalence	VER CI
+ATK.IPortadoresMenores.Roda.equiv_grosseira	VER CI
+ATK.IPortadoresMenores.Roda.toRI_um_zero_eq_zero_zero	VER CI
+ATK.IPortadoresMenores.Roda.toRI_inv_falha	VER CI
+ATK.IPortadoresMenores.Multiestado.subI_none	VER CI
+ATK.IPortadoresMenores.Multiestado.divI_none_none	VER CI
+ATK.IPortadoresMenores.Multiestado.divI_none_zero	VER CI
+ATK.IPortadoresMenores.Multiestado.standard_eq_RI	VER CI
+ATK.IPortadoresMenores.Multiestado.limit_difere_de_RI	VER CI
+ATK.IPortadoresMenores.LogicaI.paraK3_bijective	VER CI
+ATK.IPortadoresMenores.LogicaI.paraK3_neg	VER CI
+ATK.IPortadoresMenores.LogicaI.paraK3_conj	VER CI
+ATK.IPortadoresMenores.LogicaI.paraK3_disj	VER CI
+ATK.IPortadoresMenores.LogicaI.imp_eq_kleene	VER CI
+ATK.IPortadoresMenores.LogicaI.explosao_vale_designado_T	VER CI
+ATK.IPortadoresMenores.LogicaI.explosao_falha_designado_TI	VER CI
 ATK.CookLevinLacos.emite_seqC_nil	nenhum
 ATK.CookLevinLacos.emite_seqC_cons	propext
 ATK.CookLevinLacos.sem_seqC_append	propext
