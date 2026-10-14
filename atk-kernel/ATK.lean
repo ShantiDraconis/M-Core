@@ -90,5 +90,8 @@ import ATK.IntegracaoFCPNP
 import ATK.Externo.FCBeal
 import ATK.IntegracaoFCBeal
 import ATK.TranscodificadoresFC
+import ATK.PostoLivre
+import ATK.Externo.FCBSD
+import ATK.IntegracaoFCBSD
 import ATK.IPortadores
 import ATK.IPortadoresMenores
