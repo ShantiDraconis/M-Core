@@ -710,3 +710,15 @@ ATK.ObrigacoesMinimas.beal_obrigacao_iff
 ATK.ObrigacoesMinimas.pnp_obrigacao_iff
 ATK.ObrigacoesMinimas.hodge_obrigacao_iff
 ATK.ObrigacoesMinimas.bsd_obrigacao_iff
+ATK.PlancherelL1L2.continuous_fourier
+ATK.PlancherelL1L2.integral_fourier_mul
+ATK.PlancherelL1L2.fourier_toLp_ae_eq
+ATK.PlancherelL1L2.memLp_two_fourier
+ATK.PlancherelL1L2.norm_sq_eq_integral
+ATK.PlancherelL1L2.integral_norm_sq_fourier
+ATK.MellinPlancherel.integral_Ioi_eq
+ATK.MellinPlancherel.integrableOn_Ioi_iff
+ATK.MellinPlancherel.norm_sq_lado
+ATK.MellinPlancherel.integrable_lado
+ATK.MellinPlancherel.fourier_lado
+ATK.MellinPlancherel.integral_norm_sq_eq_mellin

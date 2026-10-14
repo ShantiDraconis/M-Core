@@ -50,3 +50,5 @@ import ATK.BDDistSqPort
 import ATK.HypothesisCalculus
 import ATK.BorderPrimes
 import ATK.ObrigacoesMinimas
+import ATK.PlancherelL1L2
+import ATK.MellinPlancherel
