@@ -86,3 +86,4 @@ import ATK.Externo.FCComplexidade
 import ATK.IntegracaoFCPNP
 import ATK.Externo.FCBeal
 import ATK.IntegracaoFCBeal
+import ATK.TranscodificadoresFC
