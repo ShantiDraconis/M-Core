@@ -69,7 +69,7 @@ variable (g : Bool → Γ k₀) (y : Γ k₁) (pre : List Bool) (m T : ℕ) (mai
 
 /-- O número de células por pilha: cabe tudo durante os `T` passos. -/
 def Scel : ℕ :=
-  pre.length + m + T * pushMax (Mr M k₀ k₁) + profMax (Mr M k₀ k₁) + 1
+  pre.length + m + (T + 1) * pushMax (Mr M k₀ k₁) + profMax (Mr M k₀ k₁) + 1
 
 /-- **A fórmula do verificador.** -/
 def formulaV : Fm (Var K (fun k => ↥(R M k₀ k₁ k)) Λ σ) :=
@@ -140,7 +140,9 @@ theorem formulaV_correta :
       · subst hk; rw [cfgIni_k₀]; simp; omega
       · rw [cfgIni_ne hk]; simp
     have h4 : Scel M k₀ k₁ pre m T =
-        pre.length + m + T * pushMax (Mr M k₀ k₁) + profMax (Mr M k₀ k₁) + 1 := rfl
+        pre.length + m + (T + 1) * pushMax (Mr M k₀ k₁) + profMax (Mr M k₀ k₁) + 1 := rfl
+    have h5 : (T + 1) * pushMax (Mr M k₀ k₁) = T * pushMax (Mr M k₀ k₁) + pushMax (Mr M k₀ k₁) :=
+      Nat.succ_mul _ _
     omega
 
 end Generico
