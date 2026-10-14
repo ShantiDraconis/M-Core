@@ -1357,3 +1357,6 @@ ATK.IntegracaoFCPNP.separa_par
 ATK.IntegracaoFCPNP.emP_iff
 ATK.IntegracaoFCPNP.emNP_iff
 ATK.IntegracaoFCPNP.pneNP_iff_fc
+ATK.IntegracaoFCBeal.gcd_triplo
+ATK.IntegracaoFCBeal.beal_iff_fc
+ATK.IntegracaoFCBeal.rh_mesmo_enunciado
