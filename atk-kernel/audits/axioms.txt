@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de f11faab2ba4679fc9a4954f29edf99f2a3e7ecc8975620904e0e23f63cef2669
+# axiomas por teorema — congelamento de e4663d9aad78282040df36b0992bad5a49bff63a3a46acde97ec479c601f1a58
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1601,6 +1601,74 @@ ATK.CookLevinNP.red_SAT	propext, Classical.choice, Quot.sound
 ATK.CookLevinNP.cookLevin	propext, Classical.choice, Quot.sound
 ATK.CookLevinNP.maqRed	propext, Classical.choice, Quot.sound
 ATK.ObligationsClosed.B4	propext, Classical.choice, Quot.sound
+ATK.ATKI.Estado.inv_inv	nenhum
+ATK.ATKI.Estado.inv_fixo_iff	nenhum
+ATK.ATKI.Estado.de_morgan_otimes	nenhum
+ATK.ATKI.Estado.de_morgan_oplus	nenhum
+ATK.ATKI.Estado.otimes_idem	nenhum
+ATK.ATKI.Estado.oplus_idem	nenhum
+ATK.ATKI.Estado.otimes_comm	nenhum
+ATK.ATKI.Estado.oplus_comm	nenhum
+ATK.ATKI.Estado.otimes_assoc	nenhum
+ATK.ATKI.Estado.distrib	nenhum
+ATK.ATKI.Estado.paraK3_inv	nenhum
+ATK.ATKI.Estado.paraK3_otimes	propext
+ATK.ATKI.Estado.paraK3_oplus	propext
+ATK.ATKI.detecta_nada_iff	propext, Classical.choice, Quot.sound
+ATK.ATKI.defeito_global_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ATKI.Cert.sound_todo	nenhum
+ATK.ATKI.Cert.sound_nada	nenhum
+ATK.ATKI.Cert.aberto_nao_todo	nenhum
+ATK.ATKI.Cert.estado_and	propext
+ATK.ATKI.Cert.universal	nenhum
+ATK.ATKI.fechamento_por_defeito	propext, Classical.choice, Quot.sound
+ATK.ATKI.transferencia	nenhum
+ATK.ATKI.ponte_composta	propext, Classical.choice, Quot.sound
+ATK.ATKI.Rel.flip_flip	nenhum
+ATK.ATKI.RelNum.neg_neg	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.swap_swap	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.scale_scale	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.scale_one	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.scale_inv_scale	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.scale_scale_inv	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.transl_zero	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.transl_transl	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.holds_neg	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.holds_swap	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.holds_transl	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.holds_scale	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.exemploFalso_falso	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.retorno_nao_implica_verdade	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.ciclo_quatro	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.ciclo_preserva_verdade	propext, Classical.choice, Quot.sound
+ATK.ATKI.RelNum.N0_verdadeiro	propext, Classical.choice, Quot.sound
+ATK.ATKI.compat_neg	propext, Classical.choice, Quot.sound
+ATK.ATKI.compat_scale	propext, Classical.choice, Quot.sound
+ATK.ATKI.defeito_nonneg	propext, Classical.choice, Quot.sound
+ATK.ATKI.defeito_antitone	propext, Classical.choice, Quot.sound
+ATK.ATKI.defeito_converge	propext, Classical.choice, Quot.sound
+ATK.ATKI.defeito_limite_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ATKI.wTexto_nonneg	propext, Classical.choice, Quot.sound
+ATK.ATKI.texto_converge	propext, Classical.choice, Quot.sound
+ATK.ATKI.texto_antitone	propext, Classical.choice, Quot.sound
+ATK.ATKIExemplos.phi_satisfativel	VER CI
+ATK.ATKIExemplos.psi_conta	VER CI
+ATK.ATKIExemplos.f_deriv_t	VER CI
+ATK.ATKIExemplos.f_deriv_y	VER CI
+ATK.ATKIExemplos.f_deriv_yy	VER CI
+ATK.ATKIExemplos.calor	VER CI
+ATK.ATKIExemplos.transporte_nulo	VER CI
+ATK.ATKIExemplos.comutador_pauli	VER CI
+ATK.ATKIExemplos.autovetor	VER CI
+ATK.ATKIExemplos.gap_dois	VER CI
+ATK.ATKIExemplos.c4_cubo	VER CI
+ATK.ATKIExemplos.bsd_curva32_posto_zero	VER CI
+ATK.ATKIExemplos.h_cubo	VER CI
+ATK.ATKIExemplos.pareamento	VER CI
+ATK.ATKIExemplos.pareamento_exemplo	VER CI
+ATK.ATKIExemplos.beal_exemplo	VER CI
+ATK.ATKIExemplos.beal_mdc	VER CI
+ATK.ATKIExemplos.beal_valoracoes	VER CI
 ATK.L3Base.conjV_conjV	propext, Classical.choice, Quot.sound
 ATK.L3Base.conjV_surjective	propext, Classical.choice, Quot.sound
 ATK.L3Base.isHodgeClass_puraTipo	propext, Classical.choice, Quot.sound
