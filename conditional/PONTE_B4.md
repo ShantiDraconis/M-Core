@@ -36,15 +36,26 @@ Dada uma linguagem com verificador `V : TM2ComputableInPolyTime cod encodeBool �
 | CL4a | `CookLevinReducao` | `fCL V q w := codCNF (fórmula de w)`; **`fCL_correta`**: `w ∈ L ⟺ fCL V q w ∈ SAT`; **`cookLevin_de_computavel`** |
 
 `cookLevin_de_computavel` diz: se cada `fCL V q` é computável por uma `FinTM2` em tempo polinomial,
-então `CookLevin modeloPNP SAT`. Essa hipótese é hipótese de teorema, não axioma.
+então `CookLevin modeloPNP SAT`.
 
-## O que falta para B4 inteira (CL4b)
+## A máquina da redução (CL4b) e o fecho (CL5)
 
-Só a máquina: `Nonempty (TM2ComputableInPolyTime cod cod (fCL V q))`. A fórmula é escrita por laços
-com contadores unários (por isso as variáveis são `0^i 1 0^t 1 0^p 1`): calcular `m = q(n)`,
-`T` e `S` em unário (Horner), percorrer instantes, casos finitos e células, e copiar os bits de `w`
-na linha 0. Plano: uma linguagem pequena de laços com contadores, compilada para `TM2` com
-correção e custo provados uma vez, e `fCL` escrita como programa dessa linguagem.
+| Marco | Módulo | O que está provado |
+|---|---|---|
+| CL4b-1/2 | `Gerador` | linguagem de laços com contadores unários (`out`, `inc`, `dec`, `clr`, `seq`, `loop`, `forIn`) e o montador para `TM2`; **`asm_ok`**: o código montado faz o que a semântica diz, em `≤ cost` passos |
+| CL4b-3 | `GeradorTM` | **`computavel`**: todo programa de custo `≤ B(|w|)` (polinômio) é `TM2ComputableInPolyTime` |
+| CL4b-4a | `GeradorForm` | moldes de fórmula (cláusulas, laços sobre contadores e sobre os bits da entrada); `comp_ok` (escreve exatamente a fórmula), `comp_cost` (custo polinomial) |
+| CL4b-4b | `GeradorArit` | aritmética unária: `evalP` calcula `q(x)` (`horn_coefs`) com custo polinomial |
+| CL4b-4c | `CookLevinMolde` | o molde da fórmula de Cook–Levin (linhas, parada, casos em três zonas, linha inicial pelos bits de `w`, aceitação); `sem_formulaT`, `wf_formulaT` |
+| CL4b-4d | `CookLevinPrograma` | `aritP`: `|w|`, `q(|w|)`, `T`, `S`, `S − c` nos contadores; semântica e custo |
+| CL5 | `CookLevinFinal` | **`progCL_out`** (a saída é `fCL V q w`), **`fCL_computavel`**, **`cookLevin : CookLevin modeloPNP SAT`** |
 
-Até lá B4 fica em `PARCIAL_NO_KERNEL` e o contador de pontes continua em 1/8.
-`UNIVERSAL_GREEN = false`, `CLOSED_MATH = false`.
+`ATK.ObligationsClosed.B4 : ATK.Conditional.PvsNP.CookLevin ATK.ModeloPNP.modeloPNP
+ATK.ModeloPNP.SAT` — só `propext`, `Classical.choice`, `Quot.sound`; sem `sorry`, sem `axiom`.
+O enunciado da obrigação B4 em `obligations.json` passa a ser o predicado aplicado ao modelo
+genuíno (ligação L2): antes era o predicado paramétrico, sem modelo, que não é uma proposição.
+
+## Estado
+
+Ponte B4 **provada no kernel**: contador de pontes 2/8 (B1, B4). P ≠ NP continua dependendo da
+obrigação aberta O4 (`SATNotInP`). `UNIVERSAL_GREEN = false`, `CLOSED_MATH = false`.
