@@ -8,6 +8,54 @@ Estado calculado hoje: `UNIVERSAL_GREEN = false` · `FINAL_ROOT = null` · linha
 pontes no kernel **1/8** · produtores abertos **8/8** · ligações abertas **5/5** · fiação **9/9**
 (faltam **19** termos) · ensaio do portão **10/10**.
 
+## As duas metas e o plano T1–T9 — `scripts/plano.py`
+
+O verde universal tem duas metas diferentes, e o auditor agora calcula as duas separadamente a cada
+push:
+
+* **verde da biblioteca** (T1–T6 e T9): tudo compila, cada teorema usa só os axiomas padrão, as
+  fontes estão congeladas, o projeto é isolado e o portão é fail-closed;
+* **verde universal das conjecturas** (T7 e T8): os enunciados reais ligados e os produtores
+  terminais provados.
+
+| etapa | critério verificável | estado |
+|---|---|---|
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ 839/839, `e8ed3b1b…` |
+| T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
+| T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
+| T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
+| T5 | `lake build`: todo arquivo auditado compila | ✅ |
+| T6 | `#print axioms` (fecho transitivo) só com axiomas padrão; nenhuma fonte com `sorry`/`admit`/`axiom` | ✅ |
+| T7 | enunciados reais ligados | 🟡 2/7 (RH e Beal oficiais; L1–L5 abertas) |
+| T8 | produtores terminais incondicionais (os 7 portões) | ⬜ 0/7; faltam 19 termos |
+| T9 | só o verde é certificado: ensaio do portão completo, nenhum terminal promovido | ✅ ensaio 10/10 |
+
+Resultado: **biblioteca VERDE · conjecturas ABERTAS**. O CI publica isso numa anotação
+`PLANO T1–T9`.
+
+### Sobre a análise colada
+
+* "M-Core/main usa Lean 4.19.0, a biblioteca usa 4.34.1": verdade para a raiz (`lean/MCore`), mas o
+  `atk-kernel/` **já é** o projeto Lake independente que a análise recomenda (lakefile, toolchain e
+  workflow próprios). Não há o que integrar no núcleo para certificar; T3 e T4 estão fechadas.
+* "Falta o ZIP final de 30 módulos ATK-T1": esse pacote não está em nenhum dos repositórios
+  acessíveis nem nos ramos do M-Core (busca nos clones locais dos 89 repositórios e em 227 ramos). O
+  conteúdo descrito (intervalos certificados, estados de evidência, consistência relativa) já está
+  formalizado e certificado em `ATK/AlgebraTerminal.lean` (63 teoremas). Para integrar o pacote quando
+  ele for anexado, há `scripts/integrar_biblioteca.py PACOTE.zip T1 --aplicar`: recusa `sorry`,
+  `admit`, `axiom`, outra versão do Lean ou nomes com apóstrofo; reescreve os `import` para `ATK.T1.…`,
+  acrescenta `#print axioms` e registra tudo no auditor (testado com um pacote sintético).
+* "T6: auditar `#print axioms` e dependências transitivas": `#print axioms` já devolve o fecho
+  transitivo; `audits/axioms.txt` congela o resultado por teorema (832/839 verificados também neste
+  ambiente; os 7 restantes dependem da Mathlib inteira e são certificados pelo CI).
+
+### Ramos em andamento da sessão paralela (não contados até a fusão)
+
+`atk/teorema-global-20261014`, `atk/zero-um-20261014`, `atk/bridge-reduction-20261014`,
+`atk/hypothesis-ports-20261014` (inclui `NecessidadeBD`, `MellinPlancherel`, `ObrigacoesMinimas`) e
+`atk/congruent-bijection-20261014`. Quando forem fundidos em `conditional`, o auditor os conta
+automaticamente; nada aqui depende deles.
+
 ## A árvore
 
 ```

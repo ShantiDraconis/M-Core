@@ -199,6 +199,10 @@ try:
         ens = ensaio_universal_green.run()
         report["fiacao"], report["ensaio"] = fia, ens
         md += [""] + verificar_fiacao.markdown(fia) + [""] + ensaio_universal_green.markdown(ens)
+    import plano
+    pl = plano.compute(ROOT, report)
+    report["plano"] = pl
+    md += [""] + plano.markdown(pl)
     json.dump(ug, open(os.path.join(REP, "universal_green.json"), "w"), indent=2, ensure_ascii=False)
 except Exception as exc:  # o relatório principal não depende deste cálculo
     md += ["", f"Verde universal: não calculado ({exc})."]
@@ -232,6 +236,12 @@ if os.environ.get("GITHUB_ACTIONS"):
         if fia.get("ran"):
             print(f"::notice title=FIAÇÃO {fia['templates_ok']} · faltam {fia['n_missing']} termos::"
                   + esc(", ".join(fia["missing_terms"])))
+        pl = report.get("plano")
+        if pl:
+            cnt = " · ".join(f"{k} {v}" for k, v in sorted(pl["contagem"].items()))
+            print(f"::notice title=PLANO T1–T9 biblioteca {'VERDE' if pl['VERDE_BIBLIOTECA'] else 'ABERTA'} · "
+                  f"conjecturas {'VERDE' if pl['VERDE_UNIVERSAL_CONJECTURAS'] else 'ABERTAS'}::"
+                  + esc(cnt + "\n" + "\n".join(f"{k} {v['estado']}: {v['detalhe']}" for k, v in pl["etapas"].items())))
         if ens.get("ran"):
             print(f"::notice title=ENSAIO DO PORTÃO {ens['passed']}::"
                   + esc("; ".join(f"{r['id']}={'ok' if r['passed'] else 'FALHOU'}" for r in ens["scenarios"])))

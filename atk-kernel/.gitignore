@@ -3,3 +3,4 @@ build/
 *.olean
 reports/
 __pycache__/
+.tmp_congelar/

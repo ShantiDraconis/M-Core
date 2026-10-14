@@ -243,6 +243,10 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
 - `scripts/ensaio_universal_green.py`: ensaio de ponta a ponta com enunciados de brinquedo — 10/10
   (acende com provas válidas; bloqueia `sorry`, sombreamento, hipóteses, axiomas, enunciado trocado).
 - `scripts/instalar_portao.py`: instala um portão só se for prova genuína; hoje recusa as 9 linhas.
+- `scripts/plano.py`: o plano **T1–T9** calculado a cada push — biblioteca **VERDE** (T1–T6, T9),
+  conjecturas **ABERTAS** (T7 2/7, T8 0/7). `scripts/congelar.py` gera `atk-kernel/audits/`
+  (proveniência, SHA por arquivo, axiomas por teorema, atestação do CI);
+  `scripts/integrar_biblioteca.py` integra um pacote Lean externo (p.ex. ATK-T1) sob auditoria.
 
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
@@ -385,6 +389,10 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   scripts/ensaio_universal_green.py ensaio de ponta a ponta do portão (enunciados de brinquedo)
   scripts/instalar_portao.py instala um portão terminal só se for prova genuína
   terminal-templates/        os 9 modelos de portão (RH … YM, VerdeFiel, ClosedMathGate)
+  scripts/plano.py           calcula o plano T1–T9 (biblioteca × conjecturas)
+  scripts/congelar.py        congela as fontes: audits/provenance.json, audits/axioms.txt
+  scripts/integrar_biblioteca.py integra uma biblioteca Lean externa sob auditoria
+  audits/                    congelamento: SHA das fontes e por arquivo, axiomas, atestação do CI
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional
   numerics/                  D_N de Báez-Duarte (N ≤ 1500)
 .github/workflows/           CI: compila, roda #print axioms por arquivo e publica a tabela
