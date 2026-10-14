@@ -1982,3 +1982,12 @@ ATK.NSTeste.L2B_R0
 ATK.NSTeste.L2B_dX_R0
 ATK.NSTeste.L2B_Dphi
 ATK.NSTeste.L2B_DdPhi
+ATK.NSFracaF.dX_fatia_eq
+ATK.NSFracaF.continuousOn_dX_fatia
+ATK.NSFracaF.aesm_slice_integral
+ATK.NSFracaF.dc_L2
+ATK.NSFracaF.dc_L1
+ATK.NSFracaF.sol_bounds
+ATK.NSFracaF.abs_coord_le
+ATK.NSFracaF.aesm_Fw
+ATK.NSFracaF.fraca_fourier
