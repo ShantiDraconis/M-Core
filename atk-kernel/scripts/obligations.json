@@ -22,7 +22,7 @@
       "lean": "FermatLastTheorem",
       "status": "PARCIAL_NO_MODELO_DO_LANE",
       "ref": "Wiles 1995; Taylor–Wiles 1995 (formalização em andamento: ImperialCollegeLondon/FLT) — FLT(3) e FLT(4) já estão na Mathlib; no lane Beal (m-core-beal atk/beal-parity-to-t59-partition-20261001, T59_beyondThree_and_residual_close_beal) a ponte necessária cai para FLT em primos > 3",
-      "progress": " Fichas.flt_iff_primos_ge_cinco: FermatLastTheorem ⟺ FLT para todo primo p ≥ 5 (FLT(3), FLT(4) da Mathlib)."
+      "progress": " Fichas.flt_iff_primos_ge_cinco: FermatLastTheorem ⟺ FLT para todo primo p ≥ 5 (FLT(3), FLT(4) da Mathlib). BridgeReduction: o mesmo resultado no teorema-mestre — pontes_iff_restantes (7 pontes ⟺ 6), closedMath_of_restantes, closedMathFaithful_sem_pontes."
     },
     {
       "id": "B3",
