@@ -45,6 +45,7 @@ Anti-produtos completos (`AntiProduto`): `antiRiemann` (zeros fora da linha) e `
 | indeterminação | `RiemannStates.estado_DN_dicotomia` | `D_N` só pode estar nos estados `zero` ou `finito` |
 | tensão / torção | `ForaDaLinha.quarteto_fora` | órbita de 4 zeros sob `s ↦ 1 − s`, `s ↦ s̄`, `s ↦ 1 − s̄` |
 | condensação | `ForaDaLinha.piso_DN` | piso `m(ρ)²` de `D_N` |
+| condensação explícita | `ValleePoussin.piso_DN_log` | `D_N ≥ (1/(|ρ|(1/√(2σ−1) + 1/c(t))))²`, `c(t)` logarítmico (`|t| ≥ 4`) |
 | materialização | `ForaDaLinha.finito_de_zero_fora` | o zero vira estado `finito` de `D_N` |
 | explosão | `Fichas.explosao_dado_grande` | se `b y₀² > a`, solução de `y' = −a y + b y³` explode em `T* = log(b y₀²/(b y₀² − a))/(2a)` |
 | criticidade | `Fichas.critico_estacionario` | `b y₀² = a`: solução estacionária (limiar `√(a/b)`) |
@@ -54,6 +55,11 @@ Anti-produtos completos (`AntiProduto`): `antiRiemann` (zeros fora da linha) e `
 
 * **B1 está provada** no kernel (`BaezDuarteBridge.baezDuarteCriterion`: `D_N → 0 ⇒ RH`). O que não
   está formalizado é a recíproca (necessidade de Báez-Duarte) e, claro, `D_N → 0`.
+* "Quando entrar de la Vallée Poussin, o `m(ρ)` sobe": `m` é uma função fixa de `ρ`; o que a região
+  logarítmica faz é restringir onde `ρ` pode estar (`σ < 1 − c(t)`), o que dá o piso explícito
+  `m(ρ) ≥ 1/(|ρ|(1/√(2σ−1) + 1/c(t)))` (`ValleePoussin.m_ge_log`). O piso não é uniforme (vai a `0`
+  com `σ → 1/2` e com `|t| → ∞`), então não decide O1. A potência provada é `(log|t|)⁻⁹`, não a
+  clássica `1/log|t|`.
 * `ZetaRetangulo` não usa numérica nem Riemann–Siegel: é a desigualdade analítica `|s − 1| < 2·Re s`.
 * O módulo da curva `y² = x³ − x` calcula `E(ℚ)` (4 pontos); **não** prova BSD para ela (não há
   L-função de curva elíptica na Mathlib).
