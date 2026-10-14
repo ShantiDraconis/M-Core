@@ -5,8 +5,10 @@ conjectura. O que ela faz é tornar **exato** e **verificável por máquina** o 
 que `UNIVERSAL_GREEN` e `FINAL_ROOT` só mudem quando a matemática existir.
 
 Estado calculado hoje: `UNIVERSAL_GREEN = false` · `FINAL_ROOT = null` · linhas verdes **0/7** ·
-pontes no kernel **1/8** · produtores abertos **8/8** · ligações abertas **5/5** · fiação **21/21**
-(rota da prova: faltam **18** termos) · ensaio do portão **12/12** · resolvidas **0/7**.
+pontes no kernel **1/8** · produtores abertos **8/8** · ligações abertas **5/5** · fiação **21/21** ·
+**25 lacunas distintas, todas com tipo Lean conferido pelo kernel (25/25)** · rota da prova: faltam
+**18** termos · rota da refutação: **12** · ensaio do portão **12/12** · resolvidas **0/7** ·
+lacunas fechadas **0/25**.
 
 ## As duas metas e o plano T1–T9 — `scripts/plano.py`
 
@@ -20,15 +22,15 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ 839/839, `e8ed3b1b…` |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1081 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
 | T5 | `lake build`: todo arquivo auditado compila | ✅ |
 | T6 | `#print axioms` (fecho transitivo) só com axiomas padrão; nenhuma fonte com `sorry`/`admit`/`axiom` | ✅ |
 | T7 | enunciados reais ligados | 🟡 2/7 (RH e Beal oficiais; L1–L5 abertas) |
-| T8 | produtores terminais incondicionais (os 7 portões) | ⬜ 0/7; faltam 19 termos |
-| T9 | só o verde é certificado: ensaio do portão completo, nenhum terminal promovido | ✅ ensaio 10/10 |
+| T8 | produtores terminais incondicionais (os 7 portões) | ⬜ 0/7; faltam 18 termos (prova) / 12 (refutação) |
+| T9 | só o verde é certificado: ensaio do portão completo, fiação tipada, nenhum terminal promovido | ✅ ensaio 12/12 · tipos 25/25 · sensibilidade ok |
 
 Resultado: **biblioteca VERDE · conjecturas ABERTAS**. O CI publica isso numa anotação
 `PLANO T1–T9`.
@@ -154,29 +156,65 @@ vermelho (não é o enunciado literal sem hipóteses).
 Ordem possível, do mais próximo ao mais distante: formalizar pontes publicadas → construir as
 fundações das ligações → atacar os produtores. Cada avanço muda os contadores automaticamente.
 
-## A última milha — `atk-kernel/terminal-templates/` e `scripts/verificar_fiacao.py`
+## A última milha — `atk-kernel/terminal-templates/`, `scripts/verificar_fiacao.py` e os 25 termos tipados
 
-Nove modelos de portão (`RH`, `Beal`, `NS`, `PNP`, `Hodge`, `BSD`, `YM`, `VerdeFiel`,
-`ClosedMathGate`), cada um com a composição completa até o enunciado oficial e **marcadores** no
-lugar do que falta (`PROVA_*`, `LIGACAO_*`). `verificar_fiacao.py` troca os marcadores por `sorry`,
-compila os nove contra o build real e confere que o único axioma estranho é `sorryAx`.
+21 modelos de portão: as 7 linhas, as 7 refutações, os 5 módulos de ligação (`<Linha>Modelo`),
+`VerdeFiel` e `ClosedMathGate`. Cada um tem a composição completa até o enunciado oficial e
+**marcadores** no lugar do que falta (`PROVA_*`, `LIGACAO_*`).
 
-Resultado (local e no CI): **9/9 modelos compilam; faltam exatamente 19 termos**:
+**Os termos agora têm nome e tipo no kernel.** `ATK/Termos.lean` dá um nome Lean a cada
+uma das **25 lacunas distintas**, com o tipo exato que o portão exige, e prova sem hipóteses o que já
+se pode provar sobre cada uma (39 teoremas): `fecha` (lacunas → enunciado oficial), `exato` /
+`decomposicao` (onde a lacuna é *equivalente* ao enunciado), `refutacao_iff` (a forma-testemunha do
+contraexemplo) e o que uma refutação acarreta. O catálogo `scripts/termos.json` liga cada lacuna ao
+seu nome; `verificar_fiacao.py` troca cada marcador por `(sorry : <tipo do catálogo>)` e compila os
+21 modelos: **25/25 tipos conferidos**. O teste de sensibilidade troca o tipo da ponte B3 pelo do
+produtor O3 e a compilação falha, como deve. A ficha completa (24 componentes por termo) está em
+[`TERMOS.md`](TERMOS.md), gerada por `scripts/termos.py --md`.
 
-| portão | termos que faltam |
-|---|---|
-| RH | `PROVA_DO_PRODUTOR` (`IsEmpty ZeroFora`) |
-| Beal | `PROVA_DO_PRODUTOR` (`ExclusaoResidualDescida`, rota sem pontes) |
-| NS | `LIGACAO_L1`, `PROVA_DA_PONTE_B3`, `PROVA_DO_PRODUTOR_O3` |
-| P≠NP | `LIGACAO_L2`, `LIGACAO_L2_SAT`, `PROVA_DA_PONTE_B4`, `PROVA_DO_PRODUTOR_O4` |
-| Hodge | `LIGACAO_L3`, `PROVA_DA_PONTE_B5`, `PROVA_DO_PRODUTOR_O5` |
-| BSD | `LIGACAO_L4`, `PROVA_DA_PONTE_B6`, `PROVA_DO_PRODUTOR_O6`, `PROVA_DO_PRODUTOR_O7` |
-| YM | `LIGACAO_L5`, `PROVA_DA_PONTE_B7`, `PROVA_DO_PRODUTOR_O8` |
-| VerdeFiel, ClosedMathGate | nenhum: compilam assim que os sete portões existirem |
+| | ocorrências | lacunas |
+|---|---|---|
+| rota da prova | 18 | 13 provas (2 produtores RH/Beal, 5 pontes B3–B7, 6 produtores O3–O8) + 5 ligações |
+| rota da refutação | 12 | 7 refutações + as mesmas 5 ligações |
+| distintas | **25** | 18 + 12 − 5 compartilhadas |
 
-Ou seja: tudo o que não é matemática nova (ou fundação ausente da Mathlib) já está ligado e
-verificado. Sobre L2: a Mathlib tem `Turing.TM2ComputableInPolyTime`, mas ainda não a composição de
-máquinas de tempo polinomial, necessária para que P seja fechado por reduções.
+As duas contagens que circularam ("18 + 12" do CI e "25" do inventário de lacunas) estão certas;
+medem coisas diferentes.
+
+O que os teoremas novos dizem sobre as lacunas:
+
+* **exatas** (a lacuna não pede mais do que a conjectura): RH (`IsEmpty ZeroFora` ⟺ RH), Beal
+  (`ExclusaoResidualDescida` ⟺ Beal), Hodge (`HodgeConjecture M` ⟺ B5 ∧ O5), BSD
+  (`BSDFull M` ⟺ B6 ∧ O6 ∧ O7) e P vs NP dada a ponte (O4 ⟺ P ≠ NP). `ATK.Termos.raiz_iff` junta
+  tudo;
+* **formas-testemunha da refutação**: um zero `s` de ζ não trivial, `s ≠ 1`, `Re s ≠ 1/2`; uma
+  solução primitiva de Beal, e basta procurá-la no residual da descida com `a`, `b` coprimos
+  (`Beal.refutacao_iff_residual`); um dado de Schwartz sem solução global, que com B3 dá a explosão
+  da enstrofia, o enunciado (C) do Clay (`NS.colapso_de_refutacao`); SAT ∈ P dada a ponte; uma classe
+  de Hodge não algébrica, que com B5 está forçosamente em codimensão do meio e dim X ≥ 4
+  (`Hodge.refutacao_meio`); uma curva com postos diferentes, que com B6 tem posto analítico ≥ 2;
+* **critério de fidelidade da L2**: `PNP.FielL2 M` (as classes do modelo são P e NP sobre
+  `Turing.FinTM2`, a menos de bijeção) implica `PneNP M ⟺ ATK.LigacaoPNP.PneNP`
+  (`PNP.pneNP_de_fiel`). Quem construir o modelo da L2 só precisa provar `FielL2`; nenhum modelo com
+  finitas linguagens passa (`PNP.finito_nao_fiel`).
+
+O que continua faltando é exatamente a matemática: 8 produtores (O1–O8), 5
+pontes publicadas por formalizar (B3–B7) e 4 ligações por construir (L2–L5; a L1 está construída,
+falta a revisão humana). Sobre L2: a Mathlib tem `Turing.TM2ComputableInPolyTime`, mas ainda não a
+composição de máquinas de tempo polinomial (P fechado por redução), P ⊆ NP sobre `FinTM2`, SAT nem
+Cook–Levin.
+
+### Mineração de 14/10/2026
+
+Todos os 250 repositórios do catálogo estão cobertos (224 com conteúdo, 26 vazios, nenhum sem
+acesso; ver [`INVENTORY.md`](INVENTORY.md)). Desde a varredura de 13/10 só o M-Core recebeu
+commits; ele foi varrido de novo em todos os 223 ramos: 38 declarações novas que concluem um alvo,
+todas do próprio `atk-kernel` já em `main` (17 equivalências ou implicações, 21 condicionais com
+hipóteses explícitas). Os 10 repositórios privados com arquivos de prova que antes estavam fora
+de alcance foram reconferidos ramo a ramo: as 5 declarações Lean e as 6 em Coq/Isabelle que miram
+um alvo têm `sorry`, `Axiom`, `Admitted` ou hipóteses. Os três repositórios com nome `.lean`
+(`zeta-i-formal.lean`, `i-foundations.lean`, `collapse-lemma-rh.lean`) só têm licença e protocolo.
+**Nenhum termo de prova novo** para qualquer das 25 lacunas.
 
 ## O ensaio — `scripts/ensaio_universal_green.py`
 

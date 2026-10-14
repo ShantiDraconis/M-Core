@@ -82,9 +82,11 @@ def compute(root, report):
         f"linhas verdes {ug.get('LINES_GREEN', '?')}; resolvidas (provadas + refutadas) {ug.get('RESOLVED', '?')}; "
         f"termos que faltam: prova {fia.get('n_missing', '?')}, refutação {fia.get('n_missing_refutation', '?')}")
     consistent = bool(ug) and ug.get("UNIVERSAL_GREEN") == (ug.get("LINES_GREEN") == "7/7")
-    gate_ok = bool(ens.get("ok")) and consistent
+    sens = (fia.get("sensibilidade") or {}).get("detectada")
+    gate_ok = bool(ens.get("ok")) and consistent and bool(fia.get("ok"))
     put("T9", "GREEN" if gate_ok else "OPEN",
-        f"ensaio do portão {ens.get('passed', 'não executado')}; UNIVERSAL_GREEN {str(ug.get('UNIVERSAL_GREEN')).lower()} "
+        f"ensaio do portão {ens.get('passed', 'não executado')}; fiação tipada {fia.get('tipos', '?')} "
+        f"(sensibilidade {'ok' if sens else 'não verificada'}); UNIVERSAL_GREEN {str(ug.get('UNIVERSAL_GREEN')).lower()} "
         f"com FINAL_ROOT {ug.get('FINAL_ROOT') or 'null'}")
 
     lib = all(steps[k]["estado"] == "GREEN" for k in ("T1", "T2", "T3", "T4", "T5", "T6", "T9"))

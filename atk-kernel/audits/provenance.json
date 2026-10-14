@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "774ac4c6e1257892f6b1d6162c07bc0bf452b2b4aec6e8992ca807184b272dfb",
+  "sources_sha256": "ecb8cfce21694b2e62704f0ce3b44c67b34789dcc11fbee1d72b0b1272eca2c0",
   "files": {
     "ATK/AlgebraTerminal.lean": "ab045c0a40a165fbe781e2c2e58eee54e1b79e6164a635016bf98a4959b2823b",
     "ATK/BDDistSqPort.lean": "3d209211337b561728bb8823cf8074c2a9539c832783e57d59398ae88b0d3c3f",
@@ -70,6 +70,7 @@
     "ATK/Roda.lean": "812b7d71bfe359766694f6468ed4a81fe5946b6b2bc73ea227363b041853b44a",
     "ATK/Shannon.lean": "c8e0d2f1c50b91a7480bbfed57b53ed946e00ed87326efca18b826976559f654",
     "ATK/TeoremaGlobal.lean": "971a8d965b0cc59f9dd954d2c794362b615b86a4f372ee2292b797df923b770d",
+    "ATK/Termos.lean": "d4a745d8eb63b2687f4d5b30eace0552902fe2e79f99650b6d9c221f7b443bcb",
     "ATK/Triadico.lean": "2eb7ac98cbfd57beff7d5748a926dafd702c2065245a82e3985dfe0a636b875f",
     "ATK/ValleePoussin.lean": "858c22bff925f6c9e3af477d698b5fdd07202fa35a4c7aceb44e411f6d8fa235",
     "ATK/YMToy.lean": "ccdf06a4414bffcdb4d30544090a2b35c8376273f01be11c79aa5ea4102cef97",
@@ -80,12 +81,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "34ffe65ba67995d55c549c54583d11c474c194ecdeb05466085fc65227c286a7"
+    "ATK.lean": "6ded87c423525387497c53cf65f772e3f0f2590309ea9fef807b3227daabb2e3"
   },
-  "n_files": 79,
-  "expected_theorems": 1043,
+  "n_files": 80,
+  "expected_theorems": 1082,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "15f29ba029cf2200bffae42978324ef9b043c70f",
+  "commit_at_freeze": "e247d19520cca60fd973a039e46f7a104a6b7655",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

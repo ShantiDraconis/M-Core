@@ -1,0 +1,680 @@
+{
+ "descricao": "Catálogo tipado das 25 lacunas distintas dos portões terminais (18 ocorrências na rota da prova, 12 na rota da refutação, 5 ligações compartilhadas). Fonte única: cada `lean_type` é substituído no modelo do portão como `(sorry : <lean_type>)` por scripts/verificar_fiacao.py; se divergir do tipo que o portão espera, a compilação falha. Os teoremas listados são certificados pelo kernel (ATK/Termos.lean). Nenhuma lacuna está fechada.",
+ "modulo": "ATK/Termos.lean",
+ "linhas": {
+  "RH": {
+   "problema": "Hipótese de Riemann",
+   "enunciado_oficial": "RiemannHypothesis (Mathlib)",
+   "ligacao": "nenhuma (enunciado da Mathlib)",
+   "dominio": "ℂ; zeros não triviais de ζ (faixa 0 < Re s < 1)",
+   "classes": "ℂ, ℝ, ℕ",
+   "parametros": "nenhum",
+   "operadores": "ζ (continuação analítica), Re, conjugação, s ↦ 1 − s",
+   "invariantes": "simetria ρ ↦ 1 − ρ e conjugação (quarteto de zeros: ATK.ForaDaLinha.quarteto_fora)",
+   "dimensao": "1 complexa (2 reais)",
+   "geometria": "faixa crítica; reta Re s = 1/2",
+   "coordenadas": "s = σ + it",
+   "metrica": "topologia de ℂ (métrica euclidiana)",
+   "derivadas": "ζ′ (holomorfia); usada na região sem zeros",
+   "integrais": "Mellin/Plancherel (critério de Báez-Duarte: ATK.MellinPlancherel, ATK.PlancherelL1L2)",
+   "limites": "D_N → 0 ⟺ RH (Báez-Duarte); numericamente D_N·log(N+2) ≈ 0,0457",
+   "exemplos": [
+    "ATK.ZetaLog.regiao_log",
+    "ATK.ContracaoDN.cert_Dinf_numerico_mem"
+   ],
+   "contraexemplos": [
+    "ATK.FinalRoot.rota_contracao_morta",
+    "ATK.ContracaoDN.amostra_finita_nao_decide"
+   ],
+   "mathlib": "enunciado oficial já na Mathlib",
+   "leis": [
+    "ATK.ForaDaLinha.riemann_iff_vazio",
+    "ATK.ForaDaLinha.nao_riemann_iff"
+   ]
+  },
+  "Beal": {
+   "problema": "Conjectura de Beal",
+   "enunciado_oficial": "ATK.Conditional.Beal.BealConjecture",
+   "ligacao": "nenhuma (enunciado elementar em ℕ)",
+   "dominio": "ℕ⁶: bases a, b, c > 0; expoentes x, y, z > 2",
+   "classes": "ℕ",
+   "parametros": "nenhum",
+   "operadores": "potência, mdc, divisibilidade, redução mod n",
+   "invariantes": "mdc(a, b, c); classes residuais mod 4 e mod 8; mdc dos expoentes",
+   "dimensao": "discreta (reticulado ℕ⁶)",
+   "geometria": "pontos inteiros em superfícies de Fermat generalizadas",
+   "coordenadas": "(a, b, c, x, y, z)",
+   "metrica": "discreta",
+   "derivadas": "não se aplica",
+   "integrais": "não se aplica",
+   "limites": "não se aplica (enunciado finitário por instância)",
+   "exemplos": [
+    "ATK.BealFourFourTwo.exemplos_442",
+    "ATK.BealFiltros.mod8_expoentes_pares"
+   ],
+   "contraexemplos": [
+    "ATK.BealPartial.beal_exemplos_distintos"
+   ],
+   "mathlib": "FLT para n = 3, 4 na Mathlib; enunciado de Beal no ATK",
+   "leis": [
+    "ATK.BealCompleto.beal_incondicional",
+    "ATK.BealCompleto.beal_teorema_completo"
+   ]
+  },
+  "NS": {
+   "problema": "Navier–Stokes 3D (Clay, caso A)",
+   "enunciado_oficial": "ClayStatementA modeloGenuino ⟺ (A) do Clay (ATK.LigacaoNS.clayA_iff)",
+   "ligacao": "L1 construída: ATK.LigacaoNS.modeloNS (revisão humana pendente para CLOSED)",
+   "dominio": "ℝ³ × [0, ∞); velocidade u, pressão p; dado de Schwartz de divergência nula; ν > 0",
+   "classes": "ℝ",
+   "parametros": "modelo M : NSModel (L1)",
+   "operadores": "∂_t, ∂_j (fderiv), ∇, div, Δ, (u·∇)u",
+   "invariantes": "div u = 0; energia ½‖u‖²₂ não cresce; escala u_λ(x, t) = λ·u(λx, λ²t)",
+   "dimensao": "3 espaciais + tempo; espaço de funções de dimensão infinita",
+   "geometria": "ℝ³ euclidiano; fluxo incompressível",
+   "coordenadas": "cartesianas (EuclideanSpace ℝ (Fin 3))",
+   "metrica": "L² (energia); enstrofia ‖∇u‖²₂",
+   "derivadas": "∂_t u + (u·∇)u = νΔu − ∇p (ATK.LigacaoNS.NSEq)",
+   "integrais": "energia ∫|u|², enstrofia ∫|∇u|² (ATK.LigacaoNS.gradSq)",
+   "limites": "explosão: enstrofia ilimitada quando t → T⁻",
+   "exemplos": [
+    "ATK.LigacaoNS.zero_global",
+    "ATK.LigacaoNS.global_nao_trivial",
+    "ATK.ModelosSete.absorcao_modelo"
+   ],
+   "contraexemplos": [
+    "ATK.LigacaoNS.id_nao_admissivel",
+    "ATK.FinalRoot.ns_depende_do_modelo"
+   ],
+   "mathlib": "sem teoria de soluções de NS; L1 construída sobre Schwartz, fderiv e Lebesgue",
+   "leis": [
+    "ATK.Conditional.NavierStokes.ns_conditional",
+    "ATK.LigacaoNS.clayA_iff"
+   ]
+  },
+  "PNP": {
+   "problema": "P vs NP",
+   "enunciado_oficial": "PneNP modeloGenuino; enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (Turing.FinTM2)",
+   "ligacao": "L2 aberta (critério de fidelidade certificado: ATK.Termos.PNP.FielL2 → ATK.Termos.PNP.pneNP_de_fiel)",
+   "dominio": "linguagens L ⊆ {0,1}*; máquinas Turing.FinTM2 de tempo polinomial",
+   "classes": "ℕ (tamanhos e tempos), ℕ[X]",
+   "parametros": "modelo M : ComplexityModel (L2) e a linguagem SAT (L2_SAT)",
+   "operadores": "redução de Karp, composição de máquinas, par ⟨w, c⟩",
+   "invariantes": "P ⊆ NP; P fechada por redução",
+   "dimensao": "discreta",
+   "geometria": "combinatória (circuitos, grafos de configuração)",
+   "coordenadas": "palavras List Bool",
+   "metrica": "comprimento de palavra; tempo de execução",
+   "derivadas": "não se aplica",
+   "integrais": "não se aplica",
+   "limites": "assintótica polinomial T(n) = O(nᵏ)",
+   "exemplos": [
+    "ATK.LigacaoPNP.vazio_em_P",
+    "ATK.LigacaoPNP.univ_em_NP",
+    "ATK.PvsNP.p_ne_np_of_sat"
+   ],
+   "contraexemplos": [
+    "ATK.FinalRoot.pnp_depende_do_modelo"
+   ],
+   "mathlib": "tem TM2ComputableInPolyTime; falta composição de máquinas em tempo polinomial, SAT e Cook–Levin",
+   "leis": [
+    "ATK.Conditional.PvsNP.pvsnp_conditional",
+    "ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P"
+   ]
+  },
+  "Hodge": {
+   "problema": "Conjectura de Hodge",
+   "enunciado_oficial": "HodgeConjecture modeloGenuino",
+   "ligacao": "L3 aberta",
+   "dominio": "variedades projetivas complexas lisas X; classes em H^{2p}(X, ℚ) de tipo (p, p)",
+   "classes": "ℚ, ℂ",
+   "parametros": "modelo M : HodgeModel (L3)",
+   "operadores": "classe de ciclo cl : CH^p(X) ⊗ ℚ → H^{2p}(X, ℚ); decomposição de Hodge",
+   "invariantes": "tipo (p, p); racionalidade",
+   "dimensao": "dim_ℂ X = n; codimensão p",
+   "geometria": "geometria algébrica complexa; cohomologia",
+   "coordenadas": "coordenadas projetivas homogêneas",
+   "metrica": "métrica de Kähler (Fubini–Study)",
+   "derivadas": "∂, ∂̄ (formas diferenciais)",
+   "integrais": "integração de formas sobre ciclos (períodos)",
+   "limites": "não se aplica",
+   "exemplos": [
+    "ATK.Hodge.linear_realization",
+    "ATK.ModelosSete.hodge_modelo",
+    "ATK.ModelosSete.posto_nulidade"
+   ],
+   "contraexemplos": [
+    "a versão integral é falsa (Atiyah–Hirzebruch): por isso o enunciado é racional"
+   ],
+   "mathlib": "sem cohomologia de Hodge de variedades projetivas",
+   "leis": [
+    "ATK.Conditional.Hodge.hodge_conditional"
+   ]
+  },
+  "BSD": {
+   "problema": "Birch e Swinnerton-Dyer",
+   "enunciado_oficial": "BSDFull modeloGenuino",
+   "ligacao": "L4 aberta",
+   "dominio": "curvas elípticas E/ℚ; grupo de Mordell–Weil E(ℚ); L(E, s)",
+   "classes": "ℤ, ℚ, ℝ, ℂ",
+   "parametros": "modelo M : BSDModel (L4)",
+   "operadores": "posto, ord_{s=1}, altura de Néron–Tate, regulador (det), Ω_E, Ш, c_p",
+   "invariantes": "posto r; torção; condutor",
+   "dimensao": "curva (dimensão 1); E(ℚ) ≅ ℤ^r ⊕ T",
+   "geometria": "geometria aritmética; cúbicas de Weierstrass",
+   "coordenadas": "y² = x³ + ax + b (WeierstrassCurve)",
+   "metrica": "pareamento de alturas ⟨P, Q⟩",
+   "derivadas": "L^{(r)}(E, 1)",
+   "integrais": "período Ω_E = ∫_{E(ℝ)} |dx/2y|",
+   "limites": "lim_{s→1} L(E, s)/(s − 1)^r",
+   "exemplos": [
+    "ATK.BSD.regulator_det_identity",
+    "ATK.ModelosSete.Hb_det",
+    "ATK.CongruentCurve.E_torsion_points"
+   ],
+   "contraexemplos": [
+    "ATK.BSD.sha_recovery isola #Ш só supondo a fórmula (não é prova)"
+   ],
+   "mathlib": "tem WeierstrassCurve; falta L(E, s) e o posto de Mordell–Weil",
+   "leis": [
+    "ATK.Conditional.BSD.bsd_rank_conditional",
+    "ATK.Conditional.BSD.bsd_conditional"
+   ]
+  },
+  "YM": {
+   "problema": "Yang–Mills e gap de massa",
+   "enunciado_oficial": "ClayYM modeloGenuino",
+   "ligacao": "L5 aberta",
+   "dominio": "grupos de Lie compactos simples G; teorias quânticas de Yang–Mills em ℝ⁴",
+   "classes": "ℝ, ℂ",
+   "parametros": "modelo M : YMModel (L5)",
+   "operadores": "curvatura F = dA + A∧A, Hamiltoniano H, reconstrução de Osterwalder–Schrader",
+   "invariantes": "invariância de calibre; simetria euclidiana/Poincaré",
+   "dimensao": "4 (espaço-tempo); Hilbert de dimensão infinita",
+   "geometria": "conexões em fibrados principais",
+   "coordenadas": "x ∈ ℝ⁴ (euclidiano) / Minkowski",
+   "metrica": "espectro de H ⊆ {0} ∪ [Δ, ∞)",
+   "derivadas": "derivada covariante D_A",
+   "integrais": "medida euclidiana (integral funcional)",
+   "limites": "limite contínuo; decaimento e^{−m|x|} das correlações",
+   "exemplos": [
+    "ATK.YMToy.massa_pos",
+    "ATK.ModelosSete.gap_toro"
+   ],
+   "contraexemplos": [
+    "ATK.YMToy.massa_tende_zero"
+   ],
+   "mathlib": "sem teoria quântica de campos construtiva",
+   "leis": [
+    "ATK.Conditional.YangMills.ym_conditional"
+   ]
+  }
+ },
+ "terms": [
+  {
+   "id": "T01",
+   "linha": "RH",
+   "template": "RH",
+   "placeholder": "PROVA_DO_PRODUTOR",
+   "rota": "prova",
+   "papel": "produtor",
+   "ref": "O1",
+   "nome_lean": "ATK.Termos.RH.produtor",
+   "lean_type": "ATK.Termos.RH.produtor",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "não existe zero não trivial de ζ com Re ≠ 1/2 (IsEmpty ZeroFora)",
+   "teoremas": [
+    "ATK.Termos.RH.fecha",
+    "ATK.Termos.RH.exato"
+   ],
+   "alimenta": "ATK.Terminal.RH.terminal",
+   "estado": "ABERTA — problema em aberto"
+  },
+  {
+   "id": "T02",
+   "linha": "Beal",
+   "template": "Beal",
+   "placeholder": "PROVA_DO_PRODUTOR",
+   "rota": "prova",
+   "papel": "produtor",
+   "ref": "O2",
+   "nome_lean": "ATK.Termos.Beal.produtor",
+   "lean_type": "ATK.Termos.Beal.produtor",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "nenhuma solução coprima de aˣ + bʸ = cᶻ no residual da descida (ExclusaoResidualDescida)",
+   "teoremas": [
+    "ATK.Termos.Beal.fecha",
+    "ATK.Termos.Beal.exato"
+   ],
+   "alimenta": "ATK.Terminal.Beal.terminal",
+   "estado": "ABERTA — problema em aberto"
+  },
+  {
+   "id": "T03",
+   "linha": "NS",
+   "template": "NS",
+   "placeholder": "PROVA_DA_PONTE_B3",
+   "rota": "prova",
+   "papel": "ponte",
+   "ref": "B3",
+   "nome_lean": "ATK.Termos.NS.ponteB3",
+   "lean_type": "ATK.Termos.NS.ponteB3 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "sem solução global, a enstrofia explode em tempo finito (Leray 1934 + teoria local)",
+   "teoremas": [
+    "ATK.Termos.NS.fecha",
+    "ATK.Termos.NS.colapso_de_refutacao"
+   ],
+   "alimenta": "ATK.Terminal.NS.terminal",
+   "estado": "teorema publicado; falta formalizar"
+  },
+  {
+   "id": "T04",
+   "linha": "NS",
+   "template": "NS",
+   "placeholder": "PROVA_DO_PRODUTOR_O3",
+   "rota": "prova",
+   "papel": "produtor",
+   "ref": "O3",
+   "nome_lean": "ATK.Termos.NS.produtorO3",
+   "lean_type": "ATK.Termos.NS.produtorO3 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "cota a priori da enstrofia enquanto a solução suave existe",
+   "teoremas": [
+    "ATK.Termos.NS.fecha",
+    "ATK.Termos.NS.fecha_oficial"
+   ],
+   "alimenta": "ATK.Terminal.NS.terminal",
+   "estado": "ABERTA — problema em aberto"
+  },
+  {
+   "id": "T05",
+   "linha": "PNP",
+   "template": "PNP",
+   "placeholder": "PROVA_DA_PONTE_B4",
+   "rota": "prova",
+   "papel": "ponte",
+   "ref": "B4",
+   "nome_lean": "ATK.Termos.PNP.ponteB4",
+   "lean_type": "ATK.Termos.PNP.ponteB4 modeloGenuino sat",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "Cook–Levin: SAT ∈ NP e toda L ∈ NP reduz a SAT",
+   "teoremas": [
+    "ATK.Termos.PNP.fecha",
+    "ATK.Termos.PNP.exato"
+   ],
+   "alimenta": "ATK.Terminal.PNP.terminal",
+   "estado": "teorema publicado; falta formalizar"
+  },
+  {
+   "id": "T06",
+   "linha": "PNP",
+   "template": "PNP",
+   "placeholder": "PROVA_DO_PRODUTOR_O4",
+   "rota": "prova",
+   "papel": "produtor",
+   "ref": "O4",
+   "nome_lean": "ATK.Termos.PNP.produtorO4",
+   "lean_type": "ATK.Termos.PNP.produtorO4 modeloGenuino sat",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "SAT ∉ P",
+   "teoremas": [
+    "ATK.Termos.PNP.fecha",
+    "ATK.Termos.PNP.exato"
+   ],
+   "alimenta": "ATK.Terminal.PNP.terminal",
+   "estado": "ABERTA — problema em aberto"
+  },
+  {
+   "id": "T07",
+   "linha": "Hodge",
+   "template": "Hodge",
+   "placeholder": "PROVA_DA_PONTE_B5",
+   "rota": "prova",
+   "papel": "ponte",
+   "ref": "B5",
+   "nome_lean": "ATK.Termos.Hodge.ponteB5",
+   "lean_type": "ATK.Termos.Hodge.ponteB5 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "casos conhecidos: p ≤ 1 (Lefschetz (1,1)) e p ≥ dim X − 1",
+   "teoremas": [
+    "ATK.Termos.Hodge.fecha",
+    "ATK.Termos.Hodge.decomposicao"
+   ],
+   "alimenta": "ATK.Terminal.Hodge.terminal",
+   "estado": "teorema publicado; falta formalizar"
+  },
+  {
+   "id": "T08",
+   "linha": "Hodge",
+   "template": "Hodge",
+   "placeholder": "PROVA_DO_PRODUTOR_O5",
+   "rota": "prova",
+   "papel": "produtor",
+   "ref": "O5",
+   "nome_lean": "ATK.Termos.Hodge.produtorO5",
+   "lean_type": "ATK.Termos.Hodge.produtorO5 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "codimensões do meio 2 ≤ p ≤ dim X − 2",
+   "teoremas": [
+    "ATK.Termos.Hodge.fecha",
+    "ATK.Termos.Hodge.decomposicao"
+   ],
+   "alimenta": "ATK.Terminal.Hodge.terminal",
+   "estado": "ABERTA — problema em aberto"
+  },
+  {
+   "id": "T09",
+   "linha": "BSD",
+   "template": "BSD",
+   "placeholder": "PROVA_DA_PONTE_B6",
+   "rota": "prova",
+   "papel": "ponte",
+   "ref": "B6",
+   "nome_lean": "ATK.Termos.BSD.ponteB6",
+   "lean_type": "ATK.Termos.BSD.ponteB6 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "Gross–Zagier–Kolyvagin: posto analítico ≤ 1 ⇒ posto = posto analítico",
+   "teoremas": [
+    "ATK.Termos.BSD.fecha",
+    "ATK.Termos.BSD.decomposicao"
+   ],
+   "alimenta": "ATK.Terminal.BSD.terminal",
+   "estado": "teorema publicado; falta formalizar"
+  },
+  {
+   "id": "T10",
+   "linha": "BSD",
+   "template": "BSD",
+   "placeholder": "PROVA_DO_PRODUTOR_O6",
+   "rota": "prova",
+   "papel": "produtor",
+   "ref": "O6",
+   "nome_lean": "ATK.Termos.BSD.produtorO6",
+   "lean_type": "ATK.Termos.BSD.produtorO6 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "posto analítico ≥ 2 ⇒ posto = posto analítico",
+   "teoremas": [
+    "ATK.Termos.BSD.fecha",
+    "ATK.Termos.BSD.decomposicao"
+   ],
+   "alimenta": "ATK.Terminal.BSD.terminal",
+   "estado": "ABERTA — problema em aberto"
+  },
+  {
+   "id": "T11",
+   "linha": "BSD",
+   "template": "BSD",
+   "placeholder": "PROVA_DO_PRODUTOR_O7",
+   "rota": "prova",
+   "papel": "produtor",
+   "ref": "O7",
+   "nome_lean": "ATK.Termos.BSD.produtorO7",
+   "lean_type": "ATK.Termos.BSD.produtorO7 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "Ш finito e fórmula do termo líder, para toda E/ℚ",
+   "teoremas": [
+    "ATK.Termos.BSD.fecha",
+    "ATK.Termos.BSD.decomposicao"
+   ],
+   "alimenta": "ATK.Terminal.BSD.terminal",
+   "estado": "ABERTA — problema em aberto"
+  },
+  {
+   "id": "T12",
+   "linha": "YM",
+   "template": "YM",
+   "placeholder": "PROVA_DA_PONTE_B7",
+   "rota": "prova",
+   "papel": "ponte",
+   "ref": "B7",
+   "nome_lean": "ATK.Termos.YM.ponteB7",
+   "lean_type": "ATK.Termos.YM.ponteB7 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "reconstrução de Osterwalder–Schrader + teoria espectral",
+   "teoremas": [
+    "ATK.Termos.YM.fecha"
+   ],
+   "alimenta": "ATK.Terminal.YM.terminal",
+   "estado": "teorema publicado; falta formalizar"
+  },
+  {
+   "id": "T13",
+   "linha": "YM",
+   "template": "YM",
+   "placeholder": "PROVA_DO_PRODUTOR_O8",
+   "rota": "prova",
+   "papel": "produtor",
+   "ref": "O8",
+   "nome_lean": "ATK.Termos.YM.produtorO8",
+   "lean_type": "ATK.Termos.YM.produtorO8 modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "para todo G compacto simples, medida euclidiana de YM em ℝ⁴ com axiomas OS e clustering de taxa m > 0",
+   "teoremas": [
+    "ATK.Termos.YM.fecha"
+   ],
+   "alimenta": "ATK.Terminal.YM.terminal",
+   "estado": "ABERTA — problema em aberto"
+  },
+  {
+   "id": "T14",
+   "linha": "RH",
+   "template": "RHRefutacao",
+   "placeholder": "PROVA_DA_REFUTACAO",
+   "rota": "refutacao",
+   "papel": "refutacao",
+   "ref": "¬RH",
+   "nome_lean": "ATK.Termos.RH.refutacao",
+   "lean_type": "ATK.Termos.RH.refutacao",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "um zero s de ζ, não trivial, s ≠ 1, com Re s ≠ 1/2",
+   "teoremas": [
+    "ATK.Termos.RH.refutacao_iff",
+    "ATK.Termos.RH.refutacao_iff_zero_fora",
+    "ATK.Termos.RH.refutacao_nega_produtor"
+   ],
+   "alimenta": "ATK.Terminal.RHRefutacao.refutacao",
+   "estado": "ABERTA — nenhum contraexemplo conhecido"
+  },
+  {
+   "id": "T15",
+   "linha": "Beal",
+   "template": "BealRefutacao",
+   "placeholder": "PROVA_DA_REFUTACAO",
+   "rota": "refutacao",
+   "papel": "refutacao",
+   "ref": "¬Beal",
+   "nome_lean": "ATK.Termos.Beal.refutacao",
+   "lean_type": "ATK.Termos.Beal.refutacao",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "aˣ + bʸ = cᶻ com x, y, z ≥ 3 e mdc(a, b, c) = 1 — basta procurar no residual com a, b coprimos",
+   "teoremas": [
+    "ATK.Termos.Beal.refutacao_iff",
+    "ATK.Termos.Beal.refutacao_iff_mdc",
+    "ATK.Termos.Beal.refutacao_iff_residual"
+   ],
+   "alimenta": "ATK.Terminal.BealRefutacao.refutacao",
+   "estado": "ABERTA — nenhum contraexemplo conhecido"
+  },
+  {
+   "id": "T16",
+   "linha": "NS",
+   "template": "NSRefutacao",
+   "placeholder": "PROVA_DA_REFUTACAO",
+   "rota": "refutacao",
+   "papel": "refutacao",
+   "ref": "¬(A)",
+   "nome_lean": "ATK.Termos.NS.refutacao",
+   "lean_type": "ATK.Termos.NS.refutacao modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "ν > 0 e u₀ de Schwartz com div u₀ = 0 sem solução global suave de energia limitada (com B3: explosão da enstrofia — enunciado (C))",
+   "teoremas": [
+    "ATK.Termos.NS.refutacao_iff",
+    "ATK.Termos.NS.colapso_de_refutacao",
+    "ATK.Termos.NS.refutacao_nega_produtor"
+   ],
+   "alimenta": "ATK.Terminal.NSRefutacao.refutacao",
+   "estado": "ABERTA — nenhum contraexemplo conhecido"
+  },
+  {
+   "id": "T17",
+   "linha": "PNP",
+   "template": "PNPRefutacao",
+   "placeholder": "PROVA_DA_REFUTACAO",
+   "rota": "refutacao",
+   "papel": "refutacao",
+   "ref": "P = NP",
+   "nome_lean": "ATK.Termos.PNP.refutacao",
+   "lean_type": "ATK.Termos.PNP.refutacao modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "P = NP; com B4: SAT ∈ P (um algoritmo polinomial para SAT)",
+   "teoremas": [
+    "ATK.Termos.PNP.refutacao_iff",
+    "ATK.Termos.PNP.refutacao_iff_sat"
+   ],
+   "alimenta": "ATK.Terminal.PNPRefutacao.refutacao",
+   "estado": "ABERTA — nenhum contraexemplo conhecido"
+  },
+  {
+   "id": "T18",
+   "linha": "Hodge",
+   "template": "HodgeRefutacao",
+   "placeholder": "PROVA_DA_REFUTACAO",
+   "rota": "refutacao",
+   "papel": "refutacao",
+   "ref": "¬Hodge",
+   "nome_lean": "ATK.Termos.Hodge.refutacao",
+   "lean_type": "ATK.Termos.Hodge.refutacao modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "uma classe de Hodge racional não algébrica; com B5, em codimensão do meio e dim X ≥ 4",
+   "teoremas": [
+    "ATK.Termos.Hodge.refutacao_iff",
+    "ATK.Termos.Hodge.refutacao_meio",
+    "ATK.Termos.Hodge.refutacao_nega_produtor"
+   ],
+   "alimenta": "ATK.Terminal.HodgeRefutacao.refutacao",
+   "estado": "ABERTA — nenhum contraexemplo conhecido"
+  },
+  {
+   "id": "T19",
+   "linha": "BSD",
+   "template": "BSDRefutacao",
+   "placeholder": "PROVA_DA_REFUTACAO",
+   "rota": "refutacao",
+   "papel": "refutacao",
+   "ref": "¬BSD",
+   "nome_lean": "ATK.Termos.BSD.refutacao",
+   "lean_type": "ATK.Termos.BSD.refutacao modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "uma curva com posto ≠ posto analítico (com B6: posto analítico ≥ 2) ou em que a fórmula refinada falha",
+   "teoremas": [
+    "ATK.Termos.BSD.refutacao_iff",
+    "ATK.Termos.BSD.refutacao_posto"
+   ],
+   "alimenta": "ATK.Terminal.BSDRefutacao.refutacao",
+   "estado": "ABERTA — nenhum contraexemplo conhecido"
+  },
+  {
+   "id": "T20",
+   "linha": "YM",
+   "template": "YMRefutacao",
+   "placeholder": "PROVA_DA_REFUTACAO",
+   "rota": "refutacao",
+   "papel": "refutacao",
+   "ref": "¬ClayYM",
+   "nome_lean": "ATK.Termos.YM.refutacao",
+   "lean_type": "ATK.Termos.YM.refutacao modeloGenuino",
+   "tipo_matematico": "Prop (proposição)",
+   "enunciado": "um G compacto simples sem teoria quântica de YM com gap positivo",
+   "teoremas": [
+    "ATK.Termos.YM.refutacao_iff",
+    "ATK.Termos.YM.refutacao_nega_produtor"
+   ],
+   "alimenta": "ATK.Terminal.YMRefutacao.refutacao",
+   "estado": "ABERTA — nenhum contraexemplo conhecido"
+  },
+  {
+   "id": "T21",
+   "linha": "PNP",
+   "template": "PNPModelo",
+   "placeholder": "LIGACAO_L2",
+   "rota": "prova+refutacao",
+   "papel": "ligacao",
+   "ref": "L2",
+   "nome_lean": "ATK.Termos.Ligacoes.L2",
+   "lean_type": "ATK.Termos.Ligacoes.L2",
+   "tipo_matematico": "dado: estrutura ComplexityModel.{0}",
+   "enunciado": "modelo genuíno de P e NP; fidelidade exigida: FielL2 (classes = P, NP sobre Turing.FinTM2)",
+   "teoremas": [
+    "ATK.Termos.PNP.pneNP_de_fiel",
+    "ATK.Termos.PNP.finito_nao_fiel"
+   ],
+   "alimenta": "ATK.Terminal.PNPModelo.modeloGenuino",
+   "estado": "ABERTA — falta composição de máquinas em tempo polinomial (fechamento de P por redução) e P ⊆ NP sobre FinTM2"
+  },
+  {
+   "id": "T22",
+   "linha": "PNP",
+   "template": "PNPModelo",
+   "placeholder": "LIGACAO_L2_SAT",
+   "rota": "prova+refutacao",
+   "papel": "ligacao",
+   "ref": "L2",
+   "nome_lean": "ATK.Termos.Ligacoes.L2SAT",
+   "lean_type": "ATK.Termos.Ligacoes.L2SAT modeloGenuino",
+   "tipo_matematico": "dado: linguagem do modelo L2",
+   "enunciado": "a linguagem SAT (fórmulas CNF satisfatíveis, codificadas em {0,1}*)",
+   "teoremas": [],
+   "alimenta": "ATK.Terminal.PNPModelo.sat",
+   "estado": "ABERTA — falta formalizar fórmulas CNF, satisfatibilidade e a codificação"
+  },
+  {
+   "id": "T23",
+   "linha": "Hodge",
+   "template": "HodgeModelo",
+   "placeholder": "LIGACAO_L3",
+   "rota": "prova+refutacao",
+   "papel": "ligacao",
+   "ref": "L3",
+   "nome_lean": "ATK.Termos.Ligacoes.L3",
+   "lean_type": "ATK.Termos.Ligacoes.L3",
+   "tipo_matematico": "dado: estrutura HodgeModel.{0,0}",
+   "enunciado": "variedades projetivas complexas lisas, H^{2p}(X, ℚ), tipo (p, p) e classes de ciclos algébricos",
+   "teoremas": [],
+   "alimenta": "ATK.Terminal.HodgeModelo.modeloGenuino",
+   "estado": "ABERTA — Mathlib sem cohomologia singular com decomposição de Hodge"
+  },
+  {
+   "id": "T24",
+   "linha": "BSD",
+   "template": "BSDModelo",
+   "placeholder": "LIGACAO_L4",
+   "rota": "prova+refutacao",
+   "papel": "ligacao",
+   "ref": "L4",
+   "nome_lean": "ATK.Termos.Ligacoes.L4",
+   "lean_type": "ATK.Termos.Ligacoes.L4",
+   "tipo_matematico": "dado: estrutura BSDModel.{0}",
+   "enunciado": "curvas elípticas sobre ℚ com posto de Mordell–Weil, L(E, s), regulador, Ш, c_p e torção",
+   "teoremas": [],
+   "alimenta": "ATK.Terminal.BSDModelo.modeloGenuino",
+   "estado": "ABERTA — Mathlib sem L(E, s) e sem posto de Mordell–Weil"
+  },
+  {
+   "id": "T25",
+   "linha": "YM",
+   "template": "YMModelo",
+   "placeholder": "LIGACAO_L5",
+   "rota": "prova+refutacao",
+   "papel": "ligacao",
+   "ref": "L5",
+   "nome_lean": "ATK.Termos.Ligacoes.L5",
+   "lean_type": "ATK.Termos.Ligacoes.L5",
+   "tipo_matematico": "dado: estrutura YMModel.{0,0,0}",
+   "enunciado": "teorias quânticas de campos em ℝ⁴ (axiomas de Wightman/Osterwalder–Schrader) e medidas euclidianas de YM",
+   "teoremas": [],
+   "alimenta": "ATK.Terminal.YMModelo.modeloGenuino",
+   "estado": "ABERTA — Mathlib sem teoria quântica de campos construtiva"
+  }
+ ]
+}

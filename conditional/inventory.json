@@ -4,35 +4,35 @@
   "scanned": 224,
   "not_accessible": 0,
   "empty_repos": 26,
-  "branches": 4086,
-  "files_distinct": 65049,
-  "lean_files": 8423,
+  "branches": 4094,
+  "files_distinct": 65217,
+  "lean_files": 8491,
   "coq_files": 791,
   "agda_files": 253,
   "isabelle_files": 493,
-  "python_files": 6963,
+  "python_files": 6983,
   "latex_files": 2300,
-  "lean_target_decls": 834,
-  "lean_unconditional_clean": 135,
-  "lean_unconditional_equivalences": 115,
-  "lean_unconditional_direct": 20,
+  "lean_target_decls": 872,
+  "lean_unconditional_clean": 151,
+  "lean_unconditional_equivalences": 130,
+  "lean_unconditional_direct": 21,
   "other_prover_target_statements": 552,
   "other_prover_statements_in_files_with_escape": 453,
-  "text_claims_closed": 32,
+  "text_claims_closed": 54,
   "repos_with_text_claims": 14
  },
  "languages": {
-  "Markdown": 30230,
-  "Lean": 8423,
-  "Python": 6786,
-  "YAML": 5608,
-  "JSON": 5257,
+  "Markdown": 30258,
+  "Lean": 8491,
+  "Python": 6806,
+  "YAML": 5609,
+  "JSON": 5271,
   "LaTeX": 2300,
-  "(sem extensão)": 1193,
+  "(sem extensão)": 1194,
   "Coq/Rocq": 791,
   "Shell": 658,
+  ".txt": 496,
   "Isabelle": 493,
-  ".txt": 487,
   "CSV": 483,
   "Agda": 253,
   "Jupyter": 177,
@@ -54,6 +54,7 @@
   ".py\"": 36,
   ".sh\"": 36,
   ".hpp": 33,
+  ".tpl": 27,
   ".tikz": 22,
   ".css": 21,
   ".svg": 21,
@@ -206,6 +207,27 @@
    "text_claims_closed": 1
   },
   {
+   "repo": "M-Core",
+   "visibility": "private",
+   "branches": 223,
+   "lean": 677,
+   "coq": 2,
+   "agda": 0,
+   "isabelle": 2,
+   "python": 70,
+   "latex": 0,
+   "markdown": 226,
+   "files_total": 1635,
+   "lean_target_decls": 107,
+   "lean_unconditional": 29,
+   "lean_unconditional_clean": 27,
+   "lean_with_sorry_or_axiom": 3,
+   "other_prover_files": 4,
+   "other_prover_with_escape": 0,
+   "other_prover_target_statements": 12,
+   "text_claims_closed": 32
+  },
+  {
    "repo": "m-core-hodge",
    "visibility": "private",
    "branches": 252,
@@ -225,27 +247,6 @@
    "other_prover_with_escape": 0,
    "other_prover_target_statements": 0,
    "text_claims_closed": 1
-  },
-  {
-   "repo": "M-Core",
-   "visibility": "private",
-   "branches": 215,
-   "lean": 609,
-   "coq": 2,
-   "agda": 0,
-   "isabelle": 2,
-   "python": 50,
-   "latex": 0,
-   "markdown": 198,
-   "files_total": 1467,
-   "lean_target_decls": 69,
-   "lean_unconditional": 13,
-   "lean_unconditional_clean": 11,
-   "lean_with_sorry_or_axiom": 3,
-   "other_prover_files": 4,
-   "other_prover_with_escape": 0,
-   "other_prover_target_statements": 12,
-   "text_claims_closed": 10
   },
   {
    "repo": "atk-certified-priority-record",
@@ -5163,7 +5164,7 @@
      "imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean"
     ]
    ],
-   "n_locations": 131
+   "n_locations": 139
   },
   {
    "repo": "M-Core",
@@ -5181,7 +5182,7 @@
      "imports/pnp/c102d9d4/lean/MCore/Real/P02G21G22Attack.lean"
     ]
    ],
-   "n_locations": 131
+   "n_locations": 139
   },
   {
    "repo": "M-Core",
@@ -5195,11 +5196,263 @@
      "lean/MCore/FinalFail/Semantic/Riemann.lean"
     ],
     [
-     "atk/bsd-mathlib-v431-probe",
+     "atk/beal-teorema-completo-20261014",
      "lean/MCore/FinalFail/Semantic/Riemann.lean"
     ]
    ],
-   "n_locations": 70
+   "n_locations": 78
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_incondicional",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ ExclusaoResidualDescida",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealCompleto.lean"
+    ],
+    [
+     "atk/hypothesis-ports-20261014",
+     "atk-kernel/ATK/BealCompleto.lean"
+    ]
+   ],
+   "n_locations": 5
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_residual_descida",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ ExclusaoResidualDescida",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealFermatDescent.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BealFermatDescent.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_residual_descida_pairwise",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ ExclusaoResidualDescidaPairwise",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealFermatDescent.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BealFermatDescent.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_residual442",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ ExclusaoResidual442",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealFourFourTwo.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BealFourFourTwo.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_primitive",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ BealPrimitive",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealReduction.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BealReduction.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_pairwise",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ BealPairwise",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealReduction.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BealReduction.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_gcdOne",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ BealGcdOne",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealReduction.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BealReduction.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_residual",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ ExclusaoResidual",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealResidual.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BealResidual.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_residual_pairwise",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ ExclusaoResidualPairwise",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/BealResidual.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BealResidual.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_gcdLowerBound",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ GCDLowerBound",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/Conditional/Beal.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/Conditional/Beal.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "riemann_iff_vazio",
+   "kind": "theorem",
+   "target": "RiemannHypothesis",
+   "conclusion": "RiemannHypothesis ↔ IsEmpty ZeroFora",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/ForaDaLinha.lean"
+    ],
+    [
+     "atk/hypothesis-ports-20261014",
+     "atk-kernel/ATK/ForaDaLinha.lean"
+    ]
+   ],
+   "n_locations": 7
+  },
+  {
+   "repo": "M-Core",
+   "name": "riemann_iff_ate",
+   "kind": "theorem",
+   "target": "RiemannHypothesis",
+   "conclusion": "RiemannHypothesis ↔ ∀ T, RiemannAte T",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/ZetaRetangulo.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/ZetaRetangulo.lean"
+    ]
+   ],
+   "n_locations": 8
+  },
+  {
+   "repo": "M-Core",
+   "name": "riemann_iff_torcao",
+   "kind": "theorem",
+   "target": "RiemannHypothesis",
+   "conclusion": "RiemannHypothesis ↔ ∀ s ∈ Z, torcao s = s",
+   "locations": [
+    [
+     "atk/beal-teorema-completo-20261014",
+     "atk-kernel/ATK/ZetaSimetria.lean"
+    ],
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/ZetaSimetria.lean"
+    ]
+   ],
+   "n_locations": 10
+  },
+  {
+   "repo": "M-Core",
+   "name": "flt_iff_primos_ge_cinco",
+   "kind": "theorem",
+   "target": "FermatLastTheorem",
+   "conclusion": "FermatLastTheorem ↔ FLTPrimosGeCinco",
+   "locations": [
+    [
+     "atk/bridge-reduction-20261014",
+     "atk-kernel/ATK/BridgeReduction.lean"
+    ],
+    [
+     "atk/hypothesis-ports-20261014",
+     "atk-kernel/ATK/BridgeReduction.lean"
+    ]
+   ],
+   "n_locations": 4
   },
   {
    "repo": "M-Core",
@@ -5267,6 +5520,60 @@
   },
   {
    "repo": "M-Core",
+   "name": "necessidade_iff_espectral",
+   "kind": "theorem",
+   "target": "RiemannHypothesis",
+   "conclusion": "(RiemannHypothesis → Tendsto DN atTop (𝓝 0)) ↔ (RiemannHypothesis → Tendsto DNespectral atTop (𝓝 0))",
+   "locations": [
+    [
+     "atk/hypothesis-ports-20261014",
+     "atk-kernel/ATK/EspectralDN.lean"
+    ],
+    [
+     "conditional",
+     "atk-kernel/ATK/EspectralDN.lean"
+    ]
+   ],
+   "n_locations": 3
+  },
+  {
+   "repo": "M-Core",
+   "name": "O1_implica_minima",
+   "kind": "theorem",
+   "target": "UniformLogBound",
+   "conclusion": "UniformLogBound → Tendsto DN atTop (𝓝 0)",
+   "locations": [
+    [
+     "atk/hypothesis-ports-20261014",
+     "atk-kernel/ATK/ObrigacoesMinimas.lean"
+    ],
+    [
+     "conditional",
+     "atk-kernel/ATK/ObrigacoesMinimas.lean"
+    ]
+   ],
+   "n_locations": 3
+  },
+  {
+   "repo": "M-Core",
+   "name": "beal_iff_gEstrela",
+   "kind": "theorem",
+   "target": "BealConjecture",
+   "conclusion": "BealConjecture ↔ gEstrela = 2",
+   "locations": [
+    [
+     "atk/ligacoes-L1-L2-20261014",
+     "atk-kernel/ATK/BealFiltros.lean"
+    ],
+    [
+     "conditional",
+     "atk-kernel/ATK/BealFiltros.lean"
+    ]
+   ],
+   "n_locations": 3
+  },
+  {
+   "repo": "M-Core",
    "name": "universal_failure_iff_not_in_p",
    "kind": "theorem",
    "target": "UniversalFailure",
@@ -5282,24 +5589,6 @@
     ]
    ],
    "n_locations": 40
-  },
-  {
-   "repo": "M-Core",
-   "name": "beal_iff_gcdLowerBound",
-   "kind": "theorem",
-   "target": "BealConjecture",
-   "conclusion": "BealConjecture ↔ GCDLowerBound",
-   "locations": [
-    [
-     "conditional",
-     "atk-kernel/ATK/Conditional/Beal.lean"
-    ],
-    [
-     "main",
-     "atk-kernel/ATK/Conditional/Beal.lean"
-    ]
-   ],
-   "n_locations": 2
   },
   {
    "repo": "M-Core",

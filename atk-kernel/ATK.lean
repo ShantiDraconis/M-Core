@@ -69,3 +69,4 @@ import ATK.EspectralDN
 import ATK.NecessidadeBD
 import ATK.LigacaoNS
 import ATK.LigacaoPNP
+import ATK.Termos

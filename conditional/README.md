@@ -238,9 +238,15 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
 - `scripts/terminal_gates.json` + `scripts/universal_green.py`: os 7 portões terminais; o auditor
   calcula `UNIVERSAL_GREEN` e `FINAL_ROOT` a cada push, checando o **tipo elaborado** de cada portão.
   Hoje: `false`, `null`, 0/7.
-- `terminal-templates/` + `scripts/verificar_fiacao.py`: a última milha ligada — 9/9 modelos de portão
-  compilam com as peças ausentes; faltam exatamente **19** termos (produtores, pontes, ligações).
-- `scripts/ensaio_universal_green.py`: ensaio de ponta a ponta com enunciados de brinquedo — 10/10
+- `terminal-templates/` + `scripts/verificar_fiacao.py`: a última milha ligada — 21/21 modelos de
+  portão compilam com as peças ausentes; rota da prova: faltam **18** termos; rota da refutação: 12.
+- `ATK/Termos.lean` + `scripts/termos.json` + `scripts/termos.py` (39 teoremas): as **25
+  lacunas distintas**, cada uma com nome e tipo Lean; o auditor troca cada lacuna por
+  `(sorry : <tipo>)` e o kernel confere **25/25** tipos (com teste de sensibilidade). Provado:
+  `fecha`, `exato`/`decomposicao` (RH, Beal, Hodge, BSD, P≠NP dada a ponte), formas-testemunha
+  das refutações e o critério de fidelidade da L2 (`PNP.pneNP_de_fiel`). Ficha de 24 componentes
+  por termo em [`TERMOS.md`](TERMOS.md).
+- `scripts/ensaio_universal_green.py`: ensaio de ponta a ponta com enunciados de brinquedo — 12/12
   (acende com provas válidas; bloqueia `sorry`, sombreamento, hipóteses, axiomas, enunciado trocado).
 - `scripts/instalar_portao.py`: instala um portão só se for prova genuína; hoje recusa as 9 linhas.
 - `scripts/plano.py`: o plano **T1–T9** calculado a cada push — biblioteca **VERDE** (T1–T6, T9),
@@ -328,6 +334,7 @@ FICHAS.md                    provado / refutado / lacuna, zeros fora da linha, p
 VALLEE_POUSSIN.md            região sem zeros logarítmica, valores de c(t), piso de m(ρ)
 MODELOS_TERMINAIS.md         álgebra de terminais, caudas de D_N, Beal g* = 2, modelos, triádico
 UNIVERSAL_GREEN.md           árvore do fechamento, portões terminais, UNIVERSAL_GREEN e FINAL_ROOT
+TERMOS.md                    as 25 lacunas dos portões: tipo Lean, teoremas, 24 componentes cada
 proof_search.json            dados da busca (por repositório, categoria e problema)
 HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
 hypothesis_map.json          dados do mapa

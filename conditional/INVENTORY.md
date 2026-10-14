@@ -10,14 +10,14 @@ Varredura de **todos os branches** de cada repositório acessível da conta (blo
 | Varridos (todos os branches) | **224** |
 | Vazios (sem nenhum commit) | 26 |
 | Sem acesso nesta sessão (privados não anexados) | 0 |
-| Branches varridos | 4086 |
-| Arquivos distintos (por conteúdo) | 65049 |
-| Lean / Coq / Agda / Isabelle | 8423 / 791 / 253 / 493 |
-| Python (+notebooks) / LaTeX | 6963 / 2300 |
-| Declarações Lean que concluem um alvo | 834 |
-| …sem hipótese explícita, sem sorry/axiom no próprio arquivo | 135: 115 equivalências (↔) + 20 afirmações diretas, revisadas abaixo |
+| Branches varridos | 4094 |
+| Arquivos distintos (por conteúdo) | 65217 |
+| Lean / Coq / Agda / Isabelle | 8491 / 791 / 253 / 493 |
+| Python (+notebooks) / LaTeX | 6983 / 2300 |
+| Declarações Lean que concluem um alvo | 872 |
+| …sem hipótese explícita, sem sorry/axiom no próprio arquivo | 151: 130 equivalências (↔) + 21 afirmações diretas, revisadas abaixo |
 | Enunciados-alvo em Coq/Agda/Isabelle | 552 (453 em arquivos com escapatória) |
-| Alegações textuais de fechamento (`CLOSED_MATH = true`, `state := .proved`…) | 32 em 14 repositórios |
+| Alegações textuais de fechamento (`CLOSED_MATH = true`, `state := .proved`…) | 54 em 14 repositórios |
 
 ## Veredito
 
@@ -29,8 +29,8 @@ Nenhum arquivo, em nenhuma linguagem, em nenhum branch, contém um termo sem hip
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | m-core-p-vs-np | 696 | 1410 | 0 | 0 | 0 | 33 | 0 | 256 | 34 | 0 | 3 |
 | m-core-beal | 246 | 367 | 0 | 0 | 0 | 12 | 0 | 111 | 49 | 0 | 1 |
+| M-Core | 223 | 677 | 2 | 0 | 2 | 70 | 0 | 107 | 27 | 12 | 32 |
 | m-core-hodge | 252 | 323 | 0 | 0 | 0 | 19 | 0 | 71 | 1 | 0 | 1 |
-| M-Core | 215 | 609 | 2 | 0 | 2 | 50 | 0 | 69 | 11 | 12 | 10 |
 | atk-certified-priority-record | 1 | 466 | 0 | 0 | 0 | 1 | 0 | 67 | 9 | 0 | 2 |
 | Millennium | 107 | 510 | 163 | 42 | 82 | 1229 | 352 | 53 | 2 | 199 | 2 |
 | m-core-riemann | 175 | 391 | 0 | 0 | 0 | 24 | 8 | 31 | 1 | 0 | 1 |
@@ -145,6 +145,7 @@ O scanner só vê `axiom` no próprio arquivo e hipóteses entre parênteses. Po
 |---|---|---|---|---|
 | M-Core | `rh_material_vacuous` | `ConcreteUniformLogDNBound (fun _ => 0)` | `atk-kernel-check`:`atk-kernel/ATK/LogicAudit.lean` | firewall: D_N ≡ 0 satisfaz a cota trivialmente — mostra que o alvo precisa estar ligado ao D_N concreto |
 | M-Core | `positive_rh_incompatible_with_negative_lane` | `RiemannHypothesis → ¬ Nonempty RiemannInterpretation` | `atk/global-material-frontier-20261001`:`lean/MCore/FinalFail/GlobalPositiveMaterialFrontier.lean` | implicação (RH → …), não prova de RH |
+| M-Core | `O1_implica_minima` | `UniformLogBound → Tendsto DN atTop (𝓝 0)` | `atk/hypothesis-ports-20261014`:`atk-kernel/ATK/ObrigacoesMinimas.lean` | implicação (cota uniforme UniformLogBound → D_N → 0), não prova de RH; a cota é a obrigação O1 aberta |
 | m-core-p-vs-np | `(example)` | `Nonempty P01MachineConstruction` | `atk-kernel-check`:`probe/P01MachineConstructionExpectedFailure.lean` | P01: SAT ∈ NP no modelo de máquina do lane P vs NP (resultado genuíno, mas não é P ≠ NP) |
 | m-core-p-vs-np | `p01ConstructionGap` | `P01ConstructionGap` | `atk/p01-material-inhabitant-frontier-20260930`:`lean/MCore/Real/P01TerminalCertificate.lean` | P01: idem |
 | m-core-p-vs-np | `p01_closed_no_hypothesis` | `P01ConstructionGap` | `atk/p01-terminal-promotion-candidate-20260930`:`lean/MCore/Real/P01TerminalMaterialCertificate.lean` | P01: idem |
@@ -164,7 +165,7 @@ O scanner só vê `axiom` no próprio arquivo e hipóteses entre parênteses. Po
 | universal-emergent-logic- | `UETheta_implies_RH` | `RiemannHypothesis` | `ShantiDraconis-patch-1`:`formalization/lean/UETheta_to_RH.lean` | `def RiemannHypothesis : Prop := True` no próprio arquivo — vácuo |
 | universal-emergent-logic- | `MasterTheorem` | `RiemannHypothesis ∧ GRH ∧ HardyLittlewood_k_tuple ∧ BatemanHorn ∧ GoldbachWeak` | `ShantiDraconis-patch-1`:`src/lean/EmergentTheta/Main/MasterTheorem.lean` | hipótese de classe `[UniversalThetaFramework]` e axiomas nos arquivos *FromUT.lean importados |
 
-As outras 115 são equivalências (`Alvo ↔ Reformulação`): transportam o problema, não o resolvem. Lista completa em `inventory.json`.
+As outras 130 são equivalências (`Alvo ↔ Reformulação`): transportam o problema, não o resolvem. Lista completa em `inventory.json`.
 
 
 ## Coq/Rocq, Agda, Isabelle — enunciados que mencionam os problemas
@@ -777,17 +778,17 @@ postulate | `attack/poincare-f7-f8-multistate-20260926`:`agda/UnificationTheorem
 
 | Linguagem/formato | Arquivos distintos |
 |---|---|
-| Markdown | 30230 |
-| Lean | 8423 |
-| Python | 6786 |
-| YAML | 5608 |
-| JSON | 5257 |
+| Markdown | 30258 |
+| Lean | 8491 |
+| Python | 6806 |
+| YAML | 5609 |
+| JSON | 5271 |
 | LaTeX | 2300 |
-| (sem extensão) | 1193 |
+| (sem extensão) | 1194 |
 | Coq/Rocq | 791 |
 | Shell | 658 |
+| .txt | 496 |
 | Isabelle | 493 |
-| .txt | 487 |
 | CSV | 483 |
 | Agda | 253 |
 | Jupyter | 177 |

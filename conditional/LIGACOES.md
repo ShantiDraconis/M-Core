@@ -50,6 +50,15 @@ Falta, para a instância `ComplexityModel` (e então B4/O4 sobre o objeto real):
 2. com ela: `P ⊆ NP` (o verificador descarta o certificado) e P fechada por reduções de Karp;
 3. a linguagem SAT (codificação binária de fórmulas CNF).
 
+**Critério de fidelidade certificado (14/10/2026).** `ATK.Termos.PNP.FielL2 M` diz que as classes
+do modelo são, a menos de uma bijeção das linguagens, `classeP` e `classeNP`;
+`ATK.Termos.PNP.pneNP_de_fiel` prova `FielL2 M → (PneNP M ↔ ATK.LigacaoPNP.PneNP)`. Então quem
+construir o modelo da L2 tem um alvo verificável por máquina: provar `FielL2`. Nenhum modelo com
+finitas linguagens é fiel (`ATK.Termos.PNP.finito_nao_fiel`), em particular o de brinquedo de
+`ATK.FinalRoot.pnp_depende_do_modelo` (`Lang := Bool`). A relação de
+redução `Red` não entra no critério: ela só importa para a ponte B4 (Cook–Levin), não para o
+enunciado. Ver [`TERMOS.md`](TERMOS.md), termos T21 e T22.
+
 ## Efeito no auditor e nos portões
 
 * `terminal-templates/NS.lean.tpl`: a peça `LIGACAO_L1` está preenchida com

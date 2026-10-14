@@ -24,6 +24,7 @@ if os.path.exists(_nf):
 REVIEW = {
     "rh_material_vacuous": "firewall: D_N ≡ 0 satisfaz a cota trivialmente — mostra que o alvo precisa estar ligado ao D_N concreto",
     "positive_rh_incompatible_with_negative_lane": "implicação (RH → …), não prova de RH",
+    "O1_implica_minima": "implicação (cota uniforme UniformLogBound → D_N → 0), não prova de RH; a cota é a obrigação O1 aberta",
     "P01MachineConstruction": "P01: SAT ∈ NP no modelo de máquina do lane P vs NP (resultado genuíno, mas não é P ≠ NP)",
     "P01ConstructionGap": "P01: idem",
     "concretePayload_vacuous_on_empty_model": "firewall: modelo vazio torna o payload de Hodge vácuo",

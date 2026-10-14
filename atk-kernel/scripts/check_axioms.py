@@ -199,6 +199,10 @@ try:
         ens = ensaio_universal_green.run()
         report["fiacao"], report["ensaio"] = fia, ens
         md += [""] + verificar_fiacao.markdown(fia) + [""] + ensaio_universal_green.markdown(ens)
+    import termos
+    tm = termos.compute(ROOT, verdict_of, report.get("fiacao"))
+    report["termos"] = {k: v for k, v in tm.items() if k not in ("terms", "linhas")}
+    md += [""] + termos.markdown(tm)
     import plano
     pl = plano.compute(ROOT, report)
     report["plano"] = pl
@@ -238,6 +242,13 @@ if os.environ.get("GITHUB_ACTIONS"):
                   f"refutação: {fia.get('n_missing_refutation', '?')}::"
                   + esc("prova: " + ", ".join(fia["missing_terms"])
                         + "\nrefutação: " + ", ".join(fia.get("missing_refutation", []))))
+        tm = report.get("termos")
+        if tm:
+            print(f"::notice title=TERMOS {tm['distintos']} distintos (prova {tm['prova']} · refutação {tm['refutacao']}) · "
+                  f"tipos {tm['tipos_conferidos']}/{tm['tipos_total']} · fechados {tm['fechadas']}/{tm['distintos']}::"
+                  + esc(f"teoremas do catálogo certificados {tm['teoremas_certificados']}/{tm['teoremas']}"
+                        + ("\ncatálogo OK" if tm["ok"] else "\nINCONSISTENTE: " + "; ".join(tm["problems"]))
+                        + "\nsensibilidade: " + str(((report.get("fiacao") or {}).get("sensibilidade") or {}).get("detectada"))))
         pl = report.get("plano")
         if pl:
             cnt = " · ".join(f"{k} {v}" for k, v in sorted(pl["contagem"].items()))
