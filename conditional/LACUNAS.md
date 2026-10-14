@@ -20,10 +20,17 @@ conjectura — ou uma redução que encolhe o caso que falta.
      faixa e cruza a reta crítica;
    * `zeta_ne_zero_baixo`, `riemannAte_raiz`: **nenhum zero na faixa com `|Im s| < √3/2`: RH vale
      até essa altura**; `riemann_iff_ate`: RH ⟺ RH até toda altura.
-3. Lacuna: estender a todas as alturas. Próximos lemas conhecidos e formalizáveis: região de
-   de la Vallée Poussin `σ > 1 − c/log(|t|+2)` (o "fim fechado" entra em toda altura), Hardy (infinitos
-   zeros na reta), limite inferior de Burnol para `D_N`. Qualquer extremo uniforme `a < 1` (quase-RH)
-   já seria inédito; `a = 1/2` é RH (O1).
+   Novo — `ATK/ZetaRegiao.lean` (10), **o fim fechado entra na faixa em toda altura**:
+   * `tres_quatro_um`: a desigualdade `|ζ(1+x)³ ζ(1+x+it)⁴ ζ(1+x+2it)| ≥ 1` (Mathlib);
+   * `norm_zeta_le_de_zero`: perto de um zero `β + it`, `|ζ(σ+it)| ≤ (σ−β)(9+4|t|)`;
+   * `regiao_sem_zeros`: para `|t| ≥ 1/2`, todo zero tem `Re s < 1 − c(t)`,
+     `c(t) = 1/(256·(9+4|t|)⁴·(3+3|t|))`;
+   * **`faixa_estreitada`: todo zero não trivial tem `c(t) < Re s < 1 − c(t)`** — início e fim
+     fechados avançam juntos, em toda altura.
+3. Lacuna: a largura ganha decai como `|t|⁻⁵`. Próximos lemas conhecidos e formalizáveis: região de
+   de la Vallée Poussin `σ > 1 − c/log(|t|+2)` (exige cotas `|ζ| ≪ log|t|` por somas parciais),
+   Hardy (infinitos zeros na reta), limite inferior de Burnol para `D_N`. Qualquer extremo uniforme
+   `a < 1` (quase-RH) já seria inédito; `a = 1/2` é RH (O1).
 
 ## Beal
 
@@ -91,5 +98,6 @@ conjectura — ou uma redução que encolhe o caso que falta.
 
 ## Contagem
 
-Novos nesta etapa: 54 teoremas (`ZetaRetangulo` 16, `BealFLT` 10, `Shannon` 9, `NSPequeno` 3,
-`YMToy` 16). Total esperado no CI (com os módulos paralelos de Beal/Fermat/curva congruente): 537.
+Novos nesta etapa: 64 teoremas (`ZetaRetangulo` 16, `ZetaRegiao` 10, `BealFLT` 10, `Shannon` 9,
+`NSPequeno` 3, `YMToy` 16). Total esperado no CI (com os módulos paralelos de Beal/Fermat/curva
+congruente): 547.

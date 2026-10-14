@@ -35,3 +35,4 @@ import ATK.ZetaRetangulo
 import ATK.Shannon
 import ATK.NSPequeno
 import ATK.YMToy
+import ATK.ZetaRegiao

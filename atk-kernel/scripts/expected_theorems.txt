@@ -535,3 +535,13 @@ ATK.YMToy.correl_exp
 ATK.YMToy.correl_estado_zero
 ATK.YMToy.razao_inversa
 ATK.YMToy.massa_tende_zero
+ATK.ZetaRegiao.tres_quatro_um
+ATK.ZetaRegiao.zeta_eq
+ATK.ZetaRegiao.norm_zeta_real_le
+ATK.ZetaRegiao.norm_zeta_le
+ATK.ZetaRegiao.norm_H_sub_le
+ATK.ZetaRegiao.norm_zeta_le_de_zero
+ATK.ZetaRegiao.A_ge
+ATK.ZetaRegiao.A_neg
+ATK.ZetaRegiao.regiao_sem_zeros
+ATK.ZetaRegiao.faixa_estreitada

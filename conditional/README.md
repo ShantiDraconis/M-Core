@@ -183,12 +183,13 @@ do que é verdadeiro:
   fechado chega ao meio ⟺ todo zero é fixo pela torção**. Os extremos provados são `a = 1`, `b = 0`;
   o limite `a ↓ 1/2` é a própria RH (O1), aberta.
 
-## As lacunas, problema a problema — `LACUNAS.md` (54 teoremas)
+## As lacunas, problema a problema — `LACUNAS.md` (64 teoremas)
 
 Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um problema):
 
-- **Riemann** (`ATK/ZetaRetangulo.lean`): `ζ(s) ≠ 0` se `|s − 1| < 2·Re s`; **nenhum zero na faixa
-  com `|Im s| < √3/2` — RH vale até essa altura**.
+- **Riemann** (`ATK/ZetaRetangulo.lean`, `ATK/ZetaRegiao.lean`): `ζ(s) ≠ 0` se `|s − 1| < 2·Re s`;
+  **nenhum zero na faixa com `|Im s| < √3/2`** (RH até essa altura); e **região sem zeros em toda
+  altura**: todo zero não trivial tem `c(t) < Re s < 1 − c(t)`, `c(t) = 1/(256(9+4|t|)⁴(3+3|t|))`.
 - **Beal** (`ATK/BealFLT.lean`): com o Último Teorema de Fermat, **Beal ⟺ excluir soluções dois a
   dois coprimas com `mdc(x,y,z) ∈ {1, 2}`**.
 - **P vs NP** (`ATK/Shannon.lean`): contagem de Shannon — existe função de `n` bits sem circuito com
@@ -312,6 +313,7 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/IAlgebra.lean          álgebras de I: impossibilidades e modelos consistentes (34)
   ATK/IGeometria.lean        neutro, tensão, compressão, torção, torque, K3 (56)
   ATK/ZetaRetangulo.lean     região sem zeros |s−1| < 2 Re s; RH até a altura √3/2 (16)
+  ATK/ZetaRegiao.lean        3–4–1 ⇒ região sem zeros em toda altura: c(t) < Re s < 1 − c(t) (10)
   ATK/BealFLT.lean           com FLT, Beal ⟺ caso mdc(x,y,z) ∈ {1,2} (10)
   ATK/Shannon.lean           contagem de Shannon; família fora de P/poly (9)
   ATK/NSPequeno.lean         enstrofia: dados pequenos ⇒ sem explosão, decaimento (3)
