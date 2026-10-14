@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 33ac3245c342223d016590bf3b222720d875761e96bd1401878056fca324cf41
+# axiomas por teorema — congelamento de 9b4585ad02ed06fb071f65dc7f9915d94276bc3e34285ac66a36abcd3f30257b
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1257,3 +1257,49 @@ ATK.CookLevinBase.cota	propext, Classical.choice, Quot.sound
 ATK.CookLevinBase.teste_prof_sat	nenhum
 ATK.CookLevinBase.teste_emp_sat	nenhum
 ATK.CookLevinBase.teste_topo_sat	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.sat_append	propext, Quot.sound
+ATK.CookLevinTableau.sat_flatten	propext, Quot.sound
+ATK.CookLevinTableau.sat_flatMap	propext, Quot.sound
+ATK.CookLevinTableau.sat_singleton	propext, Quot.sound
+ATK.CookLevinTableau.tomaSome_celulas	propext, Quot.sound
+ATK.CookLevinTableau.sat_noMaximo	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.umSo_forca	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.umSo_de_indicadora	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.umSo_alguma	propext, Quot.sound
+ATK.CookLevinTableau.ix_lt	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.getElem_ix	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.getElem?_ix	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.getElem?_eq_iff_ix	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.ix_getElem	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.mem_ks	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.mem_pats	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.passoA_some	nenhum
+ATK.CookLevinTableau.map_finRange_val	propext, Quot.sound
+ATK.CookLevinTableau.tomaSome_getElem?	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.length_tomaSome_le	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.mem_tomaSome	propext
+ATK.CookLevinTableau.forca_cod	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.cod_umSo	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.run_zero	nenhum
+ATK.CookLevinTableau.Tab.run_succ	propext, Quot.sound
+ATK.CookLevinTableau.Tab.init_stk_k₀	propext
+ATK.CookLevinTableau.Tab.init_stk_ne	propext
+ATK.CookLevinTableau.Tab.run_inv	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.cod_τrun	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.celula_mem	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.sat_par	propext
+ATK.CookLevinTableau.Tab.sat_unit	propext, Quot.sound
+ATK.CookLevinTableau.Tab.conseq_sat	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.antes_neg	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.completo	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.unit_true	propext
+ATK.CookLevinTableau.Tab.imp_true	propext
+ATK.CookLevinTableau.Tab.imp2_true	propext
+ATK.CookLevinTableau.Tab.umSo_de_fE	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.mem_fR	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.passo_correto	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.base_correto	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Tab.tableau_iff	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Teste.bom₀	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Teste.teste_aceita	propext, Classical.choice, Quot.sound
+ATK.CookLevinTableau.Teste.teste_recusa	propext, Classical.choice, Quot.sound

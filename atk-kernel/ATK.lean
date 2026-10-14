@@ -75,5 +75,6 @@ import ATK.ComposicaoTM2
 import ATK.ModeloPNP
 import ATK.SATemNP
 import ATK.CookLevinBase
+import ATK.CookLevinTableau
 import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes

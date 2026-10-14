@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1257 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1303 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -259,8 +259,16 @@ Marco M2a — `ATK/CookLevinBase.lean` (16): a base genérica do tableau. Um pas
 topo de cada pilha (`stepAux_topo`: com `prof q ≤ d`, o passo sobre `S` é o passo sobre `take d`,
 com `drop d` intacto), as pilhas crescem no máximo `emp q` por passo, os símbolos empurrados formam
 um conjunto finito (a `FinTM2` da Mathlib só exige alfabeto finito na pilha de entrada) e a execução
-acolchoada de `T ≥ n` passos termina na configuração de parada. Faltam M2b (tableau em CNF e
-correção), M2c (redução pura) e M2d (máquina geradora em tempo polinomial).
+acolchoada de `T ≥ n` passos termina na configuração de parada.
+
+Marco M2b — `ATK/CookLevinTableau.lean` (46): **o tableau de Cook–Levin para qualquer máquina
+`TM2`**. A CNF tem cinco famílias: (E) exatamente um valor por célula, rótulo e estado; (I) a
+linha inicial com até `Q` células livres de certificado; (R) as transições, uma por padrão de
+janela; (P) parada fica parada; (A) aceitação. `tableau_iff` prova as duas direções: a fórmula é
+satisfatível exatamente quando algum certificado faz a execução acolchoada de `T` passos parar
+aceitando (`completo`; `base_correto` + `passo_correto`). A sanidade numa máquina concreta dá
+"satisfatível" e "insatisfatível" nos dois casos esperados. Faltam M2c (a redução pura para
+`L ∈ NP`) e M2d (a máquina geradora em tempo polinomial).
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 
