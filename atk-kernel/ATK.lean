@@ -52,3 +52,6 @@ import ATK.Triadico
 import ATK.FinalRoot
 import ATK.CongruentBijection
 import ATK.BridgeReduction
+import ATK.TeoremaGlobal
+import ATK.FreyBealResidual
+import ATK.FatoresQuarticos
