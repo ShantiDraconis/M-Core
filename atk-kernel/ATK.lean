@@ -52,3 +52,4 @@ import ATK.BorderPrimes
 import ATK.ObrigacoesMinimas
 import ATK.PlancherelL1L2
 import ATK.MellinPlancherel
+import ATK.EspectralDN

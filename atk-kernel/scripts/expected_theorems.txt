@@ -722,3 +722,9 @@ ATK.MellinPlancherel.norm_sq_lado
 ATK.MellinPlancherel.integrable_lado
 ATK.MellinPlancherel.fourier_lado
 ATK.MellinPlancherel.integral_norm_sq_eq_mellin
+ATK.EspectralDN.mellin_res_geral
+ATK.EspectralDN.residualSq_espectral
+ATK.EspectralDN.DN_espectral
+ATK.EspectralDN.DN_eq_DNespectral
+ATK.EspectralDN.necessidade_iff_espectral
+ATK.EspectralDN.rh_of_espectral
