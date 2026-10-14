@@ -244,8 +244,9 @@ if os.environ.get("GITHUB_ACTIONS"):
                         + "\nrefutação: " + ", ".join(fia.get("missing_refutation", []))))
         tm = report.get("termos")
         if tm:
-            print(f"::notice title=TERMOS {tm['distintos']} distintos (prova {tm['prova']} · refutação {tm['refutacao']}) · "
-                  f"tipos {tm['tipos_conferidos']}/{tm['tipos_total']} · fechados {tm['fechadas']}/{tm['distintos']}::"
+            print(f"::notice title=TERMOS {tm.get('catalogo', tm['distintos'])} no catálogo · abertos {tm['distintos']} "
+                  f"(prova {tm['prova']} · refutação {tm['refutacao']}) · preenchidos {tm.get('preenchidas', 0)} · "
+                  f"tipos {tm['tipos_conferidos']}/{tm['tipos_total']} · fechados {tm['fechadas']}/{tm.get('catalogo', tm['distintos'])}::"
                   + esc(f"teoremas do catálogo certificados {tm['teoremas_certificados']}/{tm['teoremas']}"
                         + ("\ncatálogo OK" if tm["ok"] else "\nINCONSISTENTE: " + "; ".join(tm["problems"]))
                         + "\nsensibilidade: " + str(((report.get("fiacao") or {}).get("sensibilidade") or {}).get("detectada"))))
