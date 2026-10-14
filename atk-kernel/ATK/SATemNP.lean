@@ -21,7 +21,8 @@ de variável em `Nat.bits`, sem zeros à direita):
 * **a máquina** `satTM` (4 pilhas, 18 rótulos) computa `verif` (`verif (par w c) = acc c …`)
   em no máximo `2 (n + 4)²` passos (`runTotal`, `verifComputavel`);
 * `sat_em_NP : SAT ∈ classeNP` e `cookLevin_iff`: no modelo genuíno, a ponte B4
-  (`CookLevin modeloPNP SAT`) equivale agora à NP-dificuldade de SAT (marco M2, em aberto).
+  (`CookLevin modeloPNP SAT`) equivale à NP-dificuldade de SAT (marco M2, provado em
+  `ATK.CookLevinNP.cookLevin`).
 
 Nada aqui decide P vs NP. **CLOSED_MATH continua false.**
 -/

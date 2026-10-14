@@ -19,8 +19,8 @@ tempo polinomial, cota `q` dos certificados):
 
 Observação honesta: classicamente, toda linguagem se reduz a SAT por *alguma* função (não
 computável). O conteúdo daqui é a função explícita e local do tableau. Que ela seja computável
-por uma `FinTM2` em tempo polinomial é o marco M2d, ainda em aberto, e só com ele
-`CookLevin modeloPNP SAT` fica provado.
+por uma `FinTM2` em tempo polinomial é o marco M2d (`ATK.CookLevinNP`), que fecha
+`CookLevin modeloPNP SAT`.
 
 Nada aqui decide P vs NP. **CLOSED_MATH continua false.**
 -/

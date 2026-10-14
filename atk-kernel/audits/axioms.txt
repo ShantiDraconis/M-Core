@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de d68f5c441741c9a63033eff215a054cfbc4bd91d196ffe1fec399a05c52493df
+# axiomas por teorema — congelamento de 58eb166797a72df1745460471ceb1bf181d704fe2e5f8c8e8a325ce83339847e
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1384,3 +1384,220 @@ ATK.Compilador.maq_run	propext, Classical.choice, Quot.sound
 ATK.Compilador.sem_unario	propext
 ATK.Compilador.computavel	propext, Classical.choice, Quot.sound
 ATK.Compilador.unarioComputavel	propext, Classical.choice, Quot.sound
+ATK.IPortadores.imath_divisao_nao_preservada	VER CI
+ATK.IPortadores.ABS.emb_injective	VER CI
+ATK.IPortadores.ABS.emb_add	VER CI
+ATK.IPortadores.ABS.emb_mul	VER CI
+ATK.IPortadores.ABS.emb_div	VER CI
+ATK.IPortadores.Nexus.inv_zero_eq_I	VER CI
+ATK.IPortadores.Nexus.zero_mul_I	VER CI
+ATK.IPortadores.CARD.emb_injective	VER CI
+ATK.IPortadores.CARD.emb_add	VER CI
+ATK.IPortadores.CARD.emb_mul	VER CI
+ATK.IPortadores.CARD.sub_incompativel	VER CI
+ATK.IPortadores.KIJ.zero_mul_I	VER CI
+ATK.IPortadores.KIJ.incompativel	VER CI
+ATK.IPortadores.IEA.add_I_left	VER CI
+ATK.IPortadores.IEA.zero_mul_I	VER CI
+ATK.IPortadores.IEA.incompativel	VER CI
+ATK.IPortadores.IEA.A3_falso	VER CI
+ATK.IPortadores.AEI.zero_mul_I	VER CI
+ATK.IPortadores.AEI.nao_associativa	VER CI
+ATK.IPortadores.AEI.incompativel	VER CI
+ATK.IPortadores.ZDIV.eadd_I_right	VER CI
+ATK.IPortadores.ZDIV.nao_associativa	VER CI
+ATK.IPortadores.ZDIV.j_property_falso	VER CI
+ATK.IPortadores.ZDIV.incompativel	VER CI
+ATK.IPortadores.FLEX.I_idempotente	VER CI
+ATK.IPortadores.FLEX.iso_add	VER CI
+ATK.IPortadores.FLEX.iso_mul	VER CI
+ATK.IPortadores.FLEX.iso_bijective	VER CI
+ATK.IPortadores.FLEX.incompativel	VER CI
+ATK.IPortadores.PAX_inconsistente	VER CI
+ATK.IPortadoresMenores.Roda.equiv_nao_transitiva	VER CI
+ATK.IPortadoresMenores.Roda.toRI_add	VER CI
+ATK.IPortadoresMenores.Roda.toRI_mul	VER CI
+ATK.IPortadoresMenores.Roda.equivK_equivalence	VER CI
+ATK.IPortadoresMenores.Roda.equiv_grosseira	VER CI
+ATK.IPortadoresMenores.Roda.toRI_um_zero_eq_zero_zero	VER CI
+ATK.IPortadoresMenores.Roda.toRI_inv_falha	VER CI
+ATK.IPortadoresMenores.Multiestado.subI_none	VER CI
+ATK.IPortadoresMenores.Multiestado.divI_none_none	VER CI
+ATK.IPortadoresMenores.Multiestado.divI_none_zero	VER CI
+ATK.IPortadoresMenores.Multiestado.standard_eq_RI	VER CI
+ATK.IPortadoresMenores.Multiestado.limit_difere_de_RI	VER CI
+ATK.IPortadoresMenores.LogicaI.paraK3_bijective	VER CI
+ATK.IPortadoresMenores.LogicaI.paraK3_neg	VER CI
+ATK.IPortadoresMenores.LogicaI.paraK3_conj	VER CI
+ATK.IPortadoresMenores.LogicaI.paraK3_disj	VER CI
+ATK.IPortadoresMenores.LogicaI.imp_eq_kleene	VER CI
+ATK.IPortadoresMenores.LogicaI.explosao_vale_designado_T	VER CI
+ATK.IPortadoresMenores.LogicaI.explosao_falha_designado_TI	VER CI
+ATK.CookLevinLacos.emite_seqC_nil	nenhum
+ATK.CookLevinLacos.emite_seqC_cons	propext
+ATK.CookLevinLacos.sem_seqC_append	propext
+ATK.CookLevinLacos.emite_seqC_append	propext
+ATK.CookLevinLacos.emite_seqC_map	propext
+ATK.CookLevinLacos.emite_emit	nenhum
+ATK.CookLevinLacos.igual_refl	nenhum
+ATK.CookLevinLacos.igual_trans	nenhum
+ATK.CookLevinLacos.geraU_emite	nenhum
+ATK.CookLevinLacos.geraU_nil	nenhum
+ATK.CookLevinLacos.geraU_cons	nenhum
+ATK.CookLevinLacos.geraU_append	propext
+ATK.CookLevinLacos.geraU_map	propext
+ATK.CookLevinLacos.geraU_forU	propext, Quot.sound
+ATK.CookLevinLacos.geraU_congr	nenhum
+ATK.CookLevinLacos.forall₂_map_map	propext
+ATK.CookLevinLacos.forall₂_append	nenhum
+ATK.CookLevinLacos.forall₂_flatMap	propext
+ATK.CookLevinLacos.custoFor_le	propext, Quot.sound
+ATK.CookLevinLacos.powLoop_spec	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.one_le_custo_seqC	propext, Quot.sound
+ATK.CookLevinLacos.custo_seqC_append	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.seqC_acum	propext, Quot.sound
+ATK.CookLevinLacos.sum_range_list	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.sum_flatMap_sum	propext
+ATK.CookLevinLacos.sum_expoentes	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.le_natDegree_of_mem_expoentes	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.sem_zeros	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.polyZ_spec	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.passo_nil	nenhum
+ATK.CookLevinLacos.passo_cons	propext, Quot.sound
+ATK.CookLevinLacos.passo_mono	nenhum
+ATK.CookLevinLacos.passo_lenIn	propext, Quot.sound
+ATK.CookLevinLacos.passo_incs	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.passo_lin	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.eval_mono	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_eval	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_const	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_id	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_le	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_add	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_mul	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_pow	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_comp	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_eval_comp	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.ctrs_nodup	propext, Quot.sound
+ATK.CookLevinLacos.length_ctrs	propext
+ATK.CookLevinLacos.ge_of_mem_ctrs	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.nodup_poly	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.passo_polyZ	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.passo_congr	nenhum
+ATK.CookLevinLacos.arit_spec	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_custoZ	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.poli_custoA	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.semFor_nao_escreve	nenhum
+ATK.CookLevinLacos.sem_nao_escreve	propext
+ATK.CookLevinLacos.cota_mono	nenhum
+ATK.CookLevinLacos.cota_seq	propext, Quot.sound
+ATK.CookLevinLacos.cota_seqC	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.cota_emis	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.emisW_emit	propext
+ATK.CookLevinLacos.emisW_emitU	propext
+ATK.CookLevinLacos.emisW_seqC	propext, Quot.sound
+ATK.CookLevinLacos.emisW_forU	propext, Quot.sound
+ATK.CookLevinLacos.emisW_mono	propext
+ATK.CookLevinLacos.wf_emis	propext, Quot.sound
+ATK.CookLevinLacos.wf_seqC	nenhum
+ATK.CookLevinLacos.wf_powLoop	propext, Quot.sound
+ATK.CookLevinLacos.wf_polyZ	propext, Classical.choice, Quot.sound
+ATK.CookLevinLacos.wf_lin	propext, Quot.sound
+ATK.CookLevinLacos.wf_arit	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.unario_simb	propext
+ATK.CookLevinGerador.emite_pTermo	propext
+ATK.CookLevinGerador.codCNF_renomeia	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.emite_pLit	propext
+ATK.CookLevinGerador.codLiteral_nome	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.emite_litX	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.emite_litY	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.emite_litZ	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.emite_pCla	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.Termo.val_igual	propext, Quot.sound
+ATK.CookLevinGerador.geraU_litX	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_litY	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_litZ	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_cla	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.codCNF_renomeia_cc	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_noMax	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_umSo	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.gx	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.gy	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.gz	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.gcla	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_progE	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_progP	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_progA	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.ex	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.sem_corpoPre	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.semBits_pre	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_progPre	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.flatMap_range_add	propext
+ATK.CookLevinGerador.flatMap_range_dobro	propext
+ATK.CookLevinGerador.getElem?_dup	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.length_dup	propext
+ATK.CookLevinGerador.pre_par	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.pre_fim	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.length_pre	propext
+ATK.CookLevinGerador.fI_saida	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_progI	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.filter_range_lt	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.forall₂_antes	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.conseq_saida	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_progConseq	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.length_janela	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.fR_saida	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_progR	propext, Classical.choice, Quot.sound
+ATK.CookLevinGerador.geraU_progTab	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emisW_pTermo	propext, Quot.sound
+ATK.CookLevinNP.emisW_pLit	propext, Quot.sound
+ATK.CookLevinNP.emisW_lx	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emisW_ly	propext, Quot.sound
+ATK.CookLevinNP.emisW_lz	propext, Quot.sound
+ATK.CookLevinNP.emisW_pCla	propext, Quot.sound
+ATK.CookLevinNP.emisW_pNoMax	propext, Quot.sound
+ATK.CookLevinNP.emisW_pUmSo	propext, Quot.sound
+ATK.CookLevinNP.emisW_progE	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emisW_progP	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emisW_progA	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emisW_antesC	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emisW_progConseq	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emisW_progR	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.progI_eq	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.nao_emis_progPre	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emis_listaI	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.cota_seqC_gen	propext, Quot.sound
+ATK.CookLevinNP.cota_emisW	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.sem_puro	propext, Quot.sound
+ATK.CookLevinNP.emisW_clPre	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.custo_corpoPre	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.cota_progPre	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.emis_seqC_mem	propext
+ATK.CookLevinNP.bfE_emis	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.bfE_nao	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.cota_progI	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.nao_emis_progI	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.cota_progTab	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.wf_progTab	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_sum_list	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_Cst	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_bfE	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_Bc	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_bPre	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_oPre	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_bI	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_oI	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_bTab	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_oTab	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.aritD	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.saida_gerador	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.distintos_regs	propext, Quot.sound
+ATK.CookLevinNP.wf_gerador	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.limitado	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.custo_gerador	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_Vf	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.poli_custoTotal	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.red_SAT	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.cookLevin	propext, Classical.choice, Quot.sound
+ATK.CookLevinNP.maqRed	propext, Classical.choice, Quot.sound
+ATK.ObligationsClosed.B4	propext, Classical.choice, Quot.sound
