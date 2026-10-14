@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 9d5805288b39c7586fca322e870c5e472809de7836df7ce1ea82df1e9525ed03
+# axiomas por teorema — congelamento de 33ac3245c342223d016590bf3b222720d875761e96bd1401878056fca324cf41
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1241,3 +1241,19 @@ ATK.SATemNP.teste_aceita	propext, Quot.sound
 ATK.SATemNP.teste_certificado_errado	propext, Quot.sound
 ATK.SATemNP.teste_clausula_vazia	propext, Quot.sound
 ATK.SATemNP.teste_contradicao	propext, Quot.sound
+ATK.CookLevinBase.head?_janela	propext
+ATK.CookLevinBase.tail_janela	propext
+ATK.CookLevinBase.stepAux_moldura	propext, Quot.sound
+ATK.CookLevinBase.stepAux_topo	propext, Classical.choice, Quot.sound
+ATK.CookLevinBase.length_stepAux_le	propext, Classical.choice, Quot.sound
+ATK.CookLevinBase.simbolos_finite	propext, Classical.choice, Quot.sound
+ATK.CookLevinBase.mem_stepAux	propext
+ATK.CookLevinBase.passoA_parada	nenhum
+ATK.CookLevinBase.passoA_iter_parada	nenhum
+ATK.CookLevinBase.iter_some	propext, Quot.sound
+ATK.CookLevinBase.acolchoada_de_evals	propext, Quot.sound
+ATK.CookLevinBase.eval_mono	propext, Classical.choice, Quot.sound
+ATK.CookLevinBase.cota	propext, Classical.choice, Quot.sound
+ATK.CookLevinBase.teste_prof_sat	nenhum
+ATK.CookLevinBase.teste_emp_sat	nenhum
+ATK.CookLevinBase.teste_topo_sat	propext, Classical.choice, Quot.sound

@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1241 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1257 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -254,6 +254,13 @@ A primeira metade de Cook–Levin está provada no kernel, sobre as classes de `
 Com isso, `cookLevin_iff : CookLevin modeloPNP SAT ↔ ∀ L ∈ classeNP, Red L SAT`: a ponte B4
 no modelo genuíno é agora exatamente a NP-dificuldade de SAT (marco M2, em aberto). O contador
 "pontes no kernel" não muda: B4 só conta quando `CookLevin` inteiro for certificado.
+
+Marco M2a — `ATK/CookLevinBase.lean` (16): a base genérica do tableau. Um passo de `TM2` só lê o
+topo de cada pilha (`stepAux_topo`: com `prof q ≤ d`, o passo sobre `S` é o passo sobre `take d`,
+com `drop d` intacto), as pilhas crescem no máximo `emp q` por passo, os símbolos empurrados formam
+um conjunto finito (a `FinTM2` da Mathlib só exige alfabeto finito na pilha de entrada) e a execução
+acolchoada de `T ≥ n` passos termina na configuração de parada. Faltam M2b (tableau em CNF e
+correção), M2c (redução pura) e M2d (máquina geradora em tempo polinomial).
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 

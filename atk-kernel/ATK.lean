@@ -74,5 +74,6 @@ import ATK.CapturaRH
 import ATK.ComposicaoTM2
 import ATK.ModeloPNP
 import ATK.SATemNP
+import ATK.CookLevinBase
 import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes

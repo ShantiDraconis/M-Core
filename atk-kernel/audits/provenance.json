@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "9d5805288b39c7586fca322e870c5e472809de7836df7ce1ea82df1e9525ed03",
+  "sources_sha256": "33ac3245c342223d016590bf3b222720d875761e96bd1401878056fca324cf41",
   "files": {
     "ATK/AlgebraTerminal.lean": "ab045c0a40a165fbe781e2c2e58eee54e1b79e6164a635016bf98a4959b2823b",
     "ATK/BDDistSqPort.lean": "3d209211337b561728bb8823cf8074c2a9539c832783e57d59398ae88b0d3c3f",
@@ -32,6 +32,7 @@
     "ATK/CongruentBijection.lean": "2c9e0b801a7762a086b2d1a8d4faf235587524b93263d9c0b4b026fa178999be",
     "ATK/CongruentCurve.lean": "8b9d99a5469398f96d5f391c2d66493dc4e6ced3d4cd3d7d498e568e83846d78",
     "ATK/ContracaoDN.lean": "d7d2a018cc9fd69d8ca99c8e260b2a4b34681e050683861b91ebf5cfd289e8ec",
+    "ATK/CookLevinBase.lean": "8240cd58a4cf9cae7589afd906aa48417624427c4381af6e220e417e9df92600",
     "ATK/EspectralDN.lean": "752914e1bc8e260f831e9b05d5c0b4bd5ca9b22fbc2bf557f90db329853e8e4a",
     "ATK/FatoresQuarticos.lean": "c101dc5c0d6ce06606c31ad1da34669d17e1b184ff2c4a153eecfc83a25d7025",
     "ATK/FermatRightTriangle.lean": "b31212601d3712ea6f226ab20e78e26e11ce1e86d82197307f746ea2c301e5cd",
@@ -87,12 +88,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "5e92f7716303e8bc0c63a324a596f8804a8d51a2d4182d14d1dd7c01bb212148"
+    "ATK.lean": "0580918d8ccd0bd1047c73dbcf7ce5d790fa3f60a5f4ddf827bdd73f5079d334"
   },
-  "n_files": 86,
-  "expected_theorems": 1241,
+  "n_files": 87,
+  "expected_theorems": 1257,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "1da24f5b447212a8a27ab9a606b227c27901ca2f",
+  "commit_at_freeze": "39032e5c1783a4088d73ab3d5393b60981e4ea99",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
