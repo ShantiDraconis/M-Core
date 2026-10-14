@@ -1,4 +1,4 @@
-import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
+import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Basic
 import ATK.BealFermatDescent
 
 /-!
@@ -48,7 +48,7 @@ def freyBeal (a b x y : ℕ) : WeierstrassCurve ℚ :=
 theorem freyCurve_equation (A B X Y : ℚ) :
     (freyCurve A B).toAffine.Equation X Y ↔ Y ^ 2 = X * (X - A) * (X + B) := by
   rw [WeierstrassCurve.Affine.equation_iff]
-  simp only [freyCurve]
+  simp only [freyCurve, WeierstrassCurve.toAffine]
   constructor <;> intro h <;> linear_combination h
 
 /-- **Discriminante**: `Δ = 16 (A · B · (A + B))²`. -/
