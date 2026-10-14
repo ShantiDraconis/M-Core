@@ -73,6 +73,10 @@ import ATK.NSPicard
 import ATK.NSRegular
 import ATK.NSFisico
 import ATK.NSCampos
+import ATK.NSEquacao
+import ATK.NSPlancherel
+import ATK.NSLocal
+import ATK.NSMaximal
 import ATK.LigacaoPNP
 import ATK.Termos
 import ATK.CapturaRH
