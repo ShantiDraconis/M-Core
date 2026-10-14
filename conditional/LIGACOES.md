@@ -63,6 +63,10 @@ O modelo de portão `PNPModelo` está preenchido com `ATK.ModeloPNP.modeloPNP` e
 e compila sem nenhum axioma extra. No portão de P vs NP faltam agora só a ponte B4 (Cook–Levin
 **neste** modelo) e o produtor O4 (SAT ∉ P). Fechada pelo titular em 14/10/2026.
 
+Sobre este mesmo modelo, a metade SAT ∈ NP da ponte B4 já está provada (`ATK/SATemNP.lean`,
+`sat_em_NP`), e `cookLevin_iff` reduz B4 à NP-dificuldade de SAT. Isso é prova (ponte), não
+ligação: a regra antiga de certificado continua valendo para B4.
+
 ## L4 — a parte do posto (14/10/2026)
 
 A Mathlib v4.34.1 já define a função L de uma curva de Weierstrass sobre um corpo de números

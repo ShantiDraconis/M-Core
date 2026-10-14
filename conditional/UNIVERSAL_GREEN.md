@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1097 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1226 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -149,7 +149,7 @@ vermelho (não é o enunciado literal sem hipóteses).
 
 | camada | itens | o que exige |
 |---|---|---|
-| pontes (literatura) | B2 Fermat, B3 Leray/BKM, B4 Cook–Levin, B5 Lefschetz (1,1), B6 Gross–Zagier–Kolyvagin, B7 Osterwalder–Schrader, B8 Darmon–Merel | formalizar teoremas **publicados**; B2 está em andamento no projeto de Buzzard (FLT em Lean); B8 depende de modularidade |
+| pontes (literatura) | B2 Fermat, B3 Leray/BKM, B4 Cook–Levin (metade SAT ∈ NP já no kernel), B5 Lefschetz (1,1), B6 Gross–Zagier–Kolyvagin, B7 Osterwalder–Schrader, B8 Darmon–Merel | formalizar teoremas **publicados**; B2 está em andamento no projeto de Buzzard (FLT em Lean); B8 depende de modularidade |
 | ligações (fundações) | L1 NS 3D, L2 máquinas e classes P/NP, L3 ciclos e cohomologia de Hodge, L4 L-funções de curvas elípticas, L5 QFT 4D | construir os objetos reais na Mathlib; sem isso os enunciados paramétricos não são os do Clay |
 | produtores (matemática nova) | `IsEmpty ZeroFora`, `ExclusaoResidualFinal`, O3–O8 | resolver os problemas; nenhuma formalização substitui isto |
 
@@ -224,8 +224,9 @@ máquinas `FinTM2` em tempo polinomial** (`ATK.ComposicaoTM2.comp`). Com ela: `P
 reduções de Karp e P fechada por elas (`P_fechada_red`), SAT (CNF satisfatíveis em binário) e a
 instância `modeloPNP : ComplexityModel` com `fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP`. O
 modelo de portão `PNPModelo` está preenchido e compila sem axioma extra: no portão de P vs NP
-faltam só a ponte B4 (Cook–Levin neste modelo) e o produtor O4 (SAT ∉ P). Detalhes em
-[`LIGACOES.md`](LIGACOES.md). Ligação fechada pelo titular em 14/10/2026.
+faltam só a ponte B4 (Cook–Levin neste modelo; a metade SAT ∈ NP já está provada, ver abaixo) e o
+produtor O4 (SAT ∉ P). Detalhes em [`LIGACOES.md`](LIGACOES.md). Ligação fechada pelo titular em
+14/10/2026.
 
 ## Ligação L4, parte do posto — `ATK/LigacaoBSD.lean` (4)
 
@@ -233,6 +234,26 @@ O enunciado de BSD do Clay está no kernel sobre os objetos da Mathlib (`Weierst
 `E(ℚ)`): `ClayBSD`. A ponte para o modelo paramétrico (`posto_iff`) usa modularidade e Mordell–Weil
 como hipóteses explícitas. Falta a fórmula refinada, exigida pelo portão `BSDFull`; ver
 [`LIGACOES.md`](LIGACOES.md).
+
+## Ponte B4, marco M1: SAT ∈ NP no modelo genuíno — `ATK/SATemNP.lean` (77)
+
+A primeira metade de Cook–Levin está provada no kernel, sobre as classes de `ATK.LigacaoPNP`
+(máquinas `Turing.FinTM2` da Mathlib) e a linguagem `ATK.ModeloPNP.SAT` da ligação L2:
+`sat_em_NP : SAT ∈ classeNP`, com um verificador construído e verificado passo a passo.
+
+* O certificado é **esparso**: pares (bits do índice, valor) só para as variáveis que ocorrem na
+  fórmula, com `|c| ≤ |w|`. Um vetor denso de atribuição não serviria, porque os índices vêm em
+  binário e o vetor teria tamanho exponencial.
+* A busca filtra o certificado bit a bit enquanto lê o índice do literal; o valor de `n` é uma
+  função de `(c, n.bits)`, então a atribuição é consistente por construção.
+* O analisador confere a canonicidade dos índices e só aceita codificações `codCNF φ` (`forma`);
+  sobre elas aceita exatamente quando toda cláusula tem um literal satisfeito (`acc_cnf`).
+* A máquina `satTM` (4 pilhas, 18 rótulos) roda em no máximo `2 (n + 4)²` passos
+  (`verifComputavel`).
+
+Com isso, `cookLevin_iff : CookLevin modeloPNP SAT ↔ ∀ L ∈ classeNP, Red L SAT`: a ponte B4
+no modelo genuíno é agora exatamente a NP-dificuldade de SAT (marco M2, em aberto). O contador
+"pontes no kernel" não muda: B4 só conta quando `CookLevin` inteiro for certificado.
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 

@@ -10,7 +10,7 @@ Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/t
 - Tipos conferidos pelo kernel: **25/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
 - Fechadas: **0/25**. Preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo genuíno (falta ainda a revisão humana para `CLOSED`).
 
-Fontes do kernel: SHA-256 `adc6ece638225c6a623ae7d5fb94bcfb5dfb122a78d7517e4ab7ae98aba979ad`.
+Fontes do kernel: SHA-256 `37ea08a8bda758cb357bcdd789d6585852190bf3b7b174935790daa62d91f529`.
 
 ## Os 24 componentes
 
@@ -214,10 +214,10 @@ Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel:
 | 3 · Tipo matemático | Prop (proposição) |
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P`; `ATK.ComposicaoTM2.comp`; `ATK.ModeloPNP.P_sub_NP`; `ATK.ModeloPNP.P_fechada_red` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
-| 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.fecha`; `ATK.Termos.PNP.exato` |
+| 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.fecha`; `ATK.Termos.PNP.exato`; `ATK.SATemNP.cookLevin_iff` |
 | 19 · Dependências | `ATK/Termos.lean`; L2 FECHADA: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (aprovada pelo titular em 14/10/2026; fidelidade ATK.ModeloPNP.fiel) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.PNP.terminal` |
-| 23 · Certificado Lean | teorema publicado; falta formalizar · tipo conferido pelo kernel |
+| 23 · Certificado Lean | metade provada no kernel: SAT ∈ NP (ATK.SATemNP.sat_em_NP); com ela, ponteB4 ⟺ NP-dificuldade de SAT (ATK.SATemNP.cookLevin_iff); falta M2 · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/PNP.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
 ### T06 — `PNP:PROVA_DO_PRODUTOR_O4`

@@ -240,6 +240,9 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   Hoje: `false`, `null`, 0/7.
 - `terminal-templates/` + `scripts/verificar_fiacao.py`: a última milha ligada — 21/21 modelos de
   portão compilam com as peças ausentes; rota da prova: faltam **16** termos; rota da refutação: 10.
+- `ATK/SATemNP.lean` (77): **ponte B4, marco M1 — SAT ∈ NP** no modelo genuíno: certificado
+  esparso de tamanho `≤ |w|`, máquina `FinTM2` verificadora em `≤ 2 (n + 4)²` passos; com isso
+  `CookLevin modeloPNP SAT ⟺ NP-dificuldade de SAT` (`cookLevin_iff`; M2 em aberto).
 - `ATK/LigacaoBSD.lean` (4): **L4, parte do posto** — o enunciado de BSD do Clay sobre a função L
   da Mathlib (`WeierstrassCurve.LSeries`); continuação única; `L(E, 1) = 0 ⟺ posto > 0`.
 - `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22): **ligação L2 construída e fechada** — composição

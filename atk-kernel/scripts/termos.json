@@ -304,10 +304,11 @@
    "enunciado": "Cook–Levin: SAT ∈ NP e toda L ∈ NP reduz a SAT",
    "teoremas": [
     "ATK.Termos.PNP.fecha",
-    "ATK.Termos.PNP.exato"
+    "ATK.Termos.PNP.exato",
+    "ATK.SATemNP.cookLevin_iff"
    ],
    "alimenta": "ATK.Terminal.PNP.terminal",
-   "estado": "teorema publicado; falta formalizar"
+   "estado": "metade provada no kernel: SAT ∈ NP (ATK.SATemNP.sat_em_NP); com ela, ponteB4 ⟺ NP-dificuldade de SAT (ATK.SATemNP.cookLevin_iff); falta M2"
   },
   {
    "id": "T06",

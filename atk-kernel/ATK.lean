@@ -73,4 +73,5 @@ import ATK.Termos
 import ATK.CapturaRH
 import ATK.ComposicaoTM2
 import ATK.ModeloPNP
+import ATK.SATemNP
 import ATK.LigacaoBSD

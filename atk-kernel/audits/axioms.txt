@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de adc6ece638225c6a623ae7d5fb94bcfb5dfb122a78d7517e4ab7ae98aba979ad
+# axiomas por teorema — congelamento de 37ea08a8bda758cb357bcdd789d6585852190bf3b7b174935790daa62d91f529
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1149,3 +1149,80 @@ ATK.LigacaoBSD.continuacao_unica	propext, Classical.choice, Quot.sound
 ATK.LigacaoBSD.ordem_bem_definida	propext, Classical.choice, Quot.sound
 ATK.LigacaoBSD.zero_iff_posto_pos	propext, Classical.choice, Quot.sound
 ATK.LigacaoBSD.posto_iff	propext, Classical.choice, Quot.sound
+ATK.SATemNP.deBits_bits	propext, Quot.sound
+ATK.SATemNP.canonica_bits	propext, Quot.sound
+ATK.SATemNP.deBits_ne_zero	propext, Classical.choice, Quot.sound
+ATK.SATemNP.bits_deBits	propext, Classical.choice, Quot.sound
+ATK.SATemNP.ftr_ec	propext
+ATK.SATemNP.ftr_es	propext
+ATK.SATemNP.ftr_cod	propext
+ATK.SATemNP.filt_cod	propext
+ATK.SATemNP.filts_cod	propext
+ATK.SATemNP.mem_filtE	propext, Quot.sound
+ATK.SATemNP.mem_filtsE	propext, Quot.sound
+ATK.SATemNP.lk_ls	propext
+ATK.SATemNP.lk_cod	propext
+ATK.SATemNP.lookupE_eq	propext
+ATK.SATemNP.getLast?_cons_or	propext
+ATK.SATemNP.acc_lit	propext
+ATK.SATemNP.lb_canon	propext, Quot.sound
+ATK.SATemNP.acc_cla	propext, Quot.sound
+ATK.SATemNP.foldl_passo	propext, Quot.sound
+ATK.SATemNP.dec_some	nenhum
+ATK.SATemNP.acc_cnf	propext, Quot.sound
+ATK.SATemNP.forma	propext, Classical.choice, Quot.sound
+ATK.SATemNP.resto_par	propext
+ATK.SATemNP.resto_length_le	propext, Quot.sound
+ATK.SATemNP.verif_par	propext
+ATK.SATemNP.bits_inj	propext, Quot.sound
+ATK.SATemNP.codEntradas_len	propext, Quot.sound
+ATK.SATemNP.len_cert	propext, Quot.sound
+ATK.SATemNP.sat_iff	propext, Classical.choice, Quot.sound
+ATK.SATemNP.stks_s	nenhum
+ATK.SATemNP.stks_g	nenhum
+ATK.SATemNP.stks_w	nenhum
+ATK.SATemNP.stks_t	nenhum
+ATK.SATemNP.upd_s	Quot.sound
+ATK.SATemNP.upd_g	Quot.sound
+ATK.SATemNP.upd_w	Quot.sound
+ATK.SATemNP.upd_t	Quot.sound
+ATK.SATemNP.stp_cf	nenhum
+ATK.SATemNP.rd2_bit	propext, Classical.choice, Quot.sound
+ATK.SATemNP.rd2_fim	propext, Classical.choice, Quot.sound
+ATK.SATemNP.rd2_fc	propext, Classical.choice, Quot.sound
+ATK.SATemNP.rd2_nil	propext, Classical.choice, Quot.sound
+ATK.SATemNP.rd2_one	propext, Classical.choice, Quot.sound
+ATK.SATemNP.Run.refl	nenhum
+ATK.SATemNP.Run.trans	propext, Quot.sound
+ATK.SATemNP.Run.mono	nenhum
+ATK.SATemNP.Run.passo	propext, Quot.sound
+ATK.SATemNP.Run.um	propext, Quot.sound
+ATK.SATemNP.runU	propext, Classical.choice, Quot.sound
+ATK.SATemNP.runR	propext, Quot.sound
+ATK.SATemNP.runC1	propext, Quot.sound
+ATK.SATemNP.runC2	propext, Quot.sound
+ATK.SATemNP.runF2	propext, Quot.sound
+ATK.SATemNP.runX	propext, Quot.sound
+ATK.SATemNP.runZs	propext, Quot.sound
+ATK.SATemNP.runZg	propext, Quot.sound
+ATK.SATemNP.runZw	propext, Quot.sound
+ATK.SATemNP.runF	propext, Classical.choice, Quot.sound
+ATK.SATemNP.nf_eq	propext
+ATK.SATemNP.runL	propext, Classical.choice, Quot.sound
+ATK.SATemNP.ftr_len	propext, Classical.choice, Quot.sound
+ATK.SATemNP.lk_len	propext, Quot.sound
+ATK.SATemNP.filt_len	propext, Classical.choice, Quot.sound
+ATK.SATemNP.falha_eq	propext
+ATK.SATemNP.cota	propext, Classical.choice, Quot.sound
+ATK.SATemNP.runP	propext, Classical.choice, Quot.sound
+ATK.SATemNP.initList_sat	propext, Classical.choice, Quot.sound
+ATK.SATemNP.haltList_sat	propext, Classical.choice, Quot.sound
+ATK.SATemNP.runTotal	propext, Classical.choice, Quot.sound
+ATK.SATemNP.verifComputavel	propext, Classical.choice, Quot.sound
+ATK.SATemNP.sat_em_NP	propext, Classical.choice, Quot.sound
+ATK.SATemNP.sat_em_NP_modelo	propext, Classical.choice, Quot.sound
+ATK.SATemNP.cookLevin_iff	propext, Classical.choice, Quot.sound
+ATK.SATemNP.teste_aceita	propext, Quot.sound
+ATK.SATemNP.teste_certificado_errado	propext, Quot.sound
+ATK.SATemNP.teste_clausula_vazia	propext, Quot.sound
+ATK.SATemNP.teste_contradicao	propext, Quot.sound
