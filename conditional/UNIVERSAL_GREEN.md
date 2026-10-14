@@ -49,12 +49,24 @@ Resultado: **biblioteca VERDE · conjecturas ABERTAS**. O CI publica isso numa a
   transitivo; `audits/axioms.txt` congela o resultado por teorema (832/839 verificados também neste
   ambiente; os 7 restantes dependem da Mathlib inteira e são certificados pelo CI).
 
-### Ramos em andamento da sessão paralela (não contados até a fusão)
+### Trabalho da sessão paralela — integrado em 14/10/2026
 
-`atk/teorema-global-20261014`, `atk/zero-um-20261014`, `atk/bridge-reduction-20261014`,
-`atk/hypothesis-ports-20261014` (inclui `NecessidadeBD`, `MellinPlancherel`, `ObrigacoesMinimas`) e
-`atk/congruent-bijection-20261014`. Quando forem fundidos em `conditional`, o auditor os conta
-automaticamente; nada aqui depende deles.
+Os seis ramos certificados da sessão paralela foram fundidos em `conditional` (só uniões de listas e
+fusão campo a campo do JSON, sem conflito de conteúdo): `CongruentBijection`, `BridgeReduction`,
+`TeoremaGlobal`, `FatoresQuarticos`, `FreyBealResidual`, `Roda`, `FronteiraUm`, `LimitesUm`,
+`OscilacaoHiperreal`, `HypothesisCalculus`, `MellinPlancherel`, `PlancherelL1L2`, `EspectralDN`,
+`NecessidadeBD`, `BDDistSqPort`, `BorderPrimes`, `ObrigacoesMinimas`, **`LigacaoNS`** e
+**`LigacaoPNP`** (+204 teoremas; ver `FECHAMENTO.md` e `LIGACOES.md`). Efeito no verde universal:
+
+* **L1 construída** (`ATK.LigacaoNS.modeloNS`, `clayA_iff`: o enunciado paramétrico ⟺ enunciado (A)
+  do Clay). A peça `LIGACAO_L1` do portão de NS está preenchida — os termos que faltam passam de
+  **19 para 18**. O status fica `CONSTRUIDA_NO_KERNEL` até a **revisão humana** das definições; só
+  então vira `CLOSED` e o contador de ligações cai para 4/5.
+* **L2 parte 1** (`ATK.LigacaoPNP`): P e NP sobre `Turing.FinTM2` da Mathlib, enunciado fiel
+  `classeP ≠ classeNP`. Falta a composição de máquinas em tempo polinomial e a linguagem SAT.
+* `ObrigacoesMinimas.closedMath_minimo` dispensa a ponte B2 (Beal entra pela forma residual de
+  descida), o mesmo que `FinalRoot.verde_fiel_iff` mostra para a parte fiel.
+* `NecessidadeBD`: a direção RH ⇒ `D_N → 0` reduzida a duas entradas analíticas nomeadas.
 
 ## A árvore
 
