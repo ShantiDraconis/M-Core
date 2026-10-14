@@ -14,8 +14,9 @@ import ATK.SatNPMaquina
 * **`cookLevin_de_computavel`**: se toda `fCL V q` é computável por uma `FinTM2` em tempo
   polinomial, então `CookLevin modeloPNP SAT` (a ponte B4).
 
-A hipótese de `cookLevin_de_computavel` é exatamente o que falta (CL4b: a máquina que escreve a
-fórmula). Ela é hipótese de teorema, não axioma. **B4 não fecha aqui; CLOSED_MATH continua false.**
+A hipótese de `cookLevin_de_computavel` é descarregada em `ATK.CookLevinFinal.fCL_computavel`
+(CL4b: a máquina que escreve a fórmula); `ATK.CookLevinFinal.cookLevin` fecha B4.
+**CLOSED_MATH continua false.**
 -/
 
 namespace ATK.CookLevinReducao
