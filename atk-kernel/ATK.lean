@@ -30,6 +30,7 @@ import ATK.ZetaSimetria
 import ATK.IFormas
 import ATK.IAlgebra
 import ATK.IGeometria
+import ATK.FreyBeal
 import ATK.BealFLT
 import ATK.ZetaRetangulo
 import ATK.Shannon

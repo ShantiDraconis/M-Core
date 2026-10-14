@@ -481,6 +481,14 @@ ATK.IGeometria.inversao_fixo_iff
 ATK.IGeometria.T_tendsto_um
 ATK.IGeometria.T_menos_um
 ATK.IGeometria.torcao_plano
+ATK.FreyBeal.frey_equation_iff
+ATK.FreyBeal.frey_Δ
+ATK.FreyBeal.frey_two_torsion
+ATK.FreyBeal.frey_Δ_eq_zero_iff
+ATK.FreyBeal.frey_isElliptic
+ATK.FreyBeal.freyBeal_Δ
+ATK.FreyBeal.freyBeal_isElliptic
+ATK.FreyBeal.freyBeal_exemplo
 ATK.BealFLT.divisor_fermat
 ATK.BealFLT.dvd_xyz
 ATK.BealFLT.beal_mdc_primo_de_flt
