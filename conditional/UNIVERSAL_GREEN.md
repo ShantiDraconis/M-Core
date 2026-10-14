@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1350 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1384 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -276,6 +276,13 @@ e `reducao_iff : w ∈ L ⟺ reducao D T H w ∈ SAT`. Classicamente, toda lingu
 alguma função não computável; o conteúdo aqui é a função explícita do tableau. Falta M2d: provar
 que ela é computável por uma `FinTM2` em tempo polinomial. Só isso fecha
 `CookLevin modeloPNP SAT`.
+
+Marco M2d, parte 1 — `ATK/Fragmentos.lean` (10) + `ATK/Compilador.lean` (24): **um compilador
+verificado de laços para `FinTM2`**. A linguagem tem registradores unários, emissão de bits,
+somas, laços contados e laço sobre os bits da entrada. `comp_ok` prova que o código compilado
+realiza a semântica em exatamente `custo` passos; `maq_run` cobre a máquina inteira, de `initList`
+a `haltList`; e com `computavel`, custo polinomial dá `TM2ComputableInPolyTime`. Falta escrever a
+redução do marco M2c como programa dessa linguagem e cotar o custo.
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 

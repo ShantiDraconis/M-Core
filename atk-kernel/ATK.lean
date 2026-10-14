@@ -77,6 +77,8 @@ import ATK.SATemNP
 import ATK.CookLevinBase
 import ATK.CookLevinTableau
 import ATK.CookLevinReducao
+import ATK.Fragmentos
+import ATK.Compilador
 import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes
 import ATK.IMathPonte

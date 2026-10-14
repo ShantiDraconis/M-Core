@@ -243,6 +243,9 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
 - `ATK/SATemNP.lean` (77): **ponte B4, marco M1 — SAT ∈ NP** no modelo genuíno: certificado
   esparso de tamanho `≤ |w|`, máquina `FinTM2` verificadora em `≤ 2 (n + 4)²` passos; com isso
   `CookLevin modeloPNP SAT ⟺ NP-dificuldade de SAT` (`cookLevin_iff`; M2 em aberto).
+- `ATK/Fragmentos.lean` (10) + `ATK/Compilador.lean` (24): **B4, marco M2d (parte 1)** — compilador
+  verificado de uma linguagem de laços para `FinTM2`, com custo exato (`comp_ok`, `maq_run`,
+  `computavel`).
 - `ATK/CookLevinReducao.lean` (23): **B4, marco M2c** — a redução de Cook–Levin como função pura:
   `w ∈ L ⟺ reducao w ∈ SAT` para toda `L ∈ classeNP` (falta M2d: computável em tempo polinomial).
 - `ATK/CookLevinTableau.lean` (46): **B4, marco M2b — o tableau de Cook–Levin** para qualquer
