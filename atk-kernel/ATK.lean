@@ -77,3 +77,4 @@ import ATK.LigacaoBSD
 import ATK.SatNPSemantica
 import ATK.SatNPMaquina
 import ATK.CookLevinJanela
+import ATK.CookLevinTableau
