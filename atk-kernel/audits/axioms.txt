@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 9b4585ad02ed06fb071f65dc7f9915d94276bc3e34285ac66a36abcd3f30257b
+# axiomas por teorema — congelamento de 58734b25ba8d3098cd9b4901260676c0dc9cbd4790e952d75d8d5e7cc365685d
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1303,3 +1303,50 @@ ATK.CookLevinTableau.Tab.tableau_iff	propext, Classical.choice, Quot.sound
 ATK.CookLevinTableau.Teste.bom₀	propext, Classical.choice, Quot.sound
 ATK.CookLevinTableau.Teste.teste_aceita	propext, Classical.choice, Quot.sound
 ATK.CookLevinTableau.Teste.teste_recusa	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.codCNF_mem_SAT	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.unario_append_inj	propext, Quot.sound
+ATK.CookLevinReducao.κ_inj	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.cadeia_canonica	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.cadeia_inj	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.bits_nome	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.nome_inj	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.satisfativel_renomeia	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.simbolosTM_finite	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.fibra_finite	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.mem_vals	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.bomTM	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.init_tabTM	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.length_preD	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.entrada_par	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.length_par	propext, Quot.sound
+ATK.CookLevinReducao.haltList_k₁	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.run_par	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.reducao	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.reducao_iff	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.teste_cadeia_y	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.teste_sat_unit	propext, Classical.choice, Quot.sound
+ATK.CookLevinReducao.teste_sat_vazia	propext, Classical.choice, Quot.sound
+ATK.IMathPonte.C01	VER CI
+ATK.IMathPonte.C02	VER CI
+ATK.IMathPonte.C03	VER CI
+ATK.IMathPonte.C04	VER CI
+ATK.IMathPonte.C05	VER CI
+ATK.IMathPonte.C06	VER CI
+ATK.IMathPonte.C07	VER CI
+ATK.IMathPonte.C08	VER CI
+ATK.IMathPonte.C09	VER CI
+ATK.IMathPonte.C10	VER CI
+ATK.IMathPonte.C11	VER CI
+ATK.IMathPonte.C12	VER CI
+ATK.IMathPonte.C13	VER CI
+ATK.IMathPonte.C14	VER CI
+ATK.IMathPonte.C15	VER CI
+ATK.IMathPonte.pi_finite	VER CI
+ATK.IMathPonte.pi_I	VER CI
+ATK.IMathPonte.pi_infinity	VER CI
+ATK.IMathPonte.pi_eq_I_iff	VER CI
+ATK.IMathPonte.pi_surjective	VER CI
+ATK.IMathPonte.pi_absorbingAdd	VER CI
+ATK.IMathPonte.pi_idiv	VER CI
+ATK.IMathPonte.pi_collapse	VER CI
+ATK.IMathPonte.modelos_diferem_em_um_sobre_zero	VER CI

@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1303 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1350 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -267,8 +267,15 @@ linha inicial com até `Q` células livres de certificado; (R) as transições, 
 janela; (P) parada fica parada; (A) aceitação. `tableau_iff` prova as duas direções: a fórmula é
 satisfatível exatamente quando algum certificado faz a execução acolchoada de `T` passos parar
 aceitando (`completo`; `base_correto` + `passo_correto`). A sanidade numa máquina concreta dá
-"satisfatível" e "insatisfatível" nos dois casos esperados. Faltam M2c (a redução pura para
-`L ∈ NP`) e M2d (a máquina geradora em tempo polinomial).
+"satisfatível" e "insatisfatível" nos dois casos esperados.
+
+Marco M2c — `ATK/CookLevinReducao.lean` (23): **a redução como função pura** para toda
+`L ∈ classeNP`. O tableau da `FinTM2` verificadora usa os símbolos alcançáveis, que formam um
+conjunto finito. As variáveis viram números cujos bits são cadeias estruturadas (blocos unários),
+e `reducao_iff : w ∈ L ⟺ reducao D T H w ∈ SAT`. Classicamente, toda linguagem se reduz a SAT por
+alguma função não computável; o conteúdo aqui é a função explícita do tableau. Falta M2d: provar
+que ela é computável por uma `FinTM2` em tempo polinomial. Só isso fecha
+`CookLevin modeloPNP SAT`.
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 

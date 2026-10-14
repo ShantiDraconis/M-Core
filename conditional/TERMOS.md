@@ -10,7 +10,7 @@ Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/t
 - Tipos conferidos pelo kernel: **25/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
 - Fechadas: **0/25**. Preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo genuíno (falta ainda a revisão humana para `CLOSED`).
 
-Fontes do kernel: SHA-256 `9b4585ad02ed06fb071f65dc7f9915d94276bc3e34285ac66a36abcd3f30257b`.
+Fontes do kernel: SHA-256 `58734b25ba8d3098cd9b4901260676c0dc9cbd4790e952d75d8d5e7cc365685d`.
 
 ## Os 24 componentes
 
