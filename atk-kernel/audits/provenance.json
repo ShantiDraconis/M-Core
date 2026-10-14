@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "990b579bab054a8ceb79b54fbbcccdd900052869793782e010ad14541ce6baf4",
+  "sources_sha256": "1b93aa42af3893400f14f3b178d637b521b09899c3efa89c6c671f30c0ffae7a",
   "files": {
     "ATK/AlgebraTerminal.lean": "ab045c0a40a165fbe781e2c2e58eee54e1b79e6164a635016bf98a4959b2823b",
     "ATK/BDDistSqPort.lean": "3d209211337b561728bb8823cf8074c2a9539c832783e57d59398ae88b0d3c3f",
@@ -64,6 +64,7 @@
     "ATK/IMath/Refinement/Realization.lean": "4d075bbe829f0f50c1d180b3522c01b5888a9fc54cfbc862c5e5036f375282f9",
     "ATK/IMathPonte.lean": "5bf3bc93de77ec4f3791199be6358daf4fdc7628d436920fae56a9e339b1cb13",
     "ATK/IPortadores.lean": "29b2222e13c99bc76368ad3f9ee43f4d88367d7a25fe2e13d8f5e6e462e03b56",
+    "ATK/IPortadoresMenores.lean": "44bbc7a316fac62522620ce7ac9a917e948ae534458c57f56d66d44b5ba6720f",
     "ATK/Indeterminacy.lean": "9fc0a38993d4846610033b2a38e63894b463a738633a142520561e209bd88f57",
     "ATK/IndeterminacyStates.lean": "1a4c9ee6bd9b773c76e53ba812e1c920a6ecb2c4616f0a96179f6af279bc8a8e",
     "ATK/LigacaoBSD.lean": "0a686c591736ca9719b84c1f2b9369bf044aec5dd5e964465773ca0f3477b704",
@@ -104,12 +105,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "20316504beea1f4df48892f87b1f63b28ed6b9ee9c7b3ca833061435c433ec5a"
+    "ATK.lean": "39e217ab7739d4489fe1e696553edd3cedf33ef19a86e5723343cb3048abbda3"
   },
-  "n_files": 103,
-  "expected_theorems": 1414,
+  "n_files": 104,
+  "expected_theorems": 1433,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "22d0846800f00babf773622fc0fb3d474354e9f4",
+  "commit_at_freeze": "04f5b55ee99e7439d7ca34bdcda8d2fd14fb9264",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
