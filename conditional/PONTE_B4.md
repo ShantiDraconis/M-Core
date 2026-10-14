@@ -22,14 +22,29 @@
   * Cada passo foi verificado (`run_rx` … `run_fase1`, `run_total`). Tempo: `2 (n + 2)³`
     (`verifComputavel`).
 
-## O que falta para B4 inteira
+## A outra metade: `∀ L ∈ NP, L ≤p SAT`
 
-`∀ L ∈ NP, L ≤p SAT`. Dada uma linguagem com verificador `FinTM2` de tempo `p(n)`, é preciso:
+Dada uma linguagem com verificador `V : TM2ComputableInPolyTime cod encodeBool χ` e polinômio `q`:
 
-1. a fórmula CNF que descreve a execução (tableau) de uma `FinTM2` arbitrária: várias pilhas,
-   alfabetos finitos quaisquer e instruções em árvore (`TM2.Stmt`);
-2. a correção: a fórmula é satisfatível ⟺ existe certificado que a máquina aceita;
-3. a própria redução como `FinTM2` de tempo polinomial (a função `x ↦ codCNF φ_x`).
+| Marco | Módulo | O que está provado |
+|---|---|---|
+| CL1 | `CookLevinJanela` | um passo só lê/escreve as `profMax M` células do topo (`step_janela`) |
+| CL2–CL3 | `CookLevinTableau` | tableau CNF (exatamente-um por grandeza; passo como tabela finita de casos; parada absorvente); `tableau_correto` |
+| CL3b | `CookLevinRestricao` | alfabetos restritos ao que a máquina empilha (finito); `run_restr` |
+| CL3c | `CookLevinInicio` | linha 0 com certificado livre de comprimento `≤ m` |
+| CL3d | `CookLevinVerificador` | **`verificador_tableau`**: `formulaW V m w` satisfatível ⟺ `∃ c, |c| ≤ m ∧ χ (par w c) = true` |
+| CL4a | `CookLevinReducao` | `fCL V q w := codCNF (fórmula de w)`; **`fCL_correta`**: `w ∈ L ⟺ fCL V q w ∈ SAT`; **`cookLevin_de_computavel`** |
 
-É um projeto maior que esta metade. Até ele, B4 fica em `PARCIAL_NO_KERNEL` e o contador de pontes
-continua em 1/8. `UNIVERSAL_GREEN = false`, `CLOSED_MATH = false`.
+`cookLevin_de_computavel` diz: se cada `fCL V q` é computável por uma `FinTM2` em tempo polinomial,
+então `CookLevin modeloPNP SAT`. Essa hipótese é hipótese de teorema, não axioma.
+
+## O que falta para B4 inteira (CL4b)
+
+Só a máquina: `Nonempty (TM2ComputableInPolyTime cod cod (fCL V q))`. A fórmula é escrita por laços
+com contadores unários (por isso as variáveis são `0^i 1 0^t 1 0^p 1`): calcular `m = q(n)`,
+`T` e `S` em unário (Horner), percorrer instantes, casos finitos e células, e copiar os bits de `w`
+na linha 0. Plano: uma linguagem pequena de laços com contadores, compilada para `TM2` com
+correção e custo provados uma vez, e `fCL` escrita como programa dessa linguagem.
+
+Até lá B4 fica em `PARCIAL_NO_KERNEL` e o contador de pontes continua em 1/8.
+`UNIVERSAL_GREEN = false`, `CLOSED_MATH = false`.
