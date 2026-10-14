@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 37ea08a8bda758cb357bcdd789d6585852190bf3b7b174935790daa62d91f529
+# axiomas por teorema — congelamento de 9d5805288b39c7586fca322e870c5e472809de7836df7ce1ea82df1e9525ed03
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1149,6 +1149,21 @@ ATK.LigacaoBSD.continuacao_unica	propext, Classical.choice, Quot.sound
 ATK.LigacaoBSD.ordem_bem_definida	propext, Classical.choice, Quot.sound
 ATK.LigacaoBSD.zero_iff_posto_pos	propext, Classical.choice, Quot.sound
 ATK.LigacaoBSD.posto_iff	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.fator_multiplicativo	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.LFunction_um	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.lseries_coef	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.coef_um	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.ordem_ne_top	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.modularidade_de_continuacao	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.zero_nao_e_continuacao	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.taylor_iff_ordem	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.clay_of_taylor	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.taylor_of_clay	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.taylor_iff	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.curva32_eliptica	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.dois_torcao	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.posto_curva32	propext, Classical.choice, Quot.sound
+ATK.LigacaoBSDTestes.clay_curva32	propext, Classical.choice, Quot.sound
 ATK.SATemNP.deBits_bits	propext, Quot.sound
 ATK.SATemNP.canonica_bits	propext, Quot.sound
 ATK.SATemNP.deBits_ne_zero	propext, Classical.choice, Quot.sound

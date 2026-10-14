@@ -10,7 +10,7 @@ Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/t
 - Tipos conferidos pelo kernel: **25/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
 - Fechadas: **0/25**. Preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo genuíno (falta ainda a revisão humana para `CLOSED`).
 
-Fontes do kernel: SHA-256 `37ea08a8bda758cb357bcdd789d6585852190bf3b7b174935790daa62d91f529`.
+Fontes do kernel: SHA-256 `9d5805288b39c7586fca322e870c5e472809de7836df7ce1ea82df1e9525ed03`.
 
 ## Os 24 componentes
 
@@ -451,7 +451,7 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 parcial: part
 | 3 · Tipo matemático | dado: estrutura BSDModel.{0} |
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.BSD.bsd_rank_conditional`; `ATK.Conditional.BSD.bsd_conditional` |
 | 17 · Hipóteses | o modelo tem de satisfazer o critério de fidelidade da ligação |
-| 18 · Lemas (certificados, do termo) | `ATK.LigacaoBSD.continuacao_unica`; `ATK.LigacaoBSD.zero_iff_posto_pos`; `ATK.LigacaoBSD.posto_iff` |
+| 18 · Lemas (certificados, do termo) | `ATK.LigacaoBSD.continuacao_unica`; `ATK.LigacaoBSD.zero_iff_posto_pos`; `ATK.LigacaoBSD.posto_iff`; `ATK.LigacaoBSDTestes.taylor_iff`; `ATK.LigacaoBSDTestes.posto_curva32`; `ATK.LigacaoBSDTestes.clay_curva32` |
 | 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.BSDModelo.modeloGenuino` |
 | 23 · Certificado Lean | PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff); falta a fórmula refinada (Ω_E, regulador, Ш, Tamagawa, torção) · tipo conferido pelo kernel |

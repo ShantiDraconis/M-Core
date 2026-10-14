@@ -10,7 +10,7 @@ problema do Clay depois da **ligação**: o modelo construído com os objetos re
 | **L1** Navier–Stokes | **`CLOSED`** (revisão humana, 14/10/2026) | `ATK/LigacaoNS.lean` (15) | `modeloNS`: dados = `ν > 0` e `u₀ ∈ 𝓢(ℝ³, ℝ³)` com `div u₀ = 0`; solução global = `p, u ∈ C^∞(ℝ³ × [0, ∞))` com `∂ₜu + (u·∇)u = νΔu − ∇p`, `div u = 0`, `u(·, 0) = u₀`, energia `∫|u|²` limitada | — (fechada) |
 | **L2** P vs NP | **`CLOSED`** (titular, 14/10/2026) | `ATK/LigacaoPNP.lean` (13), `ATK/ComposicaoTM2.lean` (26), `ATK/ModeloPNP.lean` (22) | `modeloPNP`: linguagens binárias, `classeP`/`classeNP` sobre `Turing.FinTM2`, reduções de Karp; `P ⊆ NP` e P fechada por reduções **provados** (composição de máquinas em tempo polinomial); `SAT` = CNF satisfatíveis em binário; `fiel : PneNP modeloPNP ↔ P ≠ NP` | — (fechada) |
 | **L3** Hodge | `NAO_EXISTE_NA_MATHLIB` | — | — | cohomologia de de Rham/Betti de variedades projetivas complexas, decomposição de Hodge, classes de ciclos |
-| **L4** BSD | `PARTE_DO_POSTO_NO_KERNEL` | `ATK/LigacaoBSD.lean` (4) | `ClayBSD`: sobre `WeierstrassCurve.LSeries` da Mathlib, para toda `E/ℚ` existe `F` inteira = `L(E, s)` em `Re s > 3/2` com `ord_{s=1} F = rank E(ℚ)` (o enunciado oficial do Clay); `posto_iff`: `BSDRank modeloPosto ⟺ ClayBSD` sob modularidade e Mordell–Weil (hipóteses explícitas) | a fórmula refinada (`Ω_E`, regulador de Néron–Tate, `Ш`, Tamagawa, torção), exigida pelo portão `BSDFull` |
+| **L4** BSD | `PARTE_DO_POSTO_NO_KERNEL` | `ATK/LigacaoBSD.lean` (4), `ATK/LigacaoBSDTestes.lean` (15) | `ClayBSD`: sobre `WeierstrassCurve.LSeries` da Mathlib, para toda `E/ℚ` existe `F` inteira = `L(E, s)` em `Re s > 3/2` com `ord_{s=1} F = rank E(ℚ)` (o enunciado oficial do Clay); `posto_iff`: `BSDRank modeloPosto ⟺ ClayBSD` sob modularidade e Mordell–Weil (hipóteses explícitas) | a fórmula refinada (`Ω_E`, regulador de Néron–Tate, `Ш`, Tamagawa, torção), exigida pelo portão `BSDFull` |
 | **L5** Yang–Mills | `NAO_EXISTE_NA_MATHLIB` | — | — | QFT construtiva em ℝ⁴ (axiomas de Wightman/Osterwalder–Schrader), grupo de gauge compacto |
 
 ## L1 — por que é o enunciado (A) do Clay
@@ -79,6 +79,19 @@ depende da escolha, e `L(E, 1) = 0 ⟺ posto > 0` (`zero_iff_posto_pos`).
 O modelo paramétrico usa postos em `ℕ`; a ponte entre os dois (`posto_iff`) usa a modularidade
 (existência da continuação, com ordem finita) e o teorema de Mordell–Weil (posto finito). São
 teoremas publicados que não estão na Mathlib e entram como hipóteses explícitas.
+
+**Testes e forma de Taylor** (`ATK/LigacaoBSDTestes.lean`, 15 teoremas):
+
+* `a₁ = 1` (`LFunction_um`): cada fator de Euler local da Mathlib é multiplicativo
+  (`fator_multiplicativo`), logo o produto de Euler também;
+* a cláusula `≠ ⊤` da hipótese `Modularidade` está provada desde que a série L convirja em algum
+  ponto (`ordem_ne_top`, `modularidade_de_continuacao`): sobram a existência da continuação
+  (modularidade) e a convergência (cota de Hasse);
+* `ClayBSDTaylor` é o texto oficial palavra por palavra (`L(C, s) = c (s − 1)^r + …`, `c ≠ 0`):
+  `clay_of_taylor` sem hipóteses, `taylor_iff` com Mordell–Weil;
+* curva concreta: `y² = x³ − x` é elíptica (`Δ = 64`), todo ponto tem ordem 2 e o posto é `0`
+  (`posto_curva32`); então `ClayBSD` obriga `L(E, 1) ≠ 0` nela (`clay_curva32`), o valor conhecido.
+  A função nula não é continuação (`zero_nao_e_continuacao`).
 
 O que falta para a L4 inteira é a **fórmula refinada**, que o nosso portão (`BSDFull`) exige junto
 com o posto: período real, regulador de Néron–Tate, `Ш` (cohomologia de Galois), números de

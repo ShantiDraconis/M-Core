@@ -75,3 +75,4 @@ import ATK.ComposicaoTM2
 import ATK.ModeloPNP
 import ATK.SATemNP
 import ATK.LigacaoBSD
+import ATK.LigacaoBSDTestes
