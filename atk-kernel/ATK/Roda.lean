@@ -127,38 +127,38 @@ theorem mk_congr {a b c d : K} (h1 : a = c) (h2 : b = d) : mk a b = mk c d := by
 
 /-! ## Monoides comutativos e involução -/
 
-theorem add_comm' (x y : RodaK K) : x + y = y + x := by
+theorem roda_add_comm (x y : RodaK K) : x + y = y + x := by
   induction x using ind with | h a b => ?_
   induction y using ind with | h c d => ?_
   simp only [mk_add_mk]
   exact mk_congr (by ring) (by ring)
 
-theorem add_assoc' (x y z : RodaK K) : x + y + z = x + (y + z) := by
+theorem roda_add_assoc (x y z : RodaK K) : x + y + z = x + (y + z) := by
   induction x using ind with | h a b => ?_
   induction y using ind with | h c d => ?_
   induction z using ind with | h e f => ?_
   simp only [mk_add_mk]
   exact mk_congr (by ring) (by ring)
 
-theorem zero_add' (x : RodaK K) : 0 + x = x := by
+theorem roda_zero_add (x : RodaK K) : 0 + x = x := by
   induction x using ind with | h a b => ?_
   simp only [zero_def, mk_add_mk]
   exact mk_congr (by ring) (by ring)
 
-theorem mul_comm' (x y : RodaK K) : x * y = y * x := by
+theorem roda_mul_comm (x y : RodaK K) : x * y = y * x := by
   induction x using ind with | h a b => ?_
   induction y using ind with | h c d => ?_
   simp only [mk_mul_mk]
   exact mk_congr (by ring) (by ring)
 
-theorem mul_assoc' (x y z : RodaK K) : x * y * z = x * (y * z) := by
+theorem roda_mul_assoc (x y z : RodaK K) : x * y * z = x * (y * z) := by
   induction x using ind with | h a b => ?_
   induction y using ind with | h c d => ?_
   induction z using ind with | h e f => ?_
   simp only [mk_mul_mk]
   exact mk_congr (by ring) (by ring)
 
-theorem one_mul' (x : RodaK K) : 1 * x = x := by
+theorem roda_one_mul (x : RodaK K) : 1 * x = x := by
   induction x using ind with | h a b => ?_
   simp only [one_def, mk_mul_mk]
   exact mk_congr (by ring) (by ring)
@@ -286,7 +286,7 @@ theorem bot_ne_infty : (bot : RodaK K) ≠ infty := by
   obtain ⟨u, hu, h1, -⟩ := mk_eq_mk_iff.mp h
   simp at h1
 
-theorem zero_ne_one' : (0 : RodaK K) ≠ 1 := by
+theorem roda_zero_ne_one : (0 : RodaK K) ≠ 1 := by
   intro h
   obtain ⟨u, hu, h1, -⟩ := mk_eq_mk_iff.mp h
   simp at h1
@@ -345,12 +345,12 @@ end ATK.Roda
 
 #print axioms ATK.Roda.rel_equiv
 #print axioms ATK.Roda.mk_eq_mk_iff
-#print axioms ATK.Roda.add_comm'
-#print axioms ATK.Roda.add_assoc'
-#print axioms ATK.Roda.zero_add'
-#print axioms ATK.Roda.mul_comm'
-#print axioms ATK.Roda.mul_assoc'
-#print axioms ATK.Roda.one_mul'
+#print axioms ATK.Roda.roda_add_comm
+#print axioms ATK.Roda.roda_add_assoc
+#print axioms ATK.Roda.roda_zero_add
+#print axioms ATK.Roda.roda_mul_comm
+#print axioms ATK.Roda.roda_mul_assoc
+#print axioms ATK.Roda.roda_one_mul
 #print axioms ATK.Roda.roda_w1
 #print axioms ATK.Roda.roda_w2
 #print axioms ATK.Roda.roda_w3
@@ -372,7 +372,7 @@ end ATK.Roda
 #print axioms ATK.Roda.bot_ne_zero
 #print axioms ATK.Roda.bot_ne_one
 #print axioms ATK.Roda.bot_ne_infty
-#print axioms ATK.Roda.zero_ne_one'
+#print axioms ATK.Roda.roda_zero_ne_one
 #print axioms ATK.Roda.zero_ne_infty
 #print axioms ATK.Roda.one_ne_infty
 #print axioms ATK.Roda.ι_injective

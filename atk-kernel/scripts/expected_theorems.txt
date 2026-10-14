@@ -601,12 +601,12 @@ ATK.FatoresQuarticos.fatoracao_quarta
 ATK.FatoresQuarticos.divisor_comum_fatores
 ATK.Roda.rel_equiv
 ATK.Roda.mk_eq_mk_iff
-ATK.Roda.add_comm'
-ATK.Roda.add_assoc'
-ATK.Roda.zero_add'
-ATK.Roda.mul_comm'
-ATK.Roda.mul_assoc'
-ATK.Roda.one_mul'
+ATK.Roda.roda_add_comm
+ATK.Roda.roda_add_assoc
+ATK.Roda.roda_zero_add
+ATK.Roda.roda_mul_comm
+ATK.Roda.roda_mul_assoc
+ATK.Roda.roda_one_mul
 ATK.Roda.roda_w1
 ATK.Roda.roda_w2
 ATK.Roda.roda_w3
@@ -628,7 +628,7 @@ ATK.Roda.inv_bot
 ATK.Roda.bot_ne_zero
 ATK.Roda.bot_ne_one
 ATK.Roda.bot_ne_infty
-ATK.Roda.zero_ne_one'
+ATK.Roda.roda_zero_ne_one
 ATK.Roda.zero_ne_infty
 ATK.Roda.one_ne_infty
 ATK.Roda.ι_injective
