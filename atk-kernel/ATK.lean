@@ -79,6 +79,8 @@ import ATK.NSLocal
 import ATK.NSMaximal
 import ATK.NSEnergia
 import ATK.NSContinua
+import ATK.NSFraca
+import ATK.NSTeste
 import ATK.LigacaoPNP
 import ATK.Termos
 import ATK.CapturaRH
