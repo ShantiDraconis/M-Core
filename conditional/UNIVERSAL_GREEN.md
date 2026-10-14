@@ -5,10 +5,10 @@ conjectura. O que ela faz é tornar **exato** e **verificável por máquina** o 
 que `UNIVERSAL_GREEN` e `FINAL_ROOT` só mudem quando a matemática existir.
 
 Estado calculado hoje: `UNIVERSAL_GREEN = false` · `FINAL_ROOT = null` · linhas verdes **0/7** ·
-pontes no kernel **1/8** · produtores abertos **8/8** · ligações abertas **5/5** · fiação **21/21** ·
-**25 lacunas distintas, todas com tipo Lean conferido pelo kernel (25/25)** · rota da prova: faltam
-**18** termos · rota da refutação: **12** · ensaio do portão **12/12** · resolvidas **0/7** ·
-lacunas fechadas **0/25**.
+pontes no kernel **1/8** · produtores abertos **8/8** · ligações **L1 e L2 construídas** (revisão humana
+pendente; contador de ligações fechadas 0/5) · fiação **21/21** · lacunas: **23 abertas e 2 preenchidas**,
+tipos conferidos pelo kernel **25/25** · rota da prova: faltam **16** termos · rota da refutação:
+**10** · ensaio do portão **12/12** · resolvidas **0/7** · lacunas fechadas **0/25**.
 
 ## As duas metas e o plano T1–T9 — `scripts/plano.py`
 
@@ -28,8 +28,8 @@ push:
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
 | T5 | `lake build`: todo arquivo auditado compila | ✅ |
 | T6 | `#print axioms` (fecho transitivo) só com axiomas padrão; nenhuma fonte com `sorry`/`admit`/`axiom` | ✅ |
-| T7 | enunciados reais ligados | 🟡 2/7 (RH e Beal oficiais; L1–L5 abertas) |
-| T8 | produtores terminais incondicionais (os 7 portões) | ⬜ 0/7; faltam 18 termos (prova) / 12 (refutação) |
+| T7 | enunciados reais ligados | 🟡 4/7 (RH e Beal oficiais; L1 e L2 construídas, revisão humana pendente; L3–L5 sem base na Mathlib) |
+| T8 | produtores terminais incondicionais (os 7 portões) | ⬜ 0/7; faltam 16 termos (prova) / 10 (refutação) |
 | T9 | só o verde é certificado: ensaio do portão completo, fiação tipada, nenhum terminal promovido | ✅ ensaio 12/12 · tipos 25/25 · sensibilidade ok |
 
 Resultado: **biblioteca VERDE · conjecturas ABERTAS**. O CI publica isso numa anotação
@@ -168,18 +168,19 @@ se pode provar sobre cada uma (39 teoremas): `fecha` (lacunas → enunciado ofic
 `decomposicao` (onde a lacuna é *equivalente* ao enunciado), `refutacao_iff` (a forma-testemunha do
 contraexemplo) e o que uma refutação acarreta. O catálogo `scripts/termos.json` liga cada lacuna ao
 seu nome; `verificar_fiacao.py` troca cada marcador por `(sorry : <tipo do catálogo>)` e compila os
-21 modelos: **25/25 tipos conferidos**. O teste de sensibilidade troca o tipo da ponte B3 pelo do
+21 modelos: **25/25 tipos conferidos** (23 lacunas abertas com `sorry` tipado, 2 preenchidas com o termo real). O teste de sensibilidade troca o tipo da ponte B3 pelo do
 produtor O3 e a compilação falha, como deve. A ficha completa (24 componentes por termo) está em
 [`TERMOS.md`](TERMOS.md), gerada por `scripts/termos.py --md`.
 
-| | ocorrências | lacunas |
+| | ocorrências abertas | lacunas |
 |---|---|---|
-| rota da prova | 18 | 13 provas (2 produtores RH/Beal, 5 pontes B3–B7, 6 produtores O3–O8) + 5 ligações |
-| rota da refutação | 12 | 7 refutações + as mesmas 5 ligações |
-| distintas | **25** | 18 + 12 − 5 compartilhadas |
+| rota da prova | 16 | 13 provas (2 produtores RH/Beal, 5 pontes B3–B7, 6 produtores O3–O8) + 3 ligações (L3–L5) |
+| rota da refutação | 10 | 7 refutações + as mesmas 3 ligações |
+| abertas | **23** | 16 + 10 − 3 compartilhadas |
+| preenchidas | **2** | `LIGACAO_L2`, `LIGACAO_L2_SAT` (ligação L2 construída) |
 
-As duas contagens que circularam ("18 + 12" do CI e "25" do inventário de lacunas) estão certas;
-medem coisas diferentes.
+Antes da L2 eram 18 + 12 − 5 = 25: as contagens "18 + 12" do CI e "25" do inventário de lacunas
+estavam certas e mediam coisas diferentes.
 
 O que os teoremas novos dizem sobre as lacunas:
 
@@ -199,10 +200,9 @@ O que os teoremas novos dizem sobre as lacunas:
   finitas linguagens passa (`PNP.finito_nao_fiel`).
 
 O que continua faltando é exatamente a matemática: 8 produtores (O1–O8), 5
-pontes publicadas por formalizar (B3–B7) e 4 ligações por construir (L2–L5; a L1 está construída,
-falta a revisão humana). Sobre L2: a Mathlib tem `Turing.TM2ComputableInPolyTime`, mas ainda não a
-composição de máquinas de tempo polinomial (P fechado por redução), P ⊆ NP sobre `FinTM2`, SAT nem
-Cook–Levin.
+pontes publicadas por formalizar (B3–B7) e 3 ligações por construir (L3–L5, sem base na Mathlib);
+L1 e L2 estão construídas, falta a revisão humana. Em P vs NP a composição em tempo polinomial, P ⊆ NP,
+as reduções de Karp e SAT já estão no kernel; falta Cook–Levin (B4) e SAT ∉ P (O4).
 
 ### Mineração de 14/10/2026
 
@@ -215,6 +215,17 @@ de alcance foram reconferidos ramo a ramo: as 5 declarações Lean e as 6 em Coq
 um alvo têm `sorry`, `Axiom`, `Admitted` ou hipóteses. Os três repositórios com nome `.lean`
 (`zeta-i-formal.lean`, `i-foundations.lean`, `collapse-lemma-rh.lean`) só têm licença e protocolo.
 **Nenhum termo de prova novo** para qualquer das 25 lacunas.
+
+## Ligação L2 construída — `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22)
+
+A peça que faltava na fundação de P vs NP, e que a Mathlib não tem, está provada: a **composição de
+máquinas `FinTM2` em tempo polinomial** (`ATK.ComposicaoTM2.comp`). Com ela: `P ⊆ NP` sobre
+`Turing.FinTM2` (`P_sub_NP`, via um decodificador de pares construído e verificado passo a passo),
+reduções de Karp e P fechada por elas (`P_fechada_red`), SAT (CNF satisfatíveis em binário) e a
+instância `modeloPNP : ComplexityModel` com `fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP`. O
+modelo de portão `PNPModelo` está preenchido e compila sem axioma extra: no portão de P vs NP
+faltam só a ponte B4 (Cook–Levin neste modelo) e o produtor O4 (SAT ∉ P). Detalhes em
+[`LIGACOES.md`](LIGACOES.md). A ligação fica `CONSTRUIDA_NO_KERNEL` até a revisão humana.
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 

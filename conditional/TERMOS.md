@@ -4,14 +4,13 @@ Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/t
 
 ## Contagem reconciliada
 
-- **25 lacunas distintas** nos 21 modelos de portão.
-- Rota da prova: **18** ocorrências (13 provas + 5 ligações).
-- Rota da refutação: **12** ocorrências (7 refutações + as mesmas 5 ligações).
-- 18 + 12 = 30 por rota; 30 − 5 compartilhadas = 25 distintas. As duas contagens ("18 + 12" do CI e "25" do inventário) estão certas; medem coisas diferentes.
-- Tipos conferidos pelo kernel: **25/25** (cada lacuna trocada por `(sorry : <tipo do catálogo>)` compila; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
-- Fechadas: **0/25**. Nenhuma lacuna está preenchida; preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente.
+- **25 lacunas** no catálogo, nos 21 modelos de portão: **23 abertas** e **2 preenchidas** (ligação construída no kernel).
+- Rota da prova: **16** ocorrências abertas; rota da refutação: **10**; 3 ligações abertas são compartilhadas pelas duas rotas (16 + 10 − 3 = 23).
+- Antes da construção da L2 eram 18 + 12 − 5 = 25; as contagens "18 + 12" e "25" mediam coisas diferentes e estavam certas.
+- Tipos conferidos pelo kernel: **25/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
+- Fechadas: **0/25**. Preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo genuíno (falta ainda a revisão humana para `CLOSED`).
 
-Fontes do kernel: SHA-256 `ecb8cfce21694b2e62704f0ce3b44c67b34789dcc11fbee1d72b0b1272eca2c0`.
+Fontes do kernel: SHA-256 `972898dd0b87f2779d2527329c00d3e527c726ff65884deef0f0a5ba5c98e142`.
 
 ## Os 24 componentes
 
@@ -187,7 +186,7 @@ Enunciado oficial no portão: ClayStatementA modeloGenuino ⟺ (A) do Clay (ATK.
 
 ## PNP — P vs NP
 
-Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (Turing.FinTM2). Ligação: L2 aberta (critério de fidelidade certificado: ATK.Termos.PNP.FielL2 → ATK.Termos.PNP.pneNP_de_fiel). Mathlib: tem TM2ComputableInPolyTime; falta composição de máquinas em tempo polinomial, SAT e Cook–Levin.
+Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (Turing.FinTM2). Ligação: L2 construída: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (revisão humana pendente para CLOSED). Mathlib: tem TM2ComputableInPolyTime; a composição em tempo polinomial foi provada aqui (ATK.ComposicaoTM2.comp); faltam Cook–Levin e SAT ∉ P.
 
 | Componente (domínio da linha) | Conteúdo |
 |---|---|
@@ -213,10 +212,10 @@ Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel:
 | 1 · Identidade | T05 · `ATK.Termos.PNP.ponteB4` · ponte B4 · rota prova |
 | 2 · Definição formal | Cook–Levin: SAT ∈ NP e toda L ∈ NP reduz a SAT — tipo Lean `ATK.Termos.PNP.ponteB4 modeloGenuino sat` |
 | 3 · Tipo matemático | Prop (proposição) |
-| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P` |
+| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P`; `ATK.ComposicaoTM2.comp`; `ATK.ModeloPNP.P_sub_NP`; `ATK.ModeloPNP.P_fechada_red` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.fecha`; `ATK.Termos.PNP.exato` |
-| 19 · Dependências | `ATK/Termos.lean`; L2 aberta (critério de fidelidade certificado: ATK.Termos.PNP.FielL2 → ATK.Termos.PNP.pneNP_de_fiel) |
+| 19 · Dependências | `ATK/Termos.lean`; L2 construída: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (revisão humana pendente para CLOSED) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.PNP.terminal` |
 | 23 · Certificado Lean | teorema publicado; falta formalizar · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/PNP.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -228,10 +227,10 @@ Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel:
 | 1 · Identidade | T06 · `ATK.Termos.PNP.produtorO4` · produtor O4 · rota prova |
 | 2 · Definição formal | SAT ∉ P — tipo Lean `ATK.Termos.PNP.produtorO4 modeloGenuino sat` |
 | 3 · Tipo matemático | Prop (proposição) |
-| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P` |
+| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P`; `ATK.ComposicaoTM2.comp`; `ATK.ModeloPNP.P_sub_NP`; `ATK.ModeloPNP.P_fechada_red` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.fecha`; `ATK.Termos.PNP.exato` |
-| 19 · Dependências | `ATK/Termos.lean`; L2 aberta (critério de fidelidade certificado: ATK.Termos.PNP.FielL2 → ATK.Termos.PNP.pneNP_de_fiel) |
+| 19 · Dependências | `ATK/Termos.lean`; L2 construída: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (revisão humana pendente para CLOSED) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.PNP.terminal` |
 | 23 · Certificado Lean | ABERTA — problema em aberto · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/PNP.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -243,10 +242,10 @@ Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel:
 | 1 · Identidade | T17 · `ATK.Termos.PNP.refutacao` · refutacao P = NP · rota refutacao |
 | 2 · Definição formal | P = NP; com B4: SAT ∈ P (um algoritmo polinomial para SAT) — tipo Lean `ATK.Termos.PNP.refutacao modeloGenuino` |
 | 3 · Tipo matemático | Prop (proposição) |
-| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P` |
+| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P`; `ATK.ComposicaoTM2.comp`; `ATK.ModeloPNP.P_sub_NP`; `ATK.ModeloPNP.P_fechada_red` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.refutacao_iff`; `ATK.Termos.PNP.refutacao_iff_sat` |
-| 19 · Dependências | `ATK/Termos.lean`; L2 aberta (critério de fidelidade certificado: ATK.Termos.PNP.FielL2 → ATK.Termos.PNP.pneNP_de_fiel) |
+| 19 · Dependências | `ATK/Termos.lean`; L2 construída: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (revisão humana pendente para CLOSED) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.PNPRefutacao.refutacao` |
 | 23 · Certificado Lean | ABERTA — nenhum contraexemplo conhecido · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/PNPRefutacao.lean.tpl` · `atk-kernel/scripts/termos.json` |
@@ -258,12 +257,12 @@ Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel:
 | 1 · Identidade | T21 · `ATK.Termos.Ligacoes.L2` · ligacao L2 · rota prova+refutacao |
 | 2 · Definição formal | modelo genuíno de P e NP; fidelidade exigida: FielL2 (classes = P, NP sobre Turing.FinTM2) — tipo Lean `ATK.Termos.Ligacoes.L2` |
 | 3 · Tipo matemático | dado: estrutura ComplexityModel.{0} |
-| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P` |
+| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P`; `ATK.ComposicaoTM2.comp`; `ATK.ModeloPNP.P_sub_NP`; `ATK.ModeloPNP.P_fechada_red` |
 | 17 · Hipóteses | o modelo tem de satisfazer o critério de fidelidade da ligação |
-| 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.pneNP_de_fiel`; `ATK.Termos.PNP.finito_nao_fiel` |
-| 19 · Dependências | `ATK/Termos.lean`; L2 aberta (critério de fidelidade certificado: ATK.Termos.PNP.FielL2 → ATK.Termos.PNP.pneNP_de_fiel) |
+| 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.pneNP_de_fiel`; `ATK.Termos.PNP.finito_nao_fiel`; `ATK.ModeloPNP.P_sub_NP`; `ATK.ModeloPNP.P_fechada_red`; `ATK.ModeloPNP.fiel`; `ATK.ModeloPNP.fielL2`; `ATK.ComposicaoTM2.comp` |
+| 19 · Dependências | `ATK/Termos.lean`; L2 construída: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (revisão humana pendente para CLOSED) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.PNPModelo.modeloGenuino` |
-| 23 · Certificado Lean | ABERTA — falta composição de máquinas em tempo polinomial (fechamento de P por redução) e P ⊆ NP sobre FinTM2 · tipo conferido pelo kernel |
+| 23 · Certificado Lean | CONSTRUÍDA no kernel (ATK.ModeloPNP.modeloPNP; P ⊆ NP e fechamento por reduções provados); falta revisão humana para CLOSED · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/PNPModelo.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
 ### T22 — `PNPModelo:LIGACAO_L2_SAT`
@@ -273,12 +272,12 @@ Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel:
 | 1 · Identidade | T22 · `ATK.Termos.Ligacoes.L2SAT` · ligacao L2 · rota prova+refutacao |
 | 2 · Definição formal | a linguagem SAT (fórmulas CNF satisfatíveis, codificadas em {0,1}*) — tipo Lean `ATK.Termos.Ligacoes.L2SAT modeloGenuino` |
 | 3 · Tipo matemático | dado: linguagem do modelo L2 |
-| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P` |
+| 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P`; `ATK.ComposicaoTM2.comp`; `ATK.ModeloPNP.P_sub_NP`; `ATK.ModeloPNP.P_fechada_red` |
 | 17 · Hipóteses | o modelo tem de satisfazer o critério de fidelidade da ligação |
-| 18 · Lemas (certificados, do termo) | — (dado; critério na linha) |
-| 19 · Dependências | `ATK/Termos.lean`; L2 aberta (critério de fidelidade certificado: ATK.Termos.PNP.FielL2 → ATK.Termos.PNP.pneNP_de_fiel) |
+| 18 · Lemas (certificados, do termo) | `ATK.ModeloPNP.sat_vazia`; `ATK.ModeloPNP.clausula_vazia_insat` |
+| 19 · Dependências | `ATK/Termos.lean`; L2 construída: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (revisão humana pendente para CLOSED) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.PNPModelo.sat` |
-| 23 · Certificado Lean | ABERTA — falta formalizar fórmulas CNF, satisfatibilidade e a codificação · tipo conferido pelo kernel |
+| 23 · Certificado Lean | CONSTRUÍDA no kernel (ATK.ModeloPNP.SAT: codificação binária de CNF satisfatíveis); falta revisão humana para CLOSED · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/PNPModelo.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
 ## Hodge — Conjectura de Hodge

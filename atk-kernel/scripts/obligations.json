@@ -156,10 +156,10 @@
       "id": "L2",
       "problem": "P vs NP",
       "kind": "LIGAÇÃO",
-      "lean": "ATK.Conditional.PvsNP.ComplexityModel",
-      "status": "ENUNCIADO_FIEL_NO_KERNEL",
+      "lean": "ATK.ModeloPNP.modeloPNP",
+      "status": "CONSTRUIDA_NO_KERNEL",
       "ref": "classe NP, SAT e reduções de Karp sobre máquinas de Turing (a Mathlib tem TM2ComputableInPolyTime)",
-      "progress": "Parte 1 (ATK/LigacaoPNP.lean, 12 teoremas): classes P e NP sobre as máquinas da Mathlib (Turing.FinTM2, TM2ComputableInPolyTime), palavras binárias, NP por verificador em P com certificado de tamanho polinomial e pares ⟨w,c⟩ sem ambiguidade (par_injective); PneNP : classeP ≠ classeNP é o enunciado fiel. Sanidade com máquina construída e verificada passo a passo (apagaEscreve): ∅ e todas as palavras em P e em NP. Falta (parte 2): a instância ComplexityModel — P ⊆ NP e P fechada por reduções de Karp exigem compor FinTM2 com cota de tempo (ausente da Mathlib, que só tem idComputableInPolyTime) — e a linguagem SAT codificada."
+      "progress": "Parte 1 (ATK/LigacaoPNP.lean): P e NP sobre Turing.FinTM2 com TM2ComputableInPolyTime; PneNP : classeP ≠ classeNP. Parte 2 (ATK/ComposicaoTM2.lean, 26 teoremas; ATK/ModeloPNP.lean, 22): composição de FinTM2 em tempo polinomial (comp: TM2ComputableInPolyTime ea eb f → TM2ComputableInPolyTime eb ec g → TM2ComputableInPolyTime ea ec (g ∘ f)), com cota da saída (saida_le); decodificador de pares em tempo linear (decComputavel, dec_par); P ⊆ NP (P_sub_NP); reduções de Karp (Red, red_refl, red_trans) e P fechada por elas (P_fechada_red); SAT = codificações binárias de fórmulas CNF satisfatíveis; modeloPNP : ComplexityModel com fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP (por definição) e fielL2. Falta só a revisão humana das definições (codificação de SAT, reduções) para marcar CLOSED. A ponte B4 (Cook–Levin neste modelo) e o produtor O4 (SAT ∉ P) continuam abertos."
     },
     {
       "id": "L3",

@@ -71,3 +71,5 @@ import ATK.LigacaoNS
 import ATK.LigacaoPNP
 import ATK.Termos
 import ATK.CapturaRH
+import ATK.ComposicaoTM2
+import ATK.ModeloPNP

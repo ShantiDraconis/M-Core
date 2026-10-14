@@ -76,8 +76,13 @@ def compute(root, report):
     put("T6", "GREEN" if rows and not bad_ax and not flags else ("OPEN" if not rows else "RED"),
         f"{len(rows) - len(bad_ax)}/{len(rows)} teoremas com axiomas padrão; fontes sinalizadas: {len(flags)}")
     links = ug.get("LINKINGS_OPEN", "?")
+    obl_p = os.path.join(root, "scripts", "obligations.json")
+    obl = json.load(open(obl_p, encoding="utf-8")) if os.path.exists(obl_p) else {}
+    ligs = [o for o in obl.get("obligations", []) if o.get("kind") == "LIGAÇÃO"]
+    constr = [o["id"] for o in ligs if o.get("status") in ("CONSTRUIDA_NO_KERNEL", "CLOSED")]
     put("T7", "PARCIAL" if ug else "OPEN",
-        f"2/7 linhas com enunciado oficial (RH, Beal); ligações abertas {links}")
+        f"{2 + len(constr)}/7 linhas com enunciado oficial ou ligação construída (RH, Beal"
+        + "".join(f", {i}" for i in constr) + f"); ligações não fechadas (sem revisão humana) {links}")
     put("T8", "GREEN" if ug.get("UNIVERSAL_GREEN") else "OPEN",
         f"linhas verdes {ug.get('LINES_GREEN', '?')}; resolvidas (provadas + refutadas) {ug.get('RESOLVED', '?')}; "
         f"termos que faltam: prova {fia.get('n_missing', '?')}, refutação {fia.get('n_missing_refutation', '?')}")

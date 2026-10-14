@@ -95,7 +95,7 @@
   "PNP": {
    "problema": "P vs NP",
    "enunciado_oficial": "PneNP modeloGenuino; enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (Turing.FinTM2)",
-   "ligacao": "L2 aberta (critério de fidelidade certificado: ATK.Termos.PNP.FielL2 → ATK.Termos.PNP.pneNP_de_fiel)",
+   "ligacao": "L2 construída: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (revisão humana pendente para CLOSED)",
    "dominio": "linguagens L ⊆ {0,1}*; máquinas Turing.FinTM2 de tempo polinomial",
    "classes": "ℕ (tamanhos e tempos), ℕ[X]",
    "parametros": "modelo M : ComplexityModel (L2) e a linguagem SAT (L2_SAT)",
@@ -116,10 +116,13 @@
    "contraexemplos": [
     "ATK.FinalRoot.pnp_depende_do_modelo"
    ],
-   "mathlib": "tem TM2ComputableInPolyTime; falta composição de máquinas em tempo polinomial, SAT e Cook–Levin",
+   "mathlib": "tem TM2ComputableInPolyTime; a composição em tempo polinomial foi provada aqui (ATK.ComposicaoTM2.comp); faltam Cook–Levin e SAT ∉ P",
    "leis": [
     "ATK.Conditional.PvsNP.pvsnp_conditional",
-    "ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P"
+    "ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P",
+    "ATK.ComposicaoTM2.comp",
+    "ATK.ModeloPNP.P_sub_NP",
+    "ATK.ModeloPNP.P_fechada_red"
    ]
   },
   "Hodge": {
@@ -607,10 +610,16 @@
    "enunciado": "modelo genuíno de P e NP; fidelidade exigida: FielL2 (classes = P, NP sobre Turing.FinTM2)",
    "teoremas": [
     "ATK.Termos.PNP.pneNP_de_fiel",
-    "ATK.Termos.PNP.finito_nao_fiel"
+    "ATK.Termos.PNP.finito_nao_fiel",
+    "ATK.ModeloPNP.P_sub_NP",
+    "ATK.ModeloPNP.P_fechada_red",
+    "ATK.ModeloPNP.fiel",
+    "ATK.ModeloPNP.fielL2",
+    "ATK.ComposicaoTM2.comp"
    ],
    "alimenta": "ATK.Terminal.PNPModelo.modeloGenuino",
-   "estado": "ABERTA — falta composição de máquinas em tempo polinomial (fechamento de P por redução) e P ⊆ NP sobre FinTM2"
+   "estado": "CONSTRUÍDA no kernel (ATK.ModeloPNP.modeloPNP; P ⊆ NP e fechamento por reduções provados); falta revisão humana para CLOSED",
+   "preenchida_por": "ATK.ModeloPNP.modeloPNP"
   },
   {
    "id": "T22",
@@ -624,9 +633,13 @@
    "lean_type": "ATK.Termos.Ligacoes.L2SAT modeloGenuino",
    "tipo_matematico": "dado: linguagem do modelo L2",
    "enunciado": "a linguagem SAT (fórmulas CNF satisfatíveis, codificadas em {0,1}*)",
-   "teoremas": [],
+   "teoremas": [
+    "ATK.ModeloPNP.sat_vazia",
+    "ATK.ModeloPNP.clausula_vazia_insat"
+   ],
    "alimenta": "ATK.Terminal.PNPModelo.sat",
-   "estado": "ABERTA — falta formalizar fórmulas CNF, satisfatibilidade e a codificação"
+   "estado": "CONSTRUÍDA no kernel (ATK.ModeloPNP.SAT: codificação binária de CNF satisfatíveis); falta revisão humana para CLOSED",
+   "preenchida_por": "ATK.ModeloPNP.SAT"
   },
   {
    "id": "T23",

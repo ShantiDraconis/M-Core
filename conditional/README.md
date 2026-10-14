@@ -239,7 +239,10 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   calcula `UNIVERSAL_GREEN` e `FINAL_ROOT` a cada push, checando o **tipo elaborado** de cada portão.
   Hoje: `false`, `null`, 0/7.
 - `terminal-templates/` + `scripts/verificar_fiacao.py`: a última milha ligada — 21/21 modelos de
-  portão compilam com as peças ausentes; rota da prova: faltam **18** termos; rota da refutação: 12.
+  portão compilam com as peças ausentes; rota da prova: faltam **16** termos; rota da refutação: 10.
+- `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22): **ligação L2 construída** — composição
+  de máquinas `FinTM2` em tempo polinomial (`comp`, ausente da Mathlib), `P ⊆ NP`, reduções de Karp
+  com P fechada por elas, SAT e `modeloPNP` com `PneNP modeloPNP ↔ P ≠ NP`.
 - `ATK/Termos.lean` + `scripts/termos.json` + `scripts/termos.py` (39 teoremas): as **25
   lacunas distintas**, cada uma com nome e tipo Lean; o auditor troca cada lacuna por
   `(sorry : <tipo>)` e o kernel confere **25/25** tipos (com teste de sensibilidade). Provado:

@@ -1,9 +1,10 @@
 import ATK.FinalRoot
+import ATK.ModeloPNP
 
 /-!
 # Ligação de PNP — MODELO (vira `ATK/Terminal/PNPModelo.lean`)
 
-Ligação L2 — parte 1 no kernel (`ATK.LigacaoPNP`: P e NP sobre `Turing.FinTM2`); falta a instância `ComplexityModel` (composição de máquinas em tempo polinomial) e a linguagem SAT.
+Ligação L2 — **construída** no kernel: `ATK.ModeloPNP.modeloPNP` (P e NP sobre `Turing.FinTM2`, reduções de Karp; `P ⊆ NP` e P fechada por reduções provados com a composição de máquinas em tempo polinomial, `ATK.ComposicaoTM2.comp`) e `ATK.ModeloPNP.SAT` (fórmulas CNF codificadas em binário, satisfatíveis). Fidelidade: `ATK.ModeloPNP.fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP` (por definição). Falta a revisão humana para o status `CLOSED`.
 O portão de prova (`PNP.lean`) e o de refutação (`PNPRefutacao.lean`) usam este mesmo modelo.
 -/
 
@@ -11,8 +12,8 @@ namespace ATK.Terminal.PNPModelo
 
 open ATK.Conditional.PvsNP
 
-noncomputable def modeloGenuino : ComplexityModel.{0} := LIGACAO_L2
+noncomputable def modeloGenuino : ComplexityModel.{0} := ATK.ModeloPNP.modeloPNP
 
-noncomputable def sat : modeloGenuino.Lang := LIGACAO_L2_SAT
+noncomputable def sat : modeloGenuino.Lang := ATK.ModeloPNP.SAT
 
 end ATK.Terminal.PNPModelo

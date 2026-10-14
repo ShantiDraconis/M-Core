@@ -116,7 +116,7 @@
       "linking": "L2",
       "statement_root": "_root_.ATK.Conditional.PvsNP.PneNP _root_.ATK.Terminal.PNPModelo.modeloGenuino",
       "template": "terminal-templates/PNP.lean.tpl",
-      "statement_note": "enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (classeP ≠ classeNP sobre Turing.FinTM2); falta a instância ComplexityModel (L2 parte 2) para preencher modeloGenuino",
+      "statement_note": "ligação L2 construída: modeloGenuino := ATK.ModeloPNP.modeloPNP (P, NP sobre Turing.FinTM2; reduções de Karp; P ⊆ NP e fechamento provados via ATK.ComposicaoTM2.comp); sat := ATK.ModeloPNP.SAT; PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP por definição (ATK.ModeloPNP.fiel). Falta revisão humana para CLOSED.",
       "refutation_gate_file": "ATK/Terminal/PNPRefutacao.lean",
       "refutation_gate_theorem": "ATK.Terminal.PNPRefutacao.refutacao",
       "refutation_statement": "¬ (PneNP modeloGenuino)",
@@ -124,7 +124,9 @@
       "refutation_meaning": "P = NP no modelo genuíno",
       "linking_module": "ATK/Terminal/PNPModelo.lean",
       "linking_template": "terminal-templates/PNPModelo.lean.tpl",
-      "refutation_template": "terminal-templates/PNPRefutacao.lean.tpl"
+      "refutation_template": "terminal-templates/PNPRefutacao.lean.tpl",
+      "linking_term": "ATK.ModeloPNP.modeloPNP",
+      "statement_equivalence": "ATK.ModeloPNP.fiel"
     },
     {
       "id": "Hodge",

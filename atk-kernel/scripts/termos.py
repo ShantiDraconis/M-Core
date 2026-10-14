@@ -44,7 +44,17 @@ def compute(root, verdict_of=None, fiacao=None):
     if len(set(keys)) != len(keys):
         problems.append("entradas repetidas no catálogo")
     problems += [f"lacuna sem entrada: {n}:{h}" for n, h in sorted(occ - set(keys))]
-    problems += [f"entrada órfã: {n}:{h}" for n, h in sorted(set(keys) - occ)]
+    preenchidas = [t for t in terms if t.get("preenchida_por")]
+    for t in preenchidas:  # lacuna preenchida: some do modelo e o termo aparece no lugar dela
+        k = (t["template"], t["placeholder"])
+        tpl = os.path.join(tpl_dir, t["template"] + ".lean.tpl")
+        texto = open(tpl, encoding="utf-8").read() if os.path.exists(tpl) else ""
+        if k in occ:
+            problems.append(f"{t['id']}: marcada como preenchida, mas a lacuna continua no modelo")
+        elif t["preenchida_por"] not in texto:
+            problems.append(f"{t['id']}: {t['preenchida_por']} não aparece em {t['template']}")
+    abertas_cat = {(t["template"], t["placeholder"]) for t in terms if not t.get("preenchida_por")}
+    problems += [f"entrada órfã: {n}:{h}" for n, h in sorted(abertas_cat - occ)]
     ids = [t["id"] for t in terms]
     if len(set(ids)) != len(ids):
         problems.append("ids repetidos")
@@ -70,23 +80,30 @@ def compute(root, verdict_of=None, fiacao=None):
         for r in fiacao["rows"]:
             for h in r.get("typed", []):
                 typed[(r["template"], h)] = r["compiled"]
+    compilou = {}
+    if fiacao and fiacao.get("ran"):
+        compilou = {r["template"]: r["compiled"] for r in fiacao["rows"]}
     for t in terms:
-        t["tipo_conferido"] = typed.get((t["template"], t["placeholder"]))
+        if t.get("preenchida_por"):  # o termo real está no modelo; compilar = tipo conferido
+            t["tipo_conferido"] = compilou.get(t["template"])
+        else:
+            t["tipo_conferido"] = typed.get((t["template"], t["placeholder"]))
     fechadas = 0  # uma lacuna só fecha com o portão instalado e certificado (universal_green.py)
     return {"ok": not problems, "problems": problems, "distintos": len(occ), "prova": n_prova,
             "refutacao": n_ref, "compartilhadas": n_prova + n_ref - len(occ),
             "teoremas": len(thms), "teoremas_certificados": cert,
-            "tipos_conferidos": sum(1 for v in typed.values() if v), "tipos_total": len(occ),
+            "tipos_conferidos": sum(1 for t in terms if t.get("tipo_conferido")), "tipos_total": len(terms),
+            "preenchidas": len(preenchidas), "catalogo": len(terms),
             "fechadas": fechadas, "terms": terms, "linhas": cat["linhas"]}
 
 
 def markdown(res):
     c = res
     cert = "?" if c["teoremas_certificados"] is None else c["teoremas_certificados"]
-    md = [f"### Termos terminais — {c['distintos']} lacunas distintas (prova {c['prova']}, refutação "
-          f"{c['refutacao']}, {c['compartilhadas']} ligações compartilhadas); tipos conferidos "
-          f"{c['tipos_conferidos']}/{c['tipos_total']}; teoremas do catálogo certificados {cert}/{c['teoremas']}; "
-          f"fechadas {c['fechadas']}/{c['distintos']}", ""]
+    md = [f"### Termos terminais — {c['catalogo']} no catálogo: {c['distintos']} lacunas abertas (prova {c['prova']}, "
+          f"refutação {c['refutacao']}, {c['compartilhadas']} ligações compartilhadas) e {c['preenchidas']} "
+          f"preenchidas (ligação construída); tipos conferidos {c['tipos_conferidos']}/{c['tipos_total']}; "
+          f"teoremas do catálogo certificados {cert}/{c['teoremas']}; fechadas {c['fechadas']}/{c['catalogo']}", ""]
     if c["problems"]:
         md += ["**Catálogo inconsistente:** " + "; ".join(c["problems"]), ""]
     md += ["| Id | Linha | Rota | Lacuna | Tipo Lean | O que é | Tipo conferido | Estado |",
@@ -104,17 +121,19 @@ def ficha(res, sha=None):
           "Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/termos.json` "
           "(catálogo) e `atk-kernel/ATK/Termos.lean` (nomes e teoremas no kernel).", "",
           "## Contagem reconciliada", "",
-          f"- **{res['distintos']} lacunas distintas** nos 21 modelos de portão.",
-          f"- Rota da prova: **{res['prova']}** ocorrências (13 provas + 5 ligações).",
-          f"- Rota da refutação: **{res['refutacao']}** ocorrências (7 refutações + as mesmas 5 ligações).",
-          f"- {res['prova']} + {res['refutacao']} = {res['prova'] + res['refutacao']} por rota; "
-          f"{res['prova'] + res['refutacao']} − {res['compartilhadas']} compartilhadas = {res['distintos']} distintas. "
-          "As duas contagens (\"18 + 12\" do CI e \"25\" do inventário) estão certas; medem coisas diferentes.",
+          f"- **{res['catalogo']} lacunas** no catálogo, nos 21 modelos de portão: "
+          f"**{res['distintos']} abertas** e **{res['preenchidas']} preenchidas** (ligação construída no kernel).",
+          f"- Rota da prova: **{res['prova']}** ocorrências abertas; rota da refutação: **{res['refutacao']}**; "
+          f"{res['compartilhadas']} ligações abertas são compartilhadas pelas duas rotas "
+          f"({res['prova']} + {res['refutacao']} − {res['compartilhadas']} = {res['distintos']}).",
+          "- Antes da construção da L2 eram 18 + 12 − 5 = 25; as contagens \"18 + 12\" e \"25\" mediam coisas "
+          "diferentes e estavam certas.",
           f"- Tipos conferidos pelo kernel: **{res['tipos_conferidos']}/{res['tipos_total']}** "
-          "(cada lacuna trocada por `(sorry : <tipo do catálogo>)` compila; trocar o tipo de B3 pelo de O3 "
-          "faz a compilação falhar).",
-          f"- Fechadas: **{res['fechadas']}/{res['distintos']}**. Nenhuma lacuna está preenchida; preencher uma "
-          "lacuna de produtor ou de refutação é resolver o problema correspondente.", ""]
+          "(cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida "
+          "compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).",
+          f"- Fechadas: **{res['fechadas']}/{res['catalogo']}**. Preencher uma lacuna de produtor ou de "
+          "refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo "
+          "genuíno (falta ainda a revisão humana para `CLOSED`).", ""]
     if sha:
         md += [f"Fontes do kernel: SHA-256 `{sha}`.", ""]
     md += ["## Os 24 componentes", "",

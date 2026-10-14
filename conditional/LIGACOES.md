@@ -8,7 +8,7 @@ problema do Clay depois da **ligação**: o modelo construído com os objetos re
 | Ligação | Estado | Arquivo | O que foi construído | O que falta |
 |---|---|---|---|---|
 | **L1** Navier–Stokes | `CONSTRUIDA_NO_KERNEL` | `ATK/LigacaoNS.lean` (15) | `modeloNS`: dados = `ν > 0` e `u₀ ∈ 𝓢(ℝ³, ℝ³)` com `div u₀ = 0`; solução global = `p, u ∈ C^∞(ℝ³ × [0, ∞))` com `∂ₜu + (u·∇)u = νΔu − ∇p`, `div u = 0`, `u(·, 0) = u₀`, energia `∫|u|²` limitada | revisão humana das definições → status `CLOSED` |
-| **L2** P vs NP | `ENUNCIADO_FIEL_NO_KERNEL` | `ATK/LigacaoPNP.lean` (12) | `classeP`, `classeNP` sobre `Turing.FinTM2` da Mathlib; `PneNP : classeP ≠ classeNP` | instância `ComplexityModel`: composição de `FinTM2` em tempo polinomial (para `P ⊆ NP` e fechamento por reduções) e a linguagem SAT |
+| **L2** P vs NP | `CONSTRUIDA_NO_KERNEL` | `ATK/LigacaoPNP.lean` (13), `ATK/ComposicaoTM2.lean` (26), `ATK/ModeloPNP.lean` (22) | `modeloPNP`: linguagens binárias, `classeP`/`classeNP` sobre `Turing.FinTM2`, reduções de Karp; `P ⊆ NP` e P fechada por reduções **provados** (composição de máquinas em tempo polinomial); `SAT` = CNF satisfatíveis em binário; `fiel : PneNP modeloPNP ↔ P ≠ NP` | revisão humana das definições (codificação de SAT, reduções) → status `CLOSED` |
 | **L3** Hodge | `NAO_EXISTE_NA_MATHLIB` | — | — | cohomologia de de Rham/Betti de variedades projetivas complexas, decomposição de Hodge, classes de ciclos |
 | **L4** BSD | `NAO_EXISTE_NA_MATHLIB` | — | — | `L(E, s)` com continuação analítica (modularidade), Ш, regulador, períodos, números de Tamagawa |
 | **L5** Yang–Mills | `NAO_EXISTE_NA_MATHLIB` | — | — | QFT construtiva em ℝ⁴ (axiomas de Wightman/Osterwalder–Schrader), grupo de gauge compacto |
@@ -35,20 +35,34 @@ obrigação O3 no modelo genuíno ⇒ o enunciado (A) do Clay.
 `[0, T)` com energia e enstrofia finitas em cada `[0, T']`; `enstrophy` = supremo de `∫|∇u|²`
 sobre as soluções dessa classe, que é única (Leray; Kato).
 
-## L2 — o que está pronto e o que falta
+## L2 — construída (14/10/2026)
 
-Pronto: `L ∈ P` ⟺ a função característica de `L` é computável por uma `FinTM2` em tempo
-polinomial (`TM2ComputableInPolyTime`); `L ∈ NP` ⟺ verificador em P e certificado de tamanho
-polinomial, com pares `⟨w, c⟩` sem ambiguidade (`par_injective`). Sanidade com uma máquina
-construída e verificada passo a passo (`apagaEscreve`): `∅` e todas as palavras estão em P e em
-NP.
+Parte 1 (`ATK/LigacaoPNP.lean`): `L ∈ P` ⟺ a função característica de `L` é computável por uma
+`FinTM2` em tempo polinomial (`TM2ComputableInPolyTime`); `L ∈ NP` ⟺ verificador em P e
+certificado de tamanho polinomial, com pares `⟨w, c⟩` sem ambiguidade (`par_injective`).
 
-Falta, para a instância `ComplexityModel` (e então B4/O4 sobre o objeto real):
+Parte 2, o que faltava e agora está no kernel:
 
-1. composição de `FinTM2` com cota polinomial (simulação passo a passo, transferência de pilha
-   preservando a ordem, cota do tamanho da saída pelo tempo);
-2. com ela: `P ⊆ NP` (o verificador descarta o certificado) e P fechada por reduções de Karp;
-3. a linguagem SAT (codificação binária de fórmulas CNF).
+1. **Composição de máquinas em tempo polinomial** (`ATK/ComposicaoTM2.lean`, 26 teoremas), que a
+   Mathlib não tem: `comp : TM2ComputableInPolyTime ea eb f → TM2ComputableInPolyTime eb ec g →
+   TM2ComputableInPolyTime ea ec (g ∘ f)`. A máquina composta roda `M₁`, transfere a saída para a
+   entrada de `M₂` por uma pilha auxiliar (duas inversões preservam a ordem) e roda `M₂`;
+   `run_comp` dá a execução exata em `n₂ + 2(|y| + 1) + n₁` passos, e `saida_le` limita a saída
+   por `|x| + n · pushMax`, o que mantém o tempo total polinomial (`eval_mono`).
+2. **`P ⊆ NP`** (`P_sub_NP`): uma máquina construída e verificada passo a passo (`decTM`) decodifica
+   o primeiro componente de `⟨w, c⟩` em tempo `2|x| + 2` (`decComputavel`, `dec_par`); o
+   verificador é "decodifica e roda o decisor", com certificado vazio.
+3. **Reduções de Karp** (`Red`: função computável em tempo polinomial por `FinTM2`), reflexivas e
+   transitivas, e **P fechada por elas** (`P_fechada_red`).
+4. **SAT**: fórmulas CNF (`List (List (ℕ × Bool))`) codificadas em binário com quatro símbolos de
+   dois bits; `SAT` = codificações de fórmulas satisfatíveis. Sanidade: a fórmula vazia está em SAT,
+   a cláusula vazia não é satisfatível.
+5. **`modeloPNP`** com `fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP` (por definição) e `fielL2`.
+
+O modelo de portão `PNPModelo` está preenchido com `ATK.ModeloPNP.modeloPNP` e `ATK.ModeloPNP.SAT`
+e compila sem nenhum axioma extra. No portão de P vs NP faltam agora só a ponte B4 (Cook–Levin
+**neste** modelo) e o produtor O4 (SAT ∉ P). A mudança para `CLOSED` depende da revisão humana da
+codificação de SAT e da definição de redução.
 
 **Critério de fidelidade certificado (14/10/2026).** `ATK.Termos.PNP.FielL2 M` diz que as classes
 do modelo são, a menos de uma bijeção das linguagens, `classeP` e `classeNP`;
@@ -65,7 +79,10 @@ enunciado. Ver [`TERMOS.md`](TERMOS.md), termos T21 e T22.
   `ATK.LigacaoNS.modeloNS`. Faltam no portão de NS só a ponte B3 e o produtor O3.
 * `terminal_gates.json`: NS ganhou `linking_term` e `statement_equivalence`
   (`ATK.LigacaoNS.clayA_iff`); P vs NP ganhou a nota do enunciado fiel `ATK.LigacaoPNP.PneNP`.
-* O auditor só conta uma ligação como fechada com status `CLOSED`. L1 fica em
+* `terminal-templates/PNPModelo.lean.tpl`: as peças `LIGACAO_L2` e `LIGACAO_L2_SAT` estão
+  preenchidas com `ATK.ModeloPNP.modeloPNP` e `ATK.ModeloPNP.SAT`; `terminal_gates.json` ganhou
+  `linking_term` e `statement_equivalence` (`ATK.ModeloPNP.fiel`) para P vs NP.
+* O auditor só conta uma ligação como fechada com status `CLOSED`. L1 e L2 ficam em
   `CONSTRUIDA_NO_KERNEL` até a revisão humana; por isso o contador de ligações continua 5/5.
 
 **Estado calculado: UNIVERSAL_GREEN = false, linhas verdes 0/7, CLOSED_MATH = false.** As

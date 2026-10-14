@@ -22,10 +22,9 @@ Testes de sanidade com máquinas construídas e verificadas passo a passo (`apag
 `∅ ∈ P`, `todas as palavras ∈ P`, `∅ ∈ NP`, `todas ∈ NP`; a codificação de pares é injetiva
 (`par_injective`).
 
-**O que ainda falta para fechar L2**: a instância `ComplexityModel` (campos `P ⊆ NP` e "P fechada
-por reduções de Karp") e SAT. Os dois campos exigem compor máquinas `FinTM2` com cotas de tempo,
-o que a Mathlib ainda não tem (só `idComputableInPolyTime`). O enunciado terminal `PneNP` já não
-depende disso.
+**Parte 2** (`ATK.ComposicaoTM2`, `ATK.ModeloPNP`): composição de máquinas `FinTM2` em tempo
+polinomial, `P ⊆ NP`, reduções de Karp com P fechada por elas, SAT e a instância
+`ComplexityModel` (`ATK.ModeloPNP.modeloPNP`), com `PneNP modeloPNP ↔ PneNP` por definição.
 
 Nada aqui decide P vs NP. **CLOSED_MATH continua false.**
 -/

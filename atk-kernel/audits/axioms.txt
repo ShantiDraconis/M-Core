@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 009d5ff07cabd03b73b35007e9cfc07ec3daf3adc52216d26841fa9dc0e52206
+# axiomas por teorema — congelamento de 972898dd0b87f2779d2527329c00d3e527c726ff65884deef0f0a5ba5c98e142
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1097,3 +1097,51 @@ ATK.CapturaRH.captura_log_iff	propext, Classical.choice, Quot.sound
 ATK.CapturaRH.riemann_de_captura	propext, Classical.choice, Quot.sound
 ATK.CapturaRH.positiva_de_piso	propext, Classical.choice, Quot.sound
 ATK.CapturaRH.captura_teto	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.iterate_none	nenhum
+ATK.ComposicaoTM2.iterate_sim	propext
+ATK.ComposicaoTM2.update_stkA	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.stepAux_liftA	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.step_cfgA	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.run_fase1	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.run_transf₁	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.run_transf₂	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.update_stkB	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.stepAux_liftB	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.step_cfgB	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.run_fase2	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.initList_comp	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.haltList_fase1	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.initList_fase2	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.haltList_comp	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.run_comp	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.tam_update	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.tam_stepAux	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.tam_step	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.tam_iterate	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.tam_initList	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.tam_haltList	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.saida_le	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.eval_mono	propext, Classical.choice, Quot.sound
+ATK.ComposicaoTM2.comp	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.dec_par	propext
+ATK.ModeloPNP.dec_length_le	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.upd_false	propext, Quot.sound
+ATK.ModeloPNP.upd_true	propext, Quot.sound
+ATK.ModeloPNP.par_igual	propext, Quot.sound
+ATK.ModeloPNP.par_dif	propext, Quot.sound
+ATK.ModeloPNP.run_limpa	propext, Quot.sound
+ATK.ModeloPNP.run_saida	propext, Quot.sound
+ATK.ModeloPNP.kPar_le	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.run_par	propext, Quot.sound
+ATK.ModeloPNP.initList_dec	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.haltList_dec	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.decComputavel	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.P_sub_NP	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.P_fechada_red	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.red_refl	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.red_trans	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.sat_vazia	propext, Quot.sound
+ATK.ModeloPNP.clausula_vazia_insat	propext
+ATK.ModeloPNP.modeloPNP	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.fiel	propext, Classical.choice, Quot.sound
+ATK.ModeloPNP.fielL2	propext, Classical.choice, Quot.sound
