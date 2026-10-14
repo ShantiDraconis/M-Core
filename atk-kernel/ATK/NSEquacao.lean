@@ -312,7 +312,7 @@ theorem sum_conv_eq {f : E3 → C3} (hf : Continuous f) {A : ℝ} (hA : Cota 4 A
   unfold cI nl
   rw [neg_smul, neg_neg]
 
-theorem Fi_eq_fourierInv' (V : E3 × ℝ → C3) (x : E3) (t : ℝ) :
+theorem Fi_eq_fourierInv_xt (V : E3 × ℝ → C3) (x : E3) (t : ℝ) :
     Fi V (x, t) = 𝓕⁻ (fun ξ => V (ξ, t)) x := Fi_eq_fourierInv V (x, t)
 
 theorem integrable_coord {f : E3 → C3} (hf : Integrable f) (j : Fin 3) :
@@ -357,11 +357,11 @@ theorem conv_Ufis {c T : ℝ} {v : E3 × ℝ → C3} (h : SolF c T v) (x : E3) {
     rw [← mul_fourierInv (hcj j) (hmsl j), ← Fi_coord hv x ht j, ← hre, Complex.coe_smul,
       map_smul]
     congr 2
-    exact Fi_eq_fourierInv' _ x t
+    exact Fi_eq_fourierInv_xt _ x t
   unfold ATK.LigacaoNS.conv
   simp_rw [hterm]
   rw [← map_sum, fourierInv_sum (fun j => (hcj j).integrable_convolution _ (hmsl j)),
-    Fi_eq_fourierInv']
+    Fi_eq_fourierInv_xt]
   refine congrArg reV (congrArg (fun g : E3 → C3 => 𝓕⁻ g x) (funext fun ζ => ?_))
   rw [sum_conv_eq ((hv.1 t ht)) (hA t ht) (fun ξ => h.div (ξ, t)) ζ]
   rfl
@@ -644,7 +644,7 @@ theorem sol_zero {D : Dado} {T : ℝ} (hT : 0 ≤ T) {v : E3 × ℝ → C3} (hv 
 /-- **O dado inicial**: `U(x, 0) = u₀(x)`. -/
 theorem Ufis_zero {ν : ℝ} (hν : 0 < ν) {u₀ : 𝓢(E3, E3)} {T : ℝ} (hT : 0 ≤ T)
     {v : E3 × ℝ → C3} (hv : Sol (dadoNS ν hν u₀) T v) (x : E3) : Ufis v (x, 0) = u₀ x := by
-  rw [Ufis, Fi_eq_fourierInv']
+  rw [Ufis, Fi_eq_fourierInv_xt]
   have : (fun ξ => v (ξ, 0)) = ⇑(v0S u₀) := funext fun ξ => sol_zero hT hv ξ
   rw [this, fourierInv_v0, reV_cx]
 
@@ -657,3 +657,73 @@ theorem contDiffOn_Pfis {c T : ℝ} {v : E3 × ℝ → C3} (h : SolF c T v) :
   contDiffOn_Φ_top h.pos aesm_LP zero_le_one LP_bound h.suave_Nl
 
 end ATK.NSEquacao
+
+#print axioms ATK.NSEquacao.cxL
+#print axioms ATK.NSEquacao.cxL_apply
+#print axioms ATK.NSEquacao.reV_cx
+#print axioms ATK.NSEquacao.u0c
+#print axioms ATK.NSEquacao.u0c_apply
+#print axioms ATK.NSEquacao.v0S
+#print axioms ATK.NSEquacao.v0S_eq
+#print axioms ATK.NSEquacao.cota_schwartz
+#print axioms ATK.NSEquacao.cota_v0
+#print axioms ATK.NSEquacao.herm_v0
+#print axioms ATK.NSEquacao.proj_integral
+#print axioms ATK.NSEquacao.lineDeriv_u0c
+#print axioms ATK.NSEquacao.ip_v0
+#print axioms ATK.NSEquacao.integrable_v0
+#print axioms ATK.NSEquacao.fourierInv_v0
+#print axioms ATK.NSEquacao.dadoNS
+#print axioms ATK.NSEquacao.dadoNS_c
+#print axioms ATK.NSEquacao.dadoNS_v₀
+#print axioms ATK.NSEquacao.integrable_Fi
+#print axioms ATK.NSEquacao.integrable_slice
+#print axioms ATK.NSEquacao.Fi_add
+#print axioms ATK.NSEquacao.Fi_sub
+#print axioms ATK.NSEquacao.Fi_neg
+#print axioms ATK.NSEquacao.Fi_real_smul
+#print axioms ATK.NSEquacao.Fi_coord
+#print axioms ATK.NSEquacao.ip_sub_left
+#print axioms ATK.NSEquacao.SolF
+#print axioms ATK.NSEquacao.Ufis
+#print axioms ATK.NSEquacao.SolF.reg0
+#print axioms ATK.NSEquacao.SolF.suave_dv
+#print axioms ATK.NSEquacao.SolF.cx_Ufis
+#print axioms ATK.NSEquacao.dX_reV
+#print axioms ATK.NSEquacao.dX_Ufis
+#print axioms ATK.NSEquacao.sum_conv_eq
+#print axioms ATK.NSEquacao.Fi_eq_fourierInv_xt
+#print axioms ATK.NSEquacao.integrable_coord
+#print axioms ATK.NSEquacao.integrable_fourierInv_integrand
+#print axioms ATK.NSEquacao.fourierInv_sum
+#print axioms ATK.NSEquacao.conv_Ufis
+#print axioms ATK.NSEquacao.Reg0.mj
+#print axioms ATK.NSEquacao.hasDerivWithinAt_mj
+#print axioms ATK.NSEquacao.hasDerivAt_Ufis
+#print axioms ATK.NSEquacao.Fi_sum
+#print axioms ATK.NSEquacao.sum_mj_sq
+#print axioms ATK.NSEquacao.lap_Ufis
+#print axioms ATK.NSEquacao.div_Ufis
+#print axioms ATK.NSEquacao.kap
+#print axioms ATK.NSEquacao.measurable_kap
+#print axioms ATK.NSEquacao.norm_kap_mul
+#print axioms ATK.NSEquacao.ipR
+#print axioms ATK.NSEquacao.ipR_apply
+#print axioms ATK.NSEquacao.continuous_ipR
+#print axioms ATK.NSEquacao.LP
+#print axioms ATK.NSEquacao.LP_apply
+#print axioms ATK.NSEquacao.aesm_LP
+#print axioms ATK.NSEquacao.LP_bound
+#print axioms ATK.NSEquacao.Pfis
+#print axioms ATK.NSEquacao.SolF.suave_Nl
+#print axioms ATK.NSEquacao.SolF.suave_Bil
+#print axioms ATK.NSEquacao.sub_leray
+#print axioms ATK.NSEquacao.dP_integrand
+#print axioms ATK.NSEquacao.grad_Pfis
+#print axioms ATK.NSEquacao.Reg0.const_smul
+#print axioms ATK.NSEquacao.NSEq_fis
+#print axioms ATK.NSEquacao.solF_of_sol
+#print axioms ATK.NSEquacao.sol_zero
+#print axioms ATK.NSEquacao.Ufis_zero
+#print axioms ATK.NSEquacao.contDiffOn_Ufis
+#print axioms ATK.NSEquacao.contDiffOn_Pfis
