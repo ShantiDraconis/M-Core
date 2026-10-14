@@ -80,3 +80,4 @@ import ATK.CookLevinReducao
 import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes
 import ATK.IMathPonte
+import ATK.RhoIndependente
