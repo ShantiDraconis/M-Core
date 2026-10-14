@@ -229,6 +229,15 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
 - `ATK/Triadico.lean`: decomposição espectral de todo `T` com `T³ = 1`; órbitas de tamanho 1 ou 3;
   `|X| ≡ |Fix σ| (mod 3)`; cadeias de Markov com simetria triádica têm estacionária uniforme.
 
+## Verde universal e raiz final — `UNIVERSAL_GREEN.md` (12 teoremas + auditor)
+
+- `ATK/FinalRoot.lean`: a árvore inteira do fechamento. `raiz_de_produtores` (pontes restantes +
+  produtores ⇒ os sete enunciados), `produtores_fieis_de_raiz` (sem atalho), **`verde_fiel_iff`**
+  (`RH ∧ Beal ⟺ IsEmpty ZeroFora ∧ ExclusaoResidualDescida`, sem hipóteses), e
+  `ns_depende_do_modelo`/`pnp_depende_do_modelo` (as ligações L1–L5 são necessárias).
+- `scripts/terminal_gates.json` + `scripts/universal_green.py`: os 7 portões terminais; o auditor
+  calcula `UNIVERSAL_GREEN` e `FINAL_ROOT` a cada push. Hoje: `false`, `null`, 0/7.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -308,6 +317,7 @@ LACUNAS.md                   cada problema: fronteira certificada, lemas de cami
 FICHAS.md                    provado / refutado / lacuna, zeros fora da linha, parâmetros
 VALLEE_POUSSIN.md            região sem zeros logarítmica, valores de c(t), piso de m(ρ)
 MODELOS_TERMINAIS.md         álgebra de terminais, caudas de D_N, Beal g* = 2, modelos, triádico
+UNIVERSAL_GREEN.md           árvore do fechamento, portões terminais, UNIVERSAL_GREEN e FINAL_ROOT
 proof_search.json            dados da busca (por repositório, categoria e problema)
 HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
 hypothesis_map.json          dados do mapa
@@ -356,12 +366,15 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/BealFiltros.lean       Beal ⟺ g* = 2; paridade; filtros mod 8 e mod 4 (15)
   ATK/ModelosSete.lean       modelos finitos das 7 linhas; volumes de bolas 4/5/11D (55)
   ATK/Triadico.lean          T³ = 1: decomposição espectral; pontos fixos mod 3; Markov (25)
+  ATK/FinalRoot.lean         raiz final: pontes restantes + produtores ⇒ 7 enunciados; verde fiel exato (12)
   ATK/BealFLT.lean           com FLT, Beal ⟺ caso mdc(x,y,z) ∈ {1,2} (10)
   ATK/Shannon.lean           contagem de Shannon; família fora de P/poly (9)
   ATK/NSPequeno.lean         enstrofia: dados pequenos ⇒ sem explosão, decaimento (3)
   ATK/YMToy.lean             rede solúvel: gap de massa e seu fechamento no contínuo (16)
   scripts/obligations.json   as 20 obrigações e a regra do portão de CLOSED_MATH
   scripts/check_axioms.py    auditoria: CERTIFIED só com axiomas padrão e sem sorry/admit/axiom
+  scripts/terminal_gates.json os 7 portões terminais (enunciado literal sem hipóteses)
+  scripts/universal_green.py calcula UNIVERSAL_GREEN e FINAL_ROOT (fail-closed)
   scripts/conditionals.json  ponte, hipótese aberta e fidelidade de cada condicional
   numerics/                  D_N de Báez-Duarte (N ≤ 1500)
 .github/workflows/           CI: compila, roda #print axioms por arquivo e publica a tabela

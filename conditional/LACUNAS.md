@@ -122,4 +122,4 @@ Etapa das lacunas: 64 teoremas (`ZetaRetangulo` 16, `ZetaRegiao` 10, `BealFLT` 1
 (`ZetaParcial` 8, `ZetaLog` 39, `ValleePoussin` 7). Total esperado no CI (com os módulos paralelos
 de Beal/Fermat/curva congruente/Darmon–Merel/Beal completo): 656. Álgebra de terminais, modelos
 das sete linhas e triádico: 171 (`AlgebraTerminal` 63, `ContracaoDN` 13, `BealFiltros` 15,
-`ModelosSete` 55, `Triadico` 25). Total: 827.
+`ModelosSete` 55, `Triadico` 25). Raiz final (`FinalRoot`): 12. Total: 839.

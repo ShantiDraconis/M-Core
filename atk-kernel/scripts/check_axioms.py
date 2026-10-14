@@ -173,6 +173,17 @@ if obligations:
            "", "| Id | Problema | Tipo | Proposição Lean | Estado | Referência |", "|---|---|---|---|---|---|"]
     for o in obligations:
         md.append(f"| {o['id']} | {o['problem']} | {o['kind']} | `{o['lean']}` | {o['status']} | {o['ref']} |")
+# Verde universal e raiz final: calculados a partir dos portões terminais (scripts/terminal_gates.json).
+ug = None
+try:
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    import universal_green
+    ug = universal_green.compute(ROOT, report, axioms, status)
+    report["universal_green"] = ug["summary"]
+    md += [""] + ug["md"]
+    json.dump(ug, open(os.path.join(REP, "universal_green.json"), "w"), indent=2, ensure_ascii=False)
+except Exception as exc:  # o relatório principal não depende deste cálculo
+    md += ["", f"Verde universal: não calculado ({exc})."]
 json.dump(report, open(os.path.join(REP, "report.json"), "w"), indent=2, ensure_ascii=False)
 if errors:
     md += ["", "### Erros de compilação (primeiras linhas)"]
@@ -193,6 +204,12 @@ if os.environ.get("GITHUB_ACTIONS"):
         return s.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
     print(f"::notice title=ATK-KERNEL {state} {certified}/{len(expected)}::"
           + esc(f"sha256 fontes {src_sha}\nlean {report['lean_version']} · mathlib v4.34.1"))
+    if ug:
+        u = ug["summary"]
+        print(f"::notice title=UNIVERSAL_GREEN {str(u['UNIVERSAL_GREEN']).lower()} {u['LINES_GREEN']} · "
+              f"FINAL_ROOT {u['FINAL_ROOT'] or 'null'}::"
+              + esc(f"pontes no kernel {u['BRIDGES_IN_KERNEL']} · produtores abertos {u['PRODUCERS_OPEN']} · "
+                    f"ligações abertas {u['LINKINGS_OPEN']} · verde fiel {str(u['UNIVERSAL_GREEN_FIEL']).lower()}"))
     by_mod = {}
     for r in rows:
         by_mod.setdefault(r["file"], []).append(r)

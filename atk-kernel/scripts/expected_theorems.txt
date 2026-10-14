@@ -825,3 +825,15 @@ ATK.Triadico.pontos_fixos_mod_tres
 ATK.Triadico.R_cubo
 ATK.Triadico.markov_circulante
 ATK.Triadico.markov_uniforme_estacionaria
+ATK.FinalRoot.pontes_de_restantes
+ATK.FinalRoot.raiz_de_produtores
+ATK.FinalRoot.raiz_implica_fiel
+ATK.FinalRoot.produtores_fieis_de_raiz
+ATK.FinalRoot.verde_fiel_iff
+ATK.FinalRoot.verde_fiel_iff_final
+ATK.FinalRoot.verde_fiel_de_produtores
+ATK.FinalRoot.produtores_de_obrigacoes
+ATK.FinalRoot.rotas_RH
+ATK.FinalRoot.rota_contracao_morta
+ATK.FinalRoot.ns_depende_do_modelo
+ATK.FinalRoot.pnp_depende_do_modelo
