@@ -553,3 +553,9 @@ ATK.ZetaRegiao.A_ge
 ATK.ZetaRegiao.A_neg
 ATK.ZetaRegiao.regiao_sem_zeros
 ATK.ZetaRegiao.faixa_estreitada
+ATK.BealDarmonMerel.sem_solucao_dm_sq
+ATK.BealDarmonMerel.sem_solucao_dm_cube
+ATK.BealDarmonMerel.descida_iff_dm
+ATK.BealDarmonMerel.beal_iff_residual_dm
+ATK.BealDarmonMerel.exemplos_dm
+ATK.BealDarmonMerel.exemplos_dm_novos

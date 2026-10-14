@@ -64,6 +64,14 @@
       "ref": "Osterwalder–Schrader 1973/75"
     },
     {
+      "id": "B8",
+      "problem": "Beal",
+      "kind": "PONTE",
+      "lean": "ATK.BealDarmonMerel.DarmonMerel",
+      "status": "PUBLICADA_NAO_FORMALIZADA",
+      "ref": "Darmon–Merel 1997 (Aⁿ+Bⁿ=C², n≥4; Aⁿ+Bⁿ=C³, n≥3, este com modularidade — BCDT 2001); Poonen 1998; Lucas; Euler. Forma fraca: A, B > 0 coprimos."
+    },
+    {
       "id": "O1",
       "problem": "Riemann",
       "kind": "ABERTA",
@@ -79,7 +87,7 @@
       "lean": "ATK.Conditional.Beal.GCDLowerBoundSmallExponents",
       "status": "OPEN_MATH",
       "ref": "gcd(a,b,c) > 1 quando gcd(x,y,z) ≤ 2 — na forma do lane: T59ResidualEliminator (domínio residual misto)",
-      "progress": "Incondicional (BealReduction, BealPartial): Beal ⟺ nenhuma solução dois a dois coprima; caso a = b; todo triplo com 3 ∣ mdc(x,y,z) ou 4 ∣ mdc(x,y,z) sem usar a ponte B2. O2 (mdc(x,y,z) ≤ 2) inalterada: OPEN_MATH. BealResidual: Beal ⟺ excluir soluções dois a dois coprimas com 3 ∤ mdc(x,y,z) e 4 ∤ mdc(x,y,z). BealFourFourTwo (via not_fermat_42 da Mathlib): sem solução quando 4 ∣ x, 4 ∣ y, 2 ∣ z — cobre triplos com mdc = 2 como (4,4,6); Beal ⟺ ExclusaoResidual442. FermatRightTriangle (descida, 11 teoremas): x⁴ − y⁴ ≠ z², área de triângulo pitagórico não é quadrado, 1 não é congruente. BealFermatDescent: sem solução quando 4 ∣ x, 2 ∣ y, 4 ∣ z ou 2 ∣ x, 4 ∣ y, 4 ∣ z; Beal ⟺ ExclusaoResidualDescida. Cobertura do domínio mdc ≤ 2 com expoentes 3..200: ≈ 4,8% — 350.064 de 7.260.078 triplos (resto ≈ 95% aberto). O2 inalterada: OPEN_MATH. QuarticResidues: n⁴ % 16 ∈ {0,1}, n⁴ % 5 ∈ {0,1} em ℤ, e no_congruence_obstruction: nenhuma congruência sozinha exclui x⁴ − y⁴ = z² (a exclusão exige descida). Com FLT (BealFLT): Beal ⟺ nenhuma solução dois a dois coprima com mdc(x,y,z) ∈ {1,2} (beal_iff_mdc_pequeno_pairwise); cada primo p com FLT(p) exclui p ∣ mdc já hoje. FreyBeal: curva de Frey–Hellegouarch Y² = X(X − aˣ)(X + bʸ) como WeierstrassCurve ℚ; numa solução, Δ = 16 (aˣ bʸ cᶻ)² e a curva é elíptica. Objeto clássico: o argumento modular (BCDT + Ribet) exige primo comum aos expoentes, caso já reduzido a FLT; não reduz O2."
+      "progress": "Incondicional (BealReduction, BealPartial): Beal ⟺ nenhuma solução dois a dois coprima; caso a = b; todo triplo com 3 ∣ mdc(x,y,z) ou 4 ∣ mdc(x,y,z) sem usar a ponte B2. O2 (mdc(x,y,z) ≤ 2) inalterada: OPEN_MATH. BealResidual: Beal ⟺ excluir soluções dois a dois coprimas com 3 ∤ mdc(x,y,z) e 4 ∤ mdc(x,y,z). BealFourFourTwo (via not_fermat_42 da Mathlib): sem solução quando 4 ∣ x, 4 ∣ y, 2 ∣ z — cobre triplos com mdc = 2 como (4,4,6); Beal ⟺ ExclusaoResidual442. FermatRightTriangle (descida, 11 teoremas): x⁴ − y⁴ ≠ z², área de triângulo pitagórico não é quadrado, 1 não é congruente. BealFermatDescent: sem solução quando 4 ∣ x, 2 ∣ y, 4 ∣ z ou 2 ∣ x, 4 ∣ y, 4 ∣ z; Beal ⟺ ExclusaoResidualDescida. Cobertura do domínio mdc ≤ 2 com expoentes 3..200: ≈ 4,8% — 350.064 de 7.260.078 triplos (resto ≈ 95% aberto). O2 inalterada: OPEN_MATH. QuarticResidues: n⁴ % 16 ∈ {0,1}, n⁴ % 5 ∈ {0,1} em ℤ, e no_congruence_obstruction: nenhuma congruência sozinha exclui x⁴ − y⁴ = z² (a exclusão exige descida). Com FLT (BealFLT): Beal ⟺ nenhuma solução dois a dois coprima com mdc(x,y,z) ∈ {1,2} (beal_iff_mdc_pequeno_pairwise); cada primo p com FLT(p) exclui p ∣ mdc já hoje. FreyBeal: curva de Frey–Hellegouarch Y² = X(X − aˣ)(X + bʸ) como WeierstrassCurve ℚ; numa solução, Δ = 16 (aˣ bʸ cᶻ)² e a curva é elíptica. Objeto clássico: o argumento modular (BCDT + Ribet) exige primo comum aos expoentes, caso já reduzido a FLT; não reduz O2. BealDarmonMerel (condicional à ponte B8): sem solução coprima quando mdc(x,y) ≥ 4 e 2 ∣ z, ou mdc(x,y) ≥ 3 e 3 ∣ z; DarmonMerel → (Beal ⟺ ExclusaoResidualDM). Cobertura sob B8: 11,03% (800.982 de 7.260.078 triplos; incondicional 4,82%). O2 inalterada: OPEN_MATH."
     },
     {
       "id": "O3",
