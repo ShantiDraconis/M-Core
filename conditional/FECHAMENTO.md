@@ -43,7 +43,7 @@ são equivalentes ao mesmo payload.
 | # | Alvo | Tipo | O que exige | Efeito |
 |---|---|---|---|---|
 | 1 | Necessidade de Báez-Duarte: RH ⇒ `D_N → 0` | teorema publicado | **feito**: Plancherel L¹∩L², Plancherel de Mellin, fórmula espectral de `D_N`, convergência dominada, mollificador de Möbius (`NecessidadeBD`). **Falta**: RH ⇒ `EntradasNecessidade` (Littlewood: Σμ(n)n^{-s} converge em Re s > 1/2 com cota polinomial em t; Lindelöf para ζ(½+it); `J(ε) → 0` pelo produto de Hadamard) | obrigação de RH ⟺ RH no kernel; fecha as formas ⟺ de `RHConvergence` |
-| 2 | B4 Cook–Levin + L2 | teorema publicado + modelo | P/NP com máquinas de Turing da Mathlib; redução de SAT; portar a prova de SAT ∈ NP do lane (P01) | O4 vira exatamente P ≠ NP com modelo genuíno |
+| 2 | B4 Cook–Levin + L2 | teorema publicado + modelo | P/NP com máquinas de Turing da Mathlib; redução de SAT; portar a prova de SAT ∈ NP do lane (P01) | O4 vira exatamente P ≠ NP com modelo genuíno — **feito em 14/10/2026**: L2 fechada pelo titular; B4 provada no kernel (`ATK.CookLevinNP.cookLevin`) |
 | 3 | B3 Leray + L1 | teorema publicado + modelo | espaços de Bochner, projetor de Leray, desigualdade de energia | O3 com modelo genuíno |
 | 4 | B6 Gross–Zagier–Kolyvagin + L4 | teorema publicado + modelo | função L de curvas elípticas, posto, pontos de Heegner | O6/O7 com modelo genuíno |
 | 5 | B5 Lefschetz (1,1) + L3 | teorema publicado + modelo | cohomologia de Hodge (versão algébrica) | O5 com modelo genuíno |

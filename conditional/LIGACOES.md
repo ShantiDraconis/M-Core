@@ -60,12 +60,13 @@ Parte 2, o que faltava e agora está no kernel:
 5. **`modeloPNP`** com `fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP` (por definição) e `fielL2`.
 
 O modelo de portão `PNPModelo` está preenchido com `ATK.ModeloPNP.modeloPNP` e `ATK.ModeloPNP.SAT`
-e compila sem nenhum axioma extra. No portão de P vs NP faltam agora só a ponte B4 (Cook–Levin
-**neste** modelo) e o produtor O4 (SAT ∉ P). Fechada pelo titular em 14/10/2026.
+e compila sem nenhum axioma extra. Fechada pelo titular em 14/10/2026.
 
-Sobre este mesmo modelo, a metade SAT ∈ NP da ponte B4 já está provada (`ATK/SATemNP.lean`,
-`sat_em_NP`), e `cookLevin_iff` reduz B4 à NP-dificuldade de SAT. Isso é prova (ponte), não
-ligação: a regra antiga de certificado continua valendo para B4.
+Sobre este mesmo modelo, a ponte B4 está provada: `ATK.CookLevinNP.cookLevin :
+CookLevin modeloPNP SAT` (SAT ∈ NP em `ATK/SATemNP.lean`; NP-dificuldade em
+`ATK/CookLevinReducao.lean` + `ATK/CookLevinNP.lean`). Isso é prova (ponte), não ligação: B4 fecha
+pela regra antiga de certificado (teorema `ATK.ObligationsClosed.B4` com o enunciado literal). No
+portão de P vs NP falta agora só o produtor O4 (SAT ∉ P).
 
 ## L4 — a parte do posto (14/10/2026)
 

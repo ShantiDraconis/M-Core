@@ -242,12 +242,21 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   portão compilam com as peças ausentes; rota da prova: faltam **16** termos; rota da refutação: 10.
 - `ATK/SATemNP.lean` (77): **ponte B4, marco M1 — SAT ∈ NP** no modelo genuíno: certificado
   esparso de tamanho `≤ |w|`, máquina `FinTM2` verificadora em `≤ 2 (n + 4)²` passos; com isso
-  `CookLevin modeloPNP SAT ⟺ NP-dificuldade de SAT` (`cookLevin_iff`; M2 em aberto).
+  `CookLevin modeloPNP SAT ⟺ NP-dificuldade de SAT` (`cookLevin_iff`; M2 provado, abaixo).
+- `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.lean` (45) + `ATK/CookLevinNP.lean` (51):
+  **ponte B4 provada — Cook–Levin no modelo genuíno**, `ATK.CookLevinNP.cookLevin :
+  CookLevin modeloPNP SAT` (marco M2d, parte 2). O gerador da redução é um programa da linguagem
+  de laços: fase aritmética (`|w|`, `q(|w|)`, tempo e altura do tableau, com `polyZ` para qualquer
+  polinômio) e emissão do tableau família por família; `saida_gerador` (a saída é exatamente
+  `reducao`), cotas polinomiais de custo e de saída (`custo_gerador`, `poli_custoTotal`),
+  `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
+  fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
+  O4 (SAT ∉ P).
 - `ATK/Fragmentos.lean` (10) + `ATK/Compilador.lean` (24): **B4, marco M2d (parte 1)** — compilador
   verificado de uma linguagem de laços para `FinTM2`, com custo exato (`comp_ok`, `maq_run`,
   `computavel`).
 - `ATK/CookLevinReducao.lean` (23): **B4, marco M2c** — a redução de Cook–Levin como função pura:
-  `w ∈ L ⟺ reducao w ∈ SAT` para toda `L ∈ classeNP` (falta M2d: computável em tempo polinomial).
+  `w ∈ L ⟺ reducao w ∈ SAT` para toda `L ∈ classeNP` (computável em tempo polinomial: M2d, acima).
 - `ATK/CookLevinTableau.lean` (46): **B4, marco M2b — o tableau de Cook–Levin** para qualquer
   máquina `TM2`: CNF satisfatível ⟺ algum certificado faz a execução parar aceitando
   (`tableau_iff`, as duas direções).
@@ -295,7 +304,7 @@ reproduzida em cada relatório do CI):
 
 | Tipo | Quantas | O que é | Estado |
 |---|---|---|---|
-| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | provados no papel, não formalizados (B2 e B4 parciais nos modelos dos lanes) |
+| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | B1 e B4 provadas no kernel; B2 parcial no modelo do lane; B3, B5–B7 provadas no papel, não formalizadas |
 | ABERTA (O1–O8) | 8 | as hipóteses abertas dos condicionais | `OPEN_MATH` |
 | LIGAÇÃO (L1–L5) | 5 | construir na Mathlib os objetos reais de NS, P vs NP, Hodge, BSD e Yang–Mills | não existem na Mathlib |
 

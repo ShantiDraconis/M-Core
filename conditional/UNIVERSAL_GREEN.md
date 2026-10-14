@@ -5,7 +5,7 @@ conjectura. O que ela faz é tornar **exato** e **verificável por máquina** o 
 que `UNIVERSAL_GREEN` e `FINAL_ROOT` só mudem quando a matemática existir.
 
 Estado calculado hoje: `UNIVERSAL_GREEN = false` · `FINAL_ROOT = null` · linhas verdes **0/7** ·
-pontes no kernel **1/8** · produtores abertos **8/8** · ligações: **L1 e L2 fechadas** (titular,
+pontes no kernel **2/8** · produtores abertos **8/8** · ligações: **L1 e L2 fechadas** (titular,
 14/10/2026), abertas **3/5** · fiação **21/21** · lacunas: **23 abertas e 2 preenchidas**,
 tipos conferidos pelo kernel **25/25** · rota da prova: faltam **16** termos · rota da refutação:
 **10** · ensaio do portão **12/12** · resolvidas **0/7** · lacunas fechadas **0/25**.
@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1384 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1582 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -149,7 +149,7 @@ vermelho (não é o enunciado literal sem hipóteses).
 
 | camada | itens | o que exige |
 |---|---|---|
-| pontes (literatura) | B2 Fermat, B3 Leray/BKM, B4 Cook–Levin (metade SAT ∈ NP já no kernel), B5 Lefschetz (1,1), B6 Gross–Zagier–Kolyvagin, B7 Osterwalder–Schrader, B8 Darmon–Merel | formalizar teoremas **publicados**; B2 está em andamento no projeto de Buzzard (FLT em Lean); B8 depende de modularidade |
+| pontes (literatura) | B2 Fermat, B3 Leray/BKM, B5 Lefschetz (1,1), B6 Gross–Zagier–Kolyvagin, B7 Osterwalder–Schrader, B8 Darmon–Merel (B1 Báez-Duarte e B4 Cook–Levin já provadas no kernel) | formalizar teoremas **publicados**; B2 está em andamento no projeto de Buzzard (FLT em Lean); B8 depende de modularidade |
 | ligações (fundações) | L1 NS 3D, L2 máquinas e classes P/NP, L3 ciclos e cohomologia de Hodge, L4 L-funções de curvas elípticas, L5 QFT 4D | construir os objetos reais na Mathlib; sem isso os enunciados paramétricos não são os do Clay |
 | produtores (matemática nova) | `IsEmpty ZeroFora`, `ExclusaoResidualFinal`, O3–O8 | resolver os problemas; nenhuma formalização substitui isto |
 
@@ -199,10 +199,11 @@ O que os teoremas novos dizem sobre as lacunas:
   (`PNP.pneNP_de_fiel`). Quem construir o modelo da L2 só precisa provar `FielL2`; nenhum modelo com
   finitas linguagens passa (`PNP.finito_nao_fiel`).
 
-O que continua faltando é exatamente a matemática: 8 produtores (O1–O8), 5
-pontes publicadas por formalizar (B3–B7) e 3 ligações por construir (L3–L5, sem base na Mathlib);
+O que continua faltando é exatamente a matemática: 8 produtores (O1–O8), 4
+pontes publicadas por formalizar (B3, B5–B7) e 3 ligações por construir (L3–L5, sem base na Mathlib);
 L1 e L2 estão fechadas (aprovação do titular). Em P vs NP a composição em tempo polinomial, P ⊆ NP,
-as reduções de Karp e SAT já estão no kernel; falta Cook–Levin (B4) e SAT ∉ P (O4).
+as reduções de Karp, SAT e Cook–Levin (B4, `ATK.CookLevinNP.cookLevin`) já estão no kernel; falta
+só SAT ∉ P (O4).
 
 ### Mineração de 14/10/2026
 
@@ -224,8 +225,7 @@ máquinas `FinTM2` em tempo polinomial** (`ATK.ComposicaoTM2.comp`). Com ela: `P
 reduções de Karp e P fechada por elas (`P_fechada_red`), SAT (CNF satisfatíveis em binário) e a
 instância `modeloPNP : ComplexityModel` com `fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP`. O
 modelo de portão `PNPModelo` está preenchido e compila sem axioma extra: no portão de P vs NP
-faltam só a ponte B4 (Cook–Levin neste modelo; a metade SAT ∈ NP já está provada, ver abaixo) e o
-produtor O4 (SAT ∉ P). Detalhes em [`LIGACOES.md`](LIGACOES.md). Ligação fechada pelo titular em
+falta só o produtor O4 (SAT ∉ P): a ponte B4 (Cook–Levin neste modelo) está provada, ver abaixo. Detalhes em [`LIGACOES.md`](LIGACOES.md). Ligação fechada pelo titular em
 14/10/2026.
 
 ## Ligação L4, parte do posto — `ATK/LigacaoBSD.lean` (4)
@@ -235,7 +235,19 @@ O enunciado de BSD do Clay está no kernel sobre os objetos da Mathlib (`Weierst
 como hipóteses explícitas. Falta a fórmula refinada, exigida pelo portão `BSDFull`; ver
 [`LIGACOES.md`](LIGACOES.md).
 
-## Ponte B4, marco M1: SAT ∈ NP no modelo genuíno — `ATK/SATemNP.lean` (77)
+## Ponte B4 provada: Cook–Levin no modelo genuíno — marcos M1 e M2
+
+Resultado: **`ATK.CookLevinNP.cookLevin : CookLevin modeloPNP SAT`**, axiomas padrão, sobre o
+modelo da ligação L2 (`Turing.FinTM2`, reduções de Karp). O auditor fecha a obrigação B4 pelo
+teorema `ATK.ObligationsClosed.B4`, cujo enunciado é literalmente o campo `lean` de B4 em
+`scripts/obligations.json`. Pontes no kernel: **2/8** (B1 e B4). Observação: o campo `lean` de B4
+era o nome do predicado paramétrico `ATK.Conditional.PvsNP.CookLevin`, que sozinho não é uma
+proposição; ele foi instanciado no modelo da ligação L2 —
+`ATK.Conditional.PvsNP.CookLevin ATK.ModeloPNP.modeloPNP ATK.ModeloPNP.SAT` —, que é exatamente a
+ponte usada pela linha de P vs NP. A regra de fechamento (enunciado literal + certificado +
+verificação de tipo) não mudou. P vs NP continua aberto: falta O4 (SAT ∉ P).
+
+### Marco M1: SAT ∈ NP no modelo genuíno — `ATK/SATemNP.lean` (77)
 
 A primeira metade de Cook–Levin está provada no kernel, sobre as classes de `ATK.LigacaoPNP`
 (máquinas `Turing.FinTM2` da Mathlib) e a linguagem `ATK.ModeloPNP.SAT` da ligação L2:
@@ -252,8 +264,7 @@ A primeira metade de Cook–Levin está provada no kernel, sobre as classes de `
   (`verifComputavel`).
 
 Com isso, `cookLevin_iff : CookLevin modeloPNP SAT ↔ ∀ L ∈ classeNP, Red L SAT`: a ponte B4
-no modelo genuíno é agora exatamente a NP-dificuldade de SAT (marco M2, em aberto). O contador
-"pontes no kernel" não muda: B4 só conta quando `CookLevin` inteiro for certificado.
+no modelo genuíno é exatamente a NP-dificuldade de SAT, provada no marco M2 (abaixo).
 
 Marco M2a — `ATK/CookLevinBase.lean` (16): a base genérica do tableau. Um passo de `TM2` só lê o
 topo de cada pilha (`stepAux_topo`: com `prof q ≤ d`, o passo sobre `S` é o passo sobre `take d`,
@@ -273,16 +284,32 @@ Marco M2c — `ATK/CookLevinReducao.lean` (23): **a redução como função pura
 `L ∈ classeNP`. O tableau da `FinTM2` verificadora usa os símbolos alcançáveis, que formam um
 conjunto finito. As variáveis viram números cujos bits são cadeias estruturadas (blocos unários),
 e `reducao_iff : w ∈ L ⟺ reducao D T H w ∈ SAT`. Classicamente, toda linguagem se reduz a SAT por
-alguma função não computável; o conteúdo aqui é a função explícita do tableau. Falta M2d: provar
-que ela é computável por uma `FinTM2` em tempo polinomial. Só isso fecha
-`CookLevin modeloPNP SAT`.
+alguma função não computável; o conteúdo aqui é a função explícita do tableau. O marco M2d prova
+que ela é computável por uma `FinTM2` em tempo polinomial.
 
 Marco M2d, parte 1 — `ATK/Fragmentos.lean` (10) + `ATK/Compilador.lean` (24): **um compilador
 verificado de laços para `FinTM2`**. A linguagem tem registradores unários, emissão de bits,
 somas, laços contados e laço sobre os bits da entrada. `comp_ok` prova que o código compilado
 realiza a semântica em exatamente `custo` passos; `maq_run` cobre a máquina inteira, de `initList`
-a `haltList`; e com `computavel`, custo polinomial dá `TM2ComputableInPolyTime`. Falta escrever a
-redução do marco M2c como programa dessa linguagem e cotar o custo.
+a `haltList`; e com `computavel`, custo polinomial dá `TM2ComputableInPolyTime`.
+
+Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.lean` (45) +
+`ATK/CookLevinNP.lean` (51): **o gerador da redução e o fechamento de B4**.
+
+* Fase aritmética (`arit`, `arit_spec`): `n = |w|`, `Q = q(n)`, `m = 2n+2+Q`, `T = p(m)` e as
+  alturas do tableau, com ambiente final exato. `polyZ` soma `P(x)` a um registrador para qualquer
+  `P : Polynomial ℕ`, por laços aninhados (`polyZ_spec`: semântica e custo).
+* Emissão do tableau (`progE`, `progI`, `progR`, `progP`, `progA`): cada família da CNF impressa
+  por laços contados; (I) lê a palavra de entrada por `forBits`; (R) percorre rótulos, estados e
+  padrões de janela e imprime os consequentes com o resto das pilhas deslocado.
+  `geraU_progTab`: a saída é exatamente `(formula …).flatMap cc`; `saida_gerador`: a saída do
+  programa sobre `w` é `reducao D Tf Hf w`.
+* Custo: programas de pura emissão custam e emitem no máximo `10·tam·(V+1)^(prof+1)` a partir de
+  ambientes limitados por `V` (`cota_emis`); o bloco que lê a entrada é cotado à parte
+  (`cota_progPre`); `Poli` (funções cotadas por polinômio, fechadas por soma, produto, potência e
+  composição) dá `poli_custoTotal`.
+* `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
+  `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 

@@ -19,8 +19,9 @@ custo `custo w c E`.
   `w ↦ (sem w c 0).2` é `TM2ComputableInPolyTime`;
 * sanidade: o comprimento da entrada em unário é computável em tempo `≤ 15 n + 9`.
 
-É a ferramenta para o marco M2d: escrever a redução de Cook–Levin (`ATK.CookLevinReducao`) como
-programa de laços e cotar seu custo. Nada aqui decide P vs NP. **CLOSED_MATH continua false.**
+É a ferramenta para o marco M2d: a redução de Cook–Levin (`ATK.CookLevinReducao`) escrita como
+programa de laços, com custo cotado, em `ATK.CookLevinGerador` e `ATK.CookLevinNP`. Nada aqui
+decide P vs NP. **CLOSED_MATH continua false.**
 -/
 
 namespace ATK.Compilador

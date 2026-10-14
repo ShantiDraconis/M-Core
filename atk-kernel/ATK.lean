@@ -79,6 +79,9 @@ import ATK.CookLevinTableau
 import ATK.CookLevinReducao
 import ATK.Fragmentos
 import ATK.Compilador
+import ATK.CookLevinLacos
+import ATK.CookLevinGerador
+import ATK.CookLevinNP
 import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes
 import ATK.IMathPonte
