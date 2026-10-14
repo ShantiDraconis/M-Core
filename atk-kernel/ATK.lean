@@ -40,6 +40,7 @@ import ATK.ZetaRegiao
 import ATK.BealDarmonMerel
 import ATK.ForaDaLinha
 import ATK.Fichas
+import ATK.BealCompleto
 import ATK.ZetaParcial
 import ATK.ZetaLog
 import ATK.ValleePoussin
