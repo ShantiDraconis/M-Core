@@ -78,3 +78,4 @@ import ATK.SatNPSemantica
 import ATK.SatNPMaquina
 import ATK.CookLevinJanela
 import ATK.CookLevinTableau
+import ATK.CookLevinRestricao

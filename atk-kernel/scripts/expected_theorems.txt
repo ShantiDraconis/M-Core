@@ -1348,3 +1348,14 @@ ATK.CookLevinTableau.trans_det
 ATK.CookLevinTableau.sat_estrutura
 ATK.CookLevinTableau.sat_aceita
 ATK.CookLevinTableau.tableau_correto
+ATK.CookLevinRestricao.pushSet
+ATK.CookLevinRestricao.pushSet_finite
+ATK.CookLevinRestricao.tr
+ATK.CookLevinRestricao.valS
+ATK.CookLevinRestricao.valC
+ATK.CookLevinRestricao.valS_update
+ATK.CookLevinRestricao.stepAux_tr
+ATK.CookLevinRestricao.restr
+ATK.CookLevinRestricao.step_restr
+ATK.CookLevinRestricao.passo_restr
+ATK.CookLevinRestricao.run_restr
