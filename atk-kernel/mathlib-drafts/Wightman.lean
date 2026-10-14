@@ -48,7 +48,8 @@ def SpacelikeSeparated (A B : Set Spacetime) : Prop := ∀ x ∈ A, ∀ y ∈ B,
 def closedForwardCone : Set Spacetime := {p | 0 ≤ p 0 ∧ 0 ≤ minkowski p p}
 
 /-- The spatial reflection `R = diag(1, -1, -1, -1)`, so that `minkowski p a = ⟪p, R a⟫`. -/
-def spatialReflection (a : Spacetime) : Spacetime := WithLp.toLp 2 (fun i => if i = 0 then a 0 else - a i)
+def spatialReflection (a : Spacetime) : Spacetime :=
+  WithLp.toLp 2 (fun i => if i = 0 then a 0 else - a i)
 
 /-- A proper orthochronous Lorentz transformation. -/
 structure RestrictedLorentz where
@@ -66,11 +67,18 @@ noncomputable def RestrictedLorentz.id : RestrictedLorentz where
   Λ := ContinuousLinearEquiv.refl ℝ Spacetime
   map_minkowski _ _ := rfl
   det_eq_one := by
-    rw [show ((ContinuousLinearEquiv.refl ℝ Spacetime : Spacetime ≃L[ℝ] Spacetime) : Spacetime →ₗ[ℝ] Spacetime) = LinearMap.id from rfl,
+    rw [show ((ContinuousLinearEquiv.refl ℝ Spacetime : Spacetime ≃L[ℝ] Spacetime) :
+        Spacetime →ₗ[ℝ] Spacetime) = LinearMap.id from rfl,
       LinearMap.det_id]
   orthochronous := by simp
 
-/-! ## Os axiomas de WightmanQFT -/
+/-- The topology on `RestrictedLorentz`, induced by the operator norm on
+`Spacetime →L[ℝ] Spacetime`. -/
+noncomputable instance : TopologicalSpace RestrictedLorentz :=
+  TopologicalSpace.induced (fun Λ : RestrictedLorentz => (Λ.Λ : Spacetime →L[ℝ] Spacetime))
+    inferInstance
+
+/-! ## The Wightman axioms -/
 
 variable (H : Type*) [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
 
@@ -83,7 +91,8 @@ structure WightmanQFT where
   map_one : U 0 RestrictedLorentz.id = 1
   map_mul : ∀ a b (Λ M N : RestrictedLorentz), N.Λ = M.Λ.trans Λ.Λ →
     U a Λ ∘L U b M = U (a + Λ.Λ b) N
-  continuous : ∀ ψ : H, Continuous fun a => U a RestrictedLorentz.id ψ
+  /-- Strong continuity on the whole restricted Poincaré group. -/
+  continuous : ∀ ψ : H, Continuous fun p : Spacetime × RestrictedLorentz => U p.1 p.2 ψ
   /-- The vacuum. -/
   Ω : H
   norm_vacuum : ‖Ω‖ = 1
@@ -102,7 +111,8 @@ structure WightmanQFT where
   hermitian : ∀ f f' : SchwartzMap Spacetime ℂ, (∀ x, f' x = (starRingEnd ℂ) (f x)) →
     ∀ ψ ∈ D, ∀ χ ∈ D, ⟪χ, φ f ψ⟫_ℂ = ⟪φ f' χ, ψ⟫_ℂ
   /-- Covariance: `U φ(f) U⁻¹ = φ(f ∘ g⁻¹)`. -/
-  covariant : ∀ a (Λ : RestrictedLorentz) (f f' : SchwartzMap Spacetime ℂ), (∀ x, f' x = f (Λ.Λ.symm (x - a))) →
+  covariant : ∀ a (Λ : RestrictedLorentz) (f f' : SchwartzMap Spacetime ℂ),
+    (∀ x, f' x = f (Λ.Λ.symm (x - a))) →
     ∀ ψ ∈ D, U a Λ (φ f ψ) = φ f' (U a Λ ψ)
   /-- Locality (microcausal commutativity). -/
   locality : ∀ f g : SchwartzMap Spacetime ℂ, SpacelikeSeparated (tsupport f) (tsupport g) →
@@ -110,7 +120,8 @@ structure WightmanQFT where
   /-- Spectral condition: the energy-momentum spectrum lies in the closed forward cone. With
   `U(a) = e^{i P·a}` and `P·a = ⟪P, R a⟫` this says `∫ ⟪χ, U(2π R b) ψ⟫ (𝓕 g)(b) db = 0` whenever
   the support of `g` misses the cone. -/
-  spectral_condition : ∀ ψ χ : H, ∀ g : SchwartzMap Spacetime ℂ, Disjoint (tsupport g) closedForwardCone →
+  spectral_condition : ∀ ψ χ : H, ∀ g : SchwartzMap Spacetime ℂ,
+    Disjoint (tsupport g) closedForwardCone →
     ∫ b, ⟪χ, U ((2 * Real.pi) • spatialReflection b) RestrictedLorentz.id ψ⟫_ℂ * (𝓕 g) b = 0
   /-- Cyclicity: polynomials in the field applied to the vacuum are dense. -/
   cyclic : Dense (Submodule.span ℂ {v : H | ∃ fs : List (SchwartzMap Spacetime ℂ),
@@ -124,7 +135,8 @@ theorem minkowski_eq_inner (p a : Spacetime) : minkowski p a = ⟪p, spatialRefl
   ring
 
 /-- `e₀ = (1, 0, 0, 0)` lies in the closed forward cone. -/
-theorem e0_mem_closedForwardCone : EuclideanSpace.single (0 : Fin 4) (1 : ℝ) ∈ closedForwardCone := by
+theorem e0_mem_closedForwardCone :
+    EuclideanSpace.single (0 : Fin 4) (1 : ℝ) ∈ closedForwardCone := by
   simp [closedForwardCone, minkowski]
 
 /-- `e₁ = (0, 1, 0, 0)` is spacelike. -/
@@ -132,7 +144,8 @@ theorem e1_isSpacelike : IsSpacelike (EuclideanSpace.single (1 : Fin 4) (1 : ℝ
   simp [IsSpacelike, minkowski]
 
 /-- The origin lies in the closed forward cone. -/
-theorem zero_mem_closedForwardCone : (0 : Spacetime) ∈ closedForwardCone := by simp [closedForwardCone, minkowski]
+theorem zero_mem_closedForwardCone : (0 : Spacetime) ∈ closedForwardCone := by
+  simp [closedForwardCone, minkowski]
 
 /-- `∫ 𝓕 g = g 0` (Fourier inversion at the origin). -/
 theorem integral_fourier_eq (g : SchwartzMap Spacetime ℂ) : ∫ b, (𝓕 g) b = g 0 := by

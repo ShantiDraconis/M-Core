@@ -11,7 +11,8 @@ Mathlib já tem (espaços de Hilbert, funções de Schwartz, transformada de Fou
 
 * espaço-tempo de Minkowski (`mink`, assinatura `(+, −, −, −)`), vetores tipo espaço, cone futuro
   fechado `V̄₊`, transformações de Lorentz próprias ortócronas (`Lorentz`);
-* representação unitária fortemente contínua do grupo de Poincaré restrito, vácuo invariante e
+* representação unitária fortemente contínua do grupo de Poincaré restrito (topologia de `Lorentz`
+  induzida pela norma de operador), vácuo invariante e
   único, domínio denso invariante, campo como distribuição temperada a valores em operadores,
   hermiticidade, covariância, localidade, condição espectral (via `𝓕` da Mathlib, convenção
   `U(a) = e^{i P·a}`), ciclicidade do vácuo.
@@ -72,6 +73,10 @@ noncomputable def Lorentz.id : Lorentz where
       LinearMap.det_id]
   ortocrona := by simp
 
+/-- A topologia de `Lorentz`: a induzida pela norma de operador em `ET →L[ℝ] ET`. -/
+noncomputable instance : TopologicalSpace Lorentz :=
+  TopologicalSpace.induced (fun Λ : Lorentz => (Λ.Λ : ET →L[ℝ] ET)) inferInstance
+
 /-! ## Os axiomas de Wightman -/
 
 variable (H : Type*) [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
@@ -85,7 +90,8 @@ structure Wightman where
   identidade : U 0 Lorentz.id = 1
   composicao : ∀ a b (Λ M N : Lorentz), N.Λ = M.Λ.trans Λ.Λ →
     U a Λ ∘L U b M = U (a + Λ.Λ b) N
-  continua : ∀ ψ : H, Continuous fun a => U a Lorentz.id ψ
+  /-- Continuidade forte em todo o grupo de Poincaré restrito. -/
+  continua : ∀ ψ : H, Continuous fun p : ET × Lorentz => U p.1 p.2 ψ
   /-- O vácuo. -/
   Ω : H
   norma_Ω : ‖Ω‖ = 1

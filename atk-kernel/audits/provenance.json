@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "0eed8827277b27567b3b76f5defa79575251dc9458816eada82f219d8b1161b0",
+  "sources_sha256": "f11faab2ba4679fc9a4954f29edf99f2a3e7ecc8975620904e0e23f63cef2669",
   "files": {
     "ATK/AlgebraTerminal.lean": "ab045c0a40a165fbe781e2c2e58eee54e1b79e6164a635016bf98a4959b2823b",
     "ATK/BDDistSqPort.lean": "3d209211337b561728bb8823cf8074c2a9539c832783e57d59398ae88b0d3c3f",
@@ -72,7 +72,7 @@
     "ATK/IndeterminacyStates.lean": "1a4c9ee6bd9b773c76e53ba812e1c920a6ecb2c4616f0a96179f6af279bc8a8e",
     "ATK/L3Base.lean": "b3350cf0c102a4dc7d6babbe643359e7869d7ce563a21a624b9fd41a0d33ad3c",
     "ATK/L4Base.lean": "87ed0774feb3d4dafca5bcd8ff686fd1d847cebc79e3a293161efc82d85b2bce",
-    "ATK/L5Base.lean": "6a86bf68d386915d3562511496525ff58804f872e323f9d5d7368c922ae425ed",
+    "ATK/L5Base.lean": "9814c0d8fb50271608b252fe1138c7d849b7870df845166bdbf3a866d39e9b98",
     "ATK/LigacaoBSD.lean": "0a686c591736ca9719b84c1f2b9369bf044aec5dd5e964465773ca0f3477b704",
     "ATK/LigacaoBSDTestes.lean": "a2c052adf3f5c5e21f6a0ae4dc04000b7a3b4d814c090c9052bc2b4dbb7164fe",
     "ATK/LigacaoNS.lean": "3f3783fc28394feb2d42b2bc6a0b8960ccf9b72217ed4e23560578be20bddf76",
@@ -117,6 +117,6 @@
   "expected_theorems": 1627,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "09cf0fa8827f009ce03a37b74f617c7e0f0b3c3e",
+  "commit_at_freeze": "aba948fc56b9f7461c6194d148b5995eba39f48b",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
