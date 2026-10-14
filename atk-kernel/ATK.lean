@@ -50,3 +50,5 @@ import ATK.BealFiltros
 import ATK.ModelosSete
 import ATK.Triadico
 import ATK.FinalRoot
+import ATK.LigacaoNS
+import ATK.LigacaoPNP
