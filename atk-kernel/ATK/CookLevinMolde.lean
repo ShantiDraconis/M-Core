@@ -219,7 +219,7 @@ theorem val_c (g : Rg C → ℕ) (c : ℕ) : val (([] : List (Rg C)), c) g = c :
 
 /-- Instante `t` e `t+1`; célula `j`. -/
 abbrev T0 : UT (Rg C) := ([Rg.t], 0)
-abbrev T1' : UT (Rg C) := ([Rg.t], 1)
+abbrev TS : UT (Rg C) := ([Rg.t], 1)
 abbrev J0 : UT (Rg C) := ([Rg.j], 0)
 abbrev Z : UT (Rg C) := ([], 0)
 
@@ -250,11 +250,11 @@ theorem sem_linhaT (w : List Bool) (g : Rg C → ℕ) :
 
 /-- Molde de `clsPara t S`. -/
 def paraT : FT (Var K Γ Λ σ) (Rg C) :=
-  .cat (.cl [litLab false none T0, litLab true none T1'])
+  .cat (.cl [litLab false none T0, litLab true none TS])
     (.cat (manyF ((todos σ).map fun v => .cl [litLab false none T0, litSt false v T0,
-        litSt true v T1']))
+        litSt true v TS]))
       (manyF ((todos K).map fun k => .rng Rg.SS Rg.j (manyF ((todos (Option (Γ k))).map fun a =>
-        .cl [litLab false none T0, litCel false k a T0 J0, litCel true k a T1' J0])))))
+        .cl [litLab false none T0, litCel false k a T0 J0, litCel true k a TS J0])))))
 
 theorem sem_paraT (w : List Bool) (g : Rg C → ℕ) :
     sem w (paraT (K := K) (Γ := Γ) (Λ := Λ) (σ := σ)) g = clsPara (g Rg.t) (g Rg.SS) := by
@@ -323,20 +323,20 @@ theorem premT_v (c : Caso M) (g : Rg C → ℕ) :
 /-- Molde das células de um caso, na pilha `k`. -/
 def celT (c : Caso M) (k : K) : FT (Var K Γ Λ σ) (Rg C) :=
   .cat (manyF ((List.range ((res M c).stk k).length).map fun p =>
-      .cl (premT M c ++ [litCel true k ((res M c).stk k)[p]? T1' ([], p)])))
+      .cl (premT M c ++ [litCel true k ((res M c).stk k)[p]? TS ([], p)])))
     (.cat (.rng (Rg.sm (max ((res M c).stk k).length (profMax M))) Rg.j
         (manyF ((todos (Option (Γ k))).map fun a =>
           .cl (litCel false k a T0 ([Rg.j], profMax M) :: premT M c ++
-            [litCel true k a T1' ([Rg.j], ((res M c).stk k).length)]))))
+            [litCel true k a TS ([Rg.j], ((res M c).stk k).length)]))))
       (manyF ((List.range (max ((res M c).stk k).length (profMax M) -
           ((res M c).stk k).length)).map fun i =>
-        .cl (premT M c ++ [litCel true k none T1'
+        .cl (premT M c ++ [litCel true k none TS
           ([Rg.sm (max ((res M c).stk k).length (profMax M) - ((res M c).stk k).length)], i)]))))
 
 /-- Molde de `clsCaso t S c`. -/
 def casoT (c : Caso M) : FT (Var K Γ Λ σ) (Rg C) :=
-  .cat (.cl (premT M c ++ [litLab true (res M c).l T1']))
-    (.cat (.cl (premT M c ++ [litSt true (res M c).var T1']))
+  .cat (.cl (premT M c ++ [litLab true (res M c).l TS]))
+    (.cat (.cl (premT M c ++ [litSt true (res M c).var TS]))
       (manyF ((todos K).map fun k => celT M c k)))
 
 /-- O tamanho de uma janela nova não passa de `profMax M + pushMax M`. -/
