@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de ecb8cfce21694b2e62704f0ce3b44c67b34789dcc11fbee1d72b0b1272eca2c0
+# axiomas por teorema — congelamento de 009d5ff07cabd03b73b35007e9cfc07ec3daf3adc52216d26841fa9dc0e52206
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1082,3 +1082,18 @@ ATK.Termos.Ligacoes.L1_fiel	propext, Classical.choice, Quot.sound
 ATK.Termos.raiz_de_termos	propext, Classical.choice, Quot.sound
 ATK.Termos.raiz_iff	propext, Classical.choice, Quot.sound
 ATK.Termos.exclusao	nenhum
+ATK.CapturaRH.q_nonneg	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.q_le	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.η_nonneg	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.η_le_one	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.passo	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.produto	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.telescopio	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.le_exp	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.log_pos_N	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.captura_suficiente	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.soma_log	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.captura_log_iff	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.riemann_de_captura	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.positiva_de_piso	propext, Classical.choice, Quot.sound
+ATK.CapturaRH.captura_teto	propext, Classical.choice, Quot.sound

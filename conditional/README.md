@@ -246,6 +246,10 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `fecha`, `exato`/`decomposicao` (RH, Beal, Hodge, BSD, P≠NP dada a ponte), formas-testemunha
   das refutações e o critério de fidelidade da L2 (`PNP.pneNP_de_fiel`). Ficha de 24 componentes
   por termo em [`TERMOS.md`](TERMOS.md).
+- `ATK/CapturaRH.lean` (15 teoremas): na família genuína, `D_{N+1} = (1 − η_N) D_N` e
+  `D_N = D_0 ∏(1 − η_j)` sem hipóteses; a captura relativa acumulada (forma logarítmica) é
+  **equivalente** à obrigação O1 (`captura_log_iff`) e, sob o piso BBLS, fica presa em
+  `log log N + O(1)` (`captura_teto`).
 - `scripts/ensaio_universal_green.py`: ensaio de ponta a ponta com enunciados de brinquedo — 12/12
   (acende com provas válidas; bloqueia `sorry`, sombreamento, hipóteses, axiomas, enunciado trocado).
 - `scripts/instalar_portao.py`: instala um portão só se for prova genuína; hoje recusa as 9 linhas.

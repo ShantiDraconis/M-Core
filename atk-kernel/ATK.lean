@@ -70,3 +70,4 @@ import ATK.NecessidadeBD
 import ATK.LigacaoNS
 import ATK.LigacaoPNP
 import ATK.Termos
+import ATK.CapturaRH

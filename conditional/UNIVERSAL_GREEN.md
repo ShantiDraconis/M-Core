@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1081 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1097 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -215,6 +215,59 @@ de alcance foram reconferidos ramo a ramo: as 5 declarações Lean e as 6 em Coq
 um alvo têm `sorry`, `Axiom`, `Admitted` ou hipóteses. Os três repositórios com nome `.lean`
 (`zeta-i-formal.lean`, `i-foundations.lean`, `collapse-lemma-rh.lean`) só têm licença e protocolo.
 **Nenhum termo de prova novo** para qualquer das 25 lacunas.
+
+## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
+
+A obrigação proposta como "próxima" na rota de Riemann foi testada no kernel, sobre a família
+genuína `D_N = inf_c ‖χ − Σ_{k≤N} c_k ρ_k‖²`, com `q_N = D_N − D_{N+1}` e `η_N = q_N / D_N`:
+
+| teorema | enunciado | hipóteses |
+|---|---|---|
+| `passo` | `D_{N+1} = (1 − η_N) · D_N` | nenhuma |
+| `produto` | `D_N = D_0 · ∏_{j<N} (1 − η_j)` | nenhuma |
+| `telescopio` | `D_N = D_0 − Σ_{j<N} q_j` | nenhuma |
+| `le_exp` | `D_N ≤ D_0 · exp(−Σ_{j<N} η_j)` | nenhuma |
+| `captura_suficiente` | `Σ_{j<N} η_j ≥ log log(N+2) − C` ⇒ O1 (`D_N ≤ D_0 e^C / log(N+2)`) | a cota de captura |
+| `captura_log_iff` | O1 ⟺ `Σ_{j<N} −log(1 − η_j) ≥ log log(N+2) − C` | `D_N > 0` |
+| `riemann_de_captura` | `Σ_{j<N} η_j ≥ log log(N+2) − C` ⇒ **RH** (pontes todas no kernel: O1 ⇒ `D_N → 0` ⇒ RH) | a cota de captura |
+| `positiva_de_piso` | piso BBLS ⇒ `D_N > 0` para todo `N` | `PisoLog` |
+| `captura_teto` | piso BBLS ⇒ `Σ_{j<N} −log(1 − η_j) ≤ log log(N+2) + C` | `PisoLog` |
+
+Conclusão verificada: a "cota inferior acumulada dos decrementos relativos", na forma exata
+(logarítmica), **é a própria obrigação O1** (`captura_log_iff`), não uma redução dela; e a cota
+implica RH com todas as pontes já certificadas (`riemann_de_captura`). Provar a cota é, portanto, pelo
+menos tão difícil quanto RH. Sob o piso de
+Báez-Duarte–Balazard–Landreau–Saias a captura acumulada fica presa em `log log N + O(1)`
+(`captura_teto`): nenhuma rota pode capturar mais rápido, o que reconfirma `contracao_impossivel`.
+A forma linear `Σ η_j` é só suficiente. A lacuna exata continua sendo
+`∃ C, ∀ N, Σ_{j<N} −log(1 − η_j) ≥ log log(N+2) − C` para a família genuína, e nenhuma dedução
+incondicional dela é conhecida.
+
+## Auditoria dos pacotes ATK30 V3–V12 anexados (14/10/2026)
+
+Oito ZIPs (`ATK30_audit_v3`, `ATK30_full_structure`, `ATK30_source_reconciled_v5`,
+`ATK30_v6_source_matrix`, `ATK30_v7_connections`, `ATK30_v8_exact_inventory`,
+`ATK30_v10_terminal_research`, `ATK_Omega_V12`) com 25 arquivos Lean distintos, declarados para
+Lean 4.22.0 e nunca compilados (`BUILD_PENDING`). Compilados aqui com Lean 4.34.1 e a Mathlib
+v4.34.1, cada teorema auditado com `#print axioms`:
+
+* sem correção: **17/23 módulos** compilam; **60/69 teoremas** só com os axiomas padrão;
+* três erros genuínos, de uma linha cada: `ATK30.equalityDefect_zero_iff` e
+  `ATK30.squareDefect_zero_iff` (`simp` deixa `a − b = 0 ↔ a = b`; falta `sub_eq_zero`) e
+  `ATKOmega.absorption_example_*` (`decide` não reduz aritmética de `ℚ`; `decide +kernel`
+  resolve); com esses três ajustes, **22/23 módulos e 69/69 teoremas**;
+* o agregador `ATK30.lean` não compila em versão nenhuma: `ATK30.Registry` e `ATK30.Candidates`
+  declaram os mesmos nomes (`ATK30.proof_16`, …);
+* conteúdo: lógica proposicional (contraposição, conjunção, exclusão prova/refutação), defeitos
+  pontuais e aritmética de exemplos. Os teoremas de "fechamento" do V10 (`rh_closure`,
+  `pnp_closure`, …) quantificam sobre proposições arbitrárias (`rh : Prop`), sem ligação com
+  `RiemannHypothesis` ou com os outros enunciados. Nenhum toca uma das 25 lacunas.
+* números: os valores de `VALORES_CALCULADOS.csv` que são exemplos batem com o kernel
+  (`ModelosSete.D2_modelo` = 5/6, com `b = (1/2, 1/2)`; `absorcao_modelo`; `Hb_det` = 5); as
+  observações `D_N·log N` são numéricas, não cotas.
+
+Nada dos pacotes foi incorporado ao `atk-kernel`: o que é válido já está certificado aqui
+(`ATK.Termos`, `ATK.AlgebraTerminal`, `ATK.ModelosSete`), e o restante não é matemática terminal.
 
 ## O ensaio — `scripts/ensaio_universal_green.py`
 
