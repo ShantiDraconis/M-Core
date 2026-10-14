@@ -19,6 +19,8 @@ Só `propext`, `Classical.choice`, `Quot.sound`. **B3 continua aberta**; **CLOSE
 false**.
 -/
 
+set_option autoImplicit false
+
 open MeasureTheory Real Filter Topology Set SchwartzMap
 open scoped ContDiff Convolution
 open FourierTransform
