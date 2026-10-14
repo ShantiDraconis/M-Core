@@ -81,8 +81,7 @@ theorem residual_final_exemplos :
     ResidualFinal 3 4 5 ∧ ResidualFinal 3 5 7 ∧ ResidualFinal 5 7 3 ∧
       ¬ ResidualFinal 3 3 3 ∧ ¬ ResidualFinal 4 4 6 ∧ ¬ ResidualFinal 4 6 4 ∧
       ¬ ResidualFinal 4 4 3 ∧ ¬ ResidualFinal 5 5 4 := by
-  unfold ResidualFinal
-  decide
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩ <;> simp only [ResidualFinal] <;> decide
 
 end ATK.BealCompleto
 
