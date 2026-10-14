@@ -594,3 +594,9 @@ ATK.Fichas.fichaYM
 ATK.Fichas.fichaPNP
 ATK.Fichas.fichaBSD
 ATK.Fichas.fichaNS
+ATK.BealCompleto.dm_iff_final
+ATK.BealCompleto.beal_incondicional
+ATK.BealCompleto.beal_teorema_completo
+ATK.BealCompleto.beal_de_pontes_e_residual
+ATK.BealCompleto.residual_de_beal
+ATK.BealCompleto.residual_final_exemplos
