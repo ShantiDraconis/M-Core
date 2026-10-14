@@ -13,7 +13,7 @@ permissions:
 jobs:
   kernel:
     name: Lean 4 + Mathlib — compilação e auditoria de axiomas
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     defaults:
       run:
@@ -83,7 +83,7 @@ jobs:
 
   numerics:
     name: RH — D_N real (Nyman–Beurling / Báez-Duarte)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
