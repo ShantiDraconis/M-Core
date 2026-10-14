@@ -1,4 +1,5 @@
 import ATK.BaezDuarteBridge
+import ATK.CookLevinNP
 
 /-!
 # ATK — Obrigações fechadas por teoremas certificados
@@ -16,6 +17,13 @@ namespace ATK.ObligationsClosed
 theorem B1 : ATK.Conditional.Riemann.BaezDuarteCriterion :=
   ATK.BaezDuarteBridge.baezDuarteCriterion
 
+/-- **B4** (ponte de P vs NP, Cook 1971; Levin 1973) no modelo genuíno da ligação L2
+(`ATK.ModeloPNP.modeloPNP`: P e NP sobre `Turing.FinTM2`, reduções de Karp): SAT ∈ NP e toda
+L ∈ NP se reduz a SAT em tempo polinomial. -/
+theorem B4 : ATK.Conditional.PvsNP.CookLevin ATK.ModeloPNP.modeloPNP ATK.ModeloPNP.SAT :=
+  ATK.CookLevinNP.cookLevin
+
 end ATK.ObligationsClosed
 
 #print axioms ATK.ObligationsClosed.B1
+#print axioms ATK.ObligationsClosed.B4

@@ -305,10 +305,12 @@
    "teoremas": [
     "ATK.Termos.PNP.fecha",
     "ATK.Termos.PNP.exato",
-    "ATK.SATemNP.cookLevin_iff"
+    "ATK.SATemNP.cookLevin_iff",
+    "ATK.CookLevinNP.cookLevin",
+    "ATK.ObligationsClosed.B4"
    ],
    "alimenta": "ATK.Terminal.PNP.terminal",
-   "estado": "metade provada no kernel: SAT ∈ NP (ATK.SATemNP.sat_em_NP); com ela, ponteB4 ⟺ NP-dificuldade de SAT (ATK.SATemNP.cookLevin_iff); falta M2"
+   "estado": "PROVADA no kernel no modelo genuíno: ATK.CookLevinNP.cookLevin : CookLevin modeloPNP SAT (= ponteB4 modeloGenuino sat com a ligação L2); obrigação B4 fechada por ATK.ObligationsClosed.B4"
   },
   {
    "id": "T06",
