@@ -38,3 +38,5 @@ import ATK.NSPequeno
 import ATK.YMToy
 import ATK.ZetaRegiao
 import ATK.BealDarmonMerel
+import ATK.ForaDaLinha
+import ATK.Fichas

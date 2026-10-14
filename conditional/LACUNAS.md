@@ -5,6 +5,9 @@ que empurram essa fronteira (todos sem `sorry`, sem axiomas novos, auditados pel
 lacuna exata que sobra. Nenhum destes lemas fecha um problema: `CLOSED_MATH` continua `false`, e
 continuará até que a lacuna listada em (3) seja provada.
 
+Ver também `FICHAS.md`: para cada conjectura, parte provada, parte refutada e lacuna; e o
+anti-produto de RH (zeros fora da linha, que condensam `D_N ≥ m(ρ)²`).
+
 Princípio: uma **equivalência** (como `riemann_iff_fim`) tem a mesma dificuldade do problema; o que
 abre caminho é um teorema **intermediário** — mais forte que o conhecido, mais fraco que a
 conjectura — ou uma redução que encolhe o caso que falta.

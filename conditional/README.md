@@ -201,6 +201,16 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
 - **BSD**: `E(ℚ)` de `y² = x³ − x` tem exatamente 4 pontos (módulo paralelo `CongruentCurve`); o caso
   geral precisa de L-funções (L4). **Hodge**: sem fundações na Mathlib (L3).
 
+## Provado, refutado, lacuna — e os zeros fora da linha — `FICHAS.md` (35 teoremas)
+
+- `ATK/ForaDaLinha.lean`: **RH ⟺ não existe zero fora da linha**; um zero fora da linha evita a
+  reta, o eixo real, `|Im| < √3/2` e as bordas `c(t)`, vem em **quarteto** de 4 zeros distintos e
+  **condensa**: força `D_N ≥ m(ρ)² > 0` para todo `N` (estado `finito`).
+- `ATK/Fichas.lean`: para cada conjectura, a parte **provada**, uma parte **refutada** (reforço
+  falso, provado `¬`) e a **lacuna** (`Riemann ⟺ lacuna`, `Beal ⟺ lacuna`); anti-produtos
+  completos; parâmetro de **explosão** (`T*` explícito para dados grandes na desigualdade de
+  enstrofia), limiar crítico, e `FLT ⟺ FLT para primos ≥ 5`.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -277,6 +287,7 @@ theorems_2440.json           dados (lane, nome, arquivo, linha, conclusão, hip�
 INDETERMINACY.md             a teoria dos pontos de 3 estados e o que o kernel provou dela
 I_THEORY.md                  a teoria de I: levantamento (586 leis), o que foi certificado/refutado
 LACUNAS.md                   cada problema: fronteira certificada, lemas de caminho, lacuna exata
+FICHAS.md                    provado / refutado / lacuna, zeros fora da linha, parâmetros
 proof_search.json            dados da busca (por repositório, categoria e problema)
 HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
 hypothesis_map.json          dados do mapa
@@ -314,6 +325,8 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/IGeometria.lean        neutro, tensão, compressão, torção, torque, K3 (56)
   ATK/ZetaRetangulo.lean     região sem zeros |s−1| < 2 Re s; RH até a altura √3/2 (16)
   ATK/ZetaRegiao.lean        3–4–1 ⇒ região sem zeros em toda altura: c(t) < Re s < 1 − c(t) (10)
+  ATK/ForaDaLinha.lean       zeros fora da linha: evitam, quarteto, condensam D_N ≥ m(ρ)² (11)
+  ATK/Fichas.lean            provado/refutado/lacuna; anti-produtos; explosão T*; FLT ⟺ primos ≥ 5 (24)
   ATK/BealFLT.lean           com FLT, Beal ⟺ caso mdc(x,y,z) ∈ {1,2} (10)
   ATK/Shannon.lean           contagem de Shannon; família fora de P/poly (9)
   ATK/NSPequeno.lean         enstrofia: dados pequenos ⇒ sem explosão, decaimento (3)
