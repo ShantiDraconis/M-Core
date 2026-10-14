@@ -21,6 +21,11 @@ import ATK.ZetaStrip
 import ATK.MellinRho
 import ATK.BaezDuarteBridge
 import ATK.ObligationsClosed
+import ATK.BealFourFourTwo
+import ATK.FermatRightTriangle
+import ATK.BealFermatDescent
+import ATK.CongruentCurve
+import ATK.QuarticResidues
 import ATK.ZetaSimetria
 import ATK.IFormas
 import ATK.IAlgebra
