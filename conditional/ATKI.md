@@ -33,9 +33,11 @@ defeito, números relacionais e os sete cálculos concretos. `ATK/ATKI.lean` (50
 ## O que isto não é
 
 * Nenhum teorema aqui prova uma conjectura nem toca uma obrigação O1–O8.
-* A família discreta do texto (`ρₘ(k) = (k mod m)/m`, pesos `1/(k(k+1))`) **não** é o `D_N` de
-  Báez-Duarte da ponte B1: não há ponte provada entre o seu `D∞` e RH. O valor `D₁ = 1 − ln 2` do
-  texto não foi formalizado (a Mathlib não tem a série harmônica alternada como `log 2`).
+* A família discreta do texto (`ρₘ(n) = {n/m}`, pesos `1/(n(n+1))`) é exatamente a do teorema 1 de
+  Bagchi (2006, arXiv:math/0607733): **RH ⟺ a sequência constante 1 está no fecho do span de
+  `{n/m}` nesse espaço ⟺ `D∞ = 0`**. Logo `D∞ = 0` não é um enunciado novo: é RH. A ponte de
+  Bagchi está publicada mas **não está formalizada** no kernel (o kernel tem a de Báez-Duarte,
+  B1, para o `D_N` contínuo). O valor `D₁ = 1 − ln 2` do texto não foi formalizado.
 * O modelo de Hodge é só a álgebra `ℚ[h]/(h³)`; a Mathlib não tem `H*(ℂP², ℚ)`.
 * O gap de `diag(0, 2, 5)` não é o gap de Yang–Mills.
 * `Cert` torna explícito o que os textos dizem: classificar como `I` ou `Todo` não prova nada; só
