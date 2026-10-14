@@ -473,7 +473,7 @@ theorem Epre_length (k₀ : K) (g : Bool → Γ k₀) (w : List Bool) :
 def celPre (k₀ : K) (g : Bool → Γ k₀) (w : List Bool) (p : ℕ) : List (Var K Γ Λ σ × Bool) :=
   [(Var.cel 0 k₀ p (Epre k₀ g w)[p]?, true)]
 
-theorem range'_pre (k₀ : K) (g : Bool → Γ k₀) (w : List Bool) :
+theorem rangeL_pre (k₀ : K) (g : Bool → Γ k₀) (w : List Bool) :
     ∀ (v : List Bool) (n : ℕ), (∀ i < v.length, (Epre k₀ g w)[2 * (n + i)]? = some (g v[i]!) ∧
       (Epre k₀ g w)[2 * (n + i) + 1]? = some (g v[i]!)) →
       (List.range' (2 * n) (2 * v.length)).map (celPre (Λ := Λ) (σ := σ) k₀ g w) =
@@ -483,7 +483,7 @@ theorem range'_pre (k₀ : K) (g : Bool → Γ k₀) (w : List Bool) :
   | [], n, _ => by simp
   | b :: v, n, h => by
     have h0 := h 0 (by simp)
-    have ih := range'_pre k₀ g w v (n + 1) (fun i hi => by
+    have ih := rangeL_pre k₀ g w v (n + 1) (fun i hi => by
       have := h (i + 1) (by simp; omega)
       simpa [show n + (i + 1) = n + 1 + i by ring] using this)
     rw [List.length_cons, show 2 * (v.length + 1) = 2 * v.length + 1 + 1 by ring,
@@ -511,7 +511,7 @@ theorem sem_pre_range (k₀ : K) (g : Bool → Γ k₀) (w : List Bool) :
       List.getElem?_append_left (by rw [dobro_length]; omega), this.1, this.2,
       List.getElem?_eq_getElem hi]
     simp [List.getElem!_eq_getElem?_getD, List.getElem?_eq_getElem hi]
-  have := range'_pre (Λ := Λ) (σ := σ) k₀ g w w 0 hw
+  have := rangeL_pre (Λ := Λ) (σ := σ) k₀ g w w 0 hw
   rw [Nat.mul_zero] at this
   rw [this]
   congr 1
@@ -801,3 +801,99 @@ theorem wf_formulaT (k₀ k₁ : K) (g : Bool → Γ k₀) (y : Γ k₁) (main :
 end
 
 end ATK.CookLevinMolde
+
+#print axioms ATK.CookLevinMolde.Rg
+#print axioms ATK.CookLevinMolde.Rg.N
+#print axioms ATK.CookLevinMolde.Rg.Mq
+#print axioms ATK.CookLevinMolde.Rg.X
+#print axioms ATK.CookLevinMolde.Rg.TT
+#print axioms ATK.CookLevinMolde.Rg.T1
+#print axioms ATK.CookLevinMolde.Rg.SS
+#print axioms ATK.CookLevinMolde.Rg.TP
+#print axioms ATK.CookLevinMolde.Rg.pw
+#print axioms ATK.CookLevinMolde.Rg.tm
+#print axioms ATK.CookLevinMolde.Rg.t
+#print axioms ATK.CookLevinMolde.Rg.j
+#print axioms ATK.CookLevinMolde.Rg.i
+#print axioms ATK.CookLevinMolde.Rg.E2
+#print axioms ATK.CookLevinMolde.Rg.sm
+#print axioms ATK.CookLevinMolde.idxR
+#print axioms ATK.CookLevinMolde.varOf
+#print axioms ATK.CookLevinMolde.idxD
+#print axioms ATK.CookLevinMolde.cod3
+#print axioms ATK.CookLevinMolde.litLab
+#print axioms ATK.CookLevinMolde.litSt
+#print axioms ATK.CookLevinMolde.litCel
+#print axioms ATK.CookLevinMolde.LitOK
+#print axioms ATK.CookLevinMolde.val_insens
+#print axioms ATK.CookLevinMolde.litLab_ok
+#print axioms ATK.CookLevinMolde.litSt_ok
+#print axioms ATK.CookLevinMolde.litCel_ok
+#print axioms ATK.CookLevinMolde.unS_eq
+#print axioms ATK.CookLevinMolde.litOutV_cod3
+#print axioms ATK.CookLevinMolde.fmOutV_cod3
+#print axioms ATK.CookLevinMolde.sem_cat
+#print axioms ATK.CookLevinMolde.manyF
+#print axioms ATK.CookLevinMolde.sem_manyF
+#print axioms ATK.CookLevinMolde.wf_manyF
+#print axioms ATK.CookLevinMolde.wf_cl
+#print axioms ATK.CookLevinMolde.umDeT
+#print axioms ATK.CookLevinMolde.sem_umDeT
+#print axioms ATK.CookLevinMolde.sem_manyF_cl
+#print axioms ATK.CookLevinMolde.flatMap_single
+#print axioms ATK.CookLevinMolde.val_t
+#print axioms ATK.CookLevinMolde.val_r
+#print axioms ATK.CookLevinMolde.val_c
+#print axioms ATK.CookLevinMolde.T0
+#print axioms ATK.CookLevinMolde.TS
+#print axioms ATK.CookLevinMolde.J0
+#print axioms ATK.CookLevinMolde.Z
+#print axioms ATK.CookLevinMolde.linhaT
+#print axioms ATK.CookLevinMolde.sem_linhaT
+#print axioms ATK.CookLevinMolde.paraT
+#print axioms ATK.CookLevinMolde.sem_paraT
+#print axioms ATK.CookLevinMolde.range_zonas
+#print axioms ATK.CookLevinMolde.premT
+#print axioms ATK.CookLevinMolde.premT_v
+#print axioms ATK.CookLevinMolde.celT
+#print axioms ATK.CookLevinMolde.casoT
+#print axioms ATK.CookLevinMolde.res_len_le
+#print axioms ATK.CookLevinMolde.SmOK
+#print axioms ATK.CookLevinMolde.sem_casoT
+#print axioms ATK.CookLevinMolde.transT
+#print axioms ATK.CookLevinMolde.sem_transT
+#print axioms ATK.CookLevinMolde.estruturaT
+#print axioms ATK.CookLevinMolde.SmOK_upd
+#print axioms ATK.CookLevinMolde.sem_estruturaT
+#print axioms ATK.CookLevinMolde.aceitaT
+#print axioms ATK.CookLevinMolde.sem_aceitaT
+#print axioms ATK.CookLevinMolde.dobro_get
+#print axioms ATK.CookLevinMolde.dobro_length
+#print axioms ATK.CookLevinMolde.Epre
+#print axioms ATK.CookLevinMolde.Epre_length
+#print axioms ATK.CookLevinMolde.celPre
+#print axioms ATK.CookLevinMolde.rangeL_pre
+#print axioms ATK.CookLevinMolde.sem_pre_range
+#print axioms ATK.CookLevinMolde.preT
+#print axioms ATK.CookLevinMolde.sem_preT
+#print axioms ATK.CookLevinMolde.P2
+#print axioms ATK.CookLevinMolde.P3
+#print axioms ATK.CookLevinMolde.PX
+#print axioms ATK.CookLevinMolde.iniT
+#print axioms ATK.CookLevinMolde.sem_iniT
+#print axioms ATK.CookLevinMolde.formulaT
+#print axioms ATK.CookLevinMolde.RegOK
+#print axioms ATK.CookLevinMolde.sem_formulaT
+#print axioms ATK.CookLevinMolde.sm_not_idx
+#print axioms ATK.CookLevinMolde.wf_umDeT
+#print axioms ATK.CookLevinMolde.sc1
+#print axioms ATK.CookLevinMolde.sc2
+#print axioms ATK.CookLevinMolde.wf_linhaT
+#print axioms ATK.CookLevinMolde.wf_paraT
+#print axioms ATK.CookLevinMolde.premT_ok
+#print axioms ATK.CookLevinMolde.wf_casoT
+#print axioms ATK.CookLevinMolde.wf_transT
+#print axioms ATK.CookLevinMolde.wf_estruturaT
+#print axioms ATK.CookLevinMolde.wf_iniT
+#print axioms ATK.CookLevinMolde.wf_aceitaT
+#print axioms ATK.CookLevinMolde.wf_formulaT
