@@ -147,17 +147,19 @@
       "id": "L1",
       "problem": "Navier–Stokes",
       "kind": "LIGAÇÃO",
-      "lean": "ATK.Conditional.NavierStokes.NSModel",
-      "status": "NAO_EXISTE_NA_MATHLIB",
-      "ref": "soluções suaves/fracas de NS em ℝ³ e enstrofia, a partir de objetos da Mathlib"
+      "lean": "ATK.LigacaoNS.modeloNS",
+      "status": "CONSTRUIDA_NO_KERNEL",
+      "ref": "soluções suaves/fracas de NS em ℝ³ e enstrofia, a partir de objetos da Mathlib",
+      "progress": "Modelo genuíno construído (ATK/LigacaoNS.lean, 15 teoremas): dados = ν > 0 e u₀ na classe de Schwartz 𝓢(ℝ³,ℝ³) com div u₀ = 0 (condição (4) do Clay); solução global = p, u ∈ C^∞(ℝ³×[0,∞)) com ∂ₜu + (u·∇)u = νΔu − ∇p, div u = 0, u(·,0) = u₀ e energia ∫|u|² limitada (integrável); clayA_iff: ClayStatementA modeloNS ⟺ enunciado (A) do Clay. Testes: dado nulo admissível com solução global (zero_global); x ↦ x não admissível (div = 3); u = t·v, p = −⟨v,x⟩ resolve (1)–(2) mas viola a energia (fluxo_sem_energia); dado constante v ≠ 0 não tem solução global (global_nao_trivial, contraste com ns_toy_model_vacuous); clay_ns_condicional: B3 + O3 no modelo genuíno ⇒ Clay (A). Falta só a revisão humana das definições para marcar CLOSED (o auditor conta ligação fechada só com status CLOSED)."
     },
     {
       "id": "L2",
       "problem": "P vs NP",
       "kind": "LIGAÇÃO",
       "lean": "ATK.Conditional.PvsNP.ComplexityModel",
-      "status": "NAO_EXISTE_NA_MATHLIB",
-      "ref": "classe NP, SAT e reduções de Karp sobre máquinas de Turing (a Mathlib tem TM2ComputableInPolyTime)"
+      "status": "ENUNCIADO_FIEL_NO_KERNEL",
+      "ref": "classe NP, SAT e reduções de Karp sobre máquinas de Turing (a Mathlib tem TM2ComputableInPolyTime)",
+      "progress": "Parte 1 (ATK/LigacaoPNP.lean, 12 teoremas): classes P e NP sobre as máquinas da Mathlib (Turing.FinTM2, TM2ComputableInPolyTime), palavras binárias, NP por verificador em P com certificado de tamanho polinomial e pares ⟨w,c⟩ sem ambiguidade (par_injective); PneNP : classeP ≠ classeNP é o enunciado fiel. Sanidade com máquina construída e verificada passo a passo (apagaEscreve): ∅ e todas as palavras em P e em NP. Falta (parte 2): a instância ComplexityModel — P ⊆ NP e P fechada por reduções de Karp exigem compor FinTM2 com cota de tempo (ausente da Mathlib, que só tem idComputableInPolyTime) — e a linguagem SAT codificada."
     },
     {
       "id": "L3",

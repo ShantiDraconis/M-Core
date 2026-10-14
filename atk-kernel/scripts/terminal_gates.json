@@ -74,7 +74,9 @@
       "producer_equivalence": null,
       "linking": "L1",
       "statement_root": "_root_.ATK.Conditional.NavierStokes.ClayStatementA _root_.ATK.Terminal.NS.modeloGenuino",
-      "template": "terminal-templates/NS.lean.tpl"
+      "template": "terminal-templates/NS.lean.tpl",
+      "linking_term": "ATK.LigacaoNS.modeloNS",
+      "statement_equivalence": "ATK.LigacaoNS.clayA_iff"
     },
     {
       "id": "PNP",
@@ -93,7 +95,8 @@
       "producer_equivalence": null,
       "linking": "L2",
       "statement_root": "_root_.ATK.Conditional.PvsNP.PneNP _root_.ATK.Terminal.PNP.modeloGenuino",
-      "template": "terminal-templates/PNP.lean.tpl"
+      "template": "terminal-templates/PNP.lean.tpl",
+      "statement_note": "enunciado fiel já no kernel: ATK.LigacaoPNP.PneNP (classeP ≠ classeNP sobre Turing.FinTM2); falta a instância ComplexityModel (L2 parte 2) para preencher modeloGenuino"
     },
     {
       "id": "Hodge",
