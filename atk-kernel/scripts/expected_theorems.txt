@@ -481,3 +481,11 @@ ATK.IGeometria.inversao_fixo_iff
 ATK.IGeometria.T_tendsto_um
 ATK.IGeometria.T_menos_um
 ATK.IGeometria.torcao_plano
+ATK.CongruentBijection.sub_ne_zero_de_triangulo
+ATK.CongruentBijection.ponto_de_triangulo
+ATK.CongruentBijection.triangulo_de_ponto
+ATK.CongruentBijection.ponto_de_triangulo_de_ponto
+ATK.CongruentBijection.triangulo_de_ponto_de_triangulo
+ATK.CongruentBijection.congruente_iff_ponto
+ATK.CongruentBijection.um_nao_congruente_iff_y_eq_zero
+ATK.CongruentBijection.um_congruente_iff_ponto_E
