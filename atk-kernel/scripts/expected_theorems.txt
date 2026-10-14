@@ -1624,3 +1624,14 @@ ATK.CookLevinNP.red_SAT
 ATK.CookLevinNP.cookLevin
 ATK.CookLevinNP.maqRed
 ATK.ObligationsClosed.B4
+ATK.PostoLivre.rank_eq_finrank
+ATK.PostoLivre.rank_eq_of_surjective
+ATK.PostoLivre.freeRank_eq_finrank
+ATK.IntegracaoFCBSD.postoMW_eq_freeRank
+ATK.IntegracaoFCBSD.continuacao_meromorfa
+ATK.IntegracaoFCBSD.continuacao_de_analitica
+ATK.IntegracaoFCBSD.clayBSD_weak
+ATK.IntegracaoFCBSD.weak_clayBSD
+ATK.IntegracaoFCBSD.clayBSD_iff_weak
+ATK.IntegracaoFCBSD.mordellWeil_de_fc
+ATK.IntegracaoFCBSD.bsdRank_iff_weak
