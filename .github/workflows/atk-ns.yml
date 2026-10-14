@@ -1,4 +1,4 @@
-name: ATK-NS (verificacao independente: Navier–Stokes, Clay (C)/(D))
+name: "ATK-NS — verificação independente de Navier–Stokes (Clay C e D)"
 
 on:
   push:
