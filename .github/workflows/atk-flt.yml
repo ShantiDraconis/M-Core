@@ -1,0 +1,78 @@
+name: ATK-FLT (Beal via flt-regular)
+
+on:
+  push:
+    paths:
+      - 'atk-flt/**'
+      - '.github/workflows/atk-flt.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel:
+    name: Lean 4.35 + Mathlib + flt-regular — compilação e auditoria de axiomas
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: atk-flt
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Versões
+        shell: bash
+        run: |
+          mkdir -p reports
+          lean --version | tee reports/toolchain.txt
+          lake --version
+
+      - name: Baixar Mathlib já compilada (cache oficial)
+        shell: bash
+        run: |
+          lake exe cache get || (lake update && lake exe cache get)
+
+      - name: lake build
+        shell: bash
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee reports/build.log
+
+      - name: Auditoria por arquivo
+        shell: bash
+        run: |
+          for f in AtkFlt/*.lean; do
+            r=${f//\//_}
+            if lake env lean "$f" > "reports/audit_${r}.log" 2>&1; then
+              echo OK > "reports/status_${r}.txt"
+            else
+              echo FAIL > "reports/status_${r}.txt"
+            fi
+            cat "reports/audit_${r}.log"
+          done
+          cp lake-manifest.json reports/ || true
+
+      - name: Relatório de certificação
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/check_axioms.py
+          code=$?
+          cat reports/report.md >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+
+      - name: Publicar relatórios
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atk-flt-report
+          path: atk-flt/reports
