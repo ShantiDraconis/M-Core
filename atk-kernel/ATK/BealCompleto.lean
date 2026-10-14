@@ -81,6 +81,16 @@ theorem residual_final_exemplos :
     ResidualFinal 3 4 5 ∧ ResidualFinal 3 5 7 ∧ ResidualFinal 5 7 3 ∧
       ¬ ResidualFinal 3 3 3 ∧ ¬ ResidualFinal 4 4 6 ∧ ¬ ResidualFinal 4 6 4 ∧
       ¬ ResidualFinal 4 4 3 ∧ ¬ ResidualFinal 5 5 4 := by
+  unfold ResidualFinal
+  decide
+
+theorem dbg_exemplos_simp :
+    ResidualFinal 3 4 5 ∧ ¬ ResidualFinal 4 4 3 := by
+  simp only [ResidualFinal]
+  decide
+
+theorem dbg_exemplos_explicit :
+    (2 < 3 ∧ 2 < 4 ∧ 2 < 5 ∧ Nat.gcd 3 (Nat.gcd 4 5) ≤ 2) := by
   decide
 
 end ATK.BealCompleto
