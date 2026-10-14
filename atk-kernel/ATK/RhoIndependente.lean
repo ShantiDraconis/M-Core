@@ -244,3 +244,9 @@ end ATK.RhoIndependente
 #print axioms ATK.RhoIndependente.coeffs_eq_zero
 #print axioms ATK.RhoIndependente.linearIndependent_rho
 #print axioms ATK.RhoIndependente.linearIndependent_rho_real
+#print axioms ATK.RhoIndependente.rho_inv_nat
+#print axioms ATK.RhoIndependente.sum_rho_eq_stepVal
+#print axioms ATK.RhoIndependente.fract_succ_div_sub
+#print axioms ATK.RhoIndependente.stepVal_succ_sub
+#print axioms ATK.RhoIndependente.coeffs_eq_zero_of_stepVal
+#print axioms ATK.RhoIndependente.coeffs_eq_zero_of_points
