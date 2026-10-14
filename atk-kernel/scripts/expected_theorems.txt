@@ -1441,3 +1441,16 @@ ATK.OmegaGramL2.integral_sq_pos
 ATK.OmegaGramL2.quad_gramL2
 ATK.OmegaGramL2.gramL2_posDef
 ATK.OmegaGramL2.gramL2_eq_gram_of_integral
+ATK.Orion.κ_apply
+ATK.Orion.PΩ_idempotent
+ATK.Orion.PΩ_const
+ATK.Orion.fixed_point_compat
+ATK.Orion.PΩ_fix_unique
+ATK.Orion.hiddenStatePrinciple
+ATK.Orion.boundedHiddenOfBoundedSignature
+ATK.Orion.residue_zero_of_signature_zero
+ATK.Orion.law5_energy_identity
+ATK.Orion.law5_rearranged
+ATK.Orion.law7_closure
+ATK.Orion.indirect_absorption
+ATK.Orion.instance_closure_conditional
