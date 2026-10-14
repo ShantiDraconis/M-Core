@@ -60,6 +60,13 @@ Anti-produtos completos (`AntiProduto`): `antiRiemann` (zeros fora da linha) e `
   `m(ρ) ≥ 1/(|ρ|(1/√(2σ−1) + 1/c(t)))` (`ValleePoussin.m_ge_log`). O piso não é uniforme (vai a `0`
   com `σ → 1/2` e com `|t| → ∞`), então não decide O1. A potência provada é `(log|t|)⁻⁹`, não a
   clássica `1/log|t|`.
+* "Provar `D_{2N} ≤ q D_N` (`q < 1`) é o próximo cálculo decisivo": falso para a sequência real —
+  contração geométrica contradiz o piso `D_N ≥ c/log N` (`ContracaoDN.sem_contracao_de_piso_log`);
+  a numérica dá `D_{2N}/D_N → 1` e `D_N log N ≈ 0,046`.
+* "Se Beal for verdadeira, `g* ∈ {2, 3}`": na verdade **Beal ⟺ `g* = 2`** (`BealFiltros.beal_iff_gEstrela`),
+  pois `2³ + 2³ = 2⁴` tem mdc 2.
+* "A álgebra de intervalos é um anel": falso (`AlgebraTerminal.distributiva_falha`); vale só a
+  subdistributividade. O `D₂ = 5/6` do modelo de Gram não é o `D₂` real (`0,28996…`).
 * `ZetaRetangulo` não usa numérica nem Riemann–Siegel: é a desigualdade analítica `|s − 1| < 2·Re s`.
 * O módulo da curva `y² = x³ − x` calcula `E(ℚ)` (4 pontos); **não** prova BSD para ela (não há
   L-função de curva elíptica na Mathlib).

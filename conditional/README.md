@@ -216,6 +216,19 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   completos; parâmetro de **explosão** (`T*` explícito para dados grandes na desigualdade de
   enstrofia), limiar crítico, e `FLT ⟺ FLT para primos ≥ 5`.
 
+## Álgebra de terminais, modelos das sete linhas e álgebra triádica — `MODELOS_TERMINAIS.md` (171 teoremas)
+
+- `ATK/AlgebraTerminal.lean`: intervalos racionais certificados (correção, imagem exata,
+  comutatividade, **associatividade**, subdistributividade; a distributividade é **refutada**),
+  estados `U < A < P` e certificados condicionais `Cert x H` — hipótese não vira teorema.
+- `ATK/ContracaoDN.lean`: contração `D_{2N} ≤ q D_N` ⇒ RH, mas é **incompatível** com o piso
+  `D_N ≥ c/log N`; nenhuma amostra finita decide o limite; fechar RH ⟺ certificado `D_∞ ∈ [0,0]`.
+- `ATK/BealFiltros.lean`: **Beal ⟺ `g* = 2`**; exatamente uma base par; filtros mod 8 e mod 4.
+- `ATK/ModelosSete.lean`: os cálculos dos modelos (Gram `D₂ = 5/6`, absorção `5/12`, gap `1`,
+  `Z = 7/4`, `det 5`, posto/núcleo, composição `n^{kl}`) e volumes exatos das bolas em 4, 5 e 11D.
+- `ATK/Triadico.lean`: decomposição espectral de todo `T` com `T³ = 1`; órbitas de tamanho 1 ou 3;
+  `|X| ≡ |Fix σ| (mod 3)`; cadeias de Markov com simetria triádica têm estacionária uniforme.
+
 ## Estrutura para CLOSED_MATH — `ATK/ClosedMath.lean`
 
 `CLOSED_MATH` não é escrito à mão: o auditor o calcula. Ele só vira `true` se existir
@@ -294,6 +307,7 @@ I_THEORY.md                  a teoria de I: levantamento (586 leis), o que foi c
 LACUNAS.md                   cada problema: fronteira certificada, lemas de caminho, lacuna exata
 FICHAS.md                    provado / refutado / lacuna, zeros fora da linha, parâmetros
 VALLEE_POUSSIN.md            região sem zeros logarítmica, valores de c(t), piso de m(ρ)
+MODELOS_TERMINAIS.md         álgebra de terminais, caudas de D_N, Beal g* = 2, modelos, triádico
 proof_search.json            dados da busca (por repositório, categoria e problema)
 HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
 hypothesis_map.json          dados do mapa
@@ -337,6 +351,11 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/ZetaParcial.lean       ζ por somas parciais: Σ_{n≤N} n^{-s} + N^{1-s}/(s−1) − s·H_N(s) (8)
   ATK/ZetaLog.lean           |ζ| ≪ log|t| perto de Re s = 1; região c(t) ≍ (log|t|)^{-9} (39)
   ATK/ValleePoussin.lean     região log vence a polinomial (|t| ≥ 2000); piso explícito de D_N (7)
+  ATK/AlgebraTerminal.lean   intervalos certificados, estados U<A<P, Cert x H (63)
+  ATK/ContracaoDN.lean       contração ⇒ RH; refutada pelo piso log; amostra finita não decide (13)
+  ATK/BealFiltros.lean       Beal ⟺ g* = 2; paridade; filtros mod 8 e mod 4 (15)
+  ATK/ModelosSete.lean       modelos finitos das 7 linhas; volumes de bolas 4/5/11D (55)
+  ATK/Triadico.lean          T³ = 1: decomposição espectral; pontos fixos mod 3; Markov (25)
   ATK/BealFLT.lean           com FLT, Beal ⟺ caso mdc(x,y,z) ∈ {1,2} (10)
   ATK/Shannon.lean           contagem de Shannon; família fora de P/poly (9)
   ATK/NSPequeno.lean         enstrofia: dados pequenos ⇒ sem explosão, decaimento (3)

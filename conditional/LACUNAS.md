@@ -40,6 +40,10 @@ conjectura — ou uma redução que encolhe o caso que falta.
    * **`log_vence_poly`**: para `|t| ≥ 2000` a nova largura supera a polinomial (numericamente desde
      `|t| ≈ 31,3`); `piso_DN_log`: a condensação ganha piso explícito
      `D_N ≥ (1/(|ρ|(1/√(2σ−1) + 1/c(t))))²`.
+   Novo — `ATK/ContracaoDN.lean` (13), **caudas de `D_N`** (ver `MODELOS_TERMINAIS.md`):
+   * `riemann_de_contracao`: `D_{2N} ≤ q D_N` (`q < 1`) ⇒ RH; mas **`sem_contracao_de_piso_log`**:
+     isso é incompatível com o piso `D_N ≥ c/log(N+2)` (teorema publicado), então a rota é falsa;
+   * `amostra_finita_nao_decide`; `fecho_RH_iff`: fechar RH ⟺ certificado demonstrado `D_∞ ∈ [0,0]`.
 3. Lacuna: a largura agora decai como `(log|t|)⁻⁹` (antes `|t|⁻⁵`). Próximos lemas conhecidos e
    formalizáveis: a região clássica de de la Vallée Poussin `σ > 1 − c/log|t|` (potência 1; exige
    `ζ'/ζ` e contagem local de zeros), Hardy (infinitos zeros na reta), limite inferior de Burnol
@@ -59,6 +63,8 @@ conjectura — ou uma redução que encolhe o caso que falta.
    descida de Fermat `x⁴ − y⁴ ≠ z²` e exclusão **incondicional** das assinaturas `(4k, 4l, 2m)`,
    `(4k, 2l, 4m)`, `(2k, 4l, 4m)` — casos com `g = 2` como `(4, 4, 6)`; cobertura ≈ 4,8 % dos
    triplos com `g ≤ 2` e expoentes de 3 a 200.
+   Novo — `ATK/BealFiltros.lean` (15): **Beal ⟺ `g* = 2`** (`g*` = menor mdc entre as soluções;
+   `2³ + 2³ = 2⁴`); exatamente uma base par em solução primitiva; filtros mod 8 e mod 4.
 3. Lacuna: o resto do caso `g ∈ {1, 2}` (onde nenhum caso de Fermat ajuda) — p.ex. `(3, 4, 5)`.
    A formalização completa de Fermat (projeto de Buzzard, em andamento) tornaria a redução a
    `g ∈ {1, 2}` incondicional.
@@ -114,4 +120,6 @@ conjectura — ou uma redução que encolhe o caso que falta.
 Etapa das lacunas: 64 teoremas (`ZetaRetangulo` 16, `ZetaRegiao` 10, `BealFLT` 10, `Shannon` 9,
 `NSPequeno` 3, `YMToy` 16). Fichas e zeros fora da linha: 35. Região logarítmica: 54
 (`ZetaParcial` 8, `ZetaLog` 39, `ValleePoussin` 7). Total esperado no CI (com os módulos paralelos
-de Beal/Fermat/curva congruente/Darmon–Merel): 650.
+de Beal/Fermat/curva congruente/Darmon–Merel/Beal completo): 656. Álgebra de terminais, modelos
+das sete linhas e triádico: 171 (`AlgebraTerminal` 63, `ContracaoDN` 13, `BealFiltros` 15,
+`ModelosSete` 55, `Triadico` 25). Total: 827.

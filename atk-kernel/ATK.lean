@@ -44,3 +44,8 @@ import ATK.BealCompleto
 import ATK.ZetaParcial
 import ATK.ZetaLog
 import ATK.ValleePoussin
+import ATK.AlgebraTerminal
+import ATK.ContracaoDN
+import ATK.BealFiltros
+import ATK.ModelosSete
+import ATK.Triadico
