@@ -82,3 +82,4 @@ import ATK.CookLevinRestricao
 import ATK.CookLevinInicio
 import ATK.CookLevinVerificador
 import ATK.CookLevinReducao
+import ATK.Gerador
