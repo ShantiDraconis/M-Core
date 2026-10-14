@@ -1348,3 +1348,12 @@ ATK.IMathPonte.pi_absorbingAdd
 ATK.IMathPonte.pi_idiv
 ATK.IMathPonte.pi_collapse
 ATK.IMathPonte.modelos_diferem_em_um_sobre_zero
+ATK.IntegracaoFCPNP.caract_eq_true
+ATK.IntegracaoFCPNP.caract_lang
+ATK.IntegracaoFCPNP.lang_caract
+ATK.IntegracaoFCPNP.encBool_eq
+ATK.IntegracaoFCPNP.cer_par
+ATK.IntegracaoFCPNP.separa_par
+ATK.IntegracaoFCPNP.emP_iff
+ATK.IntegracaoFCPNP.emNP_iff
+ATK.IntegracaoFCPNP.pneNP_iff_fc
