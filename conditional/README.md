@@ -190,6 +190,11 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
 - **Riemann** (`ATK/ZetaRetangulo.lean`, `ATK/ZetaRegiao.lean`): `ζ(s) ≠ 0` se `|s − 1| < 2·Re s`;
   **nenhum zero na faixa com `|Im s| < √3/2`** (RH até essa altura); e **região sem zeros em toda
   altura**: todo zero não trivial tem `c(t) < Re s < 1 − c(t)`, `c(t) = 1/(256(9+4|t|)⁴(3+3|t|))`.
+- **Riemann, região logarítmica** (`ATK/ZetaParcial.lean`, `ATK/ZetaLog.lean`,
+  `ATK/ValleePoussin.lean`, 54 teoremas, `VALLEE_POUSSIN.md`): somas parciais de ζ, cotas
+  `|ζ| ≪ log|t|` perto de `Re s = 1` e **`c(t) < Re s < 1 − c(t)` com `c(t) ≥ 1/(10⁹ log⁹(3|t|))`**
+  para `|t| ≥ 4`; supera a largura `|t|⁻⁵` a partir de `|t| = 2000` (numericamente desde ≈ 31) e dá
+  piso explícito à condensação de `D_N`.
 - **Beal** (`ATK/BealFLT.lean`): com o Último Teorema de Fermat, **Beal ⟺ excluir soluções dois a
   dois coprimas com `mdc(x,y,z) ∈ {1, 2}`**.
 - **P vs NP** (`ATK/Shannon.lean`): contagem de Shannon — existe função de `n` bits sem circuito com
@@ -288,6 +293,7 @@ INDETERMINACY.md             a teoria dos pontos de 3 estados e o que o kernel p
 I_THEORY.md                  a teoria de I: levantamento (586 leis), o que foi certificado/refutado
 LACUNAS.md                   cada problema: fronteira certificada, lemas de caminho, lacuna exata
 FICHAS.md                    provado / refutado / lacuna, zeros fora da linha, parâmetros
+VALLEE_POUSSIN.md            região sem zeros logarítmica, valores de c(t), piso de m(ρ)
 proof_search.json            dados da busca (por repositório, categoria e problema)
 HYPOTHESIS_MAP.md            quais hipóteses dos condicionais já estão provadas
 hypothesis_map.json          dados do mapa
@@ -301,6 +307,7 @@ scripts/inventory_scan.py    varredura multilíngue de um repositório (todos os
 scripts/aggregate_inv.py     gera INVENTORY.md
 scripts/i_scan.py            coleta os arquivos sobre I em todos os branches
 scripts/thm2440.py           classifica os 2.440 teoremas no commit verificado pelo CI
+scripts/valores_vp.py        avalia c_poly(t), c_log(t) e o piso de m(ρ) (ilustração numérica)
 scripts/report2440.py        gera THEOREMS_2440.md
 atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.34.1)
   ATK/*.lean                 19 lemas auxiliares do M-Core (inalterados)
@@ -327,6 +334,9 @@ atk-kernel/                  projeto Lean independente (Lean 4.34.1, Mathlib v4.
   ATK/ZetaRegiao.lean        3–4–1 ⇒ região sem zeros em toda altura: c(t) < Re s < 1 − c(t) (10)
   ATK/ForaDaLinha.lean       zeros fora da linha: evitam, quarteto, condensam D_N ≥ m(ρ)² (11)
   ATK/Fichas.lean            provado/refutado/lacuna; anti-produtos; explosão T*; FLT ⟺ primos ≥ 5 (24)
+  ATK/ZetaParcial.lean       ζ por somas parciais: Σ_{n≤N} n^{-s} + N^{1-s}/(s−1) − s·H_N(s) (8)
+  ATK/ZetaLog.lean           |ζ| ≪ log|t| perto de Re s = 1; região c(t) ≍ (log|t|)^{-9} (39)
+  ATK/ValleePoussin.lean     região log vence a polinomial (|t| ≥ 2000); piso explícito de D_N (7)
   ATK/BealFLT.lean           com FLT, Beal ⟺ caso mdc(x,y,z) ∈ {1,2} (10)
   ATK/Shannon.lean           contagem de Shannon; família fora de P/poly (9)
   ATK/NSPequeno.lean         enstrofia: dados pequenos ⇒ sem explosão, decaimento (3)

@@ -30,10 +30,20 @@ conjectura — ou uma redução que encolhe o caso que falta.
      `c(t) = 1/(256·(9+4|t|)⁴·(3+3|t|))`;
    * **`faixa_estreitada`: todo zero não trivial tem `c(t) < Re s < 1 − c(t)`** — início e fim
      fechados avançam juntos, em toda altura.
-3. Lacuna: a largura ganha decai como `|t|⁻⁵`. Próximos lemas conhecidos e formalizáveis: região de
-   de la Vallée Poussin `σ > 1 − c/log(|t|+2)` (exige cotas `|ζ| ≪ log|t|` por somas parciais),
-   Hardy (infinitos zeros na reta), limite inferior de Burnol para `D_N`. Qualquer extremo uniforme
-   `a < 1` (quase-RH) já seria inédito; `a = 1/2` é RH (O1).
+   Novo — `ATK/ZetaParcial.lean` (8), `ATK/ZetaLog.lean` (39), `ATK/ValleePoussin.lean` (7),
+   **região logarítmica** (ver `VALLEE_POUSSIN.md`):
+   * `zeta_parcial`: `ζ(s) = Σ_{n≤N} n^{−s} + N^{1−s}/(s−1) − s∫_N^∞ {u}u^{−s−1}du`;
+   * `norm_zeta_le_log`, `norm_zeta_sub_le_log`: `|ζ| ≤ e(L+7)` e
+     `|ζ(σ+iτ) − ζ(β+iτ)| ≤ (σ−β)e(L²+7L+13)` perto de `Re s = 1`, `L = log⌈2|t|⌉`;
+   * **`faixa_log`**: para `|t| ≥ 4`, todo zero não trivial tem `c(t) < Re s < 1 − c(t)`,
+     `c(t) = 1/(256e⁵(ℓ²+7ℓ+13)⁴(ℓ+7))`, `ℓ = log(3|t|)`; forma simples `c(t) ≥ 1/(10⁹ℓ⁹)`;
+   * **`log_vence_poly`**: para `|t| ≥ 2000` a nova largura supera a polinomial (numericamente desde
+     `|t| ≈ 31,3`); `piso_DN_log`: a condensação ganha piso explícito
+     `D_N ≥ (1/(|ρ|(1/√(2σ−1) + 1/c(t))))²`.
+3. Lacuna: a largura agora decai como `(log|t|)⁻⁹` (antes `|t|⁻⁵`). Próximos lemas conhecidos e
+   formalizáveis: a região clássica de de la Vallée Poussin `σ > 1 − c/log|t|` (potência 1; exige
+   `ζ'/ζ` e contagem local de zeros), Hardy (infinitos zeros na reta), limite inferior de Burnol
+   para `D_N`. Qualquer extremo uniforme `a < 1` (quase-RH) já seria inédito; `a = 1/2` é RH (O1).
 
 ## Beal
 
@@ -101,6 +111,7 @@ conjectura — ou uma redução que encolhe o caso que falta.
 
 ## Contagem
 
-Novos nesta etapa: 64 teoremas (`ZetaRetangulo` 16, `ZetaRegiao` 10, `BealFLT` 10, `Shannon` 9,
-`NSPequeno` 3, `YMToy` 16). Total esperado no CI (com os módulos paralelos de Beal/Fermat/curva
-congruente): 547.
+Etapa das lacunas: 64 teoremas (`ZetaRetangulo` 16, `ZetaRegiao` 10, `BealFLT` 10, `Shannon` 9,
+`NSPequeno` 3, `YMToy` 16). Fichas e zeros fora da linha: 35. Região logarítmica: 54
+(`ZetaParcial` 8, `ZetaLog` 39, `ValleePoussin` 7). Total esperado no CI (com os módulos paralelos
+de Beal/Fermat/curva congruente/Darmon–Merel): 650.
