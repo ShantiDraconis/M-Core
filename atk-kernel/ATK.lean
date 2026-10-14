@@ -89,3 +89,4 @@ import ATK.IPortadores
 import ATK.IPortadoresMenores
 import ATK.ATKI
 import ATK.ATKIExemplos
+import ATK.ATKITeste

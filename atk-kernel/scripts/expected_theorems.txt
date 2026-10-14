@@ -1667,3 +1667,12 @@ ATK.ATKIExemplos.pareamento_exemplo
 ATK.ATKIExemplos.beal_exemplo
 ATK.ATKIExemplos.beal_mdc
 ATK.ATKIExemplos.beal_valoracoes
+ATK.ATKITeste.estrutura_vale
+ATK.ATKITeste.estrutura_nao_implica
+ATK.ATKITeste.estrutura_RH_e_negacao
+ATK.ATKITeste.interpretarP_todo_iff
+ATK.ATKITeste.todo_iff
+ATK.ATKITeste.ultimo_passo_iff
+ATK.ATKITeste.dTrivial_ponte
+ATK.ATKITeste.dTrivial_nonneg
+ATK.ATKITeste.ultimo_passo_RH
