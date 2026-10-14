@@ -837,3 +837,11 @@ ATK.FinalRoot.rotas_RH
 ATK.FinalRoot.rota_contracao_morta
 ATK.FinalRoot.ns_depende_do_modelo
 ATK.FinalRoot.pnp_depende_do_modelo
+ATK.CongruentBijection.sub_ne_zero_de_triangulo
+ATK.CongruentBijection.ponto_de_triangulo
+ATK.CongruentBijection.triangulo_de_ponto
+ATK.CongruentBijection.ponto_de_triangulo_de_ponto
+ATK.CongruentBijection.triangulo_de_ponto_de_triangulo
+ATK.CongruentBijection.congruente_iff_ponto
+ATK.CongruentBijection.um_nao_congruente_iff_y_eq_zero
+ATK.CongruentBijection.um_congruente_iff_ponto_E
