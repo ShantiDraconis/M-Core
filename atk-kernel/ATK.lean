@@ -24,3 +24,9 @@ import ATK.ObligationsClosed
 import ATK.BealFourFourTwo
 import ATK.FermatRightTriangle
 import ATK.BealFermatDescent
+import ATK.FermatAux
+import ATK.CurvaCongruente
+import ATK.TeoriaI
+import ATK.ZetaSimetria
+import ATK.FreyBeal
+import ATK.TeoremaGlobal
