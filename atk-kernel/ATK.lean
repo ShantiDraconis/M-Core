@@ -85,3 +85,4 @@ import ATK.CookLevinReducao
 import ATK.Gerador
 import ATK.GeradorTM
 import ATK.GeradorForm
+import ATK.GeradorArit
