@@ -654,3 +654,11 @@ ATK.ValleePoussin.log_vence_poly
 ATK.ValleePoussin.evita_log
 ATK.ValleePoussin.m_ge_log
 ATK.ValleePoussin.piso_DN_log
+ATK.CongruentBijection.sub_ne_zero_de_triangulo
+ATK.CongruentBijection.ponto_de_triangulo
+ATK.CongruentBijection.triangulo_de_ponto
+ATK.CongruentBijection.ponto_de_triangulo_de_ponto
+ATK.CongruentBijection.triangulo_de_ponto_de_triangulo
+ATK.CongruentBijection.congruente_iff_ponto
+ATK.CongruentBijection.um_nao_congruente_iff_y_eq_zero
+ATK.CongruentBijection.um_congruente_iff_ponto_E
