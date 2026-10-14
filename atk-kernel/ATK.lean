@@ -55,3 +55,7 @@ import ATK.BridgeReduction
 import ATK.TeoremaGlobal
 import ATK.FreyBealResidual
 import ATK.FatoresQuarticos
+import ATK.Roda
+import ATK.FronteiraUm
+import ATK.LimitesUm
+import ATK.OscilacaoHiperreal
