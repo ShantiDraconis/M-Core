@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 58734b25ba8d3098cd9b4901260676c0dc9cbd4790e952d75d8d5e7cc365685d
+# axiomas por teorema — congelamento de d68f5c441741c9a63033eff215a054cfbc4bd91d196ffe1fec399a05c52493df
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1350,3 +1350,37 @@ ATK.IMathPonte.pi_absorbingAdd	VER CI
 ATK.IMathPonte.pi_idiv	VER CI
 ATK.IMathPonte.pi_collapse	VER CI
 ATK.IMathPonte.modelos_diferem_em_um_sobre_zero	VER CI
+ATK.Fragmentos.stepAux_rel	nenhum
+ATK.Fragmentos.embute	propext, Classical.choice, Quot.sound
+ATK.Fragmentos.iter_none	nenhum
+ATK.Fragmentos.faz_seq	propext, Classical.choice, Quot.sound
+ATK.Fragmentos.faz_cond_true	propext, Classical.choice, Quot.sound
+ATK.Fragmentos.faz_cond_false	propext, Classical.choice, Quot.sound
+ATK.Fragmentos.faz_atom	propext, Classical.choice, Quot.sound
+ATK.Fragmentos.faz_laco	propext, Classical.choice, Quot.sound
+ATK.Fragmentos.laco_cons	propext, Classical.choice, Quot.sound
+ATK.Fragmentos.laco_nil	propext, Classical.choice, Quot.sound
+ATK.Compilador.stepAux_pushesOut	propext, Classical.choice, Quot.sound
+ATK.Compilador.faz_emit	propext, Classical.choice, Quot.sound
+ATK.Compilador.stepAux_pushesBit	propext, Quot.sound
+ATK.Compilador.faz_mover	propext, Classical.choice, Quot.sound
+ATK.Compilador.faz_congr	propext, Classical.choice, Quot.sound
+ATK.Compilador.ok_emit	propext, Classical.choice, Quot.sound
+ATK.Compilador.ok_zero	propext, Classical.choice, Quot.sound
+ATK.Compilador.ok_inc	propext, Classical.choice, Quot.sound
+ATK.Compilador.ok_add	propext, Classical.choice, Quot.sound
+ATK.Compilador.laco_emitU	propext, Classical.choice, Quot.sound
+ATK.Compilador.ok_emitU	propext, Classical.choice, Quot.sound
+ATK.Compilador.laco_lenIn	propext, Classical.choice, Quot.sound
+ATK.Compilador.ok_lenIn	propext, Classical.choice, Quot.sound
+ATK.Compilador.res_res	propext, Quot.sound
+ATK.Compilador.res_self	propext, Quot.sound
+ATK.Compilador.res_update	propext, Quot.sound
+ATK.Compilador.pre_res	propext
+ATK.Compilador.comp_ok	propext, Classical.choice, Quot.sound
+ATK.Compilador.faz_zeraRegs	propext, Classical.choice, Quot.sound
+ATK.Compilador.init_pre	propext, Classical.choice, Quot.sound
+ATK.Compilador.maq_run	propext, Classical.choice, Quot.sound
+ATK.Compilador.sem_unario	propext
+ATK.Compilador.computavel	propext, Classical.choice, Quot.sound
+ATK.Compilador.unarioComputavel	propext, Classical.choice, Quot.sound
