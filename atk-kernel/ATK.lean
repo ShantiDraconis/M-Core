@@ -77,6 +77,7 @@ import ATK.NSEquacao
 import ATK.NSPlancherel
 import ATK.NSLocal
 import ATK.NSMaximal
+import ATK.NSEnergia
 import ATK.LigacaoPNP
 import ATK.Termos
 import ATK.CapturaRH
