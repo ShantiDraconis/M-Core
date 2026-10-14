@@ -1,0 +1,65 @@
+From e403f3b8487fb506a1bab3107ca4a7b0427ed2c2 Mon Sep 17 00:00:00 2001
+From: Tiago Paschoalatto Fagliari <fagliarit@gmail.com>
+Date: Thu, 15 Oct 2026 00:02:32 +0100
+Subject: [PATCH] =?UTF-8?q?feat(GroupTheory/FiniteAbelian):=20the=20free?=
+ =?UTF-8?q?=20rank=20is=20the=20rank=20over=20=E2=84=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add `AddGroup.rank_eq_finrank_int`: the minimal number of generators of a
+finitely generated torsion-free abelian group is its rank as a `ℤ`-module,
+and `AddCommGroup.freeRank_eq_finrank`: the free rank of a finitely generated
+abelian group is its rank as a `ℤ`-module.
+---
+ Mathlib/GroupTheory/FiniteAbelian/Basic.lean | 34 ++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+diff --git a/Mathlib/GroupTheory/FiniteAbelian/Basic.lean b/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
+index 4bf6530..47dfb17 100644
+--- a/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
++++ b/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
+@@ -164,6 +164,40 @@ theorem finite_of_fg_isAddTorsion [hG' : AddGroup.FG G] (hG : IsAddTorsion G) :
+ 
+ @[deprecated (since := "2026-07-01")] alias finite_of_fg_torsion := finite_of_fg_isAddTorsion
+ 
++/-- The minimal number of generators of a finitely generated torsion-free abelian group is its
++rank as a `ℤ`-module. -/
++theorem _root_.AddGroup.rank_eq_finrank_int [HasUniqueDiv G] [AddGroup.FG G] :
++    AddGroup.rank G = Module.finrank ℤ G := by
++  have : Module.Finite ℤ G := Module.Finite.iff_addGroup_fg.mpr ‹_›
++  refine le_antisymm ?_ ?_
++  · classical
++    let b := Module.finBasis ℤ G
++    have hb : AddSubgroup.closure (Finset.univ.image b : Set G) = ⊤ := by
++      rw [Finset.coe_image, Finset.coe_univ, Set.image_univ,
++        ← Submodule.span_int_eq_addSubgroupClosure, b.span_eq, Submodule.top_toAddSubgroup]
++    exact (AddGroup.rank_le hb).trans (Finset.card_image_le.trans (by simp))
++  · obtain ⟨S, hS, hS'⟩ := AddGroup.rank_spec G
++    have : Submodule.span ℤ (Set.range ((↑) : S → G)) = ⊤ := by
++      refine Submodule.toAddSubgroup_injective ?_
++      rw [Subtype.range_coe_subtype, Finset.setOfPred_mem,
++        Submodule.span_int_eq_addSubgroupClosure, hS', Submodule.top_toAddSubgroup]
++    exact (finrank_le_of_span_eq_top this).trans (by simp [hS])
++
++/-- The free rank of a finitely generated abelian group is its rank as a `ℤ`-module. -/
++theorem freeRank_eq_finrank [AddGroup.FG G] : freeRank G = Module.finrank ℤ G := by
++  let f := (QuotientAddGroup.mk' (torsion G)).toIntLinearMap
++  have hf : Module.rank ℤ (LinearMap.ker f) = 0 := by
++    refine rank_eq_zero_iff.mpr fun ⟨x, hx⟩ ↦ ?_
++    obtain ⟨n, hn, hnx⟩ :=
++      isOfFinAddOrder_iff_nsmul_eq_zero.mp ((QuotientAddGroup.eq_zero_iff x).mp hx)
++    exact ⟨n, by exact_mod_cast hn.ne', Subtype.ext (by simpa [natCast_zsmul] using hnx)⟩
++  have h := LinearMap.rank_eq_of_surjective (f := f) (QuotientAddGroup.mk'_surjective _)
++  rw [hf, add_zero] at h
++  have : HasUniqueDiv (G ⧸ torsion G) :=
++    ⟨by intro n hn a b hab; exact (AddCommute.all a b).eq_of_nsmul_eq_nsmul hn hab⟩
++  rw [freeRank_def, AddGroup.rank_eq_finrank_int]
++  exact (congrArg Cardinal.toNat h).symm
++
+ end AddCommGroup
+ 
+ namespace CommGroup
+-- 
+2.43.0
+
