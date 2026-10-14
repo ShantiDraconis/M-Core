@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 58eb166797a72df1745460471ceb1bf181d704fe2e5f8c8e8a325ce83339847e
+# axiomas por teorema — congelamento de 0eed8827277b27567b3b76f5defa79575251dc9458816eada82f219d8b1161b0
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1601,3 +1601,29 @@ ATK.CookLevinNP.red_SAT	propext, Classical.choice, Quot.sound
 ATK.CookLevinNP.cookLevin	propext, Classical.choice, Quot.sound
 ATK.CookLevinNP.maqRed	propext, Classical.choice, Quot.sound
 ATK.ObligationsClosed.B4	propext, Classical.choice, Quot.sound
+ATK.L3Base.conjV_conjV	propext, Classical.choice, Quot.sound
+ATK.L3Base.conjV_surjective	propext, Classical.choice, Quot.sound
+ATK.L3Base.isHodgeClass_puraTipo	propext, Classical.choice, Quot.sound
+ATK.L3Base.tate_classe	propext, Classical.choice, Quot.sound
+ATK.L3Base.tate_classes	propext, Classical.choice, Quot.sound
+ATK.L3Base.tate_H20	propext, Classical.choice, Quot.sound
+ATK.L3Base.Hermitiana.ω_apply	propext, Classical.choice, Quot.sound
+ATK.L3Base.Hermitiana.ω_antisymm	propext, Classical.choice, Quot.sound
+ATK.L3Base.Hermitiana.ω_self	propext, Classical.choice, Quot.sound
+ATK.L3Base.Hermitiana.ω_J	propext, Classical.choice, Quot.sound
+ATK.L3Base.plana_ω	propext, Classical.choice, Quot.sound
+ATK.L4Base.LFunctionContinued.continuacao	propext, Classical.choice, Quot.sound
+ATK.L4Base.LFunctionContinued.ext_L	propext, Classical.choice, Quot.sound
+ATK.L4Base.bsd_iff_forall	propext, Classical.choice, Quot.sound
+ATK.L4Base.clayBSD_iff	propext, Classical.choice, Quot.sound
+ATK.L4Base.L_one_eq_zero_iff	propext, Classical.choice, Quot.sound
+ATK.L4Base.E32_eliptica	propext, Classical.choice, Quot.sound
+ATK.L4Base.rank_E32	propext, Classical.choice, Quot.sound
+ATK.L4Base.bsd_E32_iff	propext, Classical.choice, Quot.sound
+ATK.L4Base.clay_E32	propext, Classical.choice, Quot.sound
+ATK.L5Base.mink_eq_inner	propext, Classical.choice, Quot.sound
+ATK.L5Base.e0_cone	propext, Classical.choice, Quot.sound
+ATK.L5Base.e1_espacial	propext, Classical.choice, Quot.sound
+ATK.L5Base.zero_cone	propext, Classical.choice, Quot.sound
+ATK.L5Base.integral_fourier	propext, Classical.choice, Quot.sound
+ATK.L5Base.trivial	propext, Classical.choice, Quot.sound

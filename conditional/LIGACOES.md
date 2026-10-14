@@ -109,6 +109,33 @@ finitas linguagens é fiel (`ATK.Termos.PNP.finito_nao_fiel`), em particular o d
 redução `Red` não entra no critério: ela só importa para a ponte B4 (Cook–Levin), não para o
 enunciado. Ver [`TERMOS.md`](TERMOS.md), termos T21 e T22.
 
+## L3, L4, L5 — bases com testes de sanidade (14/10/2026)
+
+Três arquivos separados, cada um com teste de sanidade. Eles não mudam o estado das ligações: o
+estado continua sendo o registrado pelo titular.
+
+* **L4** — `ATK/L4Base.lean` (9): a conjectura de BSD (parte do posto) em forma de biblioteca.
+  `LFunctionContinued E` é uma função inteira igual a `E.LSeries` em `Re s > 3/2`. O semiplano é
+  `3/2` porque `LSeries` da Mathlib é um `tsum`, que vale `0` fora da somabilidade absoluta; com `1`
+  a estrutura ficaria vazia para as curvas verdadeiras. A continuação é única (`Subsingleton`).
+  `clayBSD_iff`: o enunciado do Clay é `BSDConjecture` para toda curva elíptica. Teste
+  (`bsd_E32_iff`): em `y² = x³ − x` (posto 0), BSD ⟺ a continuação existe e `L(E, 1) ≠ 0`.
+* **L3** — `ATK/L3Base.lean` (11): estruturas de Hodge racionais puras (`ℂ ⊗[ℚ] V = ⨁ H^{p,n−p}`,
+  com simetria de Hodge), classes de Hodge como subespaço racional, estruturas hermitianas e
+  métricas de Kähler locais (forma fundamental fechada pela `extDerivWithin` da Mathlib). Testes: em
+  `ℚ(−1)`, `1` é classe de Hodge e `H^{2,0} = 0`; a métrica plana de `ℂ` é de Kähler e
+  `ω(1, i) = 1`. Falta, na Mathlib, a cohomologia singular `H^{2p}(X, ℚ)` com decomposição de Hodge
+  e classe de ciclo, além de formas diferenciais em variedades.
+* **L5** — `ATK/L5Base.lean` (6): os axiomas de Wightman para um campo escalar hermitiano em `ℝ⁴`:
+  Minkowski, cone futuro, Lorentz restrito, representação unitária, vácuo único, campo temperado,
+  covariância, localidade, condição espectral via a transformada de Fourier da Mathlib e
+  ciclicidade. Teste: a teoria trivial satisfaz os axiomas, o que mostra que eles são consistentes.
+  O Clay pede uma teoria de Yang–Mills não trivial com lacuna de massa, que ainda não está expressa.
+
+Rascunhos no estilo da Mathlib, que compilam sozinhos contra a v4.34.1, estão em
+`atk-kernel/mathlib-drafts/`, na ordem L4 → L3 PR1 (Kähler) → L3 PR2 (classes de Hodge) → L5
+(Wightman). Os PRs na Mathlib são abertos pelo titular.
+
 ## Efeito no auditor e nos portões
 
 * `terminal-templates/NS.lean.tpl`: a peça `LIGACAO_L1` está preenchida com

@@ -262,6 +262,12 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   (`tableau_iff`, as duas direções).
 - `ATK/CookLevinBase.lean` (16): **B4, marco M2a** — o passo de uma `TM2` só lê o topo das pilhas
   (lema de moldura), crescimento por passo, símbolos empurrados finitos, execução acolchoada.
+- `ATK/L4Base.lean` (9) + `ATK/L3Base.lean` (11) + `ATK/L5Base.lean` (6): **bases das ligações
+  L4, L3 e L5**, cada uma com teste de sanidade. São elas: BSD por curva (`LFunctionContinued`,
+  `BSDConjecture`, teste em `y² = x³ − x`); estruturas de Hodge, classes de Hodge e métricas de
+  Kähler locais (testes `ℚ(−1)` e `ℂ` plano); e os axiomas de Wightman (a teoria trivial os
+  satisfaz). Há rascunhos para a Mathlib em `atk-kernel/mathlib-drafts/`. Os estados das ligações
+  não mudam.
 - `ATK/LigacaoBSD.lean` (4): **L4, parte do posto** — o enunciado de BSD do Clay sobre a função L
   da Mathlib (`WeierstrassCurve.LSeries`); continuação única; `L(E, 1) = 0 ⟺ posto > 0`.
 - `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22): **ligação L2 construída e fechada** — composição

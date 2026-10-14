@@ -186,7 +186,8 @@
       "kind": "LIGAÇÃO",
       "lean": "ATK.Conditional.Hodge.HodgeModel",
       "status": "NAO_EXISTE_NA_MATHLIB",
-      "ref": "cohomologia racional e decomposição de Hodge de variedades projetivas complexas"
+      "ref": "cohomologia racional e decomposição de Hodge de variedades projetivas complexas",
+      "progress": "Base (ATK/L3Base.lean, 11 teoremas): estruturas de Hodge racionais puras (HodgeStructure V n: ℂ ⊗[ℚ] V = ⨁ H^{p,n−p}, conj H^{p,q} = H^{q,p}), IsHodgeClass e hodgeClasses (subespaço racional); estruturas hermitianas (produto interno real invariante por J = i•, forma fundamental alternada e J-invariante) e métricas de Kähler locais (forma fundamental fechada pela extDerivWithin da Mathlib). Testes: ℚ(−1) com 1 classe de Hodge e H^{2,0} = 0; métrica plana de ℂ é de Kähler, ω(1, i) = 1. Falta: cohomologia singular H^{2p}(X, ℚ) de variedades projetivas complexas lisas com decomposição de Hodge e classe de ciclo (não existe na Mathlib); formas diferenciais em variedades. Rascunhos para a Mathlib em atk-kernel/mathlib-drafts/ (Kahler.lean, HodgeStructure.lean)."
     },
     {
       "id": "L4",
@@ -195,7 +196,7 @@
       "lean": "ATK.LigacaoBSD.modeloPosto",
       "status": "PARTE_DO_POSTO_NO_KERNEL",
       "ref": "função L de E/ℚ e posto de Mordell–Weil (a Mathlib tem curvas de Weierstrass)",
-      "progress": "Parte do posto (ATK/LigacaoBSD.lean, 4 teoremas): sobre WeierstrassCurve.LSeries da Mathlib (fatores locais por modelo minimal e tipo de redução) e o grupo E(ℚ), ClayBSD = para toda E/ℚ elíptica existe F inteira com F = L(E,s) em Re s > 3/2 e ord_{s=1} F = posto de Mordell–Weil (enunciado oficial do Clay); continuação única (continuacao_unica), corolário L(E,1) = 0 ⟺ posto > 0 (zero_iff_posto_pos); modeloPosto com posto_iff: BSDRank modeloPosto ⟺ ClayBSD, sob Modularidade e MordellWeil (teoremas publicados, hipóteses explícitas). Falta: a fórmula refinada (Ω_E, regulador de Néron–Tate, Ш, Tamagawa, torção), exigida pelo portão BSDFull. Testes e forma de Taylor (ATK/LigacaoBSDTestes.lean, 15 teoremas): a₁ = 1 (LFunction_um, fatores de Euler multiplicativos); a cláusula ≠ ⊤ de Modularidade está provada desde que a série convirja em algum ponto (ordem_ne_top, modularidade_de_continuacao); ClayBSDTaylor = texto oficial palavra por palavra (c(s−1)^r + …, c ≠ 0), clay_of_taylor sem hipóteses e taylor_iff com Mordell–Weil; y² = x³ − x elíptica (Δ = 64) com posto 0 (posto_curva32) e clay_curva32: ClayBSD obriga L(E,1) ≠ 0 nessa curva; zero_nao_e_continuacao."
+      "progress": "Parte do posto (ATK/LigacaoBSD.lean, 4 teoremas): sobre WeierstrassCurve.LSeries da Mathlib (fatores locais por modelo minimal e tipo de redução) e o grupo E(ℚ), ClayBSD = para toda E/ℚ elíptica existe F inteira com F = L(E,s) em Re s > 3/2 e ord_{s=1} F = posto de Mordell–Weil (enunciado oficial do Clay); continuação única (continuacao_unica), corolário L(E,1) = 0 ⟺ posto > 0 (zero_iff_posto_pos); modeloPosto com posto_iff: BSDRank modeloPosto ⟺ ClayBSD, sob Modularidade e MordellWeil (teoremas publicados, hipóteses explícitas). Falta: a fórmula refinada (Ω_E, regulador de Néron–Tate, Ш, Tamagawa, torção), exigida pelo portão BSDFull. Testes e forma de Taylor (ATK/LigacaoBSDTestes.lean, 15 teoremas): a₁ = 1 (LFunction_um, fatores de Euler multiplicativos); a cláusula ≠ ⊤ de Modularidade está provada desde que a série convirja em algum ponto (ordem_ne_top, modularidade_de_continuacao); ClayBSDTaylor = texto oficial palavra por palavra (c(s−1)^r + …, c ≠ 0), clay_of_taylor sem hipóteses e taylor_iff com Mordell–Weil; y² = x³ − x elíptica (Δ = 64) com posto 0 (posto_curva32) e clay_curva32: ClayBSD obriga L(E,1) ≠ 0 nessa curva; zero_nao_e_continuacao. Base em forma de biblioteca (ATK/L4Base.lean, 9 teoremas): LFunctionContinued E (inteira, = LSeries em Re s > 3/2; semiplano 3/2 porque LSeries da Mathlib é tsum, nulo fora da somabilidade absoluta), unicidade (Subsingleton), BSDConjecture E, clayBSD_iff: ClayBSD ⟺ ∀ E elíptica, BSDConjecture E; teste: bsd_E32_iff (y² = x³ − x, posto 0: BSD ⟺ continuação com L(E,1) ≠ 0). Rascunho para a Mathlib: atk-kernel/mathlib-drafts/BSD.lean."
     },
     {
       "id": "L5",
@@ -203,7 +204,8 @@
       "kind": "LIGAÇÃO",
       "lean": "ATK.Conditional.YangMills.YMModel",
       "status": "NAO_EXISTE_NA_MATHLIB",
-      "ref": "axiomas OS/Wightman e o espectro do Hamiltoniano"
+      "ref": "axiomas OS/Wightman e o espectro do Hamiltoniano",
+      "progress": "Base (ATK/L5Base.lean, 6 declarações auditadas): espaço-tempo de Minkowski, cone futuro, transformações de Lorentz próprias ortócronas, e a estrutura Wightman H (representação unitária fortemente contínua do grupo de Poincaré restrito, vácuo invariante e único, domínio denso invariante, campo como distribuição temperada a valores em operadores, hermiticidade, covariância, localidade, condição espectral via a transformada de Fourier da Mathlib com U(a) = e^{i P·a}, ciclicidade). Testes: mink p a = ⟪p, R a⟫, e₀ no cone, e₁ tipo espaço, ∫ 𝓕 g = g 0, e a teoria trivial satisfaz os axiomas (consistência). Falta: campos de calibre e a correspondência com o Yang–Mills clássico (o problema do Clay pede uma teoria não trivial com lacuna de massa). Rascunho para a Mathlib: atk-kernel/mathlib-drafts/Wightman.lean."
     }
   ],
   "snapshot": {
