@@ -13,7 +13,8 @@
       "status": "PROVADA_NO_KERNEL",
       "ref": "Nyman 1950; Beurling 1955; Báez-Duarte 2003",
       "proof": "ATK.BaezDuarteBridge.baezDuarteCriterion : BaezDuarteCriterion (ATK/ZetaStrip.lean, ATK/MellinRho.lean, ATK/BaezDuarteBridge.lean; axiomas padrão)",
-      "proof_theorem": "ATK.ObligationsClosed.B1"
+      "proof_theorem": "ATK.ObligationsClosed.B1",
+      "progress": "Port para a linha de Riemann: a hipótese hCriterion : Tendsto bdDistSq atTop (𝓝 0) → RiemannHypothesis (HYPOTHESIS_MAP, 2 usos em ATK.Riemann.rh_of_bd_bound) é descarregada por ATK.BDDistSqPort.criterio_bd (bdDistSq = DN por rfl). A forma ⟺ de RHConvergence exige a direção de necessidade (RH ⇒ D_N → 0), não formalizada."
     },
     {
       "id": "B2",

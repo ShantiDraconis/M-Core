@@ -92,3 +92,12 @@ As hipóteses mais usadas e ainda sem prova em lugar nenhum, por problema:
 | `axiomatic-millenium` | `formal/official-model-obligation-v1` | 2 arquivos próprios; 0 condicionais, 0 equivalências, 0 sem hipóteses; 0 arquivos com buraco |
 
 Nenhum desses fecha uma obrigação. `CLOSED_MATH` segue `false`.
+
+## Descarga por port (14/10/2026)
+
+| Hipótese | Usada em | Provada por | Efeito |
+|---|---|---|---|
+| `Tendsto bdDistSq atTop (𝓝 0) → RiemannHypothesis` | 2 teorema(s): `ATK.Riemann.rh_of_bd_bound` (`m-core-riemann` e `M-Core`, branches `atk-kernel-check`, `fix/ns-scaling-false`) | `M-Core` · `atk/hypothesis-ports-20261014` · `ATK.BDDistSqPort.criterio_bd` | `bdDistSq = DN` por `rfl`; transporte da prova de B1. Não fecha O1 |
+
+Fica aberta a forma `Tendsto bdDistSq atTop (𝓝 0) ↔ RiemannHypothesis` (`ATK.RHConvergence.rh_iff_limit_zero_of_criterion`):
+a direção RH ⇒ `D_N → 0` (necessidade de Báez-Duarte) não está formalizada.

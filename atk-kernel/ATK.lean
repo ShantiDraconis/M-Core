@@ -46,3 +46,6 @@ import ATK.ZetaLog
 import ATK.ValleePoussin
 import ATK.CongruentBijection
 import ATK.BridgeReduction
+import ATK.BDDistSqPort
+import ATK.HypothesisCalculus
+import ATK.BorderPrimes
