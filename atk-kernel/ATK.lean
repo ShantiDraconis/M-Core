@@ -98,3 +98,6 @@ import ATK.CapturaIncondicional
 import ATK.RefutacoesBeal
 import ATK.BealPolinomial
 import ATK.YMSemGap
+import ATK.Base.RiemannXi
+import ATK.Base.GalerkinNS
+import ATK.Base.RedeCalibre
