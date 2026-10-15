@@ -27,7 +27,7 @@ Mathlib atual (exige teoria grande que ainda não existe).
 |---|---|---|---|---|
 | N1 | Galerkin em Fourier no toro | termo convectivo truncado; `Σ N(u)_k · conj û_k = 0`; Leray; identidade de energia | ✅ | `BaseGalerkinNS` |
 | N2 | Existência global dissipativa | `F` localmente Lipschitz, `⟪F v, v⟫ ≤ 0` ⇒ solução em `[0,T]` para todo `T`, com `‖u(t)‖ ≤ ‖u(0)‖`; unicidade | ✅ | `BaseEDODissipativa` |
-| N2b | Instância Galerkin | o subespaço admissível (div. nula, realidade) é invariante pelo campo de Galerkin; o campo é localmente Lipschitz e dissipativo ⇒ soluções globais de Galerkin | 🟡 | — |
+| N2b | Instância Galerkin | o subespaço admissível (div. nula, realidade) é invariante pelo campo de Galerkin; o campo é localmente Lipschitz e dissipativo ⇒ soluções globais de Galerkin | ✅ | `BaseGalerkinGlobal` |
 | N3 | Espaços de energia | `L²_σ(T³)`, `H¹`, desigualdade de Poincaré em média nula (a Mathlib tem `mFourierBasis` e `BesselPotentialSpace`) | ⬜ | — |
 | N4 | Compacidade | Aubin–Lions (ou Arzelà–Ascoli + estimativa de `∂ₜu_N` em `H⁻¹`) | ⬜ | — |
 | N5 | Soluções fracas de Leray | passagem ao limite `N → ∞`; desigualdade de energia | ⬜ | — |
@@ -43,7 +43,7 @@ não afeta o enunciado A acima.
 |---|---|---|---|---|
 | R1 | Função ξ e Ξ | ξ inteira; `ξ(1−s)=ξ(s)`; `ξ(s̄)=conj ξ(s)`; Ξ real e par; zeros; troca de sinal; RH ⟺ zeros de Ξ reais | ✅ | `BaseRiemannXi` |
 | R1' | Família de Báez-Duarte | `D_N = 1 − bᵀG⁻¹b`; `b_k = (log k + 1 − γ)/k`; `D_N > 0` | ✅ | `GramBaezDuarte`, `BaezDuarteVetorB`, `RelacionalDN` |
-| R2 | Sinal de Ξ(0) | `Ξ(0) = ξ(1/2) > 0` (de `ζ(1/2) < 0`, já no kernel) | ⬜ | — |
+| R2 | Sinal de ξ e Ξ(0) | ξ real e positiva em toda a reta real; `Ξ(0) = ξ(1/2) > 0`; uma troca de sinal de Ξ dá um zero na reta | ✅ | `BaseRiemannXiSinal` |
 | R3 | Representação integral | `Ξ(t) = ∫₀^∞ Φ(u) cos(ut) du` a partir da teta de Jacobi (a Mathlib tem `jacobiTheta₂` e a equação funcional) | ⬜ | — |
 | R4 | Teorema de Hardy | infinitos zeros na reta crítica | ⬜ | — |
 | R5 | Certificação numérica de zeros | aritmética intervalar para ζ (Euler–Maclaurin) + troca de sinal de Ξ | ⬜ | — |
@@ -79,7 +79,7 @@ não afeta o enunciado A acima.
 |---|---|---|---|---|
 | B0 | Enunciado do Clay | L-função e pontos sobre os objetos da Mathlib | ✅ | `LigacaoBSD`, `CongruentCurve` |
 | B1a | 2-torsão | `P + P = 0` ⟺ `y = 0` ⟺ `x` raiz da cúbica | ✅ | `BaseCurvasTorsao` |
-| B1b | Nagell–Lutz | pontos de torsão sobre ℚ têm coordenadas inteiras e `y² ∣ Δ` | ⬜ | — |
+| B1b | Nagell–Lutz | pontos de torsão sobre ℚ têm coordenadas inteiras e `y² ∣ Δ` — feito para a ordem 2 (`x ∈ ℤ`, `x ∣ a₆`) e `\|E[2]\| ≤ 4`; o caso geral exige a filtração `p`-ádica | 🟡 | `BaseNagellLutzDois` |
 | B2 | Redução mod p | `E(ℚ)_tors ↪ E(𝔽_p)` para p de boa redução, p ≠ 2 | ⬜ | — |
 | B3 | 2-descida | `E(ℚ)/2E(ℚ)` finito para curvas com 2-torsão completa | ⬜ | — |
 | B4 | Mordell–Weil | alturas e descida | ⛔ | — |
@@ -109,8 +109,8 @@ não afeta o enunciado A acima.
 
 ## Ordem de ataque
 
-1. **N2b** (instância Galerkin): fecha "soluções de Galerkin globais" e abre N3–N5.
-2. **R2 → R3 → R4** (Hardy): primeira parte provada de RH sobre a reta.
+1. ~~N2b~~ (feito) → **N3** (Poincaré discreto, decaimento exponencial) → N4–N5.
+2. ~~R2~~ (feito) → **R3** (fórmula integral de Riemann para Ξ) → **R4** (Hardy): primeira parte provada de RH sobre a reta.
 3. **P3** (M2d): fecha "SAT é NP-completo" no modelo genuíno.
 4. **B1b → B2** (torsão): primeira estrutura de `E(ℚ)`.
 5. **Y3** (positividade por reflexão).
