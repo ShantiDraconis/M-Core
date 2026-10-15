@@ -55,14 +55,16 @@ volta deles.
 
 | Id | Teorema | Estado | O que falta |
 |---|---|---|---|
-| P1 | modularidade de `y² = x³ − x` com sinal `+1`: `g(1/x) = x² g(x)` | ⬜ publicada (Deuring, Hecke; Wiles) | caráter de Hecke de `ℚ(i)`, Poisson em dimensão 2, contagem de Gauss |
+| **P1** | modularidade de `y² = x³ − x` com sinal `+1`: `g(1/x) = x² g(x)` | ✅ **provada** (`PonteModularCurva32.ponteModular_curva32`): caráter de Hecke de `ℚ(i)` (`BaseGaussPrimario`), `a_p = π + π̄` (`BaseGaussCurva32`), duas fatorações da soma dupla e as equações funcionais dos núcleos de Hurwitz da Mathlib | — |
 | **P2** | `\|aₙ\| ≤ n` para `y² = x³ − x` | ✅ **provada** (`PonteFatoresCurva32.cotaCoef_curva32`): cota de Hasse–Gauss (`BaseHasseCurva32`), recursão de Hecke e multiplicatividade (`PonteCoefCurva32`), fatores locais da Mathlib (P2a) | — |
 | P2a | os coeficientes `WeierstrassCurve.LFunction` da Mathlib são os padrão (`a_{2^k} = 0`; `a_{p^k} = c_k(a_p, p)`, `a_p = p + 1 − #E(𝔽_p)`) | ✅ **provada** (`PonteFatoresCurva32.fatoresPadrao`) | — |
 | PemPpoly | `P ⊆ P/poly` (Savage 1972) | ⬜ publicada | simulação de `FinTM2` por circuitos de tamanho polinomial (engenharia) |
 | — | ponte de Leray em `AtaqueNS` | = B3 | — |
 
-Com P2 provada, a parte do posto de BSD para `y² = x³ − x` depende só de P1 (modularidade com
-sinal `+1`): `PonteFatoresCurva32.bsd_posto_curva32_modP1`. P2a foi desdobrada sem matemática
+Com P1 e P2 provadas, **a parte do posto de BSD para `y² = x³ − x` não depende de nenhuma
+ponte**: `PonteModularCurva32.bsd_posto_curva32_incondicional` — toda continuação analítica `G` de
+`L(E, s)` tem `G(1) ≠ 0` e ordem `0 =` posto de Mordell–Weil. (Antes, `bsd_posto_curva32_modP1`
+dependia de P1.) P2a foi desdobrada sem matemática
 nova: corpo residual `ℤ_v/𝔪 ≅ 𝔽_p` (via `ℤ_v ≅ ℤ_p`), produto de Euler da Mathlib em `p^k`
 (Northcott), descida do modelo minimal a `ℤ_v` em `p` ímpar com `#Ẽ(𝔽_p) = p + 1 + Σ χ(x³ − x)`,
 e redução aditiva em `2` (`2` uniformizador de `ℤ_2`, paridade de `v(Δ_min) = 6 − 12 v(u)`,
@@ -70,7 +72,7 @@ e redução aditiva em `2` (`2` uniformizador de `ℤ_2`, paridade de `v(Δ_min)
 
 ## Ordem proposta
 
-1. ~~**P2a**~~ ✅ provada: P2 fechada; BSD (posto) para `y² = x³ − x` fica módulo só P1.
+1. ~~**P2a**~~, ~~**P1**~~ ✅ provadas: BSD (posto) para `y² = x³ − x` sem pontes.
 2. **PemPpoly** (engenharia, semanas): P ≠ NP fica equivalente a `NP ⊄ P/poly` no modelo genuíno.
 3. **`MordellWeil` geral** via 2-descida sobre a álgebra cúbica (meses; a Mathlib tem grupo de
    classes finito e o teorema das unidades de Dirichlet): fecha uma das duas hipóteses de L4.
