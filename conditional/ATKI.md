@@ -63,6 +63,34 @@ falsa, o `D∞` do texto é estritamente positivo). Isto liga o `D∞` do ATK-I 
   muda a verdade; `T₁(D∞ = 0) = (0 = 0)` qualquer que seja `D∞`. Já `(D∞ = 0)` **valer** implica
   RH (`vale_D_infinito_RH`, pela ponte de Bagchi).
 
+## Álgebra relacional completa (`ATK/ATKIAlgebra.lean`, 28 teoremas)
+
+* Operações componente a componente nos pares `(a = b)` e as leis de anel comutativo (comutatividade,
+  associatividade, distributividade, zero, um, oposto); a diagonal das relações verdadeiras é
+  fechada por soma, produto e escala.
+* Defeito: simetria, `d(R ⊕ S) ≤ d(R) + d(S)`, `d(R ⊗ S) ≤ |c|·d(R) + |b|·d(S)` e a fatoração
+  exata `d(Rⁿ) = d(R)·|Σ aⁱ bⁿ⁻¹⁻ⁱ|` (`|2 − 1|·7 = 7`). A potência pode apagar o defeito:
+  `(−1 = 1)` é falsa e `(−1 = 1)² = (1 = 1)`.
+* O quociente por "mesmo defeito" não preserva a soma: `(1 = 0) ∼ (0 = 1)`, mas as somas com
+  `(1 = 0)` têm defeitos 2 e 0.
+* Três estados por tolerância (verdade / aproximada / longe); `(0 = 1)` com `τ = 1/4` está longe.
+* `(ε = 0)` nos hiper-reais: defeito positivo e menor que todo real positivo. Defeito
+  infinitesimal não é defeito zero.
+* Fechamento simultâneo: `Σ wᵢ dᵢ/(1 + dᵢ) = 0 ⟺ os sete dᵢ = 0` e `Σ wᵢ (aᵢ − bᵢ)² = 0 ⟺ ∀ i, aᵢ = bᵢ`.
+
+## Aplicações às sete conjecturas (`ATK/ATKIAplicacoes.lean`, 25 teoremas)
+
+| Problema | O que foi provado | O que continua aberto |
+|---|---|---|
+| RH | `Σ_N (D_N − D_{N+1}) = D_0 − D∞`, `D_0 = Σ 1/((k+1)(k+2)) = 1`; `Σ_N (D_N − D_{N+1}) = 1 ⟹ RH` (Bagchi) | provar que a soma dos ganhos é 1 |
+| Yang–Mills | coercividade `⟪ψ, Hψ⟫ ≥ δ‖ψ‖²` em `Ω^⊥` ⟹ autovalores em `Ω^⊥` são `≥ δ`; gaps `1/(n+1) > 0` somem no limite | construir `H` em 4D e a coercividade |
+| Navier–Stokes | absorção com `c < 1` ⟹ `Y' ≤ 2CY` ⟹ `Y(t) ≤ Y(0) e^{2Ct}` (Grönwall); `δ = 5/12` | a absorção para NS 3D sem supor regularidade |
+| BSD | defeito de posto `< 1` ⟹ postos iguais; cotas `[2, 2]` fecham; `det !![2,1;1,3] = 5`, `h₂₂ = 3` | as cotas para toda curva |
+| Hodge | `2z₁ + 3z₂ = α`; transição `D(t) = 10(1 − t)`; lei de contração `f(q(t)) − α = (1 − t)(f(q₀) − α)`, que pressupõe a solução exata | os ciclos algébricos |
+| P vs NP | `∀N ∃m, m > N` vale e `∃m ∀N, m > N` não; `2ⁿ` atribuições; aproximação finita trivial; erro `1/(n+1) → 0` sem zerar | excluir todo algoritmo polinomial |
+
+Também os números do navio do texto (`Re = 1,6·10⁹`, `q = 32800 Pa`), só como aritmética.
+
 ## O que isto não é
 
 * Nenhum teorema aqui prova uma conjectura nem toca uma obrigação O1–O8.
