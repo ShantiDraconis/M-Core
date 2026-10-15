@@ -1,0 +1,94 @@
+name: "ATK-FERMAT — Beal com mdc ≥ 3 pelo Último Teorema de Fermat (Anthropic), em máquina própria"
+
+# Execução só manual. O projeto da Anthropic tem 60 474 módulos: ≈ 530 h de CPU, até 36 GB de
+# memória num único módulo e ≈ 300 GB de disco durante o build (README do projeto: 5 h 32 min
+# com 96 jobs e 153 GB de pico). O runner hospedado do GitHub não comporta; é preciso registrar
+# um runner auto-hospedado com o rótulo `atk-grande` (sugestão: ≥ 32 núcleos, ≥ 192 GB de RAM,
+# ≥ 400 GB de disco livre) e disparar este workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: "Jobs paralelos do Lean (≈ 5 GB de memória por job)"
+        default: "32"
+
+permissions:
+  contents: read
+
+jobs:
+  kernel:
+    name: Lean 4.33.1 + Mathlib v4.33.0 + fermats-last-theorem — compilação e auditoria
+    runs-on: [self-hosted, linux, atk-grande]
+    timeout-minutes: 2880
+    defaults:
+      run:
+        working-directory: atk-fermat
+    env:
+      LEAN_NUM_THREADS: ${{ github.event.inputs.jobs }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Versões
+        shell: bash
+        run: |
+          mkdir -p reports
+          lean --version | tee reports/toolchain.txt
+          lake --version
+          df -h . | tee reports/disco.txt
+          free -g | tee reports/memoria.txt
+
+      - name: Baixar Mathlib já compilada (cache oficial)
+        shell: bash
+        run: |
+          lake exe cache get || (lake update && lake exe cache get)
+
+      - name: lake build
+        id: build
+        shell: bash
+        run: |
+          set +e
+          lake build 2>&1 | tee reports/build.log
+          rc=${PIPESTATUS[0]}
+          n=$(grep -c "Built " reports/build.log || true)
+          echo "::notice title=fermats-last-theorem compilado nesta máquina::$n módulos compilados; lake build saiu com $rc"
+          { grep -E "^error: |: error" reports/build.log || true; } | head -8 | while IFS= read -r l; do
+            echo "::error title=lake build::${l:0:900}"
+          done
+          exit $rc
+
+      - name: Auditoria por arquivo
+        shell: bash
+        run: |
+          for f in AtkFermat/*.lean; do
+            r=${f//\//_}
+            if lake env lean "$f" > "reports/audit_${r}.log" 2>&1; then
+              echo OK > "reports/status_${r}.txt"
+            else
+              echo FAIL > "reports/status_${r}.txt"
+            fi
+            cat "reports/audit_${r}.log"
+          done
+          cp lake-manifest.json reports/ || true
+
+      - name: Relatório de certificação
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/check_axioms.py
+          code=$?
+          cat reports/report.md >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+
+      - name: Publicar relatórios
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atk-fermat-report
+          path: atk-fermat/reports

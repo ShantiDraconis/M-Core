@@ -87,3 +87,5 @@ import ATK.LigacaoBSDTestes
 import ATK.IMathPonte
 import ATK.IPortadores
 import ATK.IPortadoresMenores
+import ATK.QuasiRiemann
+import ATK.BealFermat

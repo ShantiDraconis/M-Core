@@ -1,0 +1,133 @@
+name: "ATK-EXTERNO — teoremas externos compilados com o atk-kernel (quasi-RH da OpenAI)"
+
+on:
+  push:
+    paths:
+      - 'atk-kernel/externo/**'
+      - 'atk-kernel/ATK/QuasiRiemann.lean'
+      - 'atk-kernel/ATK/ZetaSimetria.lean'
+      - '.github/workflows/atk-externo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel:
+    name: Lean 4.34.1 + Mathlib d13f23b + atk-kernel + openai/math — compilação e auditoria
+    runs-on: ubuntu-24.04
+    timeout-minutes: 355
+    defaults:
+      run:
+        working-directory: atk-kernel/externo
+    steps:
+      # a Mathlib compilada + ~3 mil módulos da OpenAI não cabem no disco padrão do runner
+      - name: Liberar espaço em disco
+        shell: bash
+        working-directory: .
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost || true
+          sudo docker image prune --all --force > /dev/null 2>&1 || true
+          df -h /
+
+      - uses: actions/checkout@v4
+
+      - name: Instalar elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Versões
+        shell: bash
+        run: |
+          mkdir -p reports
+          lean --version | tee reports/toolchain.txt
+          lake --version
+
+      - name: Baixar Mathlib já compilada (cache oficial)
+        shell: bash
+        run: |
+          lake exe cache get || (lake update && lake exe cache get)
+
+      # O build da OpenAI pode passar do limite de uma execução. O que já foi compilado fica
+      # num cache do GitHub; a próxima execução continua de onde esta parou. Nada vem de fora
+      # do próprio repositório: o cache só guarda .olean produzidos por este workflow.
+      - name: Restaurar compilação parcial
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            atk-kernel/.lake/build
+            atk-kernel/externo/.lake/build
+            atk-kernel/externo/.lake/packages/OAI/lean/.lake/build
+            atk-kernel/externo/.lake/packages/PrimeNumberTheoremAnd/.lake/build
+            atk-kernel/externo/.lake/packages/rellich-kondrachov/.lake/build
+            atk-kernel/externo/.lake/packages/LeanArchitect/.lake/build
+          key: externo-${{ hashFiles('atk-kernel/externo/lake-manifest.json') }}-${{ github.run_id }}
+          restore-keys: |
+            externo-${{ hashFiles('atk-kernel/externo/lake-manifest.json') }}-
+
+      - name: lake build
+        id: build
+        shell: bash
+        continue-on-error: true
+        run: |
+          set +e
+          timeout 320m lake build 2>&1 | tee reports/build.log
+          rc=${PIPESTATUS[0]}
+          n=$(grep -c "Built OAI" reports/build.log || true)
+          echo "::notice title=módulos da OpenAI compilados nesta execução::$n módulos OAI compilados do código-fonte; lake build saiu com $rc (124 = tempo esgotado, a próxima execução continua)"
+          { grep -E "^error: |: error" reports/build.log || true; } | head -8 | while IFS= read -r l; do
+            echo "::error title=lake build::${l:0:900}"
+          done
+          exit $rc
+
+      - name: Guardar compilação parcial
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            atk-kernel/.lake/build
+            atk-kernel/externo/.lake/build
+            atk-kernel/externo/.lake/packages/OAI/lean/.lake/build
+            atk-kernel/externo/.lake/packages/PrimeNumberTheoremAnd/.lake/build
+            atk-kernel/externo/.lake/packages/rellich-kondrachov/.lake/build
+            atk-kernel/externo/.lake/packages/LeanArchitect/.lake/build
+          key: externo-${{ hashFiles('atk-kernel/externo/lake-manifest.json') }}-${{ github.run_id }}
+
+      - name: Auditoria por arquivo
+        if: steps.build.outcome == 'success'
+        shell: bash
+        run: |
+          for f in ATKExterno/*.lean; do
+            r=${f//\//_}
+            if lake env lean "$f" > "reports/audit_${r}.log" 2>&1; then
+              echo OK > "reports/status_${r}.txt"
+            else
+              echo FAIL > "reports/status_${r}.txt"
+            fi
+            cat "reports/audit_${r}.log"
+            { grep -E ": error" "reports/audit_${r}.log" || true; } | head -4 | while IFS= read -r l; do
+              echo "::error title=auditoria ${f}::${l:0:900}"
+            done
+          done
+          cp lake-manifest.json reports/ || true
+
+      - name: Relatório de certificação
+        if: steps.build.outcome == 'success'
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/check_axioms.py
+          code=$?
+          cat reports/report.md >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+
+      - name: Publicar relatórios
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atk-externo-report
+          path: atk-kernel/externo/reports

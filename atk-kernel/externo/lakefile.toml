@@ -1,0 +1,23 @@
+name = "ATKExterno"
+defaultTargets = ["ATKExterno"]
+
+# O próprio atk-kernel (mesma Mathlib: d13f23b, a tag v4.34.1).
+[[require]]
+name = "ATK"
+path = ".."
+
+# Os resultados da OpenAI em Lean (openai/math, pasta lean/), na MESMA Mathlib d13f23b.
+[[require]]
+name = "OAI"
+git = "https://github.com/openai/math"
+rev = "1581d4cbdd69a0faf34b2089614fe2a814316a6a"
+subDir = "lean"
+
+# Fixa a Mathlib comum por último (o Lake resolve os últimos requisitos primeiro).
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "d13f23b723b8a846827a245b89c10fc7d3f11612"
+
+[[lean_lib]]
+name = "ATKExterno"
