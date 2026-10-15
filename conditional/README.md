@@ -252,11 +252,12 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
   fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
   O4 (SAT ∉ P).
-- **Rodada de 15/10/2026 — todos os itens abertos tocados** (97 teoremas, 10 arquivos; detalhes em
+- **Rodada de 15/10/2026 — todos os itens abertos tocados** (102 teoremas, 11 arquivos; detalhes em
   `UNIVERSAL_GREEN.md`): `BSDInvariantes` (23) + `BSDRefinada` (16) — **a fórmula refinada de BSD
   inteira sobre a Mathlib** (Ω, Néron–Tate com limite provado e `ĥ = 0 ⟺ torção`, regulador,
   Tamagawa, Ш por cohomologia de Galois contínua, `FormulaRefinada`, `modeloCompleto`,
-  `bsdFull_iff_fraco`); `HodgeToro` (10, L3), `HodgeFiltracao` (5, B5/O5), `L5Lacuna` (4, L5),
+  `bsdFull_iff_fraco`; `BSDTamagawaE32` (5): em `y² = x³ − x`, `c_p = 1` para `p ≠ 2`);
+  `HodgeToro` (10, L3), `HodgeFiltracao` (5, B5/O5), `L5Lacuna` (4, L5),
   `SophieGermain` (12, B2: primeiro caso de FLT(5)), `DarmonMerelReducao` (9, B8 reduzida a
   expoentes primos), `NSExplosao` (2, B3 taxa de Leray / O3 obstrução), `YMReconstrucao` (6,
   B7/O8 na rede), `CircuitoExplicito` (10, O4 cota explícita linear). Nenhum estado mudou: pontes

@@ -1,6 +1,7 @@
 # Rascunhos para a Mathlib (ligações L3–L5)
 
-Cinco arquivos no estilo da Mathlib, na ordem combinada para os PRs: **L4 → L3 PR1 → L3 PR2 → L5**.
+Cinco arquivos no estilo da Mathlib, na ordem combinada para os PRs: **L4 → L3 PR1 → L3 PR2 → L5**,
+mais o quinto, **L4 (altura canônica)**, acrescentado em 15/10.
 Cada um compila sozinho contra a Mathlib v4.34.1 (conferido com `lake env lean` neste ambiente),
 sem `sorry`, `admit` nem `axiom`. Os PRs na Mathlib são abertos pelo titular. Neste repositório os
 mesmos conteúdos, com teoremas auditados, estão em `ATK/L4Base.lean`, `ATK/L3Base.lean` e

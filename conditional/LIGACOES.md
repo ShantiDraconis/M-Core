@@ -155,7 +155,9 @@ Nada aqui muda o estado das ligações, que continua sendo o registrado pelo tit
   `modeloPosto` com a fórmula), `bsdFull_iff` (sob `Modularidade` e `MordellWeil`) e
   `bsdFull_iff_fraco` (com Mordell–Weil **fraco**, `E(ℚ)/2E(ℚ)` finito, graças a
   `mordellWeil_of_fraco`, pela descida da Mathlib). Teste: em `y² = x³ − x` a fórmula se reduz a
-  `L(E,1) = Ω·∏c_p·#Ш/16` com Ш finito.
+  `L(E,1) = Ω·∏c_p·#Ш/16` com Ш finito, e `ATK/BSDTamagawaE32.lean` (5) mostra que nessa curva
+  `c_p = 1` para todo `p ≠ 2` (`boa_reducao_de_unidade`: modelo integral com `Δ` unidade ⇒ o
+  modelo minimal da Mathlib tem redução boa), logo o produto de Tamagawa é só o fator em 2.
 * **L3** — `ATK/HodgeToro.lean` (10): a estrutura de Hodge de peso 1 de `H¹` do toro
   `ℂ/(ℤ + τℤ)`: `H^{1,0} = ℂ·dz`, `dz = e₁ + τe₂`, `H^{0,1} = ℂ·dz̄`; decomposição em soma direta
   (`Im τ ≠ 0`) e simetria de Hodge; `h^{1,0} = 1`. `ATK/HodgeFiltracao.lean` (5): classes de Hodge

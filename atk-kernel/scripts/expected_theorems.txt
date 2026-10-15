@@ -1810,3 +1810,8 @@ ATK.CircuitoExplicito.computa_update
 ATK.CircuitoExplicito.cota_linear
 ATK.CircuitoExplicito.ou_depende
 ATK.CircuitoExplicito.ou_cota
+ATK.BSDTamagawaE32.boa_reducao_de_unidade
+ATK.BSDTamagawaE32.dois_unidade
+ATK.BSDTamagawaE32.boa_E32
+ATK.BSDTamagawaE32.fatorTamagawa_E32
+ATK.BSDTamagawaE32.tamagawa_E32

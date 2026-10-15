@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 2aac1e8e728c395d4498f0befdf3691e4cd4d23f941eb0a378376702fe314f14
+# axiomas por teorema — congelamento de 7f2fd57345833e8894f93631399d1955feca60341ed2a1db361522dc1d3fd680
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1812,3 +1812,8 @@ ATK.CircuitoExplicito.computa_update	propext, Classical.choice, Quot.sound
 ATK.CircuitoExplicito.cota_linear	propext, Classical.choice, Quot.sound
 ATK.CircuitoExplicito.ou_depende	propext, Quot.sound
 ATK.CircuitoExplicito.ou_cota	propext, Classical.choice, Quot.sound
+ATK.BSDTamagawaE32.boa_reducao_de_unidade	propext, Classical.choice, Quot.sound
+ATK.BSDTamagawaE32.dois_unidade	propext, Classical.choice, Quot.sound
+ATK.BSDTamagawaE32.boa_E32	propext, Classical.choice, Quot.sound
+ATK.BSDTamagawaE32.fatorTamagawa_E32	propext, Classical.choice, Quot.sound
+ATK.BSDTamagawaE32.tamagawa_E32	propext, Classical.choice, Quot.sound
