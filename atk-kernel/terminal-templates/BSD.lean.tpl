@@ -1,26 +1,26 @@
 import ATK.FinalRoot
-import ATK.Terminal.BSDModelo
+import ATK.Terminal.BSDClay
+import ATK.Terminal.BSDRefinada
 
 /-!
-# Portão terminal de BSD — MODELO (não compilado; vira `ATK/Terminal/BSD.lean`)
+# Portão terminal de BSD (BSD_FULL) — MODELO (não compilado; vira `ATK/Terminal/BSD.lean`)
 
-1. **Ligação L4**: `modeloGenuino` com curvas elípticas sobre ℚ (`WeierstrassCurve` da Mathlib), suas
-   L-funções, regulador, Sha, fatores de Tamagawa e torção — as L-funções ainda não estão na Mathlib.
-2. **Ponte B6**: Gross–Zagier–Kolyvagin.
-3. **Produtores O6, O7**: igualdade de postos e fórmula refinada.
+**BSD_FULL = BSD_CLAY ∧ BSD_REFINED** (`ATK.BSDPortoes.full_iff`). As peças ficam nos dois
+subportões, cada um auditável por si:
+
+1. `BSDClay.lean.tpl`: ligação L4, ponte B6 (Gross–Zagier–Kolyvagin) e produtor O6 (posto) —
+   a parte do posto, que é o enunciado oficial do Clay;
+2. `BSDRefinada.lean.tpl`: produtor O7 (Ш finito e fórmula refinada).
+
+Este portão não tem peças próprias: só compõe os dois.
 -/
 
 namespace ATK.Terminal.BSD
 
 open ATK.Conditional.BSD ATK.Terminal.BSDModelo
 
-theorem ponte : GrossZagierKolyvagin modeloGenuino := PROVA_DA_PONTE_B6
-
-theorem produtorPosto : RankOpen modeloGenuino := PROVA_DO_PRODUTOR_O6
-
-theorem produtorRefinado : RefinedOpen modeloGenuino := PROVA_DO_PRODUTOR_O7
-
-theorem terminal : BSDFull modeloGenuino := bsd_conditional ponte produtorPosto produtorRefinado
+theorem terminal : BSDFull modeloGenuino :=
+  ⟨ATK.Terminal.BSDClay.terminal, ATK.Terminal.BSDRefinada.terminal⟩
 
 end ATK.Terminal.BSD
 

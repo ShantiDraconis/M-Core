@@ -4,13 +4,13 @@ Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/t
 
 ## Contagem reconciliada
 
-- **25 lacunas** no catálogo, nos 21 modelos de portão: **23 abertas** e **2 preenchidas** (ligação construída no kernel).
+- **25 lacunas** no catálogo, nos 23 modelos de portão: **23 abertas** e **2 preenchidas** (ligação construída no kernel).
 - Rota da prova: **16** ocorrências abertas; rota da refutação: **10**; 3 ligações abertas são compartilhadas pelas duas rotas (16 + 10 − 3 = 23).
 - Antes da construção da L2 eram 18 + 12 − 5 = 25; as contagens "18 + 12" e "25" mediam coisas diferentes e estavam certas.
-- Tipos conferidos pelo kernel: **25/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
+- Tipos conferidos pelo kernel: **22/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
 - Fechadas: **0/25**. Preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo genuíno (falta ainda a revisão humana para `CLOSED`).
 
-Fontes do kernel: SHA-256 `2d58a0493bb00fdc2d58d41f76230ff8997b5af4f4d1f0931899de4350ad00ea`.
+Fontes do kernel: SHA-256 `4e89fb2b0c9a6aeacac54af8b6d6664ee2ef81799908d6d2f920333ae4a355da`.
 
 ## Os 24 componentes
 
@@ -382,7 +382,7 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 parcial: part
 | 21 · Exemplos (no kernel) | `ATK.BSD.regulator_det_identity`; `ATK.ModelosSete.Hb_det`; `ATK.CongruentCurve.E_torsion_points` |
 | 22 · Contraexemplos (no kernel) | `ATK.BSD.sha_recovery` isola #Ш só supondo a fórmula (não é prova) |
 
-### T09 — `BSD:PROVA_DA_PONTE_B6`
+### T09 — `BSDClay:PROVA_DA_PONTE_B6`
 
 | Componente | Conteúdo |
 |---|---|
@@ -393,11 +393,11 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 parcial: part
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.BSD.fecha`; `ATK.Termos.BSD.decomposicao` |
 | 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
-| 20 · Obrigação terminal | alimenta `ATK.Terminal.BSD.terminal` |
-| 23 · Certificado Lean | teorema publicado; falta formalizar · tipo conferido pelo kernel |
-| 24 · Proveniência | `atk-kernel/terminal-templates/BSD.lean.tpl` · `atk-kernel/scripts/termos.json` |
+| 20 · Obrigação terminal | alimenta `ATK.Terminal.BSDClay.terminal` |
+| 23 · Certificado Lean | teorema publicado; falta formalizar · tipo não conferido nesta execução |
+| 24 · Proveniência | `atk-kernel/terminal-templates/BSDClay.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
-### T10 — `BSD:PROVA_DO_PRODUTOR_O6`
+### T10 — `BSDClay:PROVA_DO_PRODUTOR_O6`
 
 | Componente | Conteúdo |
 |---|---|
@@ -408,11 +408,11 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 parcial: part
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.BSD.fecha`; `ATK.Termos.BSD.decomposicao` |
 | 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
-| 20 · Obrigação terminal | alimenta `ATK.Terminal.BSD.terminal` |
-| 23 · Certificado Lean | ABERTA — problema em aberto · tipo conferido pelo kernel |
-| 24 · Proveniência | `atk-kernel/terminal-templates/BSD.lean.tpl` · `atk-kernel/scripts/termos.json` |
+| 20 · Obrigação terminal | alimenta `ATK.Terminal.BSDClay.terminal` |
+| 23 · Certificado Lean | ABERTA — problema em aberto · tipo não conferido nesta execução |
+| 24 · Proveniência | `atk-kernel/terminal-templates/BSDClay.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
-### T11 — `BSD:PROVA_DO_PRODUTOR_O7`
+### T11 — `BSDRefinada:PROVA_DO_PRODUTOR_O7`
 
 | Componente | Conteúdo |
 |---|---|
@@ -423,9 +423,9 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 parcial: part
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
 | 18 · Lemas (certificados, do termo) | `ATK.Termos.BSD.fecha`; `ATK.Termos.BSD.decomposicao` |
 | 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
-| 20 · Obrigação terminal | alimenta `ATK.Terminal.BSD.terminal` |
-| 23 · Certificado Lean | ABERTA — problema em aberto · tipo conferido pelo kernel |
-| 24 · Proveniência | `atk-kernel/terminal-templates/BSD.lean.tpl` · `atk-kernel/scripts/termos.json` |
+| 20 · Obrigação terminal | alimenta `ATK.Terminal.BSDRefinada.terminal` |
+| 23 · Certificado Lean | ABERTA — problema em aberto · tipo não conferido nesta execução |
+| 24 · Proveniência | `atk-kernel/terminal-templates/BSDRefinada.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
 ### T19 — `BSDRefutacao:PROVA_DA_REFUTACAO`
 

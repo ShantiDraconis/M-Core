@@ -312,13 +312,13 @@ open ATK.Conditional.BSD
 
 universe u
 
-/-- **T09** · `BSD.lean.tpl : PROVA_DA_PONTE_B6` · Gross–Zagier–Kolyvagin (posto analítico ≤ 1). -/
+/-- **T09** · `BSDClay.lean.tpl : PROVA_DA_PONTE_B6` · Gross–Zagier–Kolyvagin (posto analítico ≤ 1). -/
 def ponteB6 (M : BSDModel.{u}) : Prop := GrossZagierKolyvagin M
 
-/-- **T10** · `BSD.lean.tpl : PROVA_DO_PRODUTOR_O6` · obrigação O6: posto analítico ≥ 2. -/
+/-- **T10** · `BSDClay.lean.tpl : PROVA_DO_PRODUTOR_O6` · obrigação O6: posto analítico ≥ 2. -/
 def produtorO6 (M : BSDModel.{u}) : Prop := RankOpen M
 
-/-- **T11** · `BSD.lean.tpl : PROVA_DO_PRODUTOR_O7` · obrigação O7: Ш finito e fórmula refinada. -/
+/-- **T11** · `BSDRefinada.lean.tpl : PROVA_DO_PRODUTOR_O7` · obrigação O7: Ш finito e fórmula refinada. -/
 def produtorO7 (M : BSDModel.{u}) : Prop := RefinedOpen M
 
 /-- **T19** · `BSDRefutacao.lean.tpl : PROVA_DA_REFUTACAO`. -/

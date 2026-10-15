@@ -84,6 +84,7 @@ import ATK.CookLevinGerador
 import ATK.CookLevinNP
 import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes
+import ATK.BSDPortoes
 import ATK.L3Base
 import ATK.L4Base
 import ATK.L5Base

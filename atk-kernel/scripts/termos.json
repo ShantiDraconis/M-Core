@@ -372,7 +372,7 @@
   {
    "id": "T09",
    "linha": "BSD",
-   "template": "BSD",
+   "template": "BSDClay",
    "placeholder": "PROVA_DA_PONTE_B6",
    "rota": "prova",
    "papel": "ponte",
@@ -385,13 +385,13 @@
     "ATK.Termos.BSD.fecha",
     "ATK.Termos.BSD.decomposicao"
    ],
-   "alimenta": "ATK.Terminal.BSD.terminal",
+   "alimenta": "ATK.Terminal.BSDClay.terminal",
    "estado": "teorema publicado; falta formalizar"
   },
   {
    "id": "T10",
    "linha": "BSD",
-   "template": "BSD",
+   "template": "BSDClay",
    "placeholder": "PROVA_DO_PRODUTOR_O6",
    "rota": "prova",
    "papel": "produtor",
@@ -404,13 +404,13 @@
     "ATK.Termos.BSD.fecha",
     "ATK.Termos.BSD.decomposicao"
    ],
-   "alimenta": "ATK.Terminal.BSD.terminal",
+   "alimenta": "ATK.Terminal.BSDClay.terminal",
    "estado": "ABERTA — problema em aberto"
   },
   {
    "id": "T11",
    "linha": "BSD",
-   "template": "BSD",
+   "template": "BSDRefinada",
    "placeholder": "PROVA_DO_PRODUTOR_O7",
    "rota": "prova",
    "papel": "produtor",
@@ -423,7 +423,7 @@
     "ATK.Termos.BSD.fecha",
     "ATK.Termos.BSD.decomposicao"
    ],
-   "alimenta": "ATK.Terminal.BSD.terminal",
+   "alimenta": "ATK.Terminal.BSDRefinada.terminal",
    "estado": "ABERTA — problema em aberto"
   },
   {

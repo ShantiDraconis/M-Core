@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 2d58a0493bb00fdc2d58d41f76230ff8997b5af4f4d1f0931899de4350ad00ea
+# axiomas por teorema — congelamento de 4e89fb2b0c9a6aeacac54af8b6d6664ee2ef81799908d6d2f920333ae4a355da
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3075,3 +3075,12 @@ ATK.BealFermatRegular.beal_mdc_regular	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.seis_iff_regular	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.beal_iff_residual_regular	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.exemplos_regulares	propext, Classical.choice, Quot.sound
+ATK.BSDPortoes.full_iff	nenhum
+ATK.BSDPortoes.full_clay	nenhum
+ATK.BSDPortoes.full_refinada	nenhum
+ATK.BSDPortoes.full_de_partes	nenhum
+ATK.BSDPortoes.clay_iff	propext, Quot.sound
+ATK.BSDPortoes.refinada_iff	nenhum
+ATK.BSDPortoes.clay_fiel	propext, Classical.choice, Quot.sound
+ATK.BSDPortoes.clay_nao_implica_full	nenhum
+ATK.BSDPortoes.refinada_nao_implica_clay	propext

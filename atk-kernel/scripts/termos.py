@@ -20,7 +20,8 @@ import sys
 PH = re.compile(r"\b(PROVA_[A-Z0-9_]+|LIGACAO_[A-Z0-9_]+)\b")
 LINHAS = ["RH", "Beal", "NS", "PNP", "Hodge", "BSD", "YM"]
 MODELOS = ["NSModelo", "PNPModelo", "HodgeModelo", "BSDModelo", "YMModelo"]
-PROVA = set(MODELOS + LINHAS)
+SUBPORTOES = ["BSDClay", "BSDRefinada"]           # BSD_FULL = BSD_CLAY ∧ BSD_REFINED
+PROVA = set(MODELOS + SUBPORTOES + LINHAS)
 REFUTACAO = set(MODELOS + [k + "Refutacao" for k in LINHAS])
 
 
@@ -121,7 +122,7 @@ def ficha(res, sha=None):
           "Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/termos.json` "
           "(catálogo) e `atk-kernel/ATK/Termos.lean` (nomes e teoremas no kernel).", "",
           "## Contagem reconciliada", "",
-          f"- **{res['catalogo']} lacunas** no catálogo, nos 21 modelos de portão: "
+          f"- **{res['catalogo']} lacunas** no catálogo, nos 23 modelos de portão: "
           f"**{res['distintos']} abertas** e **{res['preenchidas']} preenchidas** (ligação construída no kernel).",
           f"- Rota da prova: **{res['prova']}** ocorrências abertas; rota da refutação: **{res['refutacao']}**; "
           f"{res['compartilhadas']} ligações abertas são compartilhadas pelas duas rotas "

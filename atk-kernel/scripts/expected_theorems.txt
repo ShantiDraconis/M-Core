@@ -3073,3 +3073,12 @@ ATK.BealFermatRegular.beal_mdc_regular
 ATK.BealFermatRegular.seis_iff_regular
 ATK.BealFermatRegular.beal_iff_residual_regular
 ATK.BealFermatRegular.exemplos_regulares
+ATK.BSDPortoes.full_iff
+ATK.BSDPortoes.full_clay
+ATK.BSDPortoes.full_refinada
+ATK.BSDPortoes.full_de_partes
+ATK.BSDPortoes.clay_iff
+ATK.BSDPortoes.refinada_iff
+ATK.BSDPortoes.clay_fiel
+ATK.BSDPortoes.clay_nao_implica_full
+ATK.BSDPortoes.refinada_nao_implica_clay

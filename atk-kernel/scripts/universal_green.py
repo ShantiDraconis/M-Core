@@ -158,6 +158,14 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
                        ln.get("refutation_statement"), ln.get("refutation_statement_root"), runner)
         proved = g["ok"] and link_ok
         refuted = bool(rg and rg["ok"]) and link_ok
+        subs = []  # subportões (BSD: BSD_FULL = BSD_CLAY ∧ BSD_REFINED); a linha exige todos
+        for sg in ln.get("subgates", []):
+            sgg = _gate(root, axioms, fstatus, sg["gate_file"], sg["gate_theorem"], sg["statement"],
+                        sg.get("statement_root"), runner)
+            subs.append({"id": sg["id"], "statement": sg["statement"], "gate": sgg,
+                         "green": (sgg["ok"] and link_ok) or proved,
+                         "bridges": [{"id": b, "status": st(b)} for b in sg.get("bridges", [])],
+                         "obligations": [{"id": o, "status": st(o)} for o in sg.get("obligations", [])]})
         estado = ("INCONSISTENTE" if proved and refuted else "PROVADA" if proved
                   else "REFUTADA" if refuted else "ABERTA")
         green = proved and not refuted
@@ -169,6 +177,7 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
             "obligations": [{"id": o, "status": st(o)} for o in ln["obligations"]],
             "producer": ln["producer"], "producer_equivalence": ln["producer_equivalence"],
             "linking": None if ln["linking"] is None else {"id": ln["linking"], "status": st(ln["linking"])},
+            "subgates": subs, "full_rule": ln.get("full_rule"),
         })
     fiel = gates["universal_green_fiel"]
     gf = _gate(root, axioms, fstatus, fiel["gate_file"], fiel["gate_theorem"], fiel["statement"],
@@ -204,6 +213,8 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
         "BRIDGES_IN_KERNEL": f"{proved_b}/{len(bridges)}",
         "PRODUCERS_OPEN": f"{open_o}/{len(obligs)}",
         "LINKINGS_OPEN": f"{open_l}/{len(links)}",
+        "SUBGATES_GREEN": f"{sum(sg['green'] for l in lines for sg in l['subgates'])}/"
+                          f"{sum(len(l['subgates']) for l in lines)}",
     }
     md = [f"### Verde universal e raiz final — `UNIVERSAL_GREEN = {str(universal).lower()}` · "
           f"`FINAL_ROOT = {final_root or 'null'}`",
@@ -222,6 +233,13 @@ def compute(root, report=None, axioms=None, fstatus=None, runner="default"):
                   + f"`{l['producer']}` (" + ", ".join(f"{o['id']} {o['status']}" for o in l["obligations"]) + ") | "
                   + (f"{l['linking']['id']} {l['linking']['status']}" if l["linking"] else "—")
                   + " | " + {"PROVADA": "✅ PROVADA", "REFUTADA": "🔻 REFUTADA", "INCONSISTENTE": "⚠️ INCONSISTENTE"}.get(l["estado"], "❌ ABERTA") + " |")
+    for l in lines:
+        if l["subgates"]:
+            md += ["", f"Subportões de {l['problem']} — `{l['full_rule']}`:", ""]
+            md += [f"- **{sg['id']}** `{sg['statement']}` — `{sg['gate']['theorem']}`: "
+                   + ("✅ verde" if sg["green"] else (sg["gate"]["reason"] or "aberto")) + " ("
+                   + ", ".join(f"{o['id']} {o['status']}" for o in sg["bridges"] + sg["obligations"]) + ")"
+                   for sg in l["subgates"]]
     md += ["", f"Raiz final: `{fr['gate_theorem']}` — {gr['reason'] or 'OK'}; redução certificada "
            f"`{fr['reduction']}`. Verde fiel: `{fiel['gate_theorem']}` — {gf['reason'] or 'OK'}; forma exata "
            f"`{fiel['exact_form']}`.",
