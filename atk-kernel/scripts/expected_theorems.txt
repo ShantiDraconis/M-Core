@@ -3096,6 +3096,16 @@ ATK.BSDPontosE32.card_raizes
 ATK.BSDPontosE32.card_afim
 ATK.BSDPontosE32.card_projetivo
 ATK.BSDPontosE32.traco_zero
+ATK.BSDEulerE32.car_ne_dois
+ATK.BSDEulerE32.chi_menos_um
+ATK.BSDEulerE32.soma_chi_zero
+ATK.BSDEulerE32.card_raizes
+ATK.BSDEulerE32.card_afim
+ATK.BSDEulerE32.card_pontos
+ATK.BSDEulerE32.equacao_mudanca
+ATK.BSDEulerE32.card_pontos_mudanca
+ATK.BSDEulerE32.reducao_minimal
+ATK.BSDEulerE32.polinomioLocal_E32
 ATK.ParametrosModelo.comp_map
 ATK.ParametrosModelo.h1_substituicao
 ATK.ParametrosModelo.h2_composicao
