@@ -2779,3 +2779,13 @@ ATK.BaseToroPoincare.coeff_trig
 ATK.BaseToroPoincare.energia_trig
 ATK.BaseToroPoincare.galerkin_L2
 ATK.BaseToroPoincare.galerkin_L2_decaimento
+ATK.BaseLerayL2.coefL_apply
+ATK.BaseLerayL2.divL_apply
+ATK.BaseLerayL2.mem_L2sigma
+ATK.BaseLerayL2.isClosed_L2sigma
+ATK.BaseLerayL2.leray_mem
+ATK.BaseLerayL2.leray_eq_self_iff
+ATK.BaseLerayL2.leray_idem
+ATK.BaseLerayL2.norm_leray_le
+ATK.BaseLerayL2.galerkin_mem_L2sigma
+ATK.BaseLerayL2.galerkin_leray

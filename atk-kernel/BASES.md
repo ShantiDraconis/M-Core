@@ -33,7 +33,7 @@ O mapa junta as duas linhas de trabalho do kernel: as bases `ATK/Base*.lean` (ra
 | N2b | Instância Galerkin | o subespaço admissível (div. nula, realidade) é invariante pelo campo de Galerkin; o campo é localmente Lipschitz e dissipativo ⇒ soluções globais de Galerkin | ✅ | `BaseGalerkinGlobal` |
 | N3a | Poincaré discreto e decaimento | `k ≠ 0 ⇒ λ_k ≥ 4π²`; Parseval; soluções de Galerkin de média nula com `‖u(t)‖ ≤ e^{−4π²νt}‖u(0)‖` (estimativa uniforme em `K`) | ✅ | `BaseGalerkinDecaimento` |
 | N3 | Espaços de energia | `f̂₀` = média; `H¹(Tᵈ)` em Fourier; **Poincaré** `∫\|f\|² ≤ (2π)⁻²‖∇f‖²` em média nula (Parseval da Mathlib); estados de Galerkin como campos de `L²(T³)³` com a mesma energia, e decaimento da energia contínua | ✅ | `BaseToroPoincare` |
-| N3b | `L²_σ` e Leray em `L²` | subespaço fechado de divergência nula e projeção de Leray como operador em `L²(T³)³` | ⬜ | — |
+| N3b | `L²_σ` e Leray em `L²` | `L²_σ = ⋂ₖ ker(div_k)` fechado em `L²(T³)³`; Leray = projeção ortogonal (`P² = P`, `‖Pu‖ ≤ ‖u‖`, `Pu = u ⟺ u ∈ L²_σ`); os estados admissíveis de Galerkin estão em `L²_σ` | ✅ | `BaseLerayL2` |
 | N4 | Compacidade | Aubin–Lions (ou Arzelà–Ascoli + estimativa de `∂ₜu_N` em `H⁻¹`) | ⬜ | — |
 | N5 | Soluções fracas de Leray | passagem ao limite `N → ∞`; desigualdade de energia | ⬜ | — |
 | N6 | Dados pequenos | dada a desigualdade de enstrofia `y' ≤ −ay + by³`: barreira exponencial, enstrofia limitada, `y → 0` | 🟡 | `NSPequeno` |
@@ -127,7 +127,7 @@ não afeta o enunciado A acima.
 
 ## Ordem de ataque
 
-1. ~~N2b~~, ~~N3a~~, ~~N3~~ (feitos) → **N3b** (`L²_σ`) → **N4** (Aubin–Lions) → N5.
+1. ~~N2b~~, ~~N3a~~, ~~N3~~, ~~N3b~~ (feitos) → **N4** (Aubin–Lions) → N5.
 2. ~~R2~~, ~~R3~~ (feitos) → **R3'** (forma de Fourier, Φ > 0) → **R4** (Hardy): primeira parte provada de RH sobre a reta.
 3. ~~P3~~ (feito) → **P5** (hierarquia de tempo).
 4. B1b e B2 parciais → **Nagell–Lutz geral** (filtração `p`-ádica) → redução mod p em toda a torsão.
