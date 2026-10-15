@@ -75,8 +75,6 @@ theorem hasSum_cos (a : ℝ) {t : ℝ} (ht : 0 < t) :
     Complex.I_im, Complex.ofReal_re, Complex.ofReal_im, Complex.add_re, Complex.add_im]
   ring
 
-theorem sin_int_mul_pi' (k : ℤ) : Real.sin (k * π) = 0 := Real.sin_int_mul_pi k
-
 theorem cos_pi_int (j : ℤ) : Real.cos (π * j) = if j % 2 = 0 then 1 else -1 := by
   have hj : j = j % 2 + 2 * (j / 2) := by omega
   split_ifs with h
@@ -614,7 +612,6 @@ end ATK.PonteModularCurva32
 
 #print axioms ATK.PonteModularCurva32.hasSum_sin
 #print axioms ATK.PonteModularCurva32.hasSum_cos
-#print axioms ATK.PonteModularCurva32.sin_int_mul_pi'
 #print axioms ATK.PonteModularCurva32.cos_pi_int
 #print axioms ATK.PonteModularCurva32.sin_quarto
 #print axioms ATK.PonteModularCurva32.cos_quarto

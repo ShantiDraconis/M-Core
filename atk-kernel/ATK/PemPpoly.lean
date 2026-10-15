@@ -33,7 +33,7 @@ open Classical
 
 /-! ## Fórmulas: mudança de variáveis -/
 
-namespace Form'
+namespace FormM
 
 variable {ι κ : Type*}
 
@@ -63,7 +63,7 @@ theorem tam_map (f : ι → κ) : ∀ φ : Form ι, (map f φ).tam = φ.tam
   | .ou a b => by simp [map, tam, tam_map f a, tam_map f b]
   | .nao a => by simp [map, tam, tam_map f a]
 
-end Form'
+end FormM
 
 /-! ## A máquina -/
 
@@ -577,9 +577,9 @@ noncomputable def altura (n : ℕ) : ℕ := n + cres M.tm * M.time.eval n + jan 
 noncomputable def tamanho (n : ℕ) : ℕ :=
   custo (List.ofFn fun b => iniF M.tm (altura M n) M.inputAlphabet n
       ((Fintype.equivFin (Bit M.tm (altura M n))).symm b)) +
-    M.time.eval n * custo (List.ofFn fun b => Form'.map (Fintype.equivFin (Bit M.tm (altura M n)))
+    M.time.eval n * custo (List.ofFn fun b => FormM.map (Fintype.equivFin (Bit M.tm (altura M n)))
       (pasF M.tm (altura M n) ((Fintype.equivFin (Bit M.tm (altura M n))).symm b))) +
-    ((Form'.map (Fintype.equivFin (Bit M.tm (altura M n)))
+    ((FormM.map (Fintype.equivFin (Bit M.tm (altura M n)))
       (saiF M.tm (altura M n) M.outputAlphabet)).tam + 1)
 
 /-- **Simulação**: a fatia de tamanho `n` tem circuito com `tamanho M n` portas. -/
@@ -592,18 +592,18 @@ theorem circuito_M (n : ℕ) :
   have hH : n + cres M.tm * T ≤ Hb + 1 := by simp only [hHb, altura, hT]; omega
   have h := temCircuito_camadas (n := n) (T := T)
     (fun b => iniF M.tm Hb M.inputAlphabet n (e.symm b))
-    (fun b => Form'.map e (pasF M.tm Hb (e.symm b)))
-    (Form'.map e (saiF M.tm Hb M.outputAlphabet))
+    (fun b => FormM.map e (pasF M.tm Hb (e.symm b)))
+    (FormM.map e (saiF M.tm Hb M.outputAlphabet))
   have hfun : (fun x : Fin n → Bool => χ (List.ofFn x)) = fun x =>
-      (Form'.map e (saiF M.tm Hb M.outputAlphabet)).eval
-        ((fun r b => (Form'.map e (pasF M.tm Hb (e.symm b))).eval r)^[T]
+      (FormM.map e (saiF M.tm Hb M.outputAlphabet)).eval
+        ((fun r b => (FormM.map e (pasF M.tm Hb (e.symm b))).eval r)^[T]
           (fun b => (iniF M.tm Hb M.inputAlphabet n (e.symm b)).eval x)) := by
     funext x
     set c₀ : TM2.Cfg M.tm.Γ M.tm.Λ M.tm.σ := initList M.tm (ent M.tm M.inputAlphabet x) with hc₀
     have h0 : ∀ k, (c₀.stk k).length ≤ n ∧ ∀ y ∈ c₀.stk k, y ∈ S M.tm k :=
       ok_ini M.tm M.inputAlphabet x
     -- linhas indexadas por `Fin B`
-    have hrows : ∀ t, (fun r b => (Form'.map e (pasF M.tm Hb (e.symm b))).eval r)^[t]
+    have hrows : ∀ t, (fun r b => (FormM.map e (pasF M.tm Hb (e.symm b))).eval r)^[t]
         (fun b => (iniF M.tm Hb M.inputAlphabet n (e.symm b)).eval x) =
         ((fun ρ r => (pasF M.tm Hb r).eval ρ)^[t] (codif M.tm Hb c₀)) ∘ e.symm := by
       intro t
@@ -615,11 +615,11 @@ theorem circuito_M (n : ℕ) :
       | succ t ih =>
         rw [Function.iterate_succ_apply', Function.iterate_succ_apply', ih]
         funext b
-        simp only [Function.comp, Form'.eval_map]
+        simp only [Function.comp, FormM.eval_map]
         congr 1
         funext r
         simp
-    rw [hrows, Form'.eval_map, linhas M.tm hd c₀ h0 hH T le_rfl]
+    rw [hrows, FormM.eval_map, linhas M.tm hd c₀ h0 hH T le_rfl]
     -- a execução para em `T` passos com a saída `χ w`
     have hout := M.outputsFun (List.ofFn x)
     have hlen : (LigacaoPNP.cod (List.ofFn x)).length = n := by simp [LigacaoPNP.cod]
@@ -710,15 +710,15 @@ theorem tamanho_le (n : ℕ) :
       _ = _ := by ring
   have c1 : custo (List.ofFn fun b => iniF M.tm Hb M.inputAlphabet n (e.symm b)) ≤ B * 7 :=
     custo_le _ 6 fun b => tam_iniF M.tm Hb M.inputAlphabet n _
-  have c2 : custo (List.ofFn fun b => Form'.map e (pasF M.tm Hb (e.symm b))) ≤
+  have c2 : custo (List.ofFn fun b => FormM.map e (pasF M.tm Hb (e.symm b))) ≤
       B * (cP M.tm + 1) :=
-    custo_le _ (cP M.tm) fun b => by rw [Form'.tam_map]; exact tam_pasF M.tm Hb _
-  have c3 : (Form'.map e (saiF M.tm Hb M.outputAlphabet)).tam ≤
+    custo_le _ (cP M.tm) fun b => by rw [FormM.tam_map]; exact tam_pasF M.tm Hb _
+  have c3 : (FormM.map e (saiF M.tm Hb M.outputAlphabet)).tam ≤
       Fintype.card (S M.tm M.tm.k₁) + 1 := by
-    rw [Form'.tam_map]; exact tam_saiF M.tm Hb _
+    rw [FormM.tam_map]; exact tam_saiF M.tm Hb _
   have hsum : custo (List.ofFn fun b => iniF M.tm Hb M.inputAlphabet n (e.symm b)) +
-      T * custo (List.ofFn fun b => Form'.map e (pasF M.tm Hb (e.symm b))) +
-      ((Form'.map e (saiF M.tm Hb M.outputAlphabet)).tam + 1) ≤
+      T * custo (List.ofFn fun b => FormM.map e (pasF M.tm Hb (e.symm b))) +
+      ((FormM.map e (saiF M.tm Hb M.outputAlphabet)).tam + 1) ≤
       B * 7 + T * (B * (cP M.tm + 1)) + (Fintype.card (S M.tm M.tm.k₁) + 2) := by
     have := Nat.mul_le_mul_left T c2
     omega
@@ -771,14 +771,14 @@ theorem pemPpoly : PemPpoly := by
 theorem p_ne_np_de_naoPpoly (h : NPnaoEmPpoly) : PneNP := p_ne_np_de_ppoly pemPpoly h
 
 /-- **Cotas superpolinomiais para uma linguagem de NP ⇒ P ≠ NP**, sem pontes. -/
-theorem p_ne_np_de_cotas' {L : Linguagem} (hL : L ∈ classeNP)
+theorem p_ne_np_de_cotas_sem_ponte {L : Linguagem} (hL : L ∈ classeNP)
     (h : ∀ k : ℕ, CotaInferior L fun n => n ^ k + k) : PneNP :=
   p_ne_np_de_cotas pemPpoly hL h
 
 end ATK.PemPpoly
 
-#print axioms ATK.PemPpoly.Form'.eval_map
-#print axioms ATK.PemPpoly.Form'.tam_map
+#print axioms ATK.PemPpoly.FormM.eval_map
+#print axioms ATK.PemPpoly.FormM.tam_map
 #print axioms ATK.PemPpoly.prof_le
 #print axioms ATK.PemPpoly.emp_le
 #print axioms ATK.PemPpoly.simb_finite
@@ -812,4 +812,4 @@ end ATK.PemPpoly
 #print axioms ATK.PemPpoly.tamanho_poli
 #print axioms ATK.PemPpoly.pemPpoly
 #print axioms ATK.PemPpoly.p_ne_np_de_naoPpoly
-#print axioms ATK.PemPpoly.p_ne_np_de_cotas'
+#print axioms ATK.PemPpoly.p_ne_np_de_cotas_sem_ponte
