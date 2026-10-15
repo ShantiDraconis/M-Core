@@ -2976,7 +2976,6 @@ ATK.BaseGaussCurva32.somaG_mult
 ATK.BaseGaussCurva32.coef_gauss
 ATK.PonteModularCurva32.hasSum_sin
 ATK.PonteModularCurva32.hasSum_cos
-ATK.PonteModularCurva32.sin_int_mul_pi'
 ATK.PonteModularCurva32.cos_pi_int
 ATK.PonteModularCurva32.sin_quarto
 ATK.PonteModularCurva32.cos_quarto
@@ -3038,8 +3037,8 @@ ATK.CircuitoCamadas.trunca_length
 ATK.CircuitoCamadas.trunca_getElem
 ATK.CircuitoCamadas.temCircuito_lista
 ATK.CircuitoCamadas.temCircuito_camadas
-ATK.PemPpoly.Form'.eval_map
-ATK.PemPpoly.Form'.tam_map
+ATK.PemPpoly.FormM.eval_map
+ATK.PemPpoly.FormM.tam_map
 ATK.PemPpoly.prof_le
 ATK.PemPpoly.emp_le
 ATK.PemPpoly.simb_finite
@@ -3073,4 +3072,4 @@ ATK.PemPpoly.tamanho_le
 ATK.PemPpoly.tamanho_poli
 ATK.PemPpoly.pemPpoly
 ATK.PemPpoly.p_ne_np_de_naoPpoly
-ATK.PemPpoly.p_ne_np_de_cotas'
+ATK.PemPpoly.p_ne_np_de_cotas_sem_ponte
