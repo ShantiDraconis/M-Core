@@ -83,7 +83,7 @@ não afeta o enunciado A acima.
 | B0 | Enunciado do Clay | L-função e pontos sobre os objetos da Mathlib | ✅ | `LigacaoBSD`, `CongruentCurve` |
 | B1a | 2-torsão | `P + P = 0` ⟺ `y = 0` ⟺ `x` raiz da cúbica | ✅ | `BaseCurvasTorsao` |
 | B1b | Nagell–Lutz | pontos de torsão sobre ℚ têm coordenadas inteiras e `y² ∣ Δ` — feito para a ordem 2 (`x ∈ ℤ`, `x ∣ a₆`) e `\|E[2]\| ≤ 4`; o caso geral exige a filtração `p`-ádica | 🟡 | `BaseNagellLutzDois` |
-| B2 | Redução mod p | `E(ℚ)_tors ↪ E(𝔽_p)` para p de boa redução, p ≠ 2 | ⬜ | — |
+| B2 | Redução mod p | `E(ℚ)_tors ↪ E(𝔽_p)` para p de boa redução, p ≠ 2 — feito para `E(ℚ)[2]` (`Δ = 16d`, `d` pelas raízes, raízes distintas mod p); o caso geral exige o grupo formal | 🟡 | `BaseReducaoDois` |
 | B3 | 2-descida | `E(ℚ)/2E(ℚ)` finito para curvas com 2-torsão completa | ⬜ | — |
 | B4 | Mordell–Weil | alturas e descida | ⛔ | — |
 | B5 | Gross–Zagier–Kolyvagin | posto analítico ≤ 1 | ⛔ | — |
