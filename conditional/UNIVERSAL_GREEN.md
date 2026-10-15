@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (2112 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (2291 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -310,6 +310,56 @@ Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.le
   composição) dá `poli_custoTotal`.
 * `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
   `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
+
+## Rodada de 15/10/2026 (noite): Fermat para primos regulares, `n = 5, 7, 11, 13, 17`
+
+Continuação do pedido "prove tudo" (179 teoremas auditados, axiomas padrão).
+
+### `ATK/FltRegular/` — o teorema de Kummer (formalização pública flt-regular)
+
+Cópia do projeto **flt-regular** (<https://github.com/leanprover-community/flt-regular>, commit
+`faae830`, Apache 2.0; Riccardo Brasca, Ruben Van de Velde, Chris Birkbeck, Eric Rodriguez, Andrew
+Yang, Alex J. Best e colaboradores): FLT para todo primo ímpar regular (casos I e II, com o lema de
+Kummer e Hilbert 90/92/94), e `3, 5, 7` regulares. Mudanças: só os `import` (`ATK.FltRegular.…`) e
+uma adaptação à Mathlib v4.34.1 em `Hilbert92.lean` (`MulEquiv.monoidEnd`), igual à da versão
+posterior do próprio projeto. Sem `sorry`/`axiom`/`native_decide`; detalhes em
+`ATK/FltRegular/ORIGEM.md`.
+
+### `FermatOnze` (7), `FermatTreze` (11), `FermatDezessete` (126), `PolyLista` (9) — novos
+
+* Cotas de Minkowski: parte inteira 58 para `ℚ(ζ₁₁)`, 306 para `ℚ(ζ₁₃)` e 13 254 para `ℚ(ζ₁₇)`
+  (limites de `π` da Mathlib).
+* Primos abaixo da cota com classe de norma pequena: `23` (`n = 11`); `3` (grau 3) e
+  `53, 79, 131, 157` (`n = 13`); para `n = 17`, `2` (grau 8), `67`, `101` (grau 2) e os 100 primos
+  `≡ 1 (mód 17)` até 13 254. Para cada um, `certificado_p` exibe um gerador do ideal primo e as
+  identidades polinomiais em `ℤ[X]` do critério `pid6` de flt-regular. Os geradores foram achados
+  fora do kernel (busca e redução de reticulados) e só conferidos dentro dele: por `ring` para 11 e
+  13; para 17, por reflexão (`ATK.PolyLista`: `poly_soma`, `poly_produto`, `igual_de_listas`) e
+  `decide +kernel` sobre listas de inteiros.
+* `FermatDezessete.excecoes`: o kernel confere (por cálculo, em blocos de mil) que todo
+  `p ≤ 13 254` com alguma potência `pⁱ ≤ 13 254`, `pⁱ ≡ 1 (mód 17)`, ou está entre os 103
+  certificados, ou é 1, ou tem divisor primo `≤ 115`.
+* **`pid_onze`, `pid_treze`, `pid_dezessete`**: `𝓞(ℚ(ζₚ))` principal; `regular_*`;
+  **`flt_onze`, `flt_treze`, `flt_dezessete`: FLT(11), FLT(13) e FLT(17)**.
+
+### `ATK/FermatRegular.lean` (15) — ponte B2
+
+* `flt_primo_regular`, `flt_cinco`, `flt_sete`, `flt_onze`, `flt_treze`, `flt_dezessete`,
+  `flt_tres_a_dezoito` (FLT(n) para `3 ≤ n ≤ 18`).
+* **`flt_iff_irregulares`: `FermatLastTheorem ⟺ ∀ p primo, p ≥ 19, p irregular ⇒ FLT(p)`.** O
+  primeiro primo irregular é 37. Para 19 o mesmo método serve (cota ≈ 105 933, ≈ 600
+  certificados); de 23 em diante `𝓞(ℚ(ζₚ))` não é principal e é preciso calcular o número de
+  classes.
+
+### `ATK/BealFermatRegular.lean` (11) — produtor O2, residual incondicional
+
+* Beal sem pontes quando `d ∣ mdc(x, y, z)`, `d ∈ {5, 7, 11, 13, 17}` (`beal_mdc_regular`), e
+  `BealConjecture ↔ ExclusaoResidualRegular` (`beal_iff_residual_regular`). Cobertura incondicional
+  dos expoentes em `3..200`: 799.326 → **886.236** (10,30% → **11,42%**). Esses triplos têm
+  `mdc ≥ 5`, fora do domínio de O2; sob B2 já estavam cobertos.
+
+Nenhum estado mudou: pontes no kernel **2/8** (B2 parcial: faltam os primos irregulares),
+produtores abertos **8/8**, ligações abertas **3/5**.
 
 ## Rodada de 15/10/2026 (tarde): posto `≥ 2` por 2-descida e `A⁶ + B⁶ ≠ C²`
 

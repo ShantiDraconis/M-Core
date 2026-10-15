@@ -112,3 +112,9 @@ import ATK.GermainLegendre
 import ATK.PostoDois
 import ATK.DarmonMerelSeis
 import ATK.BealSeisSeisDois
+import ATK.FermatOnze
+import ATK.FermatTreze
+import ATK.PolyLista
+import ATK.FermatDezessete
+import ATK.FermatRegular
+import ATK.BealFermatRegular

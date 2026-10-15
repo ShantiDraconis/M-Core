@@ -252,6 +252,18 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
   fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
   O4 (SAT ∉ P).
+- **Rodada de 15/10/2026 (noite) — último teorema de Fermat para primos regulares e para
+  `n = 5, 7, 11, 13, 17`** (179 teoremas): `ATK/FltRegular/` traz a formalização pública
+  **flt-regular** (teorema de Kummer, casos I e II; Apache 2.0, com atribuição e uma adaptação de
+  uma linha à Mathlib v4.34.1 — ver `ATK/FltRegular/ORIGEM.md`). `FermatOnze`, `FermatTreze`,
+  `FermatDezessete` (novos): `𝓞(ℚ(ζ₁₁))`, `𝓞(ℚ(ζ₁₃))` e `𝓞(ℚ(ζ₁₇))` são principais pela cota de
+  Minkowski (58, 306 e 13 254), com geradores explícitos dos primos pequenos (1, 5 e 103
+  certificados) conferidos pelo kernel — para 17, por reflexão em listas de inteiros (`PolyLista`)
+  e `decide +kernel` —, logo **FLT(11)**, **FLT(13)** e **FLT(17)**. `FermatRegular`: FLT(n) para
+  `3 ≤ n ≤ 18` e **a ponte B2 equivale a FLT para os primos irregulares `p ≥ 19`**
+  (`flt_iff_irregulares`). `BealFermatRegular`: Beal sem pontes quando `5, 7, 11, 13` ou `17`
+  divide `mdc(x, y, z)` (cobertura incondicional em `3..200`: 10,30% → 11,42%). Pontes **2/8** (B2
+  continua parcial: faltam os primos irregulares), produtores **8/8** abertos.
 - **Rodada de 15/10/2026 (tarde) — posto `≥ 2` e `A⁶ + B⁶ ≠ C²`** (39 teoremas): `PostoDois` (28):
   `E(ℚ)[2] = {O, T₁, T₂, T₃}`, a torção cai em `φ(E[2])` quando `|φ(E[2])| = 4`
   (`phi_torsao_mem`, com `|T/2T| = |T[2]|`), e o **critério de independência** de pontos pela

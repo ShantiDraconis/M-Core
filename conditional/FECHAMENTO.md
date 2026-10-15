@@ -61,7 +61,8 @@ classes de Hodge = `V_ℚ ∩ F^p` (`HodgeFiltracao`) e `H¹` do toro complexo (
 reconstrução OS no modelo de rede (`YMReconstrucao`) e lacuna de massa sobre Wightman
 (`L5Lacuna`). FLT: teorema de Sophie Germain (`SophieGermain`) e o primeiro caso para todo primo ímpar `p < 300`
 (`GermainLegendre`); `A⁶ + B⁶ ≠ C²` na ponte B8 (`DarmonMerelSeis`) e Beal incondicional em `(6k, 6l, 2m)`
-(`BealSeisSeisDois`); Mordell–Weil para curvas com 2-torção racional completa (`MordellWeilDois`) e cotas inferiores do
+(`BealSeisSeisDois`); FLT para primos regulares (flt-regular, `ATK/FltRegular/`) e FLT(5), FLT(7),
+FLT(11), FLT(13), FLT(17), com B2 reduzida aos primos irregulares `p ≥ 19` (`FermatRegular`); Mordell–Weil para curvas com 2-torção racional completa (`MordellWeilDois`) e cotas inferiores do
 posto por 2-descida, com uma curva de posto `≥ 2` (`PostoDois`).
 
 ### Estado do item 1 (`ATK/NecessidadeBD.lean`, 18 teoremas, kernel local)
