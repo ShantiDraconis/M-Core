@@ -90,3 +90,8 @@ import ATK.Orion
 import ATK.OrionAlcance
 import ATK.GramBaezDuarte
 import ATK.BaezDuarteVetorB
+import ATK.RelacionalI
+import ATK.RelacionalLeis
+import ATK.RelacionalTransporte
+import ATK.RelacionalDN
+import ATK.CapturaIncondicional
