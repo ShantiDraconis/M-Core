@@ -50,6 +50,12 @@ jobs:
             dir: .
             module: MCore.Real.P01TerminalCertificate
             audit: "import MCore.Real.P01TerminalCertificate|#check @MCore.Real.P01TerminalCertificate.p01ConstructionGap|#print axioms MCore.Real.P01TerminalCertificate.p01ConstructionGap"
+          - id: R05b-PNP-contraexemplo-size-lt
+            local: kernelaudit/pnp/atk_p01-material-inhabitant-frontier-20260930
+            dir: .
+            module: MCore.Real.CanonicalCircuitBits
+            audit: "import MCore.Real.CanonicalCircuitBits|#check @MCore.Real.CanonicalCircuitBits.decodeCircuitCore"
+            source_messages: $GITHUB_WORKSPACE/self/kernelaudit/pnp/contraexemplos/DecodeSizeLtFalso.lean
           - id: R06-PNP-P01TerminalMaterialCertificate
             local: kernelaudit/pnp/atk_p01-terminal-promotion-candidate-20260930
             dir: .
@@ -122,6 +128,6 @@ jobs:
       - name: erros
         shell: bash
         run: |
-          n=$(tr '~' '\n' < erros.txt | grep -c . )
+          n=$(tr '~' '\n' < erros.txt | grep -c . || true)
           echo "::warning::${{ matrix.id }} ERROS_TOTAL=$n"
           fold -w 3000 erros.txt | head -8 | while IFS= read -r l; do echo "::warning::${{ matrix.id }} $l"; done
