@@ -28,7 +28,8 @@ Mathlib atual (exige teoria grande que ainda não existe).
 | N1 | Galerkin em Fourier no toro | termo convectivo truncado; `Σ N(u)_k · conj û_k = 0`; Leray; identidade de energia | ✅ | `BaseGalerkinNS` |
 | N2 | Existência global dissipativa | `F` localmente Lipschitz, `⟪F v, v⟫ ≤ 0` ⇒ solução em `[0,T]` para todo `T`, com `‖u(t)‖ ≤ ‖u(0)‖`; unicidade | ✅ | `BaseEDODissipativa` |
 | N2b | Instância Galerkin | o subespaço admissível (div. nula, realidade) é invariante pelo campo de Galerkin; o campo é localmente Lipschitz e dissipativo ⇒ soluções globais de Galerkin | ✅ | `BaseGalerkinGlobal` |
-| N3 | Espaços de energia | `L²_σ(T³)`, `H¹`, desigualdade de Poincaré em média nula (a Mathlib tem `mFourierBasis` e `BesselPotentialSpace`) | ⬜ | — |
+| N3a | Poincaré discreto e decaimento | `k ≠ 0 ⇒ λ_k ≥ 4π²`; Parseval; soluções de Galerkin de média nula com `‖u(t)‖ ≤ e^{−4π²νt}‖u(0)‖` (estimativa uniforme em `K`) | ✅ | `BaseGalerkinDecaimento` |
+| N3 | Espaços de energia | `L²_σ(T³)`, `H¹` contínuos e a identificação com ℓ² de Fourier (a Mathlib tem `mFourierBasis` e `BesselPotentialSpace`) | ⬜ | — |
 | N4 | Compacidade | Aubin–Lions (ou Arzelà–Ascoli + estimativa de `∂ₜu_N` em `H⁻¹`) | ⬜ | — |
 | N5 | Soluções fracas de Leray | passagem ao limite `N → ∞`; desigualdade de energia | ⬜ | — |
 | N6 | Regularidade 2D / dados pequenos | Ladyzhenskaya 2D; Fujita–Kato | ⬜ | — |
@@ -44,7 +45,8 @@ não afeta o enunciado A acima.
 | R1 | Função ξ e Ξ | ξ inteira; `ξ(1−s)=ξ(s)`; `ξ(s̄)=conj ξ(s)`; Ξ real e par; zeros; troca de sinal; RH ⟺ zeros de Ξ reais | ✅ | `BaseRiemannXi` |
 | R1' | Família de Báez-Duarte | `D_N = 1 − bᵀG⁻¹b`; `b_k = (log k + 1 − γ)/k`; `D_N > 0` | ✅ | `GramBaezDuarte`, `BaezDuarteVetorB`, `RelacionalDN` |
 | R2 | Sinal de ξ e Ξ(0) | ξ real e positiva em toda a reta real; `Ξ(0) = ξ(1/2) > 0`; uma troca de sinal de Ξ dá um zero na reta | ✅ | `BaseRiemannXiSinal` |
-| R3 | Representação integral | `Ξ(t) = ∫₀^∞ Φ(u) cos(ut) du` a partir da teta de Jacobi (a Mathlib tem `jacobiTheta₂` e a equação funcional) | ⬜ | — |
+| R3 | Representação integral | fórmula de Riemann `Ξ(t) = 1/2 − (t² + 1/4) ∫₁^∞ ψ(x) x^{−3/4} cos((t/2) log x) dx`, com `ψ = (θ − 1)/2 > 0`, a partir do FE-pair teta da Mathlib | ✅ | `BaseRiemannTeta` |
+| R3' | Forma de Fourier | `Ξ(t) = 2∫₀^∞ Φ(u) cos(ut) du` com `Φ > 0` (duas integrações por partes em R3) | ⬜ | — |
 | R4 | Teorema de Hardy | infinitos zeros na reta crítica | ⬜ | — |
 | R5 | Certificação numérica de zeros | aritmética intervalar para ζ (Euler–Maclaurin) + troca de sinal de Ξ | ⬜ | — |
 | R6 | Necessidade de Báez-Duarte | RH ⇒ `D_N → 0` (hoje com entradas isoladas em `NecessidadeBD`) | 🟡 | `NecessidadeBD` |
@@ -90,7 +92,7 @@ não afeta o enunciado A acima.
 
 | Camada | Base | Enunciado-alvo | Estado | Arquivo |
 |---|---|---|---|---|
-| H1 | Álgebra linear de Hodge | decomposição de Hodge para toros complexos (álgebra linear) | ⬜ | — |
+| H1 | Álgebra linear de Hodge | peso 1: `W = H^{1,0} ⊕ H^{0,1}`, simetria de Hodge `h^{1,0} = h^{0,1}`, `dim W` par | ✅ | `BaseHodgeLinear` |
 | H2 | Teorema (1,1) de Lefschetz | classes de divisores | ⛔ | — |
 | H3 | Teoria de Hodge em Kähler | harmônicas, decomposição `H^k = ⊕ H^{p,q}` | ⛔ | — |
 | — | **Núcleo aberto** | classes de Hodge racionais são algébricas | aberto | — |
@@ -109,8 +111,8 @@ não afeta o enunciado A acima.
 
 ## Ordem de ataque
 
-1. ~~N2b~~ (feito) → **N3** (Poincaré discreto, decaimento exponencial) → N4–N5.
-2. ~~R2~~ (feito) → **R3** (fórmula integral de Riemann para Ξ) → **R4** (Hardy): primeira parte provada de RH sobre a reta.
+1. ~~N2b~~, ~~N3a~~ (feitos) → **N3** (espaços contínuos) → **N4** (Aubin–Lions) → N5.
+2. ~~R2~~, ~~R3~~ (feitos) → **R3'** (forma de Fourier, Φ > 0) → **R4** (Hardy): primeira parte provada de RH sobre a reta.
 3. **P3** (M2d): fecha "SAT é NP-completo" no modelo genuíno.
 4. **B1b → B2** (torsão): primeira estrutura de `E(ℚ)`.
 5. **Y3** (positividade por reflexão).

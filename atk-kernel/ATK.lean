@@ -107,3 +107,6 @@ import ATK.BaseCurvasTorsao
 import ATK.BaseGalerkinGlobal
 import ATK.BaseRiemannXiSinal
 import ATK.BaseNagellLutzDois
+import ATK.BaseRiemannTeta
+import ATK.BaseHodgeLinear
+import ATK.BaseGalerkinDecaimento
