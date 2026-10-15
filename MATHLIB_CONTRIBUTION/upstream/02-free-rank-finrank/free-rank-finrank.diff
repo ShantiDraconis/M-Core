@@ -1,0 +1,61 @@
+diff --git a/Mathlib/GroupTheory/FiniteAbelian/Basic.lean b/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
+index 4bf6530..97744ff 100644
+--- a/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
++++ b/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
+@@ -8,6 +8,7 @@ module
+ public import Mathlib.Algebra.Module.PID
+ 
+ import Mathlib.Data.ZMod.QuotientRing
++import Mathlib.LinearAlgebra.Dimension.Torsion.Basic
+ 
+ /-!
+ # Structure of finite(ly generated) abelian groups
+@@ -164,6 +165,30 @@ theorem finite_of_fg_isAddTorsion [hG' : AddGroup.FG G] (hG : IsAddTorsion G) :
+ 
+ @[deprecated (since := "2026-07-01")] alias finite_of_fg_torsion := finite_of_fg_isAddTorsion
+ 
++/-- The minimal number of generators of a finitely generated torsion-free abelian group is its
++rank as a `ℤ`-module. -/
++theorem _root_.AddGroup.rank_eq_finrank_int [HasUniqueDiv G] [AddGroup.FG G] :
++    AddGroup.rank G = Module.finrank ℤ G := by
++  have : Module.Finite ℤ G := Module.Finite.iff_addGroup_fg.mpr ‹_›
++  refine le_antisymm ?_ ?_
++  · classical
++    let b := Module.finBasis ℤ G
++    have hb : AddSubgroup.closure (Finset.univ.image b : Set G) = ⊤ := by
++      rw [Finset.coe_image, Finset.coe_univ, Set.image_univ,
++        ← Submodule.span_int_eq_addSubgroupClosure, b.span_eq, Submodule.top_toAddSubgroup]
++    exact (AddGroup.rank_le hb).trans (Finset.card_image_le.trans (by simp))
++  · obtain ⟨S, hS, hS'⟩ := AddGroup.rank_spec G
++    have : Submodule.span ℤ (Set.range ((↑) : S → G)) = ⊤ := by
++      refine Submodule.toAddSubgroup_injective ?_
++      rw [Subtype.range_coe_subtype, Finset.setOfPred_mem,
++        Submodule.span_int_eq_addSubgroupClosure, hS', Submodule.top_toAddSubgroup]
++    exact (finrank_le_of_span_eq_top this).trans (by simp [hS])
++
++/-- The free rank of a finitely generated abelian group is its rank as a `ℤ`-module. -/
++theorem freeRank_eq_finrank [AddGroup.FG G] : freeRank G = Module.finrank ℤ G := by
++  rw [freeRank_def, AddGroup.rank_eq_finrank_int]
++  exact finrank_quotient_torsion_eq
++
+ end AddCommGroup
+ 
+ namespace CommGroup
+diff --git a/Mathlib/GroupTheory/Torsion.lean b/Mathlib/GroupTheory/Torsion.lean
+index 36c1ed9..1129221 100644
+--- a/Mathlib/GroupTheory/Torsion.lean
++++ b/Mathlib/GroupTheory/Torsion.lean
+@@ -523,6 +523,13 @@ instance _root_.QuotientGroup.instIsMulTorsionFree : IsMulTorsionFree <| G ⧸ t
+   exact (QuotientGroup.eq_one_iff g).mpr
+     (isOfFinOrder_iff_pow_eq_one.mpr ⟨m * n, mul_pos mpos npos, (pow_mul g m n).symm ▸ hn⟩)
+ 
++/-- Quotienting a commutative group by its torsion subgroup yields a group with unique roots. -/
++@[to_additive _root_.QuotientAddGroup.instHasUniqueDiv
++/-- Quotienting an additive commutative group by its torsion additive subgroup yields an additive
++group with unique division. -/]
++instance _root_.QuotientGroup.instHasUniqueRoots : HasUniqueRoots <| G ⧸ torsion G where
++  pow_left_injective _ hn a b hab := (Commute.all a b).eq_of_pow_eq_pow hn hab
++
+ end CommGroup
+ 
+ section AddCommGroup

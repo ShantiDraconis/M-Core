@@ -1,48 +1,48 @@
 # Upstream candidate 02 — the free rank of a f.g. abelian group is its rank over ℤ
 
-Status: READY_FOR_AUTHOR_REVIEW; UPSTREAM_NOT_SUBMITTED.
+Status: READY_FOR_AUTHOR_REVIEW; UPSTREAM_NOT_SUBMITTED (no fork of mathlib4 yet).
 
-- Target: `leanprover-community/mathlib4`, existing file
-  `Mathlib/GroupTheory/FiniteAbelian/Basic.lean` (+34 lines, no new imports).
+- Target: `leanprover-community/mathlib4`, two existing files (+32 lines):
+  `Mathlib/GroupTheory/Torsion.lean` and `Mathlib/GroupTheory/FiniteAbelian/Basic.lean`.
 - Base: mathlib4 `master` at `8678dc2` (2026-10-14), Lean `v4.35.0`.
-- Local commit on that base: `e403f3b`, branch `free-rank-finrank`
-  (`feat(GroupTheory/FiniteAbelian): the free rank is the rank over ℤ`).
-  `0001-…patch` here is that commit (`git am` applies it on `8678dc2`).
-- Derived from `atk-kernel/ATK/PostoLivre.lean` (Mathlib v4.34.1), rewritten for `master`: there
-  the torsion-free hypothesis is `IsAddTorsionFree`; on `master` (since 2026-09-29) commutative
-  monoids should use `HasUniqueDiv`, so the lemma takes `[HasUniqueDiv G]`.
-
-## Why
-
-Mathlib defines `AddCommGroup.freeRank G` as the minimal number of generators of
-`G ⧸ torsion G`, but has no lemma relating it to `Module.finrank ℤ G` or `Module.rank ℤ G`, the
-usual way to write the rank of a f.g. abelian group (for instance the Mordell–Weil rank). The
-comparison of the ATK and formal-conjectures statements of BSD needs exactly this lemma
-(`ATK.IntegracaoFCBSD.postoMW_eq_freeRank`).
+- Local branch `free-rank-finrank`, two commits on that base:
+  - `e403f3b` feat(GroupTheory/FiniteAbelian): the free rank is the rank over ℤ
+  - `772104b` feat(GroupTheory/Torsion): the torsion-free quotient has unique roots
+- `0001-…patch`, `0002-…patch`: those commits (`git am` applies them on `8678dc2`; checked).
+  `free-rank-finrank.diff`: the combined diff.
+- Derived from `atk-kernel/ATK/PostoLivre.lean` (Mathlib v4.34.1), rewritten for `master`.
+- `DEFESA.md`: study notes for the owner (the mathematics, every design choice, likely review
+  questions). Mathlib requires review comments to be written by the author, without AI.
 
 ## Declarations
 
+- `QuotientGroup.instHasUniqueRoots : HasUniqueRoots (G ⧸ torsion G)` and the additive
+  `QuotientAddGroup.instHasUniqueDiv` (name given explicitly to `to_additive`)
 - `AddGroup.rank_eq_finrank_int [HasUniqueDiv G] [AddGroup.FG G] :
   AddGroup.rank G = Module.finrank ℤ G`
 - `AddCommGroup.freeRank_eq_finrank [AddGroup.FG G] : freeRank G = Module.finrank ℤ G`
+  (two lines: `rank_eq_finrank_int` on the quotient plus the existing
+  `finrank_quotient_torsion_eq`)
+- New private `import Mathlib.LinearAlgebra.Dimension.Torsion.Basic` in `FiniteAbelian/Basic.lean`;
+  it adds exactly one module (itself) to that file's import closure of 2198 modules.
 
 ## Checks run on the Mathlib base
 
-- `lake build Mathlib.GroupTheory.FiniteAbelian.Basic`: success, no warnings.
-- `#print axioms` on both: `propext`, `Classical.choice`, `Quot.sound` only.
-- `#lint in Mathlib.GroupTheory.FiniteAbelian.Basic`: 0 errors, 20 declarations, 15 linters.
-- `lake exe lint-style`: no output; added lines are at most 100 characters.
-
-## Possible review points
-
-- A multiplicative version (`CommGroup.freeRank G = Module.finrank ℤ (Additive G)`) is not included.
-- `HasUniqueDiv (G ⧸ torsion G)` is built inside the proof from `IsAddTorsionFree`; Mathlib may
-  prefer a global instance next to `QuotientGroup.instIsMulTorsionFree`.
+- `lake build` of both files and of every module that imports `Mathlib.GroupTheory.Torsion`
+  directly (`Algebra.Module.Torsion.Basic`, `GroupTheory.Descent`,
+  `NumberTheory.NumberField.Units.Basic`): success, no warnings (3348 jobs).
+- `#print axioms` on the four declarations: `propext`, `Classical.choice`, `Quot.sound` only.
+- `#lint in Mathlib.GroupTheory.FiniteAbelian.Basic`: 0 errors (20 declarations, 15 linters).
+- `#lint in Mathlib.GroupTheory.Torsion`: 0 errors (144 declarations, 15 linters).
+- `lake exe lint-style` on both files: exit 0; added lines at most 100 characters.
+- Not run locally: the full Mathlib build (Mathlib's CI does it on the PR).
 
 ## Before opening the PR (owner)
 
-1. Fork `leanprover-community/mathlib4`; push the branch `free-rank-finrank`.
-2. Write the PR description in your own words, saying that AI (Claude, Anthropic) was used and
-   how; then comment `LLM-generated` on the PR to add the label.
-3. Be ready to explain the proof to reviewers (generators vs. a basis, and rank-nullity for the
-   quotient by the torsion subgroup).
+1. Fork `leanprover-community/mathlib4` on GitHub (this session cannot create forks: the GitHub
+   proxy refuses `POST /repos/…/forks`).
+2. Add the fork to the session with push access; then the branch `free-rank-finrank` can be
+   pushed from here. Or apply the two patches yourself with `git am`.
+3. Write the PR title and description in your own words. Say that AI (Claude, Anthropic, in
+   Claude Code) wrote the Lean code and how you checked it; then comment `LLM-generated`.
+4. Answer review comments yourself, without AI (see `DEFESA.md`).

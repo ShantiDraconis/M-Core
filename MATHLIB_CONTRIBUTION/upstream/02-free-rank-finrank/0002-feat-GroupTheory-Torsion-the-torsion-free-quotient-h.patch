@@ -1,0 +1,72 @@
+From 772104bfb7ec2597a12b153b66ec924965bf304a Mon Sep 17 00:00:00 2001
+From: Tiago Paschoalatto Fagliari <fagliarit@gmail.com>
+Date: Thu, 15 Oct 2026 03:20:39 +0100
+Subject: [PATCH 2/2] feat(GroupTheory/Torsion): the torsion-free quotient has
+ unique roots
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add the instance `QuotientGroup.instHasUniqueRoots` (additive version
+`QuotientAddGroup.instHasUniqueDiv`), so that lemmas assuming `HasUniqueDiv`
+apply to `G ⧸ torsion G`, and use it together with the existing
+`finrank_quotient_torsion_eq` to shorten the proof of
+`AddCommGroup.freeRank_eq_finrank`.
+---
+ Mathlib/GroupTheory/FiniteAbelian/Basic.lean | 13 ++-----------
+ Mathlib/GroupTheory/Torsion.lean             |  7 +++++++
+ 2 files changed, 9 insertions(+), 11 deletions(-)
+
+diff --git a/Mathlib/GroupTheory/FiniteAbelian/Basic.lean b/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
+index 47dfb17..97744ff 100644
+--- a/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
++++ b/Mathlib/GroupTheory/FiniteAbelian/Basic.lean
+@@ -8,6 +8,7 @@ module
+ public import Mathlib.Algebra.Module.PID
+ 
+ import Mathlib.Data.ZMod.QuotientRing
++import Mathlib.LinearAlgebra.Dimension.Torsion.Basic
+ 
+ /-!
+ # Structure of finite(ly generated) abelian groups
+@@ -185,18 +186,8 @@ theorem _root_.AddGroup.rank_eq_finrank_int [HasUniqueDiv G] [AddGroup.FG G] :
+ 
+ /-- The free rank of a finitely generated abelian group is its rank as a `ℤ`-module. -/
+ theorem freeRank_eq_finrank [AddGroup.FG G] : freeRank G = Module.finrank ℤ G := by
+-  let f := (QuotientAddGroup.mk' (torsion G)).toIntLinearMap
+-  have hf : Module.rank ℤ (LinearMap.ker f) = 0 := by
+-    refine rank_eq_zero_iff.mpr fun ⟨x, hx⟩ ↦ ?_
+-    obtain ⟨n, hn, hnx⟩ :=
+-      isOfFinAddOrder_iff_nsmul_eq_zero.mp ((QuotientAddGroup.eq_zero_iff x).mp hx)
+-    exact ⟨n, by exact_mod_cast hn.ne', Subtype.ext (by simpa [natCast_zsmul] using hnx)⟩
+-  have h := LinearMap.rank_eq_of_surjective (f := f) (QuotientAddGroup.mk'_surjective _)
+-  rw [hf, add_zero] at h
+-  have : HasUniqueDiv (G ⧸ torsion G) :=
+-    ⟨by intro n hn a b hab; exact (AddCommute.all a b).eq_of_nsmul_eq_nsmul hn hab⟩
+   rw [freeRank_def, AddGroup.rank_eq_finrank_int]
+-  exact (congrArg Cardinal.toNat h).symm
++  exact finrank_quotient_torsion_eq
+ 
+ end AddCommGroup
+ 
+diff --git a/Mathlib/GroupTheory/Torsion.lean b/Mathlib/GroupTheory/Torsion.lean
+index 36c1ed9..1129221 100644
+--- a/Mathlib/GroupTheory/Torsion.lean
++++ b/Mathlib/GroupTheory/Torsion.lean
+@@ -523,6 +523,13 @@ instance _root_.QuotientGroup.instIsMulTorsionFree : IsMulTorsionFree <| G ⧸ t
+   exact (QuotientGroup.eq_one_iff g).mpr
+     (isOfFinOrder_iff_pow_eq_one.mpr ⟨m * n, mul_pos mpos npos, (pow_mul g m n).symm ▸ hn⟩)
+ 
++/-- Quotienting a commutative group by its torsion subgroup yields a group with unique roots. -/
++@[to_additive _root_.QuotientAddGroup.instHasUniqueDiv
++/-- Quotienting an additive commutative group by its torsion additive subgroup yields an additive
++group with unique division. -/]
++instance _root_.QuotientGroup.instHasUniqueRoots : HasUniqueRoots <| G ⧸ torsion G where
++  pow_left_injective _ hn a b hab := (Commute.all a b).eq_of_pow_eq_pow hn hab
++
+ end CommGroup
+ 
+ section AddCommGroup
+-- 
+2.43.0
+
