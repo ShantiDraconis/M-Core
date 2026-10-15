@@ -2771,3 +2771,11 @@ ATK.BaseReducaoDois.Δ_eq
 ATK.BaseReducaoDois.disc_eq_raizes
 ATK.BaseReducaoDois.raizes_separadas
 ATK.BaseReducaoDois.reducao_dois_torsao
+ATK.BaseToroPoincare.one_le_nq
+ATK.BaseToroPoincare.media_eq
+ATK.BaseToroPoincare.poincare
+ATK.BaseToroPoincare.poincare_2pi
+ATK.BaseToroPoincare.coeff_trig
+ATK.BaseToroPoincare.energia_trig
+ATK.BaseToroPoincare.galerkin_L2
+ATK.BaseToroPoincare.galerkin_L2_decaimento
