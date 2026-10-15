@@ -47,6 +47,22 @@ Também: `rh_of_texto_eps` (forma `∀ ε > 0, ∃ N, D_N < ε`) e `texto_pos_of
 falsa, o `D∞` do texto é estritamente positivo). Isto liga o `D∞` do ATK-I à RH, mas não prova
 `D∞ = 0`: esse é o passo aberto, equivalente à própria RH.
 
+## Pares relacionais, proximidade e normalização (`ATK/ATKINormal.lean`, 33 teoremas)
+
+* `Par` é o objeto `(a = b)`; `vale ↔ a = b ↔ defeito |a − b| = 0`; escala e potência
+  componente a componente.
+* Ordem de proximidade `R ⪰ S ↔ defeito R ≤ defeito S`: pré-ordem total, não antissimétrica
+  (`(0 = 1)` e `(1 = 0)`), com as relações que valem no topo.
+* **`(0 = 1)·3 ⪰ (2 = 1)³`**: `(0 = 3) ⪰ (8 = 1)`, defeitos `3 ≤ 7` (`exemplo_proximidade`). Pela
+  diferença (`−3 ≥ 1`), componente a componente e com infinitésimo hiper-real (`−3ε ≥ (2 − ε)³`)
+  a desigualdade é falsa: o resultado depende da ordem escolhida.
+* Normalização `T_t(a = b) = ((1 − t)a + tb = b)`: `T₀ = id`, `T_s ∘ T_t = T_{s+t−st}`,
+  `T₁ ∘ T₁ = T₁`, `defeito(T_t R) = |1 − t|·defeito R`, estabilidade nas relações que valem,
+  monotonia da ordem; `D_x(R) = defeito R/(1 + x) → 0`; o desvio de `T_{x/(1+x)}(0 = 1)` vai a 0.
+* **Normalizar não é provar**: `T₁(0 = 1) = (1 = 1)` vale e `(0 = 1)` não; para `t ≠ 1`, `T_t` não
+  muda a verdade; `T₁(D∞ = 0) = (0 = 0)` qualquer que seja `D∞`. Já `(D∞ = 0)` **valer** implica
+  RH (`vale_D_infinito_RH`, pela ponte de Bagchi).
+
 ## O que isto não é
 
 * Nenhum teorema aqui prova uma conjectura nem toca uma obrigação O1–O8.
