@@ -70,7 +70,8 @@ não afeta o enunciado A acima.
 | Y1 | Calibre na rede | elos, ação de calibre, plaquetas, ação de Wilson invariante | ✅ | `BaseRedeCalibre` |
 | Y2 | Medida de Wilson | medida produto preservada por calibre; esperanças de Wilson invariantes | ✅ | `BaseWilsonMedida` |
 | Y2' | Variante abeliana | campo livre sem massa não tem gap; com massa, gap ≥ m² | ✅ | `YMSemGap` |
-| Y3 | Positividade por reflexão | Osterwalder–Seiler para a ação de Wilson | ⬜ | — |
+| Y3 | Positividade por reflexão (abstrata) | `−S = B(a) + B(b) + Σ cᵢCᵢ(a)Cᵢ(b)`, `cᵢ ≥ 0` ⇒ `⟨Θ(F)F⟩ ≥ 0` sob medida produto finita | ✅ | `BasePositividadeReflexao` |
+| Y3' | Ação de Wilson refletida | escrever `Re tr` das plaquetas que cruzam o plano na forma de Y3 (com fixação de calibre nos elos que cruzam) | ⬜ | — |
 | Y4 | Gap em acoplamento forte | expansão em cluster para β pequeno | ⬜ | — |
 | Y5 | Limite contínuo | axiomas de Wightman/Osterwalder–Schrader em 4D | ⛔ | — |
 | — | **Núcleo aberto** | existência em 4D e gap > 0 | aberto | — |
@@ -115,6 +116,6 @@ não afeta o enunciado A acima.
 2. ~~R2~~, ~~R3~~ (feitos) → **R3'** (forma de Fourier, Φ > 0) → **R4** (Hardy): primeira parte provada de RH sobre a reta.
 3. **P3** (M2d): fecha "SAT é NP-completo" no modelo genuíno.
 4. **B1b → B2** (torsão): primeira estrutura de `E(ℚ)`.
-5. **Y3** (positividade por reflexão).
+5. ~~Y3~~ (forma abstrata feita) → **Y3'** (ação de Wilson) → **Y4** (gap em acoplamento forte).
 
 Nenhuma camada desta lista altera os núcleos abertos. `OPEN_MATH = true`, `CLOSED_MATH = false`.
