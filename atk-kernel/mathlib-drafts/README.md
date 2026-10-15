@@ -1,6 +1,6 @@
 # Rascunhos para a Mathlib (ligações L3–L5)
 
-Quatro arquivos no estilo da Mathlib, na ordem combinada para os PRs: **L4 → L3 PR1 → L3 PR2 → L5**.
+Cinco arquivos no estilo da Mathlib, na ordem combinada para os PRs: **L4 → L3 PR1 → L3 PR2 → L5**.
 Cada um compila sozinho contra a Mathlib v4.34.1 (conferido com `lake env lean` neste ambiente),
 sem `sorry`, `admit` nem `axiom`. Os PRs na Mathlib são abertos pelo titular. Neste repositório os
 mesmos conteúdos, com teoremas auditados, estão em `ATK/L4Base.lean`, `ATK/L3Base.lean` e
@@ -12,6 +12,7 @@ mesmos conteúdos, com teoremas auditados, estão em `ATK/L4Base.lean`, `ATK/L3B
 | 2 (L3 PR1) | `Kahler.lean` | `Mathlib/Analysis/Complex/Kahler.lean` | `HermitianStructure` (produto interno real invariante por `I`), forma fundamental alternada e `I`-invariante, `LocalKahlerMetric` (forma fundamental fechada pela `extDerivWithin` da Mathlib) | métrica plana de `ℂ`: `ω(1, I) = 1` e é de Kähler |
 | 3 (L3 PR2) | `HodgeStructure.lean` | `Mathlib/LinearAlgebra/HodgeStructure.lean` | `HodgeStructure V n` (`ℂ ⊗[ℚ] V = ⨁ H^{p,n−p}`, simetria de Hodge), `IsHodgeClass`, `hodgeClasses` (subespaço racional), `pure`, `tate` | `ℚ(−1)`: `1` é classe de Hodge, `H^{2,0} = 0` |
 | 4 (L5) | `Wightman.lean` | `Mathlib/Analysis/Distribution/Wightman.lean` | Minkowski, cone futuro, Lorentz restrito, `QFT.WightmanQFT H` (representação unitária, vácuo, domínio, campo temperado, hermiticidade, covariância, localidade, condição espectral via `𝓕`, ciclicidade) | a teoria trivial satisfaz os axiomas; `∫ 𝓕 g = g 0` |
+| 5 (L4, 15/10) | `CanonicalHeight.lean` | `Mathlib/NumberTheory/Height/CanonicalHeight.lean` | `Point.canonicalHeight` (`ĥ = lim h(2ⁿP)/4ⁿ`) sobre qualquer corpo com `AdmissibleAbsValues`: existência do limite, `ĥ − h` limitada, `ĥ ≥ 0`, paralelogramo exato, `ĥ(nP) = n²ĥ(P)`, `ĥ(P) = 0 ↔` torção (com Northcott), emparelhamento de Néron–Tate simétrico e aditivo | é o passo natural depois de `approx_parallelogram_law` (já na Mathlib); no repositório, `ATK/BSDInvariantes.lean` |
 
 Observações:
 

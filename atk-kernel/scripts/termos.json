@@ -681,7 +681,7 @@
     "ATK.LigacaoBSDTestes.clay_curva32"
    ],
    "alimenta": "ATK.Terminal.BSDModelo.modeloGenuino",
-   "estado": "PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff); falta a fórmula refinada (Ω_E, regulador, Ш, Tamagawa, torção)"
+   "estado": "PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff) e fórmula refinada sobre a Mathlib (ATK.BSDRefinada.FormulaRefinada: Ω_E, regulador de Néron–Tate, Ш, Tamagawa, torção; modeloCompleto, bsdFull_iff_fraco); o fechamento da ligação é decisão do titular"
   },
   {
    "id": "T25",

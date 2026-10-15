@@ -10,7 +10,7 @@ Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/t
 - Tipos conferidos pelo kernel: **25/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
 - Fechadas: **0/25**. Preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo genuíno (falta ainda a revisão humana para `CLOSED`).
 
-Fontes do kernel: SHA-256 `e4663d9aad78282040df36b0992bad5a49bff63a3a46acde97ec479c601f1a58`.
+Fontes do kernel: SHA-256 `2aac1e8e728c395d4498f0befdf3691e4cd4d23f941eb0a378376702fe314f14`.
 
 ## Os 24 componentes
 
@@ -454,7 +454,7 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 parcial: part
 | 18 · Lemas (certificados, do termo) | `ATK.LigacaoBSD.continuacao_unica`; `ATK.LigacaoBSD.zero_iff_posto_pos`; `ATK.LigacaoBSD.posto_iff`; `ATK.LigacaoBSDTestes.taylor_iff`; `ATK.LigacaoBSDTestes.posto_curva32`; `ATK.LigacaoBSDTestes.clay_curva32` |
 | 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.BSDModelo.modeloGenuino` |
-| 23 · Certificado Lean | PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff); falta a fórmula refinada (Ω_E, regulador, Ш, Tamagawa, torção) · tipo conferido pelo kernel |
+| 23 · Certificado Lean | PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff) e fórmula refinada sobre a Mathlib (ATK.BSDRefinada.FormulaRefinada: Ω_E, regulador de Néron–Tate, Ш, Tamagawa, torção; modeloCompleto, bsdFull_iff_fraco); o fechamento da ligação é decisão do titular · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/BSDModelo.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
 ## YM — Yang–Mills e gap de massa

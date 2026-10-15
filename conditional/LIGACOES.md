@@ -136,6 +136,34 @@ Rascunhos no estilo da Mathlib, que compilam sozinhos contra a v4.34.1, estão e
 `atk-kernel/mathlib-drafts/`, na ordem L4 → L3 PR1 (Kähler) → L3 PR2 (classes de Hodge) → L5
 (Wightman). Os PRs na Mathlib são abertos pelo titular.
 
+## L3, L4, L5 — avanço de 15/10/2026
+
+Nada aqui muda o estado das ligações, que continua sendo o registrado pelo titular.
+
+* **L4** — `ATK/BSDInvariantes.lean` (23) + `ATK/BSDRefinada.lean` (16): a fórmula refinada inteira
+  sobre os objetos da Mathlib. Coeficiente líder `L^{(r)}(E,1)/r!` da continuação; período real
+  `Ω = ∫_{E(ℝ)} |dx/(2y + a₁x + a₃)|` num modelo minimal global (`quadrado`: `(2y + a₁x + a₃)² =
+  4x³ + b₂x² + 2b₄x + b₆`); torção (`ordemTorsao_pos`, `ordemTorsao_E32 = 4`); altura de
+  Néron–Tate `ĥ(P) = lim h(x(2ⁿP))/4ⁿ` com o limite provado a partir da lei do paralelogramo
+  aproximada da Mathlib, paralelogramo exato, `ĥ(nP) = n²ĥ(P)`, `|ĥ − h| ≤ C` e `ĥ(P) = 0 ⟺ P de
+  torção` (Northcott); emparelhamento simétrico, bilinear e nulo na torção; regulador
+  `|det ⟨Pᵢ, Pⱼ⟩|` numa base de `E(ℚ)/torção` (`regulador_E32 = 1`); números de Tamagawa
+  `c_v = [E(K_v) : E⁰(K_v)]` pelo modelo minimal e pela redução da Mathlib (`tamagawaLocal_of_good`:
+  redução boa ⇒ `c_v = 1`); Ш como núcleo de `H¹(G_ℚ, E(ℚ̄)) → ∏_v H¹(G_{ℚ_v}, E(ℚ̄_v))` com
+  cociclos localmente constantes na topologia de Krull e todas as places (`ℝ` e os completamentos
+  `p`-ádicos), com `cobordo_localmenteTrivial`. `FormulaRefinada`, `modeloCompleto` (=
+  `modeloPosto` com a fórmula), `bsdFull_iff` (sob `Modularidade` e `MordellWeil`) e
+  `bsdFull_iff_fraco` (com Mordell–Weil **fraco**, `E(ℚ)/2E(ℚ)` finito, graças a
+  `mordellWeil_of_fraco`, pela descida da Mathlib). Teste: em `y² = x³ − x` a fórmula se reduz a
+  `L(E,1) = Ω·∏c_p·#Ш/16` com Ш finito.
+* **L3** — `ATK/HodgeToro.lean` (10): a estrutura de Hodge de peso 1 de `H¹` do toro
+  `ℂ/(ℤ + τℤ)`: `H^{1,0} = ℂ·dz`, `dz = e₁ + τe₂`, `H^{0,1} = ℂ·dz̄`; decomposição em soma direta
+  (`Im τ ≠ 0`) e simetria de Hodge; `h^{1,0} = 1`. `ATK/HodgeFiltracao.lean` (5): classes de Hodge
+  são os vetores racionais em `F^p`.
+* **L5** — `ATK/L5Lacuna.lean` (4): `LacunaAoMenos W Δ` (no complemento do vácuo, a medida
+  espectral de energia-momento está em `{p⁰ ≥ Δ}`) e `TemLacuna`; coerente com a condição espectral
+  para `Δ ≤ 0`; a teoria trivial tem lacuna. Falta `IsQuantumYM`.
+
 ## Efeito no auditor e nos portões
 
 * `terminal-templates/NS.lean.tpl`: a peça `LIGACAO_L1` está preenchida com

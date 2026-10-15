@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1695 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1812 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -310,6 +310,35 @@ Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.le
   composição) dá `poli_custoTotal`.
 * `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
   `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
+
+## Rodada de 15/10/2026: avanço certificado em todos os itens abertos
+
+Pedido do titular: tocar todos os itens que faltam. Cada item abaixo ganhou teoremas certificados
+(axiomas padrão), em arquivos separados com testes de sanidade. **Nenhum estado mudou**: pontes no
+kernel continuam **2/8**, produtores abertos **8/8**, ligações abertas **3/5** (estado das ligações
+é decisão do titular). Total: 97 teoremas novos em 10 arquivos.
+
+| item | arquivo (teoremas) | o que foi provado | o que continua faltando |
+|---|---|---|---|
+| L4 | `BSDInvariantes` (23) + `BSDRefinada` (16) | todos os invariantes da fórmula refinada sobre a Mathlib: `L^{(r)}(E,1)/r!`, Ω no modelo minimal global, torção (`ordemTorsao_E32 = 4`), altura de Néron–Tate com limite provado, paralelogramo exato, `ĥ(P) = 0 ⟺ P de torção`, emparelhamento bilinear, regulador (`regulador_E32 = 1`), Tamagawa pela redução da Mathlib (redução boa ⇒ `c_v = 1`), Ш por cohomologia de Galois contínua em todas as places; `FormulaRefinada`, `modeloCompleto`, `bsdFull_iff` | a decisão do titular sobre a ligação; as hipóteses publicadas `Modularidade` e Mordell–Weil fraco |
+| L3 | `HodgeToro` (10) | estrutura de Hodge de peso 1 de `H¹(ℂ/(ℤ + τℤ), ℚ)`, `H^{1,0} = ℂ·dz`, `h^{1,0} = 1` | cohomologia singular de variedades projetivas na Mathlib |
+| L5 | `L5Lacuna` (4) | `GapAtLeast` com definição genuína sobre `Wightman` (energia `≥ Δ` em `Ω^⊥`), coerente com a condição espectral; a teoria trivial tem lacuna | `IsQuantumYM` (campos de calibre) |
+| B2 | `SophieGermain` (12) | teorema de Sophie Germain; primeiro caso de FLT(5); FLT(5) ⟺ segundo caso | segundo caso; primos que não são de Sophie Germain |
+| B3 | `NSExplosao.taxa_leray` | taxa de Leray: explosão em `T` ⇒ `y(t)² ≥ 1/(2b(T − t))` | existência local e continuação (não estão na Mathlib) |
+| B5 | `HodgeFiltracao` (5) | classe de Hodge ⟺ vetor racional em `F^p` (Deligne); para `p = 1`, a parte linear de Lefschetz (1,1); `p_g = 0` ⇒ todo `H²` é de Hodge | a classe vir de um divisor (sequência exponencial) |
+| B6 | `BSDRefinada.pontes_E32_iff`, `bsdFull_iff_fraco` | em `y² = x³ − x`, B6 ∧ O6 ⟺ posto analítico 0; Mordell–Weil fraco basta para a fidelidade | Gross–Zagier–Kolyvagin |
+| B7 | `YMReconstrucao` (6) | reconstrução OS no modelo de rede: positividade de reflexão, vácuo único, lacuna do hamiltoniano = taxa de decaimento | o teorema para medidas em `ℝ⁴` |
+| B8 | `DarmonMerelReducao` (9) | a ponte se reduz aos expoentes primos (mais 6, 9 em `C²` e 4 em `C³`); o resto está provado com a Mathlib | os casos primos (modularidade) |
+| O3 | `NSExplosao.explosao_comparacao` | com `b·y₀² > a`, a comparação de Riccati explode em tempo finito: a desigualdade sozinha não dá O3 | informação estrutural de NS |
+| O4 | `CircuitoExplicito` (10) | cota inferior explícita linear `n ≤ 2s + 1` (ex.: `OUₙ`), contra a cota de Shannon não construtiva | cota superpolinomial para uma família em NP |
+| O5 | `HodgeFiltracao` | `Hdg^p = V_ℚ ∩ F^p` em toda codimensão | algebricidade |
+| O6 | `BSDRefinada.pontes_E32_iff` | instância em `y² = x³ − x` | posto analítico ≥ 2 |
+| O7 | `BSDRefinada` | O7 no modelo completo é literalmente a fórmula refinada; em `y² = x³ − x` se reduz a `L(E,1) = Ω·∏c_p·#Ш/16` | a fórmula |
+| O8 | `YMReconstrucao` | na rede: positividade de reflexão e clustering com taxa `m(β) > 0` | limite contínuo 4D não abeliano |
+| O1 | — | nenhum teorema novo nesta rodada (o upstream integrou `ATKIBagchi`: `D∞ = 0` da família do texto ⇒ RH) | `D∞ = 0` |
+| O2 | — | nenhuma família incondicional nova (reduções com a Mathlib esgotadas); a redução condicional por B8 ficou mais estreita | O2 |
+
+**Estado calculado: UNIVERSAL_GREEN = false, linhas verdes 0/7, CLOSED_MATH = false.**
 
 ## Rota RH: captura relativa acumulada — `ATK/CapturaRH.lean` (15 teoremas)
 

@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de e4663d9aad78282040df36b0992bad5a49bff63a3a46acde97ec479c601f1a58
+# axiomas por teorema — congelamento de 2aac1e8e728c395d4498f0befdf3691e4cd4d23f941eb0a378376702fe314f14
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1695,3 +1695,120 @@ ATK.L5Base.e1_espacial	propext, Classical.choice, Quot.sound
 ATK.L5Base.zero_cone	propext, Classical.choice, Quot.sound
 ATK.L5Base.integral_fourier	propext, Classical.choice, Quot.sound
 ATK.L5Base.trivial	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.fract_div_nat	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.rho_sub	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.faixa_meas	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.faixa_pos	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.mem_faixa_iff	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.iUnion_faixa	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.faixa_disjoint	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.coefBD_zero	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.coefBD_succ	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.tailS_coefBD	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.res_coefBD	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.res_on_faixa	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.integral_faixa	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.integral_Ioc_coefBD	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.residualSq_coefBD	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.DN_succ_le	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.tendsto_DN_of_texto	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.rh_of_texto	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.rh_of_texto_eps	propext, Classical.choice, Quot.sound
+ATK.ATKIBagchi.texto_pos_of_not_rh	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.coefLider_of_ne_zero	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.quadrado	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.gR_E32	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.ordemTorsao_E32	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.ordemTorsao_pos	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.fg_of_fraco	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.mordellWeil_of_fraco	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.duplicacao	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.passo	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.tendsto_alturaCanonica	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.abs_alturaCanonica_sub_le	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.alturaCanonica_nonneg	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.paralelogramo	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.alturaCanonica_zero	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.alturaCanonica_neg	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.alturaCanonica_nsmul	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.alturaCanonica_eq_zero_iff	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.emparelhamento_comm	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.emparelhamento_self	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.emparelhamento_add_left	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.emparelhamento_torsao	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.regulador_of_torsao	propext, Classical.choice, Quot.sound
+ATK.BSDInvariantes.regulador_E32	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.reducao_equacao	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.tamagawaLocal_of_good	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.fatorTamagawa_of_good	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.tamagawa_eq_prod	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.res_comm	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.map_acao	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.trivialEm_add	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.trivialEm_zero	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.trivialEm_neg	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.cobordo_localmenteTrivial	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.bsdFull_iff	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.bsdFull_iff_fraco	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.refinedOpen_iff	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.formula_E32_iff	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.formula_E32_iff_of_ne_zero	propext, Classical.choice, Quot.sound
+ATK.BSDRefinada.pontes_E32_iff	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelReducao.dmSq_of_dvd	propext, Quot.sound
+ATK.DarmonMerelReducao.dmCube_of_dvd	propext, Quot.sound
+ATK.DarmonMerelReducao.dmSq_four	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelReducao.dmCube_three	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelReducao.divisor_sq	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelReducao.divisor_cube	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelReducao.darmonMerelSq_iff	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelReducao.darmonMerelCube_iff	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelReducao.darmonMerel_iff	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.Q_mul	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.Q_cast	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.Q_neg	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.Q_zero	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.pot_pm_um	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.zero_de_soma	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.fator	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.caso_q_dvd	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.sophieGermain_coprimo	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.sophieGermain	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.flt_caso_um_cinco	propext, Classical.choice, Quot.sound
+ATK.SophieGermain.flt_cinco_iff_caso_dois	propext, Classical.choice, Quot.sound
+ATK.HodgeFiltracao.conj_mem_H	propext, Classical.choice, Quot.sound
+ATK.HodgeFiltracao.conj_filtracao	propext, Classical.choice, Quot.sound
+ATK.HodgeFiltracao.inter_filtracao	propext, Classical.choice, Quot.sound
+ATK.HodgeFiltracao.isHodgeClass_iff_filtracao	propext, Classical.choice, Quot.sound
+ATK.HodgeFiltracao.hodgeClasses_eq_top	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.conjV_smul	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.image_span	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.conjV_B	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.conjV_dz	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.sub_conj_ne	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.repr_dz	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.dz_ne_zero	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.disjunto	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.gera	propext, Classical.choice, Quot.sound
+ATK.HodgeToro.finrank_H10	propext, Classical.choice, Quot.sound
+ATK.NSExplosao.taxa_leray	propext, Classical.choice, Quot.sound
+ATK.NSExplosao.explosao_comparacao	propext, Classical.choice, Quot.sound
+ATK.YMReconstrucao.positividade_reflexao	propext, Classical.choice, Quot.sound
+ATK.YMReconstrucao.vacuo_autovetor	propext, Classical.choice, Quot.sound
+ATK.YMReconstrucao.impar_autovetor	propext, Classical.choice, Quot.sound
+ATK.YMReconstrucao.vacuo_unico	propext, Classical.choice, Quot.sound
+ATK.YMReconstrucao.correl_reconstruida	propext, Classical.choice, Quot.sound
+ATK.YMReconstrucao.lacuna_igual_taxa	propext, Classical.choice, Quot.sound
+ATK.L5Lacuna.lacuna_mono	propext, Classical.choice, Quot.sound
+ATK.L5Lacuna.lacuna_nao_positiva	propext, Classical.choice, Quot.sound
+ATK.L5Lacuna.trivial_lacuna	propext, Classical.choice, Quot.sound
+ATK.L5Lacuna.trivial_temLacuna	propext, Classical.choice, Quot.sound
+ATK.CircuitoExplicito.avalia_cons	propext
+ATK.CircuitoExplicito.avalia_nil	propext
+ATK.CircuitoExplicito.getLastD_eq_getD	propext
+ATK.CircuitoExplicito.foraDe_passo	propext, Classical.choice, Quot.sound
+ATK.CircuitoExplicito.foraDe_avalia	propext, Classical.choice, Quot.sound
+ATK.CircuitoExplicito.length_avalia	propext
+ATK.CircuitoExplicito.computa_update	propext, Classical.choice, Quot.sound
+ATK.CircuitoExplicito.cota_linear	propext, Classical.choice, Quot.sound
+ATK.CircuitoExplicito.ou_depende	propext, Quot.sound
+ATK.CircuitoExplicito.ou_cota	propext, Classical.choice, Quot.sound

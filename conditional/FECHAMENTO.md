@@ -53,6 +53,14 @@ são equivalentes ao mesmo payload.
 O FLT para p ≥ 5 saiu do caminho crítico (B2 dispensada); continua útil para a forma gcd de Beal
 e é objeto do projeto FLT do Imperial College.
 
+Avanços de 15/10/2026 nos itens 3–6 (nenhum fecha o item): item 3 — taxa de Leray a partir da
+desigualdade cúbica (`NSExplosao.taxa_leray`) e explosão da comparação de Riccati para dados
+grandes (`explosao_comparacao`); item 4 — invariantes da fórmula refinada e modelo completo
+(`BSDInvariantes`, `BSDRefinada`), com Mordell–Weil reduzido ao Mordell–Weil fraco; item 5 —
+classes de Hodge = `V_ℚ ∩ F^p` (`HodgeFiltracao`) e `H¹` do toro complexo (`HodgeToro`); item 6 —
+reconstrução OS no modelo de rede (`YMReconstrucao`) e lacuna de massa sobre Wightman
+(`L5Lacuna`). FLT: teorema de Sophie Germain (`SophieGermain`).
+
 ### Estado do item 1 (`ATK/NecessidadeBD.lean`, 18 teoremas, kernel local)
 
 * incondicional: `|ζ(½+iτ)|²/|½+iτ|²` integrável em ℝ (`integrable_zeta_sq`); para todo
