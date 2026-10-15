@@ -14,7 +14,7 @@ closedMath_minimo : PontesParametricas M → Obrigacoes M → SevenStatements M
 | B1 Nyman–Beurling–Báez-Duarte | ponte | **provada** (`ObligationsClosed.B1`) |
 | B2 FLT | ponte (`FermatLastTheorem`) | **dispensada**: Beal entra pela forma residual, sem ponte |
 | B3–B7 | pontes paramétricas | continuam (dependem de L1–L5) |
-| O1 | `D_N ≤ K/log(N+2)` (mais forte que RH) | `D_N → 0` ⟺ `inf D_N = 0`; ⇒ RH provado |
+| O1 | `D_N ≤ K/log(N+2)` (mais forte que RH) | `D_N → 0` ⟺ `inf D_N = 0`; a implicação para RH está provada, mas a premissa terminal permanece aberta |
 | O2 | forma gcd + ponte FLT | `ExclusaoResidualDescida` ⟺ Beal (provado) |
 | O4 / O5 / O6–O7 | — | ⟺ P≠NP / Hodge / BSD, dadas as pontes (provado) |
 
