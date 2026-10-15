@@ -1,7 +1,7 @@
 import ATK.Conditional
 
 /-!
-# ATK — Estrutura para CLOSED_MATH (teorema-mestre, obrigações e firewall)
+# ATK — Estrutura condicional para CLOSED_MATH (teorema-mestre, obrigações e firewall)
 
 `CLOSED_MATH` = os 7 enunciados provados. Este arquivo NÃO os prova; ele fixa exatamente o
 que falta:
