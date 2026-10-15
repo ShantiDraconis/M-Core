@@ -80,3 +80,4 @@ Nenhum destes teoremas prova uma conjectura do milênio: `OPEN_MATH = true`.
 Estado: 0/8 produtores terminais. `OPEN_MATH=true`, `CLOSED_MATH=false`.
 | `ATK/OmegaGramL2.lean` | **incondicional**: a matriz de Gram de ρ_{m_i} em L²(0,1) é definida positiva (`gramL2_posDef`); descarrega `DetectsSteps` no caso real | não decide D_N → 0 |
 | `ATK/Orion.lean` | Orion/UCIF (κ, P_Ω, Hidden-State) corrigido e compilado; HREF Lei 5 (identidade de energia) como **teorema** num espaço de Hilbert real; Lei 7 e absorção; lacunas B3/B4/B5 e Leis 3/4/6 como hipóteses explícitas | não toca O1–O8 |
+| `ATK/OrionAlcance.lean` | o alcance da análise Orion: teorema-mãe = Banach (Mathlib); **não-go** da regularização dual (C_ε⁻¹C_ε = 1, não ⊥); Re ρ = ½ ⇔ 1 − ρ̄ = ρ; lema de focalização HREF L2/L3 (Θ' ≤ −aΘ², Θ(t₀) < 0 ⇒ T ≤ t₀ + 1/(a|Θ(t₀)|)); classificação de defeitos | Lei 6 (a desigualdade vale para NS) segue OPEN |

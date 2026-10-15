@@ -1454,3 +1454,12 @@ ATK.Orion.law5_rearranged
 ATK.Orion.law7_closure
 ATK.Orion.indirect_absorption
 ATK.Orion.instance_closure_conditional
+ATK.OrionAlcance.ucif_fixed_point
+ATK.OrionAlcance.regularizacao_e_identidade
+ATK.OrionAlcance.regularizacao_limite_e_um
+ATK.OrionAlcance.critical_line_iff_symmetric
+ATK.OrionAlcance.dual_state_symmetric
+ATK.OrionAlcance.focusing_blowup_bound
+ATK.OrionAlcance.focusing_blowup_bound_absorb
+ATK.OrionAlcance.classify_collapse_iff
+ATK.OrionAlcance.classify_gap_iff
