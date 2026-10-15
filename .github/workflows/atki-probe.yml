@@ -1,0 +1,53 @@
+name: Sonda ATKI Algebra
+
+on:
+  push:
+    branches: ['atk/atki-alg-*']
+    paths: ['probe/**', '.github/workflows/atki-probe.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: atk-kernel
+    steps:
+      - uses: actions/checkout@v4
+      - name: elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: cache
+        shell: bash
+        run: lake exe cache get || (lake update && lake exe cache get)
+      - name: deps
+        shell: bash
+        run: lake build ATK.ATKINormal 2>&1 | tail -5
+      - name: sonda
+        shell: bash
+        run: |
+          set +e
+          report() {
+            tag=$1; log=$2
+            grep -n "error" "$log" | head -30 | while IFS= read -r l; do echo "::error::$tag $l"; done
+            awk '/error/{f=1} f&&c<300{print; c++}' "$log" > "err_$tag.log"
+            split -l 12 -d "err_$tag.log" "chunk_${tag}_" 2>/dev/null
+            for f in chunk_${tag}_*; do [ -f "$f" ] && echo "::warning::$tag $(tr '\n' ' ' < "$f" | cut -c1-3000)"; done
+            n=$(grep -c "depends on axioms" "$log"); s=$(grep -c "sorryAx" "$log")
+            echo "::notice::$tag axiomas=$n sorry=$s"
+          }
+          cp ../probe/ATKIAlgebra.lean ATK/ATKIAlgebra.lean
+          lake env lean ATK/ATKIAlgebra.lean > p1.log 2>&1; r1=$?
+          report ALG p1.log
+          lake build ATK.ATKIAlgebra > b1.log 2>&1
+          cp ../probe/ATKIAplicacoes.lean ATK/ATKIAplicacoes.lean
+          lake env lean ATK/ATKIAplicacoes.lean > p2.log 2>&1; r2=$?
+          report APL p2.log
+          echo "::notice::rc1=$r1 rc2=$r2"
+          exit $((r1 + r2))
