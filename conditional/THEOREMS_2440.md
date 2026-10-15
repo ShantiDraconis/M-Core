@@ -5,7 +5,7 @@ Fonte: `PUBLICATION/MASTER/inventories/<lane>/PROOF_INVENTORY.json` (gerados pel
 ## Veredito
 
 - **2440 teoremas**, todos CLEAN no kernel (só `propext`, `Classical.choice`, `Quot.sound`). Isso é verdade e continua verdade.
-- **653 deles (27%) não são provas**: são projeções automáticas de campos `Prop` de `structure`/`class`. O Lean gera `S.campo : S → P` para cada campo; isso só dá `P` a quem já tem um `S`. É uma hipótese empacotada, contada como teorema pelo inventário.
+- **653 deles (27%) não são provas incondicionais dos alvos**: são projeções automáticas de campos `Prop` de `structure`/`class`. O Lean gera `S.campo : S → P` para cada campo; isso só dá `P` a quem já tem um `S`. É uma hipótese empacotada, contada como teorema pelo inventário.
 - **19 condicionais** concluem um enunciado-alvo ou terminal. **Nenhum** tem todas as hipóteses provadas por outro teorema dos 2.440 (descarregados: 0).
 - Os enunciados finais estão no relatório de proposições do próprio kernel como `NO_PROOF_IN_LIBRARY` (`MCore.OfficialSpecRH`, `MCore.BealConjecture`, `MCore.Real.CanonicalFinalProof.PneqNP`, `MCore.Real.MachinePneqNP`, `MCore.Real.FINAL_PROOF_RESIDUAL`…).
 - Conclusão: usar os 2.440 juntos dá exatamente as pontes e a infraestrutura dos modelos (B1–B7, L1–L5 do livro-razão). **Não produz nenhuma das obrigações O1–O8.** `CLOSED_MATH` continua `false`, agora com a razão medida teorema por teorema.
