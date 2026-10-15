@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 89283024862170e963c3964b3e26b0115a51ba8997de2f5329464834b20c1c51
+# axiomas por teorema — congelamento de 6f6ee5276e6c79e331e9b3a9bfa73c5bd602ee3a1e5b26891e78b287dad862ec
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3091,3 +3091,10 @@ ATK.FermatExpoentes.flt_fora_do_residuo	propext, Classical.choice, Quot.sound
 ATK.FermatExpoentes.flt_iff_residuo	propext, Classical.choice, Quot.sound
 ATK.FermatExpoentes.residuoIrregular_sub	propext, Classical.choice, Quot.sound
 ATK.FermatExpoentes.flt_iff_residuo_irregular	propext, Classical.choice, Quot.sound
+ATK.BSDPontosE32.caracteristica_ne_dois	propext, Classical.choice, Quot.sound
+ATK.BSDPontosE32.chi_menos_um	propext, Classical.choice, Quot.sound
+ATK.BSDPontosE32.soma_chi_zero	propext, Classical.choice, Quot.sound
+ATK.BSDPontosE32.card_raizes	propext, Classical.choice, Quot.sound
+ATK.BSDPontosE32.card_afim	propext, Classical.choice, Quot.sound
+ATK.BSDPontosE32.card_projetivo	propext, Classical.choice, Quot.sound
+ATK.BSDPontosE32.traco_zero	propext, Classical.choice, Quot.sound

@@ -85,6 +85,7 @@ import ATK.CookLevinNP
 import ATK.LigacaoBSD
 import ATK.LigacaoBSDTestes
 import ATK.BSDPortoes
+import ATK.BSDPontosE32
 import ATK.L3Base
 import ATK.L4Base
 import ATK.L5Base

@@ -3089,3 +3089,10 @@ ATK.FermatExpoentes.flt_fora_do_residuo
 ATK.FermatExpoentes.flt_iff_residuo
 ATK.FermatExpoentes.residuoIrregular_sub
 ATK.FermatExpoentes.flt_iff_residuo_irregular
+ATK.BSDPontosE32.caracteristica_ne_dois
+ATK.BSDPontosE32.chi_menos_um
+ATK.BSDPontosE32.soma_chi_zero
+ATK.BSDPontosE32.card_raizes
+ATK.BSDPontosE32.card_afim
+ATK.BSDPontosE32.card_projetivo
+ATK.BSDPontosE32.traco_zero

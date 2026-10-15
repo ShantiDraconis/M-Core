@@ -30,5 +30,22 @@ A separação não enfraquece o alvo. Ela só torna cada parte um portão audit�
 * As peças B6, O6 e O7 mudaram de modelo (`BSDClay`, `BSDRefinada`) no catálogo `termos.json`; o
   número de termos que faltam não muda.
 
+## Primeiro tijolo da função L de y² = x³ − x (`ATK/BSDPontosE32.lean`, 7 teoremas)
+
+Na curva y² = x³ − x (condutor 32), o kernel já mostrou que B6 e O6 se reduzem a `L(E,1) ≠ 0` e
+que O7 se reduz a um valor exato de `L(E,1)` (`ATK.BSDRefinada.pontes_E32_iff`,
+`formula_E32_iff`). Chegar lá exige construir a função L dessa curva, que a Mathlib não continua
+analiticamente. Primeiro passo, publicado e agora certificado:
+
+* `card_afim`: para todo primo `p ≡ 3 (mod 4)`, `#{(x, y) ∈ 𝔽_p² : y² = x³ − x} = p`;
+* `card_projetivo`, `traco_zero`: `#E(𝔽_p) = p + 1` e `a_p = 0` (primos supersingulares);
+* a prova: `#{y : y² = a} = χ(a) + 1` e `Σ_x χ(x³ − x) = 0`, porque `x ↦ −x` troca o sinal e
+  `χ(−1) = −1` quando `p ≡ 3 (mod 4)`.
+
+Próximos tijolos, todos publicados: `a_p` para `p ≡ 1 (mod 4)` (somas de Jacobsthal,
+`p = a² + b²`); ligar `a_p` ao fator de Euler `WeierstrassCurve.localEulerFactor` da Mathlib;
+a série L como função L de Hecke de ℚ(i) e sua continuação; o valor de `L(E,1)`. Nada disso toca
+O6 em geral nem O7 em geral, que seguem abertos.
+
 Estado: BSD_CLAY aberto (B6 publicada não formalizada, O6 aberto), BSD_REFINED aberto (O7).
 `UNIVERSAL_GREEN = false`, `FINAL_ROOT = null`, `CLOSED_MATH = false`.
