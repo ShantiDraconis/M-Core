@@ -100,7 +100,7 @@ não afeta o enunciado A acima.
 | B2 | Redução mod p | `E(ℚ)_tors ↪ E(𝔽_p)` para p de boa redução, p ≠ 2 — feito para `E(ℚ)[2]` (`Δ = 16d`, `d` pelas raízes, raízes distintas mod p); o caso geral exige o grupo formal | 🟡 | `BaseReducaoDois` |
 | B3 | 2-descida | `E(ℚ)/2E(ℚ)` finito para curvas com 2-torsão completa ⇒ `E(ℚ)` finitamente gerado | ✅ | `MordellWeilDois` |
 | B3' | Posto por descida | critério de independência pela imagem de `φ`; `y² = x(x+30)(x+2)` tem posto ≥ 2 | ✅ | `PostoDois` |
-| B4 | Mordell–Weil geral | fraco ⇒ forte (descida com altura ingênua) e a altura de Néron–Tate com o limite provado estão feitos; o Mordell–Weil fraco geral (grupos de Selmer) não | 🟡 | `BSDInvariantes` |
+| B4 | Mordell–Weil geral | fraco ⇒ forte (descida com altura ingênua), altura de Néron–Tate com o limite provado, e o **Mordell–Weil fraco para toda `E/ℚ`**: finitude de `K⟮S, n⟯` para corpos de números, 2-descida sobre o corpo de decomposição da cúbica, descida de Galois | ✅ | `BSDInvariantes`, `SelmerFinito`, `MordellWeilCorpo`, `MordellWeilNumero`, `MudancaVariaveis`, `MordellWeilGeral` |
 | B5 | Gross–Zagier–Kolyvagin | posto analítico ≤ 1 | ⛔ | — |
 | — | **Núcleo aberto** | posto ≥ 2 e finitude de Ш em geral (O6, O7) | aberto | — |
 
