@@ -30,14 +30,31 @@ defeito, números relacionais e os sete cálculos concretos. `ATK/ATKI.lean` (50
 | Beal | `3³ + 6³ = 3⁵`, `mdc(3, 6, 3) = 3`, valorações 3-ádicas `3, 3, 5` |
 | RH | o `D N` da família do texto decresce e converge (seção anterior) |
 
+## A ponte de Bagchi (`ATK/ATKIBagchi.lean`, 20 teoremas)
+
+`rh_of_texto : (⨅ N, Defeito wTexto gTexto N) = 0 → RiemannHypothesis`, com a `RiemannHypothesis`
+da Mathlib e sem hipóteses. A prova é a isometria de Bagchi:
+
+1. `{t/q} = {⌊t⌋/q} + {t}/q`, logo `ρ_q(x) − ρ_1(x)/q = {⌊1/x⌋/q}` (`rho_sub`), com
+   `ρ_k(x) = {1/(kx)}` a família de Báez-Duarte;
+2. para cada vetor `c` do texto, `c' = (−Σ c_m/(m+2), c)` dá um resíduo de Báez-Duarte nulo em
+   `(1, ∞)` e constante `1 − Σ c_m γ_{m+2}(n)` em `(1/(n+1), 1/n]` (`res_on_faixa`);
+3. logo as duas distâncias coincidem (`residualSq_coefBD`) e `D^{BD}_{N+1} ≤ D^{texto}_N`
+   (`DN_succ_le`);
+4. `D∞ = 0` ⟹ `D^{BD}_N → 0` ⟹ RH pela ponte B1 já provada (`baezDuarteCriterion`).
+
+Também: `rh_of_texto_eps` (forma `∀ ε > 0, ∃ N, D_N < ε`) e `texto_pos_of_not_rh` (se RH é
+falsa, o `D∞` do texto é estritamente positivo). Isto liga o `D∞` do ATK-I à RH, mas não prova
+`D∞ = 0`: esse é o passo aberto, equivalente à própria RH.
+
 ## O que isto não é
 
 * Nenhum teorema aqui prova uma conjectura nem toca uma obrigação O1–O8.
 * A família discreta do texto (`ρₘ(n) = {n/m}`, pesos `1/(n(n+1))`) é exatamente a do teorema 1 de
   Bagchi (2006, arXiv:math/0607733): **RH ⟺ a sequência constante 1 está no fecho do span de
-  `{n/m}` nesse espaço ⟺ `D∞ = 0`**. Logo `D∞ = 0` não é um enunciado novo: é RH. A ponte de
-  Bagchi está publicada mas **não está formalizada** no kernel (o kernel tem a de Báez-Duarte,
-  B1, para o `D_N` contínuo). O valor `D₁ = 1 − ln 2` do texto não foi formalizado.
+  `{n/m}` nesse espaço ⟺ `D∞ = 0`**. Logo `D∞ = 0` não é um enunciado novo: é RH. A direção
+  `D∞ = 0 ⟹ RH` está **provada no kernel** (`ATK/ATKIBagchi.lean`, abaixo); a recíproca não está
+  formalizada, e `D∞ = 0` continua **aberto**. O valor `D₁ = 1 − ln 2` do texto não foi formalizado.
 * O modelo de Hodge é só a álgebra `ℚ[h]/(h³)`; a Mathlib não tem `H*(ℂP², ℚ)`.
 * O gap de `diag(0, 2, 5)` não é o gap de Yang–Mills.
 * `Cert` torna explícito o que os textos dizem: classificar como `I` ou `Todo` não prova nada; só

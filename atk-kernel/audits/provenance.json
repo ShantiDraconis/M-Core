@@ -1,8 +1,9 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "e4663d9aad78282040df36b0992bad5a49bff63a3a46acde97ec479c601f1a58",
+  "sources_sha256": "293ed27017ea543d58248af81fc8d3a31be9d61340fa43b3bde465ad32e305cc",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
+    "ATK/ATKIBagchi.lean": "d95c01955fe4da7236116086f27de5cf3c0ebf3bcdbb23ac2c668baff87ab5d9",
     "ATK/ATKIExemplos.lean": "f18059d53b962f33cceee870ca4102f5871727c4be79a623ca3234a0f3abd61a",
     "ATK/AlgebraTerminal.lean": "ab045c0a40a165fbe781e2c2e58eee54e1b79e6164a635016bf98a4959b2823b",
     "ATK/BDDistSqPort.lean": "3d209211337b561728bb8823cf8074c2a9539c832783e57d59398ae88b0d3c3f",
@@ -113,12 +114,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "585dec4d78c5d238ae0ac89d7843b7e5398bb9066811d58ae4b0db6c8a48ac3d"
+    "ATK.lean": "27e132eb2a60f0bda93b286c6d485b5d7cc773b5f5988502bbae369c5332e557"
   },
-  "n_files": 112,
-  "expected_theorems": 1695,
+  "n_files": 113,
+  "expected_theorems": 1715,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "ccd4de25f4415aa8b3784c788ac5bf900fab155e",
+  "commit_at_freeze": "a8e025aa6af3975b26b49e39b63712beed5a67ac",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
