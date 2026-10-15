@@ -31,7 +31,7 @@ structure Models where
   bsd : ATK.Conditional.BSD.BSDModel.{0}
   ym : ATK.Conditional.YangMills.YMModel.{0, 0, 0}
 
-/-- CLOSED_MATH: os 7 enunciados juntos. -/
+/-- Conjunção de sete proposições (cinco dependem do modelo `M`); definir esta proposição não prova seus componentes. -/
 def SevenStatements (M : Models) : Prop :=
   RiemannHypothesis ∧
   ATK.Conditional.Beal.BealConjecture ∧
@@ -62,7 +62,7 @@ structure OpenObligations (M : Models) : Prop where
   bsdRefined : ATK.Conditional.BSD.RefinedOpen M.bsd
   ym : ATK.Conditional.YangMills.ConstructiveYM4D M.ym
 
-/-- **Teorema-mestre**: pontes + obrigações abertas ⇒ os 7 enunciados. -/
+/-- **Redução condicional**: pontes + obrigações abertas ⇒ conjunção paramétrica; as hipóteses não são descarregadas. -/
 theorem closedMath_of_obligations {M : Models} (hB : Bridges M) (hO : OpenObligations M) :
     SevenStatements M :=
   ⟨ATK.Conditional.Riemann.riemann_conditional hB.baezDuarte hO.rh,
