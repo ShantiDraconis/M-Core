@@ -252,6 +252,20 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
   fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
   O4 (SAT ∉ P).
+- **Rodada de 15/10/2026 (tarde) — posto `≥ 2` e `A⁶ + B⁶ ≠ C²`** (39 teoremas): `PostoDois` (28):
+  `E(ℚ)[2] = {O, T₁, T₂, T₃}`, a torção cai em `φ(E[2])` quando `|φ(E[2])| = 4`
+  (`phi_torsao_mem`, com `|T/2T| = |T[2]|`), e o **critério de independência** de pontos pela
+  imagem de `φ` (`independentes`, `posto_ge_dois`, `posto_ge_um`). Exemplos certificados:
+  **`y² = x(x + 30)(x + 2)` tem posto `≥ 2`** (`posto_R30`, pontos `(−20, 60)` e `(−16, 56)`) e
+  a curva do número congruente 6, `y² = x³ − 36x`, tem posto `≥ 1` (`posto_R6`, ponto `(−3, 9)`).
+  Lado algébrico de O6 (curvas de posto `≥ 2` existem e são detectadas no kernel); O6 continua
+  aberta. `DarmonMerelSeis` (5): **`A⁶ + B⁶ ≠ C²`** para `A, B > 0` coprimos (Euler), pela
+  tripla pitagórica `(A³, B³, C)` e FLT(3) da Mathlib; a ponte B8 passa a equivaler a `C²` com
+  `n = 9` ou primo `≥ 5` e `C³` com `n = 4` ou primo `≥ 5` (`darmonMerel_iff_reduzido`).
+  `BealSeisSeisDois` (6): **Beal incondicional na assinatura `(6k, 6l, 2m)`** (`beal_662`), com
+  `mdc = 2` fora das famílias anteriores (`(6, 6, 4)`, `(6, 12, 10)`, …); o residual de O2 encolhe
+  (`beal_iff_residual_seis`) e a cobertura incondicional dos expoentes em `3..200` vai de 9,83%
+  para 10,30%. Pontes **2/8**, produtores **8/8** abertos.
 - **Rodada de 15/10/2026 (manhã) — Mordell–Weil e FLT caso I** (170 teoremas):
   `MordellWeilDois` (37): **teorema de Mordell–Weil** para `y² = (x − e₁)(x − e₂)(x − e₃)` por
   2-descida completa (homomorfismo `φ`, núcleo em `2E(ℚ)`, imagem finita por valuações `p`-ádicas)

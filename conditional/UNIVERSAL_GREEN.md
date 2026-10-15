@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (2073 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (2112 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -310,6 +310,53 @@ Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.le
   composição) dá `poli_custoTotal`.
 * `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
   `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
+
+## Rodada de 15/10/2026 (tarde): posto `≥ 2` por 2-descida e `A⁶ + B⁶ ≠ C²`
+
+Continuação do pedido "prove tudo" (39 teoremas, axiomas padrão).
+
+### `ATK/PostoDois.lean` (28) — produtor O6, lado algébrico
+
+`PostoDois` usa o
+homomorfismo de descida `φ` de `MordellWeilDois` para dar **cotas inferiores** do posto de
+Mordell–Weil (o lado algébrico do produtor O6):
+
+* `dois_torcao`: `E(ℚ)[2] = {O, T₁, T₂, T₃}` (`Tᵢ = (eᵢ, 0)`);
+* `phi_torsao_mem`: se `|φ(E[2])| = 4`, `φ` leva toda a torção em `φ(E[2])` — a torção é finita
+  (`finite_torsion`, Mathlib) e `|φ(T)| ≤ |T/2T| = |T[2]| ≤ 4` (`card_quot_dois`);
+* `independentes`, `posto_ge_dois`: se `φ(P₁)`, `φ(P₂)`, `φ(P₁) + φ(P₂)` estão fora de `φ(E[2])`,
+  então `mP₁ + nP₂` de torção força `m = n = 0`, logo `postoMW E ≥ 2`; `posto_ge_um`, `nao_torsao`
+  para um ponto; `card_imT`, `fora`: as condições reduzem-se a "não é quadrado em `ℤ`" para as
+  classes `[x − e₁]`;
+* **`posto_R30`: `y² = x(x + 30)(x + 2)` tem posto `≥ 2`** (`(−20, 60)` e `(−16, 56)`;
+  classes `1, 15, −30, −2` para a 2-torção e `−5, −1, 5` para `P₁, P₂, P₁ + P₂`), e
+  `infinito_R30`: `E(ℚ)` é infinito;
+* `posto_R6`: `y² = x³ − 36x` (número congruente 6) tem posto `≥ 1`, com o ponto `(−3, 9)`.
+
+O6 pede a igualdade posto = posto analítico para posto analítico `≥ 2`, o que exige a ordem de
+anulação de `L(E, s)` em `s = 1` — fora de alcance.
+
+### `ATK/DarmonMerelSeis.lean` (5) — ponte B8, expoente 6
+
+* **`dmSq_seis`: `A⁶ + B⁶ ≠ C²`** para `A, B > 0` coprimos (Euler). Um dos dois é par (mód 4);
+  `(A³, B³, C)` é uma tripla pitagórica primitiva (`coprime_classification'`, Mathlib):
+  `A³ = M² − N²`, `B³ = 2MN`; `M ∓ N` coprimos de produto `A³` são cubos `s³`, `t³` (`cubo`) e o
+  fator par de `MN = 4B₁³` é `4u³` (`par_cubo`); então `s³ + t³ = (2u)³` ou `s³ + (2u)³ = t³`,
+  contra FLT(3) (`fermatLastTheoremThree`, Mathlib).
+* `darmonMerel_iff_reduzido`: a ponte B8 equivale a `C²` com `n = 9` ou primo `≥ 5` e `C³` com
+  `n = 4` ou primo `≥ 5` (antes: também `n = 6`). Os casos primos são Darmon–Merel (modularidade).
+
+### `ATK/BealSeisSeisDois.lean` (6) — produtor O2, residual
+
+* `sem_solucao_662`, **`beal_662`**: Beal vale incondicionalmente para todo triplo com `6 ∣ x`,
+  `6 ∣ y`, `2 ∣ z` (de `dmSq_seis`; se `a, b` têm primo comum, ele divide `c`). Triplos com
+  `mdc(x, y, z) = 2` fora das famílias já certificadas: `(6, 6, 4)`, `(6, 12, 10)`, `(18, 6, 14)`
+  (`exemplos_662`, `exemplos_662_novos`).
+* `beal_iff_residual_seis`: `BealConjecture ↔ ExclusaoResidualSeis`, sem pontes — o produtor O2
+  (`ExclusaoResidualDescida`) equivale ao residual menor (`descida_iff_seis`). Cobertura
+  incondicional dos triplos de expoentes em `3..200`: 762.844 → **799.326** (9,83% → **10,30%**).
+
+Nenhum estado mudou: pontes no kernel **2/8**, produtores abertos **8/8**, ligações abertas **3/5**.
 
 ## Rodada de 15/10/2026 (manhã): Mordell–Weil e o primeiro caso de FLT para `p < 300`
 

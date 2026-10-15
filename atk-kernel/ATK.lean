@@ -109,3 +109,6 @@ import ATK.CircuitoExplicito
 import ATK.BSDTamagawaE32
 import ATK.MordellWeilDois
 import ATK.GermainLegendre
+import ATK.PostoDois
+import ATK.DarmonMerelSeis
+import ATK.BealSeisSeisDois

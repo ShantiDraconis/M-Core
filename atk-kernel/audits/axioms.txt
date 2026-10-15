@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 716bbc8a1f5383c694a2962037040286f940dd70e97d85de57eb2ee8c1c154d2
+# axiomas por teorema — congelamento de 94a592d747b0eea9d7a0cb3857cd7cee6917353bdb97693f69b42d625f64022a
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -2073,3 +2073,42 @@ ATK.GermainLegendre.flt_caso_um_283	propext, Classical.choice, Quot.sound
 ATK.GermainLegendre.flt_caso_um_293	propext, Classical.choice, Quot.sound
 ATK.GermainLegendre.flt_caso_um_menor_300	propext, Classical.choice, Quot.sound
 ATK.GermainLegendre.flt_iff_caso_dois	propext, Classical.choice, Quot.sound
+ATK.PostoDois.q2_mul_self	propext, Classical.choice, Quot.sound
+ATK.PostoDois.add_self_q	propext, Classical.choice, Quot.sound
+ATK.PostoDois.zsmul_q	propext, Classical.choice, Quot.sound
+ATK.PostoDois.phi_dobro	propext, Classical.choice, Quot.sound
+ATK.PostoDois.card_quot_dois	propext, Classical.choice, Quot.sound
+ATK.PostoDois.dois_torcao	propext, Classical.choice, Quot.sound
+ATK.PostoDois.T_dobro	propext, Classical.choice, Quot.sound
+ATK.PostoDois.phi_torsao_mem	propext, Classical.choice, Quot.sound
+ATK.PostoDois.independentes	propext, Classical.choice, Quot.sound
+ATK.PostoDois.posto_ge_dois	propext, Classical.choice, Quot.sound
+ATK.PostoDois.cls_ne	propext, Classical.choice, Quot.sound
+ATK.PostoDois.nq_neg	propext, Classical.choice, Quot.sound
+ATK.PostoDois.nq_entre	propext, Classical.choice, Quot.sound
+ATK.PostoDois.nz	propext
+ATK.PostoDois.fst_phi	propext, Classical.choice, Quot.sound
+ATK.PostoDois.fst_T	propext, Classical.choice, Quot.sound
+ATK.PostoDois.card_imT	propext, Classical.choice, Quot.sound
+ATK.PostoDois.fora	propext, Classical.choice, Quot.sound
+ATK.PostoDois.nao_torsao	propext, Classical.choice, Quot.sound
+ATK.PostoDois.posto_ge_um	propext, Classical.choice, Quot.sound
+ATK.PostoDois.infinito_of_posto	propext, Classical.choice, Quot.sound
+ATK.PostoDois.nsR30	propext, Classical.choice, Quot.sound
+ATK.PostoDois.imT_R30	propext, Classical.choice, Quot.sound
+ATK.PostoDois.posto_R30	propext, Classical.choice, Quot.sound
+ATK.PostoDois.infinito_R30	propext, Classical.choice, Quot.sound
+ATK.PostoDois.equacao_R6	propext, Classical.choice, Quot.sound
+ATK.PostoDois.posto_R6	propext, Classical.choice, Quot.sound
+ATK.PostoDois.infinito_R6	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelSeis.cubo	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelSeis.par_cubo	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelSeis.seis_impar	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelSeis.dmSq_seis	propext, Classical.choice, Quot.sound
+ATK.DarmonMerelSeis.darmonMerel_iff_reduzido	propext, Classical.choice, Quot.sound
+ATK.BealSeisSeisDois.sem_solucao_662	propext, Classical.choice, Quot.sound
+ATK.BealSeisSeisDois.beal_662	propext, Classical.choice, Quot.sound
+ATK.BealSeisSeisDois.descida_iff_seis	propext, Classical.choice, Quot.sound
+ATK.BealSeisSeisDois.beal_iff_residual_seis	propext, Classical.choice, Quot.sound
+ATK.BealSeisSeisDois.exemplos_662	propext, Classical.choice, Quot.sound
+ATK.BealSeisSeisDois.exemplos_662_novos	propext

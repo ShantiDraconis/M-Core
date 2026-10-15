@@ -174,6 +174,12 @@ por 2-descida completa. A hipótese `MordellWeil` de `posto_iff`/`bsdFull_iff` p
 teorema para essa família; para toda curva elíptica sobre `ℚ` continua hipótese (a descida geral
 usa aritmética de corpos de números). Teste: `y² = x³ − x` está na família (`curva_E32`).
 
+`ATK/PostoDois.lean` (28, 15/10/2026, tarde): na mesma família, cotas inferiores do posto pela
+imagem de `φ` (`posto_ge_um`, `posto_ge_dois`); `y² = x(x + 30)(x + 2)` tem posto `≥ 2`
+(`posto_R30`) e `y² = x³ − 36x` tem posto `≥ 1` (`posto_R6`). Com `posto_finito`, o posto dessas
+curvas é um número natural com cotas certificadas nos dois sentidos de cálculo (finitude e
+independência); o lado analítico de L4 continua o que falta.
+
 ## Efeito no auditor e nos portões
 
 * `terminal-templates/NS.lean.tpl`: a peça `LIGACAO_L1` está preenchida com

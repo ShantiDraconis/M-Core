@@ -60,7 +60,9 @@ grandes (`explosao_comparacao`); item 4 — invariantes da fórmula refinada e m
 classes de Hodge = `V_ℚ ∩ F^p` (`HodgeFiltracao`) e `H¹` do toro complexo (`HodgeToro`); item 6 —
 reconstrução OS no modelo de rede (`YMReconstrucao`) e lacuna de massa sobre Wightman
 (`L5Lacuna`). FLT: teorema de Sophie Germain (`SophieGermain`) e o primeiro caso para todo primo ímpar `p < 300`
-(`GermainLegendre`); Mordell–Weil para curvas com 2-torção racional completa (`MordellWeilDois`).
+(`GermainLegendre`); `A⁶ + B⁶ ≠ C²` na ponte B8 (`DarmonMerelSeis`) e Beal incondicional em `(6k, 6l, 2m)`
+(`BealSeisSeisDois`); Mordell–Weil para curvas com 2-torção racional completa (`MordellWeilDois`) e cotas inferiores do
+posto por 2-descida, com uma curva de posto `≥ 2` (`PostoDois`).
 
 ### Estado do item 1 (`ATK/NecessidadeBD.lean`, 18 teoremas, kernel local)
 
