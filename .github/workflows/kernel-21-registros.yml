@@ -1,0 +1,120 @@
+name: Kernel 21 registros
+
+on:
+  push:
+    branches: ['atk/kernel-21-registros']
+    paths: ['kernelaudit/**', '.github/workflows/kernel-21-registros.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registro:
+    name: ${{ matrix.id }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: R01-MCore-LogicAudit
+            ref: atk-kernel-check
+            dir: atk-kernel
+            module: ATK.LogicAudit
+            audit: "import ATK.LogicAudit|#check @ATK.LogicAudit.rh_material_vacuous|#print axioms ATK.LogicAudit.rh_material_vacuous"
+            swap_from: audit/language-corrected/atk-kernel-check/atk-kernel/ATK/LogicAudit.lean
+            swap_to: ATK/LogicAudit.lean
+          - id: R02-MCore-GlobalPositiveMaterialFrontier
+            ref: atk/global-material-frontier-20261001
+            dir: .
+            module: MCore.FinalFail.GlobalPositiveMaterialFrontier
+            audit: "import MCore.FinalFail.GlobalPositiveMaterialFrontier|#check @MCore.FinalFail.Semantic.positive_rh_incompatible_with_negative_lane|#print axioms MCore.FinalFail.Semantic.positive_rh_incompatible_with_negative_lane"
+            swap_from: audit/language-corrected/atk__global-material-frontier-20261001/lean/MCore/FinalFail/GlobalPositiveMaterialFrontier.lean
+            swap_to: lean/MCore/FinalFail/GlobalPositiveMaterialFrontier.lean
+          - id: R03-MCore-ObrigacoesMinimas
+            ref: atk/hypothesis-ports-20261014
+            dir: atk-kernel
+            module: ATK.ObrigacoesMinimas
+            audit: "import ATK.ObrigacoesMinimas|#check @ATK.ObrigacoesMinimas.O1_implica_minima|#print axioms ATK.ObrigacoesMinimas.O1_implica_minima|#print axioms ATK.ObrigacoesMinimas.rh_obrigacao_suficiente"
+            swap_from: audit/language-corrected/atk__hypothesis-ports-20261014/atk-kernel/ATK/ObrigacoesMinimas.lean
+            swap_to: ATK/ObrigacoesMinimas.lean
+          - id: R04-PNP-P01ExpectedFailure
+            local: kernelaudit/pnp/atk-kernel-check
+            dir: .
+            module: MCore.Real.P01FinalCertificate
+            audit: "import MCore.Real.P01FinalCertificate|#check @MCore.Real.P01FinalCertificate.P01MachineConstruction"
+            expect_fail: probe/P01MachineConstructionExpectedFailure.lean
+          - id: R05-PNP-P01TerminalCertificate
+            local: kernelaudit/pnp/atk_p01-material-inhabitant-frontier-20260930
+            dir: .
+            module: MCore.Real.P01TerminalCertificate
+            audit: "import MCore.Real.P01TerminalCertificate|#check @MCore.Real.P01TerminalCertificate.p01ConstructionGap|#print axioms MCore.Real.P01TerminalCertificate.p01ConstructionGap"
+          - id: R06-PNP-P01TerminalMaterialCertificate
+            local: kernelaudit/pnp/atk_p01-terminal-promotion-candidate-20260930
+            dir: .
+            module: MCore.Real.P01TerminalMaterialCertificate
+            audit: "import MCore.Real.P01TerminalMaterialCertificate|#check @MCore.Real.P01TerminalMaterialCertificate.p01_closed_no_hypothesis|#print axioms MCore.Real.P01TerminalMaterialCertificate.p01_closed_no_hypothesis"
+          - id: R07-PNP-PNPMaterialAtoms
+            local: kernelaudit/pnp/work_pnp-minimal-separation-20261005
+            dir: .
+            module: MCore.PNPMaterialAtoms
+            audit: "import MCore.PNPMaterialAtoms"
+            source_messages: lean/MCore/PNPMaterialAtoms.lean
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: self
+      - uses: actions/checkout@v4
+        if: ${{ matrix.ref }}
+        with:
+          ref: ${{ matrix.ref }}
+          path: src
+      - name: fonte local
+        if: ${{ matrix.local }}
+        shell: bash
+        run: cp -r "self/${{ matrix.local }}" src
+      - name: elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: kernel
+        shell: bash
+        working-directory: src/${{ matrix.dir }}
+        run: |
+          set +e
+          ID="${{ matrix.id }}"
+          echo "::notice::$ID ref=${{ matrix.ref }}${{ matrix.local }} sha=$(git -C $GITHUB_WORKSPACE/src rev-parse HEAD 2>/dev/null || echo copia) toolchain=$(cat lean-toolchain)"
+          lean --version | head -1 | sed "s/^/::notice::$ID /"
+          if [ ! -f lake-manifest.json ] || ! grep -q '"name"' lake-manifest.json; then
+            echo "::notice::$ID manifesto ausente ou vazio: lake update (resolve a dependência fixada no lakefile)"
+            lake update > upd.log 2>&1; echo "::notice::$ID lake update rc=$?"
+          fi
+          lake exe cache get > cache.log 2>&1; echo "::notice::$ID cache rc=$?"
+          lake build ${{ matrix.module }} > build.log 2>&1; rc=$?
+          echo "::notice::$ID BUILD ${{ matrix.module }} rc=$rc"
+          grep -E "error" build.log | head -5 | while IFS= read -r l; do echo "::error::$ID $l" | cut -c1-900; done
+          grep -E "declaration uses 'sorry'" build.log | head -3 | while IFS= read -r l; do echo "::warning::$ID $l" | cut -c1-500; done
+          printf '%s\n' "${{ matrix.audit }}" | tr '|' '\n' > AuditRegistro.lean
+          lake env lean AuditRegistro.lean > audit.log 2>&1; arc=$?
+          echo "::notice::$ID AUDIT rc=$arc"
+          tr '\n' ' ' < audit.log | sed 's/  */ /g' | fold -w 900 | head -4 | while IFS= read -r l; do echo "::notice::$ID $l"; done
+          if [ -n "${{ matrix.source_messages }}" ]; then
+            lake env lean "${{ matrix.source_messages }}" > src.log 2>&1; src_rc=$?
+            echo "::notice::$ID FONTE rc=$src_rc mensagens=$(grep -c ':' src.log)"
+            tr '\n' ' ' < src.log | fold -w 900 | head -3 | while IFS= read -r l; do echo "::notice::$ID $l"; done
+          fi
+          if [ -n "${{ matrix.expect_fail }}" ]; then
+            lake env lean "${{ matrix.expect_fail }}" > ef.log 2>&1; erc=$?
+            echo "::notice::$ID FALHA_ESPERADA rc=$erc"
+            grep -m2 "error" ef.log | while IFS= read -r l; do echo "::notice::$ID $l" | cut -c1-900; done
+          fi
+          if [ -n "${{ matrix.swap_from }}" ]; then
+            cp "$GITHUB_WORKSPACE/self/${{ matrix.swap_from }}" "${{ matrix.swap_to }}"
+            lake build ${{ matrix.module }} > build2.log 2>&1; rc2=$?
+            echo "::notice::$ID COPIA_AUDITADA BUILD rc=$rc2"
+            grep -E "error" build2.log | head -3 | while IFS= read -r l; do echo "::error::$ID copia $l" | cut -c1-900; done
+          fi
+          exit 0
