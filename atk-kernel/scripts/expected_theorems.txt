@@ -3003,3 +3003,10 @@ ATK.PonteModularCurva32.teta_eq
 ATK.PonteModularCurva32.equacao_funcional
 ATK.PonteModularCurva32.ponteModular_curva32
 ATK.PonteModularCurva32.bsd_posto_curva32_incondicional
+ATK.PonteModularCurva32.summable_rede
+ATK.PonteModularCurva32.cota_caixa
+ATK.PonteModularCurva32.lseriesSummable_curva32
+ATK.PonteModularCurva32.abscissa_curva32
+ATK.PonteModularCurva32.existe_continuacao
+ATK.PonteModularCurva32.bsd_posto_curva32_completo
+ATK.PonteModularCurva32.bsdConjecture_E32
