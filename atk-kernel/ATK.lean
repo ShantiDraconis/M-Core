@@ -158,3 +158,5 @@ import ATK.AtaqueRH
 import ATK.AtaqueNS
 import ATK.AtaquePvsNP
 import ATK.AtaqueYM
+import ATK.BaseHasseCurva32
+import ATK.PonteCoefCurva32
