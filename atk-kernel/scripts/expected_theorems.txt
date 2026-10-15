@@ -2089,3 +2089,14 @@ ATK.NSUnico.coef_eq
 ATK.NSUnico.div_sub_fields
 ATK.NSUnico.Wc_campo
 ATK.NSUnico.unicidade
+ATK.NSCriterio.Ufis_congr
+ATK.NSCriterio.Pfis_congr
+ATK.NSCriterio.norm_Ufis_le
+ATK.NSCriterio.Compat
+ATK.NSCriterio.compat_glue
+ATK.NSCriterio.nhds_Icc_prod
+ATK.NSCriterio.solucaoLocal_compat
+ATK.NSCriterio.nhds_Ico_prod
+ATK.NSCriterio.solucaoGlobal_compat
+ATK.NSCriterio.enstrofia_eq_Q
+ATK.NSCriterio.criterio
