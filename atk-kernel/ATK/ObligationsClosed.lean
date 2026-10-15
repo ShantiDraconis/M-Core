@@ -1,4 +1,5 @@
 import ATK.BaezDuarteBridge
+import ATK.NSCriterio
 
 /-!
 # ATK — Obrigações fechadas por teoremas certificados
@@ -16,6 +17,13 @@ namespace ATK.ObligationsClosed
 theorem B1 : ATK.Conditional.Riemann.BaezDuarteCriterion :=
   ATK.BaezDuarteBridge.baezDuarteCriterion
 
+/-- **B3** (ponte de Navier–Stokes, Leray + teoria local): no modelo genuíno `modeloNS`, se não
+há solução global suave então há um tempo maximal `T` com solução suave em `[0, T)` e enstrofia
+ilimitada em `[0, T)`. -/
+theorem B3 : ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion ATK.LigacaoNS.modeloNS :=
+  ATK.NSCriterio.criterio
+
 end ATK.ObligationsClosed
 
 #print axioms ATK.ObligationsClosed.B1
+#print axioms ATK.ObligationsClosed.B3
