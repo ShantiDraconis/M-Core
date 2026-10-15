@@ -47,8 +47,12 @@ theorem fract_div_nat (t : ℝ) {q : ℕ} (hq : 0 < q) :
   have h0r : (0 : ℝ) ≤ (((⌊t⌋ % (q : ℤ)) : ℤ) : ℝ) := by exact_mod_cast h0
   have h1r : (((⌊t⌋ % (q : ℤ)) : ℤ) : ℝ) + 1 ≤ q := by exact_mod_cast h1
   have hdec : (⌊t⌋ : ℝ) = (q : ℝ) * (((⌊t⌋ / (q : ℤ)) : ℤ) : ℝ) + (((⌊t⌋ % (q : ℤ)) : ℤ) : ℝ) := by
-    have := Int.ediv_add_emod ⌊t⌋ (q : ℤ)
-    exact_mod_cast this.symm
+    have hz : ⌊t⌋ = (q : ℤ) * (⌊t⌋ / (q : ℤ)) + ⌊t⌋ % (q : ℤ) := by
+      first
+      | (have := Int.emod_def ⌊t⌋ (q : ℤ); linarith)
+      | exact (Int.mul_ediv_add_emod ⌊t⌋ (q : ℤ)).symm
+      | (have := Int.emod_add_ediv ⌊t⌋ (q : ℤ); linarith)
+    exact_mod_cast hz
   rw [Int.fract_eq_iff]
   refine ⟨div_nonneg (by linarith [Int.fract_nonneg t]) hq'.le, ?_, ⌊t⌋ / (q : ℤ), ?_⟩
   · rw [div_lt_one hq']
@@ -109,7 +113,7 @@ theorem iUnion_faixa : ⋃ k, faixa k = Ioc (0 : ℝ) 1 := by
     rw [mem_faixa_iff hx0, Int.toNat_of_nonneg (by omega)]
     ring
 
-theorem faixa_disjoint : Pairwise (Disjoint on faixa) := by
+theorem faixa_disjoint : Pairwise (Function.onFun Disjoint faixa) := by
   intro i j hij
   refine Set.disjoint_left.mpr fun x hi hj => hij ?_
   have hx := faixa_pos hi
