@@ -19,6 +19,17 @@ jobs:
       run:
         working-directory: atk-ns
     steps:
+      # a Mathlib compilada + os ~640 módulos da OpenAI não cabem no disco padrão do runner
+      # (a execução 38654150987 parou com "No space left on device")
+      - name: Liberar espaço em disco
+        shell: bash
+        working-directory: .
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost || true
+          sudo docker image prune --all --force > /dev/null 2>&1 || true
+          df -h /
+
       - uses: actions/checkout@v4
 
       - name: Instalar elan
