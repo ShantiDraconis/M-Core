@@ -1,0 +1,51 @@
+name: Sonda BSD pontos
+
+on:
+  push:
+    branches: ['atk/bsd-ap-*']
+    paths: ['probe/**', '.github/workflows/atki-probe.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: atk-kernel
+    steps:
+      - uses: actions/checkout@v4
+      - name: elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: cache
+        shell: bash
+        run: lake exe cache get || (lake update && lake exe cache get)
+      - name: nomes
+        shell: bash
+        run: |
+          M=.lake/packages/mathlib/Mathlib
+          for n in "theorem quadraticChar_card_sqrts" "theorem quadraticChar_neg_one" "theorem χ₄_nat_three_mod_four" "theorem ringChar_zmod_n" "theorem sum_prod_type" "theorem card_filter "; do
+            r=$(grep -rn "$n" $M | head -2 | tr '\n' ' ' | cut -c1-400); echo "::notice::NOME $n => $r"
+          done
+          f=$M/AlgebraicGeometry/EllipticCurve/LFunction.lean
+          grep -n "^def\|^noncomputable def\|^theorem\|^lemma\|^abbrev" $f | head -40 > lf.txt
+          split -l 10 -d lf.txt lfc_
+          for c in lfc_*; do echo "::notice::LFUN $(tr '\n' ' ' < $c | cut -c1-2500)"; done
+      - name: sonda
+        shell: bash
+        run: |
+          set +e
+          cp ../probe/BSDPontosE32.lean ATK/BSDPontosE32.lean
+          lake env lean ATK/BSDPontosE32.lean > p.log 2>&1; rc=$?
+          grep -n "error" p.log | head -30 | while IFS= read -r l; do echo "::error::$l"; done
+          awk '/error/{f=1} f&&c<300{print; c++}' p.log > e.log
+          split -l 12 -d e.log ch_
+          for c in ch_*; do [ -f "$c" ] && echo "::warning::$(tr '\n' ' ' < "$c" | cut -c1-3000)"; done
+          echo "::notice::axiomas=$(grep -c 'depends on axioms' p.log) sorry=$(grep -c sorryAx p.log) rc=$rc"
+          exit $rc
