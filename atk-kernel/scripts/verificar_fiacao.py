@@ -2,7 +2,7 @@
 """Verifica a FIAÇÃO dos portões terminais (`terminal-templates/*.lean.tpl`).
 
 Troca cada peça ausente (`PROVA_*`, `LIGACAO_*`) por `(sorry : <tipo>)`, com o tipo tirado do
-catálogo `scripts/termos.json` (nomes Lean em `ATK/Termos.lean`), compila os 21 modelos
+catálogo `scripts/termos.json` (nomes Lean em `ATK/Termos.lean`), compila os 23 modelos
 contra o build real do ATK numa pasta temporária e confere:
   * todos compilam (a ligação peça → enunciado oficial está certa e tipada);
   * o tipo de cada peça no catálogo é o tipo que o portão espera (sem divergência);
@@ -23,8 +23,9 @@ import tempfile
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 LINHAS = ["RH", "Beal", "NS", "PNP", "Hodge", "BSD", "YM"]
 MODELOS = ["NSModelo", "PNPModelo", "HodgeModelo", "BSDModelo", "YMModelo"]
-ORDER = MODELOS + LINHAS + [k + "Refutacao" for k in LINHAS] + ["VerdeFiel", "ClosedMathGate"]
-PROVA = set(MODELOS + LINHAS)                   # rota da prova (verde)
+SUBPORTOES = ["BSDClay", "BSDRefinada"]           # BSD_FULL = BSD_CLAY ∧ BSD_REFINED
+ORDER = MODELOS + SUBPORTOES + LINHAS + [k + "Refutacao" for k in LINHAS] + ["VerdeFiel", "ClosedMathGate"]
+PROVA = set(MODELOS + SUBPORTOES + LINHAS)                   # rota da prova (verde)
 REFUTACAO = set(MODELOS + [k + "Refutacao" for k in LINHAS])   # rota da refutação (resolução)
 PH = re.compile(r"\b(PROVA_[A-Z0-9_]+|LIGACAO_[A-Z0-9_]+)\b")
 

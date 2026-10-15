@@ -2,7 +2,7 @@
 """Instala um portão terminal — só se ele for uma prova genuína.
 
 Uso: python3 scripts/instalar_portao.py LINHA
-LINHA ∈ RH, Beal, NS, PNP, Hodge, BSD, YM (prova), <Linha>Refutacao (refutação), <Linha>Modelo (ligação),
+LINHA ∈ RH, Beal, NS, PNP, Hodge, BSD, YM (prova), BSDClay, BSDRefinada (subportões de BSD), <Linha>Refutacao (refutação), <Linha>Modelo (ligação),
         VerdeFiel, ClosedMathGate
 
 Recusa (sem tocar em nada) se:
@@ -36,6 +36,10 @@ def entry(gates, line):
         if line == ln["id"] + "Refutacao":
             return {"gate_file": ln["refutation_gate_file"], "gate_theorem": ln["refutation_gate_theorem"],
                     "statement_root": ln["refutation_statement_root"], "template": ln["refutation_template"]}
+        for sg in ln.get("subgates", []):  # subportões: BSD_CLAY / BSDClay, BSD_REFINED / BSDRefinada
+            if line in (sg["id"], os.path.basename(sg["gate_file"])[:-len(".lean")]):
+                return {"gate_file": sg["gate_file"], "gate_theorem": sg["gate_theorem"],
+                        "statement_root": sg["statement_root"], "template": sg["template"]}
         if line == ln["id"] + "Modelo" and ln.get("linking_module"):
             return {"gate_file": ln["linking_module"], "gate_theorem": None, "statement_root": None,
                     "template": ln["linking_template"]}
