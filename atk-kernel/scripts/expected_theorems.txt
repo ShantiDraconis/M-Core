@@ -3106,3 +3106,17 @@ ATK.BSDEulerE32.equacao_mudanca
 ATK.BSDEulerE32.card_pontos_mudanca
 ATK.BSDEulerE32.reducao_minimal
 ATK.BSDEulerE32.polinomioLocal_E32
+ATK.DuasFaces.igualdade_estrutural
+ATK.DuasFaces.linhaEquivProd_ligar
+ATK.DuasFaces.residuo_apply
+ATK.DuasFaces.residuo_zero_iff
+ATK.DuasFaces.residuo_proprio
+ATK.DuasFaces.linha_zero_iff
+ATK.DuasFaces.preserva_residuo
+ATK.DuasFaces.singular_anula
+ATK.DuasFaces.transporte
+ATK.DuasFaces.absorcao
+ATK.DuasFaces.telescopagem
+ATK.DuasFaces.decaimento
+ATK.DuasFaces.estrutura_nao_basta
+ATK.DuasFaces.fechamento_condicional
