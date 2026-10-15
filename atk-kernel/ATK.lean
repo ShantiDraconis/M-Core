@@ -83,6 +83,7 @@ import ATK.NSFraca
 import ATK.NSTeste
 import ATK.NSFracaF
 import ATK.NSDual
+import ATK.NSMild
 import ATK.LigacaoPNP
 import ATK.Termos
 import ATK.CapturaRH
