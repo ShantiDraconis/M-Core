@@ -252,10 +252,16 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
   fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
   O4 (SAT ∉ P).
+- **Rodada de 15/10/2026 (noite, 5) — espectro completo do laplaciano de `C₁₀`** (24 teoremas):
+  `LaplacianoCiclo` formaliza a matriz finita `L = 2I − P − P⁻¹` do ciclo com `n` vértices, os
+  autovetores `j ↦ ζᵏʲ`, a diagonalização `L = V⁻¹DV` (Vandermonde invertível) e o espectro com
+  multiplicidades: as raízes de `χ_L` são `2 − 2cos(2πk/n)`, `k = 0, …, n − 1` (`espectro_lap`).
+  Para `C₁₀`: `espectro_C10` (as 10 raízes explícitas) e `multiplicidade_C10` (0 e 4 simples;
+  `(3 ∓ √5)/2`, `(5 ∓ √5)/2` duplos). Responde à revisão do PR #51; `EXACT_MODEL`; terminais 0/7.
 - **Rodada de 15/10/2026 (noite, 4) — conferência dos nove textos de parâmetros** (33 teoremas):
   `ParametrosModelo` compila no kernel tudo o que os textos de valores, operadores, gramática e
   habitantes enunciam com precisão (H1–H5, fechamento, tabela `A, M, S`, matriz de Gram e defeito
-  47/54, `#SAT(F) = 4`, margem 5/12, espectro do ciclo de 10 vértices, `H = [[2,1],[1,3]]`,
+  47/54, `#SAT(F) = 4`, margem 5/12, valores `2 − 2cos(kπ/5)` do ciclo de 10 vértices, `H = [[2,1],[1,3]]`,
   gematria 1495, 1035 junções, razão áurea). Dois erros dos textos foram **refutados**: a "lei das
   junções" tem o sinal do termo em `A` trocado (`lei_do_texto_falsa`, lei certa em
   `comutador_lei`), e "`mdc(A,B) = mdc(A,C)` em Beal" é falso (`4³ + 4³ = 2⁷`,

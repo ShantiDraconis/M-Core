@@ -130,3 +130,4 @@ import ATK.FermatRegular
 import ATK.BealFermatRegular
 import ATK.FermatExpoentes
 import ATK.ParametrosModelo
+import ATK.LaplacianoCiclo

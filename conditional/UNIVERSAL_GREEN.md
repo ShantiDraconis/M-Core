@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (3131 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (3165 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -311,6 +311,30 @@ Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.le
 * `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
   `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
 
+## Rodada de 15/10/2026 (noite, 5): espectro completo do laplaciano de `C₁₀`
+
+Revisão do PR #51: `espectro_ciclo` só calcula cinco valores `2 − 2cos(kπ/5)` e `autovetor_ciclo` é
+uma recorrência em `ℤ`; nenhum dos dois é o espectro de uma matriz. `ATK/LaplacianoCiclo.lean`
+(24 teoremas, axiomas padrão) formaliza a matriz e o espectro com multiplicidades:
+
+* **Matriz**: `lap R m : Matrix (Fin (m+1)) (Fin (m+1)) R`, `L = 2I − P − P⁻¹` (vizinhos `j ± 1`
+  módulo `m + 1`); `lap_simetrica`; `lap_C10_entradas` confere as 100 entradas de `C₁₀`
+  (inclusive a aresta `0 ~ 9`).
+* **Autovetores**: `autovetor` — para todo `y` com `yᵐ⁺¹ = 1`, `L (j ↦ yʲ) = (2 − y − y⁻¹)(j ↦ yʲ)`;
+  `modo_zero` — o vetor constante tem autovalor 0; `autovalor_eq` — com `y = ζᵏ`,
+  `ζ = e^{2πi/(m+1)}`, o autovalor é `λₖ = 2 − 2cos(2πk/(m+1))`.
+* **Diagonalização e espectro (todo `n`)**: `det_modos_ne_zero` (Vandermonde dos `ζᵏ`, distintos por
+  `ζ` ser raiz primitiva), `lap_diagonaliza` (`L = V⁻¹DV`), `charpoly_lap`
+  (`χ_L = ∏ₖ (X − λₖ)`), `espectro_lap` (o multiconjunto das raízes de `χ_L` é `{λ₀, …, λₘ}`),
+  `autovalor_simetria` (`λₙ₋ₖ = λₖ`).
+* **`C₁₀`**: `espectro_C10` — as raízes de `χ_L` são, com repetição,
+  `0, (3−√5)/2, (5−√5)/2, (3+√5)/2, (5+√5)/2, 4, (5+√5)/2, (3+√5)/2, (5−√5)/2, (3−√5)/2`;
+  `multiplicidade_C10` — 0 e 4 são raízes simples, `(3 ∓ √5)/2` e `(5 ∓ √5)/2` são duplas
+  (`rootMultiplicity`); `gap_C10` — o menor autovalor positivo é `(3 − √5)/2 > 0`.
+
+É um modelo finito exato (`EXACT_MODEL`), não a teoria de Yang–Mills. Nenhum estado mudou:
+terminais 0/7, pontes no kernel **2/8**, produtores abertos **8/8**, ligações abertas **3/5**.
+
 ## Rodada de 15/10/2026 (noite, 4): conferência dos nove textos de parâmetros
 
 Nove textos (valores estruturados, preenchimento de parâmetros, derivações, letras e operadores,
@@ -325,8 +349,9 @@ confere no kernel tudo o que neles é enunciado preciso:
   `traco_det`.
 * **Modelos**: Gram `[[2,1],[1,2]]` (det 3, inversa, autovalores 1 e 3, defeito 47/54);
   `#SAT(F) = 4` de 8; margem NS 5/12 e `X ≤ (12/5)C`; decaimento `u = 8·2^{−t}` com `u' < 0`;
-  laplaciano do ciclo de 10 vértices (`autovetor_ciclo`, autovalores `(3 ∓ √5)/2`, `(5 ∓ √5)/2`,
-  4); `H = [[2,1],[1,3]]` (tr = det = 5, autovalores `(5 ± √5)/2`); decomposição Hodge `c = (2,1)`;
+  valores selecionados `2 − 2cos(kπ/5)`, `k = 1, …, 5`, do laplaciano do ciclo de 10 vértices
+  (`espectro_ciclo`; `autovetor_ciclo` é a recorrência em `ℤ`; o espectro completo, com a matriz
+  finita e as multiplicidades, está em `LaplacianoCiclo`, abaixo); `H = [[2,1],[1,3]]` (tr = det = 5, autovalores `(5 ± √5)/2`); decomposição Hodge `c = (2,1)`;
   gematria 1495, runas 300, 231 + 276 + 528 = 1035 = C(46,2); `φ² = φ + 1`, `1/φ = φ − 1`,
   `φ³ = 2φ + 1`; `v₂(8 + 8) = 4`.
 * **Erros encontrados e refutados**:

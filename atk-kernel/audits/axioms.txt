@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 5facbb05b0bd7fc2027178a76d50e7e6d7c39f3c3158ccdb2ede66948ce5791a
+# axiomas por teorema — congelamento de 440d580ee95c12b4e113a67e9a35a98cc9469a5b539d0c4ddbab84072e611956
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3098,6 +3098,16 @@ ATK.BSDPontosE32.card_raizes	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.card_afim	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.card_projetivo	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.traco_zero	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.car_ne_dois	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.chi_menos_um	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.soma_chi_zero	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.card_raizes	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.card_afim	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.card_pontos	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.equacao_mudanca	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.card_pontos_mudanca	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.reducao_minimal	propext, Classical.choice, Quot.sound
+ATK.BSDEulerE32.polinomioLocal_E32	propext, Classical.choice, Quot.sound
 ATK.ParametrosModelo.comp_map	nenhum
 ATK.ParametrosModelo.h1_substituicao	nenhum
 ATK.ParametrosModelo.h2_composicao	nenhum
@@ -3131,3 +3141,27 @@ ATK.ParametrosModelo.beal_mdc_texto_falso	propext, Classical.choice, Quot.sound
 ATK.ParametrosModelo.beal_exemplo	propext, Classical.choice, Quot.sound
 ATK.ParametrosModelo.razao_aurea	propext, Classical.choice, Quot.sound
 ATK.ParametrosModelo.contracao_modelo	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.lap_simetrica	propext, Quot.sound
+ATK.LaplacianoCiclo.lap_C10_entradas	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.lap_mulVec	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.pow_val_add	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.pow_val_one	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.pow_val_sub_one	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.autovetor	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.modo_zero	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.primitiva	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.raiz_pow	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.autovalor_eq	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.modos_mul_lap	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.det_modos_ne_zero	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.lap_diagonaliza	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.charpoly_lap	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.espectro_lap	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.autovalor_simetria	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.autovalor_nove	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.valores_C10	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.espectro_C10	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.valor_estrito	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.valores_C10_indices	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.multiplicidade_C10	propext, Classical.choice, Quot.sound
+ATK.LaplacianoCiclo.gap_C10	propext, Classical.choice, Quot.sound
