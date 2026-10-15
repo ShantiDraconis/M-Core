@@ -37,7 +37,7 @@ namespace ATK.FinalRoot
 open ATK.ClosedMath ATK.ForaDaLinha ATK.BealCompleto ATK.Conditional.Riemann
   ATK.RiemannConcrete ATK.BaezDuarteBridge ATK.ContracaoDN
 
-/-- **Raiz final**: os sete enunciados sobre os modelos `M`. -/
+/-- **Conjunção paramétrica dos sete enunciados**: não equivale, sem pontes adicionais, à conjunção dos problemas originais. -/
 abbrev Raiz (M : Models) : Prop := SevenStatements M
 
 /-- **Verde universal fiel**: a parte com enunciado oficial (RH ∧ Beal). -/
@@ -78,7 +78,7 @@ theorem pontes_de_restantes {M : Models} (hP : PontesRestantes M) : Bridges M :=
   ⟨baezDuarteCriterion, hP.fermat, hP.leray, hP.cookLevin, hP.lefschetz,
     hP.grossZagierKolyvagin, hP.osterwalderSchrader⟩
 
-/-- **Raiz final a partir do que falta**: pontes restantes + produtores ⇒ os sete enunciados. -/
+/-- **Redução condicional**: pontes restantes + produtores ⇒ os sete enunciados parametrizados. -/
 theorem raiz_de_produtores {M : Models} (hP : PontesRestantes M) (hO : Produtores M) : Raiz M :=
   ⟨riemann_iff_vazio.mpr hO.rh,
    beal_de_pontes_e_residual hP.fermat hP.darmonMerel hO.beal,
@@ -96,7 +96,7 @@ theorem produtores_fieis_de_raiz {M : Models} (h : Raiz M) :
     IsEmpty ZeroFora ∧ ExclusaoResidualFinal :=
   ⟨riemann_iff_vazio.mp h.1, residual_de_beal h.2.1⟩
 
-/-- **Verde fiel, forma exata e sem hipóteses**:
+/-- **Equivalência incondicional entre proposições (não prova dos seus membros)**:
 `RH ∧ Beal ⟺ (não há zero fora da linha) ∧ (residual de descida de Beal)`. -/
 theorem verde_fiel_iff :
     VerdeFiel ↔ IsEmpty ZeroFora ∧ ATK.BealFermatDescent.ExclusaoResidualDescida :=
