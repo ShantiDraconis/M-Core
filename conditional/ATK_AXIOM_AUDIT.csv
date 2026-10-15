@@ -1,0 +1,10 @@
+registro,declaracao,enunciado_no_kernel,axiomas,classificacao,run_id
+R01,ATK.LogicAudit.rh_material_vacuous,ConcreteUniformLogDNBound (fun _ => 0),"propext, Classical.choice, Quot.sound",MODEL_PROVEN (firewall: D_N = 0 satisfaz a cota),38816632489
+R02,MCore.FinalFail.Semantic.positive_rh_incompatible_with_negative_lane,RiemannHypothesis -> ¬ Nonempty RiemannInterpretation,"propext, Classical.choice, Quot.sound",CONDITIONAL,38816632489
+R03,ATK.ObrigacoesMinimas.O1_implica_minima,UniformLogBound -> Tendsto DN atTop (nhds 0),"propext, Classical.choice, Quot.sound",PROVEN_REDUCTION (O1 continua OPEN_OBLIGATION),38816632489
+R03,ATK.ObrigacoesMinimas.rh_obrigacao_suficiente,(ver arquivo),"propext, Classical.choice, Quot.sound",PROVEN_REDUCTION,38816632489
+R04,MCore.Real.P01FinalCertificate.P01MachineConstruction,Type (estrutura: NTM polinomial que decide SAT),-,DEFINITION; habitante OPEN_OBLIGATION,38816632489
+R05,MCore.Real.P01TerminalCertificate.p01ConstructionGap,Nonempty P01MachineConstruction,nao avaliado (nao compila),OPEN_OBLIGATION,38816632489
+R06,MCore.Real.P01TerminalMaterialCertificate.p01_closed_no_hypothesis,Nonempty P01MachineConstruction,nao avaliado (nao compila),OPEN_OBLIGATION,38816632489
+R07,(example) x2,P01MachineConstruction; FailureGenerator (SATBits circuitBitEncoding),nao avaliado (metas abertas),OPEN_OBLIGATION,38816632489
+AUD,MCore.Real.AuditoriaP01.decodeCircuitCore_size_lt_falso,¬ (decodeCircuitCore fuel bits = some (phi; tail) -> size phi < fuel),nenhum,KERNEL_PROVEN (refuta o lema P01DecodeCoreLaws.decodeCircuitCore_size_lt),38816632489

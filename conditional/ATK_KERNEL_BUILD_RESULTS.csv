@@ -1,0 +1,14 @@
+registro,repositorio,branch,sha,lean,mathlib,comando,run_id,build_original,build_copia_auditada,fecha
+R01,M-Core,atk-kernel-check,0572b8b,4.34.1,manifesto do ramo,lake build ATK.LogicAudit,38816632489,GREEN,GREEN,NAO (firewall de vacuidade)
+R02,M-Core,atk/global-material-frontier-20261001,32c8000,4.19.0,v4.19.0 (lake update: sem manifesto),lake build MCore.FinalFail.GlobalPositiveMaterialFrontier,38816632489,GREEN,GREEN apos corrigir cabecalho (era FAIL em 38815095065),NAO (implicacao RH -> ...)
+R03,M-Core,atk/hypothesis-ports-20261014,4c0f8e9,4.34.1,manifesto do ramo,lake build ATK.ObrigacoesMinimas,38816632489,GREEN,GREEN apos corrigir cabecalho (era FAIL em 38815095065),NAO (condicional: O1 -> D_N -> 0; O1 aberta)
+R04,m-core-p-vs-np,atk-kernel-check,e8ca0ce,4.19.0,v4.19.0 (lake update: manifesto vazio),lake build MCore.Real.P01FinalCertificate + lake env lean probe,38816632489,GREEN (base); sonda FAIL como projetado,-,NAO (Nonempty P01MachineConstruction sem prova)
+R05,m-core-p-vs-np,atk/p01-material-inhabitant-frontier-20260930,8a80c49,4.19.0,v4.19.0 (lake update: manifesto vazio),lake build MCore.Real.P01TerminalCertificate,38816632489,FAIL (31 erros em 5 arquivos),-,NAO (nao compila; depende de lema falso)
+R06,m-core-p-vs-np,atk/p01-terminal-promotion-candidate-20260930,84801b9,4.19.0,v4.19.0 (lake update: manifesto vazio),lake build MCore.Real.P01TerminalMaterialCertificate,38816632489,FAIL (31 erros em 5 arquivos),-,NAO (nao compila; depende de lema falso)
+R07,m-core-p-vs-np,work/pnp-minimal-separation-20261005,f114c79,4.19.0,v4.19.0 (lake update: manifesto vazio),lake build MCore.PNPMaterialAtoms,38816632489,FAIL (2 metas abertas: P01MachineConstruction e FailureGenerator),-,NAO (atomos em aberto por construcao)
+R08,m-core-hodge,atk/concrete-payload-model-binding-audit,-,-,-,-,-,NAO_RODADO (repo nao anexado),-,-
+R09-R10,m-core-yang-mills,atk/b60-triviality-audit,-,-,-,-,-,NAO_RODADO (repo nao anexado),-,-
+R11,atk-certified-priority-record,main,-,-,-,-,-,NAO_RODADO (repo nao anexado; e copia de R04),-,-
+R12-R13,millennium-riemann-I,atk-rh-g21-mold / atk/label-circular-rh-20261008,-,-,-,-,-,NAO_RODADO (repo nao anexado),-,-
+R14-R19,horizon-prime---framework,copilot/formalize-final-theorem,-,-,-,-,-,NAO_RODADO (repo nao anexado),-,-
+R20-R21,universal-emergent-logic-,ShantiDraconis-patch-1,-,-,-,-,-,NAO_RODADO (repo nao anexado),-,-
