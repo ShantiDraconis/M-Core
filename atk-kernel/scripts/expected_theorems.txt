@@ -1826,3 +1826,7 @@ ATK.BasePositividadeReflexao.hasSum_exp
 ATK.BasePositividadeReflexao.positividade_reflexao
 ATK.BasePositividadeReflexao.positividade_reflexao_coef
 ATK.BasePositividadeReflexao.positividade_reflexao_θ
+ATK.BaseReducaoDois.Δ_eq
+ATK.BaseReducaoDois.disc_eq_raizes
+ATK.BaseReducaoDois.raizes_separadas
+ATK.BaseReducaoDois.reducao_dois_torsao
