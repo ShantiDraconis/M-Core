@@ -75,7 +75,7 @@ venceu as barreiras num caso não trivial.
 |---|---|---|---|
 | F4.1 | Cook–Levin genuíno; Shannon; cota linear explícita | ✅ | `CookLevinNP`, `Shannon`, `CircuitoExplicito` |
 | F4.2 | Linguagens ↔ circuitos: fatias, `CotaInferior`, `P/poly`; `P ⊆ P/poly ∧ NP ⊄ P/poly ⇒ P ≠ NP`; fronteira linear monótona | ✅ | `AtaquePvsNP` |
-| F4.3 | Provar a ponte `P ⊆ P/poly` (simulação de `FinTM2` por circuitos) | ⬜ | `AtaquePvsNP.PemPpoly` |
+| F4.3 | **Ponte `P ⊆ P/poly` provada** (simulação de `FinTM2` por circuitos de tamanho polinomial); `NP ⊄ P/poly ⇒ P ≠ NP` sem pontes | ✅ | `PemPpoly.pemPpoly`, `p_ne_np_de_naoPpoly` |
 | F4.4 | Hierarquia de tempo; barreiras (Baker–Gill–Solovay, Razborov–Rudich) | ⬜ | — |
 | F4.5 | Fronteira linear `α > 3,1` para uma linguagem de NP | ⬜ | `AtaquePvsNP.FronteiraLinear` |
 
@@ -107,7 +107,7 @@ fica na infraestrutura (`BaseHodgeLinear`, `HodgeToro`, `HodgeFiltracao`).
 1. **BSD**: F1.4 (fórmula refinada para `y² = x³ − x`) → F1.5 (outras curvas CM de condutor pequeno).
 2. **Navier–Stokes**: F2.4 → F2.5 (aposta), F2.6 em paralelo.
 3. **Riemann**: F3.4 → F3.5.
-4. **P vs NP**: F4.3 → F4.5.
+4. **P vs NP**: F4.4 → F4.5.
 5. **Yang–Mills**: F5.3 → F5.4.
 
 O resultado esperado são formalizações publicáveis e algumas contribuições de pesquisa reais; a

@@ -58,7 +58,7 @@ volta deles.
 | **P1** | modularidade de `y² = x³ − x` com sinal `+1`: `g(1/x) = x² g(x)` | ✅ **provada** (`PonteModularCurva32.ponteModular_curva32`): caráter de Hecke de `ℚ(i)` (`BaseGaussPrimario`), `a_p = π + π̄` (`BaseGaussCurva32`), duas fatorações da soma dupla e as equações funcionais dos núcleos de Hurwitz da Mathlib | — |
 | **P2** | `\|aₙ\| ≤ n` para `y² = x³ − x` | ✅ **provada** (`PonteFatoresCurva32.cotaCoef_curva32`): cota de Hasse–Gauss (`BaseHasseCurva32`), recursão de Hecke e multiplicatividade (`PonteCoefCurva32`), fatores locais da Mathlib (P2a) | — |
 | P2a | os coeficientes `WeierstrassCurve.LFunction` da Mathlib são os padrão (`a_{2^k} = 0`; `a_{p^k} = c_k(a_p, p)`, `a_p = p + 1 − #E(𝔽_p)`) | ✅ **provada** (`PonteFatoresCurva32.fatoresPadrao`) | — |
-| PemPpoly | `P ⊆ P/poly` (Savage 1972) | ⬜ publicada | simulação de `FinTM2` por circuitos de tamanho polinomial (engenharia) |
+| **PemPpoly** | `P ⊆ P/poly` (Savage 1972) | ✅ **provada** (`PemPpoly.pemPpoly`): tableau determinístico em camadas sobre `Turing.FinTM2` (`CircuitoCamadas`, lema de moldura de `CookLevinBase`), tamanho polinomial | — |
 | — | ponte de Leray em `AtaqueNS` | = B3 | — |
 
 Com P1 e P2 provadas, **a parte do posto de BSD para `y² = x³ − x` não depende de nenhuma
@@ -74,7 +74,7 @@ e redução aditiva em `2` (`2` uniformizador de `ℤ_2`, paridade de `v(Δ_min)
 ## Ordem proposta
 
 1. ~~**P2a**~~, ~~**P1**~~ ✅ provadas: BSD (posto) para `y² = x³ − x` sem pontes.
-2. **PemPpoly** (engenharia, semanas): P ≠ NP fica equivalente a `NP ⊄ P/poly` no modelo genuíno.
+2. ~~**PemPpoly**~~ ✅ provada: `NP ⊄ P/poly ⇒ P ≠ NP` no modelo genuíno, sem pontes (`PemPpoly.p_ne_np_de_naoPpoly`).
 3. **`MordellWeil` geral** via 2-descida sobre a álgebra cúbica (meses; a Mathlib tem grupo de
    classes finito e o teorema das unidades de Dirichlet): fecha uma das duas hipóteses de L4.
 4. **B1 recíproca** (RH ⇒ `D_N → 0`; meses).
