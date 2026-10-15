@@ -95,7 +95,7 @@ theorem rh_de_ganhos
 
 /-! ## Yang–Mills: coercividade dá gap -/
 
-open scoped RealInnerProductSpace in
+open scoped InnerProductSpace in
 /-- Se `⟪ψ, Hψ⟫ ≥ δ‖ψ‖²` para todo `ψ ⊥ Ω`, todo autovalor com autovetor em `Ω^⊥` é `≥ δ`. -/
 theorem gap_de_coercividade {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
     (H : E →ₗ[ℝ] E) (Ω : E) {δ : ℝ}
