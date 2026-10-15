@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a5dab4cb4978db92ed78c01ee470c1277649d03a2cc5aea95fbe502351282a9c
+# axiomas por teorema — congelamento de 2d58a0493bb00fdc2d58d41f76230ff8997b5af4f4d1f0931899de4350ad00ea
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -2265,6 +2265,786 @@ ATK.FermatDezessete.ordem_grande	propext, Classical.choice, Quot.sound
 ATK.FermatDezessete.pid_dezessete	propext, Classical.choice, Quot.sound
 ATK.FermatDezessete.regular_dezessete	propext, Classical.choice, Quot.sound
 ATK.FermatDezessete.flt_dezessete	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveBase.phi_poly	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveBase.piso_dezenove	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveBase.minkowski_dezenove	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveBase.ciclotomico_dezenove	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_11	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_37	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_113	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_151	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_191	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_227	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_229	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_419	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_457	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_571	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_647	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_761	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_1103	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_1217	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_1483	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_1559	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_1597	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_1787	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_1901	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_2053	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_2129	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_2243	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_2281	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_2357	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_2699	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_2851	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_2927	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_3041	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_3079	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_3307	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_3877	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4219	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4409	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4447	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4523	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4561	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4637	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4751	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4789	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_4903	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_5701	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_6043	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_6271	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_6689	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_6803	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_6841	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_6917	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7069	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7297	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7411	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7487	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7639	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7753	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7829	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_7867	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_8171	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_8209	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_8513	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_8627	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_8741	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_8779	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_8893	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_8969	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_9007	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_9311	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_9349	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_9463	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_9539	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_9767	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_10223	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_10337	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_10831	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_11059	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_11173	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_11287	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_11743	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_11933	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_11971	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_12161	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_12503	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_12541	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_12959	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_13187	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_13339	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_13567	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_13681	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_13757	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_14251	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_14327	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_14479	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_14593	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_14669	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_14783	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_14821	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_14897	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_15277	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_15391	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_15467	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_15581	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_15619	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_15733	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_15809	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_15923	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_16189	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_16417	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_16493	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_16607	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_16759	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_16987	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_17291	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertA.certificado_17443	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_17519	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_17747	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_18013	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_18089	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_18127	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_18583	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_18773	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_19001	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_19267	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_19381	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_19457	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_19571	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_19609	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_19913	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_20369	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_20407	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_20483	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_20521	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_20749	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_20939	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_21319	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_21433	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_21661	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_21737	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_21851	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_22003	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_22079	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_22193	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_22307	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_22573	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_22877	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23029	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23143	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23333	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23371	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23447	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23561	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23599	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23789	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_23827	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_24169	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_24359	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_24473	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_24967	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_25309	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_25423	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_25537	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_25841	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_26107	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_26183	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_26297	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_26449	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_26981	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_27361	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_27437	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_27551	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_27779	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_27817	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_27893	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_28349	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_28387	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_28463	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_28729	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_28843	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_29033	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_29147	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_29527	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_29641	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_29717	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_29983	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_30059	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_30097	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_30211	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_30553	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_30781	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_30971	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_31123	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_31237	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_31541	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_31769	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_31883	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_32377	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_32491	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_32719	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_32833	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_32909	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_33023	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_33289	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_33403	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_33479	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_34429	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_34543	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_34847	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_34961	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_35227	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_35531	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_35569	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_35759	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_35797	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_35911	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_36671	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_36709	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_36899	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_37013	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_37507	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_37811	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_37963	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_38039	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_38153	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_38609	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_38723	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertB.certificado_39103	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_39217	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_39293	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_39521	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_39749	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_39863	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_39901	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_40129	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_40357	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_40433	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_40471	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_40699	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_40813	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_40927	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_41117	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_41231	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_41269	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_41611	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_41687	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_41801	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_41953	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_42181	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_42257	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_42409	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_42751	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_42979	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_43093	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_43207	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_43283	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_43321	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_43397	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_43777	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_43853	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_43891	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_44119	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_44537	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_44651	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_44879	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_44917	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_45259	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_45677	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_45943	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_46133	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_46171	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_46399	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_46589	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_46703	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_46817	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_47387	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_47501	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_47653	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_47843	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_47881	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_48109	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_48299	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_48337	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_48413	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_48527	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_48679	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_48869	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_48907	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_49211	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_49363	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_49477	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_49667	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_50047	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_50123	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_50503	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_51263	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_51719	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_51871	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_52289	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_52517	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_52631	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_52783	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_52859	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_52973	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_53087	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_53201	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_53239	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_53353	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_53657	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_53923	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_54037	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_54151	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_54493	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_54721	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_54949	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_55291	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_55633	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_55823	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_56393	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_56431	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_56659	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_56773	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_56963	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_57077	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_57191	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_57457	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_57571	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_58027	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_58217	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_58369	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_58711	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_58787	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_58901	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_59053	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_59167	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_59243	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_59281	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_59357	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_59471	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertC.certificado_59509	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_59699	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_60041	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_60383	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_60497	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_60611	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_60649	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_60763	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_60953	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_61333	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_61409	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_61561	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_61637	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_61751	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_61979	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_62017	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_62131	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_62207	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_62473	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_62549	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_62701	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_62929	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_63347	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_63499	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_63689	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_63727	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_63803	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_63841	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_64373	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_64601	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_65171	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_65323	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_65437	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_65551	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_66083	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_66463	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_66653	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_66919	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_67033	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_67261	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_67489	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_67679	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_68059	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_68477	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_68743	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_68819	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_69313	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_69389	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_69427	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_69959	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_69997	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_70111	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_70529	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_71023	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_71327	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_71479	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_71593	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_71707	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_71821	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_72277	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_72353	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_72467	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_72733	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_72923	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_73037	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_73189	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_73303	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_73379	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_73417	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_73607	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_73721	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_74101	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_74177	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_74747	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_74861	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_75013	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_75431	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_75583	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_75659	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_75773	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_76001	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_76039	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_76343	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_76837	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_76913	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_77141	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_77369	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_77521	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_77711	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_77863	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_77977	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_78167	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_78509	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_78623	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_78737	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_78889	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_79193	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_79231	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_79687	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_79801	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_80447	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_80599	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_80713	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_80789	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_81017	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_81131	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_81283	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_81359	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_81701	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_81853	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_81929	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_81967	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertD.certificado_82499	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_82613	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_82651	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_82727	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_83221	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_83449	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_83563	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_83639	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_83791	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_84247	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_84437	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_84551	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_84589	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_85121	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_85159	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_85577	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_85691	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_85843	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_86413	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_86869	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_87211	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_87553	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_87629	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_87743	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_88237	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_88427	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_88807	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_88883	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_88997	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_89491	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_89567	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_89681	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_89833	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_89909	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_90023	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_90289	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_90403	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_90631	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_90821	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_91163	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_91733	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_91771	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_91961	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_92189	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_92227	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_92569	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_92683	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_92987	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_93139	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_93253	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_93329	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_93481	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_93557	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_93937	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_94583	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_94621	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_94811	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_94849	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_95153	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_95191	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_95267	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_95419	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_95723	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_95989	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_96179	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_96293	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_96331	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_96749	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_96787	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_97547	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_97813	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_97927	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_98041	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_98269	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_98459	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_98573	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_98801	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_98953	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_99181	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_99257	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_99371	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_99409	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_99523	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_99713	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_100169	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_100207	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_100511	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_100549	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_100853	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_101081	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_101119	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_101347	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_101537	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_101879	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_101917	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_102031	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_102107	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_102259	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_102563	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_102677	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_102829	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_103171	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_103399	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_103703	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_103969	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_104311	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_104729	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_105071	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_105337	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_105527	propext, Classical.choice, Quot.sound
+ATK.FermatDezenoveCertE.certificado_105907	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.teste_mono	propext, Quot.sound
+ATK.FermatDezenove.teste_0	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_0	propext, Quot.sound
+ATK.FermatDezenove.teste_1	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_1	propext, Quot.sound
+ATK.FermatDezenove.teste_2	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_2	propext, Quot.sound
+ATK.FermatDezenove.teste_3	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_3	propext, Quot.sound
+ATK.FermatDezenove.teste_4	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_4	propext, Quot.sound
+ATK.FermatDezenove.teste_5	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_5	propext, Quot.sound
+ATK.FermatDezenove.teste_6	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_6	propext, Quot.sound
+ATK.FermatDezenove.teste_7	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_7	propext, Quot.sound
+ATK.FermatDezenove.teste_8	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_8	propext, Quot.sound
+ATK.FermatDezenove.teste_9	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_9	propext, Quot.sound
+ATK.FermatDezenove.teste_10	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_10	propext, Quot.sound
+ATK.FermatDezenove.teste_11	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_11	propext, Quot.sound
+ATK.FermatDezenove.teste_12	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_12	propext, Quot.sound
+ATK.FermatDezenove.teste_13	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_13	propext, Quot.sound
+ATK.FermatDezenove.teste_14	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_14	propext, Quot.sound
+ATK.FermatDezenove.teste_15	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_15	propext, Quot.sound
+ATK.FermatDezenove.teste_16	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_16	propext, Quot.sound
+ATK.FermatDezenove.teste_17	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_17	propext, Quot.sound
+ATK.FermatDezenove.teste_18	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_18	propext, Quot.sound
+ATK.FermatDezenove.teste_19	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_19	propext, Quot.sound
+ATK.FermatDezenove.teste_20	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_20	propext, Quot.sound
+ATK.FermatDezenove.teste_21	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_21	propext, Quot.sound
+ATK.FermatDezenove.teste_22	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_22	propext, Quot.sound
+ATK.FermatDezenove.teste_23	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_23	propext, Quot.sound
+ATK.FermatDezenove.teste_24	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_24	propext, Quot.sound
+ATK.FermatDezenove.teste_25	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_25	propext, Quot.sound
+ATK.FermatDezenove.teste_26	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_26	propext, Quot.sound
+ATK.FermatDezenove.teste_27	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_27	propext, Quot.sound
+ATK.FermatDezenove.teste_28	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_28	propext, Quot.sound
+ATK.FermatDezenove.teste_29	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_29	propext, Quot.sound
+ATK.FermatDezenove.teste_30	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_30	propext, Quot.sound
+ATK.FermatDezenove.teste_31	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_31	propext, Quot.sound
+ATK.FermatDezenove.teste_32	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_32	propext, Quot.sound
+ATK.FermatDezenove.teste_33	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_33	propext, Quot.sound
+ATK.FermatDezenove.teste_34	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_34	propext, Quot.sound
+ATK.FermatDezenove.teste_35	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_35	propext, Quot.sound
+ATK.FermatDezenove.teste_36	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_36	propext, Quot.sound
+ATK.FermatDezenove.teste_37	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_37	propext, Quot.sound
+ATK.FermatDezenove.teste_38	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_38	propext, Quot.sound
+ATK.FermatDezenove.teste_39	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_39	propext, Quot.sound
+ATK.FermatDezenove.teste_40	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_40	propext, Quot.sound
+ATK.FermatDezenove.teste_41	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_41	propext, Quot.sound
+ATK.FermatDezenove.teste_42	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_42	propext, Quot.sound
+ATK.FermatDezenove.teste_43	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_43	propext, Quot.sound
+ATK.FermatDezenove.teste_44	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_44	propext, Quot.sound
+ATK.FermatDezenove.teste_45	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_45	propext, Quot.sound
+ATK.FermatDezenove.teste_46	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_46	propext, Quot.sound
+ATK.FermatDezenove.teste_47	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_47	propext, Quot.sound
+ATK.FermatDezenove.teste_48	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_48	propext, Quot.sound
+ATK.FermatDezenove.teste_49	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_49	propext, Quot.sound
+ATK.FermatDezenove.teste_50	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_50	propext, Quot.sound
+ATK.FermatDezenove.teste_51	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_51	propext, Quot.sound
+ATK.FermatDezenove.teste_52	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_52	propext, Quot.sound
+ATK.FermatDezenove.teste_53	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_53	propext, Quot.sound
+ATK.FermatDezenove.teste_54	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_54	propext, Quot.sound
+ATK.FermatDezenove.teste_55	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_55	propext, Quot.sound
+ATK.FermatDezenove.teste_56	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_56	propext, Quot.sound
+ATK.FermatDezenove.teste_57	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_57	propext, Quot.sound
+ATK.FermatDezenove.teste_58	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_58	propext, Quot.sound
+ATK.FermatDezenove.teste_59	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_59	propext, Quot.sound
+ATK.FermatDezenove.teste_60	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_60	propext, Quot.sound
+ATK.FermatDezenove.teste_61	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_61	propext, Quot.sound
+ATK.FermatDezenove.teste_62	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_62	propext, Quot.sound
+ATK.FermatDezenove.teste_63	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_63	propext, Quot.sound
+ATK.FermatDezenove.teste_64	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_64	propext, Quot.sound
+ATK.FermatDezenove.teste_65	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_65	propext, Quot.sound
+ATK.FermatDezenove.teste_66	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_66	propext, Quot.sound
+ATK.FermatDezenove.teste_67	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_67	propext, Quot.sound
+ATK.FermatDezenove.teste_68	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_68	propext, Quot.sound
+ATK.FermatDezenove.teste_69	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_69	propext, Quot.sound
+ATK.FermatDezenove.teste_70	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_70	propext, Quot.sound
+ATK.FermatDezenove.teste_71	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_71	propext, Quot.sound
+ATK.FermatDezenove.teste_72	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_72	propext, Quot.sound
+ATK.FermatDezenove.teste_73	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_73	propext, Quot.sound
+ATK.FermatDezenove.teste_74	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_74	propext, Quot.sound
+ATK.FermatDezenove.teste_75	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_75	propext, Quot.sound
+ATK.FermatDezenove.teste_76	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_76	propext, Quot.sound
+ATK.FermatDezenove.teste_77	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_77	propext, Quot.sound
+ATK.FermatDezenove.teste_78	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_78	propext, Quot.sound
+ATK.FermatDezenove.teste_79	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_79	propext, Quot.sound
+ATK.FermatDezenove.teste_80	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_80	propext, Quot.sound
+ATK.FermatDezenove.teste_81	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_81	propext, Quot.sound
+ATK.FermatDezenove.teste_82	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_82	propext, Quot.sound
+ATK.FermatDezenove.teste_83	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_83	propext, Quot.sound
+ATK.FermatDezenove.teste_84	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_84	propext, Quot.sound
+ATK.FermatDezenove.teste_85	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_85	propext, Quot.sound
+ATK.FermatDezenove.teste_86	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_86	propext, Quot.sound
+ATK.FermatDezenove.teste_87	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_87	propext, Quot.sound
+ATK.FermatDezenove.teste_88	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_88	propext, Quot.sound
+ATK.FermatDezenove.teste_89	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_89	propext, Quot.sound
+ATK.FermatDezenove.teste_90	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_90	propext, Quot.sound
+ATK.FermatDezenove.teste_91	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_91	propext, Quot.sound
+ATK.FermatDezenove.teste_92	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_92	propext, Quot.sound
+ATK.FermatDezenove.teste_93	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_93	propext, Quot.sound
+ATK.FermatDezenove.teste_94	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_94	propext, Quot.sound
+ATK.FermatDezenove.teste_95	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_95	propext, Quot.sound
+ATK.FermatDezenove.teste_96	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_96	propext, Quot.sound
+ATK.FermatDezenove.teste_97	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_97	propext, Quot.sound
+ATK.FermatDezenove.teste_98	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_98	propext, Quot.sound
+ATK.FermatDezenove.teste_99	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_99	propext, Quot.sound
+ATK.FermatDezenove.teste_100	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_100	propext, Quot.sound
+ATK.FermatDezenove.teste_101	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_101	propext, Quot.sound
+ATK.FermatDezenove.teste_102	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_102	propext, Quot.sound
+ATK.FermatDezenove.teste_103	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_103	propext, Quot.sound
+ATK.FermatDezenove.teste_104	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_104	propext, Quot.sound
+ATK.FermatDezenove.teste_105	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.sub_105	propext, Quot.sound
+ATK.FermatDezenove.excecoes	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.ordem_grande	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.pid_dezenove	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.regular_dezenove	propext, Classical.choice, Quot.sound
+ATK.FermatDezenove.flt_dezenove	propext, Classical.choice, Quot.sound
 ATK.FermatRegular.flt_primo_regular	propext, Classical.choice, Quot.sound
 ATK.FermatRegular.regular_tres	propext, Classical.choice, Quot.sound
 ATK.FermatRegular.regular_cinco	propext, Classical.choice, Quot.sound
@@ -2278,13 +3058,17 @@ ATK.FermatRegular.flt_onze	propext, Classical.choice, Quot.sound
 ATK.FermatRegular.flt_treze	propext, Classical.choice, Quot.sound
 ATK.FermatRegular.regular_dezessete	propext, Classical.choice, Quot.sound
 ATK.FermatRegular.flt_dezessete	propext, Classical.choice, Quot.sound
+ATK.FermatRegular.regular_dezenove	propext, Classical.choice, Quot.sound
+ATK.FermatRegular.flt_dezenove	propext, Classical.choice, Quot.sound
 ATK.FermatRegular.flt_tres_a_dezoito	propext, Classical.choice, Quot.sound
+ATK.FermatRegular.flt_tres_a_vinte_e_dois	propext, Classical.choice, Quot.sound
 ATK.FermatRegular.flt_iff_irregulares	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.beal_igual_cinco	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.beal_igual_sete	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.beal_igual_onze	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.beal_igual_treze	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.beal_igual_dezessete	propext, Classical.choice, Quot.sound
+ATK.BealFermatRegular.beal_igual_dezenove	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.flt_regulares	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.beal_expoentes_mult	propext, Classical.choice, Quot.sound
 ATK.BealFermatRegular.beal_mdc_regular	propext, Classical.choice, Quot.sound

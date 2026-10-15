@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (2291 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (3075 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -310,6 +310,30 @@ Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.le
   composição) dá `poli_custoTotal`.
 * `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
   `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
+
+## Rodada de 15/10/2026 (noite, 2): FLT(19)
+
+Continuação do pedido "prove tudo" (784 teoremas auditados, axiomas padrão).
+
+* `ATK/FermatDezenoveBase.lean` (4): cota de Minkowski de `ℚ(ζ₁₉)` com parte inteira 105 933;
+  `Φ₁₉`.
+* `ATK/FermatDezenoveCertA.lean` … `CertE.lean` (558): um certificado por primo `p ≤ 105 933` com
+  classe de norma `≤ 105 933` — 552 primos `≡ 1 (mód 19)`, `37, 113, 151, 227` (grau 2) e `7, 11`
+  (grau 3). Cada certificado dá um gerador do ideal primo e as identidades do critério `pid6`,
+  conferidas por reflexão em listas de inteiros (`ATK.PolyLista`) e `decide +kernel`. Os
+  geradores foram achados fora do kernel por redução de reticulados (LLL exato).
+* `ATK/FermatDezenove.lean` (218): `excecoes` — o kernel confere, em 106 blocos de mil, que todo
+  `p ≤ 105 933` com potência `pⁱ ≤ 105 933`, `pⁱ ≡ 1 (mód 19)`, ou é certificado, ou é 1, ou tem
+  divisor primo `≤ 325`; **`pid_dezenove`**: `𝓞(ℚ(ζ₁₉))` é principal; `regular_dezenove`;
+  **`flt_dezenove`: FLT(19)**.
+* `FermatRegular`: `flt_dezenove`, `flt_tres_a_vinte_e_dois` (FLT(n) para `3 ≤ n ≤ 22`) e
+  **`flt_iff_irregulares`: `FermatLastTheorem ⟺` FLT para os primos irregulares `p ≥ 23`**. 19 é o
+  último primo com `𝓞(ℚ(ζₚ))` principal; para 23, 29 e 31 (números de classes 3, 8, 9) é preciso
+  calcular o grupo de classes.
+* `BealFermatRegular`: `19 ∣ mdc(x, y, z)` também é incondicional; cobertura dos expoentes em
+  `3..200`: **887.152 (11,43%)**.
+
+Nenhum estado mudou: pontes no kernel **2/8**, produtores abertos **8/8**, ligações abertas **3/5**.
 
 ## Rodada de 15/10/2026 (noite): Fermat para primos regulares, `n = 5, 7, 11, 13, 17`
 

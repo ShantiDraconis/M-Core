@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "a5dab4cb4978db92ed78c01ee470c1277649d03a2cc5aea95fbe502351282a9c",
+  "sources_sha256": "2d58a0493bb00fdc2d58d41f76230ff8997b5af4f4d1f0931899de4350ad00ea",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -20,7 +20,7 @@
     "ATK/BealDarmonMerel.lean": "ead6713ed0f643ce828121f0c63b240feec2ebbe0d0a269c3a86c97012161ab6",
     "ATK/BealFLT.lean": "a777eddc6524ae52733f12dc98be6e785fb79bfc09f4febc4db31919a95b4620",
     "ATK/BealFermatDescent.lean": "2ae030020dfaf3520e61a81afe2c18a689e11ba7a81a0ca31d0878e6476bbdcd",
-    "ATK/BealFermatRegular.lean": "b961cd77f75a2d733c7f5c2e184bcf0414324ee9bfd956b18b5ea9dd28b52ef4",
+    "ATK/BealFermatRegular.lean": "834f1b4d5823aa4db5c3b547a208c3d566229aba84c8cfac44acfb99d4bda3be",
     "ATK/BealFiltros.lean": "e41bfd04d764942b582030286e9b300f74be0738847988dae0a47d07d7baf867",
     "ATK/BealFourFourTwo.lean": "07b323e543eee66a877ebaa9514fc3582b6f8bbdf108f6c1054a325535f1b406",
     "ATK/BealPartial.lean": "1e6c661b835a86ef19e36b46e5af356cd60d873e2d4b784134bbe6983bda05fb",
@@ -55,9 +55,16 @@
     "ATK/DarmonMerelSeis.lean": "187be5b38e0fdf9254e43c17d552fdf8be59520d67cff19d8175f1f10c898840",
     "ATK/EspectralDN.lean": "752914e1bc8e260f831e9b05d5c0b4bd5ca9b22fbc2bf557f90db329853e8e4a",
     "ATK/FatoresQuarticos.lean": "c101dc5c0d6ce06606c31ad1da34669d17e1b184ff2c4a153eecfc83a25d7025",
+    "ATK/FermatDezenove.lean": "8c730c49f1f0930b0a50fc56c2a0fabd9edb2b9a10b0625c64b4972b821af78e",
+    "ATK/FermatDezenoveBase.lean": "98a4bc35691f2a78277213d6e32220a9fb73ec38172a5c3978bf40dd5965a1bc",
+    "ATK/FermatDezenoveCertA.lean": "d9db7f91376776691eae053077253aca3afecd5458a9ea07cbfcdf5f641ddc25",
+    "ATK/FermatDezenoveCertB.lean": "049c64bb678e072cb8c2b5c35b98f6a2f637bc050be4a65955e3fbaa38d48ca7",
+    "ATK/FermatDezenoveCertC.lean": "1996c8eadd61992b24e1f1cdcfbc09467e224e47dae99ac0b6e4f6f506f7ddc0",
+    "ATK/FermatDezenoveCertD.lean": "43d13f37799117ac4a2787c5e08ecace14a15e8d135f5bc2b2b748392ded67ef",
+    "ATK/FermatDezenoveCertE.lean": "c9215524b01bc19fe4a9e4b0dea83f1f8dd2f711963d5cd02b98b2dee64a1737",
     "ATK/FermatDezessete.lean": "6937d88a7a2206aa8e2352f0e5858a3f76e0e385c9faec023fb6ea630fea9f4c",
     "ATK/FermatOnze.lean": "4851253d3a0ec1d958dbbef8631c91a07a229a1870ad6145caac22aa7f0cd83e",
-    "ATK/FermatRegular.lean": "029cb621aa0aa1a3d6779a63f3b7f4058ee089bcf74938785e5bbe03cb679e4b",
+    "ATK/FermatRegular.lean": "525757e12f662e5c40571537c679bdb193553d1c92366b7bc48b90df82f11a4b",
     "ATK/FermatRightTriangle.lean": "b31212601d3712ea6f226ab20e78e26e11ce1e86d82197307f746ea2c301e5cd",
     "ATK/FermatTreze.lean": "a3a6b2cb07e54bd19ba6ae2b60a76ac1757ba6b2eee30d4ca6b3d310d9f26aab",
     "ATK/Fichas.lean": "f9073d77473d14a8c2d80307a0f9374e0e19ca5217bc3e56f936f92db549e24f",
@@ -164,12 +171,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "4a5c256c03e6ca0a6bb516cc9a16fed6e01334c575e695240a0fdabd3af137fe"
+    "ATK.lean": "c8b3f334cfc14533f6c248213441a615314ade685db8c4d5289a90f73aa86bb8"
   },
-  "n_files": 163,
-  "expected_theorems": 2291,
+  "n_files": 170,
+  "expected_theorems": 3075,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "3f192216836d909f7f90d17b087bcfc2d0694afa",
+  "commit_at_freeze": "25659d8e6fa4b9f6d10304b978c62abaa21a0f6b",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

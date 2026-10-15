@@ -252,6 +252,13 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
   fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
   O4 (SAT ∉ P).
+- **Rodada de 15/10/2026 (noite, 2) — FLT(19)** (784 teoremas): `FermatDezenove` (com
+  `FermatDezenoveBase` e cinco módulos de certificados): `𝓞(ℚ(ζ₁₉))` é principal — cota de
+  Minkowski 105 933, 558 primos certificados (552 de grau 1, 4 de grau 2, 2 de grau 3), conferidos
+  pelo kernel por reflexão (`PolyLista`) e `decide +kernel` —, logo **FLT(19)**. 19 é o último
+  primo com `𝓞(ℚ(ζₚ))` principal. `FermatRegular`: FLT(n) para `3 ≤ n ≤ 22` e **B2 equivale a FLT
+  para os primos irregulares `p ≥ 23`**. `BealFermatRegular`: Beal sem pontes também com `19 ∣ mdc`
+  (cobertura incondicional em `3..200`: 11,43%). Pontes **2/8**, produtores **8/8** abertos.
 - **Rodada de 15/10/2026 (noite) — último teorema de Fermat para primos regulares e para
   `n = 5, 7, 11, 13, 17`** (179 teoremas): `ATK/FltRegular/` traz a formalização pública
   **flt-regular** (teorema de Kummer, casos I e II; Apache 2.0, com atribuição e uma adaptação de

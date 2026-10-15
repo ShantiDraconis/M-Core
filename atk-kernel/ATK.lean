@@ -116,5 +116,12 @@ import ATK.FermatOnze
 import ATK.FermatTreze
 import ATK.PolyLista
 import ATK.FermatDezessete
+import ATK.FermatDezenoveBase
+import ATK.FermatDezenoveCertA
+import ATK.FermatDezenoveCertB
+import ATK.FermatDezenoveCertC
+import ATK.FermatDezenoveCertD
+import ATK.FermatDezenoveCertE
+import ATK.FermatDezenove
 import ATK.FermatRegular
 import ATK.BealFermatRegular
