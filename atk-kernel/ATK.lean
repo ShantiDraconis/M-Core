@@ -172,3 +172,7 @@ import ATK.MordellWeilNumero
 import ATK.MudancaVariaveis
 import ATK.MordellWeilGeral
 import ATK.LigacaoBSDMW
+import ATK.PostoLivre
+import ATK.Externo.FCBSD
+import ATK.IntegracaoFCBSD
+import ATK.IntegracaoFCBSDMW
