@@ -10,7 +10,7 @@ Gerado por `atk-kernel/scripts/termos.py --md` a partir de `atk-kernel/scripts/t
 - Tipos conferidos pelo kernel: **25/25** (cada lacuna aberta trocada por `(sorry : <tipo do catálogo>)` compila; cada lacuna preenchida compila com o termo real; trocar o tipo de B3 pelo de O3 faz a compilação falhar).
 - Fechadas: **0/25**. Preencher uma lacuna de produtor ou de refutação é resolver o problema correspondente; preencher uma ligação é construir o modelo genuíno (falta ainda a revisão humana para `CLOSED`).
 
-Fontes do kernel: SHA-256 `58734b25ba8d3098cd9b4901260676c0dc9cbd4790e952d75d8d5e7cc365685d`.
+Fontes do kernel: SHA-256 `a5dab4cb4978db92ed78c01ee470c1277649d03a2cc5aea95fbe502351282a9c`.
 
 ## Os 24 componentes
 
@@ -214,10 +214,10 @@ Enunciado oficial no portão: PneNP modeloGenuino; enunciado fiel já no kernel:
 | 3 · Tipo matemático | Prop (proposição) |
 | 8 · Leis (certificadas, da linha) | `ATK.Conditional.PvsNP.pvsnp_conditional`; `ATK.Conditional.PvsNP.pneNP_iff_sat_not_in_P`; `ATK.ComposicaoTM2.comp`; `ATK.ModeloPNP.P_sub_NP`; `ATK.ModeloPNP.P_fechada_red` |
 | 17 · Hipóteses | nenhuma: o portão exige um termo sem hipóteses |
-| 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.fecha`; `ATK.Termos.PNP.exato`; `ATK.SATemNP.cookLevin_iff` |
+| 18 · Lemas (certificados, do termo) | `ATK.Termos.PNP.fecha`; `ATK.Termos.PNP.exato`; `ATK.SATemNP.cookLevin_iff`; `ATK.CookLevinNP.cookLevin`; `ATK.ObligationsClosed.B4` |
 | 19 · Dependências | `ATK/Termos.lean`; L2 FECHADA: ATK.ModeloPNP.modeloPNP e ATK.ModeloPNP.SAT (aprovada pelo titular em 14/10/2026; fidelidade ATK.ModeloPNP.fiel) |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.PNP.terminal` |
-| 23 · Certificado Lean | metade provada no kernel: SAT ∈ NP (ATK.SATemNP.sat_em_NP); com ela, ponteB4 ⟺ NP-dificuldade de SAT (ATK.SATemNP.cookLevin_iff); falta M2 · tipo conferido pelo kernel |
+| 23 · Certificado Lean | PROVADA no kernel no modelo genuíno: ATK.CookLevinNP.cookLevin : CookLevin modeloPNP SAT (= ponteB4 modeloGenuino sat com a ligação L2); obrigação B4 fechada por ATK.ObligationsClosed.B4 · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/PNP.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
 ### T06 — `PNP:PROVA_DO_PRODUTOR_O4`
@@ -454,7 +454,7 @@ Enunciado oficial no portão: BSDFull modeloGenuino. Ligação: L4 parcial: part
 | 18 · Lemas (certificados, do termo) | `ATK.LigacaoBSD.continuacao_unica`; `ATK.LigacaoBSD.zero_iff_posto_pos`; `ATK.LigacaoBSD.posto_iff`; `ATK.LigacaoBSDTestes.taylor_iff`; `ATK.LigacaoBSDTestes.posto_curva32`; `ATK.LigacaoBSDTestes.clay_curva32` |
 | 19 · Dependências | `ATK/Termos.lean`; L4 parcial: parte do posto fiel ao Clay (ATK.LigacaoBSD); fórmula refinada pendente |
 | 20 · Obrigação terminal | alimenta `ATK.Terminal.BSDModelo.modeloGenuino` |
-| 23 · Certificado Lean | PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff); falta a fórmula refinada (Ω_E, regulador, Ш, Tamagawa, torção) · tipo conferido pelo kernel |
+| 23 · Certificado Lean | PARCIAL — parte do posto no kernel (ATK.LigacaoBSD.ClayBSD, posto_iff) e fórmula refinada sobre a Mathlib (ATK.BSDRefinada.FormulaRefinada: Ω_E, regulador de Néron–Tate, Ш, Tamagawa, torção; modeloCompleto, bsdFull_iff_fraco); o fechamento da ligação é decisão do titular · tipo conferido pelo kernel |
 | 24 · Proveniência | `atk-kernel/terminal-templates/BSDModelo.lean.tpl` · `atk-kernel/scripts/termos.json` |
 
 ## YM — Yang–Mills e gap de massa
