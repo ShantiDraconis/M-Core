@@ -9,7 +9,7 @@ formalizar o teorema. Este documento separa o que foi **calculado** (fora do ker
 Script: `atk-kernel/numerics/classes_ciclotomicas.py`. Dados: `atk-kernel/numerics/hmenos_p300.csv`
 e `atk-kernel/numerics/irregulares_p10000.csv`.
 
-**Número de classes relativo h⁻(ℚ(ζₚ)), exato, para os 62 primos 3 ≤ p ≤ 300.** A fórmula é
+**Número de classes relativo h⁻(ℚ(ζₚ)), exato, para os 61 primos 3 ≤ p ≤ 293.** A fórmula é
 h⁻ = 2p·∏_{χ ímpar}(−½B_{1,χ}). O produto é calculado como o determinante inteiro da
 multiplicação por Σ rⱼxʲ em ℤ[x]/(x^{(p−1)/2} + 1).
 
@@ -36,8 +36,8 @@ congruência de Voronoi, com uma raiz primitiva como multiplicador.
   | 3 | 1,3 % | 1,3 % |
 
   Os primeiros primos de índice 3 são 491, 617 e 647; nenhum p < 10 000 tem índice 4.
-* Conferência cruzada: para p ≤ 300, "p | h⁻" e "existe par irregular" coincidem em todos os 62
-  primos. É o critério de Kummer conferido numericamente.
+* Conferência cruzada: para os 60 primos 5 ≤ p ≤ 293, "p | h⁻" e "existe par irregular" coincidem
+  sempre (para p = 3 não há k a testar). É o critério de Kummer conferido numericamente.
 
 Nada disto é certificado pelo kernel. O critério de Kummer e a fórmula analítica de h⁻ (fatoração de
 ζ_K em funções L de Dirichlet, valores B_{1,χ}, índice de unidades) não estão na Mathlib. A Mathlib

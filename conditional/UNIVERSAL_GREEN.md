@@ -317,7 +317,7 @@ Pedido do titular: calcular todas as classes, comportamentos e enumerações e f
 Detalhes em `CLASSES_CICLOTOMICAS.md`.
 
 * **Calculado (fora do kernel)** — `atk-kernel/numerics/classes_ciclotomicas.py`:
-  * h⁻(ℚ(ζₚ)) exato para os 62 primos `p ≤ 300` (`hmenos_p300.csv`): 23 → 3, 29 → 8, 31 → 9, todos
+  * h⁻(ℚ(ζₚ)) exato para os 61 primos ímpares `p ≤ 300` (`hmenos_p300.csv`): 23 → 3, 29 → 8, 31 → 9, todos
     regulares; 37, 59, 67 são os primeiros irregulares;
   * pares irregulares `(p, k)`, `p | B_k`, para os 1227 primos `5 ≤ p ≤ 10 000`
     (`irregulares_p10000.csv`): 497 irregulares, 40,51 %; índices 0–3 em 59,5 / 30,9 / 8,3 / 1,3 %,

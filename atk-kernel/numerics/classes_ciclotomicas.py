@@ -5,7 +5,10 @@ Uso:
   python3 numerics/classes_ciclotomicas.py hmenos 300   > numerics/hmenos_p300.csv
   python3 numerics/classes_ciclotomicas.py bernoulli 10000 > numerics/irregulares_p10000.csv
 
-* `hmenos P`: para cada primo 3 ≤ p ≤ P, h⁻(ℚ(ζ_p)) exato, pela fórmula
+Dependências: `hmenos` usa só a biblioteca padrão; `bernoulli` precisa de NumPy
+(`pip install numpy`), importado só nesse modo.
+
+* `hmenos P`: para cada primo ímpar 3 ≤ p ≤ P, h⁻(ℚ(ζ_p)) exato, pela fórmula
   h⁻ = 2p · ∏_{χ ímpar} (−½ B_{1,χ}),  p·B_{1,χ} = Σ_j r_j χ(g)^j  (r_j = g^j mod p, g raiz primitiva);
   o produto sobre os caracteres ímpares é o determinante (inteiro, Bareiss) da multiplicação por
   F(x) = Σ r_j x^j em ℤ[x]/(x^{(p−1)/2} + 1).  p é regular ⟺ p ∤ h⁻ (Kummer: p | h⁺ ⟹ p | h⁻).
@@ -18,7 +21,6 @@ Nada disto é certificado pelo kernel: o critério de Kummer e a fórmula analí
 formalizados.  As duas listas concordam para todo p ≤ 300 (conferência cruzada).
 """
 import sys
-import numpy as np
 
 
 def isprime(n):
@@ -72,6 +74,7 @@ def hmenos(p):
 
 
 def pares_irregulares(p):
+    import numpy as np  # só o modo `bernoulli` precisa de NumPy
     j = np.arange(1, p, dtype=np.int64)
     w = (primroot(p) * j) // p
     jk = j.copy()
