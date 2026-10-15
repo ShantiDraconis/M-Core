@@ -47,7 +47,7 @@ theorem count_spanSingleton (v : HeightOneSpectrum R) (x : Kˣ) :
   have haJ : FractionalIdeal.spanSingleton R⁰ (x : K) =
       FractionalIdeal.spanSingleton R⁰ ((algebraMap R K) (IsLocalization.sec R⁰ (x : K)).2)⁻¹ *
         ↑(Ideal.span {(IsLocalization.sec R⁰ (x : K)).1} : Ideal R) := by
-    rw [FractionalIdeal.coeIdeal_span_singleton, ← map_mul]
+    rw [FractionalIdeal.coeIdeal_span_singleton, FractionalIdeal.spanSingleton_mul_spanSingleton]
     congr 1
     rw [← hspec]
     field_simp
@@ -175,7 +175,7 @@ theorem finito_selmer_vazio {n : ℕ} (hn : 0 < n) [Finite (ClassGroup R)]
     simp
   have hc0 : c ≠ 0 := by
     rintro rfl
-    rw [map_zero] at hc'
+    rw [FractionalIdeal.spanSingleton_zero] at hc'
     rcases mul_eq_zero.mp hc' with h | h
     · exact hI0 z₁ (inv_eq_zero.mp h)
     · exact hI0 z₂ h
@@ -183,7 +183,8 @@ theorem finito_selmer_vazio {n : ℕ} (hn : 0 < n) [Finite (ClassGroup R)]
     rw [← hc', mul_comm, ← mul_assoc, mul_inv_cancel₀ (hI0 z₁), one_mul]
   have hpow : FractionalIdeal.spanSingleton R⁰ ((X z₂ : Kˣ) : K) =
       FractionalIdeal.spanSingleton R⁰ (c ^ n * (X z₁ : K)) := by
-    rw [← hI z₂, hI₂, mul_pow, hI z₁, ← map_pow, ← map_mul]
+    rw [← hI z₂, hI₂, mul_pow, hI z₁, FractionalIdeal.spanSingleton_pow,
+      FractionalIdeal.spanSingleton_mul_spanSingleton]
   obtain ⟨u, hu⟩ := FractionalIdeal.spanSingleton_eq_spanSingleton.mp hpow
   rw [Units.smul_def, Algebra.smul_def] at hu
   have hu0 : algebraMap R K (u : R) ≠ 0 :=
