@@ -11,7 +11,7 @@ Uma camada entre os programas de laço (`ATK.Lacos.Lp`) e as fórmulas do tablea
 * `ClaT.cmd`: o programa que emite `codClausula` da cláusula renomeada (`nome`);
 * `Gen`: geradores (cláusula, sequência, laço `forU`), com `Gen.cmd` (programa) e `Gen.clas`
   (a lista de cláusulas gerada);
-* **`Gen.out`**: a saída do programa é exatamente `codCNF (renomeia (g.clas E))`;
+* **`Gen.out`**: a saída do programa é exatamente `codCNF (renomeia (g.clas w E))`;
 * `Gen.lp`: o programa é um programa de laço (`Lp`), logo tem custo polinomial.
 
 Nada aqui decide P vs NP. **CLOSED_MATH continua false.**
@@ -271,11 +271,41 @@ end ClaT
 
 /-! ### Geradores -/
 
+/-- As cláusulas de um laço sobre os bits `L`: o corpo `f₀`/`f₁` com o contador `c` valendo a
+posição (o ambiente é atualizado com `c + 1` a cada bit). -/
+def clasBitsAux {R : ℕ} {α : Type} (f₀ f₁ : Env R → List α) (c : Fin R) :
+    List Bool → Env R → List α
+  | [], _ => []
+  | b :: L, E => (if b then f₁ E else f₀ E) ++ clasBitsAux f₀ f₁ c L (update E c (E c + 1))
+
+theorem clasBitsAux_congr {R : ℕ} {α : Type} (f₀ f₁ : Env R → List α) (c : Fin R)
+    (S : Finset (Fin R)) (hcS : c ∉ S)
+    (h₀ : ∀ E E' : Env R, (∀ r, r ∉ S → E r = E' r) → f₀ E = f₀ E')
+    (h₁ : ∀ E E' : Env R, (∀ r, r ∉ S → E r = E' r) → f₁ E = f₁ E') :
+    ∀ (L : List Bool) (E E' : Env R), (∀ r, r ∉ S → E r = E' r) →
+      clasBitsAux f₀ f₁ c L E = clasBitsAux f₀ f₁ c L E'
+  | [], _, _, _ => rfl
+  | b :: L, E, E', hE => by
+    simp only [clasBitsAux]
+    have hc : E c = E' c := hE c hcS
+    have hb : (if b then f₁ E else f₀ E) = (if b then f₁ E' else f₀ E') := by
+      cases b
+      · exact h₀ E E' hE
+      · exact h₁ E E' hE
+    rw [hb]
+    congr 1
+    refine clasBitsAux_congr f₀ f₁ c S hcS h₀ h₁ L _ _ fun r hr => ?_
+    by_cases hrc : r = c
+    · subst hrc; simp [hc]
+    · rw [update_of_ne hrc, update_of_ne hrc]; exact hE r hr
+
 inductive Gen (R : ℕ) (K : Type) where
   | cla (C : ClaT R K)
   | nil
   | seq (g₁ g₂ : Gen R K)
   | forU (x y : Fin R) (g : Gen R K)
+  /-- Laço sobre os bits da entrada, com contador de posição `c`. -/
+  | bits (c : Fin R) (g₀ g₁ : Gen R K)
 
 namespace Gen
 
@@ -284,13 +314,15 @@ noncomputable def cmd : Gen R K → Cmd R
   | nil => .emit []
   | seq g₁ g₂ => .seq g₁.cmd g₂.cmd
   | forU x y g => .forU x y g.cmd
+  | bits c g₀ g₁ => .seq (.zero c) (.forBits (.seq g₀.cmd (.inc c)) (.seq g₁.cmd (.inc c)))
 
 /-- As cláusulas geradas, com o ambiente `E`. -/
-def clas (E : Env R) : Gen R K → List (Cla K)
+def clas (w : List Bool) (E : Env R) : Gen R K → List (Cla K)
   | cla C => [C.eval E]
   | nil => []
-  | seq g₁ g₂ => g₁.clas E ++ g₂.clas E
-  | forU x y g => (List.range (E x)).flatMap fun k => g.clas (update E y k)
+  | seq g₁ g₂ => g₁.clas w E ++ g₂.clas w E
+  | forU x y g => (List.range (E x)).flatMap fun k => g.clas w (update E y k)
+  | bits c g₀ g₁ => clasBitsAux (g₀.clas w) (g₁.clas w) c w (update E c 0)
 
 /-- Boa formação relativa ao conjunto `W` dos contadores escritos. -/
 def ok (W : Finset (Fin R)) : Gen R K → Prop
@@ -298,32 +330,43 @@ def ok (W : Finset (Fin R)) : Gen R K → Prop
   | nil => True
   | seq g₁ g₂ => g₁.ok W ∧ g₂.ok W
   | forU x y g => x ∉ W ∧ y ∈ W ∧ g.ok (W.erase y)
+  | bits c g₀ g₁ => c ∈ W ∧ g₀.ok (W.erase c) ∧ g₁.ok (W.erase c)
 
 theorem lp {W : Finset (Fin R)} : ∀ (g : Gen R K), g.ok W → Lp W g.cmd
   | cla C, h => ClaT.cmd_lp C h
   | nil, _ => Lp.emit W _
   | seq g₁ g₂, h => Lp.seq (lp g₁ h.1) (lp g₂ h.2)
   | forU x y g, h => Lp.forU h.1 h.2.1 (lp g h.2.2)
+  | bits c g₀ g₁, h => Lp.bitsC h.1 (lp g₀ h.2.1) (lp g₁ h.2.2)
 
-theorem clas_congr {W : Finset (Fin R)} : ∀ (g : Gen R K), g.ok W → ∀ {E E' : Env R},
-    (∀ r, r ∉ W → E r = E' r) → g.clas E = g.clas E'
+theorem clas_congr (w : List Bool) {W : Finset (Fin R)} : ∀ (g : Gen R K), g.ok W → ∀ {E E' : Env R},
+    (∀ r, r ∉ W → E r = E' r) → g.clas w E = g.clas w E'
   | cla C, h, E, E', hE => by simp only [clas]; rw [ClaT.eval_congr C h hE]
   | nil, _, _, _, _ => rfl
   | seq g₁ g₂, h, E, E', hE => by
     simp only [clas]
-    rw [clas_congr g₁ h.1 hE, clas_congr g₂ h.2 hE]
+    rw [clas_congr w g₁ h.1 hE, clas_congr w g₂ h.2 hE]
   | forU x y g, h, E, E', hE => by
     simp only [clas]
     rw [hE x h.1]
-    refine List.flatMap_congr fun k _ => clas_congr g h.2.2 fun r hr => ?_
+    refine List.flatMap_congr fun k _ => clas_congr w g h.2.2 fun r hr => ?_
     by_cases hry : r = y
     · subst hry; simp
     · rw [update_of_ne hry, update_of_ne hry]
       exact hE r fun h' => hr (Finset.mem_erase.mpr ⟨hry, h'⟩)
+  | bits c g₀ g₁, h, E, E', hE => by
+    simp only [clas]
+    refine clasBitsAux_congr _ _ c (W.erase c) (by simp)
+      (fun E E' hh => clas_congr w g₀ h.2.1 hh) (fun E E' hh => clas_congr w g₁ h.2.2 hh) w _ _
+      fun r hr => ?_
+    by_cases hrc : r = c
+    · subst hrc; simp
+    · rw [update_of_ne hrc, update_of_ne hrc]
+      exact hE r fun h' => hr (Finset.mem_erase.mpr ⟨hrc, h'⟩)
 
-/-- **A saída de um gerador** é `codCNF (renomeia (g.clas E))`. -/
+/-- **A saída de um gerador** é `codCNF (renomeia (g.clas w E))`. -/
 theorem out (w : List Bool) {W : Finset (Fin R)} : ∀ (g : Gen R K), g.ok W → ∀ (E : Env R),
-    (sem w g.cmd E).2 = codCNF (renomeia (g.clas E))
+    (sem w g.cmd E).2 = codCNF (renomeia (g.clas w E))
   | cla C, _, E => ClaT.cmd_out w C E
   | nil, _, _ => by simp [cmd, sem, clas, codCNF, renomeia]
   | seq g₁ g₂, h, E => by
@@ -337,15 +380,65 @@ theorem out (w : List Bool) {W : Finset (Fin R)} : ∀ (g : Gen R K), g.ok W →
     refine List.flatMap_congr fun k _ => ?_
     rw [out w g h.2.2]
     rfl
+  | bits c g₀ g₁, h, E => by
+    simp only [cmd, clas]
+    have hcS : c ∉ W.erase c := by simp
+    have step₀ : ∀ E' : Env R, sem w (.seq g₀.cmd (.inc c)) E' =
+        (update (sem w g₀.cmd E').1 c (E' c + 1), codCNF (renomeia (g₀.clas w E'))) := fun E' => by
+      rw [Lacos.sem_body w (W.erase c) c hcS (fun E r hr => (lp g₀ h.2.1).env w E hr) E',
+        out w g₀ h.2.1 E']
+    have step₁ : ∀ E' : Env R, sem w (.seq g₁.cmd (.inc c)) E' =
+        (update (sem w g₁.cmd E').1 c (E' c + 1), codCNF (renomeia (g₁.clas w E'))) := fun E' => by
+      rw [Lacos.sem_body w (W.erase c) c hcS (fun E r hr => (lp g₁ h.2.2).env w E hr) E',
+        out w g₁ h.2.2 E']
+    have key : ∀ (L : List Bool) (E' : Env R),
+        (semBits (sem w (.seq g₀.cmd (.inc c))) (sem w (.seq g₁.cmd (.inc c))) L E').2 =
+          codCNF (renomeia (clasBitsAux (g₀.clas w) (g₁.clas w) c L E')) := by
+      intro L
+      induction L with
+      | nil => intro E'; simp [semBits, clasBitsAux, codCNF, renomeia]
+      | cons b L ih =>
+        intro E'
+        have hag₀ : clasBitsAux (g₀.clas w) (g₁.clas w) c L (update (sem w g₀.cmd E').1 c (E' c + 1)) =
+            clasBitsAux (g₀.clas w) (g₁.clas w) c L (update E' c (E' c + 1)) := by
+          refine clasBitsAux_congr _ _ c (W.erase c) hcS
+            (fun E E' hh => clas_congr w g₀ h.2.1 hh) (fun E E' hh => clas_congr w g₁ h.2.2 hh) L _ _
+            fun r hr => ?_
+          by_cases hrc : r = c
+          · subst hrc; simp
+          · rw [update_of_ne hrc, update_of_ne hrc]
+            exact (lp g₀ h.2.1).env w E' fun h' => hr h'
+        have hag₁ : clasBitsAux (g₀.clas w) (g₁.clas w) c L (update (sem w g₁.cmd E').1 c (E' c + 1)) =
+            clasBitsAux (g₀.clas w) (g₁.clas w) c L (update E' c (E' c + 1)) := by
+          refine clasBitsAux_congr _ _ c (W.erase c) hcS
+            (fun E E' hh => clas_congr w g₀ h.2.1 hh) (fun E E' hh => clas_congr w g₁ h.2.2 hh) L _ _
+            fun r hr => ?_
+          by_cases hrc : r = c
+          · subst hrc; simp
+          · rw [update_of_ne hrc, update_of_ne hrc]
+            exact (lp g₁ h.2.2).env w E' fun h' => hr h'
+        cases b
+        · simp only [semBits, clasBitsAux, Bool.false_eq_true, ↓reduceIte]
+          rw [step₀ E']
+          dsimp only
+          rw [ih, hag₀]
+          simp only [renomeia, codCNF, List.map_append, List.flatMap_append]
+        · simp only [semBits, clasBitsAux, ↓reduceIte]
+          rw [step₁ E']
+          dsimp only
+          rw [ih, hag₁]
+          simp only [renomeia, codCNF, List.map_append, List.flatMap_append]
+    exact key w (update E c 0)
 
 /-- Sequência de geradores. -/
 def seqL : List (Gen R K) → Gen R K
   | [] => nil
   | g :: gs => seq g (seqL gs)
 
-theorem clas_seqL (E : Env R) : ∀ (gs : List (Gen R K)), (seqL gs).clas E = gs.flatMap (clas E ·)
+theorem clas_seqL (w : List Bool) (E : Env R) : ∀ (gs : List (Gen R K)),
+    (seqL gs).clas w E = gs.flatMap (clas w E ·)
   | [] => rfl
-  | g :: gs => by simp only [seqL, clas, List.flatMap_cons]; rw [clas_seqL E gs]
+  | g :: gs => by simp only [seqL, clas, List.flatMap_cons]; rw [clas_seqL w E gs]
 
 theorem ok_seqL {W : Finset (Fin R)} : ∀ (gs : List (Gen R K)), (∀ g ∈ gs, g.ok W) →
     (seqL gs).ok W
@@ -355,7 +448,8 @@ theorem ok_seqL {W : Finset (Fin R)} : ∀ (gs : List (Gen R K)), (∀ g ∈ gs,
 /-- Lista de cláusulas simbólicas. -/
 def clasL (Cs : List (ClaT R K)) : Gen R K := seqL (Cs.map cla)
 
-theorem clas_clasL (E : Env R) (Cs : List (ClaT R K)) : (clasL Cs).clas E = Cs.map (ClaT.eval E) := by
+theorem clas_clasL (w : List Bool) (E : Env R) (Cs : List (ClaT R K)) :
+    (clasL Cs).clas w E = Cs.map (ClaT.eval E) := by
   simp only [clasL, clas_seqL, List.flatMap_map, clas]
   induction Cs with
   | nil => rfl

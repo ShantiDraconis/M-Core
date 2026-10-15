@@ -19,6 +19,7 @@ Nada aqui decide P vs NP. **CLOSED_MATH continua false.**
 -/
 
 set_option autoImplicit false
+set_option linter.unusedSectionVars false
 
 namespace ATK.Lacos
 
@@ -36,6 +37,11 @@ inductive Lp : Finset (Fin R) → Cmd R → Prop
       (hb : Lp (W.erase y) body) : Lp W (.forU x y body)
   | forBits {W : Finset (Fin R)} {b₀ b₁ : Cmd R} (h₀ : Lp W b₀) (h₁ : Lp W b₁) :
       Lp W (.forBits b₀ b₁)
+  /-- Laço sobre os bits da entrada com contador de posição `c ∈ W` (zerado antes, incrementado
+  depois de cada corpo): os corpos podem ler `c`. -/
+  | bitsC {W : Finset (Fin R)} {c : Fin R} {b₀ b₁ : Cmd R} (hc : c ∈ W)
+      (h₀ : Lp (W.erase c) b₀) (h₁ : Lp (W.erase c) b₁) :
+      Lp W (.seq (.zero c) (.forBits (.seq b₀ (.inc c)) (.seq b₁ (.inc c))))
 
 /-! ### Semântica dos laços com corpo "quase puro" -/
 
@@ -116,6 +122,72 @@ theorem semBits_out : ∀ (L : List Bool) (E : Env R),
 
 end semBits
 
+/-! ### Laço sobre os bits com contador de posição -/
+
+section semBitsC
+
+variable (w : List Bool) (b₀ b₁ : Cmd R) (S : Finset (Fin R)) (c : Fin R) (hcS : c ∉ S)
+  (henv₀ : ∀ E r, r ∉ S → (sem w b₀ E).1 r = E r) (henv₁ : ∀ E r, r ∉ S → (sem w b₁ E).1 r = E r)
+  (hout₀ : ∀ E E', (∀ r, r ∉ S → E r = E' r) → (sem w b₀ E).2 = (sem w b₀ E').2)
+  (hout₁ : ∀ E E', (∀ r, r ∉ S → E r = E' r) → (sem w b₁ E).2 = (sem w b₁ E').2)
+
+include hcS in
+theorem sem_body {b : Cmd R} (henv : ∀ E r, r ∉ S → (sem w b E).1 r = E r) (E : Env R) :
+    sem w (.seq b (.inc c)) E = (update (sem w b E).1 c (E c + 1), (sem w b E).2) := by
+  simp [sem, henv E c hcS]
+
+include hcS henv₀ henv₁ in
+theorem semBitsC_c : ∀ (L : List Bool) (E : Env R),
+    (semBits (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) L E).1 c = E c + L.length
+  | [], E => rfl
+  | b :: L, E => by
+    simp only [semBits, List.length_cons]
+    rw [semBitsC_c L]
+    cases b
+    · simp only [Bool.false_eq_true, ↓reduceIte]
+      rw [sem_body w S c hcS henv₀]; simp; ring
+    · simp only [↓reduceIte]
+      rw [sem_body w S c hcS henv₁]; simp; ring
+
+include hcS henv₀ henv₁ in
+theorem semBitsC_env : ∀ (L : List Bool) (E : Env R) (r : Fin R), r ≠ c → r ∉ S →
+    (semBits (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) L E).1 r = E r
+  | [], E, r, _, _ => rfl
+  | b :: L, E, r, h1, h2 => by
+    simp only [semBits]
+    rw [semBitsC_env L _ r h1 h2]
+    cases b
+    · simp only [Bool.false_eq_true, ↓reduceIte]
+      rw [sem_body w S c hcS henv₀]; dsimp only; rw [update_of_ne h1, henv₀ E r h2]
+    · simp only [↓reduceIte]
+      rw [sem_body w S c hcS henv₁]; dsimp only; rw [update_of_ne h1, henv₁ E r h2]
+
+include hcS henv₀ henv₁ hout₀ hout₁ in
+theorem semBitsC_out_congr : ∀ (L : List Bool) (E E' : Env R), (∀ r, r ∉ S → E r = E' r) →
+    (semBits (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) L E).2 =
+      (semBits (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) L E').2
+  | [], E, E', _ => rfl
+  | b :: L, E, E', hE => by
+    simp only [semBits]
+    have hc : E c = E' c := hE c hcS
+    cases b
+    · simp only [Bool.false_eq_true, ↓reduceIte]
+      rw [sem_body w S c hcS henv₀, sem_body w S c hcS henv₀, hout₀ E E' hE]
+      congr 1
+      refine semBitsC_out_congr L _ _ fun r hr => ?_
+      by_cases hrc : r = c
+      · subst hrc; simp [hc]
+      · dsimp only; rw [update_of_ne hrc, update_of_ne hrc, henv₀ E r hr, henv₀ E' r hr]; exact hE r hr
+    · simp only [↓reduceIte]
+      rw [sem_body w S c hcS henv₁, sem_body w S c hcS henv₁, hout₁ E E' hE]
+      congr 1
+      refine semBitsC_out_congr L _ _ fun r hr => ?_
+      by_cases hrc : r = c
+      · subst hrc; simp [hc]
+      · dsimp only; rw [update_of_ne hrc, update_of_ne hrc, henv₁ E r hr, henv₁ E' r hr]; exact hE r hr
+
+end semBitsC
+
 /-! ### Propriedades de `Lp` -/
 
 /-- Registradores fora de `W` não mudam; a saída só depende dos de fora de `W`. -/
@@ -153,6 +225,22 @@ theorem Lp.env_out (w : List Bool) {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c)
       cases b
       · exact ih₀.2 E E' hE
       · exact ih₁.2 E E' hE
+  | @bitsC W c b₀ b₁ hc h₀ h₁ ih₀ ih₁ =>
+    have hcS : c ∉ W.erase c := by simp
+    refine ⟨fun E r hr => ?_, fun E E' hE => ?_⟩
+    · have hrc : r ≠ c := fun h => hr (h ▸ hc)
+      have hrS : r ∉ W.erase c := fun h => hr (Finset.mem_of_mem_erase h)
+      change (semBits (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) w (update E c 0)).1 r = E r
+      rw [semBitsC_env w b₀ b₁ (W.erase c) c hcS ih₀.1 ih₁.1 w _ r hrc hrS, update_of_ne hrc]
+    · change (semBits (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) w (update E c 0)).2 =
+        (semBits (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) w (update E' c 0)).2
+      refine semBitsC_out_congr w b₀ b₁ (W.erase c) c hcS ih₀.1 ih₁.1 ih₀.2 ih₁.2 w
+        (update E c 0) (update E' c 0) ?_
+      intro r hr
+      by_cases hrc : r = c
+      · subst hrc; simp
+      · rw [update_of_ne hrc, update_of_ne hrc]
+        exact hE r fun h => hr (Finset.mem_erase.mpr ⟨hrc, h⟩)
 
 theorem Lp.env (w : List Bool) {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c) (E : Env R)
     {r : Fin R} (hr : r ∉ W) : (sem w c E).1 r = E r := (h.env_out w).1 E r hr
@@ -186,7 +274,8 @@ theorem Lp.out_seq (w : List Bool) {W : Finset (Fin R)} {c₁ c₂ : Cmd R} (h�
   exact h₂.out_congr w fun r hr => h₁.env w E hr
 
 /-- Os registradores permanecem `≤ B`. -/
-theorem Lp.le (w : List Bool) {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c) {B : ℕ} :
+theorem Lp.le (w : List Bool) {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c) {B : ℕ}
+    (hw : w.length ≤ B) :
     ∀ E : Env R, (∀ r, E r ≤ B) → ∀ r, (sem w c E).1 r ≤ B := by
   induction h with
   | emit W s => exact fun E hE r => hE r
@@ -234,6 +323,40 @@ theorem Lp.le (w : List Bool) {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c) {B :
         · exact ih₀ E' hE' r'
         · exact ih₁ E' hE' r'
     exact key w E hE r
+  | @bitsC W c b₀ b₁ hc h₀ h₁ ih₀ ih₁ =>
+    intro E hE r
+    have hcS : c ∉ W.erase c := by simp
+    have ih₀' : ∀ E r, r ∉ W.erase c → (sem w b₀ E).1 r = E r := fun E r hr => h₀.env w E hr
+    have ih₁' : ∀ E r, r ∉ W.erase c → (sem w b₁ E).1 r = E r := fun E r hr => h₁.env w E hr
+    simp only [sem]
+    have key : ∀ (L : List Bool) (E' : Env R), (∀ r, E' r ≤ B) → E' c + L.length ≤ B →
+        ∀ r, (semBits (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) L E').1 r ≤ B := by
+      intro L
+      induction L with
+      | nil => exact fun E' hE' _ r => hE' r
+      | cons b L ihL =>
+        intro E' hE' hl r
+        simp only [semBits, List.length_cons] at hl ⊢
+        have step : ∀ (b' : Cmd R) (henv : ∀ E r, r ∉ W.erase c → (sem w b' E).1 r = E r)
+            (hle : ∀ E : Env R, (∀ r, E r ≤ B) → ∀ r, (sem w b' E).1 r ≤ B),
+            ∀ r, (sem w (.seq b' (.inc c)) E').1 r ≤ B := by
+          intro b' henv hle r'
+          rw [sem_body w (W.erase c) c hcS henv]
+          by_cases hr' : r' = c
+          · subst hr'; simp; omega
+          · simp only [update_of_ne hr']; exact hle E' hE' r'
+        cases b
+        · simp only [Bool.false_eq_true, ↓reduceIte]
+          refine ihL _ (step b₀ ih₀' ih₀) ?_ r
+          rw [sem_body w (W.erase c) c hcS ih₀']; simp; omega
+        · simp only [↓reduceIte]
+          refine ihL _ (step b₁ ih₁' ih₁) ?_ r
+          rw [sem_body w (W.erase c) c hcS ih₁']; simp; omega
+    refine key w _ (fun r' => ?_) ?_ r
+    · by_cases hr' : r' = c
+      · subst hr'; simp
+      · rw [update_of_ne hr']; exact hE r'
+    · simpa using hw
 
 /-! ### Custo -/
 
@@ -287,7 +410,7 @@ theorem Lp.custo_le (w : List Bool) {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c
   | @seq W c₁ c₂ h₁ h₂ ih₁ ih₂ =>
     intro E hE
     simp only [custo, cb]
-    have := ih₂ _ (h₁.le w E hE)
+    have := ih₂ _ (h₁.le w hw E hE)
     have := ih₁ E hE
     omega
   | @forU W x y body hx hy hb ih =>
@@ -302,7 +425,7 @@ theorem Lp.custo_le (w : List Bool) {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c
     · refine ⟨ih E' hI.1, fun r => ?_, ?_⟩
       · by_cases hr : r = y
         · subst hr; rw [update_self, hb.env w E' (by simp)]; have := hI.2; omega
-        · rw [update_of_ne hr]; exact hb.le w E' hI.1 r
+        · rw [update_of_ne hr]; exact hb.le w hw E' hI.1 r
       · rw [update_self, hb.env w E' (by simp)]; have := hI.2; omega
     · refine ⟨fun r => ?_, ?_⟩
       · by_cases hr : r = y
@@ -314,11 +437,54 @@ theorem Lp.custo_le (w : List Bool) {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c
     simp only [custo, cb]
     have hcb := custoBits_le (f₀ := custo w b₀) (f₁ := custo w b₁) (g₀ := sem w b₀)
       (g₁ := sem w b₁) (C := cb B b₀ + cb B b₁) (fun _ E' => ∀ r, E' r ≤ B)
-      (fun _ E' hI => ⟨(ih₀ E' hI).trans (Nat.le_add_right _ _), h₀.le w E' hI⟩)
-      (fun _ E' hI => ⟨(ih₁ E' hI).trans (Nat.le_add_left _ _), h₁.le w E' hI⟩) w E hE
+      (fun _ E' hI => ⟨(ih₀ E' hI).trans (Nat.le_add_right _ _), h₀.le w hw E' hI⟩)
+      (fun _ E' hI => ⟨(ih₁ E' hI).trans (Nat.le_add_left _ _), h₁.le w hw E' hI⟩) w E hE
     have h3 : w.length * (cb B b₀ + cb B b₁ + 3) ≤ B * (cb B b₀ + cb B b₁ + 3) :=
       Nat.mul_le_mul_right _ hw
     omega
+  | @bitsC W c b₀ b₁ hc h₀ h₁ ih₀ ih₁ =>
+    intro E hE
+    have hcS : c ∉ W.erase c := by simp
+    have ih₀' : ∀ E r, r ∉ W.erase c → (sem w b₀ E).1 r = E r := fun E r hr => h₀.env w E hr
+    have ih₁' : ∀ E r, r ∉ W.erase c → (sem w b₁ E).1 r = E r := fun E r hr => h₁.env w E hr
+    have e : custo w (.seq (.zero c) (.forBits (.seq b₀ (.inc c)) (.seq b₁ (.inc c)))) E =
+        ((2 * w.length + 1) + custoBits (custo w (.seq b₀ (.inc c))) (custo w (.seq b₁ (.inc c)))
+          (sem w (.seq b₀ (.inc c))) (sem w (.seq b₁ (.inc c))) w (update E c 0)) +
+          (2 * E c + 1) := rfl
+    have hI : ∀ (b' : Cmd R) (henv : ∀ E r, r ∉ W.erase c → (sem w b' E).1 r = E r)
+        (hle : ∀ E : Env R, (∀ r, E r ≤ B) → ∀ r, (sem w b' E).1 r ≤ B) (L : List Bool)
+        (E' : Env R), ((∀ r, E' r ≤ B) ∧ E' c + (L.length + 1) ≤ B) →
+        (∀ r, (sem w (.seq b' (.inc c)) E').1 r ≤ B) ∧
+          (sem w (.seq b' (.inc c)) E').1 c + L.length ≤ B := by
+      intro b' henv hle L E' hI
+      rw [sem_body w (W.erase c) c hcS henv]
+      refine ⟨fun r => ?_, by simp; omega⟩
+      by_cases hr : r = c
+      · subst hr; simp; omega
+      · simp only [update_of_ne hr]; exact hle E' hI.1 r
+    have hbits := custoBits_le (f₀ := custo w (.seq b₀ (.inc c))) (f₁ := custo w (.seq b₁ (.inc c)))
+      (g₀ := sem w (.seq b₀ (.inc c))) (g₁ := sem w (.seq b₁ (.inc c)))
+      (C := cb B b₀ + cb B b₁ + 2) (fun L E' => (∀ r, E' r ≤ B) ∧ E' c + L.length ≤ B)
+      (fun L E' hl => by
+        have h1 := ih₀ E' hl.1
+        refine ⟨?_, hI b₀ ih₀' (fun E'' h'' => h₀.le w hw E'' h'') L E' hl⟩
+        show custo w (.inc c) _ + custo w b₀ E' ≤ _
+        simp only [custo]; omega)
+      (fun L E' hl => by
+        have h1 := ih₁ E' hl.1
+        refine ⟨?_, hI b₁ ih₁' (fun E'' h'' => h₁.le w hw E'' h'') L E' hl⟩
+        show custo w (.inc c) _ + custo w b₁ E' ≤ _
+        simp only [custo]; omega)
+      w (update E c 0) ⟨fun r => by
+        by_cases hr : r = c
+        · subst hr; simp
+        · rw [update_of_ne hr]; exact hE r, by simpa using hw⟩
+    have h3 : w.length * (cb B b₀ + cb B b₁ + 2 + 3) ≤ B * (cb B b₀ + cb B b₁ + 2 + 3) :=
+      Nat.mul_le_mul_right _ hw
+    have h4 := hE c
+    rw [e]
+    simp only [cb]
+    nlinarith
 
 /-! ### Boa formação -/
 
@@ -376,5 +542,15 @@ theorem Lp.wf {A : ℕ} {W : Finset (Fin R)} {c : Cmd R} (h : Lp W c) (hbem : Be
     cases β
     · rfl
     · exact (hβ rfl).elim
+  | @bitsC W c b₀ b₁ hc h₀ h₁ ih₀ ih₁ =>
+    intro δ β hp hβ
+    have hb0 : SemBits b₀ := hbem.2.1.1
+    have hb1 : SemBits b₁ := hbem.2.2.1
+    simp only [prof] at hp
+    refine ⟨trivial, ?_, ⟨ih₀ (semBits_bem hb0) δ true (by omega) fun _ => hb0, trivial⟩,
+      ⟨ih₁ (semBits_bem hb1) δ true (by omega) fun _ => hb1, trivial⟩⟩
+    cases β
+    · rfl
+    · exact (hβ rfl).2.elim
 
 end ATK.Lacos

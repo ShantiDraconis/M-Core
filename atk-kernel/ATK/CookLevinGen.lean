@@ -68,7 +68,7 @@ theorem flatMap_triples {α β γ δ : Type} (la : List α) (lb : List β) (lc :
 section tab
 
 variable {K : Type} [DecidableEq K] [Fintype K] {Γ : K → Type} {Λ σ : Type} (A : Tab K Γ Λ σ)
-  {R : ℕ}
+  {R : ℕ} {w : List Bool}
 
 /-- `umSo` das variáveis `v 0, …, v (L-1)`. -/
 def umSoG (L : ℕ) (v : ℕ → VarT R K) : Gen R K :=
@@ -77,7 +77,7 @@ def umSoG (L : ℕ) (v : ℕ → VarT R K) : Gen R K :=
       ((List.range L).filter (fun b => decide (a < b))).map fun b => [(v a, false), (v b, false)]))
 
 theorem clas_umSoG (L : ℕ) (v : ℕ → VarT R K) (E : Env R) :
-    (umSoG L v).clas E = umSo ((List.range L).map fun j => (v j).eval E) := by
+    (umSoG L v).clas w E = umSo ((List.range L).map fun j => (v j).eval E) := by
   rw [umSoG, Gen.clas_clasL, umSo, noMaximo_range]
   simp only [List.map_cons, ClaT.eval, List.map_map, List.map_flatMap, peloMenos]
   rfl
@@ -186,7 +186,7 @@ theorem Vals.H {E : Env R} {c₀ T H P Q : ℕ} (h : Vals ρ E c₀ T H P Q) : E
 
 /-- **(E)**: o gerador produz exatamente `A.fE T H`. -/
 theorem clas_genE {E : Env R} {c₀ T H P Q : ℕ} (h : Vals ρ E c₀ T H P Q) (hd : Dist ρ c₀) :
-    (genE A ρ c₀).clas E = A.fE T H := by
+    (genE A ρ c₀).clas w E = A.fE T H := by
   simp only [genE, Gen.clas, Tab.fE, h.hT1]
   refine List.flatMap_congr fun t _ => ?_
   rw [Gen.clas_seqL]
@@ -225,7 +225,7 @@ noncomputable def genP (c₀ : ℕ) : Gen R K :=
           (vx (.add (.reg ρ.rt) (.const 1)) k (.reg ρ.ri) (.const a), true)]))))
 
 theorem clas_genP {E : Env R} {c₀ T H P Q : ℕ} (h : Vals ρ E c₀ T H P Q) (hd : Dist ρ c₀) :
-    (genP A ρ c₀).clas E = A.fP T H := by
+    (genP A ρ c₀).clas w E = A.fP T H := by
   simp only [genP, Gen.clas, Tab.fP, h.hT]
   refine List.flatMap_congr fun t _ => ?_
   rw [Gen.clas_seqL]
@@ -248,7 +248,7 @@ noncomputable def genA (acc : Γ A.k₁) : Gen R K :=
     [(vx (.reg ρ.T) A.k₁ (.const 0) (.const (ix (A.vals A.k₁) (some acc))), true)]]
 
 theorem clas_genA {E : Env R} {c₀ T H P Q : ℕ} (h : Vals ρ E c₀ T H P Q) (acc : Γ A.k₁) :
-    (genA A ρ acc).clas E = A.fA T acc := by
+    (genA A ρ acc).clas w E = A.fA T acc := by
   simp only [genA, Gen.clas_clasL, Tab.fA, ClaT.eval, List.map_cons, List.map_nil, LitT.eval,
     VarT.eval, Term.eval, h.hT, jn]
 
@@ -308,7 +308,7 @@ theorem eval_append {E : Env R} (pre l : ClaT R K) :
 theorem clas_conseqG {E : Env R} {c₀ T H P Q : ℕ} (h : Vals ρ E c₀ T H P Q) (hd : Dist ρ c₀)
     (hdc : A.d ≤ c₀) {t : ℕ} (ht : E ρ.rt = t) (pre : ClaT R K) (hpre : ∀ r ∈ pre.reads, r ≠ ρ.rj)
     (r : Cfg Γ Λ σ) (hlen : ∀ k, (r.stk k).length ≤ c₀) :
-    (conseqG A ρ c₀ pre r).clas E = (A.conseq H t r).map (pre.eval E ++ ·) := by
+    (conseqG A ρ c₀ pre r).clas w E = (A.conseq H t r).map (pre.eval E ++ ·) := by
   have hpreE : ∀ j, pre.eval (update E ρ.rj j) = pre.eval E := fun j =>
     ClaT.eval_congr (W := {ρ.rj}) pre (fun r hr => by simpa using hpre r hr)
       (fun r hr => update_of_ne (by simpa using hr) j E)
@@ -386,7 +386,7 @@ theorem reads_antesT (jl jv : ℕ) (p : A.Pat) : (antesT A ρ jl jv p).reads ⊆
 theorem clas_genR {E : Env R} {c₀ T H P Q : ℕ} (h : Vals ρ E c₀ T H P Q) (hd : Dist ρ c₀)
     (hdc : A.d ≤ c₀)
     (hlen : ∀ l v (p : A.Pat) k, ((stepAux (A.M l) v (A.janela p)).stk k).length ≤ c₀) :
-    (genR A ρ c₀).clas E = A.fR T H := by
+    (genR A ρ c₀).clas w E = A.fR T H := by
   simp only [genR, Gen.clas, Tab.fR, h.hT]
   refine List.flatMap_congr fun t _ => ?_
   rw [Gen.clas_seqL, List.flatMap_map, flatMap_triples, triplos]
