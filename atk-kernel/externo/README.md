@@ -8,6 +8,10 @@ teoremas externos já provados em Lean, e os usa como teoremas do ATK.
   `Re s > 7/8`) descarrega a hipótese de `ATK.QuasiRiemann`, e fica provado
   `RiemannHypothesis ↔ FaixaLivre (1/2) (7/8)` sem hipóteses.
 
+O lakefile da OpenAI aplica patches de compatibilidade às dependências dela só quando ela é o pacote
+raiz; o workflow aplica os mesmos patches (`lean/patches/*-lean4341.patch`, do commit fixado) antes de
+compilar.
+
 O workflow `atk-externo.yml` compila tudo do código-fonte (≈ 2 960 módulos além da Mathlib) e
 audita os axiomas. Se o build passar do limite de uma execução do GitHub, o que já foi compilado
 fica num cache do próprio repositório e a execução seguinte continua.

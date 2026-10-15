@@ -52,6 +52,27 @@ jobs:
         run: |
           lake exe cache get || (lake update && lake exe cache get)
 
+      # O lakefile da OpenAI aplica patches de compatibilidade (Lean 4.34.1) às dependências dela,
+      # mas só quando ela é o pacote raiz. Aqui ela é dependência, então aplicamos os mesmos
+      # patches (lean/patches/*-lean4341.patch, do commit fixado) às dependências presentes.
+      # A execução 38711103232 falhou em RellichKondrachov justamente por isso.
+      - name: Aplicar os patches de compatibilidade da OpenAI
+        shell: bash
+        run: |
+          for p in .lake/packages/OAI/lean/patches/*-lean4341.patch; do
+            label=$(basename "$p" -lean4341.patch)
+            d=.lake/packages/$label
+            [ -d "$d" ] || continue
+            if git -C "$d" apply --check --reverse "$PWD/$p" 2>/dev/null; then
+              echo "$label: patch já aplicado"
+            elif git -C "$d" apply "$PWD/$p"; then
+              echo "$label: patch aplicado"
+            else
+              echo "::error title=patch::$label: o patch da OpenAI não aplica"
+              exit 1
+            fi
+          done
+
       # O build da OpenAI pode passar do limite de uma execução. O que já foi compilado fica
       # num cache do GitHub; a próxima execução continua de onde esta parou. Nada vem de fora
       # do próprio repositório: o cache só guarda .olean produzidos por este workflow.
