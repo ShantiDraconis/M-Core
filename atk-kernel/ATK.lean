@@ -95,3 +95,6 @@ import ATK.RelacionalLeis
 import ATK.RelacionalTransporte
 import ATK.RelacionalDN
 import ATK.CapturaIncondicional
+import ATK.RefutacoesBeal
+import ATK.BealPolinomial
+import ATK.YMSemGap
