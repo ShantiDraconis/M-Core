@@ -1,4 +1,4 @@
-# Verde universal e raiz final — a estrutura completa do que falta
+# Verde universal e raiz final — inventário de obrigações formais
 
 Esta é a árvore inteira do fechamento, montada no kernel e no auditor. Ela não prova nenhuma
 conjectura. O que ela faz é tornar **exato** e **verificável por máquina** o que falta, e garantir
