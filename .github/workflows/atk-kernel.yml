@@ -62,6 +62,13 @@ jobs:
             fi
           done
           cat reports/file_status.txt
+          # os logs brutos não são legíveis de fora: os primeiros erros dos arquivos que falham viram anotações
+          { grep " FAIL$" reports/file_status.txt || true; } | while read -r f _; do
+            m=${f#ATK/}; m=${m%.lean}; m=${m//\//_}
+            { grep -E "error" "reports/audit_${m}.log" || true; } | head -2 | while IFS= read -r l; do
+              echo "::error title=${f}::${l:0:900}"
+            done
+          done
           cp lake-manifest.json reports/ || true
 
       - name: Relatório de certificação
