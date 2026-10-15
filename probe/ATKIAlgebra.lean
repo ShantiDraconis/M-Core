@@ -164,11 +164,12 @@ theorem exemplo_longe : estado (1 / 4) ⟨0, 1⟩ = .longe := by
 
 /-! ## 6. Defeito infinitesimal não é defeito zero -/
 
-/-- `(ε = 0)` nos hiper-reais: defeito `|ε − 0| > 0`, mas infinitesimal. -/
+/-- `(ε = 0)` nos hiper-reais: o defeito `|ε − 0|` é positivo, mas menor que todo real
+positivo (infinitesimal). -/
 theorem defeito_infinitesimal :
-    0 < |Hyperreal.epsilon - 0| ∧ Hyperreal.Infinitesimal (Hyperreal.epsilon - 0) := by
-  rw [sub_zero]
-  exact ⟨abs_pos.mpr Hyperreal.epsilon_pos.ne', Hyperreal.infinitesimal_epsilon⟩
+    0 < |Hyperreal.epsilon - 0| ∧ ∀ r : ℝ, 0 < r → |Hyperreal.epsilon - 0| < (r : Hyperreal) := by
+  rw [sub_zero, abs_of_pos Hyperreal.epsilon_pos]
+  exact ⟨Hyperreal.epsilon_pos, fun r hr => Hyperreal.epsilon_lt_of_pos hr⟩
 
 /-! ## 7. Fechamento simultâneo -/
 
