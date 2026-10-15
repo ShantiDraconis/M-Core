@@ -1,4 +1,4 @@
-/-!
+/-
 ATK language audit — provenance-preserving source copy.
 Source branch: atk/global-material-frontier-20261001
 Source path: lean/MCore/FinalFail/GlobalPositiveMaterialFrontier.lean

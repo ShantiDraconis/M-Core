@@ -1,4 +1,4 @@
-/-!
+/-
 ATK language audit — provenance-preserving source copy.
 Source branch: atk/hypothesis-ports-20261014
 Source path: atk-kernel/ATK/ObrigacoesMinimas.lean

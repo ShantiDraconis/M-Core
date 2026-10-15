@@ -95,16 +95,17 @@ jobs:
           lake exe cache get > cache.log 2>&1; echo "::notice::$ID cache rc=$?"
           lake build ${{ matrix.module }} > build.log 2>&1; rc=$?
           echo "::notice::$ID BUILD ${{ matrix.module }} rc=$rc"
-          grep -E "error" build.log | head -5 | while IFS= read -r l; do echo "::error::$ID $l" | cut -c1-900; done
+          grep -E "error" build.log | head -3 | while IFS= read -r l; do echo "::error::$ID $l" | cut -c1-900; done
+          { grep -E "error:" build.log | sed 's#^.*lean/MCore/##; s#^.*ATK/##' | sort -u | tr '\n' '~'; echo; } > $GITHUB_WORKSPACE/erros.txt
           grep -E "declaration uses 'sorry'" build.log | head -3 | while IFS= read -r l; do echo "::warning::$ID $l" | cut -c1-500; done
           printf '%s\n' "${{ matrix.audit }}" | tr '|' '\n' > AuditRegistro.lean
           lake env lean AuditRegistro.lean > audit.log 2>&1; arc=$?
           echo "::notice::$ID AUDIT rc=$arc"
-          tr '\n' ' ' < audit.log | sed 's/  */ /g' | fold -w 900 | head -4 | while IFS= read -r l; do echo "::notice::$ID $l"; done
+          { tr '\n' ' ' < audit.log; echo; } | sed 's/  */ /g' | fold -w 900 | head -4 | while IFS= read -r l; do echo "::notice::$ID $l"; done
           if [ -n "${{ matrix.source_messages }}" ]; then
             lake env lean "${{ matrix.source_messages }}" > src.log 2>&1; src_rc=$?
             echo "::notice::$ID FONTE rc=$src_rc mensagens=$(grep -c ':' src.log)"
-            tr '\n' ' ' < src.log | fold -w 900 | head -3 | while IFS= read -r l; do echo "::notice::$ID $l"; done
+            { tr '\n' ' ' < src.log; echo; } | fold -w 900 | head -3 | while IFS= read -r l; do echo "::notice::$ID $l"; done
           fi
           if [ -n "${{ matrix.expect_fail }}" ]; then
             lake env lean "${{ matrix.expect_fail }}" > ef.log 2>&1; erc=$?
@@ -118,3 +119,9 @@ jobs:
             grep -E "error" build2.log | head -3 | while IFS= read -r l; do echo "::error::$ID copia $l" | cut -c1-900; done
           fi
           exit 0
+      - name: erros
+        shell: bash
+        run: |
+          n=$(tr '~' '\n' < erros.txt | grep -c . )
+          echo "::warning::${{ matrix.id }} ERROS_TOTAL=$n"
+          fold -w 3000 erros.txt | head -8 | while IFS= read -r l; do echo "::warning::${{ matrix.id }} $l"; done
