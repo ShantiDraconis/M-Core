@@ -1,6 +1,8 @@
 import ATK.BaseGaussCurva32
 import Mathlib.NumberTheory.LSeries.HurwitzZetaOdd
 import Mathlib.NumberTheory.LSeries.HurwitzZetaEven
+import Mathlib.NumberTheory.LSeries.Deriv
+import Mathlib.NumberTheory.ModularForms.EisensteinSeries.Summable
 
 /-!
 # ATK — Ponte P1 provada: a equação funcional modular de `y² = x³ − x`
@@ -23,9 +25,15 @@ A soma dupla fatora de dois modos:
 da Mathlib os levam a `sinKernel` e `cosKernel`, que são `2A` e `T` (`sin_quarto`, `cos_quarto`).
 Daí `g(1/x) = U(1/x) V(1/x) = x² A(x) T(x) = x² g(x)` (`equacao_funcional`).
 
-Consequências: `ponteModular_curva32` (P1) e **`bsd_posto_curva32_incondicional`: BSD (posto) para
-`y² = x³ − x` sem hipóteses** — toda continuação analítica `G` de `L(E, s)` tem `G(1) ≠ 0` e
-ordem `0 = posto de Mordell–Weil`.
+Consequências:
+* `ponteModular_curva32`: P1;
+* `bsd_posto_curva32_incondicional`: toda continuação analítica `G` de `L(E, s)` tem `G(1) ≠ 0` e
+  ordem `0 =` posto de Mordell–Weil;
+* `lseriesSummable_curva32`, `existe_continuacao`: `L(E, s)` converge absolutamente em `Re s > 3/2`
+  (`|aₙ| ≤ r₂(n) √n` e a soma de Eisenstein da Mathlib) e a função inteira `c^s Λ(s)/Γ(s)` a
+  continua — a continuação **existe**;
+* **`bsdConjecture_E32`: a conjectura de BSD (parte do posto) vale para `y² = x³ − x`** no
+  enunciado por curva de `L4Base` (fiel ao do Clay por `L4Base.clayBSD_iff`), sem pontes.
 -/
 
 local notation "ℤ[i]" => GaussianInt
@@ -483,6 +491,125 @@ theorem bsd_posto_curva32_incondicional {G : ℂ → ℂ} (hG : Continuacao ATK.
     G 1 ≠ 0 ∧ analyticOrderAt G 1 = postoMW ATK.CongruentCurve.E :=
   bsd_posto_curva32_modP1 ponteModular_curva32 hG
 
+/-! ## Existência da continuação: convergência em `Re s > 3/2` -/
+
+/-- `Σ_{p ∈ ℤ²} N(p)^{−t}` converge para `t > 1` (soma de Eisenstein da Mathlib). -/
+theorem summable_rede {t : ℝ} (ht : 1 < t) :
+    Summable fun p : ℤ × ℤ => ((p.1 : ℝ) ^ 2 + (p.2 : ℝ) ^ 2) ^ (-t) := by
+  have hE := EisensteinSeries.summable_one_div_norm_rpow (k := 2 * t) (by linarith)
+  have hE' : Summable fun p : ℤ × ℤ => ‖(finTwoArrowEquiv ℤ).symm p‖ ^ (-(2 * t)) :=
+    (finTwoArrowEquiv ℤ).symm.summable_iff.mpr hE
+  refine hE'.of_nonneg_of_le (fun p => by positivity) fun p => ?_
+  rw [EisensteinSeries.norm_eq_max_natAbs]
+  simp only [finTwoArrowEquiv_symm_apply, Matrix.cons_val_zero, Matrix.cons_val_one,
+    Nat.cast_max, Nat.cast_natAbs, Int.cast_abs]
+  obtain ⟨a, b⟩ := p
+  simp only
+  by_cases h0 : a = 0 ∧ b = 0
+  · obtain ⟨rfl, rfl⟩ := h0
+    have ht0 : (-t : ℝ) ≠ 0 := by linarith
+    have ht2 : (-(2 * t) : ℝ) ≠ 0 := by linarith
+    simp [Real.zero_rpow ht0, Real.zero_rpow ht2]
+  · have hM : 0 < max |(a : ℝ)| |(b : ℝ)| := by
+      rcases not_and_or.mp h0 with ha | hb
+      · exact lt_max_of_lt_left (abs_pos.mpr (by exact_mod_cast ha))
+      · exact lt_max_of_lt_right (abs_pos.mpr (by exact_mod_cast hb))
+    have hle : (max |(a : ℝ)| |(b : ℝ)|) ^ 2 ≤ (a : ℝ) ^ 2 + (b : ℝ) ^ 2 := by
+      rcases le_total |(a : ℝ)| |(b : ℝ)| with h | h
+      · rw [max_eq_right h, sq_abs]; nlinarith [sq_nonneg (a : ℝ)]
+      · rw [max_eq_left h, sq_abs]; nlinarith [sq_nonneg (b : ℝ)]
+    rw [show -(2 * t) = 2 * (-t) by ring, Real.rpow_mul hM.le, Real.rpow_two]
+    exact Real.rpow_le_rpow_of_nonpos (by positivity) hle (by linarith)
+
+/-- `|aₙ| ≤ Σ_{a² + b² = n} √n`. -/
+theorem cota_caixa (n : ℕ) :
+    |(ATK.CongruentCurve.E.LFunction n : ℝ)| ≤ ∑ p ∈ caixa n, Real.sqrt n := by
+  rw [coef_caixa]
+  push_cast
+  calc |∑ p ∈ (caixa n).filter (fun p => Prim (⟨p.1, p.2⟩ : ℤ[i])), (p.1 : ℝ)|
+      ≤ ∑ p ∈ (caixa n).filter (fun p => Prim (⟨p.1, p.2⟩ : ℤ[i])), |(p.1 : ℝ)| :=
+        Finset.abs_sum_le_sum_abs _ _
+    _ ≤ ∑ p ∈ (caixa n).filter (fun p => Prim (⟨p.1, p.2⟩ : ℤ[i])), Real.sqrt n := by
+        refine Finset.sum_le_sum fun p hp => ?_
+        rw [Finset.mem_filter, caixa, Finset.mem_filter] at hp
+        apply Real.abs_le_sqrt
+        have : ((p.1 : ℝ) ^ 2 + (p.2 : ℝ) ^ 2) = (n : ℝ) := by exact_mod_cast hp.1.2
+        nlinarith [sq_nonneg (p.2 : ℝ)]
+    _ ≤ ∑ p ∈ caixa n, Real.sqrt n :=
+        Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ _)
+          fun _ _ _ => Real.sqrt_nonneg _
+
+/-- **`L(E, s)` converge absolutamente em `Re s > 3/2`.** -/
+theorem lseriesSummable_curva32 {s : ℂ} (hs : 3 / 2 < s.re) :
+    LSeriesSummable (coef ATK.CongruentCurve.E) s := by
+  have hsum := summable_rede (t := s.re - 1 / 2) (by linarith)
+  have hfib := hsum.hasSum.tsum_fiberwise (fun p : ℤ × ℤ => (p.1 ^ 2 + p.2 ^ 2).toNat)
+  have hG : Summable fun n : ℕ =>
+      ∑ p ∈ caixa n, ((p.1 : ℝ) ^ 2 + (p.2 : ℝ) ^ 2) ^ (-(s.re - 1 / 2)) := by
+    refine hfib.summable.congr fun n => ?_
+    rw [tsum_congr_set_coe (fun p : ℤ × ℤ => ((p.1 : ℝ) ^ 2 + (p.2 : ℝ) ^ 2) ^ (-(s.re - 1 / 2)))
+      (fibra n)]
+    exact Finset.tsum_subtype' (caixa n)
+      (fun p : ℤ × ℤ => ((p.1 : ℝ) ^ 2 + (p.2 : ℝ) ^ 2) ^ (-(s.re - 1 / 2)))
+  refine Summable.of_norm_bounded hG fun n => ?_
+  rw [LSeries.norm_term_eq]
+  split_ifs with hn
+  · exact Finset.sum_nonneg fun p _ => by positivity
+  · have hnpos : (0 : ℝ) < n := by exact_mod_cast Nat.pos_of_ne_zero hn
+    have hc : ∀ p ∈ caixa n, ((p.1 : ℝ) ^ 2 + (p.2 : ℝ) ^ 2) ^ (-(s.re - 1 / 2)) =
+        Real.sqrt n / (n : ℝ) ^ s.re := by
+      intro p hp
+      rw [caixa, Finset.mem_filter] at hp
+      have : ((p.1 : ℝ) ^ 2 + (p.2 : ℝ) ^ 2) = (n : ℝ) := by exact_mod_cast hp.2
+      rw [this, Real.sqrt_eq_rpow, ← Real.rpow_sub hnpos]
+      congr 1; ring
+    rw [Finset.sum_congr rfl hc, ← Finset.sum_div]
+    refine div_le_div_of_nonneg_right ?_ (by positivity)
+    simp only [coef, Complex.norm_intCast]
+    exact cota_caixa n
+
+theorem abscissa_curva32 :
+    LSeries.abscissaOfAbsConv (coef ATK.CongruentCurve.E) ≤ ((3 / 2 : ℝ) : EReal) :=
+  LSeries.abscissaOfAbsConv_le_of_forall_lt_LSeriesSummable fun y hy =>
+    lseriesSummable_curva32 (by simpa using hy)
+
+/-- A continuação inteira de `L(E, s)` construída pela equação funcional. -/
+noncomputable def Lcurva32 : ℂ → ℂ :=
+  Lc c32_pos cotaCoef_curva32 one_ne_zero ponteModular_curva32
+
+/-- **Existência**: `Lcurva32` é a continuação analítica de `L(E, s)` (coincide com a série em
+`Re s > 3/2`). -/
+theorem existe_continuacao : Continuacao ATK.CongruentCurve.E Lcurva32 := by
+  have hd : Differentiable ℂ Lcurva32 := differentiable_Lc _ _ _ _
+  refine ⟨hd, fun s hs => ?_⟩
+  have hU : IsPreconnected {s : ℂ | 3 / 2 < s.re} := (convex_halfSpace_re_gt (3 / 2)).isPreconnected
+  have hLa : AnalyticOnNhd ℂ Lcurva32 {s : ℂ | 3 / 2 < s.re} := fun z _ => hd.analyticAt z
+  have hSa : AnalyticOnNhd ℂ (LSeries (coef ATK.CongruentCurve.E)) {s : ℂ | 3 / 2 < s.re} := by
+    intro z hz
+    refine LSeries_analyticOnNhd _ z ?_
+    exact lt_of_le_of_lt abscissa_curva32 (by exact_mod_cast hz)
+  have hopen : IsOpen {s : ℂ | 2 < s.re} := isOpen_lt continuous_const Complex.continuous_re
+  have h3 : (3 : ℂ) ∈ {s : ℂ | 2 < s.re} := by norm_num
+  have heq := hLa.eqOn_of_preconnected_of_eventuallyEq hSa hU (z₀ := 3) (by norm_num) (by
+    filter_upwards [hopen.mem_nhds h3] with z hz
+    exact Lc_eq _ _ _ _ hz)
+  exact heq hs
+
+/-- **BSD (posto) para `y² = x³ − x`, forma completa**: `L(E, s)` tem continuação analítica
+inteira, única, que não se anula em `s = 1`; a ordem de anulação `0` é o posto de Mordell–Weil. -/
+theorem bsd_posto_curva32_completo :
+    ∃ G : ℂ → ℂ, Continuacao ATK.CongruentCurve.E G ∧
+      (∀ G' : ℂ → ℂ, Continuacao ATK.CongruentCurve.E G' → G' = G) ∧
+      G 1 ≠ 0 ∧ analyticOrderAt G 1 = postoMW ATK.CongruentCurve.E :=
+  ⟨Lcurva32, existe_continuacao, fun _ hG' => continuacao_unica hG' existe_continuacao,
+    bsd_posto_curva32_incondicional existe_continuacao⟩
+
+/-- **A conjectura de Birch e Swinnerton-Dyer (parte do posto) vale para `y² = x³ − x`**, no
+enunciado por curva de `L4Base` (fiel ao do Clay: `L4Base.clayBSD_iff`). -/
+theorem bsdConjecture_E32 : ATK.L4Base.BSDConjecture ATK.L4Base.E32 :=
+  ⟨ATK.L4Base.LFunctionContinued.ofContinuacao existe_continuacao,
+    (bsd_posto_curva32_incondicional existe_continuacao).2⟩
+
 end ATK.PonteModularCurva32
 
 #print axioms ATK.PonteModularCurva32.hasSum_sin
@@ -514,3 +641,10 @@ end ATK.PonteModularCurva32
 #print axioms ATK.PonteModularCurva32.equacao_funcional
 #print axioms ATK.PonteModularCurva32.ponteModular_curva32
 #print axioms ATK.PonteModularCurva32.bsd_posto_curva32_incondicional
+#print axioms ATK.PonteModularCurva32.summable_rede
+#print axioms ATK.PonteModularCurva32.cota_caixa
+#print axioms ATK.PonteModularCurva32.lseriesSummable_curva32
+#print axioms ATK.PonteModularCurva32.abscissa_curva32
+#print axioms ATK.PonteModularCurva32.existe_continuacao
+#print axioms ATK.PonteModularCurva32.bsd_posto_curva32_completo
+#print axioms ATK.PonteModularCurva32.bsdConjecture_E32

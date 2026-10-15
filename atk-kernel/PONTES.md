@@ -62,9 +62,10 @@ volta deles.
 | — | ponte de Leray em `AtaqueNS` | = B3 | — |
 
 Com P1 e P2 provadas, **a parte do posto de BSD para `y² = x³ − x` não depende de nenhuma
-ponte**: `PonteModularCurva32.bsd_posto_curva32_incondicional` — toda continuação analítica `G` de
-`L(E, s)` tem `G(1) ≠ 0` e ordem `0 =` posto de Mordell–Weil. (Antes, `bsd_posto_curva32_modP1`
-dependia de P1.) P2a foi desdobrada sem matemática
+ponte**: `PonteModularCurva32.bsdConjecture_E32 : L4Base.BSDConjecture L4Base.E32` —
+`L(E, s)` converge em `Re s > 3/2`, tem continuação inteira (existe e é única), `L(E, 1) ≠ 0` e a
+ordem `0` é o posto de Mordell–Weil. É o enunciado do Clay (`L4Base.clayBSD_iff`) restrito a uma
+curva; o problema do milênio (todas as curvas) continua aberto. P2a foi desdobrada sem matemática
 nova: corpo residual `ℤ_v/𝔪 ≅ 𝔽_p` (via `ℤ_v ≅ ℤ_p`), produto de Euler da Mathlib em `p^k`
 (Northcott), descida do modelo minimal a `ℤ_v` em `p` ímpar com `#Ẽ(𝔽_p) = p + 1 + Σ χ(x³ − x)`,
 e redução aditiva em `2` (`2` uniformizador de `ℤ_2`, paridade de `v(Δ_min) = 6 − 12 v(u)`,
