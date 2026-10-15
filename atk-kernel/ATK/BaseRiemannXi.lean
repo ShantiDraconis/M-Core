@@ -26,7 +26,7 @@ import Mathlib.Topology.Order.IntermediateValue
 
 open Complex ComplexConjugate Set Filter Topology
 
-namespace ATK.Base
+namespace ATK.BaseRiemannXi
 
 /-! ### Conjugação de Γℝ e de Λ₀ -/
 
@@ -281,28 +281,28 @@ theorem riemannHypothesis_iff_Xi :
     simp at this
     linarith
 
-end ATK.Base
+end ATK.BaseRiemannXi
 
-#print axioms ATK.Base.Gammaℝ_conj
-#print axioms ATK.Base.completedRiemannZeta₀_conj
-#print axioms ATK.Base.differentiable_riemannXi
-#print axioms ATK.Base.continuous_riemannXi
-#print axioms ATK.Base.riemannXi_eq
-#print axioms ATK.Base.riemannXi_eq_zeta
-#print axioms ATK.Base.riemannXi_one_sub
-#print axioms ATK.Base.riemannXi_conj
-#print axioms ATK.Base.riemannXi_zero
-#print axioms ATK.Base.riemannXi_one
-#print axioms ATK.Base.riemannXi_eq_zero_iff
-#print axioms ATK.Base.riemannXi_ne_zero_of_one_le_re
-#print axioms ATK.Base.riemannXi_ne_zero_of_re_le_zero
-#print axioms ATK.Base.riemannXi_zero_mem_strip
-#print axioms ATK.Base.re_pos_of_zeta_zero
-#print axioms ATK.Base.riemannXi_critical_im
-#print axioms ATK.Base.riemannXi_critical
-#print axioms ATK.Base.Xi_neg
-#print axioms ATK.Base.continuous_Xi
-#print axioms ATK.Base.zeta_critical_zero_iff
-#print axioms ATK.Base.zero_of_sign_change
-#print axioms ATK.Base.riemannHypothesis_iff_xi
-#print axioms ATK.Base.riemannHypothesis_iff_Xi
+#print axioms ATK.BaseRiemannXi.Gammaℝ_conj
+#print axioms ATK.BaseRiemannXi.completedRiemannZeta₀_conj
+#print axioms ATK.BaseRiemannXi.differentiable_riemannXi
+#print axioms ATK.BaseRiemannXi.continuous_riemannXi
+#print axioms ATK.BaseRiemannXi.riemannXi_eq
+#print axioms ATK.BaseRiemannXi.riemannXi_eq_zeta
+#print axioms ATK.BaseRiemannXi.riemannXi_one_sub
+#print axioms ATK.BaseRiemannXi.riemannXi_conj
+#print axioms ATK.BaseRiemannXi.riemannXi_zero
+#print axioms ATK.BaseRiemannXi.riemannXi_one
+#print axioms ATK.BaseRiemannXi.riemannXi_eq_zero_iff
+#print axioms ATK.BaseRiemannXi.riemannXi_ne_zero_of_one_le_re
+#print axioms ATK.BaseRiemannXi.riemannXi_ne_zero_of_re_le_zero
+#print axioms ATK.BaseRiemannXi.riemannXi_zero_mem_strip
+#print axioms ATK.BaseRiemannXi.re_pos_of_zeta_zero
+#print axioms ATK.BaseRiemannXi.riemannXi_critical_im
+#print axioms ATK.BaseRiemannXi.riemannXi_critical
+#print axioms ATK.BaseRiemannXi.Xi_neg
+#print axioms ATK.BaseRiemannXi.continuous_Xi
+#print axioms ATK.BaseRiemannXi.zeta_critical_zero_iff
+#print axioms ATK.BaseRiemannXi.zero_of_sign_change
+#print axioms ATK.BaseRiemannXi.riemannHypothesis_iff_xi
+#print axioms ATK.BaseRiemannXi.riemannHypothesis_iff_Xi

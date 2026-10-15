@@ -25,7 +25,7 @@ import Mathlib.LinearAlgebra.UnitaryGroup
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Data.Complex.Basic
 
-namespace ATK.Base.RedeCalibre
+namespace ATK.BaseRedeCalibre
 
 open Finset
 
@@ -124,13 +124,13 @@ theorem wilson_unitario_invariante (g : Calibre d L (Matrix.unitaryGroup N ℂ))
 
 end Unitario
 
-end ATK.Base.RedeCalibre
+end ATK.BaseRedeCalibre
 
-#print axioms ATK.Base.RedeCalibre.acao_one
-#print axioms ATK.Base.RedeCalibre.acao_mul
-#print axioms ATK.Base.RedeCalibre.plaqueta_calibre
-#print axioms ATK.Base.RedeCalibre.plaqueta_diag
-#print axioms ATK.Base.RedeCalibre.wilson_invariante
-#print axioms ATK.Base.RedeCalibre.observavel_invariante
-#print axioms ATK.Base.RedeCalibre.reTr_classe
-#print axioms ATK.Base.RedeCalibre.wilson_unitario_invariante
+#print axioms ATK.BaseRedeCalibre.acao_one
+#print axioms ATK.BaseRedeCalibre.acao_mul
+#print axioms ATK.BaseRedeCalibre.plaqueta_calibre
+#print axioms ATK.BaseRedeCalibre.plaqueta_diag
+#print axioms ATK.BaseRedeCalibre.wilson_invariante
+#print axioms ATK.BaseRedeCalibre.observavel_invariante
+#print axioms ATK.BaseRedeCalibre.reTr_classe
+#print axioms ATK.BaseRedeCalibre.wilson_unitario_invariante

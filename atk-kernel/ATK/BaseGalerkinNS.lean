@@ -30,7 +30,7 @@ import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 
 open Finset Complex ComplexConjugate
 
-namespace ATK.Base.GalerkinNS
+namespace ATK.BaseGalerkinNS
 
 /-- Modos de Fourier em `ℤ³`. -/
 abbrev Modo := Fin 3 → ℤ
@@ -317,24 +317,24 @@ theorem energia_decresce (K : Finset Modo) {ν : ℝ} (hν : 0 ≤ ν) (u : ℝ 
     exact derivada_energia_nonpos K hν (u s)
   exact hanti ht0
 
-end ATK.Base.GalerkinNS
+end ATK.BaseGalerkinNS
 
-#print axioms ATK.Base.GalerkinNS.dot_comm
-#print axioms ATK.Base.GalerkinNS.dot_kC_add
-#print axioms ATK.Base.GalerkinNS.dot_kC_neg
-#print axioms ATK.Base.GalerkinNS.conj_dot
-#print axioms ATK.Base.GalerkinNS.cj_kC
-#print axioms ATK.Base.GalerkinNS.cj_cj
-#print axioms ATK.Base.GalerkinNS.nsq_im
-#print axioms ATK.Base.GalerkinNS.nsq_re_nonneg
-#print axioms ATK.Base.GalerkinNS.dot_conv
-#print axioms ATK.Base.GalerkinNS.parConv_zero
-#print axioms ATK.Base.GalerkinNS.dot_kC_cj
-#print axioms ATK.Base.GalerkinNS.leray_par
-#print axioms ATK.Base.GalerkinNS.lam_nonneg
-#print axioms ATK.Base.GalerkinNS.energia_estatica
-#print axioms ATK.Base.GalerkinNS.energia_im
-#print axioms ATK.Base.GalerkinNS.hasDerivAt_energia
-#print axioms ATK.Base.GalerkinNS.identidade_energia
-#print axioms ATK.Base.GalerkinNS.derivada_energia_nonpos
-#print axioms ATK.Base.GalerkinNS.energia_decresce
+#print axioms ATK.BaseGalerkinNS.dot_comm
+#print axioms ATK.BaseGalerkinNS.dot_kC_add
+#print axioms ATK.BaseGalerkinNS.dot_kC_neg
+#print axioms ATK.BaseGalerkinNS.conj_dot
+#print axioms ATK.BaseGalerkinNS.cj_kC
+#print axioms ATK.BaseGalerkinNS.cj_cj
+#print axioms ATK.BaseGalerkinNS.nsq_im
+#print axioms ATK.BaseGalerkinNS.nsq_re_nonneg
+#print axioms ATK.BaseGalerkinNS.dot_conv
+#print axioms ATK.BaseGalerkinNS.parConv_zero
+#print axioms ATK.BaseGalerkinNS.dot_kC_cj
+#print axioms ATK.BaseGalerkinNS.leray_par
+#print axioms ATK.BaseGalerkinNS.lam_nonneg
+#print axioms ATK.BaseGalerkinNS.energia_estatica
+#print axioms ATK.BaseGalerkinNS.energia_im
+#print axioms ATK.BaseGalerkinNS.hasDerivAt_energia
+#print axioms ATK.BaseGalerkinNS.identidade_energia
+#print axioms ATK.BaseGalerkinNS.derivada_energia_nonpos
+#print axioms ATK.BaseGalerkinNS.energia_decresce
