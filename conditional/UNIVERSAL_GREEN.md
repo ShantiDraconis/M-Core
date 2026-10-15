@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (1903 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (2073 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -310,6 +310,30 @@ Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.le
   composição) dá `poli_custoTotal`.
 * `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
   `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
+
+## Rodada de 15/10/2026 (manhã): Mordell–Weil e o primeiro caso de FLT para `p < 300`
+
+Pedido do titular: provar tudo o que é provável. Os produtores O1–O8 continuam sem prova conhecida
+(nenhum arquivo honesto pode fechá-los); estes são os dois maiores teoremas verdadeiros ao alcance,
+170 teoremas novos, axiomas padrão:
+
+* **`ATK/MordellWeilDois.lean` (37) — teorema de Mordell–Weil para `y² = (x − e₁)(x − e₂)(x − e₃)`**
+  (`eᵢ ∈ ℤ` distintos; toda curva sobre `ℚ` com 2-torção racional completa é isomorfa a uma destas).
+  2-descida completa sobre o grupo de pontos da Mathlib: o homomorfismo
+  `φ : E(ℚ) → (ℚˣ/ℚˣ²)²`, `P ↦ ([x − e₁], [x − e₂])` (`phi`, via a identidade da reta de
+  `addPolynomial_slope`), `ker φ ⊆ 2E(ℚ)` com a fórmula explícita de divisão por 2 (`metade`,
+  `nucleo_le`), imagem finita pela paridade das valuações `p`-ádicas (`par_x_menos_e`,
+  `finito_phi`); daí **Mordell–Weil fraco** (`mordellWeil_fraco`), **Mordell–Weil**
+  (`mordellWeil`, pela descida da Mathlib) e `posto_finito`. Efeito na ligação L4: a hipótese
+  `MordellWeil` deixa de ser necessária para essa família.
+* **`ATK/GermainLegendre.lean` (133) — primeiro caso do último teorema de Fermat para todo primo
+  ímpar `p < 300`** (`flt_caso_um_menor_300`): o critério de Germain–Legendre com um primo
+  auxiliar `q = 2kp + 1` (`germain`), e para cada um dos 61 primos ímpares abaixo de 300 o
+  kernel confere o seu `q` (até 9767) por `decide`. `flt_iff_caso_dois`: para esses `p`,
+  FLT(p) ⟺ o segundo caso (`p ∣ xyz`). Efeito na ponte B2: o que falta para `p < 300` é só o
+  segundo caso.
+
+Nenhum estado mudou: pontes no kernel **2/8**, produtores abertos **8/8**, ligações abertas **3/5**.
 
 ## Rodada de 15/10/2026: avanço certificado em todos os itens abertos
 

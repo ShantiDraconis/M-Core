@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "6c64f0ee7adb2f025b585f7cdcc3c2b2ac2896931f841ccc5e50ca5a933c44e7",
+  "sources_sha256": "716bbc8a1f5383c694a2962037040286f940dd70e97d85de57eb2ee8c1c154d2",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -61,6 +61,7 @@
     "ATK/FreyBealResidual.lean": "6e11077c731acb4d638a6924d4b7cdb921611b07334d877b0ef2f4e39987eff5",
     "ATK/FronteiraUm.lean": "d263d2cae5e4dea000b84092a3a77d97e12c2c27c8459267052968404091c559",
     "ATK/Geometry.lean": "0b99af35cf654984d491404f483a79ddaa60ed79905c6ccd38b9e40b557092cb",
+    "ATK/GermainLegendre.lean": "6f3fd227c694146364b2abae76611cb5ab4d27e17d56ed2450896001005711d3",
     "ATK/Hodge.lean": "f550ba31f9473133531e7c8bf4ec71b039c4e66f658a92de9487d3b21d70b870",
     "ATK/HodgeFiltracao.lean": "0250605857654db1e393afe4137e35db9d494df17af0403f72c438aebbe47db1",
     "ATK/HodgeToro.lean": "64777184aae8d7df2286a683067c633364e8af6d6a3d83e2f76f9b1da74681ff",
@@ -96,6 +97,7 @@
     "ATK/MellinRho.lean": "d37a84591f1594e64f5b0a7d4eb4018bafe5cef503c954a41306c4daffb02771",
     "ATK/ModeloPNP.lean": "878719f9129625068bba8b1e3b34e87bf30858207bec3c3595a8307e9cfbd524",
     "ATK/ModelosSete.lean": "2e4333f33f8652309862fa8b2ac645026200405c6e33ef955413246a552b2217",
+    "ATK/MordellWeilDois.lean": "0d770d439e7250cf4d28baee67c8e80111dd7fba35898b0d3f83a27fcfabbd12",
     "ATK/NSExplosao.lean": "a780dc6086942bc682b87f34ca58e2d6153f71582ce18d5d4d701e34c04ed340",
     "ATK/NSPequeno.lean": "782cefb44e3514026baa2c5aa5fed904c04ef7e686d663156579787cb71e6a47",
     "ATK/NavierStokes.lean": "c98cd4c49cd689ae9417300ddb6128dde4c29e980c0341db64611b4606722c17",
@@ -128,12 +130,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "f4fcd9f76a1acb4a99a5903bb37ab242b671b6d8dddbc8a19d1d1566bd0a11f0"
+    "ATK.lean": "4fb64e0ad061232031e760eedde93ff380c53708026f80d37b1512ce7296a32b"
   },
-  "n_files": 127,
-  "expected_theorems": 1903,
+  "n_files": 129,
+  "expected_theorems": 2073,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "297db5988cdc7239f8114ce1a17042b74f23750d",
+  "commit_at_freeze": "19ef5f35b8ec554d011b843fd23e96ad20db8597",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

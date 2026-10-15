@@ -166,6 +166,14 @@ Nada aqui muda o estado das ligações, que continua sendo o registrado pelo tit
   espectral de energia-momento está em `{p⁰ ≥ Δ}`) e `TemLacuna`; coerente com a condição espectral
   para `Δ ≤ 0`; a teoria trivial tem lacuna. Falta `IsQuantumYM`.
 
+## L4 — Mordell–Weil para a família com 2-torção completa (15/10/2026, manhã)
+
+`ATK/MordellWeilDois.lean` (37): para `y² = (x − e₁)(x − e₂)(x − e₃)`, `eᵢ ∈ ℤ` distintos, o
+grupo `E(ℚ)` da Mathlib é finitamente gerado (`mordellWeil`) e o posto é finito (`posto_finito`),
+por 2-descida completa. A hipótese `MordellWeil` de `posto_iff`/`bsdFull_iff` passa a ser um
+teorema para essa família; para toda curva elíptica sobre `ℚ` continua hipótese (a descida geral
+usa aritmética de corpos de números). Teste: `y² = x³ − x` está na família (`curva_E32`).
+
 ## Efeito no auditor e nos portões
 
 * `terminal-templates/NS.lean.tpl`: a peça `LIGACAO_L1` está preenchida com

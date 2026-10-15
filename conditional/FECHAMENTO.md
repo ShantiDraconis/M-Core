@@ -59,7 +59,8 @@ grandes (`explosao_comparacao`); item 4 — invariantes da fórmula refinada e m
 (`BSDInvariantes`, `BSDRefinada`, `BSDTamagawaE32`), com Mordell–Weil reduzido ao Mordell–Weil fraco; item 5 —
 classes de Hodge = `V_ℚ ∩ F^p` (`HodgeFiltracao`) e `H¹` do toro complexo (`HodgeToro`); item 6 —
 reconstrução OS no modelo de rede (`YMReconstrucao`) e lacuna de massa sobre Wightman
-(`L5Lacuna`). FLT: teorema de Sophie Germain (`SophieGermain`).
+(`L5Lacuna`). FLT: teorema de Sophie Germain (`SophieGermain`) e o primeiro caso para todo primo ímpar `p < 300`
+(`GermainLegendre`); Mordell–Weil para curvas com 2-torção racional completa (`MordellWeilDois`).
 
 ### Estado do item 1 (`ATK/NecessidadeBD.lean`, 18 teoremas, kernel local)
 

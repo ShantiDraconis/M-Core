@@ -107,3 +107,5 @@ import ATK.YMReconstrucao
 import ATK.L5Lacuna
 import ATK.CircuitoExplicito
 import ATK.BSDTamagawaE32
+import ATK.MordellWeilDois
+import ATK.GermainLegendre

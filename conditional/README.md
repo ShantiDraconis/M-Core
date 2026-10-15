@@ -252,6 +252,13 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
   fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
   O4 (SAT ∉ P).
+- **Rodada de 15/10/2026 (manhã) — Mordell–Weil e FLT caso I** (170 teoremas):
+  `MordellWeilDois` (37): **teorema de Mordell–Weil** para `y² = (x − e₁)(x − e₂)(x − e₃)` por
+  2-descida completa (homomorfismo `φ`, núcleo em `2E(ℚ)`, imagem finita por valuações `p`-ádicas)
+  — tira a hipótese `MordellWeil` da L4 para essa família; `GermainLegendre` (133): **primeiro
+  caso do último teorema de Fermat para todo primo ímpar `p < 300`** (critério de
+  Germain–Legendre, primos auxiliares conferidos pelo kernel). Pontes **2/8**, produtores
+  **8/8** abertos.
 - **Rodada de 15/10/2026 — todos os itens abertos tocados** (102 teoremas, 11 arquivos; detalhes em
   `UNIVERSAL_GREEN.md`): `BSDInvariantes` (23) + `BSDRefinada` (16) — **a fórmula refinada de BSD
   inteira sobre a Mathlib** (Ω, Néron–Tate com limite provado e `ĥ = 0 ⟺ torção`, regulador,
