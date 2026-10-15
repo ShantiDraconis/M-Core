@@ -104,3 +104,6 @@ import ATK.BaseRedeCalibre
 import ATK.BaseEDODissipativa
 import ATK.BaseWilsonMedida
 import ATK.BaseCurvasTorsao
+import ATK.BaseGalerkinGlobal
+import ATK.BaseRiemannXiSinal
+import ATK.BaseNagellLutzDois
