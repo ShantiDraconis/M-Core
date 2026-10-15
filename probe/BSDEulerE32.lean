@@ -82,7 +82,9 @@ theorem card_pontos (W : WeierstrassCurve F) [W.IsElliptic]
   have hc : Nat.card W.toAffine.Point =
       Nat.card {xy : F × F // W.toAffine.Equation xy.1 xy.2} + 1 := by
     rw [Nat.card_congr (Affine.pointEquiv W.toAffine)]
-    exact Nat.card_option
+    first
+    | exact Finite.card_option
+    | exact Nat.card_option
   rw [hc, Nat.card_congr hS, Nat.card_eq_fintype_card, Fintype.card_coe]
   have := card_afim (F := F) h3
   omega
@@ -210,6 +212,7 @@ theorem reducao_minimal (W : WeierstrassCurve K) [IsIntegral R W]
     rw [← map_variableChange]
     show (integralModel R (W.minimal R))⁄K = (CR.baseChange K) • (integralModel R W)⁄K
     rw [baseChange_integralModel_eq R (W.minimal R), baseChange_integralModel_eq R W, hCR]
+    exact hmin
   refine ⟨CR.map (IsLocalRing.residue R), ?_⟩
   show (integralModel R (W.minimal R)).map (IsLocalRing.residue R) = _
   rw [hmodel, map_variableChange]
@@ -233,7 +236,7 @@ theorem polinomioLocal_E32 (h2 : (2 : 𝓞 ℚ) ∉ v.asIdeal)
   set W := ATK.L4Base.E32.baseChange (v.adicCompletion ℚ) with hWdef
   have hinj : Function.Injective (algebraMap R (v.adicCompletion ℚ)) :=
     IsFractionRing.injective R (v.adicCompletion ℚ)
-  haveI hint : IsIntegral R W := by
+  have hint : IsIntegral R W := by
     apply isIntegral_of_exists_lift
     · exact ⟨0, by simp [hWdef, ATK.L4Base.E32, ATK.CongruentCurve.E]⟩
     · exact ⟨0, by simp [hWdef, ATK.L4Base.E32, ATK.CongruentCurve.E]⟩
@@ -278,7 +281,6 @@ theorem polinomioLocal_E32 (h2 : (2 : 𝓞 ℚ) ∉ v.asIdeal)
     push_cast
     ring
   unfold localPolynomial
-  dsimp only
   rw [if_pos (ATK.BSDTamagawaE32.boa_E32 v h2), hcard, sub_self, map_zero, zero_mul, sub_zero]
 
 end E32
