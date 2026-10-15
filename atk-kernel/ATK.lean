@@ -166,3 +166,9 @@ import ATK.BaseGaussCurva32
 import ATK.PonteModularCurva32
 import ATK.CircuitoCamadas
 import ATK.PemPpoly
+import ATK.MordellWeilCorpo
+import ATK.SelmerFinito
+import ATK.MordellWeilNumero
+import ATK.MudancaVariaveis
+import ATK.MordellWeilGeral
+import ATK.LigacaoBSDMW

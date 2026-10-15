@@ -48,7 +48,7 @@ volta deles.
 | L1 | Navier–Stokes em ℝ³ | ✅ fechada (`LigacaoNS.modeloNS`) | — |
 | L2 | P/NP sobre `Turing.FinTM2` | ✅ fechada (`ModeloPNP`) | — |
 | L3 | cohomologia de Hodge de variedades projetivas | ⬜ não existe na Mathlib | de Rham/Betti de variedades, decomposição de Hodge |
-| L4 | BSD sobre `WeierstrassCurve.LSeries` | 🟡 posto ✅ (`LigacaoBSD`); fórmula refinada enunciada (`BSDRefinada`); hipóteses `Modularidade` e `MordellWeil` | `MordellWeil` geral = Mordell–Weil fraco para toda `E/ℚ` (feito para 2-torsão completa, `MordellWeilDois`); `Modularidade` = Wiles/BCDT |
+| L4 | BSD sobre `WeierstrassCurve.LSeries` | 🟡 posto ✅ (`LigacaoBSD`); fórmula refinada enunciada (`BSDRefinada`); hipótese `MordellWeil` **provada** (`MordellWeilGeral.mordellWeil`; `LigacaoBSDMW.posto_iff_mod`, `bsdFull_iff_mod`); resta a hipótese `Modularidade` | `Modularidade` = Wiles/BCDT |
 | L5 | Wightman/OS em ℝ⁴ | 🟡 axiomas e lacuna definidos (`L5Base`, `L5Lacuna`) | campos de calibre, `IsQuantumYM` |
 
 ## Pontes do programa de ataque
@@ -58,6 +58,7 @@ volta deles.
 | **P1** | modularidade de `y² = x³ − x` com sinal `+1`: `g(1/x) = x² g(x)` | ✅ **provada** (`PonteModularCurva32.ponteModular_curva32`): caráter de Hecke de `ℚ(i)` (`BaseGaussPrimario`), `a_p = π + π̄` (`BaseGaussCurva32`), duas fatorações da soma dupla e as equações funcionais dos núcleos de Hurwitz da Mathlib | — |
 | **P2** | `\|aₙ\| ≤ n` para `y² = x³ − x` | ✅ **provada** (`PonteFatoresCurva32.cotaCoef_curva32`): cota de Hasse–Gauss (`BaseHasseCurva32`), recursão de Hecke e multiplicatividade (`PonteCoefCurva32`), fatores locais da Mathlib (P2a) | — |
 | P2a | os coeficientes `WeierstrassCurve.LFunction` da Mathlib são os padrão (`a_{2^k} = 0`; `a_{p^k} = c_k(a_p, p)`, `a_p = p + 1 − #E(𝔽_p)`) | ✅ **provada** (`PonteFatoresCurva32.fatoresPadrao`) | — |
+| **MordellWeil** | Mordell–Weil para toda curva elíptica sobre `ℚ` (hipótese de L4) | ✅ **provada** (`MordellWeilGeral.mordellWeil`): 2-descida sobre um corpo qualquer (`MordellWeilCorpo`), finitude de `K⟮S, n⟯` para corpos de números (`SelmerFinito`, TODO da Mathlib), `E(K)/2E(K)` finito com 2-torção completa (`MordellWeilNumero`), completar o quadrado (`MudancaVariaveis`), descida de Galois a partir do corpo de decomposição da cúbica; fraco ⇒ forte por alturas (`BSDInvariantes.fg_of_fraco`) | — |
 | **PemPpoly** | `P ⊆ P/poly` (Savage 1972) | ✅ **provada** (`PemPpoly.pemPpoly`): tableau determinístico em camadas sobre `Turing.FinTM2` (`CircuitoCamadas`, lema de moldura de `CookLevinBase`), tamanho polinomial | — |
 | — | ponte de Leray em `AtaqueNS` | = B3 | — |
 
@@ -75,7 +76,8 @@ e redução aditiva em `2` (`2` uniformizador de `ℤ_2`, paridade de `v(Δ_min)
 
 1. ~~**P2a**~~, ~~**P1**~~ ✅ provadas: BSD (posto) para `y² = x³ − x` sem pontes.
 2. ~~**PemPpoly**~~ ✅ provada: `NP ⊄ P/poly ⇒ P ≠ NP` no modelo genuíno, sem pontes (`PemPpoly.p_ne_np_de_naoPpoly`).
-3. **`MordellWeil` geral** via 2-descida sobre a álgebra cúbica (meses; a Mathlib tem grupo de
-   classes finito e o teorema das unidades de Dirichlet): fecha uma das duas hipóteses de L4.
+3. ~~**`MordellWeil` geral**~~ ✅ provada (`MordellWeilGeral.mordellWeil`): 2-descida sobre o corpo
+   de decomposição da cúbica, finitude de `K⟮S, 2⟯` (grupo de classes finito e unidades de
+   Dirichlet da Mathlib) e descida de Galois. L4 passa a depender só de `Modularidade`.
 4. **B1 recíproca** (RH ⇒ `D_N → 0`; meses).
 5. B3, B5–B8, L3, L5: anos de teoria; acompanhar os projetos externos (FLT, cohomologia).

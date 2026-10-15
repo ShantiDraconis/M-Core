@@ -33,6 +33,7 @@ forma independente: o posto pela descida, `L(E, 1)` pela equação funcional mod
 | F1.3' | P2a: desdobrar `WeierstrassCurve.LFunction` (corpo residual, modelo minimal, contagem de pontos, produto de Euler) ⇒ **`\|aₙ\| ≤ n` incondicional; BSD (posto) para `y² = x³ − x` módulo só P1** | ✅ | `PonteFatoresCurva32.fatoresPadrao`, `cotaCoef_curva32`, `bsd_posto_curva32_modP1` |
 | F1.4 | Fórmula refinada completa para `y² = x³ − x` (`Ω`, `c₂`, `Ш[2] = 0`), com `BSDRefinada` | ⬜ | `formula_E32_iff` |
 | F1.5 | Outras curvas de condutor `< 82` e sinal `+1` (posto 0 pela 2-descida de `MordellWeilDois`) | ⬜ | `L1_ne_zero` |
+| F1.6 | **Mordell–Weil para toda curva elíptica sobre `ℚ`** (a hipótese `MordellWeil` de L4): `K⟮S, 2⟯` finito para corpos de números, 2-descida sobre o corpo de decomposição da cúbica, descida de Galois | ✅ | `MordellWeilGeral.mordellWeil`, `LigacaoBSDMW.bsdFull_iff_mod` |
 
 ## Frente 2 — Navier–Stokes (a aposta de maior retorno)
 
