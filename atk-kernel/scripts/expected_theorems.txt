@@ -3082,3 +3082,10 @@ ATK.BSDPortoes.refinada_iff
 ATK.BSDPortoes.clay_fiel
 ATK.BSDPortoes.clay_nao_implica_full
 ATK.BSDPortoes.refinada_nao_implica_clay
+ATK.FermatExpoentes.flt_primos_provados
+ATK.FermatExpoentes.flt_de_fator
+ATK.FermatExpoentes.flt_de_fator_regular
+ATK.FermatExpoentes.flt_fora_do_residuo
+ATK.FermatExpoentes.flt_iff_residuo
+ATK.FermatExpoentes.residuoIrregular_sub
+ATK.FermatExpoentes.flt_iff_residuo_irregular

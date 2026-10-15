@@ -126,3 +126,4 @@ import ATK.FermatDezenoveCertE
 import ATK.FermatDezenove
 import ATK.FermatRegular
 import ATK.BealFermatRegular
+import ATK.FermatExpoentes

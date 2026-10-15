@@ -252,6 +252,14 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
   fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
   O4 (SAT ∉ P).
+- **Rodada de 15/10/2026 (noite, 3) — classes de ℚ(ζₚ) e enumeração dos expoentes** (7 teoremas;
+  `CLASSES_CICLOTOMICAS.md`): cálculo numérico, fora do kernel, de h⁻(ℚ(ζₚ)) exato para p ≤ 300
+  (23, 29, 31 → 3, 8, 9: regulares) e dos pares irregulares até 10 000 (497 de 1227 primos,
+  40,51 %; índices compatíveis com Poisson(½)); `FermatExpoentes`: FLT(n) sempre que `4 ∣ n` ou `n`
+  tem fator primo ímpar `≤ 19` ou regular, e `FermatLastTheorem ⟺` FLT no resíduo (25,61 % dos
+  `n ≤ 10 000`) ou no resíduo irregular de Kummer (7,90 %). O teorema inteiro não sai por esse
+  caminho: há infinitos primos irregulares, e a regularidade de 23 no kernel pede a cota de
+  Minkowski ≈ 9,3·10⁶. Pontes **2/8**, produtores **8/8** abertos.
 - **Rodada de 15/10/2026 (noite, 2) — FLT(19)** (784 teoremas): `FermatDezenove` (com
   `FermatDezenoveBase` e cinco módulos de certificados): `𝓞(ℚ(ζ₁₉))` é principal — cota de
   Minkowski 105 933, 558 primos certificados (552 de grau 1, 4 de grau 2, 2 de grau 3), conferidos

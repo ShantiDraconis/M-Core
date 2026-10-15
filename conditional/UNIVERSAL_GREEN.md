@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (3084 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (3091 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -310,6 +310,29 @@ Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.le
   composição) dá `poli_custoTotal`.
 * `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
   `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
+
+## Rodada de 15/10/2026 (noite, 3): classes de ℚ(ζₚ) e enumeração dos expoentes
+
+Pedido do titular: calcular todas as classes, comportamentos e enumerações e formalizar o teorema.
+Detalhes em `CLASSES_CICLOTOMICAS.md`.
+
+* **Calculado (fora do kernel)** — `atk-kernel/numerics/classes_ciclotomicas.py`:
+  * h⁻(ℚ(ζₚ)) exato para os 62 primos `p ≤ 300` (`hmenos_p300.csv`): 23 → 3, 29 → 8, 31 → 9, todos
+    regulares; 37, 59, 67 são os primeiros irregulares;
+  * pares irregulares `(p, k)`, `p | B_k`, para os 1227 primos `5 ≤ p ≤ 10 000`
+    (`irregulares_p10000.csv`): 497 irregulares, 40,51 %; índices 0–3 em 59,5 / 30,9 / 8,3 / 1,3 %,
+    contra Poisson(½); as duas listas coincidem para `p ≤ 300`.
+* **Formalizado** — `ATK/FermatExpoentes.lean` (7 teoremas, axiomas padrão): `flt_de_fator`,
+  `flt_de_fator_regular`, `flt_iff_residuo` (`FermatLastTheorem ⟺` FLT para os `n ≥ 3` sem fator 4 e
+  com todos os fatores primos ímpares `≥ 23`) e `flt_iff_residuo_irregular` (idem, com todos os
+  fatores primos ímpares irregulares: o resíduo exato do método de Kummer).
+* **O que não sai por esse caminho**: os primos irregulares são infinitos (Jensen, 1915), e o método
+  de Kummer não os alcança; a regularidade de 23, 29, 31 no kernel pede o grupo de classes com cotas
+  de Minkowski ≈ 9,32·10⁶, 1,50·10¹⁰, 2,03·10¹¹ (para 23, 28 371 primos `≡ 1 (mód 23)` a
+  certificar); o teorema completo exige Wiles–Taylor.
+
+Nenhum estado mudou: pontes no kernel **2/8** (B2 parcial), produtores abertos **8/8**, ligações
+abertas **3/5**.
 
 ## Rodada de 15/10/2026 (noite, 2): FLT(19)
 
