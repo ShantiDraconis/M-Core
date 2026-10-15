@@ -93,6 +93,9 @@ import ATK.IPortadoresMenores
 import ATK.ATKI
 import ATK.ATKIExemplos
 import ATK.ATKIBagchi
+import ATK.ATKINormal
+import ATK.ATKIAlgebra
+import ATK.ATKIAplicacoes
 import ATK.BSDInvariantes
 import ATK.BSDRefinada
 import ATK.DarmonMerelReducao
