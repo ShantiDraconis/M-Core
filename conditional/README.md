@@ -242,14 +242,75 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   portão compilam com as peças ausentes; rota da prova: faltam **16** termos; rota da refutação: 10.
 - `ATK/SATemNP.lean` (77): **ponte B4, marco M1 — SAT ∈ NP** no modelo genuíno: certificado
   esparso de tamanho `≤ |w|`, máquina `FinTM2` verificadora em `≤ 2 (n + 4)²` passos; com isso
-  `CookLevin modeloPNP SAT ⟺ NP-dificuldade de SAT` (`cookLevin_iff`; M2 em aberto).
+  `CookLevin modeloPNP SAT ⟺ NP-dificuldade de SAT` (`cookLevin_iff`; M2 provado, abaixo).
+- `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.lean` (45) + `ATK/CookLevinNP.lean` (51):
+  **ponte B4 provada — Cook–Levin no modelo genuíno**, `ATK.CookLevinNP.cookLevin :
+  CookLevin modeloPNP SAT` (marco M2d, parte 2). O gerador da redução é um programa da linguagem
+  de laços: fase aritmética (`|w|`, `q(|w|)`, tempo e altura do tableau, com `polyZ` para qualquer
+  polinômio) e emissão do tableau família por família; `saida_gerador` (a saída é exatamente
+  `reducao`), cotas polinomiais de custo e de saída (`custo_gerador`, `poli_custoTotal`),
+  `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
+  fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
+  O4 (SAT ∉ P).
+- **Rodada de 15/10/2026 (noite) — último teorema de Fermat para primos regulares e para
+  `n = 5, 7, 11, 13, 17`** (179 teoremas): `ATK/FltRegular/` traz a formalização pública
+  **flt-regular** (teorema de Kummer, casos I e II; Apache 2.0, com atribuição e uma adaptação de
+  uma linha à Mathlib v4.34.1 — ver `ATK/FltRegular/ORIGEM.md`). `FermatOnze`, `FermatTreze`,
+  `FermatDezessete` (novos): `𝓞(ℚ(ζ₁₁))`, `𝓞(ℚ(ζ₁₃))` e `𝓞(ℚ(ζ₁₇))` são principais pela cota de
+  Minkowski (58, 306 e 13 254), com geradores explícitos dos primos pequenos (1, 5 e 103
+  certificados) conferidos pelo kernel — para 17, por reflexão em listas de inteiros (`PolyLista`)
+  e `decide +kernel` —, logo **FLT(11)**, **FLT(13)** e **FLT(17)**. `FermatRegular`: FLT(n) para
+  `3 ≤ n ≤ 18` e **a ponte B2 equivale a FLT para os primos irregulares `p ≥ 19`**
+  (`flt_iff_irregulares`). `BealFermatRegular`: Beal sem pontes quando `5, 7, 11, 13` ou `17`
+  divide `mdc(x, y, z)` (cobertura incondicional em `3..200`: 10,30% → 11,42%). Pontes **2/8** (B2
+  continua parcial: faltam os primos irregulares), produtores **8/8** abertos.
+- **Rodada de 15/10/2026 (tarde) — posto `≥ 2` e `A⁶ + B⁶ ≠ C²`** (39 teoremas): `PostoDois` (28):
+  `E(ℚ)[2] = {O, T₁, T₂, T₃}`, a torção cai em `φ(E[2])` quando `|φ(E[2])| = 4`
+  (`phi_torsao_mem`, com `|T/2T| = |T[2]|`), e o **critério de independência** de pontos pela
+  imagem de `φ` (`independentes`, `posto_ge_dois`, `posto_ge_um`). Exemplos certificados:
+  **`y² = x(x + 30)(x + 2)` tem posto `≥ 2`** (`posto_R30`, pontos `(−20, 60)` e `(−16, 56)`) e
+  a curva do número congruente 6, `y² = x³ − 36x`, tem posto `≥ 1` (`posto_R6`, ponto `(−3, 9)`).
+  Lado algébrico de O6 (curvas de posto `≥ 2` existem e são detectadas no kernel); O6 continua
+  aberta. `DarmonMerelSeis` (5): **`A⁶ + B⁶ ≠ C²`** para `A, B > 0` coprimos (Euler), pela
+  tripla pitagórica `(A³, B³, C)` e FLT(3) da Mathlib; a ponte B8 passa a equivaler a `C²` com
+  `n = 9` ou primo `≥ 5` e `C³` com `n = 4` ou primo `≥ 5` (`darmonMerel_iff_reduzido`).
+  `BealSeisSeisDois` (6): **Beal incondicional na assinatura `(6k, 6l, 2m)`** (`beal_662`), com
+  `mdc = 2` fora das famílias anteriores (`(6, 6, 4)`, `(6, 12, 10)`, …); o residual de O2 encolhe
+  (`beal_iff_residual_seis`) e a cobertura incondicional dos expoentes em `3..200` vai de 9,83%
+  para 10,30%. Pontes **2/8**, produtores **8/8** abertos.
+- **Rodada de 15/10/2026 (manhã) — Mordell–Weil e FLT caso I** (170 teoremas):
+  `MordellWeilDois` (37): **teorema de Mordell–Weil** para `y² = (x − e₁)(x − e₂)(x − e₃)` por
+  2-descida completa (homomorfismo `φ`, núcleo em `2E(ℚ)`, imagem finita por valuações `p`-ádicas)
+  — tira a hipótese `MordellWeil` da L4 para essa família; `GermainLegendre` (133): **primeiro
+  caso do último teorema de Fermat para todo primo ímpar `p < 300`** (critério de
+  Germain–Legendre, primos auxiliares conferidos pelo kernel). Pontes **2/8**, produtores
+  **8/8** abertos.
+- **Rodada de 15/10/2026 — todos os itens abertos tocados** (102 teoremas, 11 arquivos; detalhes em
+  `UNIVERSAL_GREEN.md`): `BSDInvariantes` (23) + `BSDRefinada` (16) — **a fórmula refinada de BSD
+  inteira sobre a Mathlib** (Ω, Néron–Tate com limite provado e `ĥ = 0 ⟺ torção`, regulador,
+  Tamagawa, Ш por cohomologia de Galois contínua, `FormulaRefinada`, `modeloCompleto`,
+  `bsdFull_iff_fraco`; `BSDTamagawaE32` (5): em `y² = x³ − x`, `c_p = 1` para `p ≠ 2`);
+  `HodgeToro` (10, L3), `HodgeFiltracao` (5, B5/O5), `L5Lacuna` (4, L5),
+  `SophieGermain` (12, B2: primeiro caso de FLT(5)), `DarmonMerelReducao` (9, B8 reduzida a
+  expoentes primos), `NSExplosao` (2, B3 taxa de Leray / O3 obstrução), `YMReconstrucao` (6,
+  B7/O8 na rede), `CircuitoExplicito` (10, O4 cota explícita linear). Nenhum estado mudou: pontes
+  **2/8**, produtores abertos **8/8**, ligações abertas **3/5**.
+- `ATK/Fragmentos.lean` (10) + `ATK/Compilador.lean` (24): **B4, marco M2d (parte 1)** — compilador
+  verificado de uma linguagem de laços para `FinTM2`, com custo exato (`comp_ok`, `maq_run`,
+  `computavel`).
 - `ATK/CookLevinReducao.lean` (23): **B4, marco M2c** — a redução de Cook–Levin como função pura:
-  `w ∈ L ⟺ reducao w ∈ SAT` para toda `L ∈ classeNP` (falta M2d: computável em tempo polinomial).
+  `w ∈ L ⟺ reducao w ∈ SAT` para toda `L ∈ classeNP` (computável em tempo polinomial: M2d, acima).
 - `ATK/CookLevinTableau.lean` (46): **B4, marco M2b — o tableau de Cook–Levin** para qualquer
   máquina `TM2`: CNF satisfatível ⟺ algum certificado faz a execução parar aceitando
   (`tableau_iff`, as duas direções).
 - `ATK/CookLevinBase.lean` (16): **B4, marco M2a** — o passo de uma `TM2` só lê o topo das pilhas
   (lema de moldura), crescimento por passo, símbolos empurrados finitos, execução acolchoada.
+- `ATK/L4Base.lean` (9) + `ATK/L3Base.lean` (11) + `ATK/L5Base.lean` (6): **bases das ligações
+  L4, L3 e L5**, cada uma com teste de sanidade. São elas: BSD por curva (`LFunctionContinued`,
+  `BSDConjecture`, teste em `y² = x³ − x`); estruturas de Hodge, classes de Hodge e métricas de
+  Kähler locais (testes `ℚ(−1)` e `ℂ` plano); e os axiomas de Wightman (a teoria trivial os
+  satisfaz). Há rascunhos para a Mathlib em `atk-kernel/mathlib-drafts/`. Os estados das ligações
+  não mudam.
 - `ATK/LigacaoBSD.lean` (4): **L4, parte do posto** — o enunciado de BSD do Clay sobre a função L
   da Mathlib (`WeierstrassCurve.LSeries`); continuação única; `L(E, 1) = 0 ⟺ posto > 0`.
 - `ATK/ComposicaoTM2.lean` (26) + `ATK/ModeloPNP.lean` (22): **ligação L2 construída e fechada** — composição
@@ -292,7 +353,7 @@ reproduzida em cada relatório do CI):
 
 | Tipo | Quantas | O que é | Estado |
 |---|---|---|---|
-| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | provados no papel, não formalizados (B2 e B4 parciais nos modelos dos lanes) |
+| PONTE (B1–B7) | 7 | teoremas publicados (Báez-Duarte, Fermat, Leray, Cook–Levin, Lefschetz, Gross–Zagier–Kolyvagin, Osterwalder–Schrader) | B1 e B4 provadas no kernel; B2 parcial no modelo do lane; B3, B5–B7 provadas no papel, não formalizadas |
 | ABERTA (O1–O8) | 8 | as hipóteses abertas dos condicionais | `OPEN_MATH` |
 | LIGAÇÃO (L1–L5) | 5 | construir na Mathlib os objetos reais de NS, P vs NP, Hodge, BSD e Yang–Mills | não existem na Mathlib |
 

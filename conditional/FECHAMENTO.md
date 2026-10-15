@@ -43,7 +43,7 @@ são equivalentes ao mesmo payload.
 | # | Alvo | Tipo | O que exige | Efeito |
 |---|---|---|---|---|
 | 1 | Necessidade de Báez-Duarte: RH ⇒ `D_N → 0` | teorema publicado | **feito**: Plancherel L¹∩L², Plancherel de Mellin, fórmula espectral de `D_N`, convergência dominada, mollificador de Möbius (`NecessidadeBD`). **Falta**: RH ⇒ `EntradasNecessidade` (Littlewood: Σμ(n)n^{-s} converge em Re s > 1/2 com cota polinomial em t; Lindelöf para ζ(½+it); `J(ε) → 0` pelo produto de Hadamard) | obrigação de RH ⟺ RH no kernel; fecha as formas ⟺ de `RHConvergence` |
-| 2 | B4 Cook–Levin + L2 | teorema publicado + modelo | P/NP com máquinas de Turing da Mathlib; redução de SAT; portar a prova de SAT ∈ NP do lane (P01) | O4 vira exatamente P ≠ NP com modelo genuíno |
+| 2 | B4 Cook–Levin + L2 | teorema publicado + modelo | P/NP com máquinas de Turing da Mathlib; redução de SAT; portar a prova de SAT ∈ NP do lane (P01) | O4 vira exatamente P ≠ NP com modelo genuíno — **feito em 14/10/2026**: L2 fechada pelo titular; B4 provada no kernel (`ATK.CookLevinNP.cookLevin`) |
 | 3 | B3 Leray + L1 | teorema publicado + modelo | espaços de Bochner, projetor de Leray, desigualdade de energia | O3 com modelo genuíno |
 | 4 | B6 Gross–Zagier–Kolyvagin + L4 | teorema publicado + modelo | função L de curvas elípticas, posto, pontos de Heegner | O6/O7 com modelo genuíno |
 | 5 | B5 Lefschetz (1,1) + L3 | teorema publicado + modelo | cohomologia de Hodge (versão algébrica) | O5 com modelo genuíno |
@@ -52,6 +52,18 @@ são equivalentes ao mesmo payload.
 
 O FLT para p ≥ 5 saiu do caminho crítico (B2 dispensada); continua útil para a forma gcd de Beal
 e é objeto do projeto FLT do Imperial College.
+
+Avanços de 15/10/2026 nos itens 3–6 (nenhum fecha o item): item 3 — taxa de Leray a partir da
+desigualdade cúbica (`NSExplosao.taxa_leray`) e explosão da comparação de Riccati para dados
+grandes (`explosao_comparacao`); item 4 — invariantes da fórmula refinada e modelo completo
+(`BSDInvariantes`, `BSDRefinada`, `BSDTamagawaE32`), com Mordell–Weil reduzido ao Mordell–Weil fraco; item 5 —
+classes de Hodge = `V_ℚ ∩ F^p` (`HodgeFiltracao`) e `H¹` do toro complexo (`HodgeToro`); item 6 —
+reconstrução OS no modelo de rede (`YMReconstrucao`) e lacuna de massa sobre Wightman
+(`L5Lacuna`). FLT: teorema de Sophie Germain (`SophieGermain`) e o primeiro caso para todo primo ímpar `p < 300`
+(`GermainLegendre`); `A⁶ + B⁶ ≠ C²` na ponte B8 (`DarmonMerelSeis`) e Beal incondicional em `(6k, 6l, 2m)`
+(`BealSeisSeisDois`); FLT para primos regulares (flt-regular, `ATK/FltRegular/`) e FLT(5), FLT(7),
+FLT(11), FLT(13), FLT(17), com B2 reduzida aos primos irregulares `p ≥ 19` (`FermatRegular`); Mordell–Weil para curvas com 2-torção racional completa (`MordellWeilDois`) e cotas inferiores do
+posto por 2-descida, com uma curva de posto `≥ 2` (`PostoDois`).
 
 ### Estado do item 1 (`ATK/NecessidadeBD.lean`, 18 teoremas, kernel local)
 

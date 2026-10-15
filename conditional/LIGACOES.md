@@ -60,12 +60,13 @@ Parte 2, o que faltava e agora está no kernel:
 5. **`modeloPNP`** com `fiel : PneNP modeloPNP ↔ ATK.LigacaoPNP.PneNP` (por definição) e `fielL2`.
 
 O modelo de portão `PNPModelo` está preenchido com `ATK.ModeloPNP.modeloPNP` e `ATK.ModeloPNP.SAT`
-e compila sem nenhum axioma extra. No portão de P vs NP faltam agora só a ponte B4 (Cook–Levin
-**neste** modelo) e o produtor O4 (SAT ∉ P). Fechada pelo titular em 14/10/2026.
+e compila sem nenhum axioma extra. Fechada pelo titular em 14/10/2026.
 
-Sobre este mesmo modelo, a metade SAT ∈ NP da ponte B4 já está provada (`ATK/SATemNP.lean`,
-`sat_em_NP`), e `cookLevin_iff` reduz B4 à NP-dificuldade de SAT. Isso é prova (ponte), não
-ligação: a regra antiga de certificado continua valendo para B4.
+Sobre este mesmo modelo, a ponte B4 está provada: `ATK.CookLevinNP.cookLevin :
+CookLevin modeloPNP SAT` (SAT ∈ NP em `ATK/SATemNP.lean`; NP-dificuldade em
+`ATK/CookLevinReducao.lean` + `ATK/CookLevinNP.lean`). Isso é prova (ponte), não ligação: B4 fecha
+pela regra antiga de certificado (teorema `ATK.ObligationsClosed.B4` com o enunciado literal). No
+portão de P vs NP falta agora só o produtor O4 (SAT ∉ P).
 
 ## L4 — a parte do posto (14/10/2026)
 
@@ -107,6 +108,77 @@ finitas linguagens é fiel (`ATK.Termos.PNP.finito_nao_fiel`), em particular o d
 `ATK.FinalRoot.pnp_depende_do_modelo` (`Lang := Bool`). A relação de
 redução `Red` não entra no critério: ela só importa para a ponte B4 (Cook–Levin), não para o
 enunciado. Ver [`TERMOS.md`](TERMOS.md), termos T21 e T22.
+
+## L3, L4, L5 — bases com testes de sanidade (14/10/2026)
+
+Três arquivos separados, cada um com teste de sanidade. Eles não mudam o estado das ligações: o
+estado continua sendo o registrado pelo titular.
+
+* **L4** — `ATK/L4Base.lean` (9): a conjectura de BSD (parte do posto) em forma de biblioteca.
+  `LFunctionContinued E` é uma função inteira igual a `E.LSeries` em `Re s > 3/2`. O semiplano é
+  `3/2` porque `LSeries` da Mathlib é um `tsum`, que vale `0` fora da somabilidade absoluta; com `1`
+  a estrutura ficaria vazia para as curvas verdadeiras. A continuação é única (`Subsingleton`).
+  `clayBSD_iff`: o enunciado do Clay é `BSDConjecture` para toda curva elíptica. Teste
+  (`bsd_E32_iff`): em `y² = x³ − x` (posto 0), BSD ⟺ a continuação existe e `L(E, 1) ≠ 0`.
+* **L3** — `ATK/L3Base.lean` (11): estruturas de Hodge racionais puras (`ℂ ⊗[ℚ] V = ⨁ H^{p,n−p}`,
+  com simetria de Hodge), classes de Hodge como subespaço racional, estruturas hermitianas e
+  métricas de Kähler locais (forma fundamental fechada pela `extDerivWithin` da Mathlib). Testes: em
+  `ℚ(−1)`, `1` é classe de Hodge e `H^{2,0} = 0`; a métrica plana de `ℂ` é de Kähler e
+  `ω(1, i) = 1`. Falta, na Mathlib, a cohomologia singular `H^{2p}(X, ℚ)` com decomposição de Hodge
+  e classe de ciclo, além de formas diferenciais em variedades.
+* **L5** — `ATK/L5Base.lean` (6): os axiomas de Wightman para um campo escalar hermitiano em `ℝ⁴`:
+  Minkowski, cone futuro, Lorentz restrito, representação unitária, vácuo único, campo temperado,
+  covariância, localidade, condição espectral via a transformada de Fourier da Mathlib e
+  ciclicidade. Teste: a teoria trivial satisfaz os axiomas, o que mostra que eles são consistentes.
+  O Clay pede uma teoria de Yang–Mills não trivial com lacuna de massa, que ainda não está expressa.
+
+Rascunhos no estilo da Mathlib, que compilam sozinhos contra a v4.34.1, estão em
+`atk-kernel/mathlib-drafts/`, na ordem L4 → L3 PR1 (Kähler) → L3 PR2 (classes de Hodge) → L5
+(Wightman). Os PRs na Mathlib são abertos pelo titular.
+
+## L3, L4, L5 — avanço de 15/10/2026
+
+Nada aqui muda o estado das ligações, que continua sendo o registrado pelo titular.
+
+* **L4** — `ATK/BSDInvariantes.lean` (23) + `ATK/BSDRefinada.lean` (16): a fórmula refinada inteira
+  sobre os objetos da Mathlib. Coeficiente líder `L^{(r)}(E,1)/r!` da continuação; período real
+  `Ω = ∫_{E(ℝ)} |dx/(2y + a₁x + a₃)|` num modelo minimal global (`quadrado`: `(2y + a₁x + a₃)² =
+  4x³ + b₂x² + 2b₄x + b₆`); torção (`ordemTorsao_pos`, `ordemTorsao_E32 = 4`); altura de
+  Néron–Tate `ĥ(P) = lim h(x(2ⁿP))/4ⁿ` com o limite provado a partir da lei do paralelogramo
+  aproximada da Mathlib, paralelogramo exato, `ĥ(nP) = n²ĥ(P)`, `|ĥ − h| ≤ C` e `ĥ(P) = 0 ⟺ P de
+  torção` (Northcott); emparelhamento simétrico, bilinear e nulo na torção; regulador
+  `|det ⟨Pᵢ, Pⱼ⟩|` numa base de `E(ℚ)/torção` (`regulador_E32 = 1`); números de Tamagawa
+  `c_v = [E(K_v) : E⁰(K_v)]` pelo modelo minimal e pela redução da Mathlib (`tamagawaLocal_of_good`:
+  redução boa ⇒ `c_v = 1`); Ш como núcleo de `H¹(G_ℚ, E(ℚ̄)) → ∏_v H¹(G_{ℚ_v}, E(ℚ̄_v))` com
+  cociclos localmente constantes na topologia de Krull e todas as places (`ℝ` e os completamentos
+  `p`-ádicos), com `cobordo_localmenteTrivial`. `FormulaRefinada`, `modeloCompleto` (=
+  `modeloPosto` com a fórmula), `bsdFull_iff` (sob `Modularidade` e `MordellWeil`) e
+  `bsdFull_iff_fraco` (com Mordell–Weil **fraco**, `E(ℚ)/2E(ℚ)` finito, graças a
+  `mordellWeil_of_fraco`, pela descida da Mathlib). Teste: em `y² = x³ − x` a fórmula se reduz a
+  `L(E,1) = Ω·∏c_p·#Ш/16` com Ш finito, e `ATK/BSDTamagawaE32.lean` (5) mostra que nessa curva
+  `c_p = 1` para todo `p ≠ 2` (`boa_reducao_de_unidade`: modelo integral com `Δ` unidade ⇒ o
+  modelo minimal da Mathlib tem redução boa), logo o produto de Tamagawa é só o fator em 2.
+* **L3** — `ATK/HodgeToro.lean` (10): a estrutura de Hodge de peso 1 de `H¹` do toro
+  `ℂ/(ℤ + τℤ)`: `H^{1,0} = ℂ·dz`, `dz = e₁ + τe₂`, `H^{0,1} = ℂ·dz̄`; decomposição em soma direta
+  (`Im τ ≠ 0`) e simetria de Hodge; `h^{1,0} = 1`. `ATK/HodgeFiltracao.lean` (5): classes de Hodge
+  são os vetores racionais em `F^p`.
+* **L5** — `ATK/L5Lacuna.lean` (4): `LacunaAoMenos W Δ` (no complemento do vácuo, a medida
+  espectral de energia-momento está em `{p⁰ ≥ Δ}`) e `TemLacuna`; coerente com a condição espectral
+  para `Δ ≤ 0`; a teoria trivial tem lacuna. Falta `IsQuantumYM`.
+
+## L4 — Mordell–Weil para a família com 2-torção completa (15/10/2026, manhã)
+
+`ATK/MordellWeilDois.lean` (37): para `y² = (x − e₁)(x − e₂)(x − e₃)`, `eᵢ ∈ ℤ` distintos, o
+grupo `E(ℚ)` da Mathlib é finitamente gerado (`mordellWeil`) e o posto é finito (`posto_finito`),
+por 2-descida completa. A hipótese `MordellWeil` de `posto_iff`/`bsdFull_iff` passa a ser um
+teorema para essa família; para toda curva elíptica sobre `ℚ` continua hipótese (a descida geral
+usa aritmética de corpos de números). Teste: `y² = x³ − x` está na família (`curva_E32`).
+
+`ATK/PostoDois.lean` (28, 15/10/2026, tarde): na mesma família, cotas inferiores do posto pela
+imagem de `φ` (`posto_ge_um`, `posto_ge_dois`); `y² = x(x + 30)(x + 2)` tem posto `≥ 2`
+(`posto_R30`) e `y² = x³ − 36x` tem posto `≥ 1` (`posto_R6`). Com `posto_finito`, o posto dessas
+curvas é um número natural com cotas certificadas nos dois sentidos de cálculo (finitude e
+independência); o lado analítico de L4 continua o que falta.
 
 ## Efeito no auditor e nos portões
 

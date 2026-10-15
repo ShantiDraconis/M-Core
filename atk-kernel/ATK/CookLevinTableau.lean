@@ -31,8 +31,9 @@ estão provadas:
 Sanidade (`Teste`): numa máquina que para na hora, a fórmula é satisfatível com certificados
 em `{false, true}` e insatisfatível com certificados só em `{false}`.
 
-Faltam M2c (a redução pura `L ↦ codCNF` para `L ∈ NP`) e M2d (a máquina geradora em tempo
-polinomial). Nada aqui decide P vs NP. **CLOSED_MATH continua false.**
+Os marcos seguintes são M2c (a redução pura `L ↦ codCNF` para `L ∈ NP`, `ATK.CookLevinReducao`)
+e M2d (a máquina geradora em tempo polinomial, `ATK.CookLevinNP`). Nada aqui decide P vs NP.
+**CLOSED_MATH continua false.**
 -/
 
 namespace ATK.CookLevinTableau
