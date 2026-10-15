@@ -252,6 +252,15 @@ Teoremas intermediários que empurram a fronteira certificada (nenhum fecha um p
   `red_SAT` (toda `L ∈ classeNP` reduz a SAT por uma `FinTM2` em tempo polinomial). Obrigação B4
   fechada por `ATK.ObligationsClosed.B4`; pontes no kernel **2/8**. P vs NP continua aberto: falta
   O4 (SAT ∉ P).
+- **Rodada de 15/10/2026 (noite, 4) — conferência dos nove textos de parâmetros** (33 teoremas):
+  `ParametrosModelo` compila no kernel tudo o que os textos de valores, operadores, gramática e
+  habitantes enunciam com precisão (H1–H5, fechamento, tabela `A, M, S`, matriz de Gram e defeito
+  47/54, `#SAT(F) = 4`, margem 5/12, espectro do ciclo de 10 vértices, `H = [[2,1],[1,3]]`,
+  gematria 1495, 1035 junções, razão áurea). Dois erros dos textos foram **refutados**: a "lei das
+  junções" tem o sinal do termo em `A` trocado (`lei_do_texto_falsa`, lei certa em
+  `comutador_lei`), e "`mdc(A,B) = mdc(A,C)` em Beal" é falso (`4³ + 4³ = 2⁷`,
+  `beal_mdc_texto_falso`). `anulacao_iff`: as hipóteses do "teorema central de anulação" já
+  equivalem à conclusão. Tudo `EXACT_MODEL`; terminais 0/7.
 - **Rodada de 15/10/2026 (noite, 3) — classes de ℚ(ζₚ) e enumeração dos expoentes** (7 teoremas;
   `CLASSES_CICLOTOMICAS.md`): cálculo numérico, fora do kernel, de h⁻(ℚ(ζₚ)) exato para p ≤ 300
   (23, 29, 31 → 3, 8, 9: regulares) e dos pares irregulares até 10 000 (497 de 1227 primos,

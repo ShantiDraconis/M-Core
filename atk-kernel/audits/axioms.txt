@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 6f6ee5276e6c79e331e9b3a9bfa73c5bd602ee3a1e5b26891e78b287dad862ec
+# axiomas por teorema — congelamento de 5facbb05b0bd7fc2027178a76d50e7e6d7c39f3c3158ccdb2ede66948ce5791a
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3098,3 +3098,36 @@ ATK.BSDPontosE32.card_raizes	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.card_afim	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.card_projetivo	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.traco_zero	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.comp_map	nenhum
+ATK.ParametrosModelo.h1_substituicao	nenhum
+ATK.ParametrosModelo.h2_composicao	nenhum
+ATK.ParametrosModelo.h3_iteracoes	propext, Quot.sound
+ATK.ParametrosModelo.h4_contracao	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.h4_limite	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.h5_anulacao	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.anulacao_iff	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.fechamento	nenhum
+ATK.ParametrosModelo.escopo_quantificadores	nenhum
+ATK.ParametrosModelo.tabela_operadores	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.operador_soma	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.comutador_lei	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.lei_do_texto_falsa	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.traco_det	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.exemplo_alef_bet	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.contagens	propext
+ATK.ParametrosModelo.gram_valores	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.gram_defeito	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.formula_contagem	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.margem_ns	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.cota_ns	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.modelo_decaimento	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.modelo_decaimento_inteiros	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.autovetor_ciclo	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.espectro_ciclo	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.bsd_modelo	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.hodge_modelo	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.beal_primos_comuns	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.beal_mdc_texto_falso	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.beal_exemplo	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.razao_aurea	propext, Classical.choice, Quot.sound
+ATK.ParametrosModelo.contracao_modelo	propext, Classical.choice, Quot.sound

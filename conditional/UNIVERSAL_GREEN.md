@@ -22,7 +22,7 @@ push:
 
 | etapa | critério verificável | estado |
 |---|---|---|
-| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (3098 esperados) |
+| T1 | todos os teoremas esperados certificados; SHA das fontes registrado | ✅ calculado pelo CI a cada push (3131 esperados) |
 | T2 | `audits/provenance.json` tem o mesmo SHA das fontes atuais | ✅ congelado (`scripts/congelar.py`) |
 | T3 | projeto Lake independente (`atk-kernel/`, lakefile e toolchain próprios) | ✅ |
 | T4 | compatibilidade Lean 4.19.0 (raiz `lean/MCore`) ↔ 4.34.1 (`atk-kernel`) | ✅ resolvida por isolamento |
@@ -310,6 +310,39 @@ Marco M2d, parte 2 — `ATK/CookLevinLacos.lean` (71) + `ATK/CookLevinGerador.le
   composição) dá `poli_custoTotal`.
 * `maqRed`: o gerador compilado é `TM2ComputableInPolyTime cod cod`; `red_SAT`: toda
   `L ∈ classeNP` se reduz a SAT; **`cookLevin`**.
+
+## Rodada de 15/10/2026 (noite, 4): conferência dos nove textos de parâmetros
+
+Nove textos (valores estruturados, preenchimento de parâmetros, derivações, letras e operadores,
+valores canônicos, gramática, inventário de provas, habitantes) traziam valores de modelos e lemas
+em Lean marcados como "não compilados". `ATK/ParametrosModelo.lean` (33 teoremas, axiomas padrão)
+confere no kernel tudo o que neles é enunciado preciso:
+
+* **Lógica e habitantes**: `Parametro`/`MapaParametro.comp`, H1 (substituição), H2 (composição),
+  H3 (transporte de iterações), H4 (contração `d(Tⁿx) ≤ qⁿ d(x)` e limite 0), H5 (anulação),
+  `fechamento` (sete pontes), `escopo_quantificadores` (`∀∃` ≠ `∃∀`).
+* **Operadores**: `tabela_operadores` (`A² = −I`, `M² = S² = I`, `AM = S`, …), `exemplo_alef_bet`,
+  `traco_det`.
+* **Modelos**: Gram `[[2,1],[1,2]]` (det 3, inversa, autovalores 1 e 3, defeito 47/54);
+  `#SAT(F) = 4` de 8; margem NS 5/12 e `X ≤ (12/5)C`; decaimento `u = 8·2^{−t}` com `u' < 0`;
+  laplaciano do ciclo de 10 vértices (`autovetor_ciclo`, autovalores `(3 ∓ √5)/2`, `(5 ∓ √5)/2`,
+  4); `H = [[2,1],[1,3]]` (tr = det = 5, autovalores `(5 ± √5)/2`); decomposição Hodge `c = (2,1)`;
+  gematria 1495, runas 300, 231 + 276 + 528 = 1035 = C(46,2); `φ² = φ + 1`, `1/φ = φ − 1`,
+  `φ³ = 2φ + 1`; `v₂(8 + 8) = 4`.
+* **Erros encontrados e refutados**:
+  1. a "lei universal das junções" do texto de letras e operadores tem o sinal do termo em `A`
+     trocado. `comutador_lei` prova
+     `[Oᵢ,Oⱼ] = 2(cᵢbⱼ − bᵢcⱼ)A + 2(cᵢaⱼ − aᵢcⱼ)M + 2(aᵢbⱼ − bᵢaⱼ)S`, e `lei_do_texto_falsa` dá o
+     contraexemplo `[M, S] = −2A`;
+  2. "`mdc(A,B) = mdc(A,C) = mdc(B,C) = mdc(A,B,C)` em toda solução de Beal" é falso:
+     `4³ + 4³ = 2⁷` tem `mdc(4,4) = 4 ≠ 2 = mdc(4,2)` (`beal_mdc_texto_falso`). O correto é que um
+     primo divide duas das bases se e só se divide as três (`beal_primos_comuns`).
+* **Observação de método**: `anulacao_iff` mostra que as hipóteses do "teorema central de anulação"
+  (invariância e contração do defeito) já equivalem a `d ≡ 0`. Ele não é uma redução: aplicá-lo a
+  um problema exige provar a própria conclusão.
+
+Nenhum estado mudou: terminais 0/7, pontes no kernel **2/8**, produtores abertos **8/8**,
+ligações abertas **3/5**.
 
 ## Rodada de 15/10/2026 (noite, 3): classes de ℚ(ζₚ) e enumeração dos expoentes
 

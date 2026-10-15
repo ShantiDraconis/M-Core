@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "6f6ee5276e6c79e331e9b3a9bfa73c5bd602ee3a1e5b26891e78b287dad862ec",
+  "sources_sha256": "5facbb05b0bd7fc2027178a76d50e7e6d7c39f3c3158ccdb2ede66948ce5791a",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -147,6 +147,7 @@
     "ATK/ObligationsClosed.lean": "e6005bdb1a3cc26021328a230750907264d0499882e479f334452a5257e34439",
     "ATK/ObrigacoesMinimas.lean": "519075073f7fb200d82415d6093f438a92918b4fe944a61252d5ac94129bd18a",
     "ATK/OscilacaoHiperreal.lean": "55d28468fbf7004359bb01cca759d55aeb6e309f7e87896f3eccbea5657d2989",
+    "ATK/ParametrosModelo.lean": "73dd0a59c322353982a4ef924415f73c129b583e3d15f61b8b025c3a26be6174",
     "ATK/PlancherelL1L2.lean": "40e044d1105e8e86ac679ccaca44c38e8fdb673e141b5ac0208bccd25866c6b0",
     "ATK/PolyLista.lean": "f083fa9827f6d21bc744214f97e03b013eb2d97a1fb4833e3b638ad03f32d120",
     "ATK/PostoDois.lean": "9308d6699de7f9fa39f88053b6a057e73fe5e18d3cff160584577cbd41afdf2f",
@@ -174,12 +175,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "8e557ff4987cb648df06b029bbee16e198ec88d6dd4039808aafd7f3b182ae88"
+    "ATK.lean": "63a3446820938f1f3c61121ab758e2a40689416b368ebb2158a3851a2966b14f"
   },
-  "n_files": 173,
-  "expected_theorems": 3098,
+  "n_files": 174,
+  "expected_theorems": 3131,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "7d5c0b44022bdad072d44ed3cd70b11ca26d3d44",
+  "commit_at_freeze": "44f3cb0228c6bca3a998fb2670f2438624ffac05",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
