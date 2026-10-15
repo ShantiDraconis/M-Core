@@ -90,10 +90,12 @@ jobs:
           restore-keys: |
             externo-${{ hashFiles('atk-kernel/externo/lake-manifest.json') }}-
 
+      # Sem continue-on-error: se o build falhar (erro de Lean ou 124, tempo esgotado), o job fica
+      # vermelho. A auditoria só roda depois de um build completo, e um job verde sem auditoria
+      # pareceria certificação. O cache é guardado mesmo assim (passo seguinte, if: always()).
       - name: lake build
         id: build
         shell: bash
-        continue-on-error: true
         run: |
           set +e
           timeout 320m lake build 2>&1 | tee reports/build.log
