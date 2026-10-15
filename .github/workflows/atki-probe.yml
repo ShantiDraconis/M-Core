@@ -29,11 +29,12 @@ jobs:
       - name: nomes
         shell: bash
         run: |
+          set +e
           M=.lake/packages/mathlib/Mathlib
-          for n in "theorem quadraticChar_card_sqrts" "theorem quadraticChar_neg_one" "theorem χ₄_nat_three_mod_four" "theorem ringChar_zmod_n" "theorem sum_prod_type" "theorem card_filter "; do
+          for n in "theorem quadraticChar_card_sqrts" "theorem quadraticChar_neg_one" "theorem χ₄_nat_three_mod_four" "theorem ringChar_zmod_n" "prod_prod_type" "theorem card_filter"; do
             r=$(grep -rn "$n" $M | head -2 | tr '\n' ' ' | cut -c1-400); echo "::notice::NOME $n => $r"
           done
-          f=$M/AlgebraicGeometry/EllipticCurve/LFunction.lean
+          f=$(grep -rl "def LSeries" $M/AlgebraicGeometry/EllipticCurve | head -1); echo "::notice::LFILE $f"
           grep -n "^def\|^noncomputable def\|^theorem\|^lemma\|^abbrev" $f | head -40 > lf.txt
           split -l 10 -d lf.txt lfc_
           for c in lfc_*; do echo "::notice::LFUN $(tr '\n' ' ' < $c | cut -c1-2500)"; done
