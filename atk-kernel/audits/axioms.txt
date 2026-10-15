@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 7f2fd57345833e8894f93631399d1955feca60341ed2a1db361522dc1d3fd680
+# axiomas por teorema — congelamento de 6c64f0ee7adb2f025b585f7cdcc3c2b2ac2896931f841ccc5e50ca5a933c44e7
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -1715,6 +1715,92 @@ ATK.ATKIBagchi.tendsto_DN_of_texto	propext, Classical.choice, Quot.sound
 ATK.ATKIBagchi.rh_of_texto	propext, Classical.choice, Quot.sound
 ATK.ATKIBagchi.rh_of_texto_eps	propext, Classical.choice, Quot.sound
 ATK.ATKIBagchi.texto_pos_of_not_rh	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.defeito_nonneg	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.vale_iff_defeito	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.paraRelNum_holds	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.maisProximo_refl	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.maisProximo_trans	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.maisProximo_total	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.nao_antissimetrica	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.vale_topo	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.defeito_escala	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.exemplo_escala	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.exemplo_pot	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.defeito_0_3	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.defeito_8_1	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.exemplo_proximidade	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.pela_diferenca_falsa	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.por_componentes_falsa	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.infinitesimal_falsa	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.T_zero	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.T_comp	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.T_idem	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.T_vale	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.defeito_T	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.defeito_T_le_one	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.T_estavel	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.T_mono	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.vale_T_iff	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.normalizacao_nao_e_prova	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.normalizar_D	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.Dx_tendsto	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.defeito_T_tx	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.T_tx_tendsto	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.vale_D_infinito_RH	propext, Classical.choice, Quot.sound
+ATK.ATKINormal.Par.normalizar_numeroD	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.ext	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.soma_comm	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.soma_assoc	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.prod_comm	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.prod_assoc	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.distrib	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.soma_zero	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.prod_um	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.soma_neg	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.troca_troca	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.vale_soma	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.vale_prod	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.vale_escala	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.vale_um	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.vale_zero	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.defeito_troca	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.defeito_soma_le	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.defeito_prod_le	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.defeito_pot	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.fatoracao_exemplo	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.pot_apaga_defeito	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.quociente_nao_preserva_soma	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.estado_verdade_iff	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.exemplo_longe	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.defeito_infinitesimal	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.fechamento_simultaneo	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.universal_sete	propext, Classical.choice, Quot.sound
+ATK.ATKIAlgebra.fechamento_quadratico	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.telescopica	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.peso_telescopico	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.soma_pesos	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.defeito_texto_zero	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.rh_de_telescopica	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.rh_de_ganhos	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.gap_de_coercividade	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.gaps_positivos_somem	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.absorcao	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.gronwall_simples	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.ns_condicional	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.margem_exemplo	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.fechamento_inteiro	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.cotas_fecham	propext, Quot.sound
+ATK.ATKIAplicacoes.regulador_exemplo	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.regulador_h22	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.hodge_certificado	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.hodge_transicao	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.contracao_relacional	propext, Quot.sound
+ATK.ATKIAplicacoes.quantificadores	nenhum
+ATK.ATKIAplicacoes.busca_exaustiva	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.aproximacao_finita_trivial	nenhum
+ATK.ATKIAplicacoes.erro_tende_sem_zerar	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.reynolds	propext, Classical.choice, Quot.sound
+ATK.ATKIAplicacoes.pressao_dinamica	propext, Classical.choice, Quot.sound
 ATK.BSDInvariantes.coefLider_of_ne_zero	propext, Classical.choice, Quot.sound
 ATK.BSDInvariantes.quadrado	propext, Classical.choice, Quot.sound
 ATK.BSDInvariantes.gR_E32	propext, Classical.choice, Quot.sound
