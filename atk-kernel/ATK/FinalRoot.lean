@@ -4,7 +4,7 @@ import ATK.ForaDaLinha
 import ATK.ContracaoDN
 
 /-!
-# ATK — Raiz final (`FINAL_ROOT`) e verde universal (`UNIVERSAL_GREEN`): a estrutura completa
+# ATK — Raiz final (`FINAL_ROOT`) e verde universal (`UNIVERSAL_GREEN`): redução formal condicional
 
 Fixa, no kernel, **tudo o que falta** para o verde universal — sem provar nada que não esteja
 provado. Não há `sorry`, `admit` nem `axiom`: o que está aberto entra como **hipótese explícita**.
