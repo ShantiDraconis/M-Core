@@ -26,9 +26,10 @@ forma independente: o posto pela descida, `L(E, 1)` pela equação funcional mod
 
 | Marco | Enunciado | Estado | Alvo Lean |
 |---|---|---|---|
-| F1.1 | **BSD (posto) para `y² = x³ − x`** módulo as pontes P1 (modularidade com sinal `+1`, forma `g(1/x) = x² g(x)`) e P2 (`\|aₙ\| ≤ n`, **provada**: F1.3'): toda continuação `G` de `L(E, s)` tem `G(1) ≠ 0` e ordem 0 = posto | ✅ | `AtaqueBSD.bsd_posto_curva32` |
+| F1.1 | **BSD (posto) para `y² = x³ − x`** — **incondicional** (`PonteModularCurva32.bsd_posto_curva32_incondicional`); antes, módulo as pontes P1 (modularidade com sinal `+1`, forma `g(1/x) = x² g(x)`) e P2 (`\|aₙ\| ≤ n`, **provada**: F1.3'): toda continuação `G` de `L(E, s)` tem `G(1) ≠ 0` e ordem 0 = posto | ✅ | `AtaqueBSD.bsd_posto_curva32` |
 | F1.2 | **Critério de não anulação**: sinal `+1`, `\|aₙ\| ≤ n` e `N < (2π/log 2)² ≈ 82` ⇒ `L(E, 1) ≠ 0` (FE-pair de peso 2, dobra de Mellin, série rápida) | ✅ | `AtaqueBSD.L1_ne_zero` |
 | F1.3 | P2 para `y² = x³ − x`: cota de Hasse–Gauss sobre 𝔽_q, recursão de Hecke, multiplicatividade | ✅ | `BaseHasseCurva32.hasse_curva32`, `PonteCoefCurva32.cotaCoef_de_fatores` |
+| F1.3'' | **P1 provada**: caráter de Hecke de `ℚ(i)` (`aₙ = Σ_{α primário, Nα = n} α`), `a_p = π + π̄` (Gauss), equação funcional pela soma dupla e núcleos de Hurwitz | ✅ | `BaseGaussCurva32.coef_gauss`, `PonteModularCurva32.ponteModular_curva32` |
 | F1.3' | P2a: desdobrar `WeierstrassCurve.LFunction` (corpo residual, modelo minimal, contagem de pontos, produto de Euler) ⇒ **`\|aₙ\| ≤ n` incondicional; BSD (posto) para `y² = x³ − x` módulo só P1** | ✅ | `PonteFatoresCurva32.fatoresPadrao`, `cotaCoef_curva32`, `bsd_posto_curva32_modP1` |
 | F1.4 | Fórmula refinada completa para `y² = x³ − x` (`Ω`, `c₂`, `Ш[2] = 0`), com `BSDRefinada` | ⬜ | `formula_E32_iff` |
 | F1.5 | Outras curvas de condutor `< 82` e sinal `+1` (posto 0 pela 2-descida de `MordellWeilDois`) | ⬜ | `L1_ne_zero` |
@@ -103,7 +104,7 @@ fica na infraestrutura (`BaseHodgeLinear`, `HodgeToro`, `HodgeFiltracao`).
 
 ## Ordem
 
-1. **BSD**: P1 (caráter de Hecke de `ℚ(i)`) → F1.4 → F1.5.
+1. **BSD**: existência da continuação (convergência de `L(E, s)` em `Re s > 3/2`) → F1.4 → F1.5.
 2. **Navier–Stokes**: F2.4 → F2.5 (aposta), F2.6 em paralelo.
 3. **Riemann**: F3.4 → F3.5.
 4. **P vs NP**: F4.3 → F4.5.

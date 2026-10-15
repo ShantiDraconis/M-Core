@@ -161,3 +161,6 @@ import ATK.AtaqueYM
 import ATK.BaseHasseCurva32
 import ATK.PonteCoefCurva32
 import ATK.PonteFatoresCurva32
+import ATK.BaseGaussPrimario
+import ATK.BaseGaussCurva32
+import ATK.PonteModularCurva32
