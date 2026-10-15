@@ -32,7 +32,7 @@ volta deles.
 
 | Id | Teorema | Estado | O que falta | Escala |
 |---|---|---|---|---|
-| B1 | Nyman–Beurling–Báez-Duarte | ✅ provada (`ObligationsClosed.B1`) | a recíproca RH ⇒ `D_N → 0` precisa de Littlewood/Lindelöf sob RH e do produto de Hadamard (`NecessidadeBD`) | meses |
+| B1 | Nyman–Beurling–Báez-Duarte | ✅ provada (`ObligationsClosed.B1`) | **recíproca provada** (`NecessidadeRH.necessidade`: RH ⇒ `D_N → 0`, com mollificador suavizado, Perron + deslocamento de contorno, Titchmarsh 14.2 e Lindelöf sob RH, Phragmén–Lindelöf para `ζ(s)/ζ(s+ε)`); **`NecessidadeRH.rh_iff_DN`: RH ⟺ `D_N → 0` sem pontes**; `bdDistSq_iff_rh` (forma ⟺ da linha `m-core-riemann`) | — |
 | B2 | FLT para `p ≥ 5` | 🟡 primos regulares, `p ∈ {5, 7, 11, 13, 17}`, caso I para `p < 300` (`FermatRegular`, `GermainLegendre`); dispensada no teorema-mestre mínimo | Wiles–Taylor (projeto FLT do Imperial College) | anos |
 | B3 | critério de explosão de Leray + teoria local | ⬜ (`NSExplosao` dá a taxa de Leray a partir da desigualdade cúbica) | existência local de soluções suaves em ℝ³, unicidade, continuação; desigualdade de enstrofia (Sobolev) | meses–anos |
 | B4 | Cook–Levin | ✅ provada (`CookLevinNP.cookLevin`) | — | — |
@@ -79,5 +79,7 @@ e redução aditiva em `2` (`2` uniformizador de `ℤ_2`, paridade de `v(Δ_min)
 3. ~~**`MordellWeil` geral**~~ ✅ provada (`MordellWeilGeral.mordellWeil`): 2-descida sobre o corpo
    de decomposição da cúbica, finitude de `K⟮S, 2⟯` (grupo de classes finito e unidades de
    Dirichlet da Mathlib) e descida de Galois. L4 passa a depender só de `Modularidade`.
-4. **B1 recíproca** (RH ⇒ `D_N → 0`; meses).
+4. ~~**B1 recíproca**~~ ✅ provada (`NecessidadeRH.necessidade`, `NecessidadeRH.rh_iff_DN`): o critério
+   de Nyman–Beurling–Báez-Duarte completo, RH ⟺ `D_N → 0`, sem pontes. É uma equivalência: não
+   decide RH nem O1.
 5. B3, B5–B8, L3, L5: anos de teoria; acompanhar os projetos externos (FLT, cohomologia).

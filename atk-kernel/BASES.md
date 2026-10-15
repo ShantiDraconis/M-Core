@@ -58,7 +58,7 @@ não afeta o enunciado A acima.
 | R3' | Forma de Fourier | `Ξ(t) = 2∫₀^∞ Φ(u) cos(ut) du` com `Φ > 0` (duas integrações por partes em R3) | ⬜ | — |
 | R4 | Teorema de Hardy | infinitos zeros na reta crítica | ⬜ | — |
 | R5 | Certificação numérica de zeros | aritmética intervalar para ζ (Euler–Maclaurin) + troca de sinal de Ξ | ⬜ | — |
-| R6 | Necessidade de Báez-Duarte | RH ⇒ `D_N → 0` (hoje com entradas isoladas em `NecessidadeBD`) | 🟡 | `NecessidadeBD` |
+| R6 | Necessidade de Báez-Duarte | RH ⇒ `D_N → 0`: Stirling vertical para Γ (`GammaVertical`), Titchmarsh 14.2 e Lindelöf à direita da reta sob RH (`RHLogZeta`), `\|ζ(s)/ζ(s+ε)\| ≤ C\|s+3\|^(ε/2)` uniforme em `ε` (`RazaoZeta`), Perron suavizado e deslocamento de contorno (`PerronSuave`), convergência dominada com o mollificador `μ(n)(1 − n/N)₊ n^(−ε)` e zeros enumeráveis na reta (`NecessidadeRH`); **RH ⟺ `D_N → 0`** | ✅ | `NecessidadeBD`, `GammaVertical`, `RHLogZeta`, `RazaoZeta`, `PerronSuave`, `NecessidadeRH` |
 | R7 | Critério de Bagchi | `D∞ = 0` para a família do texto ATK-I ⟹ RH, sem hipóteses (isometria de Bagchi) | ✅ | `ATKIBagchi` |
 | — | **Núcleo aberto** | `D_∞ = 0` (O1) | aberto | — |
 
