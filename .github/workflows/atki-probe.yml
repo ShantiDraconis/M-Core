@@ -1,0 +1,45 @@
+name: Sonda ATKI Bagchi
+
+on:
+  push:
+    branches: ['atk/atki-bagchi-*']
+    paths: ['probe/**', '.github/workflows/atki-probe.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: atk-kernel
+    steps:
+      - uses: actions/checkout@v4
+      - name: elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: cache
+        shell: bash
+        run: lake exe cache get || (lake update && lake exe cache get)
+      - name: deps
+        shell: bash
+        run: lake build ATK.ATKI ATK.BaezDuarteBridge 2>&1 | tail -5
+      - name: sonda
+        shell: bash
+        run: |
+          set +e
+          cp ../probe/ATKIBagchi.lean ATK/ATKIBagchi.lean
+          lake env lean ATK/ATKIBagchi.lean > p.log 2>&1
+          rc=$?
+          grep -n "error" p.log | head -40 | while IFS= read -r l; do echo "::error::$l"; done
+          awk '/error/{f=1} f&&c<400{print; c++}' p.log > perr.log
+          split -l 12 -d perr.log chunk_ 2>/dev/null
+          for f in chunk_*; do [ -f "$f" ] && echo "::warning::$(tr '\n' ' ' < "$f" | cut -c1-3000)"; done
+          grep -n "axioms" p.log | head -40 | while IFS= read -r l; do echo "::notice::$l"; done
+          echo "::notice::rc=$rc"
+          exit $rc
