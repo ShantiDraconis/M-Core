@@ -29,9 +29,12 @@
       "id": "B3",
       "problem": "Navier–Stokes",
       "kind": "PONTE",
-      "lean": "ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion",
-      "status": "PUBLICADA_NAO_FORMALIZADA",
-      "ref": "Leray 1934 + teoria local clássica"
+      "lean": "ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion ATK.LigacaoNS.modeloNS",
+      "status": "PROVADA_NO_KERNEL",
+      "ref": "Leray 1934 + teoria local clássica",
+      "proof_theorem": "ATK.ObligationsClosed.B3",
+      "proof": "ATK.NSCriterio.criterio : EnstrophyBlowupCriterion modeloNS (ATK/NSFourierBase … NSCriterio, 20 módulos; axiomas padrão)",
+      "progress": "Marcos NS1–NS9 no kernel: existência local de Picard em Fourier (NSPicard), regularidade e campos físicos (NSRegular, NSFisico, NSCampos), a equação (NSEquacao), Plancherel (NSPlancherel), SolucaoLocal (NSLocal), solução maximal e alternativa de explosão (NSMaximal), energia (NSEnergia), critério de continuação quantitativo (NSContinua), formulação fraca sem pressão (NSFraca, NSTeste, NSFracaF), pareamentos e Duhamel testada (NSDual, NSMild), unicidade fraca-forte com pressão arbitrária (NSUnico), montagem no modelo genuíno (NSCriterio). Pendente: revisão humana do titular (fidelidade de modeloNS já registrada em L1)."
     },
     {
       "id": "B4",
