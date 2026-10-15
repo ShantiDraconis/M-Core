@@ -19,6 +19,9 @@ escritos no estilo da Mathlib para poderem ser propostos a ela.
 Legenda de estado: ✅ certificado no CI · 🟡 parcial · ⬜ não iniciado · ⛔ fora do alcance da
 Mathlib atual (exige teoria grande que ainda não existe).
 
+O programa de ataque construído sobre este mapa (apostas de pesquisa, marcos certificáveis e alvos
+Lean por frente) está em [`ATAQUE.md`](ATAQUE.md).
+
 O mapa junta as duas linhas de trabalho do kernel: as bases `ATK/Base*.lean` (ramo
 `atk/rh-rho-independent`) e as pontes e ligações do ramo `conditional` (L3–L5, B2–B7, ATK-I).
 

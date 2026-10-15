@@ -152,3 +152,9 @@ import ATK.BasePositividadeReflexao
 import ATK.BaseReducaoDois
 import ATK.BaseToroPoincare
 import ATK.BaseLerayL2
+import ATK.BaseIntervalar
+import ATK.AtaqueBSD
+import ATK.AtaqueRH
+import ATK.AtaqueNS
+import ATK.AtaquePvsNP
+import ATK.AtaqueYM
