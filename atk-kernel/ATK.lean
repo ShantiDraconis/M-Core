@@ -101,3 +101,6 @@ import ATK.YMSemGap
 import ATK.BaseRiemannXi
 import ATK.BaseGalerkinNS
 import ATK.BaseRedeCalibre
+import ATK.BaseEDODissipativa
+import ATK.BaseWilsonMedida
+import ATK.BaseCurvasTorsao
