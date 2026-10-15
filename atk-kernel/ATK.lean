@@ -177,3 +177,4 @@ import ATK.RHLogZeta
 import ATK.RazaoZeta
 import ATK.PerronSuave
 import ATK.NecessidadeRH
+import ATK.NSReducao
