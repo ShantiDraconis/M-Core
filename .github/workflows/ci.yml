@@ -1,0 +1,68 @@
+name: M-Core CI
+
+on:
+  push:
+    branches: [main, python-audit]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-audit:
+    name: Python audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pip pytest pyyaml
+      - name: Compile Python sources
+        run: python -m compileall -q python adapters tests/python
+      - name: Run Python audit gates
+        run: python -m pytest tests/python -vv
+
+  lean-build:
+    name: Lean formal build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Build M-Core
+        run: lake build
+      - name: Reject sorry in M-Core source
+        run: |
+          if grep -RInE '\bsorry\b|\badmit\b' MCore MCore.lean --include='*.lean'; then
+            echo 'Unresolved Lean placeholder found.'
+            exit 1
+          fi
+      - name: K15 audit actual axiom dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean MCore/AxiomAudit.lean 2>&1 | tee /tmp/mcore-axioms.log
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          text = Path('/tmp/mcore-axioms.log').read_text()
+          allowed = {'propext', 'Quot.sound', 'Classical.choice'}
+          used = set()
+          for block in re.findall(r'depends on axioms:\s*\[(.*?)\]', text, flags=re.S):
+              used.update(re.findall(r'([A-Za-z_][A-Za-z0-9_\.]*)(?=,|\s|\])', block))
+          unauthorized = sorted(used - allowed)
+          print('K15 used axioms:', sorted(used))
+          print('K15 allowed axioms:', sorted(allowed))
+          if unauthorized:
+              raise SystemExit('K15 unauthorized axioms: ' + ', '.join(unauthorized))
+          print('K15 audit_untracked_axioms: PASS')
+          PY
