@@ -1,0 +1,55 @@
+name: elyon-v12-criticism-preparatory
+
+on:
+  push:
+    branches:
+      - attack/elyon-final-external-v12-criticism-20260922
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-v12-preparatory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate fail-closed v1.2 record
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          p='certs/final_external/v1_2_preparatory/criticism_response.json'
+          d=json.load(open(p))
+          assert d['package_state']=='PREPARATORY'
+          assert d['public_status']=='PREPARATORY_NOT_ISSUED'
+          assert d['FINAL_EXTERNAL_ISSUED'] is False
+          assert d['FINAL_ROOT'] is None
+          assert d['final_proof']=='0/7'
+          assert d['g2_0']['modified_by_v1_2'] is False
+          assert d['g2_1']['status']=='OPEN_MATH'
+          assert d['g2_2']['status']=='CONDITIONAL_GREEN'
+          assert d['g3']['automatic_promotion'] is False
+          assert d['issuance_firewall']['disqualifying_component_blocks_promotion'] is True
+          PY
+
+      - name: Preserve frozen v1 package
+        run: |
+          set -euo pipefail
+          if git diff --name-only origin/main...HEAD -- certs/final_external/v1/ | grep -q .; then
+            echo "Existing frozen/preparatory v1 package was modified"
+            exit 1
+          fi
+
+      - name: Verify pinned Lean source commit exists
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          d=json.load(open('certs/final_external/v1_2_preparatory/criticism_response.json'))
+          sha=d['p_vs_np_formalization']['head_sha']
+          assert len(sha)==40 and all(c in '0123456789abcdef' for c in sha)
+          assert d['p_vs_np_formalization']['dedicated_ci_status']=='SUCCESS'
+          PY
