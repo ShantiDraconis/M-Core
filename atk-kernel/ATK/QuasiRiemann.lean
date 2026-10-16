@@ -6,8 +6,8 @@ import ATK.ZetaSimetria
 `ZeroLivreAcima θ`: `ζ` não tem zeros com `Re s > θ`. A Mathlib dá `θ = 1`
 (`riemannZeta_ne_zero_of_one_le_re`). A **quasi-hipótese de Riemann** da OpenAI (`openai/math`,
 família 003, setembro de 2026, formalizada em Lean como
-`OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re`) dá `θ = 7/8`; ela é compilada e ligada a este
-arquivo no subprojeto `atk-rh`. Aqui ela entra só como hipótese explícita.
+`OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re`) dá `θ = 7/8`; ela é compilada e usada por este
+arquivo no pacote `atk-kernel/externo`. Aqui ela entra só como hipótese explícita.
 
 Provado aqui, sem hipóteses além das escritas:
 
@@ -33,7 +33,7 @@ def ZeroLivreAcima (θ : ℝ) : Prop := ∀ s : ℂ, θ < s.re → riemannZeta s
 /-- `ζ` não tem zeros na faixa `a < Re s ≤ b`. -/
 def FaixaLivre (a b : ℝ) : Prop := ∀ s : ℂ, a < s.re → s.re ≤ b → riemannZeta s ≠ 0
 
-/-- A quasi-RH da OpenAI, como enunciado (provada em `atk-rh`). -/
+/-- A quasi-RH da OpenAI, como enunciado (provada no pacote `atk-kernel/externo`). -/
 def QuasiRH : Prop := ZeroLivreAcima (7 / 8)
 
 /-- A Mathlib: não há zeros com `Re s ≥ 1`. -/
