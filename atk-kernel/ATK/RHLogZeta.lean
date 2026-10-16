@@ -559,7 +559,7 @@ theorem norm_F_le (hRH : RiemannHypothesis) {δ η : ℝ} (hδ : 0 < δ) (hδ1 :
       _ = C₁ * (1 + |t|) ^ η := by rw [hC₁]; ring
       _ ≤ C * (1 + |t|) ^ η := by gcongr
 
-/-- **Lindelöf à direita da reta crítica (sob RH)**: para `δ ∈ (0, 1]` e `η > 0` existe `C > 0`
+/-- **Lindelöf à direita da reta crítica (sob RH)**: para `δ ∈ (0, 1/4]` e `η > 0` existe `C > 0`
 com `‖ζ(s)‖ ≤ C (1 + |Im s|)^η` na faixa `1/2 + δ ≤ Re s ≤ 3/4` (mesma prova de `norm_F_le`, com
 `exp(Re L)` no lugar de `exp(−Re L)`). -/
 theorem norm_zeta_le_RH (hRH : RiemannHypothesis) {δ η : ℝ} (hδ : 0 < δ) (hδ1 : δ ≤ 1)
