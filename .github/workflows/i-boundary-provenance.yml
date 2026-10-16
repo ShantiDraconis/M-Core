@@ -18,9 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Lean
-        uses: leanprover/lean4-action@v1
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865 # v1.6.1
         with:
           auto-config: true
+          build: false
+          test: false
       - name: Reject proof escapes
         run: |
           set -euo pipefail
