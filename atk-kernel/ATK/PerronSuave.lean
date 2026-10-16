@@ -11,7 +11,7 @@ import Mathlib.NumberTheory.LSeries.Dirichlet
 Para `k(u) = max(1 − u, 0)` e `K(z) = 1/(z(z+1))` (a transformada de Mellin de `k` em `Re z > 0`,
 e a de `k − 1` em `−1 < Re z < 0`), a inversão de Mellin da Mathlib dá
 
-  `k(x) = (1/2π) ∫ x^(−(1+iy)) K(1+iy) dy`   (`perron_k`),
+  `k(x) = (1/2π) ∫ x^(−(1+iy)) K(1+iy) dy`   (`perron_kk`),
 
 e com o teorema de Cauchy para retângulos da Mathlib (`desloca`) a soma suavizada
 
@@ -21,7 +21,7 @@ satisfaz, sob RH e para `Re w = 1/2 + ε`,
 
   `A_N(w) − 1/ζ(w) = (1/2π) ∫ N^(−θ+iy) F(w − θ + iy) K(−θ + iy) dy`   (`θ = ε/2`),
 
-donde `‖A_N(w) − 1/ζ(w)‖ ≤ C N^(−ε/2) (1 + |Im w|)^η` (`norm_A_sub_le`), com `η` arbitrário
+donde `‖A_N(w) − 1/ζ(w)‖ ≤ C N^(−ε/2) (1 + |Im w|)^η` (`norm_AN_sub_le`), com `η` arbitrário
 (`ATK.RHLogZeta.norm_F_le`).
 -/
 
