@@ -1,0 +1,170 @@
+name: Kernel 21 registros (outros repositorios)
+
+on:
+  push:
+    branches: ['atk/kernel-21-registros']
+    paths: ['kernelaudit/outros/**', '.github/workflows/kernel-21-outros.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registro:
+    name: ${{ matrix.id }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: R08-hodge-original
+            tree: kernelaudit/outros/hodge
+            mode: original
+            dir: .
+            targets: MCore.K18
+            file: audit/ATK_CONCRETE_PAYLOAD_MODEL_BINDING_COUNTERAUDIT.lean
+            extra: "#check @MCore.concretePayload_vacuous_on_empty_model|#print axioms MCore.concretePayload_vacuous_on_empty_model"
+          - id: R09-R10-yang-mills-original
+            tree: kernelaudit/outros/yang-mills
+            mode: original
+            dir: .
+            targets: MCore.YangMills.A1.B60TrivialityAudit
+            file: lean/MCore/YangMills/A1/B60TrivialityAudit.lean
+            extra: "#check @MCore.YangMills.A1.b60_inhabited_by_degenerate_model|#print axioms MCore.YangMills.A1.toyB60ConcretePhysicalAdapter|#print axioms MCore.YangMills.A1.b60_inhabited_by_degenerate_model"
+          - id: R11-priority-record-snapshot
+            tree: kernelaudit/pnp/atk-kernel-check
+            mode: original
+            dir: .
+            targets: MCore.Real.P01FinalCertificate
+            file: $GITHUB_WORKSPACE/self/kernelaudit/outros/priority-record/P01MachineConstructionExpectedFailure.lean
+            extra: ""
+          - id: R12-riemann-I-g21-original
+            tree: kernelaudit/outros/riemann-i-g21
+            mode: original
+            dir: .
+            targets: Riemann.CollapseProof.Contradiction
+            file: src/Riemann/CollapseProof/Contradiction.lean
+            extra: ""
+          - id: R12-riemann-I-g21-harness
+            tree: kernelaudit/outros/riemann-i-g21
+            mode: harness
+            dir: .
+            targets: Riemann.CollapseProof.Contradiction
+            file: src/Riemann/CollapseProof/Contradiction.lean
+            extra: "#check @Riemann.CollapseProof.riemann_hypothesis|#print axioms Riemann.CollapseProof.riemann_hypothesis"
+          - id: R13-riemann-I-label-original
+            tree: kernelaudit/outros/riemann-i-label
+            mode: original
+            dir: .
+            targets: Riemann.CollapseProof.Contradiction
+            file: src/Riemann/CollapseProof/Contradiction.lean
+            extra: ""
+          - id: R13-riemann-I-label-harness
+            tree: kernelaudit/outros/riemann-i-label
+            mode: harness
+            dir: .
+            targets: Riemann.CollapseProof.Contradiction
+            file: src/Riemann/CollapseProof/Contradiction.lean
+            extra: "#check @Riemann.CollapseProof.riemann_hypothesis|#print axioms Riemann.CollapseProof.riemann_hypothesis"
+          - id: R14-R19-horizon-original
+            tree: kernelaudit/outros/horizon
+            mode: original
+            dir: formal/lean
+            targets: FinalTheorems.All
+            file: FinalTheorems/All.lean
+            extra: ""
+          - id: R14-R19-horizon-harness
+            tree: kernelaudit/outros/horizon
+            mode: harness
+            dir: .
+            targets: FinalTheorems.All
+            file: formal/lean/FinalTheorems/All.lean
+            extra: "#check @HorizonPrime.FinalTheorems.RH_final|#print axioms HorizonPrime.FinalTheorems.all_millennium_problems|#print axioms HorizonPrime.FinalTheorems.BSD_final|#print axioms HorizonPrime.FinalTheorems.Hodge_final|#print axioms HorizonPrime.FinalTheorems.PneqNP_final|#print axioms HorizonPrime.FinalTheorems.RH_final|#print axioms HorizonPrime.FinalTheorems.YM_final"
+          - id: R20-uel-UETheta-original
+            tree: kernelaudit/outros/uel-formalization
+            mode: original
+            dir: formalization/lean
+            targets: UETheta_to_RH
+            file: UETheta_to_RH.lean
+            extra: ""
+          - id: R20-uel-UETheta-harness
+            tree: kernelaudit/outros/uel-formalization
+            mode: harness
+            dir: .
+            targets: UETheta_to_RH
+            file: formalization/lean/UETheta_to_RH.lean
+            extra: "#check @UETheta_implies_RH|#print RiemannHypothesis|#print axioms UETheta_implies_RH"
+          - id: R21-uel-Master-patch1-original
+            tree: kernelaudit/outros/uel-src-patch1
+            mode: original
+            dir: src/lean
+            targets: EmergentTheta.Main.MasterTheorem
+            file: EmergentTheta/Main/MasterTheorem.lean
+            extra: ""
+          - id: R21-uel-Master-patch1-harness
+            tree: kernelaudit/outros/uel-src-patch1
+            mode: harness
+            dir: .
+            targets: EmergentTheta.Main.MasterTheorem
+            file: src/lean/EmergentTheta/Main/MasterTheorem.lean
+            extra: "#check @EmergentTheta.MasterTheorem|#print axioms EmergentTheta.MasterTheorem"
+          - id: R21-uel-Master-languageaudit-harness
+            tree: kernelaudit/outros/uel-src-langaudit
+            mode: harness
+            dir: .
+            targets: EmergentTheta.Main.MasterTheorem
+            file: src/lean/EmergentTheta/Main/MasterTheorem.lean
+            extra: "#check @EmergentTheta.MasterTheorem|#print axioms EmergentTheta.MasterTheorem"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: self
+      - name: elan
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: kernel
+        shell: bash
+        run: |
+          set +e
+          mkdir -p out; O=$GITHUB_WORKSPACE/out
+          cp -r "self/${{ matrix.tree }}" work
+          cd work
+          if [ "${{ matrix.mode }}" = harness ]; then
+            rm -f lakefile.lean lakefile.toml lake-manifest.json lean-toolchain
+            cp harness/lakefile.lean harness/lean-toolchain .
+          fi
+          cd "${{ matrix.dir }}"
+          S="mode=${{ matrix.mode }}"
+          ls lakefile.lean lakefile.toml >/dev/null 2>&1 || S="$S lakefile=AUSENTE"
+          S="$S toolchain=$(tr '\n' ';' < lean-toolchain 2>/dev/null || echo AUSENTE)"
+          timeout 900 lean --version > $O/ver.txt 2>&1; S="$S lean_rc=$? $(head -c 160 $O/ver.txt | tr '\n' ' ')"
+          if [ ! -f lake-manifest.json ] || ! grep -q '"name"' lake-manifest.json; then
+            timeout 1500 lake update > $O/upd.txt 2>&1; S="$S update_rc=$?"
+          fi
+          timeout 1200 lake exe cache get > $O/cache.txt 2>&1; S="$S cache_rc=$?"
+          for t in ${{ matrix.targets }}; do
+            timeout 5400 lake build $t > $O/build.txt 2>&1; S="$S build[$t]_rc=$?"
+          done
+          F="${{ matrix.file }}"
+          cp "$F" Auditoria_Registro.lean 2>/dev/null || echo "-- arquivo ausente: $F" > Auditoria_Registro.lean
+          printf '\n%s\n' "${{ matrix.extra }}" | tr '|' '\n' >> Auditoria_Registro.lean
+          timeout 1800 lake env lean Auditoria_Registro.lean > $O/file.txt 2>&1; S="$S arquivo_rc=$?"
+          echo "$S" > $O/resumo.txt
+          { grep -hE "error|sorry" $O/upd.txt $O/build.txt 2>/dev/null | sed 's#^.*/work/##' | sort -u | head -60 | tr '\n' '~'; echo; } > $O/erros.txt
+          { tr '\n' ' ' < $O/file.txt; echo; } | sed 's/  */ /g' > $O/arquivo.txt
+          exit 0
+      - name: resumo
+        shell: bash
+        run: |
+          echo "::notice::${{ matrix.id }} $(cat out/resumo.txt)"
+          fold -w 2500 out/arquivo.txt | head -6 | while IFS= read -r l; do echo "::notice::${{ matrix.id }} ARQUIVO $l"; done
+      - name: erros
+        shell: bash
+        run: |
+          fold -w 2500 out/erros.txt | head -8 | while IFS= read -r l; do [ -n "$l" ] && echo "::warning::${{ matrix.id }} $l"; done
+          tail -c 1500 out/upd.txt 2>/dev/null | tr '\n' ' ' | sed 's/^/::warning::${{ matrix.id }} UPDATE_TAIL /'; echo
+          true
