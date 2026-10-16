@@ -64,6 +64,7 @@ verificados, Levinson.
 | F3.4 | Certificar `Ξ(t) < 0` num `t ∈ (14,2; 21)` (quadratura intervalar de `I(t)`) ⇒ primeiro zero na reta | ⬜ | `AtaqueRH.SinalNegativo` |
 | F3.5 | Forma de Fourier `Ξ(t) = 2∫ Φ(u) cos(ut) du`, `Φ > 0`; depois Hardy | ⬜ | `AtaqueRH.Hardy` |
 | F3.6 | de Bruijn–Newman: `H_t` e `Λ` | ⬜ | — |
+| F3.7 | **Critério de Báez-Duarte completo** (ponte, não progresso sobre RH): RH ⇒ `D_N → 0` por Perron suavizado, Titchmarsh 14.2, Lindelöf sob RH e Phragmén–Lindelöf; com B1, **RH ⟺ `D_N → 0` sem pontes** | ✅ | `NecessidadeRH.necessidade`, `NecessidadeRH.rh_iff_DN` |
 
 ## Frente 4 — P vs NP
 
