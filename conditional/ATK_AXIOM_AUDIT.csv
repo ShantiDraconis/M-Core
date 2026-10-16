@@ -8,3 +8,10 @@ R05,MCore.Real.P01TerminalCertificate.p01ConstructionGap,Nonempty P01MachineCons
 R06,MCore.Real.P01TerminalMaterialCertificate.p01_closed_no_hypothesis,Nonempty P01MachineConstruction,nao avaliado (nao compila),OPEN_OBLIGATION,38816632489
 R07,(example) x2,P01MachineConstruction; FailureGenerator (SATBits circuitBitEncoding),nao avaliado (metas abertas),OPEN_OBLIGATION,38816632489
 AUD,MCore.Real.AuditoriaP01.decodeCircuitCore_size_lt_falso,¬ (decodeCircuitCore fuel bits = some (phi; tail) -> size phi < fuel),nenhum,KERNEL_PROVEN (refuta o lema P01DecodeCoreLaws.decodeCircuitCore_size_lt),38816632489
+R08,MCore.concretePayload_vacuous_on_empty_model,ConcreteAlgebraicityPayload emptyCycleSpanMechanics,nenhum,MODEL_PROVEN (firewall: payload de Hodge vacuo no modelo vazio),38829187455
+R09,MCore.YangMills.A1.toyB60ConcretePhysicalAdapter,adaptador B60 no modelo-brinquedo,"propext, Classical.choice, Quot.sound",MODEL_PROVEN (firewall),38829187455
+R10,MCore.YangMills.A1.b60_inhabited_by_degenerate_model,Nonempty (B60ConcretePhysicalAdapter toy…),"propext, Classical.choice, Quot.sound",MODEL_PROVEN (firewall: modelo degenerado),38829187455
+R12-R13,Riemann.CollapseProof.riemann_hypothesis,RH via I-collapse,nao avaliado (nao compila); fonte declara axiom I e axiom I_ne_one e axiom collapse_law,OPEN_OBLIGATION (axiomas conjecturais),38829187455
+R14-R19,HorizonPrime.FinalTheorems.{all_millennium_problems;BSD_final;Hodge_final;PneqNP_final;RH_final;YM_final},enunciados finais,nao avaliado (nao compila); fonte declara 102 axiom,OPEN_OBLIGATION (axiomas conjecturais),38829187455
+R20,UETheta_implies_RH,∀ [UEThetaAxiom] [ECAxiom] → RiemannHypothesis (a da Mathlib),"propext, sorryAx, Classical.choice, Quot.sound",OPEN_OBLIGATION (contra a RH verdadeira a prova trivial falha),38829187455
+R21,EmergentTheta.MasterTheorem,[UniversalThetaFramework] → RH ∧ GRH ∧ …,nao avaliado (nao compila),OPEN_OBLIGATION (hipotese de classe),38829187455

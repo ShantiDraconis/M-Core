@@ -1,7 +1,7 @@
 # Os 21 registros da auditoria de linguagem no kernel (15/10/2026)
 
-Ramo `atk/kernel-21-registros`, workflow `Kernel 21 registros`, runs 38815095065, 38815956454 e
-38816632489. Cada registro foi compilado no seu próprio projeto, na versão de Lean do ramo
+Ramo `atk/kernel-21-registros`, workflows `Kernel 21 registros` (runs 38815095065, 38815956454,
+38816632489) e `Kernel 21 registros (outros repositorios)` (run 38829187455). Cada registro foi compilado no seu próprio projeto, na versão de Lean do ramo
 (4.34.1 no M-Core, 4.19.0 nos outros), e os teoremas críticos passaram por `#print axioms`.
 Detalhes em `ATK_KERNEL_BUILD_RESULTS.csv` e `ATK_AXIOM_AUDIT.csv`.
 
@@ -16,7 +16,17 @@ Detalhes em `ATK_KERNEL_BUILD_RESULTS.csv` e `ATK_AXIOM_AUDIT.csv`.
 | R05 P01TerminalCertificate | **falha** (31 erros) | — | não compila |
 | R06 P01TerminalMaterialCertificate | **falha** (31 erros) | — | não compila |
 | R07 PNPMaterialAtoms | **falha** (2 metas abertas) | — | átomos em aberto |
-| R08–R21 | não rodados | — | 6 repositórios não anexados a esta sessão |
+| R08 Hodge (m-core-hodge) | verde | nenhum | firewall: payload de Hodge vácuo no modelo vazio |
+| R09–R10 Yang–Mills (m-core-yang-mills) | verde | os 3 padrão | firewall: modelo degenerado habita o adaptador B60 |
+| R11 snapshot (atk-certified-priority-record) | base verde, snapshot falha | — | idêntico a R04 |
+| R12–R13 `riemann_hypothesis` (millennium-riemann-I) | **falha** | — | não compila em nenhuma configuração; usa `axiom collapse_law`, `axiom I_ne_one` |
+| R14–R19 `*_final` (horizon-prime---framework) | **falha** | — | sem projeto Lean; com harness, imports inexistentes; 102 `axiom` |
+| R20 `UETheta_implies_RH` (universal-emergent-logic-) | **falha** | `sorryAx` | `RiemannHypothesis := True` colide com a RH da Mathlib; contra a RH verdadeira, `trivial` falha |
+| R21 `MasterTheorem` (universal-emergent-logic-, 2 ramos) | **falha** | — | lakefile inválido; `Framework.lean` mal tipado (classe `Prop` com campo de dados) |
+
+Para R12–R21 a configuração original não compila o projeto (biblioteca que não inclui `src/`,
+toolchain `stable` sem Mathlib fixada, lakefile ausente ou inválido). O harness (Lean 4.34.1 +
+Mathlib d13f23b, em `kernelaudit/outros/*/harness/`) roda os mesmos arquivos sem alterá-los.
 
 ## Correções feitas
 
