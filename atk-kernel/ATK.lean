@@ -172,6 +172,12 @@ import ATK.MordellWeilNumero
 import ATK.MudancaVariaveis
 import ATK.MordellWeilGeral
 import ATK.LigacaoBSDMW
+import ATK.GammaVertical
+import ATK.RHLogZeta
+import ATK.RazaoZeta
+import ATK.PerronSuave
+import ATK.NecessidadeRH
+import ATK.NSReducao
 import ATK.PostoLivre
 import ATK.Externo.FCBSD
 import ATK.IntegracaoFCBSD
