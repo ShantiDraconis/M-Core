@@ -46,7 +46,7 @@ for r in selected:
     meta,path=item.split(b"\t",1);filename=path.decode(errors="replace")
     if not filename.endswith((".lean",".v",".agda",".thy",".py",".md",".json",".tex",".txt")):continue
     sha=meta.split()[-1].decode()
-    key=(name,sha)
+    key=(name,ref,sha)
     if key in seen:continue
     seen.add(key);blobs_count+=1
     try:body=git("--git-dir",str(folder),"cat-file","blob",sha).decode(errors="replace")
