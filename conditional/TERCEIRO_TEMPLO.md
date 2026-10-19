@@ -66,7 +66,9 @@ dão outro grafo e precisariam ser testadas de novo.
 | 3.3 | L é positivo semidefinido | `lap_psd` | w simétrico e ≥ 0 | K-local |
 | 3.4 | Energia da Árvore ≥ 0 | `energiaArvore_nonneg` | — | K-local |
 | 3.5 | E(f) = 0 ⟺ f constante (Teorema 2) | `energiaArvore_zero_iff` | os 22 caminhos de Kircher; a ida usa uma árvore geradora explícita (arestas 0, 1, 2, 5, 7, 13, 14, 15, 21) | K-local |
-| 3.6 | Existe λ₂ > 0 em todo grafo conexo (Teorema 3, caso geral) | — | **não formalizado**: exige o mínimo do quociente de Rayleigh na esfera (compacidade). O caso explícito C₁₀ está em 4.3 | pendente |
+| 3.6 | λ₂ > 0 na Árvore (Teorema 3 no grafo concreto) | `TerceiroTemploII.poincare_arvore`, `gap_arvore`, `energia_pos_de_nao_constante` | ∑(f − f̄)² ≤ 10·E(f), logo λ₂ ≥ 1/10; usa caminhos de Keter de comprimento ≤ 3 | K-local |
+| 3.7 | A média minimiza o desvio | `decomposicao_desvio`, `desvio_minimo` | ∑(f − c)² = ∑(f − m)² + n(m − c)² | K-local |
+| 3.8 | λ₂ > 0 em **todo** grafo conexo (caso geral) | — | não formalizado (compacidade da esfera) | pendente |
 
 ## 4. O ciclo de dez estados (Teorema 4 e cálculo explícito)
 
@@ -87,6 +89,17 @@ dão outro grafo e precisariam ser testadas de novo.
 | 5.3 | ‖Tⁿf‖ ≤ qⁿ‖f‖ | `contracao_iterada` | por indução, em qualquer espaço seminormado | K-local |
 | 5.4 | qⁿ‖f‖ → 0 | `contracao_tende_zero` | 0 ≤ q < 1 | K-local |
 | 5.5 | Invariante **e** contraído implica zero | `invariante_contraido_zero` | d(Tx) = d(x) ≤ q·d(x), com q < 1, dá d(x) = 0: o mecanismo só **detecta** um zero, não o cria | K-local |
+
+## 5b. Operadores U·C·R e comutadores (`TerceiroTemploII`)
+
+| # | Afirmação | Teorema | Estado |
+|---|---|---|---|
+| 5b.1 | d(Fⁿx) ≤ qⁿ d(x) | `defeito_iterado` | K-local |
+| 5b.2 | Lei U·C·R: U preserva, C contrai, R não aumenta ⟹ d(RCUx) ≤ q·d(x) | `lei_URC` | K-local |
+| 5b.3 | Iterando R∘C∘U, o defeito tende a 0 | `URC_tende_zero` | K-local |
+| 5b.4 | **Contraexemplo**: sem a hipótese sobre R, a lei falha | `urc_precisa_R` | K-local |
+| 5b.5 | [a,b] = −[b,a]; [a,a] = 0; Jacobi; [a,b] = 0 ⟺ comutam | `comutador_antissim`, `comutador_self`, `comutador_jacobi`, `comutador_zero_iff` | K-local |
+| 5b.6 | Portas que não comutam: [E₁₂, E₂₁] = diag(1, −1) ≠ 0 | `comutador_matriz`, `comutador_matriz_ne_zero` | K-local |
 
 ## 6. Zero, seta e infinitésimo (a tabela E_N / 0 / → / 10⁻ᴺ / 10⁻ᴴ)
 
@@ -145,6 +158,18 @@ dão outro grafo e precisariam ser testadas de novo.
 | 8.21 | Todos | Defeito total ∑wᵢdᵢ = 0 ⟹ cada dᵢ = 0 | `ATKIAlgebra.fechamento_simultaneo`, `universal_sete` | K-CI |
 | 8.22 | Todos | Mundo hipotético: pontes + obrigações ⟹ enunciados | `ClosedMath.closedMath_of_obligations` | K-CI (condicional: as obrigações entram como hipóteses) |
 
+## 8b. Gramática, semântica, tempo verbal e o mundo O1 (`MundoHipotetico`)
+
+| # | Afirmação | Teorema | Estado |
+|---|---|---|---|
+| 8b.1 | Conectivos e semântica em `Prop` | `Formula.avaliar` | definição |
+| 8b.2 | Modus ponens, contrapositiva, De Morgan (∧, ∨), dupla negação, transitividade, ↔ | `modus_ponens`, `contrapositiva`, `de_morgan_e`, `de_morgan_ou`, `dupla_negacao`, `implica_transitiva`, `equivale_iff`, `terceiro_excluido` | K-local |
+| 8b.3 | Quantificadores: ¬∀ ⟺ ∃¬; ¬∃ ⟺ ∀¬ | `nao_todo`, `nao_existe` | K-local |
+| 8b.4 | Sujeito e predicado | `Sentenca.afirma`, `afirma_congr` | K-local |
+| 8b.5 | Tempo verbal: só a certificação carrega prova; fase futura não informa nada | `registro_certificado`, `fase_futura_nao_informa`, `certificacao_e_o_topo` | K-local |
+| 8b.6 | Mundo O1: produtores, testemunhas e pontes ⟹ os oito enunciados | `fechar_tudo`, `compor`, `transportar` | K-local (condicional) |
+| 8b.7 | O que o kernel mostra: equivalência, circularidade, vacuidade, explosão, brinquedo, fidelidade, oráculo = id | `mundo_iff` … `oraculo_eq_id` | K-local; ver `MUNDO_HIPOTETICO_KERNEL.md` |
+
 ## 9. Atribuição simbólica letra → problema
 
 | # | Afirmação | Teorema | Estado |
@@ -158,9 +183,11 @@ dão outro grafo e precisariam ser testadas de novo.
 
 | Camada | Testes | Estado |
 |---|---|---|
-| Alfabeto, Árvore, energia, ciclo C₁₀, contração, infinitésimos, defeitos (módulo novo) | 49 | 49/49 K-local |
+| Alfabeto, Árvore, energia, ciclo C₁₀, contração, infinitésimos, defeitos (`TerceiroTemplo`) | 49 | 49/49 K-local |
+| Gap da Árvore, U·C·R, comutadores (`TerceiroTemploII`) | 18 | 18/18 K-local |
+| Gramática, fases, mundo O1 e testes do kernel (`MundoHipotetico`) | 28 | 28/28 K-local |
 | ATK-I e defeitos dos problemas (módulos existentes, citados acima) | 40+ | K-CI |
-| Gap geral do grafo conexo (Teorema 3, caso geral) | 1 | pendente de formalização |
+| Gap geral de todo grafo conexo (a Árvore já está feita) | 1 | pendente de formalização |
 | Pontes para RH, YM, NS, BSD, Hodge, P≠NP e Beal | 7 | **OPEN_MATH** |
 | Correspondências cabalísticas | tabela | SYMBOLIC |
 

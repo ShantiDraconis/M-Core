@@ -130,3 +130,5 @@ import ATK.FermatRegular
 import ATK.BealFermatRegular
 import ATK.FermatExpoentes
 import ATK.TerceiroTemplo
+import ATK.TerceiroTemploII
+import ATK.MundoHipotetico

@@ -1,0 +1,11 @@
+== MillenniumAudit.StabilizedHypothetical: OK
+== CriticalBarrier.GlobalRegularityFromG1: OK
+== CriticalBarrier.BackwardHypotheticalClosureOracle: OK
+   'CriticalBarrier.BackwardAudit.hypothetical_global_regularity' does not depend on any axioms
+== Teste.StabilizedBrinquedo: OK
+   'MillenniumAudit.StabilizedHypothetical.Perelman_like_22_25_3_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+   'MillenniumAudit.StabilizedHypothetical.G2_differential' depends on axioms: [propext, Classical.choice, Quot.sound]
+   'MillenniumAudit.StabilizedHypothetical.G1d2_time_integral_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+   'TesteNS.conclusao_arbitraria' depends on axioms: [propext, Classical.choice, Quot.sound]
+   'TesteNS.perelman_prova_aritmetica' depends on axioms: [propext, Classical.choice, Quot.sound]
+   'TesteNS.oraculo_ns_brinquedo' does not depend on any axioms

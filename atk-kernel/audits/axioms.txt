@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 21c0c675c51b61247d044191fc5c39e6e73fdf363e6289999638797929a024c1
+# axiomas por teorema — congelamento de 442bcab3846199f6faed7f2eb223d73a5de12ea84d428b855c4314e2aa4cdb4c
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3147,3 +3147,49 @@ ATK.TerceiroTemplo.riccati_explode	propext, Classical.choice, Quot.sound
 ATK.TerceiroTemplo.fechamento_inteiro_int	propext, Classical.choice, Quot.sound
 ATK.TerceiroTemplo.letras_cobertas	propext, Classical.choice, Quot.sound
 ATK.TerceiroTemplo.tav_em_todos	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.decomposicao_desvio	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.desvio_minimo	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.energiaArvore_expl	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.soma_sefirot	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.poincare_keter	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.poincare_arvore	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.gap_arvore	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.energia_pos_de_nao_constante	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.defeito_iterado	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.lei_URC	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.URC_tende_zero	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.urc_precisa_R	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.comutador_antissim	propext
+ATK.TerceiroTemplo.comutador_self	nenhum
+ATK.TerceiroTemplo.comutador_jacobi	propext
+ATK.TerceiroTemplo.comutador_zero_iff	propext
+ATK.TerceiroTemplo.comutador_matriz	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.comutador_matriz_ne_zero	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.modus_ponens	nenhum
+ATK.MundoHipotetico.contrapositiva	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.de_morgan_e	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.de_morgan_ou	nenhum
+ATK.MundoHipotetico.dupla_negacao	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.implica_transitiva	nenhum
+ATK.MundoHipotetico.equivale_iff	nenhum
+ATK.MundoHipotetico.terceiro_excluido	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.nao_todo	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.nao_existe	nenhum
+ATK.MundoHipotetico.afirma_congr	propext
+ATK.MundoHipotetico.registro_certificado	nenhum
+ATK.MundoHipotetico.fase_futura_nao_informa	nenhum
+ATK.MundoHipotetico.certificacao_e_o_topo	nenhum
+ATK.MundoHipotetico.fechar_tudo	nenhum
+ATK.MundoHipotetico.fechar_tudo_eq	nenhum
+ATK.MundoHipotetico.mundo_iff	nenhum
+ATK.MundoHipotetico.mundo_canonico_circular	nenhum
+ATK.MundoHipotetico.mundo_vazio_de_falso	nenhum
+ATK.MundoHipotetico.mundo_prova_tudo_se_falso	nenhum
+ATK.MundoHipotetico.contraditorio_vazio	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.contraditorio_prova_rh_e_nao_rh	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.mundo_brinquedo	nenhum
+ATK.MundoHipotetico.fiel_fecha	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.brinquedo_fiel_iff	propext, Classical.choice, Quot.sound
+ATK.MundoHipotetico.oraculo_eq_id	nenhum
+ATK.MundoHipotetico.oraculo_beal	propext
+ATK.MundoHipotetico.oraculo_rh	propext, Classical.choice, Quot.sound
