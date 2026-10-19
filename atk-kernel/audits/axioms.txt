@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 6f6ee5276e6c79e331e9b3a9bfa73c5bd602ee3a1e5b26891e78b287dad862ec
+# axiomas por teorema — congelamento de 21c0c675c51b61247d044191fc5c39e6e73fdf363e6289999638797929a024c1
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3098,3 +3098,52 @@ ATK.BSDPontosE32.card_raizes	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.card_afim	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.card_projetivo	propext, Classical.choice, Quot.sound
 ATK.BSDPontosE32.traco_zero	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.card_letras	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.card_maes	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.card_duplas	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.card_simples	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.familias_particionam	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.gematria_injetiva	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.gematria_soma	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.gematria_maes	nenhum
+ATK.TerceiroTemplo.portas_231	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.portas_eq_choose	nenhum
+ATK.TerceiroTemplo.caminhos_32	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.card_sefirot	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.caminho_sem_laco	propext
+ATK.TerceiroTemplo.caminho_sem_repeticao	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.arvore_conexa	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.betti_um	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.energia_nonneg	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.forma_laplaciano	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.lap_psd	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.energiaArvore_nonneg	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.energiaArvore_zero_iff	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.ciclo_autovetor	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.ciclo_periodico	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.lambda1_C10	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.lambda1_C10_pos	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.mu_C10	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.q_C10	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.q_C10_lt_one	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.q_C10_pos	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.preserva_id	nenhum
+ATK.TerceiroTemplo.preserva_comp	nenhum
+ATK.TerceiroTemplo.contracao_iterada	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.contracao_tende_zero	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.invariante_contraido_zero	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.dez_pot_pos	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.dez_pot_tende_zero	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.positivo_decrescente_nao_basta	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.dezMenosH_infinitesimal	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.E1_intervalo	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.defeito_gap_zero_iff	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.defeito_gap_exemplo	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.espectro_sem_gap	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.cota_log_fecha	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.cota_geometrica_fecha	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.riccati_solucao	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.riccati_explode	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.fechamento_inteiro_int	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.letras_cobertas	propext, Classical.choice, Quot.sound
+ATK.TerceiroTemplo.tav_em_todos	propext, Classical.choice, Quot.sound

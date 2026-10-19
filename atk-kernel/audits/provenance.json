@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "f9f51e21fd2758e24c1f82fa92bd100d98c9b43527bca048771369a069c85755",
+  "sources_sha256": "21c0c675c51b61247d044191fc5c39e6e73fdf363e6289999638797929a024c1",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -163,6 +163,7 @@
     "ATK/Shannon.lean": "c8e0d2f1c50b91a7480bbfed57b53ed946e00ed87326efca18b826976559f654",
     "ATK/SophieGermain.lean": "679036b7365572bace3d207a00f8036c1c785c7a2e0659114a3952889bc15d92",
     "ATK/TeoremaGlobal.lean": "971a8d965b0cc59f9dd954d2c794362b615b86a4f372ee2292b797df923b770d",
+    "ATK/TerceiroTemplo.lean": "fba69f2f93190d66079b292ff862e95553c94c73945695723893475ff0667293",
     "ATK/Termos.lean": "6a319edc9e6f9d9a3b7eb3a34d5e68a2b4f6ab60b23178c497b05f1bde86c456",
     "ATK/Triadico.lean": "2eb7ac98cbfd57beff7d5748a926dafd702c2065245a82e3985dfe0a636b875f",
     "ATK/ValleePoussin.lean": "858c22bff925f6c9e3af477d698b5fdd07202fa35a4c7aceb44e411f6d8fa235",
@@ -175,12 +176,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "c84f8b65d69067e29fc80f4ba297b175478f67d142271006b5c2fe3753e0f6b9"
+    "ATK.lean": "472085bc323f7db89166b2f0b7dfd51b78f78834f4a2cdc56f8ca03b85e9672e"
   },
-  "n_files": 174,
-  "expected_theorems": 3108,
+  "n_files": 175,
+  "expected_theorems": 3157,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "44f3cb0228c6bca3a998fb2670f2438624ffac05",
+  "commit_at_freeze": "f9e761f2d222f4ca797832cbfad62c373325cdcf",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
