@@ -129,3 +129,6 @@ import ATK.FermatDezenove
 import ATK.FermatRegular
 import ATK.BealFermatRegular
 import ATK.FermatExpoentes
+import ATK.Conditional.YangMillsResearchProgram
+import ATK.Conditional.NavierStokesResearchProgram
+import ATK.Conditional.BSDResearchProgram

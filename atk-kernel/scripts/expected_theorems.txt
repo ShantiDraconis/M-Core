@@ -3106,3 +3106,9 @@ ATK.BSDEulerE32.equacao_mudanca
 ATK.BSDEulerE32.card_pontos_mudanca
 ATK.BSDEulerE32.reducao_minimal
 ATK.BSDEulerE32.polinomioLocal_E32
+ATK.Conditional.YangMills.YM4DResearchProgram.toWitness
+ATK.Conditional.YangMills.constructiveYM4D_of_researchPrograms
+ATK.Conditional.NavierStokes.EnstrophyControlProgram.toBound
+ATK.Conditional.NavierStokes.enstrophyAPrioriBound_of_researchPrograms
+ATK.Conditional.BSD.BSDHigherRankProgram.toEquality
+ATK.Conditional.BSD.rankOpen_of_researchPrograms
