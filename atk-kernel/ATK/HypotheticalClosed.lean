@@ -40,6 +40,25 @@ theorem rh_of_closed {M : Models} (hm : ClosedMath M) :
     RiemannHypothesis :=
   ATK.ObrigacoesMinimas.rh_obrigacao_suficiente hm.rh
 
+/-- Equivalence between the closure contract and the product of its premises.
+    This is a logical characterization, not a proof of those premises. -/
+theorem closed_contract_iff {M : Models} :
+    (ClosedBridge M ∧ ClosedMath M) ↔
+    (PontesParametricas M ∧ Obrigacoes M) := by
+  rfl
+
+/-- A combined conditional theorem, with both assumptions visible. -/
+theorem seven_of_contract {M : Models}
+    (h : ClosedBridge M ∧ ClosedMath M) :
+    SevenStatements M :=
+  all_seven_of_closed h.1 h.2
+
+/-- A conditional RH consequence extracted from the combined contract. -/
+theorem rh_of_contract {M : Models}
+    (h : ClosedBridge M ∧ ClosedMath M) :
+    RiemannHypothesis :=
+  rh_of_closed h.2
+
 end ATK.HypotheticalClosed
 
 #print axioms ATK.HypotheticalClosed.all_seven_of_closed
