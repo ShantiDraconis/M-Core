@@ -3106,3 +3106,5 @@ ATK.BSDEulerE32.equacao_mudanca
 ATK.BSDEulerE32.card_pontos_mudanca
 ATK.BSDEulerE32.reducao_minimal
 ATK.BSDEulerE32.polinomioLocal_E32
+ATK.YMWilsonLoop.wilson_area_law
+ATK.YMWilsonLoop.wilson_area_law_exp
