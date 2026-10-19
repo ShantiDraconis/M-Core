@@ -27,6 +27,8 @@ Ausente da Mathlib v4.34.1, e por isso dado explícito em `ConstrucoesHodge`:
 
 Teste: com `cl = 0`, o enunciado vira "toda classe de Hodge é 0" (`hodge_cl_zero_iff`). O enunciado só é a conjectura de Hodge com as construções genuínas.
 
+**Construções coerentes** (`Coerente`): a classe de ciclo é aditiva, e a classe de um ciclo de codimensão `p` é de Hodge (a direção já provada). Com isso, a conjectura vira exatamente "classes de Hodge = imagem da classe de ciclo" (`hodge_iff_imagem`). A coerência ainda não fixa a construção, porque `cl = 0` é coerente (`zero_coerente`).
+
 ## Yang–Mills (`ATK/YMOficial.lean`)
 
 Real:

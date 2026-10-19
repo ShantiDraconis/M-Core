@@ -3224,3 +3224,12 @@ ATK.EnunciadosOficiais.ym_nucleo
 ATK.EnunciadosOficiais.rh_refutacao
 ATK.EnunciadosOficiais.sete_condicional
 ATK.EnunciadosOficiais.sete_refutado
+ATK.GapGrafo.somaDarts_nonneg
+ATK.GapGrafo.desigualdade_passo
+ATK.GapGrafo.quadrado_caminho
+ATK.GapGrafo.somaDarts_le
+ATK.GapGrafo.poincare_grafo
+ATK.GapGrafo.gap_grafo
+ATK.GapGrafo.constante_gap_pos
+ATK.HodgeOficial.hodge_iff_imagem
+ATK.HodgeOficial.zero_coerente

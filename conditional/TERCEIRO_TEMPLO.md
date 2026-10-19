@@ -68,7 +68,7 @@ dão outro grafo e precisariam ser testadas de novo.
 | 3.5 | E(f) = 0 ⟺ f constante (Teorema 2) | `energiaArvore_zero_iff` | os 22 caminhos de Kircher; a ida usa uma árvore geradora explícita (arestas 0, 1, 2, 5, 7, 13, 14, 15, 21) | K-local |
 | 3.6 | λ₂ > 0 na Árvore (Teorema 3 no grafo concreto) | `TerceiroTemploII.poincare_arvore`, `gap_arvore`, `energia_pos_de_nao_constante` | ∑(f − f̄)² ≤ 10·E(f), logo λ₂ ≥ 1/10; usa caminhos de Keter de comprimento ≤ 3 | K-local |
 | 3.7 | A média minimiza o desvio | `decomposicao_desvio`, `desvio_minimo` | ∑(f − c)² = ∑(f − m)² + n(m − c)² | K-local |
-| 3.8 | λ₂ > 0 em **todo** grafo conexo (caso geral) | — | não formalizado (compacidade da esfera) | pendente |
+| 3.8 | λ₂ > 0 em **todo** grafo finito conexo (Teorema 3, caso geral) | `GapGrafo.poincare_grafo`, `gap_grafo`, `constante_gap_pos` | ∑(f − f̄)² ≤ (n²/c)·E(f) com pesos ≥ c > 0 nas arestas, logo λ₂ ≥ c/n²; prova por Cauchy–Schwarz ao longo de caminhos (`quadrado_caminho`, `somaDarts_le`), sem compacidade | K-local |
 
 ## 4. O ciclo de dez estados (Teorema 4 e cálculo explícito)
 
@@ -187,7 +187,7 @@ dão outro grafo e precisariam ser testadas de novo.
 | Gap da Árvore, U·C·R, comutadores (`TerceiroTemploII`) | 18 | 18/18 K-local |
 | Gramática, fases, mundo O1 e testes do kernel (`MundoHipotetico`) | 28 | 28/28 K-local |
 | ATK-I e defeitos dos problemas (módulos existentes, citados acima) | 40+ | K-CI |
-| Gap geral de todo grafo conexo (a Árvore já está feita) | 1 | pendente de formalização |
+| Gap geral de todo grafo finito conexo (`GapGrafo`) | 7 | 7/7 K-local |
 | Pontes para RH, YM, NS, BSD, Hodge, P≠NP e Beal | 7 | **OPEN_MATH** |
 | Correspondências cabalísticas | tabela | SYMBOLIC |
 

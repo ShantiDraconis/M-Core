@@ -130,8 +130,45 @@ theorem hodge_cl_zero_iff (C : ConstrucoesHodge) (h0 : ∀ V p z, C.cl V p z = 0
   · intro h V p α hα
     exact ⟨0, zero_mem_ciclosCodim _ _, by rw [h0, h V p α hα]⟩
 
+/-! ## Construções coerentes: o que já se sabe sobre a classe de ciclo -/
+
+/-- Construções que satisfazem os teoremas conhecidos: a classe de ciclo é aditiva e a classe de um
+ciclo de codimensão `p` é sempre uma classe de Hodge (a direção fácil, provada por Hodge). -/
+structure Coerente (C : ConstrucoesHodge) : Prop where
+  cl_add : ∀ (V : VariedadeProjetivaLisa) (p : ℕ) (z₁ z₂ : AlgebraicCycle V.X ℚ), C.cl V p (z₁ + z₂) = C.cl V p z₁ + C.cl V p z₂
+  cl_hodge : ∀ (V : VariedadeProjetivaLisa) (p : ℕ), ∀ z ∈ CiclosCodim V.X p, ATK.L3Base.IsHodgeClass (C.hodge V p) (C.cl V p z)
+
+/-- Para construções coerentes, a conjectura de Hodge diz exatamente: **as classes de Hodge são as
+classes de ciclo**. -/
+theorem hodge_iff_imagem {C : ConstrucoesHodge} (hC : Coerente C) :
+    HodgeOficial C ↔ ∀ V p, {α : H2p (C.an V) p | ATK.L3Base.IsHodgeClass (C.hodge V p) α} =
+      C.cl V p '' CiclosCodim V.X p := by
+  constructor
+  · intro h V p
+    ext α
+    constructor
+    · intro hα
+      obtain ⟨z, hz, rfl⟩ := h V p α hα
+      exact ⟨z, hz, rfl⟩
+    · rintro ⟨z, hz, rfl⟩
+      exact hC.cl_hodge V p z hz
+  · intro h V p α hα
+    have : α ∈ C.cl V p '' CiclosCodim V.X p := h V p ▸ hα
+    obtain ⟨z, hz, rfl⟩ := this
+    exact ⟨z, hz, rfl⟩
+
+/-- A coerência **não** fixa a construção: `cl = 0` é coerente (`0` é classe de Hodge), e então o
+enunciado vira "toda classe de Hodge é 0". As construções genuínas continuam necessárias. -/
+theorem zero_coerente (C : ConstrucoesHodge) (h0 : ∀ V p z, C.cl V p z = 0) : Coerente C where
+  cl_add V p z₁ z₂ := by rw [h0, h0, h0, add_zero]
+  cl_hodge V p z _ := by
+    rw [h0]
+    exact (ATK.L3Base.hodgeClasses (C.hodge V p)).zero_mem
+
 end ATK.HodgeOficial
 
 #print axioms ATK.HodgeOficial.zero_mem_ciclosCodim
 #print axioms ATK.HodgeOficial.hodgeOficial_iff_modelo
 #print axioms ATK.HodgeOficial.hodge_cl_zero_iff
+#print axioms ATK.HodgeOficial.hodge_iff_imagem
+#print axioms ATK.HodgeOficial.zero_coerente

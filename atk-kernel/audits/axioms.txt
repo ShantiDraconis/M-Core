@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de bbf2f2aabe06a2a38e05739f322f537277c88c24f0f76e6bbfaa434e10c8414f
+# axiomas por teorema — congelamento de f1cff370b00b38b2dc0e5db499341a02e7f9adc4daf5c87bf5f03039b8b06c40
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3216,3 +3216,12 @@ ATK.EnunciadosOficiais.ym_nucleo	propext, Classical.choice, Quot.sound
 ATK.EnunciadosOficiais.rh_refutacao	propext, Classical.choice, Quot.sound
 ATK.EnunciadosOficiais.sete_condicional	propext, Classical.choice, Quot.sound
 ATK.EnunciadosOficiais.sete_refutado	propext, Classical.choice, Quot.sound
+ATK.GapGrafo.somaDarts_nonneg	propext, Classical.choice, Quot.sound
+ATK.GapGrafo.desigualdade_passo	propext, Classical.choice, Quot.sound
+ATK.GapGrafo.quadrado_caminho	propext, Classical.choice, Quot.sound
+ATK.GapGrafo.somaDarts_le	propext, Classical.choice, Quot.sound
+ATK.GapGrafo.poincare_grafo	propext, Classical.choice, Quot.sound
+ATK.GapGrafo.gap_grafo	propext, Classical.choice, Quot.sound
+ATK.GapGrafo.constante_gap_pos	propext, Classical.choice, Quot.sound
+ATK.HodgeOficial.hodge_iff_imagem	propext, Classical.choice, Quot.sound
+ATK.HodgeOficial.zero_coerente	propext, Classical.choice, Quot.sound
