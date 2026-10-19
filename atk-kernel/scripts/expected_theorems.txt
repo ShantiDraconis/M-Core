@@ -3201,3 +3201,10 @@ ATK.MundoHipotetico.brinquedo_fiel_iff
 ATK.MundoHipotetico.oraculo_eq_id
 ATK.MundoHipotetico.oraculo_beal
 ATK.MundoHipotetico.oraculo_rh
+ATK.ClosedMathReal.closedMath_real
+ATK.ClosedMathReal.enunciadosReais_de_lacunas
+ATK.ClosedMathReal.lacuna_rh_iff
+ATK.ClosedMathReal.lacuna_beal_iff
+ATK.ClosedMathReal.lacuna_pnp_iff
+ATK.ClosedMathReal.tres_lacunas_iff
+ATK.ClosedMathReal.sem_lacunas_se_refutado

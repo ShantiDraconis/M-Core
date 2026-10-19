@@ -101,6 +101,22 @@ originais não foram alterados.
 Mesmo corrigidos, esses arquivos continuam condicionais: `G1Bridge` e `ActualNSToTwentyFive` não
 têm construtor a partir das equações de Navier–Stokes, como os próprios arquivos dizem.
 
+## CLOSED_MATH sobre os enunciados reais (`ATK/ClosedMathReal.lean`)
+
+`closedMath_real : Lacunas H Y → ClosedMathRealAlvo H Y` foi aceito pelo kernel (axiomas padrão).
+O alvo usa os enunciados **reais**: `RiemannHypothesis` (Mathlib), Beal elementar, Navier–Stokes
+(A) do Clay sobre `ℝ³` (`NSReal`), `P ≠ NP` sobre `Turing.FinTM2` e BSD completo (posto e fórmula
+refinada) sobre `WeierstrassCurve.LFunction`. Hodge e Yang–Mills ainda **não têm enunciado real
+exprimível na Mathlib** e ficam sobre modelos `H`, `Y`.
+
+As hipóteses (`Lacunas`) são as lacunas reais: produtores O1–O8 e as pontes publicadas que ainda
+não estão no kernel (Leray, modularidade, Mordell–Weil, Gross–Zagier–Kolyvagin, Lefschetz,
+Osterwalder–Schrader). Cook–Levin (B4) e Báez-Duarte (B1) já estão provados e não entram.
+
+O que o kernel mostra: `tres_lacunas_iff`, ou seja, para RH, Beal e P vs NP as lacunas são
+**equivalentes** aos enunciados reais. Supor a lacuna é supor a conjectura. E se um enunciado real
+for refutado, não existem lacunas (`sem_lacunas_se_refutado`).
+
 ## Estado
 
 `OPEN_MATH = true` e `CLOSED_MATH = false`, inalterados. O kernel confirma a lógica dos

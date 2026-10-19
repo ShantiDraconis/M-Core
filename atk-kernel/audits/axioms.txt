@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 442bcab3846199f6faed7f2eb223d73a5de12ea84d428b855c4314e2aa4cdb4c
+# axiomas por teorema — congelamento de eb56501c4a0b826a2026ced339e6f2343de4f7b55ac359bab9b0b30cc69458e9
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3193,3 +3193,10 @@ ATK.MundoHipotetico.brinquedo_fiel_iff	propext, Classical.choice, Quot.sound
 ATK.MundoHipotetico.oraculo_eq_id	nenhum
 ATK.MundoHipotetico.oraculo_beal	propext
 ATK.MundoHipotetico.oraculo_rh	propext, Classical.choice, Quot.sound
+ATK.ClosedMathReal.closedMath_real	propext, Classical.choice, Quot.sound
+ATK.ClosedMathReal.enunciadosReais_de_lacunas	propext, Classical.choice, Quot.sound
+ATK.ClosedMathReal.lacuna_rh_iff	propext, Classical.choice, Quot.sound
+ATK.ClosedMathReal.lacuna_beal_iff	propext, Classical.choice, Quot.sound
+ATK.ClosedMathReal.lacuna_pnp_iff	propext, Classical.choice, Quot.sound
+ATK.ClosedMathReal.tres_lacunas_iff	propext, Classical.choice, Quot.sound
+ATK.ClosedMathReal.sem_lacunas_se_refutado	propext, Classical.choice, Quot.sound
