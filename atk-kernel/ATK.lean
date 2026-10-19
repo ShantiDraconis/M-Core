@@ -133,3 +133,6 @@ import ATK.TerceiroTemplo
 import ATK.TerceiroTemploII
 import ATK.MundoHipotetico
 import ATK.ClosedMathReal
+import ATK.YMOficial
+import ATK.HodgeOficial
+import ATK.EnunciadosOficiais

@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "eb56501c4a0b826a2026ced339e6f2343de4f7b55ac359bab9b0b30cc69458e9",
+  "sources_sha256": "bbf2f2aabe06a2a38e05739f322f537277c88c24f0f76e6bbfaa434e10c8414f",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -57,6 +57,7 @@
     "ATK/CookLevinTableau.lean": "1a47f6b4dc45d5920ce651c7c29284bc82abbb1e41c9ed6ab468a2b624858b7b",
     "ATK/DarmonMerelReducao.lean": "cfdc3d5b69b446969ee5d10334cc622a97665912b04081008c6f29eedccdadaf",
     "ATK/DarmonMerelSeis.lean": "187be5b38e0fdf9254e43c17d552fdf8be59520d67cff19d8175f1f10c898840",
+    "ATK/EnunciadosOficiais.lean": "8409a090f6b8a5ee7cc6e0cdb8d21c33f553e701d9e3dcbc1fe831b74b728281",
     "ATK/EspectralDN.lean": "752914e1bc8e260f831e9b05d5c0b4bd5ca9b22fbc2bf557f90db329853e8e4a",
     "ATK/FatoresQuarticos.lean": "c101dc5c0d6ce06606c31ad1da34669d17e1b184ff2c4a153eecfc83a25d7025",
     "ATK/FermatDezenove.lean": "8c730c49f1f0930b0a50fc56c2a0fabd9edb2b9a10b0625c64b4972b821af78e",
@@ -108,6 +109,7 @@
     "ATK/GermainLegendre.lean": "6f3fd227c694146364b2abae76611cb5ab4d27e17d56ed2450896001005711d3",
     "ATK/Hodge.lean": "f550ba31f9473133531e7c8bf4ec71b039c4e66f658a92de9487d3b21d70b870",
     "ATK/HodgeFiltracao.lean": "0250605857654db1e393afe4137e35db9d494df17af0403f72c438aebbe47db1",
+    "ATK/HodgeOficial.lean": "1a4fcddf8ab2378974eb5526d4d3ed766f110cff485b4bf26cb3164e1bdf9e60",
     "ATK/HodgeToro.lean": "64777184aae8d7df2286a683067c633364e8af6d6a3d83e2f76f9b1da74681ff",
     "ATK/HypothesisCalculus.lean": "87f1249fedb5027daee16f93f8fc437b5ed2f7714632580dc7c835b562afa15f",
     "ATK/IAlgebra.lean": "6bb09f5400b619a5d2631a23c8dd0e16ff2fc5e25d160f71529589a7932fbc98",
@@ -170,6 +172,7 @@
     "ATK/Termos.lean": "6a319edc9e6f9d9a3b7eb3a34d5e68a2b4f6ab60b23178c497b05f1bde86c456",
     "ATK/Triadico.lean": "2eb7ac98cbfd57beff7d5748a926dafd702c2065245a82e3985dfe0a636b875f",
     "ATK/ValleePoussin.lean": "858c22bff925f6c9e3af477d698b5fdd07202fa35a4c7aceb44e411f6d8fa235",
+    "ATK/YMOficial.lean": "352c748f123a25a9d6ed15b3c990e4503a5310eb9d294bca2b7ba45ee11a369d",
     "ATK/YMReconstrucao.lean": "9179947558621aa9504a9f2f16c66516080cb6659e1dd5cb0d41e013dc10054d",
     "ATK/YMToy.lean": "ccdf06a4414bffcdb4d30544090a2b35c8376273f01be11c79aa5ea4102cef97",
     "ATK/YangMills.lean": "8d71d123b50c37f0db0302c6edd40b519f32f1318084af81375fade4c49b89b0",
@@ -179,12 +182,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "d1bb73921e9f973e0690b0018b3696e4d7ca880d6373980078eadb4cfcd58ed1"
+    "ATK.lean": "870967fd4ad4bd121cc51f95bddc017d636ddcc5fcf9830db9e93029f99f097e"
   },
-  "n_files": 178,
-  "expected_theorems": 3210,
+  "n_files": 181,
+  "expected_theorems": 3226,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "0e831e0bed5d3631ef6bec4b4db9ab7da2d1022b",
+  "commit_at_freeze": "e365686f06ac5fb4115b2714eae87f23379a4ec8",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

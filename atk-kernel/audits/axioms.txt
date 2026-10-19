@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de eb56501c4a0b826a2026ced339e6f2343de4f7b55ac359bab9b0b30cc69458e9
+# axiomas por teorema — congelamento de bbf2f2aabe06a2a38e05739f322f537277c88c24f0f76e6bbfaa434e10c8414f
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound (local, importações reduzidas)
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound (local, importações reduzidas)
@@ -3200,3 +3200,19 @@ ATK.ClosedMathReal.lacuna_beal_iff	propext, Classical.choice, Quot.sound
 ATK.ClosedMathReal.lacuna_pnp_iff	propext, Classical.choice, Quot.sound
 ATK.ClosedMathReal.tres_lacunas_iff	propext, Classical.choice, Quot.sound
 ATK.ClosedMathReal.sem_lacunas_se_refutado	propext, Classical.choice, Quot.sound
+ATK.YMOficial.trF2_invariante	propext, Classical.choice, Quot.sound
+ATK.YMOficial.clay_implica_nucleo	propext, Classical.choice, Quot.sound
+ATK.YMOficial.nucleo_sem_g	propext, Classical.choice, Quot.sound
+ATK.YMOficial.trivial_gap	propext, Classical.choice, Quot.sound
+ATK.YMOficial.trivial_gaussiana	propext, Classical.choice, Quot.sound
+ATK.YMOficial.trivial_nao_e_nao_trivial	propext, Classical.choice, Quot.sound
+ATK.HodgeOficial.zero_mem_ciclosCodim	propext, Classical.choice, Quot.sound
+ATK.HodgeOficial.hodgeOficial_iff_modelo	propext, Classical.choice, Quot.sound
+ATK.HodgeOficial.hodge_cl_zero_iff	propext, Classical.choice, Quot.sound
+ATK.EnunciadosOficiais.ns_iff_clay	propext, Classical.choice, Quot.sound
+ATK.EnunciadosOficiais.pnp_iff_modelo	propext, Classical.choice, Quot.sound
+ATK.EnunciadosOficiais.hodge_iff_modelo	propext, Classical.choice, Quot.sound
+ATK.EnunciadosOficiais.ym_nucleo	propext, Classical.choice, Quot.sound
+ATK.EnunciadosOficiais.rh_refutacao	propext, Classical.choice, Quot.sound
+ATK.EnunciadosOficiais.sete_condicional	propext, Classical.choice, Quot.sound
+ATK.EnunciadosOficiais.sete_refutado	propext, Classical.choice, Quot.sound
