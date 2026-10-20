@@ -13,15 +13,53 @@ compilando hoje precisamente porque não afirmam nada. `ValorBelnap` de cada um:
 prova real, do tamanho exato do enunciado, inserida em `ATK/` como um teorema de verdade, do
 mesmo jeito que `ATK.ObligationsClosed.B1`/`B4` chegaram lá.
 
-| # | Problema | Alvo real (nome Lean, sem prova) | Onde vive hoje | O que falta |
-|---|---|---|---|---|
-| O1 | Riemann | `ATK.NecessidadeBD.EntradaLittlewood ε` (`0 < ε ≤ 1/2`) e `EntradasNecessidade` | `ATK/NecessidadeBD.lean` | Littlewood-type bound em `1/ζ` na linha crítica + decaimento de `J(ε)` via produto de Hadamard. Checado nesta sessão: nenhuma das duas peças (contagem de zeros/fórmula explícita, fatoração de Hadamard para funções inteiras) está no Mathlib hoje. `EntradasNecessidade ⇒ RH` já está provado (`rh_of_entradas`); a direção que falta tem, pelo próprio docstring do arquivo, "a força exata de RH". |
-| O2 | Beal | `ATK.Conditional.Beal.GCDLowerBoundSmallExponents` | `ATK/Conditional/Beal.lean` | Excluir o caso residual `mdc(x,y,z) ≤ 2`; ~11-17% do domínio já reduzido via FLT/Darmon–Merel (condicional a B2/B8), resto aberto. |
-| O3 | Navier–Stokes | `ATK.Conditional.NavierStokes.EnstrophyAPrioriBound` | `ATK/Conditional/NavierStokes.lean` | Cota a priori para a enstrofia independente de já saber que a solução é suave — equivalente em força aos critérios de Beale–Kato–Majda/Prodi–Serrin, não contornável por uma desigualdade mais fraca (ver `ATK.NSExplosao.explosao_comparacao`). |
-| O4 | P vs NP | `ATK.Conditional.PvsNP.SATNotInP` | `ATK/Conditional/PvsNP.lean` | Um lower bound super-polinomial real para SAT — é o próprio P ≠ NP, não um passo intermediário. `B4` (Cook–Levin, `SAT ∈ NP`) já provado; não ajuda a fechar esta direção. |
-| O5 | Hodge | `ATK.Conditional.Hodge.MiddleCodimension` | `ATK/Conditional/Hodge.lean` | Toda classe de Hodge racional vem de um divisor/ciclo algébrico — falta a parte que depende de cohomologia de variedades (sequência exponencial), fora do que `HodgeFiltracao` já cobre incondicionalmente. |
-| O6/O7 | BSD | obrigação de posto (`rank E ≤ analyticRank E` para posto analítico ≥ 2) | `ATK/Conditional/BSD.lean` | Cota superior do posto via Selmer/sistema de Euler — Gross–Zagier–Kolyvagin (`B6`, já certificado) só cobre posto analítico ≤ 1; nenhum método geral conhecido além disso. |
-| O8 | Yang–Mills | obrigação de mass gap | `ATK/Conditional/YangMills.lean` | Construção de medida em `ℝ⁴` satisfazendo os axiomas de Osterwalder–Schrader com `mass gap > 0` — a reconstrução (`B7`, já certificada) só existe no modelo de rede de `ATK.YMToy`, não no contínuo. |
+**Categorias de produtor** (nenhuma delas é "fechamento" — todas as 8 linhas abaixo têm
+`status = open`):
+
+- `route-eliminated` — uma rota proposta para o alvo foi fechada por incompatibilidade real
+  (não é produção, é eliminação de um caminho).
+- `conditional-reduction` — reduz o alvo a um caso residual menor, condicional a um resultado
+  externo (bridge).
+- `context-machinery` — resultado padrão necessário para enquadrar o problema; não avança sobre
+  ele.
+- `clarifying-prerequisite` — conteúdo real e não-trivial, mas ortogonal ao alvo: esclarece a
+  definição correta do problema sem aproximar a prova (ver O5 abaixo — checado nesta sessão,
+  `IsHodgeClass` é definida independentemente de `filtracao`, e identificá-las exige o argumento
+  de conjugação; não é `Iff.rfl` disfarçado, mas também não toca algebricidade).
+- `genuine-partial-producer` — matemática nova real na direção do alvo (casos concretos,
+  identidades reduzidas).
+
+**Funil** = existe um teorema conhecido e nomeável tal que formalizá-lo isola o conteúdo aberto
+num único enunciado (sem resolvê-lo). "Não formalizado" significa que o caminho existe na
+literatura mas não foi andado neste kernel.
+
+| O | Alvo (nome Lean) | Categoria | Funil disponível | Status | Razão |
+|---|---|---|---|---|---|
+| O1 | `ATK.NecessidadeBD.EntradaLittlewood`/`EntradasNecessidade` | `route-eliminated` | `NecessidadeRH` (RH ⇒ D_N→0, Báez-Duarte) — não formalizado | open | Rota de contração `D_{2N}≤q·D_N` eliminada por `sem_contracao_de_piso_log` (incompatível com o piso log BBLS/Burnol). Littlewood-bound + decaimento de Hadamard não estão no Mathlib. |
+| O2 | `ATK.Conditional.Beal.GCDLowerBoundSmallExponents` | `conditional-reduction` | nenhum conhecido (ABC implica Beal, mas é mais forte e aberto — funil para cima, não para baixo) | open | FLT (formalizado externamente, não integrado) fecha o caso `gcd(x,y,z)>2` via `exponent_gcd_le_two`; o caso `gcd≤2` é O2 em si. Sem medida natural no espaço de expoentes — nenhuma fração de "cobertura do domínio" é citada aqui. |
+| O3 | `ATK.Conditional.NavierStokes.EnstrophyAPrioriBound` | `route-eliminated` | BKM + Prodi–Serrin–Ladyzhenskaya — não formalizado | open | A rota de dados pequenos (`y'≤-ay+by³`, `bM²<a`) nunca pretendeu cobrir o caso geral — não se estende a ele, porque a mesma desigualdade explode quando `by₀²>a` (`NSExplosao.explosao_comparacao`). Não é uma rota geral que "caiu"; é uma desigualdade escalar que nunca bastava sozinha. |
+| O4 | `ATK.Conditional.PvsNP.SATNotInP` | `context-machinery` | nenhum conhecido (barreiras — Razborov–Rudich, GCT — são o próprio conteúdo) | open | Shannon (não-construtivo) e a cota linear explícita (`n≤2s+1`) enquadram o problema; nenhum dos dois é um produtor sobre SAT especificamente. Zero produtores reais sobre a obrigação em si. |
+| O5 | `ATK.Conditional.Hodge.MiddleCodimension` | `clarifying-prerequisite` | nenhum conhecido (algebricidade não reduz; versão integral é falsa por Atiyah–Hirzebruch, só a racional é o alvo) | open | `HodgeFiltracao` identifica `IsHodgeClass` com a filtração — conteúdo real, mas nunca toca se a classe vem de um ciclo algébrico. |
+| O6 | `ATK.Conditional.BSD.RankOpen` (posto analítico ≥ 2) | `genuine-partial-producer` | nenhum conhecido (Iwasawa main conjecture reduz a outro problema aberto) | open | Posto algébrico certificado em curvas concretas (`posto_R30`, `posto_R6`), uma por vez; Gross–Zagier–Kolyvagin só cobre posto analítico ≤ 1. |
+| O7 | `ATK.Conditional.BSD.RefinedOpen` | `genuine-partial-producer` | nenhum conhecido | open | Reduz a uma identidade numérica concreta em `y²=x³-x` (`L(E,1)=Ω·∏c_p·#Ш/16`); `#Ш` finitude continua aberta. |
+| O8 | `ATK.Conditional.YangMills.ConstructiveYM4D` | `genuine-partial-producer` | OS reconstruction (Osterwalder–Schrader 1973/75) — não formalizado | open | Modelo de rede (`YMToy`) satisfaz a versão lattice de toda condição (positividade de reflexão, clustering com `m(β)>0`); o limite contínuo 4D não-abeliano é o aberto, nomeado. |
+
+## Nota: FLT formalizado externamente (B2)
+
+`anthropics/fermats-last-theorem`, commit `db584cd6d46c92f209a44c0f1c829460d327499d`, pinado em
+Lean `v4.33.1` / Mathlib no mesmo commit. Fonte inspecionada diretamente (clone raso, leitura de
+`lakefile.lean`, `FinalCheck.lean`, `lean-toolchain`): `FinalCheck.lean` deriva
+`flt_mathlib : FermatLastTheorem` (a definição real da Mathlib, `import
+Mathlib.NumberTheory.FLT.Basic`) a partir de `fermat_last_theorem`, com `#guard_msgs` gateando
+`#print axioms fermat_last_theorem` para `[propext, Classical.choice, Quot.sound]`. Build verde é
+alegado pelo README do repositório; **não compilado independentemente nesta auditoria**.
+
+Esse `FermatLastTheorem` é exatamente a hipótese `hFLT` de
+`ATK.Conditional.Beal.exponent_gcd_le_two`, já provado e committed neste kernel: dado `hFLT`, toda
+solução da equação de Beal tem `gcd(x,y,z) ≤ 2` (a substituição `x=rd,y=sd,z=td` reduz o caso
+`gcd>2` a uma instância literal de Fermat). Importar o repo externo não fecharia B2 nem Beal —
+só removeria o parâmetro `hFLT` de um teorema já provado. **Beal reduz a O2** (o caso
+`gcd(x,y,z)≤2`), que continua `open`. Este kernel não foi alterado para depender do repo externo.
 
 ## O que o roteiro não é
 
