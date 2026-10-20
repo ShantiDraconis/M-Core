@@ -47,10 +47,15 @@ para funções de Schwinger $S_n(x_1,\dots,x_n)$:
 
 **3. Classificação: `mais fraco`.** `M.OSAxioms : Group → Euclidean → Prop` é um campo
 **não interpretado** da estrutura abstrata `YMModel`. Nada no tipo Lean força esse campo a
-codificar OS0–OS4; é um parâmetro livre, satisfazível por qualquer predicado, inclusive um
-vazio. `ConstructiveYM4D M` não formaliza "OS0–OS4 valem para uma medida euclidiana 4D
-não-abeliana real" — formaliza "algum predicado que o modelo chama de `OSAxioms` vale", o que é
-estritamente mais fraco. Isso não é um defeito escondido: o arquivo declara `PARAMÉTRICA`
+codificar OS0–OS4; o campo pode ser **instanciado** por qualquer predicado — inclusive um
+restritivo, como `fun _ _ => False`, que tornaria a obrigação insatisfazível para esse `M`, não
+trivialmente satisfeita. A vacuidade específica (seção 4) exige um predicado **permissivo**
+(`True`), não "qualquer um"; o ponto que sustenta `mais fraco` é mais estreito e ainda vale: o
+tipo não exclui nem o caso vazio nem o caso permissivo, logo `ConstructiveYM4D M` não formaliza
+"OS0–OS4 valem para uma medida euclidiana 4D não-abeliana real" — formaliza "algum predicado que
+o modelo chama de `OSAxioms` vale, para a instância de `M` escolhida", o que é estritamente mais
+fraco e pode ir em qualquer direção (trivialmente satisfeito ou trivialmente insatisfazível)
+dependendo da escolha. Isso não é um defeito escondido: o arquivo declara `PARAMÉTRICA`
 abertamente. É a mesma classe de risco já documentada no kernel para NS/P vs NP (L1/L2) via
 `ns_toy_model_vacuous`/`pnp_toy_model_vacuous`.
 
