@@ -43,6 +43,18 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   teoremas (`ATK/F1YM.lean`, `StatusFinal.natureza`); a atestação de CI das fontes atuais (3361)
   fica para o próximo run.
 
+**`CLOSED_MATH` por obrigação** (`StatusFinal.closedMillennium`): um item só conta como fechado
+se estiver provado **e** for fiel ao problema Millennium. Fidelidade: `fiel` para O1, O2 e O4 (o
+kernel prova que a obrigação é a conjectura real), `sombra` para O8, `naoConferida` para O3, O5, O6
+e O7. `closedMillennium_hoje`: nenhum dos oito. `sombra_nunca_millennium`: provar `YMNucleo` não
+muda isso.
+
+Para 7 dos 8, *closed* exige resolver um problema Millennium; não há caminho de formalização. Para
+O8, *closed* no sentido do kernel é alcançável (reconstrução de Wightman de `:φ²:`; os axiomas do
+kernel só usam o campo em `D`, provado em `ATK.F1YM.troca_fora_de_D`), mas isso fecha a sombra
+`YMNucleo`, não o Clay. Portanto `CLOSED_MATH = true` agregado seria enganoso mesmo no melhor caso;
+o mapa por obrigação, com a semântica "provado e fiel ao Millennium", é o que carrega a verdade.
+
 **Status calculado pelo kernel** (`ATK/StatusFinal.lean`): `open_math_true`, `closed_math_false`,
 `nenhum_item_em_B`, `closedMath_correto`. Roteiro do que falta: `conditional/ROTEIRO_LIMITE.md`.
 

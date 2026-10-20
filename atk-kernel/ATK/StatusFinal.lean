@@ -177,6 +177,41 @@ theorem sete_abertas_uma_nao_formalizada (C : ATK.HodgeOficial.ConstrucoesHodge)
       openMath (obrigacoes C) = true :=
   ⟨by decide, by decide, rfl⟩
 
+/-! ## `CLOSED_MATH` por obrigação: "provado **e** fiel ao Millennium"
+
+O agregado `CLOSED_MATH` seria enganoso mesmo no melhor caso: provar `YMNucleo` (sombra) poria O8
+em `T` sem resolver o Clay. O mapa por obrigação só conta um item como fechado no sentido Millennium
+se ele estiver provado **e** o enunciado for fiel. A fidelidade só é `fiel` onde o kernel prova que
+a obrigação **é** a conjectura real (`obrigacoes_sao_conjecturas`: O1, O2, O4); O8 é `sombra`
+(F.1/O8); os demais são `naoConferida` (F.1 não feita). -/
+
+/-- Fidelidade do enunciado registrado ao problema Millennium. -/
+inductive Fidelidade
+  | fiel
+  | sombra
+  | naoConferida
+  deriving DecidableEq
+
+/-- A fidelidade de O1–O8, na ordem de `obrigacoes`. -/
+def fidelidade : List Fidelidade :=
+  [.fiel, .fiel, .naoConferida, .fiel, .naoConferida, .naoConferida, .naoConferida,
+    if shadowO8 then .sombra else .naoConferida]
+
+/-- Fechado no sentido Millennium: provado (`estado.pos`) **e** fiel. -/
+def fechadoMillennium (i : Item) (f : Fidelidade) : Bool := i.estado.pos && decide (f = .fiel)
+
+/-- **Uma sombra nunca conta como Millennium fechado**, qualquer que seja o estado do item. -/
+theorem sombra_nunca_millennium (i : Item) : fechadoMillennium i .sombra = false := by
+  simp [fechadoMillennium]
+
+/-- O mapa por obrigação. -/
+def closedMillennium (C : ATK.HodgeOficial.ConstrucoesHodge) : List Bool :=
+  List.zipWith fechadoMillennium (obrigacoes C) fidelidade
+
+/-- **Hoje: nenhuma das oito fechada no sentido Millennium.** -/
+theorem closedMillennium_hoje (C : ATK.HodgeOficial.ConstrucoesHodge) :
+    closedMillennium C = List.replicate 8 false := rfl
+
 /-- As pontes provadas estão em `T`, e cada uma carrega sua prova. -/
 theorem pontesProvadas_T : ∀ i ∈ pontesProvadas, i.estado = Quatro.T := by
   simp [pontesProvadas, itemT]
@@ -216,3 +251,5 @@ end ATK.StatusFinal
 #print axioms ATK.StatusFinal.obrigacoes_sao_conjecturas
 #print axioms ATK.StatusFinal.natureza_alinhada
 #print axioms ATK.StatusFinal.sete_abertas_uma_nao_formalizada
+#print axioms ATK.StatusFinal.sombra_nunca_millennium
+#print axioms ATK.StatusFinal.closedMillennium_hoje

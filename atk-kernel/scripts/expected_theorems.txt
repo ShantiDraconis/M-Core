@@ -3359,3 +3359,5 @@ ATK.F1YM.troca_fora_de_D
 ATK.F1YM.extensao_de_D
 ATK.StatusFinal.natureza_alinhada
 ATK.StatusFinal.sete_abertas_uma_nao_formalizada
+ATK.StatusFinal.sombra_nunca_millennium
+ATK.StatusFinal.closedMillennium_hoje
