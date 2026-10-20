@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 0f4be6c290df59efcece030dcb929a4184a2debd39293d71b779e4a3a74a4aba
+# axiomas por teorema — congelamento de b7a58c7dd47966d161c4df7aca433236921893389dfb78ce84040569f992b657
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -3297,3 +3297,56 @@ ATK.LinhasNovas.centro_bsd_normalizado	propext, Classical.choice, Quot.sound
 ATK.LinhasNovas.centro_hodge_normalizado	propext, Classical.choice, Quot.sound
 ATK.LinhasNovas.aproximacao_trivial	propext, Quot.sound
 ATK.LinhasNovas.truncamento_finito	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Meio.half_fixed_point	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Meio.half_normalized	propext
+ATK.LinhasNovas.Meio.half_center_invariant	propext
+ATK.LinhasNovas.Truncamento.trunc_monotone	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Truncamento.trunc_iUnion	propext, Quot.sound
+ATK.LinhasNovas.Truncamento.trunc_injective	propext, Quot.sound
+ATK.LinhasNovas.RetaProjetiva.inv_some	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.RetaProjetiva.inv_fixed	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.RetaProjetiva.neg_fixed	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.RetaProjetiva.neg_involutive	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.RetaProjetiva.inv_involutive	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.RetaProjetiva.neg_inv_involutive	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Colapso.colapso_inf	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Colapso.colapso_some	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Colapso.colapso_fiber	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Colapso.colapso_inv	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Colapso.inv_real_fixed	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Colapso.inv_real_bijective	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Cauda.conjunto_countable	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Cauda.conjunto_dense	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Cauda.nao_corpo	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.InvolucaoComFixos.centro_fixos	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.InvolucaoComFixos.invProj_fixos	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.InvolucaoComFixos.negProj_fixos	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Truncamento.trunc_tabela	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Extras.no_fixpoint_of_cancelative	nenhum
+ATK.LinhasNovas.Extras.enat_nao_cancelativo	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Extras.rat_sem_maior_negativo	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Extras.caudaFinita_iff	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Extras.centro_afim	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.InvolucaoComFixos.ofAffineCenter_fixos	propext, Classical.choice, Quot.sound
+ATK.DInfinito.dInf_nonneg	propext, Classical.choice, Quot.sound
+ATK.DInfinito.dInf_le_one	propext, Classical.choice, Quot.sound
+ATK.DInfinito.tendsto_dInf	propext, Classical.choice, Quot.sound
+ATK.DInfinito.dInf_eq_zero_iff	propext, Classical.choice, Quot.sound
+ATK.DInfinito.piso_no_limite	propext, Classical.choice, Quot.sound
+ATK.DInfinito.dInf_pos_of_zeroFora	propext, Classical.choice, Quot.sound
+ATK.DInfinito.rh_of_dInf_eq_zero	propext, Classical.choice, Quot.sound
+ATK.DInfinito.rh_iff_dInf_eq_zero	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Cauda.conjunto_not_closed	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Cauda.um_terco_no_fecho	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Truncamento.trunc_eq_self_iff	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Ordem.nat_sem_topo	propext, Quot.sound
+ATK.LinhasNovas.Ordem.enat_com_topo	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Ordem.maior_abaixo_iff_predOrder	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Ordem.int_pred	propext
+ATK.LinhasNovas.Ordem.real_sem_pred	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Involucao.quebrada_involutive	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Involucao.quebrada_strictAnti	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Involucao.strictAnti_involutive_nao_afim	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.Involucao.quebrada_fixo	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.InvolucaoComFixos.Hom.mapsTo_fixos	propext
+ATK.LinhasNovas.InvolucaoComFixos.colapso_nao_injetivo	propext, Classical.choice, Quot.sound

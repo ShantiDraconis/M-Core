@@ -14,11 +14,18 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
 
 * **Nenhum dos sete problemas está resolvido.** `CLOSED_MATH = false`; o portão
   `ATK/ClosedMathGate.lean` (que exigiria `closed_math` **sem hipóteses**) não existe.
-* **Congelamento** (`atk-kernel/audits/`): **3297 teoremas esperados**
-  (`scripts/expected_theorems.txt`), **3297/3297 verificados localmente** (Lean 4.34.1, Mathlib
+* **OPEN_MATH = true é, por ora, fato sobre os enunciados que o kernel codifica, não certificação
+  de fidelidade aos problemas Millennium. F.1 não foi checada** (próximos a conferir: O8,
+  O4, O1).
+* **Congelamento** (`atk-kernel/audits/`): **3350 teoremas esperados**
+  (`scripts/expected_theorems.txt`), **3350/3350 verificados localmente** (Lean 4.34.1, Mathlib
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,
   `Classical.choice`, `Quot.sound`). Nenhum `sorryAx`, nenhum axioma novo; a distribuição por
   teorema está em `audits/axioms.txt`.
+* **Nível da evidência**: a contagem acima é **local, por compilação** (`congelar.py --axiomas`
+  roda `lake env lean` em cada módulo e lê o `#print axioms`). O `check_axioms.py` só certifica a
+  partir dos logs do CI (`reports/audit_*.log`); localmente ele dá `NOT_RUN`, por desenho. A
+  certificação **por CI** das fontes atuais só vale depois do run correspondente.
 * **Hash das fontes**: o valor atual está em `audits/provenance.json` (`sources_sha256`).
 * **CI**: os runs 314–318 passaram. O run 318 imprimiu o mesmo hash do congelamento anterior
   (`f1cff370…`, 3235 teoremas). A atestação das fontes atuais é registrada depois do run
