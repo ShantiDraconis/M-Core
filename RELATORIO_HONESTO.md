@@ -112,6 +112,15 @@ evidência negativa), `B = ⟨true, true⟩` e `nao` troca as componentes:
 P ≠ NP ou dos outros. Um terceiro estado "verdadeiro e falso" **no nível de prova** é impossível
 (`closed_e_refutado_impossivel`): habitar `P` e `¬P` dá `False`.
 
+## 6b. Limite do kernel
+
+Para sete dos oito, a árvore de redução termina num problema Millennium. O kernel torna a folha
+explícita e verificável; não a move. O trabalho futuro é (a) fechar as folhas fecháveis (O1
+necessidade, O7 numérico, O8 Wightman, O3 **com interface**: o critério do kernel é o de
+enstrofia, não BKM nem PSL), (b) registrar as interfaces (`conditional/MAPA_FOLHAS.md`), e (c)
+esperar a matemática. O kernel não transforma conjecturas em soluções: verifica uma prova quando
+ela existir, não a produz.
+
 ## 7. O que este projeto não é
 
 * Não é a solução de nenhum dos problemas do milênio.
