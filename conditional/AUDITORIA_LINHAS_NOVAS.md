@@ -2,7 +2,7 @@
 
 Commit compilado: `7fdcc61` (Lean 4.34.1, Mathlib `v4.34.1`, compilação local com `lake env lean`).
 Comandos: `#check @<nome>` e `#print axioms <nome>` com o nome completamente qualificado.
-Resultado: **20 entradas (20 declarações e o construtor `NaturalFinal.mk`), 0 com `sorryAx`**; todas usam no máximo
+Resultado: **21 entradas (20 declarações e o construtor `NaturalFinal.mk`), 0 com `sorryAx`**; todas usam no máximo
 `propext`, `Classical.choice` e `Quot.sound`.
 
 | Nome qualificado | Tipo | Axiomas |
@@ -25,6 +25,7 @@ Resultado: **20 entradas (20 declarações e o construtor `NaturalFinal.mk`), 0 
 | `ATK.LinhasNovas.centro_rh` | `∀ (σ : ℝ), 1 - σ = σ ↔ σ = 1 / 2` | propext, Classical.choice, Quot.sound |
 | `ATK.LinhasNovas.centro_bsd` | `∀ (s : ℝ), 2 - s = s ↔ s = 1` | propext, Classical.choice, Quot.sound |
 | `ATK.LinhasNovas.centro_bsd_normalizado` | `∀ (s : ℝ), 2 - s - 1 / 2 = 1 - (s - 1 / 2)` | propext, Classical.choice, Quot.sound |
+| `ATK.LinhasNovas.centro_hodge_normalizado` | `∀ {n p q : ℝ}, n ≠ 0 → p + q = n → q / n = 1 - p / n ∧ (p = q ↔ p / n = 1 / 2)` | propext, Classical.choice, Quot.sound |
 | `ATK.LinhasNovas.aproximacao_trivial` | `∀ (L : Set (List Bool)) (w : List Bool), ∀ᶠ (k : ℕ) in Filter.atTop, w ∈ truncamento L k ↔ w ∈ L` | propext, Quot.sound |
 | `ATK.LinhasNovas.truncamento_finito` | `∀ (L : Set (List Bool)) (k : ℕ), (truncamento L k).Finite` | propext, Classical.choice, Quot.sound |
 
