@@ -101,23 +101,33 @@ def o8 : Evidencia :=
   { camada := "OPEN_MATH", claim := "O8 (Yang–Mills, mass gap)", temAFavor := false,
     temContra := false, fonte := "scripts/obligations.json, O8 (OPEN_MATH)" }
 
-/-! ## O caso real de `ambos`: o esquema paramétrico sem a ligação fixada -/
+/-! ## Correção (revisão de PR): o caso do modelo de brinquede não é `ambos` -/
 
-/-- `L1` (ligação de Navier–Stokes) está `CLOSED` no modelo genuíno — isso continua só a favor.
-Mas o **mesmo esquema** `ClayStatementA M`, antes de fixar esse modelo genuíno, também é
-satisfeito trivialmente por um modelo de brinquedo vazio (`ns_toy_model_vacuous`), e
-`ns_depende_do_modelo` prova que o esquema é verdadeiro num modelo e falso noutro. Isso é
-evidência real e específica contra tratar o esquema paramétrico, por si só, como significativo
-— um caso legítimo de `ambos`, distinto de `L1` em si. -/
+/-- Uma revisão real desta auditoria apontou um erro aqui: `ns_toy_model_vacuous` prova só
+`∃ M, ClayStatementA M` (favor, sobre esse `M`); ela não prova `¬ ClayStatementA M'` para
+nenhum `M'` — não é uma segunda fonte refutando a mesma reivindicação. Tratar isso como `ambos`
+para "`ClayStatementA M`" conflava duas reivindicações diferentes: a verdade do existencial
+(incondicionalmente verdadeira — não há como ter evidência contra ela) e a questão separada de
+se um `M` não ligado conta como progresso real. É exatamente a conflação entre reivindicações
+que este arquivo existe para evitar (ver `ATK.StatusHonesto`).
+
+A reivindicação correta, isolada, é: "**um modelo não ligado (brinquedo) que satisfaz o esquema
+conta como progresso em direção a `ClayStatementA`/`PneNP`**". Ninguém afirma isso a favor
+(`temAFavor := false`); e há evidência real e específica contra (`temContra := true`):
+`ns_toy_model_vacuous` exibe esse `M` como trivial, e `ns_depende_do_modelo` prova que o mesmo
+esquema vale para um `M` e falha para outro — logo satisfazê-lo para um `M` não ligado não
+mostra nada sobre o problema genuíno. Isso é `falso`, não `ambos`. -/
 def esquemaNS_sem_ligacao : Evidencia :=
-  { camada := "LIGAÇÃO", claim := "esquema NS paramétrico antes de fixar L1",
-    temAFavor := true, temContra := true,
+  { camada := "LIGAÇÃO",
+    claim := "um modelo NS não ligado (brinquedo) que satisfaz o esquema conta como progresso",
+    temAFavor := false, temContra := true,
     fonte := "ATK.ClosedMath.ns_toy_model_vacuous + ATK.FinalRoot.ns_depende_do_modelo" }
 
 /-- O mesmo para `L2` / P vs NP: `pnp_toy_model_vacuous` + `pnp_depende_do_modelo`. -/
 def esquemaPNP_sem_ligacao : Evidencia :=
-  { camada := "LIGAÇÃO", claim := "esquema P vs NP paramétrico antes de fixar L2",
-    temAFavor := true, temContra := true,
+  { camada := "LIGAÇÃO",
+    claim := "um modelo PvsNP não ligado (brinquedo) que satisfaz o esquema conta como progresso",
+    temAFavor := false, temContra := true,
     fonte := "ATK.ClosedMath.pnp_toy_model_vacuous + ATK.FinalRoot.pnp_depende_do_modelo" }
 
 /-! ## Teoremas -/
@@ -135,17 +145,19 @@ theorem obrigacoesAbertas_nenhum :
       o5.valor = .nenhum ∧ o6.valor = .nenhum ∧ o7.valor = .nenhum ∧ o8.valor = .nenhum :=
   ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
 
-theorem esquemaSemLigacao_ambos :
-    esquemaNS_sem_ligacao.valor = .ambos ∧ esquemaPNP_sem_ligacao.valor = .ambos :=
+theorem esquemaSemLigacao_falso :
+    esquemaNS_sem_ligacao.valor = .falso ∧ esquemaPNP_sem_ligacao.valor = .falso :=
   ⟨rfl, rfl⟩
 
 /-!
-Nesta auditoria item a item, `ambos` ocorre exatamente duas vezes, e só para a reivindicação
-"o esquema paramétrico sem ligação fixada é significativo por si só" — nunca para `OPEN_MATH`
-ou `CLOSED_MATH` como um todo, que permanecem conjunções majoritariamente `nenhum` (6 das 8
-obrigações e 6 das 8 pontes) mais duas pontes `verdadeiro` (B1, B4). Atribuir `ambos` a
-`OPEN_MATH`/`CLOSED_MATH` inteiros por decreto, sem esta auditoria item a item, não é algo que
-este arquivo prove ou licencie.
+Depois da correção acima, esta auditoria item a item não contém nenhum caso confirmado de
+`ambos`: as 8 obrigações e 6 das 8 pontes são `nenhum`, duas pontes são `verdadeiro` (B1, B4), e
+os dois itens de ligação que pareciam `ambos` são, corretamente isolados, `falso`. `ambos`
+continua um valor legítimo de `ValorBelnap` (ver `ATK.AnaliseInversao`), só que, até hoje, sem
+uma instância real confirmada neste kernel — e não é este arquivo que vai forçar uma só para ter
+um exemplo. Nada aqui atribui `ambos`, `verdadeiro` ou qualquer outro valor a `OPEN_MATH` ou
+`CLOSED_MATH` como um todo: essas camadas permanecem conjunções heterogêneas, não uma
+reivindicação com `ValorBelnap` próprio.
 -/
 
 end ATK.AuditoriaBelnapReal
@@ -154,4 +166,4 @@ end ATK.AuditoriaBelnapReal
 #print axioms ATK.AuditoriaBelnapReal.b4_verdadeiro
 #print axioms ATK.AuditoriaBelnapReal.pontesNaoProvadas_nenhum
 #print axioms ATK.AuditoriaBelnapReal.obrigacoesAbertas_nenhum
-#print axioms ATK.AuditoriaBelnapReal.esquemaSemLigacao_ambos
+#print axioms ATK.AuditoriaBelnapReal.esquemaSemLigacao_falso

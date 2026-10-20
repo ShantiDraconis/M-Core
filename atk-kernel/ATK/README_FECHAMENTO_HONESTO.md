@@ -28,15 +28,15 @@ inductive Tri (P : Prop) where
 
 Em Lean, `¬P` é `P → False`. Para construir `Tri.tf h1 h2` é preciso ter, ao mesmo tempo,
 `h1 : P` e `h2 : ¬P`. Mas `h2 h1 : False` já é um termo de `False` — e de `False`, `False.elim`
-prova qualquer coisa (principio da explosão). `Tri.tf` não é um terceiro estado estável: é um
+prova qualquer coisa (princípio da explosão). `Tri.tf` não é um terceiro estado estável: é um
 detector de inconsistência. Se `P := ATK.ClosedMath.SevenStatements M` e alguém de fato
 construísse `Tri.tf h1 h2`, a notícia seria que a teoria de base (Mathlib, ou a lógica que o Lean
 está checando) é inconsistente — não que `SevenStatements M` tem um terceiro valor de verdade
 interessante.
 
-Por que isso passaria pelos checadores de axioma do projeto (`check_axioms.py`,
-`axiom-gate-G6b.sh`)? Porque esses scripts checam `sorry`/`admit`/`axiom` e o fecho de axiomas de
-um teorema já construído — não checam se as premissas que alguém *forneceria* para construir
+Por que isso passaria pelo checador de axioma do projeto (`check_axioms.py`, rodado pelo passo de
+auditoria do `atk-kernel.yml`)? Porque esse checador checa `sorry`/`admit`/`axiom` e o fecho de
+axiomas de um teorema já construído — não checam se as premissas que alguém *forneceria* para construir
 `Tri.tf` são, elas próprias, consistentes entre si. É exatamente o tipo de buraco que o projeto
 já fechou quando removeu `ForcagemManual`.
 
@@ -102,13 +102,18 @@ de Belnap e essa equação precisar valer, esse valor só pode ser `ambos` ou `n
 `verdadeiro` ou `falso` isolados. Isso não é uma falha do kernel; é a lógica de Belnap
 confirmando que, além dessas duas, não há uma terceira opção escondida.
 
-## 6. Aplicação honesta ao estado atual — dois exemplos reais, um deles uma correção
+## 6. Aplicação honesta ao estado atual — dois exemplos reais, dois deles correções
 
 * **`ATK.ClosedMath.ns_toy_model_vacuous` / `pnp_toy_model_vacuous`**
-  (`ATK/ClosedMath.lean:94,103`): existe um modelo (`temAFavor`) *e* uma prova própria,
-  certificada, de que esse modelo específico é vazio/trivial (`temContra`) — evidência real e
-  conflitante de duas fontes diferentes dentro do mesmo kernel. Este é um caso legítimo de
-  `ambos`.
+  (`ATK/ClosedMath.lean:94,103`): uma revisão real nesta PR apontou que uma versão anterior desta
+  seção também rotulava isso `ambos`, e também estava errada — pela mesma razão da seção 4.
+  `ns_toy_model_vacuous` prova só `∃ M, ClayStatementA M`; não prova `¬ ClayStatementA M'` para
+  nenhum `M'`, então não há uma segunda fonte refutando a mesma reivindicação. A reivindicação
+  isolada corretamente é outra: "um modelo não ligado (brinquedo) que satisfaz o esquema conta
+  como progresso real" — ninguém afirma isso a favor, e há evidência específica contra
+  (`ns_toy_model_vacuous` exibe esse `M` como trivial; `ns_depende_do_modelo` prova que o mesmo
+  esquema vale num `M` e falha noutro). Isso é `falso`, não `ambos` — ver
+  `ATK.AuditoriaBelnapReal.esquemaSemLigacao_falso`.
 
 * **A obrigação aberta de Riemann, `ATK.Conditional.Riemann.UniformLogBound`**
   (`ATK/Conditional/Riemann.lean`): a ponte `BaezDuarteCriterion` (B1) está certificada
@@ -143,10 +148,13 @@ verdade foi definida por decreto.
 A alternativa feita em `ATK/AuditoriaBelnapReal.lean` é auditar os 8 + 8 itens reais de
 `scripts/obligations.json` **um por um**, com a fonte real de cada `temAFavor`/`temContra`, e
 deixar o `ValorBelnap` de cada um ser computado (`Evidencia.valor`), não estipulado. O resultado
-real: `ambos` aparece exatamente duas vezes (o esquema paramétrico de NS e de P vs NP antes de
-fixar a ligação genuína — seção 6), as 8 obrigações abertas e 6 das 8 pontes são `nenhum`, e
-B1/B4 são `verdadeiro`. Não existe, nessa auditoria, uma reivindicação única chamada "OPEN_MATH"
-ou "CLOSED_MATH" com um `ValorBelnap` próprio — só a conjunção de itens heterogêneos que `ATK.ClosedMath.OpenObligations`/`Bridges` já definem.
+real, após a correção da seção 6: as 8 obrigações abertas e 6 das 8 pontes são `nenhum`, B1/B4
+são `verdadeiro`, e os dois itens de ligação (NS/P vs NP) são `falso` — não `ambos`. Esta
+auditoria não contém, hoje, nenhum caso confirmado de `ambos`; é um valor legítimo de
+`ValorBelnap` sem instância real ainda, e este arquivo não força uma só para ter um exemplo. Não
+existe, nessa auditoria, uma reivindicação única chamada "OPEN_MATH" ou "CLOSED_MATH" com um
+`ValorBelnap` próprio — só a conjunção de itens heterogêneos que
+`ATK.ClosedMath.OpenObligations`/`Bridges` já definem.
 
 ## 8. Por que isso é relevante
 

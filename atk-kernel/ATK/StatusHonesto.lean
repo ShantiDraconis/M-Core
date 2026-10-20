@@ -45,11 +45,15 @@ def Evidencia.valor (e : Evidencia) : ValorBelnap :=
   | true, true => .ambos
   | false, false => .nenhum
 
-/-- Combining reports from several sources about the same claim: favorable if *any* source
-reported favorable evidence, contrary if *any* source reported contrary evidence. -/
+/-- Combining reports from several sources **about the same claim**: favorable if *any* matching
+source reported favorable evidence, contrary if *any* matching source reported contrary
+evidence. `es` is filtered to `e.claim = claim` first — otherwise a favorable report about one
+claim and a contrary report about an unrelated claim would wrongly combine into `ambos` for a
+claim neither source said anything about. -/
 def combinar (claim : String) (es : List Evidencia) : ValorBelnap :=
+  let relevantes := es.filter (·.claim == claim)
   Evidencia.valor
     { camada := "", claim := claim, fonte := "",
-      temAFavor := es.any (·.temAFavor), temContra := es.any (·.temContra) }
+      temAFavor := relevantes.any (·.temAFavor), temContra := relevantes.any (·.temContra) }
 
 end ATK.StatusHonesto

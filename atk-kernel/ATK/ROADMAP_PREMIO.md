@@ -43,4 +43,6 @@ sobre o enunciado exato de uma das linhas acima — entrar em `ATK/`, ela:
    `prova := some "<nome do teorema>"`.
 
 Até lá, o estado honesto é o que já está auditado: `nenhum` nos oito, `verdadeiro` só em B1/B4,
-`ambos` só no esquema paramétrico sem ligação fixada.
+`falso` nos dois esquemas paramétricos sem ligação fixada (NS, P vs NP) — uma revisão de PR
+corrigiu uma versão anterior que rotulava esses dois como `ambos` por conflação entre
+reivindicações; veja a seção 6 de `README_FECHAMENTO_HONESTO.md`.

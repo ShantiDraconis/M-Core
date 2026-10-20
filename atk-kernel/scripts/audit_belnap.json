@@ -21,7 +21,7 @@
     { "camada": "OPEN_MATH", "claim": "O6 (BSD, cota superior do posto)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O6", "prova": null },
     { "camada": "OPEN_MATH", "claim": "O7 (BSD, segunda obrigacao)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O7", "prova": null },
     { "camada": "OPEN_MATH", "claim": "O8 (Yang-Mills, mass gap)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O8", "prova": null },
-    { "camada": "LIGAÇÃO", "claim": "esquema NS parametrico antes de fixar L1", "valor": "ambos", "temAFavor": true, "temContra": true, "fonte": "ATK.ClosedMath.ns_toy_model_vacuous + ATK.FinalRoot.ns_depende_do_modelo", "prova": null },
-    { "camada": "LIGAÇÃO", "claim": "esquema P vs NP parametrico antes de fixar L2", "valor": "ambos", "temAFavor": true, "temContra": true, "fonte": "ATK.ClosedMath.pnp_toy_model_vacuous + ATK.FinalRoot.pnp_depende_do_modelo", "prova": null }
+    { "camada": "LIGAÇÃO", "claim": "um modelo NS nao ligado (brinquedo) que satisfaz o esquema conta como progresso", "valor": "falso", "temAFavor": false, "temContra": true, "fonte": "ATK.ClosedMath.ns_toy_model_vacuous + ATK.FinalRoot.ns_depende_do_modelo", "prova": null },
+    { "camada": "LIGAÇÃO", "claim": "um modelo PvsNP nao ligado (brinquedo) que satisfaz o esquema conta como progresso", "valor": "falso", "temAFavor": false, "temContra": true, "fonte": "ATK.ClosedMath.pnp_toy_model_vacuous + ATK.FinalRoot.pnp_depende_do_modelo", "prova": null }
   ]
 }

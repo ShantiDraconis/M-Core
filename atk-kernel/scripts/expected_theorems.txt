@@ -3119,4 +3119,4 @@ ATK.AuditoriaBelnapReal.b1_verdadeiro
 ATK.AuditoriaBelnapReal.b4_verdadeiro
 ATK.AuditoriaBelnapReal.pontesNaoProvadas_nenhum
 ATK.AuditoriaBelnapReal.obrigacoesAbertas_nenhum
-ATK.AuditoriaBelnapReal.esquemaSemLigacao_ambos
+ATK.AuditoriaBelnapReal.esquemaSemLigacao_falso
