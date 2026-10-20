@@ -196,6 +196,12 @@
   "expected_theorems": 3350,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "716f893e62d307b402a2986b2a5b838adda00358",
-  "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
+  "commit_at_freeze": "58580eb3f018c286f372b68d2ff0e892b8b4eac7",
+  "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256.",
+  "ci_attestation": {
+    "check_run": "39366289639",
+    "result": "success",
+    "sources_sha256": "b7a58c7dd47966d161c4df7aca433236921893389dfb78ce84040569f992b657",
+    "matches_freeze": true
+  }
 }

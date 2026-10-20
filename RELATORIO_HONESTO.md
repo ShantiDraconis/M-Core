@@ -22,15 +22,15 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,
   `Classical.choice`, `Quot.sound`). Nenhum `sorryAx`, nenhum axioma novo; a distribuição por
   teorema está em `audits/axioms.txt`.
-* **Nível da evidência**: a contagem acima é **local, por compilação** (`congelar.py --axiomas`
-  roda `lake env lean` em cada módulo e lê o `#print axioms`). O `check_axioms.py` só certifica a
-  partir dos logs do CI (`reports/audit_*.log`); localmente ele dá `NOT_RUN`, por desenho. A
-  certificação **por CI** das fontes atuais só vale depois do run correspondente.
+* **Nível da evidência**: local, por compilação (`congelar.py --axiomas`, `lake env lean` em cada
+  módulo) **e** por CI (`check_axioms.py` sobre os logs do run, ver abaixo). Localmente o
+  `check_axioms.py` dá `NOT_RUN` por desenho: ele lê os logs do CI.
 * **Hash das fontes**: o valor atual está em `audits/provenance.json` (`sources_sha256`).
-* **CI**: os runs 314–318 passaram. O run 318 imprimiu o mesmo hash do congelamento anterior
-  (`f1cff370…`, 3235 teoremas). A atestação das fontes atuais é registrada depois do run
-  correspondente. O passo de certificação só termina com sucesso quando todos os esperados são
-  `CERTIFIED`.
+* **CI**: o run **334** de `atk-kernel.yml` (job 118443794504, commit `a63ca3a`) passou: **T1 GREEN,
+  3350/3350 teoremas certificados**, T2 GREEN (congelamento confere), T6 GREEN (axiomas padrão,
+  0 fontes sinalizadas), com `sources_sha256` `b7a58c7d…`, o mesmo do congelamento local. Os
+  commits seguintes (merge de `main`, documentação) não mudam fontes de `atk-kernel/`.
+  Atestação registrada em `audits/provenance.json` (`ci_attestation`).
 
 **Status calculado pelo kernel** (`ATK/StatusFinal.lean`): `open_math_true`, `closed_math_false`,
 `nenhum_item_em_B`, `closedMath_correto`. Roteiro do que falta: `conditional/ROTEIRO_LIMITE.md`.
