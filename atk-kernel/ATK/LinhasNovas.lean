@@ -2,7 +2,7 @@ import Mathlib.Data.ENat.Basic
 import Mathlib.NumberTheory.Real.Irrational
 import Mathlib.Data.ZMod.Basic
 import Mathlib.Order.Filter.AtTopBot.Basic
-import Mathlib.Data.Real.Sqrt
+import Mathlib.Analysis.Real.Sqrt
 import Mathlib.Data.Set.Finite.List
 
 /-!
@@ -42,7 +42,7 @@ theorem sem_ultimo_natural : ¬ ∃ N : ℕ, ∀ n : ℕ, n ≤ N := fun ⟨N, h
 
 /-- **Em `ℕ∞` a linha é consistente**: `⊤ + 1 = ⊤`, e `⊤` está acima de todo natural. -/
 theorem enat_final : (⊤ : ℕ∞) + 1 = ⊤ ∧ ∀ n : ℕ, (n : ℕ∞) < ⊤ :=
-  ⟨by simp, fun n => ENat.coe_lt_top n⟩
+  ⟨by simp, fun n => ENat.natCast_lt_top n⟩
 
 /-- **O preço**: em `ℕ∞` o cancelamento falha (`⊤ + 1 = ⊤ + 0` com `1 ≠ 0`). -/
 theorem enat_sem_cancelamento : (⊤ : ℕ∞) + 1 = ⊤ + 0 ∧ (1 : ℕ∞) ≠ 0 := ⟨by simp, one_ne_zero⟩
@@ -128,7 +128,7 @@ theorem inv_neg (x : RetaProj) : inv (neg x) = neg (inv x) := by
   · simp [inv, neg]
   · by_cases hx : x = 0
     · subst hx; simp [inv, neg]
-    · simp [inv, neg, hx, inv_neg]
+    · simp [inv, neg, hx]
 
 /-! ## 5. A constante ½: centros de simetria normalizados -/
 
