@@ -129,3 +129,6 @@ import ATK.FermatDezenove
 import ATK.FermatRegular
 import ATK.BealFermatRegular
 import ATK.FermatExpoentes
+import ATK.RefutacaoTri
+import ATK.StatusHonesto
+import ATK.AnaliseInversao

@@ -3106,3 +3106,12 @@ ATK.BSDEulerE32.equacao_mudanca
 ATK.BSDEulerE32.card_pontos_mudanca
 ATK.BSDEulerE32.reducao_minimal
 ATK.BSDEulerE32.polinomioLocal_E32
+ATK.RefutacaoTri.tf_requires_false
+ATK.RefutacaoTri.tf_explodes
+ATK.RefutacaoTri.tri_tf_case_gives_false
+ATK.RefutacaoTri.sevenStatements_tf_would_explode
+ATK.AnaliseInversao.neg_ambos_fixo
+ATK.AnaliseInversao.neg_nenhum_fixo
+ATK.AnaliseInversao.equacaoInversao_ambos
+ATK.AnaliseInversao.equacaoInversao_nenhum
+ATK.AnaliseInversao.fixo_e_ambos_ou_nenhum
