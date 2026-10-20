@@ -69,6 +69,15 @@ só removeria o parâmetro `hFLT` de um teorema já provado. **Beal reduz a O2**
 - Não altera `AuditoriaBelnapReal.lean`: os oito itens continuam `nenhum`, auditados com fonte
   real, sem mudança nesta rodada.
 
+**Changelog (`bb86b4b`):** `clarifying-prerequisite` é um rótulo deste documento apenas. O enum
+de status planejado para `scripts/obligations.json` (Fase 0.2 — `open`, `route-refuted`,
+`partial-producer`, `definitional`, `no-funnel-known`) ainda não tem esse quinto valor, e esta
+PR não toca `obligations.json`. Quem ler só o JSON hoje ainda vê O5 sob o rótulo antigo
+(`definitional`-adjacente); é a mesma misclassificação que esta auditoria corrigiu aqui, só que
+ainda não propagada. O enum do schema precisa ganhar `clarifying-prerequisite` (ou nome
+equivalente) quando a Fase 0.2 for feita — até lá, este markdown é a fonte certa para O5, não o
+JSON.
+
 ## Quando algo muda de fato
 
 Quando (e só quando) uma prova real e certificada — compila limpo, sem `sorry`/`admit`/`axiom`,
