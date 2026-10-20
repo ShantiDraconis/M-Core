@@ -31,8 +31,10 @@ structure BSDHigherRankProgram (M : BSDModel.{u}) (E : M.Curve) where
 
 /-- The decomposition still supplies exactly the rank equality this curve needs. -/
 theorem BSDHigherRankProgram.toEquality {M : BSDModel.{u}} {E : M.Curve}
-    (P : BSDHigherRankProgram M E) : M.rank E = M.analyticRank E :=
-  le_antisymm P.upperBound P.lowerBound
+    (P : BSDHigherRankProgram M E) : M.rank E = M.analyticRank E := by
+  have h1 := P.lowerBound
+  have h2 := P.upperBound
+  omega
 
 /-- A full producer, supplying the program for every curve of analytic rank `≥ 2`. -/
 theorem rankOpen_of_researchPrograms {M : BSDModel.{u}}
