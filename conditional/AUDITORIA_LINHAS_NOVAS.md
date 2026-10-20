@@ -119,3 +119,11 @@ do padrão (é esse o portão contra regressão silenciosa).
    linguagens finitas; não separa P de NP.
 4. **Reta projetiva**: `RetaProj = Option ℝ` não carrega a topologia de `ℝP¹`; homeomorfismos de
    `inv`/`neg` exigiriam trocar para `OnePoint ℝ` (não feito).
+
+### Leitura da distribuição de axiomas do congelamento (3350)
+
+`propext` 3226, `Quot.sound` 3105, `Classical.choice` 2868; **119 sem nenhum axioma**. "Sem
+axioma" só quer dizer que a prova não usa `propext`, `Classical.choice` nem `Quot.sound`. Numa
+amostra inspecionada, essas 119 são lemas pequenos: `rfl`, `cases … <;> rfl`, desdobramento de
+definição, passos estruturais curtos (ex.: `ATK.SATemNP.Run.mono`, `ATK.SATemNP.dec_some`,
+`ATK.ATKI.Rel.flip_flip`). **A contagem não indica força**; não deve ser lida como resultado.
