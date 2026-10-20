@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de f1cff370b00b38b2dc0e5db499341a02e7f9adc4daf5c87bf5f03039b8b06c40
+# axiomas por teorema — congelamento de e7a67daad16437a0ad860bdf4b72221a2c5ec15c2b7d6f450222b7efd25c4d6e
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -3235,3 +3235,16 @@ ATK.GapGrafo.gap_grafo	propext, Classical.choice, Quot.sound
 ATK.GapGrafo.constante_gap_pos	propext, Classical.choice, Quot.sound
 ATK.HodgeOficial.hodge_iff_imagem	propext, Classical.choice, Quot.sound
 ATK.HodgeOficial.zero_coerente	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.zeros_finitos_compacto	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.abs_im_ge	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.zerosAte_finito	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.zerosSim_finito	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.zerosAte_mono	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.N_mono	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.N_baixo	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.xi_zero	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.rh_iff_DN	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.entradas_iff_rh	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.fecha_O1	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.rotaO1_iff_rh	propext, Classical.choice, Quot.sound
+ATK.FechamentoO1.sem_rota_se_refutado	propext, Classical.choice, Quot.sound

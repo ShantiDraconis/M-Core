@@ -3233,3 +3233,16 @@ ATK.GapGrafo.gap_grafo
 ATK.GapGrafo.constante_gap_pos
 ATK.HodgeOficial.hodge_iff_imagem
 ATK.HodgeOficial.zero_coerente
+ATK.FechamentoO1.zeros_finitos_compacto
+ATK.FechamentoO1.abs_im_ge
+ATK.FechamentoO1.zerosAte_finito
+ATK.FechamentoO1.zerosSim_finito
+ATK.FechamentoO1.zerosAte_mono
+ATK.FechamentoO1.N_mono
+ATK.FechamentoO1.N_baixo
+ATK.FechamentoO1.xi_zero
+ATK.FechamentoO1.rh_iff_DN
+ATK.FechamentoO1.entradas_iff_rh
+ATK.FechamentoO1.fecha_O1
+ATK.FechamentoO1.rotaO1_iff_rh
+ATK.FechamentoO1.sem_rota_se_refutado

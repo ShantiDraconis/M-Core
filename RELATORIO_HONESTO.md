@@ -14,16 +14,16 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
 
 * **Nenhum dos sete problemas está resolvido.** `CLOSED_MATH = false`; o portão
   `ATK/ClosedMathGate.lean` (que exigiria `closed_math` **sem hipóteses**) não existe.
-* **Congelamento** (`atk-kernel/audits/`): **3235 teoremas esperados**
-  (`scripts/expected_theorems.txt`), **3235/3235 verificados localmente** (Lean 4.34.1, Mathlib
+* **Congelamento** (`atk-kernel/audits/`): **3248 teoremas esperados**
+  (`scripts/expected_theorems.txt`), **3248/3248 verificados localmente** (Lean 4.34.1, Mathlib
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,
-  `Classical.choice`, `Quot.sound`). Distribuição em `audits/axioms.txt`: 2767 usam os três,
-  226 `propext, Quot.sound`, 121 só `propext`, 116 nenhum, 4 só `Quot.sound`, 1
-  `Classical.choice, Quot.sound`. Nenhum `sorryAx`, nenhum axioma novo.
-* **Hash das fontes** (182 arquivos): `f1cff370b00b38b2dc0e5db499341a02e7f9adc4daf5c87bf5f03039b8b06c40`.
-* **Atestação do CI** (`audits/provenance.json`): o check-run `118362114354` (run 318, commit
-  `9079d63`) passou e imprimiu o **mesmo** hash. O passo de certificação só termina com sucesso
-  quando todos os esperados são `CERTIFIED`. Os runs 314–318 passaram.
+  `Classical.choice`, `Quot.sound`). Nenhum `sorryAx`, nenhum axioma novo; a distribuição por
+  teorema está em `audits/axioms.txt`.
+* **Hash das fontes**: o valor atual está em `audits/provenance.json` (`sources_sha256`).
+* **CI**: os runs 314–318 passaram. O run 318 imprimiu o mesmo hash do congelamento anterior
+  (`f1cff370…`, 3235 teoremas). A atestação das fontes atuais é registrada depois do run
+  correspondente. O passo de certificação só termina com sucesso quando todos os esperados são
+  `CERTIFIED`.
 
 ## 2. Enunciados reais (`ATK/EnunciadosOficiais.lean`)
 
@@ -71,6 +71,11 @@ A direção de necessidade (RH ⇒ `D_N → 0`) tem esqueleto em `ATK/Necessidad
 * `J(ε) → 0` quando `ε → 0⁺` (produto de Hadamard).
 
 É formalização de resultados publicados, e é pesada. Fechá-la daria o **iff** de RH, não RH.
+
+`ATK/FechamentoO1.lean` dá a estrutura completa: `N(T)` bem definido (zeros finitos, provado),
+os três teoremas ausentes da Mathlib com tipo exato (`RiemannVonMangoldt`, `HadamardXi`,
+`LittlewoodSobRH`), `NecessidadeRH → (RH ⟺ D_N → 0)` e `rotaO1_iff_rh` (todo produtor de O1 tem a
+força exata de RH). Ver `conditional/FECHAMENTO_O1.md`.
 
 ## 6. Lógica de 4 valores: a "inversão" open/closed
 
