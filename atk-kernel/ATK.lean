@@ -141,3 +141,6 @@ import ATK.FechamentoO1
 import ATK.StatusFinal
 import ATK.ZerosFora
 import ATK.LinhasNovas
+import ATK.LinhasNovasII
+import ATK.LinhasNovasIII
+import ATK.DInfinito
