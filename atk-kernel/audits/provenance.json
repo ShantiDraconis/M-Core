@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "1563580c54aae5843c3dd6aaef918667404a572b1b0dc831d7db7ade96e026ba",
+  "sources_sha256": "4cdbaff6997b2bcc5c744c77c6c1ffff0f765a00265b42be4c03647545743419",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -60,7 +60,7 @@
     "ATK/DarmonMerelSeis.lean": "187be5b38e0fdf9254e43c17d552fdf8be59520d67cff19d8175f1f10c898840",
     "ATK/EnunciadosOficiais.lean": "8409a090f6b8a5ee7cc6e0cdb8d21c33f553e701d9e3dcbc1fe831b74b728281",
     "ATK/EspectralDN.lean": "752914e1bc8e260f831e9b05d5c0b4bd5ca9b22fbc2bf557f90db329853e8e4a",
-    "ATK/F1YM.lean": "3da31d6966352a48788026cda9263d23ff56582e90946c96f0a1f23c22f6227b",
+    "ATK/F1YM.lean": "13d32e94f24a6d3d1d17d5e8b1036f6011aab82af7206a0742b7636a286b4297",
     "ATK/FatoresQuarticos.lean": "c101dc5c0d6ce06606c31ad1da34669d17e1b184ff2c4a153eecfc83a25d7025",
     "ATK/FechamentoO1.lean": "6f977ec6f7ad05d67d6ea247168ac1cbc259f1beb8f2db025a8045108c0eb7f0",
     "ATK/FermatDezenove.lean": "8c730c49f1f0930b0a50fc56c2a0fabd9edb2b9a10b0625c64b4972b821af78e",
@@ -173,7 +173,7 @@
     "ATK/SATemNP.lean": "ab78922537c886f9b637fadf21e47cfaeda7d8251a9c9c4e6e90dfaa3b20be9a",
     "ATK/Shannon.lean": "c8e0d2f1c50b91a7480bbfed57b53ed946e00ed87326efca18b826976559f654",
     "ATK/SophieGermain.lean": "679036b7365572bace3d207a00f8036c1c785c7a2e0659114a3952889bc15d92",
-    "ATK/StatusFinal.lean": "3aee5d5f7f6c49032f436346e450ec105e0c7bbafa584acb66b1730337ceb6b2",
+    "ATK/StatusFinal.lean": "810402ca6ecc639eb10dce3779a62a855e392b46ab780c65c383d273ae1654ee",
     "ATK/TeoremaGlobal.lean": "971a8d965b0cc59f9dd954d2c794362b615b86a4f372ee2292b797df923b770d",
     "ATK/TerceiroTemplo.lean": "fba69f2f93190d66079b292ff862e95553c94c73945695723893475ff0667293",
     "ATK/TerceiroTemploII.lean": "7c70f470e2b1b20f328f11c07256405ee506f81e8e45ae56b8c947147097d270",
@@ -194,9 +194,9 @@
     "ATK.lean": "58c3725344b5f78219d4308d2bc28dcb5a4af2cbe5bec646070760f9f85119c9"
   },
   "n_files": 190,
-  "expected_theorems": 3356,
+  "expected_theorems": 3361,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "13ba60883c01944438578f116bd271a4c7d21d98",
+  "commit_at_freeze": "b85ac7f0ec3c772ec8ebe5641505ade82812504c",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

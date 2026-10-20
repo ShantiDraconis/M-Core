@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 1563580c54aae5843c3dd6aaef918667404a572b1b0dc831d7db7ade96e026ba
+# axiomas por teorema — congelamento de 4cdbaff6997b2bcc5c744c77c6c1ffff0f765a00265b42be4c03647545743419
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -3356,3 +3356,8 @@ ATK.F1YM.parametrica	propext, Classical.choice, Quot.sound
 ATK.F1YM.wick_dois	propext, Classical.choice, Quot.sound
 ATK.F1YM.wick_tres	propext, Classical.choice, Quot.sound
 ATK.F1YM.wick_quatro	propext, Classical.choice, Quot.sound
+ATK.F1YM.foldr_mem	propext, Classical.choice, Quot.sound
+ATK.F1YM.troca_fora_de_D	propext, Classical.choice, Quot.sound
+ATK.F1YM.extensao_de_D	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.natureza_alinhada	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.sete_abertas_uma_nao_formalizada	propext, Classical.choice, Quot.sound
