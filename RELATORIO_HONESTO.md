@@ -26,8 +26,8 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   `naoFormalizado` (`sete_abertas_uma_nao_formalizada`). `OPEN_MATH = true` = nenhuma obrigação
   provada no kernel; **não** = oito problemas abertos: O8 é sombra com testemunha na literatura
   (por fonte, lacuna de fonte primária em `F1_O8.md` §6).
-* **Congelamento** (`atk-kernel/audits/`): **3363 teoremas esperados**
-  (`scripts/expected_theorems.txt`), **3363/3363 verificados localmente** (Lean 4.34.1, Mathlib
+* **Congelamento** (`atk-kernel/audits/`): **3365 teoremas esperados**
+  (`scripts/expected_theorems.txt`), **3365/3365 verificados localmente** (Lean 4.34.1, Mathlib
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,
   `Classical.choice`, `Quot.sound`). Nenhum `sorryAx`, nenhum axioma novo; a distribuição por
   teorema está em `audits/axioms.txt`.
@@ -38,7 +38,9 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
 * **CI**: o run **343** de `atk-kernel.yml` (job 118588897763, commit `d6e63b0`) passou: **T1 GREEN,
   3363/3363 teoremas certificados**, T2 GREEN, T6 GREEN (0 fontes sinalizadas), 0 `NOT_CERTIFIED`,
   com `sources_sha256` `24f8dba…`, o mesmo do congelamento local. Atestação em
-  `audits/provenance.json`. Commits que só mudam documentação não disparam novo run.
+  `audits/provenance.json` daquele congelamento. **Fontes atuais (3365, com as guardas
+  `fidelidade_O7` e `o8_absorvente`): CI = pendente**; o congelamento local de 3365 está limpo, mas
+  não é atestação de CI.
 
 **`CLOSED_MATH` por obrigação** (`StatusFinal.closedMillennium`): um item só conta como fechado
 se estiver provado **e** for fiel ao problema Millennium. Fidelidade: `fiel` para O1, O2 e O4 (o

@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 24f8dba08dbd6ecbbc95c801789d07ba212588cd3eefde3044a43138138c50b3
+# axiomas por teorema — congelamento de 6fbaed1dce1080fdaec8d2f7c8916c0b8c23d34245fc8e3d3c4d63fb4e7ed601
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -3363,3 +3363,5 @@ ATK.StatusFinal.natureza_alinhada	propext, Classical.choice, Quot.sound
 ATK.StatusFinal.sete_abertas_uma_nao_formalizada	propext, Classical.choice, Quot.sound
 ATK.StatusFinal.sombra_nunca_millennium	propext
 ATK.StatusFinal.closedMillennium_hoje	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.fidelidade_O7	propext
+ATK.StatusFinal.o8_absorvente	propext
