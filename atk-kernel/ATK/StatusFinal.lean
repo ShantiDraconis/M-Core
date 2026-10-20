@@ -204,6 +204,18 @@ def fechadoMillennium (i : Item) (f : Fidelidade) : Bool := i.estado.pos && deci
 theorem sombra_nunca_millennium (i : Item) : fechadoMillennium i .sombra = false := by
   simp [fechadoMillennium]
 
+/-- **Guarda 1** (`naoConferida` é estável): `fidelidade` é uma definição; nenhum build, run de
+CI ou dado numérico a altera. O7 continua `naoConferida` mesmo com a instância numérica
+(`conditional/o7_numerico`); só mudar a definição, com conteúdo de kernel como
+`obrigacoes_sao_conjecturas`, pode promovê-la. -/
+theorem fidelidade_O7 : fidelidade[6]? = some .naoConferida := rfl
+
+/-- **Guarda 2** (`sombra` é absorvente): o que quer que esteja na posição de O8, **mesmo provado**,
+não conta como Millennium fechado enquanto `shadowO8 = true`. -/
+theorem o8_absorvente (i : Item) :
+    fechadoMillennium i (fidelidade[7]?.getD .naoConferida) = false := by
+  simp [fidelidade, shadowO8, fechadoMillennium]
+
 /-- O mapa por obrigação. -/
 def closedMillennium (C : ATK.HodgeOficial.ConstrucoesHodge) : List Bool :=
   List.zipWith fechadoMillennium (obrigacoes C) fidelidade
@@ -253,3 +265,5 @@ end ATK.StatusFinal
 #print axioms ATK.StatusFinal.sete_abertas_uma_nao_formalizada
 #print axioms ATK.StatusFinal.sombra_nunca_millennium
 #print axioms ATK.StatusFinal.closedMillennium_hoje
+#print axioms ATK.StatusFinal.fidelidade_O7
+#print axioms ATK.StatusFinal.o8_absorvente

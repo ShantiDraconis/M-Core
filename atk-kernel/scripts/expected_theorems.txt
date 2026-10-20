@@ -3361,3 +3361,5 @@ ATK.StatusFinal.natureza_alinhada
 ATK.StatusFinal.sete_abertas_uma_nao_formalizada
 ATK.StatusFinal.sombra_nunca_millennium
 ATK.StatusFinal.closedMillennium_hoje
+ATK.StatusFinal.fidelidade_O7
+ATK.StatusFinal.o8_absorvente
