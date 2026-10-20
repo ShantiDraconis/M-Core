@@ -1,0 +1,23 @@
+{
+ "curve": "y^2 = x^3 - x",
+ "conductor": 32,
+ "root_number": 1,
+ "torsion_structure": [
+  2,
+  2
+ ],
+ "torsion_order": 4,
+ "torsion_sq": 16,
+ "discriminant": 64,
+ "real_components": 2,
+ "Omega_integral": "5.244115108584239620929177",
+ "Omega_component_(-1,0)": "2.6220575542921198105",
+ "Omega_component_(1,inf)": "2.6220575542921198105",
+ "pari_omega": "[2.62205755429212, -2.62205755429212*I]",
+ "L_E_1_series": "0.6555143885730299526162099",
+ "L_E_1_pari": "0.65551438857303",
+ "Tamagawa_product": 2,
+ "Sha_analytic": "1.000000000000000000000096",
+ "BSD_rank0_residual": "9.5773e-23",
+ "tool": "mpmath 1.4.1; PARI via cypari2 ((2, 17, 2))"
+}

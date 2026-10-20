@@ -35,13 +35,10 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   módulo) **e** por CI (`check_axioms.py` sobre os logs do run, ver abaixo). Localmente o
   `check_axioms.py` dá `NOT_RUN` por desenho: ele lê os logs do CI.
 * **Hash das fontes**: o valor atual está em `audits/provenance.json` (`sources_sha256`).
-* **CI**: o run **334** de `atk-kernel.yml` (job 118443794504, commit `a63ca3a`) passou: **T1 GREEN,
-  3350/3350 teoremas certificados**, T2 GREEN (congelamento confere), T6 GREEN (axiomas padrão,
-  0 fontes sinalizadas), com `sources_sha256` `b7a58c7d…`, o mesmo do congelamento local. Os
-  commits seguintes (merge de `main`, documentação) não mudam fontes de `atk-kernel/`.
-  Atestação registrada em `audits/provenance.json` (`ci_attestation`). Depois dele entraram 13
-  teoremas (`ATK/F1YM.lean`, `StatusFinal.natureza`, `StatusFinal.closedMillennium`); a atestação
-  de CI das fontes atuais (3363) fica para o próximo run.
+* **CI**: o run **343** de `atk-kernel.yml` (job 118588897763, commit `d6e63b0`) passou: **T1 GREEN,
+  3363/3363 teoremas certificados**, T2 GREEN, T6 GREEN (0 fontes sinalizadas), 0 `NOT_CERTIFIED`,
+  com `sources_sha256` `24f8dba…`, o mesmo do congelamento local. Atestação em
+  `audits/provenance.json`. Commits que só mudam documentação não disparam novo run.
 
 **`CLOSED_MATH` por obrigação** (`StatusFinal.closedMillennium`): um item só conta como fechado
 se estiver provado **e** for fiel ao problema Millennium. Fidelidade: `fiel` para O1, O2 e O4 (o
@@ -124,6 +121,15 @@ evidência negativa), `B = ⟨true, true⟩` e `nao` troca as componentes:
 **Limite**: são identidades da lógica de 4 valores. **Não** dizem nada sobre o estado de RH,
 P ≠ NP ou dos outros. Um terceiro estado "verdadeiro e falso" **no nível de prova** é impossível
 (`closed_e_refutado_impossivel`): habitar `P` e `¬P` dá `False`.
+
+## 6a. O7: uma instância numérica (dado, não teorema)
+
+Para `y² = x³ − x` (condutor 32, posto 0): torsão `[2,2]` (`16 = 4²`), `Δ = 64 > 0` (duas
+componentes reais), `Ω = 5.24411510858…` (integral sobre `E(ℝ)` inteiro), `L(E,1) = 0.65551438857…`
+(série própria e PARI concordam), Tamagawa `2`, logo `#Ш_an = 1` com resíduo `10⁻²²`.
+`conditional/o7_numerico/`. **Não promove nada**: `fidelidade(O7)` continua `naoConferida`, o
+status de O7 continua aberto (o alvo é a fórmula para toda curva), e mesmo muitas curvas seriam
+dado, não BSD.
 
 ## 6b. Limite do kernel
 
