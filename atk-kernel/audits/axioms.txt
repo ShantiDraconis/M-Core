@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de d14f8abf5f0018c00838ebfaa66aea0209d90c23096375d02dfe49df404d2eef
+# axiomas por teorema — congelamento de 0f4be6c290df59efcece030dcb929a4184a2debd39293d71b779e4a3a74a4aba
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -3277,3 +3277,23 @@ ATK.ZerosFora.infinitos_iff	propext, Classical.choice, Quot.sound
 ATK.ZerosFora.finitos_iff	propext, Classical.choice, Quot.sound
 ATK.ZerosFora.piso_esconde	propext, Classical.choice, Quot.sound
 ATK.ZerosFora.piso_some	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.natural_final_vazio	propext, Quot.sound
+ATK.LinhasNovas.sem_ultimo_natural	propext, Quot.sound
+ATK.LinhasNovas.enat_final	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.enat_sem_cancelamento	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.sem_maior_negativo	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.int_maior_negativo	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.um_terco_cauda_infinita	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.raiz_dois_cauda_infinita	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.inv_inf	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.inv_zero	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.neg_inf	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.inv_inv	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.inv_neg	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.centro_reflexao	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.centro_rh	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.centro_bsd	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.centro_bsd_normalizado	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.centro_hodge_normalizado	propext, Classical.choice, Quot.sound
+ATK.LinhasNovas.aproximacao_trivial	propext, Quot.sound
+ATK.LinhasNovas.truncamento_finito	propext, Classical.choice, Quot.sound

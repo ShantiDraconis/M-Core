@@ -140,3 +140,4 @@ import ATK.GapGrafo
 import ATK.FechamentoO1
 import ATK.StatusFinal
 import ATK.ZerosFora
+import ATK.LinhasNovas
