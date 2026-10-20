@@ -1,0 +1,12 @@
+schema: m-core/v2
+policy: frozen
+S0:
+  u0: ref
+  I_star_0: 0.6
+  nu0: 0.01
+  chi0: 1.0
+  N0: 1.0
+  T0: 0.0
+notes:
+  - I_star_0=0.6 is configuration/calibration, not a proved universal constant.
+  - Any change creates a new experiment identifier; proofs may not mutate S0 downstream.

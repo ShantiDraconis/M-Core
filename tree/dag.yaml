@@ -1,0 +1,14 @@
+schema: m-core/dag/v2
+nodes: [G1, G4, "a(t)", Y, I]
+fixture_edges:
+  - [G1, G4]
+  - [G4, G1]
+  - [G1, "a(t)"]
+  - [Y, "a(t)"]
+  - [I, Y]
+rule: downstream_of_G1_only
+forbidden:
+  - G1_on_directed_cycle
+  - target_Y_reads_into_a_t
+  - conclusion_I_reads_into_a_t
+note: fixture_edges intentionally violate the rule so the negative audit test must detect them.

@@ -1,0 +1,34 @@
+name: I Boundary Provenance
+
+on:
+  push:
+    branches: [formal/i-boundary-provenance]
+    paths:
+      - 'lean/MCore/IBoundaryProvenance.lean'
+      - 'lean/MCore/BSDLogicOpenMath.lean'
+      - '.github/workflows/i-boundary-provenance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        uses: leanprover/lean4-action@v1
+        with:
+          auto-config: true
+      - name: Reject proof escapes
+        run: |
+          set -euo pipefail
+          FILES='lean/MCore/IBoundaryProvenance.lean lean/MCore/BSDLogicOpenMath.lean'
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom|axiomatization)([[:space:]]|$)' $FILES; then
+            exit 1
+          fi
+      - name: Kernel check
+        run: |
+          lake env lean lean/MCore/IBoundaryProvenance.lean
+          lake env lean lean/MCore/BSDLogicOpenMath.lean

@@ -8,7 +8,7 @@ inductive GapState where
 
 inductive ResolutionShape where
   | nonexistence | elimination | vanishing | quotientZero
-  | separation | equality | bridgeAndVanishing | positivity
+  | separation | equality | bridgeAndVanishing | positivity | fixedPoint
   deriving DecidableEq, Repr
 
 structure ExactGap where
@@ -22,7 +22,7 @@ structure ExactGap where
 
 def exactGaps : List ExactGap := [
   { problem := "BEAL", statement := "primitive/common-gcd=1 Beal equation -> contradiction; equivalently every BealData has a nontrivial common divisor", resolution := .nonexistence, state := .openMath, source := "m-core-beal/lean/MCore/BealSpecification.lean + K9/K10", provenance := "K6 frozen 434d6b7b...; K9 frozen e3b8598a..." },
-  { problem := "POINCARE", statement := "faithfully import the known geometrization/Ricci-flow-with-surgery chain through recognition M ~= S3", resolution := .elimination, state := .historicallySolvedToAudit, source := "positive-control import pending exact theorem-level formal source", provenance := "historically solved; not counted as a new FINAL_PROOF result" },
+  { problem := "POINCARE", statement := "closed simply-connected 3-manifold -> diffeomorphic to S3; Ricci flow with surgery supplies the F7 route and F8 classification endpoint", resolution := .fixedPoint, state := .historicallySolvedToAudit, source := "lean/MCore/Poincare.lean; Perelman 2002-2003 historical solution, theorem-level Lean import still pending", provenance := "CLOSED_UNCONDITIONAL mathematically; CORE_FORMAL_GAPS=0; MATERIAL_PRODUCER_GAPS=0; FORMAL_IMPORT_GAPS=1; not counted as a new kernel FINAL_PROOF result" },
   { problem := "NAVIER_STOKES", statement := "construct a legitimate compensator with independent quantitative budget and prove signed far-field direction-field cancellation with positive scale gain", resolution := .vanishing, state := .openMath, source := "navier-stokes-critical-barrier-audit/audit/76_stretchFar_signed_blocking.md + audit/09_required_cancellations.md", provenance := "fail-proof run 35565581964 GREEN; no endpoint promotion" },
   { problem := "HODGE", statement := "for every smooth projective X and rational Hodge class alpha, produce rational span of algebraic cycle classes", resolution := .quotientZero, state := .openMath, source := "m-core-hodge Hodge.lean + R3a provenance", provenance := "R3a frozen/audited reduction; general algebraicity remains open" },
   { problem := "P_VS_NP", statement := "produce a genuine asymptotic SAT lower bound in the fixed official model yielding not_in_p", resolution := .separation, state := .openMath, source := "m-core-p-vs-np EndpointCompression/ThreeTracks/K10", provenance := "historical triadic source recovered and hash-pinned; ApproximationBridge remains open" },
