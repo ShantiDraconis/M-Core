@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de e7a67daad16437a0ad860bdf4b72221a2c5ec15c2b7d6f450222b7efd25c4d6e
+# axiomas por teorema — congelamento de 392e3ce726c5331c8ffab6e4d2a71016bcb14e91d54b244471396ff9672bbd1b
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -3248,3 +3248,14 @@ ATK.FechamentoO1.entradas_iff_rh	propext, Classical.choice, Quot.sound
 ATK.FechamentoO1.fecha_O1	propext, Classical.choice, Quot.sound
 ATK.FechamentoO1.rotaO1_iff_rh	propext, Classical.choice, Quot.sound
 ATK.FechamentoO1.sem_rota_se_refutado	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.nenhum_item_em_B	nenhum
+ATK.StatusFinal.prova_de_T	nenhum
+ATK.StatusFinal.closedMath_correto	propext, Quot.sound
+ATK.StatusFinal.open_iff_not_closed	propext
+ATK.StatusFinal.open_math_true	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.closed_math_false	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.pontesProvadas_T	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.pontesProvadas_validas	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.closed_pontes_true	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.contagem	propext, Classical.choice, Quot.sound
+ATK.StatusFinal.obrigacoes_sao_conjecturas	propext, Classical.choice, Quot.sound

@@ -14,8 +14,8 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
 
 * **Nenhum dos sete problemas está resolvido.** `CLOSED_MATH = false`; o portão
   `ATK/ClosedMathGate.lean` (que exigiria `closed_math` **sem hipóteses**) não existe.
-* **Congelamento** (`atk-kernel/audits/`): **3248 teoremas esperados**
-  (`scripts/expected_theorems.txt`), **3248/3248 verificados localmente** (Lean 4.34.1, Mathlib
+* **Congelamento** (`atk-kernel/audits/`): **3259 teoremas esperados**
+  (`scripts/expected_theorems.txt`), **3259/3259 verificados localmente** (Lean 4.34.1, Mathlib
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,
   `Classical.choice`, `Quot.sound`). Nenhum `sorryAx`, nenhum axioma novo; a distribuição por
   teorema está em `audits/axioms.txt`.
@@ -24,6 +24,9 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   (`f1cff370…`, 3235 teoremas). A atestação das fontes atuais é registrada depois do run
   correspondente. O passo de certificação só termina com sucesso quando todos os esperados são
   `CERTIFIED`.
+
+**Status calculado pelo kernel** (`ATK/StatusFinal.lean`): `open_math_true`, `closed_math_false`,
+`nenhum_item_em_B`, `closedMath_correto`. Roteiro do que falta: `conditional/ROTEIRO_LIMITE.md`.
 
 ## 2. Enunciados reais (`ATK/EnunciadosOficiais.lean`)
 

@@ -3246,3 +3246,14 @@ ATK.FechamentoO1.entradas_iff_rh
 ATK.FechamentoO1.fecha_O1
 ATK.FechamentoO1.rotaO1_iff_rh
 ATK.FechamentoO1.sem_rota_se_refutado
+ATK.StatusFinal.nenhum_item_em_B
+ATK.StatusFinal.prova_de_T
+ATK.StatusFinal.closedMath_correto
+ATK.StatusFinal.open_iff_not_closed
+ATK.StatusFinal.open_math_true
+ATK.StatusFinal.closed_math_false
+ATK.StatusFinal.pontesProvadas_T
+ATK.StatusFinal.pontesProvadas_validas
+ATK.StatusFinal.closed_pontes_true
+ATK.StatusFinal.contagem
+ATK.StatusFinal.obrigacoes_sao_conjecturas
