@@ -14,11 +14,16 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
 
 * **Nenhum dos sete problemas está resolvido.** `CLOSED_MATH = false`; o portão
   `ATK/ClosedMathGate.lean` (que exigiria `closed_math` **sem hipóteses**) não existe.
-* **Teoremas esperados**: a lista está em `scripts/expected_theorems.txt` e a contagem de
-  axiomas em `audits/axioms.txt`. Os padrões permitidos são `propext`, `Classical.choice` e
-  `Quot.sound`.
-* **CI** (check-run *Lean 4 + Mathlib — compilação e auditoria de axiomas*): runs 314, 315 e
-  316 passaram. A atestação do CI para as fontes congeladas fica em `audits/provenance.json`.
+* **Congelamento** (`atk-kernel/audits/`): **3235 teoremas esperados**
+  (`scripts/expected_theorems.txt`), **3235/3235 verificados localmente** (Lean 4.34.1, Mathlib
+  `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,
+  `Classical.choice`, `Quot.sound`). Distribuição em `audits/axioms.txt`: 2767 usam os três,
+  226 `propext, Quot.sound`, 121 só `propext`, 116 nenhum, 4 só `Quot.sound`, 1
+  `Classical.choice, Quot.sound`. Nenhum `sorryAx`, nenhum axioma novo.
+* **Hash das fontes** (182 arquivos): `f1cff370b00b38b2dc0e5db499341a02e7f9adc4daf5c87bf5f03039b8b06c40`.
+* **Atestação do CI** (`audits/provenance.json`): o check-run `118362114354` (run 318, commit
+  `9079d63`) passou e imprimiu o **mesmo** hash. O passo de certificação só termina com sucesso
+  quando todos os esperados são `CERTIFIED`. Os runs 314–318 passaram.
 
 ## 2. Enunciados reais (`ATK/EnunciadosOficiais.lean`)
 
