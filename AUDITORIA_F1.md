@@ -12,21 +12,28 @@ efetivamente produz um teorema.
 **1. `def` verbatim do kernel** (`ATK/Conditional/YangMills.lean`):
 
 ```lean
+/-- Interface do problema. -/
 structure YMModel where
   Group : Type u
   CompactSimple : Group → Prop
+  /-- candidatos a medida euclidiana em ℝ⁴ -/
   Euclidean : Type v
-  OSAxioms : Group → Euclidean → Prop        -- comentário: "axiomas OS + é o limite
-                                              -- contínuo de Yang–Mills com grupo G"
-  ClusterRate : Euclidean → ℝ → Prop          -- comentário: "correlações decaem como e^{-m|x|}"
+  /-- axiomas OS + é o limite contínuo de Yang–Mills com grupo G -/
+  OSAxioms : Group → Euclidean → Prop
+  /-- correlações decaem como e^{-m|x|} -/
+  ClusterRate : Euclidean → ℝ → Prop
+  /-- teorias quânticas (Wightman) em ℝ⁴ -/
   Quantum : Type w
   reconstruct : Euclidean → Quantum
   IsQuantumYM : Group → Quantum → Prop
+  /-- espectro do Hamiltoniano ⊆ {0} ∪ [Δ, ∞) -/
   GapAtLeast : Quantum → ℝ → Prop
 
 def ConstructiveYM4D (M : YMModel.{u,v,w}) : Prop :=
   ∀ G, M.CompactSimple G → ∃ μ, M.OSAxioms G μ ∧ ∃ m : ℝ, 0 < m ∧ M.ClusterRate μ m
 ```
+(Trecho exatamente como está em `ATK/Conditional/YangMills.lean`, incluindo os docstrings de
+cada campo — nada condensado ou reformulado.)
 
 O docstring do arquivo declara a fidelidade explicitamente: **"fidelidade: PARAMÉTRICA"**.
 
@@ -61,7 +68,7 @@ abertamente. É a mesma classe de risco já documentada no kernel para NS/P vs N
 
 **4. Contraexemplo** (prosa — Lean seria caro demais para esta auditoria, e não é exigido):
 instanciar `Euclidean := Unit`, `OSAxioms := fun _ _ => True`, `ClusterRate := fun _ _ => True`.
-`ConstructiveYM4D` para esse `M` é provável em uma linha — não porque Yang–Mills contínuo 4D foi
+`ConstructiveYM4D` para esse `M` é demonstrável em uma linha — não porque Yang–Mills contínuo 4D foi
 construído, mas porque a interface admite uma testemunha vazia. **Diferença em relação a
 NS/P vs NP:** aqueles dois já têm um lema committed e nomeado documentando exatamente esse
 risco (`ns_toy_model_vacuous`, `pnp_toy_model_vacuous`). **Não existe ainda um
