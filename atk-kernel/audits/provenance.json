@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "4cdbaff6997b2bcc5c744c77c6c1ffff0f765a00265b42be4c03647545743419",
+  "sources_sha256": "24f8dba08dbd6ecbbc95c801789d07ba212588cd3eefde3044a43138138c50b3",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -173,7 +173,7 @@
     "ATK/SATemNP.lean": "ab78922537c886f9b637fadf21e47cfaeda7d8251a9c9c4e6e90dfaa3b20be9a",
     "ATK/Shannon.lean": "c8e0d2f1c50b91a7480bbfed57b53ed946e00ed87326efca18b826976559f654",
     "ATK/SophieGermain.lean": "679036b7365572bace3d207a00f8036c1c785c7a2e0659114a3952889bc15d92",
-    "ATK/StatusFinal.lean": "810402ca6ecc639eb10dce3779a62a855e392b46ab780c65c383d273ae1654ee",
+    "ATK/StatusFinal.lean": "4e34a5ff6d654341205db26113775ad23cd153e056ce8d242b572b18d58816f0",
     "ATK/TeoremaGlobal.lean": "971a8d965b0cc59f9dd954d2c794362b615b86a4f372ee2292b797df923b770d",
     "ATK/TerceiroTemplo.lean": "fba69f2f93190d66079b292ff862e95553c94c73945695723893475ff0667293",
     "ATK/TerceiroTemploII.lean": "7c70f470e2b1b20f328f11c07256405ee506f81e8e45ae56b8c947147097d270",
@@ -194,9 +194,9 @@
     "ATK.lean": "58c3725344b5f78219d4308d2bc28dcb5a4af2cbe5bec646070760f9f85119c9"
   },
   "n_files": 190,
-  "expected_theorems": 3361,
+  "expected_theorems": 3363,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "b85ac7f0ec3c772ec8ebe5641505ade82812504c",
+  "commit_at_freeze": "a0cd30e02d41ce923e1827fdb41856fed2d5b4e2",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
