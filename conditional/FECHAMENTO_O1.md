@@ -40,3 +40,17 @@ rotaO1_iff_rh : RotaO1 ⟺ RH   (toda rota tem a força exata de RH)
 **Leitura**:
 - Preencher `NecessidadeRH` (formalizar os três teoremas e a dedução) fecha a **necessidade** (o iff de RH), que é a parte (a). Não fecha RH.
 - Fechar O1 exige um **produtor**: `IsEmpty ZeroFora`, `D_N → 0` ou as entradas sem hipótese. O kernel prova que cada um desses produtores é equivalente a RH (`rotaO1_iff_rh`), então não existe produtor mais fraco. Os produtores dos outros seis estão em `ATK/Termos.lean` e `ATK/ClosedMathReal.lean` (`Lacunas`).
+
+## 4. Zeros fora da linha (`atk-kernel/ATK/ZerosFora.lean`, 18 teoremas)
+
+* **Órbitas**: as simetrias `s ↦ 1 − s` e `s ↦ s̄` formam o grupo de Klein. A órbita tem
+  **1, 2 ou 4** pontos (`orbita_card`), **nunca 3 nem 5** (`orbita_nao_tres_nem_cinco`). Um zero
+  fora da linha tem órbita de exatamente 4 (`card_fora`); um zero na linha, de 2 (`card_na_linha`).
+* **Contagem**: só finitos zeros fora da linha abaixo de cada altura (`foraAte_finito`).
+  Infinitos zeros fora da linha ⟺ há zero fora da linha acima de **qualquer** altura
+  (`infinitos_iff`). Não há "zero no infinito" em `ℂ`; na leitura hiper-real, um zero de altura
+  infinita corresponde exatamente a infinitos zeros comuns fora da linha.
+* **Esconderijo no truncamento**: um zero `ρ` fora da linha garante `D_N ≥ m(ρ)²` (`piso_DN`), mas
+  `m(ρ)² ≤ (2 Re ρ − 1)/‖ρ‖²` e `m(ρ)² ≤ 1/(4‖ρ‖²)` (`piso_esconde`). O piso garantido tende a 0
+  com a altura (`piso_some`). Um zero na altura `10¹²` garante no máximo `≈ 2,5·10⁻²⁵`: é
+  invisível a truncamentos calculáveis, mas é positivo.

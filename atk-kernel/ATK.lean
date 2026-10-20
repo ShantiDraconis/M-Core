@@ -139,3 +139,4 @@ import ATK.EnunciadosOficiais
 import ATK.GapGrafo
 import ATK.FechamentoO1
 import ATK.StatusFinal
+import ATK.ZerosFora

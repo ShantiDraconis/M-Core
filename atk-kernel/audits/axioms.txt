@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 392e3ce726c5331c8ffab6e4d2a71016bcb14e91d54b244471396ff9672bbd1b
+# axiomas por teorema — congelamento de d14f8abf5f0018c00838ebfaa66aea0209d90c23096375d02dfe49df404d2eef
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -3259,3 +3259,21 @@ ATK.StatusFinal.pontesProvadas_validas	propext, Classical.choice, Quot.sound
 ATK.StatusFinal.closed_pontes_true	propext, Classical.choice, Quot.sound
 ATK.StatusFinal.contagem	propext, Classical.choice, Quot.sound
 ATK.StatusFinal.obrigacoes_sao_conjecturas	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.tensao_ext	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.espelho_ext	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.torcao_ext	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.card_quatro	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.card_dois_linha	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.card_dois_eixo	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.card_um	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.orbita_card	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.orbita_nao_tres_nem_cinco	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.orbita_sub_Z	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.card_fora	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.card_na_linha	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.foraAte_finito	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.rh_iff_fora_vazio	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.infinitos_iff	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.finitos_iff	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.piso_esconde	propext, Classical.choice, Quot.sound
+ATK.ZerosFora.piso_some	propext, Classical.choice, Quot.sound
