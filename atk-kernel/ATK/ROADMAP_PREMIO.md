@@ -98,3 +98,9 @@ Até lá, o estado honesto é o que já está auditado: `nenhum` nos oito, `verd
 `falso` nos dois esquemas paramétricos sem ligação fixada (NS, P vs NP) — uma revisão de PR
 corrigiu uma versão anterior que rotulava esses dois como `ambos` por conflação entre
 reivindicações; veja a seção 6 de `README_FECHAMENTO_HONESTO.md`.
+
+## Nível de evidência do CI
+
+Evidência de CI para `atk-kernel.yml`: `by-source` (3122 entradas em `expected_theorems.txt`) +
+`by-structural` (job `success` sob gate fail-closed) + `by-partial-log` (span lido, zero
+`NOT_CERTIFIED`). Não `by-summary` — a linha de sumário não foi lida.
