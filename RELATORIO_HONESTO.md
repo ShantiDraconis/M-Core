@@ -21,7 +21,11 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   correspondência a Yang–Mills; "não trivial" = não gaussiana) e, por fonte, provavelmente é
   satisfeito pelo quadrado de Wick `:φ²:` do campo livre massivo, o que o tornaria não aberto.
   Ponto (iii), `wick` padrão: confirmado no kernel. Ponto (i), ciclicidade: passa por fonte (o `H`
-  é existencial). Registro de O8 adiado até (i) ser confirmado; condições em `F1_O8.md`, seção 4.
+  é existencial; e os axiomas só usam o campo em `D`, provado no kernel: `troca_fora_de_D`,
+  `extensao_de_D`). **Registro aplicado**: `StatusFinal.natureza` marca O1–O7 `aberto` e O8
+  `naoFormalizado` (`sete_abertas_uma_nao_formalizada`). `OPEN_MATH = true` = nenhuma obrigação
+  provada no kernel; **não** = oito problemas abertos: O8 é sombra com testemunha na literatura
+  (por fonte, lacuna de fonte primária em `F1_O8.md` §6).
 * **Congelamento** (`atk-kernel/audits/`): **3356 teoremas esperados**
   (`scripts/expected_theorems.txt`), **3356/3356 verificados localmente** (Lean 4.34.1, Mathlib
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,

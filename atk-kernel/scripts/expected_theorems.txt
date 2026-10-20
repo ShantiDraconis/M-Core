@@ -3354,3 +3354,8 @@ ATK.F1YM.parametrica
 ATK.F1YM.wick_dois
 ATK.F1YM.wick_tres
 ATK.F1YM.wick_quatro
+ATK.F1YM.foldr_mem
+ATK.F1YM.troca_fora_de_D
+ATK.F1YM.extensao_de_D
+ATK.StatusFinal.natureza_alinhada
+ATK.StatusFinal.sete_abertas_uma_nao_formalizada

@@ -136,6 +136,47 @@ theorem open_math_true (C : ATK.HodgeOficial.ConstrucoesHodge) : openMath (obrig
 theorem closed_math_false (C : ATK.HodgeOficial.ConstrucoesHodge) :
     closedMath (obrigacoes C) = false := rfl
 
+/-! ## F.1/O8: "aberto" × "não formalizado"
+
+`OPEN_MATH = true` diz que **nenhuma** obrigação está provada no kernel. Não diz que as oito são
+matematicamente abertas. A auditoria F.1/O8 (`conditional/F1_O8.md`) separa as duas coisas para O8:
+`YMNucleo` é **sombra** do enunciado do Clay (sem correspondência a Yang–Mills, `nucleo_sem_g`;
+"não trivial" = não gaussiana), e tem testemunha candidata na literatura, o quadrado de Wick
+`:φ²:` do campo livre massivo. Níveis de evidência:
+
+* kernel: `wick` é a fórmula de Isserlis (`ATK.F1YM.wick_quatro`), e os axiomas `Wightman` só usam
+  o campo em `D` (`ATK.F1YM.troca_fora_de_D`, `ATK.F1YM.extensao_de_D`), então o domínio total
+  exigido pelo kernel não exclui `:φ²:`;
+* por fonte (com lacuna de fonte primária): `:φ²:` restrito ao seu subespaço cíclico satisfaz os
+  axiomas, é não gaussiano e tem lacuna `2m`.
+
+`shadowO8` e `natureza` registram isso como **dado**, não como prova (`flag_nao_e_prova`). -/
+
+/-- Natureza matemática de uma obrigação. -/
+inductive Natureza
+  /-- sem prova conhecida -/
+  | aberto
+  /-- testemunha ou prova na literatura, não formalizada no kernel -/
+  | naoFormalizado
+  deriving DecidableEq
+
+/-- **`ShadowO8`**: o O8 contado (`YMNucleo`) é sombra do Clay, não o problema do Clay. -/
+def shadowO8 : Bool := true
+
+/-- A natureza de O1–O8, na ordem de `obrigacoes`. -/
+def natureza : List Natureza :=
+  [.aberto, .aberto, .aberto, .aberto, .aberto, .aberto, .aberto,
+    if shadowO8 then .naoFormalizado else .aberto]
+
+theorem natureza_alinhada (C : ATK.HodgeOficial.ConstrucoesHodge) :
+    natureza.length = (obrigacoes C).length := rfl
+
+/-- **Sete abertas, uma não formalizada**; `OPEN_MATH` continua `true`. -/
+theorem sete_abertas_uma_nao_formalizada (C : ATK.HodgeOficial.ConstrucoesHodge) :
+    natureza.count .aberto = 7 ∧ natureza.count .naoFormalizado = 1 ∧
+      openMath (obrigacoes C) = true :=
+  ⟨by decide, by decide, rfl⟩
+
 /-- As pontes provadas estão em `T`, e cada uma carrega sua prova. -/
 theorem pontesProvadas_T : ∀ i ∈ pontesProvadas, i.estado = Quatro.T := by
   simp [pontesProvadas, itemT]
@@ -173,3 +214,5 @@ end ATK.StatusFinal
 #print axioms ATK.StatusFinal.closed_pontes_true
 #print axioms ATK.StatusFinal.contagem
 #print axioms ATK.StatusFinal.obrigacoes_sao_conjecturas
+#print axioms ATK.StatusFinal.natureza_alinhada
+#print axioms ATK.StatusFinal.sete_abertas_uma_nao_formalizada
