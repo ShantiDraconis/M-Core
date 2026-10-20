@@ -31,7 +31,12 @@ mesmo jeito que `ATK.ObligationsClosed.B1`/`B4` chegaram lá.
 
 **Funil** = existe um teorema conhecido e nomeável tal que formalizá-lo isola o conteúdo aberto
 num único enunciado (sem resolvê-lo). "Não formalizado" significa que o caminho existe na
-literatura mas não foi andado neste kernel.
+literatura mas não foi andado neste kernel. Distinção que importa: funil isola a **obrigação
+inteira** num único enunciado aberto nomeado (O1 ≡ RH; O3 ≡ "nenhuma solução satisfaz BKM/PSL";
+O8 ≡ "construir medida contínua não-abeliana"). `genuine-partial-producer` cobre só uma **fatia**
+— é por isso que O7 (Gross–Zagier–Kolyvagin cobre posto analítico ≤ 1; o alvo é posto ≥ 2, sem
+produtor) é produtor parcial, não funil, mesma forma de O2 (FLT cobre `gcd>2`; `gcd≤2` não tem
+produtor).
 
 | O | Alvo (nome Lean) | Categoria | Funil disponível | Status | Razão |
 |---|---|---|---|---|---|
