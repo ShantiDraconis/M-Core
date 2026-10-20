@@ -20,7 +20,8 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   (kernel, `ATK.F1YM.parametrica`); o O8 contado, `YMNucleo`, é **sombra** do Clay (sem
   correspondência a Yang–Mills; "não trivial" = não gaussiana) e, por fonte, provavelmente é
   satisfeito pelo quadrado de Wick `:φ²:` do campo livre massivo, o que o tornaria não aberto.
-  Nível: por fonte, não verificado no kernel.
+  Ponto (iii), `wick` padrão: confirmado no kernel. Ponto (i), ciclicidade: passa por fonte (o `H`
+  é existencial). Registro de O8 adiado até (i) ser confirmado; condições em `F1_O8.md`, seção 4.
 * **Congelamento** (`atk-kernel/audits/`): **3350 teoremas esperados**
   (`scripts/expected_theorems.txt`), **3350/3350 verificados localmente** (Lean 4.34.1, Mathlib
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,

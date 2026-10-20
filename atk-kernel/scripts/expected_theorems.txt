@@ -3351,3 +3351,6 @@ ATK.LinhasNovas.InvolucaoComFixos.colapso_nao_injetivo
 ATK.F1YM.vale_no_vacuo
 ATK.F1YM.falha_no_vazio
 ATK.F1YM.parametrica
+ATK.F1YM.wick_dois
+ATK.F1YM.wick_tres
+ATK.F1YM.wick_quatro

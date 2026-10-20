@@ -1,4 +1,5 @@
 import ATK.Conditional.YangMills
+import ATK.YMOficial
 
 /-!
 # F.1/O8: `ConstructiveYM4D` é paramétrica
@@ -9,6 +10,10 @@ fixo**: num modelo ela vale (junto com `ClayYM`), noutro ela falha. Ela só pass
 Yang–Mills quando o modelo é fixado, e o kernel não fixa nenhum.
 
 A obrigação O8 contada por `OPEN_MATH` não é esta, é `ATK.YMOficial.YMNucleo`.
+
+Ponto (iii) da auditoria de `YMNucleo`: a fórmula `ATK.YMOficial.wick` coincide com a de
+Wick/Isserlis ordenada (pares na ordem original): `wick_dois`, `wick_tres` (ímpar ⇒ 0),
+`wick_quatro` (os três emparelhamentos).
 -/
 
 namespace ATK.F1YM
@@ -49,8 +54,29 @@ theorem parametrica :
     (∃ M : YMModel.{0, 0, 0}, ConstructiveYM4D M) ∧ (∃ M : YMModel.{0, 0, 0}, ¬ ConstructiveYM4D M) :=
   ⟨⟨_, vale_no_vacuo.1⟩, ⟨_, falha_no_vazio⟩⟩
 
+section Wick
+
+open ATK.YMOficial
+
+variable {S : Type*} (w : S → S → ℂ) (a b c d : S)
+
+theorem wick_dois : wick w [a, b] = w a b := by simp [wick]
+
+theorem wick_tres : wick w [a, b, c] = 0 := by simp [wick, Fin.sum_univ_succ]
+
+theorem wick_quatro : wick w [a, b, c, d] = w a b * w c d + w a c * w b d + w a d * w b c := by
+  simp only [wick, List.length_cons, List.length_nil, Fin.sum_univ_succ, Fin.sum_univ_zero]
+  simp
+  rw [wick_dois w c d, wick_dois w b d, wick_dois w b c]
+  ring
+
+end Wick
+
 end ATK.F1YM
 
 #print axioms ATK.F1YM.vale_no_vacuo
 #print axioms ATK.F1YM.falha_no_vazio
 #print axioms ATK.F1YM.parametrica
+#print axioms ATK.F1YM.wick_dois
+#print axioms ATK.F1YM.wick_tres
+#print axioms ATK.F1YM.wick_quatro
