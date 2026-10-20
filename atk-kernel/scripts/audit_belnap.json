@@ -1,0 +1,27 @@
+{
+  "_nota": "Espelha ATK/AuditoriaBelnapReal.lean. Cada entrada é individual (por item de scripts/obligations.json); nenhuma entrada agrega OPEN_MATH ou CLOSED_MATH como um todo — ver o docstring daquele arquivo para o porquê.",
+  "regras": {
+    "temAFavor=true": "só quando obligations.json marca o item PROVADA_NO_KERNEL/CLOSED, citando proof_theorem real",
+    "temContra=true": "só quando existe uma prova específica no kernel que mina a reivindicação; nunca a mera ausência de uma prova"
+  },
+  "entradas": [
+    { "camada": "BRIDGE", "claim": "B1 (Riemann, Nyman-Beurling-Baez-Duarte)", "valor": "verdadeiro", "temAFavor": true, "temContra": false, "fonte": "scripts/obligations.json B1", "prova": "ATK.ObligationsClosed.B1" },
+    { "camada": "BRIDGE", "claim": "B4 (P vs NP, Cook-Levin)", "valor": "verdadeiro", "temAFavor": true, "temContra": false, "fonte": "scripts/obligations.json B4", "prova": "ATK.ObligationsClosed.B4" },
+    { "camada": "BRIDGE", "claim": "B2 (Beal, FLT)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json B2 (PARCIAL_NO_MODELO_DO_LANE)", "prova": null },
+    { "camada": "BRIDGE", "claim": "B3 (Navier-Stokes, Leray)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json B3", "prova": null },
+    { "camada": "BRIDGE", "claim": "B5 (Hodge, Lefschetz)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json B5", "prova": null },
+    { "camada": "BRIDGE", "claim": "B6 (BSD, Gross-Zagier-Kolyvagin)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json B6", "prova": null },
+    { "camada": "BRIDGE", "claim": "B7 (Yang-Mills, Osterwalder-Schrader)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json B7", "prova": null },
+    { "camada": "BRIDGE", "claim": "B8 (Beal, Darmon-Merel)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json B8", "prova": null },
+    { "camada": "OPEN_MATH", "claim": "O1 (Riemann, UniformLogBound)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O1", "prova": null },
+    { "camada": "OPEN_MATH", "claim": "O2 (Beal, GCDLowerBoundSmallExponents)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O2", "prova": null },
+    { "camada": "OPEN_MATH", "claim": "O3 (Navier-Stokes, EnstrophyAPrioriBound)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O3", "prova": null },
+    { "camada": "OPEN_MATH", "claim": "O4 (P vs NP, SATNotInP)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O4", "prova": null },
+    { "camada": "OPEN_MATH", "claim": "O5 (Hodge, MiddleCodimension)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O5", "prova": null },
+    { "camada": "OPEN_MATH", "claim": "O6 (BSD, cota superior do posto)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O6", "prova": null },
+    { "camada": "OPEN_MATH", "claim": "O7 (BSD, segunda obrigacao)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O7", "prova": null },
+    { "camada": "OPEN_MATH", "claim": "O8 (Yang-Mills, mass gap)", "valor": "nenhum", "temAFavor": false, "temContra": false, "fonte": "scripts/obligations.json O8", "prova": null },
+    { "camada": "LIGAÇÃO", "claim": "esquema NS parametrico antes de fixar L1", "valor": "ambos", "temAFavor": true, "temContra": true, "fonte": "ATK.ClosedMath.ns_toy_model_vacuous + ATK.FinalRoot.ns_depende_do_modelo", "prova": null },
+    { "camada": "LIGAÇÃO", "claim": "esquema P vs NP parametrico antes de fixar L2", "valor": "ambos", "temAFavor": true, "temContra": true, "fonte": "ATK.ClosedMath.pnp_toy_model_vacuous + ATK.FinalRoot.pnp_depende_do_modelo", "prova": null }
+  ]
+}

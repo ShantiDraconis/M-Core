@@ -3115,3 +3115,8 @@ ATK.AnaliseInversao.neg_nenhum_fixo
 ATK.AnaliseInversao.equacaoInversao_ambos
 ATK.AnaliseInversao.equacaoInversao_nenhum
 ATK.AnaliseInversao.fixo_e_ambos_ou_nenhum
+ATK.AuditoriaBelnapReal.b1_verdadeiro
+ATK.AuditoriaBelnapReal.b4_verdadeiro
+ATK.AuditoriaBelnapReal.pontesNaoProvadas_nenhum
+ATK.AuditoriaBelnapReal.obrigacoesAbertas_nenhum
+ATK.AuditoriaBelnapReal.esquemaSemLigacao_ambos

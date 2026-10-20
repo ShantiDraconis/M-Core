@@ -121,7 +121,34 @@ confirmando que, além dessas duas, não há uma terceira opção escondida.
   como se fosse evidência contrária — essa é exatamente a confusão que a ressalva da seção 4
   existe para prevenir, e esta versão corrige o rótulo para `nenhum`.
 
-## 7. Por que isso é relevante
+## 7. Por que `open_atual := .b` / `closed_atual := .b` por decreto não vale
+
+Uma versão posterior desta análise propôs definir constantes como
+
+```lean
+def open_atual : ValorBelnap := .b
+def closed_atual : ValorBelnap := .b
+theorem fechamento_atual_satisfaz : equacao open_atual closed_atual := rfl
+```
+
+e chamar isso de "a prova que fecha seu meio honestamente". Isso não foi incluído.
+`rfl` aqui só prova que, **dado que você definiu `open_atual` e `closed_atual` como `.b`**, a
+equação `open_atual = neg closed_atual` vale — uma tautologia sobre as definições, não uma
+descoberta sobre o estado real de `OPEN_MATH`/`CLOSED_MATH`. Compilar limpo, sem `sorry`, sem
+`axiom`, só mostra que as definições são internamente consistentes; não mostra que elas
+descrevem corretamente o projeto. É a mesma categoria de erro do `Tri.tf` original, numa forma
+diferente: em vez de uma explosão lógica, é uma conclusão apresentada como descoberta quando na
+verdade foi definida por decreto.
+
+A alternativa feita em `ATK/AuditoriaBelnapReal.lean` é auditar os 8 + 8 itens reais de
+`scripts/obligations.json` **um por um**, com a fonte real de cada `temAFavor`/`temContra`, e
+deixar o `ValorBelnap` de cada um ser computado (`Evidencia.valor`), não estipulado. O resultado
+real: `ambos` aparece exatamente duas vezes (o esquema paramétrico de NS e de P vs NP antes de
+fixar a ligação genuína — seção 6), as 8 obrigações abertas e 6 das 8 pontes são `nenhum`, e
+B1/B4 são `verdadeiro`. Não existe, nessa auditoria, uma reivindicação única chamada "OPEN_MATH"
+ou "CLOSED_MATH" com um `ValorBelnap` próprio — só a conjunção de itens heterogêneos que `ATK.ClosedMath.OpenObligations`/`Bridges` já definem.
+
+## 8. Por que isso é relevante
 
 Um laudo de auditoria que roda dentro do kernel (`#eval`, `#print axioms`) e diferencia, com
 rigor mecânico, "sem prova" de "prova de que é falso" é uma contribuição de metodologia de

@@ -132,3 +132,4 @@ import ATK.FermatExpoentes
 import ATK.RefutacaoTri
 import ATK.StatusHonesto
 import ATK.AnaliseInversao
+import ATK.AuditoriaBelnapReal
