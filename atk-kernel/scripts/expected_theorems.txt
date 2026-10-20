@@ -3348,3 +3348,6 @@ ATK.LinhasNovas.Involucao.strictAnti_involutive_nao_afim
 ATK.LinhasNovas.Involucao.quebrada_fixo
 ATK.LinhasNovas.InvolucaoComFixos.Hom.mapsTo_fixos
 ATK.LinhasNovas.InvolucaoComFixos.colapso_nao_injetivo
+ATK.F1YM.vale_no_vacuo
+ATK.F1YM.falha_no_vazio
+ATK.F1YM.parametrica

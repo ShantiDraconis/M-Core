@@ -16,7 +16,11 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   `ATK/ClosedMathGate.lean` (que exigiria `closed_math` **sem hipóteses**) não existe.
 * **OPEN_MATH = true é, por ora, fato sobre os enunciados que o kernel codifica, não certificação
   de fidelidade aos problemas Millennium. F.1 não foi checada** (próximos a conferir: O8,
-  O4, O1).
+  O4, O1). **F.1/O8 feito** (`conditional/F1_O8.md`): `ConstructiveYM4D` é **paramétrica**
+  (kernel, `ATK.F1YM.parametrica`); o O8 contado, `YMNucleo`, é **sombra** do Clay (sem
+  correspondência a Yang–Mills; "não trivial" = não gaussiana) e, por fonte, provavelmente é
+  satisfeito pelo quadrado de Wick `:φ²:` do campo livre massivo, o que o tornaria não aberto.
+  Nível: por fonte, não verificado no kernel.
 * **Congelamento** (`atk-kernel/audits/`): **3350 teoremas esperados**
   (`scripts/expected_theorems.txt`), **3350/3350 verificados localmente** (Lean 4.34.1, Mathlib
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,
