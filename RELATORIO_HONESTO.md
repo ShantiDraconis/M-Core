@@ -22,8 +22,8 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   satisfeito pelo quadrado de Wick `:φ²:` do campo livre massivo, o que o tornaria não aberto.
   Ponto (iii), `wick` padrão: confirmado no kernel. Ponto (i), ciclicidade: passa por fonte (o `H`
   é existencial). Registro de O8 adiado até (i) ser confirmado; condições em `F1_O8.md`, seção 4.
-* **Congelamento** (`atk-kernel/audits/`): **3350 teoremas esperados**
-  (`scripts/expected_theorems.txt`), **3350/3350 verificados localmente** (Lean 4.34.1, Mathlib
+* **Congelamento** (`atk-kernel/audits/`): **3356 teoremas esperados**
+  (`scripts/expected_theorems.txt`), **3356/3356 verificados localmente** (Lean 4.34.1, Mathlib
   `v4.34.1`, `lake build` completo sem erros) e **0 fora do padrão** de axiomas (`propext`,
   `Classical.choice`, `Quot.sound`). Nenhum `sorryAx`, nenhum axioma novo; a distribuição por
   teorema está em `audits/axioms.txt`.
@@ -35,7 +35,8 @@ python3 scripts/check_axioms.py   # CERTIFIED só com: compila, sem sorry/admit/
   3350/3350 teoremas certificados**, T2 GREEN (congelamento confere), T6 GREEN (axiomas padrão,
   0 fontes sinalizadas), com `sources_sha256` `b7a58c7d…`, o mesmo do congelamento local. Os
   commits seguintes (merge de `main`, documentação) não mudam fontes de `atk-kernel/`.
-  Atestação registrada em `audits/provenance.json` (`ci_attestation`).
+  Atestação registrada em `audits/provenance.json` (`ci_attestation`). Depois dele entraram 6
+  teoremas (`ATK/F1YM.lean`); a atestação de CI das fontes atuais (3356) fica para o próximo run.
 
 **Status calculado pelo kernel** (`ATK/StatusFinal.lean`): `open_math_true`, `closed_math_false`,
 `nenhum_item_em_B`, `closedMath_correto`. Roteiro do que falta: `conditional/ROTEIRO_LIMITE.md`.

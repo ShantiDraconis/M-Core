@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "b7a58c7dd47966d161c4df7aca433236921893389dfb78ce84040569f992b657",
+  "sources_sha256": "1563580c54aae5843c3dd6aaef918667404a572b1b0dc831d7db7ade96e026ba",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -60,6 +60,7 @@
     "ATK/DarmonMerelSeis.lean": "187be5b38e0fdf9254e43c17d552fdf8be59520d67cff19d8175f1f10c898840",
     "ATK/EnunciadosOficiais.lean": "8409a090f6b8a5ee7cc6e0cdb8d21c33f553e701d9e3dcbc1fe831b74b728281",
     "ATK/EspectralDN.lean": "752914e1bc8e260f831e9b05d5c0b4bd5ca9b22fbc2bf557f90db329853e8e4a",
+    "ATK/F1YM.lean": "3da31d6966352a48788026cda9263d23ff56582e90946c96f0a1f23c22f6227b",
     "ATK/FatoresQuarticos.lean": "c101dc5c0d6ce06606c31ad1da34669d17e1b184ff2c4a153eecfc83a25d7025",
     "ATK/FechamentoO1.lean": "6f977ec6f7ad05d67d6ea247168ac1cbc259f1beb8f2db025a8045108c0eb7f0",
     "ATK/FermatDezenove.lean": "8c730c49f1f0930b0a50fc56c2a0fabd9edb2b9a10b0625c64b4972b821af78e",
@@ -190,18 +191,12 @@
     "ATK/ZetaRetangulo.lean": "db4894dc82d4e302b9260e188f37bf79c2c1bf82999f6380e39228e7bcc160a4",
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
-    "ATK.lean": "181dada525d7f3a72436603206b15182af7e0f22263d53ec18bf0932ec61036c"
+    "ATK.lean": "58c3725344b5f78219d4308d2bc28dcb5a4af2cbe5bec646070760f9f85119c9"
   },
-  "n_files": 189,
-  "expected_theorems": 3350,
+  "n_files": 190,
+  "expected_theorems": 3356,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "58580eb3f018c286f372b68d2ff0e892b8b4eac7",
-  "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256.",
-  "ci_attestation": {
-    "check_run": "39366289639",
-    "result": "success",
-    "sources_sha256": "b7a58c7dd47966d161c4df7aca433236921893389dfb78ce84040569f992b657",
-    "matches_freeze": true
-  }
+  "commit_at_freeze": "13ba60883c01944438578f116bd271a4c7d21d98",
+  "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
