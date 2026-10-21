@@ -109,6 +109,16 @@ import ATK.L3Base
 import ATK.L4Base
 import ATK.L5Base
 import ATK.IMathPonte
+import ATK.Externo.FCComplexidade
+import ATK.IntegracaoFCPNP
+import ATK.Externo.FCBeal
+import ATK.IntegracaoFCBeal
+import ATK.TranscodificadoresFC
+import ATK.PostoLivre
+import ATK.Externo.FCBSD
+import ATK.IntegracaoFCBSD
+import ATK.Externo.FCNavierStokes
+import ATK.IntegracaoFCNS
 import ATK.IPortadores
 import ATK.IPortadoresMenores
 import ATK.ATKI
