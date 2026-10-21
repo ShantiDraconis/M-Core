@@ -1,5 +1,6 @@
 import ATK.BaezDuarteBridge
 import ATK.CookLevinNP
+import ATK.NSCriterio
 
 /-!
 # ATK — Obrigações fechadas por teoremas certificados
@@ -22,8 +23,14 @@ theorem B1 : ATK.Conditional.Riemann.BaezDuarteCriterion :=
 L ∈ NP se reduz a SAT em tempo polinomial. -/
 theorem B4 : ATK.Conditional.PvsNP.CookLevin ATK.ModeloPNP.modeloPNP ATK.ModeloPNP.SAT :=
   ATK.CookLevinNP.cookLevin
+/-- **B3** (ponte de Navier–Stokes, Leray + teoria local): no modelo genuíno `modeloNS`, se não
+há solução global suave então há um tempo maximal `T` com solução suave em `[0, T)` e enstrofia
+ilimitada em `[0, T)`. -/
+theorem B3 : ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion ATK.LigacaoNS.modeloNS :=
+  ATK.NSCriterio.criterio
 
 end ATK.ObligationsClosed
 
 #print axioms ATK.ObligationsClosed.B1
 #print axioms ATK.ObligationsClosed.B4
+#print axioms ATK.ObligationsClosed.B3

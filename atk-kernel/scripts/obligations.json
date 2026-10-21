@@ -29,10 +29,12 @@
       "id": "B3",
       "problem": "Navier–Stokes",
       "kind": "PONTE",
-      "lean": "ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion",
-      "status": "PUBLICADA_NAO_FORMALIZADA",
+      "lean": "ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion ATK.LigacaoNS.modeloNS",
+      "status": "PROVADA_NO_KERNEL",
       "ref": "Leray 1934 + teoria local clássica",
-      "progress": " NSExplosao (taxa_leray, 15/10): parte quantitativa do critério de Leray — y > 0, y' ≤ b·y³ em [t₀, T) e y → ∞ em T⁻ ⇒ y(t)² ≥ 1/(2b(T − t)) (taxa mínima de explosão da enstrofia). Status inalterado: existência local e continuação das soluções suaves não estão na Mathlib."
+      "proof_theorem": "ATK.ObligationsClosed.B3",
+      "proof": "ATK.NSCriterio.criterio : EnstrophyBlowupCriterion modeloNS (ATK/NSFourierBase … NSCriterio, 20 módulos; axiomas padrão)",
+      "progress": "Marcos NS1–NS9 no kernel: existência local de Picard em Fourier (NSPicard), regularidade e campos físicos (NSRegular, NSFisico, NSCampos), a equação (NSEquacao), Plancherel (NSPlancherel), SolucaoLocal (NSLocal), solução maximal e alternativa de explosão (NSMaximal), energia (NSEnergia), critério de continuação quantitativo (NSContinua), formulação fraca sem pressão (NSFraca, NSTeste, NSFracaF), pareamentos e Duhamel testada (NSDual, NSMild), unicidade fraca-forte com pressão arbitrária (NSUnico), montagem no modelo genuíno (NSCriterio). Pendente: revisão humana do titular (fidelidade de modeloNS já registrada em L1)."
     },
     {
       "id": "B4",
