@@ -268,7 +268,8 @@ if os.environ.get("GITHUB_ACTIONS"):
     by_mod = {}
     for r in rows:
         by_mod.setdefault(r["file"], []).append(r)
-    for f, rs in by_mod.items():
+    # o Actions mostra no máximo 10 anotações por passo: módulos com falha primeiro, para que apareçam
+    for f, rs in sorted(by_mod.items(), key=lambda kv: all(r["verdict"] == "CERTIFIED" for r in kv[1])):
         ok = sum(r["verdict"] == "CERTIFIED" for r in rs)
         lines = [f"{r['verdict']} {r['theorem']} [{', '.join(r['axioms']) if r['axioms'] is not None else '—'}]"
                  + (f" ({r['reason']})" if r["reason"] else "") for r in rs]

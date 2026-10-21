@@ -1,0 +1,25 @@
+ATK/RH/RhoIndependent.lean:108:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+ATK/RH/RhoIndependent.lean:116:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+ATK/RH/RhoIndependent.lean:152:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+ATK/RH/RhoIndependent.lean:174:12: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+ATK/RH/RhoIndependent.lean:177:12: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+'ATK.RH.rho_eq_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ATK.RH.rho_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ATK.RH.coeffs_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ATK.RH.linearIndependent_rho' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ATK.RH.linearIndependent_rho_real' depends on axioms: [propext, Classical.choice, Quot.sound]
