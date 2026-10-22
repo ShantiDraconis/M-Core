@@ -289,6 +289,7 @@ theorem disc3_jensen:
   unfolding disc3_def by (simp add: power2_eq_square power3_eq_cube algebra_simps)
 
 theorem turan3:
+  fixes g0 g1 g2 g3 r1 r2 r3 :: real
   assumes hB: "3*g2 = -g3*(r1+r2+r3)" and hC: "3*g1 = g3*(r1*r2+r1*r3+r2*r3)"
     and hD: "g0 = -g3*r1*r2*r3"
   shows "(g1*g2-g0*g3)^2 \<le> 4*(g1^2-g0*g2)*(g2^2-g1*g3)"
