@@ -89,6 +89,12 @@ retângulos (fase 3). O quantificador `∀ n` é a própria HR: **não há aqui 
 * `hilbert_polya` (condicional): se todo zero não trivial for `½ + iμ` com `μ` autovalor de um operador simétrico,
   então HR; `mu_real_iff`: `μ = (ρ − ½)/i` é real ⟺ `Re ρ = ½`. Nenhum operador assim é conhecido.
 
+## 4c. Laplaciano do toro plano (`ATK/EspectroToro.lean`)
+
+`e_{m,n}(x, y) = e^{i(mx+ny)}` é `2π`-periódica e `−Δ e_{m,n} = (m² + n²) e_{m,n}` (derivadas segundas provadas):
+um operador com espectro real `≥ 0`. Com `hilbert_polya`, só faltaria a correspondência completa entre zeros e
+espectro — que este operador não tem: autovalores inteiros forçariam `Im ρ ∈ ℤ` (`espectro_inteiro_forca`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
