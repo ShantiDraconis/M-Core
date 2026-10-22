@@ -1,0 +1,214 @@
+{
+ "G_fatora": true,
+ "G_R": true,
+ "G_conj": true,
+ "P1_zeros": [
+  "(3/4+1i)",
+  "(3/4+-1i)",
+  "(1/4+1i)",
+  "(1/4+-1i)"
+ ],
+ "P1_ok": true,
+ "G_meio": "(289/256+0i)",
+ "G_meio_eq": true,
+ "G_2": "(2665/256+0i)",
+ "grau_d=1/4": 4,
+ "mult_d=1/4": 1,
+ "H_mult_meio+i_d=1/4": 1,
+ "eval_d=1/4": true,
+ "grau_d=0": 4,
+ "mult_d=0": 2,
+ "H_mult_meio+i_d=0": 3,
+ "eval_d=0": true,
+ "quartica": true,
+ "mult_(z-2)^m": {
+  "1": 1,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6
+ },
+ "klein": true,
+ "TRT": true,
+ "troca_fluxo": true,
+ "centro": "(1/2+14i)",
+ "separacao": 0.2,
+ "centro_troca": "(14+1/2i)",
+ "checar": {
+  "G(0.6+13.99i)": "naoZero",
+  "zero exato": "indeterminado"
+ },
+ "posneg": true,
+ "sin_pi_inteiros": 5.879542597180472e-15,
+ "sin_pi_nao_inteiro": 1.0497552308367462,
+ "zero_infinito": true,
+ "limite": [
+  [
+   1.1,
+   2.1
+  ],
+  [
+   1.01,
+   2.009999999999999
+  ],
+  [
+   1.001,
+   2.0009999999999177
+  ],
+  [
+   0.999,
+   1.9989999999999712
+  ]
+ ],
+ "truncamentos": true,
+ "f(0.33)": "-1/300",
+ "contorno_fArg": 3.0,
+ "contorno_H_d=0.25": 6.0,
+ "contorno_H_d=0.0": 6.0,
+ "H_meio": 1.245480102467664,
+ "Gamma(5/4)": 0.906402477055477,
+ "esfera_corda": 0.002027780854702864,
+ "esfera_corda_formula": 0.0020277808547028617,
+ "esfera_angulo": 0.0020277812021206225,
+ "cilindro_dist": 1.1755705045849463,
+ "cilindro_formula": 1.1755705045849463,
+ "cone_K(0.1,pi)": [
+  -0.1,
+  1.2246467991473533e-17,
+  0.1
+ ],
+ "cone_K(-0.1,pi)": [
+  -0.1,
+  1.2246467991473533e-17,
+  -0.1
+ ],
+ "toro": {
+  "superficie": 2.220446049250313e-16,
+  "linha_raio": 2.0,
+  "R-r": 2.0,
+  "par_dist": 1.1755705045849463,
+  "par_formula": 1.1755705045849463,
+  "reencontro": 2.4492935982947064e-16,
+  "K_linha": -0.5,
+  "K_linha_formula": -0.5,
+  "K_externo": 0.25,
+  "area_num": 118.4352528130723,
+  "area_formula": 118.4352528130723,
+  "gauss_bonnet_num": -2.092721098805179e-15,
+  "S_fixos": [
+   "0",
+   "0.5",
+   "14j",
+   "(0.5+14j)"
+  ]
+ },
+ "terminal": [
+  {
+   "n": 5,
+   "N": 40,
+   "M": 10,
+   "E": 2.917504436092647e-10,
+   "min|EM| (grade)": 0.5737117409499584,
+   "E<min": true
+  },
+  {
+   "n": 8,
+   "N": 40,
+   "M": 10,
+   "E": 1.7508317549300835e-09,
+   "min|EM| (grade)": 0.556392257008387,
+   "E<min": true
+  },
+  {
+   "n": 10,
+   "N": 40,
+   "M": 10,
+   "E": 4.973256849959124e-09,
+   "min|EM| (grade)": 0.5504733859727753,
+   "E<min": true
+  },
+  {
+   "n": 13,
+   "N": 40,
+   "M": 10,
+   "E": 1.9954833646380747e-08,
+   "min|EM| (grade)": 0.5450029815048439,
+   "E<min": true
+  },
+  {
+   "n": 15,
+   "N": 40,
+   "M": 10,
+   "E": 4.578302380011365e-08,
+   "min|EM| (grade)": 0.05263245752813968,
+   "E<min": true
+  },
+  {
+   "n": 20,
+   "N": 40,
+   "M": 10,
+   "E": 2.820667955301089e-07,
+   "min|EM| (grade)": 0.03937905468621618,
+   "E<min": true
+  },
+  {
+   "n": 25,
+   "N": 40,
+   "M": 10,
+   "E": 1.3142696752702072e-06,
+   "min|EM| (grade)": 0.03141839345172256,
+   "E<min": true
+  },
+  {
+   "n": 30,
+   "N": 40,
+   "M": 10,
+   "E": 4.988071335012781e-06,
+   "min|EM| (grade)": 0.026138668366190793,
+   "E<min": true
+  }
+ ],
+ "tempos": [
+  [
+   "classificação exaustiva C/E/N_C/N_E",
+   "perfeito",
+   "ATK.ClosedMath.classificacao"
+  ],
+  [
+   "simetria força a linha crítica",
+   "negado",
+   "ATK.ClosedMath.a_simetria"
+  ],
+  [
+   "HR ⟺ ZE = ∅",
+   "perfeito",
+   "ATK.CEZ.rh_iff_externa_vazia"
+  ],
+  [
+   "zeros no equador interno do toro, se HR",
+   "condicional",
+   "ATK.ClosedMath.a_toro_condicional"
+  ],
+  [
+   "HR",
+   "futuro",
+   "ATK.ClosedMath.a_rh"
+  ],
+  [
+   "HR ⟺ critério de somas finitas em todo K_n",
+   "perfeito",
+   "ATK.ClosedMath.Terminal.rh_iff_criterioEM"
+  ],
+  [
+   "critério verificado para n = 5..N (grade)",
+   "presente",
+   "(numérico, este script)"
+  ],
+  [
+   "primeiros zeros na linha (Platt–Trudgian até 3·10¹²)",
+   "presente",
+   "(literatura; não no kernel)"
+  ]
+ ]
+}

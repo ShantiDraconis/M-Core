@@ -16,6 +16,16 @@ on:
 permissions:
   contents: read
 
+# Cada job grava a saída do verificador num arquivo e a publica como anotação (legível pela API),
+# com o código de saída real do verificador.
+env:
+  ANOTA: |
+    anota() {  # anota <arquivo> <título> <código>
+      local msg
+      msg=$(tail -c 3500 "$1" | sed 's/%/%25/g; s/\r//g' | sed ':a;N;$!ba;s/\n/%0A/g')
+      if [ "$3" = "0" ]; then echo "::notice title=$2 OK::$msg"; else echo "::error title=$2 FALHOU ($3)::$msg"; fi
+    }
+
 jobs:
   coq:
     name: Coq (coqc + coqchk)
@@ -24,24 +34,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Instalar Coq
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq coq
-      - name: coqc
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq coq > /dev/null
+      - name: coqc + coqchk
         working-directory: formatos/coq
         run: |
-          set -o pipefail
-          coqc --version | tee coq_versao.txt
-          coqc -Q . ATK ClosedMath.v 2>&1 | tee coq_saida.txt
-          coqchk -silent -Q . ATK ATK.ClosedMath 2>&1 | tee coqchk_saida.txt
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: coq-relatorio
-          path: formatos/coq/*.txt
+          eval "$ANOTA"
+          set +e
+          { coqc --version; coqc -Q . ATK ClosedMath.v; echo "coqc=$?"; } > coq_saida.txt 2>&1
+          c1=$(grep -o 'coqc=[0-9]*' coq_saida.txt | cut -d= -f2)
+          coqchk -silent -o -Q . ATK ATK.ClosedMath > coqchk_saida.txt 2>&1; c2=$?
+          anota coq_saida.txt "coqc" "$c1"
+          anota coqchk_saida.txt "coqchk" "$c2"
+          [ "$c1" = "0" ] && [ "$c2" = "0" ]
 
   isabelle:
     name: Isabelle/HOL (isabelle build)
     runs-on: ubuntu-24.04
-    timeout-minutes: 75
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - name: Instalar Isabelle
@@ -53,14 +62,13 @@ jobs:
           done
       - name: isabelle build
         run: |
-          set -o pipefail
-          "$ISA/bin/isabelle" version | tee formatos/isabelle/isabelle_versao.txt
-          "$ISA/bin/isabelle" build -v -o threads=4 -D formatos/isabelle 2>&1 | tee formatos/isabelle/isabelle_saida.txt
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: isabelle-relatorio
-          path: formatos/isabelle/*.txt
+          eval "$ANOTA"
+          set +e
+          { "$ISA/bin/isabelle" version; "$ISA/bin/isabelle" build -v -o threads=4 -D formatos/isabelle; echo "build=$?"; } > isa_saida.txt 2>&1
+          c=$(grep -o 'build=[0-9]*' isa_saida.txt | tail -1 | cut -d= -f2)
+          grep -n -i -E "error|failed|Finished|Building|Timing|theory" isa_saida.txt | tail -60 > isa_resumo.txt
+          anota isa_resumo.txt "isabelle" "$c"
+          [ "$c" = "0" ]
 
   smt:
     name: SMT-LIB 2 (z3, cvc5)
@@ -68,18 +76,17 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Instalar z3 e cvc5
+      - name: Instalar resolvedores
         run: |
-          pip install -q z3-solver
-          sudo apt-get update -qq && sudo apt-get install -y -qq z3 || true
-          sudo apt-get install -y -qq cvc5 || true
+          pip install -q z3-solver cvc5 || pip install -q z3-solver
+          sudo apt-get update -qq && sudo apt-get install -y -qq z3 > /dev/null || true
       - name: rodar
-        run: python3 formatos/smtlib/rodar.py
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: smt-relatorio
-          path: formatos/smtlib/resultado_smt.json
+        run: |
+          eval "$ANOTA"
+          set +e
+          python3 formatos/smtlib/rodar.py > smt_saida.txt 2>&1; c=$?
+          anota smt_saida.txt "smt" "$c"
+          exit $c
 
   tptp:
     name: TPTP (E prover)
@@ -88,9 +95,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Instalar E
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq eprover
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq eprover > /dev/null
       - name: rodar
-        run: bash formatos/tptp/rodar.sh
+        run: |
+          eval "$ANOTA"
+          set +e
+          bash formatos/tptp/rodar.sh > tptp_saida.txt 2>&1; c=$?
+          anota tptp_saida.txt "tptp" "$c"
+          exit $c
 
   python:
     name: Python (pytest + SymPy)
@@ -104,4 +116,9 @@ jobs:
       - name: Dependências
         run: pip install -q numpy scipy matplotlib sympy pytest
       - name: pytest
-        run: python -m pytest -q pesquisa/rodada5/testes -rs
+        run: |
+          eval "$ANOTA"
+          set +e
+          python -m pytest -q -rs pesquisa/rodada5/testes > py_saida.txt 2>&1; c=$?
+          anota py_saida.txt "pytest" "$c"
+          exit $c
