@@ -5233,3 +5233,12 @@ ATK.ZeroIncognito.rh_iff_dispersao
 ATK.ZeroIncognito.card_filter_le
 ATK.ZeroIncognito.dispersao_le
 ATK.ZeroIncognito.dispersao_media_tende_zero
+ATK.TruncamentoZero.eixo_unico
+ATK.TruncamentoZero.aproximantes_sobem
+ATK.TruncamentoZero.aproximante_refuta
+ATK.TruncamentoZero.zeta_eq_trunc
+ATK.TruncamentoZero.norm_cauda_le
+ATK.TruncamentoZero.residuo_trunc
+ATK.TruncamentoZero.limite_de_zeros_truncados
+ATK.TruncamentoZero.rh_iff_sem_solucao
+ATK.TruncamentoZero.solucao_eixo_deslocado
