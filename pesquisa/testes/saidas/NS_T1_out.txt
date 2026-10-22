@@ -1,0 +1,58 @@
+== Ponto OpenAI (a,b,c) = (1/2, 1/2-h, 1/2+h), 0<h<1/100 ==
+  d (U_r = tau^-d)             tau^(1/2)
+  ||u||_inf                    tau^(-h - 1/2)
+  energia do nucleo            tau^(1/2 - 3*h)
+  ||u||_L3                     tau^(-4*h/3)
+  ||u||_H1/2^2                 tau^(-3*h)
+  enstrofia                    tau^(-3*h - 1/2)
+  ||omega||_inf                tau^(-h - 1)
+  Re_loc                       tau^(-h)
+  ||u||_inf sqrt(tau)          tau^(-h)
+  l_z/l_r                      tau^(-h)
+  expoente CKN ingenuo  : -3*h
+  expoente CKN truncado : 2*h/(2*h - 1)  (~ -4*h**2 - 2*h )
+    conferencia numerica h=0.0010: generico=-0.002004 simbolico=-0.002004
+    conferencia numerica h=0.0050: generico=-0.010101 simbolico=-0.010101
+    conferencia numerica h=0.0099: generico=-0.020202 simbolico=-0.020202
+  condicao -> conjunto de h em (0,1/100) onde vale:
+    [OK] energia limitada (expoente >= 0): Interval.open(0, 1/100)
+    [OK] int enstrofia < inf (desig. de energia): Interval.open(0, 1/100)
+    [OK] Leray: ||u||_inf >~ tau^-1/2: Interval.open(0, 1/100)
+    [OK] Leray enstrofia >~ tau^-1/2: Interval.open(0, 1/100)
+    [OK] ESS/Seregin: ||u||_L3 -> inf: Interval.open(0, 1/100)
+    [OK] BKM: int ||omega||_inf = inf: Interval.open(0, 1/100)
+    [OK] int ||u||_inf^2 = inf: Interval.open(0, 1/100)
+    [OK] Serrin q=4,p=8: int ||u||_q^p = inf: Interval.open(0, 1/100)
+    [OK] Serrin q=6,p=4: int ||u||_q^p = inf: Interval.open(0, 1/100)
+    [OK] Serrin q=9,p=3: int ||u||_q^p = inf: Interval.open(0, 1/100)
+    [OK] CKN (nucleo inteiro em B_r) >= eps: Interval.open(0, 1/100)
+    [OK] CKN (truncado a B_r) >= eps: Interval.open(0, 1/100)
+    [OK] Tipo II: ||u||_inf sqrt(tau) -> inf: Interval.open(0, 1/100)
+    [OK] Re_loc -> inf: Interval.open(0, 1/100)
+    [OK] balanco d_t <~ inercia (c >= 1-a): Interval.open(0, 1/100)
+    [OK] viscosidade <~ inercia (c >= a): Interval.open(0, 1/100)
+  TODAS AS CONDICOES NECESSARIAS VALEM EM (0,1/100): True
+== B4: expoentes apos a escala ==
+  (i)  lam = tau0^(-1/2) [convencao do frontier]
+     tempo de explosao s* = tau0/lam^2 = tau0^(2)
+     ||v0||_2^2 (total)  ~ tau0^(1/2)
+     ||v0||_2^2 (nucleo) ~ tau0^(1 - 3*h)
+     ||v0||_L3            ~ tau0^(-4*h/3)  (invariante)
+     ||g||_{L^1_s W^{k,p}} <= C tau0^(...): k=0,p=3: 1; k=0,p=inf: 1/2; k=1,p=3: 1/2; k=1,p=inf: 0; k=2,p=3: 0; k=2,p=inf: -1/2; k=3,p=3: -1/2; k=3,p=inf: -1
+  (ii) lam = tau0^(+1/2) [explosao em s = 1, nu fixo]
+     tempo de explosao s* = tau0/lam^2 = tau0^(0)
+     ||v0||_2^2 (total)  ~ tau0^(-1/2)
+     ||v0||_2^2 (nucleo) ~ tau0^(-3*h)
+     ||v0||_L3            ~ tau0^(-4*h/3)  (invariante)
+     ||g||_{L^1_s W^{k,p}} <= C tau0^(...): k=0,p=3: 1; k=0,p=inf: 3/2; k=1,p=3: 3/2; k=1,p=inf: 2; k=2,p=3: 2; k=2,p=inf: 5/2; k=3,p=3: 5/2; k=3,p=inf: 3
+== Varredura (a,b,c) em [0.3,1]^3, passo 0.005 ==
+  pontos: 2803221; viaveis: 123957
+  Re_loc expoente (cu - a): min=0.0000 max=0.2450; viaveis com Re_loc = O(1) (cu=a): 4010
+  margem Tipo II (cu - 1/2): min=0.0050 max=0.4900
+  faixa de a: [0.400, 0.990]
+  faixa de b: [0.300, 0.985]
+  faixa de c: [0.500, 0.990]
+  aspecto b-a: min=-0.345 max=0.165; com l_z >= l_r (b<=a): 89665
+  exemplos com Re_loc = O(1): [(0.505, 0.3, 0.505), (0.505, 0.305, 0.505), (0.505, 0.31, 0.505), (0.505, 0.315, 0.505), (0.505, 0.32, 0.505)]
+  (0.5, 0.495, 0.505) [OpenAI com h=0.005] viavel na grade: True
+  fatia a=1/2: 2426 viaveis; margem Tipo II minima 0.0050

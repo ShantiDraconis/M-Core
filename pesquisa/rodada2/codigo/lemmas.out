@@ -1,0 +1,15 @@
+max T na grade = 2.828426907 em r=1.0000 th/pi=0.5002 ; 2sqrt2 = 2.828427125 ; violacoes T(r)>T(1): 4
+n= 0  k_n = 2.66666666667   previsto = 2.66666666667
+n= 1  k_n = 0.0   previsto = 0
+n= 2  k_n = -0.380952380952   previsto = -0.380952380952
+n= 3  k_n = 0.0   previsto = 0
+n= 4  k_n = -0.103896103896   previsto = -0.103896103896
+n= 5  k_n = 0.0   previsto = 0
+n= 6  k_n = -0.0484848484848   previsto = -0.0484848484848
+n= 7  k_n = 0.0   previsto = 0
+n= 8  k_n = -0.0280701754386   previsto = -0.0280701754386
+n= 9  k_n = 0.0   previsto = 0
+n=10  k_n = -0.0183066361556   previsto = -0.0183066361556
+n=11  k_n = 0.0   previsto = 0
+n=12  k_n = -0.0128824476651   previsto = -0.0128824476651
+media uniforme de K = 2.66666666666667  8/3 = 2.66666666666667

@@ -1,0 +1,5 @@
+autoteste ok (142 potencias sinteticas, caminhos double e long double)
+HIT p=5 x=3 y=-1 F=121 e=0 q=2 z=11 [q=2]
+RESUMO modo=slice p=5 N=10000000 pares=19999998 vp>=2:0
+  q=2 acertos=1 (com e=1: 0)
+rc=0 TEMPO 195 s

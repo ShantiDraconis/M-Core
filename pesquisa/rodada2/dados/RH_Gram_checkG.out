@@ -1,0 +1,16 @@
+(1,1) C-dd=1.260661401507812623 |C-Vas_mpmath|=1.51e-34 rel=1.2e-34 |Vas-direto|=2.53e-40
+(2,3) C-dd=0.44110350927940217633 |C-Vas_mpmath|=4.48e-35 rel=1.01e-34 |Vas-direto|=9.13e-40
+(12,18) C-dd=0.073517251546567029388 |C-Vas_mpmath|=1.75e-35 rel=2.38e-34 |Vas-direto|=1.52e-40
+(1,4999) C-dd=0.0010779865388102841559 |C-Vas_mpmath|=7.12e-30 rel=6.6e-27 |Vas-direto|=5.27e-38
+(2,4999) C-dd=0.00100865109840331241 |C-Vas_mpmath|=1.13e-29 rel=1.12e-26 |Vas-direto|=5.13e-38
+(3,4998) C-dd=0.00096828799354352506541 |C-Vas_mpmath|=1.88e-30 rel=1.94e-27 |Vas-direto|=4.77e-40
+(2311,4997) C-dd=0.00030436527533511596694 |C-Vas_mpmath|=1.46e-34 rel=4.78e-31 (direto: lcm grande)
+(4000,4999) C-dd=0.00024738706244933670449 |C-Vas_mpmath|=3.43e-35 rel=1.39e-31 (direto: lcm grande)
+(1234,3457) C-dd=0.00047465712813560871324 |C-Vas_mpmath|=8.0e-35 rel=1.69e-31 (direto: lcm grande)
+(2310,4620) C-dd=0.00033428972120817019042 |C-Vas_mpmath|=2.14e-36 rel=6.39e-33 |Vas-direto|=9.53e-44
+(2999,3001) C-dd=0.00041943682203458596791 |C-Vas_mpmath|=4.58e-33 rel=1.09e-29 (direto: lcm grande)
+(1,2310) C-dd=0.0021657538716739813065 |C-Vas_mpmath|=1.04e-30 rel=4.8e-28 |Vas-direto|=1.69e-38
+(4096,3) C-dd=0.0011571994758945333999 |C-Vas_mpmath|=3.31e-31 rel=2.86e-28 |Vas-direto|=3.39e-39
+(4999,5000) C-dd=0.00025199233290426771513 |C-Vas_mpmath|=5.09e-34 rel=2.02e-30 (direto: lcm grande)
+(3,7) C-dd=0.22075579001066494403 |C-Vas_mpmath|=1.82e-34 rel=8.25e-34 |Vas-direto|=1.48e-39
+(4999,4998) C-dd=0.00025204271744867831456 |C-Vas_mpmath|=1.89e-34 rel=7.51e-31 (direto: lcm grande)

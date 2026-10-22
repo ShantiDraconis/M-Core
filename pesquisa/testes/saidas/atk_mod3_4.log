@@ -1,0 +1,15 @@
+  MOD3_2 n=4 ATK/sb s=9 -> UNSAT (0.1s, 1195 vars, 7433 cl)
+  MOD3_2 n=4 ATK/sb s=10 -> SAT (6.9s, 1428 vars, 8999 cl)
+RESULT MOD3_2 n=4 ATK/sb: lo=10 hi=10 verified=True
+  MOD3_0 n=4 ATK/sb s=10 -> UNSAT (0.1s, 1418 vars, 8981 cl)
+  MOD3_0 n=4 ATK/sb s=11 -> UNSAT (3.5s, 1670 vars, 10712 cl)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/a7d41c1e-9201-5acd-ad60-9a9635944b71/scratchpad/research/tests/code/PNP_T1_run.py", line 41, in <module>
+    r = min_size(fn, n, basis, mode, lo, hi, to, lambda m: print(m, flush=True), cu2=cu2)
+  File "/tmp/claude-0/-home-claude/a7d41c1e-9201-5acd-ad60-9a9635944b71/scratchpad/research/tests/code/PNP_T1_enc.py", line 297, in min_size
+    st, model, dt = solve(C, timeout, extra=extra)
+                    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-claude/a7d41c1e-9201-5acd-ad60-9a9635944b71/scratchpad/research/tests/code/PNP_T1_enc.py", line 202, in solve
+    os.unlink(path)
+    ~~~~~~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-0/-home-claude/a7d41c1e-9201-5acd-ad60-9a9635944b71/scratchpad/research/tests/work/tmpvkl4gwp_.cnf'

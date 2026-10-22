@@ -1,0 +1,38 @@
+a_p ok (Legendre == forca bruta p<400; Hasse; a_p=0 p=3 mod 4). Primeiros: [(2, 0), (3, 0), (5, -2), (7, 0), (11, 0), (13, 6), (17, 2), (19, 0), (23, 0), (29, -10), (31, 0), (37, -2)]
+
+Teste FE: L(1) = sum a_n/n [e^{-2pi n A/sqrtN} + eps e^{-2pi n/(A sqrtN)}] deve independer de A
+  N= 16 eps=+1: L(A=1)=  0.41544810809046873564  spread(A)=0.0756
+  N= 16 eps=-1: L(A=1)=                     0.0  spread(A)=0.63
+  N= 32 eps=+1: L(A=1)=  0.65551438857302995262  spread(A)=4.59e-41
+  N= 32 eps=-1: L(A=1)=                     0.0  spread(A)=0.685
+  N= 64 eps=+1: L(A=1)=  0.89558066905559116959  spread(A)=0.0756
+  N= 64 eps=-1: L(A=1)=                     0.0  spread(A)=0.63
+
+Periodo:
+  int_{-1}^{0} 2/sqrt(g) = 2.62205755429211981046483958989
+  int_{1}^{inf} 2/sqrt(g) = 2.62205755429211981046483958989
+  Omega_ATK (soma)        = 5.24411510858423962092967917978
+  (quadratura direta, sem substituicao = 5.24411510858423962092917693364 )
+  menor periodo real (AGM) omega1 = pi/AGM(sqrt2,1) = 2.62205755429211981046483958989
+  constante lemniscata varpi       = 2.62205755429211981046483958989
+
+Tate em p=2: Delta = 64 v2(Delta) = 6  c4 = 48 v2(c4) = 4 -> modelo minimal (v(Delta)<12)
+  ponto singular de E mod 2: [(1, 0)]
+  apos x->x+1: a2=3, a4=2, a6=0; 2|a3,a4,a6: True; 2|b2=12: True (nao e multiplicativa)
+  4|a6: True (nao e tipo II); v2(b8)=2 < 3 -> tipo III, m=2, c_2=2, f=v(Delta)-1=5
+  Ogg: m = v(Delta) - f + 1 = 2 (f=5 do teste FE com N=32)
+  (0,0) mod 2 = (0,0) -> nao singular (em E0)
+  (1,0) mod 2 = (1,0) -> singular (fora de E0)
+  (-1,0) mod 2 = (1,0) -> singular (fora de E0)
+
+L(E,1) (FE, 600 termos)   = 0.65551438857302995261620989747277985
+varpi/4                   = 0.65551438857302995261620989747277985
+Omega_ATK*c2/16 (#Sha=1)  = 0.65551438857302995261620989747277985
+#Sha_an com Omega_ATK     = 1.0
+L(E,1)/Omega_ATK          = 0.125 (=1/8 ?)
+
+Convencoes alternativas (#Sha_an = L*16/(Omega*c2)):
+  Omega_ATK = 2*varpi (int sobre E(R), kernel)              : #Sha_an = 1.0
+  omega1 = varpi (so 1 componente; '2.622057' do enunciado) : #Sha_an = 2.0
+  Omega_ATK, sem c2 (c2=1)                                  : #Sha_an = 2.0
+  omega1 com c2*c_inf = 2*2                                 : #Sha_an = 1.0

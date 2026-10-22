@@ -1,0 +1,3 @@
+autoteste ok (142 potencias sinteticas, caminhos double e long double)
+RESUMO modo=box p=7 N=5000 pares=15200914 vp>=2:0
+rc=0 TEMPO 77 s
