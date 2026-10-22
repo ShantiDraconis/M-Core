@@ -5148,3 +5148,15 @@ ATK.EixoDeslocado.eps_torcao
 ATK.EixoDeslocado.eps_par_trivial
 ATK.EixoDeslocado.par_deslocado_refuta
 ATK.EixoDeslocado.tres_zeros
+ATK.BohrLandau.todos_finite
+ATK.BohrLandau.direita_subset
+ATK.BohrLandau.esquerda_subset
+ATK.BohrLandau.torcao_torcao
+ATK.BohrLandau.torcao_injective
+ATK.BohrLandau.torcao_direita
+ATK.BohrLandau.simetria_contagem
+ATK.BohrLandau.direita_vazia_de_rh
+ATK.BohrLandau.esquerda_vazia_de_rh
+ATK.BohrLandau.rh_bohrLandau
+ATK.BohrLandau.rh_densidade
+ATK.BohrLandau.densidade_de_bohrLandau
