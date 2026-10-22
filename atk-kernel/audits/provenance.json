@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "9ec5d00ddd9874cae90e84fb4289408c9cb19b8316c751da23cf439f98d8550b",
+  "sources_sha256": "c37a0dd20b9d482267b113e860aa9aff9514ec1bd18d98d54ac5574977460902",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -262,7 +262,7 @@
     "ATK/PvsNP.lean": "af6a98531a70abc013def9a68f4f88e63aa59cc202ed5f1e52153990514f7ea2",
     "ATK/QuarticResidues.lean": "0210ef36976dd12d5c0d8f1e38c117be438fc11765628c91715807c2f052e191",
     "ATK/RHLogZeta.lean": "99eb566c78105d25c6200585e708a740c2f81587f284728cacd5009540410cb8",
-    "ATK/RHTerminal.lean": "0a61e12b1648e3326dcd9f863a999c87457037ca2c29a72203e08550809eb6f0",
+    "ATK/RHTerminal.lean": "8e9f09191bd05526f4ff056f13e6f77046c8067a7fe74a5c94b925c134fbb3be",
     "ATK/RazaoZeta.lean": "c233a2918e5832cbf16bae610bdc9e7b6c2661ebe909166d425e5803753152e4",
     "ATK/RefutacoesBeal.lean": "8ac3fce5a2d5e9d1f5cd6c1cf66e11df011f0e5f76b26a4cca972bbb3f8dcbc4",
     "ATK/Regimes.lean": "fefe7e4df5cd23888873fae6d730026a5e1c5c1d354408fce7d72cc09775654e",
@@ -306,9 +306,9 @@
     "ATK.lean": "4aab6b355b1e42cb1a77f94bb60cff80473d41264020f18cc6098ffb1331b3fa"
   },
   "n_files": 302,
-  "expected_theorems": 5546,
+  "expected_theorems": 5551,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "8c96bcfd5026145d774ceaa34ab7b7c1c64fd56b",
+  "commit_at_freeze": "fc28df1021cf5cb06544afae76a1e872907bc665",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

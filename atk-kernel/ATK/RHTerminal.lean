@@ -285,6 +285,68 @@ theorem rh_iff_criterioEM : RiemannHypothesis ↔ CriterioEM := by
     obtain ⟨N, M, hN, hM, L, hL, hEL⟩ := h n hn
     exact ⟨EM N M, Eb n N M, L, EM_uniforme hn hN hM, hL, hEL⟩
 
+/-! ### O parâmetro terminal `δ_n = min_{K_n} |η|` -/
+
+/-- Função eta de Dirichlet, `η(s) = (1 − 2^{1−s}) ζ(s)`. -/
+noncomputable def eta (s : ℂ) : ℂ := (1 - (2 : ℂ) ^ (1 - s)) * riemannZeta s
+
+/-- `1 − 2^{1−s} ≠ 0` para `Re s < 1` (pois `|2^{1−s}| = 2^{1−σ} > 1`). -/
+theorem fator_eta_ne {s : ℂ} (h : s.re < 1) : 1 - (2 : ℂ) ^ (1 - s) ≠ 0 := by
+  intro h0
+  have h1 : (2 : ℂ) ^ (1 - s) = 1 := by linear_combination -h0
+  have hn := Complex.norm_cpow_eq_rpow_re_of_pos (x := 2) (by norm_num) (1 - s)
+  push_cast at hn
+  rw [h1, norm_one] at hn
+  have : (1 : ℝ) < 2 ^ (1 - s).re := Real.one_lt_rpow (by norm_num) (by simp; linarith)
+  linarith
+
+/-- Em `K_n`, `η = 0 ⟺ ζ = 0` (mesmos zeros, mesmas multiplicidades). -/
+theorem eta_zero_iff {n : ℕ} (hn : 5 ≤ n) {s : ℂ} (hs : s ∈ Kn n) : eta s = 0 ↔ riemannZeta s = 0 := by
+  unfold eta
+  rw [mul_eq_zero, or_iff_right (fator_eta_ne (Kn_sub hn hs).2)]
+
+theorem eta_continua_Kn {n : ℕ} (hn : 5 ≤ n) : ContinuousOn eta (Kn n) := by
+  intro s hs
+  have h1 : s ≠ 1 := by
+    rintro rfl
+    have := (Kn_sub hn hs).2
+    simp at this
+  have hc : ContinuousAt (fun s : ℂ => (2 : ℂ) ^ (1 - s)) s :=
+    (continuousAt_const.sub continuousAt_id).const_cpow (Or.inl two_ne_zero)
+  exact ((continuousAt_const.sub hc).mul
+    (differentiableAt_riemannZeta h1).continuousAt).continuousWithinAt
+
+/-- **O parâmetro** `δ_n = min_{s ∈ K_n} |η(s)|`. -/
+noncomputable def delta (n : ℕ) : ℝ := sInf ((fun s => ‖eta s‖) '' Kn n)
+
+/-- O mínimo é atingido: `δ_n = |η(s₀)|` para algum `s₀ ∈ K_n`, e `δ_n ≤ |η(s)|` em `K_n`. -/
+theorem delta_atingido {n : ℕ} (hn : 5 ≤ n) :
+    (∃ s₀ ∈ Kn n, delta n = ‖eta s₀‖) ∧ ∀ s ∈ Kn n, delta n ≤ ‖eta s‖ := by
+  have hK : IsCompact ((fun s => ‖eta s‖) '' Kn n) :=
+    (Kn_compacto n).image_of_continuousOn (eta_continua_Kn hn).norm
+  have hne : ((fun s => ‖eta s‖) '' Kn n).Nonempty := (Kn_nonempty hn).image _
+  refine ⟨?_, fun s hs => csInf_le ⟨0, ?_⟩ ⟨s, hs, rfl⟩⟩
+  · obtain ⟨s₀, hs₀, he⟩ := hK.sInf_mem hne
+    exact ⟨s₀, hs₀, he.symm⟩
+  · rintro _ ⟨t, -, rfl⟩
+    exact norm_nonneg _
+
+/-- **HR ⟺ ∀ n ≥ 5, δ_n > 0** (com `δ_n = min_{K_n} |η|`): o parâmetro proposto é exatamente HR. -/
+theorem rh_iff_delta : RiemannHypothesis ↔ ∀ n : ℕ, 5 ≤ n → 0 < delta n := by
+  rw [T25]
+  constructor
+  · intro h n hn
+    obtain ⟨⟨s₀, hs₀, he⟩, -⟩ := delta_atingido hn
+    rw [he, norm_pos_iff, Ne, eta_zero_iff hn hs₀]
+    exact h s₀ (Kn_sub hn hs₀)
+  · intro h s hs hz
+    rw [cobertura] at hs
+    simp only [Set.mem_iUnion, Set.mem_setOf_eq, exists_prop] at hs
+    obtain ⟨n, hn, hsn⟩ := hs
+    have h1 := (delta_atingido hn).2 s hsn
+    rw [(eta_zero_iff hn hsn).mpr hz, norm_zero] at h1
+    linarith [h n hn]
+
 end ATK.ClosedMath.Terminal
 
 -- Auditoria de axiomas (kernel): cada teorema deve depender só de propext, Classical.choice, Quot.sound.
@@ -305,3 +367,8 @@ end ATK.ClosedMath.Terminal
 #print axioms ATK.ClosedMath.Terminal.EM_uniforme
 #print axioms ATK.ClosedMath.Terminal.Eb_tende_zero
 #print axioms ATK.ClosedMath.Terminal.rh_iff_criterioEM
+#print axioms ATK.ClosedMath.Terminal.fator_eta_ne
+#print axioms ATK.ClosedMath.Terminal.eta_zero_iff
+#print axioms ATK.ClosedMath.Terminal.eta_continua_Kn
+#print axioms ATK.ClosedMath.Terminal.delta_atingido
+#print axioms ATK.ClosedMath.Terminal.rh_iff_delta

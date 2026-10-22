@@ -5544,3 +5544,8 @@ ATK.ClosedMath.Terminal.norm_le_Kn
 ATK.ClosedMath.Terminal.EM_uniforme
 ATK.ClosedMath.Terminal.Eb_tende_zero
 ATK.ClosedMath.Terminal.rh_iff_criterioEM
+ATK.ClosedMath.Terminal.fator_eta_ne
+ATK.ClosedMath.Terminal.eta_zero_iff
+ATK.ClosedMath.Terminal.eta_continua_Kn
+ATK.ClosedMath.Terminal.delta_atingido
+ATK.ClosedMath.Terminal.rh_iff_delta

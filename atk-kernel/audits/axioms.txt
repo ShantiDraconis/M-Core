@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 9ec5d00ddd9874cae90e84fb4289408c9cb19b8316c751da23cf439f98d8550b
+# axiomas por teorema — congelamento de c37a0dd20b9d482267b113e860aa9aff9514ec1bd18d98d54ac5574977460902
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -5546,3 +5546,8 @@ ATK.ClosedMath.Terminal.norm_le_Kn	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.Terminal.EM_uniforme	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.Terminal.Eb_tende_zero	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.Terminal.rh_iff_criterioEM	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Terminal.fator_eta_ne	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Terminal.eta_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Terminal.eta_continua_Kn	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Terminal.delta_atingido	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Terminal.rh_iff_delta	propext, Classical.choice, Quot.sound
