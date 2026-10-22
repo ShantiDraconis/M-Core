@@ -71,10 +71,20 @@ FALLBACK = ("import Mathlib.Analysis.SpecialFunctions.Pow.Real\n"
 
 
 def axioms_local(root, timeout=1200):
-    """Compila cada módulo com `lake env lean` e lê `#print axioms`."""
+    """Compila cada módulo com `lake env lean` (em paralelo, ATK_JOBS processos) e lê `#print axioms`."""
+    from concurrent.futures import ThreadPoolExecutor
     out = {}
     files = sorted(glob.glob(os.path.join(root, "ATK", "**", "*.lean"), recursive=True))
-    for f in files:
+    jobs = int(os.environ.get("ATK_JOBS", max(1, (os.cpu_count() or 2) // 2)))
+    with ThreadPoolExecutor(max_workers=jobs) as ex:
+        for res in ex.map(lambda f: _axioms_file(root, f, timeout), files):
+            out.update(res)
+    return out
+
+
+def _axioms_file(root, f, timeout):
+    out = {}
+    if True:
         rel = os.path.relpath(f, root)
         try:
             p = subprocess.run(["lake", "env", "lean", rel], cwd=root, capture_output=True, text=True, timeout=timeout)
@@ -99,11 +109,11 @@ def axioms_local(root, timeout=1200):
             except subprocess.TimeoutExpired:
                 log = ""
             os.remove(tmpf)
-        for m in re.finditer(r"'([^']+)' depends on axioms: \[([^\]]*)\]", log, re.S):
+        for m in re.finditer(r"'(\S+?)' depends on axioms: \[([^\]]*)\]", log, re.S):
             out[m.group(1)] = ", ".join(a.strip() for a in m.group(2).replace("\n", " ").split(",") if a.strip()) + suffix
-        for m in re.finditer(r"'([^']+)' does not depend on any axioms", log):
+        for m in re.finditer(r"'(\S+?)' does not depend on any axioms", log):
             out[m.group(1)] = "nenhum"
-        print(f"{rel}: {'ok' if p.returncode == 0 else 'não compila aqui'}", file=sys.stderr, flush=True)
+        print(f"{rel}: {'ok' if log else 'não compila aqui'}", file=sys.stderr, flush=True)
     return out
 
 

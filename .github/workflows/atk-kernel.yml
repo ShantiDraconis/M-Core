@@ -14,7 +14,7 @@ jobs:
   kernel:
     name: Lean 4 + Mathlib — compilação e auditoria de axiomas
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 150
     defaults:
       run:
         working-directory: atk-kernel
@@ -52,15 +52,14 @@ jobs:
         shell: bash
         run: |
           : > reports/file_status.txt
-          for f in ATK/*.lean ATK/Conditional/*.lean ATK/Terminal/*.lean; do
-            [ -e "$f" ] || continue
-            m=${f#ATK/}; m=${m%.lean}; m=${m//\//_}
-            if lake env lean "$f" > "reports/audit_${m}.log" 2>&1; then
-              echo "$f OK" >> reports/file_status.txt
-            else
-              echo "$f FAIL" >> reports/file_status.txt
-            fi
-          done
+          # auditoria em paralelo (4 processos): cada arquivo é reverificado pelo kernel com #print axioms
+          shopt -s nullglob
+          arquivos=(ATK/*.lean ATK/Conditional/*.lean ATK/Terminal/*.lean ATK/Cert/*.lean)
+          printf '%s\n' "${arquivos[@]}" \
+            | xargs -P 4 -I{} bash -c 'f="{}"; m=${f#ATK/}; m=${m%.lean}; m=${m//\//_};
+                if lake env lean "$f" > "reports/audit_${m}.log" 2>&1; then echo "$f OK"; else echo "$f FAIL"; fi' \
+            > reports/file_status.unsorted
+          sort reports/file_status.unsorted > reports/file_status.txt
           cat reports/file_status.txt
           # os logs brutos não são legíveis de fora: os primeiros erros dos arquivos que falham viram anotações
           { grep " FAIL$" reports/file_status.txt || true; } | while read -r f _; do

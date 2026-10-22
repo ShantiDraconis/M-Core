@@ -29,14 +29,17 @@ if os.path.exists(fs):
         if len(parts) == 2:
             status[parts[0]] = parts[1]
 
-axioms, errors = {}, {}
+axioms, errors, origin = {}, {}, {}
 for log in sorted(glob.glob(os.path.join(REP, "audit_*.log"))):
     text = open(log, encoding="utf-8", errors="replace").read()
-    for m in re.finditer(r"'([^']+)' depends on axioms: \[([^\]]*)\]", text, re.S):
-        axioms[m.group(1)] = [a.strip() for a in m.group(2).replace("\n", " ").split(",") if a.strip()]
-    for m in re.finditer(r"'([^']+)' does not depend on any axioms", text):
-        axioms[m.group(1)] = []
     mod = os.path.basename(log)[len("audit_"):-len(".log")]
+    # nomes podem conter apóstrofos (ex.: kt''_pos): casar até "' depends"
+    for m in re.finditer(r"'(\S+?)' depends on axioms: \[([^\]]*)\]", text, re.S):
+        axioms[m.group(1)] = [a.strip() for a in m.group(2).replace("\n", " ").split(",") if a.strip()]
+        origin[m.group(1)] = mod
+    for m in re.finditer(r"'(\S+?)' does not depend on any axioms", text):
+        axioms[m.group(1)] = []
+        origin[m.group(1)] = mod
     errs = [l for l in text.splitlines() if ": error" in l or "error:" in l]
     if errs:
         errors[mod] = errs[:20]
@@ -62,9 +65,18 @@ def module_file(thm):
             return cand
     return "/".join(parts[:-1]) + ".lean"
 
+# arquivo de cada teorema: o log de auditoria onde o kernel imprimiu seus axiomas (namespaces
+# como ATK.ClosedMath.* ou ATK.Cert.* não correspondem a um único arquivo); senão, pelo nome.
+mod2file = {f[len("ATK/"):-len(".lean")].replace("/", "_"): f for f in status}
+
+def file_of(thm):
+    if thm in origin and origin[thm] in mod2file:
+        return mod2file[origin[thm]]
+    return module_file(thm)
+
 rows, certified = [], 0
 for thm in expected:
-    f = module_file(thm)
+    f = file_of(thm)
     fstat = status.get(f, "NOT_RUN")
     ax = axioms.get(thm)
     if fstat != "OK":

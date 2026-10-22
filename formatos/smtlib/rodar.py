@@ -13,12 +13,16 @@ if not solvers:
 for f in sorted(glob.glob(os.path.join(aqui, "*.smt2"))):
     res[os.path.basename(f)] = {}
     for s in solvers:
-        if s == "z3py":
-            import z3
-            sol = z3.Solver(); sol.from_file(f); out = str(sol.check())
-        else:
-            args = [s, f] if s == "z3" else [s, "--lang=smt2", f]
-            out = subprocess.run(args, capture_output=True, text=True, timeout=600).stdout.strip().splitlines()[-1]
+        try:
+            if s == "z3py":
+                import z3
+                sol = z3.Solver(); sol.set("timeout", 120000); sol.from_file(f); out = str(sol.check())
+            else:
+                args = [s, "-T:120", f] if s == "z3" else [s, "--lang=smt2", "--tlimit=120000", f]
+                r = subprocess.run(args, capture_output=True, text=True, timeout=180).stdout.strip().splitlines()
+                out = r[-1] if r else "sem saída"
+        except subprocess.TimeoutExpired:
+            out = "timeout"
         res[os.path.basename(f)][s] = out
         ok &= (out == "unsat")
         print(f"{os.path.basename(f):28s} {s:5s} {out}")

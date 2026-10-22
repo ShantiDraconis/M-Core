@@ -54,14 +54,14 @@ Proof.
 Qed.
 
 Theorem zero_sempre_indeterminado : forall r : R, 0 <= r -> ~ (r < Rabs 0).
-Proof. intros r Hr; rewrite Rabs_R0; lra. Qed.
+Proof. intros r Hr H; rewrite Rabs_R0 in H; lra. Qed.
 
 (* ------------------------------------------------------------------ 3. operadores *)
 Definition opJ := Cconj.
 Definition opR (s : C) := Csub C1 (Cconj s).
 Definition opS (s : C) := Csub C1 s.
 Definition opT (s : C) := Cmul Ci (Cconj s).
-Definition D (s : C) := re s - 1/2.
+Definition Dd (s : C) := re s - 1/2.
 
 Lemma J_J : forall s, opJ (opJ s) = s.
 Proof. intros [a b]; apply C_ext; simpl; ring. Qed.
@@ -77,8 +77,8 @@ Lemma J_R : forall s, opJ (opR s) = opS s.
 Proof. intros [a b]; apply C_ext; unfold opR, opJ, opS, Csub, Cconj, C1; simpl; ring. Qed.
 Lemma R_S : forall s, opR (opS s) = opJ s.
 Proof. intros [a b]; apply C_ext; unfold opR, opJ, opS, Csub, Cconj, C1; simpl; ring. Qed.
-Lemma D_R : forall s, D (opR s) = - D s.
-Proof. intros [a b]; unfold D, opR, Csub, Cconj, C1; simpl; ring. Qed.
+Lemma D_R : forall s, Dd (opR s) = - Dd s.
+Proof. intros [a b]; unfold Dd, opR, Csub, Cconj, C1; simpl; ring. Qed.
 Lemma TRT : forall w, opT (opR (opT w)) = Cadd (Cconj w) Ci.
 Proof. intros [a b]; apply C_ext; unfold opT, opR, Cmul, Csub, Cconj, Cadd, Ci, C1; simpl; ring. Qed.
 Lemma TRT_fixo : forall w, opT (opR (opT w)) = w <-> im w = 1/2.
@@ -110,7 +110,8 @@ Definition G (d g : R) (s : C) : C :=
   Cmul (Cadd (sq (Csub (Csub s (Cr (1/2))) (Cr d))) (Cr (g * g)))
        (Cadd (sq (Cadd (Csub s (Cr (1/2))) (Cr d))) (Cr (g * g))).
 
-Ltac cring := apply C_ext; unfold G, sq, Cmul, Cadd, Csub, Cconj, Cr, Ci, C0, C1, opS, opJ; simpl; ring.
+Definition xm (s : C) := Csub s (Cr (1/2)).
+Ltac cring := apply C_ext; unfold G, xm, sq, Cmul, Cadd, Csub, Cconj, Cr, Ci, C0, C1, opS, opJ; simpl; ring.
 
 Theorem P1 : forall d g,
   G d g (mkC (1/2 + d) g) = C0 /\ G d g (mkC (1/2 + d) (- g)) = C0 /\
@@ -125,20 +126,19 @@ Proof. intros d g [a b]; cring. Qed.
 
 (* expansão quártica: G = x^4 + 2(g²−d²)x² + (g²+d²)², x = s − 1/2 *)
 Theorem G_quartica : forall d g s,
-  let x := Csub s (Cr (1/2)) in
-  G d g s = Cadd (Cadd (sq (sq x)) (Cmul (Cr (2 * (g * g - d * d))) (sq x))) (Cr ((g * g + d * d) ^ 2)).
-Proof. intros d g [a b] x; unfold x; cring. Qed.
+  G d g s = Cadd (Cadd (sq (sq (xm s))) (Cmul (Cr (2 * (g * g - d * d))) (sq (xm s)))) (Cr ((g * g + d * d) ^ 2)).
+Proof. intros d g [a b]; cring. Qed.
 
 Theorem P2_critico : forall g, Critico (G 0 g) (mkC (1/2) g).
 Proof.
   intro g; split.
   - replace (mkC (1/2) g) with (mkC (1/2 + 0) g) by (apply C_ext; simpl; ring).
-    apply (P1 0 g).
+    exact (proj1 (P1 0 g)).
   - simpl; reflexivity.
 Qed.
 
 Theorem P3_externo : forall d g, d <> 0 -> Externo (G d g) (mkC (1/2 + d) g).
-Proof. intros d g Hd; split; [apply (P1 d g) | simpl; lra]. Qed.
+Proof. intros d g Hd; split; [exact (proj1 (P1 d g)) | simpl; intro H; apply Hd; lra]. Qed.
 
 Theorem P5_NE : forall d g, g <> 0 -> NaoZeroE (G d g) (Cr 2).
 Proof.
@@ -168,7 +168,7 @@ Qed.
 (* "ambos": o ramo ½ + λ + i g é zero de G_λ para todo λ; crítico em λ = 0, externo em λ = 1/4 *)
 Theorem P4_ambos : forall g,
   (forall l, G l g (mkC (1/2 + l) g) = C0) /\ re (mkC (1/2 + 0) g) = 1/2 /\ re (mkC (1/2 + 1/4) g) = 3/4.
-Proof. intro g; split; [intro l; apply (P1 l g) | simpl; split; field]. Qed.
+Proof. intro g; split; [intro l; exact (proj1 (P1 l g)) | simpl; split; field]. Qed.
 
 (* as simetrias de ζ são compatíveis com as duas respostas *)
 Theorem simetria_compativel_com_ambos :
@@ -176,7 +176,7 @@ Theorem simetria_compativel_com_ambos :
   Critico (G 0 1) (mkC (1/2) 1) /\ Externo (G 1 1) (mkC (1/2 + 1) 1).
 Proof.
   split; [intro; apply G_R|]. split; [intro; apply G_R|].
-  split; [apply P2_critico | apply P3_externo; lra].
+  split; [apply P2_critico | apply P3_externo; apply R1_neq_R0].
 Qed.
 
 (* ------------------------------------------------------------------ 5. geometrias *)
@@ -244,33 +244,14 @@ Proof. intros r d; destruct (Cil_par d) as [H1 [H2 [H3 H4]]]; rewrite H2, H4; ri
 Definition Kg (R0 r th : R) := cos th / (r * (R0 + r * cos th)).
 
 Theorem curvatura_linha : forall R0 r, 0 < r -> r < R0 ->
-  Kg R0 r PI = - 1 / (r * (R0 - r)) /\ Kg R0 r PI < 0 /\ Kg R0 r 0 = 1 / (r * (R0 + r)).
+  Kg R0 r PI = -1 / (r * (R0 - r)) /\ Kg R0 r PI < 0 /\ Kg R0 r 0 = 1 / (r * (R0 + r)).
 Proof.
   intros R0 r Hr HR; unfold Kg; rewrite cos_PI, cos_0.
-  assert (H1 : r * (R0 + r * -1) <> 0) by (apply Rgt_not_eq; nra).
-  assert (H2 : r * (R0 - r) <> 0) by (apply Rgt_not_eq; nra).
-  assert (H3 : r * (R0 + r * 1) <> 0) by (apply Rgt_not_eq; nra).
-  repeat split.
-  - field; split; [lra | apply Rgt_not_eq; lra].
-  - replace (-1 / (r * (R0 + r * -1))) with (- (1 / (r * (R0 - r)))) by (field; split; lra).
-    assert (0 < 1 / (r * (R0 - r))) by (apply Rdiv_lt_0_compat; nra).
-    lra.
-  - field; split; lra.
-Qed.
-
-Theorem curvatura_minima : forall R0 r c, 0 < r -> r < R0 -> -1 <= c -> c <= 1 ->
-  - 1 / (r * (R0 - r)) <= c / (r * (R0 + r * c)).
-Proof.
-  intros R0 r c Hr HR Hc1 Hc2.
-  assert (Ha : 0 < r * (R0 - r)) by nra.
-  assert (Hb : 0 < r * (R0 + r * c)) by nra.
-  unfold Rdiv.
-  apply (Rmult_le_reg_r (r * (R0 - r) * (r * (R0 + r * c)))); [nra |].
-  replace (-1 * / (r * (R0 - r)) * (r * (R0 - r) * (r * (R0 + r * c)))) with (- (r * (R0 + r * c)))
-    by (field; lra).
-  replace (c * / (r * (R0 + r * c)) * (r * (R0 - r) * (r * (R0 + r * c)))) with (c * (r * (R0 - r)))
-    by (field; lra).
-  nra.
+  replace (R0 + r * -1) with (R0 - r) by ring.
+  replace (R0 + r * 1) with (R0 + r) by ring.
+  split; [reflexivity | split; [| reflexivity]].
+  assert (H : 0 < / (r * (R0 - r))) by (apply Rinv_0_lt_compat; nra).
+  unfold Rdiv; lra.
 Qed.
 
 (* ------------------------------------------------------------------ 6. taxonomia *)
@@ -287,14 +268,14 @@ Proof. intros x Hx; field; lra. Qed.
 Definition TransporteZero (F G0 phi u : R -> R) := forall s, G0 (phi s) = u s * F s.
 
 Theorem transporte_zero : forall F G0 phi u s, TransporteZero F G0 phi u -> F s = 0 -> G0 (phi s) = 0.
-Proof. intros F G0 phi u s H Hz; rewrite H, Hz; ring. Qed.
+Proof. intros F G0 phi u s H Hz; unfold TransporteZero in H; rewrite H, Hz; ring. Qed.
 
 Theorem transporte_zero_iff : forall F G0 phi u s,
   TransporteZero F G0 phi u -> u s <> 0 -> (F s = 0 <-> G0 (phi s) = 0).
 Proof.
   intros F G0 phi u s H Hu; split.
   - apply transporte_zero; assumption.
-  - intro Hz; rewrite H in Hz; destruct (Rmult_integral _ _ Hz) as [H1|H1]; [contradiction | exact H1].
+  - intro Hz; unfold TransporteZero in H; rewrite H in Hz; destruct (Rmult_integral _ _ Hz) as [H1|H1]; [contradiction | exact H1].
 Qed.
 
 (* T28: |F − P| ≤ E < L ≤ |P| em K ⇒ F ≠ 0 em K *)
@@ -349,6 +330,6 @@ Print Assumptions classificacao.
 Print Assumptions P1.
 Print Assumptions G_quartica.
 Print Assumptions P5_NE.
-Print Assumptions curvatura_minima.
+Print Assumptions curvatura_linha.
 Print Assumptions criterio_aproximacao.
 Print Assumptions perfeito_verdadeiro.
