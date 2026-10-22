@@ -252,3 +252,4 @@ import ATK.ZeroIncognito
 import ATK.TruncamentoZero
 import ATK.ModeloParametrico
 import ATK.ZetaTroca
+import ATK.CaudaMeio
