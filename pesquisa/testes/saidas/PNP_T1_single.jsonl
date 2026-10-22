@@ -1,0 +1,4 @@
+{"f": "XOR", "n": 4, "basis": "ATK", "mode": "sb", "s": 9, "maxnot": 0, "status": "UNSAT", "time": 0.0, "opts": [], "verified": null, "circuit": null}
+{"f": "XOR", "n": 4, "basis": "ATK", "mode": "sb", "s": 10, "maxnot": 1, "status": "UNSAT", "time": 2.0, "opts": [], "verified": null, "circuit": null}
+{"f": "XOR", "n": 4, "basis": "ATK", "mode": "sb", "s": 12, "maxnot": 3, "status": "SAT", "time": 272.3, "opts": [], "verified": true, "circuit": [["e", 0, 1], ["ou", 0, 1], ["nao", 4, 4], ["e", 5, 6], ["ou", 3, 7], ["e", 3, 7], ["nao", 9, 9], ["e", 8, 10], ["ou", 2, 11], ["e", 2, 11], ["nao", 13, 13], ["e", 12, 14]]}
+{"f": "XOR", "n": 4, "basis": "ATK", "mode": "sb", "s": 11, "maxnot": 2, "status": "UNSAT", "time": 100.3, "opts": [], "verified": null, "circuit": null}

@@ -29,10 +29,10 @@
         "B1"
       ],
       "obligations": [
-        "O1"
+        "O1m"
       ],
-      "producer": "IsEmpty ATK.ForaDaLinha.ZeroFora",
-      "producer_equivalence": "ATK.ForaDaLinha.riemann_iff_vazio",
+      "producer": "Filter.Tendsto ATK.Conditional.Riemann.DN Filter.atTop (nhds 0)",
+      "producer_equivalence": "ATK.NecessidadeRH.rh_iff_DN",
       "linking": null,
       "statement_root": "_root_.RiemannHypothesis",
       "template": "terminal-templates/RH.lean.tpl",
@@ -41,7 +41,8 @@
       "refutation_statement": "¬ RiemannHypothesis",
       "refutation_statement_root": "¬ (_root_.RiemannHypothesis)",
       "refutation_meaning": "um zero não trivial fora da reta crítica (RH falsa)",
-      "refutation_template": "terminal-templates/RHRefutacao.lean.tpl"
+      "refutation_template": "terminal-templates/RHRefutacao.lean.tpl",
+      "producer_note": "Alvo trocado em 22/10/2026 (auditoria): a O1 (UniformLogBound) é mais forte que RH; o produtor mínimo é D_N → 0, equivalente ao RiemannHypothesis da Mathlib por ATK.NecessidadeRH.rh_iff_DN (provado no kernel). Antes: IsEmpty ATK.ForaDaLinha.ZeroFora (também equivalente, via riemann_iff_vazio)."
     },
     {
       "id": "Beal",

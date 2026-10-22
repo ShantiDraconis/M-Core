@@ -1,0 +1,5 @@
+  MAJ n=5 U2/sb s=4 -> UNSAT (0.0s, 646 vars, 3789 cl)
+  MAJ n=5 U2/sb s=5 -> UNSAT (0.1s, 893 vars, 5301 cl)
+  MAJ n=5 U2/sb s=6 -> UNSAT (0.6s, 1174 vars, 7051 cl)
+  MAJ n=5 U2/sb s=7 -> UNSAT (6.5s, 1489 vars, 9044 cl)
+  MAJ n=5 U2/sb s=8 -> UNSAT (63.0s, 1838 vars, 11285 cl)

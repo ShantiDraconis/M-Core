@@ -1,0 +1,22 @@
+== M=3 small nmodes=8
+FINAL rho=3.837774 Am1A1/A0^2=1.0156 N/A0^2=0.2646 Ntil/A0^2=0.5396 N/Ntil=0.4905 Nzero/N=1.000 nmodes=12
+   cascas(|k|^2:fracao de A0): 14:0.339 17:0.127 22:0.362 27:0.172  | modos com |v|>5%max: 12
+   suporte(classes): (2,-3,-1) (2,-2,-3) (2,3,-3) (2,3,-1) (3,2,3) (3,3,-3)
+   amplitudes |v|: 9.036 5.101 7.745 4.584 6.799 6.891
+== M=3 small nmodes=12
+FINAL rho=3.733849 Am1A1/A0^2=1.0084 N/A0^2=0.2701 Ntil/A0^2=0.5605 N/Ntil=0.4818 Nzero/N=1.000 nmodes=14
+   cascas(|k|^2:fracao de A0): 13:0.152 14:0.561 19:0.152 22:0.135  | modos com |v|>5%max: 14
+   suporte(classes): (1,-3,-2) (2,-3,-3) (2,-1,3) (3,-2,-1) (3,-1,3) (3,2,-1) (3,2,0)
+   amplitudes |v|: 4.865 4.653 6.082 2.700 5.220 5.661 5.215
+== M=3 small nmodes=16
+FINAL rho=3.691513 Am1A1/A0^2=1.0156 N/A0^2=0.2751 Ntil/A0^2=0.5711 N/Ntil=0.4817 Nzero/N=1.000 nmodes=18
+   cascas(|k|^2:fracao de A0): 13:0.226 14:0.104 17:0.252 18:0.141 22:0.115 27:0.162  | modos com |v|>5%max: 18
+   suporte(classes): (0,2,-3) (1,-3,-2) (2,-3,2) (2,-2,3) (3,-3,-3) (3,-2,2) (3,-2,3) (3,2,0) (3,3,0)
+   amplitudes |v|: 10.442 12.862 3.427 15.366 20.172 12.548 14.259 17.692 17.472
+== M=3 caixa inteira (com poda)
+FINAL rho=3.603191 Am1A1/A0^2=1.0079 N/A0^2=0.2797 Ntil/A0^2=0.6051 N/Ntil=0.4623 Nzero/N=1.000 nmodes=86
+   cascas(|k|^2:fracao de A0): 14:0.039 17:0.021 18:0.231 19:0.283 22:0.220 27:0.197  | modos com |v|>5%max: 36
+== M=2 caixa inteira (com poda)
+FINAL rho=3.578131 Am1A1/A0^2=1.0065 N/A0^2=0.2813 Ntil/A0^2=0.5900 N/Ntil=0.4767 Nzero/N=1.000 nmodes=18
+   cascas(|k|^2:fracao de A0): 8:0.319 9:0.397 12:0.284  | modos com |v|>5%max: 18
+   suporte(classes): (0,2,-2) (1,2,-2) (2,-2,-2) (2,-2,-1) (2,-2,0) (2,0,2) (2,1,2) (2,2,-2) (2,2,2)

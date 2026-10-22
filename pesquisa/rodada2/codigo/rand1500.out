@@ -1,0 +1,6 @@
+MAX sobre 1500 campos: Nder/N1=1.00000 N1/N2=0.82152 N2/Nt=0.84446 Nt/A0^2=0.66191 Bj/A0^2=0.66661 A0^2/(A-1A1)=0.99994 Nder/(A-1A1)=0.20771
+referencias: 1/sqrt2=0.70711  2/3=0.66667
+
+real	1m59.173s
+user	1m56.522s
+sys	0m0.088s

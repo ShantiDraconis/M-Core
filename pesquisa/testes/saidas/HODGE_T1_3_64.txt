@@ -1,0 +1,139 @@
+SUM m=3 phi=2 dimHdgPrim=20 multisets=1 orbits=1 orb_dec=1 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=1 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=4 phi=2 dimHdgPrim=141 multisets=4 orbits=4 orb_dec=4 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=1 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=5 phi=4 dimHdgPrim=400 multisets=4 orbits=2 orb_dec=2 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=1 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=6 phi=2 dimHdgPrim=1751 multisets=18 orbits=14 orb_dec=13 orb_indec=1 orb_indec_qdec=1 orb_tsplit_any=6 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=7 phi=6 dimHdgPrim=1860 multisets=10 orbits=4 orb_dec=4 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=2 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=8 phi=4 dimHdgPrim=5881 multisets=30 orbits=17 orb_dec=16 orb_indec=1 orb_indec_qdec=1 orb_tsplit_any=7 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=9 phi=6 dimHdgPrim=8000 multisets=28 orbits=10 orb_dec=10 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=4 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=10 phi=4 dimHdgPrim=19881 multisets=79 orbits=30 orb_dec=29 orb_indec=1 orb_indec_qdec=1 orb_tsplit_any=10 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=11 phi=10 dimHdgPrim=10900 multisets=35 orbits=7 orb_dec=7 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=2 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=12 phi=4 dimHdgPrim=52991 multisets=174 orbits=79 orb_dec=72 orb_indec=7 orb_indec_qdec=7 orb_tsplit_any=29 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=13 phi=12 dimHdgPrim=19920 multisets=56 orbits=10 orb_dec=10 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=3 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=14 phi=6 dimHdgPrim=77401 multisets=202 orbits=51 orb_dec=47 orb_indec=4 orb_indec_qdec=4 orb_tsplit_any=16 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=15 phi=8 dimHdgPrim=78260 multisets=174 orbits=40 orb_dec=38 orb_indec=2 orb_indec_qdec=2 orb_tsplit_any=14 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=16 phi=8 dimHdgPrim=87921 multisets=216 orbits=62 orb_dec=56 orb_indec=6 orb_indec_qdec=6 orb_tsplit_any=19 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=17 phi=16 dimHdgPrim=50560 multisets=120 orbits=15 orb_dec=15 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=3 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=18 phi=6 dimHdgPrim=264671 multisets=597 orbits=143 orb_dec=123 orb_indec=20 orb_indec_qdec=20 orb_tsplit_any=39 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=19 phi=18 dimHdgPrim=73620 multisets=165 orbits=19 orb_dec=19 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=4 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=20 phi=8 dimHdgPrim=346381 multisets=748 orbits=161 orb_dec=143 orb_indec=18 orb_indec_qdec=18 orb_tsplit_any=42 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=21 phi=12 dimHdgPrim=215120 multisets=412 orbits=64 orb_dec=61 orb_indec=3 orb_indec_qdec=3 orb_tsplit_any=18 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=22 phi=10 dimHdgPrim=277101 multisets=566 orbits=86 orb_dec=80 orb_indec=6 orb_indec_qdec=6 orb_tsplit_any=17 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=23 phi=22 dimHdgPrim=138820 multisets=286 orbits=26 orb_dec=26 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=4 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=24 phi=8 dimHdgPrim=745211 multisets=1478 orbits=355 orb_dec=291 orb_indec=64 orb_indec_qdec=64 orb_tsplit_any=91 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=25 a=(1,6,11,16,20,21) orbsize=4 tsplit=0
+SUM m=25 phi=20 dimHdgPrim=185280 multisets=368 orbits=39 orb_dec=38 orb_indec=1 orb_indec_qdec=0 orb_tsplit_any=6 R_orbits=1 R_dim=2880 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=2880
+SUM m=26 phi=12 dimHdgPrim=439081 multisets=851 orbits=112 orb_dec=105 orb_indec=7 orb_indec_qdec=7 orb_tsplit_any=19 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=27 phi=18 dimHdgPrim=301940 multisets=565 orbits=68 orb_dec=67 orb_indec=1 orb_indec_qdec=1 orb_tsplit_any=11 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=28 phi=12 dimHdgPrim=644121 multisets=1200 orbits=209 orb_dec=188 orb_indec=21 orb_indec_qdec=21 orb_tsplit_any=37 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=29 phi=28 dimHdgPrim=295120 multisets=560 orbits=40 orb_dec=40 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=5 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=30 phi=8 dimHdgPrim=2106431 multisets=3844 orbits=650 orb_dec=503 orb_indec=147 orb_indec_qdec=147 orb_tsplit_any=120 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=31 phi=30 dimHdgPrim=365700 multisets=680 orbits=46 orb_dec=46 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=6 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=32 a=(1,9,17,20,24,25) orbsize=4 tsplit=0
+SUM m=32 phi=16 dimHdgPrim=727201 multisets=1344 orbits=196 orb_dec=176 orb_indec=20 orb_indec_qdec=19 orb_tsplit_any=35 R_orbits=1 R_dim=2880 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=2880
+REP m=33 a=(1,4,16,22,25,31) orbsize=4 tsplit=0
+SUM m=33 phi=20 dimHdgPrim=557600 multisets=990 orbits=104 orb_dec=102 orb_indec=2 orb_indec_qdec=1 orb_tsplit_any=14 R_orbits=1 R_dim=2880 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=2880
+SUM m=34 phi=16 dimHdgPrim=909921 multisets=1657 orbits=166 orb_dec=157 orb_indec=9 orb_indec_qdec=9 orb_tsplit_any=20 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=35 a=(1,8,15,22,29,30) orbsize=6 tsplit=0
+SUM m=35 phi=24 dimHdgPrim=543220 multisets=975 orbits=92 orb_dec=91 orb_indec=1 orb_indec_qdec=0 orb_tsplit_any=12 R_orbits=1 R_dim=4320 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=4320
+REP m=36 a=(1,4,13,27,29,34) orbsize=12 tsplit=0
+REP m=36 a=(1,5,6,29,33,34) orbsize=12 tsplit=1
+REP m=36 a=(1,5,12,27,29,34) orbsize=12 tsplit=0
+REP m=36 a=(1,5,12,28,29,33) orbsize=12 tsplit=0
+REP m=36 a=(1,5,14,26,29,33) orbsize=12 tsplit=0
+REP m=36 a=(1,5,14,27,29,32) orbsize=12 tsplit=0
+REP m=36 a=(1,5,18,25,27,32) orbsize=12 tsplit=0
+REP m=36 a=(1,7,19,25,26,30) orbsize=6 tsplit=0
+REP m=36 a=(1,14,15,19,26,33) orbsize=6 tsplit=0
+SUM m=36 phi=12 dimHdgPrim=1923971 multisets=3362 orbits=574 orb_dec=470 orb_indec=104 orb_indec_qdec=95 orb_tsplit_any=94 R_orbits=9 R_dim=69120 R_tsplit_orbits=1 Rprime_orbits=8 Rprime_dim=60480
+SUM m=37 phi=36 dimHdgPrim=642960 multisets=1140 orbits=64 orb_dec=64 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=7 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=38 phi=18 dimHdgPrim=1241821 multisets=2194 orbits=198 orb_dec=188 orb_indec=10 orb_indec_qdec=10 orb_tsplit_any=22 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=39 a=(1,7,16,22,34,37) orbsize=8 tsplit=1
+REP m=39 a=(1,14,16,22,29,35) orbsize=4 tsplit=1
+SUM m=39 phi=24 dimHdgPrim=923780 multisets=1582 orbits=140 orb_dec=137 orb_indec=3 orb_indec_qdec=1 orb_tsplit_any=19 R_orbits=2 R_dim=8640 R_tsplit_orbits=2 Rprime_orbits=0 Rprime_dim=0
+REP m=40 a=(1,9,17,25,33,35) orbsize=4 tsplit=0
+SUM m=40 phi=16 dimHdgPrim=2016681 multisets=3506 orbits=496 orb_dec=432 orb_indec=64 orb_indec_qdec=63 orb_tsplit_any=80 R_orbits=1 R_dim=2880 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=2880
+SUM m=41 phi=40 dimHdgPrim=889600 multisets=1540 orbits=77 orb_dec=77 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=7 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=42 a=(2,10,16,27,33,38) orbsize=6 tsplit=0
+SUM m=42 phi=12 dimHdgPrim=5661851 multisets=9237 orbits=1030 orb_dec=784 orb_indec=246 orb_indec_qdec=245 orb_tsplit_any=142 R_orbits=1 R_dim=4320 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=4320
+SUM m=43 phi=42 dimHdgPrim=1033620 multisets=1771 orbits=85 orb_dec=85 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=8 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=44 a=(1,12,23,26,34,36) orbsize=10 tsplit=0
+SUM m=44 phi=20 dimHdgPrim=1843141 multisets=3164 orbits=342 orb_dec=316 orb_indec=26 orb_indec_qdec=25 orb_tsplit_any=38 R_orbits=1 R_dim=7200 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=7200
+REP m=45 a=(1,10,19,28,37,40) orbsize=6 tsplit=0
+REP m=45 a=(1,19,20,28,30,37) orbsize=6 tsplit=0
+SUM m=45 phi=24 dimHdgPrim=1543040 multisets=2558 orbits=245 orb_dec=237 orb_indec=8 orb_indec_qdec=6 orb_tsplit_any=31 R_orbits=2 R_dim=8640 R_tsplit_orbits=0 Rprime_orbits=2 Rprime_dim=8640
+SUM m=46 phi=22 dimHdgPrim=2098581 multisets=3576 orbits=268 orb_dec=256 orb_indec=12 orb_indec_qdec=12 orb_tsplit_any=24 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=47 phi=46 dimHdgPrim=1366660 multisets=2300 orbits=100 orb_dec=100 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=8 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=48 a=(1,6,7,39,45,46) orbsize=16 tsplit=0
+REP m=48 a=(1,7,18,34,39,45) orbsize=16 tsplit=0
+REP m=48 a=(1,13,25,28,37,40) orbsize=4 tsplit=0
+REP m=48 a=(1,14,17,27,39,46) orbsize=8 tsplit=0
+REP m=48 a=(1,16,17,27,39,44) orbsize=16 tsplit=0
+REP m=48 a=(1,16,19,25,40,43) orbsize=4 tsplit=0
+REP m=48 a=(1,17,18,25,41,42) orbsize=4 tsplit=0
+REP m=48 a=(1,17,18,27,39,42) orbsize=8 tsplit=0
+REP m=48 a=(1,17,22,27,38,39) orbsize=8 tsplit=0
+REP m=48 a=(1,17,24,27,36,39) orbsize=8 tsplit=0
+REP m=48 a=(2,9,21,33,34,45) orbsize=4 tsplit=0
+REP m=48 a=(3,15,16,27,39,44) orbsize=4 tsplit=0
+SUM m=48 phi=16 dimHdgPrim=3911651 multisets=6516 orbits=959 orb_dec=782 orb_indec=177 orb_indec_qdec=165 orb_tsplit_any=143 R_orbits=12 R_dim=72000 R_tsplit_orbits=0 Rprime_orbits=12 Rprime_dim=72000
+SUM m=49 phi=42 dimHdgPrim=1557120 multisets=2600 orbits=128 orb_dec=128 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=12 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=50 a=(1,7,27,30,41,44) orbsize=20 tsplit=0
+REP m=50 a=(1,11,21,31,41,45) orbsize=4 tsplit=0
+REP m=50 a=(1,13,22,32,40,42) orbsize=20 tsplit=0
+REP m=50 a=(2,12,22,32,40,42) orbsize=4 tsplit=0
+SUM m=50 phi=20 dimHdgPrim=2639041 multisets=4477 orbits=397 orb_dec=377 orb_indec=20 orb_indec_qdec=16 orb_tsplit_any=38 R_orbits=4 R_dim=34560 R_tsplit_orbits=0 Rprime_orbits=4 Rprime_dim=34560
+SUM m=51 phi=32 dimHdgPrim=2040980 multisets=3341 orbits=217 orb_dec=216 orb_indec=1 orb_indec_qdec=1 orb_tsplit_any=19 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=52 a=(1,14,27,30,40,44) orbsize=12 tsplit=0
+SUM m=52 phi=24 dimHdgPrim=2925981 multisets=4884 orbits=444 orb_dec=414 orb_indec=30 orb_indec_qdec=29 orb_tsplit_any=42 R_orbits=1 R_dim=8640 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=8640
+SUM m=53 phi=52 dimHdgPrim=1989520 multisets=3276 orbits=126 orb_dec=126 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=9 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=54 a=(1,4,30,31,44,52) orbsize=18 tsplit=0
+REP m=54 a=(1,5,28,37,43,48) orbsize=18 tsplit=1
+REP m=54 a=(1,5,29,41,42,44) orbsize=18 tsplit=0
+REP m=54 a=(1,6,8,44,51,52) orbsize=18 tsplit=0
+REP m=54 a=(1,6,29,31,44,51) orbsize=18 tsplit=0
+REP m=54 a=(1,7,19,36,49,50) orbsize=18 tsplit=0
+REP m=54 a=(1,7,24,38,41,51) orbsize=18 tsplit=0
+REP m=54 a=(1,7,27,38,41,48) orbsize=18 tsplit=0
+REP m=54 a=(1,7,36,38,39,41) orbsize=18 tsplit=0
+REP m=54 a=(1,8,15,42,44,52) orbsize=18 tsplit=0
+REP m=54 a=(1,8,20,38,44,51) orbsize=18 tsplit=0
+REP m=54 a=(1,8,21,36,44,52) orbsize=18 tsplit=0
+REP m=54 a=(1,8,22,30,49,52) orbsize=18 tsplit=0
+REP m=54 a=(1,8,30,34,37,52) orbsize=18 tsplit=0
+REP m=54 a=(1,8,30,37,38,48) orbsize=18 tsplit=0
+REP m=54 a=(1,8,36,37,38,42) orbsize=18 tsplit=0
+REP m=54 a=(1,10,28,37,38,48) orbsize=18 tsplit=0
+REP m=54 a=(1,20,24,28,38,51) orbsize=18 tsplit=0
+REP m=54 a=(1,20,28,33,38,42) orbsize=18 tsplit=1
+REP m=54 a=(1,20,28,36,38,39) orbsize=18 tsplit=0
+SUM m=54 phi=18 dimHdgPrim=4314491 multisets=7044 orbits=719 orb_dec=632 orb_indec=87 orb_indec_qdec=67 orb_tsplit_any=75 R_orbits=20 R_dim=259200 R_tsplit_orbits=2 Rprime_orbits=18 Rprime_dim=233280
+REP m=55 a=(1,12,23,34,45,50) orbsize=10 tsplit=0
+SUM m=55 phi=40 dimHdgPrim=2240100 multisets=3664 orbits=197 orb_dec=196 orb_indec=1 orb_indec_qdec=0 orb_tsplit_any=16 R_orbits=1 R_dim=7200 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=7200
+REP m=56 a=(1,9,29,37,42,50) orbsize=12 tsplit=0
+REP m=56 a=(1,10,29,36,42,50) orbsize=12 tsplit=0
+REP m=56 a=(1,15,29,32,43,48) orbsize=6 tsplit=0
+REP m=56 a=(1,15,29,36,43,44) orbsize=6 tsplit=0
+REP m=56 a=(1,18,21,29,49,50) orbsize=12 tsplit=0
+REP m=56 a=(1,18,29,34,42,44) orbsize=12 tsplit=0
+REP m=56 a=(2,10,21,34,49,52) orbsize=12 tsplit=0
+SUM m=56 phi=24 dimHdgPrim=3902701 multisets=6392 orbits=651 orb_dec=587 orb_indec=64 orb_indec_qdec=57 orb_tsplit_any=69 R_orbits=7 R_dim=51840 R_tsplit_orbits=0 Rprime_orbits=7 Rprime_dim=51840
+SUM m=57 phi=36 dimHdgPrim=2845280 multisets=4582 orbits=265 orb_dec=264 orb_indec=1 orb_indec_qdec=1 orb_tsplit_any=22 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=58 phi=28 dimHdgPrim=3981321 multisets=6539 orbits=396 orb_dec=381 orb_indec=15 orb_indec_qdec=15 orb_tsplit_any=28 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+SUM m=59 phi=58 dimHdgPrim=2777620 multisets=4495 orbits=155 orb_dec=155 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=10 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=60 a=(1,3,32,44,49,51) orbsize=16 tsplit=0
+REP m=60 a=(1,7,32,41,47,52) orbsize=8 tsplit=1
+REP m=60 a=(1,8,9,49,56,57) orbsize=16 tsplit=0
+REP m=60 a=(1,13,16,41,53,56) orbsize=8 tsplit=0
+REP m=60 a=(1,16,25,31,52,55) orbsize=8 tsplit=0
+REP m=60 a=(1,17,27,31,47,57) orbsize=8 tsplit=0
+REP m=60 a=(3,4,15,51,52,55) orbsize=16 tsplit=0
+REP m=60 a=(3,4,25,45,51,52) orbsize=16 tsplit=0
+REP m=60 a=(4,16,25,28,52,55) orbsize=2 tsplit=0
+SUM m=60 phi=16 dimHdgPrim=16107791 multisets=25250 orbits=2794 orb_dec=2056 orb_indec=738 orb_indec_qdec=729 orb_tsplit_any=297 R_orbits=9 R_dim=70560 R_tsplit_orbits=1 Rprime_orbits=8 Rprime_dim=64800
+SUM m=61 phi=60 dimHdgPrim=3080400 multisets=4960 orbits=166 orb_dec=166 orb_indec=0 orb_indec_qdec=0 orb_tsplit_any=11 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=62 a=(1,31,33,35,39,47) orbsize=6 tsplit=0
+SUM m=62 phi=30 dimHdgPrim=4795621 multisets=7802 orbits=445 orb_dec=428 orb_indec=17 orb_indec_qdec=16 orb_tsplit_any=30 R_orbits=1 R_dim=4320 R_tsplit_orbits=0 Rprime_orbits=1 Rprime_dim=4320
+SUM m=63 phi=36 dimHdgPrim=4115780 multisets=6508 orbits=407 orb_dec=400 orb_indec=7 orb_indec_qdec=7 orb_tsplit_any=39 R_orbits=0 R_dim=0 R_tsplit_orbits=0 Rprime_orbits=0 Rprime_dim=0
+REP m=64 a=(1,17,33,36,49,56) orbsize=8 tsplit=0
+REP m=64 a=(2,18,34,40,48,50) orbsize=4 tsplit=0
+SUM m=64 phi=32 dimHdgPrim=5150721 multisets=8352 orbits=615 orb_dec=568 orb_indec=47 orb_indec_qdec=45 orb_tsplit_any=59 R_orbits=2 R_dim=8640 R_tsplit_orbits=0 Rprime_orbits=2 Rprime_dim=8640

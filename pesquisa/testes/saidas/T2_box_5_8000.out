@@ -1,0 +1,8 @@
+autoteste ok (142 potencias sinteticas, caminhos double e long double)
+HIT p=5 x=3 y=-1 F=121 e=0 q=2 z=11 [q=2]
+HIT p=5 x=11 y=8 F=10201 e=0 q=2 z=101 [q=2]
+HIT p=5 x=123 y=35 F=178516321 e=0 q=2 z=13361 [q=2]
+HIT p=5 x=808 y=-627 F=1367358374281 e=0 q=2 z=1169341 [q=2]
+RESUMO modo=box p=5 N=8000 pares=38911562 vp>=2:0
+  q=2 acertos=4 (com e=1: 0)
+rc=0 TEMPO 142 s

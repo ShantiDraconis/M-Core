@@ -1,0 +1,26 @@
+# O7, verificação numérica de uma instância. DADO, não teorema.
+curve: y^2 = x^3 - x          # Cremona 32a2, CM por Z[i]
+conductor: 32
+rank: 0                        # root_number = +1, L(E,1) != 0
+root_number: 1
+torsion_structure: [2, 2]
+torsion_order: 4
+torsion_sq: 16
+discriminant: 64
+real_components: 2             # Delta > 0; raizes de x^3 - x: -1, 0, 1
+Omega: 5.244115108584239620929177
+Omega_bounds: "integral de dx/sqrt(x^3-x) sobre (-1,0) U (1,inf) = |dx/2y| sobre E(R) inteiro"
+Omega_components: [2.6220575542921198105, 2.6220575542921198105]
+Omega_note: "o real period da PARI (E.omega[1] = 2.62205755429212) cobre UMA componente; BSD usa a soma"
+L_E_1: 0.6555143885730299526162099   # serie 2*sum a_n/n*exp(-2*pi*n/sqrt(32)), n <= 400, a_p por contagem
+L_E_1_pari: 0.65551438857303          # lfun, conferencia independente
+Tamagawa: 2
+Sha_analytic: 1.000000000000000000000096
+BSD_rank0_residual: 9.5773e-23
+kernel_identity: "L(E,1) = periodo * tamagawa * #Sha / 16  (ATK/BSDRefinada.lean, E32)"
+tool: "mpmath 1.4.1; PARI 2.17.2 via cypari2; script conditional/o7_numerico/o7.py"
+freeze: 3363/3363
+commit: d6e63b0
+lean_status: data_only
+fidelidade_O7: naoConferida
+promotes_to: nothing

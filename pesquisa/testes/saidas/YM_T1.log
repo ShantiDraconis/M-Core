@@ -1,0 +1,25 @@
+Z2 closed form d=3: 0.084118059155
+Z2 closed form d=4: 0.055785887829
+Z2 order 2 classes 2 dim 1
+Z3 order 3 classes 3 dim 1
+Z4 order 4 classes 4 dim 1
+S3 order 6 classes 3 dim 2
+Q8 order 8 classes 5 dim 2
+2T order 24 classes 7 dim 2
+Z2  d=3 n=1  beta_D=0.0841180592  lgt=0.015625  lgt(alpha-form)=0.016135  ratio=5.384  mono=True  #M=4  t=0s
+Z3  d=3 n=1  beta_D=0.1447298837  lgt=0.015625  lgt(alpha-form)=0.016135  ratio=9.263  mono=True  #M=10  t=0s
+Z4  d=3 n=1  beta_D=0.1442668283  lgt=0.015625  lgt(alpha-form)=0.016135  ratio=9.233  mono=True  #M=16  t=0s
+S3  d=3 n=2  beta_D=0.1097316909  lgt=0.007812  lgt(alpha-form)=0.008067  ratio=14.046  mono=True  #M=55  t=0s
+Q8  d=3 n=2  beta_D=0.1096010570  lgt=0.007812  lgt(alpha-form)=0.008067  ratio=14.029  mono=True  #M=96  t=0s
+2T  d=3 n=2  beta_D=0.0972220500  lgt=0.007812  lgt(alpha-form)=0.008067  ratio=12.444  mono=True  #M=625  t=6s
+Z2  d=4 n=1  beta_D=0.0557858878  lgt=0.010417  lgt(alpha-form)=0.010640  ratio=5.355  mono=True  #M=6  t=6s
+Z3  d=4 n=1  beta_D=0.0960505965  lgt=0.010417  lgt(alpha-form)=0.010640  ratio=9.221  mono=True  #M=21  t=6s
+Z4  d=4 n=1  beta_D=0.0953571386  lgt=0.010417  lgt(alpha-form)=0.010640  ratio=9.154  mono=True  #M=36  t=6s
+S3  d=4 n=2  beta_D=0.0721680454  lgt=0.005208  lgt(alpha-form)=0.005320  ratio=13.856  mono=True  #M=231  t=6s
+Q8  d=4 n=2  beta_D=0.0710830393  lgt=0.005208  lgt(alpha-form)=0.005320  ratio=13.648  mono=True  #M=456  t=9s
+2T  d=4 n=2  beta_D=0.0647338416  lgt=0.005208  lgt(alpha-form)=0.005320  ratio=12.429  mono=True  #M=3721  t=50s
+norm check 0.9999999999999998
+norm check 1.0000000000000002
+small-beta slope c(1e-4)/1e-4 = 0.8488263611766689  8/(3pi) = 0.8488263631567752
+SU2 d=3  beta_D=0.09839647 lgt=0.007812 ratio=12.595  argmax(s,m1,m2)=(1.0, 0.0, 0.0) |r|=0.0000  t=52s
+SU2 d=4  beta_D=0.06551539 lgt=0.005208 ratio=12.579  argmax(s,m1,m2)=(1.0, 0.0, 0.0) |r|=0.0000  t=53s

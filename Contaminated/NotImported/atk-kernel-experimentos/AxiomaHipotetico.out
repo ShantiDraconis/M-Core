@@ -1,0 +1,10 @@
+experimentos/AxiomaHipotetico.lean:38:8: warning: declaration uses `sorry`
+'ATK.Experimento.rh_e_beal_postulados' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ ATK.Experimento.S,
+ ATK.Experimento.W,
+ ATK.Experimento.hS]
+'ATK.Experimento.rh_e_nao_rh' depends on axioms: [propext, Classical.choice, Quot.sound, ATK.Experimento.Wc]
+'ATK.Experimento.falso' depends on axioms: [propext, Classical.choice, Quot.sound, ATK.Experimento.Wc]
+'ATK.Experimento.rh_por_sorry' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

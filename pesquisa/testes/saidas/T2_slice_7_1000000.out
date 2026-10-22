@@ -1,0 +1,3 @@
+autoteste ok (142 potencias sinteticas, caminhos double e long double)
+RESUMO modo=slice p=7 N=1000000 pares=1999998 vp>=2:0
+rc=0 TEMPO 39 s

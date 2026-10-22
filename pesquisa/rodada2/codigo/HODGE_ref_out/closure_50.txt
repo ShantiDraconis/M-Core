@@ -1,0 +1,8 @@
+m=50 lam=1 K=2 a=(1,7,27,30,41,44): NONE
+m=50 lam=2 K=2 a=(1,7,27,30,41,44): NONE
+m=50 lam=1 level0: a itself is std5
+m=50 lam=2 level0: a itself is std5
+m=50 lam=1 (level 50) k=2 a'=(1,13,22,32,40,42) pairs: {2,48} {12,38} blocks: quad(1,13,38,48) std5(2,12,22,32,40,42)
+m=50 lam=2 (level 100) k=2 a'=(2,26,44,64,80,84) pairs: {4,96} {24,76} blocks: quad(2,26,76,96) std5(4,24,44,64,80,84)
+m=50 lam=1 level0: a itself is std5
+m=50 lam=2 level0: a itself is std5

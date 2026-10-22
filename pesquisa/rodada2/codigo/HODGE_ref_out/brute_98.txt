@@ -1,0 +1,1 @@
+m=98 dimB=17429701 orbits=1182 dec=1148 qdec=34 R=0

@@ -1,0 +1,82 @@
+######## m-core-beal @ 36dce6e
+== MCore.BealSpecification: OK
+== MCore.BackwardAudit.HypotheticalClosureOracle: OK
+   'MCore.BackwardAudit.hypothetical_common_prime' does not depend on any axioms
+######## m-core-bsd @ a9e1292
+== MCore.Signature: OK
+== MCore.Boundary: OK
+== MCore.K0: OK
+== MCore.K1: OK
+== MCore.K2: OK
+== MCore.K3: OK
+== MCore.K4: OK
+== MCore.K5: OK
+== MCore.K6: OK
+== MCore.K7: OK
+== MCore.K8: OK
+== MCore.K9: OK
+== MCore.K10: OK
+== MCore.K11: OK
+== MCore.K12: OK
+== MCore.K13: OK
+== MCore.BackwardAudit.HypotheticalRankPartOracle: OK
+   'MCore.BackwardAudit.hypothetical_rank_part' does not depend on any axioms
+######## m-core-hodge @ 31d96f3
+== MCore.Signature: OK
+== MCore.Boundary: OK
+== MCore.K0: OK
+== MCore.K1: OK
+== MCore.K2: OK
+== MCore.K3: OK
+== MCore.K4: OK
+== MCore.K5: OK
+== MCore.K6: OK
+== MCore.Hodge: OK
+== MCore.HodgeReduction: OK
+== MCore.HodgeDecomposition: OK
+== MCore.K11: OK
+== MCore.K12: OK
+   'MCore.k11LogicalCertificate' does not depend on any axioms
+   'MCore.k12_noPromotion' does not depend on any axioms
+   'MCore.k12_hodge_supplies_payload' does not depend on any axioms
+== MCore.K13: OK
+   'MCore.gradedHodge_iff_pointwise' does not depend on any axioms
+   'MCore.adapter_equivalence' does not depend on any axioms
+== MCore.K14: OK
+   'MCore.gradedHodge_iff_algebraicityPayload' does not depend on any axioms
+   'MCore.gradedEvidence_closes' does not depend on any axioms
+   'MCore.gradedEvidence_of_hodge' does not depend on any axioms
+== MCore.K15: OK
+   'MCore.CycleCombination.eval' does not depend on any axioms
+   'MCore.adapter_transports_span' does not depend on any axioms
+== MCore.K16: OK
+   'MCore.concreteSurjectivity_implies_hodge' does not depend on any axioms
+   'MCore.hodge_implies_concreteSurjectivity' does not depend on any axioms
+   'MCore.hodge_iff_concreteSurjectivity' does not depend on any axioms
+== MCore.BackwardAudit.HypotheticalClosureOracle: OK
+   'MCore.BackwardAudit.hypothetical_pointwise' does not depend on any axioms
+   'MCore.BackwardAudit.hypothetical_concrete_witness' does not depend on any axioms
+   'MCore.BackwardAudit.specification_oracle_only' does not depend on any axioms
+######## m-core-pnp @ 328cb67
+== MCore.Signature: OK
+== MCore.Boundary: OK
+== MCore.K0: OK
+== MCore.K1: OK
+== MCore.K2: OK
+== MCore.K3: OK
+== MCore.K4: OK
+== MCore.K5: OK
+== MCore.K6: OK
+== MCore.K7: OK
+== MCore.K8: OK
+== MCore.K9: OK
+== MCore.BackwardAudit.HypotheticalClosureOracle: OK
+   'MCore.BackwardAudit.hypothetical_final' does not depend on any axioms
+######## navier-stokes-critical-barrier-audit @ 3904224 (cópias com as correções de ns_correcoes_minimas.diff)
+== CriticalBarrier.GlobalRegularityFromG1: OK
+== CriticalBarrier.BackwardHypotheticalClosureOracle: OK
+   'CriticalBarrier.BackwardAudit.hypothetical_global_regularity' does not depend on any axioms
+== MillenniumAudit.StabilizedHypothetical: OK
+== NSMultistate.NS_Multistate: OK
+   'NSMultistateAudit.bilateral_witness_to_end' does not depend on any axioms
+   'NSMultistateAudit.hypothetical_chain_composes' does not depend on any axioms

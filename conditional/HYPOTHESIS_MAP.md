@@ -99,5 +99,6 @@ Nenhum desses fecha uma obrigação. `CLOSED_MATH` segue `false`.
 |---|---|---|---|
 | `Tendsto bdDistSq atTop (𝓝 0) → RiemannHypothesis` | 2 teorema(s): `ATK.Riemann.rh_of_bd_bound` (`m-core-riemann` e `M-Core`, branches `atk-kernel-check`, `fix/ns-scaling-false`) | `M-Core` · `atk/hypothesis-ports-20261014` · `ATK.BDDistSqPort.criterio_bd` | `bdDistSq = DN` por `rfl`; transporte da prova de B1. Não fecha O1 |
 
-Fica aberta a forma `Tendsto bdDistSq atTop (𝓝 0) ↔ RiemannHypothesis` (`ATK.RHConvergence.rh_iff_limit_zero_of_criterion`):
-a direção RH ⇒ `D_N → 0` (necessidade de Báez-Duarte) não está formalizada.
+A forma `Tendsto bdDistSq atTop (𝓝 0) ↔ RiemannHypothesis` (`ATK.RHConvergence.rh_iff_limit_zero_of_criterion`)
+está provada sem hipóteses desde 15/10/2026: `ATK.NecessidadeRH.bdDistSq_iff_rh` (a direção RH ⇒ `D_N → 0`,
+necessidade de Báez-Duarte, é `ATK.NecessidadeRH.necessidade`). É uma equivalência: não fecha O1 nem RH.

@@ -1,0 +1,4 @@
+repl R=6 n=924 inicio 0: max a^T T a/(sum a)^2 = 2.646492 (4*2/3=2.666667, 2sqrt2=2.828427) suporte |k| em [4.69,5.83]
+repl R=6 n=924 inicio 1: max a^T T a/(sum a)^2 = 2.646492 (4*2/3=2.666667, 2sqrt2=2.828427) suporte |k| em [4.69,5.83]
+repl R=6 n=924 inicio 2: max a^T T a/(sum a)^2 = 2.646491 (4*2/3=2.666667, 2sqrt2=2.828427) suporte |k| em [4.69,5.83]
+repl R=6: melhor Nt/A0^2 = 0.661623  (2/3=0.666667, 1/sqrt2=0.707107)

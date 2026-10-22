@@ -1,0 +1,8 @@
+climb ncl=2 M=3: max Nder/(A-1A1) = 0.20068  => rho_min <= 4.9830  (limiar do metodo <= 4.9830 nu)
+climb ncl=3 M=3: max Nder/(A-1A1) = 0.22669  => rho_min <= 4.4113  (limiar do metodo <= 4.4113 nu)
+climb ncl=4 M=3: max Nder/(A-1A1) = 0.23592  => rho_min <= 4.2387  (limiar do metodo <= 4.2387 nu)
+climb ncl=6 M=3: max Nder/(A-1A1) = 0.24521  => rho_min <= 4.0782  (limiar do metodo <= 4.0782 nu)
+climb ncl=8 M=3: max Nder/(A-1A1) = 0.24983  => rho_min <= 4.0028  (limiar do metodo <= 4.0028 nu)
+climb ncl=12 M=3: max Nder/(A-1A1) = 0.26750  => rho_min <= 3.7383  (limiar do metodo <= 3.7383 nu)
+climb ncl=16 M=3: max Nder/(A-1A1) = 0.26046  => rho_min <= 3.8393  (limiar do metodo <= 3.8393 nu)
+climb ncl=12 M=4: max Nder/(A-1A1) = 0.26507  => rho_min <= 3.7726  (limiar do metodo <= 3.7726 nu)
