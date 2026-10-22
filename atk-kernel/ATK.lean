@@ -263,3 +263,7 @@ import ATK.RHTerminal
 import ATK.ClosedMathGeometrias
 import ATK.EspectroToro
 import ATK.Hexagrama
+import ATK.JensenTuran
+import ATK.ZeroCertificado
+import ATK.ZeroCritico
+import ATK.ZeroCertificadoAplicado

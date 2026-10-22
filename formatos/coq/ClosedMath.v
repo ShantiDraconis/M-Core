@@ -332,6 +332,85 @@ Definition a_classificacao : Afirmacao :=
   Build_Afirmacao (forall F s, Critico F s \/ Externo F s \/ NaoZeroC F s \/ NaoZeroE F s)
     perfeito True classificacao.
 
+(* ------------------------------------------------------------------ Jensen / Turán / Toeplitz *)
+(* Espelha ATK/JensenTuran.lean na parte algébrica. *)
+
+Definition disc3 (a b c d : R) :=
+  b^2*c^2 - 4*a*c^3 - 4*b^3*d - 27*a^2*d^2 + 18*a*b*c*d.
+
+Theorem disc3_raizes : forall A r1 r2 r3,
+  disc3 A (-A*(r1+r2+r3)) (A*(r1*r2+r1*r3+r2*r3)) (-A*r1*r2*r3) =
+  A^4*((r1-r2)*(r1-r3)*(r2-r3))^2.
+Proof. intros; unfold disc3; ring. Qed.
+
+Theorem disc3_jensen : forall g0 g1 g2 g3,
+  disc3 g3 (3*g2) (3*g1) g0 = 27*(4*(g1^2-g0*g2)*(g2^2-g1*g3) - (g1*g2-g0*g3)^2).
+Proof. intros; unfold disc3; ring. Qed.
+
+Theorem turan3 : forall g0 g1 g2 g3 r1 r2 r3,
+  3*g2 = -g3*(r1+r2+r3) -> 3*g1 = g3*(r1*r2+r1*r3+r2*r3) -> g0 = -g3*r1*r2*r3 ->
+  (g1*g2-g0*g3)^2 <= 4*(g1^2-g0*g2)*(g2^2-g1*g3).
+Proof.
+  intros g0 g1 g2 g3 r1 r2 r3 HB HC HD.
+  assert (E : disc3 g3 (3*g2) (3*g1) g0 = g3^4*((r1-r2)*(r1-r3)*(r2-r3))^2).
+  { rewrite HB, HC, HD. apply disc3_raizes. }
+  rewrite disc3_jensen in E.
+  assert (P : 0 <= g3^4*((r1-r2)*(r1-r3)*(r2-r3))^2).
+  { apply Rmult_le_pos.
+    - replace (g3^4) with ((g3^2)^2) by ring. apply pow2_ge_0.
+    - apply pow2_ge_0. }
+  lra.
+Qed.
+
+(* Jensen de grau 2: g2 z^2 + 2 g1 z + g0 com z = x + i y; partes real e imaginária. *)
+Theorem jensen_grau2 : forall g0 g1 g2 x y, g2 <> 0 ->
+  g2*(x^2 - y^2) + 2*g1*x + g0 = 0 -> y*(2*(g2*x + g1)) = 0 ->
+  g0*g2 <= g1^2 -> y = 0.
+Proof.
+  intros g0 g1 g2 x y H2 Hre Him Hd.
+  destruct (Req_dec y 0) as [Hy|Hy]; [exact Hy|].
+  assert (Hx : g2*x + g1 = 0).
+  { destruct (Rmult_integral _ _ Him) as [H|H]; [contradiction | lra]. }
+  assert (K : (g2*g2)*(y*y) = g0*g2 - g1^2).
+  { assert (Hx' : g2*x = -g1) by lra.
+    replace ((g2*g2)*(y*y)) with
+      ((g2*x)*(g2*x) + 2*g1*(g2*x) + g0*g2 - g2*(g2*(x^2 - y^2) + 2*g1*x + g0)) by ring.
+    rewrite Hre, Hx'. ring. }
+  assert (P1 : 0 < g2*g2) by (apply Rsqr_pos_lt; exact H2).
+  assert (P2 : 0 < y*y) by (apply Rsqr_pos_lt; exact Hy).
+  assert (P : 0 < (g2*g2)*(y*y)) by (apply Rmult_lt_0_compat; assumption).
+  exfalso. lra.
+Qed.
+
+(* Normalização de Jensen: gamma_n = n! a_n; f = k!. *)
+Theorem turan_normalizacao_id : forall k f a0 a1 a2,
+  ((k+1)*f*a1)^2 - (f*a0)*((k+2)*(k+1)*f*a2) = ((k+1)*f^2)*((k+1)*a1^2 - (k+2)*a0*a2).
+Proof. intros; ring. Qed.
+
+(* Menor de Toeplitz D_{3,1} = det [[g1,g0,0],[g2,g1,g0],[g3,g2,g1]]. *)
+Definition D31 (g0 g1 g2 g3 : R) := g1^3 - 2*g0*g1*g2 + g0^2*g3.
+
+Theorem D31_cofator : forall g0 g1 g2 g3,
+  g1*(g1*g1 - g0*g2) - g0*(g2*g1 - g0*g3) + 0*(g2*g2 - g1*g3) = D31 g0 g1 g2 g3.
+Proof. intros; unfold D31; ring. Qed.
+
+(* (1+X)^3: a = (1,3,3,1) tem D31 = 10; gamma = n! a = (1,3,6,6) tem D31 = -3. *)
+Theorem tp_a_nao_passa_gamma : D31 1 3 3 1 = 10 /\ D31 1 3 6 6 = -3.
+Proof. unfold D31; split; ring. Qed.
+
+(* Momentos: gamma_n = C q^n n! M_n/(2n)!, A = 2n+1, B = 2n+3  ==>  Turan <-> A M0 M2 <= B M1^2. *)
+Theorem turan_momentos_id : forall c q A B M0 M1 M2, 0 < A -> 0 < B ->
+  (c*(q/(2*A))*M1)^2 - (c*M0)*(c*(q^2/(4*A*B))*M2) =
+  (c^2*q^2/(4*A^2*B)) * (B*M1^2 - A*(M0*M2)).
+Proof.
+  intros c q A B M0 M1 M2 HA HB.
+  field; repeat split; apply Rgt_not_eq; assumption.
+Qed.
+
+(* Log-convexidade (Cauchy–Schwarz) não implica Turán: M = (1, 1, 4) (medida 3/4 d0 + 1/4 d2). *)
+Theorem cs_nao_implica_turan : 1^2 <= 1*4 /\ ~ (1*(1*4) <= 3*1^2).
+Proof. split; lra. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -340,3 +419,7 @@ Print Assumptions P5_NE.
 Print Assumptions curvatura_linha.
 Print Assumptions criterio_aproximacao.
 Print Assumptions perfeito_verdadeiro.
+Print Assumptions turan3.
+Print Assumptions jensen_grau2.
+Print Assumptions turan_momentos_id.
+Print Assumptions tp_a_nao_passa_gamma.
