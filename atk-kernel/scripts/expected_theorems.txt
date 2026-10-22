@@ -5677,3 +5677,16 @@ ATK.DeltaCert.zeta_K5
 ATK.DeltaCert.minimo_K5
 ATK.DeltaCert.eta_K5
 ATK.DeltaCert.delta_cinco_pos
+ATK.Li.w_eq
+ATK.Li.norm_w_sq
+ATK.Li.normSq_pos
+ATK.Li.norm_w_sq_sub_one
+ATK.Li.w_unitario_iff
+ATK.Li.w_dentro_iff
+ATK.Li.w_fora_iff
+ATK.Li.ne_zero_of_mem_Z
+ATK.Li.rh_iff_li_unitario
+ATK.Li.parcela_nao_negativa
+ATK.Li.rh_parcelas
+ATK.Li.parcela_ilimitada
+ATK.Li.w_torcao

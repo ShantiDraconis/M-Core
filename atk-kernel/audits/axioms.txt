@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de ba633f3530e9cb4679b25504dafaaf28bfdebd96ec6064e79bac3f2d90a17d53
+# axiomas por teorema — congelamento de f073ddb164f564e0a85040e08c26977ee68a71a2c08792f5b9e598fd5f0e17f4
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -5679,3 +5679,16 @@ ATK.DeltaCert.zeta_K5	propext, Classical.choice, Quot.sound
 ATK.DeltaCert.minimo_K5	propext, Classical.choice, Quot.sound
 ATK.DeltaCert.eta_K5	propext, Classical.choice, Quot.sound
 ATK.DeltaCert.delta_cinco_pos	propext, Classical.choice, Quot.sound
+ATK.Li.w_eq	propext, Classical.choice, Quot.sound
+ATK.Li.norm_w_sq	propext, Classical.choice, Quot.sound
+ATK.Li.normSq_pos	propext, Classical.choice, Quot.sound
+ATK.Li.norm_w_sq_sub_one	propext, Classical.choice, Quot.sound
+ATK.Li.w_unitario_iff	propext, Classical.choice, Quot.sound
+ATK.Li.w_dentro_iff	propext, Classical.choice, Quot.sound
+ATK.Li.w_fora_iff	propext, Classical.choice, Quot.sound
+ATK.Li.ne_zero_of_mem_Z	propext, Classical.choice, Quot.sound
+ATK.Li.rh_iff_li_unitario	propext, Classical.choice, Quot.sound
+ATK.Li.parcela_nao_negativa	propext, Classical.choice, Quot.sound
+ATK.Li.rh_parcelas	propext, Classical.choice, Quot.sound
+ATK.Li.parcela_ilimitada	propext, Classical.choice, Quot.sound
+ATK.Li.w_torcao	propext, Classical.choice, Quot.sound
