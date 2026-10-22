@@ -1,0 +1,39 @@
+γ∈[1,11]: zeros em β∈[−1,2] pelo argumento = -0.000000
+γ∈[11,21]: zeros em β∈[−1,2] pelo argumento = 1.000000
+γ∈[21,31]: zeros em β∈[−1,2] pelo argumento = 3.000000
+γ∈[31,41]: zeros em β∈[−1,2] pelo argumento = 3.000000
+γ∈[41,51]: zeros em β∈[−1,2] pelo argumento = 3.000000
+γ∈[51,61]: zeros em β∈[−1,2] pelo argumento = 4.000000
+γ∈[61,71]: zeros em β∈[−1,2] pelo argumento = 3.000000
+γ∈[71,81]: zeros em β∈[−1,2] pelo argumento = 4.000000
+γ∈[81,91]: zeros em β∈[−1,2] pelo argumento = 4.000000
+γ∈[91,101]: zeros em β∈[−1,2] pelo argumento = 4.000000
+γ∈[101,111]: zeros em β∈[−1,2] pelo argumento = 4.000000
+γ∈[111,121]: zeros em β∈[−1,2] pelo argumento = 5.000000
+γ∈[121,131]: zeros em β∈[−1,2] pelo argumento = 5.000000
+γ∈[131,141]: zeros em β∈[−1,2] pelo argumento = 5.000000
+γ∈[141,151]: zeros em β∈[−1,2] pelo argumento = 6.000000
+γ∈[151,161]: zeros em β∈[−1,2] pelo argumento = 4.000000
+γ∈[161,171]: zeros em β∈[−1,2] pelo argumento = 6.000000
+γ∈[171,181]: zeros em β∈[−1,2] pelo argumento = 5.000000
+γ∈[181,191]: zeros em β∈[−1,2] pelo argumento = 5.000000
+γ∈[191,201]: zeros em β∈[−1,2] pelo argumento = 5.000000
+γ∈[201,211]: zeros em β∈[−1,2] pelo argumento = 6.000000
+γ∈[211,221]: zeros em β∈[−1,2] pelo argumento = 6.000000
+γ∈[221,231]: zeros em β∈[−1,2] pelo argumento = 5.000000
+γ∈[231,241]: zeros em β∈[−1,2] pelo argumento = 6.000000
+γ∈[241,251]: zeros em β∈[−1,2] pelo argumento = 6.000000
+γ∈[251,261]: zeros em β∈[−1,2] pelo argumento = 7.000000
+γ∈[261,271]: zeros em β∈[−1,2] pelo argumento = 5.000000
+γ∈[271,281]: zeros em β∈[−1,2] pelo argumento = 6.000000
+γ∈[281,291]: zeros em β∈[−1,2] pelo argumento = 6.000000
+γ∈[291,300]: zeros em β∈[−1,2] pelo argumento = 6.000000
+Newton livre: 7774 sementes, 138 soluções; max|β−1/2| = 7.07e-13
+trocas de sinal de Z(t) em (1, 300): 138; contagem pelo argumento: 138
+γ=14.134725 |ζ'|=0.7932 |ζ(1/2+ε+iγ)| ε=0.01: 0.00790 (razão 0.9960), ε=0.25: 0.1795
+γ=21.022040 |ζ'|=1.1368 |ζ(1/2+ε+iγ)| ε=0.01: 0.01130 (razão 0.9940), ε=0.25: 0.2454
+γ=25.010858 |ζ'|=1.3717 |ζ(1/2+ε+iγ)| ε=0.01: 0.01362 (razão 0.9931), ε=0.25: 0.2900
+γ=30.424876 |ζ'|=1.3039 |ζ(1/2+ε+iγ)| ε=0.01: 0.01294 (razão 0.9922), ε=0.25: 0.2700
+γ=32.935062 |ζ'|=1.3821 |ζ(1/2+ε+iγ)| ε=0.01: 0.01371 (razão 0.9918), ε=0.25: 0.2835
+m(β): 0.00:0.4886  0.10:0.3746  0.20:0.2693  0.30:0.1722  0.40:0.0826  0.50:0.0000  0.60:0.0762  0.70:0.1464  0.80:0.2112  0.90:0.2709  1.00:0.3260
+figura gravada
