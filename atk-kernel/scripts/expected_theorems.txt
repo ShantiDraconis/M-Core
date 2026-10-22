@@ -5561,3 +5561,9 @@ ATK.ClosedMath.Geometrias.margem_invariante_inf
 ATK.ClosedMath.Geometrias.toro_sem_transporte
 ATK.ClosedMath.Geometrias.mu_real_iff
 ATK.ClosedMath.Geometrias.hilbert_polya
+ATK.ClosedMath.EspectroToro.e_periodica
+ATK.ClosedMath.EspectroToro.dx
+ATK.ClosedMath.EspectroToro.dy
+ATK.ClosedMath.EspectroToro.d2
+ATK.ClosedMath.EspectroToro.autofuncao_toro
+ATK.ClosedMath.EspectroToro.espectro_inteiro_forca

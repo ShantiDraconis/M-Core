@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 3f89687203109be92be86bccbee527101ba6241c148cf26da66e087290c5b0a7
+# axiomas por teorema — congelamento de 7de233c58312ca157f16b41c797eddcac4d0fdde3ff24d8bba35a116b0291446
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -5563,3 +5563,9 @@ ATK.ClosedMath.Geometrias.margem_invariante_inf	propext, Classical.choice, Quot.
 ATK.ClosedMath.Geometrias.toro_sem_transporte	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.Geometrias.mu_real_iff	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.Geometrias.hilbert_polya	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.EspectroToro.e_periodica	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.EspectroToro.dx	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.EspectroToro.dy	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.EspectroToro.d2	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.EspectroToro.autofuncao_toro	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.EspectroToro.espectro_inteiro_forca	propext, Classical.choice, Quot.sound
