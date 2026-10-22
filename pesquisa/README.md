@@ -7,7 +7,7 @@ dos achados que pareciam novos. Nada aqui prova uma conjectura; números finitos
 * `fronteira/<TÓPICO>_frontier.md` — estado da arte (out/2026), perguntas atacáveis, o que precisa ser criado, testes propostos.
 * `testes/` — 1ª rodada: um relatório por teste (`<TÓPICO>_T<n>.md`), código em `testes/codigo/`, saídas em `testes/saidas/`.
 * `rodada2/` — 2ª rodada: revisões independentes (NS, Hodge) e o cálculo exato de D_N (RH); dados em `rodada2/dados/`.
-* `rodada3/` — RH: centro, tolerância, precisão e cauda de D_∞ (`RH_centro_Dinf.md`).
+* `rodada3/` — RH: centro, tolerância, precisão e cauda de D_∞ (`RH_centro_Dinf.md`); certificado intervalar de D_256 (`certificado_D256/`).
 
 Os caminhos absolutos dentro dos scripts são os do ambiente onde rodaram (máquina de 2 núcleos, sem numpy/PyPI;
 mpmath/sympy/networkx puros, CaDiCaL e gcc).
