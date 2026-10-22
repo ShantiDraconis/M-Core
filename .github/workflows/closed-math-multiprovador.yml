@@ -22,7 +22,8 @@ env:
   ANOTA: |
     anota() {  # anota <arquivo> <título> <código>
       local msg
-      msg=$(tail -c 3500 "$1" | sed 's/%/%25/g; s/\r//g' | sed ':a;N;$!ba;s/\n/%0A/g')
+      msg=$(tail -c 3500 "$1" 2>/dev/null | sed 's/%/%25/g; s/\r//g' | sed ':a;N;$!ba;s/\n/%0A/g')
+      [ -n "$msg" ] || msg="(sem saída em $1)"
       if [ "$3" = "0" ]; then echo "::notice title=$2 OK::$msg"; else echo "::error title=$2 FALHOU ($3)::$msg"; fi
     }
 
@@ -34,7 +35,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Instalar Coq
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq coq > /dev/null
+        timeout-minutes: 20
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: sudo -E apt-get update -qq && sudo -E apt-get install -y -qq --no-install-recommends coq > /dev/null
       - name: coqc + coqchk
         working-directory: formatos/coq
         run: |
@@ -54,12 +58,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Instalar Isabelle
+        timeout-minutes: 45
         run: |
+          eval "$ANOTA"
+          : > baixar.txt
           for v in Isabelle2025 Isabelle2024; do
-            if curl -fsSL --retry 3 -o isa.tar.gz "https://isabelle.in.tum.de/dist/${v}_linux.tar.gz"; then
-              tar xzf isa.tar.gz && echo "ISA=$PWD/$v" >> "$GITHUB_ENV" && echo "baixado $v" && break
-            fi
+            for base in https://isabelle.in.tum.de/dist https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist https://mirror.cse.unsw.edu.au/pub/isabelle/dist; do
+              url="$base/${v}_linux.tar.gz"
+              curl -fL --retry 2 --connect-timeout 30 --max-time 1200 -s -o isa.tar.gz "$url"; c=$?
+              echo "$url -> curl $c ($(stat -c %s isa.tar.gz 2>/dev/null || echo 0) bytes)" >> baixar.txt
+              if [ $c = 0 ] && tar xzf isa.tar.gz; then echo "ISA=$PWD/$v" >> "$GITHUB_ENV"; break 2; fi
+            done
           done
+          anota baixar.txt "isabelle-download" 0
       - name: isabelle build
         run: |
           eval "$ANOTA"
