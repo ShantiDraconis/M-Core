@@ -1,8 +1,8 @@
 # Status calculado do ATK
 
-Gerado por `scripts/status_calculado.py` em 2026-10-22T08:35:27+00:00. Nada aqui é digitado.
+Gerado por `scripts/status_calculado.py` em 2026-10-22T09:43:50+00:00. Nada aqui é digitado.
 
-* Teoremas `ATK.*` no ambiente: 6951; certificados (só axiomas padrão): 6951; proibidos: 0; axiomas declarados sob `ATK`: 0.
+* Teoremas `ATK.*` no ambiente: 6956; certificados (só axiomas padrão): 6956; proibidos: 0; axiomas declarados sob `ATK`: 0.
 * Produtores materiais (portão existe e certificado): 0 de 7.
 
 | Linha | Produtor | Equivalência certificada | Arquivo-portão existe | Produtor material |

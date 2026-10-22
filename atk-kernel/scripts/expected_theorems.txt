@@ -5136,3 +5136,8 @@ ATK.BarreiraZero.barreira_pos
 ATK.BarreiraZero.exclusao
 ATK.BarreiraZero.regiao_livre_D256
 ATK.BarreiraZero.m_sq_le_barreira
+ATK.LinhaIncognita.zeta_real_ne_zero
+ATK.LinhaIncognita.zeta_meio_ne_zero
+ATK.LinhaIncognita.reta_espelhada
+ATK.LinhaIncognita.linha_forcada
+ATK.LinhaIncognita.nenhuma_outra_reta
