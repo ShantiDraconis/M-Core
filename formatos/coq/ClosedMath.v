@@ -148,11 +148,12 @@ Theorem P5_NE : forall d g, g <> 0 -> NaoZeroE (G d g) (Cr 2).
 Proof.
   intros d g Hg; split.
   - intro H.
-    assert (Hre : re (G d g (Cr 2)) = ((3/2 - d) ^ 2 + g * g) * ((3/2 + d) ^ 2 + g * g))
+    assert (Hre : re (G d g (Cr 2)) = ((3/2 - d) * (3/2 - d) + g * g) * ((3/2 + d) * (3/2 + d) + g * g))
       by (unfold G, sq, Cmul, Cadd, Csub, Cr; fecha).
     rewrite H in Hre; simpl in Hre.
-    assert (Hp : 0 < ((3/2 - d) ^ 2 + g * g) * ((3/2 + d) ^ 2 + g * g)).
-    { apply Rmult_lt_0_compat; assert (0 < g * g) by (apply Rsqr_pos_lt; exact Hg); nra. }
+    assert (H0 : 0 < g * g) by (apply Rsqr_pos_lt; exact Hg).
+    assert (Hp : 0 < ((3/2 - d) * (3/2 - d) + g * g) * ((3/2 + d) * (3/2 + d) + g * g)).
+    { apply Rmult_lt_0_compat; apply Rplus_le_lt_0_compat; try exact H0; apply Rle_0_sqr. }
     lra.
   - simpl; lra.
 Qed.
@@ -161,11 +162,13 @@ Theorem P5_NC : forall d g, g <> 0 -> NaoZeroC (G d g) (Cr (1/2)).
 Proof.
   intros d g Hg; split.
   - intro H.
-    assert (Hre : re (G d g (Cr (1/2))) = (d * d + g * g) ^ 2)
+    assert (Hre : re (G d g (Cr (1/2))) = (d * d + g * g) * (d * d + g * g))
       by (unfold G, sq, Cmul, Cadd, Csub, Cr; fecha).
     rewrite H in Hre; simpl in Hre.
-    assert (0 < g * g) by (apply Rsqr_pos_lt; exact Hg).
-    nra.
+    assert (H0 : 0 < g * g) by (apply Rsqr_pos_lt; exact Hg).
+    assert (Hp : 0 < (d * d + g * g) * (d * d + g * g)).
+    { apply Rmult_lt_0_compat; apply Rplus_le_lt_0_compat; try exact H0; apply Rle_0_sqr. }
+    lra.
   - simpl; reflexivity.
 Qed.
 
@@ -185,7 +188,7 @@ Qed.
 
 (* ------------------------------------------------------------------ 5. geometrias *)
 Lemma den_ne : forall a b, 1 + a * a + b * b <> 0.
-Proof. intros a b; apply Rgt_not_eq; nra. Qed.
+Proof. intros a b; apply Rgt_not_eq; pose proof (Rle_0_sqr a); pose proof (Rle_0_sqr b); unfold Rsqr in *; lra. Qed.
 
 Theorem P_esfera : forall a b,
   (2 * a / (1 + a * a + b * b)) ^ 2 + (2 * b / (1 + a * a + b * b)) ^ 2 +
@@ -254,7 +257,7 @@ Proof.
   replace (R0 + r * -1) with (R0 - r) by ring.
   replace (R0 + r * 1) with (R0 + r) by ring.
   split; [reflexivity | split; [| reflexivity]].
-  assert (H : 0 < / (r * (R0 - r))) by (apply Rinv_0_lt_compat; nra).
+  assert (H : 0 < / (r * (R0 - r))) by (apply Rinv_0_lt_compat; apply Rmult_lt_0_compat; lra).
   unfold Rdiv; lra.
 Qed.
 
