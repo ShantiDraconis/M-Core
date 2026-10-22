@@ -299,7 +299,13 @@ proof -
   have p4: "0 \<le> g3^4" by (simp add: zero_le_even_power)
   have P: "0 \<le> g3^4*((r1-r2)*(r1-r3)*(r2-r3))^2"
     by (rule mult_nonneg_nonneg[OF p4 zero_le_power2])
-  show ?thesis using E P disc3_jensen[of g3 g2 g1 g0] by linarith
+  define D where "D = 4*(g1^2-g0*g2)*(g2^2-g1*g3) - (g1*g2-g0*g3)^2"
+  have J: "disc3 g3 (3*g2) (3*g1) g0 = 27*D"
+    unfolding D_def by (rule disc3_jensen)
+  have Q: "27*D = g3^4*((r1-r2)*(r1-r3)*(r2-r3))^2" using J E by metis
+  have "0 \<le> 27*D" using Q P by simp
+  then have "0 \<le> D" by linarith
+  then show ?thesis unfolding D_def by linarith
 qed
 
 theorem jensen_grau2:
