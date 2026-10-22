@@ -227,6 +227,24 @@
       "status": "NAO_EXISTE_NA_MATHLIB",
       "ref": "axiomas OS/Wightman e o espectro do Hamiltoniano",
       "progress": "Base (ATK/L5Base.lean, 6 declarações auditadas): espaço-tempo de Minkowski, cone futuro, transformações de Lorentz próprias ortócronas, e a estrutura Wightman H (representação unitária fortemente contínua do grupo de Poincaré restrito, vácuo invariante e único, domínio denso invariante, campo como distribuição temperada a valores em operadores, hermiticidade, covariância, localidade, condição espectral via a transformada de Fourier da Mathlib com U(a) = e^{i P·a}, ciclicidade). Testes: mink p a = ⟪p, R a⟫, e₀ no cone, e₁ tipo espaço, ∫ 𝓕 g = g 0, e a teoria trivial satisfaz os axiomas (consistência). Falta: campos de calibre e a correspondência com o Yang–Mills clássico (o problema do Clay pede uma teoria não trivial com lacuna de massa). Rascunho para a Mathlib: atk-kernel/mathlib-drafts/Wightman.lean. L5Lacuna (4 teoremas, 15/10): o campo GapAtLeast ganha definição genuína sobre ATK.L5Base.Wightman (LacunaAoMenos: no complemento do vácuo, a medida espectral de energia-momento está em {p⁰ ≥ Δ}); testes: monotonia, coerência com a condição espectral para Δ ≤ 0, a teoria trivial tem lacuna. Falta IsQuantumYM (campos de calibre). Status do titular inalterado."
+    },
+    {
+      "id": "B9",
+      "problem": "Riemann",
+      "kind": "PONTE",
+      "lean": "ATK.BohrLandau.TeoremaBohrLandau",
+      "status": "PUBLICADA_NAO_FORMALIZADA",
+      "ref": "Bohr–Landau 1914; Titchmarsh, The Theory of the Riemann Zeta-Function, §9.15",
+      "progress": "ATK/BohrLandau.lean: enunciado fiel N(1/2+δ,T) = O(T) com contagens finitas (todos_finite, pela discreção dos zeros na Mathlib); simetria_contagem (direita de 1/2+δ = esquerda de 1/2−δ); rh_bohrLandau (RH ⇒ B9, logo B9 é mais fraca que RH); densidade_de_bohrLandau (B9 + B10 ⇒ quase todos os zeros a distância < δ de 1/2). Falta: média quadrática ∫|ζ(σ+it)|² = O(T) para σ > 1/2 e o lema de contagem (Littlewood, ou Jensen em discos — Jensen já está na Mathlib)."
+    },
+    {
+      "id": "B10",
+      "problem": "Riemann",
+      "kind": "PONTE",
+      "lean": "ATK.BohrLandau.CrescimentoN",
+      "status": "PUBLICADA_NAO_FORMALIZADA",
+      "ref": "Riemann–von Mangoldt: N(T) = (T/2π) log(T/2πe) + O(log T)",
+      "progress": "Usada só na forma fraca N(T)/T → ∞ (densidade_de_bohrLandau). Nem a existência de um zero não trivial está na Mathlib."
     }
   ],
   "snapshot": {
