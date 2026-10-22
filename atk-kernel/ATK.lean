@@ -240,3 +240,4 @@ import ATK.IntegracaoFCBSDMW
 import ATK.LeisDeGanho
 import ATK.BarreiraZero
 import ATK.LinhaIncognita
+import ATK.EixoDeslocado
