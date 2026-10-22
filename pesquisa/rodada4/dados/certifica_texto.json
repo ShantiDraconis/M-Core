@@ -1,0 +1,259 @@
+{
+ "modelo": [
+  {
+   "item": "consecutiva v_10",
+   "impresso": "0.600000000",
+   "exato_arredondado": "0.600000000",
+   "ok": true
+  },
+  {
+   "item": "consecutiva k_10",
+   "impresso": "0.595454545",
+   "exato_arredondado": "0.595454545",
+   "ok": true
+  },
+  {
+   "item": "consecutiva v_100",
+   "impresso": "0.510000000",
+   "exato_arredondado": "0.510000000",
+   "ok": true
+  },
+  {
+   "item": "consecutiva k_100",
+   "impresso": "0.509950495",
+   "exato_arredondado": "0.509950495",
+   "ok": true
+  },
+  {
+   "item": "consecutiva v_1000",
+   "impresso": "0.501000000",
+   "exato_arredondado": "0.501000000",
+   "ok": true
+  },
+  {
+   "item": "consecutiva k_1000",
+   "impresso": "0.500999500",
+   "exato_arredondado": "0.500999500",
+   "ok": true
+  },
+  {
+   "item": "consecutiva v_10000",
+   "impresso": "0.500100000",
+   "exato_arredondado": "0.500100000",
+   "ok": true
+  },
+  {
+   "item": "consecutiva k_10000",
+   "impresso": "0.500099995",
+   "exato_arredondado": "0.500099995",
+   "ok": true
+  },
+  {
+   "item": "consecutiva v_1000000",
+   "impresso": "0.500001000",
+   "exato_arredondado": "0.500001000",
+   "ok": true
+  },
+  {
+   "item": "consecutiva k_1000000",
+   "impresso": "0.500001000",
+   "exato_arredondado": "0.500001000",
+   "ok": true
+  },
+  {
+   "item": "consecutiva v_1000000000",
+   "impresso": "0.500000001",
+   "exato_arredondado": "0.500000001",
+   "ok": true
+  },
+  {
+   "item": "consecutiva k_1000000000",
+   "impresso": "0.500000001",
+   "exato_arredondado": "0.500000001",
+   "ok": true
+  },
+  {
+   "item": "A7 j_10",
+   "impresso": "0.554132231405",
+   "exato_arredondado": "0.554132231405",
+   "ok": true
+  },
+  {
+   "item": "A7 j_100",
+   "impresso": "0.505049014802",
+   "exato_arredondado": "0.505049014802",
+   "ok": true
+  },
+  {
+   "item": "A7 j_1000",
+   "impresso": "0.500500499001",
+   "exato_arredondado": "0.500500499001",
+   "ok": true
+  },
+  {
+   "item": "A7 j_1000000",
+   "impresso": "0.5000005000005",
+   "exato_arredondado": "0.5000005000005",
+   "ok": true
+  },
+  {
+   "item": "A7 j_1000000000000",
+   "impresso": "0.5000000000005",
+   "exato_arredondado": "0.5000000000005",
+   "ok": true
+  },
+  {
+   "item": "expans\u00e3o at\u00e9 N^-4 em N = 10^4: resto\u00b7N^5",
+   "valor": -1.9997500299965003,
+   "ok": true
+  }
+ ],
+ "zeros_trocados": [
+  {
+   "n": 1,
+   "gamma": 14.134725141734709,
+   "abs_zeta_Trho": 1.0000524444365066,
+   "abs_zeta_menos_1": 5.57731316761968e-05,
+   "cota_certificada_log10": -4.152272032546892,
+   "dentro_da_cota": "True",
+   "texto": 1.00005244444,
+   "texto_dentro_do_envelope": true,
+   "texto_menos_calculado": 3.4934277692855176e-12
+  },
+  {
+   "n": 2,
+   "gamma": 21.022039638771556,
+   "abs_zeta_Trho": 1.0000004417658772,
+   "abs_zeta_menos_1": 4.696996236134815e-07,
+   "cota_certificada_log10": -6.280237223785381,
+   "dentro_da_cota": "True",
+   "texto": 1.00000044177,
+   "texto_dentro_do_envelope": true,
+   "texto_menos_calculado": 4.122702179643056e-12
+  },
+  {
+   "n": 3,
+   "gamma": 25.010857580145693,
+   "abs_zeta_Trho": 1.0000000278211727,
+   "abs_zeta_menos_1": 2.9580018180518514e-08,
+   "cota_certificada_log10": -7.490987785340318,
+   "dentro_da_cota": "True",
+   "texto": 1.00000002782,
+   "texto_dentro_do_envelope": true,
+   "texto_menos_calculado": -1.1726175586090903e-12
+  },
+  {
+   "n": 4,
+   "gamma": 30.424876125859512,
+   "abs_zeta_Trho": 1.0000000006524987,
+   "abs_zeta_menos_1": 6.937477045915751e-10,
+   "cota_certificada_log10": -9.001936173984118,
+   "dentro_da_cota": "True",
+   "texto": 1.00000000065,
+   "texto_dentro_do_envelope": true,
+   "texto_menos_calculado": -2.4986679392213773e-12
+  },
+  {
+   "n": 5,
+   "gamma": 32.9350615877392,
+   "abs_zeta_Trho": 1.0000000001145348,
+   "abs_zeta_menos_1": 1.2177534044663456e-10,
+   "cota_certificada_log10": -9.605807615203783,
+   "dentro_da_cota": "True",
+   "texto": 1.00000000011,
+   "texto_dentro_do_envelope": true,
+   "texto_menos_calculado": -4.5348169663839144e-12
+  },
+  {
+   "n": 6,
+   "gamma": 37.58617815882566,
+   "abs_zeta_Trho": 1.0000000000045584,
+   "abs_zeta_menos_1": 4.8465217132933765e-12,
+   "cota_certificada_log10": -11.114628743717782,
+   "dentro_da_cota": "True"
+  },
+  {
+   "n": 7,
+   "gamma": 40.91871901214749,
+   "abs_zeta_Trho": 1.0000000000004525,
+   "abs_zeta_menos_1": 4.811305577201216e-13,
+   "cota_certificada_log10": -12.01948057686601,
+   "dentro_da_cota": "True"
+  },
+  {
+   "n": 8,
+   "gamma": 43.327073280914995,
+   "abs_zeta_Trho": 1.0000000000000853,
+   "abs_zeta_menos_1": 9.065188578981577e-14,
+   "cota_certificada_log10": -12.924086427462903,
+   "dentro_da_cota": "True"
+  },
+  {
+   "n": 100,
+   "gamma": 236.524229665816,
+   "abs_zeta_Trho": 1.0,
+   "abs_zeta_menos_1": 2.1388408512486034e-72,
+   "cota_certificada_log10": -71.0393984929612,
+   "dentro_da_cota": "True",
+   "residuo_na_reta": 1.331739710609922e-13,
+   "troca_de_sinal_Z": true,
+   "theta_sobre_pi_mais_1": 99.80999537802705,
+   "indice_menos_meio": 99.5
+  },
+  {
+   "n": 1000,
+   "gamma": 1419.422480945996,
+   "abs_zeta_Trho": 1.0,
+   "abs_zeta_menos_1": 0.0,
+   "cota_certificada_log10": -427.16095173365335,
+   "dentro_da_cota": "True",
+   "residuo_na_reta": 1.9376456464893345e-11,
+   "troca_de_sinal_Z": true,
+   "theta_sobre_pi_mais_1": 999.4178086755679,
+   "indice_menos_meio": 999.5
+  },
+  {
+   "n": 10000,
+   "gamma": 9877.782654005501,
+   "abs_zeta_Trho": 1.0,
+   "abs_zeta_menos_1": 0.0,
+   "cota_certificada_log10": -2973.2731792325762,
+   "dentro_da_cota": "True",
+   "residuo_na_reta": 2.5038327702120997e-11,
+   "troca_de_sinal_Z": true,
+   "theta_sobre_pi_mais_1": 9999.679269672224,
+   "indice_menos_meio": 9999.5
+  }
+ ],
+ "D": {
+  "D_256 (rodada 2, ~24 d\u00edgitos)": "8.2337162772610214415980381e-3",
+  "D_7999 (rodada 2)": "5.0692748577823043996341385e-3",
+  "D_8000 (rodada 3, double)": "5.069120200107221e-03",
+  "texto D_256": "0.008233716277261",
+  "texto D_8000": "0.0050691202",
+  "D_256 certificado (rodada 3, intervalar)": "D_256 \u2264 0.00823372, folga 3.7227e-9"
+ },
+ "truncamento": {
+  "lei_real": [
+   {
+    "gamma": 14.134725141734698,
+    "trocas_de_sinal": 45,
+    "positivos": 148,
+    "negativos": 104
+   },
+   {
+    "gamma": 21.022039638771552,
+    "trocas_de_sinal": 67,
+    "positivos": 142,
+    "negativos": 109
+   },
+   {
+    "gamma": 25.01085758014569,
+    "trocas_de_sinal": 78,
+    "positivos": 131,
+    "negativos": 120
+   }
+  ],
+  "lei_A7": "k_N \u2212 c > 0 e decrescente para todo N (provado: k_gt, k_anti)"
+ }
+}

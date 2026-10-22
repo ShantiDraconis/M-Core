@@ -1,9 +1,9 @@
 {
-  "gerado_em_utc": "2026-10-22T12:17:46+00:00",
+  "gerado_em_utc": "2026-10-22T12:55:41+00:00",
   "kernel": {
-    "resumo": "RESUMO\tteoremas=7062\tok=7062\tproibidos=0\taxiomas_atk=0",
-    "teoremas": 7062,
-    "certificados": 7062,
+    "resumo": "RESUMO\tteoremas=7110\tok=7110\tproibidos=0\taxiomas_atk=0",
+    "teoremas": 7110,
+    "certificados": 7110,
     "proibidos": [],
     "axiomas_declarados_sob_ATK": []
   },
