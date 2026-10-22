@@ -7,6 +7,7 @@ dos achados que pareciam novos. Nada aqui prova uma conjectura; números finitos
 * `fronteira/<TÓPICO>_frontier.md` — estado da arte (out/2026), perguntas atacáveis, o que precisa ser criado, testes propostos.
 * `testes/` — 1ª rodada: um relatório por teste (`<TÓPICO>_T<n>.md`), código em `testes/codigo/`, saídas em `testes/saidas/`.
 * `rodada2/` — 2ª rodada: revisões independentes (NS, Hodge) e o cálculo exato de D_N (RH); dados em `rodada2/dados/`.
+* `rodada3/` — RH: centro, tolerância, precisão e cauda de D_∞ (`RH_centro_Dinf.md`).
 
 Os caminhos absolutos dentro dos scripts são os do ambiente onde rodaram (máquina de 2 núcleos, sem numpy/PyPI;
 mpmath/sympy/networkx puros, CaDiCaL e gcc).
@@ -36,5 +37,6 @@ Em cada linha, o controle (resultado conhecido reproduzido) vem antes do que é 
 * b_k = ⟨χ, ρ_k⟩ = (log k + 1 − γ)/k (certificado em `ATK.BaezDuarteVetorB.b_formula`); a versão com −log k está errada.
 * ‖ρ₁‖² = log 2π − γ; a versão "log 2π − γ − 1" omite ∫₁^∞.
 * D₁ = 0,858212051396, ⟨ρ₁,ρ₂⟩ = ¾(log 2π − γ) − ¼ log 2 = 0,772209255991, D₂ = 0,289964573742.
+* O candidato (−0,83; 1,90) tem erro exato E = 0,289967592338 (forma fechada), 3,02·10⁻⁶ acima de D₂ (não 1,7·10⁻⁵).
 * Identidades de Gram, independência dos ρ_k, D_N = 1 − bᵀG⁻¹b e a lei D_{N+1} = (1−η_N)D_N **já estão no kernel**
   (`GramBaezDuarte`, `CapturaRH`); "a soma dos ganhos esgota D₁" é a própria O1 (`CapturaRH.captura_log_iff`).
