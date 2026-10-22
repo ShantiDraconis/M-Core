@@ -254,3 +254,10 @@ import ATK.ModeloParametrico
 import ATK.ZetaTroca
 import ATK.CaudaMeio
 import ATK.EMGeral
+import ATK.Cert.Intervalo
+import ATK.Cert.Transc
+import ATK.ClosedMathCEZ
+import ATK.ClosedMathCompleto
+import ATK.ClosedMathToro
+import ATK.RHTerminal
+import ATK.ClosedMathGeometrias
