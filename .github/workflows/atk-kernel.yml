@@ -21,6 +21,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Liberar disco do runner
+        shell: bash
+        run: |
+          df -h / | tail -1
+          # a verificação de fiação copia o build do ATK; o disco padrão do runner não comporta mais
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache /usr/local/share/boost || true
+          df -h / | tail -1
+
       - name: Instalar elan (gerenciador do Lean)
         shell: bash
         run: |
