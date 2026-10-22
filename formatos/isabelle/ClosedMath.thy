@@ -62,10 +62,7 @@ next
 qed
 
 lemma T_isometria: "cmod (opT s - opT w) = cmod (s - w)"
-proof -
-  have "opT s - opT w = \<i> * cnj (s - w)" by (simp add: opT_def algebra_simps)
-  then show ?thesis by (simp add: norm_mult)
-qed
+  by (simp add: norm_complex_def opT_def power2_eq_square algebra_simps)
 
 lemma T4_centro: "((1/2 + of_real d + \<i> * of_real t) + (1/2 - of_real d + \<i> * of_real t)) / 2
     = (1/2 :: complex) + \<i> * of_real t"
@@ -135,18 +132,20 @@ lemma G_real: "G d g (of_real x) = of_real (((x - 1/2 - d)\<^sup>2 + g\<^sup>2) 
 theorem P5_NE: "g \<noteq> 0 \<Longrightarrow> naozeroE (G d g) 2"
 proof -
   assume hg: "g \<noteq> 0"
+  have g2: "0 < g\<^sup>2" using hg by simp
   have pos: "0 < ((2 - 1/2 - d)\<^sup>2 + g\<^sup>2) * ((2 - 1/2 + d)\<^sup>2 + g\<^sup>2)"
-    using hg by (intro mult_pos_pos add_nonneg_pos) auto
-  have "G d g (of_real 2) \<noteq> 0" unfolding G_real using pos by simp
+    by (intro mult_pos_pos add_nonneg_pos zero_le_power2 g2)
+  have "G d g (of_real 2) \<noteq> 0" unfolding G_real using pos by (metis of_real_eq_0_iff less_irrefl)
   then show ?thesis unfolding naozeroE_def by simp
 qed
 
 theorem P5_NC: "g \<noteq> 0 \<Longrightarrow> naozeroC (G d g) (1/2)"
 proof -
   assume hg: "g \<noteq> 0"
+  have g2: "0 < g\<^sup>2" using hg by simp
   have pos: "0 < ((1/2 - 1/2 - d)\<^sup>2 + g\<^sup>2) * ((1/2 - 1/2 + d)\<^sup>2 + g\<^sup>2)"
-    using hg by (intro mult_pos_pos add_nonneg_pos) auto
-  have "G d g (of_real (1/2)) \<noteq> 0" unfolding G_real using pos by simp
+    by (intro mult_pos_pos add_nonneg_pos zero_le_power2 g2)
+  have "G d g (of_real (1/2)) \<noteq> 0" unfolding G_real using pos by (metis of_real_eq_0_iff less_irrefl)
   then show ?thesis unfolding naozeroC_def by simp
 qed
 

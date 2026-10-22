@@ -281,7 +281,7 @@ Theorem transporte_zero_iff : forall F G0 phi u s,
   TransporteZero F G0 phi u -> u s <> 0 -> (F s = 0 <-> G0 (phi s) = 0).
 Proof.
   intros F G0 phi u s H Hu; split.
-  - apply transporte_zero; assumption.
+  - exact (transporte_zero F G0 phi u s H).
   - intro Hz; unfold TransporteZero in H; rewrite H in Hz; destruct (Rmult_integral _ _ Hz) as [H1|H1]; [contradiction | exact H1].
 Qed.
 
