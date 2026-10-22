@@ -5141,3 +5141,10 @@ ATK.LinhaIncognita.zeta_meio_ne_zero
 ATK.LinhaIncognita.reta_espelhada
 ATK.LinhaIncognita.linha_forcada
 ATK.LinhaIncognita.nenhuma_outra_reta
+ATK.EixoDeslocado.im_torcao
+ATK.EixoDeslocado.re_de_rh
+ATK.EixoDeslocado.rh_um_por_altura
+ATK.EixoDeslocado.eps_torcao
+ATK.EixoDeslocado.eps_par_trivial
+ATK.EixoDeslocado.par_deslocado_refuta
+ATK.EixoDeslocado.tres_zeros
