@@ -167,3 +167,9 @@ end ATK.BohrLandau
 #print axioms ATK.BohrLandau.rh_bohrLandau
 #print axioms ATK.BohrLandau.rh_densidade
 #print axioms ATK.BohrLandau.densidade_de_bohrLandau
+#print axioms ATK.BohrLandau.direita_subset
+#print axioms ATK.BohrLandau.esquerda_subset
+#print axioms ATK.BohrLandau.torcao_torcao
+#print axioms ATK.BohrLandau.torcao_injective
+#print axioms ATK.BohrLandau.direita_vazia_de_rh
+#print axioms ATK.BohrLandau.esquerda_vazia_de_rh

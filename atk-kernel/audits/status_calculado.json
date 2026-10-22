@@ -1,9 +1,9 @@
 {
-  "gerado_em_utc": "2026-10-22T10:53:34+00:00",
+  "gerado_em_utc": "2026-10-22T11:35:09+00:00",
   "kernel": {
-    "resumo": "RESUMO\tteoremas=6975\tok=6975\tproibidos=0\taxiomas_atk=0",
-    "teoremas": 6975,
-    "certificados": 6975,
+    "resumo": "RESUMO\tteoremas=7036\tok=7036\tproibidos=0\taxiomas_atk=0",
+    "teoremas": 7036,
+    "certificados": 7036,
     "proibidos": [],
     "axiomas_declarados_sob_ATK": []
   },
@@ -261,9 +261,9 @@
     {
       "id": "B9",
       "problema": "Riemann",
-      "status_declarado": "PUBLICADA_NAO_FORMALIZADA",
-      "status_calculado": "SEM_PROVA_NO_KERNEL",
-      "teorema": null,
+      "status_declarado": "PROVADA_NO_KERNEL",
+      "status_calculado": "PROVADA_NO_KERNEL",
+      "teorema": "ATK.ObligationsClosed.B9",
       "divergente": false
     },
     {

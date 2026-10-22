@@ -233,9 +233,11 @@
       "problem": "Riemann",
       "kind": "PONTE",
       "lean": "ATK.BohrLandau.TeoremaBohrLandau",
-      "status": "PUBLICADA_NAO_FORMALIZADA",
+      "status": "PROVADA_NO_KERNEL",
       "ref": "Bohr–Landau 1914; Titchmarsh, The Theory of the Riemann Zeta-Function, §9.15",
-      "progress": "ATK/BohrLandau.lean: enunciado fiel N(1/2+δ,T) = O(T) com contagens finitas (todos_finite, pela discreção dos zeros na Mathlib); simetria_contagem (direita de 1/2+δ = esquerda de 1/2−δ); rh_bohrLandau (RH ⇒ B9, logo B9 é mais fraca que RH); densidade_de_bohrLandau (B9 + B10 ⇒ quase todos os zeros a distância < δ de 1/2). Falta: média quadrática ∫|ζ(σ+it)|² = O(T) para σ > 1/2 e o lema de contagem (Littlewood, ou Jensen em discos — Jensen já está na Mathlib)."
+      "progress": "Prova incondicional (22/10): Jensen em média (BLJensen.ncard_zeros_zeta_le), Euler–Maclaurin ζ(s) = Σ_{n≤N} n^{−s} + N^{1−s}/(s−1) − s·I_N(s) para N geral (BLEulerMaclaurin.zeta_eq), cauda ∫|I_N(σ+it)|² dt ≤ πN^{−2σ}/σ por Mellin–Plancherel (BLCauda.cauda_L2), média do polinômio de Dirichlet ∫_U^{2U}|D_N|² ≤ CU (BLDirichlet.media_D), média quadrática ∫_{1/2}^{Y}|ζ(σ+it)|² ≤ CY uniforme em σ ∈ [σ₀, 4], σ₀ > 1/2 (BLMediaZeta.media_zeta), e montagem por Jensen em discos de centro 2+iy, cota |ζ(2+iy)| ≥ 2 − π²/6 e Fubini (BLProva.bohrLandau). Consequências: bohrLandau_esquerda, fora_da_faixa, densidade_de_crescimento (B10 ⇒ Densidade), zeros_escapam.",
+      "proof": "ATK.BLProva.bohrLandau : TeoremaBohrLandau (ATK/BLJensen.lean, ATK/BLEulerMaclaurin.lean, ATK/BLCauda.lean, ATK/BLDirichlet.lean, ATK/BLMediaZeta.lean, ATK/BLProva.lean; axiomas padrão)",
+      "proof_theorem": "ATK.ObligationsClosed.B9"
     },
     {
       "id": "B10",
@@ -244,7 +246,7 @@
       "lean": "ATK.BohrLandau.CrescimentoN",
       "status": "PUBLICADA_NAO_FORMALIZADA",
       "ref": "Riemann–von Mangoldt: N(T) = (T/2π) log(T/2πe) + O(log T)",
-      "progress": "Usada só na forma fraca N(T)/T → ∞ (densidade_de_bohrLandau). Nem a existência de um zero não trivial está na Mathlib."
+      "progress": "Usada só na forma fraca N(T)/T → ∞. Com B9 provada, a densidade (quase todos os zeros a distância < δ de 1/2) depende só desta: ATK.BLProva.densidade_de_crescimento : CrescimentoN → Densidade. Nem a existência de um zero não trivial está na Mathlib."
     }
   ],
   "snapshot": {
