@@ -260,3 +260,4 @@ import ATK.ClosedMathCEZ
 import ATK.ClosedMathCompleto
 import ATK.ClosedMathToro
 import ATK.RHTerminal
+import ATK.ClosedMathGeometrias

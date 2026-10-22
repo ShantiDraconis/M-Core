@@ -5549,3 +5549,15 @@ ATK.ClosedMath.Terminal.eta_zero_iff
 ATK.ClosedMath.Terminal.eta_continua_Kn
 ATK.ClosedMath.Terminal.delta_atingido
 ATK.ClosedMath.Terminal.rh_iff_delta
+ATK.ClosedMath.Geometrias.angulo_inj
+ATK.ClosedMath.Geometrias.helicoide_linha
+ATK.ClosedMath.Geometrias.helicoide_injOn
+ATK.ClosedMath.Geometrias.cilParabolico_injetivo
+ATK.ClosedMath.Geometrias.sela_injetiva
+ATK.ClosedMath.Geometrias.hiperboloide_injOn
+ATK.ClosedMath.Geometrias.transporte_zero_superficie
+ATK.ClosedMath.Geometrias.margem_invariante
+ATK.ClosedMath.Geometrias.margem_invariante_inf
+ATK.ClosedMath.Geometrias.toro_sem_transporte
+ATK.ClosedMath.Geometrias.mu_real_iff
+ATK.ClosedMath.Geometrias.hilbert_polya

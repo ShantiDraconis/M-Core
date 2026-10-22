@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de c37a0dd20b9d482267b113e860aa9aff9514ec1bd18d98d54ac5574977460902
+# axiomas por teorema — congelamento de 3f89687203109be92be86bccbee527101ba6241c148cf26da66e087290c5b0a7
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -5551,3 +5551,15 @@ ATK.ClosedMath.Terminal.eta_zero_iff	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.Terminal.eta_continua_Kn	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.Terminal.delta_atingido	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.Terminal.rh_iff_delta	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.angulo_inj	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.helicoide_linha	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.helicoide_injOn	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.cilParabolico_injetivo	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.sela_injetiva	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.hiperboloide_injOn	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.transporte_zero_superficie	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.margem_invariante	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.margem_invariante_inf	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.toro_sem_transporte	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.mu_real_iff	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Geometrias.hilbert_polya	propext, Classical.choice, Quot.sound

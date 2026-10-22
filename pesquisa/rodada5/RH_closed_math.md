@@ -77,6 +77,18 @@ A queda em `n = 15` é o primeiro zero (14,1347…): `K_15` chega a `t = 15` e p
 Cada linha é uma conta finita; transformá-la em certificado do kernel exige avaliação intervalar de ζ em
 retângulos (fase 3). O quantificador `∀ n` é a própria HR: **não há aqui prova da desigualdade universal**.
 
+## 4b. Outras superfícies e a ponte espectral (`ATK/ClosedMathGeometrias.lean`)
+
+* Helicoide `(σ cos t, σ sin t, t)` (injetivo em `σ > 0`; a linha crítica é a hélice de raio ½), cilindro
+  parabólico `(σ, t, σ²)` e sela `(σ, t, σ² − t²)` (injetivos), hiperboloide `(cosh t cos σ, cosh t sin σ, sinh t)`
+  (injetivo na faixa): o transporte `F̃(Φ s) = F(s)` preserva zeros e classes.
+* `margem_invariante`: os valores de `|F̃|` em `Φ(K)` são os de `|F|` em `K`; logo a margem `inf |F|` **não muda**
+  com a geometria.
+* `toro_sem_transporte`: no toro (T = 1) nenhuma `F̃` reproduz `G_{0,1}` — `½ + i` (zero) e `½ + 2i` (não zero)
+  têm a mesma imagem; é preciso guardar o rótulo.
+* `hilbert_polya` (condicional): se todo zero não trivial for `½ + iμ` com `μ` autovalor de um operador simétrico,
+  então HR; `mu_real_iff`: `μ = (ρ − ½)/i` é real ⟺ `Re ρ = ½`. Nenhum operador assim é conhecido.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

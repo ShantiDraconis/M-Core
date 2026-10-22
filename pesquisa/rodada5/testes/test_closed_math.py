@@ -147,6 +147,35 @@ class Geometria(unittest.TestCase):
             self.assertEqual(cm.Kg(R, r, 2 * math.pi * sig) < 0, 0.25 < sig < 0.75)
 
 
+class Superficies(unittest.TestCase):
+    """Helicoide, cilindro parabólico, sela e hiperboloide recuperam s (injetivas); o toro não."""
+    def test_recuperacao(self):
+        rng = np.random.default_rng(7)
+        for _ in range(200):
+            s = complex(rng.uniform(0.01, 0.99), rng.uniform(-40, 40))
+            x, y, z = s.real * math.cos(s.imag), s.real * math.sin(s.imag), s.imag      # helicoide
+            self.assertAlmostEqual(complex(math.hypot(x, y), z), s, places=9)
+            X, Y, Z = math.cosh(s.imag) * math.cos(s.real), math.cosh(s.imag) * math.sin(s.real), math.sinh(s.imag)
+            self.assertAlmostEqual(complex(math.atan2(Y, X), math.asinh(Z)), s, places=6)  # hiperboloide
+        R, r, T = 3.0, 1.0, 1.0
+        a, b = 0.5 + 1j, 0.5 + 2j
+        self.assertLess(np.linalg.norm(cm.tor(R, r, T, a) - cm.tor(R, r, T, b)), 1e-12)   # mesma imagem
+        self.assertEqual(cm.G(0, 1, Q(Fr(1, 2), 1)), 0)
+        self.assertNotEqual(cm.G(0, 1, Q(Fr(1, 2), 2)), 0)                                 # estados diferentes
+
+    def test_margem_invariante(self):
+        from zeta_em import zeta
+        zs = cm.Kn_grade(8, ns=6, nt=40)
+        m_plano = min(abs(zeta(z)) for z in zs)
+        m_sela = min(abs(zeta(complex(p[0], p[1]))) for p in [(z.real, z.imag, z.real**2 - z.imag**2) for z in zs])
+        self.assertEqual(m_plano, m_sela)
+
+    def test_mu_real(self):
+        for rho in (0.5 + 14.1347j, 0.6 + 14j, 0.4 - 3j):
+            mu = (rho - 0.5) / 1j
+            self.assertEqual(abs(mu.imag) < 1e-15, abs(rho.real - 0.5) < 1e-15)
+
+
 class Terminal(unittest.TestCase):
     def test_bernoulli(self):
         B = cm.BN
