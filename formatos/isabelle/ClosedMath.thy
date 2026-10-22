@@ -116,9 +116,9 @@ theorem G_R: "G d g (1 - s) = G d g s"
 theorem G_conj: "G d g (cnj s) = cnj (G d g s)"
   by (simp add: G_def)
 
-theorem G_quartica: "G d g s = (s - 1/2)^4 + 2 * ((of_real g)\<^sup>2 - (of_real d)\<^sup>2) * (s - 1/2)\<^sup>2
+theorem G_quartica: "G d g (x + 1/2) = x^4 + 2 * ((of_real g)\<^sup>2 - (of_real d)\<^sup>2) * x\<^sup>2
     + ((of_real g)\<^sup>2 + (of_real d)\<^sup>2)\<^sup>2"
-  by (simp add: G_def power2_eq_square power4_eq_xxxx algebra_simps)
+  unfolding G_def by (simp add: power2_eq_square power4_eq_xxxx algebra_simps)
 
 theorem P2_critico: "critico (G 0 g) (1/2 + \<i> * of_real g)"
   unfolding critico_def using P1(1)[of 0 g] by simp
@@ -158,10 +158,19 @@ section \<open>Geometrias\<close>
 
 theorem P_esfera:
   fixes a b :: real
-  shows "(2*a / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2 + (2*b / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2 + ((a\<^sup>2 + b\<^sup>2 - 1) / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2 = 1"
+  shows "(2*a / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2 + (2*b / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2
+         + ((a\<^sup>2 + b\<^sup>2 - 1) / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2 = 1"
 proof -
-  have h: "1 + a\<^sup>2 + b\<^sup>2 \<noteq> 0" by (smt (verit) zero_le_power2)
-  show ?thesis using h by (simp add: field_simps power2_eq_square) (simp add: algebra_simps)
+  have hD: "0 < 1 + a\<^sup>2 + b\<^sup>2" by (simp add: add_pos_nonneg)
+  then have hD': "(1 + a\<^sup>2 + b\<^sup>2)\<^sup>2 \<noteq> 0" by simp
+  have num: "(2*a)\<^sup>2 + (2*b)\<^sup>2 + (a\<^sup>2 + b\<^sup>2 - 1)\<^sup>2 = (1 + a\<^sup>2 + b\<^sup>2)\<^sup>2"
+    by (simp add: power2_eq_square algebra_simps)
+  have "(2*a / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2 + (2*b / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2
+         + ((a\<^sup>2 + b\<^sup>2 - 1) / (1 + a\<^sup>2 + b\<^sup>2))\<^sup>2
+        = ((2*a)\<^sup>2 + (2*b)\<^sup>2 + (a\<^sup>2 + b\<^sup>2 - 1)\<^sup>2) / (1 + a\<^sup>2 + b\<^sup>2)\<^sup>2"
+    by (simp add: power_divide add_divide_distrib)
+  also have "\<dots> = 1" unfolding num using hD' by simp
+  finally show ?thesis .
 qed
 
 theorem Cil_par:
@@ -183,9 +192,10 @@ theorem Cil_dist_par:
 
 theorem K_cone: "(\<bar>\<delta>\<bar> * cos th)\<^sup>2 + (\<bar>\<delta>\<bar> * sin th)\<^sup>2 = (\<delta>::real)\<^sup>2"
 proof -
-  have "(\<bar>\<delta>\<bar> * cos th)\<^sup>2 + (\<bar>\<delta>\<bar> * sin th)\<^sup>2 = \<bar>\<delta>\<bar>\<^sup>2 * ((sin th)\<^sup>2 + (cos th)\<^sup>2)"
-    by (simp add: power_mult_distrib algebra_simps)
-  then show ?thesis by simp
+  have "(\<bar>\<delta>\<bar> * cos th)\<^sup>2 + (\<bar>\<delta>\<bar> * sin th)\<^sup>2 = \<delta>\<^sup>2 * ((sin th)\<^sup>2 + (cos th)\<^sup>2)"
+    by (simp add: power_mult_distrib distrib_left add.commute)
+  also have "\<dots> = \<delta>\<^sup>2" by simp
+  finally show ?thesis .
 qed
 
 theorem tor_R:
@@ -240,9 +250,11 @@ theorem criterio_aproximacao:
   assumes "\<forall>s\<in>K. cmod (F s - P s) \<le> E" "\<forall>s\<in>K. L \<le> cmod (P s)" "E < L" "s \<in> K"
   shows "F s \<noteq> 0"
 proof
-  assume "F s = 0"
-  then have "cmod (P s) \<le> E" using assms(1,4) by (simp add: norm_minus_commute)
-  then show False using assms(2,3,4) by fastforce
+  assume h: "F s = 0"
+  have "cmod (F s - P s) \<le> E" using assms(1) assms(4) by blast
+  then have "cmod (P s) \<le> E" using h by simp
+  moreover have "L \<le> cmod (P s)" using assms(2) assms(4) by blast
+  ultimately show False using assms(3) by linarith
 qed
 
 theorem cobertura_exclui:
