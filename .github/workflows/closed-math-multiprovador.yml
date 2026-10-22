@@ -57,30 +57,24 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
-      - name: Instalar Isabelle
-        timeout-minutes: 45
+      - name: isabelle build (imagem oficial makarius/isabelle)
         run: |
           set +e
           eval "$ANOTA"
-          : > baixar.txt
-          for v in Isabelle2025 Isabelle2024; do
-            for base in https://isabelle.in.tum.de/dist https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist https://mirror.cse.unsw.edu.au/pub/isabelle/dist; do
-              url="$base/${v}_linux.tar.gz"
-              curl -fL --retry 2 --connect-timeout 30 --max-time 1200 -s -o isa.tar.gz "$url"; c=$?
-              echo "$url -> curl $c ($(stat -c %s isa.tar.gz 2>/dev/null || echo 0) bytes)" >> baixar.txt
-              if [ $c = 0 ] && tar xzf isa.tar.gz; then echo "ISA=$PWD/$v" >> "$GITHUB_ENV"; break 2; fi
-            done
+          : > isa_saida.txt
+          IMG=""
+          for tag in Isabelle2025 Isabelle2024 latest; do
+            if docker pull -q "makarius/isabelle:$tag" >> isa_saida.txt 2>&1; then IMG="makarius/isabelle:$tag"; break; fi
           done
-          anota baixar.txt "isabelle-download" 0
-      - name: isabelle build
-        run: |
-          eval "$ANOTA"
-          set +e
-          { "$ISA/bin/isabelle" version; "$ISA/bin/isabelle" build -v -o threads=4 -D formatos/isabelle; echo "build=$?"; } > isa_saida.txt 2>&1
-          c=$(grep -o 'build=[0-9]*' isa_saida.txt | tail -1 | cut -d= -f2)
-          grep -n -i -E "error|failed|Finished|Building|Timing|theory" isa_saida.txt | tail -60 > isa_resumo.txt
+          echo "imagem: ${IMG:-nenhuma}" >> isa_saida.txt
+          chmod -R a+rwX formatos/isabelle
+          docker run --rm -v "$PWD/formatos/isabelle:/work" "$IMG" version >> isa_saida.txt 2>&1
+          docker run --rm -v "$PWD/formatos/isabelle:/work" "$IMG" build -v -o threads=4 -D /work >> isa_saida.txt 2>&1; c=$?
+          echo "build=$c" >> isa_saida.txt
+          grep -n -i -E "imagem|Isabelle20|error|failed|Finished|Building|Timing|theory|build=" isa_saida.txt | tail -60 > isa_resumo.txt
+          [ -s isa_resumo.txt ] || tail -40 isa_saida.txt > isa_resumo.txt
           anota isa_resumo.txt "isabelle" "$c"
-          [ "$c" = "0" ]
+          exit $c
 
   smt:
     name: SMT-LIB 2 (z3, cvc5)
