@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 7de233c58312ca157f16b41c797eddcac4d0fdde3ff24d8bba35a116b0291446
+# axiomas por teorema — congelamento de 43d36ba000281c1a74a13fcbb55de3817dc658ff6f9b1faa82a112ae960913dc
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -5569,3 +5569,18 @@ ATK.ClosedMath.EspectroToro.dy	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.EspectroToro.d2	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.EspectroToro.autofuncao_toro	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.EspectroToro.espectro_inteiro_forca	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.V_oposto	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.eixo	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.soma_seis	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.soma_pentagrama	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.contagens	nenhum
+ATK.ClosedMath.Hexagrama.A_mulVec	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.A_um	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.A_soma_zero	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.laplaciano	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.energia_identidade	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.pontos_val	nenhum
+ATK.ClosedMath.Hexagrama.energia_pontos	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.energia_horizontal	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.rh_iff_energia	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.Hexagrama.Eh_nonneg	propext, Classical.choice, Quot.sound
