@@ -1,0 +1,262 @@
+{
+  "gerado_em_utc": "2026-10-22T02:01:37+00:00",
+  "kernel": {
+    "resumo": "RESUMO\tteoremas=6922\tok=6922\tproibidos=0\taxiomas_atk=0",
+    "teoremas": 6922,
+    "certificados": 6922,
+    "proibidos": [],
+    "axiomas_declarados_sob_ATK": []
+  },
+  "fonte": [],
+  "linhas": [
+    {
+      "linha": "RH",
+      "produtor": "Filter.Tendsto ATK.Conditional.Riemann.DN Filter.atTop (nhds 0)",
+      "equivalencia": "ATK.NecessidadeRH.rh_iff_DN",
+      "equivalencia_certificada": true,
+      "arquivo_portao": "ATK/Terminal/RH.lean",
+      "arquivo_portao_existe": false,
+      "teorema_portao_certificado": false,
+      "produtor_material": false
+    },
+    {
+      "linha": "Beal",
+      "produtor": "ATK.BealCompleto.ExclusaoResidualFinal",
+      "equivalencia": "ATK.BealCompleto.beal_teorema_completo",
+      "equivalencia_certificada": true,
+      "arquivo_portao": "ATK/Terminal/Beal.lean",
+      "arquivo_portao_existe": false,
+      "teorema_portao_certificado": false,
+      "produtor_material": false
+    },
+    {
+      "linha": "NS",
+      "produtor": "ATK.Conditional.NavierStokes.EnstrophyAPrioriBound M.ns",
+      "equivalencia": null,
+      "equivalencia_certificada": null,
+      "arquivo_portao": "ATK/Terminal/NS.lean",
+      "arquivo_portao_existe": false,
+      "teorema_portao_certificado": false,
+      "produtor_material": false
+    },
+    {
+      "linha": "PNP",
+      "produtor": "ATK.Conditional.PvsNP.SATNotInP M.cx M.sat",
+      "equivalencia": null,
+      "equivalencia_certificada": null,
+      "arquivo_portao": "ATK/Terminal/PNP.lean",
+      "arquivo_portao_existe": false,
+      "teorema_portao_certificado": false,
+      "produtor_material": false
+    },
+    {
+      "linha": "Hodge",
+      "produtor": "ATK.Conditional.Hodge.MiddleCodimension M.hodge",
+      "equivalencia": null,
+      "equivalencia_certificada": null,
+      "arquivo_portao": "ATK/Terminal/Hodge.lean",
+      "arquivo_portao_existe": false,
+      "teorema_portao_certificado": false,
+      "produtor_material": false
+    },
+    {
+      "linha": "BSD",
+      "produtor": "ATK.Conditional.BSD.RankOpen M.bsd ∧ ATK.Conditional.BSD.RefinedOpen M.bsd",
+      "equivalencia": null,
+      "equivalencia_certificada": null,
+      "arquivo_portao": "ATK/Terminal/BSD.lean",
+      "arquivo_portao_existe": false,
+      "teorema_portao_certificado": false,
+      "produtor_material": false
+    },
+    {
+      "linha": "YM",
+      "produtor": "ATK.Conditional.YangMills.ConstructiveYM4D M.ym",
+      "equivalencia": null,
+      "equivalencia_certificada": null,
+      "arquivo_portao": "ATK/Terminal/YM.lean",
+      "arquivo_portao_existe": false,
+      "teorema_portao_certificado": false,
+      "produtor_material": false
+    }
+  ],
+  "produtores_materiais": 0,
+  "obrigacoes": [
+    {
+      "id": "B1",
+      "problema": "Riemann",
+      "status_declarado": "PROVADA_NO_KERNEL",
+      "status_calculado": "PROVADA_NO_KERNEL",
+      "teorema": "ATK.ObligationsClosed.B1",
+      "divergente": false
+    },
+    {
+      "id": "B2",
+      "problema": "Beal",
+      "status_declarado": "PARCIAL_NO_MODELO_DO_LANE",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "B3",
+      "problema": "Navier–Stokes",
+      "status_declarado": "PROVADA_NO_KERNEL",
+      "status_calculado": "PROVADA_NO_KERNEL",
+      "teorema": "ATK.ObligationsClosed.B3",
+      "divergente": false
+    },
+    {
+      "id": "B4",
+      "problema": "P vs NP",
+      "status_declarado": "PROVADA_NO_KERNEL",
+      "status_calculado": "PROVADA_NO_KERNEL",
+      "teorema": "ATK.ObligationsClosed.B4",
+      "divergente": false
+    },
+    {
+      "id": "B5",
+      "problema": "Hodge",
+      "status_declarado": "PUBLICADA_NAO_FORMALIZADA",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "B6",
+      "problema": "BSD",
+      "status_declarado": "PUBLICADA_NAO_FORMALIZADA",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "B7",
+      "problema": "Yang–Mills",
+      "status_declarado": "PUBLICADA_NAO_FORMALIZADA",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "B8",
+      "problema": "Beal",
+      "status_declarado": "PUBLICADA_NAO_FORMALIZADA",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O1",
+      "problema": "Riemann",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O1m",
+      "problema": "Riemann",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O2",
+      "problema": "Beal",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O3",
+      "problema": "Navier–Stokes",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O4",
+      "problema": "P vs NP",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O5",
+      "problema": "Hodge",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O6",
+      "problema": "BSD",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O7",
+      "problema": "BSD",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "O8",
+      "problema": "Yang–Mills",
+      "status_declarado": "OPEN_MATH",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "L1",
+      "problema": "Navier–Stokes",
+      "status_declarado": "CLOSED",
+      "status_calculado": "PROVADA_NO_KERNEL",
+      "teorema": "ATK.LigacaoNS.clayA_iff",
+      "divergente": false
+    },
+    {
+      "id": "L2",
+      "problema": "P vs NP",
+      "status_declarado": "CLOSED",
+      "status_calculado": "PROVADA_NO_KERNEL",
+      "teorema": "ATK.ModeloPNP.fielL2",
+      "divergente": false
+    },
+    {
+      "id": "L3",
+      "problema": "Hodge",
+      "status_declarado": "NAO_EXISTE_NA_MATHLIB",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "L4",
+      "problema": "BSD",
+      "status_declarado": "PARTE_DO_POSTO_NO_KERNEL",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    },
+    {
+      "id": "L5",
+      "problema": "Yang–Mills",
+      "status_declarado": "NAO_EXISTE_NA_MATHLIB",
+      "status_calculado": "SEM_PROVA_NO_KERNEL",
+      "teorema": null,
+      "divergente": false
+    }
+  ]
+}

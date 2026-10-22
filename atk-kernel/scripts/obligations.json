@@ -180,7 +180,8 @@
         "data": "2026-10-14",
         "base": "parecer técnico em LIGACOES.md (revisão da L1 contra o texto oficial do Clay, caso A: dados de Schwartz, suavidade até t = 0, equação para t > 0, divergência nula, condição inicial, energia limitada)",
         "registro": "aprovação explícita do titular na sessão de 14/10/2026"
-      }
+      },
+      "proof_theorem": "ATK.LigacaoNS.clayA_iff"
     },
     {
       "id": "L2",
@@ -197,7 +198,8 @@
         "data": "2026-10-14",
         "base": "LIGACOES.md, seção L2: codificação de SAT (CNF em binário, quatro símbolos de dois bits) e redução de Karp (função computável em tempo polinomial por FinTM2)",
         "registro": "aprovação explícita do titular na sessão de 14/10/2026"
-      }
+      },
+      "proof_theorem": "ATK.ModeloPNP.fielL2"
     },
     {
       "id": "L3",

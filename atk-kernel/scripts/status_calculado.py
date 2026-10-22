@@ -20,6 +20,8 @@ import json, os, re, subprocess, sys, datetime
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PERMITIDOS = {"propext", "Classical.choice", "Quot.sound"}
+# status declarados que afirmam prova: precisam de `proof_theorem` certificado, senão aparecem como divergentes
+DECLARA_PROVA = {"PROVADA_NO_KERNEL", "CLOSED"}
 TSV = os.path.join(RAIZ, "audits", "auditoria_axiomas.tsv")
 
 
@@ -122,7 +124,7 @@ def main():
         decl = o.get("status")
         obrig.append({"id": o["id"], "problema": o.get("problem"), "status_declarado": decl,
                       "status_calculado": calc, "teorema": pt,
-                      "divergente": (decl == "PROVADA_NO_KERNEL") != (calc == "PROVADA_NO_KERNEL")})
+                      "divergente": (decl in DECLARA_PROVA) != (calc == "PROVADA_NO_KERNEL")})
 
     status = {
         "gerado_em_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
