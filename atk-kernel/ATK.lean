@@ -268,3 +268,4 @@ import ATK.ZeroCertificado
 import ATK.ZeroCritico
 import ATK.ZeroCertificadoAplicado
 import ATK.OrdemCoordenadas
+import ATK.DeltaCertificado

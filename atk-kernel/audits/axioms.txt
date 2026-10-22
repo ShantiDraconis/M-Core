@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 99daf1f408b75da0cda82d5a3f1bd60fb0a49c39df3b2ccca435f5335c1b99e0
+# axiomas por teorema — congelamento de ba633f3530e9cb4679b25504dafaaf28bfdebd96ec6064e79bac3f2d90a17d53
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -5662,3 +5662,20 @@ ATK.ZeroCertAplicado.centro_exato	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.ordem_coordenadas	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.ordem_composicao	propext, Classical.choice, Quot.sound
 ATK.ClosedMath.transporte_ordem	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.mem_root	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.cpow_gen	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.okTabs_ok	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.okRange_all	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.okBox_ok	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.mem_AI	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.quadInf_le	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.lip_cpow	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.lip_fpol	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.corr_le	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.resto_le'	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.disco	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.cobertura	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.zeta_K5	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.minimo_K5	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.eta_K5	propext, Classical.choice, Quot.sound
+ATK.DeltaCert.delta_cinco_pos	propext, Classical.choice, Quot.sound
