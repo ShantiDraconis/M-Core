@@ -6,7 +6,10 @@ decide entre os dois. O que os dados de N ≤ 8000 forçam:
 * **cerco** (numérico, ~24 dígitos, ainda sem aritmética intervalar): 0 ≤ D_∞ < D_8000 = 0,00506912020009596;
 * **centro extrapolado**: D̂_∞ = 0 ± 1·10⁻³, isto é ±20% de D_8000. O modelo com D_∞ = 0 forçado ajusta tão bem quanto os modelos com D_∞ livre;
 * **resolução**: abaixo de ~10⁻⁴ os dados não enxergam nada. Um zero fora da linha acima da altura verificada (3·10¹²) só garante
-  D_∞ ≥ m(ρ)², e esse piso é no máximo 5,1·10⁻²⁷, cerca de 22 ordens de grandeza abaixo do que a extrapolação resolve (~10⁻⁴).
+  D_∞ ≥ B(ρ) = (2σ−1)|1−ρ|²/|ρ|⁴ (`ATK.BarreiraZero`, que reforça o m(ρ)² de `piso_DN`), e esse piso é no máximo 1,1·10⁻²⁵,
+  cerca de 21 ordens de grandeza abaixo do que a extrapolação resolve (~10⁻⁴).
+* **certificado**: D_256 ≤ 0,00823372 está agora provado por aritmética intervalar (folga 3,72·10⁻⁹), módulo a fórmula de Vasyunin;
+  ver `certificado_D256/D256_certificado.md`.
 
 Código: `codigo/RH_centro_dn.cpp` (Cholesky incremental em float / double / double-double / binary128, Gram exata de Vasyunin,
 tabela de arredondamento dos coeficientes) e `codigo/RH_centro_fit.py` (ajustes, cauda, piso). Dados em `dados/`.
@@ -18,10 +21,11 @@ A referência de alta precisão é `../rodada2/dados/RH_Gram_DN.tsv` (dd, N ≤ 
 | --- | --- | --- | --- | --- |
 | rigorosa | [0; D_8000] = [0; 0,0050691202] | 0,0025345601 | ±100% do centro | D_∞ ≤ D_N (monotonia) e D_∞ ≥ 0 |
 | extrapolação | 0 ± ~1·10⁻³ | ≈ 0 | ±20% de D_8000 | modelos com D_∞ livre, janelas a partir de N ≤ 400 (§2) |
-| zero fora da linha | se existir, D_∞ ≥ m(ρ)², com m(ρ)² ≤ 5,1·10⁻²⁷ | — | — | `ForaDaLinha.piso_DN` + Platt–Trudgian 2021 (RH até 3,0002·10¹²) |
+| zero fora da linha | se existir, D_∞ ≥ B(ρ) ≤ 1,1·10⁻²⁵ (kernel antigo: m(ρ)² ≤ 5,1·10⁻²⁷) | — | — | `BarreiraZero.barreira_le_dInf` + Platt–Trudgian 2021 (RH até 3,0002·10¹²) |
 
-O piso é m(ρ) = 1/(|ρ|(1/√(2σ−1) + 1/(1−σ))). O fator entre parênteses é mínimo (4,6636) em σ = 0,6319, logo m(ρ)² ≤ 1/(4,6636·3,0002·10¹²)².
-Mais perto da linha o piso cai ainda mais: σ = 0,51 dá 1,3·10⁻²⁷; σ = 0,5001 dá 2,1·10⁻²⁹.
+O piso antigo é m(ρ) = 1/(|ρ|(1/√(2σ−1) + 1/(1−σ))), no máximo 5,1·10⁻²⁷ acima de 3·10¹² (em σ = 0,6319).
+A barreira nova B(ρ) = (2σ−1)|1−ρ|²/|ρ|⁴ ≈ (2σ−1)/γ² é sempre ≥ m(ρ)² (`m_sq_le_barreira`): 4,5 vezes maior em σ = 0,6, 63 vezes em σ = 7/8.
+Acima de 3·10¹² ela vale no máximo 1,1·10⁻²⁵ (8,3·10⁻²⁶ com σ ≤ 7/8); perto da linha cai linearmente: σ = 0,51 dá 2,2·10⁻²⁷.
 
 ## 2. O centro forçado pelos dados (ajustes com D_∞ livre)
 
@@ -108,7 +112,7 @@ O valor esperado é tr(G_N)·10^{−2d}/12, com tr(G_N) = (log 2π − γ)·H_N 
 | 1·10⁻³ | 46 | ≈ 10²⁰ |
 | 1·10⁻⁴ | 462 | ≈ 10²⁰⁰ |
 | 1·10⁻⁶ | 4,6·10⁴ | ≈ 10^(2·10⁴) |
-| 5·10⁻²⁷ (piso de um zero fora da linha) | 9·10²⁴ | ≈ 10^(3,9·10²⁴) |
+| 1·10⁻²⁵ (piso máximo de um zero fora da linha) | 4,6·10²³ | ≈ 10^(2·10²³) |
 
 Derivada: dN/dτ = −N·C₀/τ². Cada redução da tolerância custa um fator exponencial em N.
 Escalas físicas encaminhadas: N = R_universo/a_Bohr (log N = 85,0) dá C₀/log N = 5,4·10⁻⁴ (10,7% de D_8000); N = R_universo/ℓ_Planck (141,5) dá 3,3·10⁻⁴ (6,4%).
@@ -130,5 +134,15 @@ Nem a razão universo/Planck leva a tolerância abaixo de 6% de D_8000. A escala
 * **Mostra:** o cerco [0; 0,0050691202]; que o centro que os dados forçam é 0 com tolerância ~10⁻³; que 4 algarismos de D_N e 4 casas nos
   coeficientes já atingem a menor tolerância alcançável; e que a precisão baixa (float) fabrica um falso D_∞ = 0.
 * **Não mostra:** nada sobre RH. A tolerância cai como 1/log N, e a diferença entre "D_∞ = 0" e "D_∞ = piso de um zero acima de 3·10¹²"
-  só apareceria em N ≈ 10^(10²⁴).
+  só apareceria em N ≈ 10^(10²³).
+
+## 8. Barreira de um zero e região livre de zeros (`ATK.BarreiraZero`, Lean, só axiomas padrão)
+
+* `barreira_le_DN`: se ζ(ρ) = 0 com 1/2 < σ < 1, então D_N ≥ B(ρ) = (2σ−1)|1−ρ|²/|ρ|⁴ para todo N. Prova: Mellin da cauda
+  (∫_1^∞ = −S/(1−ρ)), logo ∫_0^1 t^{ρ−1}·res = 1/ρ + S/(1−ρ); Cauchy–Schwarz em (0,1]; ‖res‖² = ∫_0^1 res² + S²; e a identidade
+  S² + t|1/ρ + S/(1−ρ)|² − B = ((a²S − t(a−σ))² + t²γ²)/(a³b) ≥ 0 (t = 2σ−1, a = |ρ|², b = |1−ρ|², a = b + t).
+* `exclusao` / `regiao_livre_D256`: qualquer cota D_N < B(ρ) exclui zeros. Com D_256 ≤ 0,00823372 (certificada) a região livre é
+  |γ| < 1,47 em σ = 0,51; 4,87 em 0,6; 9,46 em 7/8; 10,8 em 0,99. Com D_8000 (numérico): 1,9 / 6,2 / 12,1 / 13,8.
+  Mesmo D_N com N = 10²⁰ só chegaria a |γ| ≈ 31. Comparação: a verificação direta já cobre |γ| ≤ 3·10¹²; para a barreira
+  igualar isso seria preciso D_N ≲ 10⁻²⁵, ou seja log N ≈ 5·10²³. A região é formal e nova no kernel, mas fraca.
 * **Próximo passo útil:** o certificado intervalar de D_256 com 4 casas decimais (§3c), que tira a única hipótese numérica do kernel de RH.

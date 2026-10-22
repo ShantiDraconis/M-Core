@@ -5123,3 +5123,16 @@ ATK.LeisDeGanho.lei_log_suficiente
 ATK.LeisDeGanho.rh_de_lei_log
 ATK.LeisDeGanho.sem_lei_polinomial
 ATK.LeisDeGanho.sem_lei_log_forte
+ATK.BarreiraZero.normSq_eq_add
+ATK.BarreiraZero.mellin_cauda
+ATK.BarreiraZero.mellin_cabeca
+ATK.BarreiraZero.cabeca_cs
+ATK.BarreiraZero.residual_split
+ATK.BarreiraZero.algebra_barreira
+ATK.BarreiraZero.barreira_le_residual
+ATK.BarreiraZero.barreira_le_DN
+ATK.BarreiraZero.barreira_le_dInf
+ATK.BarreiraZero.barreira_pos
+ATK.BarreiraZero.exclusao
+ATK.BarreiraZero.regiao_livre_D256
+ATK.BarreiraZero.m_sq_le_barreira

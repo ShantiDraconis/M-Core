@@ -1,0 +1,20 @@
+[build N=256 dps=60] cot 2.0s, V 12.1s (19947 pares), G 13.9s
+(1) G_11 contém log 2pi - gamma: True  largura 6.83e-50 | G_ii = G_11/i contém A/i p/ todo i: True
+(2) V completo x pareado em 10 pares: intervalos se intersectam = True, |dif. dos meios| máx 8.76e-58
+(3) 32896 entradas x double independente: |dif| máx 2.36e-14 em (1, 207)
+(4) 2940 entradas do C (q): fora de [G] ± 1.0e-30·|G|: 0;  |dif|/|G| máx 1.23e-31
+(4) 2940 entradas do C (dd): fora de [G] ± 1.0e-27·|G|: 0;  |dif|/|G| máx 5.48e-29
+    G(1,1): direto 1.260661401507812622954  |dif| 4.9e-42
+    G(1,2): direto 0.7722092559908731398613  |dif| 6.8e-43
+    G(2,3): direto 0.4411035092794021763273  |dif| 2.1e-42
+    G(3,5): direto 0.2735564369630130823903  |dif| 9.7e-43
+    G(5,7): direto 0.1825942845820989647146  |dif| 1.3e-42
+    G(4,6): direto 0.2205517546397010881637  |dif| 1.1e-42
+    G(7,10): direto 0.1287268301345383127  |dif| 6.5e-43
+    G(6,9): direto 0.1470345030931340587758  |dif| 7.0e-43
+    b_1: direto 0.4227843350984671393935  |dif| 2.2e-42
+    b_3: direto 0.5071322079221922769296  |dif| 1.0e-42
+    b_10: direto 0.2725369428092512823411  |dif| 1.8e-42
+(5) integração direta: |dif| máx 4.92e-42  (81.4s)
+(6) D_256 do C (dd) = 8.233716277261021441598038103838035e-03  distância ao envelope 1.2e-30  (rel. 1.5e-28)
+(6) D_256 do C (q) = 8.233716277261021441598038102637497e-03  distância ao envelope 2.06e-33  (rel. 2.5e-31)
