@@ -148,6 +148,12 @@ e `ρ` é o único zero de `ζ` nesse disco. Incondicional, só axiomas padrão.
 `eixo_unico`, `incognita_resolvida` e `centro_exato` (estes dois para `T ≥ 15`). **Um zero na linha não é HR**: HR
 fala de todos os zeros; o mesmo método certifica qualquer zero isolado, nunca infinitos.
 
+## 4g. B18: ordem sob mudança de coordenadas (`ATK/OrdemCoordenadas.lean`)
+
+`ordem_coordenadas`: `φ` analítica em `a` com `φ'(a) ≠ 0` ⇒ `ord_a(F ∘ φ) = ord_{φ(a)}(F)`; `ordem_composicao`: em geral
+as ordens multiplicam (`ord_{φ(a)}F · ord_a(φ − φ(a))`); `transporte_ordem` (B17 + B18): no transporte
+`G(φ(s)) = u(s)F(s)` com `u(a) ≠ 0` e `φ'(a) ≠ 0`, o zero de `G` em `φ(a)` tem a ordem do zero de `F` em `a`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

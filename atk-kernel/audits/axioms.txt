@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 24cd79eee97855b99d14bfdd46c4a1069298deadd3fb03e64125f7f0d45398d3
+# axiomas por teorema — congelamento de 99daf1f408b75da0cda82d5a3f1bd60fb0a49c39df3b2ccca435f5335c1b99e0
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -5659,3 +5659,6 @@ ATK.ZeroCertAplicado.eixo_unico	propext, Classical.choice, Quot.sound
 ATK.ZeroCertAplicado.todos_nao_vazio	propext, Classical.choice, Quot.sound
 ATK.ZeroCertAplicado.incognita_resolvida	propext, Classical.choice, Quot.sound
 ATK.ZeroCertAplicado.centro_exato	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.ordem_coordenadas	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.ordem_composicao	propext, Classical.choice, Quot.sound
+ATK.ClosedMath.transporte_ordem	propext, Classical.choice, Quot.sound

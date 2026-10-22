@@ -5657,3 +5657,6 @@ ATK.ZeroCertAplicado.eixo_unico
 ATK.ZeroCertAplicado.todos_nao_vazio
 ATK.ZeroCertAplicado.incognita_resolvida
 ATK.ZeroCertAplicado.centro_exato
+ATK.ClosedMath.ordem_coordenadas
+ATK.ClosedMath.ordem_composicao
+ATK.ClosedMath.transporte_ordem
