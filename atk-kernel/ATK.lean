@@ -262,3 +262,4 @@ import ATK.ClosedMathToro
 import ATK.RHTerminal
 import ATK.ClosedMathGeometrias
 import ATK.EspectroToro
+import ATK.Hexagrama
