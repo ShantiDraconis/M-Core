@@ -5296,3 +5296,17 @@ ATK.CaudaMeio.cauda_refuta
 ATK.CaudaMeio.barreira_le_cauda
 ATK.CaudaMeio.cauda_piso
 ATK.CaudaMeio.deteccao_exige
+ATK.EMGeral.abs_bernoulliFun_le
+ATK.EMGeral.perB_eq
+ATK.EMGeral.integrableOn_J
+ATK.EMGeral.norm_J_le
+ATK.EMGeral.passo_unidade
+ATK.EMGeral.recorrencia
+ATK.EMGeral.cauda_eq_J
+ATK.EMGeral.zeta_EM
+ATK.EMGeral.norm_zeta_sub_EM_le
+ATK.EMGeral.bernoulliFun_eq_sum
+ATK.EMGeral.Cb_nonneg
+ATK.EMGeral.abs_perB_le
+ATK.EMGeral.measurable_perB
+ATK.EMGeral.continuousOn_cpow_pos
