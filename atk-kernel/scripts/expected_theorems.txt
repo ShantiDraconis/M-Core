@@ -5116,3 +5116,10 @@ ATK.IntegracaoFCNS.contDiff_dois
 ATK.IntegracaoFCNS.fc_of_atk
 ATK.IntegracaoFCNS.atk_of_fc
 ATK.IntegracaoFCNS.clayA_iff_fc
+ATK.LeisDeGanho.harm_ge
+ATK.LeisDeGanho.loglog_ge
+ATK.LeisDeGanho.soma_eta_le_loglog
+ATK.LeisDeGanho.lei_log_suficiente
+ATK.LeisDeGanho.rh_de_lei_log
+ATK.LeisDeGanho.sem_lei_polinomial
+ATK.LeisDeGanho.sem_lei_log_forte

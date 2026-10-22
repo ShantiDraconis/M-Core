@@ -237,3 +237,4 @@ import ATK.PostoLivre
 import ATK.Externo.FCBSD
 import ATK.IntegracaoFCBSD
 import ATK.IntegracaoFCBSDMW
+import ATK.LeisDeGanho
