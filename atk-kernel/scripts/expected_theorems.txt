@@ -5219,3 +5219,17 @@ ATK.BLProva.fora_da_faixa
 ATK.BLProva.densidade_de_crescimento
 ATK.BLProva.zeros_escapam
 ATK.ObligationsClosed.B9
+ATK.ZeroIncognito.sistema_iff
+ATK.ZeroIncognito.sistema
+ATK.ZeroIncognito.mem_F
+ATK.ZeroIncognito.card_F
+ATK.ZeroIncognito.torcao_mem_todos
+ATK.ZeroIncognito.soma_desvio_meio
+ATK.ZeroIncognito.soma_desvio
+ATK.ZeroIncognito.incognita_resolvida
+ATK.ZeroIncognito.centro_exato
+ATK.ZeroIncognito.dispersao_nonneg
+ATK.ZeroIncognito.rh_iff_dispersao
+ATK.ZeroIncognito.card_filter_le
+ATK.ZeroIncognito.dispersao_le
+ATK.ZeroIncognito.dispersao_media_tende_zero
