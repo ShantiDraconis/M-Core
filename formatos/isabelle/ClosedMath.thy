@@ -191,12 +191,7 @@ theorem Cil_dist_par:
   unfolding Cil_par by (simp add: power2_eq_square algebra_simps)
 
 theorem K_cone: "(\<bar>\<delta>\<bar> * cos th)\<^sup>2 + (\<bar>\<delta>\<bar> * sin th)\<^sup>2 = (\<delta>::real)\<^sup>2"
-proof -
-  have "(\<bar>\<delta>\<bar> * cos th)\<^sup>2 + (\<bar>\<delta>\<bar> * sin th)\<^sup>2 = \<delta>\<^sup>2 * ((sin th)\<^sup>2 + (cos th)\<^sup>2)"
-    by (simp add: power_mult_distrib distrib_left add.commute)
-  also have "\<dots> = \<delta>\<^sup>2" by (simp only: sin_cos_squared_add mult_1_right)
-  finally show ?thesis .
-qed
+  by (simp add: power_mult_distrib cos_squared_eq algebra_simps)
 
 theorem tor_R:
   "cos (2*pi*(1 - \<sigma>)) = cos (2*pi*\<sigma>)" "sin (2*pi*(1 - \<sigma>)) = - sin (2*pi*\<sigma>)"
