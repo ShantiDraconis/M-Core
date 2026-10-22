@@ -5289,3 +5289,10 @@ ATK.ZetaTroca.sistema_trocado
 ATK.ZetaTroca.sistema_trocado_sem_solucao
 ATK.ZetaTroca.dInf_le_DN
 ATK.ZetaTroca.dInf_le_de_cota
+ATK.CaudaMeio.dizima_noves
+ATK.CaudaMeio.cauda_decimal_exata
+ATK.CaudaMeio.cauda_par
+ATK.CaudaMeio.cauda_refuta
+ATK.CaudaMeio.barreira_le_cauda
+ATK.CaudaMeio.cauda_piso
+ATK.CaudaMeio.deteccao_exige
