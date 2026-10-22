@@ -1,0 +1,107 @@
+name: Closed Math multiprovador (Coq, Isabelle, SMT, TPTP, Python)
+
+on:
+  push:
+    paths:
+      - 'formatos/**'
+      - 'pesquisa/rodada5/**'
+      - '.github/workflows/closed-math-multiprovador.yml'
+  pull_request:
+    paths:
+      - 'formatos/**'
+      - 'pesquisa/rodada5/**'
+      - '.github/workflows/closed-math-multiprovador.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  coq:
+    name: Coq (coqc + coqchk)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar Coq
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq coq
+      - name: coqc
+        working-directory: formatos/coq
+        run: |
+          set -o pipefail
+          coqc --version | tee coq_versao.txt
+          coqc -Q . ATK ClosedMath.v 2>&1 | tee coq_saida.txt
+          coqchk -silent -Q . ATK ATK.ClosedMath 2>&1 | tee coqchk_saida.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coq-relatorio
+          path: formatos/coq/*.txt
+
+  isabelle:
+    name: Isabelle/HOL (isabelle build)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar Isabelle
+        run: |
+          for v in Isabelle2025 Isabelle2024; do
+            if curl -fsSL --retry 3 -o isa.tar.gz "https://isabelle.in.tum.de/dist/${v}_linux.tar.gz"; then
+              tar xzf isa.tar.gz && echo "ISA=$PWD/$v" >> "$GITHUB_ENV" && echo "baixado $v" && break
+            fi
+          done
+      - name: isabelle build
+        run: |
+          set -o pipefail
+          "$ISA/bin/isabelle" version | tee formatos/isabelle/isabelle_versao.txt
+          "$ISA/bin/isabelle" build -v -o threads=4 -D formatos/isabelle 2>&1 | tee formatos/isabelle/isabelle_saida.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: isabelle-relatorio
+          path: formatos/isabelle/*.txt
+
+  smt:
+    name: SMT-LIB 2 (z3, cvc5)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar z3 e cvc5
+        run: |
+          pip install -q z3-solver
+          sudo apt-get update -qq && sudo apt-get install -y -qq z3 || true
+          sudo apt-get install -y -qq cvc5 || true
+      - name: rodar
+        run: python3 formatos/smtlib/rodar.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smt-relatorio
+          path: formatos/smtlib/resultado_smt.json
+
+  tptp:
+    name: TPTP (E prover)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar E
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq eprover
+      - name: rodar
+        run: bash formatos/tptp/rodar.sh
+
+  python:
+    name: Python (pytest + SymPy)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependências
+        run: pip install -q numpy scipy matplotlib sympy pytest
+      - name: pytest
+        run: python -m pytest -q pesquisa/rodada5/testes -rs

@@ -1,0 +1,4 @@
+session ATK_ClosedMath = HOL +
+  options [document = false]
+  theories
+    ClosedMath
