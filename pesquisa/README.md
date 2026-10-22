@@ -8,6 +8,7 @@ dos achados que pareciam novos. Nada aqui prova uma conjectura; números finitos
 * `testes/` — 1ª rodada: um relatório por teste (`<TÓPICO>_T<n>.md`), código em `testes/codigo/`, saídas em `testes/saidas/`.
 * `rodada2/` — 2ª rodada: revisões independentes (NS, Hodge) e o cálculo exato de D_N (RH); dados em `rodada2/dados/`.
 * `rodada3/` — RH: centro, tolerância, precisão e cauda de D_∞ (`RH_centro_Dinf.md`); certificado intervalar de D_256 (`certificado_D256/`).
+* `rodada4/` — RH: lado material da prova formal de Bohr–Landau (`RH_BohrLandau_material.md`): média quadrática de ζ, contagem de Jensen e a constante efetiva.
 
 Os caminhos absolutos dentro dos scripts são os do ambiente onde rodaram (máquina de 2 núcleos, sem numpy/PyPI;
 mpmath/sympy/networkx puros, CaDiCaL e gcc).
@@ -21,6 +22,7 @@ Em cada linha, o controle (resultado conhecido reproduzido) vem antes do que é 
 | NS | T2 + revisão | Lei–Lin κ* ≥ 1 recuperado; derivada temporal conferida | **Limiar de Lei–Lin melhorado de ν para 3ν/2** (argumento angular + lema de Björck); √2·ν conferido passo a passo. Não achado na literatura (pode ser folclore). Teto do método ≈ 3,5ν. |
 | NS | T1 | — | Expoentes da explosão forçada (OpenAI, caso C) não violam Leray/Serrin/BKM/CKN; duas correções ao mapa (CKN, barreira B4). Só consistência dimensional. |
 | RH | rodada 2 | Fórmula de Vasyunin = integração direta (4e−44) | **D_N para todo N ≤ 8000** (~24 dígitos): D_8000 = 0,0050691202; D_256 = 0,0082337162773 (confirma a hipótese numérica do kernel, folga 3,7e−9). D_N·log N ∈ [0,96; 1,01]·(2+γ−log 4π). Lei por passo η_N ≥ c/(N+1) é falsa (Burnol); por passo η_N ≥ c/(N log N) só com c ≤ 6e−8 nos dados. As três leis estão decididas no kernel em `ATK.LeisDeGanho` (PR #60). |
+| RH | rodada 4 | ζ(2), 1º zero, ζ(1/2+10i) a 10⁻¹⁵ | **Bohr–Landau provado no kernel** (`ATK.BLProva.bohrLandau`, PR #67). A média quadrática bate com os dois termos clássicos (~1%). A constante da prova para δ = 1/4 é C ≈ 734 com M numérico; a densidade só morde a partir de T ≈ 10²⁰⁰⁵ (teorema qualitativo). |
 | RH | T1, T2 | Inclinação clássica −(2σ−1) recuperada | O desenho F = ζ·R do mapa é mal posto (piso positivo provado); substituído por F = ζ(1 − 2^{β₀−s}), em que o ótimo segue −2(σ−β₀). |
 | Hodge | T1 + revisão | dim Hdg para m = 3..6; R_33 = 1 órbita | (P_m⁴) vale para m par ∈ {22,24,26,28,30,34,38,46,58,74,82,86,94,98} — confirmado por reimplementação, **mas todos já conhecidos** (Aoki). Hipótese H1 do mapa refutada. Possível novidade: família m = 4q com certificado de 2 pares (m ∈ {44,52,66,68,76,78,88,92}); m = 70 segue aberto. |
 | BSD | T4 | L(E,1) = ϖ/4 (35 dígitos); c₂ = 2 por Tate | `formula_E32_iff` é numericamente verdadeira (o período do kernel é 2ϖ); sem erro de fator 2. |

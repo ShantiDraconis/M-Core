@@ -1,6 +1,7 @@
 import ATK.BaezDuarteBridge
 import ATK.CookLevinNP
 import ATK.NSCriterio
+import ATK.BLProva
 
 /-!
 # ATK — Obrigações fechadas por teoremas certificados
@@ -31,6 +32,18 @@ theorem B3 : ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion ATK.LigacaoNS
 
 end ATK.ObligationsClosed
 
+namespace ATK.ObligationsClosed
+
+/-- **B9** (ponte de Riemann, Bohr–Landau 1914): `N(1/2 + δ, T) = O(T)` para todo `δ > 0` —
+quase todos os zeros estão arbitrariamente perto de `1/2`. Prova incondicional em
+`ATK/BLJensen.lean`, `ATK/BLEulerMaclaurin.lean`, `ATK/BLCauda.lean`, `ATK/BLDirichlet.lean`,
+`ATK/BLMediaZeta.lean`, `ATK/BLProva.lean`. -/
+theorem B9 : ATK.BohrLandau.TeoremaBohrLandau :=
+  ATK.BLProva.bohrLandau
+
+end ATK.ObligationsClosed
+
 #print axioms ATK.ObligationsClosed.B1
 #print axioms ATK.ObligationsClosed.B4
 #print axioms ATK.ObligationsClosed.B3
+#print axioms ATK.ObligationsClosed.B9

@@ -242,3 +242,9 @@ import ATK.BarreiraZero
 import ATK.LinhaIncognita
 import ATK.EixoDeslocado
 import ATK.BohrLandau
+import ATK.BLJensen
+import ATK.BLEulerMaclaurin
+import ATK.BLCauda
+import ATK.BLDirichlet
+import ATK.BLMediaZeta
+import ATK.BLProva
