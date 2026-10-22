@@ -21,6 +21,10 @@ Definition C0 := mkC 0 0.
 Definition C1 := mkC 1 0.
 Definition nsq (a : C) := re a * re a + im a * im a.
 
+(* fechamento robusto para igualdades reais: tenta ring/lra/nra/field, com e sem simplificação *)
+Ltac fecha := first [ ring | lra | nra | field | (simpl; ring) | (simpl; lra) | (cbn; ring)
+                    | (cbn; lra) | (simpl; field) | (simpl; nra) ].
+
 Lemma C_ext : forall a b : C, re a = re b -> im a = im b -> a = b.
 Proof. intros [a1 a2] [b1 b2]; simpl; intros H1 H2; subst; reflexivity. Qed.
 
@@ -78,7 +82,7 @@ Proof. intros [a b]; apply C_ext; unfold opR, opJ, opS, Csub, Cconj, C1; simpl; 
 Lemma R_S : forall s, opR (opS s) = opJ s.
 Proof. intros [a b]; apply C_ext; unfold opR, opJ, opS, Csub, Cconj, C1; simpl; ring. Qed.
 Lemma D_R : forall s, Dd (opR s) = - Dd s.
-Proof. intros [a b]; unfold Dd, opR, Csub, Cconj, C1; simpl; ring. Qed.
+Proof. intros [a b]; unfold Dd, opR, Csub, Cconj, C1; fecha. Qed.
 Lemma TRT : forall w, opT (opR (opT w)) = Cadd (Cconj w) Ci.
 Proof. intros [a b]; apply C_ext; unfold opT, opR, Cmul, Csub, Cconj, Cadd, Ci, C1; simpl; ring. Qed.
 Lemma TRT_fixo : forall w, opT (opR (opT w)) = w <-> im w = 1/2.
@@ -88,15 +92,15 @@ Proof.
   - intro H; apply C_ext; simpl; lra.
 Qed.
 Lemma T_isometria : forall s w, nsq (Csub (opT s) (opT w)) = nsq (Csub s w).
-Proof. intros [a b] [c d]; unfold nsq, opT, Csub, Cmul, Cconj, Ci; simpl; ring. Qed.
+Proof. intros [a b] [c d]; unfold nsq, opT, Csub, Cmul, Cconj, Ci; fecha. Qed.
 
 (* par simétrico s± = 1/2 ± d + t i *)
 Definition sp (d t : R) := mkC (1/2 + d) t.
 Definition sm (d t : R) := mkC (1/2 - d) t.
 Lemma T4_centro : forall d t, re (Cadd (sp d t) (sm d t)) / 2 = 1/2 /\ im (Cadd (sp d t) (sm d t)) / 2 = t.
-Proof. intros; unfold Cadd, sp, sm; simpl; split; field. Qed.
+Proof. intros; unfold Cadd, sp, sm; split; fecha. Qed.
 Lemma T5_separacao : forall d t, nsq (Csub (sp d t) (sm d t)) = (2 * d) ^ 2.
-Proof. intros; unfold nsq, Csub, sp, sm; simpl; ring. Qed.
+Proof. intros; unfold nsq, Csub, sp, sm; fecha. Qed.
 Lemma T6_coincidencia : forall d t, sp d t = sm d t <-> d = 0.
 Proof.
   intros d t; unfold sp, sm; split.
@@ -111,7 +115,7 @@ Definition G (d g : R) (s : C) : C :=
        (Cadd (sq (Cadd (Csub s (Cr (1/2))) (Cr d))) (Cr (g * g))).
 
 Definition xm (s : C) := Csub s (Cr (1/2)).
-Ltac cring := apply C_ext; unfold G, xm, sq, Cmul, Cadd, Csub, Cconj, Cr, Ci, C0, C1, opS, opJ; simpl; ring.
+Ltac cring := apply C_ext; unfold G, xm, sq, Cmul, Cadd, Csub, Cconj, Cr, Ci, C0, C1, opS, opJ; fecha.
 
 Theorem P1 : forall d g,
   G d g (mkC (1/2 + d) g) = C0 /\ G d g (mkC (1/2 + d) (- g)) = C0 /\
@@ -145,7 +149,7 @@ Proof.
   intros d g Hg; split.
   - intro H.
     assert (Hre : re (G d g (Cr 2)) = ((3/2 - d) ^ 2 + g * g) * ((3/2 + d) ^ 2 + g * g))
-      by (unfold G, sq, Cmul, Cadd, Csub, Cr; simpl; field).
+      by (unfold G, sq, Cmul, Cadd, Csub, Cr; fecha).
     rewrite H in Hre; simpl in Hre.
     assert (Hp : 0 < ((3/2 - d) ^ 2 + g * g) * ((3/2 + d) ^ 2 + g * g)).
     { apply Rmult_lt_0_compat; assert (0 < g * g) by (apply Rsqr_pos_lt; exact Hg); nra. }
@@ -158,7 +162,7 @@ Proof.
   intros d g Hg; split.
   - intro H.
     assert (Hre : re (G d g (Cr (1/2))) = (d * d + g * g) ^ 2)
-      by (unfold G, sq, Cmul, Cadd, Csub, Cr; simpl; field).
+      by (unfold G, sq, Cmul, Cadd, Csub, Cr; fecha).
     rewrite H in Hre; simpl in Hre.
     assert (0 < g * g) by (apply Rsqr_pos_lt; exact Hg).
     nra.
@@ -168,7 +172,7 @@ Qed.
 (* "ambos": o ramo ½ + λ + i g é zero de G_λ para todo λ; crítico em λ = 0, externo em λ = 1/4 *)
 Theorem P4_ambos : forall g,
   (forall l, G l g (mkC (1/2 + l) g) = C0) /\ re (mkC (1/2 + 0) g) = 1/2 /\ re (mkC (1/2 + 1/4) g) = 3/4.
-Proof. intro g; split; [intro l; exact (proj1 (P1 l g)) | simpl; split; field]. Qed.
+Proof. intro g; split; [intro l; exact (proj1 (P1 l g)) | simpl; split; fecha]. Qed.
 
 (* as simetrias de ζ são compatíveis com as duas respostas *)
 Theorem simetria_compativel_com_ambos :

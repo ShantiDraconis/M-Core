@@ -60,6 +60,7 @@ jobs:
       - name: Instalar Isabelle
         timeout-minutes: 45
         run: |
+          set +e
           eval "$ANOTA"
           : > baixar.txt
           for v in Isabelle2025 Isabelle2024; do
@@ -105,8 +106,18 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Instalar E
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq eprover > /dev/null
+      - name: Instalar provadores (SPASS, E, Vampire)
+        run: |
+          set +e
+          sudo apt-get update -qq && sudo apt-get install -y -qq spass eprover > /dev/null
+          url=$(curl -s https://api.github.com/repos/vprover/vampire/releases/latest | python3 -c "import json,sys; a=json.load(sys.stdin).get('assets',[]); print(next((x['browser_download_url'] for x in a if 'linux' in x['name'].lower()), ''))")
+          if [ -n "$url" ]; then
+            mkdir -p vamp && curl -sL -o vamp/pkg "$url"
+            (cd vamp && (unzip -q pkg 2>/dev/null || tar xf pkg 2>/dev/null || cp pkg vampire))
+            v=$(find vamp -type f -name 'vampire*' ! -name pkg | head -1)
+            [ -n "$v" ] && chmod +x "$v" && echo "VAMPIRE=$PWD/$v" >> "$GITHUB_ENV" && echo "vampire: $url"
+          fi
+          true
       - name: rodar
         run: |
           eval "$ANOTA"
