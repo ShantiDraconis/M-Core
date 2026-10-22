@@ -194,7 +194,7 @@ theorem K_cone: "(\<bar>\<delta>\<bar> * cos th)\<^sup>2 + (\<bar>\<delta>\<bar>
 proof -
   have "(\<bar>\<delta>\<bar> * cos th)\<^sup>2 + (\<bar>\<delta>\<bar> * sin th)\<^sup>2 = \<delta>\<^sup>2 * ((sin th)\<^sup>2 + (cos th)\<^sup>2)"
     by (simp add: power_mult_distrib distrib_left add.commute)
-  also have "\<dots> = \<delta>\<^sup>2" by simp
+  also have "\<dots> = \<delta>\<^sup>2" by (simp only: sin_cos_squared_add mult_1_right)
   finally show ?thesis .
 qed
 
