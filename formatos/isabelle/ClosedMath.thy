@@ -465,4 +465,10 @@ theorem tri_um_x_x2:
   shows "d3 < 0"
   using assms by linarith
 
+theorem inv_um_x_x2:
+  fixes b0 b1 b2 b3 :: real
+  assumes "b0 = 1" "b1 - b0 = 0" "b2 - b1 + b0 = 0" "b3 - b2 + b1 = 0"
+  shows "b3 < 0"
+  using assms by linarith
+
 end

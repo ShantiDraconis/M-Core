@@ -249,7 +249,7 @@ fechada `Pc(K)` (igual à soma direta dos degraus; erro `≈ 0,1458/K`), `D₁ =
 | 56e0dfa6 | `B = d∫₀¹ Re F′` | falso: é `Im F′` (`F = z²` e o próprio `ξ`) | `XiAnalitica.B_integral`, `ErrosAnaliticos.texto_Re_falso_para_xi` |
 | 8af24fb4 / bef58a09 | `λ ≠ 0` ⇒ quatro zeros simples; `λ = 0` ⇒ dois duplos | falta `γ ≠ 0`: tabela 1 / 2 / 4 | `ErrosAnaliticos.multiplicidade_tabela` |
 | f1754ca5 / 0e761a7c | Jensen montado com `aₙ` | normalização errada: Turán(`γ`) ⇒ Turán(`a`), não o contrário | `GeometriaExtra.jensen_a_hiperbolico`, `ErrosAnaliticos.turan_gamma_implica_a`, `jensen_a_falha_gamma_detecta` |
-| 0e761a7c | `TP∞(γ)` caracteriza zeros reais negativos | falso: `(1+x)³` tem todos os 2×2 `≥ 0` e `D₃,₁(γ) = −3`; o certo é `TP∞(aₙ)` | `ErrosAnaliticos.tp_binomial`, `ToeplitzTN.tn_de_raizes` (⇐), `tn_grau_dois_iff` (grau 2) |
+| 0e761a7c | `TP∞(γ)` caracteriza zeros reais negativos | falso: `(1+x)³` tem todos os 2×2 `≥ 0` e `D₃,₁(γ) = −3`; o certo é `TP∞(aₙ)` | `ErrosAnaliticos.tp_binomial`, `ToeplitzTN.tn_de_raizes` (⇐), **`ASWReciproca.asw_iff`** (⟺, qualquer grau) |
 | 425e4bc1 | "HR ⇏ O1" | mal posto: provar `¬(HR → Q)` provaria HR; alvo é `D_N → 0` | `GeometriaExtra.nao_implica_prova_rh`, `ErrosAnaliticos.alvo_correto` |
 | 99d52102 | ajuste `D_N ≈ a + C/log N` com os dois valores | intercepto negativo; os dados só dizem `D_N log N < C₀` e decrescente | `BarreiraModelos.sem_modelo_nao_negativo`, `ErrosGram.E12_corrigido` |
 | e1644f4c / f1754ca5 | `Ξ(t) = ∫Φ(u)cos(tu)du` | fator 2: **`Ξ(t) = 2∫₀^∞Φ(u)cos(tu)du`** | `XiPhi.Xi_eq_dois_int_Phi`, `sem_fator_dois_falso` |
@@ -259,9 +259,9 @@ fechada `Pc(K)` (igual à soma direta dos degraus; erro `≈ 0,1458/K`), `D₁ =
 ## 4l. O que continua pendente (não formalizado aqui)
 
 Ganho de Schur exato e Tikhonov; `D_∞` como resíduo ortogonal em `L²`; o núcleo `ψ` fora da linha; o princípio do
-argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); a recíproca de
-Aissen–Schoenberg–Whitney em grau `≥ 3` (`TP∞(aₙ)` ⇒ zeros reais; precisa da identidade de Jacobi para a inversa e de
-Pringsheim) e o teorema de Edrei para séries infinitas (Nevanlinna); e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas
+argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); o teorema
+de Edrei para séries infinitas (Nevanlinna) e a fatoração de Hadamard de `Θ` (a recíproca de Aissen–Schoenberg–Whitney
+para polinômios **já está no kernel**, §4o); e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas
 equivalentes continuam abertas.
 
 ## 4m. Erros: explicação, correção e teoremas (rodada 7)
@@ -315,7 +315,7 @@ não (`jensen_a_falha_gamma_detecta`).
 **E8 — `TP∞(γ)` (0e761a7c).** *Origem*: Aissen–Schoenberg–Whitney–Edrei é sobre os coeficientes de Taylor `aₙ`. Para
 `(1+x)³` (só zeros reais negativos), **todos** os menores 2×2 de `a = (1,3,3,1)` e de `γ = (1,3,6,6)` são `≥ 0`, mas
 `D₃,₁(a) = 10` e `D₃,₁(γ) = −3` (`tp_binomial`): Turán para `γ` não dá `TP₃(γ)`. *Correção*: o critério é `TP∞(aₙ)`
-(ASWE; o teorema geral não está no Mathlib e não foi formalizado).
+(ASWE). Para polinômios as duas direções estão no kernel (`ASWReciproca.asw_iff`, §4o); Edrei (séries infinitas) não.
 
 **E9 — fator 2 em `Ξ(t) = ∫₀^∞Φ(u)cos(tu)du` (e1644f4c / f1754ca5).** *Origem*: o `2` é o jacobiano de `x = e^{2u}`
 (`dx = 2e^{2u}du`). *Teoremas*: **`Ξ(t) = ½ − 2(t²+¼)∫₀^∞ψ(e^{2u})e^{u/2}cos(tu)du`** (`Xi_forma_u`, da fórmula de
@@ -383,20 +383,60 @@ menores tridiagonais `D_{r+2} = a₁D_{r+1} − a₀a₂D_r` (`D_rec`, Laplace d
 telescópica `2(1−c)Σ_{k≤N}x_k = x₁ − x₀ + x_N − x_{N+1}` são incompatíveis com `x_r ≥ 0` para todo `r`. Para
 `Θ = 1 + x + x²`, `D₃ = −1` (`um_x_x2`, `um_x_x2_nao_tn`).
 
-*Não formalizado*: a recíproca em grau `≥ 3` (ASW 1952 usa a identidade de Jacobi para a inversa de uma matriz TN e o
-teorema de Pringsheim, nenhum no Mathlib) e o teorema de Edrei para séries infinitas (teoria de Nevanlinna).
+*Não formalizado nesta rodada*: a recíproca em grau `≥ 3` — **fechada na rodada 9** (§4o, sem Pringsheim) — e o
+teorema de Edrei para séries infinitas (teoria de Nevanlinna), que continua fora.
 Formatos: SMT-LIB 29–30, Coq e Isabelle (constante de `θ`, tridiagonal). Numérico: `codigo/fechamento.py`,
 `dados/fechamento.json`, `testes/test_fechamento.py` (4 testes): `4Σce^{−c} − ψ(1) − ½ ≈ 10⁻⁵¹`; menores até 4×4 de
 `(1+x)³` e `(x+1)(x+2)(x+3)` todos `≥ 0`; com `a₁ = 1,9` e `1,99` o primeiro `D_r < 0` aparece em `r = 9` e `r = 31`.
+
+## 4o. A recíproca de Aissen–Schoenberg–Whitney, qualquer grau (rodada 9)
+
+`ATK/ASWReciproca.lean`: 33 teoremas novos, total 6203, só `propext`, `Classical.choice`, `Quot.sound`. Com a direção
+(⇐) da rodada 8, **ASW para polinômios está completo no kernel**:
+
+**Teorema** (`asw_iff`). Para `p ∈ ℝ[x]` com `p(0) > 0`: `T(coef p)` é totalmente não negativa
+(`Matrix.IsTotallyNonneg`, todos os menores) **⟺** `p` tem `deg p` zeros reais contados com multiplicidade, todos `≤ 0`,
+e coeficiente líder `≥ 0`; equivalentemente `p = c·∏(x − xᵢ)` com `xᵢ ≤ 0` (`asw_fatora`).
+
+O que faltava no Mathlib e foi formalizado aqui:
+
+1. **Colunas unitárias** (`det_unit_cols`): se a coluna `π_s` de `M` é `e_{ρ_s}`, então
+   `det M = (−1)^{Σ(π_s+ρ_s)}·det M[ρᶜ, πᶜ]` (Laplace iterado, reindexação por `succAbove`).
+2. **Identidade de Jacobi** para a inversa, forma sem sinal (`jacobi_init`): se `G·X = 1` e `A = DGD`,
+   `D = diag((−1)^i)`, então `det X[R, {0..r−1}]·det A = det A[{r..}, Rᶜ]`. Prova: `W` com as colunas de `X` nas
+   posições `R` e unitárias fora; `G·W` tem colunas unitárias nas posições `R`; duas vezes o item 1 e paridade.
+3. **Seções de Toeplitz** (`sec_mul`: `T_N(φ)T_N(ψ) = T_N(φψ)`) e a **transferência** (`cc_de_tn`): com
+   `B = 1/p(−x) = Σb_kx^k`, `G = T_N(p(−x))`, `X = T_N(B)`, tem-se `A = DGD = T_N(p)`, `det A = p(0)^N > 0` e os
+   `A[{r..}, Rᶜ]` são menores de `T(p)`; logo **todo menor de `T(b)` com colunas iniciais é `≥ 0`** (`CCTN`).
+4. **Uma raiz real, sem Pringsheim**: de `CCTN`, `b_k ≥ 0` e `b_kb_{k+2} ≤ b_{k+1}²` (`cc_log_concave`); um zero de
+   `b` propaga-se para a frente (`cc_zero_prop`), e `B` não é polinômio (grau `≥ 1`), então `b_k > 0` para todo `k`
+   (`b_pos`); `b_{k+1}/b_k` decresce para `L ≥ 0` (`ratio_tendsto`) e `b_{M+j}/b_M → L^j` (`ratio_pow`). Dividindo a
+   recorrência `Σ(−1)^ip_ib_{M+n−i} = 0` por `b_M`: `Σ(−1)^ip_iL^{n−i} = 0`, logo `L > 0` (senão `p_n = 0`) e
+   **`p(−1/L) = 0`** (`raiz_real`).
+5. **Remoção do fator** (`cc_remove`): `b′ = (1 − Lx)b` também tem `CCTN`. Cada menor de `T(b′)` com colunas iniciais é
+   o limite de `det T(b)[R ∪ {M+J+r}, {0..r}]/b_{M+J}` (continuidade do determinante) depois das operações de coluna
+   `col_c ← col_c − L·col_{c+1}` (`opCol`, determinante 1): a última linha tende a `(0, …, 0, 1)` porque
+   `b_{M+j+1}/b_M − L·b_{M+j}/b_M → L^{j+1} − L·L^j = 0`, e Laplace nela devolve o menor de `T(b′)`.
+6. **Indução no grau** (`asw_rec`): `p = (x + 1/L)·q`, `q(0) = L·p(0) > 0`, `q(−x)·(1/L − x)B = 1`, e
+   `(1/L − x)B = L⁻¹(1 − Lx)B` tem `CCTN` (`cc_smul`); `raízes(p) = {−1/L} + raízes(q)`.
+
+Com isso E8 fica corrigido por inteiro no caso polinomial: o critério certo é `TP∞(aₙ)`, e ele **caracteriza** zeros
+reais `≤ 0` (para `1 + x + x²`, `1/(1 − x + x²) = 1 + x − x³ − x⁴ + …` já tem `b₃ = −1 < 0`).
+
+*Fora do kernel*: o teorema de Edrei (séries infinitas; teoria de Nevanlinna) e a fatoração de Hadamard de `Θ`. Aplicar o
+critério à função de HR exigiria os dois e, mesmo assim, só reformularia HR — **nada aqui prova HR**.
+Formatos: SMT-LIB 31, Coq e Isabelle (`inv_um_x_x2`). Numérico: `codigo/asw.py`, `dados/asw.json`, `testes/test_asw.py`
+(4 testes): para `(x+1)(x+2)(x+3)`, `b = 1/6, 11/36, 85/216, …`, razões decrescentes para `L = 1` (raiz `−1`), menor
+mínimo de colunas iniciais (`r ≤ 3`, 10 linhas) `= 1/60466176 > 0`, e `(1 − x)b` é exatamente `coef 1/((2−x)(3−x))`.
 
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²` |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 30 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 31 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 

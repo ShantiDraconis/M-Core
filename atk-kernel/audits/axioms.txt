@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de b102fa1f1c07ae60c75b9bacf3930fdef0f0e4236bf10e35d18c20399c48f417
+# axiomas por teorema — congelamento de 1ed5a1c70d35f70a2f4ac1ce400a6448727979a54114784e3ef42093d00c79b5
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6170,3 +6170,36 @@ ATK.ToeplitzTN.fatora_iff	propext, Classical.choice, Quot.sound
 ATK.ToeplitzTN.seq3_eq_coeff	propext, Classical.choice, Quot.sound
 ATK.ToeplitzTN.tn_grau_dois_iff	propext, Classical.choice, Quot.sound
 ATK.ToeplitzTN.um_x_x2_nao_tn	propext, Classical.choice, Quot.sound
+ATK.ASWRec.succAbove_preAbove	propext, Classical.choice
+ATK.ASWRec.val_succAbove_of_lt	propext
+ATK.ASWRec.neg_one_pow_even_sum	propext, Classical.choice, Quot.sound
+ATK.ASWRec.det_unit_cols	propext, Classical.choice, Quot.sound
+ATK.ASWRec.range_castAdd_iff	propext, Quot.sound
+ATK.ASWRec.sum_partition	propext, Classical.choice, Quot.sound
+ATK.ASWRec.det_conj_sign	propext, Classical.choice, Quot.sound
+ATK.ASWRec.jacobi_init	propext, Classical.choice, Quot.sound
+ATK.ASWRec.sec_mul	propext, Classical.choice, Quot.sound
+ATK.ASWRec.sec_one	propext, Classical.choice, Quot.sound
+ATK.ASWRec.coeff_comp_neg_X	propext, Classical.choice, Quot.sound
+ATK.ASWRec.cc_de_tn	propext, Classical.choice, Quot.sound
+ATK.ASWRec.rec_of_inv	propext, Classical.choice, Quot.sound
+ATK.ASWRec.toep_zero_col	propext, Classical.choice, Quot.sound
+ATK.ASWRec.toep_one_col	propext, Classical.choice, Quot.sound
+ATK.ASWRec.cc_nonneg	propext, Classical.choice, Quot.sound
+ATK.ASWRec.cc_minor2	propext, Classical.choice, Quot.sound
+ATK.ASWRec.cc_log_concave	propext, Classical.choice, Quot.sound
+ATK.ASWRec.cc_zero_prop	propext, Classical.choice, Quot.sound
+ATK.ASWRec.coeff_natDegree_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ASWRec.b_pos	propext, Classical.choice, Quot.sound
+ATK.ASWRec.ratio_tendsto	propext, Classical.choice, Quot.sound
+ATK.ASWRec.ratio_pow	propext, Classical.choice, Quot.sound
+ATK.ASWRec.raiz_real	propext, Classical.choice, Quot.sound
+ATK.ASWRec.toep_bL	propext, Classical.choice, Quot.sound
+ATK.ASWRec.det_opCol	propext, Classical.choice, Quot.sound
+ATK.ASWRec.mul_opCol_apply	propext, Classical.choice, Quot.sound
+ATK.ASWRec.cc_remove	propext, Classical.choice, Quot.sound
+ATK.ASWRec.cc_smul	propext, Classical.choice, Quot.sound
+ATK.ASWRec.asw_rec	propext, Classical.choice, Quot.sound
+ATK.ASWRec.asw_reciproca	propext, Classical.choice, Quot.sound
+ATK.ASWRec.asw_iff	propext, Classical.choice, Quot.sound
+ATK.ASWRec.asw_fatora	propext, Classical.choice, Quot.sound
