@@ -289,3 +289,4 @@ import ATK.ErrosAnaliticos
 import ATK.ErrosConstantes
 import ATK.XiPhi
 import ATK.ToeplitzTN
+import ATK.ASWReciproca

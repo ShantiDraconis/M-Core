@@ -506,6 +506,13 @@ Theorem tri_um_x_x2 : forall d0 d1 d2 d3 : R,
   d0 = 1 -> d1 = 1 -> d2 = d1 - d0 -> d3 = d2 - d1 -> d3 < 0.
 Proof. intros; lra. Qed.
 
+(* ---------------------------------------- reciproca de ASW (rodada 9, ATK/ASWReciproca) *)
+
+(* 1/(1 - x + x^2): b_3 = -1 < 0, menor 1x1 de colunas iniciais negativo (ASWRec.cc_de_tn, contrapositiva). *)
+Theorem inv_um_x_x2 : forall b0 b1 b2 b3 : R,
+  b0 = 1 -> b1 - b0 = 0 -> b2 - b1 + b0 = 0 -> b3 - b2 + b1 = 0 -> b3 < 0.
+Proof. intros; lra. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -530,3 +537,4 @@ Print Assumptions regiao_vazia.
 Print Assumptions inv_zeta3.
 Print Assumptions constante_theta.
 Print Assumptions tri_um_x_x2.
+Print Assumptions inv_um_x_x2.
