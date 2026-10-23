@@ -274,4 +274,83 @@ theorem perfeito_verdadeiro: "exige Perfeito p h \<Longrightarrow> p" by simp
 theorem negado_falso: "exige Negado p h \<Longrightarrow> \<not> p" by simp
 theorem futuro_vazio: "exige Futuro p h \<and> exige Futuro (\<not> p) h" by simp
 
+section \<open>Jensen, Turán, Toeplitz (espelha ATK/JensenTuran.lean)\<close>
+
+definition disc3 :: "real \<Rightarrow> real \<Rightarrow> real \<Rightarrow> real \<Rightarrow> real" where
+  "disc3 A B C D = B^2*C^2 - 4*A*C^3 - 4*B^3*D - 27*A^2*D^2 + 18*A*B*C*D"
+
+theorem disc3_raizes:
+  "disc3 A (-A*(r1+r2+r3)) (A*(r1*r2+r1*r3+r2*r3)) (-A*r1*r2*r3) =
+    A^4*((r1-r2)*(r1-r3)*(r2-r3))^2"
+  unfolding disc3_def by (simp add: power2_eq_square power3_eq_cube power4_eq_xxxx algebra_simps)
+
+theorem disc3_jensen:
+  "disc3 g3 (3*g2) (3*g1) g0 = 27*(4*(g1^2-g0*g2)*(g2^2-g1*g3) - (g1*g2-g0*g3)^2)"
+  unfolding disc3_def by (simp add: power2_eq_square power3_eq_cube algebra_simps)
+
+theorem turan3:
+  fixes g0 g1 g2 g3 r1 r2 r3 :: real
+  assumes hB: "3*g2 = -g3*(r1+r2+r3)" and hC: "3*g1 = g3*(r1*r2+r1*r3+r2*r3)"
+    and hD: "g0 = -g3*r1*r2*r3"
+  shows "(g1*g2-g0*g3)^2 \<le> 4*(g1^2-g0*g2)*(g2^2-g1*g3)"
+proof -
+  have E: "disc3 g3 (3*g2) (3*g1) g0 = g3^4*((r1-r2)*(r1-r3)*(r2-r3))^2"
+    unfolding hB hC hD by (rule disc3_raizes)
+  have p4: "0 \<le> g3^4" by (simp add: zero_le_even_power)
+  have P: "0 \<le> g3^4*((r1-r2)*(r1-r3)*(r2-r3))^2"
+    by (rule mult_nonneg_nonneg[OF p4 zero_le_power2])
+  define D where "D = 4*(g1^2-g0*g2)*(g2^2-g1*g3) - (g1*g2-g0*g3)^2"
+  have J: "disc3 g3 (3*g2) (3*g1) g0 = 27*D"
+    unfolding D_def by (rule disc3_jensen)
+  have Q: "27*D = g3^4*((r1-r2)*(r1-r3)*(r2-r3))^2" using J E by metis
+  have "0 \<le> 27*D" using Q P by simp
+  then have "0 \<le> D" by linarith
+  then show ?thesis unfolding D_def by linarith
+qed
+
+theorem jensen_grau2:
+  fixes g0 g1 g2 x y :: real
+  assumes h2: "g2 \<noteq> 0" and hre: "g2*(x^2 - y^2) + 2*g1*x + g0 = 0"
+    and him: "y*(2*(g2*x + g1)) = 0" and hd: "g0*g2 \<le> g1^2"
+  shows "y = 0"
+proof (rule ccontr)
+  assume hy: "y \<noteq> 0"
+  have hx: "g2*x + g1 = 0" using him hy by simp
+  have hx': "g2*x = -g1" using hx by linarith
+  have e1: "g2*(g2*(x^2 - y^2) + 2*g1*x + g0) = 0" using hre by simp
+  have e2: "g2^2*y^2 = (g2*x)*(g2*x) + 2*g1*(g2*x) + g0*g2 - g2*(g2*(x^2 - y^2) + 2*g1*x + g0)"
+    by (simp add: power2_eq_square algebra_simps)
+  have e3: "(g2*x)*(g2*x) + 2*g1*(g2*x) = g1^2 - 2*g1^2"
+    unfolding hx' by (simp add: power2_eq_square algebra_simps)
+  have K: "g2^2*y^2 = g0*g2 - g1^2" using e1 e2 e3 by linarith
+  have a: "0 < g2^2" using h2 by simp
+  have b: "0 < y^2" using hy by simp
+  have "0 < g2^2*y^2" using a b by (rule mult_pos_pos)
+  then show False using K hd by linarith
+qed
+
+theorem turan_normalizacao_id:
+  "((k+1)*f*a1)^2 - (f*a0)*((k+2)*(k+1)*f*a2) = ((k+1)*f^2)*((k+1)*a1^2 - (k+2)*a0*a2)"
+  for k f a0 a1 a2 :: real
+  by (simp add: power2_eq_square algebra_simps)
+
+definition D31 :: "real \<Rightarrow> real \<Rightarrow> real \<Rightarrow> real \<Rightarrow> real" where
+  "D31 g0 g1 g2 g3 = g1^3 - 2*g0*g1*g2 + g0^2*g3"
+
+theorem tp_a_nao_passa_gamma: "D31 1 3 3 1 = 10" "D31 1 3 6 6 = -3"
+  by (simp_all add: D31_def)
+
+theorem turan_momentos_id:
+  fixes c q A B M0 M1 M2 :: real
+  assumes hA: "0 < A" and hB: "0 < B"
+  shows "(c*(q/(2*A))*M1)^2 - (c*M0)*(c*(q^2/(4*A*B))*M2) =
+    (c^2*q^2/(4*A^2*B)) * (B*M1^2 - A*(M0*M2))"
+proof -
+  have a: "A \<noteq> 0" "B \<noteq> 0" using hA hB by simp_all
+  show ?thesis using a by (simp add: field_simps power2_eq_square)
+qed
+
+theorem cs_nao_implica_turan: "(1::real)^2 \<le> 1*4 \<and> \<not> ((1::real)*(1*4) \<le> 3*1^2)"
+  by simp
+
 end

@@ -1,0 +1,11 @@
+; disc3 de A(X-r1)(X-r2)(X-r3) = A^4 ((r1-r2)(r1-r3)(r2-r3))^2  (ATK.ClosedMath.Jensen.disc3_raizes)
+(set-logic QF_NRA)
+(declare-const a Real) (declare-const r1 Real) (declare-const r2 Real) (declare-const r3 Real)
+(define-fun B () Real (* (- a) (+ r1 r2 r3)))
+(define-fun C () Real (* a (+ (* r1 r2) (* r1 r3) (* r2 r3))))
+(define-fun D () Real (* (- a) r1 r2 r3))
+(define-fun disc3 () Real
+  (+ (- (- (- (* B B C C) (* 4.0 a C C C)) (* 4.0 B B B D)) (* 27.0 a a D D)) (* 18.0 a B C D)))
+(define-fun v () Real (* (- r1 r2) (- r1 r3) (- r2 r3)))
+(assert (not (= disc3 (* a a a a v v))))
+(check-sat)

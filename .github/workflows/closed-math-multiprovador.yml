@@ -31,22 +31,36 @@ jobs:
   coq:
     name: Coq (coqc + coqchk)
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - name: Instalar Coq
-        timeout-minutes: 20
+      - name: Instalar Coq (imagem coqorg/coq; alternativa apt)
+        timeout-minutes: 25
         env:
           DEBIAN_FRONTEND: noninteractive
-        run: sudo -E apt-get update -qq && sudo -E apt-get install -y -qq --no-install-recommends coq > /dev/null
+        run: |
+          set +e
+          IMG=""
+          for tag in 8.20 8.19 8.18 latest; do
+            if timeout 600 docker pull -q "coqorg/coq:$tag" > /dev/null 2>&1; then IMG="coqorg/coq:$tag"; break; fi
+          done
+          echo "COQ_IMG=$IMG" >> "$GITHUB_ENV"
+          if [ -z "$IMG" ]; then
+            sudo -E apt-get update -qq && timeout 1200 sudo -E apt-get install -y -qq --no-install-recommends coq > /dev/null
+          fi
+          echo "imagem: ${IMG:-apt}"
+          true
       - name: coqc + coqchk
         working-directory: formatos/coq
         run: |
           eval "$ANOTA"
           set +e
-          { coqc --version; coqc -Q . ATK ClosedMath.v; echo "coqc=$?"; } > coq_saida.txt 2>&1
+          chmod -R a+rwX .
+          RUN=""
+          [ -n "$COQ_IMG" ] && RUN="docker run --rm -v $PWD:/work -w /work $COQ_IMG"
+          { echo "coq: ${COQ_IMG:-apt}"; $RUN coqc --version; $RUN coqc -Q . ATK ClosedMath.v; echo "coqc=$?"; } > coq_saida.txt 2>&1
           c1=$(grep -o 'coqc=[0-9]*' coq_saida.txt | cut -d= -f2)
-          coqchk -silent -o -Q . ATK ATK.ClosedMath > coqchk_saida.txt 2>&1; c2=$?
+          $RUN coqchk -silent -o -Q . ATK ATK.ClosedMath > coqchk_saida.txt 2>&1; c2=$?
           anota coq_saida.txt "coqc" "$c1"
           anota coqchk_saida.txt "coqchk" "$c2"
           [ "$c1" = "0" ] && [ "$c2" = "0" ]

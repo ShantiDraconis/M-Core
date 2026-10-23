@@ -1,0 +1,11 @@
+; Jensen grau 2: g2 z^2 + 2 g1 z + g0 = 0, z = x + i y, g2 /= 0, g0 g2 <= g1^2  ==>  y = 0
+; (ATK.ClosedMath.Jensen.jensen_grau2, direcao Turan => hiperbolico)
+(set-logic QF_NRA)
+(declare-const g0 Real) (declare-const g1 Real) (declare-const g2 Real)
+(declare-const x Real) (declare-const y Real)
+(assert (not (= g2 0.0)))
+(assert (= (+ (* g2 (- (* x x) (* y y))) (* 2.0 g1 x) g0) 0.0))
+(assert (= (* y (* 2.0 (+ (* g2 x) g1))) 0.0))
+(assert (<= (* g0 g2) (* g1 g1)))
+(assert (not (= y 0.0)))
+(check-sat)

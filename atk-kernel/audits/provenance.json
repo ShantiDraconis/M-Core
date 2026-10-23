@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "43d36ba000281c1a74a13fcbb55de3817dc658ff6f9b1faa82a112ae960913dc",
+  "sources_sha256": "ba633f3530e9cb4679b25504dafaaf28bfdebd96ec6064e79bac3f2d90a17d53",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -102,6 +102,7 @@
     "ATK/DInfinito.lean": "896e72fcc4b8c4b8fcf0288235ce9991a2af26155973ab1725fd1e57be18625e",
     "ATK/DarmonMerelReducao.lean": "cfdc3d5b69b446969ee5d10334cc622a97665912b04081008c6f29eedccdadaf",
     "ATK/DarmonMerelSeis.lean": "187be5b38e0fdf9254e43c17d552fdf8be59520d67cff19d8175f1f10c898840",
+    "ATK/DeltaCertificado.lean": "5002dda862e7aa6cd83646d90f612f0adc56b02105a396ae9cd527c979a31233",
     "ATK/EMGeral.lean": "bb5ae21385e0c058dcf7331f60d78514ad5804328908abb2775cffe8206daba5",
     "ATK/EixoDeslocado.lean": "1397c1aa6add421167f35d698390c9663d1e00b4f4567e0ee0b88b656ed4db59",
     "ATK/EnunciadosOficiais.lean": "8409a090f6b8a5ee7cc6e0cdb8d21c33f553e701d9e3dcbc1fe831b74b728281",
@@ -193,6 +194,7 @@
     "ATK/IntegracaoFCBeal.lean": "eedbefe725eacbc1ec6349929cf8c1f5939442a4b58f023a9a3a58cd10cecdc8",
     "ATK/IntegracaoFCNS.lean": "614fa3aa44a73cecbab7d23302110616c81b45f96842b40ee50619602fe8c422",
     "ATK/IntegracaoFCPNP.lean": "bbfd56d089f8de59396b1031d5e0d63da4088ccc351fcc0b6c57fe46ddb367bc",
+    "ATK/JensenTuran.lean": "54143c1c06ee5b25b8a78df19b33d267162a1706aec1f610fa632520c0d5ec7c",
     "ATK/L3Base.lean": "b3350cf0c102a4dc7d6babbe643359e7869d7ce563a21a624b9fd41a0d33ad3c",
     "ATK/L4Base.lean": "87ed0774feb3d4dafca5bcd8ff686fd1d847cebc79e3a293161efc82d85b2bce",
     "ATK/L5Base.lean": "9814c0d8fb50271608b252fe1138c7d849b7870df845166bdbf3a866d39e9b98",
@@ -250,6 +252,7 @@
     "ATK/OmegaEstados.lean": "079982b1dcf2010f72dbca1325c2549ee0e2dce76da6c4838c4d16caeff108f6",
     "ATK/OmegaGramL2.lean": "5f090104711b3971e13644d54dc1cddf74370000e30038c7eb450b5b522047b5",
     "ATK/OmegaGramRho.lean": "82b3ede0a852c0d9e599031ccbad200134f58dce1d4f97c47e392d843b8d6911",
+    "ATK/OrdemCoordenadas.lean": "9a345f66ff8890108c61ad3dec668a0044e9605e20a0a2daa4176eec1d1c18a5",
     "ATK/Orion.lean": "e66a393abafefb527c1df268971980bcf0646aff5a6ed9ffc3f18b58a7a85e1f",
     "ATK/OrionAlcance.lean": "662caf0eee8ab97bac77de260c8bdf650f284804bf7b7d5302814324da43b810",
     "ATK/OscilacaoHiperreal.lean": "55d28468fbf7004359bb01cca759d55aeb6e309f7e87896f3eccbea5657d2989",
@@ -297,6 +300,9 @@
     "ATK/YMSemGap.lean": "6895c3ef33487739eb859627d1a957e8de6794c035dad61ba9eada17cfd410d5",
     "ATK/YMToy.lean": "ccdf06a4414bffcdb4d30544090a2b35c8376273f01be11c79aa5ea4102cef97",
     "ATK/YangMills.lean": "8d71d123b50c37f0db0302c6edd40b519f32f1318084af81375fade4c49b89b0",
+    "ATK/ZeroCertificado.lean": "7fa10e43f863f82976852467225cf4decc34f1e063bf40d06e21e50a15b80e20",
+    "ATK/ZeroCertificadoAplicado.lean": "e7575e3e4222e42d2b86e2ea7ca677d47961be0c857df2b24f5ebadfd61fa57e",
+    "ATK/ZeroCritico.lean": "85a1b26a23a42382d3cfa8ca50e8cb0145ede194985c18d48a988691a110b8eb",
     "ATK/ZeroIncognito.lean": "bdef23f67e196ddeeeabedd099ceb4b6daeadd0c9f74fb5f6a2eea31805d9e97",
     "ATK/ZerosFora.lean": "34a6fb5de9f63fcca4098db5628d27e895ddca756510d1ae3b9339fbc01a2897",
     "ATK/ZetaLog.lean": "06c1e922bc6a0633d907744fb8669772109607f84f71e759ad5fd2015d478aab",
@@ -306,12 +312,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "6595d876f2e6c1d24114528eb90b8342cde94a5d144afebf32a817d66d2b9b50"
+    "ATK.lean": "994a177075ea954e214567d8a094c79132677ff483aa1c96d3d655df8548ad1b"
   },
-  "n_files": 305,
-  "expected_theorems": 5584,
+  "n_files": 311,
+  "expected_theorems": 5679,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "9782a8bf8eb5a993c157e268fd85d0a40fded617",
+  "commit_at_freeze": "f2cbc18187956738d250efba9cc554629e8b3e96",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
