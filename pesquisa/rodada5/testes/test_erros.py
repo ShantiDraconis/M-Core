@@ -43,9 +43,12 @@ def test_E3_b_texto():
 def test_E4_parciais_por_baixo():
     r = erros.e4()
     assert D("0.7722084") < r["G12"] < D("0.7722094")
-    vals = [r["parciais"][K] for K in (10, 100, 150, 1000)]
+    vals = [r["parciais"][K] for K in (10, 100, 1000, 10000)]
     assert all(v < r["G12"] for v in vals) and vals == sorted(vals)
     assert r["tabela"] < D("0.7722084")
+    # erro ≈ 0,1458/K: o valor tabelado corresponde a K ≈ 1,5·10⁵ (não ~150)
+    assert abs(r["erro_vezes_K"][10000] - D("0.1458")) < D("1e-3")
+    assert D("140000") < r["K_estimado"] < D("170000")
 
 
 def test_E9_fator_dois():

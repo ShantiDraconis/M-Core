@@ -7,7 +7,8 @@ Para cada erro dos textos: o valor do texto, de onde ele vem e o valor correto. 
 * E1  G₁₁ = log 2π − γ − 1 é só ∫_{(0,1]}{1/t}²; o D₁ do texto (≈ 0,31426) é o mínimo do resíduo local.
 * E2  G₁₁ = log 2 dá D₁ ≈ 0,74212 (coerente com o texto), abaixo do D₁ correto ≈ 0,85821.
 * E3  b̃_k = b_k − H_{k−1}/k; negativo para todo k ≥ 4.
-* E4  G₁₂ ≈ 0,77220926; somas parciais Pc(K) + ½ ficam por baixo (0,7722083 ≈ K ~ 150).
+* E4  G₁₂ ≈ 0,77220926; somas parciais Pc(K) + ½ ficam por baixo, com erro ≈ 0,1458/K: o 0,7722083 tabelado
+      corresponde a truncar em K ≈ 1,5·10⁵.
 * E9  Ξ(t) = 2∫₀^∞ Φ(u)cos(tu)du com Φ(u) = Σ(4π²n⁴e^{9u/2} − 6πn²e^{5u/2})e^{−πn²e^{2u}}.
 * E10 região ½ + 1/T ≤ σ ≤ 1 − 1/T vazia para T < 4.
 * E12 D_N log N < C₀ = 2 + γ − log 4π nos dois pontos.
@@ -75,8 +76,11 @@ def e3(kmax=30):
 
 def e4():
     G12 = gram2.gram()["G12"]
-    parc = {K: gram2.Pc(K) + D(1) / 2 for K in (10, 100, 150, 1000)}
-    return {"G12": G12, "parciais": parc, "tabela": D("0.7722083")}
+    parc = {K: gram2.Pc(K) + D(1) / 2 for K in (10, 100, 1000, 10000)}
+    tab = D("0.7722083")
+    return {"G12": G12, "parciais": parc, "tabela": tab,
+            "erro_vezes_K": {K: (G12 - v) * K for K, v in parc.items()},
+            "K_estimado": D("0.1458") / (G12 - tab)}
 
 
 def phi_texto(u):
