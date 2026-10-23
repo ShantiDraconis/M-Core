@@ -1,0 +1,25 @@
+{
+ "I0_razao_final": "0.691660276123",
+ "I0_4/j01^2": "0.691660276123",
+ "I0_razoes_decrescem": true,
+ "I0_menor_min_toeplitz": "0",
+ "a_xi_0..4": [
+  "0.497120778188",
+  "0.0114859721576",
+  "0.00012345201807",
+  "8.32355481386e-07",
+  "3.99222655134e-09"
+ ],
+ "a_xi_0_menos_xi_meio": "1.67e-16",
+ "turan_a_xi_n=1..8": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true
+ ],
+ "aviso": "verificação finita; PF∞(aₙ) é OPEN_MATH (equivale a HR)"
+}

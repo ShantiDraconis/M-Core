@@ -259,9 +259,11 @@ fechada `Pc(K)` (igual à soma direta dos degraus; erro `≈ 0,1458/K`), `D₁ =
 ## 4l. O que continua pendente (não formalizado aqui)
 
 Ganho de Schur exato e Tikhonov; `D_∞` como resíduo ortogonal em `L²`; o núcleo `ψ` fora da linha; o princípio do
-argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); o teorema
-de Edrei para séries infinitas (Nevanlinna) e a fatoração de Hadamard de `Θ` (a recíproca de Aissen–Schoenberg–Whitney
-para polinômios **já está no kernel**, §4o); e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas
+argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); a volta
+**HR ⇒ PF∞(aₙ)** (precisa da fatoração de Hadamard de gênero 0 de `B(w) = Σaₙwⁿ` e do crescimento de `ξ`; a ida
+PF∞ ⇒ HR, Edrei (⇒) para funções inteiras e ASW para polinômios **já estão no kernel**, §4o–§4p); Edrei na forma completa
+(fator `e^{γz}`, funções meromorfas); o fluxo de de Bruijn–Newman (`Λ ≤ 0 ⟺ HR`); a fórmula explícita e a positividade
+de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas
 equivalentes continuam abertas.
 
 ## 4m. Erros: explicação, correção e teoremas (rodada 7)
@@ -429,14 +431,64 @@ Formatos: SMT-LIB 31, Coq e Isabelle (`inv_um_x_x2`). Numérico: `codigo/asw.py`
 (4 testes): para `(x+1)(x+2)(x+3)`, `b = 1/6, 11/36, 85/216, …`, razões decrescentes para `L = 1` (raiz `−1`), menor
 mínimo de colunas iniciais (`r ≤ 3`, 10 linhas) `= 1/60466176 > 0`, e `(1 − x)b` é exatamente `coef 1/((2−x)(3−x))`.
 
+## 4p. Edrei para funções inteiras, PF∞ ⇒ HR, Weil e Hilbert–Pólya (rodada 10)
+
+`ATK/EdreiInteira.lean` (30), `ATK/XiTP.lean` (17), `ATK/WeilMecanismo.lean` (5): 52 teoremas novos, total 6255,
+só `propext`, `Classical.choice`, `Quot.sound`.
+
+**Edrei (⇒) para funções inteiras, sem Nevanlinna** (`edrei_inteira`): se `F(z) = Σaₙzⁿ` é inteira
+(`Σ|aₙ|Rⁿ < ∞` para todo `R`), `a₀ > 0` e `T(a)` é totalmente não negativa, **todo zero complexo de `F` é real e
+negativo**. A prova de Edrei (1953) usa teoria de Nevanlinna; aqui ela é trocada por uma descida nos coeficientes
+`b` de `B = 1/F(−x)`, estendendo a rodada 9:
+
+1. `cc_de_tn_ser`: TN de `T(a)` ⇒ menores de colunas iniciais de `T(b)` `≥ 0` (Jacobi nas seções finitas).
+2. `ev_mul_inv`: onde `Σb_kx^k` converge absolutamente, `F(−x)·B(x) = 1` (produto de Cauchy).
+3. Se `F(w) = 0`: `b_k > 0` (`b_pos_ser`: se `b` se anulasse, `B` seria polinômio e `F` não teria zeros),
+   `b_{k+1}/b_k ↓ L` com **`L·|w| ≥ 1`** (`raio_ser`: senão a série de `B` convergiria em `−w`) e **`F(−1/L) = 0`**
+   (`raiz_ser`: convergência dominada de Tannery, com `b_{M−i}/b_M ≤ L^{−i}`).
+4. `F = (1 + Lz)·G` com `G` inteira (`divLin`; `inteira_divLin` usa que a soma parcial de `F(−1/L)` é menos a cauda,
+   `ev_divLin`), e `1/G(−x) = (1 − Lx)·B` tem de novo menores de colunas iniciais `≥ 0` (`cc_remove`).
+5. Descida (`passo`, `descida`): se `w` não é real negativo, cada passo tira um zero real de módulo `≤ |w|` e baixa
+   `b₁` de pelo menos `1/(a₀|w|)`; como `b₁ ≥ 0`, há no máximo `a₀|w|b₁` passos — absurdo.
+
+**(⇐) para produtos de gênero 0** (`tn_genero0`): `αⱼ ≥ 0`, `Σαⱼ < ∞`, `a₀ ≥ 0` ⇒ `T(coef a₀∏(1 + αⱼz))` é TN
+(multiplicar por `1 + αz` preserva TN, `tn_mul_one_add`; coeficientes monótonos e limitados por `a₀(Σαⱼ)ⁿ`,
+`prodCoef_le`; TN é fechada por limites entrada a entrada, `tn_closed`, `tn_de_limite`).
+
+**PF∞ dos coeficientes de Ξ ⇒ HR** (`XiTP.rh_de_tn`, com o `RiemannHypothesis` do Mathlib). `g(z) = ξ(1/2 + iz)` é
+inteira e par; seus coeficientes de Taylor `d_k` são reais (`dXi_im`, pela unicidade de séries de potências,
+`coef_zero_of_hasSum_zero`) e os ímpares se anulam (`iteratedDeriv_gXi_odd`). Com `aₙ = (−1)ⁿd_{2n}` (`aXi`),
+`B(w) = Σaₙwⁿ` é inteira (`inteira_aXi`), `B(−z²) = g(z)` (`ev_aXi`) e `a₀ = Ξ(0) > 0`. Um zero `z` de `g` dá o zero
+`−z²` de `B`, que por Edrei é real negativo; logo `z` é real. Forma explícita: `rh_de_menores` — **se todo menor
+`det(a_{i_p − j_q}) ≥ 0`, vale HR**. A hipótese é **`OPEN_MATH`**: é equivalente a HR, e a volta precisa de
+Hadamard de gênero 0 para `B` e do crescimento de `ξ` (em construção). Nada aqui prova HR.
+
+**O mecanismo de Weil** (`ATK.Weil`). Para qualquer forma bilinear simétrica com os números de interseção de `C × C`
+(curva de gênero `g` sobre `𝔽_q`: `f₁² = f₂² = 0`, `f₁·f₂ = 1`, `Δ·fᵢ = Γ·f₁ = 1`, `Γ·f₂ = q`, `Δ² = 2 − 2g`,
+`Γ² = q(2 − 2g)`, `Δ·Γ = N`) e o índice de Hodge (`x·(f₁ + f₂) = 0 ⇒ x² ≤ 0`), valem Castelnuovo–Severi
+`D² ≤ 2(D·f₁)(D·f₂)` (`castelnuovo_severi`) e a **cota de Weil `|N − q − 1| ≤ 2g√q`** (`cota_weil`,
+`cota_weil_abs`) — HR para curvas. Sem o índice de Hodge a cota falha: há uma forma simétrica em `ℝ⁴` com exatamente
+esses números (`g = 0`, `q = 1`, `N = 5`) e `(N − q − 1)² = 9 > 0` (`hodge_necessario`). Para `Spec ℤ` falta a
+"superfície" com forma de interseção; o análogo do índice de Hodge é a positividade de Weil — `OPEN_MATH`.
+
+**Hilbert–Pólya** (`HilbertPolya.rh_de_operador`): se cada zero não trivial `ρ` dá o autovalor `(ρ − 1/2)/i` de um
+operador simétrico num espaço com produto interno complexo, vale HR. Sem uma construção natural, a existência do
+operador é só uma reformulação; o operador é `OPEN_MATH`.
+
+Numérico (`codigo/edrei.py`, `dados/edrei.json`, `testes/test_edrei.py`, 4 testes): para `B = Σwⁿ/(n!)² = I₀(2√w)`, a
+razão dos coeficientes de `1/J₀(2√x)` desce para `4/j₀,₁² = 0,691660276123` (12 dígitos; raiz `−j₀,₁²/4`); os
+`aₙ = 2∫₀^∞Φ(u)u²ⁿ/(2n)!du` dão `a₀ = ξ(1/2)` a `2·10⁻¹⁶` (confere `Ξ = 2∫Φcos` da rodada 8), `a₁ = 0,0114859721576`
+e Turán `aₙ² ≥ a_{n−1}a_{n+1}` para `n ≤ 8` — verificação finita, que não prova PF∞. Formatos: SMT-LIB 32, Coq e
+Isabelle (`descida_tres`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²` |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 31 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 32 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 

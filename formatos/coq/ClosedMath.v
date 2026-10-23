@@ -513,6 +513,14 @@ Theorem inv_um_x_x2 : forall b0 b1 b2 b3 : R,
   b0 = 1 -> b1 - b0 = 0 -> b2 - b1 + b0 = 0 -> b3 - b2 + b1 = 0 -> b3 < 0.
 Proof. intros; lra. Qed.
 
+(* ---------------------------------------- Edrei para funcoes inteiras (rodada 10, ATK/EdreiInteira) *)
+
+(* Descida: cada passo baixa b1 de L_j >= 1/(a0|w|); com a0 = 1, |w| = 2 e b1 = 1, tres passos dao b1 < 0. *)
+Theorem descida_tres : forall b0 b1 b2 b3 L0 L1 L2 : R,
+  b0 = 1 -> L0 >= 1/2 -> L1 >= 1/2 -> L2 >= 1/2 ->
+  b1 = b0 - L0 -> b2 = b1 - L1 -> b3 = b2 - L2 -> b3 < 0.
+Proof. intros; lra. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -538,3 +546,4 @@ Print Assumptions inv_zeta3.
 Print Assumptions constante_theta.
 Print Assumptions tri_um_x_x2.
 Print Assumptions inv_um_x_x2.
+Print Assumptions descida_tres.
