@@ -287,3 +287,5 @@ import ATK.LaplacianoModulo
 import ATK.ErrosGram
 import ATK.ErrosAnaliticos
 import ATK.ErrosConstantes
+import ATK.XiPhi
+import ATK.ToeplitzTN
