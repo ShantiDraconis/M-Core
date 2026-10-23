@@ -499,4 +499,18 @@ proof (intro conjI)
   show "0 < p22" using assms by linarith
 qed
 
+text \<open>Rodada 12 (ATK/LaguerrePolya): no grau 2, se p = x^2 - s x + P tem raizes reais, p + c p' tambem
+  (o discriminante passa a 4c^2 + disc p).\<close>
+
+theorem laguerre_quadratica:
+  fixes s P c :: real
+  assumes "s*s - 4*P \<ge> 0"
+  shows "(2*c - s)*(2*c - s) - 4*(P - c*s) \<ge> 0"
+proof -
+  have e: "(2*c - s)*(2*c - s) - 4*(P - c*s) = 4*(c*c) + (s*s - 4*P)"
+    by (simp add: algebra_simps)
+  have "0 \<le> c*c" by simp
+  then show ?thesis using assms e by linarith
+qed
+
 end

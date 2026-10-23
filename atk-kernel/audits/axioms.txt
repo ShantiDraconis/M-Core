@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 1e74205b0036e2080494d953f81472fa2fe0757cda85adb0f7d1e8b7ad702d6e
+# axiomas por teorema — congelamento de 36c511de3a073f5ad679e3ba522acc73f540bdd9facb6db8694b5dc828623bef
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6320,3 +6320,32 @@ ATK.XiCresc.tn_de_rh	propext, Classical.choice, Quot.sound
 ATK.XiCresc.rh_iff_tn	propext, Classical.choice, Quot.sound
 ATK.XiCresc.rh_iff_menores	propext, Classical.choice, Quot.sound
 ATK.XiCresc.rh_iff_genero0	propext, Classical.choice, Quot.sound
+ATK.Laguerre.realRooted_iff_splits	propext, Classical.choice, Quot.sound
+ATK.Laguerre.realRooted_of_card	propext, Classical.choice, Quot.sound
+ATK.Laguerre.realRooted_add_C_mul_derivative	propext, Classical.choice, Quot.sound
+ATK.Laguerre.realRooted_sub_derivative2	propext, Classical.choice, Quot.sound
+ATK.Laguerre.realRooted_iter	propext, Classical.choice, Quot.sound
+ATK.Laguerre.calor_direto_falha	propext, Classical.choice, Quot.sound
+ATK.DBN.expoente_dbn	propext, Classical.choice, Quot.sound
+ATK.DBN.peso_cota	propext, Classical.choice, Quot.sound
+ATK.DBN.continuousOn_peso	propext, Classical.choice, Quot.sound
+ATK.DBN.aesm_G	propext, Classical.choice, Quot.sound
+ATK.DBN.integrable_G	propext, Classical.choice, Quot.sound
+ATK.DBN.hasDerivAt_H	propext, Classical.choice, Quot.sound
+ATK.DBN.H_differentiable	propext, Classical.choice, Quot.sound
+ATK.DBN.H_zero	propext, Classical.choice, Quot.sound
+ATK.DBN.H_neg	propext, Classical.choice, Quot.sound
+ATK.DBN.H_ofReal	propext, Classical.choice, Quot.sound
+ATK.DBN.hasDerivAt_H1	propext, Classical.choice, Quot.sound
+ATK.DBN.hasDerivAt_H_t	propext, Classical.choice, Quot.sound
+ATK.DBN.calor	propext, Classical.choice, Quot.sound
+ATK.DBN.H_zero_eq_zero_iff	propext, Classical.choice, Quot.sound
+ATK.DBN.rh_iff_H0	propext, Classical.choice, Quot.sound
+ATK.DBN.rh_iff_zero_mem	propext, Classical.choice, Quot.sound
+ATK.DBN.Lambda_vazio	propext, Classical.choice, Quot.sound
+ATK.DBN.Lambda_nao_limitado	propext, Classical.choice, Quot.sound
+ATK.DBN.Lambda_le_zero_of_rh	propext, Classical.choice, Quot.sound
+ATK.DBN.rh_of_Lambda_le_zero	propext, Classical.choice, Quot.sound
+ATK.DBN.rh_iff_Lambda_le_zero	propext, Classical.choice, Quot.sound
+ATK.DBN.rh_iff_Lambda_eq_zero	propext, Classical.choice, Quot.sound
+ATK.DBN.rh_todo_t	propext, Classical.choice, Quot.sound
