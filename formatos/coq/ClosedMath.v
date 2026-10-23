@@ -411,6 +411,57 @@ Qed.
 Theorem cs_nao_implica_turan : 1^2 <= 1*4 /\ ~ (1*(1*4) <= 3*1^2).
 Proof. split; lra. Qed.
 
+(* ------------------------------------------------------------------ pendentes formalizados (rodada 6) *)
+(* K6: v^T L v = soma dos quadrados das diferencas, L = 6I - J (ATK.GeometriaExtra.forma_L6). *)
+Theorem forma_L6 : forall a b c d e f : R,
+  a*(6*a-(a+b+c+d+e+f)) + b*(6*b-(a+b+c+d+e+f)) + c*(6*c-(a+b+c+d+e+f)) +
+  d*(6*d-(a+b+c+d+e+f)) + e*(6*e-(a+b+c+d+e+f)) + f*(6*f-(a+b+c+d+e+f)) =
+  (a-b)^2+(a-c)^2+(a-d)^2+(a-e)^2+(a-f)^2+(b-c)^2+(b-d)^2+(b-e)^2+(b-f)^2+
+  (c-d)^2+(c-e)^2+(c-f)^2+(d-e)^2+(d-f)^2+(e-f)^2.
+Proof. intros; ring. Qed.
+
+(* gamma = (1,2,4): J_{3,0} = 1 + 6X + 12X^2 nao tem raiz real (jensen_gamma_detecta). *)
+Theorem jensen_gamma_detecta : forall x : R, 1 + 6*x + 12*x^2 <> 0.
+Proof.
+  intros x H.
+  assert (E : 1 + 6*x + 12*x^2 = 3/4*(4*x+1)^2 + 1/4) by field.
+  assert (P : 0 <= (4*x+1)^2) by apply pow2_ge_0.
+  lra.
+Qed.
+
+(* a = (1,2,2): discriminante de 1 + 2N X + N(N-1) X^2 e 4N (jensen_a_hiperbolico). *)
+Theorem jensen_a_disc : forall N : R, (2*N)^2 - 4*(N*(N-1))*1 = 4*N.
+Proof. intros; ring. Qed.
+
+(* Rotacao preserva d^2 + t^2 (rotacao). *)
+Theorem rotacao : forall d t c s : R, c^2 + s^2 = 1 ->
+  (d*c - t*s)^2 + (d*s + t*c)^2 = d^2 + t^2.
+Proof.
+  intros d t c s H.
+  replace ((d*c - t*s)^2 + (d*s + t*c)^2) with ((d^2 + t^2)*(c^2 + s^2)) by ring.
+  rewrite H; ring.
+Qed.
+
+(* Barreira: a = b + t (normSq_eq_add). *)
+Theorem barreira_a_b_t : forall be ga : R,
+  be^2 + ga^2 = ((1-be)^2 + ga^2) + (2*be - 1).
+Proof. intros; ring. Qed.
+
+(* Ajuste de dois pontos: intercepto negativo (ajuste_negativo), dados os limites de log 2 e log 5 - log 4. *)
+Theorem ajuste_intercepto : forall l2 l5 : R,
+  6931471803/10000000000 < l2 -> l2 < 6931471808/10000000000 ->
+  2231435/10000000 < l5 - 2*l2 -> l5 - 2*l2 < 2231436/10000000 ->
+  50691202/10000000000 * (6*l2 + 3*l5) < 82337162772/10000000000000 * (8*l2) /\
+  50691202/10000000000 * (6*l2 + 3*l5) - 82337162772/10000000000000 * (8*l2) <
+    - 290/10000000 * ((6*l2 + 3*l5) - 8*l2).
+Proof. intros; split; lra. Qed.
+
+(* Integral por pedacos: o coeficiente (p/i + q/j) do texto daria valor negativo (contraexemplo_pedaco). *)
+Theorem contraexemplo_pedaco : forall L : R,
+  4054651081081/10000000000000 < L -> L < 4054651081082/10000000000000 ->
+  0 < 1/2 - 2*L + 1/3 /\ 1/2 - (2/1 + 1/2)*L + 1/3 < 0.
+Proof. intros; split; lra. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -423,3 +474,8 @@ Print Assumptions turan3.
 Print Assumptions jensen_grau2.
 Print Assumptions turan_momentos_id.
 Print Assumptions tp_a_nao_passa_gamma.
+Print Assumptions forma_L6.
+Print Assumptions jensen_gamma_detecta.
+Print Assumptions rotacao.
+Print Assumptions ajuste_intercepto.
+Print Assumptions contraexemplo_pedaco.

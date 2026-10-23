@@ -270,3 +270,17 @@ import ATK.ZeroCertificadoAplicado
 import ATK.OrdemCoordenadas
 import ATK.DeltaCertificado
 import ATK.LiCriterio
+import ATK.Projetores
+import ATK.BSDCoefLider
+import ATK.GramExato
+import ATK.BarreiraModelos
+import ATK.XiAnalitica
+import ATK.GamaCotas
+import ATK.GramDois
+import ATK.ZeroSegundo
+import ATK.ZeroTerceiro
+import ATK.TresZeros
+import ATK.GeometriaExtra
+import ATK.EtaCriterio
+import ATK.Reformulacoes
+import ATK.LaplacianoModulo

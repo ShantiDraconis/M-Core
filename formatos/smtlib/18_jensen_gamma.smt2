@@ -1,0 +1,5 @@
+; gamma = (1,2,4): J_{3,0}(X) = 1 + 6X + 12X^2 nao tem raiz real (ATK.GeometriaExtra.jensen_gamma_detecta)
+(set-logic QF_NRA)
+(declare-const x Real)
+(assert (= (+ 1.0 (* 6.0 x) (* 12.0 x x)) 0.0))
+(check-sat)
