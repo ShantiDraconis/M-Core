@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 36c511de3a073f5ad679e3ba522acc73f540bdd9facb6db8694b5dc828623bef
+# axiomas por teorema — congelamento de 09328d1e35d95bde49c0c3884b770773fc8dd6a2607fa0f9ed6a132d27eb6c19
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6349,3 +6349,15 @@ ATK.DBN.rh_of_Lambda_le_zero	propext, Classical.choice, Quot.sound
 ATK.DBN.rh_iff_Lambda_le_zero	propext, Classical.choice, Quot.sound
 ATK.DBN.rh_iff_Lambda_eq_zero	propext, Classical.choice, Quot.sound
 ATK.DBN.rh_todo_t	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.aux_prod	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.norm_eval_ge	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.realRooted_of_tendsto	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.natDegree_passoCalor	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.coeff_natDegree_passoCalor	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.natDegree_iter	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.coeff_iter	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.iter_passoCalor	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.tendsto_choose_div_pow	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.calorExato_zero	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.tendsto_iter_calor	propext, Classical.choice, Quot.sound
+ATK.PolyaCalor.realRooted_calorExato	propext, Classical.choice, Quot.sound

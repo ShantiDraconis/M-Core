@@ -262,8 +262,8 @@ Ganho de Schur exato e Tikhonov; `D_∞` como resíduo ortogonal em `L²`; o nú
 argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); Edrei na
 forma completa (fator `e^{γz}`, funções meromorfas, ordem `≥ 1`); no fluxo de de Bruijn–Newman, os teoremas de de
 Bruijn (`1/2 ∈ S`, `S` fechado para cima), Newman (`S` limitado), Hurwitz (`S` fechado) e Rodgers–Tao (`Λ ≥ 0`), que
-entram como hipóteses explícitas em §4r, e a passagem `(1 − (t/N)D²)^N → e^{−tD²}`; a fórmula explícita e a
-positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
+entram como hipóteses explícitas em §4r, Hurwitz para funções inteiras e `e^{−tD²}` na classe de Laguerre–Pólya (o
+caso polinomial já está no kernel, §4r); a fórmula explícita e a positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
 `aₙ`**) — todas as formas equivalentes continuam abertas. A **equivalência** HR ⟺ PF∞(aₙ) já está no kernel nas duas
 direções (§4p–§4q); o que falta é a positividade total dos `aₙ` concretos, que é `OPEN_MATH`.
 
@@ -537,8 +537,8 @@ consistência com zeros já verificados na linha, não prova. Formatos: SMT-LIB 
 
 ## 4r. de Bruijn–Newman e Laguerre (rodada 12)
 
-`ATK/DeBruijnNewman.lean` (23), `ATK/LaguerrePolya.lean` (6): 29 teoremas novos, total 6349, só `propext`,
-`Classical.choice`, `Quot.sound`.
+`ATK/DeBruijnNewman.lean` (23), `ATK/LaguerrePolya.lean` (6), `ATK/PolyaCalor.lean` (12): 41 teoremas novos, total
+6361, só `propext`, `Classical.choice`, `Quot.sound`.
 
 **A família `H_t`** (`ATK.DBN`), construída sem hipóteses: `H_t(z) = ∫₀^∞e^{tu²}Φ(u)cos(zu)du` é **inteira para todo
 `t ∈ ℝ`** (`H_differentiable`; dominação `|e^{tu²}Φ(u)|e^{yu} ≤ 160·e^{|t|+y+(|t|+y)²}e^{−u}`, `peso_cota`, a partir de
@@ -566,12 +566,24 @@ raiz nova entre raízes consecutivas; uma raiz de multiplicidade `m` de `p` tem 
 (`realRooted_of_card`: o fator restante teria grau 1). Daí `p − λp''` (`λ ≥ 0`, `1 − λD² = (1 + √λD)(1 − √λD)`,
 `realRooted_sub_derivative2`) e **`(1 − λD²)^N p` com raízes reais** (`realRooted_iter`) — com `λ = t/N`, o análogo
 discreto de `H_t = e^{−t∂²}H₀`. O sentido oposto não preserva: `X²` tem raízes reais e `(1 + D²)X² = X² + 2` não
-(`calor_direto_falha`). Falta (`BUILD_PENDING`) o limite `N → ∞` (Hurwitz) e a aproximação de `H₀` por polinômios.
+(`calor_direto_falha`).
 
-Numérico (`codigo/dbn.py`, `dados/dbn.json`, `testes/test_dbn.py`, 4 testes): `H₀(0) = ξ(½)/2 = 0,248560389094`
+**Pólya–de Bruijn para polinômios** (`ATK.PolyaCalor`), com a passagem ao limite provada: se `p` tem só raízes reais
+(coeficiente líder `a`, grau `n`), `|p(z)| ≥ |a|·|Im z|ⁿ` em `ℂ` (`norm_eval_ge`); daí **Hurwitz para polinômios**
+(`realRooted_of_tendsto`): um limite coeficiente a coeficiente de polinômios de grau `n` com só raízes reais e
+coeficiente `n` do limite `≠ 0` tem só raízes reais (um zero não real `z₀` daria `0 < |a||Im z₀|ⁿ ≤ |f_N(z₀)| → 0`).
+Pelo binômio em `Module.End`, `(1 − λD²)^N p = Σ_m C(N,m)(−λ)^m D^{2m}p` (`iter_passoCalor`), e `C(N,m)/N^m → 1/m!`
+(`tendsto_choose_div_pow`), logo `(1 − (λ/N)D²)^N p → e^{−λD²}p = Σ_m (−λ)^m/m!·D^{2m}p` coeficiente a coeficiente
+(`tendsto_iter_calor`, `calorExato`). Resultado: **`p` com só raízes reais e `λ ≥ 0` ⇒ `e^{−λD²}p` com só raízes
+reais** (`realRooted_calorExato`; Pólya 1913) — o caso polinomial do fechamento para cima de de Bruijn. Para `H_t`
+falta (`BUILD_PENDING`) Hurwitz para funções inteiras e `e^{−λD²}` na classe de Laguerre–Pólya (aproximar `H_t` por
+polinômios com raízes reais, o que em `t = 0` já pressupõe HR).
+
+Numérico (`codigo/dbn.py`, `dados/dbn.json`, `testes/test_dbn.py`): `H₀(0) = ξ(½)/2 = 0,248560389094`
 (Simpson), `H₀` troca de sinal entre `14,13` e `14,14`, `∂_tH = −∂²_xH` por diferenças finitas a `10⁻⁵` relativo em
 `(t, x) = (0, 5), (0,2; 10), (−0,3; 2)`; Laguerre exato em `ℚ` (Sturm na parte livre de quadrados): `(x+1)(x−½)²(x−3)`
-com `p + cp'` (`c = 1/3, −2, 5, −1/7`) e `(1 − D²/10)^k p` (`k ≤ 10`) com raízes reais, `X² + 2` e `(x²+1)(x−1)²` sem.
+com `p + cp'` (`c = 1/3, −2, 5, −1/7`), `(1 − D²/10)^k p` (`k ≤ 10`) e `e^{−λD²}p` (`λ = 1/1000, 1/3, 1, 5`) com
+raízes reais, `e^{D²}X² = X² + 2` e `(x²+1)(x−1)²` sem; 5 testes.
 Formatos: SMT-LIB 34, Coq e Isabelle (`laguerre_quadratica`).
 
 ## 5. Formatos

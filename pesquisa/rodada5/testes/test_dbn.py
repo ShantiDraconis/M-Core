@@ -37,3 +37,13 @@ def test_sentido_direto_falha():
     assert dbn.raizes_reais([F(0), F(0), F(1)])
     assert not dbn.raizes_reais([F(2), F(0), F(1)])
     assert not dbn.raizes_reais(dbn.mul([F(1), F(0), F(1)], dbn.produto([1, 1])))
+
+
+def test_calor_exato():
+    # e^{−λD²} preserva raízes reais para λ ≥ 0 (`realRooted_calorExato`); e^{D²}X² = X² + 2 não
+    p = dbn.P_TESTE
+    for l in (F(1, 3), F(1), F(5), F(1, 1000)):
+        assert dbn.raizes_reais(dbn.calor_exato(l, p))
+    assert dbn.calor_exato(F(0), p) == p  # `calorExato_zero`
+    assert dbn.calor_exato(F(-1), [F(0), F(0), F(1)]) == [F(2), F(0), F(1)]
+    assert not dbn.raizes_reais(dbn.calor_exato(F(-1), [F(0), F(0), F(1)]))

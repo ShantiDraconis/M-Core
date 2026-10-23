@@ -7,8 +7,8 @@ Só biblioteca padrão. Nada aqui é certificado e nada prova HR: `Λ ≤ 0` é 
 
 * H_t(x) = ∫₀^∞ e^{tu²}Φ(u)cos(xu)du (Simpson): H₀(0) = ξ(½)/2, troca de sinal de H₀ em γ₁ = 14,1347…,
   e a equação do calor reversa ∂H/∂t = −∂²H/∂x² por diferenças finitas (`ATK.DBN.calor`).
-* Laguerre em ℚ exato (Sturm): p + c·p' e (1 − λD²)^N p conservam raízes reais; X² + 2 = (1 + D²)X² não tem
-  raízes reais (`calor_direto_falha`).
+* Laguerre em ℚ exato (Sturm): p + c·p', (1 − λD²)^N p e e^{−λD²}p (λ ≥ 0, `realRooted_calorExato`) conservam
+  raízes reais; X² + 2 = (1 + D²)X² = e^{D²}X² não tem raízes reais (`calor_direto_falha`).
 """
 import json
 import math
@@ -124,6 +124,16 @@ def produto(rs):
 P_TESTE = produto([F(-1), F(1, 2), F(1, 2), F(3)])
 
 
+def calor_exato(l, p):
+    """`ATK.PolyaCalor.calorExato`: e^{−λD²}p = Σ_m (−λ)^m/m!·D^{2m}p (soma finita)."""
+    r, q, m = [], list(p), 0
+    while q:
+        r = add(r, esc(F(-l) ** m / math.factorial(m), q))
+        q = der(der(q))
+        m += 1
+    return r
+
+
 def main(saida=None):
     p = P_TESTE
     lag = {str(c): raizes_reais(add(p, esc(F(c), der(p)))) for c in (F(1, 3), F(-2), F(5))}
@@ -139,6 +149,8 @@ def main(saida=None):
         "laguerre_p+cp'_raizes_reais": lag,
         "(1-D^2/10)^10_p_raizes_reais": raizes_reais(q),
         "X^2+2_raizes_reais": raizes_reais([F(2), F(0), F(1)]),
+        "exp(-lD^2)p_raizes_reais_l=1/3,1,5": [raizes_reais(calor_exato(F(x), p)) for x in (F(1, 3), F(1), F(5))],
+        "exp(+D^2)X^2": [str(c) for c in calor_exato(F(-1), [F(0), F(0), F(1)])],
         "aviso": "consistência numérica; Λ ≤ 0 é HR (OPEN_MATH)",
     }
     if saida:

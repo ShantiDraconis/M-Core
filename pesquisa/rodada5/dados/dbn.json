@@ -20,5 +20,15 @@
  },
  "(1-D^2/10)^10_p_raizes_reais": true,
  "X^2+2_raizes_reais": false,
+ "exp(-lD^2)p_raizes_reais_l=1/3,1,5": [
+  true,
+  true,
+  true
+ ],
+ "exp(+D^2)X^2": [
+  "2",
+  "0",
+  "1"
+ ],
  "aviso": "consistência numérica; Λ ≤ 0 é HR (OPEN_MATH)"
 }

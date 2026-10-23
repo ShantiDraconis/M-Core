@@ -6347,3 +6347,15 @@ ATK.DBN.rh_of_Lambda_le_zero
 ATK.DBN.rh_iff_Lambda_le_zero
 ATK.DBN.rh_iff_Lambda_eq_zero
 ATK.DBN.rh_todo_t
+ATK.PolyaCalor.aux_prod
+ATK.PolyaCalor.norm_eval_ge
+ATK.PolyaCalor.realRooted_of_tendsto
+ATK.PolyaCalor.natDegree_passoCalor
+ATK.PolyaCalor.coeff_natDegree_passoCalor
+ATK.PolyaCalor.natDegree_iter
+ATK.PolyaCalor.coeff_iter
+ATK.PolyaCalor.iter_passoCalor
+ATK.PolyaCalor.tendsto_choose_div_pow
+ATK.PolyaCalor.calorExato_zero
+ATK.PolyaCalor.tendsto_iter_calor
+ATK.PolyaCalor.realRooted_calorExato
