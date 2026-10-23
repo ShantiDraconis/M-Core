@@ -259,12 +259,11 @@ fechada `Pc(K)` (igual à soma direta dos degraus; erro `≈ 0,1458/K`), `D₁ =
 ## 4l. O que continua pendente (não formalizado aqui)
 
 Ganho de Schur exato e Tikhonov; `D_∞` como resíduo ortogonal em `L²`; o núcleo `ψ` fora da linha; o princípio do
-argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); a volta
-**HR ⇒ PF∞(aₙ)** (precisa da fatoração de Hadamard de gênero 0 de `B(w) = Σaₙwⁿ` e do crescimento de `ξ`; a ida
-PF∞ ⇒ HR, Edrei (⇒) para funções inteiras e ASW para polinômios **já estão no kernel**, §4o–§4p); Edrei na forma completa
-(fator `e^{γz}`, funções meromorfas); o fluxo de de Bruijn–Newman (`Λ ≤ 0 ⟺ HR`); a fórmula explícita e a positividade
-de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas
-equivalentes continuam abertas.
+argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); Edrei na
+forma completa (fator `e^{γz}`, funções meromorfas, ordem `≥ 1`); o fluxo de de Bruijn–Newman (`Λ ≤ 0 ⟺ HR`); a fórmula
+explícita e a positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
+`aₙ`**) — todas as formas equivalentes continuam abertas. A **equivalência** HR ⟺ PF∞(aₙ) já está no kernel nas duas
+direções (§4p–§4q); o que falta é a positividade total dos `aₙ` concretos, que é `OPEN_MATH`.
 
 ## 4m. Erros: explicação, correção e teoremas (rodada 7)
 
@@ -460,8 +459,8 @@ inteira e par; seus coeficientes de Taylor `d_k` são reais (`dXi_im`, pela unic
 `coef_zero_of_hasSum_zero`) e os ímpares se anulam (`iteratedDeriv_gXi_odd`). Com `aₙ = (−1)ⁿd_{2n}` (`aXi`),
 `B(w) = Σaₙwⁿ` é inteira (`inteira_aXi`), `B(−z²) = g(z)` (`ev_aXi`) e `a₀ = Ξ(0) > 0`. Um zero `z` de `g` dá o zero
 `−z²` de `B`, que por Edrei é real negativo; logo `z` é real. Forma explícita: `rh_de_menores` — **se todo menor
-`det(a_{i_p − j_q}) ≥ 0`, vale HR**. A hipótese é **`OPEN_MATH`**: é equivalente a HR, e a volta precisa de
-Hadamard de gênero 0 para `B` e do crescimento de `ξ` (em construção). Nada aqui prova HR.
+`det(a_{i_p − j_q}) ≥ 0`, vale HR**. A hipótese é **`OPEN_MATH`**: é equivalente a HR (a volta, por Hadamard de
+gênero 0 e o crescimento de `ξ`, está em §4q). Nada aqui prova HR.
 
 **O mecanismo de Weil** (`ATK.Weil`). Para qualquer forma bilinear simétrica com os números de interseção de `C × C`
 (curva de gênero `g` sobre `𝔽_q`: `f₁² = f₂² = 0`, `f₁·f₂ = 1`, `Δ·fᵢ = Γ·f₁ = 1`, `Γ·f₂ = q`, `Δ² = 2 − 2g`,
@@ -481,14 +480,67 @@ razão dos coeficientes de `1/J₀(2√x)` desce para `4/j₀,₁² = 0,69166027
 e Turán `aₙ² ≥ a_{n−1}a_{n+1}` para `n ≤ 8` — verificação finita, que não prova PF∞. Formatos: SMT-LIB 32, Coq e
 Isabelle (`descida_tres`).
 
+## 4q. Hadamard de gênero 0 e **HR ⟺ PF∞ dos coeficientes de Ξ** (rodada 11)
+
+`ATK/InteiraAnalitica.lean` (9), `ATK/HadamardGenero0.lean` (35), `ATK/XiCrescimento.lean` (21): 65 teoremas novos,
+total 6320, só `propext`, `Classical.choice`, `Quot.sound`. Nenhuma hipótese nova: o produto é **construído** e a sua
+**convergência é provada** (não declarada).
+
+**Ferramentas** (`ATK.InteiraAn`): `ev c` é inteira (série `ofScalars` de raio `⊤`, `hasFPowerSeries_ev`), `g⁽ⁿ⁾(0) =
+n!cₙ` (`iteratedDeriv_ev`), desigualdade de Cauchy `|cₙ|Rⁿ ≤ max_{|w|=R}|ev c|` (`coef_le`), só finitos zeros num disco
+(`zeros_finite`) e existência de um zero de módulo mínimo (`existe_zero_min`).
+
+**Hadamard de gênero 0** (`ATK.Hadamard.hadamard_tn`, `coef_eq_lim`): se `F(z) = Σcₙzⁿ` é inteira, `c₀ > 0`,
+`|F(w)| ≤ A·exp(A|w|^σ)` com `σ < 1` e todo zero de `F` é real negativo, então `F = c₀∏(1 + αⱼz)` com `αⱼ ≥ 0`,
+`Σαⱼ < ∞` — **coeficiente a coeficiente**: `prodCoef c₀ α k n → cₙ` — e `T(c)` é totalmente não negativa. Com Edrei
+(rodada 10): **para ordem `< 1`, `T(c)` TN ⟺ zeros reais negativos** (`tn_iff_zeros`). A prova:
+
+1. Construção (`passo`, `seqH`, `alphaH`): a cada passo tira-se um zero de módulo mínimo `−1/αₖ` com `divLin`, e
+   `F = ∏_{j<k}(1 + αⱼz)·Gₖ` (`ev_seqH`, `mk_seqH`); os `αₖ` decrescem (`alphaH_antitone`) e `Gₖ` não tem zeros em
+   `|w| < 1/αₖ` (`alphaH_zero_free`).
+2. Contagem (`contagem`, `summable_alpha_rpow`): no círculo `|w| = 3/αₖ` cada fator tem `|1 + αⱼw| ≥ 2`, e o módulo
+   máximo dá `2^{k+1}c₀ ≤ A·exp(A(3/αₖ)^σ)`; daí `αₖ ≲ k^{−1/σ}` e `Σαⱼ^s < ∞` para todo `s > σ`.
+3. `Gₖ → c₀` (`norm_seqH_le`, `coef_seqH_le`, `coef_seqH_tendsto`): `log|Gₖ|` é harmônica no disco sem zeros; pela
+   fórmula de Poisson e pelo valor médio (`log_norm_le_poisson`), `log|Gₖ(w)| ≤ log c₀ + (2|w|/(r − |w|))·média|log|Gₖ||`;
+   a média é controlada pelo crescimento de `F` e pela fórmula de Jensen para o polinômio `∏(1 + αⱼz)`
+   (`avg_log_prod_nonneg`); Borel–Carathéodory e Cauchy dão `|coefₙ(Gₖ) − c₀δₙ₀| → 0`, porque a cauda `Σ_{j≥k}αⱼ^s → 0`
+   (`tendsto_E`).
+4. TN: `T(prodCoef c₀ α k)` é TN (rodada 10) e TN é fechada por limites entrada a entrada (`tn_closed`).
+
+**Ξ tem ordem `≤ 3/4` em `w`** (`ATK.XiCresc`): a cota forte `|Φ(u)| ≤ 160·e^{u/2 − (3/2)e^{2u}}` (`Phi_cota`, para
+`u ≥ 0`) torna `HPhi(z) = 2∫₀^∞Φ(u)cos(zu)du` inteira (holomorfia sob a integral com dominação
+`160·e^{Y√Y}e^{−u}`, `hasDerivAt_HPhi`); como `HPhi = Ξ` em `ℝ` (rodada 8), o princípio de identidade dá
+**`ξ(1/2 + iz) = 2∫₀^∞Φ(u)cos(zu)du` para todo `z ∈ ℂ`** (`gXi_eq_HPhi`), e daí `|ξ(1/2 + iz)| ≤ 320·e^{|z|√|z|}`
+(`norm_gXi_le`, via `u/2 − (3/2)e^{2u} + yu ≤ y√y − u`, `expoente_le`). Com `B(−z²) = ξ(1/2 + iz)`:
+`|B(w)| ≤ 320·exp(320·|w|^{3/4})` (`crescimento_B`). Sob HR, todo zero de `B` é real negativo (`zerosNeg_of_rh`; `0`
+não é zero porque `Ξ(0) > 0`).
+
+**O teorema** (com o `RiemannHypothesis` do Mathlib):
+
+* `tn_de_rh`: **HR ⇒ `T(aₙ)` totalmente não negativa**;
+* `rh_iff_tn`: **HR ⟺ `T(aₙ)` totalmente não negativa** (com `XiTP.rh_de_tn`, rodada 10);
+* `rh_iff_menores`: **HR ⟺ todo menor de Toeplitz `det(a_{i_p − j_q})` é `≥ 0`**;
+* `rh_iff_genero0`: **HR ⟺ existem `αⱼ ≥ 0`, `Σαⱼ < ∞`, com `B = a₀∏(1 + αⱼw)` coeficiente a coeficiente**.
+
+**Estado.** Isto **não prova HR**: transforma HR, no kernel e sem hipóteses extras, num enunciado sobre uma sequência
+real concreta (`aₙ = (−1)ⁿg^{(2n)}(0)/(2n)!` com `g(z) = ξ(1/2 + iz)`, i.e. `aXi`; numericamente
+`aₙ = 2∫₀^∞Φ(u)u²ⁿ/(2n)!du`, identidade não formalizada aqui). A positividade total desses `aₙ` é **`OPEN_MATH`** — é HR. Verificações finitas (Turán, menores pequenos) são consistentes e não provam nada sobre todos os menores.
+
+Numérico (`codigo/hadamard.py`, `dados/hadamard.json`, `testes/test_hadamard.py`, 4 testes): para `I₀(2√w) =
+∏(1 + 4w/j₀,ₖ²)`, `Σαₖ = 1` e `Σαₖ² = 1/2` a `10⁻¹⁵` (30 zeros por Newton com `J₀` avaliada em 90 dígitos, McMahon até `2·10⁵` e cauda
+integral), as funções simétricas elementares dão `1/(n!)²` para `n ≤ 5` a `2·10⁻¹⁴`, e `prodCoef` cresce com o número
+de fatores e fica `≤ (Σα)ⁿ`; para `Ξ`, `a₁/a₀ = 0,02310499312` e `Σ1/γₖ² = 0,0231044` (20 zeros conhecidos + cauda de
+Riemann–von Mangoldt, sem `S(t)`; a cauda pesa 30 % e confere a `6·10⁻⁷`), `a₂/a₀ = e₂(1/γₖ²)` a `1,3·10⁻⁸` —
+consistência com zeros já verificados na linha, não prova. Formatos: SMT-LIB 33, Coq e Isabelle (`prodcoef_dois`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0 |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 32 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 33 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 

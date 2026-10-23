@@ -484,4 +484,19 @@ theorem descida_tres:
   shows "b3 < 0"
   using assms by linarith
 
+text \<open>Rodada 11 (ATK/HadamardGenero0): prodCoef com a0 = 1 e alpha = (1/2, 1/3) da 1 + (5/6)z + (1/6)z^2;
+  os coeficientes crescem com o numero de fatores e ficam <= a0 (soma alpha)^n.\<close>
+
+theorem prodcoef_dois:
+  fixes p10 p11 p12 p20 p21 p22 :: real
+  assumes "p10 = 1" "p11 = 1/2 * 1" "p12 = 0"
+    "p20 = p10" "p21 = p11 + 1/3 * p10" "p22 = p12 + 1/3 * p11"
+  shows "p11 \<le> p21 \<and> p12 \<le> p22 \<and> p22 \<le> 25/36 \<and> 0 < p22"
+proof (intro conjI)
+  show "p11 \<le> p21" using assms by linarith
+  show "p12 \<le> p22" using assms by linarith
+  show "p22 \<le> 25/36" using assms by linarith
+  show "0 < p22" using assms by linarith
+qed
+
 end

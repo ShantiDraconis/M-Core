@@ -521,6 +521,16 @@ Theorem descida_tres : forall b0 b1 b2 b3 L0 L1 L2 : R,
   b1 = b0 - L0 -> b2 = b1 - L1 -> b3 = b2 - L2 -> b3 < 0.
 Proof. intros; lra. Qed.
 
+(* ---------------------------------------- Hadamard de genero 0 (rodada 11, ATK/HadamardGenero0) *)
+
+(* prodCoef com a0 = 1, alpha = (1/2, 1/3): coeficientes 1 + (5/6)z + (1/6)z^2, crescentes com o numero de fatores
+   (ATK.Edrei.prodCoef_mono) e <= a0 (soma alpha)^n (ATK.Edrei.prodCoef_le). *)
+Theorem prodcoef_dois : forall p10 p11 p12 p20 p21 p22 : R,
+  p10 = 1 -> p11 = 1/2 * 1 -> p12 = 0 ->
+  p20 = p10 -> p21 = p11 + 1/3 * p10 -> p22 = p12 + 1/3 * p11 ->
+  p11 <= p21 /\ p12 <= p22 /\ p22 <= 25/36 /\ 0 < p22.
+Proof. intros; repeat split; lra. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -547,3 +557,4 @@ Print Assumptions constante_theta.
 Print Assumptions tri_um_x_x2.
 Print Assumptions inv_um_x_x2.
 Print Assumptions descida_tres.
+Print Assumptions prodcoef_dois.
