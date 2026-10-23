@@ -30,4 +30,10 @@ explícitos dos teoremas, nunca como `axiom`; por isso a auditoria só deve ver
 | Yang–Mills | `ATK.Conditional.YangMills.ym_conditional` | PARAMÉTRICA (`YMModel`) |
 
 Nenhum destes teoremas resolve um problema: `OPEN_MATH = true` nos sete.
+
+## Pontes extras, fora das 7 lanes (não importadas aqui, mesma convenção de `ZetaSimetria`)
+
+| Problema | Teorema | Fidelidade do enunciado |
+|---|---|---|
+| Riemann (derivada logarítmica) | `ATK.Conditional.RiemannLogDerivative.logDerivPositivity_implies_RH` | OFICIAL (`RiemannHypothesis` da Mathlib), via a hipótese aberta `LogDerivPositivity` (positividade de `Re(ζ'/ζ)` acima de `Re s = 1/2`); núcleo geral de análise complexa certificado: `neg_reLogDeriv_near_zero_of_order_lt_top` |
 -/

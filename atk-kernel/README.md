@@ -44,6 +44,7 @@ argumentos explícitos; detalhes em `scripts/conditionals.json`.
 | Arquivo | Teorema principal | Enunciado |
 |---|---|---|
 | `Conditional/Riemann` | `riemann_conditional` (+ `DN_nonneg`, `DN_tendsto_zero`) | `RiemannHypothesis` da Mathlib |
+| `Conditional/RiemannLogDerivative` | `logDerivPositivity_implies_RH` (núcleo geral: `neg_reLogDeriv_near_zero_of_order_lt_top`) | `RiemannHypothesis` da Mathlib, via positividade de Re(ζ'/ζ) acima de 1/2 |
 | `Conditional/Beal` | `beal_conditional` (+ `beal_iff_gcdLowerBound`, `exponent_gcd_le_two`, `one_lt_gcd_iff`) | enunciado elementar completo |
 | `Conditional/NavierStokes` | `ns_conditional` | relativo a `NSModel` |
 | `Conditional/PvsNP` | `pvsnp_conditional` (+ `pneNP_iff_sat_not_in_P`) | relativo a `ComplexityModel` |
