@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "09328d1e35d95bde49c0c3884b770773fc8dd6a2607fa0f9ed6a132d27eb6c19",
+  "sources_sha256": "e635e51c94faeee17a5f29efb7cf7d30fefe5e20aafb7b6c981337930636baed",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -320,9 +320,9 @@
     "ATK/ValleePoussin.lean": "858c22bff925f6c9e3af477d698b5fdd07202fa35a4c7aceb44e411f6d8fa235",
     "ATK/WeilMecanismo.lean": "477ac3c70f5ed1db9afdaec95a760308bc9eab4ab9b6246b68c49d85341480e0",
     "ATK/XiAnalitica.lean": "179bd9f0e12c448d4971b892a26cc58f80d935c41ffebc4646e6bdc109b10399",
-    "ATK/XiCrescimento.lean": "d3c4d5bfef9e8c03ba2c6ed4f2849909720754bede2bdf5d3438196b098fffc6",
+    "ATK/XiCrescimento.lean": "528e5be8cfd385a9a575c1f6739899bc99a609abce8002a6dc8c1aa37e53dce4",
     "ATK/XiPhi.lean": "1cdb05b7409967976e556616851590d312fccf4d5df6871849fef438e59048f2",
-    "ATK/XiTP.lean": "b524e9d19fc3fc9a4e51fcbef1b6a15f3f2d5b6d3da81d135019bf5ecfad5fb1",
+    "ATK/XiTP.lean": "79cfd46b229d52b775a23f1d327e6fecefeb4607e540c94fe8df6d507173398c",
     "ATK/YMOficial.lean": "352c748f123a25a9d6ed15b3c990e4503a5310eb9d294bca2b7ba45ee11a369d",
     "ATK/YMReconstrucao.lean": "9179947558621aa9504a9f2f16c66516080cb6659e1dd5cb0d41e013dc10054d",
     "ATK/YMSemGap.lean": "6895c3ef33487739eb859627d1a957e8de6794c035dad61ba9eada17cfd410d5",
@@ -348,6 +348,6 @@
   "expected_theorems": 6361,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "fb7c79601c97e4ba20af9a4ad5a06775e4b4f69a",
+  "commit_at_freeze": "72f7d0230eeafb8a522312933189d25aa24e86e3",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

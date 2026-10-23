@@ -94,10 +94,6 @@ def elementares(p):
     return e
 
 
-def theta(t):
-    return t / 2 * math.log(t / (2 * math.pi)) - t / 2 - math.pi / 8 + 1 / (48 * t) + 7 / (5760 * t ** 3)
-
-
 def p_xi(T=None):
     """Σ1/γₖ² e Σ1/γₖ⁴: 20 zeros + cauda ∫_T^∞ t^{−j} dN̄(t), N̄ = θ/π + 1 (sem o termo S(t))."""
     if T is None:
