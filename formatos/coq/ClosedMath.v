@@ -462,6 +462,38 @@ Theorem contraexemplo_pedaco : forall L : R,
   0 < 1/2 - 2*L + 1/3 /\ 1/2 - (2/1 + 1/2)*L + 1/3 < 0.
 Proof. intros; split; lra. Qed.
 
+(* ---------------------------------------------- erros corrigidos (rodada 7, ATK/Erros*.lean) *)
+
+(* E3: caso base da formula do texto para b_k (ErrosGram.bTexto_neg): 1 - gamma - (H_3 - log 4) < 0. *)
+Theorem b_texto_base : forall g l2 s : R,
+  5772156/10000000 < g -> l2 < 6931471808/10000000000 -> 11/6 - 2*l2 <= s ->
+  1 - g - s < 0.
+Proof. intros; lra. Qed.
+
+(* E4: G12 > 0,7722084 > 0,7722083 (ErrosGram.G12_cotas). *)
+Theorem G12_tabela : forall g l2 lp : R,
+  g < 5772163/10000000 -> 6931471803/10000000000 < l2 -> 11447295/10000000 < lp ->
+  7722084/10000000 < 3/4*(l2 + lp - g) - 1/4*l2.
+Proof. intros; lra. Qed.
+
+(* E12: D_N log N < C0 = 2 + gamma - log 4pi para N = 256, 8000 (ErrosGram.produtos_abaixo_C0). *)
+Theorem produtos_C0 : forall g l2 lp d : R,
+  5772156/10000000 < g -> l2 < 6931471808/10000000000 -> 6931471803/10000000000 < l2 ->
+  lp < 11447300/10000000 -> d < 2231436/10000000 -> 2231435/10000000 < d ->
+  82337162772/10000000000000 * (8*l2) < 2 + g - (2*l2 + lp) /\
+  50691202/10000000000 * (6*l2 + 3*(2*l2 + d)) < 2 + g - (2*l2 + lp).
+Proof. intros; split; lra. Qed.
+
+(* E10: com u = 1/T > 1/4 (T < 4) a regiao 1/2 + u <= s <= 1 - u e vazia (ErrosAnaliticos.R_vazio). *)
+Theorem regiao_vazia : forall u s : R, 1/4 < u -> ~ (1/2 + u <= s /\ s <= 1 - u).
+Proof. intros u s H [H1 H2]; lra. Qed.
+
+(* E13: 0,831907 < 1/zeta(3) < 0,8319075 (ErrosConstantes.inv_zeta_tres_cotas), na forma multiplicativa. *)
+Theorem inv_zeta3 : forall z : R,
+  12020568851/10000000000 < z -> z < 12020569219/10000000000 ->
+  831907/1000000 * z < 1 /\ 1 < 8319075/10000000 * z.
+Proof. intros; split; lra. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -479,3 +511,8 @@ Print Assumptions jensen_gamma_detecta.
 Print Assumptions rotacao.
 Print Assumptions ajuste_intercepto.
 Print Assumptions contraexemplo_pedaco.
+Print Assumptions b_texto_base.
+Print Assumptions G12_tabela.
+Print Assumptions produtos_C0.
+Print Assumptions regiao_vazia.
+Print Assumptions inv_zeta3.

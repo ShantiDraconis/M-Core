@@ -409,4 +409,45 @@ proof -
   show "1/2 - 5/2*L + 1/3 < 0" using assms by linarith
 qed
 
+theorem b_texto_base:
+  fixes g l2 s :: real
+  assumes "5772156/10000000 < g" "l2 < 6931471808/10000000000" "11/6 - 2*l2 \<le> s"
+  shows "1 - g - s < 0"
+  using assms by linarith
+
+theorem G12_tabela:
+  fixes g l2 lp :: real
+  assumes "g < 5772163/10000000" "6931471803/10000000000 < l2" "11447295/10000000 < lp"
+  shows "7722084/10000000 < 1/2*l2 + 3/4*lp - 3/4*g"
+  using assms by linarith
+
+theorem produtos_C0:
+  fixes g l2 lp d :: real
+  assumes h1: "5772156/10000000 < g" and h2: "l2 < 6931471808/10000000000"
+    and h3: "6931471803/10000000000 < l2" and h4: "lp < 11447300/10000000"
+    and h5: "d < 2231436/10000000" and h6: "2231435/10000000 < d"
+  shows "658697302176/10000000000000 * l2 < 2 + g - 2*l2 - lp"
+    and "608294424/10000000000 * l2 + 152073606/10000000000 * d < 2 + g - 2*l2 - lp"
+proof -
+  show "658697302176/10000000000000 * l2 < 2 + g - 2*l2 - lp"
+    using h1 h2 h3 h4 by linarith
+  show "608294424/10000000000 * l2 + 152073606/10000000000 * d < 2 + g - 2*l2 - lp"
+    using h1 h2 h3 h4 h5 h6 by linarith
+qed
+
+theorem regiao_vazia:
+  fixes u s :: real
+  assumes "1/4 < u"
+  shows "\<not> (1/2 + u \<le> s \<and> s \<le> 1 - u)"
+  using assms by linarith
+
+theorem inv_zeta3:
+  fixes z :: real
+  assumes "12020568851/10000000000 < z" "z < 12020569219/10000000000"
+  shows "831907/1000000 * z < 1" and "1 < 8319075/10000000 * z"
+proof -
+  show "831907/1000000 * z < 1" using assms by linarith
+  show "1 < 8319075/10000000 * z" using assms by linarith
+qed
+
 end
