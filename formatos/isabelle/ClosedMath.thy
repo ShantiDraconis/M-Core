@@ -353,4 +353,60 @@ qed
 theorem cs_nao_implica_turan: "(1::real)^2 \<le> 1*4 \<and> \<not> ((1::real)*(1*4) \<le> 3*1^2)"
   by simp
 
+theorem forma_L6:
+  fixes a b c d e f :: real
+  shows "a*(6*a-(a+b+c+d+e+f)) + b*(6*b-(a+b+c+d+e+f)) + c*(6*c-(a+b+c+d+e+f)) +
+    d*(6*d-(a+b+c+d+e+f)) + e*(6*e-(a+b+c+d+e+f)) + f*(6*f-(a+b+c+d+e+f)) =
+    (a-b)^2+(a-c)^2+(a-d)^2+(a-e)^2+(a-f)^2+(b-c)^2+(b-d)^2+(b-e)^2+(b-f)^2+
+    (c-d)^2+(c-e)^2+(c-f)^2+(d-e)^2+(d-f)^2+(e-f)^2"
+  by (simp add: power2_eq_square algebra_simps)
+
+theorem jensen_gamma_detecta:
+  fixes x :: real
+  shows "1 + 6*x + 12*x^2 \<noteq> 0"
+proof -
+  have e: "1 + 6*x + 12*x^2 = 3/4*(4*x+1)^2 + 1/4"
+    by (simp add: power2_eq_square algebra_simps)
+  have h: "0 \<le> (4*x+1)^2" by simp
+  show ?thesis using e h by linarith
+qed
+
+theorem jensen_a_disc: "(2*N)^2 - 4*(N*(N-1))*1 = 4*N" for N :: real
+  by (simp add: power2_eq_square algebra_simps)
+
+theorem rotacao:
+  fixes d t c s :: real
+  assumes h: "c^2 + s^2 = 1"
+  shows "(d*c - t*s)^2 + (d*s + t*c)^2 = d^2 + t^2"
+proof -
+  have "(d*c - t*s)^2 + (d*s + t*c)^2 = (d^2 + t^2)*(c^2 + s^2)"
+    by (simp add: power2_eq_square algebra_simps)
+  then show ?thesis using h by simp
+qed
+
+theorem barreira_a_b_t: "be^2 + ga^2 = ((1-be)^2 + ga^2) + (2*be - 1)" for be ga :: real
+  by (simp add: power2_eq_square algebra_simps)
+
+theorem ajuste_intercepto:
+  fixes l2 l5 :: real
+  assumes h1: "6931471803/10000000000 < l2" and h2: "l2 < 6931471808/10000000000"
+    and h3: "2231435/10000000 < l5 - 2*l2" and h4: "l5 - 2*l2 < 2231436/10000000"
+  shows "304147212/10000000000 * l2 + 152073606/10000000000 * l5 < 658697302176/10000000000000 * l2"
+    and "- 354550090176/10000000000000 * l2 + 152073606/10000000000 * l5 < 58/1000000 * l2 - 87/1000000 * l5"
+proof -
+  show "304147212/10000000000 * l2 + 152073606/10000000000 * l5 < 658697302176/10000000000000 * l2"
+    using h1 h2 h3 h4 by linarith
+  show "- 354550090176/10000000000000 * l2 + 152073606/10000000000 * l5 < 58/1000000 * l2 - 87/1000000 * l5"
+    using h1 h2 h3 h4 by linarith
+qed
+
+theorem contraexemplo_pedaco:
+  fixes L :: real
+  assumes "4054651081081/10000000000000 < L" "L < 4054651081082/10000000000000"
+  shows "0 < 1/2 - 2*L + 1/3" and "1/2 - 5/2*L + 1/3 < 0"
+proof -
+  show "0 < 1/2 - 2*L + 1/3" using assms by linarith
+  show "1/2 - 5/2*L + 1/3 < 0" using assms by linarith
+qed
+
 end
