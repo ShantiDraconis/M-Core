@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "ff5cb4bbb84a79d918f2cd2761ed1f4c98f89bdd89e60b56ab663a07dc6ac6ae",
+  "sources_sha256": "e09545e104f15ace6ba89a0743a9f60bcd786c33c5396e8189dade162d99447f",
   "files": {
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
     "ATK/ATKIAlgebra.lean": "2075cec2b384028e9aca99d9a57ae05cdfb26d2ead2be12b07a48a88d3176ae3",
@@ -108,6 +108,9 @@
     "ATK/EMGeral.lean": "bb5ae21385e0c058dcf7331f60d78514ad5804328908abb2775cffe8206daba5",
     "ATK/EixoDeslocado.lean": "1397c1aa6add421167f35d698390c9663d1e00b4f4567e0ee0b88b656ed4db59",
     "ATK/EnunciadosOficiais.lean": "8409a090f6b8a5ee7cc6e0cdb8d21c33f553e701d9e3dcbc1fe831b74b728281",
+    "ATK/ErrosAnaliticos.lean": "f2f0a9dff77749402a921b76e9cbc75297ed35225ffa542eb869870e909818a4",
+    "ATK/ErrosConstantes.lean": "e8f3dc5b2e6236829a37bbd2c3621da10112ea17a4ce69627fd389b9a6959069",
+    "ATK/ErrosGram.lean": "a4d77eaabf60da55ead4df181f851328b27a7467560f7cf45fb2f5e9a778fcfe",
     "ATK/EspectralDN.lean": "752914e1bc8e260f831e9b05d5c0b4bd5ca9b22fbc2bf557f90db329853e8e4a",
     "ATK/EspectroToro.lean": "f97fa731a73d1def4da4d6aac690c727c7298d687b64d516636cf0d9d2f8335b",
     "ATK/EtaCriterio.lean": "cd6381f7d76218f6eeaaa51950efe6174b831dcda0278da8f201996b236061a3",
@@ -327,12 +330,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "c0d88b3a90249108e918aceb1db6800cd827c792862706766ee70e52246b599a"
+    "ATK.lean": "8d5b5d7bd0a33d62ed06a80067f47e1951f2c9ff5a17abaa6dbe7409ed4fc384"
   },
-  "n_files": 326,
-  "expected_theorems": 6011,
+  "n_files": 329,
+  "expected_theorems": 6100,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "d282707f9ddd00697a168714d8213e3c139837b0",
+  "commit_at_freeze": "705c4d005dc2bb0cb682d80b8039c1d3160aaebd",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

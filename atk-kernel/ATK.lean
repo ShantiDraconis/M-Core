@@ -284,3 +284,6 @@ import ATK.GeometriaExtra
 import ATK.EtaCriterio
 import ATK.Reformulacoes
 import ATK.LaplacianoModulo
+import ATK.ErrosGram
+import ATK.ErrosAnaliticos
+import ATK.ErrosConstantes

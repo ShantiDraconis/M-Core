@@ -242,35 +242,123 @@ fechada `Pc(K)` (igual à soma direta dos degraus; erro `≈ 0,1458/K`), `D₁ =
 
 | Texto | Afirmação | Situação | Onde |
 | --- | --- | --- | --- |
-| 963449d2 | `G₁₁ = log 2π − γ − 1` | falso (esquece `∫₁^∞ t⁻² = 1`) | `GramDois.G11_ne_texto1` |
-| 1fb0a5dd | `G₁₁ = log 2` | falso (`G₁₁ − log 2 = log π − γ > 0`) | `GramDois.G11_ne_log2` |
-| 9654e97e | `b_k = (1 − γ + log k − H_{k−1})/k` | falso: dá `b₄ < 0`, mas `b_k > 0` | `GramDois.b4_texto_errado` |
-| 9e0c6efb | coeficiente `(p/i + q/j)` na integral por pedaços | falso: `i=1, j=2, [2,3]` daria `< 0` | `GramDois.contraexemplo_pedaco` |
-| 56e0dfa6 | `B = d∫₀¹ Re F′` | falso: é `Im F′` (`F = z²`) | `XiAnalitica.contraexemplo_Re`, `B_integral` |
-| 8af24fb4 / bef58a09 | `λ ≠ 0` ⇒ quatro zeros simples; `λ = 0` ⇒ dois duplos | falta `γ ≠ 0`: zero duplo / quádruplo | `GeometriaExtra.cruzamento_*` |
-| f1754ca5 / 0e761a7c | Jensen montado com `aₙ` | normalização errada: `Θ = 1+2x+2x²` passa e tem zeros não reais | `GeometriaExtra.jensen_a_hiperbolico`, `jensen_gamma_detecta` |
-| 0e761a7c | `TP∞(γ)` caracteriza zeros reais negativos | falso: `(1+x)³` tem `D₃,₁(γ) = −3` | `Jensen.tp_a_nao_passa_gamma` |
-| 425e4bc1 | "HR ⇏ O1" | mal posto: provar `¬(HR → Q)` provaria HR | `GeometriaExtra.nao_implica_prova_rh` |
-| 99d52102 | ajuste `D_N ≈ a + C/log N` com os dois valores | intercepto negativo, incompatível com `D_N ≥ 0` | `BarreiraModelos.sem_modelo_nao_negativo` |
-| e1644f4c / f1754ca5 | `Ξ(t) = ∫Φ(u)cos(tu)du` | fator 2 (é `2∫₀^∞`; `2∫Φ = ξ(½)`) | só numérico (`jensen.py`) |
-| 48cacf85 | `HR ⟺ ∀T > 2, M₊(T) > 0` | mal posto para `2 < T < 4` (região vazia) | registrado; a versão `K_n, n ≥ 5` está formalizada |
-| 7a43314b | `0,831908` (`1/ζ(3)`) | é `0,8319073726…` | só numérico |
+| 963449d2 | `G₁₁ = log 2π − γ − 1` | falso (esquece `∫₁^∞ t⁻² = 1`); seu `D₁ ≈ 0,31426` é o mínimo do resíduo local | `GramDois.G11_ne_texto1`, `ErrosGram.residuo_split`, `D1texto_minimo_local` |
+| 1fb0a5dd | `G₁₁ = log 2` | falso (`G₁₁ − log 2 = log π − γ > 0`); `D₁ ≈ 0,7421` vem dele | `GramDois.G11_ne_log2`, `ErrosGram.D1log2_cotas` |
+| 9654e97e | `b_k = (1 − γ + log k − H_{k−1})/k` | falso: é `b_k − H_{k−1}/k`, `< 0` para todo `k ≥ 4` | `GramDois.b4_texto_errado`, `ErrosGram.bTexto_neg` |
+| 9e0c6efb | coeficiente `(p/i + q/j)` na integral por pedaços; `G₁₂ ≈ 0,7722083` | falso: `i=1, j=2, [2,3]` daria `< 0`; `G₁₂ > 0,7722084` | `GramDois.contraexemplo_pedaco`, `ErrosGram.G12_cotas` |
+| 56e0dfa6 | `B = d∫₀¹ Re F′` | falso: é `Im F′` (`F = z²` e o próprio `ξ`) | `XiAnalitica.B_integral`, `ErrosAnaliticos.texto_Re_falso_para_xi` |
+| 8af24fb4 / bef58a09 | `λ ≠ 0` ⇒ quatro zeros simples; `λ = 0` ⇒ dois duplos | falta `γ ≠ 0`: tabela 1 / 2 / 4 | `ErrosAnaliticos.multiplicidade_tabela` |
+| f1754ca5 / 0e761a7c | Jensen montado com `aₙ` | normalização errada: Turán(`γ`) ⇒ Turán(`a`), não o contrário | `GeometriaExtra.jensen_a_hiperbolico`, `ErrosAnaliticos.turan_gamma_implica_a`, `jensen_a_falha_gamma_detecta` |
+| 0e761a7c | `TP∞(γ)` caracteriza zeros reais negativos | falso: `(1+x)³` tem todos os 2×2 `≥ 0` e `D₃,₁(γ) = −3` | `Jensen.tp_a_nao_passa_gamma`, `ErrosAnaliticos.tp_binomial` |
+| 425e4bc1 | "HR ⇏ O1" | mal posto: provar `¬(HR → Q)` provaria HR; alvo é `D_N → 0` | `GeometriaExtra.nao_implica_prova_rh`, `ErrosAnaliticos.alvo_correto` |
+| 99d52102 | ajuste `D_N ≈ a + C/log N` com os dois valores | intercepto negativo; os dados só dizem `D_N log N < C₀` e decrescente | `BarreiraModelos.sem_modelo_nao_negativo`, `ErrosGram.E12_corrigido` |
+| e1644f4c / f1754ca5 | `Ξ(t) = ∫Φ(u)cos(tu)du` | fator 2 (é `2∫₀^∞`; `2∫Φ = ξ(½)`) | `ErrosAnaliticos.Xi_forma_u`, `fator_um_falso`; forma `Φ` condicional (`Xi_forma_Phi`) |
+| 48cacf85 | `HR ⟺ ∀T > 2, M₊(T) > 0` | falso para `2 < T < 4` (região vazia, `M₊ = 0`); correto com `T ≥ 4` | `ErrosAnaliticos.texto_M_falso`, `rh_iff_Mplus` |
+| 7a43314b | `0,831908` (`1/ζ(3)`); `19,739209` "volume da esfera unitária" | `1/ζ(3) ∈ (0,831907; 0,8319075)`; `2π²` é a área de `S³` | `ErrosConstantes.texto_0831908_errado`, `area_S3` |
 
 ## 4l. O que continua pendente (não formalizado aqui)
 
 Ganho de Schur exato e Tikhonov; `D_∞` como resíduo ortogonal em `L²`; o núcleo `ψ` fora da linha; o princípio do
-argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); a constante
-`0,831908`; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas equivalentes continuam
-abertas.
+argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); a forma
+`Φ` completa de `Ξ` (regularidade de `ψ`, `g″ − g/4 = Φ` termo a termo, `½ + 2g′(0) = 0`); o teorema de
+Aissen–Schoenberg–Whitney–Edrei; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas
+equivalentes continuam abertas.
+
+## 4m. Erros: explicação, correção e teoremas (rodada 7)
+
+Três módulos — `ATK/ErrosGram.lean`, `ATK/ErrosAnaliticos.lean`, `ATK/ErrosConstantes.lean` — com 89 teoremas novos
+(total 6100), só `propext`, `Classical.choice`, `Quot.sound`. Para cada erro da tabela §4k: **de onde vem**, **a
+correção** e o que o kernel prova (refutação + versão corrigida). Nada disto prova ou refuta HR.
+
+**E1 — `G₁₁ = log 2π − γ − 1` (963449d2).** *Origem*: é exatamente `∫_{(0,1]}{1/t}²dt`; falta a cauda
+`∫₁^∞ t⁻²dt = 1` (para `t > 1`, `{1/t} = 1/t`) (`G11_partes`). *Consequência*: o resíduo verdadeiro é
+`‖χ − xρ₁‖² = ∫_{(0,1]}(1 − x{1/t})² + x²` (`residuo_split`); o `D₁ = 1 − (1−γ)²/(log 2π − γ − 1) ≈ 0,31426` do texto é o
+mínimo só da parte local, atingido em `x ≈ 1,622` (`D1texto_minimo_local`) — não é um `D₁`. *Correção*:
+`G₁₁ = log 2π − γ`, `D₁ = 1 − (1−γ)²/(log 2π − γ) ∈ (0,85821; 0,85822)`; o valor do texto fica mais de `0,54` abaixo
+(`E1_corrigido`, `D1texto_cotas`, `D1texto_lt_DN1`).
+
+**E2 — `G₁₁ = log 2`, `D₁ ≈ 0,7421` (1fb0a5dd).** *Origem*: o `0,7421` é coerente com o `G₁₁` errado,
+`1 − (1−γ)²/log 2 ∈ (0,74212; 0,74213)` (`D1log2_cotas`); não há derivação de `log 2` como `∫{1/t}²`. *Correção*:
+`G₁₁ − log 2 = log π − γ > 0`, e esse `D₁` subestima o verdadeiro (`D1log2_lt_DN1`).
+
+**E3 — `b_k = (1 − γ + log k − H_{k−1})/k` (9654e97e).** *Origem*: a fórmula é `b_k − H_{k−1}/k` (`bTexto_eq`).
+Escrevendo `b̃_{n+1} = (1 − γ − (H_n − log(n+1)))/(n+1)` (`bTexto_eq_seq`) e usando que `H_n − log(n+1)` cresce para `γ`
+(Mathlib), `H₃ − log 4 = 11/6 − 2 log 2 ≈ 0,4470 > 1 − γ ≈ 0,4228` dá **`b̃_k < 0` para todo `k ≥ 4`** (`bTexto_neg`),
+contra `b_k > 0` (`bTexto_contradiz`). Os valores listados no texto: `k = 2` (`0,0579657578`) bate com a fórmula;
+`k = 3` (`0,0072177332`; a fórmula dá `0,0071322`) e `k = 4` (`−0,0060668825`; a fórmula dá `−0,0060637`) não
+(`bTexto_valores`). *Correção*: `b_k = ∫₀¹{1/(kt)}dt = (log k + 1 − γ)/k > 0`.
+
+**E4 — integral por pedaços e `G₁₂` tabelado (9e0c6efb).** *Origem*: `p` e `q` trocados no termo logarítmico; os
+coeficientes `q/i + p/j` (certo) e `p/i + q/j` (texto) só coincidem quando `(p − q)(1/i − 1/j) = 0`
+(`coef_coincide_iff`), isto é `p = q` ou `i = j` — por isso o erro não aparece na diagonal. Contraexemplo:
+`contraexemplo_pedaco` (rodada 6). *Valor tabelado*: `G₁₂ ≈ 0,7722083` está abaixo do intervalo certificado
+`(0,7722084; 0,7722094)` (`G12_cotas`; o exato é `0,77220926`); como o integrando é `≥ 0`, toda soma parcial
+`Pc(K) + ½` fica por baixo (`truncado_por_baixo`): o valor do texto é compatível com truncar a série.
+
+**E5 — `B = d∫₀¹ Re F′` (56e0dfa6).** *Origem*: `Re` e `Im` trocados nas equações de Cauchy–Riemann. *Correção*:
+`∂_d Im F(d+it) = Im F′(d+it)` e `∂_d Re F = Re F′` (`cauchy_riemann_horizontal`), logo `B = d∫₀¹ Im F′`
+(`XiAnalitica.B_integral`). *Refutações*: `F = z²` (`contraexemplo_derivada`: `∂_d Im F = 2`, `Re F′ = 0`); e **para
+o próprio `F(z) = ξ(½+z)`**: como `Re F′(it) = 0`, a fórmula do texto daria `∂_d B(0,t) = 0` para todo `t`, logo
+`F′(it) = 0` e `Ξ` constante — mas `Ξ(0) > 0` e `Ξ(γ₁) = 0` (`texto_Re_falso_para_xi`).
+
+**E6 — multiplicidades na família de cruzamento (8af24fb4 / bef58a09).** *Origem*: falta a hipótese `γ ≠ 0`.
+*Correção* (`multiplicidade_tabela`): o zero `½ + λ + iγ` de `G_λ` tem multiplicidade `1` se `λ ≠ 0` e `γ ≠ 0`, `2` se
+exatamente um deles é `0`, `4` se `λ = γ = 0`.
+
+**E7 — Jensen montado com `aₙ` (f1754ca5).** *Origem*: os polinômios de Jensen usam `γₙ = n!aₙ`. *Teoremas*: Turán para
+`γ` implica Turán para `a` sempre (`turan_gamma_implica_a`), mas não o contrário (`turan_a_nao_implica_gamma`,
+`a = (1,1,1)`, `γ = (1,1,2)`): o teste com `aₙ` é estritamente mais fraco. Para `Θ = 1 + x + x²` (zeros `(−1 ± i√3)/2`,
+fora de Laguerre–Pólya), o polinômio montado com `a` (`z² + 2z + 1`) é hiperbólico e o montado com `γ` (`2z² + 2z + 1`)
+não (`jensen_a_falha_gamma_detecta`).
+
+**E8 — `TP∞(γ)` (0e761a7c).** *Origem*: Aissen–Schoenberg–Whitney–Edrei é sobre os coeficientes de Taylor `aₙ`. Para
+`(1+x)³` (só zeros reais negativos), **todos** os menores 2×2 de `a = (1,3,3,1)` e de `γ = (1,3,6,6)` são `≥ 0`, mas
+`D₃,₁(a) = 10` e `D₃,₁(γ) = −3` (`tp_binomial`): Turán para `γ` não dá `TP₃(γ)`. *Correção*: o critério é `TP∞(aₙ)`
+(ASWE; o teorema geral não está no Mathlib e não foi formalizado).
+
+**E9 — fator 2 em `Ξ(t) = ∫₀^∞Φ(u)cos(tu)du` (e1644f4c / f1754ca5).** *Origem*: o `2` é o jacobiano de `x = e^{2u}`
+(`dx = 2e^{2u}du`). *Teoremas*: **`Ξ(t) = ½ − 2(t²+¼)∫₀^∞ψ(e^{2u})e^{u/2}cos(tu)du`** (`Xi_forma_u`, da fórmula de
+Riemann já certificada); sem o `2` é falso (`fator_um_falso`: daria `Ξ(γ₁) = ½`); `∫_ℝΦcos = 2∫₀^∞Φcos` para `Φ` par
+(`integral_par`); duas integrações por partes (`ibp_cos`, geral) dão, **condicionalmente** à regularidade e ao
+decaimento de `g(u) = ψ(e^{2u})e^{u/2}`, `g′`, `g″`, a forma `Ξ(t) = (½ + 2g′(0)) + 2∫₀^∞(g″ − g/4)cos(tu)du`
+(`Xi_forma_Phi`). *Não formalizado*: essas hipóteses, a identificação termo a termo `g″ − g/4 = Φ` e `½ + 2g′(0) = 0`
+(equação funcional de `θ`). *Numérico*: `2∫₀^∞Φ = 0,497120778188314110 = ξ(½)` e `2∫₀^∞Φ(u)cos(γ₁u)du ≈ 6·10⁻²²`.
+
+**E10 — `HR ⟺ ∀T > 2, M₊(T) > 0` (48cacf85).** *Origem*: a região `½ + 1/T ≤ σ ≤ 1 − 1/T` só é não vazia para `T ≥ 4`.
+Para `0 < T < 4` ela é vazia (`R_vazio`), `M₊(T) = inf ∅ = 0` (`Mplus_vazio`), logo "`∀T > 2, M₊(T) > 0`" é **falso**
+(`texto_M_falso`) e a equivalência do texto implicaria `¬HR` (`texto_equivalencia_daria_nao_rh`). *Correção*:
+**`HR ⟺ ∀T ≥ 4, M₊(T) > 0`** (`rh_iff_Mplus`; `R(T)` compacta e `|ξ|` contínua). A versão com `K_n`, `n ≥ 5`, já estava
+formalizada.
+
+**E11 — "O1 ⇒ HR, mas HR ⇏ O1" (425e4bc1).** *Origem*: "HR ⇏ O1" como teorema é inalcançável — provar `¬(HR → Q)`
+provaria HR. *Correção* (`alvo_correto`): `O1 ⇒ HR`, `O1 ⇒ D_N → 0` e `HR ⟺ D_N → 0`; o alvo mínimo é `D_N → 0`; se
+HR implica O1 é desconhecido.
+
+**E12 — ajuste `D_N ≈ a + C/log N` (99d52102).** *Origem*: dois pontos determinam `a` e `C`; o intercepto sai
+`≈ −2,91·10⁻⁵ < 0 ≤ D_∞`. *O que os dados sustentam* (`E12_corrigido`, `produtos_abaixo_C0`, `razoes_C0`):
+`D₈₀₀₀ log 8000 ≈ 0,04556 < D₂₅₆ log 256 ≈ 0,04566 < C₀ = 2 + γ − log 4π ≈ 0,04619` (razões `≈ 0,9863` e `≈ 0,9884`);
+nem `C/log N` sozinho passa pelos dois pontos (`sem_C_unico`); o intercepto do ajuste não é estimativa de `D_∞`.
+
+**E13 — tabela de constantes (7a43314b).** *`0,831908`*: errado na 6ª casa. `ζ(3) = Σ1/n³` (Mathlib), a soma exata até
+`n = 60` (`decide +kernel`) e as caudas telescópicas `1/(2m²) + 1/(2m³)` (minorante) e `1/(2m(m−1))` (majorante) dão
+`1,2020568 < ζ(3) < 1,2020570` e **`0,831907 < 1/ζ(3) < 0,8319075 < 0,831908`** (`inv_zeta_tres_cotas`,
+`texto_0831908_errado`); o valor é `0,8319073726…` (densidade dos inteiros livres de cubos). *`19,739209`*: o número
+está certo (`19,739208 < 2π² < 19,739209`, `dois_pi_quadrado_cotas`), o rótulo não: `2π²` é a **área de `S³ ⊂ ℝ⁴`**
+(`d/dr(π²r⁴/2)` em `r = 1`, `area_S3`); o volume da bola unitária é `π²/2` em ℝ⁴ (`vol_bola_unit_quatro`) e `4π/3` em
+ℝ³ (`rotulo_errado`). As demais constantes da tabela conferem.
+
+Formatos: SMT-LIB 24–28 (caso base de `b̃_k < 0`, `G₁₂` tabelado, `D_N log N < C₀`, região vazia, `1/ζ(3)`) e as mesmas
+cinco obrigações lineares em Coq e Isabelle. Numérico: `codigo/erros.py`, `dados/erros.json`, `testes/test_erros.py`
+(8 testes).
 
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`) |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 23 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 28 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 
