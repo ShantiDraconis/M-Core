@@ -494,6 +494,18 @@ Theorem inv_zeta3 : forall z : R,
   831907/1000000 * z < 1 /\ 1 < 8319075/10000000 * z.
 Proof. intros; split; lra. Qed.
 
+(* ---------------------------------------- fechamento (rodada 8, ATK/XiPhi, ATK/ToeplitzTN) *)
+
+(* Xi = 2 int Phi cos: a constante 1/2 + 2 sum h'(0) e zero (XiPhi.constante_zero). *)
+Theorem constante_theta : forall P T S : R,
+  4*T = P + 1/2 -> S = P/2 - 2*T -> 1/2 + 2*S = 0.
+Proof. intros; lra. Qed.
+
+(* 1 + x + x^2: D_3 = -1 < 0 pela recorrencia tridiagonal (ToeplitzTN.um_x_x2). *)
+Theorem tri_um_x_x2 : forall d0 d1 d2 d3 : R,
+  d0 = 1 -> d1 = 1 -> d2 = d1 - d0 -> d3 = d2 - d1 -> d3 < 0.
+Proof. intros; lra. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -516,3 +528,5 @@ Print Assumptions G12_tabela.
 Print Assumptions produtos_C0.
 Print Assumptions regiao_vazia.
 Print Assumptions inv_zeta3.
+Print Assumptions constante_theta.
+Print Assumptions tri_um_x_x2.

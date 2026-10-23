@@ -450,4 +450,19 @@ proof -
   show "1 < 8319075/10000000 * z" using assms by linarith
 qed
 
+theorem constante_theta:
+  fixes P T S :: real
+  assumes "4*T = P + 1/2" "S = P/2 - 2*T"
+  shows "1/2 + 2*S \<le> 0" and "0 \<le> 1/2 + 2*S"
+proof -
+  show "1/2 + 2*S \<le> 0" using assms by linarith
+  show "0 \<le> 1/2 + 2*S" using assms by linarith
+qed
+
+theorem tri_um_x_x2:
+  fixes d0 d1 d2 d3 :: real
+  assumes "d0 = 1" "d1 = 1" "d2 = d1 - d0" "d3 = d2 - d1"
+  shows "d3 < 0"
+  using assms by linarith
+
 end

@@ -249,19 +249,19 @@ fechada `Pc(K)` (igual à soma direta dos degraus; erro `≈ 0,1458/K`), `D₁ =
 | 56e0dfa6 | `B = d∫₀¹ Re F′` | falso: é `Im F′` (`F = z²` e o próprio `ξ`) | `XiAnalitica.B_integral`, `ErrosAnaliticos.texto_Re_falso_para_xi` |
 | 8af24fb4 / bef58a09 | `λ ≠ 0` ⇒ quatro zeros simples; `λ = 0` ⇒ dois duplos | falta `γ ≠ 0`: tabela 1 / 2 / 4 | `ErrosAnaliticos.multiplicidade_tabela` |
 | f1754ca5 / 0e761a7c | Jensen montado com `aₙ` | normalização errada: Turán(`γ`) ⇒ Turán(`a`), não o contrário | `GeometriaExtra.jensen_a_hiperbolico`, `ErrosAnaliticos.turan_gamma_implica_a`, `jensen_a_falha_gamma_detecta` |
-| 0e761a7c | `TP∞(γ)` caracteriza zeros reais negativos | falso: `(1+x)³` tem todos os 2×2 `≥ 0` e `D₃,₁(γ) = −3` | `Jensen.tp_a_nao_passa_gamma`, `ErrosAnaliticos.tp_binomial` |
+| 0e761a7c | `TP∞(γ)` caracteriza zeros reais negativos | falso: `(1+x)³` tem todos os 2×2 `≥ 0` e `D₃,₁(γ) = −3`; o certo é `TP∞(aₙ)` | `ErrosAnaliticos.tp_binomial`, `ToeplitzTN.tn_de_raizes` (⇐), `tn_grau_dois_iff` (grau 2) |
 | 425e4bc1 | "HR ⇏ O1" | mal posto: provar `¬(HR → Q)` provaria HR; alvo é `D_N → 0` | `GeometriaExtra.nao_implica_prova_rh`, `ErrosAnaliticos.alvo_correto` |
 | 99d52102 | ajuste `D_N ≈ a + C/log N` com os dois valores | intercepto negativo; os dados só dizem `D_N log N < C₀` e decrescente | `BarreiraModelos.sem_modelo_nao_negativo`, `ErrosGram.E12_corrigido` |
-| e1644f4c / f1754ca5 | `Ξ(t) = ∫Φ(u)cos(tu)du` | fator 2 (é `2∫₀^∞`; `2∫Φ = ξ(½)`) | `ErrosAnaliticos.Xi_forma_u`, `fator_um_falso`; forma `Φ` condicional (`Xi_forma_Phi`) |
+| e1644f4c / f1754ca5 | `Ξ(t) = ∫Φ(u)cos(tu)du` | fator 2: **`Ξ(t) = 2∫₀^∞Φ(u)cos(tu)du`** | `XiPhi.Xi_eq_dois_int_Phi`, `sem_fator_dois_falso` |
 | 48cacf85 | `HR ⟺ ∀T > 2, M₊(T) > 0` | falso para `2 < T < 4` (região vazia, `M₊ = 0`); correto com `T ≥ 4` | `ErrosAnaliticos.texto_M_falso`, `rh_iff_Mplus` |
 | 7a43314b | `0,831908` (`1/ζ(3)`); `19,739209` "volume da esfera unitária" | `1/ζ(3) ∈ (0,831907; 0,8319075)`; `2π²` é a área de `S³` | `ErrosConstantes.texto_0831908_errado`, `area_S3` |
 
 ## 4l. O que continua pendente (não formalizado aqui)
 
 Ganho de Schur exato e Tikhonov; `D_∞` como resíduo ortogonal em `L²`; o núcleo `ψ` fora da linha; o princípio do
-argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); a forma
-`Φ` completa de `Ξ` (regularidade de `ψ`, `g″ − g/4 = Φ` termo a termo, `½ + 2g′(0) = 0`); o teorema de
-Aissen–Schoenberg–Whitney–Edrei; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas
+argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); a recíproca de
+Aissen–Schoenberg–Whitney em grau `≥ 3` (`TP∞(aₙ)` ⇒ zeros reais; precisa da identidade de Jacobi para a inversa e de
+Pringsheim) e o teorema de Edrei para séries infinitas (Nevanlinna); e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`) — todas as formas
 equivalentes continuam abertas.
 
 ## 4m. Erros: explicação, correção e teoremas (rodada 7)
@@ -352,14 +352,51 @@ Formatos: SMT-LIB 24–28 (caso base de `b̃_k < 0`, `G₁₂` tabelado, `D_N lo
 cinco obrigações lineares em Coq e Isabelle. Numérico: `codigo/erros.py`, `dados/erros.json`, `testes/test_erros.py`
 (8 testes).
 
+## 4n. Fechamento: `Ξ = 2∫₀^∞Φcos` e ASW polinomial (rodada 8)
+
+Os dois itens que ficaram parciais na rodada 7, agora no kernel (`ATK/XiPhi.lean`, `ATK/ToeplitzTN.lean`; 70 teoremas
+novos, total 6170, só `propext`, `Classical.choice`, `Quot.sound`).
+
+**`Ξ(t) = 2∫₀^∞ Φ(u)cos(tu)du`, sem hipóteses** (`Xi_eq_dois_int_Phi`), com
+`Φ(u) = Σ_{n≥1}(4π²n⁴e^{9u/2} − 6πn²e^{5u/2})e^{−πn²e^{2u}}` — exatamente o `Φ` do texto e1644f4c, com o fator `2`.
+Roteiro: `ψ(e^{2u})e^{u/2} = Σ_n h_{c}(u)`, `h_c(u) = exp(u/2 − ce^{2u})`, `c = πn²` (`hasSum_g`); derivadas exatas e
+`h_c″ − h_c/4 = (4c²e^{4u} − 6ce^{2u})h_c` (`phiT_texto`); a cota-chave `(ce^{2u})^k h_c(u) ≤ 8e^{−c/2}e^{−u}`
+(`u ≥ 0`, `k ≤ 2`, `cota`) dá integrabilidade, limites e somabilidade; integração por partes termo a termo
+(`ibp_termo`, de `ErrosAnaliticos.ibp_cos`) e troca soma/integral (`K_tsum`, `Phi_tsum`) dão
+`Ξ(t) = (½ + 2Σh_c′(0)) + 2∫₀^∞Φcos` (`Xi_forma_constante`); e **a constante é zero** (`constante_zero`): derivando
+`ψ(x) = x^{−1/2}ψ(1/x) + (x^{−1/2} − 1)/2` (`psi_feq`, da equação funcional de `θ` no Mathlib) em `x = 1`, com
+`ψ′(1) = −Σc e^{−c}` termo a termo (`hasDerivAt_psi_um`), sai `4Σc e^{−c} = ψ(1) + ½` (`quatro_T`). Sem o `2` a
+identidade é falsa (`sem_fator_dois_falso`), e `2∫₀^∞Φ = Ξ(0) = ξ(½)` (`dois_int_Phi_meio`).
+
+**Aissen–Schoenberg–Whitney, direção (⇐), qualquer grau** (`tn_de_raizes`): se as raízes de `p` são todas reais
+(`#raízes = grau`) e `≤ 0` e o coeficiente líder é `≥ 0`, a matriz de Toeplitz `T(a)_{ij} = a_{i−j}` dos coeficientes é
+**totalmente não negativa** (`Matrix.IsTotallyNonneg` do Mathlib: todos os menores). Prova: multiplicar por `X + r`
+troca cada coluna por `r·col_j + col_{j+1}` (`toep_mulLin`); por multilinearidade o menor vira soma, com pesos `≥ 0`, de
+menores de `T(a)` com colunas não decrescentes (`det_expand`), cada um `≥ 0` ou com coluna repetida (`tn_mulLin`);
+indução no multiconjunto de raízes (`tn_prod`). Em particular **todo menor de Toeplitz `D_{r,m}(aₙ) ≥ 0`**
+(`Dmin_nonneg_de_raizes`) e `T(1,3,3,1)` é totalmente não negativa (`tn_binomio_cubo`) — o enunciado correto de E8.
+
+**Direção (⇒) em grau 2** (`tn_grau_dois_iff`): para `a₀, a₂ > 0`, `T(a₀,a₁,a₂)` é totalmente não negativa **⟺
+`a₁ ≥ 0` e `a₁² ≥ 4a₀a₂`** ⟺ `a₀ + a₁x + a₂x² = a₂(x + r₁)(x + r₂)` com `rᵢ ≥ 0` (`fatora_iff`). A recíproca usa os
+menores tridiagonais `D_{r+2} = a₁D_{r+1} − a₀a₂D_r` (`D_rec`, Laplace duas vezes) e um argumento sem trigonometria
+(`cheb_neg`): para `x_{r+2} = 2c x_{r+1} − x_r`, `0 ≤ c < 1`, o invariante `x_{r+1}² − 2cx_{r+1}x_r + x_r² = 1` e a soma
+telescópica `2(1−c)Σ_{k≤N}x_k = x₁ − x₀ + x_N − x_{N+1}` são incompatíveis com `x_r ≥ 0` para todo `r`. Para
+`Θ = 1 + x + x²`, `D₃ = −1` (`um_x_x2`, `um_x_x2_nao_tn`).
+
+*Não formalizado*: a recíproca em grau `≥ 3` (ASW 1952 usa a identidade de Jacobi para a inversa de uma matriz TN e o
+teorema de Pringsheim, nenhum no Mathlib) e o teorema de Edrei para séries infinitas (teoria de Nevanlinna).
+Formatos: SMT-LIB 29–30, Coq e Isabelle (constante de `θ`, tridiagonal). Numérico: `codigo/fechamento.py`,
+`dados/fechamento.json`, `testes/test_fechamento.py` (4 testes): `4Σce^{−c} − ψ(1) − ½ ≈ 10⁻⁵¹`; menores até 4×4 de
+`(1+x)³` e `(x+1)(x+2)(x+3)` todos `≥ 0`; com `a₁ = 1,9` e `1,99` o primeiro `D_r < 0` aparece em `r = 9` e `r = 31`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`) |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 28 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 30 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 
