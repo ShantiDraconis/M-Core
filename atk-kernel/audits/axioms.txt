@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a35ce421363c90f2d60423bf3c904a55799c693f7360b6ed8097ccad326a1271
+# axiomas por teorema — congelamento de 2ac374c0af31f65fb1618d2088aa50ab5d22611da6b8d0df4ecca58470bab7f7
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7237,3 +7237,34 @@ ATK.ZeroClasses.Jensen.N_le_divisor	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Jensen.N_cota	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Jensen.log_Bx_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Jensen.N_O_TlogT	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.cen_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.cen_im	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.coord_bola	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.perto_cen	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.ne_um_de	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.cota_zeta_circ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.zeta_analitica_bola	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.Lc_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.jensen_local	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.soma_ordem_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.ordem_zeta_finita	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.ordem_xi_reflexao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.ordemNat_zeta_reflexao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.caixa_na_bola	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.caixa_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.N_succ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.N_succ_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.N_local_O_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.gq_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.gq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.summable_gq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.soma_ordem_inv_quadrado	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JensenLocal.soma_inv_quadrado	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Canonico.E1_sub_one_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Canonico.summable_ZM	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Canonico.norma_quociente	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Canonico.canonico_converge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Canonico.prod_sim_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Canonico.simT_tendsto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Canonico.produtos_simetricos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Canonico.hadamardXi_iff	propext, Classical.choice, Quot.sound
