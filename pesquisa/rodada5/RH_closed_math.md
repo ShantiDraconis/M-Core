@@ -1314,6 +1314,82 @@ Numérico (`codigo/finito.py`, `dados/finito.json`, `testes/test_finito.py`, 3 t
 inteira exata; 300 fórmulas aleatórias com `⌊M/B^m⌋ = #SAT`, `ord₀ F = min R` e as cotas da função de partição em
 **todas**; associatividade da soma saturada em `0..8`; `⊞` e o estado "01".
 
+## 4ag. A fronteira entre estados, antes do colapso (rodada 27)
+
+`ATK/ZeroClasses/Fronteira.lean` (72 teoremas, total 7032, só os axiomas padrão). Formaliza a aritmética de
+estados com fronteira enviada: quantização, produtor multivalorado, adjacência, competição `Δ_ab`, a ponte com RH,
+intervalos e uma semântica de três valores.
+
+**Quantização** (`Q`, `cel`, `Q_eq_round`, `Q_eq_iff`, `celulas_particao`, `celulas_disjuntas`, `celulas_exemplos`,
+`Q_int`, `Q_add_int`, `Q_monotone`, `Q_proximo`, `Q_nao_aditivo`, `Q_soma_cotas`, `Q_soma_cotas_atingidas`).
+`Q(x) = ⌊x + ½⌋` é o `round` de Mathlib; `Q x = k ⟺ x ∈ C_k = [k − ½, k + ½)`; as células particionam `ℝ`; `Q` é
+monótona, comuta com translações inteiras e escolhe um inteiro mais próximo. **O colapso não é aditivo**:
+`Q(x + y) − Q x − Q y ∈ {−1, 0, 1}`, e os dois extremos ocorrem (`Q(½ + ½) = 2Q(½) − 1`, `Q(⅖ + ⅖) = 2Q(⅖) + 1`).
+
+**Produtor multivalorado** (`P`, `Q_mem_P`, `P_interior`, `P_fronteira`, `P_exemplos`, `P_sub`, `P_dois_iff`,
+`P_eq_argmin`, `colapso_fronteira`). `P(x) = {k ∈ ℤ | |x − k| ≤ ½}`:
+
+* `P(x) = {k}` no interior, `P(k + ½) = {k, k + 1}`; em particular **`P(½) = {0, 1}`, `P(3/2) = {1, 2}`**;
+* `P(x) ⊆ {Q x − 1, Q x}`, contém `Q x`, e tem dois elementos **exatamente** nas fronteiras `k + ½`;
+* `P(x)` é exatamente o conjunto dos inteiros mais próximos de `x`;
+* o colapso desempata para cima: `Q(k + ½) = k + 1`, embora `k ∈ P(k + ½)`.
+
+**Adjacência** (`Adj`, `adj_iff`, `adj_exemplos`, `adj_nao_transitiva`, `adj_symm`, `adj_irrefl`, `colapso_fecho`,
+`fecho_tudo`). Compartilhar uma fronteira ⟺ `|a − b| = 1`. `0 ∼ 1` e `1 ∼ 2`, mas **não** `0 ∼ 2`: a adjacência
+não é transitiva. Toda equivalência que a contém identifica **todos** os inteiros; o fecho de equivalência
+(`Relation.EqvGen`) é a relação total.
+
+**Competição** (`Dif`, `Dif_fatora`, `Dif_zero_iff`, `Dif_equidistante`, `Dif_neg_iff`, `Dif_lado`, `Dif01`,
+`Dif01_zero_iff`, `Dif12_zero_iff`, `meio_equidistante`, `Dif_reflexao`, `Dif01_antissim`, `reflexao_fixa`,
+`fronteira_iff`, `fronteira_iff_Dif`). `Δ_ab(x) = (x − a)² − (x − b)² = (b − a)(2x − a − b)`; para `a ≠ b`,
+`Δ_ab = 0 ⟺ x = (a + b)/2 ⟺ |x − a| = |x − b|`, e `Δ_ab < 0 ⟺ x está mais perto de a`. `Δ₀₁ = 2x − 1` zera só em
+`½`, `Δ₁₂` só em `3/2`. A reflexão `x ↦ a + b − x` troca o sinal; `x ↦ 1 − x` fixa só `½`. **A fronteira de `P`
+entre `k` e `k + 1` é exatamente o zero de `Δ_{k,k+1}`.**
+
+**Ponte com RH** (`Dif01_re`, `ponte_iff_RH`, `zero_iff_re_im`, `nao_rh_iff_produtor`, `dl`, `dl_zero_iff`,
+`classifica`, `regiao_decimo`, `distancias_exemplos`, `reflexo_zero`, `simetria_permite_pares`,
+`tolerancia_independente`):
+
+* **ATK-RH-BRIDGE ⟺ RH** (`ponte_iff_RH`): a ponte é a própria hipótese, não um lema disponível;
+* **o "produtor que falta"** — `σ + it` com `0 < |σ − ½| ≤ ε < ½` e `Re ζ = Im ζ = 0` — **existe ⟺ RH é falsa**;
+* `d(s) = |Re s − ½|`; classificação exata em central / tolerante fora da linha / fora da tolerância;
+  `T_{1/10} = {⅖ ≤ Re s ≤ ⅗}`; `d(9/20 + 10i) = d(11/20 + 10i) = 1/20`;
+* a reflexão `β + iγ ↦ (1 − β) + iγ` leva zeros a zeros, preserva `d` e troca o sinal de `Δ₀₁`;
+* a simetria sozinha admite pares fora da linha (`{9/20, 11/20}`), e a tolerância é independente da função: há
+  função sem zeros em `T_ε` e função com zero em `T_ε` fora da linha.
+
+**Intervalos** (`Intervalo`, `pts`, `soma`, `neg`, `sub`, `pt`, `larg`, `larg_nonneg`, `soma_correta`, `pts_soma`,
+`soma_assoc`, `soma_comm`, `soma_zero`, `pt_soma`, `larg_soma`, `sub_auto`, `zero_mem_sub_auto`,
+`sub_auto_eq_zero_iff`, `sem_inverso`, `estados`, `estados_iff`, `estados_pt`, `estados_tolerancia`,
+`estados_unidade`). A soma de intervalos é **exata** (igual à soma de Minkowski), associativa, comutativa, com
+neutro; as larguras somam. `I − I = [−w, w]` contém `0` e **só é `{0}` para estado fixo** — "`Z − Z = 0`" vale
+exatamente quando a tolerância é zero; com tolerância positiva **não há inverso aditivo**. Os estados de
+`[lo, hi]` são os `k` com `lo ≤ k + ½` e `k − ½ ≤ hi`: `[⅖, ⅗]` e `[0, 1]` têm os estados `{0, 1}` (o estado "01");
+`[0, 3/2]` já toca o estado `2`.
+
+**Semântica de três valores** (`Valor`, `aval`, `aval_ne_falso_iff`, `aval_fronteira_iff`, `aval_meio`,
+`aval_colapso`). "`x` está no estado `k`" é verdadeiro (`|x − k| < ½`), fronteira (`= ½`) ou falso; não-falso ⟺
+`k ∈ P(x)`; fronteira ⟺ `x = k ± ½`; em `½`, os estados `0` e `1` valem *fronteira* e `2` vale falso; o colapso
+respeita a verdade.
+
+| Afirmação | Estado |
+| --- | --- |
+| `Q`, células, não aditividade do colapso com erro em `{−1, 0, 1}` | CERTIFIED |
+| `P(½) = {0, 1}`, `P(3/2) = {1, 2}`, `P = argmin`, dois estados ⟺ fronteira | CERTIFIED |
+| adjacência ⟺ `\|a − b\| = 1`, não transitiva; fecho transitivo colapsa tudo | CERTIFIED |
+| `Δ_ab = (b − a)(2x − a − b)`, zero ⟺ ponto médio; fronteira de `P` = zero de `Δ` | CERTIFIED |
+| simetria `Δ₀₁(1 − x) = −Δ₀₁(x)`; reflexão dos zeros preserva `d` | CERTIFIED |
+| ATK-RH-BRIDGE ⟺ RH; produtor fora da linha ⟺ `¬RH` | CERTIFIED (equivalências) |
+| intervalos: soma exata, sem inverso; estados de `[lo, hi]`; semântica de três valores | CERTIFIED |
+| todo zero não trivial está na fronteira `Δ₀₁ = 0` | OPEN_MATH (é RH) |
+| existe zero com `0 < \|σ − ½\| ≤ ε` | OPEN_MATH (é `¬RH`) |
+
+Numérico (`codigo/fronteira.py`, `dados/fronteira.json`, `testes/test_fronteira.py`, 3 testes), em aritmética
+exata: 4001 racionais em `[−5, 5]` com `P = argmin`, `|P| ≤ 2`, `|P| = 2` só nas fronteiras; 160 801 pares com
+`Q(x + y) − Q x − Q y ∈ {−1, 0, 1}` (21 000 / 120 801 / 19 000); adjacência e fecho em `{−6..6}` (uma classe);
+1997 triplas para `Δ`; 300 pares de intervalos (Minkowski, larguras, `I − I`, estados por força bruta). Em ponto
+flutuante: `|ζ(9/20 + 10i)| ≈ 1,567`, `|ζ(11/20 + 10i)| ≈ 1,531`; a reflexão do primeiro zero é zero.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

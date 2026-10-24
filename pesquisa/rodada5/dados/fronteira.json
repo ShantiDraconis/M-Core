@@ -1,0 +1,72 @@
+{
+ "produtor": {
+  "pontos": 4001,
+  "P_eq_argmin": 4001,
+  "card_le_2": 4001,
+  "dois_iff_fronteira": 4001,
+  "Q_em_P": 4001
+ },
+ "P(1/2)": [
+  0,
+  1
+ ],
+ "P(3/2)": [
+  1,
+  2
+ ],
+ "Q(1/2)": 1,
+ "Q(3/2)": 2,
+ "erro_colapso_soma": {
+  "-1": 21000,
+  "0": 120801,
+  "1": 19000
+ },
+ "Q(1/2+1/2)-2Q(1/2)": -1,
+ "Q(2/5+2/5)-2Q(2/5)": 1,
+ "adjacencia": {
+  "adj_iff_dist1": true,
+  "0~1": true,
+  "1~2": true,
+  "0~2": false,
+  "classes_do_fecho_em_-6..6": 1
+ },
+ "competicao": {
+  "triplas": 1997,
+  "fatora": 1997,
+  "zero_iff_meio": 1997,
+  "reflexao": 1997
+ },
+ "Delta01(1/2)": "0",
+ "Delta12(3/2)": "0",
+ "intervalos": {
+  "pares": 300,
+  "minkowski": 300,
+  "larguras": 300,
+  "I-I_simetrico": 300,
+  "estados": 300
+ },
+ "estados[2/5,3/5]": [
+  0,
+  1
+ ],
+ "estados[0,1]": [
+  0,
+  1
+ ],
+ "estados[0,3/2]": [
+  0,
+  1,
+  2
+ ],
+ "zeta": {
+  "|ζ(9/20+10i)|": 1.5674555521768094,
+  "|ζ(11/20+10i)|": 1.5314865990740896,
+  "rho1": [
+   0.49999999999999883,
+   14.134725141734693
+  ],
+  "|ζ(1-β+iγ)|": 1.9105766708076064e-15,
+  "d(rho1)": 1.1657341758564144e-15
+ },
+ "aviso": "aritmética exata exceto ζ; o kernel prova as leis (Fronteira.lean)"
+}
