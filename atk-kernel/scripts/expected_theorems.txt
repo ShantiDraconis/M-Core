@@ -6710,3 +6710,7 @@ ATK.ZeroClasses.Complementar.triv_passo
 ATK.ZeroClasses.Complementar.triv_segunda_diferenca
 ATK.ZeroClasses.Complementar.triv_compensados
 ATK.ZeroClasses.Complementar.equilibrio_sem_fora
+ATK.ZeroClasses.Complementar.sin_meio_zero_iff
+ATK.ZeroClasses.Complementar.triv_iff_sin
+ATK.ZeroClasses.Complementar.teste_decisivo
+ATK.ZeroClasses.Complementar.necessidade_iff

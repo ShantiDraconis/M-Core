@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 265a78f70ec438b4a663fcf98cc13651d98526b8be8e73ab0ba3d82e4dc56e8b
+# axiomas por teorema — congelamento de ac88eea39059b4b3e5445c011bc21b0006cdd54b67be615a2dfe2742adb11ad9
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6712,3 +6712,7 @@ ATK.ZeroClasses.Complementar.triv_passo	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Complementar.triv_segunda_diferenca	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Complementar.triv_compensados	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Complementar.equilibrio_sem_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.sin_meio_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.triv_iff_sin	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.teste_decisivo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.necessidade_iff	propext, Classical.choice, Quot.sound

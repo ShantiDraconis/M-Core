@@ -841,7 +841,7 @@ ponto médio na linha e desvios que somam zero.
 
 ## 4x. Os dois casos: onde se excluem e onde se complementam (rodada 18)
 
-`ATK/ZeroClasses/Complementar.lean` (25 teoremas, total 6712, só axiomas padrão). Responde a "os dois casos valem,
+`ATK/ZeroClasses/Complementar.lean` (29 teoremas, total 6716, só axiomas padrão). Responde a "os dois casos valem,
 porque se complementam; a rigidez está na forma da pergunta de Riemann".
 
 * **Para a mesma `ζ`, exatamente um** (`exatamente_um`: `RH ∨ H_fora` e `¬(RH ∧ H_fora)`). Aceitar os dois prova
@@ -862,8 +862,14 @@ porque se complementam; a rigidez está na forma da pergunta de Riemann".
   `ζ`, ela vem dos primos, não da forma da pergunta.
 * **Triviais** (`triv_passo`, `triv_segunda_diferenca`, `triv_compensados`): `Δ²zₙ = 0` e, em `ξ`, os triviais
   desaparecem (`ζ(−2(n+1)) = 0`, `ξ(−2(n+1)) ≠ 0`).
+* **A lei `sin(πs/2)`** (`triv_iff_sin`): `sin(πs/2) = 0 ∧ Re s < 0 ⟺ s = −2(n+1)` — a classe trivial é imposta
+  pelo fator `sin` da equação funcional.
 * **Necessidade** (`equilibrio_sem_fora`): `Σ(β − 1/2) = 0` vale também só com zeros centrais, logo **não** torna
-  os externos necessários. A lei de acoplamento em que cada zero (trivial, central ou externo) é necessário é a
+  os externos necessários. **Teste decisivo** (`teste_decisivo`, `necessidade_iff`): uma propriedade `P` provada
+  que seria falsa sem externos prova `H_fora`; e **existe tal `P` ⟺ ¬RH** — demonstrar a necessidade dos externos
+  é exatamente refutar RH. No erro dos primos: `ψ(x) − x = O(x^{1/2+ε})` para todo `ε` ⟺ RH (von Koch), e a
+  oscilação incondicional de Littlewood `Ω±(x^{1/2} log log log x)` é produzida só pelos zeros centrais — não força
+  externos. A lei de acoplamento em que cada zero (trivial, central ou externo) é necessário é a
   fórmula explícita `ψ(x) = x − Σ_ρ x^ρ/ρ − log 2π − ½log(1 − x^{−2})`: `BUILD_PENDING`.
 
 Numérico (`testes/test_zeroclasses.py`, 2 testes novos): a família `F_{d,t}` (simetria, zeros, `d = 0` ⟺ sem

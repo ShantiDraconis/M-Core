@@ -19,8 +19,10 @@ separa com precisão onde isso é contraditório e onde é exato.
   parâmetro contínuo; se `Θ < 1` também é `OPEN_MATH`.
 * **A rigidez dos triviais** (`triv_segunda_diferenca`): `Δ²zₙ = 0`; e eles são **compensados** em `ξ`
   (`triv_compensados`: `ζ(−2(n+1)) = 0`, `ξ(−2(n+1)) ≠ 0`, os polos de `Γ` cancelam os zeros).
+* **A lei `sin(πs/2)`** (`triv_iff_sin`): `sin(πs/2) = 0 ∧ Re s < 0 ⟺ s` é trivial.
 * **Necessidade** (`equilibrio_sem_fora`): a lei de equilíbrio `Σ(β − 1/2) = 0` vale **também sem** zeros
-  externos — ela não os torna necessários. Uma lei de acoplamento em que **cada** zero é necessário é a
+  externos — ela não os torna necessários. **Teste decisivo** (`teste_decisivo`, `necessidade_iff`): uma
+  propriedade provada que seria falsa sem externos prova `H_fora`; e existe tal teste **⟺ ¬RH**. Uma lei de acoplamento em que **cada** zero é necessário é a
   fórmula explícita de Riemann–von Mangoldt (triviais, críticos e externos contribuem termos distintos para
   `ψ(x)`): BUILD_PENDING.
 -/
@@ -217,6 +219,61 @@ theorem equilibrio_sem_fora (S : Finset ℂ) (h : ∀ ρ ∈ S, ρ.re = 1 / 2) :
     ∑ ρ ∈ S, (ρ.re - 1 / 2) = 0 :=
   Finset.sum_eq_zero fun ρ hρ => by rw [h ρ hρ, sub_self]
 
+/-! ## 6. A lei `sin(πs/2)` dos triviais -/
+
+theorem sin_meio_zero_iff (s : ℂ) : Complex.sin ((Real.pi : ℂ) * s / 2) = 0 ↔ ∃ k : ℤ, s = 2 * k := by
+  have hπ : (Real.pi : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero
+  rw [Complex.sin_eq_zero_iff]
+  constructor
+  · rintro ⟨k, hk⟩
+    refine ⟨k, mul_left_cancel₀ hπ ?_⟩
+    linear_combination 2 * hk
+  · rintro ⟨k, rfl⟩
+    exact ⟨k, by ring⟩
+
+/-- **`sin(πs/2) = 0 ∧ Re s < 0 ⟺ s` é trivial**: a classe trivial é imposta pelo fator `sin` da equação
+funcional. -/
+theorem triv_iff_sin (s : ℂ) :
+    (Complex.sin ((Real.pi : ℂ) * s / 2) = 0 ∧ s.re < 0) ↔ ATK.ZetaSimetria.Trivial s := by
+  rw [sin_meio_zero_iff]
+  constructor
+  · rintro ⟨⟨k, rfl⟩, hre⟩
+    have hk : (k : ℝ) < 0 := by simp at hre; linarith
+    have hk' : k ≤ -1 := by
+      have : k < 0 := by exact_mod_cast hk
+      omega
+    obtain ⟨n, hn⟩ := Int.exists_eq_neg_ofNat (show k ≤ 0 by omega)
+    obtain ⟨m, rfl⟩ : ∃ m, n = m + 1 := ⟨n - 1, by omega⟩
+    refine ⟨m, ?_⟩
+    rw [hn]; push_cast; ring
+  · rintro ⟨n, rfl⟩
+    refine ⟨⟨-((n : ℤ) + 1), by push_cast; ring⟩, ATK.ZetaSimetria.re_trivial ⟨n, rfl⟩⟩
+
+/-! ## 7. O teste decisivo da necessidade -/
+
+open ATK.ZeroClasses.MundoFora (ForaSet)
+
+/-- **O teste decisivo**: uma propriedade `P` provada, que seria falsa sem zeros externos, prova `H_fora`. -/
+theorem teste_decisivo {P : Prop} (hP : P) (hne : ForaSet = ∅ → ¬ P) : HFora := by
+  rw [hFora_iff_fora]
+  by_contra h
+  apply hne _ hP
+  ext s
+  simp only [mem_empty_iff_false, iff_false]
+  exact fun hs => h ⟨s, hs⟩
+
+/-- **Todo teste decisivo é uma prova de `¬RH`, e vice-versa**: a "necessidade dos externos" não é mais
+fraca do que refutar RH. -/
+theorem necessidade_iff :
+    (∃ P : Prop, P ∧ (ForaSet = ∅ → ¬ P)) ↔ ¬ RiemannHypothesis := by
+  constructor
+  · rintro ⟨P, hP, hne⟩
+    exact hFora_iff.mp (teste_decisivo hP hne)
+  · intro h
+    refine ⟨¬ RiemannHypothesis, h, fun hv hn => hn ?_⟩
+    rw [ATK.ZerosFora.rh_iff_fora_vazio, ← ATK.ZeroClasses.MundoFora.foraSet_eq]
+    exact hv
+
 end ATK.ZeroClasses.Complementar
 
 #print axioms ATK.ZeroClasses.Complementar.exatamente_um
@@ -244,3 +301,7 @@ end ATK.ZeroClasses.Complementar
 #print axioms ATK.ZeroClasses.Complementar.triv_segunda_diferenca
 #print axioms ATK.ZeroClasses.Complementar.triv_compensados
 #print axioms ATK.ZeroClasses.Complementar.equilibrio_sem_fora
+#print axioms ATK.ZeroClasses.Complementar.sin_meio_zero_iff
+#print axioms ATK.ZeroClasses.Complementar.triv_iff_sin
+#print axioms ATK.ZeroClasses.Complementar.teste_decisivo
+#print axioms ATK.ZeroClasses.Complementar.necessidade_iff
