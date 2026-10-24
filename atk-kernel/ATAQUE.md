@@ -50,6 +50,8 @@ A regularidade exigiria usar a estrutura fina do termo não linear (barreira de 
 | F2.5 | Estabilidade linear certificada do perfil (cotas espectrais intervalares) | ⬜ | — |
 | F2.6 | Soluções fracas de Leray (N4–N5) | ⬜ | — |
 | F2.7 | **Existência local de soluções suaves em ℝ³** (Leray; Kato–Fujita) no modelo genuíno: dado de Schwartz de divergência nula ⇒ (u, p) suaves em ℝ³ × [0, T) com energia e enstrofia finitas | ✅ | `NSExistencia.existenciaLocal` |
+| F2.8 | **Desigualdade de energia** ∫|u(t)|² ≤ ∫|u₀|² na classe de Fourier (o termo não linear não troca energia: ∫⟪â, N(â, â)⟫ = 0) e redução de B3 com classe dependente do dado | ✅ | `NSEnergia.energia_decresce`, `NSClasse.desigualdadeEnergiaF`, `NSClasse.existenciaLocalF`, `NSClasse.b3_de_classeD` |
+| F2.9 | Continuação com enstrofia limitada e unicidade fraca–forte (os dois enunciados que faltam para B3) | ⬜ | — |
 
 ## Frente 3 — Hipótese de Riemann
 

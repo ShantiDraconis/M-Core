@@ -189,3 +189,5 @@ import ATK.NSPressao
 import ATK.NSDado
 import ATK.NSPlancherel
 import ATK.NSExistencia
+import ATK.NSEnergia
+import ATK.NSClasse
