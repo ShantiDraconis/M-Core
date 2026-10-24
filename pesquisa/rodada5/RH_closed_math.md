@@ -910,6 +910,49 @@ externos em aberto são os **não triviais**.
 Numérico (`testes/test_zeroclasses.py`, 2 testes novos): `ζ′(−2) = −0,0304484571…` e `ζ′(−4)` conferem com a fórmula;
 `Z_ATK` com `N = 3` tem os quartetos, a simetria, preserva o 1º zero de `ζ` e não se anula nos triviais.
 
+## 4z. As escalas em que um zero fora da linha ainda pode existir (rodada 20)
+
+`ATK/ZeroClasses/Escalas.lean` (11 teoremas, total 6757, só axiomas padrão). Responde a "a meta é achar
+exatamente as escalas onde esse zero poderia existir": é o **complemento das regiões excluídas**. O kernel prova
+as exclusões que tem; as da literatura entram como **hipóteses nomeadas**, e o kernel deriva a janela.
+
+**Perto do primeiro zero — a lei da cauda certificada** (`lei_da_cauda`, `primeiro_zero_simples`,
+`cauda_nao_zero`). No disco de raio `10⁻⁶` do certificado de §4f, a contração `g(z) = z − ζ(z)/c` dá
+`(|c|/2)·|z − ρ₁| ≤ |ζ(z)| ≤ (3|c|/2)·|z − ρ₁|`, `|c| ≈ 0,7932`; o primeiro zero é **simples**; nenhum ponto do disco
+fora da linha é zero. É a forma provada da medição `R_n ≈ 0,79316·d_n` da "cauda ATK": a cauda tende a zero sem
+zeros exatos — ela se aproxima de um zero **conhecido**, não revela um novo.
+
+**O que o kernel exclui sozinho** (`escalas_kernel`): `(Im ρ)² ≥ 3/4`, `c(γ) < Re ρ < 1 − c(γ)` e o disco do primeiro
+zero.
+
+**A janela, com a literatura como hipótese** (`janela`, `janela_2026`):
+
+* `VerificadoAte 3 000 175 332 800` — Platt–Trudgian (2021): todos os zeros até essa altura estão na linha e são
+  simples;
+* `RegiaoClassica 4,896` — Bellotti–Trudgian–Yang (2026): `ζ ≠ 0` em `σ ≥ 1 − 1/(4,896 log t)`, `t ≥ 3`.
+
+Então **todo zero fora da linha tem `|γ| > 3·10¹²` e `1/(4,896 log|γ|) < Re ρ < 1 − 1/(4,896 log|γ|)`**. A janela
+**alarga** com a altura (`janela_alarga`), e **nenhuma reta vertical `σ₀ ∈ (0,1)` fica excluída em todas as alturas**
+(`nenhuma_reta_excluida`): por isso não existe "uma escala exata" — existe uma região. As retas ATK
+`σₙ = ½ + 1/(2n+3)` estão **todas** dentro dela acima de `3·10¹²` (`retas_atk_acima_de_H`).
+
+| Altura `|γ|` | Janela possível para `Re ρ` | Região que manda | Escala de Selberg `1/log t` |
+| --- | --- | --- | --- |
+| `3·10¹²` | `(0,00711; 0,99289)` | clássica (`R = 4,896`) | `0,0348` |
+| `10²⁰` | `(0,00444; 0,99556)` | clássica | `0,0217` |
+| `10¹⁰⁰` | `(0,00111; 0,99889)` | Littlewood (`log log t/(21,233 log t)`) | `0,0043` |
+| `e^{10⁶}` | `(7,7·10⁻⁷; 1 − 7,7·10⁻⁷)` | Korobov–Vinogradov (`53,989`) | `10⁻⁶` |
+
+A região de Littlewood passa a clássica em `log t ≈ 76,46` e a de Korobov–Vinogradov só em `log t ≈ 482 036`.
+**Quantos** zeros podem estar numa reta: Guth–Maynard (2026) dá `N(σ, T) ≤ T^{30(1−σ)/13 + o(1)}`, útil só para
+`σ > 17/30` — e a reta ATK `n = 6` é **exatamente** `σ = 17/30`; nas retas `n ≤ 5` o expoente vai de `0,385`
+(`σ = 5/6`) a `0,976`. Bohr–Landau (§4w, no kernel) dá `O(T)` para cada distância fixa. O que **não** está aqui: uma
+contagem certificada positiva numa região fora da linha — só ela provaria um zero externo.
+
+Numérico (`codigo/escalas.py`, `dados/escalas.json`, `testes/test_escalas.py`, 6 testes): janelas, cruzamentos das
+três regiões, expoentes de Guth–Maynard nas retas ATK e `R/d → 0,79316` dentro dos limites certificados
+`[0,3966; 1,1897]`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

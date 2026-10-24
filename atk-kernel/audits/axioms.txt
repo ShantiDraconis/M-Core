@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 5620afaae04f63f794baa7e8a5f1f908a7a5274614228a910f7587251c15c3b6
+# axiomas por teorema — congelamento de a7f36002c0d564a51a9a4dddc2784f2392fa920f3743b4521add721f584ada0b
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6746,3 +6746,14 @@ ATK.ZeroClasses.Construcao.rigidez	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Construcao.ZATK_analitica	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Construcao.colar_refuta	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Construcao.rh_nao_colar	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.zeta_eq_cC	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.lei_da_cauda	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.primeiro_zero_simples	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.cauda_nao_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.escalas_kernel	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.janela	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.janela_alarga	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.nenhuma_reta_excluida	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.retas_atk_na_janela	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.retas_atk_acima_de_H	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Escalas.janela_2026	propext, Classical.choice, Quot.sound

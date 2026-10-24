@@ -1,0 +1,157 @@
+{
+ "H_Platt_Trudgian": 3000175332800,
+ "janela_por_altura": {
+  "3e12 (H)": {
+   "delta_borda": "0.00710931",
+   "janela": [
+    "0.00710931",
+    "0.992891"
+   ],
+   "regiao": "classica",
+   "escala_selberg_1/log_t": "0.03481"
+  },
+  "1e15": {
+   "delta_borda": "0.0059136",
+   "janela": [
+    "0.0059136",
+    "0.994086"
+   ],
+   "regiao": "classica",
+   "escala_selberg_1/log_t": "0.02895"
+  },
+  "1e20": {
+   "delta_borda": "0.0044352",
+   "janela": [
+    "0.0044352",
+    "0.995565"
+   ],
+   "regiao": "classica",
+   "escala_selberg_1/log_t": "0.02171"
+  },
+  "1e50": {
+   "delta_borda": "0.00194149",
+   "janela": [
+    "0.00194149",
+    "0.998059"
+   ],
+   "regiao": "littlewood",
+   "escala_selberg_1/log_t": "0.008686"
+  },
+  "1e100": {
+   "delta_borda": "0.00111252",
+   "janela": [
+    "0.00111252",
+    "0.998887"
+   ],
+   "regiao": "littlewood",
+   "escala_selberg_1/log_t": "0.004343"
+  },
+  "1e1000": {
+   "delta_borda": "0.000158349",
+   "janela": [
+    "0.000158349",
+    "0.999842"
+   ],
+   "regiao": "littlewood",
+   "escala_selberg_1/log_t": "0.0004343"
+  },
+  "e^100": {
+   "delta_borda": "0.00216887",
+   "janela": [
+    "0.00216887",
+    "0.997831"
+   ],
+   "regiao": "littlewood",
+   "escala_selberg_1/log_t": "0.01"
+  },
+  "e^10^6": {
+   "delta_borda": "7.7192e-07",
+   "janela": [
+    "7.7192e-07",
+    "0.999999"
+   ],
+   "regiao": "kv",
+   "escala_selberg_1/log_t": "1e-06"
+  }
+ },
+ "log_log_t_cruzamento_classica_littlewood": "4.3368",
+ "log_t_cruzamento_classica_littlewood": "76.4629",
+ "retas_ATK": {
+  "0": {
+   "sigma": "0.833333",
+   "dentro_da_janela_em_H": true,
+   "expoente_GM": "0.3846",
+   "GM_nao_trivial": true
+  },
+  "1": {
+   "sigma": "0.700000",
+   "dentro_da_janela_em_H": true,
+   "expoente_GM": "0.6923",
+   "GM_nao_trivial": true
+  },
+  "2": {
+   "sigma": "0.642857",
+   "dentro_da_janela_em_H": true,
+   "expoente_GM": "0.8242",
+   "GM_nao_trivial": true
+  },
+  "3": {
+   "sigma": "0.611111",
+   "dentro_da_janela_em_H": true,
+   "expoente_GM": "0.8974",
+   "GM_nao_trivial": true
+  },
+  "4": {
+   "sigma": "0.590909",
+   "dentro_da_janela_em_H": true,
+   "expoente_GM": "0.9441",
+   "GM_nao_trivial": true
+  },
+  "5": {
+   "sigma": "0.576923",
+   "dentro_da_janela_em_H": true,
+   "expoente_GM": "0.9763",
+   "GM_nao_trivial": true
+  },
+  "6": {
+   "sigma": "0.566667",
+   "dentro_da_janela_em_H": true,
+   "expoente_GM": "1.0000",
+   "GM_nao_trivial": false
+  },
+  "7": {
+   "sigma": "0.558824",
+   "dentro_da_janela_em_H": true,
+   "expoente_GM": "1.0181",
+   "GM_nao_trivial": false
+  }
+ },
+ "sigma_onde_GM_deixa_de_ajudar": "0.566667",
+ "cauda_primeiro_zero": [
+  {
+   "d": 0.01,
+   "R": "0.00789955",
+   "R/d": "0.789955"
+  },
+  {
+   "d": 0.001,
+   "R": "0.000792839",
+   "R/d": "0.792839"
+  },
+  {
+   "d": 0.0001,
+   "R": "7.93128e-05",
+   "R/d": "0.793128"
+  },
+  {
+   "d": 1e-05,
+   "R": "7.93157e-06",
+   "R/d": "0.793157"
+  }
+ ],
+ "limites_certificados_R/d": [
+  "0.39658",
+  "1.18975"
+ ],
+ "aviso": "dados da literatura como entrada; o kernel prova a janela a partir deles (`janela`), não os dados"
+}

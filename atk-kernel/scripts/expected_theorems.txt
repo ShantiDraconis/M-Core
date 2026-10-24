@@ -6744,3 +6744,14 @@ ATK.ZeroClasses.Construcao.rigidez
 ATK.ZeroClasses.Construcao.ZATK_analitica
 ATK.ZeroClasses.Construcao.colar_refuta
 ATK.ZeroClasses.Construcao.rh_nao_colar
+ATK.ZeroClasses.Escalas.zeta_eq_cC
+ATK.ZeroClasses.Escalas.lei_da_cauda
+ATK.ZeroClasses.Escalas.primeiro_zero_simples
+ATK.ZeroClasses.Escalas.cauda_nao_zero
+ATK.ZeroClasses.Escalas.escalas_kernel
+ATK.ZeroClasses.Escalas.janela
+ATK.ZeroClasses.Escalas.janela_alarga
+ATK.ZeroClasses.Escalas.nenhuma_reta_excluida
+ATK.ZeroClasses.Escalas.retas_atk_na_janela
+ATK.ZeroClasses.Escalas.retas_atk_acima_de_H
+ATK.ZeroClasses.Escalas.janela_2026
