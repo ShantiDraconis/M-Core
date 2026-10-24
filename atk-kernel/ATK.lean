@@ -293,3 +293,6 @@ import ATK.ASWReciproca
 import ATK.EdreiInteira
 import ATK.XiTP
 import ATK.WeilMecanismo
+import ATK.InteiraAnalitica
+import ATK.HadamardGenero0
+import ATK.XiCrescimento

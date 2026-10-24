@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "6b7a651a677c3776f6f9bf64c82b14f14a83d3a7ebfabbbbf59b346fce2b7ba6",
+  "sources_sha256": "1e74205b0036e2080494d953f81472fa2fe0757cda85adb0f7d1e8b7ad702d6e",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -177,6 +177,7 @@
     "ATK/GramBaezDuarte.lean": "3490e6d7d6afc5134dfa64df59e3fd80c6840b4c492103a009d5b9a5ba329d80",
     "ATK/GramDois.lean": "59aa6067bb85619f77ddab81e32fe60f7ee4e9f13134e03ed564073744ff408e",
     "ATK/GramExato.lean": "cd56dcd8b0e0a08856e89ec0c33fa9ba44edeb41a7b87e7073db16c3816c2fcb",
+    "ATK/HadamardGenero0.lean": "a1682e7095ce97d256df18e4a9852f835b242abd7e8e2de704b1d610c2edef72",
     "ATK/Hexagrama.lean": "d8bcbdae13aaffe64fc491d8992b4a08a62f75bb437646c879296d4863099248",
     "ATK/Hodge.lean": "f550ba31f9473133531e7c8bf4ec71b039c4e66f658a92de9487d3b21d70b870",
     "ATK/HodgeFiltracao.lean": "0250605857654db1e393afe4137e35db9d494df17af0403f72c438aebbe47db1",
@@ -206,6 +207,7 @@
     "ATK/IntegracaoFCBeal.lean": "eedbefe725eacbc1ec6349929cf8c1f5939442a4b58f023a9a3a58cd10cecdc8",
     "ATK/IntegracaoFCNS.lean": "614fa3aa44a73cecbab7d23302110616c81b45f96842b40ee50619602fe8c422",
     "ATK/IntegracaoFCPNP.lean": "bbfd56d089f8de59396b1031d5e0d63da4088ccc351fcc0b6c57fe46ddb367bc",
+    "ATK/InteiraAnalitica.lean": "8c1b859377dfabb22e8256289ff4d8951b92e73c805d044300989aea0911f941",
     "ATK/JensenTuran.lean": "54143c1c06ee5b25b8a78df19b33d267162a1706aec1f610fa632520c0d5ec7c",
     "ATK/L3Base.lean": "b3350cf0c102a4dc7d6babbe643359e7869d7ce563a21a624b9fd41a0d33ad3c",
     "ATK/L4Base.lean": "87ed0774feb3d4dafca5bcd8ff686fd1d847cebc79e3a293161efc82d85b2bce",
@@ -315,6 +317,7 @@
     "ATK/ValleePoussin.lean": "858c22bff925f6c9e3af477d698b5fdd07202fa35a4c7aceb44e411f6d8fa235",
     "ATK/WeilMecanismo.lean": "477ac3c70f5ed1db9afdaec95a760308bc9eab4ab9b6246b68c49d85341480e0",
     "ATK/XiAnalitica.lean": "179bd9f0e12c448d4971b892a26cc58f80d935c41ffebc4646e6bdc109b10399",
+    "ATK/XiCrescimento.lean": "d3c4d5bfef9e8c03ba2c6ed4f2849909720754bede2bdf5d3438196b098fffc6",
     "ATK/XiPhi.lean": "1cdb05b7409967976e556616851590d312fccf4d5df6871849fef438e59048f2",
     "ATK/XiTP.lean": "b524e9d19fc3fc9a4e51fcbef1b6a15f3f2d5b6d3da81d135019bf5ecfad5fb1",
     "ATK/YMOficial.lean": "352c748f123a25a9d6ed15b3c990e4503a5310eb9d294bca2b7ba45ee11a369d",
@@ -336,12 +339,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "c48e75f985d2151239a6614d874146b575978176ed960f3fc27ade104656312c"
+    "ATK.lean": "c6bd348ca57f4f026d49775da544c3d79c23cd10a91aec2717ef0b90837824f9"
   },
-  "n_files": 335,
-  "expected_theorems": 6255,
+  "n_files": 338,
+  "expected_theorems": 6320,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "fec7f49b63b5d41a8d1fbb4b107e61c19e1b2f00",
+  "commit_at_freeze": "1d25fb6b5500fa9d2a6925c1d6ed69c710acd28f",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
