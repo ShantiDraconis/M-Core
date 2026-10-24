@@ -1031,6 +1031,65 @@ de teste; **varredura** de `|ζ|` em `0,05 ≤ σ ≤ 0,45` e `0,55 ≤ σ ≤ 0
 `(0,55; 14,14)` (ao lado do 1º zero), 180/180 blocos com margem de exclusão positiva **heurística** (`M` amostrado,
 não cota rigorosa); certificados de contração numéricos nos zeros 2–5 (todos na linha).
 
+## 4ab. Onde o real encontra o imaginário: componentes, mínimos, caudas e o infinito (rodada 22)
+
+`ATK/ZeroClasses/Componentes.lean` (28 teoremas, total 6833, só axiomas padrão). Com `ζ(σ + it) = u + iv`, o kernel
+separa **componentes iguais**, **troca de componentes** e **anulação simultânea**, e acrescenta o teorema que
+decide o "quase zero".
+
+**Curvas e rotação** (`diagonais`, `cruzam_so_no_zero`, `curvas_C`, `igual_nao_e_zero`, `rotacao`). As curvas
+`C₊ = {u = v}` e `C₋ = {u = −v}` cruzam-se **exatamente** nos zeros de `ζ`; `u = v` sozinho não é zero (`1 + i`). A
+troca `(u, v) ↦ (−v, u)` é `J = A(i)`, com `J² = −1`, `J⁴ = 1`, `|iz| = |z|`: girar não cria zero.
+
+**Cauchy–Riemann e o ângulo reto** (`cauchy_riemann`, `cruzamento_perpendicular`). Em `s ≠ 1`:
+`∂σu = Re ζ′`, `∂σv = Im ζ′`, `∂tu = −Im ζ′`, `∂tv = Re ζ′` (logo `uσ = vt`, `ut = −vσ`). Os gradientes de `u` e `v` —
+e os de `u − v` e `u + v` — são **ortogonais** e de mesma norma `|ζ′|`: num zero simples, as curvas cruzam-se em
+ângulo reto.
+
+**Não existe "quase zero" que seja mínimo** (`nao_localmente_constante`, `minimo_local_e_zero`,
+`sem_maximo_local`, `minimo_na_fronteira`). Pelo princípio do módulo mínimo, **todo mínimo local de `|ζ|` fora do
+polo é um zero exato**; `|ζ|` não tem máximo local; e num compacto sem zeros o mínimo de `|ζ|` fica **na fronteira**.
+Isso explica a varredura da rodada 21: o mínimo fora da linha (`0,0391`) estava em `σ = 0,55`, a borda da região — o
+que o teorema obriga numa região sem zeros. Para procurar zeros, os mínimos locais são **os** candidatos, e um
+mínimo positivo no interior é impossível.
+
+**A cauda de influência** (`residuo_logderiv`, `residuo_primeiro_zero`, `residuo_triviais`). Num zero de ordem
+`m` de `f` analítica, `(s − ρ)·f′(s)/f(s) → m`: a parcela `m/(s − ρ)` é a influência do zero sobre a vizinhança. No
+primeiro zero certificado e em todos os triviais, `m = 1`. A influência não cria zeros.
+
+**Caudas de zeros** (`sem_curva_de_zeros`, `sem_curva_unitInterval`, `cauda_iff`, `triviais_ilimitados`).
+Nenhuma curva contínua não constante (em qualquer espaço pré-conexo, em particular `[0, 1]`) é feita de zeros de
+`ζ`. **Infinitos zeros fora da linha ⟺ alturas ilimitadas**: uma "cauda" de zeros externos é compatível com o
+isolamento (os triviais `−2n` são uma sequência ilimitada de zeros), mas não está demonstrada.
+
+**Simetria não obriga zeros fora** (`Fch_refl`, `Fch_conj`, `Fch_zero_iff`, `Fch_na_linha`, `simetria_sem_fora`).
+`cosh(s − ½)` tem `F(1 − s) = F(s)` e `F(s̄) = conj F(s)`, zeros em alturas ilimitadas, e **todos** na linha.
+
+**Depois do infinito** (`arquimediano`, `altura_infinita`, `deslocamento_infinitesimal`, `ordinal_sucessor`).
+Nos reais não há deslocamento infinitesimal: todo `δ > 0` supera algum `1/(2n+1)`. Nos hiper-reais, `ω` excede todo
+real e `½ < ½ + ε < ½ + r` para todo real `r > 0`. Nos ordinais, `1 + ω = ω < ω + 1`. Nenhum desses objetos é um
+argumento de `ζ`; a transferência para `*ζ` não está no kernel, e ela não mudaria a pergunta clássica.
+
+**Li e contagem.** O critério de Li já está no kernel (`ATK/LiCriterio.lean`: `RH ⟺ |1 − 1/ρ| = 1` para todo `ρ`).
+Riemann–von Mangoldt não está; numericamente, o termo principal em `T = 10¹⁰⁰` é **`≈ 3,62·10¹⁰¹`** (não `10¹⁰²`).
+
+| Afirmação | Estado |
+| --- | --- |
+| `C₊ ∩ C₋` = zeros; rotação `J`; Cauchy–Riemann; gradientes ortogonais | CERTIFIED |
+| todo mínimo local de `\|ζ\|` é zero; sem máximo local; mínimo na fronteira de compacto sem zeros | CERTIFIED |
+| resíduo `(s − ρ)f′/f → m`; `m = 1` no 1º zero e nos triviais | CERTIFIED |
+| sem curva de zeros; zeros externos infinitos ⟺ alturas ilimitadas | CERTIFIED |
+| modelo `cosh(s − ½)`: simetrias de `ξ`, todos os zeros na linha | CERTIFIED |
+| arquimediano, `ω`, `½ + ε`, `1 + ω = ω < ω + 1` | CERTIFIED |
+| Riemann–von Mangoldt `N(T)` | não formalizado (BUILD_PENDING) |
+| interseção `C₊ ∩ C₋` fora da linha | OPEN_MATH (equivale a `¬RH`) |
+
+Numérico (`codigo/componentes.py`, `dados/componentes.json`, `testes/test_componentes.py`, 7 testes): Cauchy–Riemann
+no 1º zero a `10⁻⁹`; na malha `0,05 ≤ σ ≤ 0,95`, `10 ≤ t ≤ 100`, **29 mínimos locais, todos sobre os 29 zeros da linha**
+(conferidos por Newton); em `0,55 ≤ σ ≤ 0,95`, **nenhum** mínimo interior e o mínimo global na borda `σ = 0,55`;
+`(s − ρ₁)ζ′/ζ − 1 = O(d)`; `N(10³) ≈ 649`, `N(3·10¹²) ≈ 1,2363·10¹³` (a contagem de Platt–Trudgian), espaçamento
+médio `≈ 0,0275` em `10¹⁰⁰`; zeros do modelo `cosh` na linha.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
