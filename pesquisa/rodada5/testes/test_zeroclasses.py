@@ -71,3 +71,15 @@ def test_fluxo():
 def test_z2_mais_1():
     assert abs(1j ** 2 + 1) == 0  # zero imaginário puro
     assert all(abs(x * x + 1) >= 1 for x in [k / 10 for k in range(-100, 101)])  # nenhum real
+
+
+def test_mundo_fora_modelo():
+    # modelo (não é ζ): um quarteto hipotético fora da linha, com a órbita do kernel (`ponto_medio`,
+    # `equilibrio`): o ponto médio de ρ e 1 − ρ̄ está na linha e os desvios β − 1/2 somam zero.
+    for rho in (complex(0.6, 20.0), complex(0.51, 1e6), complex(0.9, 3.0)):
+        q = zc.orbita(rho)
+        assert zc.card_orbita(rho) == 4
+        meio = (rho + (1 - rho.conjugate())) / 2
+        assert abs(meio.real - 0.5) < 1e-12 and abs(meio.imag - rho.imag) < 1e-9
+        acima = [w for w in q if w.imag > 0]
+        assert abs(sum(w.real - 0.5 for w in acima)) < 1e-12

@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "69964944c47a24c0f32bc8be333418c7dcd33af1b4b40bd06fbab8b883bd5958",
+  "sources_sha256": "162b96e58094110887665173ddcd5e3df4d349e803326be2bb4e1deaec37d4c7",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -342,6 +342,7 @@
     "ATK/ZeroClasses/Hipotetico.lean": "41c689384ab203561911b1047075d5fd4edb09b2d288eb304134bed45559e9a8",
     "ATK/ZeroClasses/Laws.lean": "706996bb208f61a47c36f585e3cbf41172be0a97d80e9dd3d3e2fd558d1429f6",
     "ATK/ZeroClasses/Multiplicity.lean": "410e73e4cfa4a3816228c0eebc5ad409056f80779f41631197f19de363dc4f63",
+    "ATK/ZeroClasses/MundoFora.lean": "925019b18ec913e493350b122ee8d664b4881e6a0ce7ed82dfd1a6920185b330",
     "ATK/ZeroClasses/Regions.lean": "b5bf7b171d8af608951c1532c816007e91d749b86f5f451b1ee75d7e344c76e2",
     "ATK/ZeroClasses/Symmetry.lean": "2c86a8d7fe2ce119326dd7636dbcccd944988110c756ce9ffbde32b3162cc1d1",
     "ATK/ZeroClasses/Zeta.lean": "a5699b66b00dba9f55c593bb2a43eef25b9daa6d62e3f2fefc1550c8377c2609",
@@ -357,12 +358,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "e5224f6dd131eea55a7f2f806a3ab0ceeba19c6aa2e4829e8ad3098398f28c97"
+    "ATK.lean": "d15459081192aa6914c2b5f86faf6c1374af165fccc22a1b1669c359b52c0aad"
   },
-  "n_files": 356,
-  "expected_theorems": 6672,
+  "n_files": 357,
+  "expected_theorems": 6687,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "4e4127270c83d4bfa488b600b96490293e04afc7",
+  "commit_at_freeze": "aa44fa0dfecbc1e070c9f8130a8be1567b9e16b2",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

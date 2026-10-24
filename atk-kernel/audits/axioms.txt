@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 69964944c47a24c0f32bc8be333418c7dcd33af1b4b40bd06fbab8b883bd5958
+# axiomas por teorema — congelamento de 162b96e58094110887665173ddcd5e3df4d349e803326be2bb4e1deaec37d4c7
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6672,3 +6672,18 @@ ATK.ZeroClasses.Hipotetico.painel	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.FinalAudit.fechado	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.FinalAudit.reducao	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.FinalAudit.primeiro_ponto_aberto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.foraSet_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.linha_sobrevive	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.coexistencia	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.torcao_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.linha_espelho	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.ponto_medio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.fora_fixa_eixo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.equilibrio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.centro_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.contagem_espelhada	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.esparsidade	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.quase_todos_perto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.dicotomia_mundo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.rh_acima	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.MundoFora.mundo_finito	propext, Classical.choice, Quot.sound

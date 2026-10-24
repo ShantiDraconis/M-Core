@@ -808,6 +808,37 @@ Euler–Maclaurin (só biblioteca padrão) confere em `ζ(2)`, `ζ(−2)` e no 1
 estável sob perturbação `10⁻¹²`); `menor3/a₁³ ≈ 0,205`. Formatos: SMT-LIB 38–39, Coq e Isabelle (`orbita_quatro`,
 `menor3`).
 
+## 4w. O mundo com zeros fora da linha: a linha não cai, e os zeros fora a seguram (rodada 17)
+
+`ATK/ZeroClasses/MundoFora.lean` (15 teoremas, total 6687, só axiomas padrão). Responde à leitura "nesse mundo os
+zeros fora da linha são conhecidos; não bastaria um para destruir a linha; o que segura a linha são os zeros fora
+dela". O kernel separa as duas coisas que a frase "um zero fora refuta HR" mistura: um zero fora **refuta o
+enunciado universal** HR, mas **não destrói a linha**.
+
+* **A linha sobrevive** em qualquer mundo (`linha_sobrevive`, pelo zero certificado §4f) e, sob `HFora`, linha e
+  fora **coexistem** (`coexistencia`).
+* **A linha é o espelho**: é exatamente o conjunto fixo da torção `s ↦ 1 − s̄`, que leva cada zero fora em outro
+  zero fora, distinto (`linha_espelho`); o **ponto médio** de cada par está na linha (`ponto_medio`).
+* **Os zeros fora fixam o eixo** (`fora_fixa_eixo`): se o conjunto dos zeros fora é não vazio e simétrico em torno
+  de `Re s = κ`, então `κ = 1/2` — só eles já determinam a linha.
+* **Equilíbrio exato** (`equilibrio`, `centro_fora`): em toda altura, `Σ_{ρ fora} (β − 1/2) = 0` e a média das
+  partes reais dos zeros fora é **exatamente `1/2`**; contagens espelhadas à direita e à esquerda
+  (`contagem_espelhada`).
+* **Esparsidade** (`esparsidade`, Bohr–Landau, incondicional): a distância `> δ` da linha há no máximo `C·T`
+  zeros até a altura `T`; com `N(T)/T → ∞` (B10) eles são uma proporção que tende a zero (`quase_todos_perto`).
+* **Dicotomia do mundo** (`dicotomia_mundo`, `rh_acima`, `mundo_finito`): os zeros fora são finitos — e então,
+  acima de uma altura, **todos** os zeros estão na linha — ou infinitos, em alturas arbitrariamente grandes.
+
+Sentido exato de "os zeros fora seguram a linha": se existirem, são obrigados a ficar em quartetos espelhados
+nela, com centro de massa exatamente nela e densidade nula em relação a ela. A linha em si é fixada pela equação
+funcional (é o conjunto fixo da torção) e existiria igual sem eles. Que esse mundo exista é `¬HR` — `OPEN_MATH`.
+Na literatura esse mundo é ferramenta clássica: Littlewood (1914) provou `π(x) > li(x)` infinitas vezes tratando
+separadamente HR e `¬HR`; sob `¬HR`, com `Θ = sup Re ρ > 1/2`, `ψ(x) − x = Ω±(x^{Θ−ε})` (oscilação de Landau) — a
+consequência material de zeros fora sobre os primos (não formalizada: `BUILD_PENDING`).
+
+Teste-modelo (`testes/test_zeroclasses.py::test_mundo_fora_modelo`, não é `ζ`): quartetos hipotéticos têm o
+ponto médio na linha e desvios que somam zero.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
