@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de d9f720495743c7976ba7a89d425e42ac0997de334062dc56c3ecb6930448275d
+# axiomas por teorema — congelamento de a35ce421363c90f2d60423bf3c904a55799c693f7360b6ed8097ccad326a1271
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7220,3 +7220,20 @@ ATK.ZeroClasses.Faixa.zeros_acima_13	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Faixa.primeiro_zero_entre	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Faixa.m_pos_ate_13	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Faixa.novo_primeiro_ponto_14	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.cota_zeta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.cota_Gammaℝ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.Gamma_le_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.Gamma_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.Bx_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.norm_le_de	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.cota_xi_direita	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.cota_xi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.xi_metade_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.jensen_xi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.ordem_zeta_eq_xi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.ordemNat_zeta_eq_xi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.zerosAte_sub_bola	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.N_le_divisor	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.N_cota	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.log_Bx_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Jensen.N_O_TlogT	propext, Classical.choice, Quot.sound
