@@ -529,4 +529,13 @@ proof -
   then show ?thesis using e by linarith
 qed
 
+text \<open>Rodada 14 (ATK/HurwitzJensen): o passo do circulo de Hurwitz (variaveis = normas): |g| >= delta e
+  |g - F| < delta/2 dao |F| > delta/2, incompativel com |F(z0)| < delta/2 e |F(z0)| >= |F|.\<close>
+
+theorem hurwitz_circulo:
+  fixes delta g e F F0 :: real
+  assumes "delta > 0" "g \<ge> delta" "e < delta/2" "F \<ge> g - e" "F0 < delta/2" "F0 \<ge> F"
+  shows False
+  using assms by linarith
+
 end

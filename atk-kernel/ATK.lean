@@ -302,3 +302,5 @@ import ATK.PolyaCalor
 import ATK.XiMomentos
 import ATK.ProdutoresTN
 import ATK.JensenPolya
+import ATK.HurwitzJensen
+import ATK.DBNFechado

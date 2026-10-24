@@ -261,11 +261,11 @@ fechada `Pc(K)` (igual à soma direta dos degraus; erro `≈ 0,1458/K`), `D₁ =
 Ganho de Schur exato e Tikhonov; `D_∞` como resíduo ortogonal em `L²`; o núcleo `ψ` fora da linha; o princípio do
 argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); Edrei na
 forma completa (fator `e^{γz}`, funções meromorfas, ordem `≥ 1`); no fluxo de de Bruijn–Newman, os teoremas de de
-Bruijn (`1/2 ∈ S`, `S` fechado para cima), Newman (`S` limitado), Hurwitz (`S` fechado) e Rodgers–Tao (`Λ ≥ 0`), que
-entram como hipóteses explícitas em §4r, Hurwitz para funções inteiras e `e^{−tD²}` na classe de Laguerre–Pólya (o
-caso polinomial já está no kernel, §4r); Cauchy–Binet e Lindström–Gessel–Viennot (fechamento de TN por produtos, núcleos
-por caminhos); a volta de Pólya–Jensen (todos os `J^{d,n}` hiperbólicos ⇒ HR) e os resultados incondicionais de
-Csordas–Norfolk–Varga (Turán) e Griffin–Ono–Rolen–Zagier; a fórmula explícita e a positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
+Bruijn (`1/2 ∈ S`, `S` fechado para cima), Newman (`S` limitado) e Rodgers–Tao (`Λ ≥ 0`), que entram como hipóteses
+explícitas (o fechamento de `S` já está provado, §4t), e `e^{−tD²}` na classe de Laguerre–Pólya (o caso polinomial está
+no kernel, §4r); Cauchy–Binet e Lindström–Gessel–Viennot (fechamento de TN por produtos, núcleos por caminhos); os
+resultados incondicionais de Csordas–Norfolk–Varga (Turán) e Griffin–Ono–Rolen–Zagier; a fórmula explícita e a
+positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
 `aₙ`**) — todas as formas equivalentes continuam abertas. A **equivalência** HR ⟺ PF∞(aₙ) já está no kernel nas duas
 direções (§4p–§4q); o que falta é a positividade total dos `aₙ` concretos, que é `OPEN_MATH`.
 
@@ -634,7 +634,7 @@ A desigualdade de Turán, necessária para PF∞, é uma cota **inferior** — H
 * **`turan_de_rh`: HR ⇒ `γ(n)γ(n+2) ≤ γ(n+1)²`**. Com `aXi_cota_superior`, sob HR `a_{n+1}²` fica cercado por cima
   (incondicional) e por baixo.
 
-A volta (todos os `J^{d,n}` hiperbólicos ⇒ HR) precisa de Hurwitz para funções inteiras (`BUILD_PENDING`); Turán
+A volta (todos os `J^{d,n}` hiperbólicos ⇒ HR) está em §4t (Hurwitz); Turán
 incondicional (Csordas–Norfolk–Varga 1986) e `J^{d,n}` para `n` grande (Griffin–Ono–Rolen–Zagier 2019) não estão
 formalizados.
 
@@ -650,14 +650,46 @@ de Toeplitz contíguos `det(a_{k+i−j})` (`r = 2, …, 8` sob perturbação rel
 faixa; `J^{d,n}` hiperbólico para `d ≤ 6`, `d + n ≤ 13` (Sturm exato nos coeficientes em ponto flutuante); `−7/2880` confere. Verificação finita: não prova
 PF∞. Formatos: SMT-LIB 35, Coq e Isabelle (`turan_raiz`).
 
+## 4t. Hurwitz: o critério de Pólya–Jensen completo e `S` fechado (rodada 14)
+
+`ATK/HurwitzJensen.lean` (11), `ATK/DBNFechado.lean` (9): 20 teoremas novos, total 6432, só `propext`,
+`Classical.choice`, `Quot.sound`. Fecha dois nós que estavam `BUILD_PENDING`.
+
+**Hurwitz** (`hurwitz_local`): se `F_n → g` uniformemente num disco fechado, cada `F_n` é holomorfa e sem zeros no disco
+e `g ≠ 0` na circunferência, então `g ≠ 0` no centro. Prova sem Rouché: com `δ = min_{|z−z₀|=r}|g|`, para `n` grande
+`|F_n| ≥ δ/2` no círculo; o módulo máximo de `1/F_n` dá `|F_n(z₀)| ≥ δ/2`, mas `F_n(z₀) → g(z₀) = 0`.
+
+**A volta de Pólya–Jensen** (`zeros_reais_de_jensen`): se `B(w) = Σaₖwᵏ` é inteira, `a₀ ≠ 0` e todo `J^{d,0}` de
+`γ(k) = k!aₖ` tem só raízes reais, **todo zero de `B` é real**. `J^{d,0}(w/d) = Σⱼ (d^{(j)}/dʲ)aⱼwʲ` (`Fj_eq`) converge
+uniformemente em discos para `B` (Tannery, `tendstoUniformlyOn_Fj`), não se anula fora do eixo real (`Fj_ne_zero`, pela
+cota `|p(z)| ≥ |a||Im z|ⁿ`), e Hurwitz + princípio de identidade concluem. Para `Ξ` (`rh_de_jensen`): um zero `z` de
+`ξ(1/2 + iz)` dá `−z²` real, logo `z` real ou imaginário puro, e o segundo caso é impossível porque `ξ > 0` no eixo
+real. Com §4s:
+
+* **`rh_iff_jensen`: HR ⟺ todo polinômio de Jensen `J^{d,n}` de `Ξ` tem só raízes reais**;
+* **`rh_iff_jensen0`: HR ⟺ todo `J^{d,0}` tem** — o critério de Pólya (1927), nas duas direções, sem hipóteses.
+
+**`S` fechado** (`isClosed_S`): `H_t(0) = ∫₀^∞e^{tu²}Φ(u)du > 0` (`H_ne_zero_at_zero`), `t_n → t ⇒ H_{t_n} → H_t`
+uniformemente em discos (convergência dominada, `tendstoUniformlyOn_H`), e Hurwitz no semiplano dá: um zero não real
+de `H_t` seria limite de zeros não reais de `H_{t_n}`. Daí `rh_iff_Lambda_le_zero'`: **HR ⟺ `Λ ≤ 0`** condicional só
+a de Bruijn (`S ≠ ∅`, fechamento para cima) e Newman (limitação).
+
+**Estado.** São equivalências e pontes: a hiperbolicidade de todos os `J^{d,n}` de `Ξ` e `Λ ≤ 0` continuam
+`OPEN_MATH` (são HR).
+
+Numérico (`codigo/hurwitz.py`, `dados/hurwitz.json`, `testes/test_hurwitz.py`, 2 testes): `B(−50) = 2H₀(√50)` a
+`10⁻¹⁶` (série dos `aₙ` = integral de `Φ`); `|J^{d,0}(w/d) − B(w)|` em `w = −50` cai como `1/d` (`0,0114` em `d = 10`,
+`0,00034` em `d = 320`); `H_t(0) > 0`; o primeiro zero real de `H_t` é `14,2508`, `14,1347`, `14,0190` para
+`t = −0,1; 0; 0,1` (varia continuamente). Formatos: SMT-LIB 36, Coq e Isabelle (`hurwitz_circulo`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2; Turán a partir de uma raiz real |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2; Turán a partir de uma raiz real; o passo do círculo de Hurwitz |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 35 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2; 35: Turán a partir de uma raiz), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 36 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2; 35: Turán a partir de uma raiz; 36: círculo de Hurwitz), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 
