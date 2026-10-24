@@ -318,3 +318,4 @@ import ATK.ZeroClasses.MundoFora
 import ATK.ZeroClasses.Complementar
 import ATK.ZeroClasses.Construcao
 import ATK.ZeroClasses.Escalas
+import ATK.ZeroClasses.Encontro

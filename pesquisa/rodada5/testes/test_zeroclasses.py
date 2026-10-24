@@ -1,4 +1,4 @@
-"""Testes do companheiro numérico de ATK/ZeroClasses e ATK/TruncamentoToeplitz (rodada 16)."""
+"""Testes do companheiro numérico de ATK/ZeroClasses (rodadas 16–19) e ATK/TruncamentoToeplitz."""
 import math
 import os
 import sys
