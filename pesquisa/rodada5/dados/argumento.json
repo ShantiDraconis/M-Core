@@ -1,0 +1,31 @@
+{
+ "contagem": {
+  "1o_zero_r0.3": [
+   1.0,
+   -0.0
+  ],
+  "fora_0.75+14.13i_r0.2": [
+   0.0,
+   0.0
+  ],
+  "grande_0.5+20i_r7": [
+   2.99998798,
+   -0.00013852
+  ],
+  "fora_0.8+30i_r0.25": [
+   -0.0,
+   -0.0
+  ]
+ },
+ "rouche_razao_max_|ζ−F|/|F|": 0.020978151928396187,
+ "E1_afiado_1o_zero": {
+  "|ζ(c)|+M r²/2": 0.0008966685268750568,
+  "r|ζ′(c)|": 0.0039622635544848675
+ },
+ "exemplo_quadratico": {
+  "esq": 0.05390625,
+  "dir": 0.125,
+  "69/1280": 0.05390625
+ },
+ "aviso": "trapézios e M amostrado; o kernel prova os teoremas (ArgPrincipio.lean, Rouche.lean)"
+}
