@@ -83,3 +83,29 @@ def test_mundo_fora_modelo():
         assert abs(meio.real - 0.5) < 1e-12 and abs(meio.imag - rho.imag) < 1e-9
         acima = [w for w in q if w.imag > 0]
         assert abs(sum(w.real - 0.5 for w in acima)) < 1e-12
+
+
+def FM(d, t, z):
+    w = z - 0.5
+    return (w * w + t * t) * ((w - d) ** 2 + t * t) * ((w + d) ** 2 + t * t)
+
+
+def test_familia_dois_casos():
+    # `ATK.ZeroClasses.Complementar`: F_{d,t}(1 − z) = F_{d,t}(z); zeros 1/2 ± it, 1/2 ± d ± it;
+    # todos na reta ⟺ d = 0; ponto médio dos externos = zero central.
+    t = 1.0
+    for d in (0.0, 0.25, 0.1):
+        for z in (complex(0.3, 0.7), complex(-1.0, 2.0), complex(0.5, 5.0)):
+            assert abs(FM(d, t, 1 - z) - FM(d, t, z)) < 1e-9 * max(1.0, abs(FM(d, t, z)))
+        zeros = [complex(0.5 + e * d, s * t) for e in (0, 1, -1) for s in (1, -1)]
+        assert all(abs(FM(d, t, z)) < 1e-12 for z in zeros)
+        fora = [z for z in zeros if abs(z.real - 0.5) > 1e-15]
+        assert (len(fora) == 0) == (d == 0.0)
+        assert abs((complex(0.5 - d, t) + complex(0.5 + d, t)) / 2 - complex(0.5, t)) < 1e-15
+
+
+def test_triviais_rigidez():
+    z = [-2 * (n + 1) for n in range(10)]
+    assert all(z[n + 2] - 2 * z[n + 1] + z[n] == 0 for n in range(8))  # `triv_segunda_diferenca`
+    # zeros triviais de ζ (Euler–Maclaurin em ponto flutuante perde precisão por cancelamento além de −4)
+    assert all(abs(zc.zeta(x)) < 1e-9 for x in z[:2])

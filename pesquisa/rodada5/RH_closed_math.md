@@ -839,6 +839,42 @@ consequência material de zeros fora sobre os primos (não formalizada: `BUILD_P
 Teste-modelo (`testes/test_zeroclasses.py::test_mundo_fora_modelo`, não é `ζ`): quartetos hipotéticos têm o
 ponto médio na linha e desvios que somam zero.
 
+## 4x. Os dois casos: onde se excluem e onde se complementam (rodada 18)
+
+`ATK/ZeroClasses/Complementar.lean` (29 teoremas, total 6716, só axiomas padrão). Responde a "os dois casos valem,
+porque se complementam; a rigidez está na forma da pergunta de Riemann".
+
+* **Para a mesma `ζ`, exatamente um** (`exatamente_um`: `RH ∨ H_fora` e `¬(RH ∧ H_fora)`). Aceitar os dois prova
+  qualquer proposição (`explosao`) — é o princípio de não contradição, não uma escolha de formulação.
+* **Numa família, os dois coexistem** (`dois_casos_na_familia`, `ambos_realizados`): no modelo
+  `F_{d,t}(z) = (w² + t²)((w − d)² + t²)((w + d)² + t²)`, `w = z − 1/2`, com a mesma equação funcional
+  `F(1 − z) = F(z)` (`FM_eq_func`) e a mesma conjugação (`FM_conj`) de `ζ`, os zeros são exatamente
+  `1/2 ± it`, `1/2 ± d ± it` (`FM_zero_iff`); **todos na reta ⟺ `d = 0`**. Para `d ≠ 0` coexistem zeros centrais
+  e um quarteto externo (`FM_externos`) cujo ponto médio é o zero central (`FM_ponto_medio`) — a construção dos
+  textos encaminhados (Teoremas 1–4), agora compilada.
+* **Um número em vez de sim/não** (`Theta`): `Θ = sup Re ρ ∈ [1/2, 1]`; **RH ⟺ Θ = 1/2**, **H_fora ⟺ Θ > 1/2**
+  (`rh_iff_Theta`, `fora_iff_Theta`). A pergunta de Riemann é o extremo de um parâmetro contínuo; `Θ < 1` é
+  `OPEN_MATH`. Outras formulações não binárias, na literatura: a constante de de Bruijn–Newman (`RH ⟺ Λ ≤ 0`;
+  Rodgers–Tao: `Λ ≥ 0`, i.e. a família `H_t` tem zeros não reais para todo `t < 0`; Polymath: `Λ ≤ 0,2`); a
+  proporção de zeros na reta (`> 5/12`, Conrey e sucessores); estimativas de densidade `N(σ, T)`.
+* **Funções com os dois casos, na literatura**: a função de Davenport–Heilbronn tem equação funcional do tipo de
+  `ζ`, infinitos zeros na reta e infinitos fora dela; o que lhe falta é o **produto de Euler**. Se há rigidez em
+  `ζ`, ela vem dos primos, não da forma da pergunta.
+* **Triviais** (`triv_passo`, `triv_segunda_diferenca`, `triv_compensados`): `Δ²zₙ = 0` e, em `ξ`, os triviais
+  desaparecem (`ζ(−2(n+1)) = 0`, `ξ(−2(n+1)) ≠ 0`).
+* **A lei `sin(πs/2)`** (`triv_iff_sin`): `sin(πs/2) = 0 ∧ Re s < 0 ⟺ s = −2(n+1)` — a classe trivial é imposta
+  pelo fator `sin` da equação funcional.
+* **Necessidade** (`equilibrio_sem_fora`): `Σ(β − 1/2) = 0` vale também só com zeros centrais, logo **não** torna
+  os externos necessários. **Teste decisivo** (`teste_decisivo`, `necessidade_iff`): uma propriedade `P` provada
+  que seria falsa sem externos prova `H_fora`; e **existe tal `P` ⟺ ¬RH** — demonstrar a necessidade dos externos
+  é exatamente refutar RH. No erro dos primos: `ψ(x) − x = O(x^{1/2+ε})` para todo `ε` ⟺ RH (von Koch), e a
+  oscilação incondicional de Littlewood `Ω±(x^{1/2} log log log x)` é produzida só pelos zeros centrais — não força
+  externos. A lei de acoplamento em que cada zero (trivial, central ou externo) é necessário é a
+  fórmula explícita `ψ(x) = x − Σ_ρ x^ρ/ρ − log 2π − ½log(1 − x^{−2})`: `BUILD_PENDING`.
+
+Numérico (`testes/test_zeroclasses.py`, 2 testes novos): a família `F_{d,t}` (simetria, zeros, `d = 0` ⟺ sem
+externos, ponto médio) e `Δ²zₙ = 0` com `ζ(zₙ) ≈ 0`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
