@@ -538,4 +538,32 @@ theorem hurwitz_circulo:
   shows False
   using assms by linarith
 
+text \<open>Rodada 15 (ATK/TuranDispersao): o integrando simetrizado da identidade de dispersao de ordem 2,
+  (t^2 - s^2)(psi t - psi s) >= 0 quando psi e crescente.\<close>
+
+theorem simetrizacao_ordem2:
+  fixes t s pt ps :: real
+  assumes "t > 0" "s > 0" "t \<le> s \<Longrightarrow> pt \<le> ps" "s \<le> t \<Longrightarrow> ps \<le> pt"
+  shows "0 \<le> (t*t - s*s) * (pt - ps)"
+proof (cases "t \<le> s")
+  case True
+  have t0: "0 \<le> t" using assms(1) by linarith
+  have s0: "0 \<le> s" using True assms(1) by linarith
+  have m: "t*t \<le> s*s" by (rule mult_mono[OF True True s0 t0])
+  have a: "t*t - s*s \<le> 0" using m by linarith
+  have p: "pt \<le> ps" using assms(3) True by blast
+  have b: "pt - ps \<le> 0" using p by linarith
+  show ?thesis using a b by (rule mult_nonpos_nonpos)
+next
+  case False
+  then have st: "s \<le> t" by linarith
+  have s0: "0 \<le> s" using assms(2) by linarith
+  have t0: "0 \<le> t" using st assms(2) by linarith
+  have m: "s*s \<le> t*t" by (rule mult_mono[OF st st t0 s0])
+  have a: "0 \<le> t*t - s*s" using m by linarith
+  have p: "ps \<le> pt" using assms(4) st by blast
+  have b: "0 \<le> pt - ps" using p by linarith
+  show ?thesis using a b by (rule mult_nonneg_nonneg)
+qed
+
 end
