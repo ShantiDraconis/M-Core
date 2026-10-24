@@ -265,7 +265,11 @@ Bruijn (`1/2 ∈ S`, `S` fechado para cima), Newman (`S` limitado) e Rodgers–T
 explícitas (o fechamento de `S` já está provado, §4t), e `e^{−tD²}` na classe de Laguerre–Pólya (o caso polinomial está
 no kernel, §4r); Cauchy–Binet e Lindström–Gessel–Viennot (fechamento de TN por produtos, núcleos por caminhos); os
 resultados incondicionais de Csordas–Norfolk–Varga (Turán) e Griffin–Ono–Rolen–Zagier; a fórmula explícita e a
-positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
+positividade de Weil; nas classes de zeros (§4v), a certificação finita de `m₄ > 0` (aritmética intervalar de `ζ` em
+`σ = 1/4`), o teorema de Hardy (infinitos zeros na reta) e a infinitude dos zeros não triviais por Hadamard com zeros
+complexos, o lema de Csordas (que daria `P(2)` para `Ξ`) e o multiplicador de Laguerre `q^{n²}` (que daria a ida do
+fluxo de Toeplitz); a simplicidade dos zeros não triviais e a irracionalidade das suas ordenadas são conjecturas
+independentes, `OPEN_MATH`; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
 `aₙ`**) — todas as formas equivalentes continuam abertas. A **equivalência** HR ⟺ PF∞(aₙ) já está no kernel nas duas
 direções (§4p–§4q); o que falta é a positividade total dos `aₙ` concretos, que é `OPEN_MATH`.
 
@@ -718,14 +722,100 @@ diferenças finitas (`10⁻¹⁰`); `ψ_Φ` é crescente numa malha de passo `5�
 `ψ(1) ≈ 41,79`, `ψ(2) ≈ 169,27`); os dois lados da identidade de dispersão conferem a 10 dígitos para `m = 0, 1, 2`
 (quadratura 1D e Simpson 2D). Formatos: SMT-LIB 37, Coq e Isabelle (`simetrizacao_ordem2`).
 
+## 4v. Classes de zeros e truncamento de Toeplitz: as "demais linhas" fechadas (rodada 16)
+
+`ATK/ZeroClasses/{Basic,Symmetry,Multiplicity,Laws,Zeta,Regions,Hipotetico,FinalAudit}.lean` e
+`ATK/TruncamentoToeplitz.lean` (222 teoremas, total 6672, só `propext`, `Classical.choice`, `Quot.sound`). Responde
+ao prompt ATK-ZERO-CLASSES e ao pedido "ignorar Riemann e fechar em Mathlib as demais linhas": tudo o que é
+demonstrável sem HR foi para o kernel; o que é HR está escrito como equivalência, nunca como prova.
+
+**Camada genérica** (`f : ℂ → ℂ` arbitrária, reta `x = c` livre). Partições `Z = Z_{x<c} ⊔ Z_{x=c} ⊔ Z_{x>c}`
+(`particao_posicao`, `zero_on_or_off`), `Z = Z_real ⊔ Z*_imag ⊔ Z_misto` (`particao_natureza`, `zero_nature`),
+`Z_ℚ ⊔ Z_{ℝ∖ℚ}` para a parte real e para a imaginária; matriz de compatibilidade (imaginário puro ⇒ parte real
+racional; para `c ∈ ℚ`, parte real irracional ⇒ fora da reta), **todas as células compatíveis realizadas por uma só
+função** (`realiza_celulas`) e compatibilidade ≠ existência (`f ≡ 1`). A classe "localização indeterminada" é
+**relativa a um conjunto certificado `K`**, antimonótona e não intrínseca (`indeterminado_nao_intrinseco`).
+Simetrias sob hipóteses explícitas (`ConjEquiv`, `ReflZeros`, basta `f(2c − z) = u(z)f(z)` com `u` qualquer); a
+órbita `{z, z̄, 2c − z, 2c − z̄}` tem cardinal `1 ⟺ z = c`, `4 ⟺ x ≠ c ∧ y ≠ 0`, `2` nos outros casos, nunca `3`
+(`orbita_card_iff`); **a simetria não exclui zeros fora da reta** (`simetria_nao_basta`: `(z − c)⁴ + 4`).
+Multiplicidade (`Multiplicity`): todo zero é isolado ou de acumulação (lógica pura); para `f` analítica,
+**multiplicidade finita ⟺ isolado**, simples ⟺ ordem 1, simples ou múltiplo; num conexo com `f ≢ 0`, nenhum ponto
+acumula zeros. Leis (`Laws`): `Existe F C` (o "ProvenExists" é uma prova dela; um postulado é uma hipótese e é
+**inconsistente** quando a classe é refutada — `z² + 1` não tem zero real); leis de conjuntos, união, interseção
+(só `⇒`, `existe_inter_nao_reciproca`), lei da simetria `T(Z) ⊆ Z` e `= Z` para `T` involutiva; os operadores
+`{id, conj, refl c, tor c}` formam o **grupo de Klein** (`klein`), com a tabela da ação sobre as classes
+(`conj_classes`, `refl_classes`, `refl_ratRe`, `tor_classes`).
+
+**`ζ` (`Zeta`)** — matriz das classes, com o estado no kernel:
+
+| Classe | Ocupada? | Teorema |
+| --- | --- | --- |
+| triviais `−2(n+1)` | **sim** — reais, racionais, **simples** | `trivial_classes`, `linha_trivial` |
+| não triviais na reta crítica | **sim** (zero certificado, §4f) | `existe_critico`, `ocupacao` |
+| não triviais (prova sem cálculo) | **sim**, por Hadamard: `B ≢` const pois `a₁ > 0` | `existe_nao_trivial`, `sem_zeros_constante` |
+| mistos / parte real racional | **sim** (o zero crítico) | `ocupacao` |
+| imaginários puros | **não** | `sem_imaginarios_puros` |
+| reais na faixa, `Re ≥ 1`, `Re = 0` | **não** | `classificacao_natureza`, `sem_zeros_re_ge_one`, `sem_zeros_re_zero` |
+| pontos de acumulação (inclusive `s = 1`) | **não** | `sem_acumulacao_zeta` (resíduo) |
+| multiplicidade infinita | **não** | `zeros_isolados` |
+| fora da reta crítica | `OPEN_MATH` (¬HR) | `nao_rh_iff_fora` |
+| parte real irracional | `OPEN_MATH` (refutaria HR) | `irr_refuta`, `nao_rh_iff_aritm` |
+| localização indeterminada (relativa a `Kcert`, regiões certificadas livres de zeros) | = exatamente os não triviais (a classe muda com `K`) | `indeterminados_eq` |
+
+`ζ` é equivariante mas **não** preserva zeros por `s ↦ 1 − s` (`zeta_nao_reflZeros`: `ζ(−2) = 0`, `ζ(3) ≠ 0`); a
+camada genérica instancia-se em `ξ` (`xi_conjEquiv`, `xi_reflZeros`, `quarteto_ou_par`).
+
+**O cerco (`Regions`).** `F(σ,t) = |ζ(σ+it)|² ≥ 0`, `F > 0 ⟺ ζ ≠ 0`; `F > 0` incondicional em `t² < 3/4` e em
+`σ ≤ c(t)`; **`RH ⟺ F > 0` em `0 < σ < 1/2, t > 0`** (`obrigacao_exata`). `Z_L = ∅ ⟺ Z_R = ∅`, `RH ⟺ Z_L = ∅`,
+`RH ⟺ ζ ≠ 0` em `Ω`. Compactos `K_n`: **correção ao texto encaminhado — `K₃ = ∅`** (`1/3 > 1/6`), não vazios para
+`n ≥ 4`; compactos, crescentes, `Ω = ⋃_{n≥3} K_n`. Mínimos `m_n`: atingidos, `m_{n+1} ≤ m_n`, `m₃ = 0` (convenção),
+**`m_n > 0 ⟺ K_n` sem zeros** e **`RH ⟺ ∀ n ≥ 4, m_n > 0`**; certificados `PositiveCertificate` (o código Lean do
+texto, compilado) excluem zeros, ficam abaixo de `m_n`, e **existe certificado ⟺ HR**; certificados de malha com
+cota de derivada (`certificado_malha`, `certificado_derivada`). **Novo e incondicional: `m_n → 0`**
+(`m_tende_zero`, pelo zero crítico certificado), logo **não existe cota uniforme** (`sem_cota_uniforme`): a camada C
+só pode ser positividade ponto a ponto, nunca `m_n ≥ δ > 0`.
+
+**Truncamento de Toeplitz (`TruncamentoToeplitz`).** `P(N+1) ⟺ P(N) ∧ Q(N+1)`, `TN ⟺ ∀N P(N)`, `P(N) ⟺ TN(T_N)`,
+`P(0) ⟺ a₀ ≥ 0`, indução, **nível único de primeira falha** (`nivel_unico`, `primeira_falha`); para `Ξ`:
+`RH ⟺ ∀N P(N) ⟺ ∀N Q(N+1)`, **`P(1)` incondicional**, **`P(2)` sob Csordas**; logo um zero fora da reta tem nível de
+falha `≥ 1` (e `≥ 2` com menor negativo de **ordem `≥ 3`** sob Csordas). O menor do texto
+`a₁³ − 2a₀a₁a₂ + a₀²a₃` é o menor contíguo `3×3` (`menor3`); `a₁² − a₀a₂ = (6m₁² − m₀m₂)/24` (`defeito_momentos`).
+Fluxo `bₙ(τ) = aₙe^{−τn(n−1)}`: `D₂(b(τ))ₙ = e^{−2τ(n+1)n}(a_{n+1}² − e^{−2τ}aₙa_{n+2})`, crescente em `τ`;
+**volta válida** a partir de todo `τ > 0` (também para TN inteira, `volta_valida_tn`), **volta ingênua inválida** a
+partir de um `τ` (`a = (1,1,2,1,…)`).
+
+**O universo hipotético (`Hipotetico`).** `OFF_LINE_ZEROS EXIST` entra como **hipótese** `HFora` (`UniversoATK`),
+nunca como `axiom`: se HR for verdadeira, o axioma tornaria o sistema inconsistente. `UniversoATK ⟺ ¬HR` e
+**refutar o universo é exatamente provar HR** (`refutar_universo_iff`) — a "consistência interna" não é uma
+verificação à parte, é a própria questão. Consequências certificadas de `HFora`: quarteto distinto; representantes em
+`Ω` e em `1/2 < Re < 1, Im > 0`; os dois ramos aritméticos (cada um refuta HR); `(Im ρ)² ≥ 3/4` e bordas `c(t)`;
+finitos abaixo de cada altura; `D_N ≥ μ > 0`; falha de TN com nível único `≥ 1`; Jensen não hiperbólico; `m_n = 0`
+para algum `n ≥ 4`; nenhum certificado; `F = 0` em `Ω`. O `painel` mostra que **cada falha é equivalente a
+`HFora`**: nenhuma é mais fraca do que HR, e **nenhuma contradição foi derivada** (`ANALYTIC_CONTRADICTION:
+NOT_DERIVED` — derivá-la seria provar HR).
+
+**`FinalAudit`**: `fechado` (o incondicional), `reducao` (as equivalências), `primeiro_ponto_aberto`: o primeiro
+ponto em que uma prova incondicional não se completa é **`m₄ > 0`**, i.e. `ζ ≠ 0` no segmento
+`{1/4 + it : 1/4 ≤ t ≤ 4}` — afirmação **finita**, verdadeira numericamente (`m₄ ≈ 0,461`), cuja certificação no
+kernel é mecânica (estender `mem_zetaI` de `σ = 1/2` para `σ = 1/4` e montar a malha com `certificado_derivada`):
+`BUILD_PENDING`. O universal `∀ n ≥ 4` é HR.
+
+Numérico (`codigo/zeroclasses.py`, `dados/zeroclasses.json`, `testes/test_zeroclasses.py`, 8 testes): `ζ` por
+Euler–Maclaurin (só biblioteca padrão) confere em `ζ(2)`, `ζ(−2)` e no 1º zero; a órbita do 1º zero tem cardinal 2;
+`m_n` numa malha global encaixada (passo `0,0125`) decresce de `0,461` (`n = 4`) a `0,415` (`n = 13`) e cai para
+`0,125`, `0,061`, `0,051` em `n = 14, 15, 16` (o 1º zero, altura `14,13`); margem heurística de malha positiva para
+`n = 4..10`; todos os menores de `T(aₙ)` com índices `≤ N`, `N ≤ 5`, são `> 0` ou estruturalmente nulos (sinal
+estável sob perturbação `10⁻¹²`); `menor3/a₁³ ≈ 0,205`. Formatos: SMT-LIB 38–39, Coq e Isabelle (`orbita_quatro`,
+`menor3`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2; Turán a partir de uma raiz real; o passo do círculo de Hurwitz; a simetrização da dispersão de ordem 2 |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2; Turán a partir de uma raiz real; o passo do círculo de Hurwitz; a simetrização da dispersão de ordem 2; o quarteto de zeros; o menor `3×3` de Toeplitz |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 37 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2; 35: Turán a partir de uma raiz; 36: círculo de Hurwitz; 37: simetrização de ordem 2), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 39 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2; 35: Turán a partir de uma raiz; 36: círculo de Hurwitz; 37: simetrização de ordem 2; 38: quarteto de zeros; 39: menor `3×3`), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 

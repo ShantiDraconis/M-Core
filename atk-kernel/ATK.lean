@@ -305,3 +305,12 @@ import ATK.JensenPolya
 import ATK.HurwitzJensen
 import ATK.DBNFechado
 import ATK.TuranDispersao
+import ATK.ZeroClasses.Basic
+import ATK.ZeroClasses.Symmetry
+import ATK.ZeroClasses.Multiplicity
+import ATK.ZeroClasses.Laws
+import ATK.ZeroClasses.Zeta
+import ATK.ZeroClasses.Regions
+import ATK.TruncamentoToeplitz
+import ATK.ZeroClasses.Hipotetico
+import ATK.ZeroClasses.FinalAudit

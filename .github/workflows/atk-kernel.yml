@@ -62,7 +62,7 @@ jobs:
           : > reports/file_status.txt
           # auditoria em paralelo (4 processos): cada arquivo é reverificado pelo kernel com #print axioms
           shopt -s nullglob
-          arquivos=(ATK/*.lean ATK/Conditional/*.lean ATK/Terminal/*.lean ATK/Cert/*.lean)
+          arquivos=(ATK/*.lean ATK/Conditional/*.lean ATK/Terminal/*.lean ATK/Cert/*.lean ATK/ZeroClasses/*.lean)
           printf '%s\n' "${arquivos[@]}" \
             | xargs -P 4 -I{} bash -c 'f="{}"; m=${f#ATK/}; m=${m%.lean}; m=${m//\//_};
                 if lake env lean "$f" > "reports/audit_${m}.log" 2>&1; then echo "$f OK"; else echo "$f FAIL"; fi' \

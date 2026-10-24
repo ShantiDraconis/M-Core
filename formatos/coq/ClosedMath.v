@@ -583,6 +583,20 @@ Proof.
     nra.
 Qed.
 
+(* Rodada 16 - ATK.ZeroClasses.card_quatro: o quarteto {z, conj z, 2c - z, 2c - conj z} tem 4 pontos
+   distintos quando Re z <> c e Im z <> 0 (os seis pares reduzem-se a x <> 2c - x e y <> -y). *)
+Theorem orbita_quatro : forall x y c : R, x <> c -> y <> 0 -> x <> 2*c - x /\ y <> - y.
+Proof.
+  intros x y c Hx Hy. split; intro H.
+  - apply Hx. lra.
+  - apply Hy. lra.
+Qed.
+
+(* Rodada 16 - ATK.TruncToep.menor3: o menor 3x3 contiguo de Toeplitz. *)
+Theorem menor3 : forall a0 a1 a2 a3 : R,
+  a1*(a1*a1 - a0*a2) - a0*(a2*a1 - a0*a3) = a1*a1*a1 - 2*a0*a1*a2 + a0*a0*a3.
+Proof. intros. ring. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -614,3 +628,5 @@ Print Assumptions laguerre_quadratica.
 Print Assumptions turan_raiz.
 Print Assumptions hurwitz_circulo.
 Print Assumptions simetrizacao_ordem2.
+Print Assumptions orbita_quatro.
+Print Assumptions menor3.

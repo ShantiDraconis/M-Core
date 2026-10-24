@@ -566,4 +566,34 @@ next
   show ?thesis using a b by (rule mult_nonneg_nonneg)
 qed
 
+text \<open>Rodada 16 - ATK.ZeroClasses.card_quatro: o quarteto tem 4 pontos distintos quando
+  Re z \<noteq> c e Im z \<noteq> 0.\<close>
+
+theorem orbita_quatro:
+  fixes x y c :: real
+  assumes "x \<noteq> c" "y \<noteq> 0"
+  shows "x \<noteq> 2*c - x \<and> y \<noteq> - y"
+proof -
+  have a: "x \<noteq> 2*c - x"
+  proof
+    assume "x = 2*c - x"
+    then have "x = c" by linarith
+    with assms(1) show False by simp
+  qed
+  have b: "y \<noteq> - y"
+  proof
+    assume "y = - y"
+    then have "y = 0" by linarith
+    with assms(2) show False by simp
+  qed
+  show ?thesis using a b by simp
+qed
+
+text \<open>Rodada 16 - ATK.TruncToep.menor3: o menor 3x3 contiguo de Toeplitz.\<close>
+
+theorem menor3:
+  fixes a0 a1 a2 a3 :: real
+  shows "a1*(a1*a1 - a0*a2) - a0*(a2*a1 - a0*a3) = a1*a1*a1 - 2*a0*a1*a2 + a0*a0*a3"
+  by (simp add: algebra_simps)
+
 end
