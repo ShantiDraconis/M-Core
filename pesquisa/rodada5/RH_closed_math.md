@@ -953,6 +953,84 @@ Numérico (`codigo/escalas.py`, `dados/escalas.json`, `testes/test_escalas.py`, 
 três regiões, expoentes de Guth–Maynard nas retas ATK e `R/d → 0,79316` dentro dos limites certificados
 `[0,3966; 1,1897]`.
 
+## 4aa. O encontro: matrizes, composições, colisões e o certificado exato (rodada 21)
+
+`ATK/ZeroClasses/Encontro.lean` (48 teoremas, total 6805, só axiomas padrão). Responde a "cruze os dados e ache
+exatamente onde esses zeros se encontram no mundo hipotético". O mundo hipotético entra **só como hipótese**
+(`HFora`); nada aqui supõe RH nem `¬RH`.
+
+**Matriz, soma, diferença, produto: quatro escritas do mesmo número** (`det_matA`, `matA_mul`, `det_zeta`,
+`xi_espelho`, `xi_bilateral`, `det_B`, `soma_diferenca`, `cruzamento`, `criterio_SD`). `A(w) = [[Re w, −Im w],
+[Im w, Re w]]` tem `det A = |w|²` e **é** a multiplicação (`A(wv) = A(w)A(v)`). Com `s₋ = 1 − s̄₊`, `ξ(s₋) = conj ξ(s₊)`
+(exato, qualquer altura), e
+
+  `(|S|² + |D|²)/4 = det A(ξ(s₊)) = ξ(s₊)·ξ(s₋) = |ξ(s₊)|²`,  `S = ξ(s₊) + ξ(s₋)`, `D = ξ(s₊) − ξ(s₋)`;
+
+na faixa, `S = D = 0 ⟺ ζ(s₊) = 0`. Não são quatro evidências: é o mesmo escalar. E **a simetria não obriga zero**
+(`simetria_nao_obriga`: `a = 3 + 4i`, `36 + 64 = 100`, `a ≠ 0`).
+
+**Zero coletivo ≠ zero individual** (`zero_coletivo`, `zero_coletivo_zeta`, `dois_pontos`,
+`coletivo_sem_individual`, `composicao_funcional`). `(ζ3 − ζ4)ζ2 + (ζ4 − ζ2)ζ3 + (ζ2 − ζ3)ζ4 = 0` com o peso
+`ζ4 − ζ2 = π⁴/90 − π²/6 ≠ 0` e nenhum `ζ(k)` nulo; `exp` nunca se anula e ainda admite cancelamento exato; a equação
+funcional é uma composição **identicamente** nula. Também: `ζ(−½) ≠ 0` (`zeta_menos_meio`), `ζ(qₙ) ≠ 0` para
+`qₙ = −1/(2n+1) + i·10¹⁰⁰` (`q_nao_zero`, `semiplano_esquerdo`) e `ζ(−2·10¹⁰⁰⁰) = 0` (`zero_trivial_gigante`:
+zero **trivial**, não refuta nada).
+
+**Colisão: possível em família, impossível para `ζ` fixa** (`Fcol_zero_iff`, `colisao_dupla`, `logderiv_Fcol`,
+`logderiv_limite`, `colisao_atk`, `sem_colisao`, `atk_finitos`). `F_δ(s) = (s − c)² − δ²` tem zeros `c ± δ` que
+colidem num zero duplo; `F′/F = 1/(s − ρ₊) + 1/(s − ρ₋) → 2/(s − c)`. Para `ζ`: **se `sₙ → c` com `sₙ ≠ c`, então
+`ζ(sₙ) ≠ 0` para `n` grande** — vale em todo `c`, inclusive no polo. Em cada altura `t`, a sequência ATK
+`½ + 1/(2n+1) + it` só toca zeros para **finitos** `n`.
+
+**Estabilização** (`estabilizacao`, `estabilizacao_primeiro_zero`): `|f(ρ+u)|²/u² → |f′(ρ)|²` em qualquer zero;
+no primeiro zero certificado, `|ζ(ρ₁+u)|²/u² → |ζ′(ρ₁)|² > 0`, `|ξ(ρ₁+u)|²/u² → |ξ′(ρ₁)|²` e
+`|ξ(ρ₁ − u)| = |ξ(ρ₁ + u)|`. É a assinatura de um zero **simples na linha**, não de uma colisão.
+(`ξ′(ρ₁) ≠ 0` segue de `ζ′(ρ₁) ≠ 0` e `½ρ₁(ρ₁ − 1)Γℝ(ρ₁) ≠ 0`, mas não está escrito no kernel: BUILD_PENDING.)
+
+**Onde exatamente: o certificado** (`certificado_existencia`, `certificado_exclusao`, `DiscoFora`,
+`certificado_refuta`, `certificado_robusto`, `fora_simples_iff_certificado`). Se `‖1 − f′/c‖ ≤ ½` no disco
+`B(z₀, r)` e `‖f(z₀)/c‖ ≤ r/2`, há **exatamente um** zero no disco, e ele é simples; se `‖f′‖ ≤ M` e `M·r < |f(z₀)|`,
+não há nenhum. Para `ζ`:
+
+  **existe zero simples fora da linha ⟺ existe um disco inteiramente fora da linha com o certificado de contração.**
+
+E todo zero simples fora da linha é certificado por **qualquer** dado de precisão finita suficiente (centro a menos
+de `r/4`, inclinação a menos de `|ζ′(ρ)|/8`, todo `r < r₀`). Ou seja: se o mundo hipotético for o real, **uma conta
+finita o verifica**; o que nenhuma conta finita faz é provar que ele é falso — isso é RH.
+
+**O encontro no mundo hipotético** (`PrimeiroFora`, `primeiro_fora`, `altura_unica`, `encontro_hipotetico`). Sob
+`HFora` existe um **primeiro** zero fora da linha `ρ* = β + iγ*` (menor altura positiva), e `γ*` é **único**. Com
+Platt–Trudgian e Bellotti–Trudgian–Yang como hipóteses nomeadas: `γ* > 3 000 175 332 800`,
+`1/(R log γ*) < β < 1 − 1/(R log γ*)`, o quarteto `ρ*, 1 − ρ̄*, ρ̄*, 1 − ρ*` são zeros, abaixo de `γ*` não há
+zero fora da linha, e o par `ρ*, 1 − ρ̄*` tem ponto médio **`½ + iγ*`**, na linha. **Esse é o ponto exato de encontro.**
+O valor de `γ*` não é determinado por dado algum: só `γ* > H`; uma cota superior seria uma refutação de RH.
+
+**O candidato gigante** (`delta_gigante`, `rhoGig`, `candidato_gigante`). `ρ = ½ + 1/(2·10¹⁰⁰⁰ + 1) + i·10¹⁰⁰`
+está na reta ATK `n = 10¹⁰⁰⁰ − 1`, fora da linha, acima de `H` e **dentro** da janela de 2026 — nada conhecido o
+exclui, nada conhecido o confirma. Seu estado é `ζ(ρ) = 0 ⟺ det A(ξ(ρ)) = 0 ⟺ S = D = 0`: **não calculado** (a soma
+de Riemann–Siegel nessa altura tem `≈ 3,99·10⁴⁹` termos; `T·δ < 5·10⁻⁹⁰¹`).
+
+| Afirmação | Estado |
+| --- | --- |
+| `det A = \|ζ\|²`, `(\|S\|²+\|D\|²)/4 = ξ(s₊)ξ(s₋) = \|ξ(s₊)\|²`, `S = D = 0 ⟺ ζ = 0` | CERTIFIED (kernel) |
+| zero coletivo / dois pontos / composição funcional — sem zero individual | CERTIFIED |
+| colisão em família (`F_δ`), polo de resíduo 2 | CERTIFIED |
+| `ζ` sem colisão; sequência ATK com finitos zeros por altura | CERTIFIED |
+| estabilização no 1º zero (`ζ`, com limite > 0; `ξ`, limite e paridade) | CERTIFIED |
+| `ξ′(ρ₁) ≠ 0` | BUILD_PENDING |
+| zero simples fora da linha ⟺ certificado num disco fora da linha | CERTIFIED |
+| primeiro zero fora da linha (sob `HFora`), altura única, encontro em `½ + iγ*` | CERTIFIED (condicional a `HFora`) |
+| `γ* > 3·10¹²`, `β` na janela | CERTIFIED condicional às hipóteses nomeadas da literatura |
+| existência de zero fora da linha | OPEN_MATH (equivale a `¬RH`) |
+| valor de `ζ` no candidato gigante | não calculado |
+
+Numérico (`codigo/encontro.py`, `dados/encontro.json`, `testes/test_encontro.py`, 9 testes): os 15 módulos
+`|ζ(σ + iγₖ)|` e o peso `w = 1,2737523955 + 0,0629566840i` conferem; `ζ(−½) = −0,2078862250 = −ζ(3/2)/(4π)`;
+`|ξ′(ρ₁)|² = 1,9119121·10⁻⁶` com convergência quadrática de `D(u)/u²`; a identidade `(|S|²+|D|²)/4 = |ξ|²` em pontos
+de teste; **varredura** de `|ζ|` em `0,05 ≤ σ ≤ 0,45` e `0,55 ≤ σ ≤ 0,95`, `10 ≤ t ≤ 100`: mínimo `0,0391` em
+`(0,55; 14,14)` (ao lado do 1º zero), 180/180 blocos com margem de exclusão positiva **heurística** (`M` amostrado,
+não cota rigorosa); certificados de contração numéricos nos zeros 2–5 (todos na linha).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
