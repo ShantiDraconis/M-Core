@@ -513,4 +513,20 @@ proof -
   then show ?thesis using assms e by linarith
 qed
 
+text \<open>Rodada 13 (ATK/JensenPolya): se g0 + 2 g1 x + g2 x^2 = 0 com g2 > 0, entao g0 g2 <= g1^2 (Turan a
+  partir de uma raiz real de J^{2,n}).\<close>
+
+theorem turan_raiz:
+  fixes g0 g1 g2 x :: real
+  assumes "g2 > 0" "g2*x*x + 2*g1*x + g0 = 0"
+  shows "g0*g2 \<le> g1*g1"
+proof -
+  have e1: "(g2*x + g1)*(g2*x + g1) = g2*(g2*x*x + 2*g1*x + g0) + (g1*g1 - g0*g2)"
+    by (simp add: algebra_simps)
+  have e: "(g2*x + g1)*(g2*x + g1) = g1*g1 - g0*g2"
+    using e1 assms(2) by simp
+  have "0 \<le> (g2*x + g1)*(g2*x + g1)" by simp
+  then show ?thesis using e by linarith
+qed
+
 end

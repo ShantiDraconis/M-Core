@@ -542,6 +542,19 @@ Proof.
   rewrite E. pose proof (Rle_0_sqr c) as Hc. unfold Rsqr in Hc. lra.
 Qed.
 
+(* ---------------------------------------- Jensen/Turan (rodada 13, ATK/JensenPolya) *)
+
+(* Se g0 + 2 g1 x + g2 x^2 = 0 com g2 > 0, entao g0 g2 <= g1^2: (g2 x + g1)^2 = g1^2 - g0 g2. *)
+Theorem turan_raiz : forall g0 g1 g2 x : R,
+  g2 > 0 -> g2*x*x + 2*g1*x + g0 = 0 -> g0*g2 <= g1*g1.
+Proof.
+  intros g0 g1 g2 x Hg H.
+  assert (E : (g2*x + g1)*(g2*x + g1) = g1*g1 - g0*g2).
+  { replace (g1*g1 - g0*g2) with (g1*g1 + g2*(g2*x*x + 2*g1*x) - g2*(g2*x*x + 2*g1*x + g0)) by ring.
+    rewrite H. ring. }
+  pose proof (Rle_0_sqr (g2*x + g1)) as Hs. unfold Rsqr in Hs. lra.
+Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -570,3 +583,4 @@ Print Assumptions inv_um_x_x2.
 Print Assumptions descida_tres.
 Print Assumptions prodcoef_dois.
 Print Assumptions laguerre_quadratica.
+Print Assumptions turan_raiz.

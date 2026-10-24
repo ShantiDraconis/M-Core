@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "e635e51c94faeee17a5f29efb7cf7d30fefe5e20aafb7b6c981337930636baed",
+  "sources_sha256": "875900f0906de958168aa9b9003d2b85eae333f5c666ca99c64cb7c043004c62",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -209,6 +209,7 @@
     "ATK/IntegracaoFCNS.lean": "614fa3aa44a73cecbab7d23302110616c81b45f96842b40ee50619602fe8c422",
     "ATK/IntegracaoFCPNP.lean": "bbfd56d089f8de59396b1031d5e0d63da4088ccc351fcc0b6c57fe46ddb367bc",
     "ATK/InteiraAnalitica.lean": "8c1b859377dfabb22e8256289ff4d8951b92e73c805d044300989aea0911f941",
+    "ATK/JensenPolya.lean": "2d48692f7f2e556e69519a3a2a35ac6a2c682a62aa7d95ae8566b93347f854fb",
     "ATK/JensenTuran.lean": "54143c1c06ee5b25b8a78df19b33d267162a1706aec1f610fa632520c0d5ec7c",
     "ATK/L3Base.lean": "b3350cf0c102a4dc7d6babbe643359e7869d7ce563a21a624b9fd41a0d33ad3c",
     "ATK/L4Base.lean": "87ed0774feb3d4dafca5bcd8ff686fd1d847cebc79e3a293161efc82d85b2bce",
@@ -284,6 +285,7 @@
     "ATK/PonteModularCurva32.lean": "3048480397e968bf58e97b4871c7b21c57c37046d9f4f4f9e98bf51e27c6d064",
     "ATK/PostoDois.lean": "9308d6699de7f9fa39f88053b6a057e73fe5e18d3cff160584577cbd41afdf2f",
     "ATK/PostoLivre.lean": "af833e848abc8385bab1ea20424ee8963e1967b914862ffda67f3a20417be355",
+    "ATK/ProdutoresTN.lean": "68a7807f7a160732399181329c67f9123f1f0045ac0b66ada62a34d897e53fea",
     "ATK/Projetores.lean": "519efa136281cd914ea2c23495b45113daafbe2df70e3a5b31f5b45976548dd9",
     "ATK/PvsNP.lean": "af6a98531a70abc013def9a68f4f88e63aa59cc202ed5f1e52153990514f7ea2",
     "ATK/QuarticResidues.lean": "0210ef36976dd12d5c0d8f1e38c117be438fc11765628c91715807c2f052e191",
@@ -321,6 +323,7 @@
     "ATK/WeilMecanismo.lean": "477ac3c70f5ed1db9afdaec95a760308bc9eab4ab9b6246b68c49d85341480e0",
     "ATK/XiAnalitica.lean": "179bd9f0e12c448d4971b892a26cc58f80d935c41ffebc4646e6bdc109b10399",
     "ATK/XiCrescimento.lean": "528e5be8cfd385a9a575c1f6739899bc99a609abce8002a6dc8c1aa37e53dce4",
+    "ATK/XiMomentos.lean": "e4c25e4f280e004184ca873a69cbb7cead2799bdc48d7ae0b73aa0354c8cbd55",
     "ATK/XiPhi.lean": "1cdb05b7409967976e556616851590d312fccf4d5df6871849fef438e59048f2",
     "ATK/XiTP.lean": "79cfd46b229d52b775a23f1d327e6fecefeb4607e540c94fe8df6d507173398c",
     "ATK/YMOficial.lean": "352c748f123a25a9d6ed15b3c990e4503a5310eb9d294bca2b7ba45ee11a369d",
@@ -342,12 +345,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "48bc88ef2aca04f08d169e14865b2cb8c2693bb930fb65a2c55c7ed2f8832471"
+    "ATK.lean": "1ba234088c51266ced1de44b9a2c9b69295d346738d31b10067f7978e9aab2ad"
   },
-  "n_files": 341,
-  "expected_theorems": 6361,
+  "n_files": 344,
+  "expected_theorems": 6410,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "72f7d0230eeafb8a522312933189d25aa24e86e3",
+  "commit_at_freeze": "f1fe59393bf55c24824e119963d003faaab9954e",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
