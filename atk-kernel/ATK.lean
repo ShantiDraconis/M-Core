@@ -181,3 +181,7 @@ import ATK.NSReducao
 import ATK.NSFourierBase
 import ATK.NSPicard
 import ATK.NSMild
+import ATK.NSSuave
+import ATK.NSTempo
+import ATK.NSSimetria
+import ATK.NSFisico
