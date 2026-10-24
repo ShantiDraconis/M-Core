@@ -109,3 +109,35 @@ def test_triviais_rigidez():
     assert all(z[n + 2] - 2 * z[n + 1] + z[n] == 0 for n in range(8))  # `triv_segunda_diferenca`
     # zeros triviais de ζ (Euler–Maclaurin em ponto flutuante perde precisão por cancelamento além de −4)
     assert all(abs(zc.zeta(x)) < 1e-9 for x in z[:2])
+
+
+def test_derivada_triviais():
+    # `deriv_trivial_fechada`: ζ′(−2k) = (−1)ᵏ(2k)! ζ(2k+1) / (2(2π)^{2k}), por diferenças centrais
+    for k in (1, 2):
+        h = 1e-3  # passo maior: o Euler–Maclaurin em ponto flutuante tem ruído ~1e-11 perto de −4
+        fd = (zc.zeta(-2 * k + h) - zc.zeta(-2 * k - h)) / (2 * h)
+        formula = (-1) ** k * math.factorial(2 * k) * zc.zeta(2 * k + 1).real / (2 * (2 * math.pi) ** (2 * k))
+        assert abs(fd - formula) < 1e-4 * abs(formula)
+    assert abs(-math.factorial(2) * zc.zeta(3).real / (2 * (2 * math.pi) ** 2) + 0.0304484571) < 1e-9
+
+
+def test_construcao_ZATK():
+    # `Construcao`: Z_ATK = ζ·P_N preserva os zeros de ζ e acrescenta os quartetos ½ ± δₙ ± itₙ, δₙ = 1/(2n+3)
+    def Q(d, t, s):
+        return ((s - 0.5 - d) ** 2 + t * t) * ((s - 0.5 + d) ** 2 + t * t)
+
+    t = [3.0, 5.0, 7.0]
+    def PN(s):
+        out = 1.0
+        for n, tn in enumerate(t):
+            out *= Q(1 / (2 * n + 3), tn, s)
+        return out
+    for n, tn in enumerate(t):
+        d = 1 / (2 * n + 3)
+        for z in (complex(0.5 + d, tn), complex(0.5 + d, -tn), complex(0.5 - d, tn), complex(0.5 - d, -tn)):
+            assert abs(PN(z)) < 1e-6
+        z0 = complex(0.3, 0.2)
+        assert abs(PN(1 - z0) - PN(z0)) < 1e-12 * abs(PN(z0))  # P_N(1 − s) = P_N(s)
+    rho = zc.zero_newton(complex(0.5, 14.13))
+    assert abs(zc.zeta(rho) * PN(rho)) < 1e-10 * abs(PN(rho))  # zeros de ζ preservados
+    assert all(abs(PN(complex(-2 * k, 0))) > 1 for k in (1, 2, 3))  # triviais continuam simples

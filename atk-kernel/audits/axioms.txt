@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de ac88eea39059b4b3e5445c011bc21b0006cdd54b67be615a2dfe2742adb11ad9
+# axiomas por teorema — congelamento de 5620afaae04f63f794baa7e8a5f1f908a7a5274614228a910f7587251c15c3b6
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6716,3 +6716,33 @@ ATK.ZeroClasses.Complementar.sin_meio_zero_iff	propext, Classical.choice, Quot.s
 ATK.ZeroClasses.Complementar.triv_iff_sin	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Complementar.teste_decisivo	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Complementar.necessidade_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.sin_impar	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.deriv_trivial_fechada	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.deriv_trivial_sinal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.zeros_reais_negativos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.delta_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.delta_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.delta_tende	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.delta_finitos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.Q_eq_func	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.PN_eq_func	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.conj_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.Q_conj	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.PN_conj	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.Q_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.Q_zero_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.PN_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.PN_zero_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.PN_differentiable	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.zeros_ZATK	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.preserva	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.triviais_simples_ATK	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.externos_ATK	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.lei_transporte_ATK	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.simetria_ATK	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.lei_transporte_refuta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.conexo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.rigidez	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.ZATK_analitica	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.colar_refuta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Construcao.rh_nao_colar	propext, Classical.choice, Quot.sound
