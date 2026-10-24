@@ -14,7 +14,7 @@ jobs:
   kernel:
     name: Lean 4 + Mathlib — compilação e auditoria de axiomas
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 150
     defaults:
       run:
         working-directory: atk-kernel
@@ -63,6 +63,25 @@ jobs:
           done
           cat reports/file_status.txt
           cp lake-manifest.json reports/ || true
+
+      - name: Anotar erros de compilação
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import glob, re
+          n = 0
+          for log in sorted(glob.glob("reports/audit_*.log")):
+              lines = open(log, encoding="utf-8", errors="replace").read().splitlines()
+              for i, l in enumerate(lines):
+                  m = re.match(r"^(ATK/[^:]+\.lean):(\d+):(\d+): error: ?(.*)", l)
+                  if m and n < 45:
+                      ctx = " | ".join([m.group(4)] + lines[i + 1:i + 6])
+                      ctx = ctx.replace("%", "%25").replace("\r", "")[:900]
+                      print(f"::error file=atk-kernel/{m.group(1)},line={m.group(2)},col={m.group(3)}::{ctx}")
+                      n += 1
+          print(f"{n} erros anotados")
+          PY
 
       - name: Relatório de certificação
         id: report

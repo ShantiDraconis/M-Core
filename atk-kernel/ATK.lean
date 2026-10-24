@@ -191,3 +191,7 @@ import ATK.NSPlancherel
 import ATK.NSExistencia
 import ATK.NSEnergia
 import ATK.NSClasse
+import ATK.NSEstimativas
+import ATK.NSAltaOrdem
+import ATK.NSCotaUniforme
+import ATK.NSContinuacao
