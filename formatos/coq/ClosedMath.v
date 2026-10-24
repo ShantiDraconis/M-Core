@@ -531,6 +531,17 @@ Theorem prodcoef_dois : forall p10 p11 p12 p20 p21 p22 : R,
   p11 <= p21 /\ p12 <= p22 /\ p22 <= 25/36 /\ 0 < p22.
 Proof. intros; repeat split; lra. Qed.
 
+(* ---------------------------------------- Laguerre (rodada 12, ATK/LaguerrePolya) *)
+
+(* Grau 2: se p = x^2 - s x + P tem raizes reais, q = p + c p' tambem (discriminante 4c^2 + disc p). *)
+Theorem laguerre_quadratica : forall s P c : R,
+  s*s - 4*P >= 0 -> (2*c - s)*(2*c - s) - 4*(P - c*s) >= 0.
+Proof.
+  intros s P c H.
+  assert (E : (2*c - s)*(2*c - s) - 4*(P - c*s) = 4*(c*c) + (s*s - 4*P)) by ring.
+  rewrite E. pose proof (Rle_0_sqr c) as Hc. unfold Rsqr in Hc. lra.
+Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -558,3 +569,4 @@ Print Assumptions tri_um_x_x2.
 Print Assumptions inv_um_x_x2.
 Print Assumptions descida_tres.
 Print Assumptions prodcoef_dois.
+Print Assumptions laguerre_quadratica.

@@ -12,7 +12,7 @@ menores de Toeplitz `det(a_{i_p − j_q})` serem `≥ 0` (`rh_iff_menores`).
 
 * (⇐) `ATK.XiTP.rh_de_tn` (Edrei para funções inteiras, rodada 10).
 * (⇒) `tn_de_rh`: sob HR, `B` só tem zeros reais negativos (`zerosNeg_of_rh`) e tem ordem `≤ 3/4`:
-  `|B(w)| ≤ 320·exp(|w|^{3/4})` (`crescimento_B`), via a representação `ξ(1/2 + iz) = 2∫₀^∞Φ(u)cos(zu)du`
+  `|B(w)| ≤ 320·exp(320·|w|^{3/4})` (`crescimento_B`), via a representação `ξ(1/2 + iz) = 2∫₀^∞Φ(u)cos(zu)du`
   estendida a `z` complexo (`HPhi`, holomorfia sob a integral e princípio de identidade, `gXi_eq_HPhi`) e a
   cota forte `|Φ(u)| ≤ 160·e^{u/2 − (3/2)e^{2u}}` (`Phi_cota`). Então `ATK.Hadamard.hadamard_tn` (Hadamard
   de gênero 0) dá a positividade total.

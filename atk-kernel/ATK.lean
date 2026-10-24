@@ -296,3 +296,6 @@ import ATK.WeilMecanismo
 import ATK.InteiraAnalitica
 import ATK.HadamardGenero0
 import ATK.XiCrescimento
+import ATK.LaguerrePolya
+import ATK.DeBruijnNewman
+import ATK.PolyaCalor

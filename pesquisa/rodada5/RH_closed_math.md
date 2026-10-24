@@ -260,8 +260,10 @@ fechada `Pc(K)` (igual à soma direta dos degraus; erro `≈ 0,1458/K`), `D₁ =
 
 Ganho de Schur exato e Tikhonov; `D_∞` como resíduo ortogonal em `L²`; o núcleo `ψ` fora da linha; o princípio do
 argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (cobertura certificada, pesada); Edrei na
-forma completa (fator `e^{γz}`, funções meromorfas, ordem `≥ 1`); o fluxo de de Bruijn–Newman (`Λ ≤ 0 ⟺ HR`); a fórmula
-explícita e a positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
+forma completa (fator `e^{γz}`, funções meromorfas, ordem `≥ 1`); no fluxo de de Bruijn–Newman, os teoremas de de
+Bruijn (`1/2 ∈ S`, `S` fechado para cima), Newman (`S` limitado), Hurwitz (`S` fechado) e Rodgers–Tao (`Λ ≥ 0`), que
+entram como hipóteses explícitas em §4r, Hurwitz para funções inteiras e `e^{−tD²}` na classe de Laguerre–Pólya (o
+caso polinomial já está no kernel, §4r); a fórmula explícita e a positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
 `aₙ`**) — todas as formas equivalentes continuam abertas. A **equivalência** HR ⟺ PF∞(aₙ) já está no kernel nas duas
 direções (§4p–§4q); o que falta é a positividade total dos `aₙ` concretos, que é `OPEN_MATH`.
 
@@ -533,14 +535,65 @@ de fatores e fica `≤ (Σα)ⁿ`; para `Ξ`, `a₁/a₀ = 0,02310499312` e `Σ1
 Riemann–von Mangoldt, sem `S(t)`; a cauda pesa 30 % e confere a `6·10⁻⁷`), `a₂/a₀ = e₂(1/γₖ²)` a `1,3·10⁻⁸` —
 consistência com zeros já verificados na linha, não prova. Formatos: SMT-LIB 33, Coq e Isabelle (`prodcoef_dois`).
 
+## 4r. de Bruijn–Newman e Laguerre (rodada 12)
+
+`ATK/DeBruijnNewman.lean` (23), `ATK/LaguerrePolya.lean` (6), `ATK/PolyaCalor.lean` (12): 41 teoremas novos, total
+6361, só `propext`, `Classical.choice`, `Quot.sound`.
+
+**A família `H_t`** (`ATK.DBN`), construída sem hipóteses: `H_t(z) = ∫₀^∞e^{tu²}Φ(u)cos(zu)du` é **inteira para todo
+`t ∈ ℝ`** (`H_differentiable`; dominação `|e^{tu²}Φ(u)|e^{yu} ≤ 160·e^{|t|+y+(|t|+y)²}e^{−u}`, `peso_cota`, a partir de
+`|Φ(u)| ≤ 160e^{u/2−(3/2)e^{2u}}` e `e^{2u} ≥ (2u)⁴/24`), par (`H_neg`), real em `ℝ` (`H_ofReal`), com
+**`H₀(z) = ξ(1/2 + iz)/2`** (`H_zero`), e satisfaz a **equação do calor reversa `∂H_t/∂t = −∂²H_t/∂z²`** (`calor`:
+derivação sob a integral em `t` e duas vezes em `z`, `hasDerivAt_H_t`, `hasDerivAt_H`, `hasDerivAt_H1`).
+
+**`Λ` e HR.** Com `S = {t | todo zero de H_t é real}` e `Λ = inf S` (`Lambda`): **HR ⟺ `0 ∈ S`** (`rh_iff_zero_mem`,
+`rh_iff_H0`), sem hipóteses. As pontes clássicas ficam **condicionais, com as hipóteses à vista**:
+
+* `rh_iff_Lambda_le_zero`: se `S ≠ ∅` (de Bruijn 1950: `1/2 ∈ S`), `S` é limitado inferiormente (Newman 1976), fechado
+  (Hurwitz) e fechado para cima (de Bruijn 1950), então **HR ⟺ `Λ ≤ 0`**;
+* `rh_iff_Lambda_eq_zero`: somando `Λ ≥ 0` (Rodgers–Tao 2020), **HR ⟺ `Λ = 0`**;
+* `Lambda_vazio`, `Lambda_nao_limitado`: com o `sInf` do Mathlib, `S = ∅` ou `S` ilimitado dariam `Λ = 0` — por isso
+  as hipóteses `S ≠ ∅` e limitação não são decorativas.
+
+Esses cinco teoremas conhecidos **não estão formalizados aqui** (`BUILD_PENDING`), nem as cotas `Λ ≤ 0,22`
+(Polymath15, 2019) e `Λ ≤ 0,2` (Platt–Trudgian, 2021). `Λ ≤ 0` é HR: **`OPEN_MATH`**.
+
+**Laguerre** (`ATK.Laguerre`), o núcleo polinomial do fechamento para cima: para `p ∈ ℝ[X]` com só raízes reais
+(`RealRooted`: `#raízes = grau`, `⟺ Splits`) e qualquer `c ∈ ℝ`, **`p + c·p'` tem só raízes reais**
+(`realRooted_add_C_mul_derivative`). Prova: Rolle para `e^{x/c}p(x)`, cuja derivada é `e^{x/c}(p + cp')(x)/c`, dá uma
+raiz nova entre raízes consecutivas; uma raiz de multiplicidade `m` de `p` tem multiplicidade `≥ m − 1` em `p + cp'`
+(`pow_sub_one_dvd_derivative_of_pow_dvd`); isso dá `grau − 1` raízes, e para polinômios reais isso basta
+(`realRooted_of_card`: o fator restante teria grau 1). Daí `p − λp''` (`λ ≥ 0`, `1 − λD² = (1 + √λD)(1 − √λD)`,
+`realRooted_sub_derivative2`) e **`(1 − λD²)^N p` com raízes reais** (`realRooted_iter`) — com `λ = t/N`, o análogo
+discreto de `H_t = e^{−t∂²}H₀`. O sentido oposto não preserva: `X²` tem raízes reais e `(1 + D²)X² = X² + 2` não
+(`calor_direto_falha`).
+
+**Pólya–de Bruijn para polinômios** (`ATK.PolyaCalor`), com a passagem ao limite provada: se `p` tem só raízes reais
+(coeficiente líder `a`, grau `n`), `|p(z)| ≥ |a|·|Im z|ⁿ` em `ℂ` (`norm_eval_ge`); daí **Hurwitz para polinômios**
+(`realRooted_of_tendsto`): um limite coeficiente a coeficiente de polinômios de grau `n` com só raízes reais e
+coeficiente `n` do limite `≠ 0` tem só raízes reais (um zero não real `z₀` daria `0 < |a||Im z₀|ⁿ ≤ |f_N(z₀)| → 0`).
+Pelo binômio em `Module.End`, `(1 − λD²)^N p = Σ_m C(N,m)(−λ)^m D^{2m}p` (`iter_passoCalor`), e `C(N,m)/N^m → 1/m!`
+(`tendsto_choose_div_pow`), logo `(1 − (λ/N)D²)^N p → e^{−λD²}p = Σ_m (−λ)^m/m!·D^{2m}p` coeficiente a coeficiente
+(`tendsto_iter_calor`, `calorExato`). Resultado: **`p` com só raízes reais e `λ ≥ 0` ⇒ `e^{−λD²}p` com só raízes
+reais** (`realRooted_calorExato`; Pólya 1913) — o caso polinomial do fechamento para cima de de Bruijn. Para `H_t`
+falta (`BUILD_PENDING`) Hurwitz para funções inteiras e `e^{−λD²}` na classe de Laguerre–Pólya (aproximar `H_t` por
+polinômios com raízes reais, o que em `t = 0` já pressupõe HR).
+
+Numérico (`codigo/dbn.py`, `dados/dbn.json`, `testes/test_dbn.py`): `H₀(0) = ξ(½)/2 = 0,248560389094`
+(Simpson), `H₀` troca de sinal entre `14,13` e `14,14`, `∂_tH = −∂²_xH` por diferenças finitas a `10⁻⁵` relativo em
+`(t, x) = (0, 5), (0,2; 10), (−0,3; 2)`; Laguerre exato em `ℚ` (Sturm na parte livre de quadrados): `(x+1)(x−½)²(x−3)`
+com `p + cp'` (`c = 1/3, −2, 5, −1/7`), `(1 − D²/10)^k p` (`k ≤ 10`) e `e^{−λD²}p` (`λ = 1/1000, 1/3, 1, 5`) com
+raízes reais, `e^{D²}X² = X² + 2` e `(x²+1)(x−1)²` sem; 5 testes.
+Formatos: SMT-LIB 34, Coq e Isabelle (`laguerre_quadratica`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0 |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2 |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 33 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 34 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 

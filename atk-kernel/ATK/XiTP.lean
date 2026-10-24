@@ -16,8 +16,8 @@ Prova: um zero `z` de `g` dá o zero `−z²` de `B`; por `ATK.Edrei.edrei_intei
 logo `z` é real; e `RH ⟺ zeros de g reais` (`ATK.BaseRiemannXi.riemannHypothesis_iff_Xi`).
 
 **Estado**: a hipótese `(toep aXi).IsTotallyNonneg` é **`OPEN_MATH`** — é equivalente a HR (a volta
-precisa da fatoração de Hadamard de gênero 0 de `B`, em `ATK/HadamardGenero0.lean`). Este arquivo
-prova a implicação, não a hipótese.
+precisa da fatoração de Hadamard de gênero 0 de `B`: `ATK/HadamardGenero0.lean` e `ATK.XiCresc.rh_iff_tn`,
+rodada 11). Este arquivo prova a implicação, não a hipótese.
 -/
 
 open Complex Filter Topology Finset
