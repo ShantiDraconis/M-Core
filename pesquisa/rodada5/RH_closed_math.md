@@ -1612,6 +1612,50 @@ Numérico (`codigo/inteira.py`, `dados/inteira.json`, `testes/test_inteira.py`, 
 `|P_{300}(ρ₁ + h)|/h` estabiliza (zero simples), e `ξ/P_{300}` perto de `ρ₁` é liso e igual a `e^{A+Bρ₁}` vezes a
 cauda `exp(−ρ₁²/2 · Σ_{|γ|>300} 1/ρ²)`, a menos de `10⁻⁴`.
 
+## 4am. O teorema de Hadamard para `ξ` (rodada 33)
+
+Um arquivo, **23 teoremas** (total 7321), só os axiomas padrão. **`hadamardXi : HadamardXi`**: existem `A, B` com
+`ξ(s) = lim_{T→∞} e^{A+Bs} ∏_{|Im ρ| ≤ T} ((1 − s/ρ)e^{s/ρ})^{m_ρ}`, sem hipóteses. A Mathlib não tem a fatoração
+de Hadamard; a prova junta as rodadas 30–32 com seis ferramentas que a Mathlib tem (`ZeroClasses/Hadamard.lean`):
+
+1. **o quociente** (`existe_quociente`): funções inteiras com a mesma ordem em todo ponto diferem por um fator
+   inteiro sem zeros. Com `ordem_Pcan_eq_xi` (§4al), `ξ = P · F`;
+2. **o logaritmo** (`existe_log`): `F = e^g` com `g` inteira. É a primitiva de `F′/F`, pelo teorema de Morera da
+   Mathlib (`Differentiable.isExactOn_univ`);
+3. **a média** (`media_mono_fora`, `posLog_Pcan_le`, `posLog_xi_le`, `media_posLog_exp_le`): em `|z| = R ≥ 2`,
+   `média log⁺|e^g| ≤ média log⁺|ξ| + média log⁺|P| − média log|P| ≤ (34 + 3S) R^{3/2}`. Três ingredientes:
+   * `log⁺(ab) ≤ log⁺a + log⁺b` fora dos zeros de `P` no círculo, que são finitos;
+   * a fórmula de Jensen da Mathlib dá `média log|P| ≥ log|P(0)| = 0`;
+   * as cotas `‖ξ‖ ≤ Bx` (§4aj) e `log|P| ≤ 3S|s|^{3/2}` (§4al);
+4. **Poisson** (`nucleo_cotas`, `re_g_le`): `Re g(w) ≤ 3 · média log⁺|e^g|` em `|w| ≤ R/2`, pela fórmula de Poisson da
+   Mathlib com o núcleo `≤ (R + |w|)/(R − |w|) ≤ 3`;
+5. **Borel–Carathéodory** (`norm_g_le`, da Mathlib): `|g| ≤ 2(3K R^{3/2} + 1) + 3|g(0)|` em `|z| ≤ R/4`;
+6. **Cauchy duas vezes** (`norm_g2_le`, `g2_zero`, `g_afim`): `|g″(z₀)| ≤ 1024·B(R)/R² → 0`, logo `g″ ≡ 0` e
+   `g(z) = g(0) + g′(0)z`;
+7. **conclusão** (`xi_hadamard`, `hadamardXi`): `ξ = e^{A+Bs}·P`, e pela redução `hadamardXi_iff` (§4ak) segue
+   `HadamardXi`. `necessidade_iff`: `NecessidadeRH` passa a depender só de Riemann–von Mangoldt, de Littlewood sob RH e
+   da dedução clássica.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `HadamardXi`: `ξ = e^{A+Bs} ∏ ((1 − s/ρ)e^{s/ρ})^{m_ρ}` | CERTIFIED | ferramenta/alavanca |
+| `NecessidadeRH ⟺ RvM ∧ Littlewood ∧ dedução` | CERTIFIED | redução |
+| a recíproca de Lagarias (RH ⟹ `Re ξ′/ξ ≥ 0` em `Re s > ½`) via `ξ′/ξ = B + Σ (1/(s − ρ) + 1/ρ)` | BUILD_PENDING | redução |
+| `RiemannVonMangoldt`, `LittlewoodSobRH` | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Das três peças ausentes da Mathlib em `NecessidadeRH`, Hadamard é a primeira fechada. Isso não toca a posição dos
+zeros.
+
+Numérico (`codigo/hadamard_xi.py`, `dados/hadamard_xi.json`, `testes/test_hadamard_xi.py`, 2 testes):
+* as constantes:
+  * `A = log ξ(0) = −log 2`;
+  * `B = ξ′(0)/ξ(0) = −0,0230957090` por diferença finita, igual a `−γ/2 − 1 + ½ log 4π` a `10⁻¹¹`;
+  * `−Σ Re(1/ρ)` até 300, mais a cauda, dá `−0,0230989`;
+* a identidade `ξ = e^{A+Bs}·P_{300}·cauda`, com `cauda(s) ≈ exp(−s²/2 · Σ_{|γ|>300} 1/ρ²)`, vale com erro
+  relativo `≤ 3·10⁻⁴` em `s = 2, ½+2i, 3+5i, −1+3i, ½+10i`;
+* `g″ ≈ 6·10⁻⁶`, o ruído da diferença finita.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
