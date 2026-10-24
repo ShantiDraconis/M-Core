@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 35496abb6fe0bacbf4cf93ed7cc6797c9b85ebbd61b9a162673d1d2898c0859e
+# axiomas por teorema — congelamento de 9f108fcb93cbdeaa0d45abd5a793cb68d4c0e0b7e0b6bc8ae1a9297e8920dffa
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6805,3 +6805,31 @@ ATK.ZeroClasses.Encontro.altura_unica	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Encontro.encontro_hipotetico	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Encontro.delta_gigante	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Encontro.candidato_gigante	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.diagonais	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.cruzam_so_no_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.curvas_C	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.igual_nao_e_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.rotacao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.cauchy_riemann	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.cruzamento_perpendicular	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.nao_localmente_constante	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.diferenciavel_perto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.minimo_local_e_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.sem_maximo_local	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.minimo_na_fronteira	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.residuo_logderiv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.residuo_primeiro_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.residuo_triviais	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.sem_curva_de_zeros	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.sem_curva_unitInterval	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.cauda_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.triviais_ilimitados	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.Fch_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.Fch_conj	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.Fch_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.Fch_na_linha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.simetria_sem_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.arquimediano	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.altura_infinita	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.deslocamento_infinitesimal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Componentes.ordinal_sucessor	propext, Classical.choice, Quot.sound
