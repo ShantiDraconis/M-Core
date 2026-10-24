@@ -45,3 +45,9 @@ def test_hankel_nao_toeplitz():
         assert grupo3.det([[m[i + j] for j in range(r)] for i in range(r)]) >= 0
     b = [m[n] / math.factorial(2 * n) for n in range(6)]
     assert grupo3.det([[grupo3.toep(b, i, j) for j in (0, 1, 2)] for i in (1, 2, 3)]) == F(-7, 2880)
+
+
+def test_M3_menores_maiores():
+    # menores contíguos 10 × 10 com 24 coeficientes: sinal positivo estável sob perturbação relativa 10⁻¹⁴
+    a24 = grupo3.coef_xi(24)
+    assert all(grupo3.sinal_estavel(a24, 10, k, eps=1e-14, amostras=3) == 1 for k in range(4))
