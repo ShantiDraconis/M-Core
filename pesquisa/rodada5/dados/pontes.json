@@ -1,0 +1,51 @@
+{
+ "exemplo_um": {
+  "N": 1,
+  "ord0": 1,
+  "det": 0,
+  "posto+N": 4,
+  "2^n": 4,
+  "F(0)": 1,
+  "F(z)-N": 0.1875,
+  "cota 2^n z": 0.25,
+  "arredonda": true,
+  "B1": true,
+  "Q_bool_zero_iff_sat": true
+ },
+ "exemplo_um_Z": [
+  0,
+  1,
+  3,
+  3,
+  1
+ ],
+ "exemplo_zero": {
+  "N": 0,
+  "ord0": 0,
+  "det": 1,
+  "posto+N": 2,
+  "2^n": 2,
+  "F(0)": 0,
+  "F(z)-N": 0.25,
+  "cota 2^n z": 0.25,
+  "arredonda": true,
+  "B1": true,
+  "Q_bool_zero_iff_sat": true
+ },
+ "exemplo_zero_Z": [
+  1,
+  2,
+  1
+ ],
+ "aleatorias": {
+  "formulas": 300,
+  "ord0==N": 300,
+  "det0_iff_sat": 300,
+  "posto": 300,
+  "T2": 300,
+  "B1": 300,
+  "Q": 300
+ },
+ "Q_real_em_ponto_nao_booleano": 0.6875,
+ "aviso": "enumeração 2ⁿ: as pontes mudam a linguagem, não o custo; o kernel prova as identidades (Pontes.lean)"
+}
