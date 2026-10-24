@@ -474,4 +474,14 @@ theorem inv_um_x_x2:
   shows "b3 < 0"
   using assms by linarith
 
+text \<open>Rodada 10 (ATK/EdreiInteira): cada passo da descida baixa b1 de L_j >= 1/(a0 |w|); com a0 = 1,
+  |w| = 2 e b1 = 1, tres passos dariam b1 < 0.\<close>
+
+theorem descida_tres:
+  fixes b0 b1 b2 b3 L0 L1 L2 :: real
+  assumes "b0 = 1" "L0 \<ge> 1/2" "L1 \<ge> 1/2" "L2 \<ge> 1/2"
+    "b1 = b0 - L0" "b2 = b1 - L1" "b3 = b2 - L2"
+  shows "b3 < 0"
+  using assms by linarith
+
 end

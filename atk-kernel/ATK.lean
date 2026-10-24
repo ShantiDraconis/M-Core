@@ -290,3 +290,6 @@ import ATK.ErrosConstantes
 import ATK.XiPhi
 import ATK.ToeplitzTN
 import ATK.ASWReciproca
+import ATK.EdreiInteira
+import ATK.XiTP
+import ATK.WeilMecanismo
