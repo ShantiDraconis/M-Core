@@ -1,0 +1,27 @@
+{
+ "Phi'_formula_vs_dif_finita_u=0.3": [
+  "-2.28939373791",
+  "-2.28939373778"
+ ],
+ "psi_crescente_(0,2]": true,
+ "psi(0.0005),psi(1),psi(2)": [
+  "18.726911",
+  "41.788645",
+  "169.26632"
+ ],
+ "dispersao_m:[lado_esquerdo,integral_dupla]": {
+  "0": [
+   "2.755928946e-05",
+   "2.755928946e-05"
+  ],
+  "1": [
+   "6.478437161e-07",
+   "6.478437161e-07"
+  ],
+  "2": [
+   "3.237290121e-08",
+   "3.237290121e-08"
+  ]
+ },
+ "aviso": "verificação finita; o lema de Csordas é BUILD_PENDING e PF∞ é OPEN_MATH (equivale a HR)"
+}

@@ -563,6 +563,26 @@ Theorem hurwitz_circulo : forall delta g e F F0 : R,
   delta > 0 -> g >= delta -> e < delta/2 -> F >= g - e -> F0 < delta/2 -> F0 >= F -> False.
 Proof. intros; lra. Qed.
 
+(* ---------------------------------------- dispersao de ordem 2 (rodada 15, ATK/TuranDispersao) *)
+
+(* O integrando simetrizado da identidade de dispersao: (t^2 - s^2)(psi t - psi s) >= 0 se psi e crescente. *)
+Theorem simetrizacao_ordem2 : forall t s pt ps : R,
+  t > 0 -> s > 0 -> (t <= s -> pt <= ps) -> (s <= t -> ps <= pt) ->
+  0 <= (t*t - s*s) * (pt - ps).
+Proof.
+  intros t s pt ps Ht Hs H1 H2.
+  destruct (Rle_dec t s) as [Hle | Hgt].
+  - pose proof (H1 Hle) as Hp.
+    assert (A : t*t - s*s <= 0) by nra.
+    assert (B : pt - ps <= 0) by lra.
+    nra.
+  - assert (Hst : s <= t) by lra.
+    pose proof (H2 Hst) as Hp.
+    assert (A : 0 <= t*t - s*s) by nra.
+    assert (B : 0 <= pt - ps) by lra.
+    nra.
+Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -593,3 +613,4 @@ Print Assumptions prodcoef_dois.
 Print Assumptions laguerre_quadratica.
 Print Assumptions turan_raiz.
 Print Assumptions hurwitz_circulo.
+Print Assumptions simetrizacao_ordem2.

@@ -304,3 +304,4 @@ import ATK.ProdutoresTN
 import ATK.JensenPolya
 import ATK.HurwitzJensen
 import ATK.DBNFechado
+import ATK.TuranDispersao

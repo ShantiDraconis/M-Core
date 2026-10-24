@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 11f7b6a8f73953aaf29847e2c51090814d41f65639c618668e07f2a6133cfd50
+# axiomas por teorema — congelamento de 71b06bc3df1d348e34834d7de87101a0c04da839c8941422be51ad8c02d57158
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6432,3 +6432,21 @@ ATK.DBNF.tendsto_int_dif	propext, Classical.choice, Quot.sound
 ATK.DBNF.tendstoUniformlyOn_H	propext, Classical.choice, Quot.sound
 ATK.DBNF.isClosed_S	propext, Classical.choice, Quot.sound
 ATK.DBNF.rh_iff_Lambda_le_zero'	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.ibp	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.turan_disp	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.razao_lc	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.pf2_de_logconcava	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.continuous_phiTd	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.hasDerivAt_phiT	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.cN_ge3	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.phiTd_cota	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.phiTd_cota'	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.hasDerivAt_Phi	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.Phid_cota	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.continuousOn_Phid	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.pow_le_fact_exp	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.nucleo_Phi	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.gam_Phi	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.turan_a_de_csordas	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.turan_de_csordas	propext, Classical.choice, Quot.sound
+ATK.TuranDisp.pf2_de_csordas	propext, Classical.choice, Quot.sound

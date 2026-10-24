@@ -682,14 +682,50 @@ Numérico (`codigo/hurwitz.py`, `dados/hurwitz.json`, `testes/test_hurwitz.py`, 
 `0,00034` em `d = 320`); `H_t(0) > 0`; o primeiro zero real de `H_t` é `14,2508`, `14,1347`, `14,0190` para
 `t = −0,1; 0; 0,1` (varia continuamente). Formatos: SMT-LIB 36, Coq e Isabelle (`hurwitz_circulo`).
 
+## 4u. Dispersão de ordem 2: PF₂ dos coeficientes de `Ξ` sem HR, módulo o lema de Csordas (rodada 15)
+
+`ATK/TuranDispersao.lean` (18 teoremas, total 6450, só `propext`, `Classical.choice`, `Quot.sound`). Responde à
+proposta de uma "identidade de dispersão aritmética para os menores de Toeplitz, começando pela ordem 2": a ordem 2
+já tem uma — a de Csordas–Norfolk–Varga (1986) — e ela está agora no kernel.
+
+**A identidade** (`turan_disp`, núcleo geral `K` com as hipóteses de `Nucleo`): com `γₖ = ∫₀^∞u^{2k}K(u)du` e
+`ψ(u) = −K′(u)/(uK(u))`, integração por partes (`ibp`: `(k+1)∫uᵏK = −∫u^{k+1}K′`) e Fubini com simetrização dão
+
+`(2m+3)γ_{m+1}² − (2m+1)γ_mγ_{m+2} = ½∬ K(t)K(s)(ts)^{2m+2}(t² − s²)(ψ(t) − ψ(s)) ds dt`,
+
+cujo integrando é `≥ 0` se `ψ` é crescente — logo vale a desigualdade de Turán.
+
+**`Φ` é um núcleo** (`nucleo_Phi`): `Φ′ = Σₙ ∂ᵤphiT(cₙ,u)` com `∂ᵤphiT = (−8w³ + 30w² − 15w)e^{u/2−w}`
+(`hasDerivAt_phiT`, `hasDerivAt_Phi`), `|Φ′(u)| ≤ 744·(Σe^{−cₙ/2})·e^{−2u}` (`Phid_cota`), e todos os `uᵏΦ`, `uᵏΦ′` são
+integráveis com `uᵏΦ → 0`.
+
+**Para `Ξ`, sem HR:**
+
+* `turan_de_csordas`: **se `ψ_Φ` é crescente, `γ(n)γ(n+2) ≤ γ(n+1)²`** para todo `n` (`γ(k) = k!aₖ`) — a mesma
+  conclusão de `turan_de_rh` (§4s), com HR trocada por uma propriedade concreta de `Φ`;
+* `pf2_de_csordas`: **todo menor `2 × 2` de `T(aₙ)` é `≥ 0`** (PF₂), via `pf2_de_logconcava` (sequência positiva
+  log-côncava ⇒ PF₂, `razao_lc`).
+
+**`BUILD_PENDING`**: a monotonia de `ψ_Φ` — equivalente à log-concavidade de `Φ(√x)`, teorema de Csordas (CNV 1986;
+Csordas 2015, Thm. 4.2(b)) — não está formalizada; é a única hipótese de `turan_de_csordas` e `pf2_de_csordas`. O nível
+seguinte (as "Turán duplas", conjectura de Csordas–Dimitrov) foi provado em 2026 por Planat–Solé (arXiv 2608.19160,
+com partes assistidas por computador; não verificado aqui). O programa de Nuttall estende o método a todas as ordens
+via sign-regularity dos cumulantes de `Φ` (Karlin) — parcialmente provado, o resto conjectura. **PF_r para `r ≥ 3`
+continua `OPEN_MATH`; PF∞ é HR.**
+
+Numérico (`codigo/turan.py`, `dados/turan.json`, `testes/test_turan.py`, 3 testes): `Φ′` termo a termo confere com
+diferenças finitas (`10⁻¹⁰`); `ψ_Φ` é crescente numa malha de passo `5·10⁻⁴` em `(0, 2]` (`ψ(0⁺) ≈ 18,73`,
+`ψ(1) ≈ 41,79`, `ψ(2) ≈ 169,27`); os dois lados da identidade de dispersão conferem a 10 dígitos para `m = 0, 1, 2`
+(quadratura 1D e Simpson 2D). Formatos: SMT-LIB 37, Coq e Isabelle (`simetrizacao_ordem2`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2; Turán a partir de uma raiz real; o passo do círculo de Hurwitz |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2; Turán a partir de uma raiz real; o passo do círculo de Hurwitz; a simetrização da dispersão de ordem 2 |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 36 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2; 35: Turán a partir de uma raiz; 36: círculo de Hurwitz), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 37 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2; 35: Turán a partir de uma raiz; 36: círculo de Hurwitz; 37: simetrização de ordem 2), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 
