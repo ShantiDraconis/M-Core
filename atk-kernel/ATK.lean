@@ -178,3 +178,6 @@ import ATK.RazaoZeta
 import ATK.PerronSuave
 import ATK.NecessidadeRH
 import ATK.NSReducao
+import ATK.NSFourierBase
+import ATK.NSPicard
+import ATK.NSMild
