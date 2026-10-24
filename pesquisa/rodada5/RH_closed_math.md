@@ -1266,6 +1266,54 @@ Numérico (`codigo/argumento.py`, `dados/argumento.json`, `testes/test_argumento
 disco `|z − (½ + 20i)| = 7` (zeros 14,13; 21,02; 25,01); Rouché com `F = ζ′(ρ₁)(z − ρ₁)` no raio `0,05`
 (`|ζ − F|/|F| ≤ 0,021`); `E1` afiado perto do 1º zero (`0,0009 < 0,0040`, `M` amostrado).
 
+## 4af. O finito exato, a aritmética terminal e a faixa tolerante (rodada 26)
+
+`ATK/ZeroClasses/Finito.lean` (30 teoremas, total 6960; quatro não usam axioma nenhum, os demais só os padrão).
+
+**SAT finito exato** (`Fpol_eval_zero`, `ordem_Fpol`, `codificacao_inteira`, `Zp_cotas`, `Zp_log_cotas`, `Zp_limite`,
+`exemplo_A`, `exemplo_B`, `exemplo_C`, `exemplos_pela_codificacao`). Para `r : ι → ℕ` num tipo finito:
+
+* `F(z) = Σ z^{rᵢ}`: `F(0) = N` e **`ord_{z=0} F = min rᵢ`** — o mínimo de cláusulas violadas. São duas ordens de
+  anulação diferentes: `ord₀ det(L + tI) = #SAT` (§4ad) e `ord₀ F = min R`;
+* **codificação inteira** (ATK-FINITE-1): se `rᵢ ≤ m` e `B > |ι|`, então `⌊(Σᵢ B^{m − rᵢ})/B^m⌋ = N`. Com `B = 2^{n+1}`,
+  `#SAT` é o dígito principal de um inteiro, sem limite nem aproximação;
+* **função de partição**: `Z(τ) = Σ e^{−τ rᵢ}` satisfaz `e^{−τμ} ≤ Z ≤ |ι|e^{−τμ}`,
+  `μ − log|ι|/τ ≤ −log Z(τ)/τ ≤ μ` e `−log Z(τ)/τ → μ = min R`;
+* os três casos enviados, por `decide`: `M_A = 704 = (1300)₈`, `M_B = 8 = (020)₄`, `M_C = 81 = (121)₈`;
+  `det(L + I) = 8, 4, 20`; `#SAT = 1, 0, 1` — e o teorema geral recupera os três.
+
+**Aritmética terminal** (`satAdd_assoc`, `satAdd_comm`, `terminal_absorve`, `cancelamento_falha`,
+`colapso_congruencia`, `zero_um_trivial`, `Ev_nao_aditivo`, `boxplus_tabela`, `boxplus_nao_assoc`, `divisao_terminal`,
+`arredonda_um_iff`, `E01_unifica`, `E01_soma_mal_definida`):
+
+* a soma saturada `min(Z, a + b)` é **associativa e comutativa**, `Z ⊕ 1 = Z`, `Z − Z = 0`, e **perde o cancelamento**
+  (`Z ⊕ 1 = (Z−1) ⊕ 1`);
+* uma congruência aditiva com `0 ∼ 1` identifica **todos** os naturais; num semianel, `0 = 1` força o trivial;
+* o avaliador `E(1) = 0` não é aditivo (`E(1+1) = 2`, `E(E1 + E1) = 0`) e `a ⊞ b = E(min(Z, a + b))` **não é
+  associativa**: `(0⊞1)⊞1 = 0`, `0⊞(1⊞1) = 2` (a tabela enviada, `Z = 7`, confere);
+* `Z/Z = 1 ≠ 0` num corpo: o "`≡ 0`" é a leitura `E(1) = 0`, não a divisão;
+* `round x = 1 ⟺ ½ ≤ x < 3/2`; o estado "01" em `[0, 3/2)` dá `E(0) = E(1) = E(1,49999)`, mas a soma **não** é bem
+  definida nas classes: `E(0 + 1) = 01 ≠ 2 = E(1 + 1)`.
+
+**A faixa tolerante** (`Tol`, `exemplos_tolerancia`, `torcao_tol`, `fora_em_tol`, `tol_refuta`, `rh_iff_tolerancias`,
+`tol_verificada`, `exemplos_nao_zeros`). `T_ε = {0 < Re s < 1, |Re s − ½| ≤ ε}` contém `9/20 + 10i` e `11/20 + 10i`
+(fora da linha), é invariante pela torção com a mesma distância à linha, e todo zero fora da linha está em alguma
+`T_ε`. Um zero de `ζ` em `T_ε` fora da linha refuta RH; RH ⟺ todo zero está a menos de `ε` da linha para todo `ε > 0`.
+Com `VerificadoAte H` (Platt–Trudgian) nenhum ponto de `T_ε` fora da linha com `|t| ≤ H` é zero; em particular os dois
+pontos enviados não são zeros. **A tolerância não impõe zeros.**
+
+| Afirmação | Estado |
+| --- | --- |
+| `ord₀ F = min R`, codificação inteira, função de partição, casos A/B/C | CERTIFIED |
+| soma saturada; colapso de `0 ∼ 1`; `⊞` não associativa; estado "01" mal definido na soma | CERTIFIED |
+| faixa tolerante; zero nela fora da linha ⟹ `¬RH`; RH ⟺ todas as faixas | CERTIFIED |
+| `9/20 + 10i`, `11/20 + 10i` não são zeros | CERTIFIED condicional a `VerificadoAte` |
+| calcular `M_φ` (ou seu dígito principal) sem enumerar `2ⁿ` atribuições | OPEN_MATH (é `#SAT`) |
+
+Numérico (`codigo/finito.py`, `dados/finito.json`, `testes/test_finito.py`, 3 testes): os três casos com aritmética
+inteira exata; 300 fórmulas aleatórias com `⌊M/B^m⌋ = #SAT`, `ord₀ F = min R` e as cotas da função de partição em
+**todas**; associatividade da soma saturada em `0..8`; `⊞` e o estado "01".
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
