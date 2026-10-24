@@ -1090,6 +1090,61 @@ no 1º zero a `10⁻⁹`; na malha `0,05 ≤ σ ≤ 0,95`, `10 ≤ t ≤ 100`, *
 `(s − ρ₁)ζ′/ζ − 1 = O(d)`; `N(10³) ≈ 649`, `N(3·10¹²) ≈ 1,2363·10¹³` (a contagem de Platt–Trudgian), espaçamento
 médio `≈ 0,0275` em `10¹⁰⁰`; zeros do modelo `cosh` na linha.
 
+## 4ac. Forçar um zero: o quarteto construído, o certificado de módulo mínimo, caudas e zeros booleanos (rodada 23)
+
+`ATK/ZeroClasses/Forcar.lean` (32 teoremas, total 6865, só axiomas padrão). O que se pode **forçar**, e onde.
+
+**O quarteto construído** (`Pq_eq_Q`, `Pq_zero_iff`, `Pq_refl`, `Pq_conj`, `quarteto_fora`, `quarteto_gigante`).
+`P(s) = ((s − ½)² − δ² + T²)² + 4T²δ²` é exatamente o `Q δ T` da rodada 19. Seus zeros são **exatamente**
+`½ ± δ ± iT`, ele tem as duas simetrias de `ξ`, e com `δ = 1/(2·10¹⁰⁰⁰+1)`, `T = 10¹⁰⁰` os quatro zeros estão fora
+da linha. Zeros forçados, mas de `P`, não de `ζ`.
+
+**Somar não força** (`Xi_lambda_refl`, `Xi_lambda_conj`, `somar_nao_forca`). `Ξ_λ = ξ + λP` mantém as simetrias
+(`λ` real), mas em cada zero `ρ` de `P`, `Ξ_λ(ρ) = ξ(ρ)`: `Ξ_λ(ρ) = 0 ⟺ ζ(ρ) = 0`.
+
+**O certificado de módulo mínimo** (`cota_fronteira`, `certificado_modulo_minimo`, `certificado_E1`,
+`certificado_E1_refuta`). A Mathlib não tem Rouché; o kernel usa o princípio do módulo máximo aplicado a `1/f`. Se
+`‖f′(z) − f′(c)‖ ≤ L` no disco fechado e
+
+  `2|f(c)| + L·r < r|f′(c)|`,
+
+então `f` tem um zero no disco aberto. Com `‖f″‖ ≤ M₂`: `2|f(c)| + M₂r² < r|f′(c)|`. A forma afiada
+`|f(c)| + M₂r²/2 < r|f′(c)|`, com unicidade, precisa de Rouché e fica BUILD_PENDING; a unicidade já vem do
+certificado de contração (§4aa). Para `ζ`, um disco fora da linha que passa o teste **refuta RH**. Exemplos
+provados: `f(z) = z − (4/5 + 10i)` e `f(z) = (z − c) + ¼(z − c)² + 1/20` em `B(¾ + 10i, ⅛)` têm zero com `Re > ½`;
+`g(z) = 1 + (z − c)` não passa e não tem zero.
+
+**Cauda por certificados e o mundo `H_ext`** (`cauda_por_certificados`, `Hext`, `hext_iff`, `hext_refuta`,
+`hext_quartetos`, `teoria_conjunta`). Infinitos certificados em discos disjuntos fora da linha ⟹ infinitos zeros
+externos. `H_ext` (zeros externos em alturas arbitrariamente grandes) ⟺ o conjunto externo é infinito; `H_ext ⟹ ¬RH`,
+com quartetos acima de toda altura. Uma hipótese independente `Q` (por exemplo `SAT ∉ P`) só se **compõe**:
+`H_ext → Q → ¬RH ∧ Q`; nenhuma implica a outra.
+
+**Zeros booleanos e aritméticos** (`viol_eq_prod`, `R_zero_iff`, `sat_iff_zero`, `lacuna`, `lacuna_min`,
+`exemplo_sat`, `exemplo_unsat`, `div_iff_zero`, `exemplo_84`). `R_φ(x) = Σ_C q_C(x)`, `q_C = ∏_{ℓ∈C}(1 − ℓ(x))`:
+`φ ∈ SAT ⟺ ∃x, R_φ(x) = 0`, e **`R_φ(x) < 1 ⟹ R_φ(x) = 0`** — a lacuna discreta que a `ζ` não tem. `b ∣ a ⟺ ∃k,
+a − bk = 0`; `84 − 7·12 = 0` e `7 ∤ 85`.
+
+**Zero assintótico ≠ zero** (`limite_sem_zero`, `quase_polinomial`). `1/(n+1) → 0` sem nunca ser `0`;
+`(log x)²/x → 0`, mas `x^{log x}` supera `C·xᵏ` para todo `k` e `C`.
+
+| Afirmação | Estado |
+| --- | --- |
+| quarteto `½ ± δ ± iT` de `P`, simetrias, gigante fora da linha | CERTIFIED (para `P`) |
+| `Ξ_λ(ρ) = ξ(ρ)` nos zeros de `P` | CERTIFIED |
+| certificado de módulo mínimo e forma `E1` (constantes `2` e `M₂r²`) | CERTIFIED |
+| forma afiada de `E1` via Rouché | BUILD_PENDING |
+| exemplos linear e quadrático; contraexemplo | CERTIFIED |
+| cauda por certificados; `H_ext ⟺` externos infinitos; `H_ext ⟹ ¬RH` | CERTIFIED |
+| SAT ⟺ zero booleano; lacuna; divisibilidade; zero assintótico | CERTIFIED |
+| `ζ` passa o certificado em algum disco fora da linha | OPEN_MATH (equivale a `¬RH` para zeros simples) |
+| `P ≠ NP` | OPEN_MATH (só entra como hipótese `Q`) |
+
+Numérico (`codigo/forcar.py`, `dados/forcar.json`, `testes/test_forcar.py`, 6 testes): `P = Q` e os quatro zeros;
+`Ξ_λ(ρ) = ξ(ρ)` para `λ = 1, 10, 10⁶`; os três exemplos; **discos em torno dos zeros 1–5 da linha passam** o
+certificado (`L` amostrado) e **os 164 discos fora da linha** em `0,6 ≤ σ ≤ 0,9`, `10 ≤ t ≤ 50` **falham todos**; 200
+fórmulas 3-SAT aleatórias (`n = 6`) com a lacuna `R = 0` ou `R ≥ 1`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
