@@ -336,3 +336,9 @@ import ATK.ZeroClasses.FaixaPecas1
 import ATK.ZeroClasses.FaixaPecas2
 import ATK.ZeroClasses.FaixaPecas3
 import ATK.ZeroClasses.Faixa
+import ATK.Discovery.Truncamento
+import ATK.Discovery.Habitante
+import ATK.Discovery.Infinitesimal
+import ATK.Discovery.Contracao
+import ATK.Discovery.Hilbert
+import ATK.Discovery.RhoMeio

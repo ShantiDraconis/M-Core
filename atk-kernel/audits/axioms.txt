@@ -1,4 +1,5 @@
 # axiomas por teorema — congelamento de d9f720495743c7976ba7a89d425e42ac0997de334062dc56c3ecb6930448275d
+# axiomas por teorema — congelamento de 4182bba6385d8b879f0a6aa7cdf3504052c5f5081c36c192591545f247130836
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7220,3 +7221,71 @@ ATK.ZeroClasses.Faixa.zeros_acima_13	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Faixa.primeiro_zero_entre	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Faixa.m_pos_ate_13	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Faixa.novo_primeiro_ponto_14	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.reconstrucao	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.cauda_nonneg	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.cauda_lt	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.zero_observado_esconde	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.projecao_nao_injetiva	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.lt_iff_cauda	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.lt_iff_cauda_de_P_eq	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.natural_sem_cauda	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.p01_sem_cauda	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.P_mono	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.tendsto_cauda	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.tendsto_P	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.projecao_zero_nao_basta	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.cauda_some_valor_nao	propext, Classical.choice, Quot.sound
+ATK.Discovery.Truncamento.fechamento_duas_componentes	propext, Classical.choice, Quot.sound
+ATK.Discovery.Cauda.lt_of_comparacao	propext, Quot.sound
+ATK.Discovery.Cauda.comparacao_iff	propext, Quot.sound
+ATK.Discovery.Cauda.lt_iff_de_cabecas_iguais	propext
+ATK.Discovery.Cauda.sem_comparacao_consigo	propext, Quot.sound
+ATK.Discovery.Cauda.cauda_deTruncamento_nonneg	propext, Classical.choice, Quot.sound
+ATK.Discovery.Cauda.p01_sem_certificado	propext, Classical.choice, Quot.sound
+ATK.Discovery.Cauda.observacao_nao_injetiva	propext, Classical.choice, Quot.sound
+ATK.Discovery.Cauda.observa_zero_valor_nao	propext, Classical.choice, Quot.sound
+ATK.Discovery.Cauda.equivObs_nao_implica_valor	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.eps_tendsto	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.mk_eps_pos	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.eps_lt_real	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.eps_lt_dez_pot	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.um_lt_umMais	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.umMenos_lt_um	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.stdPart_umMais	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.stdPart_umMenos	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.mesma_parte_padrao	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.classe_do_zero	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.cauda_nao_decide	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.real_sem_infinitesimal	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.estrita_nao_passa_ao_limite	propext, Classical.choice, Quot.sound
+ATK.Discovery.Infinitesimal.unidade_estendida	propext, Classical.choice, Quot.sound
+ATK.Discovery.Contracao.cota_exp	propext, Classical.choice, Quot.sound
+ATK.Discovery.Contracao.tende_zero_de_contracao	propext, Classical.choice, Quot.sound
+ATK.Discovery.Contracao.cota_cinco_meios	propext, Classical.choice, Quot.sound
+ATK.Discovery.Contracao.tende_zero_cinco_meios	propext, Classical.choice, Quot.sound
+ATK.Discovery.Contracao.mesmo_inicio_limites_distintos	propext, Classical.choice, Quot.sound
+ATK.Discovery.Contracao.tende_zero_iff_precisoes	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.norm_sub_smul_sq	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.melhor_coef	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.melhor_coef_minimo	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.defeito_nonneg	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.defeito_mono	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.defeito_eq_of_orth	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.melhoria_le	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.melhoria_exata	propext, Classical.choice, Quot.sound
+ATK.Discovery.Hilbert.contraexemplo_correlacao	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.rhoMeio_degrau	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.rhoMeio_sq	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.integral_faixa	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.integral_parcial	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.soma_faixas	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.tendsto_harmonic_dobro	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.integral_rhoMeio	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.integral_rhoMeio_sq	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.erro_eq	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.erro_sub	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.erro_minimo	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.erro_em_dois	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.erro_minimo_iff	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.iInf_erro	propext, Classical.choice, Quot.sound
+ATK.Discovery.RhoMeio.erro_um_pos	propext, Classical.choice, Quot.sound
