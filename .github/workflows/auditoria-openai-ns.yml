@@ -1,0 +1,78 @@
+name: Auditoria independente — Navier–Stokes da OpenAI (Lean)
+
+# Verificação independente do anúncio de 8/9/2026: compila openai/NavierStokesAndEuler no commit publicado,
+# com o toolchain e o Mathlib exatos do projeto, e confere enunciado, axiomas e não-vacuidade.
+on:
+  push:
+    branches: ['auditoria/openai-ns-20261024']
+    paths: ['auditorias/openai-ns/**', '.github/workflows/auditoria-openai-ns.yml']
+  workflow_dispatch:
+
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      NS_COMMIT: f9e8bc5b38b6e212696e8a30e3e91517af887bbd
+      FC_COMMIT: 8bf45ed70d48b2b2a501de9c00b26bfa38c573ee
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Liberar disco
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          df -h /
+
+      - name: Baixar a prova da OpenAI no commit publicado
+        run: |
+          git clone https://github.com/openai/NavierStokesAndEuler.git ns
+          cd ns && git checkout "$NS_COMMIT" && git log --oneline -1 && cat lean-toolchain
+
+      - name: Baixar o enunciado de referência (Formal Conjectures)
+        run: |
+          git clone --filter=blob:none --no-checkout https://github.com/google-deepmind/formal-conjectures.git fc
+          cd fc && git checkout "$FC_COMMIT" -- FormalConjectures/Millenium/NavierStokes.lean
+
+      - name: Varredura estática (sorry, axiom, native_decide, metaprogramação)
+        run: python3 auditorias/openai-ns/varredura.py ns
+
+      - name: Comparar enunciados (DeepMind × desafio × definições da solução)
+        run: |
+          python3 auditorias/openai-ns/compara_enunciados.py \
+            fc/FormalConjectures/Millenium/NavierStokes.lean \
+            ns/ComparatorChallenges/NavierStokes.lean \
+            ns/NavierStokes/ComparatorDefinitions.lean
+
+      - name: Instalar elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Cache do Mathlib (versão exata do projeto)
+        run: cd ns && lake exe cache get
+
+      - name: Compilar o cone de NavierStokes.ComparatorSolution
+        run: |
+          cd ns
+          /usr/bin/time -v lake build NavierStokes.ComparatorSolution 2>&1 | tail -40
+
+      - name: Mini-comparador, axiomas e não-vacuidade
+        run: |
+          cd ns
+          cp ../auditorias/openai-ns/Auditoria.lean ../auditorias/openai-ns/NaoVacuidade.lean .
+          lake env lean Auditoria.lean 2>&1 | tee ../axiomas.txt
+          lake env lean NaoVacuidade.lean 2>&1 | tee -a ../axiomas.txt
+          for t in NavierStokes.Comparator.navier_stokes_breakdown_R3 NavierStokes.Comparator.navier_stokes_breakdown_periodic \
+                   AuditoriaATK.enunciado_C AuditoriaATK.enunciado_D \
+                   NavierStokes.Comparator.dado_nulo_admissivel NavierStokes.Comparator.dado_nulo_tem_solucao; do
+            grep -q "'$t' depends on axioms: \[propext, Classical.choice, Quot.sound\]" ../axiomas.txt \
+              || { echo "FALHA: $t"; exit 1; }
+            echo "CERTIFIED $t [propext, Classical.choice, Quot.sound]"
+          done
+          if grep -q "error" ../axiomas.txt; then echo "erro de compilação"; exit 1; fi
+
+      - name: Resumo
+        if: always()
+        run: |
+          echo "## Auditoria Navier–Stokes (OpenAI, commit $NS_COMMIT)" >> "$GITHUB_STEP_SUMMARY"
+          [ -f axiomas.txt ] && sed 's/^/    /' axiomas.txt >> "$GITHUB_STEP_SUMMARY" || echo "sem axiomas.txt" >> "$GITHUB_STEP_SUMMARY"
