@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 11cfe21e3232d7a881d8208078de2475be4cf7ffa362d27e65ca7e301ac58f21
+# axiomas por teorema — congelamento de 949ac5151caa5a0d1eae7d0dfd8853389da1675d47677795ed7d4a4e997108cb
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6930,3 +6930,33 @@ ATK.ZeroClasses.Rouche.torcao_disco	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Rouche.E1_zeta_linha	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Rouche.cauda_E1	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Rouche.exemplo_quadratico_unico	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.Fpol_eval_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.ordem_Fpol	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.codificacao_inteira	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.Zp_cotas	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.Zp_log_cotas	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.Zp_limite	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.exemplo_A	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.exemplo_B	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.exemplo_C	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.exemplos_pela_codificacao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.satAdd_assoc	propext, Quot.sound
+ATK.ZeroClasses.Finito.satAdd_comm	propext, Quot.sound
+ATK.ZeroClasses.Finito.terminal_absorve	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.cancelamento_falha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.colapso_congruencia	propext
+ATK.ZeroClasses.Finito.zero_um_trivial	nenhum
+ATK.ZeroClasses.Finito.Ev_nao_aditivo	nenhum
+ATK.ZeroClasses.Finito.boxplus_tabela	nenhum
+ATK.ZeroClasses.Finito.boxplus_nao_assoc	nenhum
+ATK.ZeroClasses.Finito.divisao_terminal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.arredonda_um_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.E01_unifica	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.E01_soma_mal_definida	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.exemplos_tolerancia	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.torcao_tol	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.fora_em_tol	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.tol_refuta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.rh_iff_tolerancias	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.tol_verificada	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Finito.exemplos_nao_zeros	propext, Classical.choice, Quot.sound
