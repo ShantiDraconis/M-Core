@@ -326,3 +326,7 @@ import ATK.ArgPrincipio
 import ATK.ZeroClasses.Rouche
 import ATK.ZeroClasses.Finito
 import ATK.ZeroClasses.Fronteira
+import ATK.ZeroClasses.QuartoAval
+import ATK.ZeroClasses.QuartoGeral
+import ATK.ZeroClasses.Quarto
+import ATK.ZeroClasses.Lagarias

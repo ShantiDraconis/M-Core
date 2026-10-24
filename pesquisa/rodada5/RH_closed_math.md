@@ -266,7 +266,7 @@ explícitas (o fechamento de `S` já está provado, §4t), e `e^{−tD²}` na cl
 no kernel, §4r); Cauchy–Binet e Lindström–Gessel–Viennot (fechamento de TN por produtos, núcleos por caminhos); os
 resultados incondicionais de Csordas–Norfolk–Varga (Turán) e Griffin–Ono–Rolen–Zagier; a fórmula explícita e a
 positividade de Weil; nas classes de zeros (§4v), a certificação finita de `m₄ > 0` (aritmética intervalar de `ζ` em
-`σ = 1/4`), o teorema de Hardy (infinitos zeros na reta) e a infinitude dos zeros não triviais por Hadamard com zeros
+`σ = 1/4`; **fechada na rodada 28**, §4ah), o teorema de Hardy (infinitos zeros na reta) e a infinitude dos zeros não triviais por Hadamard com zeros
 complexos, o lema de Csordas (que daria `P(2)` para `Ξ`) e o multiplicador de Laguerre `q^{n²}` (que daria a ida do
 fluxo de Toeplitz); a simplicidade dos zeros não triviais e a irracionalidade das suas ordenadas são conjecturas
 independentes, `OPEN_MATH`; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
@@ -798,7 +798,8 @@ NOT_DERIVED` — derivá-la seria provar HR).
 ponto em que uma prova incondicional não se completa é **`m₄ > 0`**, i.e. `ζ ≠ 0` no segmento
 `{1/4 + it : 1/4 ≤ t ≤ 4}` — afirmação **finita**, verdadeira numericamente (`m₄ ≈ 0,461`), cuja certificação no
 kernel é mecânica (estender `mem_zetaI` de `σ = 1/2` para `σ = 1/4` e montar a malha com `certificado_derivada`):
-`BUILD_PENDING`. O universal `∀ n ≥ 4` é HR.
+`BUILD_PENDING` — **fechado na rodada 28** (§4ah: `m₄ ≥ 1/20`; o novo primeiro ponto aberto é `m₅ > 0`). O
+universal `∀ n ≥ 4` é HR.
 
 Numérico (`codigo/zeroclasses.py`, `dados/zeroclasses.json`, `testes/test_zeroclasses.py`, 8 testes): `ζ` por
 Euler–Maclaurin (só biblioteca padrão) confere em `ζ(2)`, `ζ(−2)` e no 1º zero; a órbita do 1º zero tem cardinal 2;
@@ -1389,6 +1390,62 @@ exata: 4001 racionais em `[−5, 5]` com `P = argmin`, `|P| ≤ 2`, `|P| = 2` s�
 `Q(x + y) − Q x − Q y ∈ {−1, 0, 1}` (21 000 / 120 801 / 19 000); adjacência e fecho em `{−6..6}` (uma classe);
 1997 triplas para `Δ`; 300 pares de intervalos (Minkowski, larguras, `I − I`, estados por força bruta). Em ponto
 flutuante: `|ζ(9/20 + 10i)| ≈ 1,567`, `|ζ(11/20 + 10i)| ≈ 1,531`; a reflexão do primeiro zero é zero.
+
+## 4ah. Empurrar a fronteira: `m₄ > 0` provado e a competição `Re(ξ′/ξ)` (rodada 28)
+
+Quatro arquivos, **60 teoremas** (total 7092), só os axiomas padrão; as verificações numéricas são feitas pelo
+próprio kernel (`decide +kernel`, sem `native_decide`).
+
+A partir desta rodada, cada resultado é classificado em quatro classes: **reformulação** (P ⟺ RH), **consequência**
+(RH ⟹ P), **parcial** (P provada sem RH, mais fraca que RH) e **alavanca** (P provada sem RH e P ⟹ RH). Só a
+última cruza a linha.
+
+**1. O primeiro ponto aberto do `FinalAudit`, fechado** (`ZeroClasses/QuartoAval.lean`, `QuartoGeral.lean`,
+`Quarto.lean`). `K₄ = {¼ + it : ¼ ≤ t ≤ 4}` e `m₄ = inf_{K₄} |ζ|`:
+
+* **avaliação certificada de `ζ(¼ + it)`** (`mem_zetaI4`): Euler–Maclaurin `EM_{6,8}` com resto explícito,
+  `n^{¼}` por intervalos racionais (`lo⁴ ≤ n ≤ hi⁴`, `mem_qrt`), `e^{iθ}` e `log n` pelos certificados de §4f;
+* **cota grosseira geral** (`cota_geral`, `cotaQ_spec`): para `Re w > 0`, `‖w‖ ≤ R`, `‖w − 1‖ ≥ d`,
+  `‖ζ(w)‖ ≤ N + N/d + ½ + Σ_{j=2}^{M} |B_j|/j!·(R)_{j−1}N^{1−j} + (R)_M/M!·C_M·N^{1−M}/(M − 1)`, com valor
+  racional calculado pelo kernel;
+* **Cauchy** (`deriv_cota`): `‖ζ′‖ ≤ B/r` no segmento; **peça** (`peca`, `peca_cert`): malha de passo `h` com
+  `‖ζ(c)‖ ≥ (B/r)h + δ` nos centros ⟹ `‖ζ‖ ≥ δ`; **cobertura** (`cobre`, `cobre_seg`, `centros_seg`);
+* **as quatro peças** (`peca1`–`peca4`): `[¼, 1]`, `[1, 2]`, `[2, 3]`, `[3, 4]`, `r = 6/25`, `B = 6,11; 4,91;
+  4,35; 4,76`, **95 centros**, cada um um retângulo certificado de `ζ(¼ + it)`;
+* **`cota_K4`: `|ζ(s)| ≥ 1/20` em todo `K₄`**; **`m4_cota`: `m₄ ≥ 1/20`**; `m4_pos`; `K4_sem_zeros`;
+  `m4_menor_um` (`m₄ < 1`, pelo retângulo em `¼ + 2i`);
+* `espelho_sem_zeros`: pela torção, também `ζ(¾ + it) ≠ 0` para `¼ ≤ t ≤ 4`;
+* `novo_primeiro_ponto`: o primeiro ponto aberto passa a ser **`m₅ > 0`** (`K₅ = [⅕, 3/10] × [⅕, 5]`, uma região
+  bidimensional), com `m₅ > 0 ⟺ ζ` sem zeros em `K₅` e `RH ⟹ m₅ > 0`.
+
+**2. A competição analítica** (`ZeroClasses/Lagarias.lean`). `L(s) = Re(ξ′(s)/ξ(s))` é a versão analítica de `Δ₀₁`
+(§4ag):
+
+* `Lg_antissim`: `L(1 − s̄) = −L(s)` (a mesma lei de `Δ₀₁(1 − x) = −Δ₀₁(x)`, `Lg_e_Dif_antissim`); `Lg_linha`:
+  `L(½ + it) = 0`;
+* `deriv_log_norm`: **`∂_σ log|ξ(σ + it)| = L(σ + it)`** onde `ξ ≠ 0`;
+* `sinal_negativo`: num zero de `ξ` com `Re ρ > ½`, `L < 0` logo à esquerda (o resíduo `m/(s − ρ)` domina);
+* **`positividade_implica_RH`** (meia-ponte de Lagarias): `L ≥ 0` em `Re s > ½` (fora dos zeros) ⟹ RH;
+  **`monotonia_implica_RH`** (Sondow–Dumitrescu): `|ξ(σ + it)|` estritamente crescente em `σ > ½` ⟹ RH;
+* `positividade_iff_RH_de`, `monotonia_iff_RH_de`: com as recíprocas nomeadas (Lagarias 1999, Sondow–Dumitrescu
+  2010; dependem do produto de Hadamard de `ξ`, ausente da Mathlib: BUILD_PENDING), as duas condições são
+  **equivalentes** a RH; `nao_RH_forca_negativo`: `¬RH` ⟹ existe `s` com `Re s > ½` e `L(s) < 0`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ζ ≠ 0` em `K₄` e no espelho `σ = ¾`, `¼ ≤ t ≤ 4`; `1/20 ≤ m₄ < 1` | CERTIFIED | parcial |
+| avaliação certificada de `ζ(¼ + it)`; cota grosseira geral; certificado de peça | CERTIFIED | ferramenta |
+| `L(1 − s̄) = −L(s)`, `L = 0` na linha, `L = ∂_σ log\|ξ\|` | CERTIFIED | incondicional |
+| `L ≥ 0` em `Re s > ½` ⟹ RH; monotonia de `\|ξ\|` ⟹ RH | CERTIFIED | reformulação (meia) |
+| RH ⟹ `L > 0` em `Re s > ½` (Lagarias), RH ⟹ monotonia | BUILD_PENDING (Hadamard) | consequência |
+| `m₅ > 0` | OPEN (finito, verificável; próximo ponto) | parcial |
+| `L ≥ 0` sem RH | OPEN_MATH | seria alavanca |
+
+Numérico (`codigo/quarto.py`, `dados/quarto.json`, `testes/test_quarto.py`, 3 testes): `m₄ ≈ 0,46114` em
+`t ≈ 2,175`, espelho `min |ζ(¾ + it)| ≈ 0,585`; nas quatro peças, a cota racional domina o máximo amostrado de `|ζ|`
+na região, `B/r` domina `|ζ′|` no segmento, e a folga entre `|ζ|` nos centros e o limiar é `≥ 0,027`; `L(½ + it) ≈ 0`
+(`< 10⁻⁸`), antissimetria `< 10⁻⁸`, `L > 0` em todos os 2400 pontos de `½ < σ ≤ 2`, `0,5 ≤ t ≤ 40`; num modelo
+com zero artificial em `0,7 + 30i`, `L(ρ − h) ≈ −1/h`.
 
 ## 5. Formatos
 
