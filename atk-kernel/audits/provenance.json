@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "55c970520bede02c66302a4101dbe5b73e8418211a2d73e6f120a855996e4480",
+  "sources_sha256": "d9f720495743c7976ba7a89d425e42ac0997de334062dc56c3ecb6930448275d",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -344,6 +344,12 @@
     "ATK/ZeroClasses/Construcao.lean": "3cc2615b42f96967bf676395170fb86ff13becdcd40bcc6078b9ed54d71b6201",
     "ATK/ZeroClasses/Encontro.lean": "8ed2a765187d68addf64dac935db08b3a79d46edf39b2e48483e4902b1f882c7",
     "ATK/ZeroClasses/Escalas.lean": "a4c298f7e444769951650e50ab733bffc2f013d8c757657cd54916d5164d2702",
+    "ATK/ZeroClasses/Faixa.lean": "9a8fa6519c7e9116d908eb1ef3cdfa443bad8c1fe25f8a479148b906a01a3162",
+    "ATK/ZeroClasses/FaixaAval.lean": "bd79e5296a98985fb7e1e1894e8591e2271ae96d28e8ec247d94a4030b7949bd",
+    "ATK/ZeroClasses/FaixaGeral.lean": "a4facefdc678bb2a432d50f5517d949cb45e17ef6addcb3dd430f2a1b1c54372",
+    "ATK/ZeroClasses/FaixaPecas1.lean": "c394cbde7d522e666f69d6be930dd358be5698ade7acdcd1bf4a86d01864a123",
+    "ATK/ZeroClasses/FaixaPecas2.lean": "d8151af99a63ab9556cd453558bb74db350dfb2b39f49390f36c7b87f52af2a8",
+    "ATK/ZeroClasses/FaixaPecas3.lean": "861e7ccf5041f20d7d71495b4ab06b0c6f27ebefe6b807c53c4eaf057605b81d",
     "ATK/ZeroClasses/FinalAudit.lean": "6dcf43bbc8478d1cf78d7f1e7a5dd356c1e4da1189383000c7bbd83ccc5d6798",
     "ATK/ZeroClasses/Finito.lean": "5cbfd6dcd0c6f03ae01d59bd7f122d574a4f2033c8802b9da0a07568a07f1538",
     "ATK/ZeroClasses/Forcar.lean": "97563a71d9e33e7a2f0b5903a26d6f320f8d39cee24fc3bb4188658393f69d25",
@@ -373,12 +379,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "b03adf43faa5d4aa82b008942594344bb597ed7c0aad95658d87fc8839cb3d0b"
+    "ATK.lean": "4dcf7980d63f82b266029880214029111d0bc52c260894b74cb157ce345e5637"
   },
-  "n_files": 372,
-  "expected_theorems": 7092,
+  "n_files": 378,
+  "expected_theorems": 7220,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "ddc878259f458a56bce7076ea5f74f3352925d1a",
+  "commit_at_freeze": "88b73dea6d807c3df55de70e006b92d68e57c7db",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

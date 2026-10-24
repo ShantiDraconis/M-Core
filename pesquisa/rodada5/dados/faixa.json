@@ -1,0 +1,26 @@
+{
+ "retangulos": 50,
+ "centros": 930,
+ "verificacoes": {
+  "cota": 50,
+  "malha": 50,
+  "raio": 50,
+  "limiar": 50,
+  "folga_min": 0.012144144616875074
+ },
+ "area_coberta": "607/100",
+ "area_alvo": "607/100",
+ "min_metade_direita": {
+  "min": 0.5262536796888697,
+  "em": [
+   0.5,
+   2.478666666666667
+  ]
+ },
+ "min_metade_esquerda": 0.3887779789649479,
+ "primeiro_zero": [
+  0.49999999999999883,
+  14.134725141734693
+ ],
+ "aviso": "ponto flutuante para ζ; o kernel prova |ζ| ≥ 1/50 nos retângulos e ζ ≠ 0 para |Im s| ≤ 13 (Faixa.lean)"
+}

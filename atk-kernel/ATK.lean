@@ -330,3 +330,9 @@ import ATK.ZeroClasses.QuartoAval
 import ATK.ZeroClasses.QuartoGeral
 import ATK.ZeroClasses.Quarto
 import ATK.ZeroClasses.Lagarias
+import ATK.ZeroClasses.FaixaAval
+import ATK.ZeroClasses.FaixaGeral
+import ATK.ZeroClasses.FaixaPecas1
+import ATK.ZeroClasses.FaixaPecas2
+import ATK.ZeroClasses.FaixaPecas3
+import ATK.ZeroClasses.Faixa
