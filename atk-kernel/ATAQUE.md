@@ -49,6 +49,7 @@ A regularidade exigiria usar a estrutura fina do termo não linear (barreira de 
 | F2.4 | Equação do perfil autossimilar (Euler com fronteira ou em `T³`) e resíduo certificado | ⬜ | — |
 | F2.5 | Estabilidade linear certificada do perfil (cotas espectrais intervalares) | ⬜ | — |
 | F2.6 | Soluções fracas de Leray (N4–N5) | ⬜ | — |
+| F2.7 | **Existência local de soluções suaves em ℝ³** (Leray; Kato–Fujita) no modelo genuíno: dado de Schwartz de divergência nula ⇒ (u, p) suaves em ℝ³ × [0, T) com energia e enstrofia finitas | ✅ | `NSExistencia.existenciaLocal` |
 
 ## Frente 3 — Hipótese de Riemann
 

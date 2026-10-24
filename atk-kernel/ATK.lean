@@ -185,3 +185,7 @@ import ATK.NSSuave
 import ATK.NSTempo
 import ATK.NSSimetria
 import ATK.NSFisico
+import ATK.NSPressao
+import ATK.NSDado
+import ATK.NSPlancherel
+import ATK.NSExistencia
