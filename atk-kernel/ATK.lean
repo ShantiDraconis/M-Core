@@ -341,3 +341,4 @@ import ATK.ZeroClasses.JensenLocal
 import ATK.ZeroClasses.Canonico
 import ATK.ZeroClasses.CanonicoInteira
 import ATK.ZeroClasses.Hadamard
+import ATK.ZeroClasses.LagariasHadamard

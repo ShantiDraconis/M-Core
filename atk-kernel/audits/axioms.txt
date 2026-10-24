@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 1b9f1b5af059f31374bfb4aa5dcceeafaeed2a6fc22cbce943ed1e92e56a6b67
+# axiomas por teorema — congelamento de 1214d04027d27c48b848da6afd53ca74ef229634d707f261cc1d02af6531a09f
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7321,3 +7321,17 @@ ATK.ZeroClasses.Hadamard.g_afim	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hadamard.xi_hadamard	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hadamard.hadamardXi	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hadamard.necessidade_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.Pcan_localmente	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.logDeriv_E1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.summable_logDeriv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.logDeriv_xi_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.summable_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.Lg_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.re_de_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.termo_sob_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.Lg_sob_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.rec_lagarias	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.Lg_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.rec_monotonia	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.positividade_iff_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LagariasHadamard.monotonia_iff_RH	propext, Classical.choice, Quot.sound
