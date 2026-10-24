@@ -320,3 +320,4 @@ import ATK.ZeroClasses.Construcao
 import ATK.ZeroClasses.Escalas
 import ATK.ZeroClasses.Encontro
 import ATK.ZeroClasses.Componentes
+import ATK.ZeroClasses.Forcar

@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 9f108fcb93cbdeaa0d45abd5a793cb68d4c0e0b7e0b6bc8ae1a9297e8920dffa
+# axiomas por teorema — congelamento de 04125bc6bcae7e31c32c2c19fd3b08035941883ea953d53a83528df2bb73dbad
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6833,3 +6833,35 @@ ATK.ZeroClasses.Componentes.arquimediano	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Componentes.altura_infinita	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Componentes.deslocamento_infinitesimal	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Componentes.ordinal_sucessor	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.Pq_eq_Q	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.Pq_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.Pq_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.Pq_conj	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.quarteto_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.quarteto_gigante	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.Xi_lambda_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.Xi_lambda_conj	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.somar_nao_forca	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.cota_fronteira	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.certificado_modulo_minimo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.certificado_E1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.certificado_E1_refuta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.exemplo_linear	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.exemplo_quadratico	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.contraexemplo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.cauda_por_certificados	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.hext_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.hext_refuta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.hext_quartetos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.teoria_conjunta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.viol_eq_prod	propext
+ATK.ZeroClasses.Forcar.R_zero_iff	propext, Quot.sound
+ATK.ZeroClasses.Forcar.sat_iff_zero	propext, Quot.sound
+ATK.ZeroClasses.Forcar.lacuna	propext, Quot.sound
+ATK.ZeroClasses.Forcar.lacuna_min	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.exemplo_sat	propext
+ATK.ZeroClasses.Forcar.exemplo_unsat	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.div_iff_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.exemplo_84	propext
+ATK.ZeroClasses.Forcar.limite_sem_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Forcar.quase_polinomial	propext, Classical.choice, Quot.sound
