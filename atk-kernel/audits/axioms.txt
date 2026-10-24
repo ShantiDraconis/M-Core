@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 162b96e58094110887665173ddcd5e3df4d349e803326be2bb4e1deaec37d4c7
+# axiomas por teorema — congelamento de 265a78f70ec438b4a663fcf98cc13651d98526b8be8e73ab0ba3d82e4dc56e8b
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6687,3 +6687,28 @@ ATK.ZeroClasses.MundoFora.quase_todos_perto	propext, Classical.choice, Quot.soun
 ATK.ZeroClasses.MundoFora.dicotomia_mundo	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.MundoFora.rh_acima	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.MundoFora.mundo_finito	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.exatamente_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.explosao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.re_nonempty	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.re_bdd	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.re_le_Theta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.Theta_le_one	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.meio_le_Theta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.Theta_mem	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.rh_iff_Theta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.fora_iff_Theta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.FM_eq_func	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.FM_conj	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.FM_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.sq_add_sq_eq_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.FM_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.FM_zero_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.FM_centrais	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.FM_externos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.FM_ponto_medio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.dois_casos_na_familia	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.ambos_realizados	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.triv_passo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.triv_segunda_diferenca	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.triv_compensados	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Complementar.equilibrio_sem_fora	propext, Classical.choice, Quot.sound
