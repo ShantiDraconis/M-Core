@@ -44,11 +44,38 @@ para redefinir notação.
 * **No CI** (`.github/workflows/auditoria-openai-ns.yml`): toolchain e Mathlib exatos do projeto (`lake exe cache
   get`), compilação de `NavierStokes.ComparatorSolution`, `#print axioms`, o mini-comparador `Auditoria.lean` (que
   reescreve literalmente os enunciados (C) e (D) do desafio e os fecha com os teoremas da OpenAI) e `NaoVacuidade.lean`.
-  Resultado: ver a execução do workflow e a seção 4.
+  Execução [40131056493](https://github.com/ShantiDraconis/M-Core/actions/runs/40131056493) (commit `ba0f178`,
+  24/10/2026, 1 h 23 min): **sucesso**.
+* Por que o sucesso é evidência: o passo de axiomas sai com erro se **qualquer** um dos seis teoremas não imprimir
+  exatamente `[propext, Classical.choice, Quot.sound]`, ou se a saída contiver `error`. `lake env lean` não compila
+  dependências; ele só importa `.olean` prontos. Então a importação de `NavierStokes.ComparatorSolution` em
+  `Auditoria.lean` só funciona se o cone inteiro tiver sido compilado, ou seja, verificado pelo kernel. Na primeira
+  execução, o passo de compilação passava por `| tail -40` sem `pipefail`, então o código de saída dele não contava
+  sozinho. O workflow agora usa `shell: bash` (`-eo pipefail`) e publica anotações (`::notice`) com o tempo e a
+  memória da compilação e cada teorema certificado. Uma execução de confirmação roda junto com este veredito.
 
 ## 4. Veredito
 
-Preenchido após a execução do CI.
+| Item | Estado | Evidência |
+| --- | --- | --- |
+| `navier_stokes_breakdown_R3` (alternativa (C), ℝ³) | **CERTIFIED** (kernel do Lean, axiomas padrão) | CI 40131056493 |
+| `navier_stokes_breakdown_periodic` (alternativa (D), ℝ³/ℤ³) | **CERTIFIED** (kernel do Lean, axiomas padrão) | CI 40131056493 |
+| O tipo provado **é** o enunciado do desafio (mini-comparador `enunciado_C`, `enunciado_D`) | **CERTIFIED** | CI 40131056493 |
+| Enunciado do desafio = Formal Conjectures (DeepMind) a menos de mudanças cosméticas | conferido (texto) | `compara_enunciados.py` |
+| Enunciado ↔ texto oficial do Clay (C)/(D), item por item | conferido (leitura) | seção 1 |
+| Não-vacuidade: o dado nulo é admissível e tem solução | **CERTIFIED** | `NaoVacuidade.lean`, CI 40131056493 |
+| Fonte sem `sorry`/`axiom`/`native_decide`/metaprogramação | conferido (estático) | `varredura.py`, 2655 arquivos |
+| Segundo kernel independente (`lean4export` + `nanoda`, o `comparator` oficial) | não executado | — |
+| (A): regularidade global sem força | OPEN_MATH (esta prova não decide) | seção 1 |
+
+**Conclusão.** Os teoremas da OpenAI para as alternativas (C) e (D) são aceitos pelo kernel do Lean, com o
+toolchain e o Mathlib exatos do projeto e só os três axiomas padrão. O que eles provam é literalmente o enunciado
+do desafio, e esse enunciado traduz fielmente (C) e (D) do texto oficial. Não achamos falha.
+
+Esta auditoria **não declara** o problema do milênio resolvido. Isso depende do processo do Clay Institute
+(publicação, prazo, comitê), do segundo kernel ainda não executado aqui e das questões de texto e procedência da
+seção 5. A alternativa (A), que é a linha NS do ATK (`ATK.LigacaoNS.clayA_iff`), continua OPEN_MATH: o portão
+terminal do ATK não muda.
 
 ## 5. O que esta auditoria não cobre
 

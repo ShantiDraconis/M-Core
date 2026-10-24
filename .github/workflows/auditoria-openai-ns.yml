@@ -12,6 +12,9 @@ jobs:
   auditoria:
     runs-on: ubuntu-latest
     timeout-minutes: 350
+    defaults:
+      run:
+        shell: bash  # -eo pipefail: uma falha antes de um pipe também falha o passo
     env:
       NS_COMMIT: f9e8bc5b38b6e212696e8a30e3e91517af887bbd
       FC_COMMIT: 8bf45ed70d48b2b2a501de9c00b26bfa38c573ee
@@ -54,7 +57,8 @@ jobs:
       - name: Compilar o cone de NavierStokes.ComparatorSolution
         run: |
           cd ns
-          /usr/bin/time -v lake build NavierStokes.ComparatorSolution 2>&1 | tail -40
+          /usr/bin/time -v -o ../tempo.txt lake build NavierStokes.ComparatorSolution 2>&1 | tail -40
+          echo "::notice title=build::lake build NavierStokes.ComparatorSolution OK; $(grep -E 'Elapsed|Maximum resident' ../tempo.txt | tr -s ' \t' ' ' | tr '\n' ';')"
 
       - name: Mini-comparador, axiomas e não-vacuidade
         run: |
@@ -68,6 +72,7 @@ jobs:
             grep -q "'$t' depends on axioms: \[propext, Classical.choice, Quot.sound\]" ../axiomas.txt \
               || { echo "FALHA: $t"; exit 1; }
             echo "CERTIFIED $t [propext, Classical.choice, Quot.sound]"
+            echo "::notice title=CERTIFIED::$t [propext, Classical.choice, Quot.sound]"
           done
           if grep -q "error" ../axiomas.txt; then echo "erro de compilação"; exit 1; fi
 
