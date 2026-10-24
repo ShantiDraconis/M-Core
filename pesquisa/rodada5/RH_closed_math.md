@@ -590,7 +590,7 @@ Formatos: SMT-LIB 34, Coq e Isabelle (`laguerre_quadratica`).
 
 ## 4s. Grupo 3: produtores de positividade — o que é construção e o que é descoberta (rodada 13)
 
-`ATK/XiMomentos.lean` (20), `ATK/ProdutoresTN.lean` (9), `ATK/JensenPolya.lean` (20): 49 teoremas novos, total 6410, só
+`ATK/XiMomentos.lean` (20), `ATK/ProdutoresTN.lean` (11), `ATK/JensenPolya.lean` (20): 51 teoremas novos, total 6412, só
 `propext`, `Classical.choice`, `Quot.sound`. Separa, no kernel, as camadas formalizáveis (M1–M4, G3.4, G3.7 parcial) do
 nó que exige uma descoberta (a positividade total dos `aₙ` concretos).
 
@@ -617,6 +617,11 @@ A desigualdade de Turán, necessária para PF∞, é uma cota **inferior** — H
 * Núcleo TN conhecido: **`e^{γz}` é PF∞** (`tn_exp`, `T(γⁿ/n!)` TN para `γ ≥ 0`, limite de `(1 + γz/N)^N` via
   `prodCoef_const` e `C(N,m)/N^m → 1/m!`). Com `∏(1 + αⱼz)` (rodadas 10–11) e `tn_closed`, é a parte suficiente de Edrei
   para funções inteiras — sem afirmar que representa `Ξ`.
+* **As pontes de fechamento propostas são HR**: `rh_de_aproximacoes_tn` (matrizes TN que convergem entrada a entrada
+  para `T(aₙ)` dão HR) e **`rh_iff_fatores_positivos`: existir um arranjo `c_{N,k} ≥ 0` com
+  `a₀·e_n(c_{N,0}, …, c_{N,N−1}) → aₙ` para todo `n` ⟺ HR**. Fechar esse "nó decisivo" é provar HR, não um passo mais
+  fácil. (O núcleo de Hankel dos momentos é estritamente totalmente positivo — Andréief + Vandermonde generalizado,
+  matemática conhecida, não formalizada aqui; isso também não dá Toeplitz, pelo contraexemplo acima.)
 
 **G3.7 — polinômios de Jensen** (`ATK.JensenPolya`). Com `γ(k) = k!aₖ` e `J^{d,n}(X) = Σ_{j≤d} C(d,j)γ(n+j)X^j`
 (`jensen`):

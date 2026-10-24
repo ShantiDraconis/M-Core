@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 875900f0906de958168aa9b9003d2b85eae333f5c666ca99c64cb7c043004c62
+# axiomas por teorema — congelamento de ab745fa04c2b8975aa23156a0b64c21fa2ba9e89c26119ae024fdcd464f19989
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6410,3 +6410,5 @@ ATK.JensenPolya.iterate_derivative_jensen	propext, Classical.choice, Quot.sound
 ATK.JensenPolya.realRooted_jensen_of_genero0	propext, Classical.choice, Quot.sound
 ATK.JensenPolya.rh_jensen	propext, Classical.choice, Quot.sound
 ATK.JensenPolya.turan_de_rh	propext, Classical.choice, Quot.sound
+ATK.ProdTN.rh_de_aproximacoes_tn	propext, Classical.choice, Quot.sound
+ATK.ProdTN.rh_iff_fatores_positivos	propext, Classical.choice, Quot.sound

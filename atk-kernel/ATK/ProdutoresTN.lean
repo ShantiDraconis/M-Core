@@ -17,7 +17,12 @@ import ATK.PolyaCalor
   limite de `(1 + γz/N)^N` (`prodCoef_const`); junto com `∏(1 + αⱼz)` (rodadas 10–11) e os limites (`tn_closed`), é
   a parte "suficiente" de Edrei para funções inteiras.
 
-Ficam `BUILD_PENDING`: Cauchy–Binet / Lindström–Gessel–Viennot (não estão no Mathlib), o fator `1/(1 − βz)`.
+* **As pontes de fechamento propostas**: `rh_de_aproximacoes_tn` (limites de matrizes TN que convergem para `T(aₙ)`
+  dão HR) e `rh_iff_fatores_positivos` — **existir `c_{N,k} ≥ 0` com `a₀e_n(c_N) → aₙ` é equivalente a HR**. Fechar
+  esse nó é provar HR; não é um passo intermediário mais fácil.
+
+Ficam `BUILD_PENDING`: Cauchy–Binet / Lindström–Gessel–Viennot (não estão no Mathlib), o fator `1/(1 − βz)`, a
+positividade total estrita do núcleo de Hankel dos momentos (Andréief + Vandermonde generalizado).
 -/
 
 open Filter Topology Matrix
@@ -147,6 +152,30 @@ theorem tn_exp {γ : ℝ} (hγ : 0 ≤ γ) : (toep fun n => γ ^ n / n.factorial
     ring
   · exact tendsto_const_nhds
 
+/-! ## 4. As pontes de fechamento propostas — e por que fechá-las é HR -/
+
+/-- **Fechamento por aproximações TN**: se `T⁽ᴺ⁾` são TN e `T⁽ᴺ⁾ᵢⱼ → a_{i−j}` (os coeficientes de `Ξ`), vale HR. -/
+theorem rh_de_aproximacoes_tn {A : ℕ → Matrix ℕ ℕ ℝ} (hA : ∀ N, (A N).IsTotallyNonneg)
+    (hl : ∀ i j, Tendsto (fun N => A N i j) atTop (𝓝 (toep aXi i j))) : RiemannHypothesis :=
+  rh_de_tn (tn_closed hA hl)
+
+/-- **O "nó decisivo" é HR**: existe um arranjo `c_{N,k} ≥ 0` com `a₀·e_n(c_{N,0}, …, c_{N,N−1}) → aₙ` para todo `n`
+**se e só se** vale HR. (`prodCoef a₀ c N n = a₀·e_n` dos primeiros `N` parâmetros.) -/
+theorem rh_iff_fatores_positivos : RiemannHypothesis ↔
+    ∃ c : ℕ → ℕ → ℝ, (∀ N k, 0 ≤ c N k) ∧
+      ∀ n, Tendsto (fun N => prodCoef (aXi 0) (c N) N n) atTop (𝓝 (aXi n)) := by
+  constructor
+  · intro h
+    obtain ⟨α, hα, _, hlim⟩ := rh_iff_genero0.mp h
+    exact ⟨fun _ => α, fun _ k => hα k, hlim⟩
+  · rintro ⟨c, hc, hlim⟩
+    refine rh_de_aproximacoes_tn (A := fun N => toep (prodCoef (aXi 0) (c N) N))
+      (fun N => tn_prodCoef aXi_zero_pos.le (hc N) N) fun i j => ?_
+    simp only [toep]
+    split_ifs
+    · exact hlim _
+    · exact tendsto_const_nhds
+
 end ATK.ProdTN
 
 #print axioms ATK.ProdTN.rh_of_kernel
@@ -158,3 +187,5 @@ end ATK.ProdTN
 #print axioms ATK.ProdTN.hankel_nao_toeplitz
 #print axioms ATK.ProdTN.prodCoef_const
 #print axioms ATK.ProdTN.tn_exp
+#print axioms ATK.ProdTN.rh_de_aproximacoes_tn
+#print axioms ATK.ProdTN.rh_iff_fatores_positivos

@@ -6408,3 +6408,5 @@ ATK.JensenPolya.iterate_derivative_jensen
 ATK.JensenPolya.realRooted_jensen_of_genero0
 ATK.JensenPolya.rh_jensen
 ATK.JensenPolya.turan_de_rh
+ATK.ProdTN.rh_de_aproximacoes_tn
+ATK.ProdTN.rh_iff_fatores_positivos
