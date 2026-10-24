@@ -299,3 +299,6 @@ import ATK.XiCrescimento
 import ATK.LaguerrePolya
 import ATK.DeBruijnNewman
 import ATK.PolyaCalor
+import ATK.XiMomentos
+import ATK.ProdutoresTN
+import ATK.JensenPolya

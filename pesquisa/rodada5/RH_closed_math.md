@@ -263,7 +263,9 @@ argumento em círculos; a identidade de Green (a) no retângulo; `N(14) = 0` (co
 forma completa (fator `e^{γz}`, funções meromorfas, ordem `≥ 1`); no fluxo de de Bruijn–Newman, os teoremas de de
 Bruijn (`1/2 ∈ S`, `S` fechado para cima), Newman (`S` limitado), Hurwitz (`S` fechado) e Rodgers–Tao (`Λ ≥ 0`), que
 entram como hipóteses explícitas em §4r, Hurwitz para funções inteiras e `e^{−tD²}` na classe de Laguerre–Pólya (o
-caso polinomial já está no kernel, §4r); a fórmula explícita e a positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
+caso polinomial já está no kernel, §4r); Cauchy–Binet e Lindström–Gessel–Viennot (fechamento de TN por produtos, núcleos
+por caminhos); a volta de Pólya–Jensen (todos os `J^{d,n}` hiperbólicos ⇒ HR) e os resultados incondicionais de
+Csordas–Norfolk–Varga (Turán) e Griffin–Ono–Rolen–Zagier; a fórmula explícita e a positividade de Weil; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
 `aₙ`**) — todas as formas equivalentes continuam abertas. A **equivalência** HR ⟺ PF∞(aₙ) já está no kernel nas duas
 direções (§4p–§4q); o que falta é a positividade total dos `aₙ` concretos, que é `OPEN_MATH`.
 
@@ -586,14 +588,76 @@ com `p + cp'` (`c = 1/3, −2, 5, −1/7`), `(1 − D²/10)^k p` (`k ≤ 10`) e 
 raízes reais, `e^{D²}X² = X² + 2` e `(x²+1)(x−1)²` sem; 5 testes.
 Formatos: SMT-LIB 34, Coq e Isabelle (`laguerre_quadratica`).
 
+## 4s. Grupo 3: produtores de positividade — o que é construção e o que é descoberta (rodada 13)
+
+`ATK/XiMomentos.lean` (20), `ATK/ProdutoresTN.lean` (11), `ATK/JensenPolya.lean` (20): 51 teoremas novos, total 6412, só
+`propext`, `Classical.choice`, `Quot.sound`. Separa, no kernel, as camadas formalizáveis (M1–M4, G3.4, G3.7 parcial) do
+nó que exige uma descoberta (a positividade total dos `aₙ` concretos).
+
+**M1 — coeficientes como momentos** (`ATK.XiMom`). `Φ(u) > 0` para `u ≥ 0` (`Phi_pos`: cada termo
+`(4w² − 6w)e^{u/2−w}`, `w = πn²e^{2u} > 3/2`, é positivo). Com `mₙ = 2∫₀^∞Φ(u)u^{2n}du` (`mom`, integrável e `> 0`):
+**`aₙ = mₙ/(2n)!`** (`aXi_eq_mom`) — a série do cosseno trocada com a integral em `HPhi(z) = 2∫Φcos(zu)`
+(`hasSum_HPhi`, dominação `|Φ|(|z|u)^{2n}/(2n)! ≤ |Φ|e^{2|z|u}/4ⁿ`) e unicidade dos coeficientes. Daí **`aₙ > 0` para
+todo `n`** (`aXi_pos`), sem hipóteses.
+
+**M2 — Hankel e Cauchy–Schwarz.** `Σ_{i,j} cᵢcⱼm_{s+i+j} = 2∫Φu^{2s}(Σcᵢu^{2i})² ≥ 0` (`hankel`), `m_{n+1}² ≤ mₙm_{n+2}`
+(`mom_logconvexo`) e, nos `aₙ`, a **cota superior** `a_{n+1}²((2n+2)!)² ≤ aₙ(2n)!·a_{n+2}(2n+4)!` (`aXi_cota_superior`).
+A desigualdade de Turán, necessária para PF∞, é uma cota **inferior** — Hankel não a dá.
+
+**M3/M4 — a interface e as ressalvas** (`ATK.ProdTN`):
+
+* `ArithmeticTotalPositiveKernel` (núcleo, identidade com `T(aₙ)`, todos os menores `≥ 0`): **`Nonempty
+  ArithmeticTotalPositiveKernel ⟺ RiemannHypothesis`** (`nonempty_iff_rh`). A interface é exatamente HR; uma instância
+  incondicional seria uma prova de HR (`OPEN_MATH`).
+* `gram_vacuo`: toda matriz é `Aᵢⱼ = ⟨uᵢ, vⱼ⟩` — uma representação `b_{i−j} = ⟨uᵢ, vⱼ⟩` sozinha não carrega
+  informação. `psd_nao_tn`: a matriz de Gram `!![1, −1; −1, 2] = BᵀB` não é TN.
+* `hankel_nao_toeplitz`: **os momentos de `μ = (3/2)δ₀ + ½δ₁` têm Hankel positiva** (`hankel_momEx`), **mas
+  `bₙ = mₙ/(2n)!` tem o menor de Toeplitz `det(b_{i_p−j_q})` (linhas 1, 2, 3; colunas 0, 1, 2) `= −7/2880`**. Ser
+  sequência de momentos de uma medida positiva — o que `aₙ` é (M1) — não basta para PF∞.
+* Núcleo TN conhecido: **`e^{γz}` é PF∞** (`tn_exp`, `T(γⁿ/n!)` TN para `γ ≥ 0`, limite de `(1 + γz/N)^N` via
+  `prodCoef_const` e `C(N,m)/N^m → 1/m!`). Com `∏(1 + αⱼz)` (rodadas 10–11) e `tn_closed`, é a parte suficiente de Edrei
+  para funções inteiras — sem afirmar que representa `Ξ`.
+* **As pontes de fechamento propostas são HR**: `rh_de_aproximacoes_tn` (matrizes TN que convergem entrada a entrada
+  para `T(aₙ)` dão HR) e **`rh_iff_fatores_positivos`: existir um arranjo `c_{N,k} ≥ 0` com
+  `a₀·e_n(c_{N,0}, …, c_{N,N−1}) → aₙ` para todo `n` ⟺ HR**. Fechar esse "nó decisivo" é provar HR, não um passo mais
+  fácil. (O núcleo de Hankel dos momentos é estritamente totalmente positivo — Andréief + Vandermonde generalizado,
+  matemática conhecida, não formalizada aqui; isso também não dá Toeplitz, pelo contraexemplo acima.)
+
+**G3.7 — polinômios de Jensen** (`ATK.JensenPolya`). Com `γ(k) = k!aₖ` e `J^{d,n}(X) = Σ_{j≤d} C(d,j)γ(n+j)X^j`
+(`jensen`):
+
+* `realRooted_jensen_of_genero0`: se `B = a₀∏(1 + αⱼw)` coeficiente a coeficiente, todo `J^{d,n}` tem só raízes reais.
+  Prova: `Q_K = a₀∏_{i<K}(1 + αᵢD)X^d` tem raízes reais (Laguerre), `Q_K → Σ_k aₖ d^{(k)}X^{d−k}` (Hurwitz para
+  polinômios), `J^{d,0}` é o reverso desse limite (`jensen_eq_reverse`, `realRooted_reverse`) e
+  `Dⁿ J^{d+n,0} = (d+n)^{(n)}·J^{d,n}` (`iterate_derivative_jensen`).
+* **`rh_jensen`: HR ⇒ todo `J^{d,n}` de `Ξ` é hiperbólico** (Pólya 1927, direção ⇒).
+* **`turan_de_rh`: HR ⇒ `γ(n)γ(n+2) ≤ γ(n+1)²`**. Com `aXi_cota_superior`, sob HR `a_{n+1}²` fica cercado por cima
+  (incondicional) e por baixo.
+
+A volta (todos os `J^{d,n}` hiperbólicos ⇒ HR) precisa de Hurwitz para funções inteiras (`BUILD_PENDING`); Turán
+incondicional (Csordas–Norfolk–Varga 1986) e `J^{d,n}` para `n` grande (Griffin–Ono–Rolen–Zagier 2019) não estão
+formalizados.
+
+**O que continua aberto.** M5–M7 (operador espectral, fórmula explícita de Weil e a sua fatoração positiva, a ponte
+terminal) e o núcleo `G3_02`/`G3_03` — **uma identidade concreta que represente os `aₙ` por um núcleo cuja positividade
+total seja provada sem HR** — são `OPEN_MATH`. Pelos contraexemplos acima, essa identidade não pode vir só de
+positividade de momentos, de Hankel ou de uma representação de Gram.
+
+Numérico (`codigo/grupo3.py`, `dados/grupo3.json`, `testes/test_grupo3.py`, 5 testes): `aₙ > 0` para `n < 14`; a razão
+de Cauchy–Schwarz sobe de `0,358` para `0,944` (`≤ 1`) e a de Turán desce de `1,0748` para `1,0261` (`≥ 1`); os menores
+de Toeplitz contíguos `det(a_{k+i−j})` (`r = 2, …, 8` sob perturbação relativa `10⁻¹²`; `r = 10, 12, 14, 16` sob
+`10⁻¹⁴`; o erro de quadratura medido é `2·10⁻¹⁶`) têm sinal positivo estável — nenhum sinal indeterminado nessa
+faixa; `J^{d,n}` hiperbólico para `d ≤ 6`, `d + n ≤ 13` (Sturm exato nos coeficientes em ponto flutuante); `−7/2880` confere. Verificação finita: não prova
+PF∞. Formatos: SMT-LIB 35, Coq e Isabelle (`turan_raiz`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
 | --- | --- | --- |
 | Lean 4 + Mathlib | kernel (`lake build`, `#print axioms`) | tudo acima |
-| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2 |
+| Coq (Rocq) | `coqc` + `coqchk` (CI) | semântica, operadores, modelo G, P1–P5, quártica, esfera, cilindro, cone, toro, curvatura, pontes, T28, tempos; discriminante cúbico, Turán 2 e 3, Toeplitz, momentos; K₆, Jensen `γ`, rotação, ajuste, integral por pedaços; erros corrigidos (`b̃_k`, `G₁₂`, `C₀`, região vazia, `1/ζ(3)`); constante de `θ`, tridiagonal; inversa de `1 − x + x²`; descida de Edrei; coeficientes de um produto de gênero 0; Laguerre no grau 2; Turán a partir de uma raiz real |
 | Isabelle/HOL | `isabelle build` (CI) | idem, com complexos nativos (inclui a seção Jensen/Turán) |
-| SMT-LIB 2 | z3 / cvc5 (CI) | 34 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2), espera-se `unsat` |
+| SMT-LIB 2 | z3 / cvc5 (CI) | 35 obrigações negadas (13–16: Jensen/Turán/Toeplitz; 17–23: K₆, Jensen `γ`/`a`, ajuste, barreira, rotação, integral por pedaços; 24–28: erros corrigidos; 29–30: constante de `θ`, tridiagonal de `1+x+x²`; 31: coeficientes de `1/(1−x+x²)`; 32: descida de Edrei; 33: `prodCoef` de gênero 0; 34: Laguerre no grau 2; 35: Turán a partir de uma raiz), espera-se `unsat` |
 | TPTP | E prover (CI) | classificação, redução terminal (forma lógica), tempos |
 | Python | `pytest` (+ SymPy) | aritmética exata em ℚ[i], contornos, toro, critério; coeficientes de `Θ`, Turán, Toeplitz, Sturm, primeiro zero |
 
