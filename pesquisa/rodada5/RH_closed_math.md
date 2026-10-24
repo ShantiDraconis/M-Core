@@ -1576,6 +1576,42 @@ estimada, dá `0,0461912` contra `2 + γ − log 4π = 0,0461914`. Com `A = −l
 identidade `ξ(s) ≈ e^{A+Bs}·P_{300}(s)` vale em `s = 2` e `s = ½ + 2i` com erro relativo de cerca de 1%, dentro da
 cauda `|s|²·Σ_{|γ|>300} 1/|ρ|²`.
 
+## 4al. O produto canônico é inteiro, com exatamente os zeros de `ξ` (rodada 32)
+
+Um arquivo, **30 teoremas** (total 7298), só os axiomas padrão. `ZeroClasses/CanonicoInteira.lean`:
+
+* **`soma_ordem_inv_pot`: `Σ_ρ m_ρ/|ρ|^p < ∞` para todo `p > 1`** (`gp`, `gp_le`, `summable_gp`, `summable_ZM_pot`).
+  É o argumento de blocos da §4ak com `n^{−(p+1)/2}` no lugar de `n^{−3/2}`;
+* o fator: `E1_eq_zero_iff` (`E1 z = 0 ⟺ z = 1`) e **`norm_E1_le`: `‖E1 z‖ ≤ e^{3‖z‖^{3/2}}`** para todo `z`;
+* **produtos gerais** `∏'_i E1(z/r_i)`, com `r_i ≠ 0` e `Σ 1/|r_i|² < ∞`:
+  * convergem uniformemente em bolas (`prodE_tendstoUniformlyOn`, via `Summable.hasProdUniformlyOn_one_add` da Mathlib);
+  * são **inteiros** (`prodE_differentiable`, limite localmente uniforme de funções holomorfas);
+  * **não se anulam** fora dos `r_i` (`prodE_ne_zero`, via `cexp_tsum_eq_tprod`);
+  * satisfazem **`‖∏'‖ ≤ exp(3‖z‖^{3/2} Σ 1/|r_i|^{3/2})`** (`prodE_norm_le`);
+* para `P = Pcan`:
+  * `Pcan_differentiable` e `Pcan_norm_le` (`log|P(s)| ≤ 3S|s|^{3/2}`);
+  * `Pcan_ne_zero` fora de `Z`;
+  * `Pcan_fator`: `P = E1(s/ρ₀)^{m₀} · P_resto`, com `P_resto(ρ₀) ≠ 0`;
+  * **`ordem_Pcan`: `ord_ρ P = m_ρ`**;
+* **`xi_eq_zero_iff_Z`: os zeros de `ξ` são exatamente os zeros de `ζ` na faixa**; **`ordem_Pcan_eq_xi`:
+  `ord_z P = ord_z ξ` para todo `z ∈ ℂ`**.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `P` inteira, `ord_z P = ord_z ξ` em todo `z`, `log\|P\| = O(\|s\|^{3/2})` | CERTIFIED | ferramenta |
+| `Σ_ρ m_ρ/\|ρ\|^p < ∞` (`p > 1`); zeros de `ξ` = `Z` | CERTIFIED | ferramenta |
+| `ξ = e^{A+Bs}·P` (`ξ/P` inteira, sem zeros, de ordem `≤ 1` ⟹ `e^{A+Bs}`) | BUILD_PENDING (rodada seguinte) | alavanca |
+| RH | OPEN_MATH | — |
+
+Do lado de `P` está tudo pronto: `ξ/P` é inteira e sem zeros, e `log|P| = O(|s|^{3/2})`. Falta o argumento de ordem:
+Poisson para `Re log(ξ/P)`, Borel–Carathéodory, e as estimativas de Cauchy para `(log(ξ/P))″ = 0`.
+
+Numérico (`codigo/inteira.py`, `dados/inteira.json`, `testes/test_inteira.py`, 2 testes):
+`max log‖E1‖/(3‖z‖^{3/2}) = 0,25` em `|z| ≤ 6`; `S_{3/2} ≈ 0,50`, sendo `0,28` da soma até 300 e `0,22` da cauda;
+`log|P_{300}|` em `|s| = 40` vale `20,6`, contra a cota `376`. Com os zeros refinados pela secante em `Ξ`,
+`|P_{300}(ρ₁ + h)|/h` estabiliza (zero simples), e `ξ/P_{300}` perto de `ρ₁` é liso e igual a `e^{A+Bρ₁}` vezes a
+cauda `exp(−ρ₁²/2 · Σ_{|γ|>300} 1/ρ²)`, a menos de `10⁻⁴`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
