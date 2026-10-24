@@ -875,6 +875,41 @@ porque se complementam; a rigidez está na forma da pergunta de Riemann".
 Numérico (`testes/test_zeroclasses.py`, 2 testes novos): a família `F_{d,t}` (simetria, zeros, `d = 0` ⟺ sem
 externos, ponto médio) e `Δ²zₙ = 0` com `ζ(zₙ) ≈ 0`.
 
+## 4y. O que a escolha humana constrói, e o que ela não alcança (rodada 19)
+
+`ATK/ZeroClasses/Construcao.lean` (30 teoremas, total 6746, só axiomas padrão). Responde a "a resposta de onde
+estão os zeros fora da linha vem dos seres humanos e de como nossas ações possibilitam a existência deles". O
+kernel separa os dois sentidos dessa frase.
+
+**O que a escolha constrói** — a escolha é literalmente o parâmetro `t : ℕ → ℝ`. `Z_ATK = ζ·P_N`,
+`P_N = ∏_{n<N} Q_{δₙ,tₙ}`, `Q_{δ,t}(s) = ((s−½−δ)² + t²)((s−½+δ)² + t²)`, `δₙ = 1/(2n+3)` (o índice do trivial
+`−2(n+1)`):
+
+* **A** (`zeros_ZATK`, `preserva`, `triviais_simples_ATK`): zeros de `Z_ATK` = zeros de `ζ` ∪ zeros de `P_N`; os
+  triviais permanecem e continuam **simples** (`Z_ATK′(−2k) = P_N(−2k)ζ′(−2k) ≠ 0`);
+* **B** (`externos_ATK`, `lei_transporte_ATK`): cada quarteto `½ ± δₙ ± itₙ` (`tₙ ≠ 0`) é de zeros, **fora da
+  linha**, de cardinal 4 — a lei de transporte do texto **vale para `Z_ATK`, por construção**;
+* **C** (`simetria_ATK`): `ξ_ATK = ξ·P_N` tem a equação funcional `ξ_ATK(1 − s) = ξ_ATK(s)` e a conjugação.
+
+**O que a escolha não alcança** (`rigidez`, `colar_refuta`, `rh_nao_colar`): pela continuação analítica, uma
+função analítica em `ℂ ∖ {1}` que coincide com `ζ` perto de **um** ponto coincide com `ζ` em toda parte. Se `Z_ATK`
+coincidisse com `ζ` em qualquer aberto, a própria `ζ` teria os zeros externos (`H_fora`); sob RH, `Z_ATK` difere de
+`ζ` perto de todo ponto. Os zeros de `ζ` estão fixados por `Σn^{−s}`; a ação humana os **encontra** (o zero
+certificado de §4f foi encontrado por um cálculo desenhado por pessoas), não os cria. A rigidez é a da continuação
+analítica, não da formulação de Riemann; e o que `Z_ATK` não preserva é o **produto de Euler** — a ligação com os
+primos.
+
+**Os triviais e a fórmula de L'Hôpital do texto** (`deriv_trivial_fechada`, `deriv_trivial_sinal`):
+`ζ′(−2k) = (−1)ᵏ(2k)! ζ(2k+1) / (2(2π)^{2k})`, `= (−1)ᵏ·c` com `c > 0`; os únicos zeros reais negativos de `ζ` são
+os pares negativos (`zeros_reais_negativos`). Lembrete: os triviais **estão fora da linha** e são certificados; os
+externos em aberto são os **não triviais**.
+
+**A lei de transporte para `ζ`** (`lei_transporte_refuta`): uma única instância `ζ(½ + δₙ + iτ) = 0` dá `H_fora`;
+`δₙ → 0` e só finitos `n` têm `δₙ > δ` (`delta_tende`, `delta_finitos`), compatível com Bohr–Landau.
+
+Numérico (`testes/test_zeroclasses.py`, 2 testes novos): `ζ′(−2) = −0,0304484571…` e `ζ′(−4)` conferem com a fórmula;
+`Z_ATK` com `N = 3` tem os quartetos, a simetria, preserva o 1º zero de `ζ` e não se anula nos triviais.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
