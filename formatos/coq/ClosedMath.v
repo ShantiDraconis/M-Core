@@ -555,6 +555,14 @@ Proof.
   pose proof (Rle_0_sqr (g2*x + g1)) as Hs. unfold Rsqr in Hs. lra.
 Qed.
 
+(* ---------------------------------------- Hurwitz (rodada 14, ATK/HurwitzJensen) *)
+
+(* O passo do circulo: |g| >= delta, |g - F| < delta/2 => |F| > delta/2; no centro |F(z0)| < delta/2;
+   o modulo maximo de 1/F daria |F(z0)| >= |F| no circulo: contradicao (variaveis = normas). *)
+Theorem hurwitz_circulo : forall delta g e F F0 : R,
+  delta > 0 -> g >= delta -> e < delta/2 -> F >= g - e -> F0 < delta/2 -> F0 >= F -> False.
+Proof. intros; lra. Qed.
+
 (* ------------------------------------------------------------------ auditoria *)
 Print Assumptions classificacao.
 Print Assumptions P1.
@@ -584,3 +592,4 @@ Print Assumptions descida_tres.
 Print Assumptions prodcoef_dois.
 Print Assumptions laguerre_quadratica.
 Print Assumptions turan_raiz.
+Print Assumptions hurwitz_circulo.

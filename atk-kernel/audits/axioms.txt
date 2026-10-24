@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de ab745fa04c2b8975aa23156a0b64c21fa2ba9e89c26119ae024fdcd464f19989
+# axiomas por teorema — congelamento de 11f7b6a8f73953aaf29847e2c51090814d41f65639c618668e07f2a6133cfd50
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6412,3 +6412,23 @@ ATK.JensenPolya.rh_jensen	propext, Classical.choice, Quot.sound
 ATK.JensenPolya.turan_de_rh	propext, Classical.choice, Quot.sound
 ATK.ProdTN.rh_de_aproximacoes_tn	propext, Classical.choice, Quot.sound
 ATK.ProdTN.rh_iff_fatores_positivos	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.hurwitz_local	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.phiJ_nonneg	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.phiJ_le_one	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.tendsto_phiJ	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.Fj_eq	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.tendstoUniformlyOn_Fj	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.Fj_ne_zero	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.zeros_reais_de_jensen	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.rh_de_jensen	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.rh_iff_jensen	propext, Classical.choice, Quot.sound
+ATK.Hurwitz.rh_iff_jensen0	propext, Classical.choice, Quot.sound
+ATK.DBNF.peso_pos	propext, Classical.choice, Quot.sound
+ATK.DBNF.aesm_peso	propext, Classical.choice, Quot.sound
+ATK.DBNF.integrableOn_peso	propext, Classical.choice, Quot.sound
+ATK.DBNF.H_ne_zero_at_zero	propext, Classical.choice, Quot.sound
+ATK.DBNF.peso_abs_le	propext, Classical.choice, Quot.sound
+ATK.DBNF.tendsto_int_dif	propext, Classical.choice, Quot.sound
+ATK.DBNF.tendstoUniformlyOn_H	propext, Classical.choice, Quot.sound
+ATK.DBNF.isClosed_S	propext, Classical.choice, Quot.sound
+ATK.DBNF.rh_iff_Lambda_le_zero'	propext, Classical.choice, Quot.sound

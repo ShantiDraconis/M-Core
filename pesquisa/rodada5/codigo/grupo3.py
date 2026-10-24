@@ -83,6 +83,9 @@ def main(saida=None):
     menores = {}
     for r in (2, 3, 4, 6, 8):
         menores[str(r)] = [sinal_estavel(a, r, k, eps=1e-12) for k in range(0, NMAX - r)]
+    a24 = coef_xi(24)  # menores maiores: 24 coeficientes, perturbação 10⁻¹⁴, 6 amostras
+    for r in (10, 12, 14, 16):
+        menores[str(r)] = [sinal_estavel(a24, r, k, eps=1e-14, amostras=6) for k in range(0, 24 - r)]
     jen = {str(d): [dbn.raizes_reais(jensen(gam, d, n)) for n in range(0, NMAX - d)] for d in (2, 3, 4, 5, 6)}
     bex = [(F(3, 2) * (1 if n == 0 else 0) + F(1, 2)) / math.factorial(2 * n) for n in range(6)]
     mex = det([[toep(bex, i, j) for j in (0, 1, 2)] for i in (1, 2, 3)])
