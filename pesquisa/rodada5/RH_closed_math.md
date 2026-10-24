@@ -1133,7 +1133,7 @@ a − bk = 0`; `84 − 7·12 = 0` e `7 ∤ 85`.
 | quarteto `½ ± δ ± iT` de `P`, simetrias, gigante fora da linha | CERTIFIED (para `P`) |
 | `Ξ_λ(ρ) = ξ(ρ)` nos zeros de `P` | CERTIFIED |
 | certificado de módulo mínimo e forma `E1` (constantes `2` e `M₂r²`) | CERTIFIED |
-| forma afiada de `E1` via Rouché | BUILD_PENDING |
+| forma afiada de `E1` via Rouché | CERTIFIED na rodada 25 (`E1_afiado`, §4ae) |
 | exemplos linear e quadrático; contraexemplo | CERTIFIED |
 | cauda por certificados; `H_ext ⟺` externos infinitos; `H_ext ⟹ ¬RH` | CERTIFIED |
 | SAT ⟺ zero booleano; lacuna; divisibilidade; zero assintótico | CERTIFIED |
@@ -1203,11 +1203,68 @@ o que é mais forte do que decidir SAT; a negação disso não dá `P ≠ NP`.
 | `P = NP ⟺ SAT ∈ P ⟺ ZERO_ORDER ∈ P` | CERTIFIED (Cook–Levin no kernel) |
 | `ξ′(ρ₁) ≠ 0` | CERTIFIED |
 | qual de `P = NP` / `P < NP` vale | OPEN_MATH |
-| argumento/Rouché, Riemann–von Mangoldt | BUILD_PENDING (ausentes da Mathlib) |
+| princípio do argumento, Rouché | CERTIFIED na rodada 25 (§4ae) |
+| Riemann–von Mangoldt | BUILD_PENDING (ausente da Mathlib) |
 
 Numérico (`codigo/pontes.py`, `dados/pontes.json`, `testes/test_pontes.py`, 4 testes): 300 fórmulas aleatórias
 (`n ≤ 7`) — `ord₀ Z = N`, `det = 0 ⟺ SAT`, posto + `N` = `2ⁿ`, T2 e B1 em **todas**; `Z = t(1+t)³` e `(1+t)²` nos
 exemplos. Tudo por enumeração de `2ⁿ` atribuições: as pontes mudam a linguagem, não o custo.
+
+## 4ae. O que faltava na Mathlib: princípio do argumento, Rouché e `E1` afiado (rodada 25)
+
+`ATK/ArgPrincipio.lean` (12 teoremas) e `ATK/ZeroClasses/Rouche.lean` (9 teoremas): total 6930, só axiomas padrão.
+A Mathlib tinha a integral de Cauchy em círculos, `∮ (z − w)⁻¹ = 2πi` e a extração de zeros de funções meromorfas
+(`MeromorphicOn.extract_zeros_poles`), mas **não** o princípio do argumento nem Rouché. Agora o kernel tem os dois.
+
+**Princípio do argumento** (`principio_argumento`). Se `f` é analítica numa vizinhança de `B̄(c, R)` e não se anula
+no círculo, então
+
+  `∮_{|z−c|=R} f′(z)/f(z) dz = 2πi · Σ_{u ∈ B(c,R), f(u)=0} ord_u f`.
+
+A prova engrossa o disco (`engrossa`), mostra que a ordem é finita (`ordem_finita`), fatora `f = ∏(z − u)^{d u}·g`
+com `g` sem zeros (Mathlib), transforma a igualdade codiscreta em igualdade numa vizinhança de cada ponto do
+círculo (`codiscreta_vizinhanca`), e soma: `∮ (z − u)⁻¹ = 2πi` dentro, `0` fora (`integral_inv_fora`), e
+`∮ g′/g = 0` (`integral_logDeriv_sem_zeros`).
+
+**Rouché** (`rouche`). Se `|g − f| < |f|` no círculo, `f` e `g` têm o mesmo número de zeros (com multiplicidade)
+no disco. A prova é a simétrica: `g/f` cai em `Re > 0` no círculo, onde `log` é analítico, logo
+`∮ (g′/g − f′/f) = ∮ (log(g/f))′ = 0`.
+
+**`E1` afiado** (`taylor2`, `deriv_ne_zero_of_ordem_um`, `E1_afiado`). Com Taylor de ordem 2
+(`|f(z) − f(c) − f′(c)(z − c)| ≤ (M/2)|z − c|²` se `|f″| ≤ M`) e Rouché contra `L(z) = f′(c)(z − c)`:
+
+  `|f(c)| + M r²/2 < r|f′(c)|`  ⟹  `f` tem **exatamente um** zero em `B(c, r)`, e ele é **simples**.
+
+É a forma enviada (ATK-E1), agora com unicidade; ela substitui o certificado mais fraco de §4ac
+(`2|f(c)| + M r² < r|f′(c)|`, só existência).
+
+**Para `ζ`** (`contagem_zeta`, `rouche_zeta`, `E1_zeta_fora`, `E1_zeta_linha`, `cauda_E1`):
+
+* `∮ ζ′/ζ = 2πi·#zeros` em todo disco fechado sem o polo e sem zeros no círculo;
+* qualquer aproximante `F` com `|ζ − F| < |F|` no círculo tem o mesmo número de zeros que `ζ`;
+* um disco **fora da linha** que passa `E1` afiado contém exatamente um zero de `ζ`, simples e fora da linha —
+  **refuta RH**;
+* um disco **centrado na linha** (raio `< ½`) que passa `E1` afiado contém exatamente um zero, e ele está **na
+  linha** (a torção o fixa);
+* infinitos discos disjuntos fora da linha passando `E1` ⟹ infinitos zeros externos.
+
+O exemplo quadrático enviado (`1/20 + (½)(⅛)²/2 = 69/1280 < 160/1280`) tem **exatamente um** zero em `B(¾ + 10i, ⅛)`,
+com `Re > ½` (`exemplo_quadratico_unico`).
+
+| Afirmação | Estado |
+| --- | --- |
+| princípio do argumento em círculos | CERTIFIED |
+| Rouché | CERTIFIED |
+| Taylor de ordem 2 com `M/2` | CERTIFIED |
+| `E1` afiado: exatamente um zero, simples | CERTIFIED |
+| `E1` para `ζ`: fora da linha ⟹ `¬RH`; na linha ⟹ zero na linha | CERTIFIED |
+| `ζ` passar `E1` num disco fora da linha | OPEN_MATH (equivale a `¬RH` para zeros simples) |
+| princípio do argumento em retângulos, Riemann–von Mangoldt | BUILD_PENDING |
+
+Numérico (`codigo/argumento.py`, `dados/argumento.json`, `testes/test_argumento.py`, 3 testes):
+`(1/2πi)∮ ζ′/ζ` por trapézios dá `1,00000` em torno do 1º zero, `0,00000` em discos fora da linha e `2,99999` no
+disco `|z − (½ + 20i)| = 7` (zeros 14,13; 21,02; 25,01); Rouché com `F = ζ′(ρ₁)(z − ρ₁)` no raio `0,05`
+(`|ζ − F|/|F| ≤ 0,021`); `E1` afiado perto do 1º zero (`0,0009 < 0,0040`, `M` amostrado).
 
 ## 5. Formatos
 

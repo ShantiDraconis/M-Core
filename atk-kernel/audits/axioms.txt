@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 5c38ac1526aa470ec4eab759989f173572e84d6f95a9b84b0de34aa4688514dd
+# axiomas por teorema — congelamento de 11cfe21e3232d7a881d8208078de2475be4cf7ffa362d27e65ca7e301ac58f21
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -6909,3 +6909,24 @@ ATK.ZeroClasses.Pontes.aproximacao_com_retorno	propext, Classical.choice, Quot.s
 ATK.ZeroClasses.Pontes.troca_quantificadores	propext, Quot.sound
 ATK.ZeroClasses.Pontes.xi_deriv_simples	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Pontes.xi_deriv_primeiro_zero	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.engrossa	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.ordem_finita	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.codiscreta_vizinhanca	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.integral_inv_fora	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.integral_logDeriv_sem_zeros	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.divisor_eq_ordem	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.ordemNat_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.principio_argumento	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.rouche	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.taylor2	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.deriv_ne_zero_of_ordem_um	propext, Classical.choice, Quot.sound
+ATK.ArgPrincipio.E1_afiado	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.analitica_disco	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.contagem_zeta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.rouche_zeta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.um_fora_disco	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.E1_zeta_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.torcao_disco	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.E1_zeta_linha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.cauda_E1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Rouche.exemplo_quadratico_unico	propext, Classical.choice, Quot.sound
