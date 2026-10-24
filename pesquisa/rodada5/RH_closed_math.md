@@ -1416,7 +1416,8 @@ A partir desta rodada, cada resultado é classificado em quatro classes: **refor
   `m4_menor_um` (`m₄ < 1`, pelo retângulo em `¼ + 2i`);
 * `espelho_sem_zeros`: pela torção, também `ζ(¾ + it) ≠ 0` para `¼ ≤ t ≤ 4`;
 * `novo_primeiro_ponto`: o primeiro ponto aberto passa a ser **`m₅ > 0`** (`K₅ = [⅕, 3/10] × [⅕, 5]`, uma região
-  bidimensional), com `m₅ > 0 ⟺ ζ` sem zeros em `K₅` e `RH ⟹ m₅ > 0`.
+  bidimensional), com `m₅ > 0 ⟺ ζ` sem zeros em `K₅` e `RH ⟹ m₅ > 0`. **Na rodada 29 (§4ai) `m₅, …, m₁₃ > 0` ficam
+  provados de uma vez e o primeiro ponto aberto passa a ser `m₁₄ > 0`.**
 
 **2. A competição analítica** (`ZeroClasses/Lagarias.lean`). `L(s) = Re(ξ′(s)/ξ(s))` é a versão analítica de `Δ₀₁`
 (§4ag):
@@ -1446,6 +1447,49 @@ Numérico (`codigo/quarto.py`, `dados/quarto.json`, `testes/test_quarto.py`, 3 t
 na região, `B/r` domina `|ζ′|` no segmento, e a folga entre `|ζ|` nos centros e o limiar é `≥ 0,027`; `L(½ + it) ≈ 0`
 (`< 10⁻⁸`), antissimetria `< 10⁻⁸`, `L > 0` em todos os 2400 pontos de `½ < σ ≤ 2`, `0,5 ≤ t ≤ 40`; num modelo
 com zero artificial em `0,7 + 30i`, `L(ρ − h) ≈ −1/h`.
+
+## 4ai. Nenhum zero de `ζ` até a altura 13: `VerificadoAte 13` vira teorema (rodada 29)
+
+Seis arquivos, **128 teoremas** (total 7220), só os axiomas padrão; 930 avaliações certificadas de `ζ`, todas
+verificadas pelo kernel (`decide +kernel`, sem `native_decide`).
+
+**Ferramentas** (`ZeroClasses/FaixaAval.lean`, `FaixaGeral.lean`):
+
+* **`ζ(σ + it)` certificada para `σ` racional qualquer** (`mem_zetaIG`): `m^{−σ}` por certificado de raiz
+  (`lo^q m^p ≤ 1 ≤ hi^q m^p`, `σ = p/q`), com o candidato calculado pelo kernel por bissecção inteira (`iroot`);
+  resto de Euler–Maclaurin com `N^{1−σ−M} = N · N^{−σ} · N^{−M}`;
+* **retângulos** (`ret`, `convex_ret`, `reg_ret`, `deriv_cota_ret`, `cobre_ret`, `centrosR_ret`, `chkR_spec`,
+  `peca_ret`, `ret_split_re`, `ret_split_im`): região de Cauchy `[s0 − r, s1 + r] × [a − r, b + r]`, cota grosseira
+  `cotaQ` (§4ah), `‖ζ′‖ ≤ B/r`, malha `nσ × nt` com raio `h ≥ √(hσ² + ht²)`.
+
+**As peças** (`FaixaPecas1`–`3`): `[½, 1] × [43/50, 13]` dividido em **50 retângulos** por bissecção adaptativa
+(`codigo/faixa_plano.py` escolhe a divisão e a malha; `codigo/faixa_lean.py` escreve o Lean), `r = 2/5`,
+`δ = 1/50`, 930 centros.
+
+**Resultados** (`ZeroClasses/Faixa.lean`):
+
+* `faixa_ate_13`: **`|ζ(s)| ≥ 1/50` em `½ ≤ Re s ≤ 1`, `43/50 ≤ Im s ≤ 13`**;
+* **`faixa_sem_zeros`: `ζ(s) ≠ 0` para `0 < Re s < 1` e `|Im s| ≤ 13`**. A metade `Re s < ½` vem da torção
+  `s ↦ 1 − s̄`, `Im s < 0` da conjugação e `Im² < ¾` de `zeta_ne_zero_baixo`;
+* **`verificado_13`: `VerificadoAte 13`** — a hipótese nomeada (Platt–Trudgian) é teorema até a altura 13;
+* `zeros_acima_13`: todo zero não trivial tem `|Im ρ| > 13`; `primeiro_zero_entre`: com `ρ₁` (§4f), o zero de
+  menor altura positiva está em `13 < γ₁ ≤ 14,1347…`;
+* `m_pos_ate_13`: **`m_n > 0` para todo `4 ≤ n ≤ 13`**; `novo_primeiro_ponto_14`: o primeiro ponto aberto passa a
+  ser `m₁₄ > 0`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ζ ≠ 0` na faixa crítica com `\|Im s\| ≤ 13`; `VerificadoAte 13` | CERTIFIED | parcial |
+| `m₄, …, m₁₃ > 0`; `13 < γ₁ ≤ 14,1347…` | CERTIFIED | parcial |
+| avaliação de `ζ` com `σ` racional; certificado de retângulo | CERTIFIED | ferramenta |
+| `VerificadoAte H` para `13 < H ≤ 3·10¹²` | hipótese nomeada (Platt–Trudgian) | — |
+| `m₁₄ > 0` (o novo primeiro ponto; finito, exige refinar a malha perto de `½ + 14i`) | OPEN | parcial |
+| `∀ n ≥ 4, m_n > 0` | OPEN_MATH (é RH) | — |
+
+Numérico (`codigo/faixa.py`, `dados/faixa.json`, `dados/faixa_plano.json`, `testes/test_faixa.py`, 2 testes):
+as 50 cotas racionais, malhas, raios e limiares conferidos em frações exatas; a área dos retângulos é exatamente a
+de `[½, 1] × [43/50, 13]` (`607/100`); folga mínima `|ζ(c)| − v ≥ 0,012`; `min |ζ| ≈ 0,526` na metade direita e
+`≈ 0,389` na esquerda; o primeiro zero `½ + 14,134725141734693i`.
 
 ## 5. Formatos
 
