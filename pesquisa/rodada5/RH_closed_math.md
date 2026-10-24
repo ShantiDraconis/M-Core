@@ -985,7 +985,7 @@ colidem num zero duplo; `F′/F = 1/(s − ρ₊) + 1/(s − ρ₋) → 2/(s −
 **Estabilização** (`estabilizacao`, `estabilizacao_primeiro_zero`): `|f(ρ+u)|²/u² → |f′(ρ)|²` em qualquer zero;
 no primeiro zero certificado, `|ζ(ρ₁+u)|²/u² → |ζ′(ρ₁)|² > 0`, `|ξ(ρ₁+u)|²/u² → |ξ′(ρ₁)|²` e
 `|ξ(ρ₁ − u)| = |ξ(ρ₁ + u)|`. É a assinatura de um zero **simples na linha**, não de uma colisão.
-(`ξ′(ρ₁) ≠ 0` segue de `ζ′(ρ₁) ≠ 0` e `½ρ₁(ρ₁ − 1)Γℝ(ρ₁) ≠ 0`, mas não está escrito no kernel: BUILD_PENDING.)
+(`ξ′(ρ₁) ≠ 0` segue de `ζ′(ρ₁) ≠ 0` e `½ρ₁(ρ₁ − 1)Γℝ(ρ₁) ≠ 0`; fechado na rodada 24, §4ad.)
 
 **Onde exatamente: o certificado** (`certificado_existencia`, `certificado_exclusao`, `DiscoFora`,
 `certificado_refuta`, `certificado_robusto`, `fora_simples_iff_certificado`). Se `‖1 − f′/c‖ ≤ ½` no disco
@@ -1017,7 +1017,7 @@ de Riemann–Siegel nessa altura tem `≈ 3,99·10⁴⁹` termos; `T·δ < 5·10
 | colisão em família (`F_δ`), polo de resíduo 2 | CERTIFIED |
 | `ζ` sem colisão; sequência ATK com finitos zeros por altura | CERTIFIED |
 | estabilização no 1º zero (`ζ`, com limite > 0; `ξ`, limite e paridade) | CERTIFIED |
-| `ξ′(ρ₁) ≠ 0` | BUILD_PENDING |
+| `ξ′(ρ₁) ≠ 0` | CERTIFIED na rodada 24 (`xi_deriv_primeiro_zero`, §4ad) |
 | zero simples fora da linha ⟺ certificado num disco fora da linha | CERTIFIED |
 | primeiro zero fora da linha (sob `HFora`), altura única, encontro em `½ + iγ*` | CERTIFIED (condicional a `HFora`) |
 | `γ* > 3·10¹²`, `β` na janela | CERTIFIED condicional às hipóteses nomeadas da literatura |
@@ -1144,6 +1144,70 @@ Numérico (`codigo/forcar.py`, `dados/forcar.json`, `testes/test_forcar.py`, 6 t
 `Ξ_λ(ρ) = ξ(ρ)` para `λ = 1, 10, 10⁶`; os três exemplos; **discos em torno dos zeros 1–5 da linha passam** o
 certificado (`L` amostrado) e **os 164 discos fora da linha** em `0,6 ≤ σ ≤ 0,9`, `10 ≤ t ≤ 50` **falham todos**; 200
 fórmulas 3-SAT aleatórias (`n = 6`) com a lacuna `R = 0` ou `R ≥ 1`.
+
+## 4ad. As pontes B1–B23 no kernel: SAT, determinantes, espectro, ordem de anulação, função geradora, e P vs NP no modelo genuíno (rodada 24)
+
+`ATK/ZeroClasses/Pontes.lean` (44 teoremas, total 6909, só axiomas padrão). As pontes enviadas passam a ser
+teoremas, e a parte de P vs NP fica ligada ao modelo genuíno que o kernel já tinha: `classeP`, `classeNP` sobre
+`Turing.FinTM2` (Mathlib), `P_sub_NP`, `SAT ∈ NP` e o teorema de Cook–Levin (`ATK.CookLevinNP.red_SAT`).
+
+**Contagem genérica** (`Nz`, `Zpol`, `ordem_Zpol`, `det_diag_zero_iff`, `nucleo_iff`, `posto_mais_nucleo`,
+`det_regularizado`, `lacuna_espectral`, `Fger_zero`, `Fger_aprox`, `recupera_contagem`). Para `r : ι → ℕ` num tipo
+finito:
+
+* `ord_{t=0} ∏ᵢ(t + rᵢ²) = #{i | rᵢ = 0}` e `det(diag(r²) + tI) = ∏ᵢ(rᵢ² + t)`;
+* `det diag(r) = 0 ⟺ ∃ rᵢ = 0 ⟺ diag(r) tem núcleo não trivial`; posto + `N` = `|ι|`;
+* lacuna espectral: ou algum `rᵢ² = 0`, ou todos `≥ 1`;
+* `F(z) = Σ z^{rᵢ}`: `F(0) = N`, `0 ≤ F(z) − N ≤ |ι|·z`; com `|ι|·z ≤ ¼`, **todo `v` a menos de `¼` de `F(z)`
+  arredonda para `N`** (T2 / ATK-CLOSED-3).
+
+**SAT em `Fin n`** (`B1_divisibilidade`, `S_um_iff`, `sat_iff_raiz_real`, `cadeia_sat`, `contagem_unificada`,
+`exemplo_um`, `exemplo_zero`). `B > m ⟹ (R = 0 ⟺ B ∣ R)` (B1); `∏(1 − q_C) = 1 ⟺ R = 0` (B10); **SAT ⟺ o polinômio
+real `Q_φ = R_φ² + Σ(xᵢ(1 − xᵢ))²` tem raiz real** (B2); e a cadeia
+
+  `SAT ⟺ N > 0 ⟺ det D = 0 ⟺ núcleo ≠ 0 ⟺ ord₀ Z > 0 ⟺ F(0) > 0`,  `#SAT = ord₀ Z = F(0)`
+
+(ATK-CLOSED-1/2). `(x∨y)∧(¬x∨y)∧(x∨¬y)` tem `N = 1` (`Z = t(1+t)³`); `x ∧ ¬x` tem `N = 0` (`Z = (1+t)²`).
+
+**A ordem de anulação no modelo genuíno** (`RK_zero_iff`, `var_lt`, `satisfativel_iff_fin`,
+`satisfativel_iff_ordem`, `ZERO_ORDER`, `zero_order_eq_sat`). Para as fórmulas `CNF` do kernel (índices em `ℕ`),
+`ZERO_ORDER = {cod ψ | ord_{t=0} Z_ψ(t) > 0}` **é** a linguagem `SAT`.
+
+**As relações entre P e NP** (`p_le_np`, `p_ge_np_iff`, `p_gt_np_falso`, `p_lt_np_iff`, `dicotomia`,
+`p_eq_np_iff_sat`, `p_ne_np_iff_sat`, `p_eq_np_iff_zero_order`, `p_ne_np_iff_zero_order`, `aproximacao_nao_basta`,
+`aproximacao_com_retorno`, `troca_quantificadores`). A lista `P = NP`, `P ≥ NP`, `P > NP`, `P < NP`, `P ≤ NP`,
+`P ≈ NP`, `P ≠ NP` fica decidida **até onde é decidível**:
+
+| Relação | Estado no kernel |
+| --- | --- |
+| `P ≤ NP` | teorema (`p_le_np`) |
+| `P > NP` | falso (`p_gt_np_falso`) |
+| `P ≥ NP` | `⟺ P = NP` (`p_ge_np_iff`) |
+| `P < NP` | `⟺ P ≠ NP` (`p_lt_np_iff`) |
+| `P = NP` ou `P < NP` | exatamente um (`dicotomia`) — **qual dos dois é OPEN_MATH** |
+| `P = NP` | `⟺ SAT ∈ P ⟺ ZERO_ORDER ∈ P` (Cook–Levin) |
+| `P ≈ NP` (classe `R` com `P ⊆ R ⊇ NP`) | não dá igualdade (`aproximacao_nao_basta`); só com `R ⊆ P` |
+| `∀k ∃A_k` em `n^{k+1}` | não é `∃A ∃c`: `n^{n+1}` supera todo `C·n^c` (`troca_quantificadores`) |
+
+A correção do material enviado vale: a aproximação de `F(2^{−(n+2)})` com erro `< ¼` equivale a **contar** (`#SAT`),
+o que é mais forte do que decidir SAT; a negação disso não dá `P ≠ NP`.
+
+**Pendência fechada** (`xi_deriv_simples`, `xi_deriv_primeiro_zero`): em todo zero simples não trivial,
+`ξ′(ρ) = ½ρ(ρ−1)Γℝ(ρ)ζ′(ρ) ≠ 0`; em particular `ξ′(ρ₁) ≠ 0`.
+
+| Afirmação | Estado |
+| --- | --- |
+| B1, B2, B10–B19, T2, ATK-CLOSED-1/2/3 | CERTIFIED |
+| `ZERO_ORDER = SAT` no modelo genuíno | CERTIFIED |
+| `P ≤ NP`, `¬(P > NP)`, `P ≥ NP ⟺ P = NP`, `P < NP ⟺ P ≠ NP`, dicotomia | CERTIFIED |
+| `P = NP ⟺ SAT ∈ P ⟺ ZERO_ORDER ∈ P` | CERTIFIED (Cook–Levin no kernel) |
+| `ξ′(ρ₁) ≠ 0` | CERTIFIED |
+| qual de `P = NP` / `P < NP` vale | OPEN_MATH |
+| argumento/Rouché, Riemann–von Mangoldt | BUILD_PENDING (ausentes da Mathlib) |
+
+Numérico (`codigo/pontes.py`, `dados/pontes.json`, `testes/test_pontes.py`, 4 testes): 300 fórmulas aleatórias
+(`n ≤ 7`) — `ord₀ Z = N`, `det = 0 ⟺ SAT`, posto + `N` = `2ⁿ`, T2 e B1 em **todas**; `Z = t(1+t)³` e `(1+t)²` nos
+exemplos. Tudo por enumeração de `2ⁿ` atribuições: as pontes mudam a linguagem, não o custo.
 
 ## 5. Formatos
 
