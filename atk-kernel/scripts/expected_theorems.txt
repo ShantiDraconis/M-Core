@@ -7333,3 +7333,15 @@ ATK.ZeroClasses.LagariasHadamard.Lg_pos
 ATK.ZeroClasses.LagariasHadamard.rec_monotonia
 ATK.ZeroClasses.LagariasHadamard.positividade_iff_RH
 ATK.ZeroClasses.LagariasHadamard.monotonia_iff_RH
+ATK.ZeroClasses.Expoente.norm_E1_le_lin
+ATK.ZeroClasses.Expoente.prodE_norm_le_lin
+ATK.ZeroClasses.Expoente.zeta_lb_re_ge_dois
+ATK.ZeroClasses.Expoente.xi_lb_par
+ATK.ZeroClasses.Expoente.nao_somavel_ZM
+ATK.ZeroClasses.Expoente.soma_ordem_inv_diverge
+ATK.ZeroClasses.Expoente.expoente_exato
+ATK.ZeroClasses.Expoente.zeros_infinitos
+ATK.ZeroClasses.Expoente.conj_mem_Z
+ATK.ZeroClasses.Expoente.zeros_infinitos_acima
+ATK.ZeroClasses.Expoente.ordem_pos
+ATK.ZeroClasses.Expoente.N_tende_infinito

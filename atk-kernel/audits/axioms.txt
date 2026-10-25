@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 1214d04027d27c48b848da6afd53ca74ef229634d707f261cc1d02af6531a09f
+# axiomas por teorema — congelamento de ae16314219b89a65ed1d157d96994330a62cf1ec1ff7568861f2f9b37bdf2cb9
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7335,3 +7335,15 @@ ATK.ZeroClasses.LagariasHadamard.Lg_pos	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LagariasHadamard.rec_monotonia	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LagariasHadamard.positividade_iff_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LagariasHadamard.monotonia_iff_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.norm_E1_le_lin	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.prodE_norm_le_lin	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.zeta_lb_re_ge_dois	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.xi_lb_par	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.nao_somavel_ZM	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.soma_ordem_inv_diverge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.expoente_exato	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.zeros_infinitos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.conj_mem_Z	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.zeros_infinitos_acima	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.ordem_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Expoente.N_tende_infinito	propext, Classical.choice, Quot.sound
