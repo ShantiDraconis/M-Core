@@ -7345,3 +7345,8 @@ ATK.ZeroClasses.Expoente.conj_mem_Z
 ATK.ZeroClasses.Expoente.zeros_infinitos_acima
 ATK.ZeroClasses.Expoente.ordem_pos
 ATK.ZeroClasses.Expoente.N_tende_infinito
+ATK.ZeroClasses.Landau.quociente_local
+ATK.ZeroClasses.Landau.ordem_monomio
+ATK.ZeroClasses.Landau.ordem_poli
+ATK.ZeroClasses.Landau.logDeriv_poli
+ATK.ZeroClasses.Landau.landau
