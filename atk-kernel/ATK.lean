@@ -342,3 +342,6 @@ import ATK.Discovery.Infinitesimal
 import ATK.Discovery.Contracao
 import ATK.Discovery.Hilbert
 import ATK.Discovery.RhoMeio
+import ATK.Discovery.Operadores
+import ATK.Discovery.LeisInfinitesimais
+import ATK.Discovery.Produtores
