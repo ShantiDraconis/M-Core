@@ -52,14 +52,19 @@ para redefinir notação.
   `Auditoria.lean` só funciona se o cone inteiro tiver sido compilado, ou seja, verificado pelo kernel. Na primeira
   execução, o passo de compilação passava por `| tail -40` sem `pipefail`, então o código de saída dele não contava
   sozinho. O workflow agora usa `shell: bash` (`-eo pipefail`) e publica anotações (`::notice`) com o tempo e a
-  memória da compilação e cada teorema certificado. Uma execução de confirmação roda junto com este veredito.
+  memória da compilação e cada teorema certificado.
+* **Confirmação** ([40137712151](https://github.com/ShantiDraconis/M-Core/actions/runs/40137712151), commit
+  `88bd1d7`, com `pipefail`): **sucesso**. A compilação de `NavierStokes.ComparatorSolution` levou 56 min 37 s
+  (relógio), com 6,40 GB de memória residente máxima. As seis anotações `CERTIFIED` saíram, todas com
+  `[propext, Classical.choice, Quot.sound]`: `navier_stokes_breakdown_R3`, `navier_stokes_breakdown_periodic`,
+  `enunciado_C`, `enunciado_D`, `dado_nulo_admissivel` e `dado_nulo_tem_solucao`.
 
 ## 4. Veredito
 
 | Item | Estado | Evidência |
 | --- | --- | --- |
-| `navier_stokes_breakdown_R3` (alternativa (C), ℝ³) | **CERTIFIED** (kernel do Lean, axiomas padrão) | CI 40131056493 |
-| `navier_stokes_breakdown_periodic` (alternativa (D), ℝ³/ℤ³) | **CERTIFIED** (kernel do Lean, axiomas padrão) | CI 40131056493 |
+| `navier_stokes_breakdown_R3` (alternativa (C), ℝ³) | **CERTIFIED** (kernel do Lean, axiomas padrão) | CI 40131056493, 40137712151 |
+| `navier_stokes_breakdown_periodic` (alternativa (D), ℝ³/ℤ³) | **CERTIFIED** (kernel do Lean, axiomas padrão) | CI 40131056493, 40137712151 |
 | O tipo provado **é** o enunciado do desafio (mini-comparador `enunciado_C`, `enunciado_D`) | **CERTIFIED** | CI 40131056493 |
 | Enunciado do desafio = Formal Conjectures (DeepMind) a menos de mudanças cosméticas | conferido (texto) | `compara_enunciados.py` |
 | Enunciado ↔ texto oficial do Clay (C)/(D), item por item | conferido (leitura) | seção 1 |
