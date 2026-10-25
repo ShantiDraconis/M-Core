@@ -7369,3 +7369,16 @@ ATK.ZeroClasses.RegiaoLivre.tres_quatro_um
 ATK.ZeroClasses.RegiaoLivre.regiao_livre_grande
 ATK.ZeroClasses.RegiaoLivre.regiao_livre
 ATK.ZeroClasses.RegiaoLivre.zeta_ne_zero_regiao
+ATK.ZeroClasses.LittlewoodRH.tres_circulos
+ATK.ZeroClasses.LittlewoodRH.log_bola
+ATK.ZeroClasses.LittlewoodRH.zeta_ne_zero_RH
+ATK.ZeroClasses.LittlewoodRH.cota_zeta_re
+ATK.ZeroClasses.LittlewoodRH.um_terco_le
+ATK.ZeroClasses.LittlewoodRH.young_rpow
+ATK.ZeroClasses.LittlewoodRH.nucleo
+ATK.ZeroClasses.LittlewoodRH.cota_grande
+ATK.ZeroClasses.LittlewoodRH.cota_compacta
+ATK.ZeroClasses.LittlewoodRH.cota_sob_RH
+ATK.ZeroClasses.LittlewoodRH.littlewoodSobRH
+ATK.ZeroClasses.LittlewoodRH.lindelof_fora_sob_RH
+ATK.ZeroClasses.LittlewoodRH.necessidade_iff_rvm

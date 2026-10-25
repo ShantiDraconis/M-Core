@@ -1778,6 +1778,42 @@ acima de `4,9`. A combinação 3-4-1 de `−ζ′/ζ` fica acima de `5,1`. `−�
 `σ = 1,001`). A cota local usa no máximo `0,1 %` de si mesma. A aritmética confere: `2886 + 481 = 3367 = 7·481` e
 `c = δ/7 = 1/6734`.
 
+## 4ar. Littlewood sob RH: `1/ζ(σ + it) = O(|t|^ε)`; `NecessidadeRH` reduz-se a Riemann–von Mangoldt (rodada 38)
+
+Um arquivo, **13 teoremas** (total 7384), só os axiomas padrão (`ZeroClasses/LittlewoodRH.lean`). **`LittlewoodSobRH`,
+uma das três peças de `NecessidadeRH` que estavam BUILD_PENDING, agora é teorema.**
+
+* `tres_circulos`: **os três círculos de Hadamard**, que a Mathlib não tem, saem do teorema das três retas da
+  Mathlib aplicado a `w ↦ g(c + e^w)` na faixa `log r₁ ≤ Re w ≤ log r₃`;
+* `log_bola`: `F ≠ 0` holomorfa num disco é `F(c)·e^H` com `H(c) = 0`. Mais `zeta_ne_zero_RH` (sob RH, `ζ ≠ 0` em
+  `Re s > ½`), `cota_zeta_re` (`|ζ| ≤ K` em `Re s ≥ 5/4`) e `young_rpow` (`B x^a ≤ εx + C` para `a < 1`);
+* `nucleo` usa o disco em torno de `c = 3 + it` (`|t| ≥ 3`). No disco grande, `Re H = log|ζ/ζ(c)| ≤ log(36|t|)`, e
+  Borel–Carathéodory dá `|H| ≤ 20 log(36|t|)/δ` no círculo `5/2 − δ/2`. Em `Re s > 5/4`, `|H| ≤ M₁` no círculo
+  `3/2`. Os três círculos dão `|H(σ + it)| ≤ M₁ (20 log(36|t|)/δ)^a` com
+  `a = log((5/2 − δ)/(3/2))/log((5/2 − δ/2)/(3/2)) < 1`;
+* `cota_grande`, `cota_compacta` (`1 ≤ |t| ≤ 3`, por compacidade), **`cota_sob_RH`: sob RH,
+  `‖ζ(σ + it)^{±1}‖ ≤ C|t|^ε` em `σ ≥ ½ + δ`, `|t| ≥ 1`**. Daí **`littlewoodSobRH : ATK.FechamentoO1.LittlewoodSobRH`**
+  e `lindelof_fora_sob_RH` (Lindelöf fora da reta, sob RH);
+* **`necessidade_iff_rvm`**: `NecessidadeRH ⟺ RiemannVonMangoldt ∧ (a dedução)`, porque `HadamardXi` (§4am) e
+  `LittlewoodSobRH` já são teoremas.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `LittlewoodSobRH` (RH ⟹ `1/ζ = O(\|t\|^ε)` em `σ ≥ ½ + δ`) | CERTIFIED | consequência |
+| RH ⟹ `ζ = O(\|t\|^ε)` em `σ ≥ ½ + δ` | CERTIFIED | consequência |
+| três círculos de Hadamard | CERTIFIED | ferramenta |
+| `NecessidadeRH ⟺ RiemannVonMangoldt ∧ dedução` | CERTIFIED | alavanca |
+| `RiemannVonMangoldt`; a dedução de Báez-Duarte | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+O teorema é condicional: ele usa RH como hipótese, não a prova.
+
+Numérico (`codigo/littlewood_rh.py`, `dados/littlewood_rh.json`, `testes/test_littlewood_rh.py`, 2 testes; RH não é
+usada). `log M(r)` de `e^{z²} + z³` é convexa em `log r`. O expoente vale `a(½) = 0,71`, `a(0,1) = 0,96` e
+`a(0,01) = 0,996`. `|log ζ(σ + it) − log ζ(3 + it)|` fica entre `0,34` e `2,05`, contra `log(36|t|) ≥ 6,2`. Nas
+janelas `t ∈ [T, 2T]` até `T = 640`, `max|ζ|^{±1}` não passa de `13` em `σ = 0,6`, e de `5,6` e `3,3` em `σ = 0,75`
+e `σ = 1`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
