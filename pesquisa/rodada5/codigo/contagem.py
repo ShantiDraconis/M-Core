@@ -105,4 +105,4 @@ def main(saida=None):
 
 
 if __name__ == "__main__":
-    print(json.dumps(main(), indent=1, ensure_ascii=False)[:3000])
+    print(json.dumps(main(sys.argv[1] if len(sys.argv) > 1 else None), indent=1, ensure_ascii=False)[:3000])
