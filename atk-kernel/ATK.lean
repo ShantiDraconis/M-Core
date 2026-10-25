@@ -195,3 +195,5 @@ import ATK.NSEstimativas
 import ATK.NSAltaOrdem
 import ATK.NSCotaUniforme
 import ATK.NSContinuacao
+import ATK.NSFraca
+import ATK.NSCorte

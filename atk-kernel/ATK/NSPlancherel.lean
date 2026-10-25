@@ -47,7 +47,9 @@ theorem fourierInv_eq_vector_scalar (h : E3 → ℂ) :
 
 theorem continuous_neg_inner :
     Continuous fun p : E3 × E3 => (-innerₗ E3 : E3 →ₗ[ℝ] E3 →ₗ[ℝ] ℝ) p.1 p.2 := by
-  simpa using (continuous_inner : Continuous fun p : E3 × E3 => inner ℝ p.1 p.2)
+  refine ((continuous_inner : Continuous fun p : E3 × E3 => inner ℝ p.1 p.2).neg).congr
+    (fun p => ?_)
+  simp only [Pi.neg_apply, LinearMap.neg_apply, innerₗ_apply_apply]
 
 theorem continuous_fourierInv (hf : Integrable f) : Continuous (𝓕⁻ f) := by
   rw [fourierInv_eq_vector]

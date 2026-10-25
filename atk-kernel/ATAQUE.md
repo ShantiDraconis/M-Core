@@ -52,7 +52,7 @@ A regularidade exigiria usar a estrutura fina do termo não linear (barreira de 
 | F2.7 | **Existência local de soluções suaves em ℝ³** (Leray; Kato–Fujita) no modelo genuíno: dado de Schwartz de divergência nula ⇒ (u, p) suaves em ℝ³ × [0, T) com energia e enstrofia finitas | ✅ | `NSExistencia.existenciaLocal` |
 | F2.8 | **Desigualdade de energia** ∫|u(t)|² ≤ ∫|u₀|² na classe de Fourier (o termo não linear não troca energia: ∫⟪â, N(â, â)⟫ = 0) e redução de B3 com classe dependente do dado | ✅ | `NSEnergia.energia_decresce`, `NSClasse.desigualdadeEnergiaF`, `NSClasse.existenciaLocalF`, `NSClasse.b3_de_classeD` |
 | F2.9 | **Continuação com enstrofia limitada** (critério de Leray) na classe de Fourier: estimativas de energia de ordem alta no lado de Fourier (Cauchy–Schwarz trilinear, interpolação L¹, Gronwall), cota pontual uniforme, reinício e colagem | ✅ | `NSContinuacao.continuacaoF` |
-| F2.10 | Unicidade fraca–forte (classe de Fourier contra qualquer solução suave; o enunciado que falta para B3) | ⬜ | — |
+| F2.10 | Unicidade fraca–forte (classe de Fourier contra qualquer solução suave; o enunciado que falta para B3). Em curso: formulação fraca sem pressão para qualquer solução suave (U-1) e sua extensão a rotacionais de campos de Schwartz (U-2) | ⬜ | `NSFraca.formulacao_fraca`, `NSCorte.formulacao_fraca_rot` (passos intermediários) |
 
 ## Frente 3 — Hipótese de Riemann
 
