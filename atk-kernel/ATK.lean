@@ -197,3 +197,6 @@ import ATK.NSCotaUniforme
 import ATK.NSContinuacao
 import ATK.NSFraca
 import ATK.NSCorte
+import ATK.NSL2
+import ATK.NSFracaFourier
+import ATK.NSDuhamel
