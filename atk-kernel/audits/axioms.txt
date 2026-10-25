@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de bc5482f5274d0d077f925424bf705ffe3bed324e3eb6e6c71549695874173cb3
+# axiomas por teorema — congelamento de 876ef2f6ac3e6a7d8e167e8763dced3a395050877feabd77e78ccbcb366b7232
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7352,3 +7352,22 @@ ATK.ZeroClasses.Landau.ordem_monomio	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Landau.ordem_poli	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Landau.logDeriv_poli	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Landau.landau	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.cota_zeta_faixa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.cota_zeta_real	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.prod341	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.zeta_lb	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.zeta_local	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.re_termo_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.re_lt_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.re_logDeriv_local	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.re_logDeriv_local_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.Gp_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.Gp_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.Gp_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.logDeriv_zeta_Gp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.polo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.termo341	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.tres_quatro_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.regiao_livre_grande	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.regiao_livre	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RegiaoLivre.zeta_ne_zero_regiao	propext, Classical.choice, Quot.sound
