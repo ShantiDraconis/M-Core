@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 2ac374c0af31f65fb1618d2088aa50ab5d22611da6b8d0df4ecca58470bab7f7
+# axiomas por teorema — congelamento de c44ef2de79d1676c88c0924e201ce0ae8fced66b406b4942b6e6344aea657c9f
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7268,3 +7268,33 @@ ATK.ZeroClasses.Canonico.prod_sim_eq	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Canonico.simT_tendsto	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Canonico.produtos_simetricos	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Canonico.hadamardXi_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.gp_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.gp_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.summable_gp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.soma_ordem_inv_pot	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.summable_ZM_pot	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.E1_eq_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.norm_E1_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.eventualmente_longe	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.cota_uniforme	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.summable_E1_sub	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.prodE_multipliable	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.prodE_tendstoUniformlyOn	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.prodE_differentiable	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.prodE_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.prodE_norm_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.Z_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.ZM_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.Pcan_differentiable	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.Pcan_norm_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.Pcan_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.mem_copias	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.summable_resto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.Presto_differentiable	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.Presto_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.Pcan_fator	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.E1_fator	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.ordem_Pcan	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.xi_ne_zero_re_ge_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.xi_eq_zero_iff_Z	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.CanonicoInteira.ordem_Pcan_eq_xi	propext, Classical.choice, Quot.sound
