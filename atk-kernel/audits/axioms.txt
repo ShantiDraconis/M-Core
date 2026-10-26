@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de c44ef2de79d1676c88c0924e201ce0ae8fced66b406b4942b6e6344aea657c9f
+# axiomas por teorema — congelamento de 1b9f1b5af059f31374bfb4aa5dcceeafaeed2a6fc22cbce943ed1e92e56a6b67
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7298,3 +7298,26 @@ ATK.ZeroClasses.CanonicoInteira.ordem_Pcan	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.CanonicoInteira.xi_ne_zero_re_ge_um	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.CanonicoInteira.xi_eq_zero_iff_Z	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.CanonicoInteira.ordem_Pcan_eq_xi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.media_mono_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.existe_quociente	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.existe_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.xi_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.ordem_Pcan_finita	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.existe_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.Pcan_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.S32_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.posLog_Pcan_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.posLog_xi_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.gH_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.xi_eq_P_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.deriv_gH_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.media_posLog_exp_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.nucleo_cotas	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.re_g_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.norm_g_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.norm_g2_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.g2_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.g_afim	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.xi_hadamard	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.hadamardXi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hadamard.necessidade_iff	propext, Classical.choice, Quot.sound
