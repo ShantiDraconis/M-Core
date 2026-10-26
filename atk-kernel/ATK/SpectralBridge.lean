@@ -45,14 +45,27 @@ deste arquivo). Isso fica registrado como obrigação aberta, não como sorry.
    abaixo é uma obrigação aberta genuína e não-trivial (não é vacuamente
    satisfeita), porque `hurwitzZetaEven a` é uma função FIXA e já definida
    no Mathlib, não uma incógnita existencial livre.
-3. **Davenport–Heilbronn** — a L-função de Davenport–Heilbronn não está
-   formalizada no Mathlib. Registrar uma obrigação Lean não-trivial exigiria
-   ou essa formalização (projeto grande, fora de escopo) ou introduzir um
-   `axiom` para o objeto (que o projeto proíbe). Por isso esta rota fica
-   só como comentário estruturado abaixo, não como `def : Prop` do Lean.
-4. **Operador de Berry–Keating** — mesma situação: o operador
-   `H = ½(xp+px)` e sua extensão espectral não estão formalizados no
-   Mathlib. Mesma decisão: comentário estruturado, não `def` Lean.
+3. **Davenport–Heilbronn** — a L-função de Davenport–Heilbronn real não
+   está formalizada no Mathlib, mas `SelbergLikeBridge` abaixo formaliza o
+   ESQUEMA ABSTRATO por trás dela: qualquer `F` satisfazendo a mesma forma
+   de equação funcional que `completedRiemannZeta` (via
+   `completedRiemannZeta_one_sub`, lema real do Mathlib), sem assumir
+   produto de Euler, e ligada por um fator `C` sem zeros. É o mesmo nível
+   de abstração de `no_finite_degree_bridge` — não é uma instância concreta
+   de Davenport–Heilbronn, é a condição que qualquer construção desse tipo
+   precisaria satisfazer.
+4. **Operador de Berry–Keating** — pesquisado no Mathlib: `IsSelfAdjoint`
+   existe para `LinearPMap` (operadores não-limitados com domínio denso,
+   `Mathlib/Analysis/InnerProductSpace/LinearPMap.lean`), mas não existe no
+   Mathlib nenhuma teoria de ESPECTRO para operadores não-limitados/
+   `LinearPMap` — `spectrum` só está definido para álgebras de Banach
+   (operadores limitados). Como a ponte precisaria dizer "o espectro de `H`
+   corresponde aos zeros de `completedRiemannZeta`", e essa noção de
+   espectro não existe para o tipo de operador não-limitado que `H`
+   precisaria ser, não há como escrever essa `Prop` de forma não-vazia sem
+   essa base ausente do Mathlib. Fica como comentário estruturado, não
+   `def` Lean — mesma decisão da rodada anterior, agora com o obstáculo
+   específico documentado.
 
 Nada neste arquivo decide a Hipótese de Riemann. `RiemannHypothesis` no
 Mathlib é uma `def` (proposição), não aparece como hipótese nem conclusão
@@ -112,24 +125,46 @@ def HurwitzZetaBridge (a : ℝ) : Prop :=
   ∃ C : ℂ → ℂ, (∀ s, C s ≠ 0) ∧
     ∀ s : ℂ, completedRiemannZeta s = C s * hurwitzZetaEven (a : UnitAddCircle) s
 
-/-!
-## Rotas registradas só como comentário (sem `def` Lean)
+/-- **Obrigação aberta — esquema abstrato tipo Davenport–Heilbronn.**
+    Qualquer `F` que (i) satisfaça a MESMA forma de equação funcional que
+    `completedRiemannZeta` (`F (1 - s) = F s`, espelhando
+    `completedRiemannZeta_one_sub`, lema real do Mathlib) — SEM assumir
+    produto de Euler, essa é precisamente a lacuna que caracteriza
+    Davenport–Heilbronn na classe de Selberg — e (ii) esteja ligada a
+    `completedRiemannZeta` por um fator `C` sem zeros.
 
-**Davenport–Heilbronn.** A obrigação seria
-`∃ C, (∀ s, C s ≠ 0) ∧ ∀ s, completedRiemannZeta s = C s * L_DH s`,
-onde `L_DH` é a L-função de Davenport–Heilbronn (combinação específica de
-funções-L de Dirichlet, conhecida por ter infinitos zeros fora da linha
-crítica em qualquer subfaixa `(1/2, 1)`, por teorema de Davenport–Heilbronn
-e Cassels/Voronin). `L_DH` não está formalizada no Mathlib. Estado: OPEN,
-não representável como `Prop` não-trivial sem formalizar `L_DH` primeiro ou
-introduzir axioma (proibido pelo projeto).
+    Isso é mais forte que uma `Prop` vazia: a condição (i) restringe `F`
+    de verdade (nem toda função satisfaz essa equação funcional). Não é
+    uma instância concreta de Davenport–Heilbronn (essa L-função não está
+    formalizada no Mathlib) — é a condição abstrata que qualquer construção
+    desse tipo precisaria satisfazer para servir de ponte. Nenhum habitante
+    é fornecido; é só a declaração do tipo da obrigação. -/
+def SelbergLikeBridge (F : ℂ → ℂ) : Prop :=
+  (∀ s : ℂ, F (1 - s) = F s) ∧
+    ∃ C : ℂ → ℂ, (∀ s, C s ≠ 0) ∧ ∀ s : ℂ, completedRiemannZeta s = C s * F s
+
+/-!
+## Rota registrada só como comentário (sem `def` Lean)
 
 **Operador de Berry–Keating.** A obrigação seria a existência de um operador
-(auto-adjunto ou não) `H` num espaço de Hilbert adequado, com extensão
-espectral `D_H`, tal que `completedRiemannZeta = C * D_H` com `C` sem zeros.
-Nem `H` nem `D_H` estão formalizados no Mathlib — é pesquisa ativa (programa
-Hilbert–Pólya), não um fato disponível para citar. Estado: OPEN, mesma razão
-que acima.
+`H` (auto-adjunto) num espaço de Hilbert adequado, com espectro `σ(H)`, tal
+que esse espectro corresponda (via uma transformação como `s ↦ -i(s - 1/2)`)
+aos zeros não-triviais de `completedRiemannZeta`.
+
+Pesquisado no Mathlib antes de decidir: `IsSelfAdjoint` existe para
+`LinearPMap` (`E →ₗ.[𝕜] E`, operadores não-limitados com domínio denso —
+exatamente o tipo que o operador de dilatação `H = ½(xp+px)` precisaria ser,
+já que é não-limitado), em
+`Mathlib/Analysis/InnerProductSpace/LinearPMap.lean`. Mas não existe no
+Mathlib nenhuma noção de ESPECTRO para `LinearPMap` ou outro operador
+não-limitado — `spectrum` (`Mathlib/Analysis/NormedSpace/Spectrum.lean` e
+correlatos) está definido só para elementos de álgebras de Banach, isto é,
+operadores LIMITADOS. Não há como escrever "o espectro de `H` é tal
+conjunto" para o `H` que esta ponte precisaria, sem essa teoria ausente.
+Registrar uma `Prop` mesmo assim exigiria ou inventar um substituto ad hoc
+para "espectro de operador não-limitado" (poderia acabar vazio ou
+enganosamente substantivo) ou um `axiom` (proibido pelo projeto). Por isso
+fica só como obrigação documentada em comentário, não como `def` Lean.
 -/
 
 end ATK.SpectralBridge
