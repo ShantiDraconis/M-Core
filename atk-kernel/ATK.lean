@@ -341,3 +341,4 @@ import ATK.SpectralBridge
 import ATK.PonteBSDRestante
 import ATK.PonteHodgeRestante
 import ATK.ScaffoldHodge
+import ATK.ScaffoldHeegner
