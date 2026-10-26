@@ -339,3 +339,4 @@ import ATK.ZeroClasses.Faixa
 import ATK.GramMdc
 import ATK.SpectralBridge
 import ATK.PonteBSDRestante
+import ATK.ScaffoldWightman
