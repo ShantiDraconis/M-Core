@@ -340,4 +340,4 @@ import ATK.GramMdc
 import ATK.SpectralBridge
 import ATK.PonteBSDRestante
 import ATK.PonteHodgeRestante
-import ATK.ScaffoldHeegner
+import ATK.ScaffoldHodge
