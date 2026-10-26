@@ -11,7 +11,6 @@ Só biblioteca padrão. **Nada aqui é certificado.**
   `L(½) = 0`;
 * `rec_monotonia`: `|ξ(σ + it)|` amostrado em `½ < σ ≤ 3` para vários `t`, sempre estritamente crescente.
 """
-import cmath
 import json
 import math
 import os
