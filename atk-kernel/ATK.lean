@@ -338,4 +338,4 @@ import ATK.ZeroClasses.FaixaPecas3
 import ATK.ZeroClasses.Faixa
 import ATK.GramMdc
 import ATK.SpectralBridge
-import ATK.PonteHodgeRestante
+import ATK.PonteBSDRestante
