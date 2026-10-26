@@ -5,7 +5,10 @@ outdir=sys.argv[2]
 def q(x):
     x=F(x)
     return f"({x.numerator} / {x.denominator} : ℚ)" if x.denominator!=1 else f"({x.numerator} : ℚ)"
-def R(x): return f"(({q(x)[1:-5]} : ℚ) : ℝ)" if False else f"(({F(x).numerator}{'' if F(x).denominator==1 else ' / '+str(F(x).denominator)} : ℚ) : ℝ)"
+def R(x):
+    x=F(x)
+    den="" if x.denominator==1 else f" / {x.denominator}"
+    return f"(({x.numerator}{den} : ℚ) : ℝ)"
 DEL="((1 / 50 : ℚ) : ℝ)"
 leaves=[]; nodes=[]
 cnt=[0]

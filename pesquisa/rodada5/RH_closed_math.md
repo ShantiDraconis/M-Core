@@ -1530,6 +1530,52 @@ circunferência de raio `R` muito abaixo de `Bx`; a cota de Jensen fica acima do
 Mangoldt e de `N(100) = 29`, `N(1000) = 649`, e abaixo de `C·T·log T`; a razão cota/`T log T` tende a `1/log 2 ≈ 1,44`,
 cerca de 9 vezes `1/(2π)`.
 
+## 4ak. Jensen local, `Σ_ρ 1/|ρ|² < ∞` e o produto canônico: `HadamardXi` vira uma identidade (rodada 31)
+
+Dois arquivos, **31 teoremas** (total 7268), só os axiomas padrão.
+
+**Jensen local** (`ZeroClasses/JensenLocal.lean`, 23 teoremas). A fórmula de Jensen da Mathlib, agora para `ζ` em bolas
+de raio fixo centradas em `2 + iy`, onde `|ζ(2 + iy)| ≥ 2 − π²/6` (`BLProva.zeta_dois_lb`):
+
+* `cota_zeta_circ`: `|ζ(s)| ≤ 15|y| + 62` em `‖s − (2 + iy)‖ ≤ 19/10`, `|y| ≥ 4` (Euler–Maclaurin de ordem 1);
+* `jensen_local`: os zeros em `‖s − (2 + iy)‖ ≤ 8/5`, com multiplicidade, são `≤ Lc |y|`, onde
+  `Lc t = log((15t + 62)/(2 − π²/6))/log(19/16)`;
+* `ordem_xi_reflexao`, `ordemNat_zeta_reflexao`: **`ord_{1−ρ} ζ = ord_ρ ζ`** na faixa (via `ξ(1 − s) = ξ(s)` e
+  `analyticOrderAt_comp_of_deriv_ne_zero`);
+* `caixa_le`: para qualquer conjunto finito de pontos da faixa com `|Im ρ − y| ≤ ½`, `Σ m_ρ ≤ 2 Lc |y|`. A metade
+  `Re ρ ≥ ½` fica na bola de `2 + iy`; a outra é refletida para a bola de `2 − iy`;
+* **`N_succ_le`: `N(T + 1) − N(T) ≤ 2 Lc(T + ½)`** e **`N_local_O_log`: `N(T + 1) − N(T) = O(log T)`**;
+* **`soma_ordem_inv_quadrado`: `Σ_ρ m_ρ/|ρ|² < ∞`** e `soma_inv_quadrado`: `Σ_ρ 1/|ρ|² < ∞`, somando sobre **todos** os
+  zeros da faixa. A prova soma por blocos `⌈|Im ρ|⌉ = n`, usa `|Im ρ| > 13` da rodada 29 e compara com `n^{−3/2}`.
+
+**O produto canônico** (`ZeroClasses/Canonico.lean`, 8 teoremas):
+
+* `E1 z = (1 − z)e^z`, `E1_sub_one_le`: `‖E1 z − 1‖ ≤ 3‖z‖²` para `‖z‖ ≤ 1`;
+* `ZM`: os zeros com multiplicidade (`Σ ρ : Z, Fin m_ρ`); `summable_ZM`;
+* **`canonico_converge`: `∏_{(ρ, j)} (1 − s/ρ)e^{s/ρ}` converge incondicionalmente para todo `s`**; `Pcan s` é o valor;
+* `produtos_simetricos`: os produtos parciais simétricos de `HadamardXi` (`|Im ρ| ≤ T`, com multiplicidade)
+  convergem para `Pcan s`;
+* **`hadamardXi_iff`: `HadamardXi ⟺ ∃ A B, ∀ s, ξ(s) = e^{A + Bs} · Pcan(s)`**.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `N(T + 1) − N(T) = O(log T)`; `ord_{1−ρ} ζ = ord_ρ ζ` | CERTIFIED | ferramenta |
+| `Σ_ρ m_ρ/\|ρ\|² < ∞`, `Σ_ρ 1/\|ρ\|² < ∞` | CERTIFIED | parcial (convergência de Hadamard) |
+| o produto canônico converge; `HadamardXi ⟺ ξ = e^{A+Bs}·P` | CERTIFIED | ferramenta (redução) |
+| `ξ = e^{A + Bs}·P` (a identidade de Hadamard: `ξ/P` inteira, sem zeros, de ordem `≤ 1`) | BUILD_PENDING | alavanca (Lagarias, §4ah) |
+| `RiemannVonMangoldt` | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Das três peças ausentes da Mathlib em `NecessidadeRH` (§4aj), `HadamardXi` deixa de ser um enunciado sobre limites e
+vira uma identidade entre duas funções definidas. Isso ainda não prova RH nem a necessidade.
+
+Numérico (`codigo/canonico.py`, `dados/canonico.json`, `testes/test_canonico.py`, 2 testes): 138 zeros `0 < γ ≤ 300`
+por trocas de sinal da função `Z` de Riemann–Siegel, com contagem a menos de 1 de Riemann–von Mangoldt em
+`T = 50, …, 300`. `N(T + 1) − N(T)` fica no máximo em 2% da cota `2 Lc(T + ½)`. `Σ_{|γ| ≤ 300} 1/|ρ|²`, mais a cauda
+estimada, dá `0,0461912` contra `2 + γ − log 4π = 0,0461914`. Com `A = −log 2` e `B = −γ/2 − 1 + ½ log 4π`, a
+identidade `ξ(s) ≈ e^{A+Bs}·P_{300}(s)` vale em `s = 2` e `s = ½ + 2i` com erro relativo de cerca de 1%, dentro da
+cauda `|s|²·Σ_{|γ|>300} 1/|ρ|²`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
