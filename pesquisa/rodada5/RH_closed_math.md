@@ -1491,6 +1491,45 @@ as 50 cotas racionais, malhas, raios e limiares conferidos em frações exatas; 
 de `[½, 1] × [43/50, 13]` (`607/100`); folga mínima `|ζ(c)| − v ≥ 0,012`; `min |ζ| ≈ 0,526` na metade direita e
 `≈ 0,389` na esquerda; o primeiro zero `½ + 14,134725141734693i`.
 
+## 4aj. A fórmula de Jensen da Mathlib aplicada a `ξ`: `N(T) = O(T log T)` (rodada 30)
+
+Um arquivo, **17 teoremas** (total 7237), só os axiomas padrão. A Mathlib já tinha a **fórmula de Jensen**
+(`AnalyticOnNhd.sum_divisor_le`: zeros em `‖s − c‖ ≤ r` com multiplicidade `≤ log(M/‖f c‖)/log(R/r)` quando
+`‖f‖ ≤ M` em `‖s − c‖ = R`); faltava aplicá-la a `ξ`. `ZeroClasses/Jensen.lean`:
+
+* **cotas de crescimento**: `cota_zeta` (`‖(s − 1)ζ(s)‖ ≤ 1 + ‖s − 1‖(½ + 3‖s‖)` em `Re s ≥ ½`, Euler–Maclaurin de
+  ordem 1); `cota_Gammaℝ` (`‖Γℝ(s)‖ ≤ Γ(Re s/2)`); `Gamma_le_um`, `Gamma_le` (`Γ(x) ≤ 4 + n!` em `¼ ≤ x ≤ n + 1`:
+  convexidade em `[1, 2]`, `Γ(x) = Γ(x+1)/x` abaixo de 1, monotonia acima de 2);
+* **cota de `ξ` na bola** (`Bx`, `Bx_ge`, `norm_le_de`, `cota_xi_direita`, `cota_xi`): `‖ξ(s)‖ ≤ Bx R n` em
+  `‖s − ½‖ ≤ R` se `R + ½ ≤ 2(n + 1)`; o lado `Re s < ½` pela equação funcional `ξ(1 − s) = ξ(s)`;
+* **Jensen para `ξ`** (`xi_metade_ne_zero`, `jensen_xi`): `ξ(½) ≠ 0` e
+  `Σ div ξ (‖s − ½‖ ≤ T + 1) ≤ log(Bx(2T + 2, ⌈T⌉ + 1)/‖ξ(½)‖)/log 2`;
+* **as ordens coincidem** (`ordem_zeta_eq_xi`, `ordemNat_zeta_eq_xi`): para `Re ρ > 0`, `ρ ≠ 1`,
+  `ord_ρ ζ = ord_ρ ξ` (perto de `ρ`, `ζ = ξ · g` com `g = 2Γℝ⁻¹/(s(s − 1))` analítica e `g(ρ) ≠ 0`);
+* **a contagem** (`zerosAte_sub_bola`, `N_le_divisor`, `N_cota`): a `N(T)` de `ATK.FechamentoO1` (zeros com
+  `0 < Im ρ ≤ T`, com multiplicidade) satisfaz **`N(T) ≤ log(Bx(2T + 2, ⌈T⌉ + 1)/‖ξ(½)‖)/log 2`**;
+* **`N_O_TlogT`: `∃ C, ∀ T ≥ 2, N(T) ≤ C · T · log T`** (com `log_Bx_le`:
+  `log Bx ≤ 13 log T + 4 T log T`; `C = ((13 + |log ξ(½)|/log 2)/2 + 4)/log 2 ≈ 15,9`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `N(T) ≤ log(Bx/‖ξ(½)‖)/log 2`; `N(T) = O(T log T)` | CERTIFIED | parcial |
+| `ord_ρ ζ = ord_ρ ξ` na faixa; `‖ξ‖ ≤ Bx` na bola; Jensen para `ξ` | CERTIFIED | ferramenta |
+| `N(T) = (T/2π) log(T/2π) − T/2π + O(log T)` (`RiemannVonMangoldt`) | BUILD_PENDING | — |
+| `N(T + 1) − N(T) = O(log T)` (Jensen local; exige a simetria das ordens `ρ ↦ 1 − ρ̄`) | BUILD_PENDING | ferramenta |
+| `Σ_ρ m_ρ/\|ρ\|^{1+ε} < ∞` e o produto de Hadamard de `ξ` | BUILD_PENDING | alavanca (Lagarias, §4ah) |
+| RH | OPEN_MATH | — |
+
+`N_O_TlogT` é a metade superior (fraca) de Riemann–von Mangoldt, com a ordem de grandeza certa: é a entrada que o
+produto de Hadamard de `ξ` precisa (expoente de convergência dos zeros `≤ 1`). Não diz nada sobre **onde** estão os
+zeros.
+
+Numérico (`codigo/contagem.py`, `dados/contagem.json`, `testes/test_contagem.py`, 2 testes): `ξ(½) = 0,4971207781…`;
+`cota_zeta` em 1331 pontos (razão máxima `0,43`); `Γ ≤ 4 + n!` em `[¼, n + 1]` para `n ≤ 12`; `max |ξ|` na
+circunferência de raio `R` muito abaixo de `Bx`; a cota de Jensen fica acima do termo principal de Riemann–von
+Mangoldt e de `N(100) = 29`, `N(1000) = 649`, e abaixo de `C·T·log T`; a razão cota/`T log T` tende a `1/log 2 ≈ 1,44`,
+cerca de 9 vezes `1/(2π)`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

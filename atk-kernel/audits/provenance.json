@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "d9f720495743c7976ba7a89d425e42ac0997de334062dc56c3ecb6930448275d",
+  "sources_sha256": "a35ce421363c90f2d60423bf3c904a55799c693f7360b6ed8097ccad326a1271",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -355,6 +355,7 @@
     "ATK/ZeroClasses/Forcar.lean": "97563a71d9e33e7a2f0b5903a26d6f320f8d39cee24fc3bb4188658393f69d25",
     "ATK/ZeroClasses/Fronteira.lean": "7ed6cd975f33b70180e36dc7851c64594ddbec8e15375c4287d6ef85c800ae88",
     "ATK/ZeroClasses/Hipotetico.lean": "41c689384ab203561911b1047075d5fd4edb09b2d288eb304134bed45559e9a8",
+    "ATK/ZeroClasses/Jensen.lean": "09eb1b38e79eecc829dd7fcf268687f231acbdeef53453a229977119916dea5d",
     "ATK/ZeroClasses/Lagarias.lean": "b7b4fe0c1a0e6be0e128f82d4044dfe04b992752d83e9b6aa61e0bf30c3ac37a",
     "ATK/ZeroClasses/Laws.lean": "706996bb208f61a47c36f585e3cbf41172be0a97d80e9dd3d3e2fd558d1429f6",
     "ATK/ZeroClasses/Multiplicity.lean": "410e73e4cfa4a3816228c0eebc5ad409056f80779f41631197f19de363dc4f63",
@@ -379,12 +380,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "4dcf7980d63f82b266029880214029111d0bc52c260894b74cb157ce345e5637"
+    "ATK.lean": "758fbf12b3f0608974b72b743e77d3e1f76649f5a08b0316771b6c4a374d800d"
   },
-  "n_files": 378,
-  "expected_theorems": 7220,
+  "n_files": 379,
+  "expected_theorems": 7237,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "88b73dea6d807c3df55de70e006b92d68e57c7db",
+  "commit_at_freeze": "0f8d0a37b3cf3099ed41b55eede6cf4299a9288c",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
