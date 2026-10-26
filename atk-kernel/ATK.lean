@@ -337,3 +337,4 @@ import ATK.ZeroClasses.FaixaPecas2
 import ATK.ZeroClasses.FaixaPecas3
 import ATK.ZeroClasses.Faixa
 import ATK.GramMdc
+import ATK.SpectralBridge
