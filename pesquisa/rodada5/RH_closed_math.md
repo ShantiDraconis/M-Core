@@ -3171,6 +3171,34 @@ Numérico (`codigo/tnp_pi.py`, `dados/tnp_pi.json`, `testes/test_tnp_pi.py`, 2 t
   `10⁻¹²`;
 * `|π − Li|` vale `8,6 … 338` em `x = 10³ … 10⁷`, contra `x e^{−½√log x} = 269 … 1,3·10⁶`. Só ordem de grandeza.
 
+## 4cj. `‖c‖₁` controlado por `‖res‖²_σ` à direita de `Θ` (rodada 82)
+
+Um arquivo, **15 teoremas** (total 8100), só os axiomas padrão (`ZeroClasses/BDNormaL1.lean`). É a ferramenta que
+leva o piso `ℓ¹` da rodada 79 a **todos** os coeficientes (rodada 83). Sob `SemZeros θ`, com `θ < σ < 1` e `η > 0`:
+
+  **`‖res_c‖²_σ ≤ 1 ⟹ ‖c‖₁ ≤ K N^{σ + 3/2 + 2η}`**   (`norma_l1_le`).
+
+* **Valor médio** (`media_inf`, a forma elementar de Montgomery–Vaughan):
+  `∫_{−T}^{T} |Σ_{k<N} a_k (k+1)^{−iτ}|² dτ ≥ (2T − 2N(N + 1)) Σ a_k²`. A integral do quadrado é
+  `Σ_{j,k} a_j a_k ∫ cos(μ_{jk}τ)` (`norm_sq_soma`, `cpow_neg_I`). Os termos fora da diagonal custam
+  `≤ 2/|μ_{jk}| ≤ 2(N + 1)` (`int_cos_abs`, com `abs_log_ge_N` da rodada 78).
+* **Média superior** (`media_sup`, `norm_P_sq_le`): na reta `Re s = σ`, `P = (1 + ζP)/ζ − 1/ζ`. Daí
+  `|P|² ≤ 2|1/ζ|²(|1 + ζP|² + 1)` com `|1/ζ| ≤ C(1 + |τ|)^η` (`QuasiRH.norm_F_le`). Por Plancherel,
+  `∫ |1 + ζP|²/|s|² = 2π‖res‖²_σ` (`integrable_espectro`, `int_espectro_le`; a densidade espectral é integrável por
+  `L¹ ∩ L²`).
+* `T = 2N(N + 1)`, Cauchy–Schwarz e `|c_k| ≤ N^σ |a_k|` (`arit_X`, `soma_abs_le`, `soma_c_le`, `expoentes`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| valor médio elementar para polinômios de Dirichlet | CERTIFIED | ferramenta |
+| sob `SemZeros θ`, `θ < σ < 1`: `‖res_c‖²_σ ≤ 1 ⟹ ‖c‖₁ ≤ K N^{σ+3/2+2η}` | CERTIFIED | ferramenta |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_normal1.py`, `dados/bd_normal1.json`, `testes/test_bd_normal1.py`, 2 testes):
+* com vetores pseudoaleatórios e `T = 2N(N + 1)`, a integral (forma fechada) fica entre 1,9 e 2,1 vezes a cota de
+  `media_inf` (`N = 5, 10, 20`);
+* a forma fechada confere com quadratura a `2·10⁻¹¹` (relativo).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
