@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de ec84405a2ee20fa41880f73bfcde11013d6d1c5970d6d4c99d2e6aa8fd39f246
+# axiomas por teorema — congelamento de f724b71bf1de9f4ccc07d5719d446994827750cbe15fd388bba3548179219819
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7896,3 +7896,29 @@ ATK.ZeroClasses.LiCompleto.finito_grande	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LiCompleto.existe_fora	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LiCompleto.RH_of_lam_nonneg	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LiCompleto.rh_iff_li	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.ordem_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.rZ_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.refl_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.summable_re_inv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.summable_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.soma_meio_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.hasDerivAt_xi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.logDeriv_xi_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.B_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.re_completed_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.termo_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.lam_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.termo_um_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.lam_um_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.log_quatro_pi_lt	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.norm_sq_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.fD_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.summable_fD	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.par_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.par_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.tsum_fD_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.summable_fD_refl	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.tsum_fD_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.soma_inv_quad_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.soma_inv_quad_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiUm.rh_iff_soma_inv_quad	propext, Classical.choice, Quot.sound

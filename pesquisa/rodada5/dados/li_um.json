@@ -1,0 +1,15 @@
+{
+ "lam1": 0.02309570896612101,
+ "B_formula": -0.02309570896612101,
+ "B_diferenca_finita": -0.02309570857339515,
+ "soma_inv_quad_600": 0.04323709417990135,
+ "cauda": 0.002949168994721333,
+ "soma_estimada": 0.04618626317462268,
+ "alvo": 0.04619141793224202,
+ "par_fora_da_reta": {
+  "beta": 0.4,
+  "gamma": 100.0,
+  "excesso": 3.999792008511675e-10
+ },
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/LiUm.lean"
+}
