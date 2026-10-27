@@ -2876,6 +2876,37 @@ Numérico (`codigo/explicita_t.py`, `dados/explicita_t.json`, `testes/test_expli
 de `0 < γ ≤ 600`, a massa máxima de uma faixa é `4`, contra a cota mínima `155,2` (razão `≤ 0,019`); em `x = 10,5` e
 `T = 77,7; 150,2; 333,3; 599,9` os erros são `0,246; −0,105; 0,054; 0,027`.
 
+## 4ca. Báez-Duarte ponderado: a forma espectral e o molificador de Riesz (rodada 73)
+
+Um arquivo, **19 teoremas** (total 7992), só os axiomas padrão (`ZeroClasses/BDEspectral.lean`). Primeira peça da
+questão Q2(ii) de `fronteira/RH_frontier.md` (a necessidade com taxa: `Θ ≤ θ < σ ⟹ D_N(σ) ≪ N^{−2(σ−θ)+ε}`).
+
+* **Plancherel de Mellin ponderado** (`plancherel_σ`): `∫_0^∞ |f|² t^{2σ−1} dt = (1/2π) ∫ |𝓜f(σ + iτ)|² dτ`, reduzido
+  ao caso `σ = ½` da Mathlib/ATK por `f ↦ t^{σ−½} f`;
+* **a forma espectral** (`Wσ_espectral`): `‖χ − Σ c_k ρ_{k+1}‖²_σ = (1/2π) ∫ |1 + ζ(s)Σ c_k (k + 1)^{−s}|²/|s|² dτ`,
+  `s = σ + iτ`, `0 < σ < 1`; daí `D_N(σ)` e `inf_N D_N(σ)` ficam abaixo dessa integral para qualquer `c`
+  (`DNσ_le`, `iInf_DNσ_le`);
+* **o núcleo de Riesz** `w(u) = (1 − u)²₊`: `𝓜w(z) = 2/(z(z + 1)(z + 2))` (`hasMellin_wR`), `‖W(c + iy)‖ ≤
+  (8/c)(1 + |y|)^{−2}` (`norm_WR_le`) e a inversão `w(u) = (1/2π) ∫ u^{−(c+iy)} W(c + iy) dy` (`wR_inv`);
+* **o molificador** `A_N(s) = Σ_{k<N} μ(k)(1 − k/N)² k^{−s}` e a **representação integral**
+  `A_N(s) = (1/2π) ∫ W(c + iy) N^{c+iy} ζ(s + c + iy)^{−1} dy` para `Re s + c > 1` (`LSeries_aN_int`);
+* **`DNσ_le_molif`**: `D_N(σ) ≤ (1/2π) ∫ |1 − ζ(s)A_N(s)|²/|s|² dτ`.
+
+O passo seguinte (rodada 74) é deslocar a integral de `A_N` para `Re z = −δ` sob `SemZeros θ`: o resíduo em `z = 0` é
+`1/ζ(s)`, e `1 − ζ(s)A_N(s) = O(N^{−δ}|ζ(s)|(1 + |τ|)^η)`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Plancherel ponderado; forma espectral de `D_N(σ)`; molificador de Riesz e sua representação | CERTIFIED | ferramenta |
+| Q2(ii): `SemZeros θ ⟹ D_N(σ) ≪ N^{−2(σ−θ)+ε}` para `θ < σ < 1` | BUILD_PENDING | — |
+| Q2(iii): o piso ponderado `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_espectral.py`, `dados/bd_espectral.json`, `testes/test_bd_espectral.py`, 2 testes):
+`𝓜w(0,7 + 3i)` por Simpson bate com `W` a `10⁻¹⁴`; a inversão de Mellin recupera `w(0,3) = 0,49` a `2·10⁻⁸` e
+`w(1,7) = 0` a `2·10⁻⁹`; a representação de `A_10(1,5 + 2i)` bate a `3·10⁻⁸`; a cota espectral em `σ = 0,8` cai de
+`0,47` (`N = 10`) a `0,047` (`N = 40`) e `0,0039` (`N = 160`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
