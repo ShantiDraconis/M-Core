@@ -375,3 +375,4 @@ import ATK.ZeroClasses.PsiRH
 import ATK.ZeroClasses.PiLiRH
 import ATK.ZeroClasses.ExplicitaPecas
 import ATK.ZeroClasses.PsiLog2
+import ATK.ZeroClasses.LiCompleto

@@ -2729,6 +2729,35 @@ Numérico (`codigo/psi_log2.py`, `dados/psi_log2.json`, `testes/test_psi_log2.py
 (`x = 10⁷`). O resíduo explícito em números: `x − Σ_{0<γ≤600} 2 Re(x^ρ/ρ) − log 2π − ½ log(1 − x^{−2})` reproduz
 `ψ(x)` a `0,30` em `x = 100,5` e a `0,19` em `x = 1000,5`.
 
+## 4bv. O critério de Li completo: RH ⟺ `λ_n ≥ 0` para todo `n ≥ 1` (rodada 68)
+
+Um arquivo, **20 teoremas** (total 7896), só os axiomas padrão (`ZeroClasses/LiCompleto.lean`). A rodada 15
+(`ATK/LiCriterio.lean`) tinha o núcleo algébrico zero a zero; agora a soma:
+
+* **`lam n = Σ_{(ρ,j)} Re(1 − (1 − 1/ρ)^n)`**, absolutamente convergente (`summable_termo`): pelo **resto binomial**
+  `|(1 − u)^n − 1 + nu| ≤ n²|u|²(1 + |u|)^n` (`resto_binom`, indução), `|Re(1 − w^n)| ≤ (n + n²(14/13)^n)/|ρ|²`
+  (`abs_termo_le`) e `Σ 1/|ρ|² < ∞` (rodada 31);
+* **RH ⟹ `λ_n ≥ 0`** (`lam_nonneg_of_RH`): sob RH `|w| = 1` e `Re(1 − w^n) ≥ 0`;
+* **`λ_n ≥ 0` ∀ `n ≥ 1` ⟹ RH** (`RH_of_lam_nonneg`): um zero com `Re ρ < ½` (pela simetria `ρ ↦ 1 − ρ̄`) tem
+  `|w| > 1`; os zeros de `|w|` máximo `r` são finitos (`|w|² ≤ 1 + 1/|ρ|²`, `finito_grande`) e os demais têm
+  `|w| ≤ r₂ < r`; a **casa dos pombos no toro** (`dirichlet_simultaneo`, `cos_ge_meio`) dá `n` arbitrariamente
+  grande com `cos(n arg w) ≥ ½` nos máximos, e a cota
+  `λ_n ≤ |A|(1 − r^n/2) + (1 + r₂^n) n² S₂ + n S₁ + 3n² S₂` (`termo_le_cauda`: `Re(1 − w^n) ≤ n Re(1/ρ) + 3n²/|ρ|²`
+  quando `|ρ| ≥ n`) fica negativa;
+* **`rh_iff_li`**: `RiemannHypothesis ↔ ∀ n ≥ 1, 0 ≤ lam n`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| RH ⟺ `λ_n ≥ 0` para todo `n ≥ 1` (Li 1997, Bombieri–Lagarias 1999) | CERTIFIED | reformulação |
+| `λ_1 = 1 + γ/2 − ½ log 4π` e a assintótica `λ_n ~ (n/2) log n` sob RH | BUILD_PENDING | — |
+| `λ_n ≥ 0` para todo `n` | OPEN_MATH (= RH) | — |
+
+Numérico (`codigo/li_completo.py`, `dados/li_completo.json`, `testes/test_li_completo.py`, 2 testes): com os 341 zeros
+de `0 < γ ≤ 600` e a cauda `n² (log(600/2π) + 1)/(2π·600)`, `λ_1 = 0,023093` (forma fechada `0,0230957`),
+`λ_2 = 0,092335` (`0,0923457`), `λ_3 = 0,20762` (`0,2076389`); positivos e crescentes até `n = 30` (`λ_30 ≈ 17,3`,
+assintótica `17,1`). Um zero hipotético `ρ = 0,4 + 14,13i` teria `|w| = 1,0005`, e a parcela cai abaixo de `−10` em
+`n = 4796`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
