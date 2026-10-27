@@ -13,7 +13,7 @@ num valor grande de `F` numa janela `[u − 1, u + 1]`.
   e as caudas `cauda_dir`/`cauda_esq`: `∫_{v ≥ 1} k_τ(v) e^{v} ≤ e^{1 − 1/(4τ)}` para `τ ≤ ½`.
 * §2 `A_eq_psi`: `A_τ(u) = Σ Λ(n) n^{−1/2} Φ_τ(u − log n) = ∫ ψ(e^{u − v}) e^{−(u − v)/2} k_τ(v) dv`,
   e `A_sub_eq`: `A_τ(u) − e^{u/2 + τ/4} = ∫ k_τ(v) F(u − v) dv` (o termo `W(1)` é exatamente a parte `x`).
-* §3 `Fpsi_le_RH`: sob RH, `|F(y)| ≤ B(1 + y²)` (von Koch, rodada 63); `localiza_menos`/`localiza_mais`:
+* §3 `Fpsi_le_RH`: sob RH, `|F(y)| ≤ B(1 + y²)` (von Koch, rodada 67); `localiza_menos`/`localiza_mais`:
   se `∫ k_τ F(u − ·) < −L − 8B(1 + 2u²)e^{1 − 1/(4τ)}` então `F(y) ≤ −L` em algum `y ∈ [u − 1, u + 1]`
   (e simetricamente por cima).
 * §4 `re_pw_RH`: em `Re ρ = ½`, `Re(W(ρ)/ρ) = e^{−τγ²}(cos(γu)/2 + γ sen(γu))/|ρ|²`.
@@ -340,7 +340,7 @@ theorem A_sub_eq {τ : ℝ} (hτ : 0 < τ) (u : ℝ) :
 
 /-! ## 3. Sob RH, `|F(y)| ≪ 1 + y²`, e a localização -/
 
-/-- **Sob RH**, `|F(y)| ≤ B(1 + y²)` para todo `y` (von Koch, `|ψ(x) − x| ≤ K√x log² x`, rodada 63). -/
+/-- **Sob RH**, `|F(y)| ≤ B(1 + y²)` para todo `y` (von Koch, `|ψ(x) − x| ≤ K√x log² x`, rodada 67). -/
 theorem Fpsi_le_RH (hRH : RiemannHypothesis) : ∃ B : ℝ, 0 ≤ B ∧ ∀ y : ℝ, |Fpsi y| ≤ B * (1 + y ^ 2) := by
   obtain ⟨K, hK0, hK⟩ := ATK.ZeroClasses.Koch.psi_RH_log2 hRH
   have hl4 : 0 ≤ Real.log 4 := Real.log_nonneg (by norm_num)
