@@ -2645,8 +2645,8 @@ critério de von Koch, por Perron e deslocamento de contorno (sem a fórmula exp
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | RH ⟺ `ψ(x) = x + O(√x log³ x)` | CERTIFIED | reformulação |
-| RH ⟹ `ψ(x) = x + O(√x log² x)` (fórmula explícita, `x^ρ/ρ`) | BUILD_PENDING | consequência |
-| RH ⟹ `π(x) = Li(x) + O(√x log x)` | BUILD_PENDING | consequência |
+| RH ⟹ `ψ(x) = x + O(√x log² x)` (fórmula explícita, `x^ρ/ρ`) | CERTIFIED (rodada 67) | consequência |
+| RH ⟹ `π(x) = Li(x) + O(√x log x)` | CERTIFIED (rodada 67) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/psi_rh.py`, `dados/psi_rh.json`, `testes/test_psi_rh.py`, 2 testes). Até `x = 10⁷`, por década, o
@@ -2668,7 +2668,7 @@ Um arquivo, **11 teoremas** (total 7853), só os axiomas padrão (`ZeroClasses/P
 | --- | --- | --- |
 | RH ⟺ `θ(x) = x + O(√x log³ x)` | CERTIFIED | reformulação |
 | RH ⟺ `π(x) = Li(x) + O(√x log² x)` | CERTIFIED | reformulação |
-| RH ⟹ `π(x) = Li(x) + O(√x log x)` (fórmula explícita) | BUILD_PENDING | consequência |
+| RH ⟹ `π(x) = Li(x) + O(√x log x)` (fórmula explícita) | CERTIFIED (rodada 67) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/pi_li_rh.py`, `dados/pi_li_rh.json`, `testes/test_pi_li_rh.py`, 2 testes). Até `10⁷`:
@@ -2695,13 +2695,39 @@ contorno de Perron **através** dos zeros (Davenport, cap. 17):
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | princípio do argumento ponderado; resíduo `x − Σ x^ρ/ρ`; alturas boas | CERTIFIED | ferramenta |
-| RH ⟹ `ψ(x) = x + O(√x log² x)` | BUILD_PENDING (rodada 67) | consequência |
+| RH ⟹ `ψ(x) = x + O(√x log² x)` | CERTIFIED (rodada 67) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/explicita_pecas.py`, `dados/explicita_pecas.json`, `testes/test_explicita_pecas.py`, 2 testes):
 `Σ_{|γ|≤T} 1/|ρ|/(1 + log T)²` de `0,028` (`T = 50`) a `0,060` (`T = 600`); o algoritmo de `separa` em
 `T₀ = 100…400` acha `T` com separação `0,35–1,26 ≥ δ` e `|ζ′/ζ(σ ± iT)|/log²(2 + T) ≤ 0,11`;
 `max_{t ≤ 300} |ζ′/ζ(¼ + it)|/log(2 + t) = 3,01`.
+
+## 4bu. O critério de von Koch na forma clássica: RH ⟺ `ψ(x) = x + O(√x log² x)` ⟺ `π(x) = Li(x) + O(√x log x)` (rodada 67)
+
+Um arquivo, **8 teoremas** (total 7876), só os axiomas padrão (`ZeroClasses/PsiLog2.lean`, namespace
+`ATK.ZeroClasses.Koch`). Com as peças da rodada 66, o contorno de Perron atravessa os zeros:
+
+* **`psi_RH_meio`**: sob RH, `|ψ(N) − (N + ½)| ≤ K √(N + ½) log²(N + ½)`. Perron (`perron_psi`, rodada 64) com
+  `η = 1/log x`, `c = 1 + 2η` e uma **altura boa** `T ∈ [x², x² + 1]` (`altura_boa`); o resíduo explícito no
+  retângulo `[¼, c] × [−T, T]` (`bordo_explicita`) dá `x − Σ_{|γ|<T} m_ρ x^ρ/ρ`; sob RH `|x^ρ| = √x` e
+  `Σ m_ρ/|ρ| ≤ C log² x` (`soma_ordem_norm`); os lados horizontais custam `O(log² x)` e o lado `Re s = ¼`,
+  `O(x^{1/4} log² x)` (`logDeriv_quarto_RH`);
+* **`psi_RH_log2`** (`x ≥ 100`) e **`rh_iff_psiLog2`: RH ⟺ `ψ(x) = x + O(√x log² x)`** (a volta pela rodada 64);
+* **`theta_RH_log2`**, **`pi_RH_log`** (fórmula de partes da rodada 65: fronteira `√x log x`, integral
+  `∫_2^x t^{−1/2} dt ≤ 2√x`) e **`rh_iff_piLog`: RH ⟺ `π(x) = Li(x) + O(√x log x)`**.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| RH ⟺ `ψ(x) = x + O(√x log² x)` (von Koch 1901) | CERTIFIED | reformulação |
+| RH ⟺ `π(x) = Li(x) + O(√x log x)` | CERTIFIED | reformulação |
+| constantes explícitas (Schoenfeld: `√x log² x/8π`, `√x log x/8π`) | BUILD_PENDING | consequência |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/psi_log2.py`, `dados/psi_log2.json`, `testes/test_psi_log2.py`, 2 testes). Até `10⁷`, por década,
+`max |ψ(x) − x|/(√x log² x)` cai de `0,032` a `0,0033`; `|π(x) − Li(x)|/(√x log x)` de `0,039` (`x = 10³`) a `0,0066`
+(`x = 10⁷`). O resíduo explícito em números: `x − Σ_{0<γ≤600} 2 Re(x^ρ/ρ) − log 2π − ½ log(1 − x^{−2})` reproduz
+`ψ(x)` a `0,30` em `x = 100,5` e a `0,19` em `x = 1000,5`.
 
 ## 5. Formatos
 

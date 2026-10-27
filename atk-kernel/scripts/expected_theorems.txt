@@ -7866,3 +7866,11 @@ ATK.ZeroClasses.Explicita.separa
 ATK.ZeroClasses.Explicita.altura_boa
 ATK.ZeroClasses.Explicita.compacto_quarto
 ATK.ZeroClasses.Explicita.logDeriv_quarto_RH
+ATK.ZeroClasses.Koch.psi_RH_meio
+ATK.ZeroClasses.Koch.psi_RH_log2
+ATK.ZeroClasses.Koch.psiLog3_of_psiLog2
+ATK.ZeroClasses.Koch.rh_iff_psiLog2
+ATK.ZeroClasses.Koch.theta_RH_log2
+ATK.ZeroClasses.Koch.pi_RH_log
+ATK.ZeroClasses.Koch.piLog2_of_piLog
+ATK.ZeroClasses.Koch.rh_iff_piLog
