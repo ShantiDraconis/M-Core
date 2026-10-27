@@ -2534,7 +2534,7 @@ A ponte com as rodadas 56–57 é somação por partes:
 | --- | --- | --- |
 | `RH ⟺ π(x) = Li(x) + O(x^{1/2+ε})`; `RH ⟺ θ(x) = x + O(x^{1/2+ε})` | CERTIFIED | reformulação |
 | `ζ ≠ 0` em `Re s > θ` ⟺ `π(x) = Li(x) + O(x^{θ+ε})` (`½ ≤ θ < 1`) | CERTIFIED | reformulação |
-| `π(x) = Li(x) + O(x e^{−b√log x})` (TNP com erro, para `π`) | BUILD_PENDING (é `pi_of_theta` com o erro da rodada 54, não montado) | — |
+| `π(x) = Li(x) + O(x e^{−b√log x})` (TNP com erro, para `π`) | CERTIFIED (rodada 81, §4ci) | consequência |
 | `\|π(x) − li(x)\| < √x log x/(8π)` sob RH (Schoenfeld) | BUILD_PENDING | — |
 | RH | OPEN_MATH | — |
 
@@ -3140,6 +3140,36 @@ Numérico (`codigo/bd_burnol_l1.py`, `dados/bd_burnol_l1.json`, `testes/test_bd_
   `2,2·10⁻⁶` em `N = 10²` e `6,7·10⁻⁷` em `N = 10¹²`;
 * a constante de Burnol `2 + γ − log 4π ≈ 0,0462` (zeros simples; citada) é ≈ 2100 vezes maior. A forma `1/log N` é a
   mesma.
+
+## 4ci. O TNP com erro para `θ` e `π` (rodada 81)
+
+Um arquivo, **8 teoremas** (total 8085), só os axiomas padrão (`ZeroClasses/TNPPi.lean`). A rodada 54 deu
+`|ψ(x) − x| ≤ K x e^{−b√log x}` (`PNT.psi_tnp`). Aqui ficam montadas as formas para `θ` e `π`, que estavam
+BUILD_PENDING desde a rodada 57:
+
+  **`|θ(x) − x| ≤ K x e^{−b√log x}`** (`theta_tnp`),   **`|π(x) − Li(x)| ≤ K′ x e^{−(b/2)√log x}`** (`pi_tnp`).
+
+* `sqrt_log_le_V`: `√x log x ≤ x e^{−b√log x}` para `x ≥ exp((2b + 4)²)`. Com `u = √log x`, é
+  `u² e^{u²/2} ≤ e^{u² − bu}`, por `u² ≤ 2e^u`. Daí `θ` a partir de `ψ − θ ≤ 2√x log x` (Mathlib).
+* `abel_dif`: `π − Li = (θ − x)/log x + ∫_2^x (θ(t) − t)/(t log²t) dt + 2/log 2`, pela fórmula de Abel da Mathlib e
+  `Li_partes` (rodada 57). `fA` é o integrando.
+* `integral_fA_le`, `exp_meio_le`, `f_le`: a integral se parte em `√x`. Em `[2, √x]` o integrando é `≤ (K + M)/log²2`.
+  Em `[√x, x]`, `e^{−b√log t} ≤ e^{−(b/2)√log x}`.
+* `pi_log_pow`: `π(x) = Li(x) + O(x/log^A x)` para todo `A ∈ ℕ`.
+
+As constantes não são explícitas (as da rodada 54 vêm de compacidade).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `θ(x) = x + O(x e^{−b√log x})`; `π(x) = Li(x) + O(x e^{−b′√log x})`; `π = Li + O(x/log^A x)` | CERTIFIED | consequência |
+| constantes explícitas (`b`, `K`) | BUILD_PENDING | — |
+| RH (⟺ `π(x) = Li(x) + O(x^{1/2+ε})`, `PiLi.rh_iff_pi`) | OPEN_MATH | — |
+
+Numérico (`codigo/tnp_pi.py`, `dados/tnp_pi.json`, `testes/test_tnp_pi.py`, 2 testes):
+* a forma logarítmica de `sqrt_log_le_V` tem folga `≥ 5,5` na grade;
+* a fórmula de Abel, somada exatamente entre primos, reproduz `π(x) = 25; 168; 1229; 9592` (`x = 10², …, 10⁵`) a
+  `10⁻¹²`;
+* `|π − Li|` vale `8,6 … 338` em `x = 10³ … 10⁷`, contra `x e^{−½√log x} = 269 … 1,3·10⁶`. Só ordem de grandeza.
 
 ## 5. Formatos
 
