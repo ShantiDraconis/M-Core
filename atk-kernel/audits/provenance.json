@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "7e7446d0f1cf31939bf47766c343e9cd665f8a94e566f94c2379e74921ae80a9",
+  "sources_sha256": "771e44ebff2bdd9101d8f2c399a4a43c184f598fb50d5c64663429c3c003ba51",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -399,7 +399,7 @@
     "ATK/ZeroClasses/PiLiRH.lean": "16c151e2d68311677da6f8a7a6cb115b2b2f1e03b1278ef3becd33420a752cd9",
     "ATK/ZeroClasses/Pontes.lean": "bb1049c311fe09b866dea145e01fd0a79ab91a18e900be6076ddfd01c4323fcc",
     "ATK/ZeroClasses/PsiLog2.lean": "1143ecaa52938b1afbd396f59adab62da7ead4f688c46d06e09201fb5ead88f9",
-    "ATK/ZeroClasses/PsiRH.lean": "c883efe8a766bbfcc725ab35f14ae120d353a94f3f09a7901c60b6b13dd9939e",
+    "ATK/ZeroClasses/PsiRH.lean": "d5039556a2c0b063f8e44f10bd6549e0b794f7aa46450063573865390fc31e43",
     "ATK/ZeroClasses/Quarto.lean": "283ec0e4aee7fd93492305293b43efbb0e7bc07817904cd88dafff4a94c9f22f",
     "ATK/ZeroClasses/QuartoAval.lean": "75b419d7c8b5a7b79693a4a4ad7e8bc1087e38140bbc262cc3f56491eb066df2",
     "ATK/ZeroClasses/QuartoGeral.lean": "3e26ee018dfc12fbcfd9bd77badbf116b04999bbf123307f51911ba55fde0d8d",
@@ -434,6 +434,6 @@
   "expected_theorems": 8039,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "899b2b969e3f416572d0aa3e1b94b489055df570",
+  "commit_at_freeze": "fcd59fd851dd6b2d7f09c0a4ac07f293f7687a01",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

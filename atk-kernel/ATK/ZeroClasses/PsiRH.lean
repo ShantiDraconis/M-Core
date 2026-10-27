@@ -16,7 +16,7 @@ deslocamento de contorno, sem fórmula explícita:
 
 1. **Perron para `Λ`** (`perron_psi`): com `f_η(n) = η Λ(n) n^{−η}` (`|f_η| ≤ 1`, `norm_fL_le`) e `s = −η`, a fórmula
    de Perron truncada da rodada 45 dá, para `x = N + ½`,
-   `|ψ(N) − (1/2π) ∫_{−T}^{T} F(c + it) dt| ≤ x^c (4x + 2) · 8/(η²πT(c − η − 1))`, `F(s) = x^s (−ζ′/ζ)(s)/s`;
+   `|ψ(N) − (1/2π) ∫_{−T}^{T} F(c + it) dt| ≤ x^c (4x + 2) · 8/(ηπT(c − η − 1))`, `F(s) = x^s (−ζ′/ζ)(s)/s`;
 2. **o retângulo** (`bordo_Fx`): `∮ F = 2πi x` em `[a, c] × [−T, T]` quando `G(s) = (s − 1)ζ(s)` não se anula lá
    (sob RH, para `a > ½`);
 3. **as cotas** sob RH: `|ζ′/ζ(σ + it)| ≤ C log(2 + |t|)/(σ − ½)` (rodada 63, `logDeriv_RH`, e compacidade em

@@ -52,7 +52,7 @@ def main(saida=None, N=NMAX):
             m3 = m2 = sch = 0.0
             k += 1
     eta = 1 / math.log(N)
-    fL_max = max(eta * lam[n] * n ** (-eta) for n in range(2, 10 ** 5))
+    fL_max = max(eta * lam[n] * n ** (-eta) for n in range(2, min(N + 1, 10 ** 5)))
     T = 1000.0
     h = 0.001
     quad = sum(h / (1 + abs(-T + (j + 0.5) * h)) for j in range(int(2 * T / h)))
