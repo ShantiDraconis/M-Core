@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 7d3ad011c7c5c11f306a0a705b63743a194554d333a8b0842a8a7b00d87785e0
+# axiomas por teorema — congelamento de 9c751007b5a0584d95824fb6f3b4718f1b87839966e6dc6431cec60074638212
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7646,3 +7646,16 @@ ATK.ZeroClasses.PNT.tendsto_psi_div	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PNT.tendsto_theta_div	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PNT.integral_inv_log_sq_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PNT.tendsto_primeCounting	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.C_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.norm_gA_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.summable_gA	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.differentiableAt_GA	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.GA_eq_LSeries	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.zero_de_edo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.E_succ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.LSeriesSummable_cL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.LSeries_cL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.zeroFree_of_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.RH_of_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.zeroFree_of_mertens	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKoch.mertens_of_vonKoch	propext, Classical.choice, Quot.sound

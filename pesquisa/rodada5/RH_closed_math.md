@@ -2342,6 +2342,43 @@ Numérico (`codigo/tnp.py`, `dados/tnp.json`, `testes/test_tnp.py`, 2 testes). P
 `π(10⁶) = 78498` e `π(x) log x/x` cai de `1,161` (`10³`) para `1,084` (`10⁶`), a convergência lenta esperada
 (`π(x) = x/log x + x/log²x + …`). O `incremento` confere em três pontos.
 
+## 4bi. `ψ(x) = x + O(x^θ)` ou `M(x) = O(x^θ)` ⟹ `ζ ≠ 0` em `Re s > θ` (rodada 55)
+
+Um arquivo, **13 teoremas** (total 7659), só os axiomas padrão (`ZeroClasses/VonKoch.lean`). A metade
+"aritmética ⟹ analítica" dos critérios de von Koch e de Littlewood, **com o expoente `θ` livre** (`0 ≤ θ < 1`):
+
+* **`zeroFree_of_psi`**: se `|ψ(N) − N| ≤ C(N + 1)^θ` para todo `N`, então `ζ(s) ≠ 0` em `Re s > θ`;
+* **`RH_of_psi`**: `ψ(x) = x + O(x^{1/2 + ε})` para todo `ε > 0` ⟹ RH (von Koch 1901, direção ⇐);
+* **`zeroFree_of_mertens`**: o mesmo com `|M(N)| ≤ C(N + 1)^θ` — generaliza `RH_of_mertens` (§4be);
+* `mertens_of_vonKoch`: a hipótese de von Koch implica a de Littlewood (passando por RH e `mertens_of_RH`).
+
+A prova para `ψ`:
+
+* `gA`, `GA`, `summable_gA`, **`differentiableAt_GA`**, **`GA_eq_LSeries`**: a série por partes da rodada 51 para
+  qualquer sequência `A(N) = O((N + 1)^θ)` — holomorfa em `Re s > θ` e igual a `Σ c(n)n^{−s}` em `Re s > 1` quando
+  `A(n + 1) = Σ_{k ≤ n} c(k + 1)`;
+* `E(N) = ψ(N) − N`, `cL(n) = Λ(n) − 1`, `E_succ`, **`LSeries_cL`**: `Σ (Λ(n) − 1)n^{−s} = −ζ′/ζ(s) − ζ(s)` em `Re s > 1`;
+* com `ζ₁(s) = (s − 1)ζ(s)` inteira, `(s − 1)ζ₁′ = ζ₁·(1 − ζ₁ − (s − 1)G)` vale em `Re s > 1` e, pelo princípio da
+  identidade, em `Re s > θ` — uma equação diferencial linear que **não tem polo** em nenhum zero;
+* **`zero_de_edo`**: se `q f′ = f P` perto de `ρ`, com `f` analítica, `P`, `q` contínuas, `q(ρ) ≠ 0` e `f(ρ) = 0`,
+  então `f ≡ 0` perto de `ρ` (se `f = (s − ρ)^{m+1}g` com `g(ρ) ≠ 0`, dividir por `(s − ρ)^m` dá `q(ρ)(m + 1)g(ρ) = 0`).
+  Aplicado a `ζ₁` com `q = s − 1`, um zero `ρ` em `θ < Re ρ < 1` faria `ζ₁ ≡ 0`, contra `ζ₁(2) = ζ(2) ≠ 0`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `\|ψ(N) − N\| ≤ C(N + 1)^θ` ⟹ `ζ ≠ 0` em `Re s > θ` | CERTIFIED | reformulação |
+| `\|M(N)\| ≤ C(N + 1)^θ` ⟹ `ζ ≠ 0` em `Re s > θ` | CERTIFIED | reformulação |
+| `ψ(x) = x + O(x^{1/2 + ε})` ⟹ RH | CERTIFIED | reformulação |
+| RH ⟹ `ψ(x) = x + O(x^{1/2 + ε})` (Perron truncado para `Λ`, `ζ′/ζ ≪ \|t\|^ε` sob RH) | BUILD_PENDING | — |
+| `ψ(x) = x + O(x^{1/2 + ε})`; `ψ(x) = x + O(x^θ)` para algum `θ < 1` | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/von_koch.py`, `dados/von_koch.json`, `testes/test_von_koch.py`, 2 testes). Com `ψ` por crivo até
+`10⁶`, a série por partes dá `G(2) = −1,0749730737` contra `−ζ′/ζ(2) − ζ(2) = −1,0749730737` (diferença `3·10⁻¹¹`;
+`1,5·10⁻⁸` em `s = 1,5`), e a identidade de `ζ₁` confere com resíduo `≤ 10⁻⁸` em `s = 1,5; 2; 3`. Nos dados,
+`max |ψ(N) − N|/√N ≈ 0,7–0,78` por década até `10⁶`, e `|ψ(N) − N|/(√N log²N)` fica abaixo de `0,029`, dentro da cota
+de Schoenfeld sob RH (`1/(8π) ≈ 0,0398`) — dado finito, sem valor de prova.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
