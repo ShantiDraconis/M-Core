@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "88c3e4ada14e109383668fb54f6a0cf2042eb987589e46f99034c12c0da1c70d",
+  "sources_sha256": "677b4d4713b97a2e8f799767ae156d6f449d08bd177d10bd2e79fb8109770e7b",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -421,7 +421,7 @@
     "ATK/ZeroClasses/Symmetry.lean": "2c86a8d7fe2ce119326dd7636dbcccd944988110c756ce9ffbde32b3162cc1d1",
     "ATK/ZeroClasses/TNP.lean": "c47c14773307b7556b06fd5d0406b2060e6fc9f72d08fb3dc8d38e0bcace6971",
     "ATK/ZeroClasses/TNPPi.lean": "ed3fa828833e030d3977eb0886e0f43bbb670a73b18f6279b6de9afb3df9e468",
-    "ATK/ZeroClasses/Unilateral.lean": "84b856678787aa522b566b827d596b6afba0cbdd73dbe7a0f6e049d55f2fbc87",
+    "ATK/ZeroClasses/Unilateral.lean": "c948ec999ab4463945dbc72762d320509af474e78132ea1b568084c4b68bb2e9",
     "ATK/ZeroClasses/VariacaoArg.lean": "54298410885f3c3a7d8f3464942a94921bb7e0feab9957e4654ee304318b4ec4",
     "ATK/ZeroClasses/VonKoch.lean": "b19eb52bc788a10ff00fbb8a58bfb009abf747cef008edce043fd3123fd014ed",
     "ATK/ZeroClasses/VonKochRH.lean": "5400f2da74b94e12d2877a19cae2564f015b63f28256a1bbae2b382b811301d0",
@@ -444,6 +444,6 @@
   "expected_theorems": 8209,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "b7f16721db6fdcfb09f7303ab1e1d81e3f110c44",
+  "commit_at_freeze": "b84dfd5e86aa94a1367a8318a923580e7f9d22b7",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
