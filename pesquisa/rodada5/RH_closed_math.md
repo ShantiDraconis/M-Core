@@ -266,7 +266,7 @@ explícitas (o fechamento de `S` já está provado, §4t), e `e^{−tD²}` na cl
 no kernel, §4r); Cauchy–Binet e Lindström–Gessel–Viennot (fechamento de TN por produtos, núcleos por caminhos); os
 resultados incondicionais de Csordas–Norfolk–Varga (Turán) e Griffin–Ono–Rolen–Zagier; a fórmula explícita e a
 positividade de Weil; nas classes de zeros (§4v), a certificação finita de `m₄ > 0` (aritmética intervalar de `ζ` em
-`σ = 1/4`; **fechada na rodada 28**, §4ah), o teorema de Hardy (infinitos zeros na reta) e a infinitude dos zeros não triviais por Hadamard com zeros
+`σ = 1/4`; **fechada na rodada 28**, §4ah), o teorema de Hardy (infinitos zeros na reta; **fechado na rodada 50**, §4bd) e a infinitude dos zeros não triviais por Hadamard com zeros
 complexos, o lema de Csordas (que daria `P(2)` para `Ξ`) e o multiplicador de Laguerre `q^{n²}` (que daria a ida do
 fluxo de Toeplitz); a simplicidade dos zeros não triviais e a irracionalidade das suas ordenadas são conjecturas
 independentes, `OPEN_MATH`; e, claro, HR (`D_∞ = 0`, `∀n δ_n > 0`, `Re ξ′/ξ > 0` em `Re s > ½`, **PF∞ dos
@@ -2183,7 +2183,7 @@ Hardy (Titchmarsh §10.2).
 | --- | --- | --- |
 | inversão de Fourier `∫₀^∞ Fx(t)cos(xt)dt = (π/2)Hr(x)` | CERTIFIED | ferramenta |
 | a identidade dos momentos e o seu limite na cúspide | CERTIFIED | ferramenta |
-| Hardy (`ATK.AtaqueRH.Hardy`) | BUILD_PENDING (próxima rodada) | — |
+| Hardy (`ATK.AtaqueRH.Hardy`) | CERTIFIED na rodada 50 (§4bd) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/hardy_momentos.py`, `dados/hardy_momentos.json`, `testes/test_hardy_momentos.py`, 2 testes), com
@@ -2192,6 +2192,40 @@ Numérico (`codigo/hardy_momentos.py`, `dados/hardy_momentos.json`, `testes/test
 `n = 0, 1` e `α = 0,2; 0,3; 0,4` coincidem com a fórmula até `2·10⁻⁸` em termos relativos (o resto é o corte em
 `t = 60`). O lado direito para `n = 1` oscila antes de assentar (`17,8; −11,2; −96,3; −1,54; −0,727; −0,7264` em
 `α = 0,5; 0,65; 0,72; 0,76; 0,775; 0,78`), contra o limite `−π cos(π/8)/4 = −0,7256`.
+
+## 4bd. O teorema de Hardy: infinitos zeros de `ζ` na reta crítica (rodada 50)
+
+Um arquivo, **6 teoremas** (total 7600), só os axiomas padrão (`ZeroClasses/HardyTeorema.lean`). Fecha o alvo R4 do
+programa: **`ATK.ZeroClasses.Hardy.hardy : ATK.AtaqueRH.Hardy`**, isto é, o conjunto
+`{t > 0 : ζ(1/2 + it) = 0}` é infinito (Hardy, 1914). O teorema não está na Mathlib fixada no `lake-manifest.json` (busca no código-fonte). O argumento é
+o de Titchmarsh §10.2, sobre a identidade dos momentos da rodada 49:
+
+* `existe_Xi_ne_zero`: `Ξ` não se anula identicamente em nenhuma semirreta (princípio da identidade para `ξ`,
+  inteira, com `ξ(0) = 1/2`);
+* `sinal_constante`: sem trocas de sinal depois de `T`, `Ξ` tem sinal constante `σ = ±1` em `[T, ∞)`;
+* **`sem_sinal_constante`**: isso é impossível. Toma-se `t₀ ≥ 2T` com `Ξ(t₀) ≠ 0` e um intervalo `[t₀, t₀ + δ]` onde
+  `σFx ≥ c > 0`; para `0 < α < π/4`,
+  `σ∫₀^∞ Fx(t) t^{2n} cosh(αt) dt ≥ t₀^{2n} cδ − T^{2n} A`, `A = ∫_{(0,T]} |Fx| cosh(πt/4)`.
+  Quando `α → π/4⁻`, o lado esquerdo tende a `σ(−1)^n π 4^{−n} cos(π/8)` (`momento_tendsto`), negativo para `n` da
+  paridade certa; e `t₀^{2n} cδ − T^{2n}A ≥ T^{2n}(4^n cδ − A) > 0` para `n` grande;
+* **`trocasInfinitas`**: `ATK.AtaqueRH.TrocasInfinitas`; **`hardy`** (por `hardy_of_trocas`, rodada antiga);
+  **`existe_zero_acima`**: para todo `T` há `t > T` com `ζ(1/2 + it) = 0`.
+
+O projeto Hardy ocupou as rodadas 47–50 (§4ba–§4bd, `HardyCuspide`, `HardyFourier`, `HardyMomentos`,
+`HardyTeorema`, 67 teoremas).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Hardy (1914): infinitos zeros de `ζ` na reta crítica (`ATK.AtaqueRH.Hardy`) | CERTIFIED | consequência (teorema clássico, incondicional) |
+| zeros na reta com altura arbitrariamente grande | CERTIFIED | consequência |
+| uma proporção positiva dos zeros na reta (Selberg, Levinson); `N₀(T) ≫ T` (Hardy–Littlewood) | BUILD_PENDING | — |
+| todos os zeros na reta (RH) | OPEN_MATH | — |
+
+Hardy **não** é RH nem a aproxima no sentido quantitativo: dá infinitos zeros na reta, sem dizer nada sobre os zeros
+fora dela. Numérico (`codigo/hardy_teorema.py`, `dados/hardy_teorema.json`, `testes/test_hardy_teorema.py`,
+2 testes): numa malha de passo `0,01`, `Ξ` troca de sinal **10** vezes em `(0, 50]` e **29** em `(0, 100]`, o valor de
+`N(100)` (o termo principal de Riemann–von Mangoldt dá `29,002`); as dez primeiras trocas ficam a menos de `0,005` de
+`γ₁, …, γ₁₀`.
 
 ## 5. Formatos
 

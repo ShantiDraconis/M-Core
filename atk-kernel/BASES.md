@@ -55,8 +55,8 @@ não afeta o enunciado A acima.
 | R1' | Família de Báez-Duarte | `D_N = 1 − bᵀG⁻¹b`; `b_k = (log k + 1 − γ)/k`; `D_N > 0` | ✅ | `GramBaezDuarte`, `BaezDuarteVetorB`, `RelacionalDN` |
 | R2 | Sinal de ξ e Ξ(0) | ξ real e positiva em toda a reta real; `Ξ(0) = ξ(1/2) > 0`; uma troca de sinal de Ξ dá um zero na reta | ✅ | `BaseRiemannXiSinal` |
 | R3 | Representação integral | fórmula de Riemann `Ξ(t) = 1/2 − (t² + 1/4) ∫₁^∞ ψ(x) x^{−3/4} cos((t/2) log x) dx`, com `ψ = (θ − 1)/2 > 0`, a partir do FE-pair teta da Mathlib | ✅ | `BaseRiemannTeta` |
-| R3' | Forma de Fourier | `Ξ(t) = 2∫₀^∞ Φ(u) cos(ut) du` com `Φ > 0` (duas integrações por partes em R3) | ⬜ | — |
-| R4 | Teorema de Hardy | infinitos zeros na reta crítica | ⬜ | — |
+| R3' | Forma de Fourier | `Ξ(t) = 2∫₀^∞ Φ(u) cos(ut) du` com `Φ > 0` (duas integrações por partes em R3); a forma `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du`, que basta para Hardy, está feita | ⬜ | `ZeroClasses.Hardy.Fx_eq` (forma com `H`) |
+| R4 | Teorema de Hardy | infinitos zeros na reta crítica (momentos de Hardy, Titchmarsh §10.2; rodadas 47–50) | ✅ | `ZeroClasses.HardyCuspide`, `HardyFourier`, `HardyMomentos`, `HardyTeorema` (`Hardy.hardy`) |
 | R5 | Certificação numérica de zeros | aritmética intervalar para ζ (Euler–Maclaurin) + troca de sinal de Ξ | ⬜ | — |
 | R6 | Necessidade de Báez-Duarte | RH ⇒ `D_N → 0`: Stirling vertical para Γ (`GammaVertical`), Titchmarsh 14.2 e Lindelöf à direita da reta sob RH (`RHLogZeta`), `\|ζ(s)/ζ(s+ε)\| ≤ C\|s+3\|^(ε/2)` uniforme em `ε` (`RazaoZeta`), Perron suavizado e deslocamento de contorno (`PerronSuave`), convergência dominada com o mollificador `μ(n)(1 − n/N)₊ n^(−ε)` e zeros enumeráveis na reta (`NecessidadeRH`); **RH ⟺ `D_N → 0`** | ✅ | `NecessidadeBD`, `GammaVertical`, `RHLogZeta`, `RazaoZeta`, `PerronSuave`, `NecessidadeRH` |
 | R7 | Critério de Bagchi | `D∞ = 0` para a família do texto ATK-I ⟹ RH, sem hipóteses (isometria de Bagchi) | ✅ | `ATKIBagchi` |
@@ -131,7 +131,7 @@ não afeta o enunciado A acima.
 ## Ordem de ataque
 
 1. ~~N2b~~, ~~N3a~~, ~~N3~~, ~~N3b~~ (feitos) → **N4** (Aubin–Lions) → N5.
-2. ~~R2~~, ~~R3~~ (feitos) → **R3'** (forma de Fourier, Φ > 0) → **R4** (Hardy): primeira parte provada de RH sobre a reta.
+2. ~~R2~~, ~~R3~~, ~~R4~~ (feitos; Hardy pela forma de Fourier com `H`, rodadas 47–50) → **R5** (zeros certificados) e uma proporção positiva de zeros na reta (Selberg/Levinson). Hardy não é RH.
 3. ~~P3~~ (feito) → **P5** (hierarquia de tempo).
 4. B1b e B2 parciais → **Nagell–Lutz geral** (filtração `p`-ádica) → redução mod p em toda a torsão.
 5. ~~Y3~~ (forma abstrata feita) → **Y3'** (ação de Wilson) → **Y4** (gap em acoplamento forte).

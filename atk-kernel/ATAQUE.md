@@ -62,7 +62,7 @@ verificados, Levinson.
 | F3.2 | **Redução de Hardy**: infinitas trocas de sinal de Ξ ⇒ infinitos zeros na reta | ✅ | `AtaqueRH.hardy_of_trocas` |
 | F3.3 | **Certificado de zero**: cotas para `I(t) = ∫₁^∞ ψ x^{−3/4} cos((t/2) log x)` com sinais opostos em `a < b` ⇒ zero na reta em `(a, b)` | ✅ | `AtaqueRH.zero_de_certificados`, `sinal_de_integral` |
 | F3.4 | Certificar `Ξ(t) < 0` num `t ∈ (14,2; 21)` (quadratura intervalar de `I(t)`) ⇒ primeiro zero na reta | ⬜ | `AtaqueRH.SinalNegativo` |
-| F3.5 | Forma de Fourier `Ξ(t) = 2∫ Φ(u) cos(ut) du`, `Φ > 0`; depois Hardy | ⬜ | `AtaqueRH.Hardy` |
+| F3.5 | Forma de Fourier `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du` (a forma com `Φ > 0` não foi necessária) e **teorema de Hardy**: infinitos zeros na reta (rodadas 47–50) | ✅ | `ZeroClasses.Hardy.Fx_eq`, `ZeroClasses.Hardy.hardy` |
 | F3.6 | de Bruijn–Newman: `H_t` e `Λ` | ⬜ | — |
 | F3.7 | **Critério de Báez-Duarte completo** (ponte, não progresso sobre RH): RH ⇒ `D_N → 0` por Perron suavizado, Titchmarsh 14.2, Lindelöf sob RH e Phragmén–Lindelöf; com B1, **RH ⟺ `D_N → 0` sem pontes** | ✅ | `NecessidadeRH.necessidade`, `NecessidadeRH.rh_iff_DN` |
 

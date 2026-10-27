@@ -46,7 +46,7 @@ conjectura — ou uma redução que encolhe o caso que falta.
    * `amostra_finita_nao_decide`; `fecho_RH_iff`: fechar RH ⟺ certificado demonstrado `D_∞ ∈ [0,0]`.
 3. Lacuna: a largura agora decai como `(log|t|)⁻⁹` (antes `|t|⁻⁵`). Próximos lemas conhecidos e
    formalizáveis: a região clássica de de la Vallée Poussin `σ > 1 − c/log|t|` (potência 1; exige
-   `ζ'/ζ` e contagem local de zeros), Hardy (infinitos zeros na reta), limite inferior de Burnol
+   `ζ'/ζ` e contagem local de zeros), Hardy (infinitos zeros na reta; **feito na rodada 50**, `ATK.ZeroClasses.Hardy.hardy`), limite inferior de Burnol
    para `D_N`. Qualquer extremo uniforme `a < 1` (quase-RH) já seria inédito; `a = 1/2` é RH (O1).
 
 ## Beal

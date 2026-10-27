@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 71572585fe841c5d5a082ba3e182bf780ccc36f9882a1405569f4723a7566b3f
+# axiomas por teorema — congelamento de a1cd2eac25ffcf00d1eb4ef471568e7ad0f6c032cd585fdf99a1da2254f32c96
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7594,3 +7594,9 @@ ATK.ZeroClasses.Hardy.hasDerivAt_iteratedDeriv_Th	propext, Classical.choice, Quo
 ATK.ZeroClasses.Hardy.Gc_eq	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hardy.momento	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hardy.momento_tendsto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.existe_Xi_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.sinal_constante	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.sem_sinal_constante	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.trocasInfinitas	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.hardy	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.existe_zero_acima	propext, Classical.choice, Quot.sound
