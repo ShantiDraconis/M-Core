@@ -7964,3 +7964,10 @@ ATK.ZeroClasses.ExplicitaLimite.lim_geo
 ATK.ZeroClasses.ExplicitaLimite.eps_tendsto
 ATK.ZeroClasses.ExplicitaLimite.explicita_k
 ATK.ZeroClasses.ExplicitaLimite.formula_explicita
+ATK.ZeroClasses.ExplicitaT.zfin_finite
+ATK.ZeroClasses.ExplicitaT.mem_Zfin
+ATK.ZeroClasses.ExplicitaT.re_lt_one
+ATK.ZeroClasses.ExplicitaT.norm_termo_le
+ATK.ZeroClasses.ExplicitaT.soma_faixa_le
+ATK.ZeroClasses.ExplicitaT.dif_le
+ATK.ZeroClasses.ExplicitaT.formula_explicita_T

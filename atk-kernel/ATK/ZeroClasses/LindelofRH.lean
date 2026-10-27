@@ -10,7 +10,7 @@ hipótese de Lindelöf (`Lindelof`), que é OPEN_MATH sem RH.
 
 A prova (Titchmarsh §14.2) junta três peças já certificadas:
 
-* `ATK.RHLogZeta.norm_zeta_le_RH` (rodada 45): sob RH, `|ζ(s)| ≤ C(1 + |t|)^η` em `½ + δ ≤ Re s ≤ ¾`;
+* `ATK.RHLogZeta.norm_zeta_le_RH` (rodada 38): sob RH, `|ζ(s)| ≤ C(1 + |t|)^η` em `½ + δ ≤ Re s ≤ ¾`;
 * `ATK.GammaVertical.norm_zeta_one_sub_le` (Stirling + equação funcional): `|ζ(1 − w)| ≤ 2C_Γ|w|^{Re w − ½}|ζ(w)|`,
   que leva a cota à reta `Re s = ½ − δ` com expoente `δ + η`;
 * **Phragmén–Lindelöf** da Mathlib na faixa `½ − δ ≤ Re s ≤ ½ + δ`, aplicado a `g(s) = ζ(s)(s + 2)^{−(δ+η)}`
