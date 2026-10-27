@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 377bf26f46922d9d618462f0f47648b8f5c77f41ebae3cfe8b756e46515dd4ba
+# axiomas por teorema — congelamento de c4d2e54fec16431d55abfda9bbde865ee15862beb39e20f0551aa0c9b9531297
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8121,3 +8121,28 @@ ATK.ZeroClasses.BDTaxaTeta.comTaxa_mono	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTaxaTeta.Teta_eq_sInf	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTaxaTeta.rh_iff_comTaxa	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTaxaTeta.rh_iff_comTaxa_perto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.w_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.w_im	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.norm_w	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.w_slit	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.w_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.ell_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.ell_im	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.arg_mul_re_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.fator_arg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.fator_arg_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.norm_peso	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.differentiableAt_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.norm_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.one_le_norm_s2	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.norm_s1_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.norm_zeta_dir	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.fator_le_exp4	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.g_dir	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.g_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.norm_zeta₁_faixa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.cubo_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.g_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.convexidade_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.convexidade	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Convexidade.convexidade_meio	propext, Classical.choice, Quot.sound
