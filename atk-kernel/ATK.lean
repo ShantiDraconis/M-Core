@@ -385,3 +385,4 @@ import ATK.ZeroClasses.BDDesloc
 import ATK.ZeroClasses.BDTaxa
 import ATK.ZeroClasses.BDTheta
 import ATK.ZeroClasses.ExplicitaReal
+import ATK.ZeroClasses.ExplicitaInteira

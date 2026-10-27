@@ -8037,3 +8037,13 @@ ATK.ZeroClasses.ExplicitaReal.epsx_tendsto
 ATK.ZeroClasses.ExplicitaReal.explicita_k_x
 ATK.ZeroClasses.ExplicitaReal.formula_explicita_x
 ATK.ZeroClasses.ExplicitaReal.formula_explicita_T_x
+ATK.ZeroClasses.ExplicitaInteira.integral_um_div
+ATK.ZeroClasses.ExplicitaInteira.perron_zero
+ATK.ZeroClasses.ExplicitaInteira.abs_log_ge_N
+ATK.ZeroClasses.ExplicitaInteira.perron_LSeries_N
+ATK.ZeroClasses.ExplicitaInteira.soma_fL_N
+ATK.ZeroClasses.ExplicitaInteira.perron_psi0
+ATK.ZeroClasses.ExplicitaInteira.explicita_k_N
+ATK.ZeroClasses.ExplicitaInteira.formula_explicita_N
+ATK.ZeroClasses.ExplicitaInteira.formula_explicita_T_N
+ATK.ZeroClasses.ExplicitaInteira.formula_explicita_T_real

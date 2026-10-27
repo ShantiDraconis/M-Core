@@ -2845,7 +2845,7 @@ A prova junta a identidade de resíduos da rodada 70 no retângulo `[−(2K + ½
 | a fórmula explícita `Σ_{\|γ\|≤T_k} x^ρ/ρ → x − ψ(N) − log 2π − ½ log(1 − x^{−2})`, sem hipóteses | CERTIFIED | ferramenta |
 | a mesma com `T → ∞` sem restringir a alturas boas | CERTIFIED (rodada 72, §4bz) | consequência |
 | a mesma com `x > 1` real não inteiro | CERTIFIED (rodada 77, §4ce) | consequência |
-| a mesma em `x` inteiro (`ψ₀(x) = ψ(x) − Λ(x)/2`) | BUILD_PENDING | — |
+| a mesma em `x` inteiro (`ψ₀(x) = ψ(x) − Λ(x)/2`) | CERTIFIED (rodada 78, §4cf) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/explicita_limite.py`, `dados/explicita_limite.json`, `testes/test_explicita_limite.py`, 2 testes):
@@ -2871,7 +2871,7 @@ Jensen `caixa_le'`), cada um com `‖x^ρ/ρ‖ ≤ x/(k + 6)` (`norm_termo_le`)
 | --- | --- | --- |
 | `lim_{T→∞} Σ_{\|γ\|≤T} m_ρ x^ρ/ρ = x − ψ(N) − log 2π − ½ log(1 − x^{−2})`, `x = N + ½` | CERTIFIED | consequência |
 | `x > 1` real não inteiro | CERTIFIED (rodada 77, §4ce) | consequência |
-| `x` inteiro (`ψ₀`) | BUILD_PENDING | — |
+| `x` inteiro (`ψ₀`) | CERTIFIED (rodada 78, §4cf) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/explicita_t.py`, `dados/explicita_t.json`, `testes/test_explicita_t.py`, 2 testes): com os 341 zeros
@@ -3018,13 +3018,43 @@ rodadas 70–72 era a Perron truncada (rodada 45), pela cota `|log(x/n)| ≥ 1/(
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | `lim_{T→∞} Σ_{\|γ\|≤T} m_ρ x^ρ/ρ = x − ψ(x) − log 2π − ½ log(1 − x^{−2})`, `x > 1` não inteiro | CERTIFIED | consequência |
-| a mesma em `x` inteiro, com `ψ₀(x) = ψ(x) − Λ(x)/2` (o termo de salto da Perron em `n = x`) | BUILD_PENDING | — |
+| a mesma em `x` inteiro, com `ψ₀(x) = ψ(x) − Λ(x)/2` (o termo de salto da Perron em `n = x`) | CERTIFIED (rodada 78, §4cf) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/explicita_real.py`, `dados/explicita_real.json`, `testes/test_explicita_real.py`, 2 testes):
 `min_n |log(x/n)| · (2x + 2)/d = 2,23; 2,06; 2,02` em `x = 10,3; 30,7; 100,05` (a cota exige `≥ 1`). Com os 341 zeros
 de `0 < γ ≤ 600`: em `x = 10,3` o erro vai de `−0,083` (`T = 100`) a `0,008` (`T = 600`); em `x = 30,7`, de `−0,63`
 a `−0,21` (a convergência em `T` é lenta e oscilante, como em `x = 30,5` na rodada 71).
+
+## 4cf. A fórmula explícita em `x` inteiro e para todo `x > 1` (rodada 78)
+
+Um arquivo, **10 teoremas** (total 8049), só os axiomas padrão (`ZeroClasses/ExplicitaInteira.lean`). Em `x = N`
+inteiro o degrau de Perron vale `½` no termo `n = N`, e a fórmula usa `ψ₀(N) = ψ(N) − Λ(N)/2` (`psi0`):
+
+* `∫_{−T}^{T} dt/(c + it) = 2 arctan(T/c)` (`integral_um_div`, primitiva `arctan(t/c) − (i/2) log(c² + t²)`), logo
+  `|perron 0 c T − ½| = arctan(c/T)/π ≤ c/(πT)` (`perron_zero`);
+* `|log(N/n)| ≥ 1/(N + 1)` para `n ≠ N` (`abs_log_ge_N`);
+* Perron truncada em `x = N` com o peso `½` em `n = N` e constante `N + 1 + c` (`perron_LSeries_N`, `soma_fL_N`,
+  `perron_psi0`);
+* a cadeia das rodadas 70–72 e 77 com essa constante (`explicita_k_N`, `formula_explicita_N`,
+  `formula_explicita_T_N`).
+
+Com a rodada 77, para `ψ₀(x) = ψ(x)` fora dos inteiros e `ψ(N) − Λ(N)/2` em `x = N` (`psiZero`):
+
+  **`lim_{T → ∞} Σ_{|γ| ≤ T} m_ρ x^ρ/ρ = x − ψ₀(x) − log 2π − ½ log(1 − x^{−2})` para todo `x > 1`**
+  (`formula_explicita_T_real`).
+
+É a fórmula explícita de Riemann–von Mangoldt na forma clássica, sem hipóteses.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `lim_{T→∞} Σ_{\|γ\|≤T} m_ρ x^ρ/ρ = x − ψ₀(x) − log 2π − ½ log(1 − x^{−2})`, todo `x > 1` | CERTIFIED | consequência |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/explicita_inteira.py`, `dados/explicita_inteira.json`, `testes/test_explicita_inteira.py`,
+2 testes): a quadratura de `∫ dt/(c + it)` bate `2 arctan(T/c)` a `10⁻¹²`; `|arctan(T/c)/π − ½|` fica abaixo de
+`c/(πT)` em `(c, T) = (2, 10), (2, 100), (½, 50)`. Com os 341 zeros de `0 < γ ≤ 600`: em `N = 11` (primo), o erro é
+`−0,011` com `ψ₀` e `1,19 = Λ(11)/2 − 0,011` com `ψ`; em `N = 10` e `N = 30` (`Λ = 0`), `−0,006` e `−0,072`.
 
 ## 5. Formatos
 
