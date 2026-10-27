@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 9c630f2d051757acf18178a37f25bce4daadff8a99813a74fa099fc2c1ade99f
+# axiomas por teorema — congelamento de c901c91c0a65a8e435f2de17515a98edecefc145c2f109fb4782ee39cd0e48ec
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8229,3 +8229,32 @@ ATK.ZeroClasses.OmegaRaiz.cota_inf_F_dupla	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.OmegaRaiz.simples_of_mertens_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.OmegaRaiz.simples_of_mertens_ge	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.OmegaRaiz.rh_e_simples_of_mertens_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.dslope_diffW	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.dslope_add_inv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.bordo_peso	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.Wg_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.norm_Wg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.kg_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.dois_pi_kg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.integral_linha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.norm_exp_linha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.inv_eq_integral	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.linha_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.term_vM_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.norm_Fn_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.Fn_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.integrable_Fn	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.lado_aritmetico	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.norm_Fw	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.hor_bound	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.hor_tendsto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.continuousAt_Fw	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.continuous_linha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.integrable_dir	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.sigmaL_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.ne_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.norm_esq_pt	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.integrable_G	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.integrable_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.esq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaGauss.formula_gauss	propext, Classical.choice, Quot.sound
