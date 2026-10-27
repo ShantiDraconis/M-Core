@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a9449c2a703fe9b699f0b4ee715f55da4ac49a412b654de22ddef2c4af5da1b8
+# axiomas por teorema — congelamento de a2699c09150910fb780ac0ff2375be73980e64b01ff654edde94bbd7d555f3ef
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8324,3 +8324,20 @@ ATK.ZeroClasses.LittlewoodSoma.fract_proximo_Q	propext, Classical.choice, Quot.s
 ATK.ZeroClasses.LittlewoodSoma.floor_lt_Q	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodSoma.dirichlet_Q	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodSoma.alinha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.integral_abs_gauss	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.resto_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.formula_psi_resto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.integral_forcada	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.um_le_Qa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.log_N_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.ev_pol	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.ev_resto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.aux_sq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.aux_abs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.F_grande	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.F_omega_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.littlewood_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.logloglog_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.raiz_le_pot	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.littlewood_nao_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMontagem.littlewood	propext, Classical.choice, Quot.sound
