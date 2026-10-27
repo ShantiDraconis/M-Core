@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de e1e62084b1b43e1c542f2c06cee8f04e6823999170ad571d3497e3bfae625f8b
+# axiomas por teorema — congelamento de 23dc3e8f5691e26d0754bd9e90adaab1581263e3f31ad5158710539eabfdea8f
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8345,3 +8345,32 @@ ATK.ZeroClasses.LittlewoodTeta.lll_ge	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodTeta.theta_littlewood	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodTeta.psi_troca_sinal	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodTeta.theta_troca_sinal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.norm_pw_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.norm_mul_exp_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.summable_gauss	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.abs_gz_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.summable_gz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.tendsto_Zfin	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.tsum_gz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.sum_Zfin_le_tsum	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.continuous_re_pw	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integral_re_pw_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.continuous_Sn	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integral_Sn_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integral_tsum_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.H_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integrable_kg_H	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integral_kg_H	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.momento_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.continuous_kg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integrable_sq_kg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.intervalIntegrable_F	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.abs_le_of_mem_uIoc	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.dif_desloc_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.fubini_kF	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.aprox_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.pot_exp_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.cota_Xi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integral_F_diadico	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integral_F_pot	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMedia.integral_F_log	propext, Classical.choice, Quot.sound

@@ -5,7 +5,7 @@ import ATK.ContracaoDN
 # Sem lei de potência para `D_N` (B1 fraca, `c` arbitrário) e a contração refutada sem o piso citado (rodada 84)
 
 A barreira B1 (o piso de Burnol/BBLS, `D_N ≥ (C − o(1))/log N`) entra no ATK como hipótese citada (`PisoLog`).
-A rodada 83 dá uma forma fraca dela **sem hipóteses e para `c` arbitrário**:
+A rodada 84 dá uma forma fraca dela **sem hipóteses e para `c` arbitrário**:
 
   **`TaxaDN (½) κ ⟹ κ ≤ 0`**   (`sem_taxa_meio_DN`).
 

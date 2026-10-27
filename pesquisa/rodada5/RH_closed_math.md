@@ -3254,8 +3254,8 @@ Numérico (`codigo/bd_taxa_piso.py`, `dados/bd_taxa_piso.json`, `testes/test_bd_
 ## 4cl. Sem lei de potência para `D_N` (B1 fraca, `c` arbitrário) e a contração refutada sem piso citado (rodada 84)
 
 Um arquivo, **4 teoremas** (total 8116), só os axiomas padrão (`ZeroClasses/BDSemPotencia.lean`). A barreira B1 (o
-piso de BBLS/Burnol `D_N ≥ (C − o(1))/log N`) entrava no ATK só como hipótese citada (`ContracaoDN.PisoLog`). A
-rodada 83 dá a forma fraca dela sem hipóteses:
+piso de BBLS/Burnol `D_N ≥ (C − o(1))/log N`) entrava no ATK só como hipótese citada (`ContracaoDN.PisoLog`). Esta
+rodada (84) dá a forma fraca dela sem hipóteses, usando o teto `taxaDN_teto` da rodada 83:
 
 * **`sem_taxa_meio_DN`**: `TaxaDN (½) κ ⟹ κ ≤ 0`. A taxa é transportada para `σ′ = ½ + h` (`taxaDN_mono`). Lá vale
   `Θ < σ′` (`taxaDN_pos`) e `κ ≤ (2σ′ + 3)(σ′ − Θ)/Θ ≤ 10h` (`taxaDN_teto`), e `h → 0`.
@@ -3619,6 +3619,41 @@ em `x ≤ 2·10⁶`:
 * `ψ(x) − x` troca de sinal 10 353 vezes;
 * `θ(x) < x` em todo o intervalo: `(θ(x) − x)/√x` fica em `[−2,03; −0,43]`. O teorema garante infinitas trocas,
   mas a primeira está além de `10¹⁹` (Büthe, Math. Comp. 2018: `θ(x) < x` para `x < 10¹⁹`).
+
+## 4cv. As médias de `F` sob RH: `|∫ₐᵇ F| ≤ C(1 + log b)` (rodada 94)
+
+Um arquivo, **29 teoremas** (total 8374), só os axiomas padrão (`ZeroClasses/LittlewoodMedia.lean`). Para passar de
+`ψ` a `π` (Littlewood para `π(x) − Li(x)`), a cota pontual de von Koch não basta: falta saber que as médias de
+`F(y) = (ψ(e^y) − e^y)e^{−y/2}` são pequenas. Aqui:
+
+**`integral_F_log`** (sob RH). `|∫ₐᵇ F(u) du| ≤ C(1 + log b)` para `1 ≤ a ≤ b`.
+
+A prova integra em `u` a fórmula gaussiana e faz `τ → 0` só nas pontas do intervalo. Não é preciso a fórmula
+explícita com peso `x^s/s²` (que tem polo duplo em `0`).
+
+* **A soma sobre os zeros converge absolutamente** (`summable_gz`, `tsum_gz`): sob RH, `|ρ|e^{−τγ²} ≤ 2/τ`, logo
+  `Σ m_ρ e^{−τγ²}/|ρ| < ∞`. A soma total vale `−(k_τ * F)(u) + R(u, τ)`, pela unicidade do limite em `formula_psi`.
+* **A integral em `u` dos termos** (`integral_re_pw_le`): `|∫ₐᵇ Re(W_u(ρ)/ρ) du| ≤ 3/|ρ|²`, com a primitiva
+  explícita `e^{−τγ²}(sen(γu)/(2γ) − cos(γu))/|ρ|²`. Por convergência dominada, `|∫ₐᵇ Σ_ρ| ≤ 3Σ m_ρ/|ρ|²`,
+  uniformemente em `τ`, `a`, `b` (`integral_tsum_le`).
+* **Fubini e a aproximação** (`fubini_kF`, `aprox_le`): `∫ₐᵇ (k_τ * F) = ∫ k_τ(v) ∫ₐᵇ F(u − v) du dv`. A diferença
+  para `∫ₐᵇ F` só envolve as pontas `[a − v, a]` e `[b − v, b]`, e fica `≤ 2B ∫ k_τ(v)|v|(1 + (c + |v|)²) dv`. Isso
+  vai a `0` com `τ`: `momento_le`, via `e^v + e^{−v} − 2 ≥ v²/2 + |v|³/6` (`H_ge`) e `∫ k_τ e^{±v} = e^τ`.
+* **Intervalos diádicos** (`integral_F_diadico`): `|∫ₐᵇ F| ≤ C` para `1 ≤ a ≤ b ≤ 2a`. Basta tomar `τ ≍ a^{−4}`; o
+  resto `R = O(e^{−u/2}/τ)` da rodada 92 custa então `a⁵e^{−a/2} ≤ 46080` (`pot_exp_le`).
+* **Intervalos quaisquer** (`integral_F_pot`, `integral_F_log`): somando `⌈log₂ b⌉ + 1` pedaços diádicos.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| sob RH, `|∫ₐᵇ F| ≤ C(1 + log b)` (`integral_F_log`); `≤ C` em intervalos diádicos | CERTIFIED | ferramenta |
+| `π(x) − Li(x) = Ω±(√x log log log x/log x)` | BUILD_PENDING (falta só a montagem) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/littlewood_media.py`, `dados/littlewood_media.json`, `testes/test_littlewood_media.py`, 2 testes):
+* em `1 ≤ y ≤ 15`, `max |∫₁ʸ F| = 2,23`, contra `max |F| = 1,33`. A integral não cresce, embora `F` oscile;
+* `|∫ₐᵇ Re(W_u(ρ)/ρ) du|` nos três primeiros zeros fica entre `3·10⁻¹¹` e `1,6·10⁻⁴`, contra a cota
+  `3/|ρ|² ≈ 0,005–0,015`;
+* `e^v + e^{−v} − 2 − (v²/2 + |v|³/6) ≥ 0` na malha `|v| ≤ 10`, com igualdade só em `v = 0`.
 
 ## 5. Formatos
 
