@@ -366,3 +366,4 @@ import ATK.ZeroClasses.VonKoch
 import ATK.ZeroClasses.VonKochRH
 import ATK.ZeroClasses.QuasiRH
 import ATK.ZeroClasses.OmegaPsi
+import ATK.ZeroClasses.BDPonderado

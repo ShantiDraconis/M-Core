@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 5bdf066846ff2568afd885edf7aa26a68950fff9e37115d70e4896069f715f34
+# axiomas por teorema — congelamento de 2b0f03db2bf985d90500f0394705c895cddf9765e6e47bff5a4b147c0d7d8dec
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7731,3 +7731,20 @@ ATK.ZeroClasses.Omega.mertens_nao_littleO	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Omega.re_zero_reta	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Omega.psi_nao_O_rpow	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Omega.mertens_nao_O_rpow	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.Wσ_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.DNσ_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.DNσ_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.measurable_res	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.abs_res_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.res_sq_w_gt_one	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.integrable_w	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.tail_sq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.head_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.key_ineq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.zeta_ne_zero_of_DNσ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.pequeno_of_iInf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.semZeros_of_DNσ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.psi_of_DNσ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.mertens_of_DNσ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.piso_DNσ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPonderado.rh_of_DN_iInf	propext, Classical.choice, Quot.sound
