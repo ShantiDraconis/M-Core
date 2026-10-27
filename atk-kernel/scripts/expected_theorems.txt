@@ -7531,3 +7531,15 @@ ATK.ZeroClasses.LittlewoodMu.entradaLittlewood
 ATK.ZeroClasses.LittlewoodMu.entradas
 ATK.ZeroClasses.LittlewoodMu.necessidadeRH
 ATK.ZeroClasses.LittlewoodMu.rh_iff_DN_classico
+ATK.ZeroClasses.Hardy.th_cusp_eq
+ATK.ZeroClasses.Hardy.hasSum_K0
+ATK.ZeroClasses.Hardy.K0_nonneg
+ATK.ZeroClasses.Hardy.norm_theta2_le
+ATK.ZeroClasses.Hardy.norm_th_cusp
+ATK.ZeroClasses.Hardy.re_exp_two_pos
+ATK.ZeroClasses.Hardy.th_diff
+ATK.ZeroClasses.Hardy.Th_diff
+ATK.ZeroClasses.Hardy.geometria
+ATK.ZeroClasses.Hardy.norm_Th_cusp
+ATK.ZeroClasses.Hardy.norm_iteratedDeriv_Th_le
+ATK.ZeroClasses.Hardy.iteratedDeriv_Th_tendsto

@@ -2091,6 +2091,37 @@ Numérico (`codigo/littlewood_mu.py`, `dados/littlewood_mu.json`, `testes/test_l
 (`0,15 → 0,0057`, `3,3 → 0,53`, `0,23 → 0,051`). O quociente pela taxa `(N + ½)^{−ε/4}` fica `≤ 3,8`. O erro
 espectral com `ε = 0,2`, `N = 2000`, vezes `(1 + |τ|)^{5/4}`, fica `≤ 1,1` em `τ = 0, 5, 20, 50`.
 
+## 4ba. Hardy, parte 1: a teta na cúspide `y = i` (rodada 47)
+
+Um arquivo, **12 teoremas** (total 7545), só os axiomas padrão (`ZeroClasses/HardyCuspide.lean`). O alvo R4 do programa
+(`ATK.AtaqueRH.Hardy`: infinitos zeros na reta crítica, Hardy 1914) não está provado, nem na Mathlib. A rota clássica
+(Titchmarsh §10.2) usa os momentos `∫ Ξ(t)/(t² + ¼) t^{2n} cosh(αt) dt = (−1)^n (π/2) H^{(2n)}(iα)`, com
+`H(u) = 2 cosh(u/2) − e^{u/2} θ(e^{2u})`, e o fato de que a parte com `θ` e **todas** as suas derivadas se anulam quando
+`α → π/4⁻`. Esta rodada prova esse fato.
+
+* `th y = θ₂(0, iy) = Σ_{n ∈ ℤ} e^{−πn²y}`; **`th_cusp_eq`**: `θ(i + η) = θ₂(½, iη)`, porque `n(n + 1)` é par;
+* **`norm_th_cusp`**: pela equação funcional de Jacobi da Mathlib, para `Re η > 0` e `Re(1/η) ≥ 1`,
+  `|θ(i + η)| ≤ K₀ |η|^{−1/2} e^{−(π/4) Re(1/η)}`, `K₀ = Σ_{n∈ℤ} e^{−π(n² − |n|)}` (`norm_theta2_le`);
+* `Th u = e^{u/2} θ(e^{2u})`, holomorfa em `|Im u| < π/4` (`re_exp_two_pos`, `th_diff`, `Th_diff`);
+* `geometria`: para `α = π/4 − 2r`, `r ≤ 1/250` e `|u − iα| ≤ r`, `η = e^{2u} − i` tem `Re η ≥ 2r/π` e
+  `|η| ≤ 12r`, logo `Re(1/η) ≥ 1/(72πr)`;
+* **`norm_Th_cusp`**: nesse círculo, `|Θ(u)| ≤ 2K₀ (2r/π)^{−1/2} e^{−1/(288 r)}`;
+* **`norm_iteratedDeriv_Th_le`** (estimativa de Cauchy da Mathlib) e **`iteratedDeriv_Th_tendsto`**: para todo
+  `k`, `Θ^{(k)}(i(π/4 − 2r)) → 0` quando `r → 0⁺`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| a teta e todas as derivadas de `Θ` se anulam na cúspide | CERTIFIED | ferramenta |
+| `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du` e o decaimento de `Ξ` | BUILD_PENDING (próxima rodada) | — |
+| a identidade dos momentos e Hardy (`ATK.AtaqueRH.Hardy`) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/hardy_cuspide.py`, `dados/hardy_cuspide.json`, `testes/test_hardy_cuspide.py`, 2 testes).
+`K₀ = 3,0037`. Em cinco pontos com `Re(1/η)` entre `1,5` e `15`, `|θ(i + η)|` fica em `≈ 2/3` da cota (a constante
+verdadeira é `2`, não `K₀`). `|Θ(i(π/4 − 2r))|` cai de `0,31` (`r = 0,08`) a `3,9·10⁻⁴` (`r = 0,02`), e `|Θ′|` de
+`3,8` a `0,09`. Em `r ≤ 1/250` os valores ficam abaixo da precisão da máquina; a cota da prova vai de `50`
+(`r = 0,004`) a `0,32` (`r = 0,0005`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
