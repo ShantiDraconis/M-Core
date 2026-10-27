@@ -1715,6 +1715,34 @@ Numérico (`codigo/expoente.py`, `dados/expoente.json`, `testes/test_expoente.py
 segue `(log(T/2π))²/(2π)` (2,35 contra 2,38 em `T = 300`) e diverge, enquanto `Σ 1/|ρ|^{1,2}` cresce cada vez mais
 devagar. `|ξ(2n + 2)|` fica acima de `(2 − π²/6)·n!/π^{n+1}` para `n ≤ 40`, e `log ξ(s)/s` cresce sem parar.
 
+## 4ap. O lema de Landau: a derivada logarítmica perto do centro de um disco (rodada 36)
+
+Um arquivo, **5 teoremas** (total 7352), só os axiomas padrão (`ZeroClasses/Landau.lean`). A Mathlib não tem o lema;
+ele é a ferramenta local que substitui a fórmula de Hadamard nas regiões livres de zeros (§4aq).
+
+* `quociente_local`: se `ord Q ≤ ord f` num aberto `U`, então `f = Q·G` com `G` analítica em `U`, e `G ≠ 0` onde as
+  ordens coincidem (`Q` sem ordem infinita);
+* `ordem_monomio`, `ordem_poli`: a ordem de `∏_{u ∈ S} (z − u)^{m_u}` em `w` é `m_w` (ou `0` fora de `S`);
+  `logDeriv_poli`: sua derivada logarítmica é `Σ m_u/(z − u)`;
+* **`landau`**: se `f` é analítica em `‖z − z₀‖ ≤ R`, `f(z₀) ≠ 0` e `‖f‖ ≤ M‖f(z₀)‖` no disco (`M ≥ 1`), existe o
+  conjunto finito `S` dos zeros em `‖z − z₀‖ ≤ R/4`, e
+
+  `‖f′/f(z₀) − Σ_{ρ ∈ S} m_ρ/(z₀ − ρ)‖ ≤ 16(log M + 1)/R`.
+
+  A prova junta quatro ferramentas da Mathlib: o quociente `G = f/Q` pelos zeros de `S`; o módulo máximo para `G`
+  em `‖z − z₀‖ ≤ R/2` (`|Q| ≥ (R/4)ⁿ` no círculo e `|Q(z₀)| ≤ (R/4)ⁿ`, logo `|G| ≤ M|G(z₀)|`); o logaritmo
+  `G = G(z₀)e^h` no disco `R/4`, com `Re h ≤ log M`; e Borel–Carathéodory mais Cauchy no círculo `R/8`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| lema de Landau (forma no centro) | CERTIFIED | ferramenta |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/landau.py`, `dados/landau.json`, `testes/test_landau.py`, 2 testes): a cota vale nos três casos
+testados. Num polinômio com um zero duplo e um simples no disco pequeno, o resto é exatamente o termo do zero de fora
+(`1/3` contra a cota `119,5`). Para `ζ` em `0,55 + 14,13i` com `R = 1`, `S = {ρ₁}` e o erro é `0,41` contra `70,2`;
+em `1,1 + γ₁i` com `R = ½`, `S` é vazio e o erro é `1,30` contra `45,8`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

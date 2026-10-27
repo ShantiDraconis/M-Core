@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de ae16314219b89a65ed1d157d96994330a62cf1ec1ff7568861f2f9b37bdf2cb9
+# axiomas por teorema — congelamento de bc5482f5274d0d077f925424bf705ffe3bed324e3eb6e6c71549695874173cb3
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7347,3 +7347,8 @@ ATK.ZeroClasses.Expoente.conj_mem_Z	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Expoente.zeros_infinitos_acima	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Expoente.ordem_pos	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Expoente.N_tende_infinito	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Landau.quociente_local	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Landau.ordem_monomio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Landau.ordem_poli	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Landau.logDeriv_poli	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Landau.landau	propext, Classical.choice, Quot.sound
