@@ -321,7 +321,7 @@ theorem gT_analitica {T : ℝ} (hT : 4 ≤ T) : AnalyticOnNhd ℂ (gT T) (closed
       (analyticAt_id.sub analyticAt_const : AnalyticAt ℂ (fun s : ℂ => s - T * I) s)
   exact (a1.add a2).div_const
 
-/-- `|ζ(s ± iT)| ≤ 6T + 37` no disco `‖s − 2‖ ≤ 7/4`. -/
+/-- `|ζ(s ± iT)| ≤ 6T + 38` no disco `‖s − 2‖ ≤ 7/4`, logo `‖gT T s‖ ≤ 6T + 38`. -/
 theorem cota_gT {T : ℝ} (hT : 4 ≤ T) {s : ℂ} (hs : ‖s - 2‖ ≤ 7 / 4) : ‖gT T s‖ ≤ 6 * T + 38 := by
   have hre : |s.re - 2| ≤ 7 / 4 := by
     have := Complex.abs_re_le_norm (s - 2)

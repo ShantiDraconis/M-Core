@@ -1,5 +1,4 @@
 """Testes do companheiro numérico da rodada 41 (ZeroClasses/VariacaoArg.lean)."""
-import math
 import os
 import sys
 import tempfile
