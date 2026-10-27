@@ -2511,6 +2511,38 @@ de Gram em forma fechada (com `x = 1/t`, `{x/j}{x/k}` é quadrático entre múlt
 `D_8(σ) = 0,0428; 0,0242; 0,0140; 0,0063` para `σ = 0,4; 0,5; 0,6; 0,75`. Os dados finitos não mostram o piso de
 `σ = 0,4`: ele é teorema, não observação.
 
+## 4bn. `RH ⟺ π(x) = Li(x) + O(x^{1/2+ε})` (rodada 60)
+
+Um arquivo, **24 teoremas** (total 7772), só os axiomas padrão (`ZeroClasses/PiLi.lean`). Com
+`Li(x) = ∫_2^x dt/log t` (`Li`) e `π`, `θ` da Mathlib:
+
+* **`rh_iff_pi`**: **`RH ⟺ ∀ ε > 0, |π(x) − Li(x)| ≤ C_ε x^{1/2+ε}`** para `x ≥ 2` (von Koch 1901, a forma mais
+  citada do critério); `rh_iff_theta`: o mesmo para `θ(x) − x`;
+* **`semZeros_iff_pi`**, `semZeros_iff_theta` (`½ ≤ θ < 1`): `ζ ≠ 0` em `Re s > θ` ⟺ `π(x) = Li(x) + O(x^{θ+ε})`.
+
+A ponte com as rodadas 56–57 é somação por partes:
+
+* `theta_of_psi`, `psi_of_theta`: com `0 ≤ ψ − θ ≤ 2√x log x` (Mathlib) e `log x ≤ x^δ/δ`, as cotas de `ψ` e de `θ`
+  com expoente `b > ½` são equivalentes;
+* `Li_partes`: `Li(x) = x/log x − 2/log 2 + ∫_2^x dt/log²t`; com a fórmula de Abel da Mathlib
+  `π(x) = θ(x)/log x + ∫_2^x θ(t)/(t log²t) dt`, **`pi_of_theta`**: `θ − x = O(x^b)` ⟹ `π − Li = O(x^b)`;
+* `Li_log_partes`: `Li(x) log x = x − 2 + ∫_2^x Li(t)/t dt`; com `θ(x) = π(x) log x − ∫_2^x π(t)/t dt` (Mathlib),
+  **`theta_of_pi`**: `π − Li = O(x^b)` ⟹ `θ − x = O(x^{b'})` para todo `b' > b`;
+* `erroPsi_of_int`, `int_of_erroPsi`: a forma inteira `|ψ(N) − N| ≤ C(N + 1)^b` das rodadas 55–57 e a forma real.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `RH ⟺ π(x) = Li(x) + O(x^{1/2+ε})`; `RH ⟺ θ(x) = x + O(x^{1/2+ε})` | CERTIFIED | reformulação |
+| `ζ ≠ 0` em `Re s > θ` ⟺ `π(x) = Li(x) + O(x^{θ+ε})` (`½ ≤ θ < 1`) | CERTIFIED | reformulação |
+| `π(x) = Li(x) + O(x e^{−b√log x})` (TNP com erro, para `π`) | BUILD_PENDING (é `pi_of_theta` com o erro da rodada 54, não montado) | — |
+| `\|π(x) − li(x)\| < √x log x/(8π)` sob RH (Schoenfeld) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/pi_li.py`, `dados/pi_li.json`, `testes/test_pi_li.py`, 2 testes). `Li = li − li(2)` pela série de
+Ramanujan; as duas integrações por partes conferem por Simpson a `10⁻⁹` (`x = 100`) e `6·10⁻⁵` (`x = 1000`).
+Por crivo: `π(10⁶) = 78498`, `Li(10⁶) = 78626,504`, `π − Li = −8,6; −16,1; −36,8; −128,5` em `x = 10³, …, 10⁶`, e
+`|π − Li|/(√x log x) ≤ 0,0392 < 1/(8π) = 0,0398` — dado finito, sem valor de prova.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
