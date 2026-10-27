@@ -2993,6 +2993,7 @@ Nada aqui fixa o valor de `Θ`: os enunciados valem qualquer que ele seja. Nenhu
 | `κ(σ) ≥ 2(σ − Θ)` em `(Θ, 1)`; nenhuma taxa abaixo de `Θ`; RH ⟺ taxa `2σ − 1` em `(½, 1)` | CERTIFIED | reformulação |
 | `PisoPonderado` (Q2(iii)): `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
 | na classe `‖c‖₁ ≤ N^A`: `κ_A(σ) ≤ 2A(σ − Θ)/Θ` | CERTIFIED (rodada 79, §4cg) | parcial |
+| `c` arbitrário, a menos de constante: `κ(σ) ≤ (2σ + 3)(σ − Θ)/Θ` | CERTIFIED (rodada 83, §4ck) | parcial |
 | o valor de `Θ` (RH: `Θ = ½`; semiplano: `Θ < 1`) | OPEN_MATH | — |
 
 Numérico (`codigo/bd_theta.py`, `dados/bd_theta.json`, `testes/test_bd_theta.py`, 2 testes): até `10⁵`,
@@ -3089,6 +3090,7 @@ Por isso a classe é **parcial**: Q2(iii) para `c` arbitrário segue OPEN_MATH.
 | --- | --- | --- |
 | `‖res‖²_σ ≥ C_ρ (1 + ‖c‖₁)^{−2(σ−β)/β}` para cada zero com `0 < β < σ` | CERTIFIED | ferramenta |
 | `κ_A(σ) ≤ 2A(σ − Θ)/Θ` na classe `‖c‖₁ ≤ N^A`; `2(σ − Θ) ≤ κ₁(σ) ≤ 2(σ − Θ)/Θ` | CERTIFIED | parcial |
+| `c` arbitrário, a menos de constante: `κ(σ) ≤ (2σ + 3)(σ − Θ)/Θ` | CERTIFIED (rodada 83, §4ck) | parcial |
 | `PisoPonderado` (Q2(iii), `c` arbitrário): `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
 | RH | OPEN_MATH | — |
 
@@ -3198,6 +3200,52 @@ Numérico (`codigo/bd_normal1.py`, `dados/bd_normal1.json`, `testes/test_bd_norm
 * com vetores pseudoaleatórios e `T = 2N(N + 1)`, a integral (forma fechada) fica entre 1,9 e 2,1 vezes a cota de
   `media_inf` (`N = 5, 10, 20`);
 * a forma fechada confere com quadratura a `2·10⁻¹¹` (relativo).
+
+## 4ck. O teto da taxa para `c` arbitrário: `2(σ − Θ) ≤ κ(σ) ≤ (2σ + 3)(σ − Θ)/Θ` (rodada 83)
+
+Um arquivo, **12 teoremas** (total 8112), só os axiomas padrão (`ZeroClasses/BDTaxaPiso.lean`). A questão Q2(iii)
+(`PisoPonderado`, §4cd) pede `κ(σ) ≤ 2(σ − Θ)` para a taxa de `D_N(σ)` sobre **todos** os coeficientes. Esta rodada
+prova o teto **a menos de uma constante**:
+
+  **`TaxaDN σ κ ⟹ κ ≤ (2σ + 3)(σ − Θ)/Θ`** para `Θ < σ < 1`   (`taxaDN_teto`).
+
+A prova:
+1. Como `D_N(σ) ≤ ‖res_0‖²_σ = 1/(2σ) ≤ 1` (`Wσ_zero`), basta olhar os `c` com `‖res_c‖²_σ ≤ 1`.
+2. Pela rodada 82, esses `c` estão na classe `‖c‖₁ ≤ K N^{σ+3/2+2η}`. Logo `D_N(σ) = D_N^{(L)}(σ)` (`DNσL_eq`), e
+   `TaxaDN σ κ ⟹ TaxaL σ A κ` para todo `A > σ + 3/2` (`taxaDN_L`).
+3. O piso da rodada 79 dá `Θ(κ + 2A) ≤ 2Aσ`; com `A ↓ σ + 3/2`, sai o teto.
+
+Consequências:
+* `Wσ_mono`, `DNσ_mono`, `taxaDN_mono`: `D_N(σ′) ≤ (1 + (1 − σ)/(1 − σ′)) D_N(σ)` para `σ ≤ σ′ < 1`. Taxas passam
+  para a direita.
+* **`taxaDN_pos`**: `TaxaDN σ κ` com `κ > 0` e `0 < σ < 1` dá `Θ < σ`. Os casos `σ < Θ` (`piso_abaixo`) e `σ = Θ`
+  (monotonia mais o teto em `σ′ ↓ Θ`) ficam excluídos.
+* **`Teta_le_de_taxaDN`**: `Θ ≤ (2σ + 3)σ/(κ + 2σ + 3)`. Uma taxa positiva **num único `σ`**, para `c` arbitrário,
+  certifica o semiplano sem zeros `Re s > (2σ + 3)σ/(κ + 2σ + 3)`.
+* **`rh_of_taxaDN`**: `TaxaDN σ₀ ((2σ₀ + 3)(2σ₀ − 1))` num único `σ₀ ∈ (½, 1)` dá RH.
+* **`sanduiche_DN`**: `2(σ − Θ) ≤ κ(σ) ≤ (2σ + 3)(σ − Θ)/Θ`. Sob RH (`taxaDN_RH`),
+  `2σ − 1 ≤ κ(σ) ≤ (2σ + 3)(2σ − 1)`.
+
+O fator entre teto e piso é `(2σ + 3)/(2Θ) ∈ (2, 5)`. Fechá-lo até `1` é Q2(iii), que segue OPEN_MATH. Também segue
+OPEN_MATH a recíproca de `rh_of_taxaDN` (RH ⟹ taxa `(2σ₀ + 3)(2σ₀ − 1)`; o molificador só garante `2σ₀ − 1`).
+
+Pela minha leitura das fontes, a literatura de semiplanos não tem taxa (fronteira Q2), e não conheço precedente para
+este teto. Antes de chamá-lo de novo é preciso uma checagem de literatura.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `κ(σ) ≤ (2σ + 3)(σ − Θ)/Θ` (`c` arbitrário); `2(σ − Θ) ≤ κ(σ)` | CERTIFIED | parcial |
+| `TaxaDN σ κ`, `κ > 0` ⟹ `Θ ≤ (2σ + 3)σ/(κ + 2σ + 3)`; `TaxaDN σ₀ ((2σ₀ + 3)(2σ₀ − 1))` ⟹ RH | CERTIFIED | reformulação |
+| `D_N(σ′) ≪ D_N(σ)` para `σ ≤ σ′ < 1` | CERTIFIED | ferramenta |
+| Q2(iii) exata: `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_taxa_piso.py`, `dados/bd_taxa_piso.json`, `testes/test_bd_taxa_piso.py`, 2 testes):
+* `∫_0^1 t^{2σ−1} = 1/(2σ)` por quadratura;
+* sob RH, as faixas `[2σ − 1, (2σ + 3)(2σ − 1)]` são `[0,2; 0,84]`, `[0,5; 2,25]` e `[0,8; 3,84]` em
+  `σ = 0,6; 0,75; 0,9`;
+* as inclinações locais `1,53–1,76` da rodada 75 (`σ = 0,75`) caem em `[0,5; 2,25]`. Isso é consistência, não medida de
+  `κ` (barreira B2).
 
 ## 5. Formatos
 

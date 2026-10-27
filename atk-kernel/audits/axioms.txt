@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a9c59e1522f3009f0ad45869ff4b43a8d4a7e240593d7d5606faa85dce8a6c0d
+# axiomas por teorema — congelamento de beacd4003ce84a40bf3c24daa96087dfb3b9c170ecca36f6dceeb1ad091820ec
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8100,3 +8100,15 @@ ATK.ZeroClasses.BDNormaL1.soma_abs_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDNormaL1.soma_c_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDNormaL1.expoentes	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDNormaL1.norma_l1_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.Wσ_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.Wσ_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.DNσ_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.DNσL_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_L	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_teto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.Teta_le_de_taxaDN	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.rh_of_taxaDN	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.sanduiche_DN	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_RH	propext, Classical.choice, Quot.sound

@@ -1,0 +1,50 @@
+{
+ "Wsigma_zero": [
+  {
+   "sigma": 0.6,
+   "quad": 0.8333333530354703,
+   "formula": 0.8333333333333334
+  },
+  {
+   "sigma": 0.75,
+   "quad": 0.6666666673468997,
+   "formula": 0.6666666666666666
+  },
+  {
+   "sigma": 0.9,
+   "quad": 0.5555555555696334,
+   "formula": 0.5555555555555556
+  }
+ ],
+ "faixa_RH": [
+  {
+   "sigma": 0.6,
+   "piso_RH": 0.19999999999999996,
+   "teto_RH": 0.8399999999999999,
+   "fator": 4.2,
+   "limiar_rh_of_taxaDN": 0.8399999999999999
+  },
+  {
+   "sigma": 0.75,
+   "piso_RH": 0.5,
+   "teto_RH": 2.25,
+   "fator": 4.5,
+   "limiar_rh_of_taxaDN": 2.25
+  },
+  {
+   "sigma": 0.9,
+   "piso_RH": 0.8,
+   "teto_RH": 3.84,
+   "fator": 4.8,
+   "limiar_rh_of_taxaDN": 3.84
+  }
+ ],
+ "inclinacoes_r75": [
+  1.5326371554174756,
+  1.757011355257682,
+  1.7569425950897726,
+  1.6749236264355116
+ ],
+ "sigma_r75": 0.75,
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/BDTaxaPiso.lean"
+}

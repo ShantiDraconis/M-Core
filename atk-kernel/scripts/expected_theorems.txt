@@ -8098,3 +8098,15 @@ ATK.ZeroClasses.BDNormaL1.soma_abs_le
 ATK.ZeroClasses.BDNormaL1.soma_c_le
 ATK.ZeroClasses.BDNormaL1.expoentes
 ATK.ZeroClasses.BDNormaL1.norma_l1_le
+ATK.ZeroClasses.BDTaxaPiso.Wσ_zero
+ATK.ZeroClasses.BDTaxaPiso.Wσ_mono
+ATK.ZeroClasses.BDTaxaPiso.DNσ_mono
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_mono
+ATK.ZeroClasses.BDTaxaPiso.DNσL_eq
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_L
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_teto
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_pos
+ATK.ZeroClasses.BDTaxaPiso.Teta_le_de_taxaDN
+ATK.ZeroClasses.BDTaxaPiso.rh_of_taxaDN
+ATK.ZeroClasses.BDTaxaPiso.sanduiche_DN
+ATK.ZeroClasses.BDTaxaPiso.taxaDN_RH
