@@ -2144,7 +2144,7 @@ identidade dos momentos de Hardy.
 | --- | --- | --- |
 | `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du`, `H` par, `\|H(u)\| ≤ 5e^{−\|u\|/2}` | CERTIFIED | ferramenta |
 | `\|Ξ(t)\| ≤ 24CΓ(1 + \|t\|)⁴e^{−π\|t\|/4}` | CERTIFIED | ferramenta |
-| inversão de Fourier, continuação à faixa `|Im x| < π/4` e a identidade dos momentos | BUILD_PENDING | — |
+| inversão de Fourier, continuação à faixa `\|Im x\| < π/4` e a identidade dos momentos | CERTIFIED na rodada 49 (§4bc) | ferramenta |
 | Hardy (`ATK.AtaqueRH.Hardy`) | BUILD_PENDING | — |
 | RH | OPEN_MATH | — |
 
@@ -2155,6 +2155,43 @@ Numérico (`codigo/hardy_fourier.py`, `dados/hardy_fourier.json`, `testes/test_h
 folgada: em `t = 30`, `|Ξ| = 1,5·10⁻⁸` contra `0,15`.
 
 Também nesta rodada: `testes/test_rvm.py` perde um `import math` sem uso (apontado pela revisão automática do #117).
+
+## 4bc. Hardy, parte 3: inversão de Fourier, continuação e a identidade dos momentos (rodada 49)
+
+Um arquivo, **27 teoremas** (total 7594), só os axiomas padrão (`ZeroClasses/HardyMomentos.lean`). Sobre a
+representação de Fourier e o decaimento da rodada 48 e a cúspide da rodada 47, prova a identidade dos momentos de
+Hardy (Titchmarsh §10.2).
+
+* funções pares na reta: `integrable_of_even`, `integral_of_even`, `integral_exp_of_even`
+  (`∫ e^{iav}g(v)dv = 2∫₀^∞ g(v)cos(av)dv`);
+* `integrableOn_dom`: `|Fx(t)| t^m e^{βt}` é integrável em `(0, ∞)` para `β < π/4` (do decaimento de `Ξ`);
+  `integrable_Hr`, `fourier_Hr` (`𝓕Hr(w) = 2Fx(2πw)`);
+* **`integral_Fx_cos`** — inversão de Fourier (`Continuous.fourierInv_fourier_eq` da Mathlib):
+  `∫₀^∞ Fx(t) cos(xt) dt = (π/2) Hr(x)` para `x` real;
+* a faixa `|Im z| < π/4` (`faixa`, aberta e convexa); `Gc n z = ∫₀^∞ Fx(t) t^{2n} cos(zt) dt` e
+  `Sc n z = ∫₀^∞ Fx(t) t^{2n+1} sin(zt) dt`, com `hasDerivAt_Gc` (`Gc′ = −Sc`) e `hasDerivAt_Sc` (`Sc′ = Gc_{n+1}`)
+  por derivação sob a integral (`hasDerivAt_trig`);
+* **`Gc_zero_eq`**: `Gc 0 = (π/2)(2cosh(z/2) − Θ(z))` na faixa — princípio da identidade da Mathlib a partir da
+  igualdade na reta real;
+* **`Gc_eq`**: `Gc n z = (−1)^n (π/2)(2·4^{−n}cosh(z/2) − Θ^{(2n)}(z))` na faixa (indução);
+* **`momento`**: para `|α| < π/4`,
+  `∫₀^∞ Fx(t) t^{2n} cosh(αt) dt = (−1)^n (π/2)(2·4^{−n} cos(α/2) − Re Θ^{(2n)}(iα))`;
+* **`momento_tendsto`**: quando `α = π/4 − 2r → π/4⁻`, o momento tende a `(−1)^n π 4^{−n} cos(π/8)`
+  (`iteratedDeriv_Th_tendsto`, rodada 47).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| inversão de Fourier `∫₀^∞ Fx(t)cos(xt)dt = (π/2)Hr(x)` | CERTIFIED | ferramenta |
+| a identidade dos momentos e o seu limite na cúspide | CERTIFIED | ferramenta |
+| Hardy (`ATK.AtaqueRH.Hardy`) | BUILD_PENDING (próxima rodada) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/hardy_momentos.py`, `dados/hardy_momentos.json`, `testes/test_hardy_momentos.py`, 2 testes), com
+`Ξ` calculada por Lanczos e Euler–Maclaurin (`encontro.py`), independente da fórmula da rodada 48. Por Simpson em
+`[0, 60]`, `∫₀^∞ Fx(t)cos(xt)dt` e `(π/2)Hr(x)` coincidem até `10⁻¹⁵` em `x = 0; 0,5; 1; 2`. Os momentos com
+`n = 0, 1` e `α = 0,2; 0,3; 0,4` coincidem com a fórmula até `2·10⁻⁸` em termos relativos (o resto é o corte em
+`t = 60`). O lado direito para `n = 1` oscila antes de assentar (`17,8; −11,2; −96,3; −1,54; −0,727; −0,7264` em
+`α = 0,5; 0,65; 0,72; 0,76; 0,775; 0,78`), contra o limite `−π cos(π/8)/4 = −0,7256`.
 
 ## 5. Formatos
 
