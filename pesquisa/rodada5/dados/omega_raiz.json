@@ -1,0 +1,26 @@
+{
+ "N": 1000000,
+ "c_psi": 0.008837940966476528,
+ "psi_acima": 515811,
+ "psi_abaixo": 452491,
+ "M_acima_0_1": 256481,
+ "M_abaixo_0_1": 334127,
+ "zeros": [
+  {
+   "gamma": 14.134725141734693,
+   "abs_zeta": 1.0574450943902825e-15,
+   "abs_deriv": 0.7931604333681896
+  },
+  {
+   "gamma": 21.022039638771556,
+   "abs_zeta": 7.467848278535495e-15,
+   "abs_deriv": 1.136839106848195
+  },
+  {
+   "gamma": 25.01085758014569,
+   "abs_zeta": 3.570175729336545e-15,
+   "abs_deriv": 1.37172128725147
+  }
+ ],
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/OmegaRaiz.lean"
+}

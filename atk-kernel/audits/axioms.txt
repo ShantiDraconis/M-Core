@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 677b4d4713b97a2e8f799767ae156d6f449d08bd177d10bd2e79fb8109770e7b
+# axiomas por teorema — congelamento de 9c630f2d051757acf18178a37f25bce4daadff8a99813a74fa099fc2c1ade99f
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8209,3 +8209,23 @@ ATK.ZeroClasses.Unilateral.rh_iff_psi_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Unilateral.rh_iff_psi_ge	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Unilateral.rh_of_mertens_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Unilateral.rh_of_mertens_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.differentiableAt_Gext	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.Gext_eq_H	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.norm_Ik_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.Ik_real0	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.cota_polo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.differentiableAt_Hf_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.differentiableAt_F_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.existe_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.norm_rho_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.Al_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.sqrt_dois_lt	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.contra_raiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.psi_omega_mais_raiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.psi_omega_menos_raiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.mertens_omega_mais_raiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.mertens_omega_menos_raiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.cota_inf_F_dupla	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.simples_of_mertens_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.simples_of_mertens_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.OmegaRaiz.rh_e_simples_of_mertens_le	propext, Classical.choice, Quot.sound
