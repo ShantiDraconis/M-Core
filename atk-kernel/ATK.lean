@@ -370,3 +370,4 @@ import ATK.ZeroClasses.BDPonderado
 import ATK.ZeroClasses.PiLi
 import ATK.ZeroClasses.LindelofRH
 import ATK.ZeroClasses.Abscissa
+import ATK.ZeroClasses.SomaZeros

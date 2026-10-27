@@ -2599,6 +2599,32 @@ Numérico (`codigo/abscissa.py`, `dados/abscissa.json`, `testes/test_abscissa.py
 análogo para `Λ − 1` a `0,013`, `0,017`, `2,6·10⁻⁵` — convergência lenta, `≈ N^{−(σ−½)}`; em `s = 0,4` o máximo das
 somas parciais cresce (`1,62 → 2,43`).
 
+## 4bq. A soma sobre os zeros e `ζ′/ζ` local (rodada 63)
+
+Um arquivo, **29 teoremas** (total 7822), só os axiomas padrão (`ZeroClasses/SomaZeros.lean`). Primeira peça da
+fórmula explícita (Davenport, cap. 15), sobre Hadamard (rodada 33), Jensen local (rodada 31) e Stirling (rodada 39):
+
+* **`soma_wz_O`**: `Σ_ρ m_ρ/(1 + (t − γ)²) = O(log(2 + |t|))` — os zeros agrupados por `⌈|γ − t|⌉ = n`, cada bloco
+  contado por duas caixas de Jensen (`bloco_le`), contra a série somável `(1 + log(2 + n))/(1 + n²)`;
+* **`norm_digamma_le`**: `|ψ(z)| ≤ log(2 + |Im z|) + 11` em `0 < Re z ≤ 1`, `|Im z| ≥ 3` (Cauchy no resto de
+  Stirling `RS`, cuja derivada é `ψ − log + 1/(2z)`, e `ψ(z + 1) = ψ(z) + 1/z`);
+* **`logDeriv_xi_sub`**: `ξ′/ξ(s) − ξ′/ξ(s₀) = Σ_ρ (1/(s − ρ) − 1/(s₀ − ρ))`;
+* **`zeta_local_O`**: para `0 < σ ≤ 2`, `|t| ≥ 6`, `ζ(s) ≠ 0`: `ζ′/ζ(s) = Σ_{|γ − t| ≤ 1} 1/(s − ρ) + O(log |t|)`, com
+  `O(log |t|)` termos (`card_perto_O`) — comparação com `s₀ = 2 + it`;
+* **`logDeriv_RH`**: **sob RH**, `|ζ′/ζ(σ + it)| ≤ C log(2 + |t|)/(σ − ½)` em `½ < σ ≤ 2`, `|t| ≥ 6`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `Σ_ρ 1/(1 + (t − γ)²) = O(log t)` e `ζ′/ζ` local | CERTIFIED | ferramenta |
+| sob RH, `ζ′/ζ(σ + it) = O(log t/(σ − ½))` | CERTIFIED | ferramenta |
+| RH ⟹ `ψ(x) = x + O(√x log³ x)` (Perron + contorno em `Re s = ½ + 1/log x`) | BUILD_PENDING | consequência |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/soma_zeros.py`, `dados/soma_zeros.json`, `testes/test_soma_zeros.py`, 2 testes), com os 341 zeros
+de `0 < γ ≤ 600`: `S(t)/log t` entre `0,21` e `0,35` para `t = 50…400` (esperado `≈ ½ log(t/2π)/log t`); o resto
+`|ζ′/ζ(s) − Σ_{|γ−t|≤1} 1/(s − ρ)|/log t` fica entre `0,03` e `0,31`; `(σ − ½)|ζ′/ζ(σ + 100i)|/log 100` cai de
+`0,072` a `0,0003` quando `σ − ½` vai de `0,5` a `0,001`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
