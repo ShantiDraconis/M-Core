@@ -8064,3 +8064,14 @@ ATK.ZeroClasses.BDPisoL1.taxaL_Teta
 ATK.ZeroClasses.BDPisoL1.taxaL_mol
 ATK.ZeroClasses.BDPisoL1.taxaL_sanduiche
 ATK.ZeroClasses.BDPisoL1.taxaL_RH
+ATK.ZeroClasses.BDBurnolL1.J_reta
+ATK.ZeroClasses.BDBurnolL1.key_reta
+ATK.ZeroClasses.BDBurnolL1.piso_reta
+ATK.ZeroClasses.BDBurnolL1.piso_DNσL_reta
+ATK.ZeroClasses.BDBurnolL1.burnol_L1
+ATK.ZeroClasses.BDBurnolL1.log_um_add_le
+ATK.ZeroClasses.BDBurnolL1.taxaL_reta
+ATK.ZeroClasses.BDBurnolL1.sem_taxa_meio
+ATK.ZeroClasses.BDBurnolL1.taxaL_pos
+ATK.ZeroClasses.BDBurnolL1.Teta_le_de_taxa
+ATK.ZeroClasses.BDBurnolL1.rh_of_taxaL

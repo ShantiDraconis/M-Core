@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 6497cce4db01d77b615aed8c7c5e55673c69a3380576585c509a1400da989350
+# axiomas por teorema — congelamento de fe7278dc3d7a97ea8f3e2fcd0e6169dbeade9343dcbef9c1d76e918c4a8fbba5
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8066,3 +8066,14 @@ ATK.ZeroClasses.BDPisoL1.taxaL_Teta	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoL1.taxaL_mol	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoL1.taxaL_sanduiche	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoL1.taxaL_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.J_reta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.key_reta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.piso_reta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.piso_DNσL_reta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.burnol_L1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.log_um_add_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.taxaL_reta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.sem_taxa_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.taxaL_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.Teta_le_de_taxa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDBurnolL1.rh_of_taxaL	propext, Classical.choice, Quot.sound
