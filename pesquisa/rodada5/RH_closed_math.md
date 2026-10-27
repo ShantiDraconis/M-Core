@@ -2417,6 +2417,39 @@ crivo até `10⁶`, `S_N(0,8) = Σ_{n ≤ N} (Λ(n) − 1)n^{−0,8}` vai de `�
 `max_{N ≤ 10⁶} |ψ(N) − N|/(N + 1)^{1/2 + ε}` vale `0,71`, `0,68`, `0,59` para `ε = 0,05; 0,1; 0,25` — dado finito,
 sem valor de prova.
 
+## 4bk. Quasi-RH: `ζ ≠ 0` em `Re s > θ` ⟺ `ψ(x) = x + O(x^{θ+ε})` ⟺ `M(x) = O(x^{θ+ε})` (rodada 57)
+
+Um arquivo, **27 teoremas** (total 7708), só os axiomas padrão (`ZeroClasses/QuasiRH.lean`). Com
+`SemZeros θ := ∀ s, θ < Re s → ζ(s) ≠ 0` e `½ ≤ θ < 1`:
+
+* **`semZeros_iff_psi`**: `SemZeros θ ⟺ ∀ ε > 0, |ψ(N) − N| ≤ C(N + 1)^{θ+ε}`;
+* **`semZeros_iff_mertens`**: `SemZeros θ ⟺ ∀ ε > 0, |M(N)| ≤ C(N + 1)^{θ+ε}`;
+* **`psi_iff_mertens`**: as duas cotas são equivalentes para cada `θ`; `semZeros_meio_iff`: `SemZeros ½ ⟺ RH`.
+
+As direções ⇐ são `zeroFree_of_psi`/`zeroFree_of_mertens` (§4bi). As ⇒ (`psi_of_semZeros`, `mertens_of_semZeros`)
+refazem as rodadas 51 e 56 com `θ` no lugar de `½`:
+
+* o ramo de `log ζ` no disco de centro `cθ = 5/2 + θ + it` e raio `5/2` (contido em `Re s > θ`; o disco interno de
+  raio `½` fica em `Re s ≥ 5/2`): `bola_props`, `norm_zeta_le_bola`, `existe_log_zeta`, `L_eq_log`, **`norm_L_le`**
+  (Borel–Carathéodory e três círculos, como em `ATK.RHLogZeta`, com `SemZeros θ` no lugar de RH);
+* **`norm_F_le`** (`|1/ζ| ≤ C(1 + |t|)^η`) e **`norm_H_le`** (`|ζ′/ζ + ζ| ≤ C(1 + |t|)^η`) em `Re s ≥ θ + δ`;
+* **o deslocamento** (`escala`, `term_escala`, `LSeries_escala`, **`somas_limitadas_gen`**): `a(n)n^{−(θ − ½ + δ)}`
+  tem série holomorfa em `Re u > ½`, e o Littlewood geral da rodada 56 (`cota_gen`) vale sem mudança;
+* somação por partes (`abel_cota`, `E_eq_sum`, `M_eq_sum`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `SemZeros θ ⟺ ψ(x) = x + O(x^{θ+ε}) ⟺ M(x) = O(x^{θ+ε})`, `½ ≤ θ < 1` | CERTIFIED | reformulação |
+| cotas de `1/ζ` e `ζ′/ζ` com crescimento `\|t\|^η` em `Re s ≥ θ + δ` sob `SemZeros θ` | CERTIFIED | ferramenta |
+| `SemZeros θ` para algum `θ < 1` | OPEN_MATH | — |
+| importar um semiplano externo (p. ex. θ = 7/8, Q1 de `fronteira/RH_frontier.md`) | BUILD_PENDING (o módulo externo não está no repositório) | — |
+| RH (`SemZeros ½`) | OPEN_MATH | — |
+
+Numérico (`codigo/quasi_rh.py`, `dados/quasi_rh.json`, `testes/test_quasi_rh.py`, 2 testes). Por crivo até `10⁶`
+(`M(10⁶) = 212`): `max |ψ(N) − N|/(N + 1)^θ` vale `0,78`, `0,68`, `0,59`, `0,54` e `max |M(N)|/(N + 1)^θ` vale
+`0,82`, `0,68`, `0,59`, `0,54` para `θ = 0,5; 0,6; 0,75; 0,9`; `Σ_{n ≤ N} μ(n)n^{−0,8}` vai de `−0,148` (`N = 10²`) a
+`−0,2221` (`N = 10⁶`), contra `1/ζ(0,8) = −0,2254`. Dado finito, sem valor de prova: não decide `SemZeros θ`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
