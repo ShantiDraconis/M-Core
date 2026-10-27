@@ -1,0 +1,79 @@
+{
+  "marcos": [
+    {
+      "N": 100,
+      "pi_menos_Li": -4.081092902897872,
+      "Pi_menos_pi": 3.533333333333335,
+      "psi_menos_theta_sobre_log2": 14.884170519108435,
+      "lam_menos_Li": 0.9103446648978739,
+      "inv_log_N": 0.21714724095162588,
+      "inv_log_2": 1.4426950408889634,
+      "a": -1.4581042344624096,
+      "decomposicao": -1.4581042344624109,
+      "Pi_menos_pi_sobre_meio_pi_raiz": 1.7666666666666675,
+      "a_sobre_raiz_log": -0.671481814860928,
+      "pi_menos_Li_sobre_raiz_log": -1.8794127362672877
+    },
+    {
+      "N": 1000,
+      "pi_menos_Li": -8.564609308974212,
+      "Pi_menos_pi": 8.695634920634916,
+      "psi_menos_theta_sobre_log2": 58.336307585427136,
+      "lam_menos_Li": 0.8741910055330777,
+      "inv_log_N": 0.14476482730108395,
+      "inv_log_2": 1.4426950408889634,
+      "a": -0.7431653938723513,
+      "decomposicao": -0.7431653938723741,
+      "Pi_menos_pi_sobre_meio_pi_raiz": 1.58102453102453,
+      "a_sobre_raiz_log": -0.16233883372547459,
+      "pi_menos_Li_sobre_raiz_log": -1.8708738296983067
+    },
+    {
+      "N": 10000,
+      "pi_menos_Li": -16.09216721820735,
+      "Pi_menos_pi": 18.09799089799094,
+      "psi_menos_theta_sobre_log2": 169.38006443492014,
+      "lam_menos_Li": 0.8560970502994678,
+      "inv_log_N": 0.10857362047581294,
+      "inv_log_2": 1.4426950408889634,
+      "a": 1.1497266294907833,
+      "decomposicao": 1.149726629484121,
+      "Pi_menos_pi_sobre_meio_pi_raiz": 1.4478392718392752,
+      "a_sobre_raiz_log": 0.10589373592335063,
+      "pi_menos_Li_sobre_raiz_log": -1.4821433740244683
+    },
+    {
+      "N": 100000,
+      "pi_menos_Li": -36.76395236962526,
+      "Pi_menos_pi": 41.76922105672202,
+      "psi_menos_theta_sobre_log2": 528.2785060882284,
+      "lam_menos_Li": 0.845239780139309,
+      "inv_log_N": 0.08685889638065036,
+      "inv_log_2": 1.4426950408889634,
+      "a": 4.160028906910559,
+      "decomposicao": 4.16002890695745,
+      "Pi_menos_pi_sobre_meio_pi_raiz": 1.285206801745293,
+      "a_sobre_raiz_log": 0.15145445114023495,
+      "pi_menos_Li_sobre_raiz_log": -1.3384676771446886
+    },
+    {
+      "N": 1000000,
+      "pi_menos_Li": -128.50411078313482,
+      "Pi_menos_pi": 99.11166462107212,
+      "psi_menos_theta_sobre_log2": 1590.4594304318687,
+      "lam_menos_Li": 0.8380015445873141,
+      "inv_log_N": 0.07238241365054197,
+      "inv_log_2": 1.4426950408889634,
+      "a": -30.23044770461001,
+      "decomposicao": -30.23044770665001,
+      "Pi_menos_pi_sobre_meio_pi_raiz": 1.1799007692984778,
+      "a_sobre_raiz_log": -0.41764906943502644,
+      "pi_menos_Li_sobre_raiz_log": -1.7753498992662098
+    }
+  ],
+  "trocas_de_sinal_a": 6762,
+  "trocas_de_sinal_pi_menos_Li_depois_de_8": 0,
+  "ultimo_N_com_pi_maior_ou_igual_Li": 7,
+  "n": 1000000,
+  "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/LittlewoodPiIncond.lean"
+}
