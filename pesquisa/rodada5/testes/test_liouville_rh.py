@@ -27,5 +27,5 @@ def test_polya_e_vies():
     # Pólya vale no intervalo (L(N) ≤ 0 para N ≥ 2), e a média de L(N)/√N fica perto de 1/ζ(½)
     o = _out()
     assert o["max_L_N_de_2_a_n"] <= 0
-    assert abs(o["media_L_sobre_raiz_no_ultimo_decimo"] - o["inv_zeta_meio"]) < 0.2
+    assert abs(o["media_L_sobre_raiz_na_ultima_decada"] - o["inv_zeta_meio"]) < 0.2
     assert o["max_abs_L_sobre_raiz"] < 2

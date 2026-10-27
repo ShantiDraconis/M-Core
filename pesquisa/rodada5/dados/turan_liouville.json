@@ -1,0 +1,11 @@
+{
+  "n": 1000000,
+  "T_n": 0.0008144393763868733,
+  "min_T": 5.4651217328169874e-05,
+  "N_do_min": 925985,
+  "min_raiz_N_T_a_partir_de_100": 0.037334803722320314,
+  "max_raiz_N_T_a_partir_de_100": 1.3463835964627975,
+  "serie_s1": 0.6579736270730798,
+  "pi2_sobre_15": 0.6579736267392905,
+  "aviso": "numérico; nada aqui é certificado — o teorema está em ATK/ZeroClasses/TuranLiouville.lean"
+}

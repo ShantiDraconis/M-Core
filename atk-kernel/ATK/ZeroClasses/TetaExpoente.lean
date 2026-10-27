@@ -28,7 +28,6 @@ open scoped Real
 
 namespace ATK.ZeroClasses.TetaExpoente
 
-open ATK.ZeroClasses.QuasiRH (SemZeros)
 open ATK.ZeroClasses.BDTheta (Teta meio_le_Teta Teta_le_um rh_iff_Teta)
 open ATK.ZeroClasses.Mertens (M)
 open ATK.ZeroClasses.PiLi (Li intervalIntegrable_inv_log)
