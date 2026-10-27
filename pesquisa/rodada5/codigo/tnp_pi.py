@@ -26,7 +26,7 @@ def crivo(n):
     m[0] = m[1] = 0
     for p in range(2, int(n ** 0.5) + 1):
         if m[p]:
-            m[p * p::p] = bytearray(len(m[p * p::p]))
+            m[p * p::p] = bytearray(len(range(p * p, n + 1, p)))
     return [i for i in range(n + 1) if m[i]]
 
 

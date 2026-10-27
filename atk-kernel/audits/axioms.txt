@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de c901c91c0a65a8e435f2de17515a98edecefc145c2f109fb4782ee39cd0e48ec
+# axiomas por teorema — congelamento de 7a36d498bb228e223c78fc0021eb1d34e389bc4a9762ecae442407ef4bcb7361
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8258,3 +8258,40 @@ ATK.ZeroClasses.ExplicitaGauss.integrable_G	propext, Classical.choice, Quot.soun
 ATK.ZeroClasses.ExplicitaGauss.integrable_esq	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaGauss.esq_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaGauss.formula_gauss	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integrable_kg_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integral_kg_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integral_kg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integrable_kg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.cauda_dir	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.kg_neg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.cauda_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.measurable_Fpsi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.phi_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.gw_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.gw_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integrable_gw	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.measurable_gw	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.termo_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.ind_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.soma_ite	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.soma_ite_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.Sn_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.measurable_psi_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integrable_psi_gw	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.A_eq_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.A_sub_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.Fpsi_le_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.um_add_le_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integrable_ind1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integrable_ind2	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integrable_cauda	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integral_cauda_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.cauda_pt	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integrable_kF	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.fora_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.integral_Icc_kg_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.localiza_menos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.localiza_mais	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.re_pw_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.Wg_real	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodBase.formula_psi	propext, Classical.choice, Quot.sound
