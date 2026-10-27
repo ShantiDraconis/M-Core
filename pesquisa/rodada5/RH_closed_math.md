@@ -3907,6 +3907,40 @@ Numérico (`codigo/turan_liouville.py`, `dados/turan_liouville.json`, `testes/te
 * `T(10⁶) = 8,1·10⁻⁴ → 0` (`Σ λ(n)/n = 0`, pelo PNT), e `√N·T(N)` fica em `[0,037; 1,35]` para `N ≥ 100`;
 * `Σ λ(n)/n²` coincide com `π²/15` a `3·10⁻¹⁰`.
 
+## 4dc. Primos em intervalos curtos (rodada 101)
+
+Um arquivo, **8 teoremas** (total 8559), só os axiomas padrão (`ZeroClasses/PrimosCurtos.lean`).
+
+* `existe_primo_of_theta_lt`: se `θ(x) < θ(y)`, há primo em `(x, y]`.
+* **`primo_curto_Teta`**: para todo `θ > Θ`, há primo em `(x, x + x^θ]` para `x` grande, isto é,
+  `p_{n+1} − p_n ≪ p_n^{Θ+ε}`. Para `θ ≥ 1` é Bertrand (Mathlib). Para `θ < 1`, sai da cota
+  `θ(x) = x + O(x^{t+ε})` com `Θ ≤ t < θ` (rodada 60).
+* **`primo_curto_RH`**: sob RH, há primo em `(x, x + C√x log³ x]` para `x` grande. Sai de
+  `θ(x) = x + O(√x log³ x)` (rodada 65).
+* **`primo_curto_tnp`** (sem hipóteses): existe `c > 0` com primo em `(x, x + x e^{−c√log x}]` para `x` grande. Sai do
+  resto `ψ(x) − x = O(x e^{−b√log x})` (rodada 53) e de `ψ − θ ≤ C√x`, com `c = b/2`: os dois restos ficam abaixo de
+  `h/2` para `h = x e^{−c√log x}` (`theta_tnp`, `parte_a`, `combina`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `p_{n+1} − p_n ≪ p_n^{Θ+ε}`; sob RH `≪ √p_n log³ p_n`; sem hipóteses `≪ p_n e^{−c√log p_n}` | CERTIFIED | consequência |
+| `√p log p` sob RH (Cramér 1920); `p^{0,525}` sem hipóteses (Baker–Harman–Pintz 2001, densidade de zeros) | não formalizado | — |
+| `O(log² p)` (conjectura de Cramér) | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+As três formas são clássicas e mais fracas que o estado da arte; aqui só formalizadas.
+
+Numérico (`codigo/primos_curtos.py`, `dados/primos_curtos.json`, `testes/test_primos_curtos.py`, 2 testes), até `10⁶`:
+* as lacunas recordes conferem com OEIS A002386/A005250, até `g = 114` em `p = 492 113`;
+* para `p ≥ 11`, as razões máximas de `g` são:
+
+| escala | `max g/escala` |
+| --- | --- |
+| `√p log³ p` | `0,066` |
+| `√p log p` | `0,43` |
+| `log² p` | `0,68` |
+| `√p` | `1,32` |
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

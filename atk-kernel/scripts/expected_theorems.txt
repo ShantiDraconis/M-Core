@@ -8549,3 +8549,11 @@ ATK.ZeroClasses.TuranLiouville.measurable_fT
 ATK.ZeroClasses.TuranLiouville.intAcima_fT
 ATK.ZeroClasses.TuranLiouville.Ik_fT
 ATK.ZeroClasses.TuranLiouville.rh_of_turan
+ATK.ZeroClasses.PrimosCurtos.existe_primo_of_theta_lt
+ATK.ZeroClasses.PrimosCurtos.primo_curto_Teta
+ATK.ZeroClasses.PrimosCurtos.raiz_log3_le
+ATK.ZeroClasses.PrimosCurtos.primo_curto_RH
+ATK.ZeroClasses.PrimosCurtos.theta_tnp
+ATK.ZeroClasses.PrimosCurtos.combina
+ATK.ZeroClasses.PrimosCurtos.parte_a
+ATK.ZeroClasses.PrimosCurtos.primo_curto_tnp

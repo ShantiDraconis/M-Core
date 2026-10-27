@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 22a58b4462a66ffbc7ddb9e25820e10f1022f287db1a98a195b8d66e0ecb384a
+# axiomas por teorema — congelamento de f33c7504b5d6a94c2e76b26a67191cceb617891f498c432b01793b71dec60faf
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8551,3 +8551,11 @@ ATK.ZeroClasses.TuranLiouville.measurable_fT	propext, Classical.choice, Quot.sou
 ATK.ZeroClasses.TuranLiouville.intAcima_fT	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.TuranLiouville.Ik_fT	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.TuranLiouville.rh_of_turan	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PrimosCurtos.existe_primo_of_theta_lt	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PrimosCurtos.primo_curto_Teta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PrimosCurtos.raiz_log3_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PrimosCurtos.primo_curto_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PrimosCurtos.theta_tnp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PrimosCurtos.combina	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PrimosCurtos.parte_a	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PrimosCurtos.primo_curto_tnp	propext, Classical.choice, Quot.sound
