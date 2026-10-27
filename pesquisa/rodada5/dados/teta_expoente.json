@@ -1,0 +1,76 @@
+{
+  "n": 1000000,
+  "expoente_local_por_decada": {
+    "0": {
+      "psi_cima": null,
+      "psi_baixo": 0.3860966708805503,
+      "theta_cima": null,
+      "theta_baixo": 0.5896162479095143,
+      "pi_cima": null,
+      "pi_baixo": null,
+      "M_cima": null,
+      "M_baixo": 0.43067655807339306
+    },
+    "1": {
+      "psi_cima": 0.1723786689425201,
+      "psi_baixo": 0.4110806052309831,
+      "theta_cima": null,
+      "theta_baixo": 0.6677230158823201,
+      "pi_cima": null,
+      "pi_baixo": 0.31486286816389014,
+      "M_cima": 0.15221034671324338,
+      "M_baixo": 0.42831734103139474
+    },
+    "2": {
+      "psi_cima": 0.3815045206635616,
+      "psi_baixo": 0.43526434955647003,
+      "theta_cima": null,
+      "theta_baixo": 0.6173277460571477,
+      "pi_cima": null,
+      "pi_baixo": 0.34193619281551924,
+      "M_cima": 0.305321278909882,
+      "M_baixo": 0.39284371683394737
+    },
+    "3": {
+      "psi_cima": 0.4249511360634344,
+      "psi_baixo": 0.46524477857275975,
+      "theta_cima": null,
+      "theta_baixo": 0.597325721387685,
+      "pi_cima": null,
+      "pi_baixo": 0.3539720323946566,
+      "M_cima": 0.3928945725779609,
+      "M_baixo": 0.4089886786517294
+    },
+    "4": {
+      "psi_cima": 0.46882604020986546,
+      "psi_baixo": 0.4650109584827487,
+      "theta_cima": null,
+      "theta_baixo": 0.5692081955869659,
+      "pi_cima": null,
+      "pi_baixo": 0.35436847281043,
+      "M_cima": 0.42309742145052914,
+      "M_baixo": 0.4299569917774612
+    },
+    "5": {
+      "psi_cima": 0.469881018404,
+      "psi_baixo": 0.47278428922142196,
+      "theta_cima": null,
+      "theta_baixo": 0.5479178062134252,
+      "pi_cima": null,
+      "pi_baixo": 0.35910059916090514,
+      "M_cima": 0.4345101851967058,
+      "M_baixo": 0.43443807752566727
+    }
+  },
+  "quantos_N_com_E_positivo_a_partir_de_8": {
+    "psi_cima": 532144,
+    "psi_baixo": 467849,
+    "theta_cima": 0,
+    "theta_baixo": 999993,
+    "pi_cima": 0,
+    "pi_baixo": 999993,
+    "M_cima": 472962,
+    "M_baixo": 521671
+  },
+  "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/TetaExpoente.lean"
+}
