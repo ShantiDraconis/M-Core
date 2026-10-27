@@ -7633,3 +7633,14 @@ ATK.ZeroClasses.PNT.norm_logDeriv_c
 ATK.ZeroClasses.PNT.continuous_logDeriv_c
 ATK.ZeroClasses.PNT.erro_explicito
 ATK.ZeroClasses.PNT.chebyshev_suave
+ATK.ZeroClasses.PNT.Ssm_ext
+ATK.ZeroClasses.PNT.mul_kk
+ATK.ZeroClasses.PNT.mul_Ssm_eq
+ATK.ZeroClasses.PNT.psi_eq_range
+ATK.ZeroClasses.PNT.incremento
+ATK.ZeroClasses.PNT.le_exp_mul
+ATK.ZeroClasses.PNT.psi_tnp
+ATK.ZeroClasses.PNT.tendsto_psi_div
+ATK.ZeroClasses.PNT.tendsto_theta_div
+ATK.ZeroClasses.PNT.integral_inv_log_sq_le
+ATK.ZeroClasses.PNT.tendsto_primeCounting

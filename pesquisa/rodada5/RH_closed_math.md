@@ -2304,12 +2304,43 @@ TNP com erro:
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | `Σ_{n ≤ x} Λ(n)(1 − n/x) = x/2 + O(x log x · e^{−a√log x})` | CERTIFIED | ferramenta |
-| `ψ(x) = x + O(x e^{−b√log x})` (tirar a suavização) | BUILD_PENDING (próxima rodada) | — |
+| `ψ(x) = x + O(x e^{−b√log x})` (tirar a suavização) | CERTIFIED na rodada 54 (§4bh) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/chebyshev_suave.py`, `dados/chebyshev_suave.json`, `testes/test_chebyshev_suave.py`, 2 testes).
 Por crivo até `10⁶`, `|Ssm(x) − x/2|/x` vale `2,1·10⁻³`, `1,7·10⁻⁴`, `3,2·10⁻⁶` e `6,1·10⁻⁶` em
 `x = 10³, 10⁴, 10⁵, 10⁶` — a oscilação é a dos zeros, e a constante `a` da prova não é explícita.
+
+## 4bh. O teorema dos números primos com o erro de de la Vallée Poussin (rodada 54)
+
+Um arquivo, **11 teoremas** (total 7646), só os axiomas padrão (`ZeroClasses/TNP.lean`). Com `ψ`, `θ` e `π` da
+Mathlib (`Chebyshev.psi`, `Chebyshev.theta`, `Nat.primeCounting`):
+
+* **`psi_tnp`**: existem `b > 0` e `K` com `|ψ(x) − x| ≤ K x e^{−b√log x}` para `x` grande;
+* **`tendsto_psi_div`**: `ψ(x)/x → 1`; **`tendsto_theta_div`**: `θ(x)/x → 1` (com `ψ − θ = O(√x)` da Mathlib);
+* **`tendsto_primeCounting`**: **`π(x) log x / x → 1`** — o teorema dos números primos (Hadamard, de la Vallée Poussin,
+  1896). Pela fórmula de Abel da Mathlib `π(x) = θ(x)/log x + ∫₂^x θ(t)/(t log²t) dt`, com a integral `O(√x + x/log²x)`
+  (`integral_inv_log_sq_le`).
+
+A prova tira a suavização da rodada 53: `ψ₁(y) = y·Ssm(y) = Σ_{n ≤ y} Λ(n)(y − n)` (`mul_Ssm_eq`), e a monotonia de
+`ψ` dá **`incremento`**: `hψ(y) ≤ ψ₁(y + h) − ψ₁(y) ≤ hψ(y + h)`. Com `ψ₁(y) = y²/2 + O(y²η²)` uniformemente em
+`[x/2, 2x]`, `η = √(2K log x)·e^{−(a/4)√log x}`, e `h = ηx`, vem `x − 2,5ηx ≤ ψ(x) ≤ x + 5,5ηx`; por fim
+`t e^{−(a/4)t} ≤ (8/a) e^{−(a/8)t}` (`le_exp_mul`).
+
+O TNP não está na Mathlib fixada. Já tinha sido formalizado em Isabelle (AFP) e em Lean fora da Mathlib (projeto
+PrimeNumberTheoremAnd, de onde vêm `ψ` e `θ` da Mathlib). Aqui as constantes não são explícitas.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ψ(x) = x + O(x e^{−b√log x})`; `ψ(x)/x → 1`; `θ(x)/x → 1` | CERTIFIED | consequência (incondicional) |
+| `π(x) ~ x/log x` | CERTIFIED | consequência (incondicional) |
+| constantes explícitas; `π(x) = Li(x) + O(x e^{−b√log x})` | BUILD_PENDING | — |
+| `ψ(x) = x + O(x^{1/2+ε})` (equivale a RH) | OPEN_MATH | — |
+
+Numérico (`codigo/tnp.py`, `dados/tnp.json`, `testes/test_tnp.py`, 2 testes). Por crivo até `10⁶`:
+`|ψ(x) − x|/x` vale `3,3·10⁻³`, `1,3·10⁻³`, `5,2·10⁻⁴`, `4,1·10⁻⁴` em `x = 10³, …, 10⁶`; `θ(10⁶)/10⁶ = 0,99848`;
+`π(10⁶) = 78498` e `π(x) log x/x` cai de `1,161` (`10³`) para `1,084` (`10⁶`), a convergência lenta esperada
+(`π(x) = x/log x + x/log²x + …`). O `incremento` confere em três pontos.
 
 ## 5. Formatos
 

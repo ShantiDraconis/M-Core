@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 4fb174e3f8e52cfb26e4b5cb0a51a2af9e46b33197c52a9c513c63892ab188ce
+# axiomas por teorema — congelamento de 7d3ad011c7c5c11f306a0a705b63743a194554d333a8b0842a8a7b00d87785e0
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7635,3 +7635,14 @@ ATK.ZeroClasses.PNT.norm_logDeriv_c	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PNT.continuous_logDeriv_c	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PNT.erro_explicito	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PNT.chebyshev_suave	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.Ssm_ext	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.mul_kk	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.mul_Ssm_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.psi_eq_range	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.incremento	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.le_exp_mul	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.psi_tnp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.tendsto_psi_div	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.tendsto_theta_div	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.integral_inv_log_sq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.tendsto_primeCounting	propext, Classical.choice, Quot.sound
