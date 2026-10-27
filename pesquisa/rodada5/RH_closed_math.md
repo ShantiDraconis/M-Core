@@ -3705,9 +3705,10 @@ sinal infinitas vezes** (`pi_troca_sinal`): `π(x) > Li(x)` para `x` arbitrariam
 Sob RH é a rodada 95. O que esta rodada acrescenta é o caso `¬RH`, em três passos.
 
 1. **Landau para `log ζ`** (`semZeros_of_aPi_le`, `semZeros_of_aPi_ge`). A série `b(n) = (Λ(n) − 1)/log n` tem
-   `Σ b(n) n^{−s}` com derivada `−(ζ′/ζ + ζ)` em `Re s > 1` (`logMul_bP`, `hasDerivAt_LSeries_bP`). Como
-   `−ζ′/ζ − ζ` é holomorfa perto de `s = 1` (os polos se cancelam), ela tem primitiva holomorfa no disco
-   `|s − 2| < 2` (`primitiva`), que cola com a transformada de Mellin das somas parciais `a(N) = Σ_{n ≤ N} b(n)`.
+   `Σ b(n) n^{−s}` com derivada `ζ′/ζ + ζ − 1` em `Re s > 1` (`logMul_bP`, `hasDerivAt_LSeries_bP`), isto é,
+   `Σ b(n) n^{−s} = log ζ(s) + ∫ζ − s` a menos de constante. Como `ζ′/ζ + ζ` é holomorfa perto de `s = 1` (os
+   polos se cancelam), a série tem extensão holomorfa ao disco `|s − 2| < 2` (`primitiva`), que cola com a
+   transformada de Mellin das somas parciais `a(N) = Σ_{n ≤ N} b(n)`.
    O passo de Landau da rodada 87 (`Unilateral.extensao`) dá então: se `a(N) ≤ A(N + 1)^θ + K` para todo `N`
    (ou o mesmo por baixo), `ζ` não se anula em `Re s > θ`.
 2. **De `a(N)` a `π(N) − Li(N)`** (`aPi_eq`, `Pi_sub_pi`, `lam_sub_Li`, `aPi_bounds`). Com `Π(N) = Σ Λ(n)/log n`
@@ -3736,6 +3737,47 @@ Numérico (`codigo/littlewood_pi_incond.py`, `dados/littlewood_pi_incond.json`, 
   enquanto `a(N) = Π(N) − λ(N)` troca de sinal 6762 vezes até `10⁶`. A diferença `Π − π = ½π(√N) + ⅓π(∛N) + …`
   (`99,1` em `10⁶`) é o viés todo, e é `O(√N)` — pequena demais para a escala `x^θ`, `θ > ½`, do caso `¬RH`.
   Sob RH o argumento de Landau só alcança `Ω±(x^{½−ε})`, abaixo de `√x`; por isso aquele caso precisou da rodada 95.
+
+## 4cy. `Θ` por cotas de um lado de `θ(x) − x` e `π(x) − Li(x)` (rodada 97)
+
+Um arquivo, **22 teoremas** (total 8445), só os axiomas padrão (`ZeroClasses/PiUnilateral.lean`).
+
+A rodada 87 leu `Θ` em cotas de um lado de `ψ(x) − x` e de `M(x)`; a rodada 60, em cotas bilaterais de `θ(x) − x` e
+`π(x) − Li(x)`. Esta rodada fecha os dois casos que faltavam. Para `½ ≤ θ < 1`:
+
+* **`Teta_le_iff_theta_le`**: `Θ ≤ θ` ⟺ para todo `ε > 0` existem `A, K` com `θ(x) − x ≤ A x^{θ+ε} + K` em `x ≥ 2`;
+  e `Teta_le_iff_theta_ge`, com `θ(x) − x ≥ −(A x^{θ+ε}) − K`;
+* **`Teta_le_iff_pi_le`**, **`Teta_le_iff_pi_ge`**: o mesmo para `π(x) − Li(x)`;
+* **`rh_iff_pi_le`**: **RH ⟺ `π(x) ≤ Li(x) + O(x^{½+ε})`** para todo `ε > 0` — von Koch de um lado só; e
+  `rh_iff_pi_ge`, `rh_iff_theta_le`, `rh_iff_theta_ge`;
+* `nao_cimaTheta`, `nao_baixoTheta`, `nao_cimaPi`, `nao_baixoPi`: para `½ ≤ θ < Θ` nenhuma das quatro cotas vale.
+
+As provas são curtas, porque as peças já estão no kernel:
+
+* para `θ`: `ψ − θ ≤ C√x` (Mathlib) leva a cota de `θ` para `ψ`, e então vale Landau para `ψ` (rodada 87);
+* para `π`: `a(N) = π(N) − Li(N) + O(√N)` leva a cota para `a(N) = Σ (Λ(n) − 1)/log n`, e então vale Landau para
+  `log ζ` (rodada 96);
+* as idas valem pela forma bilateral (rodada 60).
+
+Com isto `ψ`, `θ`, `π − Li` e `M` medem o mesmo `Θ`, por cima e por baixo.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `Θ ≤ θ` ⟺ cota de um lado de `θ(x) − x` (ou de `π(x) − Li(x)`) com expoente `θ + ε`, `½ ≤ θ < 1` | CERTIFIED | reformulação |
+| RH ⟺ `π(x) ≤ Li(x) + O(x^{½+ε})` ⟺ `π(x) ≥ Li(x) − O(x^{½+ε})` (e o mesmo para `θ`) | CERTIFIED | reformulação |
+| RH | OPEN_MATH | — |
+
+Os resultados são clássicos (Landau 1905; Ingham, *The Distribution of Prime Numbers*, cap. V). O que é novo aqui é só
+a formalização.
+
+Numérico (`codigo/pi_unilateral.py`, `dados/pi_unilateral.json`, `testes/test_pi_unilateral.py`, 2 testes), em
+`2 ≤ N ≤ 10⁶`:
+* o lado de cima parece de graça: `θ(N) < N` em todo o intervalo, e `π(N) < Li(N)` de `N = 8` em diante;
+  `max (θ(N) − N)/√N = −0,43` e `max (π(N) − Li(N))/(√N/log N) = −0,72`, ambos em `N = 355111`;
+* o lado de baixo fica na escala de RH: `min (θ(N) − N)/√N = −2,03` e `min (π(N) − Li(N))/(√N/log N) = −2,51`, em
+  `N = 1422`;
+* mesmo assim, o lado de cima **equivale** a RH: por Littlewood (rodada 96) ele é violado na escala
+  `√x log log log x/log x`, só que muito além de `10⁶`.
 
 ## 5. Formatos
 

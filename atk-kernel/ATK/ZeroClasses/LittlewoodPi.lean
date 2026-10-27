@@ -8,8 +8,8 @@ import Mathlib.MeasureTheory.Function.JacobianOneDim
 **Sob RH, `π(x) − Li(x) = Ω±(√x log log log x/log x)`** (`pi_littlewood_RH`), com `Li(x) = ∫₂ˣ dt/log t`, e
 portanto `π(x) − Li(x)` troca de sinal infinitas vezes (`pi_troca_sinal_RH`).
 
-* §1 `Li_eq`: `Li(x) = x/log x − 2/log 2 + ∫₂ˣ dt/log² t`; **`pi_sub_Li`**: com a fórmula de Abel da Mathlib
-  (`Chebyshev.primeCounting_eq_theta_div_log_add_integral`),
+* §1 `Li` é o de `PiLi` (rodada 60). `Li_eq`: `Li(x) = x/log x − 2/log 2 + ∫₂ˣ dt/log² t`; **`pi_sub_Li`**: com a fórmula
+  de Abel da Mathlib (`Chebyshev.primeCounting_eq_theta_div_log_add_integral`; as provas são as de `PiLi` e `PiLiRH`),
   `π(x) − Li(x) = (θ(x) − x)/log x + 2/log 2 + ∫₂ˣ (θ(t) − t) dt/(t log² t)`.
 * §2 `integral_exp_subst`, `E_subst`: a troca `t = e^w` sem hipóteses sobre o integrando
   (`integral_Icc_deriv_smul_of_deriv_nonneg`).
@@ -32,10 +32,9 @@ open ATK.ZeroClasses.LittlewoodBase (Fpsi)
 
 /-! ## 1. `Li` e a fórmula `π − Li = (θ − x)/log x + 2/log 2 + ∫ (θ(t) − t)/(t log² t)` -/
 
-/-- O logaritmo integral `Li(x) = ∫₂ˣ dt/log t`. -/
-noncomputable def Li (x : ℝ) : ℝ := ∫ t in (2 : ℝ)..x, 1 / Real.log t
+open ATK.ZeroClasses.PiLi (Li Li_partes log_pos_of_ge)
 
-theorem log_pos_of_two_le {t : ℝ} (ht : 2 ≤ t) : 0 < Real.log t := Real.log_pos (by linarith)
+theorem log_pos_of_two_le {t : ℝ} (ht : 2 ≤ t) : 0 < Real.log t := log_pos_of_ge ht
 
 theorem continuousOn_inv_log_pow (n : ℕ) {x : ℝ} (hx : 2 ≤ x) :
     ContinuousOn (fun t => 1 / Real.log t ^ n) (Set.uIcc 2 x) := by
@@ -45,46 +44,17 @@ theorem continuousOn_inv_log_pow (n : ℕ) {x : ℝ} (hx : 2 ≤ x) :
   have hl : Real.log t ^ n ≠ 0 := pow_ne_zero _ (log_pos_of_two_le ht.1).ne'
   exact (continuousAt_const.div ((Real.continuousAt_log h0).pow n) hl).continuousWithinAt
 
-/-- **Integração por partes de `Li`**: `Li(x) = x/log x − 2/log 2 + ∫₂ˣ dt/log² t`. -/
+/-- **Integração por partes de `Li`**: `Li(x) = x/log x − 2/log 2 + ∫₂ˣ dt/log² t` (é `PiLi.Li_partes`). -/
 theorem Li_eq {x : ℝ} (hx : 2 ≤ x) :
-    Li x = x / Real.log x - 2 / Real.log 2 + ∫ t in (2 : ℝ)..x, 1 / Real.log t ^ 2 := by
-  have hd : ∀ t ∈ Set.uIcc (2 : ℝ) x, HasDerivAt (fun t => t / Real.log t)
-      (1 / Real.log t - 1 / Real.log t ^ 2) t := by
-    intro t ht
-    rw [Set.uIcc_of_le hx] at ht
-    have h0 : t ≠ 0 := by linarith [ht.1]
-    have hl := (log_pos_of_two_le ht.1).ne'
-    have h := (hasDerivAt_id' t).div (Real.hasDerivAt_log h0) hl
-    convert h using 1
-    field_simp
-  have hi1 := (continuousOn_inv_log_pow 1 hx).intervalIntegrable (μ := volume)
-  have hi2 := (continuousOn_inv_log_pow 2 hx).intervalIntegrable (μ := volume)
-  simp only [pow_one] at hi1
-  have hFTC := intervalIntegral.integral_eq_sub_of_hasDerivAt hd (hi1.sub hi2)
-  rw [intervalIntegral.integral_sub hi1 hi2] at hFTC
-  unfold Li
-  linarith
+    Li x = x / Real.log x - 2 / Real.log 2 + ∫ t in (2 : ℝ)..x, 1 / Real.log t ^ 2 :=
+  Li_partes hx
 
-/-- **`π(x) − Li(x) = (θ(x) − x)/log x + 2/log 2 + ∫₂ˣ (θ(t) − t)/(t log² t) dt`** para `x ≥ 2`. -/
+/-- **`π(x) − Li(x) = (θ(x) − x)/log x + 2/log 2 + ∫₂ˣ (θ(t) − t)/(t log² t) dt`** para `x ≥ 2` (é
+`PiLiRH.pi_sub_Li`, com os termos noutra ordem). -/
 theorem pi_sub_Li {x : ℝ} (hx : 2 ≤ x) :
     (Nat.primeCounting ⌊x⌋₊ : ℝ) - Li x = (Chebyshev.theta x - x) / Real.log x + 2 / Real.log 2 +
       ∫ t in (2 : ℝ)..x, (Chebyshev.theta t - t) / (t * Real.log t ^ 2) := by
-  have hπ := Chebyshev.primeCounting_eq_theta_div_log_add_integral hx
-  have hθ : IntervalIntegrable (fun t => Chebyshev.theta t / (t * Real.log t ^ 2)) volume 2 x := by
-    exact (intervalIntegrable_iff_integrableOn_Icc_of_le (μ := volume) hx).mpr
-      (Chebyshev.integrableOn_theta_div_id_mul_log_sq x)
-  have hi2 := (continuousOn_inv_log_pow 2 hx).intervalIntegrable (μ := volume)
-  have e : ∫ t in (2 : ℝ)..x, (Chebyshev.theta t - t) / (t * Real.log t ^ 2) =
-      (∫ t in (2 : ℝ)..x, Chebyshev.theta t / (t * Real.log t ^ 2)) - ∫ t in (2 : ℝ)..x, 1 / Real.log t ^ 2 := by
-    rw [← intervalIntegral.integral_sub hθ hi2]
-    refine intervalIntegral.integral_congr fun t ht => ?_
-    rw [Set.uIcc_of_le hx] at ht
-    have h0 : t ≠ 0 := by linarith [ht.1]
-    have hl := (log_pos_of_two_le ht.1).ne'
-    field_simp
-  rw [hπ, Li_eq hx, e]
-  have hlx := (log_pos_of_two_le hx).ne'
-  field_simp
+  rw [ATK.ZeroClasses.PiLiRH.pi_sub_Li hx]
   ring
 
 /-! ## 2. A troca `t = e^w` -/

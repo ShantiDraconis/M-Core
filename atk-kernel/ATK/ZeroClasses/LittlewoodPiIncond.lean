@@ -6,8 +6,8 @@ import ATK.ZeroClasses.LittlewoodPi
 A rodada 95 (`LittlewoodPi`) deu `π(x) − Li(x) = Ω±(√x log log log x/log x)` **sob RH**. Aqui sai o caso
 `¬RH`, e com ele o teorema de Littlewood (1914) para `π` sem hipóteses.
 
-* §1–2. A série `b(n) = (Λ(n) − 1)/log n` tem `Σ b(n) n^{−s} = log ζ(s) − ∫ζ` a menos de constante: sua
-  derivada é `−(ζ′/ζ + ζ)` (`hasDerivAt_LSeries_bP`, via `logMul_bP`). Uma primitiva holomorfa no disco
+* §1–2. A série `b(n) = (Λ(n) − 1)/log n` tem `Σ b(n) n^{−s} = log ζ(s) + ∫ζ − s` a menos de constante: sua
+  derivada é `ζ′/ζ + ζ − 1` (`hasDerivAt_LSeries_bP`, via `logMul_bP`). Uma primitiva holomorfa no disco
   `|s − 2| < 2` (`primitiva`) cola com a transformada de Mellin `GA a(s)` das somas parciais
   `a(N) = Σ_{n ≤ N} b(n)`; o passo de Landau da rodada 87 (`Unilateral.extensao`) dá:
   **`a(N) ≤ A(N + 1)^θ + K` ⟹ `SemZeros θ`** (`semZeros_of_aPi_le`), e o mesmo por baixo
@@ -215,7 +215,7 @@ theorem semZeros_of_aPi_ge {θ A K : ℝ} (hθ : 0 ≤ θ) (hθ1 : θ < 1)
 
 /-! ## 3. De `a(N)` a `π(N) − Li(N)` -/
 
-open ATK.ZeroClasses.LittlewoodPi (Li)
+open ATK.ZeroClasses.PiLi (Li)
 
 /-- O indicador de primo. -/
 noncomputable def ip (n : ℕ) : ℝ := if n.Prime then 1 else 0
