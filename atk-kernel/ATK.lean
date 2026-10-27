@@ -363,3 +363,4 @@ import ATK.ZeroClasses.LogDerivZeta
 import ATK.ZeroClasses.ChebyshevSuave
 import ATK.ZeroClasses.TNP
 import ATK.ZeroClasses.VonKoch
+import ATK.ZeroClasses.VonKochRH

@@ -2369,7 +2369,7 @@ A prova para `ψ`:
 | `\|ψ(N) − N\| ≤ C(N + 1)^θ` ⟹ `ζ ≠ 0` em `Re s > θ` | CERTIFIED | reformulação |
 | `\|M(N)\| ≤ C(N + 1)^θ` ⟹ `ζ ≠ 0` em `Re s > θ` | CERTIFIED | reformulação |
 | `ψ(x) = x + O(x^{1/2 + ε})` ⟹ RH | CERTIFIED | reformulação |
-| RH ⟹ `ψ(x) = x + O(x^{1/2 + ε})` (Perron truncado para `Λ`, `ζ′/ζ ≪ \|t\|^ε` sob RH) | BUILD_PENDING | — |
+| RH ⟹ `ψ(x) = x + O(x^{1/2 + ε})` | CERTIFIED na rodada 56 (§4bj) | reformulação |
 | `ψ(x) = x + O(x^{1/2 + ε})`; `ψ(x) = x + O(x^θ)` para algum `θ < 1` | OPEN_MATH | — |
 | RH | OPEN_MATH | — |
 
@@ -2378,6 +2378,44 @@ Numérico (`codigo/von_koch.py`, `dados/von_koch.json`, `testes/test_von_koch.py
 `1,5·10⁻⁸` em `s = 1,5`), e a identidade de `ζ₁` confere com resíduo `≤ 10⁻⁸` em `s = 1,5; 2; 3`. Nos dados,
 `max |ψ(N) − N|/√N ≈ 0,7–0,78` por década até `10⁶`, e `|ψ(N) − N|/(√N log²N)` fica abaixo de `0,029`, dentro da cota
 de Schoenfeld sob RH (`1/(8π) ≈ 0,0398`) — dado finito, sem valor de prova.
+
+## 4bj. O critério de von Koch: `RH ⟺ ψ(x) = x + O(x^{1/2 + ε})` (rodada 56)
+
+Um arquivo, **22 teoremas** (total 7681), só os axiomas padrão (`ZeroClasses/VonKochRH.lean`). Com a rodada 55:
+
+* **`rh_iff_psi : RiemannHypothesis ↔ VonKochFraco`** (von Koch 1901; `VonKochFraco := ∀ ε > 0, ∃ C, ∀ N,
+  |ψ(N) − N| ≤ C(N + 1)^{1/2 + ε}`);
+* **`psi_of_RH`** (⇒), e **`vonKoch_iff_mertens`**: as hipóteses de von Koch e de Littlewood são equivalentes.
+
+A prova de `psi_of_RH` segue `mertens_of_RH` (§4be) com `Λ − 1` no lugar de `μ`:
+
+* **Littlewood geral** (`bordo_g`, `desloca`, `horiz_g`, `vert_g`, **`cota_gen`**): a estimativa da rodada 46 (§4az)
+  para quaisquer coeficientes `|f(n)| ≤ 1` cuja série `L` se estende a uma `Φ` holomorfa em `Re u > ½`, com
+  `|Φ(u)| ≤ C(1 + |Im u|)^{ε/16}` em `Re u ≥ ½ + ε/2`: `|Σ_{n ≤ N} f(n)n^{−w} − Φ(w)| ≤ K(1 + |Im w|)^{ε/16}(N + ½)^{−ε/4}`
+  em `Re w = ½ + ε`;
+* **`H = −ζ′/ζ − ζ`** (`Hf := −ζ₁′/ζ₁ − ζ₀`, `Hf_eq`, `differentiableAt_Hf`): holomorfa em `Re s > ½` sob RH (o polo
+  em `s = 1` cancela); **`norm_H_le`**: `|H(s)| ≤ C(1 + |Im s|)^η` em `Re s ≥ ½ + δ`, por Cauchy no círculo de raio
+  `δ/2` aplicado ao ramo de `log ζ` da rodada 45 (`ATK.RHLogZeta.norm_L_le`), mais `|ζ| ≤ e^{|log ζ|}`, Young,
+  `|ζ′/ζ| ≤ A` em `Re s ≥ 2` (`norm_logDeriv_le_dois`) e compacidade;
+* **normalização** (`norm_cL_le`, `fco`, `norm_fco_le`, `term_fco`, `LSeries_fco`): `|Λ(n) − 1| ≤ (1/δ + 1)n^δ`, e
+  `f(n) = (Λ(n) − 1)/((1/δ + 1)n^δ)` tem série `H(u + δ)/(1/δ + 1)`;
+* **`somas_limitadas`**: sob RH, `Σ_{n ≤ N} (Λ(n) − 1)n^{−σ}` é limitada para `σ = ½ + ε + δ`; **`abel_cota`**,
+  **`E_eq_sum`**: por partes, `|ψ(N) − N| ≤ 2B N^σ`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `RH ⟺ ψ(x) = x + O(x^{1/2 + ε})` para todo `ε > 0` | CERTIFIED | reformulação |
+| `ψ(x) = x + O(x^{1/2+ε}) ⟺ M(x) = O(x^{1/2+ε})` | CERTIFIED | reformulação |
+| Littlewood para coeficientes limitados com continuação de crescimento polinomial lento | CERTIFIED | ferramenta |
+| `\|ψ(x) − x\| ≤ √x log²x/(8π)` sob RH (Schoenfeld, constante explícita) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/von_koch_rh.py`, `dados/von_koch_rh.json`, `testes/test_von_koch_rh.py`, 2 testes). Com `ψ` por
+crivo até `10⁶`, `S_N(0,8) = Σ_{n ≤ N} (Λ(n) − 1)n^{−0,8}` vai de `−1,298` (`N = 10²`) a `−1,186` (`N = 10⁶`), contra
+`H(0,8) = −1,1794` (diferença `0,006`, oscilando); `|H(σ + it)|/(1 + t)^{0,1}` fica abaixo de `1,7` em
+`σ = 0,6; 0,75; 1; 1,5` e `t = 10, 100, 1000`; `|Λ(n) − 1| ≤ (1/δ + 1)n^δ` com folga (razão máxima `0,31`);
+`max_{N ≤ 10⁶} |ψ(N) − N|/(N + 1)^{1/2 + ε}` vale `0,71`, `0,68`, `0,59` para `ε = 0,05; 0,1; 0,25` — dado finito,
+sem valor de prova.
 
 ## 5. Formatos
 
