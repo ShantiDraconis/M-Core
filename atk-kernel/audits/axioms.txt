@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 13cf274d364c2f867169129a6a2e92721be667cd2b1920d7a60562c754670eca
+# axiomas por teorema — congelamento de 3756d678e1f22c0762330fcfc585058d1dd15a46507aafa09e2c77e6bef81f39
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8536,3 +8536,18 @@ ATK.ZeroClasses.LiouvilleRH.liouville_nao_O	propext, Classical.choice, Quot.soun
 ATK.ZeroClasses.LiouvilleRH.liouville_omega_abs	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LiouvilleRH.Teta_eq_liouville	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LiouvilleRH.rh_iff_expoente_liouville	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.abs_termo_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.abs_T_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.T_succ_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.term_cT	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.LSeries_cT	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.LSeriesSummable_cT	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.GA_T_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.zeta₁_ne_zero_faixa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.mem_disco	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.differentiableOn_Phi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.Phi_mul	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.measurable_fT	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.intAcima_fT	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.Ik_fT	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TuranLiouville.rh_of_turan	propext, Classical.choice, Quot.sound

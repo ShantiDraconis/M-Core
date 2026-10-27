@@ -3876,6 +3876,37 @@ Numérico (`codigo/liouville_rh.py`, `dados/liouville_rh.json`, `testes/test_lio
   em `s = ½`, o mesmo polo usado em `liouville_nao_O`;
 * `max |L(N)|/√N = 1,33`.
 
+## 4db. A conjectura de Turán implica RH (rodada 100)
+
+Um arquivo, **15 teoremas** (total 8551), só os axiomas padrão (`ZeroClasses/TuranLiouville.lean`).
+
+**`rh_of_turan`** (Turán 1948). Se `T(N) = Σ_{n ≤ N} λ(n)/n ≥ 0` para todo `N`, vale RH. A conjectura de Turán é falsa
+(Haselgrove 1958; o menor contraexemplo é `N = 72 185 376 951 205`, Borwein–Ferguson–Mossinghoff 2008), mas a
+implicação é teorema. Junto com `rh_of_polya` (rodada 99), são as duas implicações clássicas "conjectura de sinal
+⟹ RH" para `λ`.
+
+A prova é o teorema de Landau (rodada 87) aplicado a `f(x) = T(⌊x⌋) ≥ 0`. Desta vez Landau vai **abaixo de
+`Re s = 0`**:
+
+1. `Σ λ(n)n^{−1−s} = L(λ, s + 1) = ζ(2s + 2)F(s + 1)` (rodada 99), e `∫_{x>1} x^{−s−1}T(⌊x⌋) dx = GA T(s)/s`. Em
+   `Re s > 1`, isso é `Φ(s) = ζ(2s + 2)/ζ₁(s + 1)` (`GA_T_eq`, `Ik_fT`, `Phi_mul`). O polo de `1/s` em `0` é
+   removível, porque `F(1) = 0`.
+2. `Φ` é holomorfa no disco `|s − 2| < 5/2` (`differentiableOn_Phi`). Lá `Re(2s + 2) > 1`, e `ζ₁(s + 1) ≠ 0`
+   porque `Re(s + 1) > ½` e `|Im s| < 5/2`: não há zeros com `|γ| ≤ 13` (`Faixa.faixa_sem_zeros`).
+3. Landau dá a convergência da integral em `σ > −½`. Então `G(s) = s·∫…` é holomorfa em `Re s > −½`, e pelo
+   princípio da identidade vale `ζ(2s + 2)F(s + 1)` em `Re s > 0`. Logo `w ↦ G(w − 1)` estende `ζ(2w)/ζ(w)` a
+   `Re w > ½`, e `semZeros_of_ext_liouville` dá `ζ ≠ 0` lá.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Turán (`Σ_{n ≤ N} λ(n)/n ≥ 0` para todo `N`) ⟹ RH | CERTIFIED | reformulação (Turán 1948) |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/turan_liouville.py`, `dados/turan_liouville.json`, `testes/test_turan_liouville.py`, 2 testes), até `10⁶`:
+* `T(N) > 0` em todo o intervalo. O mínimo é `5,5·10⁻⁵`, em `N = 925 985`, onde `√N·T(N) = 0,053`;
+* `T(10⁶) = 8,1·10⁻⁴ → 0` (`Σ λ(n)/n = 0`, pelo PNT), e `√N·T(N)` fica em `[0,037; 1,35]` para `N ≥ 100`;
+* `Σ λ(n)/n²` coincide com `π²/15` a `3·10⁻¹⁰`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
