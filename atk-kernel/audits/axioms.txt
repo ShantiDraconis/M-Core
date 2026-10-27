@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 6ca74fe6388a4fa937640bcc37d900f3fd25b463c80874ba5a5c70244785e9d5
+# axiomas por teorema — congelamento de 1c6cf7e45b17a0fb8a8147975e9d5451b0e12ff2d028c681e4c14e40901c4523
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7992,3 +7992,13 @@ ATK.ZeroClasses.BDEspectral.norm_term_mu_le	propext, Classical.choice, Quot.soun
 ATK.ZeroClasses.BDEspectral.LSeries_aN_int	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDEspectral.soma_cN	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDEspectral.DNσ_le_molif	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.um_add_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.WR_cont'	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.norm_WR_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.norm_WR_hor	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.bordo_Gs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.cont_Gs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.norm_Gs_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.integrable_Gs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.desloc	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDDesloc.molif_cota	propext, Classical.choice, Quot.sound

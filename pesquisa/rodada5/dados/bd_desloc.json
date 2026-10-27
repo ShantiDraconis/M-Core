@@ -1,0 +1,39 @@
+{
+ "s": [
+  0.8,
+  3.0
+ ],
+ "delta": 0.2,
+ "N": 10,
+ "A_menos_inv_zeta": [
+  -0.459469011175615,
+  -0.030499771562840394
+ ],
+ "integral_deslocada": [
+  -0.4594690491107496,
+  -0.03049974514940754
+ ],
+ "cota": [
+  {
+   "N": 10,
+   "erro": 0.4604801931637048,
+   "erro_vezes_N_delta": 0.8188624462337621
+  },
+  {
+   "N": 40,
+   "erro": 0.12132814808362302,
+   "erro_vezes_N_delta": 0.30512413872373834
+  },
+  {
+   "N": 160,
+   "erro": 0.03062237312767658,
+   "erro_vezes_N_delta": 0.10891027123895294
+  },
+  {
+   "N": 640,
+   "erro": 0.007709132569800335,
+   "erro_vezes_N_delta": 0.03877488402849783
+  }
+ ],
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/BDDesloc.lean"
+}

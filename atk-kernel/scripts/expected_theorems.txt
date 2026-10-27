@@ -7990,3 +7990,13 @@ ATK.ZeroClasses.BDEspectral.norm_term_mu_le
 ATK.ZeroClasses.BDEspectral.LSeries_aN_int
 ATK.ZeroClasses.BDEspectral.soma_cN
 ATK.ZeroClasses.BDEspectral.DNσ_le_molif
+ATK.ZeroClasses.BDDesloc.um_add_le
+ATK.ZeroClasses.BDDesloc.WR_cont'
+ATK.ZeroClasses.BDDesloc.norm_WR_esq
+ATK.ZeroClasses.BDDesloc.norm_WR_hor
+ATK.ZeroClasses.BDDesloc.bordo_Gs
+ATK.ZeroClasses.BDDesloc.cont_Gs
+ATK.ZeroClasses.BDDesloc.norm_Gs_le
+ATK.ZeroClasses.BDDesloc.integrable_Gs
+ATK.ZeroClasses.BDDesloc.desloc
+ATK.ZeroClasses.BDDesloc.molif_cota
