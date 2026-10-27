@@ -3457,6 +3457,51 @@ Numérico (`codigo/explicita_gauss.py`, `dados/explicita_gauss.json`, `testes/te
 * a reta esquerda contribui `4,7·10⁻⁵`, `5,2·10⁻⁷` e `5,7·10⁻⁹` (`O(e^{−3u})`);
 * a integral gaussiana na reta confere a `5·10⁻¹⁴`.
 
+## 4cr. Littlewood, parte 1: o lado `ψ` da fórmula gaussiana e a localização (rodada 90)
+
+Um arquivo, **37 teoremas** (total 8295), só os axiomas padrão (`ZeroClasses/LittlewoodBase.lean`). É o primeiro
+passo do teorema de Littlewood `ψ(x) − x = Ω±(√x log log log x)` a partir da fórmula gaussiana da rodada 89. O lado
+aritmético `A_τ(u)` é reescrito em termos de
+
+  `F(y) = (ψ(e^y) − e^y) e^{−y/2}`,
+
+e uma média gaussiana grande de `F` é convertida num valor grande de `F` numa janela de largura 2.
+
+* **`integral_kg_exp`**: `∫ k_τ(v) e^{lv} dv = e^{τl²}` (a função geradora de momentos do núcleo do calor). Dela
+  saem as caudas `cauda_dir`/`cauda_esq`: `∫_{v ≥ 1} k_τ(v) e^{v} dv ≤ e^{1 − 1/(4τ)}` para `τ ≤ ½`.
+* **`A_eq_psi`**: `A_τ(u) = ∫ ψ(e^{u − v}) e^{−(u − v)/2} k_τ(v) dv` (a soma em `n` vira integral de Stieltjes via
+  a escada `ψ`; `phi_eq`, `Sn_eq`, `integrable_psi_gw`).
+* **`A_sub_eq`**: `A_τ(u) − e^{u/2 + τ/4} = ∫ k_τ(v) F(u − v) dv`. O termo `W(1) = e^{u/2 + τ/4}` da fórmula é
+  exatamente a contribuição da parte `x` de `ψ(x)`.
+* **`Fpsi_le_RH`**: sob RH, `|F(y)| ≤ B(1 + y²)` (von Koch, rodada 63).
+* **`localiza_menos`**/**`localiza_mais`**: se `|F(y)| ≤ B(1 + y²)` e
+  `∫ k_τ(v) F(u − v) dv < −L − 8B(1 + 2u²)e^{1 − 1/(4τ)}`, então `F(y) ≤ −L` para algum `y ∈ [u − 1, u + 1]`
+  (simetricamente por cima). A massa fora de `[−1, 1]` é controlada pelas caudas (`fora_le`).
+* **`re_pw_RH`**: em `Re ρ = ½`, `Re(W(ρ)/ρ) = e^{−τγ²}(cos(γu)/2 + γ sen(γu))/|ρ|²`.
+* **`formula_psi`** (sem hipóteses): ao longo de alturas boas `T_k ∈ [k + 6, k + 7]`,
+
+  `Σ_{|γ| ≤ T_k} m_ρ Re(W(ρ)/ρ) → −∫ k_τ(v) F(u − v) dv + e^{−5u/2 + 25τ/4}/2 − e^{−u/2 + τ/4} log 2π + Re(E)`,
+
+  com `E = (1/2π) ∫ F_W(−5/2 + iy) dy = O(e^{−3u})` (`ExplicitaGauss.esq_le`).
+
+O que falta para Littlewood (rodadas seguintes): sob RH, com `τ = A/T²`, o termo `Σ m_ρ e^{−τγ²} γ sen(γu)/|ρ|²`
+tem de ser forçado a `≳ e^{−A} log T` (com sinal escolhido) por aproximação simultânea de Dirichlet com cota
+explícita em `u`. As peças são o termo principal via Riemann–von Mangoldt, a cauda gaussiana em janelas unitárias,
+`Σ m/|ρ|² < ∞` e o erro de alinhamento. Depois vem a montagem com o caso `¬RH` (rodada 87,
+`Unilateral.psi_omega_mais`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `A_τ(u) − e^{u/2+τ/4} = ∫ k_τ F(u − ·)`, `formula_psi`, localização sob `|F| ≪ 1 + y²` | CERTIFIED | ferramenta |
+| `ψ(x) − x = Ω±(√x log log log x)` (Littlewood 1914) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/littlewood_base.py`, `dados/littlewood_base.json`, `testes/test_littlewood_base.py`, 2 testes):
+* com `τ = 0,02`, `∫ k_τ(v)e^{lv} dv` confere com `e^{τl²}` a `4·10⁻¹⁵` em `l = −½; 1; 3`;
+* `A_τ(u) − e^{u/2+τ/4}` contra `∫ k_τ F(u − ·)`: `−0,409231` vs `−0,409226` (`u = 3`), `−0,250026` vs `−0,250029`
+  (`u = 4`), `−0,154202` vs `−0,154204` (`u = 5`); a diferença é erro de quadratura;
+* `re_pw_RH` confere exatamente nos três primeiros zeros; `max_{0 < y < 14} |F(y)|/(1 + y²) = 1,067`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

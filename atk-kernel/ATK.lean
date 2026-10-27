@@ -397,3 +397,4 @@ import ATK.ZeroClasses.Convexidade
 import ATK.ZeroClasses.Unilateral
 import ATK.ZeroClasses.OmegaRaiz
 import ATK.ZeroClasses.ExplicitaGauss
+import ATK.ZeroClasses.LittlewoodBase
