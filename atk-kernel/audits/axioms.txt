@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 883465daa9c6988821739f01c0187d134aaaef6c7a03e89e02a9464055663307
+# axiomas por teorema — congelamento de 38ee8ee0a922d90e70bb21f403c3cba353d29ca304263a89a59a23d71cd336e4
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7793,3 +7793,32 @@ ATK.ZeroClasses.Abscissa.semZeros_iff_cL	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Abscissa.rh_iff_mu	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Abscissa.rh_iff_cL	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Abscissa.mu_tendsto_inv_zeta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.wz_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.wz_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.summable_wz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.wz_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.caixa_le'	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.card_le_ordens	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.card_caixa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.l0_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.one_le_a0	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.Lc_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.Lc_caixa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.fz_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.fz_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.summable_fz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.bloco_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.soma_wz_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.soma_wz_O	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.hasDerivAt_RS	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.norm_digamma_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.logDeriv_xi_sub	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.summable_dif	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.perto_finito	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.mem_perto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.card_perto_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.card_perto_O	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.norm_E'_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.zeta_local	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.zeta_local_O	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.SomaZeros.logDeriv_RH	propext, Classical.choice, Quot.sound
