@@ -18,7 +18,7 @@ A prova:
 1. **o quociente** (`existe_quociente`): `ξ` e `P` (o produto canônico, rodadas 31–32) são inteiras com a mesma
    ordem em todo ponto, logo `ξ = P · F` com `F` inteira e sem zeros;
 2. **o logaritmo** (`existe_log`): `F = e^g` com `g` inteira (primitiva de `F′/F`, Morera da Mathlib);
-3. **a média de `log⁺|F|`** (`media_posLog_F_le`): em `|z| = R`,
+3. **a média de `log⁺|F|`** (`media_posLog_exp_le`): em `|z| = R`,
    `média log⁺|F| ≤ média log⁺|ξ| + média log⁺|P| − média log|P| ≤ K R^{3/2}`
    (`log⁺(ab) ≤ log⁺a + log⁺b` fora dos zeros de `P`, que são finitos no círculo; Jensen da Mathlib dá
    `média log|P| ≥ log|P(0)| = 0`; as cotas de `ξ` (rodada 30) e de `P` (rodada 32));

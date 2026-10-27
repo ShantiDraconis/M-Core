@@ -1814,6 +1814,40 @@ usada). `log M(r)` de `e^{z²} + z³` é convexa em `log r`. O expoente vale `a(
 janelas `t ∈ [T, 2T]` até `T = 640`, `max|ζ|^{±1}` não passa de `13` em `σ = 0,6`, e de `5,6` e `3,3` em `σ = 0,75`
 e `σ = 1`.
 
+## 4as. Stirling complexo: um logaritmo holomorfo de `Γ` (rodada 39)
+
+Um arquivo, **23 teoremas** (total 7407), só os axiomas padrão (`ZeroClasses/StirlingComplexo.lean`). A Mathlib tem
+Stirling para `n!` e a sequência de Gauss `GammaSeq z n → Γ(z)`, mas não tem um logaritmo de `Γ` complexa nem a
+sua assintótica.
+
+* `ell z = (z − ½) log z − z + ½ log 2π − Σ_k e_k(z)`, com o termo de Euler–Maclaurin explícito
+  `e_k(z) = 1 − (z + k + ½)(log(z + k + 1) − log(z + k))`. A identidade `soma_log`
+  (`Σ_{k ≤ n} log(z + k) = [F]₀ⁿ + (log z + log(z + n))/2 + Σ_{k<n} e_k`) é exata e não usa integrais;
+* `norm_ek_le`: `|e_k(z)| ≤ 2/|z + k|²`, pelo resto de Taylor de `log(1 + x)` da Mathlib. Daí
+  `tsum_norm_ek_le`: `Σ_k |e_k(z)| ≤ 8/|Im z|` para `|Im z| ≥ 2`;
+* `tendsto_lgs`: `log GammaSeq(z, n) → ell z`, com Stirling para `n!`; logo **`exp_ell`: `exp(ell z) = Γ(z)`**
+  em `Re z > 0`;
+* **`ell_diff`: `ell` é holomorfa** em `Re z > 0`, com **`hasDerivAt_ell`: `ell′ = ψ`** (a digama da Mathlib) e
+  `ell_real` (real no eixo real);
+* **`stirling`: `‖ell z − ((z − ½) log z − z + ½ log 2π)‖ ≤ 8/|Im z|`** em `Re z > 0`, `|Im z| ≥ 2`;
+* **`im_ell_quarto`: `|Im ell(¼ + iτ) − (τ log τ − τ − π/8)| ≤ 9/τ`** para `τ ≥ 2`. É o termo principal
+  `(T/2π) log(T/2π) − T/2π` de Riemann–von Mangoldt.
+
+A docstring de `ZeroClasses/Hadamard.lean` passa a citar `media_posLog_exp_le`; antes citava um nome inexistente
+(revisão dos PRs #105 e #108). Nenhum teorema muda.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| logaritmo holomorfo de `Γ` em `Re z > 0`, `ell′ = ψ` | CERTIFIED | ferramenta |
+| Stirling complexo com erro `8/\|Im z\|` | CERTIFIED | ferramenta |
+| `RiemannVonMangoldt` | BUILD_PENDING (faltam o princípio do argumento em retângulos e `S(T) = O(log T)`) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/stirling_complexo.py`, `dados/stirling_complexo.json`, `testes/test_stirling_complexo.py`,
+2 testes). `exp(ell z)` reproduz o `Γ` de Lanczos a `3·10⁻¹²` em seis pontos, e `ell′` reproduz `ψ` a `3·10⁻⁷`.
+O máximo de `|e_k|·|z + k|²` é `0,0833 = 1/12` (a cota é `2`). `τ·(Im ell(¼ + iτ) − (τ log τ − τ − π/8))` tende a
+`1/96`, bem abaixo da cota `9`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

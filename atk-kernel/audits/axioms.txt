@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de d1087a584adf43a5904be03eca124c9d3e73a9364c24bddfc807648ed7cbc2ad
+# axiomas por teorema — congelamento de 6e1b5a9d051dd447730c6d5da2f776f39b057a89d9943dfcacd87b72b6e1a30d
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7384,3 +7384,26 @@ ATK.ZeroClasses.LittlewoodRH.cota_sob_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodRH.littlewoodSobRH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodRH.lindelof_fora_sob_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodRH.necessidade_iff_rvm	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.log_succ_sub	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.norm_ek_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.re_add_nat	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.norm_ek_le'	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.ek_le_k	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.summable_aux	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.summable_norm_ek	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.summable_ek	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.tsum_norm_ek_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.soma_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.add_nat_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.exp_lgs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.log_fatorial	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.lgs_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.tendsto_lgs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.exp_ell	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.mem_slit	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.ek_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.ell_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.hasDerivAt_ell	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.ell_real	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.stirling	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.StirlingComplexo.im_ell_quarto	propext, Classical.choice, Quot.sound
