@@ -1743,6 +1743,41 @@ testados. Num polinômio com um zero duplo e um simples no disco pequeno, o rest
 (`1/3` contra a cota `119,5`). Para `ζ` em `0,55 + 14,13i` com `R = 1`, `S = {ρ₁}` e o erro é `0,41` contra `70,2`;
 em `1,1 + γ₁i` com `R = ½`, `S` é vazio e o erro é `1,30` contra `45,8`.
 
+## 4aq. A região livre de zeros de de la Vallée Poussin (rodada 37)
+
+Um arquivo, **19 teoremas** (total 7371), só os axiomas padrão (`ZeroClasses/RegiaoLivre.lean`). A Mathlib tem só a
+não anulação em `Re s ≥ 1`; aqui está a primeira região livre de zeros à esquerda dessa reta.
+
+* **cotas perto de `Re s = 1`**: `cota_zeta_faixa`: `|ζ(s)| ≤ 3|Im s| + 12` em `½ ≤ Re s ≤ 3`, `|Im s| ≥ 1` (pela cota
+  de Euler–Maclaurin de §4aj); `cota_zeta_real`: `|ζ(σ)| ≤ 8/(σ − 1)` em `1 < σ ≤ 2`;
+* **a cota inferior**: `prod341` é o produto `|ζ(σ)³ζ(σ + it)⁴ζ(σ + 2it)| ≥ 1` da Mathlib, lido para `ζ`, e daí
+  `zeta_lb`: `|ζ(σ + it)|⁴ ≥ (σ − 1)³/(512(6|t| + 12))`;
+* **Landau para `ζ`** (§4ap, `zeta_local`) no disco `‖z − (σ + it)‖ ≤ ½`. Os termos `Re m_ρ/(s − ρ)` são `≥ 0`
+  (`re_termo_nonneg`, `re_lt_um`), logo `re_logDeriv_local`: `−Re ζ′/ζ(σ + it) ≤ 32(2 log|t| + log(1/(σ − 1)) + 7)`.
+  Com um zero `ρ = β + iγ` a `1/8` do centro, `re_logDeriv_local_zero` desconta `1/(σ − β)`;
+* **o polo** (`polo`): `−Re ζ′/ζ(σ) ≤ 1/(σ − 1) + C` em `1 < σ ≤ 2`. Aqui `G(s) = 2ξ(s)/(sΓℝ(s)) = (s − 1)ζ(s)`
+  (`Gp_eq`), `G ≠ 0` em `[1, 2]` e `ζ′/ζ = G′/G − 1/(s − 1)`; `C` sai por compacidade;
+* **a desigualdade 3-4-1** (`tres_quatro_um`): `3 Re(−ζ′/ζ)(σ) + 4 Re(−ζ′/ζ)(σ + it) + Re(−ζ′/ζ)(σ + 2it) ≥ 0`,
+  termo a termo na série `Σ Λ(n)n^{−s}` (`termo341`: `3 + 4 cos θ + cos 2θ = 2(1 + cos θ)²`);
+* **a montagem**. Em `regiao_livre_grande`, `σ = 1 + 1/(962 log|γ|)`, e `4/(σ − β) ≤ (2886 + 481) log|γ|` dá
+  `1 − β ≥ 1/(6734 log|γ|)` para `|γ| ≥ T₀`. Em **`regiao_livre`, existe `c > 0` com `β ≤ 1 − c/log|γ|` para todo
+  zero não trivial com `|γ| ≥ 2`**: os zeros com `|γ| < T₀` são finitos (`IsCompact.inter_riemannZetaZeros_finite`).
+  Na forma de não anulação, `zeta_ne_zero_regiao` dá `ζ(s) ≠ 0` em `Re s > 1 − c/log|Im s|`, `|Im s| ≥ 2`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| região livre de zeros `β ≤ 1 − c/log\|γ\|` (`\|γ\| ≥ 2`) | CERTIFIED | parcial |
+| desigualdade 3-4-1 para `−ζ′/ζ`; cota local `O(log\|t\|)` | CERTIFIED | ferramenta |
+| RH | OPEN_MATH | — |
+
+A região encosta em `Re s = 1` quando `|γ| → ∞` e não chega perto de `Re s = ½`. RH continua OPEN_MATH.
+
+Numérico (`codigo/regiao_livre.py`, `dados/regiao_livre.json`, `testes/test_regiao_livre.py`, 3 testes). Na grade
+testada, `|ζ(s)|/(3|t| + 12)` não passa de `0,084`, `(σ − 1)|ζ(σ)|` de `1,65` (a cota é `8`), e o produto 3-4-1 fica
+acima de `4,9`. A combinação 3-4-1 de `−ζ′/ζ` fica acima de `5,1`. `−ζ′/ζ(σ) − 1/(σ − 1)` vai a `−γ_E` (`−0,576` em
+`σ = 1,001`). A cota local usa no máximo `0,1 %` de si mesma. A aritmética confere: `2886 + 481 = 3367 = 7·481` e
+`c = δ/7 = 1/6734`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
