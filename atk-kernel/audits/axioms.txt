@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 7a36d498bb228e223c78fc0021eb1d34e389bc4a9762ecae442407ef4bcb7361
+# axiomas por teorema — congelamento de a9449c2a703fe9b699f0b4ee715f55da4ac49a412b654de22ddef2c4af5da1b8
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8295,3 +8295,32 @@ ATK.ZeroClasses.LittlewoodBase.localiza_mais	propext, Classical.choice, Quot.sou
 ATK.ZeroClasses.LittlewoodBase.re_pw_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodBase.Wg_real	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodBase.formula_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.mem_Z_of_Zfin	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.Zfin_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.Zfin_vazio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.massa_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.massa_le_real	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.card_le_massa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.N_le_massa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.soma_inv_sq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.log_razao_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.geom_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.inv_um_menos_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.cauda_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.D_neg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.mul_sin_abs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.norm_pos_Z	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.norm_sq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.abs_div_sq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.D_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.termo_alinha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.abs_termo_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.decomp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.massa_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.um_le_A₀	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.exp_A₀_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.soma_forcada	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.fract_proximo_Q	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.floor_lt_Q	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.dirichlet_Q	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodSoma.alinha	propext, Classical.choice, Quot.sound

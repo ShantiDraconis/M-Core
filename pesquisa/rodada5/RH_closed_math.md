@@ -3473,7 +3473,7 @@ e uma média gaussiana grande de `F` é convertida num valor grande de `F` numa 
   a escada `ψ`; `phi_eq`, `Sn_eq`, `integrable_psi_gw`).
 * **`A_sub_eq`**: `A_τ(u) − e^{u/2 + τ/4} = ∫ k_τ(v) F(u − v) dv`. O termo `W(1) = e^{u/2 + τ/4}` da fórmula é
   exatamente a contribuição da parte `x` de `ψ(x)`.
-* **`Fpsi_le_RH`**: sob RH, `|F(y)| ≤ B(1 + y²)` (von Koch, rodada 63).
+* **`Fpsi_le_RH`**: sob RH, `|F(y)| ≤ B(1 + y²)` (von Koch, rodada 67).
 * **`localiza_menos`**/**`localiza_mais`**: se `|F(y)| ≤ B(1 + y²)` e
   `∫ k_τ(v) F(u − v) dv < −L − 8B(1 + 2u²)e^{1 − 1/(4τ)}`, então `F(y) ≤ −L` para algum `y ∈ [u − 1, u + 1]`
   (simetricamente por cima). A massa fora de `[−1, 1]` é controlada pelas caudas (`fora_le`).
@@ -3501,6 +3501,55 @@ Numérico (`codigo/littlewood_base.py`, `dados/littlewood_base.json`, `testes/te
 * `A_τ(u) − e^{u/2+τ/4}` contra `∫ k_τ F(u − ·)`: `−0,409231` vs `−0,409226` (`u = 3`), `−0,250026` vs `−0,250029`
   (`u = 4`), `−0,154202` vs `−0,154204` (`u = 5`); a diferença é erro de quadratura;
 * `re_pw_RH` confere exatamente nos três primeiros zeros; `max_{0 < y < 14} |F(y)|/(1 + y²) = 1,067`.
+
+## 4cs. Littlewood, parte 2: a soma sobre os zeros forçada pelo alinhamento (rodada 91)
+
+Um arquivo, **29 teoremas** (total 8324), só os axiomas padrão (`ZeroClasses/LittlewoodSoma.lean`). Sob RH, a
+fórmula da rodada 90 tem do lado dos zeros
+
+  `Σ_ρ m_ρ Re(W(ρ)/ρ) = Σ_ρ m_ρ e^{−τγ²}(cos(γu)/2 + γ sen(γu))/|ρ|²`.
+
+Aqui se mostra que, com `τ = A/T²` e `u = n ± 1/T`, onde `n` alinha os zeros com `|γ| ≤ 3T`, essa soma vale
+`±c log T` a menos de erros controlados. É o coração da prova de Littlewood.
+
+* **Massa dos zeros** (`massa_le`, `massa_le_real`): `Σ_{|γ| ≤ X} m_ρ ≤ 4X(a₀ + log(X + 3))/l₀` para `X ≥ 7`.
+  A soma das janelas unitárias da rodada 72 dá um único `log`; `soma_ordem_norm` daria `log²`, que não basta.
+  Também `soma_inv_sq_le`: `Σ m_ρ/|ρ|² ≤ C₀` uniformemente.
+* **A cauda** (`cauda_le`): para `T, A ≥ 1`, `Σ_{3T < |γ| ≤ T′} m_ρ e^{−Aγ²/T²}/|ρ| ≤ 3(a₀ + log 5T)e^{−4A}/l₀`,
+  uniformemente em `T′`. A prova agrupa em fibras `⌊|γ|⌋ = n`, usa as caixas de Jensen (`caixa_le`) e uma soma
+  geométrica com razão `e^{−2A/T}`.
+* **O modelo alinhado** `D(v) = Σ_{|γ| ≤ 3T} m_ρ e^{−τγ²} γ sen(γv)/|ρ|²`:
+  * `D_ge` (sem hipóteses): `D(1/T) ≥ e^{−A}/(πT) · Σ_{|γ| ≤ T} m_ρ`. Usa `sen x ≥ 2x/π` em `[0, π/2]`; os termos
+    com `T < |γ| ≤ 3T` são `≥ 0` porque `|γ|/T ≤ 3 < π`.
+  * `decomp` (sob RH): se `|nγ − 2πk_ρ| ≤ ε` para `|γ| ≤ 3T`, então para todo `T′ ≥ 3T`
+    `|Σ_{|γ| ≤ T′} m_ρ Re(W_{n+v}(ρ)/ρ) − D(v)| ≤ C₀/2 + ε Σ_{|γ| ≤ 3T} m_ρ/|ρ| + 3(a₀ + log 5T)e^{−4A}/l₀`.
+    Os erros vêm da parte cosseno, do alinhamento (`|sen(a + δ) − sen a| ≤ |δ|`) e da cauda.
+* **`massa_ge`**: `Σ_{|γ| ≤ T} m_ρ ≥ N(T) ≥ T log T/(4π)` para `T` grande (Riemann–von Mangoldt, rodada 42).
+* **`soma_forcada`** (sob RH). Com `A₀ = 1 + log(24π²/l₀)` e `c = e^{−A₀}/(8π²)`, existe `C₁` tal que, para `T`
+  grande, todo `n` que alinha a menos de `ε` e todo `T′ ≥ 3T`:
+  * `Σ m_ρ Re(W_{n+1/T}(ρ)/ρ) ≥ c log T − C₁ − ε Σ_{|γ| ≤ 3T} m_ρ/|ρ|`;
+  * `Σ m_ρ Re(W_{n−1/T}(ρ)/ρ) ≤ −c log T + C₁ + ε Σ_{|γ| ≤ 3T} m_ρ/|ρ|`.
+* **Dirichlet com cota** (`dirichlet_Q`, `alinha`): para `n₀, Q ≥ 1` existe `n ∈ [n₀, n₀Q^K]`, com
+  `K = #{ρ : |γ| ≤ 3T}`, tal que `|nγ − 2πk_ρ| < 2π/Q` para todos esses zeros. A versão da rodada 68
+  (`LiCompleto.dirichlet_simultaneo`) não tinha cota em `n` e só dava precisão `1/6`.
+
+O que falta para Littlewood (rodada 92, montagem). Escolher `Q ≍ (log T)²`, de modo que `ε Σ m_ρ/|ρ| = O(1)`
+(`soma_ordem_norm`). Controlar `E = O(e^{−3u})` com constante explícita em `τ`. Usar a localização da rodada 90
+com `u ≤ n₀Q^K + 1`, que dá `log log u ≍ log T`. Juntar com o caso `¬RH` (rodada 87).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `cauda_le`, `D_ge`, `decomp`, `soma_forcada`, `dirichlet_Q`/`alinha`, `massa_le`/`massa_ge` | CERTIFIED | ferramenta |
+| `ψ(x) − x = Ω±(√x log log log x)` (Littlewood 1914) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/littlewood_soma.py`, `dados/littlewood_soma.json`, `testes/test_littlewood_soma.py`, 2 testes),
+com os 138 zeros de `0 < γ ≤ 300`:
+* `2N(X) = 20; 58; 158; 276` em `X = 50; 100; 200; 300`, contra cotas `≈ 10⁴`;
+* `D(1/T) = 0,112` contra o termo principal `0,0117` (`T = 20`, `A = 1`);
+* a cauda `|γ| > 3T` vale `7,5·10⁻⁶` contra a cota `2,68` (`T = 10`);
+* com `T = 10`, `A = 1`, `Q = 8` e `K = 3`, o alinhamento acha `n = 52 ≤ 8³`. As somas em `n ± 1/T` valem
+  `+0,02005` e `−0,01992` (`D(1/T) = 0,01999`); sem alinhar (`n = 1`), `0,0014`.
 
 ## 5. Formatos
 

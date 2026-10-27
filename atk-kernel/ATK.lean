@@ -398,3 +398,4 @@ import ATK.ZeroClasses.Unilateral
 import ATK.ZeroClasses.OmegaRaiz
 import ATK.ZeroClasses.ExplicitaGauss
 import ATK.ZeroClasses.LittlewoodBase
+import ATK.ZeroClasses.LittlewoodSoma
