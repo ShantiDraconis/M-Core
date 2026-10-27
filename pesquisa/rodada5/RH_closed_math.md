@@ -1848,6 +1848,35 @@ Numérico (`codigo/stirling_complexo.py`, `dados/stirling_complexo.json`, `teste
 O máximo de `|e_k|·|z + k|²` é `0,0833 = 1/12` (a cota é `2`). `τ·(Im ell(¼ + iτ) − (τ log τ − τ − π/8))` tende a
 `1/96`, bem abaixo da cota `9`.
 
+## 4at. O princípio do argumento em retângulos (rodada 40)
+
+Um arquivo, **17 teoremas** (total 7424), só os axiomas padrão (`ZeroClasses/ArgRetangulo.lean`). A Mathlib tem o
+teorema de Cauchy em retângulos (`integral_boundary_rect_eq_zero_of_differentiableOn`) e o divisor de funções
+meromorfas, mas não tem a contagem de zeros por `∮ f′/f` num retângulo.
+
+* `bordo g z w` é a integral de `g` no bordo do retângulo `Ret z w = [z.re, w.re] × [z.im, w.im]`, percorrido no
+  sentido positivo, como soma de quatro integrais de intervalo. `Bordo z w` é o conjunto dos quatro lados;
+* `bordo_congr`, `bordo_add`, `bordo_sum`, `bordo_const_mul`: `bordo` é linear e só depende de `g` no bordo;
+  `bordo_cauchy`: `bordo g = 0` se `g` é holomorfa no retângulo fechado;
+* **`bordo_inv`: `bordo (s ↦ 1/(s − u)) = 2πi`** para `u` no interior, por primitivas explícitas `log(s − u)` com os
+  saltos `log(−x) = log x ∓ πi` (`log_neg_im_pos/neg`);
+* **`principio_argumento`**: se `f` é analítica num aberto que contém o retângulo, tem ordem finita em cada ponto
+  dele e não se anula no bordo, os zeros no retângulo formam um `Finset S` e
+  **`bordo (f′/f) = 2πi Σ_{u ∈ S} ord_u f`**. A finitude vem do divisor da Mathlib num compacto. A prova fatora
+  `f = Π (s − u)^{ord_u} · G`, com `G` sem zeros no retângulo (o quociente local da rodada 36), e aplica
+  `bordo_cauchy` a `G′/G` e `bordo_inv` aos fatores.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| princípio do argumento em retângulos (com multiplicidade) | CERTIFIED | ferramenta |
+| `RiemannVonMangoldt` | BUILD_PENDING (falta `S(T) = O(log T)`) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/arg_retangulo.py`, `dados/arg_retangulo.json`, `testes/test_arg_retangulo.py`, 2 testes).
+Simpson nos quatro lados dá `(1/2πi)∮ ds/(s − u) = 1` dentro (erro `10⁻⁹`) e `0` fora (`10⁻¹⁵`). Para um
+polinômio com um zero duplo, um simples e um fora do retângulo, `(1/2πi)∮ f′/f = 3,0000000000`. Para `ζ` em
+`[0,1; 0,9] × [10, 30]`, o resultado é `3,0000000000`: os zeros `14,13`, `21,02` e `25,01`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
