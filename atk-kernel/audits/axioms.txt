@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 23dc3e8f5691e26d0754bd9e90adaab1581263e3f31ad5158710539eabfdea8f
+# axiomas por teorema — congelamento de b145ef4ce8d59dac96d57fc6be55812a83a97773a6821d610b532b201ed57509
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8374,3 +8374,22 @@ ATK.ZeroClasses.LittlewoodMedia.cota_Xi	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodMedia.integral_F_diadico	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodMedia.integral_F_pot	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodMedia.integral_F_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.log_pos_of_two_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.continuousOn_inv_log_pow	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.Li_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.pi_sub_Li	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.integral_exp_subst	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.E_subst	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.Fpsi_right_cont	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.hasDerivAt_gpeso	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.abs_deriv_gpeso_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.integral_gpeso_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.continuousOn_gpeso	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.integral_Fg_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.intervalIntegrable_comp_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.continuousOn_inv_sq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.Fpsi_mul_gpeso	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.resto_pi_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.ev_y	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.pi_littlewood_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPi.pi_troca_sinal_RH	propext, Classical.choice, Quot.sound

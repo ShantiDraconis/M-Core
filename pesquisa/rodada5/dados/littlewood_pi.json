@@ -1,0 +1,51 @@
+{
+  "Li_por_partes": [
+    {
+      "x": 10.0,
+      "Li": 5.120435717857649,
+      "por_partes": 5.120435704760485
+    },
+    {
+      "x": 100.0,
+      "Li": 29.080976763319974,
+      "por_partes": 29.080974800156156
+    },
+    {
+      "x": 1000.0,
+      "Li": 176.5643862860717,
+      "por_partes": 176.564182896535
+    }
+  ],
+  "pi_menos_Li": [
+    {
+      "x": 1000.0,
+      "pi_menos_Li": -8.563818466851814,
+      "formula": -8.563702993664979,
+      "resto": -2.229556355165591,
+      "resto_sobre_raiz_log": -0.4870296456309034
+    },
+    {
+      "x": 10000.0,
+      "pi_menos_Li": -16.091376363204517,
+      "formula": -16.091260927777885,
+      "resto": -4.798668402155272,
+      "resto_sobre_raiz_log": -0.4419736931609714
+    },
+    {
+      "x": 100000.0,
+      "pi_menos_Li": -36.763161514072635,
+      "formula": -36.7630460806117,
+      "resto": -9.436305162787054,
+      "resto_sobre_raiz_log": -0.3435481943040273
+    },
+    {
+      "x": 1000000.0,
+      "pi_menos_Li": -128.5033199187892,
+      "formula": -128.50320449224657,
+      "resto": -18.784134175738306,
+      "resto_sobre_raiz_log": -0.2595124040271301
+    }
+  ],
+  "ultimo_k_com_pi_maior_ou_igual_Li": 7,
+  "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/LittlewoodPi.lean"
+}
