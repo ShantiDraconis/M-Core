@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 2b0f03db2bf985d90500f0394705c895cddf9765e6e47bff5a4b147c0d7d8dec
+# axiomas por teorema — congelamento de 7e8a2db8626a6a735b0912a28e8a8b940852041fc833791ee59afaf7a21e9ce0
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7748,3 +7748,27 @@ ATK.ZeroClasses.BDPonderado.psi_of_DNσ	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPonderado.mertens_of_DNσ	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPonderado.piso_DNσ	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPonderado.rh_of_DN_iInf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.log_pos_of_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.continuousOn_inv_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.intervalIntegrable_inv_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.hasDerivAt_Li	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.continuousOn_Li	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.Li_partes	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.Li_log_partes	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.one_le_rpow_of_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.rpow_mono_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.sqrt_log_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.theta_of_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.psi_of_theta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.integral_rpow_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.pi_of_theta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.monotone_pi_floor	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.theta_of_pi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.erroPsi_of_int	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.int_of_erroPsi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.erroPi_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.int_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.semZeros_iff_theta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.semZeros_iff_pi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.rh_iff_pi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLi.rh_iff_theta	propext, Classical.choice, Quot.sound
