@@ -8110,3 +8110,7 @@ ATK.ZeroClasses.BDTaxaPiso.Teta_le_de_taxaDN
 ATK.ZeroClasses.BDTaxaPiso.rh_of_taxaDN
 ATK.ZeroClasses.BDTaxaPiso.sanduiche_DN
 ATK.ZeroClasses.BDTaxaPiso.taxaDN_RH
+ATK.ZeroClasses.BDSemPotencia.sem_taxa_meio_DN
+ATK.ZeroClasses.BDSemPotencia.DN_sem_potencia
+ATK.ZeroClasses.BDSemPotencia.contracao_impossivel_incond
+ATK.ZeroClasses.BDSemPotencia.sem_taxa_Teta

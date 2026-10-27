@@ -3247,6 +3247,33 @@ Numérico (`codigo/bd_taxa_piso.py`, `dados/bd_taxa_piso.json`, `testes/test_bd_
 * as inclinações locais `1,53–1,76` da rodada 75 (`σ = 0,75`) caem em `[0,5; 2,25]`. Isso é consistência, não medida de
   `κ` (barreira B2).
 
+## 4cl. Sem lei de potência para `D_N` (B1 fraca, `c` arbitrário) e a contração refutada sem piso citado (rodada 84)
+
+Um arquivo, **4 teoremas** (total 8116), só os axiomas padrão (`ZeroClasses/BDSemPotencia.lean`). A barreira B1 (o
+piso de BBLS/Burnol `D_N ≥ (C − o(1))/log N`) entrava no ATK só como hipótese citada (`ContracaoDN.PisoLog`). A
+rodada 83 dá a forma fraca dela sem hipóteses:
+
+* **`sem_taxa_meio_DN`**: `TaxaDN (½) κ ⟹ κ ≤ 0`. A taxa é transportada para `σ′ = ½ + h` (`taxaDN_mono`). Lá vale
+  `Θ < σ′` (`taxaDN_pos`) e `κ ≤ (2σ′ + 3)(σ′ − Θ)/Θ ≤ 10h` (`taxaDN_teto`), e `h → 0`.
+* **`DN_sem_potencia`**: o `D_N` de Báez-Duarte não é `O(N^{−δ})` para nenhum `δ > 0`, para `c` arbitrário.
+* **`contracao_impossivel_incond`**: não existe `q < 1` com `D_{2N} ≤ q D_N` a partir de algum `N₀`. É
+  `ContracaoDN.contracao_impossivel` sem a hipótese `PisoLog`. Uma contração daria `D_N ≪ N^{−log₂(1/q)}`
+  (`Nat.log 2` e `iter_contracao`).
+* `sem_taxa_Teta`: em `σ = Θ` (se `Θ < 1`) também não há taxa positiva.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `D_N` não decai como potência; a contração diádica é impossível (sem hipóteses) | CERTIFIED | parcial |
+| Burnol: `D_N ≥ (C − o(1))/log N`, `C = Σ m_ρ²/\|ρ\|²`, `c` arbitrário | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_sem_potencia.py`, `dados/bd_sem_potencia.json`, `testes/test_bd_sem_potencia.py`, 2 testes), com
+os `D_N` da rodada 2 (`N ≤ 7999`, double-double):
+* `max_{100 ≤ N < 4000} D_{2N}/D_N = 0,946`: os dados finitos são compatíveis com uma contração `q = 0,946`, que o
+  teorema exclui assintoticamente (B2);
+* o expoente local médio `log(D_N/D_{2N})/log 2` cai de `0,38` (`[16, 32)`) para `0,12` (`[2048, 4096)`);
+* `D_N log N/C₀ ∈ [0,957; 1,010]` para `256 ≤ N < 8000`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

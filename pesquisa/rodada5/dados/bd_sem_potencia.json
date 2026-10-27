@@ -1,0 +1,66 @@
+{
+ "max_razao_diadica_100_4000": 0.9456839231016431,
+ "expoentes_por_bloco": [
+  {
+   "bloco": [
+    16,
+    32
+   ],
+   "expoente_medio": 0.3753059929013035
+  },
+  {
+   "bloco": [
+    32,
+    64
+   ],
+   "expoente_medio": 0.21900219805490378
+  },
+  {
+   "bloco": [
+    64,
+    128
+   ],
+   "expoente_medio": 0.22812332043470845
+  },
+  {
+   "bloco": [
+    128,
+    256
+   ],
+   "expoente_medio": 0.1988379037024467
+  },
+  {
+   "bloco": [
+    256,
+    512
+   ],
+   "expoente_medio": 0.1836525749411847
+  },
+  {
+   "bloco": [
+    512,
+    1024
+   ],
+   "expoente_medio": 0.12455406408570804
+  },
+  {
+   "bloco": [
+    1024,
+    2048
+   ],
+   "expoente_medio": 0.14185947059530762
+  },
+  {
+   "bloco": [
+    2048,
+    4096
+   ],
+   "expoente_medio": 0.1220274826577912
+  }
+ ],
+ "DN_logN_sobre_C0": [
+  0.9566376981528697,
+  1.0103477084975516
+ ],
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/BDSemPotencia.lean"
+}
