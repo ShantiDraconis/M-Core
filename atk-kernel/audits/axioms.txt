@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 4f45f036fb3a7400914ee13f92677d8d4940505747511e5cd34581e8a9218a76
+# axiomas por teorema — congelamento de 6ca74fe6388a4fa937640bcc37d900f3fd25b463c80874ba5a5c70244785e9d5
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7973,3 +7973,22 @@ ATK.ZeroClasses.ExplicitaT.norm_termo_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaT.soma_faixa_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaT.dif_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaT.formula_explicita_T	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.plancherel_σ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.Wσ_espectral	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.DNσ_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.iInf_DNσ_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.continuous_wR	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.wR_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.wR_eq_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.hasMellin_congr	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.hasMellin_wR	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.WR_cont	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.norm_WR_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.integrable_WR	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.wR_inv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.aN_eq_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.LSeries_aN_soma	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.norm_term_mu_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.LSeries_aN_int	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.soma_cN	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDEspectral.DNσ_le_molif	propext, Classical.choice, Quot.sound
