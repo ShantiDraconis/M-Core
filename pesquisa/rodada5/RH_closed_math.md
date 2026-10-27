@@ -2808,7 +2808,7 @@ alguma, no retângulo `[−(2K + ½), c] × [−T, T]` (`c > 1`, `T > 0`, sem ze
 | --- | --- | --- |
 | zeros triviais simples; `ζ₁′/ζ₁(0) = log 2π − 1` | CERTIFIED | ferramenta |
 | a identidade de resíduos no retângulo largo (`bordo_largo`) | CERTIFIED | ferramenta |
-| o limite `T, K → ∞` (a fórmula explícita `ψ₀(x) = x − Σ_ρ x^ρ/ρ − log 2π − ½ log(1 − x^{−2})`) | BUILD_PENDING (rodada 71) | — |
+| o limite `T, K → ∞` (a fórmula explícita `ψ₀(x) = x − Σ_ρ x^ρ/ρ − log 2π − ½ log(1 − x^{−2})`) | CERTIFIED (rodada 71, §4by) | ferramenta |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/explicita_residuos.py`, `dados/explicita_residuos.json`, `testes/test_explicita_residuos.py`,
@@ -2816,6 +2816,41 @@ Numérico (`codigo/explicita_residuos.py`, `dados/explicita_residuos.json`, `tes
 bate com `(−1)^k (2k)! ζ(2k + 1)/(2(2π)^{2k})` (`ζ′(−2) = −0,0304484571`); em `x = 10,3`, a integral de contorno por
 Simpson em `[−2,5; 2] × [−20, 20]` dá `8,013047047` contra os resíduos `8,013047044`, e em `[−4,5; 2] × [−20, 20]`
 dá `8,013069268` contra `8,013069256`.
+
+## 4by. A fórmula explícita de Riemann–von Mangoldt (rodada 71)
+
+Um arquivo, **25 teoremas** (total 7966), só os axiomas padrão (`ZeroClasses/ExplicitaLimite.lean`). Sem hipótese
+alguma, para `x = N + ½` (`N ≥ 1`) e alturas boas `T_k ∈ [k + 6, k + 7]`:
+
+  **`Σ_{|γ| ≤ T_k} m_ρ x^ρ/ρ → x − ψ(N) − log 2π − ½ log(1 − x^{−2})`**   (`formula_explicita`),
+
+`ρ` sobre os zeros não triviais (`ζ(ρ) = 0`, `Re ρ > 0`) com multiplicidade. É a fórmula explícita clássica
+`ψ₀(x) = x − Σ_ρ x^ρ/ρ − log 2π − ½ log(1 − x^{−2})` (Davenport cap. 17), com a soma simétrica em alturas boas.
+A prova junta a identidade de resíduos da rodada 70 no retângulo `[−(2K + ½), 2] × [−T, T]` (`K = k + 7`) com:
+
+* **Perron** na reta `Re s = 2` (rodada 64): erro `32x²(4x + 2)/(πT)`;
+* **as horizontais** `O(log² T/T)` (`hor_le`): `‖ζ′/ζ(σ ± iT)‖ ≤ A(T) − σ` para todo `σ ≤ 2` (`logDeriv_hor`), com
+  `A(T) = C log²(2 + T) + O(log T)`; em `σ ≤ 0` pela equação funcional (`logDeriv_esq_le`, de
+  `logDeriv_riemannZeta_one_sub` da Mathlib), a digama `‖ψ(s)‖ ≤ log(2 + |Im s|) + 11 + Re s/3` (`digamma_hor`) e
+  `‖tan z‖ ≤ 2` em `|Im z| ≥ 1` (`norm_tan_le_dois`); a integral `∫_{−U}^2 x^σ(A − σ) dσ` em forma fechada
+  (`integral_exp_lin`);
+* **a reta esquerda** `Re s = −(2K + ½)` (`esq_le`): `‖ζ′/ζ‖ ≤ c₀ + B + log(2 + T) + 4K + 8` (`logDeriv_esq_reta`), com
+  `‖tan‖ = 1` lá (`norm_tan_le_um`, `sen² = cos²` em `Kπ + 3π/4`) e `‖ψ(n + ½ + iy)‖ ≤ B + log(2 + |y|) + 2n`
+  (`digamma_esq`, compacidade em `½ + i[−3, 3]`); o fator `x^{−2K}` mata o resto;
+* **os zeros triviais**: `Σ_{n<K} x^{−2(n+1)}/(2(n+1)) → −½ log(1 − x^{−2})` (`triv_soma`);
+* o erro total `ε_k → 0` (`eps`, `eps_tendsto`) e a forma com erro altura a altura (`explicita_k`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| a fórmula explícita `Σ_{\|γ\|≤T_k} x^ρ/ρ → x − ψ(N) − log 2π − ½ log(1 − x^{−2})`, sem hipóteses | CERTIFIED | ferramenta |
+| a mesma com `x` real qualquer (`ψ₀(x)` nos inteiros) e `T → ∞` sem restringir a alturas boas | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/explicita_limite.py`, `dados/explicita_limite.json`, `testes/test_explicita_limite.py`, 2 testes):
+`‖tan z‖ ≤ 1,313` em `|Im z| ≥ 1`, `‖tan(πs/2)‖ = 1` (a `10⁻¹⁴`) em `Re s = 2K + 3/2`; folga mínima `11,07` em
+`digamma_hor` numa grade; a forma logarítmica da equação funcional bate a `2·10⁻¹⁰` (consistência, com `ζ` em `Re < ½`
+pela própria equação funcional). Com os 341 zeros de `0 < γ ≤ 600`: em `x = 10,5` o erro cai de `0,128` (`T = 50`) a
+`0,027` (`T = 600`); em `x = 30,5`, de `0,79` a `0,12`.
 
 ## 5. Formatos
 
