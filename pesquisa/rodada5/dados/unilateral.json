@@ -1,0 +1,26 @@
+{
+ "N": 1000000,
+ "integral_escada_s2": 0.3039635509140973,
+ "alvo_3_sobre_pi2": 0.3039635509270133,
+ "erro_integral": 1.2916001601581684e-11,
+ "cota_cauda": 1e-06,
+ "M_max_sobre_raiz": {
+  "valor": 0.4377754776610174,
+  "N": 300551
+ },
+ "M_min_sobre_raiz": {
+  "valor": -0.565685424949238,
+  "N": 199
+ },
+ "psi_max_sobre_raiz": {
+  "valor": 0.7101467609854354,
+  "N": 24137
+ },
+ "psi_min_sobre_raiz": {
+  "valor": -0.7767256094741697,
+  "N": 1422
+ },
+ "trocas_sinal_M": 1652,
+ "trocas_sinal_psi": 6688,
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/Unilateral.lean"
+}

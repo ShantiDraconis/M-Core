@@ -17,10 +17,11 @@ A prova aplica Phragmén–Lindelöf (Mathlib) na faixa `−δ ≤ Re s ≤ 1 + 
 * `w(s) = −i(s + 2)`, que tem `Im w < 0` na faixa e portanto fica no plano cortado;
 * `ℓ(s) = (3 + δ − s)/2`, que tem parte real `1` em `Re s = 1 + δ` e `3/2 + δ` em `Re s = −δ`.
 
-O fator `e^{−arg w · Im ℓ}` fica entre `1` e `e^{π(Re s + 2)/4}` para `t ≥ 0` (`arg_mul_re_le`, Jordan).
+O fator `e^{−arg w · Im(−ℓ)} = e^{−arg w · t/2}` fica entre `1` e `e^{π(Re s + 2)/4}` para `t ≥ 0`
+(`arg_mul_re_le`, Jordan; ver `norm_peso`).
 
 As retas:
-* em `Re s = 1 + δ`, `|ζ| ≤ 2 + 2/δ` (`ZetaTroca.norm_zeta_sub_one_le`);
+* em `Re s = 1 + δ`, `|ζ| ≤ 2 + 1/δ` (`norm_zeta_dir`, via `ZetaTroca.norm_zeta_sub_one_le`);
 * em `Re s = −δ`, a equação funcional dá `|ζ(1 − u)| ≤ 2C_Γ|u|^{½+δ}|ζ(u)|` (`GammaVertical.norm_zeta_one_sub_le`);
 * dentro, o crescimento é polinomial (`RegiaoLivre.cota_zeta_faixa` e a equação funcional).
 

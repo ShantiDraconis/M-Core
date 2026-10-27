@@ -835,7 +835,8 @@ nela, com centro de massa exatamente nela e densidade nula em relação a ela. A
 funcional (é o conjunto fixo da torção) e existiria igual sem eles. Que esse mundo exista é `¬HR` — `OPEN_MATH`.
 Na literatura esse mundo é ferramenta clássica: Littlewood (1914) provou `π(x) > li(x)` infinitas vezes tratando
 separadamente HR e `¬HR`; sob `¬HR`, com `Θ = sup Re ρ > 1/2`, `ψ(x) − x = Ω±(x^{Θ−ε})` (oscilação de Landau) — a
-consequência material de zeros fora sobre os primos (não formalizada: `BUILD_PENDING`).
+consequência material de zeros fora sobre os primos (formalizada na rodada 87, §4co: `Unilateral.psi_omega_mais`,
+`psi_omega_menos`, para todo `0 ≤ θ < Θ`).
 
 Teste-modelo (`testes/test_zeroclasses.py::test_mundo_fora_modelo`, não é `ζ`): quartetos hipotéticos têm o
 ponto médio na linha e desvios que somam zero.
@@ -2473,7 +2474,9 @@ A prova junta o teorema de Hardy (rodada 50, `existe_zero_acima`: um zero `ρ₀
 | --- | --- | --- |
 | `ψ(x) − x ≠ o(√x)`; `M(x) ≠ o(√x)` | CERTIFIED | consequência (incondicional) |
 | `ψ(x) − x ≠ O(x^θ)`, `M(x) ≠ O(x^θ)` para `θ < ½` | CERTIFIED | consequência (incondicional) |
-| `ψ(x) − x = Ω±(√x log log log x)` (Littlewood 1914); `M(x) = Ω±(√x)` | BUILD_PENDING | — |
+| `ψ(x) − x = Ω±(x^θ)`, `M(x) = Ω±(x^θ)` para `0 ≤ θ < Θ` (incondicional para `θ < ½`) | CERTIFIED (rodada 87, §4co) | consequência |
+| `ψ(x) − x = Ω±(√x)`, `M(x) = Ω±(√x)` (escala `√x`, com constante) | BUILD_PENDING (rodada seguinte) | — |
+| `ψ(x) − x = Ω±(√x log log log x)` (Littlewood 1914) | BUILD_PENDING | — |
 | `limsup \|M(x)\|/√x = ∞` (conhecido: `> 1,06` por Odlyzko–te Riele 1985, `> 1,82` por Hurst 2018; ilimitado sob a independência linear das ordenadas) | OPEN_MATH | — |
 | RH | OPEN_MATH | — |
 
@@ -3333,6 +3336,51 @@ Numérico (`codigo/convexidade.py`, `dados/convexidade.json`, `testes/test_conve
 * a desigualdade de Jordan vale com folga `≥ 0,007` em 2000 pontos;
 * a fórmula de `|w^{−ℓ}|` confere a `2·10⁻¹⁶`;
 * `max_{1 ≤ t ≤ 500} |ζ(σ + it)|/t^{(1−σ)/2}` vale `1,47; 1,75; 2,32` em `σ = 0,25; 0,5; 0,75` (passo `0,25`).
+
+## 4co. Cotas de um lado só: o teorema de Landau e `Θ` lido por cima ou por baixo (rodada 87)
+
+Um arquivo, **63 teoremas** (total 8209), só os axiomas padrão (`ZeroClasses/Unilateral.lean`). As rodadas 55–57
+e 76 liam `Θ = sup Re ρ` em cotas **bilaterais** (`|ψ(x) − x| ≪ x^{θ+ε}`, `|M(x)| ≪ x^{θ+ε}`). Aqui basta um lado.
+
+**O teorema de Landau** (1905, forma de Pringsheim; `landau`). Seja `f ≥ 0` em `(1, ∞)` e
+`Ik f 0 s = ∫_{x>1} x^{−s−1} f(x) dx`. Se `Ik f 0` coincide, onde converge, com uma `Φ` holomorfa no disco
+`|s − c| < r`, então a integral converge em todo `σ ∈ (c − r, c]` e vale `Φ(σ)`. Ou seja, a transformada de uma
+função positiva não para antes de uma singularidade real. A prova tem três passos:
+* série de Taylor de `Φ` em `c` (`Complex.hasSum_taylorSeries_on_ball`);
+* derivadas `Ik f k` por derivação sob o sinal de integral (`hasDerivAt_Ik`, `iteratedDeriv_Ik`);
+* termos `((c − σ) log x)^k/k! · x^{−c−1} f(x) ≥ 0` e convergência monótona (`lintegral_tsum`).
+
+**A extensão** (`integral_escada`, `intAcima_uni`, `extensao`). Pela fórmula de Abel,
+`∫_{x>1} x^{−s−1} a(⌊x⌋) dx = GA a(s)/s`. Suponha `a(N) ≤ A(N + 1)^θ + K` com `0 ≤ θ < 1`, e `|a(N)| ≪ N`. Então
+`f = A′x^θ + K − a(⌊x⌋) ≥ 0`. O teorema de Landau, aplicado no disco `|s − 2| < 2 − θ`, estende `GA a` a
+`Re s > θ`. Nesse disco `ζ` não tem zeros (`zeta₁_ne_zero_bola`, via `|Im ρ| > 13`).
+
+Os resultados:
+* **um lado basta**: `ψ(N) − N ≤ A(N + 1)^θ + K` ⟹ `ζ ≠ 0` em `Re s > θ` (`semZeros_of_psi_le`). O mesmo vale
+  por baixo (`_psi_ge`) e para `M` (`semZeros_of_mertens_le`, `_ge`). A identidade da rodada 55 passa a usar a
+  extensão (`semZeros_of_ext_psi`, `semZeros_of_ext_mertens`);
+* **`Θ` por um lado**: `Θ ≤ θ` ⟺ a cota de um lado com expoente `θ + ε` (`Teta_le_iff_psi_le`, `_psi_ge`,
+  `Teta_le_iff_mertens_le`, `_mertens_ge`);
+* **oscilação dos dois lados**: para `0 ≤ θ < Θ`, `ψ(x) − x` e `M(x)` ultrapassam `A x^θ + K` por cima e
+  `−A x^θ − K` por baixo infinitas vezes (`psi_omega_mais`, `psi_omega_menos`, `mertens_omega_mais`,
+  `mertens_omega_menos`). Para `θ < ½` isso é incondicional, por um zero de Hardy (`nao_semZeros`). Sob `¬RH`
+  dá `Ω±(x^{Θ−ε})`;
+* **RH por um lado**: RH ⟺ von Koch por cima (`rh_iff_psi_le`) ⟺ von Koch por baixo (`rh_iff_psi_ge`).
+  Além disso, `M(N) ≤ A√(N + 1) + K` ⟹ RH (`rh_of_mertens_le`), e o mesmo por baixo (`rh_of_mertens_ge`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Landau–Pringsheim para `∫_{x>1} x^{−s−1} f`, `f ≥ 0` | CERTIFIED | ferramenta |
+| `ψ(N) − N ≤ A(N+1)^θ + K` (ou `≥`; ou `M`) ⟹ `ζ ≠ 0` em `Re s > θ`; `Θ` e RH por um lado | CERTIFIED | reformulação |
+| `ψ(x) − x`, `M(x)` `= Ω±(x^θ)` para `0 ≤ θ < Θ` | CERTIFIED | consequência |
+| `Ω±(√x)` com constante (polo num zero de Hardy); zeros simples sob `M(x) ≤ A√x` | BUILD_PENDING (rodada seguinte) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/unilateral.py`, `dados/unilateral.json`, `testes/test_unilateral.py`, 2 testes):
+* `∫_1^{10⁶} x^{−3} M(⌊x⌋) dx = 0,30396355091` contra `GA M(2)/2 = 3/π² = 0,30396355093` (erro `1,3·10⁻¹¹`,
+  cauda `≤ 10⁻⁶`);
+* em `100 ≤ N ≤ 10⁶`, `M(N)/√(N + 1)` vai de `−0,566` a `0,438`, e `(ψ(N) − N)/√(N + 1)` vai de `−0,777` a `0,710`;
+* há 1652 e 6688 trocas de sinal, respectivamente.
 
 ## 5. Formatos
 
