@@ -1906,6 +1906,46 @@ Numérico (`codigo/variacao_arg.py`, `dados/variacao_arg.json`, `testes/test_var
 Para `T` entre 20 e 300, `|V(T)|/log T ≤ 0,41`. O número `k` de trocas de sinal de `Re ζ` em `[½, 2]` é 0 ou 1,
 contra a cota de Jensen de 40 a 55. A razão `|ζ(s)|/(½ + 1/|s − 1| + 6|s|)` fica abaixo de `0,11` na grade.
 
+## 4av. Riemann–von Mangoldt (rodada 42)
+
+Um arquivo, **31 teoremas** (total 7472), só os axiomas padrão (`ZeroClasses/RiemannVonMangoldt.lean`).
+**`riemannVonMangoldt : ATK.FechamentoO1.RiemannVonMangoldt`**: existe `C` tal que, para todo `T ≥ 2`,
+
+  `|N(T) − ((T/2π) log(T/2π) − T/2π)| ≤ C log T`,
+
+com `N(T)` o número de zeros não triviais de `ζ` com `0 < Im ρ ≤ T`, **contados com multiplicidade** (a definição
+`FechamentoO1.N`). A Mathlib não tem a fórmula. A prova junta as rodadas 39–41:
+
+1. **contorno** (`bordo_eq_N`): o princípio do argumento da rodada 40 para `ξ` no retângulo `[−1, 2] × [1, T]` dá
+   `∮ ξ′/ξ = 2πi N(T)`. Em `Im s = 1` não há zeros (a faixa sem zeros `|Im s| ≤ 13`), nos lados `Re s = −1` e
+   `Re s = 2` também não, e no topo exige-se que `T` não seja ordenada de zero (`NaoOrdenada T`);
+2. **dobra** (`lado_horizontal`, `lado_esquerdo`, `identidade`): as simetrias `ξ′/ξ(1 − s) = −ξ′/ξ(s)` e
+   `ξ′/ξ(s̄) = conj ξ′/ξ(s)` levam o contorno à metade direita: `πN(T) = Im K₁ − Im K_T + Re R_T`;
+3. **primitivas** (`hasDerivAt_E`, `hasDerivAt_Λ`, `lado_direito`, `topo`): com
+   `E(s) = log s + log(s − 1) − (s/2) log π + log Γ(s/2)` (o `ell` da rodada 39) e `Λ = E + log ζ` em `Re s ≥ 2`
+   (onde `Re ζ > 0`), **`formula_N`**: `πN(T) = Im E(½ + iT) + arg ζ(2 + iT) − Im ∫_{1/2}^{2} ζ′/ζ(σ + iT) dσ + C₁`;
+4. **estimativas**: `im_E_meio` (`|Im E(½ + iT) − ((T/2) log(T/2π) − T/2 + 7π/8)| ≤ 18/T`, de `im_ell_quarto` e
+   `arg_meio`), `|arg ζ(2 + iT)| ≤ π/2` e `variacao_log` (rodada 41) dão **`rvm_nao_ordenada`**;
+5. **todas as alturas**: as ordenadas são finitas em cada faixa (`existe_nao_ordenada`); para `T > 13`, toma-se
+   `T₁ ∈ (T − 1, T)` e `T₂ ∈ (T, T + 1)` não ordenadas, a monotonia de `N` e `m_lip`
+   (`0 ≤ m(x) − m(y) ≤ log x` para `2π ≤ y ≤ x ≤ y + 1`); para `T ≤ 13`, `N(T) = 0` e `|m(T)| ≤ 20`.
+
+Daí **`necessidade_iff_deducao`**: `NecessidadeRH` equivale à dedução de Báez-Duarte com `RiemannVonMangoldt`,
+`HadamardXi` e `LittlewoodSobRH` como hipóteses, e as três agora são teoremas (rodadas 33, 38 e 42).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `RiemannVonMangoldt` (com multiplicidade) | CERTIFIED | alavanca |
+| `formula_N` (fórmula exata de `πN(T)` nas alturas não ordenadas) | CERTIFIED | ferramenta |
+| `CrescimentoN` (zeros *distintos*, B10) | BUILD_PENDING (não segue de RvM sem cota de multiplicidade melhor que `O(log T)`) | — |
+| a dedução de Báez-Duarte (`EntradasNecessidade`) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/rvm.py`, `dados/rvm.json`, `testes/test_rvm.py`, 2 testes). Nas oito alturas de `20,5` a
+`299,7`, `formula_N` reproduz `N(T)` (de 1 a 137) a `6·10⁻¹³`, com `C₁ ≈ −1,4·10⁻¹²`, isto é, `C₁ = 0`
+numericamente. `|N(T) − m(T)|/log T ≤ 0,24`. `T·(Im E(½ + iT) − termo principal) ≈ 0,021`, contra a cota `18`. A
+média de `N(T) − m(T) − 7/8` nas oito alturas é `−0,27`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
