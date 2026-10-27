@@ -355,3 +355,4 @@ import ATK.ZeroClasses.Perron
 import ATK.ZeroClasses.PerronDirichlet
 import ATK.ZeroClasses.LittlewoodMu
 import ATK.ZeroClasses.HardyCuspide
+import ATK.ZeroClasses.HardyFourier

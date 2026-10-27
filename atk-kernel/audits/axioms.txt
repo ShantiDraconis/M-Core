@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 3c62d75f7e49a460f51a6a5eaeb58a11f3ab316e82ffb2f510674ed419d1d105
+# axiomas por teorema — congelamento de 86f2449461601542bcd98e042dabd60ee69b5db44a6a806c80f8556806953711
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7545,3 +7545,25 @@ ATK.ZeroClasses.Hardy.geometria	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hardy.norm_Th_cusp	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hardy.norm_iteratedDeriv_Th_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hardy.iteratedDeriv_Th_tendsto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.evenKernel_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.th_ofReal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.psi_eq_th	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.continuousAt_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.psi_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.psi_inv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.psi_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.Hr_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.Hr_neg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.continuous_Hr	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.abs_Hr_le_of_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.abs_Hr_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.integrableOn_exp_Ioi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.integrableOn_Hr_cos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.integrableOn_exp_cos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.integral_exp_cos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.integral_psi_exp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.Fx_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.norm_Gamma_quarto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.abs_Xi_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.abs_Fx_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Hardy.Fx_neg	propext, Classical.choice, Quot.sound

@@ -1,5 +1,4 @@
 """Testes do companheiro numérico da rodada 42 (ZeroClasses/RiemannVonMangoldt.lean)."""
-import math
 import os
 import sys
 import tempfile
