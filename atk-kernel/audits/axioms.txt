@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 69f7033786f37da1f3bb732bf6f7d3b9f24fe8d2f845dad77eb8481821248f51
+# axiomas por teorema — congelamento de d9f03b5a7cce9d6f55d4980f344c6ef4fc10757afffd7e58dd477771a7ecbb35
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7472,3 +7472,22 @@ ATK.ZeroClasses.RvM.xlogx_inf	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.RvM.m_lip	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.RvM.riemannVonMangoldt	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.RvM.necessidade_iff_deducao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.norm_Gamma_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.continuousAt_Gamma	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.norm_log_add_sub_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.razao_Gamma_alto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.razao_Gamma_baixo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.razao_Gamma	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.norm_Gammaℝ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.razao_Gammaℝ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.xi_meio_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.razao_zeta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.integrable_dom	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.norm_lc_sq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.cota_erro	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.lc_injective	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.ae_zeta_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.continuous_erro	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.tendsto_erro	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.tendsto_J	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.JRH.necessidade_iff_entrada	propext, Classical.choice, Quot.sound
