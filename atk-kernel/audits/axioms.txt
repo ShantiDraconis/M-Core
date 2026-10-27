@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a1cd2eac25ffcf00d1eb4ef471568e7ad0f6c032cd585fdf99a1da2254f32c96
+# axiomas por teorema — congelamento de 903e26b73520b3cf5ecc6b188f2a8ed334045e7ac719ab4530ef285c4848fa5a
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7600,3 +7600,15 @@ ATK.ZeroClasses.Hardy.sem_sinal_constante	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hardy.trocasInfinitas	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hardy.hardy	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Hardy.existe_zero_acima	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.abel	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.mu_eq_term_mul	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.mertens_of_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.norm_cpow_sub_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.norm_gM_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.summable_shift	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.summable_gM	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.differentiableAt_G	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.M_succ_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.G_eq_LSeries	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.RH_of_mertens	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Mertens.rh_iff_mertens	propext, Classical.choice, Quot.sound

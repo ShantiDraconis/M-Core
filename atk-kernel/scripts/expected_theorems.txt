@@ -7598,3 +7598,15 @@ ATK.ZeroClasses.Hardy.sem_sinal_constante
 ATK.ZeroClasses.Hardy.trocasInfinitas
 ATK.ZeroClasses.Hardy.hardy
 ATK.ZeroClasses.Hardy.existe_zero_acima
+ATK.ZeroClasses.Mertens.abel
+ATK.ZeroClasses.Mertens.mu_eq_term_mul
+ATK.ZeroClasses.Mertens.mertens_of_RH
+ATK.ZeroClasses.Mertens.norm_cpow_sub_le
+ATK.ZeroClasses.Mertens.norm_gM_le
+ATK.ZeroClasses.Mertens.summable_shift
+ATK.ZeroClasses.Mertens.summable_gM
+ATK.ZeroClasses.Mertens.differentiableAt_G
+ATK.ZeroClasses.Mertens.M_succ_eq
+ATK.ZeroClasses.Mertens.G_eq_LSeries
+ATK.ZeroClasses.Mertens.RH_of_mertens
+ATK.ZeroClasses.Mertens.rh_iff_mertens

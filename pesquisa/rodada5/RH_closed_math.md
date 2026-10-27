@@ -2113,7 +2113,7 @@ Um arquivo, **12 teoremas** (total 7545), só os axiomas padrão (`ZeroClasses/H
 | --- | --- | --- |
 | a teta e todas as derivadas de `Θ` se anulam na cúspide | CERTIFIED | ferramenta |
 | `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du` e o decaimento de `Ξ` | CERTIFIED na rodada 48 (§4bb) | ferramenta |
-| a identidade dos momentos e Hardy (`ATK.AtaqueRH.Hardy`) | BUILD_PENDING | — |
+| a identidade dos momentos e Hardy (`ATK.AtaqueRH.Hardy`) | CERTIFIED nas rodadas 49–50 (§4bc–§4bd) | ferramenta; consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/hardy_cuspide.py`, `dados/hardy_cuspide.json`, `testes/test_hardy_cuspide.py`, 2 testes).
@@ -2145,7 +2145,7 @@ identidade dos momentos de Hardy.
 | `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du`, `H` par, `\|H(u)\| ≤ 5e^{−\|u\|/2}` | CERTIFIED | ferramenta |
 | `\|Ξ(t)\| ≤ 24CΓ(1 + \|t\|)⁴e^{−π\|t\|/4}` | CERTIFIED | ferramenta |
 | inversão de Fourier, continuação à faixa `\|Im x\| < π/4` e a identidade dos momentos | CERTIFIED na rodada 49 (§4bc) | ferramenta |
-| Hardy (`ATK.AtaqueRH.Hardy`) | BUILD_PENDING | — |
+| Hardy (`ATK.AtaqueRH.Hardy`) | CERTIFIED na rodada 50 (§4bd) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/hardy_fourier.py`, `dados/hardy_fourier.json`, `testes/test_hardy_fourier.py`, 2 testes).
@@ -2226,6 +2226,33 @@ fora dela. Numérico (`codigo/hardy_teorema.py`, `dados/hardy_teorema.json`, `te
 2 testes): numa malha de passo `0,01`, `Ξ` troca de sinal **10** vezes em `(0, 50]` e **29** em `(0, 100]`, o valor de
 `N(100)` (o termo principal de Riemann–von Mangoldt dá `29,002`); as dez primeiras trocas ficam a menos de `0,005` de
 `γ₁, …, γ₁₀`.
+
+## 4be. O critério de Littlewood: `RH ⟺ M(x) = O(x^{1/2 + ε})` (rodada 51)
+
+Um arquivo, **12 teoremas** (total 7612), só os axiomas padrão (`ZeroClasses/MertensRH.lean`). Com
+`M(N) = Σ_{n ≤ N} μ(n)` (a função de Mertens) e `MertensFraco := ∀ ε > 0, ∃ C, ∀ N, |M(N)| ≤ C(N + 1)^{1/2 + ε}`:
+
+* **`rh_iff_mertens : RiemannHypothesis ↔ MertensFraco`** (Littlewood 1912; Titchmarsh §14.25);
+* `abel`: somação por partes finita;
+* **`mertens_of_RH`** (⇒): sob RH, `Σ_{n ≤ N} μ(n)n^{−w}` converge em `w = ½ + ε` (o teorema de Littlewood da
+  rodada 46, §4az), logo é limitada por `B`; por partes, `|M(N)| ≤ 2B N^{1/2 + ε}`;
+* **`RH_of_mertens`** (⇐): `norm_cpow_sub_le` (`|a^{−z} − (a + 1)^{−z}| ≤ |z| a^{−Re z − 1}`, valor médio),
+  `G(z) = Σ_{n ≥ 0} M(n + 1)((n + 1)^{−z} − (n + 2)^{−z})` normalmente convergente em compactos de `Re z > θ`
+  (`summable_gM`) e holomorfa lá (`differentiableAt_G`, Weierstrass da Mathlib); em `Re z > 1`,
+  `G = Σ μ(n)n^{−z} = 1/ζ` (`G_eq_LSeries`); pelo princípio da identidade, `ζ₁(z)G(z) = z − 1` em `Re z > θ`, e `ζ`
+  não se anula lá.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `RH ⟺ M(x) = O(x^{1/2 + ε})` para todo `ε > 0` | CERTIFIED | reformulação |
+| `M(x) = O(x^{1/2 + ε})` | OPEN_MATH (é RH) | — |
+| a conjectura de Mertens `\|M(x)\| < √x` | falsa (Odlyzko–te Riele, 1985); não formalizada | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/mertens_rh.py`, `dados/mertens_rh.json`, `testes/test_mertens_rh.py`, 2 testes). Por crivo até
+`2·10⁵`: `M(10⁴) = −23`, `M(10⁵) = −48`; o máximo de `|M(N)|/√N` cai de `0,47` (`10³ < N ≤ 10⁴`) para `0,38`
+(`10⁵ < N ≤ 2·10⁵`) — dado finito, sem valor de prova. A série por partes dá `G(2) = 0,60792710` contra
+`6/π² = 0,60792710`, e a identidade de `abel` confere em `s = 0,75`, `N = 10⁴`.
 
 ## 5. Formatos
 
