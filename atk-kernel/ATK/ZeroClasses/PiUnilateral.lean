@@ -37,9 +37,6 @@ open ATK.ZeroClasses.PiLi (Li ErroPi ErroTheta semZeros_iff_pi semZeros_iff_thet
 open ATK.ZeroClasses.LittlewoodPiIncond (aPi aPi_bounds aPi_pequeno sqrt_le_rpow semZeros_of_aPi_le
   semZeros_of_aPi_ge)
 
-/-- As duas definições de `Li` (rodadas 60 e 95) são a mesma. -/
-theorem Li_eq_Li : ATK.ZeroClasses.LittlewoodPi.Li = Li := rfl
-
 /-! ## 1. As quatro cotas de um lado -/
 
 /-- `θ(x) − x ≤ A x^b + K` para `x ≥ 2`. -/
@@ -142,7 +139,7 @@ theorem semZeros_of_cimaPi {θ : ℝ} (hθ : 1 / 2 ≤ θ) (hθ1 : θ < 1) (h : 
   · linarith [(aPi_pequeno hN).2]
   · have hN2 : (2 : ℝ) ≤ N := by exact_mod_cast hN
     have h1 := hAK N hN2
-    rw [Nat.floor_natCast, ← Li_eq_Li] at h1
+    rw [Nat.floor_natCast] at h1
     have h2 := pot_le (A := A) (b := θ) (by linarith) N
     have h3 : C * √(N : ℝ) ≤ C * ((N : ℝ) + 1) ^ θ := mul_le_mul_of_nonneg_left (sqrt_le_rpow hθ N) hC0
     linarith [(hC N hN).1]
@@ -161,7 +158,7 @@ theorem semZeros_of_baixoPi {θ : ℝ} (hθ : 1 / 2 ≤ θ) (hθ1 : θ < 1) (h :
   · linarith [(aPi_pequeno hN).1]
   · have hN2 : (2 : ℝ) ≤ N := by exact_mod_cast hN
     have h1 := hAK N hN2
-    rw [Nat.floor_natCast, ← Li_eq_Li] at h1
+    rw [Nat.floor_natCast] at h1
     have h2 := pot_le (A := A) (b := θ) (by linarith) N
     linarith [(hC N hN).2]
 
@@ -228,7 +225,6 @@ theorem nao_baixoPi {θ : ℝ} (hθ : 1 / 2 ≤ θ) (hlt : θ < Teta) : ¬ Baixo
 
 end ATK.ZeroClasses.PiUnilateral
 
-#print axioms ATK.ZeroClasses.PiUnilateral.Li_eq_Li
 #print axioms ATK.ZeroClasses.PiUnilateral.cimaTheta_of_erro
 #print axioms ATK.ZeroClasses.PiUnilateral.baixoTheta_of_erro
 #print axioms ATK.ZeroClasses.PiUnilateral.cimaPi_of_erro

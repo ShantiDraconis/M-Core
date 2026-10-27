@@ -241,7 +241,7 @@ theorem contra_raiz {L c ρn : ℝ} (hL : 0 < L) (hρ : 0 < ρn) (hc : c = L / (
   nlinarith [sqrt_dois_lt]
 
 /-- **`ψ(x) − x = Ω₊(√x)`**: existe `c > 0` tal que `ψ(N) − N > c√(N + 1) + K` infinitas vezes, para todo `K`
-(Schmidt 1903). Com `ρ₀ = ½ + iγ₀` um zero de Hardy, serve `c = 1/(4|ρ₀|)`. -/
+(Schmidt 1903). Com `ρ₀ = ½ + iγ₀` um zero de Hardy, serve `c = 1/(8|ρ₀|)`. -/
 theorem psi_omega_mais_raiz : ∃ c : ℝ, 0 < c ∧ ∀ K : ℝ, ∃ N : ℕ,
     c * √((N : ℝ) + 1) + K < Chebyshev.psi N - N := by
   obtain ⟨γ, hγ, hz⟩ := existe_zero

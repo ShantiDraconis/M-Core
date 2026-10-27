@@ -8421,7 +8421,6 @@ ATK.ZeroClasses.LittlewoodPiIncond.um_le_log_eee
 ATK.ZeroClasses.LittlewoodPiIncond.pi_littlewood_nao_RH
 ATK.ZeroClasses.LittlewoodPiIncond.pi_littlewood
 ATK.ZeroClasses.LittlewoodPiIncond.pi_troca_sinal
-ATK.ZeroClasses.PiUnilateral.Li_eq_Li
 ATK.ZeroClasses.PiUnilateral.cimaTheta_of_erro
 ATK.ZeroClasses.PiUnilateral.baixoTheta_of_erro
 ATK.ZeroClasses.PiUnilateral.cimaPi_of_erro

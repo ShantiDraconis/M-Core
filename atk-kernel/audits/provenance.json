@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "473577e68881f7990f979c7430b5d1cc9a539c7a6812c8aeabd855c3cce9935e",
+  "sources_sha256": "1fa2709754c4f01069b794ec54e2406b52131d8198ceb244b4d8e3b450547ce1",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -399,8 +399,8 @@
     "ATK/ZeroClasses/LittlewoodMedia.lean": "e0223ed4cf1132e0d2ce22390a0acc69b9c9c45968ea2d43297f556e16f0fc9a",
     "ATK/ZeroClasses/LittlewoodMontagem.lean": "50525b3d999b3fc5ead9098de27c1aa494a98fab5e0263a868f9258f3dd9b9c8",
     "ATK/ZeroClasses/LittlewoodMu.lean": "562674f8f9da9bdd45e4613a641ac517055a0d93cd9b9e19660a424076ec9801",
-    "ATK/ZeroClasses/LittlewoodPi.lean": "15e49f44fa643552a126f2bc371093bf8007f2c200fec9fcfd38423b70f16963",
-    "ATK/ZeroClasses/LittlewoodPiIncond.lean": "ede20208395338180bc180e1a706803de1e77cc68072db11ce9bb545d6fefd85",
+    "ATK/ZeroClasses/LittlewoodPi.lean": "1f6e78a1cd217554a9c22e0f96201b3a6b04537242b1bde0596b2adc04c88d26",
+    "ATK/ZeroClasses/LittlewoodPiIncond.lean": "883318ec1811133666a78bafb90d711c2d72616a8a365e3f3f7adc60da7d8896",
     "ATK/ZeroClasses/LittlewoodRH.lean": "0c870ff669eecc1064a2f2c2968ef8c9c98a2e6fb28edf52793f04dfa04b79bf",
     "ATK/ZeroClasses/LittlewoodSoma.lean": "e617d6b1ac41a8b3cdf4711b4146a8f9608d4570bf166383ab5a3f5524da64c9",
     "ATK/ZeroClasses/LittlewoodTeta.lean": "41919ddbbca0dc971b4a75383cd89c6c0f6e03bb887dcb46fc6c79272c19468b",
@@ -409,12 +409,12 @@
     "ATK/ZeroClasses/Multiplicity.lean": "410e73e4cfa4a3816228c0eebc5ad409056f80779f41631197f19de363dc4f63",
     "ATK/ZeroClasses/MundoFora.lean": "925019b18ec913e493350b122ee8d664b4881e6a0ce7ed82dfd1a6920185b330",
     "ATK/ZeroClasses/OmegaPsi.lean": "7ee8cef7f963eed1a9145f7e3bde69c96677f63342107a0c0d6dd16460f9a9dc",
-    "ATK/ZeroClasses/OmegaRaiz.lean": "644c3a97a19954d34edc1ecfac1e67fec5ad169395e3addf8f1ebeda91d29df3",
+    "ATK/ZeroClasses/OmegaRaiz.lean": "99df1b1903ec6062729ed327eec25130152b02d9c04871b92be31b098eba32b7",
     "ATK/ZeroClasses/Perron.lean": "9ed97265340e164ac10249fd405b5750386ce3dd531adbac6cfaa89dc6e6b226",
     "ATK/ZeroClasses/PerronDirichlet.lean": "f77784d336111c329e7645d1750bf49357df4391a0b9473c9a80641999ae131d",
     "ATK/ZeroClasses/PiLi.lean": "cf608b99aea838b9e2e8c6b4fc08df60169781ec2999ffbd631bb08033c33fce",
     "ATK/ZeroClasses/PiLiRH.lean": "16c151e2d68311677da6f8a7a6cb115b2b2f1e03b1278ef3becd33420a752cd9",
-    "ATK/ZeroClasses/PiUnilateral.lean": "edace7a04f1ec46945b6872550c4cb92b90ea826f962642ba477c4aec37bc32f",
+    "ATK/ZeroClasses/PiUnilateral.lean": "4dbc1c6c4d85f97c3e3ea9cdc75adc8371a3a7a40ccd75de3bb3e81c1217090b",
     "ATK/ZeroClasses/Pontes.lean": "bb1049c311fe09b866dea145e01fd0a79ab91a18e900be6076ddfd01c4323fcc",
     "ATK/ZeroClasses/PsiLog2.lean": "1143ecaa52938b1afbd396f59adab62da7ead4f688c46d06e09201fb5ead88f9",
     "ATK/ZeroClasses/PsiRH.lean": "d5039556a2c0b063f8e44f10bd6549e0b794f7aa46450063573865390fc31e43",
@@ -451,9 +451,9 @@
     "ATK.lean": "bf3c5763e16d8e79410f36e43288023fbc784e90016fc6ca0121dee74c9990ac"
   },
   "n_files": 447,
-  "expected_theorems": 8446,
+  "expected_theorems": 8445,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "a32345fc03c623ce99ef15e734aed0da37c2a6e4",
+  "commit_at_freeze": "33278824f28f57c57e8e49ea1f068e87bc36366b",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

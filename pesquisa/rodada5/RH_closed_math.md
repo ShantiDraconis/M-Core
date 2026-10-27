@@ -3705,9 +3705,10 @@ sinal infinitas vezes** (`pi_troca_sinal`): `π(x) > Li(x)` para `x` arbitrariam
 Sob RH é a rodada 95. O que esta rodada acrescenta é o caso `¬RH`, em três passos.
 
 1. **Landau para `log ζ`** (`semZeros_of_aPi_le`, `semZeros_of_aPi_ge`). A série `b(n) = (Λ(n) − 1)/log n` tem
-   `Σ b(n) n^{−s}` com derivada `−(ζ′/ζ + ζ)` em `Re s > 1` (`logMul_bP`, `hasDerivAt_LSeries_bP`). Como
-   `−ζ′/ζ − ζ` é holomorfa perto de `s = 1` (os polos se cancelam), ela tem primitiva holomorfa no disco
-   `|s − 2| < 2` (`primitiva`), que cola com a transformada de Mellin das somas parciais `a(N) = Σ_{n ≤ N} b(n)`.
+   `Σ b(n) n^{−s}` com derivada `ζ′/ζ + ζ − 1` em `Re s > 1` (`logMul_bP`, `hasDerivAt_LSeries_bP`), isto é,
+   `Σ b(n) n^{−s} = log ζ(s) + ∫ζ − s` a menos de constante. Como `ζ′/ζ + ζ` é holomorfa perto de `s = 1` (os
+   polos se cancelam), a série tem extensão holomorfa ao disco `|s − 2| < 2` (`primitiva`), que cola com a
+   transformada de Mellin das somas parciais `a(N) = Σ_{n ≤ N} b(n)`.
    O passo de Landau da rodada 87 (`Unilateral.extensao`) dá então: se `a(N) ≤ A(N + 1)^θ + K` para todo `N`
    (ou o mesmo por baixo), `ζ` não se anula em `Re s > θ`.
 2. **De `a(N)` a `π(N) − Li(N)`** (`aPi_eq`, `Pi_sub_pi`, `lam_sub_Li`, `aPi_bounds`). Com `Π(N) = Σ Λ(n)/log n`
@@ -3739,7 +3740,7 @@ Numérico (`codigo/littlewood_pi_incond.py`, `dados/littlewood_pi_incond.json`, 
 
 ## 4cy. `Θ` por cotas de um lado de `θ(x) − x` e `π(x) − Li(x)` (rodada 97)
 
-Um arquivo, **23 teoremas** (total 8446), só os axiomas padrão (`ZeroClasses/PiUnilateral.lean`).
+Um arquivo, **22 teoremas** (total 8445), só os axiomas padrão (`ZeroClasses/PiUnilateral.lean`).
 
 A rodada 87 leu `Θ` em cotas de um lado de `ψ(x) − x` e de `M(x)`; a rodada 60, em cotas bilaterais de `θ(x) − x` e
 `π(x) − Li(x)`. Esta rodada fecha os dois casos que faltavam. Para `½ ≤ θ < 1`:

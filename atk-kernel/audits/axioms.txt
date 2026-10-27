@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 473577e68881f7990f979c7430b5d1cc9a539c7a6812c8aeabd855c3cce9935e
+# axiomas por teorema — congelamento de 1fa2709754c4f01069b794ec54e2406b52131d8198ceb244b4d8e3b450547ce1
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8423,7 +8423,6 @@ ATK.ZeroClasses.LittlewoodPiIncond.um_le_log_eee	propext, Classical.choice, Quot
 ATK.ZeroClasses.LittlewoodPiIncond.pi_littlewood_nao_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodPiIncond.pi_littlewood	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodPiIncond.pi_troca_sinal	propext, Classical.choice, Quot.sound
-ATK.ZeroClasses.PiUnilateral.Li_eq_Li	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiUnilateral.cimaTheta_of_erro	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiUnilateral.baixoTheta_of_erro	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiUnilateral.cimaPi_of_erro	propext, Classical.choice, Quot.sound
