@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a23e8dea2d981d60208c3e49540aa9c31bc0f030e6d0684846fd82788c093aa0
+# axiomas por teorema — congelamento de 42646f7f2b7b66d81914c545d3b3ec916b6a17ee6a9cc59e68d7b855d4431530
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7424,3 +7424,20 @@ ATK.ZeroClasses.ArgRetangulo.log_neg_im_pos	propext, Classical.choice, Quot.soun
 ATK.ZeroClasses.ArgRetangulo.log_neg_im_neg	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ArgRetangulo.bordo_inv	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ArgRetangulo.principio_argumento	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.EM11	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.poch1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.Cb1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.cota_zeta_quarto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.re_zeta_dois	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.ne_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.hasDerivAt_zeta_horiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.continuous_zeta_horiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.continuousOn_logDeriv_horiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.integrable_logDeriv_horiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.variacao_simples	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.variacao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.gT_real	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.gT_analitica	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.cota_gT	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.conta_zeros_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VariacaoArg.variacao_log	propext, Classical.choice, Quot.sound
