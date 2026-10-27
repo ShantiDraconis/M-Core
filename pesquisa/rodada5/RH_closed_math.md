@@ -2782,6 +2782,41 @@ Numérico (`codigo/li_um.py`, `dados/li_um.json`, `testes/test_li_um.py`, 2 test
 `= −0,0230957086` (fórmula `−0,0230957090`); `Σ_{0<γ≤600} 2/(¼ + γ²) = 0,043237` mais a cauda `0,002949` dá
 `0,046186` contra `2 + γ − log 4π = 0,046191`; um par fora da reta (`β = 0,4`, `γ = 100`) somaria `4,0·10⁻¹⁰` a mais.
 
+## 4bx. A fórmula explícita, primeira metade: os resíduos no retângulo largo (rodada 70)
+
+Um arquivo, **19 teoremas** (total 7941), só os axiomas padrão (`ZeroClasses/ExplicitaResiduos.lean`). Sem hipótese
+alguma, no retângulo `[−(2K + ½), c] × [−T, T]` (`c > 1`, `T > 0`, sem zeros de `ζ` nas horizontais):
+
+  **`∮ x^s(−ζ′/ζ)(s)/s ds = 2πi (x − Σ_ρ m_ρ x^ρ/ρ + Σ_{n<K} x^{−2(n+1)}/(2(n+1)) − log 2π)`**   (`bordo_largo`),
+
+`ρ` sobre os zeros não triviais do retângulo com multiplicidade. As peças:
+
+* **o princípio do argumento ponderado com um polo** (`principio_polo`): `∮ (f′/f)(φ + c/(s − p)) =
+  2πi (Σ_u m_u (φ(u) + c/(u − p)) + c f′/f(p))` para `φ` analítica e `f(p) ≠ 0`;
+* **`ζ₁(s) = (s − 1)ζ(s)`** (`riemannZeta₁` da Mathlib, inteira): `ord_u ζ₁ = ord_u ζ` fora de `1` (`ordem_zeta1`), ordem
+  finita em toda parte (`ordem_zeta1_ne_top`), `ζ₁′/ζ₁ = ζ′/ζ + 1/(s − 1)` (`logDeriv_zeta1`) e
+  **`ζ₁′/ζ₁(0) = log 2π − 1`** (`logDeriv_zeta1_zero`, de `ζ(0) = −½`, `ζ′(0) = −½ log 2π`);
+* **os zeros triviais são simples** (`deriv_trivial`, `ordem_trivial`): pela equação funcional,
+  `ζ(s) = h(s) cos(π(1 − s)/2)` perto de `−2(n + 1)` com `h = 2(2π)^{s−1}Γ(1 − s)ζ(1 − s) ≠ 0`, e o cosseno tem zero
+  simples (`sen² + cos² = 1`);
+* a decomposição `x^s(−ζ′/ζ)/s = −(ζ₁′/ζ₁)(ψ₁ + 1/s) + [dslope x^· 1 − ψ₁] + x/(s − 1) − 1/s`, `ψ₁ = (x^s − 1)/s`
+  inteira: o polo de `ζ` em `1` vira o resíduo `x`, o polo de `1/s` em `0` vira `−log 2π`, e cada zero trivial
+  `−2(n + 1)` dentro do retângulo dá `x^{−2(n+1)}/(2(n+1))`;
+* `horizontais_boas`: as alturas `T ∈ [T₀, T₀ + 1]` da rodada 66 servem de horizontais.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| zeros triviais simples; `ζ₁′/ζ₁(0) = log 2π − 1` | CERTIFIED | ferramenta |
+| a identidade de resíduos no retângulo largo (`bordo_largo`) | CERTIFIED | ferramenta |
+| o limite `T, K → ∞` (a fórmula explícita `ψ₀(x) = x − Σ_ρ x^ρ/ρ − log 2π − ½ log(1 − x^{−2})`) | BUILD_PENDING (rodada 71) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/explicita_residuos.py`, `dados/explicita_residuos.json`, `testes/test_explicita_residuos.py`,
+2 testes): `ζ₁′/ζ₁(0)` por diferença finita `= 0,8378770668` contra `log 2π − 1 = 0,8378770664`; `ζ′(−2k)`, `k ≤ 5`,
+bate com `(−1)^k (2k)! ζ(2k + 1)/(2(2π)^{2k})` (`ζ′(−2) = −0,0304484571`); em `x = 10,3`, a integral de contorno por
+Simpson em `[−2,5; 2] × [−20, 20]` dá `8,013047047` contra os resíduos `8,013047044`, e em `[−4,5; 2] × [−20, 20]`
+dá `8,013069268` contra `8,013069256`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

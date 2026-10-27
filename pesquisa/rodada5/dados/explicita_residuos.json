@@ -1,0 +1,49 @@
+{
+ "logDeriv_zeta1_zero": 0.8378770667727408,
+ "log2pi_menos_1": 0.8378770664093453,
+ "zeros_triviais": [
+  {
+   "k": 1,
+   "dif_finita": -0.030448457059657725,
+   "forma_fechada": -0.030448457058393254
+  },
+  {
+   "k": 2,
+   "dif_finita": 0.00798381144983121,
+   "forma_fechada": 0.007983811450268632
+  },
+  {
+   "k": 3,
+   "dif_finita": -0.00589975914329644,
+   "forma_fechada": -0.005899759143515936
+  },
+  {
+   "k": 4,
+   "dif_finita": 0.008316161985313868,
+   "forma_fechada": 0.008316161985602253
+  },
+  {
+   "k": 5,
+   "dif_finita": -0.018929926337625715,
+   "forma_fechada": -0.018929926338140383
+  }
+ ],
+ "x": 10.3,
+ "retangulo_largo": [
+  {
+   "K": 1,
+   "integral_re": 8.013047047197364,
+   "integral_im": -6.854695540017789e-11,
+   "residuos": 8.013047044168552
+  },
+  {
+   "K": 2,
+   "integral_re": 8.013069267906868,
+   "integral_im": -1.9579614925214285e-10,
+   "residuos": 8.01306925634475
+  }
+ ],
+ "cauda_trivial_K50": 0.004735332296837517,
+ "menos_meio_log": 0.00473533229683754,
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/ExplicitaResiduos.lean"
+}
