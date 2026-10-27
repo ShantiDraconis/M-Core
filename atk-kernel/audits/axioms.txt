@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 38ee8ee0a922d90e70bb21f403c3cba353d29ca304263a89a59a23d71cd336e4
+# axiomas por teorema — congelamento de cbfaa3fa3097507d74dc78bb391c12550d42b9843ac24abd507db97e34b8b434
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7822,3 +7822,23 @@ ATK.ZeroClasses.SomaZeros.norm_E'_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.SomaZeros.zeta_local	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.SomaZeros.zeta_local_O	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.SomaZeros.logDeriv_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.norm_fL_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.term_fL_neg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.soma_fL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.LSeries_fL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.tsum_um_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.perron_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.px_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.px_one	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.norm_Fx	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.bordo_Fx	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.zeta_ne_zero_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.compacto_logDeriv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.logDeriv_RH_unif	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.continuous_um_abs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.integral_um_abs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.psi_RH_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.psi_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.psi_le_sq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.vonKoch_of_psiLog3	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PsiRH.rh_iff_psiLog3	propext, Classical.choice, Quot.sound
