@@ -2482,6 +2482,35 @@ Numérico (`codigo/omega_psi.py`, `dados/omega_psi.json`, `testes/test_omega_psi
 (o resíduo `m = 1`), e `(σ − ½)|1/ζ|` tende a `1/|ζ′(ρ₁)| = 1,2608`. Por crivo até `10⁶`, o máximo por década de
 `|ψ(N) − N|/√N` fica entre `0,69` e `0,78`, e o de `|M(N)|/√N` entre `0,44` e `0,83` — dado finito.
 
+## 4bm. Báez-Duarte ponderado: `D_N(σ) → 0` ⟹ `ζ ≠ 0` em `Re s > σ` (rodada 59)
+
+Um arquivo, **17 teoremas** (total 7748), só os axiomas padrão (`ZeroClasses/BDPonderado.lean`). Para `0 < σ < 1`,
+`D_N(σ) = inf_c ∫_0^∞ (χ − Σ_{k ≤ N} c_k ρ_k)² t^{2σ−1} dt` (`DNσ`; `DNσ_meio`: `D_N(½)` é o `D_N` de Báez-Duarte):
+
+* **`semZeros_of_DNσ`**: `inf_N D_N(σ) = 0` ⟹ `ζ ≠ 0` em `Re s > σ`;
+* `psi_of_DNσ`, `mertens_of_DNσ` (`½ ≤ σ < 1`): daí `ψ(x) = x + O(x^{σ+ε})` e `M(x) = O(x^{σ+ε})` (rodada 57);
+* **`piso_DNσ`**: para `0 < σ < ½`, **`inf_N D_N(σ) > 0`**, incondicionalmente (os zeros de Hardy em `Re s = ½`);
+* `rh_of_DN_iInf`: a ponte B1 (`inf_N D_N = 0` ⟹ RH) como o caso `σ = ½`.
+
+A prova é a da ponte B1 (§4, `ATK.BaezDuarteBridge`) com o peso. Num zero `σ < Re s < 1`, `∫ res(t)t^{s−1} = 1/s`;
+em `(0, 1]`, `t^{Re s−1}|res| = (|res|t^{σ−½})·t^{Re s−σ−½}` e AM-GM dão `≤ (λW + 1/(2λ(Re s − σ)))/2` (`head_le`);
+em `(1, ∞)`, `res = −S/t` e `S² ≤ (2 − 2σ)W` (`tail_sq_le`, `integrable_w`). Logo
+`1/|s| ≤ (λW + 1/(2λ(Re s − σ)))/2 + √((2 − 2σ)W)/(1 − Re s)` (`key_ineq`), absurdo com `W` pequeno.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `inf_N D_N(σ) = 0` ⟹ `ζ ≠ 0` em `Re s > σ` (Q2(i) de `fronteira/RH_frontier.md`) | CERTIFIED | reformulação |
+| `inf_N D_N(σ) > 0` para `σ < ½` | CERTIFIED | consequência (incondicional) |
+| a recíproca com taxa, `Θ ≤ θ < σ` ⟹ `D_N(σ) ≪ N^{−2(σ−θ)+ε}` (Q2(ii)) | BUILD_PENDING | — |
+| o piso ponderado `κ(σ) ≤ 2(σ − Θ)` (Q2(iii)) | OPEN_MATH | — |
+| RH (`inf_N D_N(½) = 0`) | OPEN_MATH | — |
+
+Numérico (`codigo/bd_ponderado.py`, `dados/bd_ponderado.json`, `testes/test_bd_ponderado.py`, 2 testes). Pela matriz
+de Gram em forma fechada (com `x = 1/t`, `{x/j}{x/k}` é quadrático entre múltiplos de `j` e `k`; cauda pela média
+`1/4 + mdc(j,k)²/(12jk)`): `D₁(½) = 0,8582120` e `D₂(½) = 0,2899645` (os valores de `gram2.json`), e
+`D_8(σ) = 0,0428; 0,0242; 0,0140; 0,0063` para `σ = 0,4; 0,5; 0,6; 0,75`. Os dados finitos não mostram o piso de
+`σ = 0,4`: ele é teorema, não observação.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
