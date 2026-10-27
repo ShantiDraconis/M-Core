@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 1c6cf7e45b17a0fb8a8147975e9d5451b0e12ff2d028c681e4c14e40901c4523
+# axiomas por teorema — congelamento de fea5907de0f53b5dae17a099c879177d91ad906826393e401f1753ef0f5a3721
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8002,3 +8002,10 @@ ATK.ZeroClasses.BDDesloc.norm_Gs_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDDesloc.integrable_Gs	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDDesloc.desloc	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDDesloc.molif_cota	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxa.norm_zeta_linha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxa.DNσ_taxa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxa.DNσ_tendsto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxa.iInf_DNσ_eq_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxa.semZeros_iff_DNσ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxa.rh_iff_DNσ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxa.DNσ_taxa_RH	propext, Classical.choice, Quot.sound

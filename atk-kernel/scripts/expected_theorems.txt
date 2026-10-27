@@ -8000,3 +8000,10 @@ ATK.ZeroClasses.BDDesloc.norm_Gs_le
 ATK.ZeroClasses.BDDesloc.integrable_Gs
 ATK.ZeroClasses.BDDesloc.desloc
 ATK.ZeroClasses.BDDesloc.molif_cota
+ATK.ZeroClasses.BDTaxa.norm_zeta_linha
+ATK.ZeroClasses.BDTaxa.DNσ_taxa
+ATK.ZeroClasses.BDTaxa.DNσ_tendsto
+ATK.ZeroClasses.BDTaxa.iInf_DNσ_eq_zero
+ATK.ZeroClasses.BDTaxa.semZeros_iff_DNσ
+ATK.ZeroClasses.BDTaxa.rh_iff_DNσ
+ATK.ZeroClasses.BDTaxa.DNσ_taxa_RH

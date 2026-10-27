@@ -1,0 +1,35 @@
+{
+ "sigma": 0.75,
+ "Tmax": 1000.0,
+ "cauda_estimada": 0.0003183098861837907,
+ "cotas": [
+  {
+   "N": 10,
+   "cota": 0.4480868601902957
+  },
+  {
+   "N": 20,
+   "cota": 0.15487897026018235
+  },
+  {
+   "N": 40,
+   "cota": 0.04582255823601754
+  },
+  {
+   "N": 80,
+   "cota": 0.013557727792889898
+  },
+  {
+   "N": 160,
+   "cota": 0.004246045640402677
+  }
+ ],
+ "expoentes_locais": [
+  1.5326371554174756,
+  1.757011355257682,
+  1.7569425950897726,
+  1.6749236264355116
+ ],
+ "expoente_garantido_sob_RH": 0.5,
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/BDTaxa.lean"
+}

@@ -2898,7 +2898,7 @@ O passo seguinte (rodada 74) é deslocar a integral de `A_N` para `Re z = −δ`
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | Plancherel ponderado; forma espectral de `D_N(σ)`; molificador de Riesz e sua representação | CERTIFIED | ferramenta |
-| Q2(ii): `SemZeros θ ⟹ D_N(σ) ≪ N^{−2(σ−θ)+ε}` para `θ < σ < 1` | BUILD_PENDING | — |
+| Q2(ii): `SemZeros θ ⟹ D_N(σ) ≪ N^{−2(σ−θ)+ε}` para `θ < σ < 1` | CERTIFIED (rodada 75, §4cc) | reformulação |
 | Q2(iii): o piso ponderado `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
 | RH | OPEN_MATH | — |
 
@@ -2928,12 +2928,43 @@ e daí, na reta `Re s = σ`, **`|A_N(σ + iτ) − 1/ζ(σ + iτ)| ≤ K N^{−�
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | `A_N(s) − 1/ζ(s) = (1/2π)∫ W(−δ+iy)N^{−δ+iy}/ζ(s−δ+iy) dy` e `\|A_N − 1/ζ\| ≤ K N^{−δ}(1+\|τ\|)^η`, sob `SemZeros θ` | CERTIFIED | ferramenta |
-| Q2(ii): `D_N(σ) ≪ N^{−2δ}` | BUILD_PENDING (rodada 75) | — |
+| Q2(ii): `D_N(σ) ≪ N^{−2δ}` | CERTIFIED (rodada 75, §4cc) | reformulação |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/bd_desloc.py`, `dados/bd_desloc.json`, `testes/test_bd_desloc.py`, 2 testes): em `s = 0,8 + 3i`,
 `δ = 0,2`, `N = 10`, os dois lados de `desloc` batem a `4·10⁻⁸`; `|A_N(s) − 1/ζ(s)|` cai de `0,46` (`N = 10`) a
 `0,0077` (`N = 640`), com `|A_N − 1/ζ|·N^{1/4}` decrescendo de `0,82` a `0,039`.
+
+## 4cc. Báez-Duarte ponderado com taxa: a questão Q2(ii) (rodada 75)
+
+Um arquivo, **7 teoremas** (total 8009), só os axiomas padrão (`ZeroClasses/BDTaxa.lean`). Fecha a questão Q2(ii) de
+`fronteira/RH_frontier.md`. Para `½ ≤ θ < 1`, sob `SemZeros θ` (`ζ ≠ 0` em `Re s > θ`):
+
+  **`D_N(σ) ≤ K N^{−2δ}`** para todo `0 < δ < σ − θ`, `θ < σ < 1`   (`DNσ_taxa`),
+
+com `D_N(σ) = inf_c ∫_0^∞ (χ − Σ_{k≤N} c_k {1/(kt)})² t^{2σ−1} dt` (rodada 59): `κ(σ) ≥ 2(σ − θ)`. Consequências:
+
+* `DNσ_tendsto`, `iInf_DNσ_eq_zero`: `D_N(σ) → 0` para todo `σ ∈ (θ, 1)`;
+* **`semZeros_iff_DNσ`**: `SemZeros θ ⟺ ∀ σ ∈ (θ, 1), inf_N D_N(σ) = 0` (com a suficiência da rodada 59);
+* **`rh_iff_DNσ`**: **RH ⟺ `inf_N D_N(σ) = 0` para todo `σ ∈ (½, 1)`**, e sob RH `D_N(σ) ≪ N^{−2δ}` para
+  `δ < σ − ½` (`DNσ_taxa_RH`).
+
+A prova junta as rodadas 73–74: `D_N(σ) ≤ (1/2π)∫|1 − ζ(s)A_N(s)|²/|s|²`, `1 − ζA_N = ζ(1/ζ − A_N)`,
+`|1/ζ − A_N| ≤ K N^{−δ}(1 + |τ|)^{1/8}` (`molif_cota`) e `|ζ(σ + iτ)| ≤ C(1 + |τ|)^{1/8}` sob `SemZeros θ`
+(`norm_zeta_linha`, Borel–Carathéodory da rodada 57 com `exp(Re L)`); com `|s| ≥ σ(1 + |τ|)/2` o integrando fica
+`≤ (const) N^{−2δ}(1 + |τ|)^{−3/2}`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Q2(ii): `SemZeros θ ⟹ D_N(σ) ≪ N^{−2δ}`, `δ < σ − θ` | CERTIFIED | reformulação |
+| `SemZeros θ ⟺ ∀ σ ∈ (θ,1), inf_N D_N(σ) = 0`; RH ⟺ o mesmo com `θ = ½` | CERTIFIED | reformulação |
+| a versão incondicional com um semiplano externo (`θ = 7/8` ou `0,8749…`) | BUILD_PENDING (precisa importar o semiplano) | — |
+| Q2(iii): o piso ponderado `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
+| `SemZeros θ` para algum `θ < 1`; RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_taxa.py`, `dados/bd_taxa.json`, `testes/test_bd_taxa.py`, 2 testes): a cota espectral em
+`σ = 0,75` (`|τ| ≤ 1000`) cai de `0,448` (`N = 10`) a `0,0042` (`N = 160`), com expoentes locais `1,53`–`1,76`,
+acima do `2(σ − ½) = 0,5` garantido sob RH.
 
 ## 5. Formatos
 
