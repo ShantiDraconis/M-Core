@@ -6,7 +6,7 @@
   "zeta6_sobre_zeta3": 0.8463351937086948,
   "max_L_N_de_2_a_n": 0,
   "L_n": -530,
-  "media_L_sobre_raiz_no_ultimo_decimo": -0.7078708115460846,
+  "media_L_sobre_raiz_na_ultima_decada": -0.7078708115460846,
   "inv_zeta_meio": -0.6847652360899366,
   "max_abs_L_sobre_raiz": 1.3302204651592284,
   "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/LiouvilleRH.lean"

@@ -49,14 +49,14 @@ def main(saida=None, n=1_000_000):
             max_L = max(max_L, L)
         r = L / math.sqrt(k)
         max_abs = max(max_abs, abs(r))
-        if k >= n // 10:
+        if k >= n // 10:  # a última década [n/10, n]
             soma_media += r
             cont += 1
     out = {"n": n,
            "serie_s2": s2, "zeta4_sobre_zeta2": math.pi ** 2 / 15,
            "serie_s3": s3, "zeta6_sobre_zeta3": (math.pi ** 6 / 945) / ZETA3,
            "max_L_N_de_2_a_n": max_L, "L_n": L,
-           "media_L_sobre_raiz_no_ultimo_decimo": soma_media / cont, "inv_zeta_meio": 1 / ZETA_MEIO,
+           "media_L_sobre_raiz_na_ultima_decada": soma_media / cont, "inv_zeta_meio": 1 / ZETA_MEIO,
            "max_abs_L_sobre_raiz": max_abs,
            "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/LiouvilleRH.lean"}
     if saida is None:
