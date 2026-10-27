@@ -3551,6 +3551,49 @@ com os 138 zeros de `0 < γ ≤ 300`:
 * com `T = 10`, `A = 1`, `Q = 8` e `K = 3`, o alinhamento acha `n = 52 ≤ 8³`. As somas em `n ± 1/T` valem
   `+0,02005` e `−0,01992` (`D(1/T) = 0,01999`); sem alinhar (`n = 1`), `0,0014`.
 
+## 4ct. O teorema de Littlewood: `ψ(x) − x = Ω±(√x log log log x)` (rodada 92)
+
+Um arquivo, **17 teoremas** (total 8341), só os axiomas padrão (`ZeroClasses/LittlewoodMontagem.lean`). Fecha o
+plano das rodadas 89–91.
+
+**`littlewood`** (sem hipóteses). Existe `c > 0` tal que, para todo `X`, há `x ≥ X` com
+`ψ(x) − x ≤ −c√x log log log x`, e há `x ≥ X` com `ψ(x) − x ≥ c√x log log log x`.
+
+A prova é por casos em RH.
+
+* **Sob RH** (`littlewood_RH`, a partir de `F_omega_RH`: `F(y) = Ω±(log log y)`), em quatro passos:
+  * `resto_le`: o resto de `formula_psi` satisfaz `|R(u, τ)| ≤ (K/τ)e^{−u/2}` para `0 < τ ≤ 1` e `u ≥ 0`. A
+    constante explícita em `τ` vem de `∫ |y|e^{−τy²} dy = 1/τ` (`integral_abs_gauss`) e de `integral_gaussian`.
+  * `integral_forcada`: o limite de `soma_forcada` (rodada 91). Com `τ = A₀/T²`,
+    `∫ k_τ(v)F(n ± 1/T − v) dv` fica `∓ c log T` a menos de `C₁ + εΣ + R`.
+  * `log_N_le`: `log(n + 2) ≤ C_G T^{3/2}` para `n ≤ ⌈T²⌉ Q^K`, com `Q = ⌈(1 + log 3T)²⌉` e `K = #{|γ| ≤ 3T}`.
+    Usa `massa_le_real` (`K ≪ T log T`), `log Q ≪ log T` e `log T ≤ 4T^{1/4}`.
+  * `F_grande`: para `T` grande, o alinhamento de Dirichlet (`alinha`, `n ∈ [⌈T²⌉, ⌈T²⌉Q^K]`, `ε = 2π/Q`, de modo
+    que `εΣ ≤ 2πC`) e a localização da rodada 90 dão dois pontos `y ≥ T² − 2` com `log y ≤ T²`. Num deles
+    `F(y) ≤ −c log T`, no outro `F(y) ≥ c log T`. Os erros ficam pequenos: `|R| ≤ 1` (porque `u ≥ T² − 1`) e
+    `8B(1 + 2u²)e^{1 − T²/(4A₀)} ≤ ½` (porque `log u ≪ T^{3/2}`). Como `log log y ≤ 2 log T`, isso dá `Ω±(log log y)`.
+* **Se RH falha** (`littlewood_nao_RH`): então `Θ > ½` (`rh_iff_Teta`). A rodada 87 dá, para `½ < θ < Θ` e
+  `A = 1/ε` (`ε = θ − ½`), `ψ(N) − N > A(N + 1)^θ + K` e `ψ(N) − N < −A(N + 1)^θ − K` em `N` arbitrariamente
+  grandes. Como `log log log N ≤ log N ≤ N^ε/ε`, vale `√N log log log N ≤ (1/ε)(N + 1)^{½+ε}`
+  (`raiz_le_pot`), e a constante é `1`.
+
+Referências: Littlewood (1914); Ingham, *The Distribution of Prime Numbers*, cap. V; Montgomery–Vaughan,
+*Multiplicative Number Theory I*, §15.1. A prova aqui segue o esquema gaussiano (núcleo do calor + Dirichlet).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ψ(x) − x = Ω±(√x log log log x)` (`littlewood`, Littlewood 1914) | CERTIFIED | consequência (incondicional) |
+| sob RH, `F(y) = Ω±(log log y)` (`F_omega_RH`), `F_grande` | CERTIFIED | consequência |
+| `π(x) − Li(x) = Ω±(√x log log log x/log x)` (Littlewood para `π`) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/littlewood_montagem.py`, `dados/littlewood_montagem.json`, `testes/test_littlewood_montagem.py`,
+2 testes):
+* `∫ |y|e^{−τy²} dy = 1/τ` confere a `4·10⁻⁸` (relativo) em `τ = 0,5; 0,1; 0,02`;
+* `log(⌈T²⌉Q^K + 2) = 23,7; 91,8; 179,6` em `T = 10; 20; 30` (`K = 6; 26; 50`), abaixo de `T²` e de `C_G T^{3/2}`;
+* em `2 ≤ y ≤ 15`, `F` vai de `−0,95` (`y ≈ 2,40`) a `+0,70` (`y ≈ 11,0`) e troca de sinal 1041 vezes. Aqui
+  `log log log x ≤ 1`: o teorema é assintótico e não se vê numericamente.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
