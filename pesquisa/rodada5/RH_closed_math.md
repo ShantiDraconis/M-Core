@@ -3101,6 +3101,46 @@ Numérico (`codigo/bd_piso_l1.py`, `dados/bd_piso_l1.json`, `testes/test_bd_piso
 As inclinações locais `1,53–1,76` da rodada 75 passam do teto assintótico `4σ − 2 = 1` que `taxaL_RH` dá sob RH. Não
 há contradição: o piso só morde para `N` muito grande. Amostras com `N ≤ 160` não medem `κ` (barreira B2).
 
+## 4ch. Burnol restrito e RH num único `σ` (rodada 80)
+
+Um arquivo, **11 teoremas** (total 8077), só os axiomas padrão (`ZeroClasses/BDBurnolL1.lean`). É o argumento da
+rodada 79 com o zero **na** reta do peso, e daí as taxas `ℓ¹` em qualquer `σ`.
+
+**O piso na reta.** Seja `ζ(ρ) = 0` com `Re ρ = σ ∈ (0, 1)`. A integral do meio é `∫_ε^1 dt/t = −log ε` (`J_reta`,
+`key_reta`). Com `ε^σ ≍ 1/(1 + ‖c‖₁)`:
+
+  **`‖res‖²_σ ≥ C/(log(1 + ‖c‖₁) + B)`**   (`piso_reta`, `piso_DNσL_reta`).
+
+* **`burnol_L1`** — Burnol na classe restrita: em `σ = ½`, pelos zeros de Hardy,
+  `D_N^{(N^A)} ≥ C/(A log N + B)` para todo `N ≥ 1`, com o `D_N` de Báez-Duarte (`DNσ_meio`). A barreira B1 era só
+  citada no ATK; aqui ela fica provada na classe `‖c‖₁ ≤ N^A`.
+* `taxaL_reta`, `sem_taxa_meio`: um zero na reta `Re s = σ` impede qualquer taxa de potência na classe restrita; em
+  particular, nenhuma em `σ = ½`.
+* **`taxaL_pos`**: para `0 < σ < 1`, `A ≥ 0` e `κ > 0`, a hipótese `TaxaL σ A κ` dá `Θ < σ` e `Θ(κ + 2A) ≤ 2Aσ`.
+  - `σ < Θ`: excluído por `piso_abaixo`.
+  - `σ = Θ`: excluído pelos zeros com `Re ρ → σ` (rodada 79) ou na reta.
+  - `σ > Θ`: é a rodada 79.
+
+  Uma taxa `ℓ¹` positiva **num único `σ`** certifica `ζ ≠ 0` em `Re s > 2Aσ/(κ + 2A)` (`Teta_le_de_taxa`).
+* **`rh_of_taxaL`**: se `TaxaL σ₀ 1 (4σ₀ − 2)` para **um** `σ₀ ∈ (½, 1)`, então RH. Sob RH, o molificador garante
+  `2σ₀ − 1` (rodada 79). A lacuna entre `2σ₀ − 1` e `4σ₀ − 2` é o fator `1/Θ` de §4cg. Fechá-la é Q2(iii).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `‖res‖²_σ ≥ C/(log(1 + ‖c‖₁) + B)` se há zero com `Re ρ = σ` | CERTIFIED | ferramenta |
+| B1 restrita: `D_N^{(N^A)} ≥ C/(A log N + B)`; nenhuma taxa de potência em `σ = ½` na classe | CERTIFIED | parcial |
+| `TaxaL σ A κ`, `κ > 0` ⟹ `Θ < σ` e `Θ ≤ 2Aσ/(κ + 2A)`; `TaxaL σ₀ 1 (4σ₀ − 2)` ⟹ RH | CERTIFIED | reformulação |
+| Burnol para `c` arbitrário: `D_N ≥ (C − o(1))/log N`, `C = Σ m_ρ²/\|ρ\|²` | BUILD_PENDING | — |
+| a recíproca de `rh_of_taxaL` (RH ⟹ `TaxaL σ₀ 1 (4σ₀ − 2)`) | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_burnol_l1.py`, `dados/bd_burnol_l1.json`, `testes/test_bd_burnol_l1.py`, 2 testes):
+* `∫_ε^1 dt/t` confere com `−log ε`;
+* com `ρ₁` e `σ = ½`, as constantes da prova são `C = 2,2·10⁻⁵` e `B = 4,54`, e o piso `C/(log N + log 2 + B)` vale
+  `2,2·10⁻⁶` em `N = 10²` e `6,7·10⁻⁷` em `N = 10¹²`;
+* a constante de Burnol `2 + γ − log 4π ≈ 0,0462` (zeros simples; citada) é ≈ 2100 vezes maior. A forma `1/log N` é a
+  mesma.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
