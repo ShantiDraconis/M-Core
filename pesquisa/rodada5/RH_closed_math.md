@@ -2254,6 +2254,35 @@ Numérico (`codigo/mertens_rh.py`, `dados/mertens_rh.json`, `testes/test_mertens
 (`10⁵ < N ≤ 2·10⁵`) — dado finito, sem valor de prova. A série por partes dá `G(2) = 0,60792710` contra
 `6/π² = 0,60792710`, e a identidade de `abel` confere em `s = 0,75`, `N = 10⁴`.
 
+## 4bf. `ζ′/ζ = O(log² t)` na região livre de zeros (rodada 52)
+
+Um arquivo, **5 teoremas** (total 7617), só os axiomas padrão (`ZeroClasses/LogDerivZeta.lean`). Primeira peça do
+teorema dos números primos com o erro de de la Vallée Poussin, `ψ(x) = x + O(x e^{−c√log x})` — o TNP não está na
+Mathlib fixada.
+
+* **`landau_fora`**: o lema de Landau da rodada 36 **fora do centro e com contagem**. Se `f` é analítica em
+  `‖z − z₀‖ ≤ R`, `f(z₀) ≠ 0` e `‖f‖ ≤ M‖f(z₀)‖`, os zeros `S` em `‖z − z₀‖ ≤ R/4` satisfazem `(Σ m_ρ) log 2 ≤ log M`
+  (módulo máximo de `f/Q` no círculo `3R/4`) e, para `‖z − z₀‖ ≤ R/16` com `f(z) ≠ 0`,
+  `‖f′/f(z) − Σ_{ρ∈S} m_ρ/(z − ρ)‖ ≤ 32(log M + 1)/R` (Borel–Carathéodory no disco `R/8`, Cauchy no círculo
+  `R/16` em volta de `z`);
+* `zeta_disco`, **`zeta_local_fora`**: a aplicação a `ζ` com centro `σ + it`, `1 < σ ≤ 2`, `|t| ≥ 2`;
+* `norm_logDeriv_le`: `|ζ′/ζ(σ + it)| ≤ −ζ′/ζ(σ)` em `σ > 1` (série de von Mangoldt da Mathlib);
+* **`logDeriv_zeta_le`**: existem `c > 0`, `T₁ ≥ 2` e `C ≥ 0` com `ζ(σ + it) ≠ 0` e `|ζ′/ζ(σ + it)| ≤ C log²|t|` para
+  `|t| ≥ T₁` e `1 − c/log|t| ≤ σ ≤ 2`. Centro `σ₀ = 1 + 1/log|t|`; os zeros a distância `≤ 1/8` têm
+  `β ≤ 1 − c₀/(2 log|t|)` pela região livre (§4aq), logo cada termo de Landau é `≤ 4 log|t|/c₀`, e há `O(log|t|)` deles.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Landau fora do centro, com contagem de zeros | CERTIFIED | ferramenta |
+| `\|ζ′/ζ(σ + it)\| ≤ C log²\|t\|` em `σ ≥ 1 − c/log\|t\|` | CERTIFIED | ferramenta |
+| Perron suavizado para `Λ` e o deslocamento até a região livre; `ψ(x) = x + O(x e^{−c√log x})` | BUILD_PENDING (próximas rodadas) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/logderiv_zeta.py`, `dados/logderiv_zeta.json`, `testes/test_logderiv_zeta.py`, 2 testes). Com `ζ`
+por Euler–Maclaurin e `ζ′` por diferença central: `|ζ′/ζ(σ + it)|/log²t` fica abaixo de `0,036` para
+`t = 10, 100, 1000` e `σ` entre `1 − 0,05/log t` e `2`; `|ζ′/ζ(σ + it)| ≤ −ζ′/ζ(σ)` em `σ = 1,1; 1,5; 2`, com
+`−ζ′/ζ(2) = 0,5699610`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

@@ -7610,3 +7610,8 @@ ATK.ZeroClasses.Mertens.M_succ_eq
 ATK.ZeroClasses.Mertens.G_eq_LSeries
 ATK.ZeroClasses.Mertens.RH_of_mertens
 ATK.ZeroClasses.Mertens.rh_iff_mertens
+ATK.ZeroClasses.LogDerivZeta.landau_fora
+ATK.ZeroClasses.LogDerivZeta.zeta_disco
+ATK.ZeroClasses.LogDerivZeta.zeta_local_fora
+ATK.ZeroClasses.LogDerivZeta.norm_logDeriv_le
+ATK.ZeroClasses.LogDerivZeta.logDeriv_zeta_le
