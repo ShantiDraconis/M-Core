@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de c52ce1c99c8837c01db1d50f502f3e9a61ab667a15232b364718b0ebb7089810
+# axiomas por teorema — congelamento de 8c13e86c70b76d31fe2debd0d63c1cce1e06d5b01d1bc8fd18a401c633e80db4
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7941,3 +7941,28 @@ ATK.ZeroClasses.FormulaExplicita.dslope_diff	propext, Classical.choice, Quot.sou
 ATK.ZeroClasses.FormulaExplicita.psi1_add_inv	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.FormulaExplicita.bordo_largo	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.FormulaExplicita.horizontais_boas	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.normSq_sin	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.normSq_cos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.norm_tan_le_of_sq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.norm_tan_le_dois	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.norm_tan_le_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.sin_sq_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.nao_neg_nat	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.digamma_cont	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.digamma_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.digamma_rec	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.digamma_hor	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.digamma_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.log_dois_pi_lt	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.logDeriv_esq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.logDeriv_hor	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.logDeriv_esq_reta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.integral_exp_lin	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.hor_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.esq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.triv_soma	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.lim_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.lim_geo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.eps_tendsto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.explicita_k	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaLimite.formula_explicita	propext, Classical.choice, Quot.sound
