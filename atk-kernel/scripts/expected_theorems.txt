@@ -7592,3 +7592,9 @@ ATK.ZeroClasses.Hardy.hasDerivAt_iteratedDeriv_Th
 ATK.ZeroClasses.Hardy.Gc_eq
 ATK.ZeroClasses.Hardy.momento
 ATK.ZeroClasses.Hardy.momento_tendsto
+ATK.ZeroClasses.Hardy.existe_Xi_ne_zero
+ATK.ZeroClasses.Hardy.sinal_constante
+ATK.ZeroClasses.Hardy.sem_sinal_constante
+ATK.ZeroClasses.Hardy.trocasInfinitas
+ATK.ZeroClasses.Hardy.hardy
+ATK.ZeroClasses.Hardy.existe_zero_acima

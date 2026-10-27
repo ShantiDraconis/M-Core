@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "71572585fe841c5d5a082ba3e182bf780ccc36f9882a1405569f4723a7566b3f",
+  "sources_sha256": "a1cd2eac25ffcf00d1eb4ef471568e7ad0f6c032cd585fdf99a1da2254f32c96",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -362,6 +362,7 @@
     "ATK/ZeroClasses/HardyCuspide.lean": "683a95756f1fa28308ae0d2799c87131e9dcdbc441be83a08ca9cffadd4e3373",
     "ATK/ZeroClasses/HardyFourier.lean": "56a4c0f4891f029c52022fab603fde015f6c3087f61067eb68d9d1c041110ecc",
     "ATK/ZeroClasses/HardyMomentos.lean": "1d732c5438314880a16eb5cac19bc272d3952c7e5085b4f07b1ad55add4e4fdf",
+    "ATK/ZeroClasses/HardyTeorema.lean": "d35f0d1e8847047fe1b150ab5d9c7f9b38f3b65666d50dd5a3014ed27592d794",
     "ATK/ZeroClasses/Hipotetico.lean": "41c689384ab203561911b1047075d5fd4edb09b2d288eb304134bed45559e9a8",
     "ATK/ZeroClasses/JSobRH.lean": "f62f3fe28d38c71f3dbd539f3ec26eab2d16d4c124337f0356f82703dbc24e8b",
     "ATK/ZeroClasses/Jensen.lean": "09eb1b38e79eecc829dd7fcf268687f231acbdeef53453a229977119916dea5d",
@@ -400,12 +401,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "47a211b9b20a18e3df3ba7d69ee6ee14e14e267f009708e46fd39b2db3b66b94"
+    "ATK.lean": "1c4055c383ee9cbc3eb244586326d53fa54f0be5b2749fcf177c732333dabe78"
   },
-  "n_files": 399,
-  "expected_theorems": 7594,
+  "n_files": 400,
+  "expected_theorems": 7600,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "225e7dfb9f9c54abb331986eb88f8472de515256",
+  "commit_at_freeze": "5270c100861b0cdd772495c9770ced1f7a9f684b",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
