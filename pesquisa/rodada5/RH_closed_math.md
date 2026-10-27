@@ -2112,7 +2112,7 @@ Um arquivo, **12 teoremas** (total 7545), só os axiomas padrão (`ZeroClasses/H
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | a teta e todas as derivadas de `Θ` se anulam na cúspide | CERTIFIED | ferramenta |
-| `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du` e o decaimento de `Ξ` | BUILD_PENDING (próxima rodada) | — |
+| `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du` e o decaimento de `Ξ` | CERTIFIED na rodada 48 (§4bb) | ferramenta |
 | a identidade dos momentos e Hardy (`ATK.AtaqueRH.Hardy`) | BUILD_PENDING | — |
 | RH | OPEN_MATH | — |
 
@@ -2121,6 +2121,40 @@ Numérico (`codigo/hardy_cuspide.py`, `dados/hardy_cuspide.json`, `testes/test_h
 verdadeira é `2`, não `K₀`). `|Θ(i(π/4 − 2r))|` cai de `0,31` (`r = 0,08`) a `3,9·10⁻⁴` (`r = 0,02`), e `|Θ′|` de
 `3,8` a `0,09`. Em `r ≤ 1/250` os valores ficam abaixo da precisão da máquina; a cota da prova vai de `50`
 (`r = 0,004`) a `0,32` (`r = 0,0005`).
+
+## 4bb. Hardy, parte 2: a representação de Fourier de `Ξ` e o decaimento (rodada 48)
+
+Um arquivo, **22 teoremas** (total 7567), só os axiomas padrão (`ZeroClasses/HardyFourier.lean`). Liga a teta da Mathlib
+(rodada 47) à fórmula de Riemann já certificada (`ATK.BaseRiemannTeta.Xi_riemann`) e dá as duas entradas analíticas da
+identidade dos momentos de Hardy.
+
+* **`th_ofReal`**: `θ(ix) = 1 + 2ψ(x)`, com `ψ(x) = Σ_{n≥1} e^{−πn²x}` de `ATK.BaseRiemannTeta`; `continuousAt_psi`;
+* **`psi_inv`**: a equação funcional real `1 + 2ψ(1/x) = x^{1/2}(1 + 2ψ(x))` (`evenKernel_functional_equation` da
+  Mathlib); `psi_le`: `ψ(y) ≤ 2e^{−πy}` para `y ≥ 1` (comparação com a série geométrica);
+* `Hr u = e^{−u/2} − 2e^{u/2}ψ(e^{2u})`; **`Hr_eq`**: `Hr = 2 cosh(u/2) − Θ(u)` (o `Θ` da rodada 47); **`Hr_neg`**:
+  `Hr` é par; `continuous_Hr`; **`abs_Hr_le`**: `|Hr(u)| ≤ 5e^{−|u|/2}`;
+* `integral_exp_cos`: `∫₀^∞ e^{−u/2} cos(tu) du = (1/2)/(t² + 1/4)` (`integral_exp_mul_complex_Ioi`);
+  `integral_psi_exp`: a troca `x = e^{2u}` na fórmula de Riemann;
+* **`Fx_eq`** (Titchmarsh (2.16.1)): `Ξ(t)/(t² + 1/4) = ∫₀^∞ Hr(u) cos(tu) du`;
+* `norm_Gamma_quarto`: `|Γ(1/4 + iτ)| ≤ 8CΓ(1 + 2|τ|)e^{−π|τ|/2}` (Stirling vertical de `ATK.GammaVertical` em
+  `Γ(w + 1) = wΓ(w)`); **`abs_Xi_le`**: `|Ξ(t)| ≤ 24CΓ(1 + |t|)⁴e^{−π|t|/4}` (com `|ζ(s)| ≤ ½ + 1/|s − 1| + 6|s|`);
+  `abs_Fx_le`, `Fx_neg`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `Ξ(t)/(t² + ¼) = ∫₀^∞ H(u) cos(tu) du`, `H` par, `\|H(u)\| ≤ 5e^{−\|u\|/2}` | CERTIFIED | ferramenta |
+| `\|Ξ(t)\| ≤ 24CΓ(1 + \|t\|)⁴e^{−π\|t\|/4}` | CERTIFIED | ferramenta |
+| inversão de Fourier, continuação à faixa `|Im x| < π/4` e a identidade dos momentos | BUILD_PENDING | — |
+| Hardy (`ATK.AtaqueRH.Hardy`) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/hardy_fourier.py`, `dados/hardy_fourier.json`, `testes/test_hardy_fourier.py`, 2 testes).
+`Hr(−u) = Hr(u)` até `10⁻¹⁵` em cinco pontos; `|Hr(u)|` fica em `≈ 1/5` da cota. Por Simpson em `[0, 80]`,
+`(1/4)∫₀^∞ Hr = 0,49712077818826`, contra `ξ(1/2) = 0,49712077818831`; `(t² + 1/4)∫₀^∞ Hr(u) cos(tu) du` vale
+`+7,1·10⁻⁵` em `t₁ − 0,05` e `−6,7·10⁻⁵` em `t₁ + 0,05` (`t₁ = 14,1347…`, o primeiro zero). A cota de decaimento é
+folgada: em `t = 30`, `|Ξ| = 1,5·10⁻⁸` contra `0,15`.
+
+Também nesta rodada: `testes/test_rvm.py` perde um `import math` sem uso (apontado pela revisão automática do #117).
 
 ## 5. Formatos
 
