@@ -7499,3 +7499,14 @@ ATK.ZeroClasses.Perron.limite
 ATK.ZeroClasses.Perron.perron_pos
 ATK.ZeroClasses.Perron.perron_neg
 ATK.ZeroClasses.Perron.perron_degrau
+ATK.ZeroClasses.PerronD.xN_pos
+ATK.ZeroClasses.PerronD.abs_log_ge
+ATK.ZeroClasses.PerronD.log_ne_zero
+ATK.ZeroClasses.PerronD.inv_abs_log_le
+ATK.ZeroClasses.PerronD.termo
+ATK.ZeroClasses.PerronD.norm_term_le_um
+ATK.ZeroClasses.PerronD.summable_um
+ATK.ZeroClasses.PerronD.termo_div
+ATK.ZeroClasses.PerronD.ne_zero_ct
+ATK.ZeroClasses.PerronD.soma_perron
+ATK.ZeroClasses.PerronD.perron_LSeries

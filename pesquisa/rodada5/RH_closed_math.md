@@ -2019,6 +2019,32 @@ Numérico (`codigo/perron.py`, `dados/perron.json`, `testes/test_perron.py`, 2 t
 `L ∈ {±2, ±0,5, ±0,1}`, `c ∈ {0,3; 1}`, `T ∈ {5, 20, 60}`. O maior erro/cota é `0,91`, de modo que a cota é quase
 justa. Em `L = 0`, fora da cota, o núcleo tende a `½` (`0,437; 0,484; 0,495`).
 
+## 4ay. Perron truncada para séries de Dirichlet (rodada 45)
+
+Um arquivo, **11 teoremas** (total 7512), só os axiomas padrão (`ZeroClasses/PerronDirichlet.lean`). Para coeficientes
+`|f(n)| ≤ 1`, `x = N + ½`, `c > 0`, `σ + c > 1` (`σ = Re s`) e `T > 0`, **`perron_LSeries`**:
+
+  `|Σ_{n ≤ N} f(n) n^{−s} − (1/2π) ∫_{−T}^{T} F(s + c + it) x^{c+it}/(c + it) dt| ≤ x^c (4x + 2) ζ(σ + c)/(πT)`,
+
+com `F = LSeries f` e `ζ(σ + c)` escrita como `Σ_n n^{−σ−c}`.
+
+* `termo`: `f(n) n^{−s} e^{z log(x/n)} = f(n) n^{−(s+z)} x^z`;
+* **`soma_perron`**: `Σ_n f(n) n^{−s} perron(log(x/n), c, T) = (1/2π) ∫ F(s + c + it) x^{c+it}/(c + it) dt`, trocando
+  soma e integral por convergência dominada (`|f(n) n^{−s−z} x^z/z| ≤ n^{−σ−c} x^c/c`);
+* `abs_log_ge`: `|log(x/n)| ≥ 1/(4x + 2)` para `n ≥ 1`, porque `x` é meio-inteiro;
+* o degrau da rodada 44 em cada `n`, somado com pesos `n^{−σ}(x/n)^c`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Perron truncada para séries de Dirichlet com coeficientes limitados | CERTIFIED | ferramenta |
+| deslocamento para `Re = ½ + ε/2` com `1/ζ` sob RH; `EntradaLittlewood` | BUILD_PENDING (próxima rodada) | — |
+| a estrutura nomeada `FechamentoO1.NecessidadeRH` (corte abrupto; `RH ⟺ D_N → 0` já é `ATK.NecessidadeRH.rh_iff_DN`) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/perron_dirichlet.py`, `dados/perron_dirichlet.json`, `testes/test_perron_dirichlet.py`, 2 testes).
+Com `f = μ`, `s = 0,8 + 5i`, `c = ½`: o erro é `0,041` e `0,016` (`N = 10`, `T = 20` e `50`) e `0,029` e `0,0051`
+(`N = 30`), muito abaixo da cota (`3,6` a `43`). `min_n |log(x/n)|·(4x + 2) = 2,0` para `N < 60`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
