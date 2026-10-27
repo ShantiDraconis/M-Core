@@ -2543,6 +2543,35 @@ Ramanujan; as duas integrações por partes conferem por Simpson a `10⁻⁹` (`
 Por crivo: `π(10⁶) = 78498`, `Li(10⁶) = 78626,504`, `π − Li = −8,6; −16,1; −36,8; −128,5` em `x = 10³, …, 10⁶`, e
 `|π − Li|/(√x log x) ≤ 0,0392 < 1/(8π) = 0,0398` — dado finito, sem valor de prova.
 
+## 4bo. RH ⟹ a hipótese de Lindelöf (rodada 61)
+
+Um arquivo, **9 teoremas** (total 7781), só os axiomas padrão (`ZeroClasses/LindelofRH.lean`).
+
+* **`lindelof_of_RH : RiemannHypothesis → Lindelof`**, com `Lindelof := ∀ ε > 0, ∃ C, ∀ t, |ζ(½ + it)| ≤ C(1 + |t|)^ε`
+  — a hipótese de Lindelöf na reta crítica (a rodada 38 tinha `lindelof_fora_sob_RH`, só em `Re s ≥ ½ + δ`).
+
+A prova (Titchmarsh §14.2), com `δ = η = ε/4`:
+
+* na reta `Re s = ½ + δ`: `|ζ| ≤ C(1 + |t|)^η` sob RH (`ATK.RHLogZeta.norm_zeta_le_RH`);
+* na reta `Re s = ½ − δ`: a equação funcional com Stirling (`ATK.GammaVertical.norm_zeta_one_sub_le`) dá
+  `|ζ(1 − w)| ≤ 2C_Γ|w|^δ|ζ(w)|`, logo `|ζ| ≤ C(1 + |t|)^{δ+η}`;
+* `g(s) = ζ(s)(s + 2)^{−(δ+η)}` (`gL`, `norm_gL`, `fator_le`) é limitada nas duas retas, tem crescimento polinomial
+  dentro (`norm_gL_faixa`, de `ATK.ZeroClasses.VariacaoArg.cota_zeta_quarto`) e é holomorfa na faixa
+  (`differentiableAt_gL`); **Phragmén–Lindelöf** da Mathlib (`PhragmenLindelof.vertical_strip`) dá `|g| ≤ C` na
+  faixa, e em `s = ½ + it`, `|ζ| ≤ C|s + 2|^{ε/2} ≤ C′(1 + |t|)^ε` (`lindelof_um`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| RH ⟹ `ζ(½ + it) = O(\|t\|^ε)` (Lindelöf) | CERTIFIED | consequência de RH |
+| a hipótese de Lindelöf (sem RH) | OPEN_MATH | — |
+| cota de convexidade `ζ(½ + it) = O(\|t\|^{1/4+ε})`; Weyl/Bourgain `O(\|t\|^{13/84+ε})` | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/lindelof.py`, `dados/lindelof.json`, `testes/test_lindelof.py`, 2 testes). `max_{[T,2T]}|ζ(½ + it)|`
+vai de `2,34` (`T = 10`) a `10,36` (`T = 640`), com expoente aparente `log M/log T ≈ 0,36–0,39` — dado finito, sem
+relação com o expoente assintótico. A razão `|ζ(½ − ¼ + it)|/|ζ(½ + ¼ − it)|` bate com `(t/2π)^{1/4}` a `10⁻⁴` e fica
+abaixo da cota grosseira `2C_Γ|w|^{1/4}`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
