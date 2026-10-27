@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de f724b71bf1de9f4ccc07d5719d446994827750cbe15fd388bba3548179219819
+# axiomas por teorema — congelamento de c52ce1c99c8837c01db1d50f502f3e9a61ab667a15232b364718b0ebb7089810
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7922,3 +7922,22 @@ ATK.ZeroClasses.LiUm.tsum_fD_nonneg	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LiUm.soma_inv_quad_eq	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LiUm.soma_inv_quad_ge	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LiUm.rh_iff_soma_inv_quad	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.principio_polo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.zeta1_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.zeta1_an	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.zeta1_eq_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.zeta1_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.ev_zeta1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.ordem_zeta1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.ordem_zeta1_ne_top	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.logDeriv_zeta1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.logDeriv_zeta1_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.triv_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.triv_im	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.deriv_trivial	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.ordem_trivial	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.cpow_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.dslope_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.psi1_add_inv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.bordo_largo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.FormulaExplicita.horizontais_boas	propext, Classical.choice, Quot.sound
