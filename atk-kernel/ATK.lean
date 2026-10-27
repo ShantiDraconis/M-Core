@@ -364,3 +364,4 @@ import ATK.ZeroClasses.ChebyshevSuave
 import ATK.ZeroClasses.TNP
 import ATK.ZeroClasses.VonKoch
 import ATK.ZeroClasses.VonKochRH
+import ATK.ZeroClasses.QuasiRH

@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 803fae57bc46dbf8358113941b93e2eaef53a9e412f5e5d47acf39cb9bd7f46c
+# axiomas por teorema — congelamento de 4bf5e601c164ef09cfd959a218d8f5b1931cefcbebc8a1b33d0bc1e09731d039
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7681,3 +7681,30 @@ ATK.ZeroClasses.VonKochRH.E_eq_sum	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VonKochRH.psi_of_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VonKochRH.rh_iff_psi	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VonKochRH.vonKoch_iff_mertens	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.zeta₁_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.differentiableAt_F	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.differentiableAt_Hf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.cθ_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.cθ_im	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.bola_props	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.norm_zeta_le_bola	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.log_zeta_cθ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.existe_log_zeta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.L_eq_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.norm_L_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.exp_young	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.compacto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.norm_F_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.norm_H_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.norm_escala_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.term_escala	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.LSeries_escala	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.somas_limitadas_gen	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.reduz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.psi_of_semZeros	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.M_eq_sum	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.mertens_of_semZeros	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.semZeros_iff_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.semZeros_iff_mertens	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.psi_iff_mertens	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.QuasiRH.semZeros_meio_iff	propext, Classical.choice, Quot.sound
