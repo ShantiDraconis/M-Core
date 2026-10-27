@@ -396,3 +396,4 @@ import ATK.ZeroClasses.BDTaxaTeta
 import ATK.ZeroClasses.Convexidade
 import ATK.ZeroClasses.Unilateral
 import ATK.ZeroClasses.OmegaRaiz
+import ATK.ZeroClasses.ExplicitaGauss

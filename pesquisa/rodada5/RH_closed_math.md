@@ -3419,6 +3419,44 @@ Numérico (`codigo/omega_raiz.py`, `dados/omega_raiz.json`, `testes/test_omega_r
 * 256 481 e 334 127 têm `M(N) > 0,1√(N + 1)` e `M(N) < −0,1√(N + 1)`, respectivamente;
 * `|ζ′(ρ)| = 0,7932; 1,1368; 1,3717` nos três primeiros zeros.
 
+## 4cq. A fórmula explícita com peso gaussiano (rodada 89)
+
+Um arquivo, **29 teoremas** (total 8258), só os axiomas padrão (`ZeroClasses/ExplicitaGauss.lean`). A fórmula
+explícita das rodadas 70–78 usa o peso `x^s/s`, e com ele a soma sobre os zeros só converge condicionalmente. Aqui o
+peso é **gaussiano**, `W(s) = exp((s − ½)u + τ(s − ½)²)` com `τ > 0`. Em `Re s` limitada, `|W(s)|` decai como
+`e^{−τ(Im s)²}`. A soma em `ρ` converge absolutamente, e o lado aritmético é `e^{−u/2}ψ(e^u)` suavizado na escala
+`√τ`.
+
+**`formula_gauss`** (sem hipóteses). Ao longo de alturas boas `T_k ∈ [k + 6, k + 7]`,
+
+  `Σ_{|γ| ≤ T_k} m_ρ W(ρ)/ρ → W(1) + W(−2)/2 − W(0) log 2π − A_τ(u) + (1/2π) ∫ F_W(−5/2 + iy) dy`,
+
+com `A_τ(u) = Σ_n Λ(n) n^{−1/2} Φ_τ(u − log n)`, `Φ_τ(Y) = ∫_0^∞ e^{−w/2} k_τ(Y − w) dw` e
+`k_τ(v) = (4πτ)^{−1/2} e^{−v²/(4τ)}`. As peças:
+* **`bordo_peso`**: o retângulo largo da rodada 70 com um peso inteiro `W` qualquer;
+* **`integral_linha`**: a integral gaussiana na reta vertical (`integral_cexp_quadratic` da Mathlib);
+* **`linha_x`**: `∫ e^{−sL}W(s)/s dy = 2π e^{−L/2} Φ_τ(u − L)`. A prova usa `1/s = ∫_0^∞ e^{−sw} dw` e Fubini;
+* **`lado_aritmetico`**: soma de Dirichlet de `−ζ′/ζ` trocada com a integral;
+* **as cotas**:
+  * horizontais em alturas boas, `‖F_W(x ± iT)‖ ≤ e^{3|u| + 9τ − τT²}A(T)/T`, que tende a `0` (`hor_bound`,
+    `hor_tendsto`);
+  * as retas `Re s = 2` e `Re s = −5/2` são integráveis (`integrable_dir`, `integrable_esq`);
+  * a reta esquerda é `O(e^{−3u})`, uniformemente em `u` (`esq_le`).
+
+Sob RH, `W(ρ) = e^{iγu − τγ²}`, a forma usada nas provas de oscilação.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| a fórmula explícita gaussiana (`formula_gauss`), com `bordo_peso`, `lado_aritmetico` e `esq_le` | CERTIFIED | ferramenta |
+| `ψ(x) − x = Ω±(√x log log log x)` (Littlewood 1914) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/explicita_gauss.py`, `dados/explicita_gauss.json`, `testes/test_explicita_gauss.py`, 2 testes):
+* com `τ = 0,02` e os 21 zeros de `0 < γ ≤ 80`, a fórmula fecha com erro `1,3·10⁻⁵`, `4,8·10⁻⁶` e `2,5·10⁻⁵` em
+  `u = 2; 3; 4`, onde `A_τ(u) = 2,0564; 4,0949; 7,1761`;
+* a reta esquerda contribui `4,7·10⁻⁵`, `5,2·10⁻⁷` e `5,7·10⁻⁹` (`O(e^{−3u})`);
+* a integral gaussiana na reta confere a `5·10⁻¹⁴`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
