@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 1fdf57448daef2880c41fefb7bcc9f499cdbbc284d315acbda95ebd27f9af6bd
+# axiomas por teorema — congelamento de 883465daa9c6988821739f01c0187d134aaaef6c7a03e89e02a9464055663307
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7781,3 +7781,15 @@ ATK.ZeroClasses.LindelofRH.norm_gL_faixa	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LindelofRH.differentiableAt_gL	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LindelofRH.lindelof_um	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LindelofRH.lindelof_of_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.tendsto_gen	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.parametros	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.tendsto_mu	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.tendsto_cL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.limitada_of_converge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.mertens_of_converge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.psi_of_converge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.semZeros_iff_mu	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.semZeros_iff_cL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.rh_iff_mu	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.rh_iff_cL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Abscissa.mu_tendsto_inv_zeta	propext, Classical.choice, Quot.sound

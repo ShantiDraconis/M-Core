@@ -2572,6 +2572,33 @@ vai de `2,34` (`T = 10`) a `10,36` (`T = 640`), com expoente aparente `log M/log
 relação com o expoente assintótico. A razão `|ζ(½ − ¼ + it)|/|ζ(½ + ¼ − it)|` bate com `(t/2π)^{1/4}` a `10⁻⁴` e fica
 abaixo da cota grosseira `2C_Γ|w|^{1/4}`.
 
+## 4bp. A abscissa de convergência de `Σ μ(n)n^{−s}` e de `Σ (Λ(n) − 1)n^{−s}` (rodada 62)
+
+Um arquivo, **12 teoremas** (total 7793), só os axiomas padrão (`ZeroClasses/Abscissa.lean`). Para `½ ≤ θ < 1`:
+
+* **`semZeros_iff_mu`**: `ζ ≠ 0` em `Re s > θ` ⟺ `Σ μ(n)n^{−s}` converge em todo `Re s > θ`, e então para `1/ζ(s)`
+  (`tendsto_mu`);
+* **`semZeros_iff_cL`**: o mesmo para `Σ (Λ(n) − 1)n^{−s}`, com limite `−ζ′/ζ(s) − ζ(s)` (`tendsto_cL`);
+* **`rh_iff_mu`**, `rh_iff_cL`: **RH ⟺ `Σ μ(n)n^{−s}` converge em `Re s > ½`** (Littlewood); `mu_tendsto_inv_zeta`:
+  sob RH, `Σ μ(n)n^{−s} → 1/ζ(s)` em todo `Re s > ½`, `s ≠ 1`.
+
+Logo a abscissa de convergência das duas séries é `max(½, Θ)` com `Θ = sup Re ρ`. A ida é o Littlewood geral
+(`cota_gen`, aqui `tendsto_gen`) com os coeficientes deslocados das rodadas 56–57 (`parametros` escolhe
+`ε = min((Re s − θ)/2, 1)` e `d = Re s − ½ − ε`); a volta é convergência num real `σ` ⟹ somas parciais limitadas ⟹
+`M(N), ψ(N) − N = O(N^σ)` por partes (`mertens_of_converge`, `psi_of_converge`) ⟹ rodada 55.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| abscissa de `Σ μ(n)n^{−s}` e de `Σ (Λ(n) − 1)n^{−s}` = `max(½, Θ)` | CERTIFIED | reformulação |
+| RH ⟺ `Σ μ(n)n^{−s}` converge em `Re s > ½` | CERTIFIED | reformulação |
+| convergência em `Re s = ½` (ou em `s = ½`) | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/abscissa.py`, `dados/abscissa.json`, `testes/test_abscissa.py`, 2 testes). Até `N = 10⁶`:
+`|Σ μ(n)n^{−s} − 1/ζ(s)|` cai a `0,0065` (`s = 0,75`), `0,012` (`s = 0,75 + 10i`) e `1,3·10⁻⁵` (`s = 1,2 + 3i`), e o
+análogo para `Λ − 1` a `0,013`, `0,017`, `2,6·10⁻⁵` — convergência lenta, `≈ N^{−(σ−½)}`; em `s = 0,4` o máximo das
+somas parciais cresce (`1,62 → 2,43`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
