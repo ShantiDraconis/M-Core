@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de b145ef4ce8d59dac96d57fc6be55812a83a97773a6821d610b532b201ed57509
+# axiomas por teorema — congelamento de a582278e93607ac1f754cdd53a7606a6a9e7a9f7e023b9cb1c814b593672f312
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8393,3 +8393,33 @@ ATK.ZeroClasses.LittlewoodPi.resto_pi_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodPi.ev_y	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodPi.pi_littlewood_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodPi.pi_troca_sinal_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.abs_bR_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.abs_aPi_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.aPi_succ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.norm_bP_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.abscissa_bP	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.LSeriesSummable_bP	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.GA_aPi_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.logMul_bP	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.hasDerivAt_LSeries_bP	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.primitiva	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.semZeros_of_aPi_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.semZeros_of_aPi_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.psi_nat	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.theta_nat	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.pi_nat	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.termo_Pi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.Pi_sub_pi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.aPi_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.integral_inv_log_bounds	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.lam_sub_Li	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.aPi_bounds	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.sqrt_le_rpow	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.aPi_pequeno	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.pi_omega_mais	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.pi_omega_menos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.tres_le_eee	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.um_le_log_eee	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.pi_littlewood_nao_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.pi_littlewood	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodPiIncond.pi_troca_sinal	propext, Classical.choice, Quot.sound

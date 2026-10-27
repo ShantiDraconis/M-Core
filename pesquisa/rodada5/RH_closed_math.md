@@ -3694,6 +3694,49 @@ Numérico (`codigo/littlewood_pi.py`, `dados/littlewood_pi.json`, `testes/test_l
 * `π(x) ≥ Li(x)` só até `x = 7`: depois, `π(x) < Li(x)` em todo `8 ≤ x ≤ 10⁶`. A primeira troca de sinal está além de
   `10¹⁹` (Büthe 2018).
 
+## 4cx. Littlewood para `π(x) − Li(x)` sem hipóteses (rodada 96)
+
+Um arquivo, **30 teoremas** (total 8423), só os axiomas padrão (`ZeroClasses/LittlewoodPiIncond.lean`).
+
+**`pi_littlewood`** (sem hipóteses). Existe `c > 0` tal que `π(x) − Li(x) ≤ −c√x log log log x/log x` e
+`π(x) − Li(x) ≥ c√x log log log x/log x` para `x` arbitrariamente grandes. Em particular **`π(x) − Li(x)` troca de
+sinal infinitas vezes** (`pi_troca_sinal`): `π(x) > Li(x)` para `x` arbitrariamente grande (Littlewood 1914).
+
+Sob RH é a rodada 95. O que esta rodada acrescenta é o caso `¬RH`, em três passos.
+
+1. **Landau para `log ζ`** (`semZeros_of_aPi_le`, `semZeros_of_aPi_ge`). A série `b(n) = (Λ(n) − 1)/log n` tem
+   `Σ b(n) n^{−s}` com derivada `−(ζ′/ζ + ζ)` em `Re s > 1` (`logMul_bP`, `hasDerivAt_LSeries_bP`). Como
+   `−ζ′/ζ − ζ` é holomorfa perto de `s = 1` (os polos se cancelam), ela tem primitiva holomorfa no disco
+   `|s − 2| < 2` (`primitiva`), que cola com a transformada de Mellin das somas parciais `a(N) = Σ_{n ≤ N} b(n)`.
+   O passo de Landau da rodada 87 (`Unilateral.extensao`) dá então: se `a(N) ≤ A(N + 1)^θ + K` para todo `N`
+   (ou o mesmo por baixo), `ζ` não se anula em `Re s > θ`.
+2. **De `a(N)` a `π(N) − Li(N)`** (`aPi_eq`, `Pi_sub_pi`, `lam_sub_Li`, `aPi_bounds`). Com `Π(N) = Σ Λ(n)/log n`
+   e `λ(N) = Σ_{2 ≤ n ≤ N} 1/log n`,
+
+   `a(N) = (π(N) − Li(N)) + (Π(N) − π(N)) − (λ(N) − Li(N))`,
+
+   onde `0 ≤ Π − π ≤ (ψ − θ)/log 2 ≤ C√N` (Mathlib: `Chebyshev.psi_sub_theta_le_mul_sqrt`) e
+   `1/log N ≤ λ(N) − Li(N) ≤ 1/log 2`. Logo `a(N) = π(N) − Li(N) + O(√N)`.
+3. **`π(x) − Li(x) = Ω±(x^θ)` para `½ ≤ θ < Θ`** (`pi_omega_mais`, `pi_omega_menos`): uma cota unilateral
+   `A(N + 1)^θ + K` para `π − Li` passa para `a(N)` (o erro `O(√N)` cabe em `x^θ`, `θ ≥ ½`) e dá `SemZeros θ`,
+   contra `θ < Θ`. Se RH falha, `Θ > ½` e `θ = (½ + Θ)/2` dá `x^θ ≫ √x log log log x` (`pi_littlewood_nao_RH`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `π(x) − Li(x) = Ω±(x^θ)` para `½ ≤ θ < Θ` | CERTIFIED | consequência |
+| `π(x) − Li(x) = Ω±(√x log log log x/log x)` e troca de sinal infinitas vezes, sem hipóteses (Littlewood 1914) | CERTIFIED | consequência |
+| um `x` explícito com `π(x) > Li(x)` (número de Skewes) | fora do escopo (não formalizado) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/littlewood_pi_incond.py`, `dados/littlewood_pi_incond.json`, `testes/test_littlewood_pi_incond.py`,
+2 testes), em `N = 10², …, 10⁶`:
+* as duas cotas de `Pi_sub_pi` e `lam_sub_Li` valem nos marcos, e a decomposição de `a(N)` fecha a `2·10⁻⁹`;
+* `λ(N) − Li(N)` vale `0,91; 0,87; 0,86; 0,85; 0,84`, dentro de `[1/log N, 1/log 2]`;
+* o viés: `π(N) − Li(N) = −8,56; −16,09; −36,76; −128,50` (`N = 10³…10⁶`) e não troca de sinal depois de `N = 7`,
+  enquanto `a(N) = Π(N) − λ(N)` troca de sinal 6762 vezes até `10⁶`. A diferença `Π − π = ½π(√N) + ⅓π(∛N) + …`
+  (`99,1` em `10⁶`) é o viés todo, e é `O(√N)` — pequena demais para a escala `x^θ`, `θ > ½`, do caso `¬RH`.
+  Sob RH o argumento de Landau só alcança `Ω±(x^{½−ε})`, abaixo de `√x`; por isso aquele caso precisou da rodada 95.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
