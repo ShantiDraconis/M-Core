@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "7c3e9eba594710fe8af61515355ce2693d2abed05a07440d8bd81e1607f57b88",
+  "sources_sha256": "88c3e4ada14e109383668fb54f6a0cf2042eb987589e46f99034c12c0da1c70d",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -358,7 +358,7 @@
     "ATK/ZeroClasses/Complementar.lean": "c6238f365b52884ff4793203cd5f6943002076740c0f72377da439c69825cd87",
     "ATK/ZeroClasses/Componentes.lean": "8066114e5816dbc3f1ff285282eb5e0204f2e181c6fafcced72bbfc3435f7262",
     "ATK/ZeroClasses/Construcao.lean": "3cc2615b42f96967bf676395170fb86ff13becdcd40bcc6078b9ed54d71b6201",
-    "ATK/ZeroClasses/Convexidade.lean": "a120afe231b50262594c93d116c2d9f9078c9252f43f5461f018047d10fe12ef",
+    "ATK/ZeroClasses/Convexidade.lean": "21dbe90626c4876973fd11cd43b1d3fcd982e51ff0dabc0368f24c33ef8ca6ac",
     "ATK/ZeroClasses/Encontro.lean": "8ed2a765187d68addf64dac935db08b3a79d46edf39b2e48483e4902b1f882c7",
     "ATK/ZeroClasses/Escalas.lean": "a4c298f7e444769951650e50ab733bffc2f013d8c757657cd54916d5164d2702",
     "ATK/ZeroClasses/ExplicitaInteira.lean": "e4499718a7f076712b98c8f077594ac5e9e3da7d4098f1bdf4ddb757fdbc083e",
@@ -444,6 +444,6 @@
   "expected_theorems": 8209,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "0572c72dbd1199377e07e55537c85f8674ddb636",
+  "commit_at_freeze": "b7f16721db6fdcfb09f7303ab1e1d81e3f110c44",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
