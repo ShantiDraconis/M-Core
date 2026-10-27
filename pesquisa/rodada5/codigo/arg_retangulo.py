@@ -7,7 +7,6 @@ Só biblioteca padrão. **Nada aqui é certificado.**
 * `principio_argumento`: `(1/2πi)∮ f′/f` conta os zeros com multiplicidade. Os testes são um polinômio com um zero
   duplo, um simples e um fora, e `ζ` em `[0,1; 0,9] × [10, 30]`, onde há três zeros (`14,13`, `21,02`, `25,01`).
 """
-import cmath
 import json
 import math
 import os
