@@ -2653,6 +2653,29 @@ Numérico (`codigo/psi_rh.py`, `dados/psi_rh.json`, `testes/test_psi_rh.py`, 2 t
 máximo de `|ψ(x) − x|/(√x log³ x)` cai de `0,0080` (`x ≤ 100`) a `0,00024`, e o de `|ψ(x) − x|/(√x log² x/8π)`
 (Schoenfeld, sob RH) de `0,92` a `0,083`; `η Λ(n) n^{−η} ≤ 0,35` para `η = 1/log 10⁷`.
 
+## 4bs. RH ⟺ `θ(x) = x + O(√x log³ x)` ⟺ `π(x) = Li(x) + O(√x log² x)` (rodada 65)
+
+Um arquivo, **11 teoremas** (total 7853), só os axiomas padrão (`ZeroClasses/PiLiRH.lean`). Da rodada 64 para `θ` e `π`:
+
+* **`theta_RH`**: sob RH, `|θ(x) − x| ≤ K √x log³ x` em `x ≥ 2` (`ψ − θ ≤ 2√x log x` da Mathlib; `ψ(x) ≤ x²` em
+  `[2, 100]`); **`rh_iff_thetaLog3`**;
+* **`pi_sub_Li`**: `π(x) − Li(x) = (θ(x) − x)/log x + ∫_2^x (θ(t) − t)/(t log² t) dt + 2/log 2`;
+* **`pi_RH`**: sob RH, `|π(x) − Li(x)| ≤ K √x log² x` em `x ≥ 2` (`pi_of_thetaLog3`: o termo de fronteira dá
+  `√x log² x`, a integral `∫_2^x log t · t^{−1/2} dt ≤ 2√x log x`); **`rh_iff_piLog2`**;
+* as voltas pela rodada 60 com `√x log^k x ≤ (k/ε)^k x^{½+ε}` (`sqrt_log_pow_le`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| RH ⟺ `θ(x) = x + O(√x log³ x)` | CERTIFIED | reformulação |
+| RH ⟺ `π(x) = Li(x) + O(√x log² x)` | CERTIFIED | reformulação |
+| RH ⟹ `π(x) = Li(x) + O(√x log x)` (fórmula explícita) | BUILD_PENDING | consequência |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/pi_li_rh.py`, `dados/pi_li_rh.json`, `testes/test_pi_li_rh.py`, 2 testes). Até `10⁷`:
+`max |θ(x) − x|/(√x log³ x)` por década cai de `0,016` (`10² < x ≤ 10³`) a `0,00065`; `|π(x) − Li(x)|/(√x log² x)` de
+`0,019` (`x = 100`) a `0,00041` (`x = 10⁷`, `π − Li = −338,4`); contra a cota de Schoenfeld `√x log x/8π` (válida em
+`x ≥ 2657`), `0,44` a `0,17`; a fórmula de partes confere em `x = 10⁴` (`−16,0921`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

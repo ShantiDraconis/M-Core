@@ -7840,3 +7840,14 @@ ATK.ZeroClasses.PsiRH.psi_RH
 ATK.ZeroClasses.PsiRH.psi_le_sq
 ATK.ZeroClasses.PsiRH.vonKoch_of_psiLog3
 ATK.ZeroClasses.PsiRH.rh_iff_psiLog3
+ATK.ZeroClasses.PiLiRH.sqrt_log_pow_le
+ATK.ZeroClasses.PiLiRH.log_dois_gt
+ATK.ZeroClasses.PiLiRH.sqrt_log3_ge
+ATK.ZeroClasses.PiLiRH.theta_RH
+ATK.ZeroClasses.PiLiRH.erroTheta_of_log3
+ATK.ZeroClasses.PiLiRH.rh_iff_thetaLog3
+ATK.ZeroClasses.PiLiRH.pi_sub_Li
+ATK.ZeroClasses.PiLiRH.pi_of_thetaLog3
+ATK.ZeroClasses.PiLiRH.pi_RH
+ATK.ZeroClasses.PiLiRH.erroPi_of_log2
+ATK.ZeroClasses.PiLiRH.rh_iff_piLog2
