@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 8c13e86c70b76d31fe2debd0d63c1cce1e06d5b01d1bc8fd18a401c633e80db4
+# axiomas por teorema — congelamento de d3075c88eb495b001fea60d0bd0d616f7727b6f7a38f954b56570e291ff2cede
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7966,3 +7966,10 @@ ATK.ZeroClasses.ExplicitaLimite.lim_geo	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaLimite.eps_tendsto	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaLimite.explicita_k	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaLimite.formula_explicita	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaT.zfin_finite	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaT.mem_Zfin	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaT.re_lt_one	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaT.norm_termo_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaT.soma_faixa_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaT.dif_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaT.formula_explicita_T	propext, Classical.choice, Quot.sound

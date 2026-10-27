@@ -379,3 +379,4 @@ import ATK.ZeroClasses.LiCompleto
 import ATK.ZeroClasses.LiUm
 import ATK.ZeroClasses.ExplicitaResiduos
 import ATK.ZeroClasses.ExplicitaLimite
+import ATK.ZeroClasses.ExplicitaT

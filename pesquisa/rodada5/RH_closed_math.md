@@ -2843,7 +2843,8 @@ A prova junta a identidade de resíduos da rodada 70 no retângulo `[−(2K + ½
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | a fórmula explícita `Σ_{\|γ\|≤T_k} x^ρ/ρ → x − ψ(N) − log 2π − ½ log(1 − x^{−2})`, sem hipóteses | CERTIFIED | ferramenta |
-| a mesma com `x` real qualquer (`ψ₀(x)` nos inteiros) e `T → ∞` sem restringir a alturas boas | BUILD_PENDING | — |
+| a mesma com `T → ∞` sem restringir a alturas boas | CERTIFIED (rodada 72, §4bz) | consequência |
+| a mesma com `x` real qualquer (`ψ₀(x)` nos inteiros) | BUILD_PENDING | — |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/explicita_limite.py`, `dados/explicita_limite.json`, `testes/test_explicita_limite.py`, 2 testes):
@@ -2851,6 +2852,29 @@ Numérico (`codigo/explicita_limite.py`, `dados/explicita_limite.json`, `testes/
 `digamma_hor` numa grade; a forma logarítmica da equação funcional bate a `2·10⁻¹⁰` (consistência, com `ζ` em `Re < ½`
 pela própria equação funcional). Com os 341 zeros de `0 < γ ≤ 600`: em `x = 10,5` o erro cai de `0,128` (`T = 50`) a
 `0,027` (`T = 600`); em `x = 30,5`, de `0,79` a `0,12`.
+
+## 4bz. A fórmula explícita com `T → ∞` (rodada 72)
+
+Um arquivo, **7 teoremas** (total 7973), só os axiomas padrão (`ZeroClasses/ExplicitaT.lean`). Para `x = N + ½`
+(`N ≥ 1`):
+
+  **`lim_{T → ∞} Σ_{|γ| ≤ T} m_ρ x^ρ/ρ = x − ψ(N) − log 2π − ½ log(1 − x^{−2})`**   (`formula_explicita_T`),
+
+com `T` real qualquer (não só alturas boas), a soma sobre `Zfin T` = zeros não triviais com `|γ| ≤ T` (`zfin_finite`,
+`mem_Zfin`). A passagem das alturas boas da rodada 71 para `T` qualquer: em `T, T′ ∈ [k + 6, k + 7]` as somas diferem
+pelos zeros com `k + 6 < |γ| ≤ k + 7`, cuja massa é `≤ 4 (a₀ + log(k + 9))/l₀` (`soma_faixa_le`, pelas caixas de
+Jensen `caixa_le'`), cada um com `‖x^ρ/ρ‖ ≤ x/(k + 6)` (`norm_termo_le`); logo
+`‖Σ_{Zfin T} − Σ_{Zfin T′}‖ ≤ 8 (a₀ + log(k + 9))/l₀ · x/(k + 6) → 0` (`dif_le`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `lim_{T→∞} Σ_{\|γ\|≤T} m_ρ x^ρ/ρ = x − ψ(N) − log 2π − ½ log(1 − x^{−2})`, `x = N + ½` | CERTIFIED | consequência |
+| `x` real qualquer | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/explicita_t.py`, `dados/explicita_t.json`, `testes/test_explicita_t.py`, 2 testes): com os 341 zeros
+de `0 < γ ≤ 600`, a massa máxima de uma faixa é `4`, contra a cota mínima `155,2` (razão `≤ 0,019`); em `x = 10,5` e
+`T = 77,7; 150,2; 333,3; 599,9` os erros são `0,246; −0,105; 0,054; 0,027`.
 
 ## 5. Formatos
 
