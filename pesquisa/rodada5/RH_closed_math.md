@@ -1690,6 +1690,31 @@ Numérico (`codigo/lagarias_rec.py`, `dados/lagarias_rec.json`, `testes/test_lag
 * `L(½) ≈ 10⁻¹⁰`;
 * `|ξ(σ + it)|` é estritamente crescente em `½ < σ ≤ 3` para `t = 0,3, 5, 14,13, 20, 50`.
 
+## 4ao. O expoente de convergência dos zeros é exatamente 1; há infinitos zeros (rodada 35)
+
+Um arquivo, **12 teoremas** (total 7347), só os axiomas padrão (`ZeroClasses/Expoente.lean`):
+
+* `norm_E1_le_lin`: `‖(1 − z)e^z‖ ≤ e^{2‖z‖}`; `prodE_norm_le_lin`: se `Σ 1/|r_i| < ∞`, então
+  `‖∏' E1(z/r_i)‖ ≤ e^{2‖z‖ Σ 1/|r_i|}`;
+* `zeta_lb_re_ge_dois`: `|ζ(s)| ≥ 2 − π²/6` em `Re s ≥ 2`; **`xi_lb_par`: `|ξ(2n + 2)| ≥ (2 − π²/6)·n!/π^{n+1}`**
+  (`Γ(n + 1) = n!`);
+* **`nao_somavel_ZM`: `Σ_{(ρ,j)} 1/|ρ| = ∞`**. Se a série convergisse, o teorema de Hadamard (§4am) daria
+  `|ξ(s)| ≤ e^{a + K|s|}`, e `n! ≤ C·Dⁿ` contradiz `Dⁿ/n! → 0`. `soma_ordem_inv_diverge` é a mesma coisa sobre `Z`;
+* **`expoente_exato`: `Σ_ρ m_ρ/|ρ|^p < ∞ ⟺ p > 1`**, junto com §4al;
+* **`zeros_infinitos`**: `Z` é infinito. `conj_mem_Z` dá a simetria `ρ ↦ ρ̄`, e daí `zeros_infinitos_acima`: há
+  infinitos zeros com `Im ρ > 0`. Com `ordem_pos`, **`N_tende_infinito`: `N(T) → ∞`**.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| expoente de convergência dos zeros `= 1`; `Σ 1/\|ρ\| = ∞` | CERTIFIED | consequência |
+| infinitos zeros não triviais; `N(T) → ∞` | CERTIFIED | consequência |
+| `N(T)/T → ∞` (`CrescimentoN`, B10) | BUILD_PENDING (pede as constantes de RvM) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/expoente.py`, `dados/expoente.json`, `testes/test_expoente.py`, 2 testes): `Σ_{|γ| ≤ T} 1/|ρ|`
+segue `(log(T/2π))²/(2π)` (2,35 contra 2,38 em `T = 300`) e diverge, enquanto `Σ 1/|ρ|^{1,2}` cresce cada vez mais
+devagar. `|ξ(2n + 2)|` fica acima de `(2 − π²/6)·n!/π^{n+1}` para `n ≤ 40`, e `log ξ(s)/s` cresce sem parar.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
