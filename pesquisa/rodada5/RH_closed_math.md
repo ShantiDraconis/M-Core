@@ -2992,6 +2992,7 @@ Nada aqui fixa o valor de `Θ`: os enunciados valem qualquer que ele seja. Nenhu
 | `Θ` definido; `½ ≤ Θ ≤ 1`; RH ⟺ `Θ = ½`; `ψ`, `M` e `D_N(σ)` medem o mesmo `Θ` | CERTIFIED | reformulação |
 | `κ(σ) ≥ 2(σ − Θ)` em `(Θ, 1)`; nenhuma taxa abaixo de `Θ`; RH ⟺ taxa `2σ − 1` em `(½, 1)` | CERTIFIED | reformulação |
 | `PisoPonderado` (Q2(iii)): `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
+| na classe `‖c‖₁ ≤ N^A`: `κ_A(σ) ≤ 2A(σ − Θ)/Θ` | CERTIFIED (rodada 79, §4cg) | parcial |
 | o valor de `Θ` (RH: `Θ = ½`; semiplano: `Θ < 1`) | OPEN_MATH | — |
 
 Numérico (`codigo/bd_theta.py`, `dados/bd_theta.json`, `testes/test_bd_theta.py`, 2 testes): até `10⁵`,
@@ -3055,6 +3056,50 @@ Numérico (`codigo/explicita_inteira.py`, `dados/explicita_inteira.json`, `teste
 2 testes): a quadratura de `∫ dt/(c + it)` bate `2 arctan(T/c)` a `10⁻¹²`; `|arctan(T/c)/π − ½|` fica abaixo de
 `c/(πT)` em `(c, T) = (2, 10), (2, 100), (½, 50)`. Com os 341 zeros de `0 < γ ≤ 600`: em `N = 11` (primo), o erro é
 `−0,011` com `ψ₀` e `1,19 = Λ(11)/2 − 0,011` com `ψ`; em `N = 10` e `N = 30` (`Λ = 0`), `−0,006` e `−0,072`.
+
+## 4cg. Pisos `ℓ¹`: `κ_A(σ) ≤ 2A(σ − Θ)/Θ` na classe `‖c‖₁ ≤ N^A` (rodada 79)
+
+Um arquivo, **17 teoremas** (total 8066), só os axiomas padrão (`ZeroClasses/BDPisoL1.lean`). É a questão Q2(iii)
+(`PisoPonderado`, §4cd) restrita aos coeficientes com `‖c‖₁ ≤ N^A`, o caso "fácil" previsto em
+`fronteira/RH_frontier.md`.
+
+**O piso.** Seja `ζ(ρ) = 0` com `0 < β = Re ρ < σ < 1`. A transformada de Mellin do resíduo vale `1/ρ` em `ρ`
+(ponte B1). Partimos `∫_0^∞ |res| t^{β−1}` em três pedaços:
+* em `(0, ε]`, `|res| ≤ 1 + ‖c‖₁` dá `(1 + ‖c‖₁) ε^β/β` (`head0_le`);
+* em `(ε, 1]`, AM-GM contra `‖res‖²_σ` com `∫_ε^1 t^{2(β−σ)−1} ≤ ε^{2(β−σ)}/(2(σ−β))` (`mid_le`, `J_le`);
+* em `(1, ∞)`, a cauda `−S/t` com `S² ≤ (2 − 2σ)‖res‖²_σ` (rodada 59).
+
+Isso dá `key_L1`. Com `ε^β ≍ 1/(1 + ‖c‖₁)`:
+
+  **`‖res‖²_σ ≥ C_ρ (1 + ‖c‖₁)^{−2(σ−β)/β}`**   (`piso_L1`, com `C_ρ` explícito).
+
+**Consequências**, com `D_N^{(L)}(σ)` o ínfimo sobre `‖c‖₁ ≤ L` (`DNσL`) e `TaxaL σ A κ` a taxa `N^{−κ}` na classe
+`L = N^A`:
+* `taxaL_le_zero`: cada zero `ρ` com `0 < β < σ` limita `κ_A(σ) ≤ 2A(σ − β)/β`;
+* **`taxaL_Teta`**: para `Θ < σ < 1`, `Θ (κ + 2A) ≤ 2Aσ`, isto é, `κ_A(σ) ≤ 2A(σ − Θ)/Θ` (zeros com `Re ρ → Θ` por
+  `existe_zero`, ou um zero na reta por Hardy se `Θ = ½`);
+* `norm_cN_le`, `Wσ_taxa`, `taxaL_mol`: o molificador de Riesz tem `‖c_N‖₁ ≤ N`, logo `TaxaL σ 1 (2(σ − Θ))`;
+* **`taxaL_sanduiche`**: na classe `A = 1`, `2(σ − Θ) ≤ κ₁(σ) ≤ 2(σ − Θ)/Θ`;
+* `taxaL_RH`: sob RH, `2σ − 1 ≤ κ₁(σ) ≤ 4σ − 2`.
+
+O teto `2(σ − Θ)/Θ` é maior que o `2(σ − Θ)` pedido em Q2(iii) (por um fator `1/Θ ∈ [1, 2]`), e a classe é restrita.
+Por isso a classe é **parcial**: Q2(iii) para `c` arbitrário segue OPEN_MATH.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `‖res‖²_σ ≥ C_ρ (1 + ‖c‖₁)^{−2(σ−β)/β}` para cada zero com `0 < β < σ` | CERTIFIED | ferramenta |
+| `κ_A(σ) ≤ 2A(σ − Θ)/Θ` na classe `‖c‖₁ ≤ N^A`; `2(σ − Θ) ≤ κ₁(σ) ≤ 2(σ − Θ)/Θ` | CERTIFIED | parcial |
+| `PisoPonderado` (Q2(iii), `c` arbitrário): `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_piso_l1.py`, `dados/bd_piso_l1.json`, `testes/test_bd_piso_l1.py`, 2 testes):
+* as integrais de `head0_le` e `J_le` conferem por quadratura;
+* `‖c_N‖₁ ≈ 0,21 N ≤ N` para `N = 10, …, 160`;
+* com `ρ₁ = ½ + 14,1347i` e `σ = 0,75`, a constante da prova é `C = 1,6·10⁻⁶` e o piso `C/(1 + ‖c_N‖₁)` fica entre
+  `4,5·10⁻⁷` e `4,5·10⁻⁸`, bem abaixo das cotas espectrais `0,448 … 0,0042` da rodada 75.
+
+As inclinações locais `1,53–1,76` da rodada 75 passam do teto assintótico `4σ − 2 = 1` que `taxaL_RH` dá sob RH. Não
+há contradição: o piso só morde para `N` muito grande. Amostras com `N ≤ 160` não medem `κ` (barreira B2).
 
 ## 5. Formatos
 

@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 5abf135258fd2b263ec9900cdc6949edc634599f0f171afde20fd524e86382d0
+# axiomas por teorema — congelamento de 6497cce4db01d77b615aed8c7c5e55673c69a3380576585c509a1400da989350
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8049,3 +8049,20 @@ ATK.ZeroClasses.ExplicitaInteira.explicita_k_N	propext, Classical.choice, Quot.s
 ATK.ZeroClasses.ExplicitaInteira.formula_explicita_N	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaInteira.formula_explicita_T_N	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.ExplicitaInteira.formula_explicita_T_real	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.head0_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.mid_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.J_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.key_L1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.piso_L1	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.wR_le_one	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.norm_cN_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.Wσ_molif	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.Wσ_taxa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.DNσL_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.DNσ_le_DNσL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.piso_DNσL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.taxaL_le_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.taxaL_Teta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.taxaL_mol	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.taxaL_sanduiche	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDPisoL1.taxaL_RH	propext, Classical.choice, Quot.sound
