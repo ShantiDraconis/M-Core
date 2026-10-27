@@ -7779,3 +7779,15 @@ ATK.ZeroClasses.LindelofRH.norm_gL_faixa
 ATK.ZeroClasses.LindelofRH.differentiableAt_gL
 ATK.ZeroClasses.LindelofRH.lindelof_um
 ATK.ZeroClasses.LindelofRH.lindelof_of_RH
+ATK.ZeroClasses.Abscissa.tendsto_gen
+ATK.ZeroClasses.Abscissa.parametros
+ATK.ZeroClasses.Abscissa.tendsto_mu
+ATK.ZeroClasses.Abscissa.tendsto_cL
+ATK.ZeroClasses.Abscissa.limitada_of_converge
+ATK.ZeroClasses.Abscissa.mertens_of_converge
+ATK.ZeroClasses.Abscissa.psi_of_converge
+ATK.ZeroClasses.Abscissa.semZeros_iff_mu
+ATK.ZeroClasses.Abscissa.semZeros_iff_cL
+ATK.ZeroClasses.Abscissa.rh_iff_mu
+ATK.ZeroClasses.Abscissa.rh_iff_cL
+ATK.ZeroClasses.Abscissa.mu_tendsto_inv_zeta
