@@ -2045,6 +2045,52 @@ Numérico (`codigo/perron_dirichlet.py`, `dados/perron_dirichlet.json`, `testes/
 Com `f = μ`, `s = 0,8 + 5i`, `c = ½`: o erro é `0,041` e `0,016` (`N = 10`, `T = 20` e `50`) e `0,029` e `0,0051`
 (`N = 30`), muito abaixo da cota (`3,6` a `43`). `min_n |log(x/n)|·(4x + 2) = 2,0` para `N < 60`.
 
+## 4az. O teorema de Littlewood para `Σ μ(n) n^{−s}` e `NecessidadeRH` (rodada 46)
+
+Um arquivo, **21 teoremas** (total 7533), só os axiomas padrão (`ZeroClasses/LittlewoodMu.lean`).
+
+**`cota_PN`** (Littlewood, 1912, com taxa): sob RH, para `Re w = ½ + ε` com `0 < ε ≤ 1` e `N ≥ 1`,
+
+  `|Σ_{n ≤ N} μ(n) n^{−w} − F(w)| ≤ K (1 + |Im w|)^{ε/16} (N + ½)^{−ε/4}`,
+
+com `F(w) = (w − 1)/ζ₁(w) = 1/ζ(w)` (`ATK.RHLogZeta.F`) e `K` dependendo só de `ε`. Daí **`littlewood`**: sob RH,
+`Σ_{n ≤ N} μ(n) n^{−w} → 1/ζ(w)` para `½ < Re w ≤ 3/2`. A Mathlib não tem o teorema.
+
+1. **Perron** (§4ay) com `f = μ`, `c = ½`, `T = x²`, `x = N + ½`: a soma parcial é
+   `(1/2π) ∫_{−T}^{T} x^{½+it} F(w + ½ + it)/(½ + it) dt` a menos de `x^{½}(4x + 2)ζ(1 + ε)/(πT)` (`LSeries_mu`);
+2. **o resíduo** (`bordo_g`): sob RH, `G(z) = x^z F(w + z)` é holomorfa em `Re(w + z) > ½`, e
+   `∮ G(z)/z dz = 2πi F(w)` no retângulo `[−ε/2, ½] × [−T, T]` (`dslope` + `bordo_inv`);
+3. **os três lados** (`horiz_g`, `vert_g`), com `|F(s)| ≤ C(1 + |Im s|)^{ε/16}` em `Re s ≥ ½ + ε/2`
+   (`ATK.RHLogZeta.norm_F_le`): os horizontais custam `x^{½} C (1 + |Im w|)^η (1 + T)^η/T`; o vertical em
+   `Re z = −ε/2` custa `x^{−ε/2} C (1 + |Im w|)^η (1 + 2/ε)(1 + T)^{2η} ∫ (1 + |y|)^{−1−η}`;
+4. **as potências** (`rpow_mul_le`, `rpow_div_le`, `um_add_sq_rpow_le`): os três erros são `O(x^{−ε/4})`.
+
+Consequências:
+
+* **`entradaLittlewood`**: sob RH, `ATK.NecessidadeBD.EntradaLittlewood ε` para `0 < ε ≤ ¼` (mollificador de corte
+  abrupto `μ(n) n^{−ε}`), com a dominação `16(1 + M²)(1 + |τ|)^{−5/4}` vinda da razão `ζ(s)/ζ(s + ε)` (§4aw) e de
+  Lindelöf à direita da reta (`ATK.RHLogZeta.norm_zeta_le_RH`);
+* **`entradas`**: sob RH, `EntradasNecessidade`;
+* **`necessidadeRH : ATK.FechamentoO1.NecessidadeRH`**: a estrutura nomeada é um teorema;
+* **`rh_iff_DN_classico`**: `RH ⟺ D_N → 0` pelo caminho clássico. A primeira prova (`ATK.NecessidadeRH.rh_iff_DN`,
+  2026-10-15) usa o mollificador suavizado; as duas são independentes.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Littlewood: sob RH, `Σ_{n≤N} μ(n) n^{−w} → 1/ζ(w)` em `½ < Re w ≤ 3/2`, com taxa `N^{−ε/4}` | CERTIFIED | consequência |
+| `EntradaLittlewood ε` sob RH (`0 < ε ≤ ¼`) | CERTIFIED | consequência |
+| `ATK.FechamentoO1.NecessidadeRH` | CERTIFIED | fecha a estrutura nomeada |
+| `RH ⟺ D_N → 0` (segunda prova, clássica) | CERTIFIED | reformulação |
+| `CrescimentoN` (zeros distintos, B10) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+`NecessidadeRH` fecha a **necessidade** do critério (RH ⇒ `D_N → 0`). O critério é uma equivalência e não prova RH.
+
+Numérico (`codigo/littlewood_mu.py`, `dados/littlewood_mu.json`, `testes/test_littlewood_mu.py`, 2 testes). Em
+`w = 0,8 + 5i`, `0,7 + 14i` e `0,6 + 3i`, o erro `|Σ_{n≤N} μ(n)n^{−w} − 1/ζ(w)|` cai de `N = 10` a `N = 10⁵`
+(`0,15 → 0,0057`, `3,3 → 0,53`, `0,23 → 0,051`). O quociente pela taxa `(N + ½)^{−ε/4}` fica `≤ 3,8`. O erro
+espectral com `ε = 0,2`, `N = 2000`, vezes `(1 + |τ|)^{5/4}`, fica `≤ 1,1` em `τ = 0, 5, 20, 50`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
