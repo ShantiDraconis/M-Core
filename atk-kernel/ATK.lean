@@ -345,3 +345,4 @@ import ATK.ZeroClasses.LagariasHadamard
 import ATK.ZeroClasses.Expoente
 import ATK.ZeroClasses.Landau
 import ATK.ZeroClasses.RegiaoLivre
+import ATK.ZeroClasses.LittlewoodRH

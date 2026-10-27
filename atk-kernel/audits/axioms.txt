@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 876ef2f6ac3e6a7d8e167e8763dced3a395050877feabd77e78ccbcb366b7232
+# axiomas por teorema — congelamento de d1087a584adf43a5904be03eca124c9d3e73a9364c24bddfc807648ed7cbc2ad
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7371,3 +7371,16 @@ ATK.ZeroClasses.RegiaoLivre.tres_quatro_um	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.RegiaoLivre.regiao_livre_grande	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.RegiaoLivre.regiao_livre	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.RegiaoLivre.zeta_ne_zero_regiao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.tres_circulos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.log_bola	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.zeta_ne_zero_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.cota_zeta_re	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.um_terco_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.young_rpow	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.nucleo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.cota_grande	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.cota_compacta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.cota_sob_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.littlewoodSobRH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.lindelof_fora_sob_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodRH.necessidade_iff_rvm	propext, Classical.choice, Quot.sound
