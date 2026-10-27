@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a99808ba7b6abd8667ac651e236da8f48f3472349b105bd282cb4ed4c288e06f
+# axiomas por teorema — congelamento de 7e7446d0f1cf31939bf47766c343e9cd665f8a94e566f94c2379e74921ae80a9
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8029,3 +8029,13 @@ ATK.ZeroClasses.BDTheta.piso_abaixo	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTheta.nao_taxa_abaixo	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTheta.rh_iff_taxa	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTheta.rh_iff_taxa_de_piso	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.abs_log_ge_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.log_ne_zero_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.inv_abs_log_le_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.soma_fL_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.perron_LSeries_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.perron_psi_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.epsx_tendsto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.explicita_k_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.formula_explicita_x	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ExplicitaReal.formula_explicita_T_x	propext, Classical.choice, Quot.sound

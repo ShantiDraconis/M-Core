@@ -2844,7 +2844,8 @@ A prova junta a identidade de resíduos da rodada 70 no retângulo `[−(2K + ½
 | --- | --- | --- |
 | a fórmula explícita `Σ_{\|γ\|≤T_k} x^ρ/ρ → x − ψ(N) − log 2π − ½ log(1 − x^{−2})`, sem hipóteses | CERTIFIED | ferramenta |
 | a mesma com `T → ∞` sem restringir a alturas boas | CERTIFIED (rodada 72, §4bz) | consequência |
-| a mesma com `x` real qualquer (`ψ₀(x)` nos inteiros) | BUILD_PENDING | — |
+| a mesma com `x > 1` real não inteiro | CERTIFIED (rodada 77, §4ce) | consequência |
+| a mesma em `x` inteiro (`ψ₀(x) = ψ(x) − Λ(x)/2`) | BUILD_PENDING | — |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/explicita_limite.py`, `dados/explicita_limite.json`, `testes/test_explicita_limite.py`, 2 testes):
@@ -2869,7 +2870,8 @@ Jensen `caixa_le'`), cada um com `‖x^ρ/ρ‖ ≤ x/(k + 6)` (`norm_termo_le`)
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | `lim_{T→∞} Σ_{\|γ\|≤T} m_ρ x^ρ/ρ = x − ψ(N) − log 2π − ½ log(1 − x^{−2})`, `x = N + ½` | CERTIFIED | consequência |
-| `x` real qualquer | BUILD_PENDING | — |
+| `x > 1` real não inteiro | CERTIFIED (rodada 77, §4ce) | consequência |
+| `x` inteiro (`ψ₀`) | BUILD_PENDING | — |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/explicita_t.py`, `dados/explicita_t.json`, `testes/test_explicita_t.py`, 2 testes): com os 341 zeros
@@ -2995,6 +2997,34 @@ Nada aqui fixa o valor de `Θ`: os enunciados valem qualquer que ele seja. Nenhu
 Numérico (`codigo/bd_theta.py`, `dados/bd_theta.json`, `testes/test_bd_theta.py`, 2 testes): até `10⁵`,
 `max |ψ(N) − N|/(N + 1)^{0,6} = 0,676` e `max |M(N)|/(N + 1)^{0,6} = 0,683` — compatível com qualquer `Θ`;
 `|1 − 1/ρ| = 1` na reta, `< 1` para `ρ = 0,6 + 100i` e `> 1` para `0,4 + 100i`.
+
+## 4ce. A fórmula explícita para `x` real não inteiro (rodada 77)
+
+Um arquivo, **10 teoremas** (total 8039), só os axiomas padrão (`ZeroClasses/ExplicitaReal.lean`). Para todo `x > 1`
+a distância `≥ d > 0` dos inteiros (`0 < d ≤ 1`):
+
+  **`lim_{T → ∞} Σ_{|γ| ≤ T} m_ρ x^ρ/ρ = x − ψ(x) − log 2π − ½ log(1 − x^{−2})`**   (`formula_explicita_T_x`),
+
+com `ψ(x) = Σ_{n ≤ x} Λ(n)` (em `x` não inteiro, `ψ₀(x) = ψ(x)`). O único ponto em que `x = N + ½` entrava nas
+rodadas 70–72 era a Perron truncada (rodada 45), pela cota `|log(x/n)| ≥ 1/(4x + 2)`. Aqui:
+
+* `|log(x/n)| ≥ d/(2x + 2)` para todo `n ≥ 1` (`abs_log_ge_x`, por `1 − 1/t ≤ log t ≤ t − 1`), logo
+  `1/|log(x/n)| ≤ (2x + 2)/d` (`log_ne_zero_x`, `inv_abs_log_le_x`);
+* Perron truncada para `x` real (`perron_LSeries_x`, `perron_psi_x`), com a soma até `⌊x⌋` (`soma_fL_x`);
+* o erro da altura `k` com constante de Perron `P = (2x + 2)/d` no lugar de `4x + 2` (`epsx`, `epsx_tendsto`), a
+  fórmula com erro (`explicita_k_x`), o limite em alturas boas (`formula_explicita_x`) e com `T → ∞` qualquer
+  (`formula_explicita_T_x`, pelas caixas de Jensen da rodada 72).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `lim_{T→∞} Σ_{\|γ\|≤T} m_ρ x^ρ/ρ = x − ψ(x) − log 2π − ½ log(1 − x^{−2})`, `x > 1` não inteiro | CERTIFIED | consequência |
+| a mesma em `x` inteiro, com `ψ₀(x) = ψ(x) − Λ(x)/2` (o termo de salto da Perron em `n = x`) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/explicita_real.py`, `dados/explicita_real.json`, `testes/test_explicita_real.py`, 2 testes):
+`min_n |log(x/n)| · (2x + 2)/d = 2,23; 2,06; 2,02` em `x = 10,3; 30,7; 100,05` (a cota exige `≥ 1`). Com os 341 zeros
+de `0 < γ ≤ 600`: em `x = 10,3` o erro vai de `−0,083` (`T = 100`) a `0,008` (`T = 600`); em `x = 30,7`, de `−0,63`
+a `−0,21` (a convergência em `T` é lenta e oscilante, como em `x = 30,5` na rodada 71).
 
 ## 5. Formatos
 

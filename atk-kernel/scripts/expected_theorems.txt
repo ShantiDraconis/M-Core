@@ -8027,3 +8027,13 @@ ATK.ZeroClasses.BDTheta.piso_abaixo
 ATK.ZeroClasses.BDTheta.nao_taxa_abaixo
 ATK.ZeroClasses.BDTheta.rh_iff_taxa
 ATK.ZeroClasses.BDTheta.rh_iff_taxa_de_piso
+ATK.ZeroClasses.ExplicitaReal.abs_log_ge_x
+ATK.ZeroClasses.ExplicitaReal.log_ne_zero_x
+ATK.ZeroClasses.ExplicitaReal.inv_abs_log_le_x
+ATK.ZeroClasses.ExplicitaReal.soma_fL_x
+ATK.ZeroClasses.ExplicitaReal.perron_LSeries_x
+ATK.ZeroClasses.ExplicitaReal.perron_psi_x
+ATK.ZeroClasses.ExplicitaReal.epsx_tendsto
+ATK.ZeroClasses.ExplicitaReal.explicita_k_x
+ATK.ZeroClasses.ExplicitaReal.formula_explicita_x
+ATK.ZeroClasses.ExplicitaReal.formula_explicita_T_x
