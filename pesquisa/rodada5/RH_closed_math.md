@@ -3779,6 +3779,57 @@ Numérico (`codigo/pi_unilateral.py`, `dados/pi_unilateral.json`, `testes/test_p
 * mesmo assim, o lado de cima **equivale** a RH: por Littlewood (rodada 96) ele é violado na escala
   `√x log log log x/log x`, só que muito além de `10⁶`.
 
+## 4cz. `Θ` como expoente exato, de cada lado (rodada 98)
+
+Um arquivo, **49 teoremas** (total 8494), só os axiomas padrão (`ZeroClasses/TetaExpoente.lean`).
+
+Para `E : ℕ → ℝ`, seja `Expoentes E = {θ : E(N) ≤ N^θ para todo N grande}`. Então
+
+  **`Θ = inf Expoentes E`**
+
+para cada uma das doze funções `ψ(N) − N`, `N − ψ(N)`, `|ψ(N) − N|`, o mesmo com `θ(N)`, `π(N) − Li(N)`,
+`Li(N) − π(N)`, `|π(N) − Li(N)|`, e `M(N)`, `−M(N)`, `|M(N)|` (`Teta_eq_psi_cima`, `Teta_eq_psi_baixo`, `Teta_eq_psi`,
+…, `Teta_eq_mertens`). `Θ = sup Re ρ` é o expoente de crescimento de cada uma, e de cada lado separadamente. Em
+particular, RH ⟺ o expoente do lado de cima de `π(N) − Li(N)` é `½` (`rh_iff_expoente_pi_cima`), e o mesmo para
+`|ψ(N) − N|` e `|M(N)|`.
+
+A prova tem duas metades.
+
+1. **`θ > Θ` está em `Expoentes E`** (`mem_of_Teta`): as cotas de um lado das rodadas 87 e 97
+   (`Teta_le_iff_psi_le`, …, `Teta_le_iff_pi_ge`) dão `E(N) ≤ A(N + 1)^b + K` com `b < θ`, e isso é `≤ N^θ` para `N`
+   grande (`ev_pot`). Para `θ > 1` bastam as cotas triviais: `ψ(N) ≤ (log 4 + 4)N`, `π(N) ≤ N + 1`, `Li(N) ≤ 2N`,
+   `|M(N)| ≤ N + 1`.
+2. **`θ < Θ` não está** (`low_of_freq`): é preciso `E(N) > N^θ` infinitas vezes.
+   * Uma família `Ω₊` com `K` livre já basta, pelo truque `K = Σ_{n ≤ X} |E(n)|` (`freq_of_omega`).
+   * Para `±(ψ − N)`, `±M`, `N − θ(N)` e `Li − π`, isso vale em todo `0 ≤ θ < Θ` (Landau, rodadas 87 e 96).
+     O lado de baixo de `π − Li` é o fácil: o viés `Π − π ≥ 0` joga a favor (`freq_pi_baixo`).
+   * Para os lados de cima de `θ(N) − N` e `π(N) − Li(N)`, Landau só alcança `½ ≤ θ < Θ`, porque o viés é `O(√N)`.
+     Abaixo de `½` entra Littlewood (rodadas 93 e 96), via `freq_meio`: `c√x log log log x/log x ≥ x^θ` para
+     `θ < ½` e `x` grande.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `Θ = inf{θ : E(N) ≤ N^θ, N grande}` para as doze funções acima | CERTIFIED | reformulação |
+| RH ⟺ esse expoente é `½` (para qualquer uma delas) | CERTIFIED | reformulação |
+| RH | OPEN_MATH | — |
+
+A forma "`Θ = limsup log|ψ(x) − x|/log x`" é folclore. A versão de um lado para `π − Li`, cujo lado de cima depende de
+Littlewood, é a menos imediata, mas também é clássica (Ingham, cap. V). Aqui é só formalizada.
+
+Numérico (`codigo/teta_expoente.py`, `dados/teta_expoente.json`, `testes/test_teta_expoente.py`, 2 testes), em
+`2 ≤ N ≤ 10⁶`. O expoente local `max log E(N)/log N` por década, em `[10⁵, 10⁶)`:
+
+| `E` | expoente local |
+| --- | --- |
+| `ψ − N` (cima / baixo) | `0,470` / `0,473` |
+| `N − θ(N)` | `0,548` |
+| `Li − π` | `0,359` |
+| `M` (cima / baixo) | `0,435` / `0,434` |
+
+* Os valores sobem devagar para `½` nas décadas anteriores; os fatores `log` desviam de `½` nos dois sentidos.
+* Os lados de cima de `θ − N` e de `π − Li` ficam **vazios** até `10⁶`: nenhum `N ≥ 8` com `θ(N) > N` ou
+  `π(N) > Li(N)`. Mesmo assim o expoente deles é `Θ ≥ ½`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
