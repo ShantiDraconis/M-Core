@@ -3254,8 +3254,8 @@ Numérico (`codigo/bd_taxa_piso.py`, `dados/bd_taxa_piso.json`, `testes/test_bd_
 ## 4cl. Sem lei de potência para `D_N` (B1 fraca, `c` arbitrário) e a contração refutada sem piso citado (rodada 84)
 
 Um arquivo, **4 teoremas** (total 8116), só os axiomas padrão (`ZeroClasses/BDSemPotencia.lean`). A barreira B1 (o
-piso de BBLS/Burnol `D_N ≥ (C − o(1))/log N`) entrava no ATK só como hipótese citada (`ContracaoDN.PisoLog`). A
-rodada 83 dá a forma fraca dela sem hipóteses:
+piso de BBLS/Burnol `D_N ≥ (C − o(1))/log N`) entrava no ATK só como hipótese citada (`ContracaoDN.PisoLog`). Esta
+rodada (84) dá a forma fraca dela sem hipóteses, usando o teto `taxaDN_teto` da rodada 83:
 
 * **`sem_taxa_meio_DN`**: `TaxaDN (½) κ ⟹ κ ≤ 0`. A taxa é transportada para `σ′ = ½ + h` (`taxaDN_mono`). Lá vale
   `Θ < σ′` (`taxaDN_pos`) e `κ ≤ (2σ′ + 3)(σ′ − Θ)/Θ ≤ 10h` (`taxaDN_teto`), e `h → 0`.
