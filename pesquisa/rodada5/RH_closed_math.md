@@ -2749,7 +2749,7 @@ Um arquivo, **20 teoremas** (total 7896), só os axiomas padrão (`ZeroClasses/L
 | Afirmação | Estado | Classe |
 | --- | --- | --- |
 | RH ⟺ `λ_n ≥ 0` para todo `n ≥ 1` (Li 1997, Bombieri–Lagarias 1999) | CERTIFIED | reformulação |
-| `λ_1 = 1 + γ/2 − ½ log 4π` e a assintótica `λ_n ~ (n/2) log n` sob RH | BUILD_PENDING | — |
+| `λ_1 = 1 + γ/2 − ½ log 4π` (rodada 69, CERTIFIED) e a assintótica `λ_n ~ (n/2) log n` sob RH | BUILD_PENDING (assintótica) | — |
 | `λ_n ≥ 0` para todo `n` | OPEN_MATH (= RH) | — |
 
 Numérico (`codigo/li_completo.py`, `dados/li_completo.json`, `testes/test_li_completo.py`, 2 testes): com os 341 zeros
@@ -2757,6 +2757,30 @@ de `0 < γ ≤ 600` e a cauda `n² (log(600/2π) + 1)/(2π·600)`, `λ_1 = 0,023
 `λ_2 = 0,092335` (`0,0923457`), `λ_3 = 0,20762` (`0,2076389`); positivos e crescentes até `n = 30` (`λ_30 ≈ 17,3`,
 assintótica `17,1`). Um zero hipotético `ρ = 0,4 + 14,13i` teria `|w| = 1,0005`, e a parcela cai abaixo de `−10` em
 `n = 4796`.
+
+## 4bw. `λ₁ = 1 + γ/2 − ½ log 4π` e RH ⟺ `Σ_ρ 1/|ρ|² = 2 + γ − log 4π` (rodada 69)
+
+Um arquivo, **26 teoremas** (total 7922), só os axiomas padrão (`ZeroClasses/LiUm.lean`). Com o produto de Hadamard e
+os valores da Mathlib `Λ₀(0) = Λ₀(1) = (γ − log 4π)/2 + 1`:
+
+* **a reflexão nas cópias** (`refl`, `reflEquiv`): `(ρ, j) ↦ (1 − ρ, j)` é uma involução de `ZM` (ordens simétricas,
+  rodada 31); daí `Σ_ρ Re 1/(½ − ρ) = 0` (`soma_meio_zero`);
+* **`B_eq`**: a constante de Hadamard é `B = ξ′/ξ(0) = −((γ − log 4π)/2 + 1)`;
+* **`lam_um`**: `λ₁ = Σ_ρ Re(1/ρ) = 1 + γ/2 − ½ log 4π` (com `L(½) = 0`); `lam_um_pos`, e daí
+  **`log 4π < 2 + γ`** (`log_quatro_pi_lt`) — uma desigualdade real deduzida dos zeros;
+* **`soma_inv_quad_ge`**: `Σ_ρ 1/|ρ|² ≥ 2 + γ − log 4π`, pois `Σ (1 − 2β)/|ρ|²` vale metade de
+  `Σ (1 − 2β)²/(|ρ|²|1 − ρ|²) ≥ 0` (`par_eq`, pareando `ρ` com `1 − ρ`);
+* **`rh_iff_soma_inv_quad`**: **RH ⟺ `Σ_ρ 1/|ρ|² = 2 + γ − log 4π`** (com multiplicidade).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `B = −λ₁`, `λ₁ = 1 + γ/2 − ½ log 4π` | CERTIFIED | consequência |
+| RH ⟺ `Σ_ρ 1/|ρ|² = 2 + γ − log 4π` | CERTIFIED | reformulação |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/li_um.py`, `dados/li_um.json`, `testes/test_li_um.py`, 2 testes): `ξ′/ξ(0)` por diferença finita
+`= −0,0230957086` (fórmula `−0,0230957090`); `Σ_{0<γ≤600} 2/(¼ + γ²) = 0,043237` mais a cauda `0,002949` dá
+`0,046186` contra `2 + γ − log 4π = 0,046191`; um par fora da reta (`β = 0,4`, `γ = 100`) somaria `4,0·10⁻¹⁰` a mais.
 
 ## 5. Formatos
 

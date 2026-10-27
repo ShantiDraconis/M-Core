@@ -101,7 +101,7 @@ Em uma linha: o fato novo que muda o mapa é a quasi-RH (zero-free Re s > 7/8, c
   - N(T) = (T/2π)log(T/2πe) + 7/8 + O(log T);
   - RH ⟺ λ_n ≥ 0 ∀n, com λ_n = Σ_ρ[1−(1−1/ρ)^n].
 - Por que importa: habilita o piso de Burnol formal (hoje um teorema citado no ATK), as somas Σ1/|ρ|² = 2+γ−log 4π, e as rotas de Li e Weil. Médio valor, média tratabilidade (Jensen e decomposição canônica já existem).
-- ATK (rodadas 33, 42, 63–68, out/2026): Hadamard (`hadamardXi`), N(T) (`riemannVonMangoldt`), as peças da fórmula explícita (`ExplicitaPecas`: princípio do argumento ponderado, resíduo `x − Σ x^ρ/ρ`, alturas boas), von Koch clássico (`Koch.rh_iff_psiLog2`, `rh_iff_piLog`) e **o critério de Li completo** (`LiCompleto.rh_iff_li`) estão certificados. Faltam o piso de Burnol formal, `Σ 1/|ρ|² = 2 + γ − log 4π` e a fórmula explícita incondicional com a reta esquerda.
+- ATK (rodadas 33, 42, 63–68, out/2026): Hadamard (`hadamardXi`), N(T) (`riemannVonMangoldt`), as peças da fórmula explícita (`ExplicitaPecas`: princípio do argumento ponderado, resíduo `x − Σ x^ρ/ρ`, alturas boas), von Koch clássico (`Koch.rh_iff_psiLog2`, `rh_iff_piLog`) e **o critério de Li completo** (`LiCompleto.rh_iff_li`) estão certificados. Rodada 69: `λ₁ = 1 + γ/2 − ½ log 4π` e RH ⟺ `Σ 1/|ρ|² = 2 + γ − log 4π` (`LiUm`). Faltam o piso de Burnol formal e a fórmula explícita incondicional com a reta esquerda.
 
 **Q5 [(a) alto valor, baixa tratabilidade]. Baixar o expoente da quasi-RH.**
 - Enunciado: provar ζ ≠ 0 em Re s > B' com B' < 0,8748867, ou provar que o método da sonda não passa de 3/4 (um no-go também é publicável).
