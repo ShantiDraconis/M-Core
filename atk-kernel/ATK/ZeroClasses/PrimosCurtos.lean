@@ -26,7 +26,7 @@ open scoped Real
 namespace ATK.ZeroClasses.PrimosCurtos
 
 open ATK.ZeroClasses.BDTheta (Teta Teta_le_iff Teta_le_um meio_le_Teta)
-open ATK.ZeroClasses.PiLi (ErroTheta semZeros_iff_theta)
+open ATK.ZeroClasses.PiLi (semZeros_iff_theta)
 
 /-! ## 1. `θ(y) > θ(x)` dá um primo em `(x, y]` -/
 
