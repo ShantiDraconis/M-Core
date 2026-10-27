@@ -1,0 +1,10 @@
+{
+  "n": 2000000,
+  "C_mathlib": 16.158883083359672,
+  "max_psi_menos_theta_sobre_raiz": 1.4261932892133378,
+  "trocas_psi": 10353,
+  "theta_menor_que_x": true,
+  "min_theta_sobre_raiz": -2.0270209050720283,
+  "max_theta_sobre_raiz": -0.42980577190127967,
+  "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/LittlewoodTeta.lean"
+}

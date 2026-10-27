@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a2699c09150910fb780ac0ff2375be73980e64b01ff654edde94bbd7d555f3ef
+# axiomas por teorema — congelamento de e1e62084b1b43e1c542f2c06cee8f04e6823999170ad571d3497e3bfae625f8b
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8341,3 +8341,7 @@ ATK.ZeroClasses.LittlewoodMontagem.logloglog_le	propext, Classical.choice, Quot.
 ATK.ZeroClasses.LittlewoodMontagem.raiz_le_pot	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodMontagem.littlewood_nao_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodMontagem.littlewood	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodTeta.lll_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodTeta.theta_littlewood	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodTeta.psi_troca_sinal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodTeta.theta_troca_sinal	propext, Classical.choice, Quot.sound
