@@ -7644,3 +7644,16 @@ ATK.ZeroClasses.PNT.tendsto_psi_div
 ATK.ZeroClasses.PNT.tendsto_theta_div
 ATK.ZeroClasses.PNT.integral_inv_log_sq_le
 ATK.ZeroClasses.PNT.tendsto_primeCounting
+ATK.ZeroClasses.VonKoch.C_nonneg
+ATK.ZeroClasses.VonKoch.norm_gA_le
+ATK.ZeroClasses.VonKoch.summable_gA
+ATK.ZeroClasses.VonKoch.differentiableAt_GA
+ATK.ZeroClasses.VonKoch.GA_eq_LSeries
+ATK.ZeroClasses.VonKoch.zero_de_edo
+ATK.ZeroClasses.VonKoch.E_succ
+ATK.ZeroClasses.VonKoch.LSeriesSummable_cL
+ATK.ZeroClasses.VonKoch.LSeries_cL
+ATK.ZeroClasses.VonKoch.zeroFree_of_psi
+ATK.ZeroClasses.VonKoch.RH_of_psi
+ATK.ZeroClasses.VonKoch.zeroFree_of_mertens
+ATK.ZeroClasses.VonKoch.mertens_of_vonKoch

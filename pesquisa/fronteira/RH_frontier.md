@@ -77,6 +77,7 @@ Em uma linha: o fato novo que muda o mapa é a quasi-RH (zero-free Re s > 7/8, c
 - Por que importa: seria o primeiro TNP com economia de potência verificado por kernel (Isabelle e PNT+ têm só e^{−c√log x}). Também troca o meta-teorema `rh_iff_faixa` por teoremas de conteúdo.
 - O que se sabe: é a dedução clássica (Perron truncado + 1/ζ ≪ t^ε e ζ'/ζ ≪ (log t)^A em σ ≥ θ + δ, via Borel–Carathéodory/três círculos, análogo a Titchmarsh §14.2). O ATK já tem `PerronSuave` (ramo lateral). A Mathlib tem Borel–Carathéodory.
 - Progresso: (i) re-checagem local do módulo-solução (lean4checker/comparator); (ii) M(x) ≪ x^{θ+ε} com θ paramétrico, sem `sorry`.
+- ATK (rodadas 51 e 55, out/2026): a recíproca está certificada com θ livre — `|M(N)| ≤ C(N+1)^θ` ou `|ψ(N) − N| ≤ C(N+1)^θ` ⟹ `ζ ≠ 0` em `Re s > θ` (`ATK.ZeroClasses.VonKoch.zeroFree_of_mertens`, `zeroFree_of_psi`). A direção desta questão está certificada só para `M` com θ = 1/2 (`ATK.ZeroClasses.Mertens.mertens_of_RH`); ψ e θ geral seguem BUILD_PENDING.
 
 **Q2 [(a) nova + (b)]. Báez-Duarte ponderado: um critério com taxa de potência.**
 - Definições, para σ ∈ (1/2,1):
