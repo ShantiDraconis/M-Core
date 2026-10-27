@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de db64838594431380a5da0d3e4603bbb8d1b1af366a8ab973bc60fd575ae4e45e
+# axiomas por teorema — congelamento de 36d31228800b5d56e990a7b0a527fff0eae6d1d3e8551a0e1d87af0b4c72675d
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7512,3 +7512,24 @@ ATK.ZeroClasses.PerronD.termo_div	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PerronD.ne_zero_ct	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PerronD.soma_perron	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PerronD.perron_LSeries	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.norm_mu_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.LSeries_mu	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.norm_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.alg_res	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.bordo_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.desloca_mu	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.um_add_abs_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.horiz_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.integrable_peso	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.vert_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.rpow_mul_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.um_add_sq_rpow_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.rpow_div_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.xN_ge_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.cota_PN	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.littlewood	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.polD_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.entradaLittlewood	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.entradas	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.necessidadeRH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LittlewoodMu.rh_iff_DN_classico	propext, Classical.choice, Quot.sound
