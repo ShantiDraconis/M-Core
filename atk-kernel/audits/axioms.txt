@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 689f3440dc9c87df67d1356b1e0eb47ff8d4d027c9382b7459cff25893c0542c
+# axiomas por teorema — congelamento de ec005d6966e32a2ae2b9a311da231fff8a6ff81f3a8142345014a84d60018bbe
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7868,3 +7868,11 @@ ATK.ZeroClasses.Explicita.separa	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Explicita.altura_boa	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Explicita.compacto_quarto	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Explicita.logDeriv_quarto_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Koch.psi_RH_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Koch.psi_RH_log2	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Koch.psiLog3_of_psiLog2	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Koch.rh_iff_psiLog2	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Koch.theta_RH_log2	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Koch.pi_RH_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Koch.piLog2_of_piLog	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Koch.rh_iff_piLog	propext, Classical.choice, Quot.sound
