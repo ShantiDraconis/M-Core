@@ -8075,3 +8075,11 @@ ATK.ZeroClasses.BDBurnolL1.sem_taxa_meio
 ATK.ZeroClasses.BDBurnolL1.taxaL_pos
 ATK.ZeroClasses.BDBurnolL1.Teta_le_de_taxa
 ATK.ZeroClasses.BDBurnolL1.rh_of_taxaL
+ATK.ZeroClasses.TNPPi.sqrt_log_le_V
+ATK.ZeroClasses.TNPPi.theta_tnp
+ATK.ZeroClasses.TNPPi.exp_meio_le
+ATK.ZeroClasses.TNPPi.f_le
+ATK.ZeroClasses.TNPPi.abel_dif
+ATK.ZeroClasses.TNPPi.integral_fA_le
+ATK.ZeroClasses.TNPPi.pi_tnp
+ATK.ZeroClasses.TNPPi.pi_log_pow

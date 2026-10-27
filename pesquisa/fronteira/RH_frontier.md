@@ -57,7 +57,7 @@ Em uma linha: o fato novo que muda o mapa é a quasi-RH (zero-free Re s > 7/8, c
 - Mathlib **não** tem: TNP, produto de Hadamard de ξ, N(T), fórmula explícita, nem região livre além de Re s ≥ 1.
 - TNP forte em Lean: PNT+ (Kontorovich–Tao) concluído com o agente Gauss (cerca de 25 mil linhas, ~set/2025). Não pude abrir o blueprint para ver qual região livre está lá.
 - Isabelle AFP (Song–Yao, mai/2024): região livre 1 − 1/(952320 log(|γ|+2)) e π(x) = Li(x) + O(x e^{−√log x/3653}).
-- ATK (rodadas 37 e 52–54, out/2026): região livre `1 − c/log|γ|`, `ζ′/ζ = O(log² t)` nela, `ψ(x) = x + O(x e^{−b√log x})` e `π(x) ~ x/log x` (`ATK.ZeroClasses.PNT.tendsto_primeCounting`), com constantes não explícitas.
+- ATK (rodadas 37 e 52–54, out/2026): região livre `1 − c/log|γ|`, `ζ′/ζ = O(log² t)` nela, `ψ(x) = x + O(x e^{−b√log x})` e `π(x) ~ x/log x` (`ATK.ZeroClasses.PNT.tendsto_primeCounting`), com constantes não explícitas. Rodada 81: `θ(x) = x + O(x e^{−b√log x})` e `π(x) = Li(x) + O(x e^{−b′√log x})` (`ATK.ZeroClasses.TNPPi.theta_tnp`, `pi_tnp`).
 
 ## 2. Barreiras e no-go (o que já cai)
 - **B1 (piso de Burnol/BBLS).** D_N ≥ (C − o(1))/log N, então a taxa 1/log N de O1 é a melhor possível. (ATK, rodada 80: provado na classe `‖c‖₁ ≤ N^A`, `D_N^{(N^A)} ≥ C/(A log N + B)`, `BDBurnolL1.burnol_L1`; para `c` arbitrário segue citado.) Isso refuta contração geométrica e qualquer lei de potência em σ = 1/2 (o ATK já registra `sem_contracao_de_piso_log`). Além disso, O1 ⇐ RH **não** é conhecido (BCF precisa de hipóteses extras). Atacar O1 é pelo menos tão difícil quanto RH somado ao controle de 1/ζ'(ρ).

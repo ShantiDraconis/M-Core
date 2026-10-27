@@ -224,6 +224,17 @@ theorem piso_DNσL_reta {σ : ℝ} (hσ0 : 0 < σ) (hσ1 : σ < 1) {s : ℂ} (hs
 
 /-! ## 2. Burnol restrito -/
 
+/-- `log(1 + N^A) ≤ log 2 + A log N` para `N ≥ 1`, `A ≥ 0`. -/
+theorem log_um_add_le {A : ℝ} (hA : 0 ≤ A) {N : ℕ} (hN : 1 ≤ N) :
+    Real.log (1 + (N : ℝ) ^ A) ≤ Real.log 2 + A * Real.log N := by
+  have hNr : (1 : ℝ) ≤ N := by exact_mod_cast hN
+  have hN0 : (0 : ℝ) < N := by linarith
+  have hNA : 1 ≤ (N : ℝ) ^ A := Real.one_le_rpow hNr hA
+  have h1 : Real.log (1 + (N : ℝ) ^ A) ≤ Real.log (2 * (N : ℝ) ^ A) :=
+    Real.log_le_log (by linarith) (by linarith)
+  rw [Real.log_mul (by norm_num) (by linarith), Real.log_rpow hN0] at h1
+  exact h1
+
 /-- **Burnol na classe `‖c‖₁ ≤ N^A`**: em `σ = ½` há `C, B > 0` com `D_N^{(N^A)} ≥ C/(A log N + B)` para todo
 `N ≥ 1` (pelos zeros de Hardy na reta crítica). -/
 theorem burnol_L1 {A : ℝ} (hA : 0 ≤ A) :
@@ -238,26 +249,11 @@ theorem burnol_L1 {A : ℝ} (hA : 0 ≤ A) :
   have hNA : 1 ≤ (N : ℝ) ^ A := Real.one_le_rpow hNr hA
   have h := hC ((N : ℝ) ^ A) N (by linarith)
   refine le_trans ?_ h
-  have hlog : Real.log (1 + (N : ℝ) ^ A) ≤ Real.log 2 + A * Real.log N := by
-    have h1 : Real.log (1 + (N : ℝ) ^ A) ≤ Real.log (2 * (N : ℝ) ^ A) :=
-      Real.log_le_log (by linarith) (by linarith)
-    rw [Real.log_mul (by norm_num) (by linarith), Real.log_rpow hN0] at h1
-    exact h1
+  have hlog := log_um_add_le hA hN
   have hl0 : 0 ≤ Real.log (1 + (N : ℝ) ^ A) := Real.log_nonneg (by linarith)
   exact div_le_div_of_nonneg_left hC0.le (by linarith) (by linarith)
 
 /-! ## 3. Taxas `ℓ¹` positivas certificam semiplanos -/
-
-/-- `log(1 + N^A) ≤ log 2 + A log N` para `N ≥ 1`, `A ≥ 0`. -/
-theorem log_um_add_le {A : ℝ} (hA : 0 ≤ A) {N : ℕ} (hN : 1 ≤ N) :
-    Real.log (1 + (N : ℝ) ^ A) ≤ Real.log 2 + A * Real.log N := by
-  have hNr : (1 : ℝ) ≤ N := by exact_mod_cast hN
-  have hN0 : (0 : ℝ) < N := by linarith
-  have hNA : 1 ≤ (N : ℝ) ^ A := Real.one_le_rpow hNr hA
-  have h1 : Real.log (1 + (N : ℝ) ^ A) ≤ Real.log (2 * (N : ℝ) ^ A) :=
-    Real.log_le_log (by linarith) (by linarith)
-  rw [Real.log_mul (by norm_num) (by linarith), Real.log_rpow hN0] at h1
-  exact h1
 
 /-- **Um zero na reta do peso impede taxa de potência**: se `ζ(ρ) = 0` com `Re ρ = σ ∈ (0, 1)`, então
 `TaxaL σ A κ ⟹ κ ≤ 0`. -/

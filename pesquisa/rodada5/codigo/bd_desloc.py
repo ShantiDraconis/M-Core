@@ -18,18 +18,20 @@ import bd_espectral as be  # noqa: E402
 import zeroclasses as zc  # noqa: E402
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
+DELTA_DESLOC = 0.2  # a reta `Re z = −δ` de `desloc`
+DELTA_COTA = 0.25   # o expoente de `molif_cota` na demonstração `|A_N − 1/ζ| · N^δ`
 
 
 def main(saida=None):
-    s, d, N = complex(0.8, 3), 0.2, 10
+    s, d, N = complex(0.8, 3), DELTA_DESLOC, 10
     integ = be.simpson(lambda y: be.W(complex(-d, y)) * N ** complex(-d, y) / zc.zeta(s + complex(-d, y)),
                        -300, 300, 30000) / (2 * math.pi)
     dif = be.A(N, s) - 1 / zc.zeta(s)
     cot = []
     for M in (10, 40, 160, 640):
         e = abs(be.A(M, s) - 1 / zc.zeta(s))
-        cot.append({"N": M, "erro": e, "erro_vezes_N_delta": e * M ** 0.25})
-    out = {"s": [s.real, s.imag], "delta": d, "N": N, "A_menos_inv_zeta": [dif.real, dif.imag],
+        cot.append({"N": M, "erro": e, "erro_vezes_N_delta": e * M ** DELTA_COTA})
+    out = {"s": [s.real, s.imag], "delta": d, "delta_cota": DELTA_COTA, "N": N, "A_menos_inv_zeta": [dif.real, dif.imag],
            "integral_deslocada": [integ.real, integ.imag], "cota": cot,
            "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/BDDesloc.lean"}
     if saida is None:

@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Companheiro numérico da rodada 68: o critério de Li completo (ATK/ZeroClasses/LiCompleto.lean).
 
-Só biblioteca padrão (zeros por Riemann–Siegel, de `canonico.py`, refinados por `inteira.refina`). **Nada aqui é
-certificado.**
+Só biblioteca padrão (zeros por Riemann–Siegel, de `canonico.py`). **Nada aqui é certificado.**
 
 * `lam`: `λ_n = Σ_ρ Re(1 − (1 − 1/ρ)^n)` com os 341 zeros de `0 < γ ≤ 600` (pares conjugados) mais a cauda
   `≈ Σ_{γ>600} 2(n/2 + C(n,2))/γ² ≈ n² (log(600/2π) + 1)/(2π·600)` (densidade de Riemann–von Mangoldt);

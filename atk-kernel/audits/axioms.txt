@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de fe7278dc3d7a97ea8f3e2fcd0e6169dbeade9343dcbef9c1d76e918c4a8fbba5
+# axiomas por teorema — congelamento de 8e1027cee449e305c8512b4490401513737c5c7f3157aabdeca040ab297c5d5e
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8077,3 +8077,11 @@ ATK.ZeroClasses.BDBurnolL1.sem_taxa_meio	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDBurnolL1.taxaL_pos	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDBurnolL1.Teta_le_de_taxa	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDBurnolL1.rh_of_taxaL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TNPPi.sqrt_log_le_V	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TNPPi.theta_tnp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TNPPi.exp_meio_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TNPPi.f_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TNPPi.abel_dif	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TNPPi.integral_fA_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TNPPi.pi_tnp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.TNPPi.pi_log_pow	propext, Classical.choice, Quot.sound
