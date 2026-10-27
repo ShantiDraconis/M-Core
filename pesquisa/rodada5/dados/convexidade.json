@@ -1,0 +1,22 @@
+{
+ "jordan_folga_minima": 0.007214254357676983,
+ "peso_erro_relativo_max": 1.6754894132953823e-16,
+ "convexidade": [
+  {
+   "sigma": 0.25,
+   "max_razao": 1.4683288749461316,
+   "pontos": 1997
+  },
+  {
+   "sigma": 0.5,
+   "max_razao": 1.7467275377154763,
+   "pontos": 1997
+  },
+  {
+   "sigma": 0.75,
+   "max_razao": 2.324707523533553,
+   "pontos": 1997
+  }
+ ],
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/Convexidade.lean"
+}

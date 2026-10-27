@@ -2564,7 +2564,8 @@ A prova (Titchmarsh §14.2), com `δ = η = ε/4`:
 | --- | --- | --- |
 | RH ⟹ `ζ(½ + it) = O(\|t\|^ε)` (Lindelöf) | CERTIFIED | consequência de RH |
 | a hipótese de Lindelöf (sem RH) | OPEN_MATH | — |
-| cota de convexidade `ζ(½ + it) = O(\|t\|^{1/4+ε})`; Weyl/Bourgain `O(\|t\|^{13/84+ε})` | BUILD_PENDING | — |
+| cota de convexidade `ζ(½ + it) = O(\|t\|^{1/4+ε})` | CERTIFIED (rodada 86, §4cn) | ferramenta |
+| Weyl/Bourgain `O(\|t\|^{13/84+ε})` | BUILD_PENDING | — |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/lindelof.py`, `dados/lindelof.json`, `testes/test_lindelof.py`, 2 testes). `max_{[T,2T]}|ζ(½ + it)|`
@@ -3296,6 +3297,42 @@ Para medir `Θ` basta o sinal da taxa. O valor exato `2(σ − Θ)` (Q2(iii)) n�
 Numérico (`codigo/bd_taxa_teta.py`, `dados/bd_taxa_teta.json`, `testes/test_bd_taxa_teta.py`, 2 testes): num modelo
 com `Θ ∈ {0,5; 0,6; 0,875}` hipotéticos, o ínfimo de uma grade de passo `10⁻³` onde o piso garantido `2(σ − Θ)` é
 positivo recupera `Θ` a menos do passo. Isso ilustra `Teta_eq_sInf` e não mede o `Θ` verdadeiro.
+
+## 4cn. A cota de convexidade `ζ(σ + it) ≪ |t|^{(1−σ)/2+ε}` (rodada 86)
+
+Um arquivo, **25 teoremas** (total 8146), só os axiomas padrão (`ZeroClasses/Convexidade.lean`). Para `0 < δ ≤ ½`
+há `C` com
+
+  **`|ζ(σ + it)| ≤ C |t|^{(1−σ+δ)/2}`** para `0 ≤ σ ≤ 1`, `|t| ≥ 1`   (`convexidade`),
+
+e `ζ(½ + it) = O((1 + |t|)^{1/4+ε})` (`convexidade_meio`). A rodada 61 tinha Lindelöf **sob RH**; esta cota é
+incondicional.
+
+A prova aplica Phragmén–Lindelöf (Mathlib, `PhragmenLindelof.vertical_strip`) na faixa `−δ ≤ Re s ≤ 1 + δ` a
+`g(s) = ζ₁(s) w(s)^{−ℓ(s)}`:
+* `ζ₁ = (s − 1)ζ` é inteira (Mathlib);
+* `w(s) = −i(s + 2)` fica no plano cortado porque `Im w < 0`;
+* `ℓ(s) = (3 + δ − s)/2` (`g`, `differentiableAt_g`, `norm_g`, `norm_peso`).
+
+O peso `|w^{−ℓ}| = |s + 2|^{−(3+δ−σ)/2} e^{−arg w · t/2}` tem fator angular entre `1` e `e^{π(σ+2)/4}` para
+`t ≥ 0`, pela desigualdade de Jordan `|arg z| Re z ≤ (π/2)|Im z|` (`arg_mul_re_le`, `fator_arg`). As retas:
+* **direita** (`g_dir`): `|ζ| ≤ 2 + 1/δ` em `Re s = 1 + δ` (`ZetaTroca.norm_zeta_sub_one_le`);
+* **esquerda** (`g_esq`): `|ζ(1 − u)| ≤ 2C_Γ|u|^{½+δ}|ζ(u)|` (`GammaVertical.norm_zeta_one_sub_le`);
+* **dentro** (`norm_zeta₁_faixa`, `cubo_le`): `|ζ₁| ≤ 6(1 + 2C_Γ)(2 + |t|)³ ≤ K e^{e^{|t|}}`.
+
+Para `t ≥ 1`, `|ζ₁(s)| ≤ C_g|s + 2|^{(3+δ−σ)/2}` (`convexidade_pos`). Para `t ≤ −1`, vale `ζ(s̄) = conj ζ(s)`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ζ(σ + it) ≪ \|t\|^{(1−σ+δ)/2}` em `0 ≤ σ ≤ 1`; `ζ(½ + it) ≪ (1 + \|t\|)^{1/4+ε}` | CERTIFIED | ferramenta |
+| subconvexidade (Weyl, Bourgain `13/84`) | BUILD_PENDING | — |
+| Lindelöf (`\|t\|^ε`, sem RH) | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/convexidade.py`, `dados/convexidade.json`, `testes/test_convexidade.py`, 2 testes):
+* a desigualdade de Jordan vale com folga `≥ 0,007` em 2000 pontos;
+* a fórmula de `|w^{−ℓ}|` confere a `2·10⁻¹⁶`;
+* `max_{1 ≤ t ≤ 500} |ζ(σ + it)|/t^{(1−σ)/2}` vale `1,47; 1,75; 2,32` em `σ = 0,25; 0,5; 0,75` (passo `0,25`).
 
 ## 5. Formatos
 
