@@ -1877,6 +1877,35 @@ Simpson nos quatro lados dá `(1/2πi)∮ ds/(s − u) = 1` dentro (erro `10⁻�
 polinômio com um zero duplo, um simples e um fora do retângulo, `(1/2πi)∮ f′/f = 3,0000000000`. Para `ζ` em
 `[0,1; 0,9] × [10, 30]`, o resultado é `3,0000000000`: os zeros `14,13`, `21,02` e `25,01`.
 
+## 4au. `S(T) = O(log T)`: a variação do argumento de `ζ` num segmento horizontal (rodada 41)
+
+Um arquivo, **17 teoremas** (total 7441), só os axiomas padrão (`ZeroClasses/VariacaoArg.lean`). É o argumento
+clássico de Backlund: a variação de `arg ζ` em `[½, 2] + iT` é no máximo `π` vezes (um mais) o número de zeros de
+`Re ζ(σ + iT)`, e esses zeros se contam por Jensen.
+
+* `cota_zeta_quarto`: `‖ζ(s)‖ ≤ ½ + 1/‖s − 1‖ + 6‖s‖` em `Re s ≥ ¼` (Euler–Maclaurin de ordem 1, `EM11`, `Cb1`);
+  `re_zeta_dois`: `Re ζ(s) ≥ 2 − π²/6 > 0` em `Re s ≥ 2`;
+* `variacao_simples`: se `Re ζ(σ + iT)` não se anula em `(a, b)`, então `|Im ∫_a^b ζ′/ζ(σ + iT) dσ| ≤ π` (há um
+  logaritmo contínuo de `ζ` no semiplano `±Re > 0`);
+* `variacao`: com no máximo `k` zeros de `Re ζ(σ + iT)` em `(a, b)`, a variação é `≤ (k + 1)π` (indução forte,
+  cortando no zero);
+* `gT(s) = (ζ(s + iT) + ζ(s − iT))/2` é analítica (`gT_analitica`), real no eixo real com `gT(σ) = Re ζ(σ + iT)`
+  (`gT_real`), e `cota_gT`: `‖gT‖ ≤ 6T + 38` no disco `‖s − 2‖ ≤ 7/4`;
+* `conta_zeros_re`: os zeros de `Re ζ(σ + iT)` em `(½, 2)` são no máximo `log((6T + 38)/(2 − π²/6))/log(7/6)`
+  (Jensen da Mathlib, `AnalyticOnNhd.sum_divisor_le`, no disco de raio `7/4` em torno de `2`);
+* **`variacao_log`: existe `C` com `|Im ∫_{1/2}^{2} ζ′/ζ(σ + iT) dσ| ≤ C log T`** para `T ≥ 4` sem zero de `ζ` no
+  segmento.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `S(T) = O(log T)` (variação horizontal de `arg ζ`) | CERTIFIED | ferramenta |
+| `RiemannVonMangoldt` | BUILD_PENDING (falta montar o contorno de `ξ`) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/variacao_arg.py`, `dados/variacao_arg.json`, `testes/test_variacao_arg.py`, 2 testes).
+Para `T` entre 20 e 300, `|V(T)|/log T ≤ 0,41`. O número `k` de trocas de sinal de `Re ζ` em `[½, 2]` é 0 ou 1,
+contra a cota de Jensen de 40 a 55. A razão `|ζ(s)|/(½ + 1/|s − 1| + 6|s|)` fica abaixo de `0,11` na grade.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

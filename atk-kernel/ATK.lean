@@ -348,3 +348,4 @@ import ATK.ZeroClasses.RegiaoLivre
 import ATK.ZeroClasses.LittlewoodRH
 import ATK.ZeroClasses.StirlingComplexo
 import ATK.ZeroClasses.ArgRetangulo
+import ATK.ZeroClasses.VariacaoArg
