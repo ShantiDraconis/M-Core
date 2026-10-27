@@ -2450,6 +2450,38 @@ Numérico (`codigo/quasi_rh.py`, `dados/quasi_rh.json`, `testes/test_quasi_rh.py
 `0,82`, `0,68`, `0,59`, `0,54` para `θ = 0,5; 0,6; 0,75; 0,9`; `Σ_{n ≤ N} μ(n)n^{−0,8}` vai de `−0,148` (`N = 10²`) a
 `−0,2221` (`N = 10⁶`), contra `1/ζ(0,8) = −0,2254`. Dado finito, sem valor de prova: não decide `SemZeros θ`.
 
+## 4bl. Teoremas Ω: `ψ(x) − x` e `M(x)` não são `o(√x)` (rodada 58)
+
+Um arquivo, **23 teoremas** (total 7731), só os axiomas padrão (`ZeroClasses/OmegaPsi.lean`). Incondicionais:
+
+* **`psi_nao_o`**: não existem, para todo `ε > 0`, constantes `C_ε` com `|ψ(N) − N| ≤ ε√(N + 1) + C_ε`;
+  **`psi_nao_littleO`**: `¬ (ψ(N) − N =o[atTop] √N)` (Schmidt 1903, na forma Ω);
+* **`mertens_nao_o`**, **`mertens_nao_littleO`**: o mesmo para `M(N) = Σ_{n ≤ N} μ(n)`;
+* `psi_nao_O_rpow`, `mertens_nao_O_rpow`: para `θ < ½`, nem `ψ(x) − x` nem `M(x)` são `O(x^θ)`.
+
+A prova junta o teorema de Hardy (rodada 50, `existe_zero_acima`: um zero `ρ₀ = ½ + iγ₀`) com a série por partes
+`G(s) = Σ A(n + 1)((n + 1)^{−s} − (n + 2)^{−s})` da rodada 55:
+
+* **`o_GA`**: se `A(N) = o(√N)`, então `(σ − ½)|G(σ + iγ)| → 0` quando `σ → ½⁺` (`norm_GA_le_o`, com
+  `(σ − ½)ζ(σ + ½) → 1`, `tendsto_Z`, do resíduo de `ζ` em `1` da Mathlib);
+* `GA_E_eq_Hf`, `GA_M_eq_F`: com `A = ψ − N` (resp. `M`) e `O(√N)`, `G = −ζ′/ζ − ζ` (resp. `1/ζ`) em `Re s > ½`
+  (rodada 55 para não haver zeros em `Re s > ½`, depois o princípio da identidade);
+* `fatora` (`ζ₁ = (s − ρ₀)^{m+1} g` com `g(ρ₀) ≠ 0`), **`cota_inf_H`** (`(σ − ½)|H(σ + iγ₀)| ≥ ½`, pelo polo de
+  resíduo `−(m + 1)` de `−ζ′/ζ`) e **`cota_inf_F`** (`(σ − ½)|1/ζ(σ + iγ₀)| ≥ c > 0`): contradição.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ψ(x) − x ≠ o(√x)`; `M(x) ≠ o(√x)` | CERTIFIED | consequência (incondicional) |
+| `ψ(x) − x ≠ O(x^θ)`, `M(x) ≠ O(x^θ)` para `θ < ½` | CERTIFIED | consequência (incondicional) |
+| `ψ(x) − x = Ω±(√x log log log x)` (Littlewood 1914); `M(x) = Ω±(√x)` | BUILD_PENDING | — |
+| `limsup \|M(x)\|/√x = ∞` (conhecido: `> 1,06` por Odlyzko–te Riele 1985, `> 1,82` por Hurst 2018; ilimitado sob a independência linear das ordenadas) | OPEN_MATH | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/omega_psi.py`, `dados/omega_psi.json`, `testes/test_omega_psi.py`, 2 testes). No primeiro zero
+`γ₁ = 14,1347…`: `(σ − ½)|ζ′/ζ + ζ|(σ + iγ₁)` vale `0,968`, `0,996`, `0,9996`, `0,99996` para `σ − ½ = 10⁻¹, …, 10⁻⁴`
+(o resíduo `m = 1`), e `(σ − ½)|1/ζ|` tende a `1/|ζ′(ρ₁)| = 1,2608`. Por crivo até `10⁶`, o máximo por década de
+`|ψ(N) − N|/√N` fica entre `0,69` e `0,78`, e o de `|M(N)|/√N` entre `0,44` e `0,83` — dado finito.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
