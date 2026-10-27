@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de cbfaa3fa3097507d74dc78bb391c12550d42b9843ac24abd507db97e34b8b434
+# axiomas por teorema — congelamento de 0ca614ef8e5a883da23c68373f2cc1b1ae022231cf4420c840ab89766ec43b68
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7842,3 +7842,14 @@ ATK.ZeroClasses.PsiRH.psi_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PsiRH.psi_le_sq	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PsiRH.vonKoch_of_psiLog3	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PsiRH.rh_iff_psiLog3	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.sqrt_log_pow_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.log_dois_gt	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.sqrt_log3_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.theta_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.erroTheta_of_log3	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.rh_iff_thetaLog3	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.pi_sub_Li	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.pi_of_thetaLog3	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.pi_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.erroPi_of_log2	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiLiRH.rh_iff_piLog2	propext, Classical.choice, Quot.sound
