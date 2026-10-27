@@ -7489,3 +7489,13 @@ ATK.ZeroClasses.JRH.continuous_erro
 ATK.ZeroClasses.JRH.tendsto_erro
 ATK.ZeroClasses.JRH.tendsto_J
 ATK.ZeroClasses.JRH.necessidade_iff_entrada
+ATK.ZeroClasses.Perron.norm_nucleo
+ATK.ZeroClasses.Perron.nucleo_cont
+ATK.ZeroClasses.Perron.horiz
+ATK.ZeroClasses.Perron.vert
+ATK.ZeroClasses.Perron.alg_esq
+ATK.ZeroClasses.Perron.alg_dir
+ATK.ZeroClasses.Perron.limite
+ATK.ZeroClasses.Perron.perron_pos
+ATK.ZeroClasses.Perron.perron_neg
+ATK.ZeroClasses.Perron.perron_degrau

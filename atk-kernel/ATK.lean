@@ -351,3 +351,4 @@ import ATK.ZeroClasses.ArgRetangulo
 import ATK.ZeroClasses.VariacaoArg
 import ATK.ZeroClasses.RiemannVonMangoldt
 import ATK.ZeroClasses.JSobRH
+import ATK.ZeroClasses.Perron

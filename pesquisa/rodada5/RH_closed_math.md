@@ -1992,6 +1992,33 @@ Numérico (`codigo/jsobrh.py`, `dados/jsobrh.json`, `testes/test_jsobrh.py`, 2 t
 razão `|ζ(½ + iτ)|/(|ζ(½ + ε + iτ)|(1 + |τ|)^{1/4})` fica `≤ 0,87` para `τ ≤ 200`. A monotonia
 `|ξ(½ + iτ)| ≤ |ξ(½ + ε + iτ)|` vale nos 903 pontos da grade.
 
+## 4ax. A fórmula de Perron truncada: o núcleo (rodada 44)
+
+Um arquivo, **10 teoremas** (total 7501), só os axiomas padrão (`ZeroClasses/Perron.lean`). A Mathlib não tem a fórmula
+de Perron. O núcleo é
+
+  `perron(L, c, T) = (1/2π) ∫_{−T}^{T} e^{(c+it)L}/(c + it) dt = (1/2πi) ∫_{c−iT}^{c+iT} y^z/z dz`, `y = e^L`.
+
+* **`perron_pos`**: para `L > 0` (`y > 1`), `‖perron(L, c, T) − 1‖ ≤ e^{cL}/(πTL)`;
+* **`perron_neg`**: para `L < 0` (`y < 1`), `‖perron(L, c, T)‖ ≤ e^{cL}/(πT|L|)`;
+* **`perron_degrau`**: as duas juntas, `‖perron(L, c, T) − 1_{L>0}‖ ≤ e^{cL}/(πT|L|)` para `L ≠ 0`.
+
+A prova desloca o segmento vertical com os retângulos da rodada 40. Para `y > 1`, até `Re z = −U`: o resíduo em
+`z = 0` sai de `e^{zL}/z = dslope(e^{·L}, 0) + 1/z`, com `bordo_cauchy` para a parte inteira e `bordo_inv` para `1/z`.
+Para `y < 1`, até `Re z = U`, sem polos. Os dois lados horizontais custam `≤ e^{cL}/(|L|T)` cada (`horiz`), o vertical
+deslocado `≤ 2T/U` (`vert`), e `limite` faz `U → ∞`. `alg_esq` e `alg_dir` são a álgebra das quatro integrais.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| Perron truncada para o degrau, com erro `e^{cL}/(πT\|L\|)` | CERTIFIED | ferramenta |
+| Perron truncada para séries de Dirichlet | BUILD_PENDING (próxima rodada) | — |
+| `EntradaLittlewood` sob RH (corte abrupto); a estrutura nomeada `FechamentoO1.NecessidadeRH` | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/perron.py`, `dados/perron.json`, `testes/test_perron.py`, 2 testes). Simpson em 36 pontos
+`L ∈ {±2, ±0,5, ±0,1}`, `c ∈ {0,3; 1}`, `T ∈ {5, 20, 60}`. O maior erro/cota é `0,91`, de modo que a cota é quase
+justa. Em `L = 0`, fora da cota, o núcleo tende a `½` (`0,437; 0,484; 0,495`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
