@@ -1946,6 +1946,52 @@ Numérico (`codigo/rvm.py`, `dados/rvm.json`, `testes/test_rvm.py`, 2 testes). N
 numericamente. `|N(T) − m(T)|/log T ≤ 0,24`. `T·(Im E(½ + iT) − termo principal) ≈ 0,021`, contra a cota `18`. A
 média de `N(T) − m(T) − 7/8` nas oito alturas é `−0,27`.
 
+## 4aw. `J(ε) → 0` sob RH: uma segunda prova (rodada 43)
+
+Um arquivo, **19 teoremas** (total 7491), só os axiomas padrão (`ZeroClasses/JSobRH.lean`). A rodada 42 deixou a
+estrutura nomeada `FechamentoO1.NecessidadeRH` equivalente à dedução `RH ⇒ EntradasNecessidade`, e
+`EntradasNecessidade` tem duas partes: a entrada de Littlewood (mollificador de corte abrupto) e `J(ε) → 0`.
+
+**Já estava certificado** (2026-10-15, `ATK/NecessidadeRH.lean`): `tendsto_J_RH`, o mesmo enunciado, por
+Phragmén–Lindelöf para `ζ(s)/ζ(s + ε)` (`ATK.RazaoZeta`), e **`rh_iff_DN : RH ⟺ D_N → 0`**, com o mollificador
+suavizado `μ(n)(1 − n/N)₊ n^{−ε}` e Perron suavizada (`ATK.PerronSuave`). O critério de Báez-Duarte completo não está
+pendente. Esta rodada dá uma **segunda prova, independente**, de
+
+**`tendsto_J`: sob RH, `J(ε) = ∫ |1 − ζ(½ + iτ)/ζ(½ + ε + iτ)|²/|½ + iτ|² dτ → 0` quando `ε → 0⁺`,**
+
+trocando Phragmén–Lindelöf pela monotonia de Sondow–Dumitrescu e por Stirling:
+
+1. **monotonia em `σ = ½`** (`xi_meio_le`): sob RH, `|ξ(½ + iτ)| ≤ |ξ(½ + ε + iτ)|`, pela recíproca de
+   Sondow–Dumitrescu (`rec_monotonia`, §4an) e continuidade;
+2. **o fator `Γ`** (`norm_log_add_sub_le`, `razao_Gamma_alto`, `razao_Gamma_baixo`, `razao_Gamma`, `razao_Gammaℝ`):
+   `|Γℝ(½ + ε + iτ)| ≤ K (1 + |τ|)^{1/4} |Γℝ(½ + iτ)|` para `0 ≤ ε ≤ ½`, por Stirling complexo (§4as) em `|τ| ≥ 4`
+   (com constante `e^{17/2}`) e compacidade em `|τ| ≤ 4`;
+3. **a razão** (`razao_zeta`): de `ξ = s(s − 1)/2 · Γℝ · ζ`, sob RH,
+   `|ζ(½ + iτ)| ≤ K (1 + |τ|)^{1/4} |ζ(½ + ε + iτ)|`, uniformemente em `0 < ε < ½`;
+4. **convergência dominada** (`cota_erro`, `integrable_dom`, `ae_zeta_ne_zero`, `tendsto_erro`): o integrando é
+   `≤ 16(1 + K²)(1 + |τ|)^{−3/2}`, integrável. Fora dos zeros de `ζ` na linha crítica ele tende a `0`, e esses
+   zeros são enumeráveis (finitos em cada janela, `zerosSim_finito`).
+
+Daí **`necessidade_iff_entrada`**: `FechamentoO1.NecessidadeRH ⟺ (RH ⇒ ∀ᶠ ε → 0⁺, EntradaLittlewood ε)`. Para a
+estrutura nomeada falta só a convergência dominada das somas parciais de corte abrupto
+`Σ_{n ≤ N} μ(n) n^{−½−ε−iτ}` (o teorema de Littlewood de 1912), isto é, a fórmula de Perron truncada e a cota de
+Littlewood para `1/ζ` (§4ar) num deslocamento de contorno.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `J(ε) → 0` sob RH (segunda prova; a primeira é `ATK.NecessidadeRH.tendsto_J_RH`) | CERTIFIED | ferramenta |
+| razão `ζ(½ + iτ)/ζ(½ + ε + iτ) = O(\|τ\|^{1/4})` sob RH, uniforme em `ε` | CERTIFIED | ferramenta |
+| `RH ⟺ D_N → 0` (`ATK.NecessidadeRH.rh_iff_DN`, 2026-10-15) | CERTIFIED (anterior) | reformulação |
+| `EntradaLittlewood ε` sob RH, `ε` pequeno (corte abrupto) | BUILD_PENDING (Perron truncada) | — |
+| a estrutura nomeada `FechamentoO1.NecessidadeRH` | BUILD_PENDING (só a entrada acima) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/jsobrh.py`, `dados/jsobrh.json`, `testes/test_jsobrh.py`, 2 testes). `J(ε)` truncada em
+`|τ| ≤ 120` vale `2,27; 0,72; 0,21; 0,058; 0,011; 0,0031` para `ε = 0,4; 0,2; 0,1; 0,05; 0,02; 0,01`, caindo como
+`≈ ε²`. A razão `|Γ(¼ + h + iy)|/(|Γ(¼ + iy)|(1 + |y|)^{1/4})` fica `≤ 1` na grade (a prova usa `e^{17/2}`). A
+razão `|ζ(½ + iτ)|/(|ζ(½ + ε + iτ)|(1 + |τ|)^{1/4})` fica `≤ 0,87` para `τ ≤ 200`. A monotonia
+`|ξ(½ + iτ)| ≤ |ξ(½ + ε + iτ)|` vale nos 903 pontos da grade.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
