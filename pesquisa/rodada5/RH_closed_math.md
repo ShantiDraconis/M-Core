@@ -3594,6 +3594,32 @@ Numérico (`codigo/littlewood_montagem.py`, `dados/littlewood_montagem.json`, `t
 * em `2 ≤ y ≤ 15`, `F` vai de `−0,95` (`y ≈ 2,40`) a `+0,70` (`y ≈ 11,0`) e troca de sinal 1041 vezes. Aqui
   `log log log x ≤ 1`: o teorema é assintótico e não se vê numericamente.
 
+## 4cu. Littlewood para `θ` e as trocas de sinal (rodada 93)
+
+Um arquivo, **4 teoremas** (total 8345), só os axiomas padrão (`ZeroClasses/LittlewoodTeta.lean`). São
+corolários da rodada 92.
+
+* **`theta_littlewood`**: `θ(x) − x = Ω±(√x log log log x)`. O lado de baixo sai de `θ ≤ ψ`. O de cima sai de
+  `ψ(x) − θ(x) ≤ C√x` (`Chebyshev.psi_sub_theta_le_mul_sqrt`, da Mathlib), que é `o(√x log log log x)`, tomando
+  `x ≥ exp(exp(exp M))` com `M ≥ 2C/c` (`lll_ge`).
+* **`psi_troca_sinal`**, **`theta_troca_sinal`**: `ψ(x) − x` e `θ(x) − x` trocam de sinal infinitas vezes.
+
+Para `π(x) − Li(x)` falta `∫₂ˣ (θ(t) − t) dt/(t log² t) = O(√x/log² x)` sob RH. A cota pontual de von Koch dá só
+`O(√x)`, e é preciso o cancelamento da fórmula explícita integrada (`∫₂ˣ (ψ(t) − t) dt = O(x^{3/2})`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `θ(x) − x = Ω±(√x log log log x)`; `ψ(x) − x` e `θ(x) − x` trocam de sinal infinitas vezes | CERTIFIED | consequência |
+| `π(x) − Li(x) = Ω±(√x log log log x/log x)` (e as trocas de sinal de `π − Li`, Littlewood 1914) | BUILD_PENDING | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/littlewood_teta.py`, `dados/littlewood_teta.json`, `testes/test_littlewood_teta.py`, 2 testes),
+em `x ≤ 2·10⁶`:
+* `max (ψ(x) − θ(x))/√x = 1,426`, contra a constante `3(log 4 + 4) = 16,16` da Mathlib;
+* `ψ(x) − x` troca de sinal 10 353 vezes;
+* `θ(x) < x` em todo o intervalo: `(θ(x) − x)/√x` fica em `[−2,03; −0,43]`. O teorema garante infinitas trocas,
+  mas a primeira está além de `10¹⁹` (Büthe, Math. Comp. 2018: `θ(x) < x` para `x < 10¹⁹`).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

@@ -8339,3 +8339,7 @@ ATK.ZeroClasses.LittlewoodMontagem.logloglog_le
 ATK.ZeroClasses.LittlewoodMontagem.raiz_le_pot
 ATK.ZeroClasses.LittlewoodMontagem.littlewood_nao_RH
 ATK.ZeroClasses.LittlewoodMontagem.littlewood
+ATK.ZeroClasses.LittlewoodTeta.lll_ge
+ATK.ZeroClasses.LittlewoodTeta.theta_littlewood
+ATK.ZeroClasses.LittlewoodTeta.psi_troca_sinal
+ATK.ZeroClasses.LittlewoodTeta.theta_troca_sinal
