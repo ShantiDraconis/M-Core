@@ -395,3 +395,4 @@ import ATK.ZeroClasses.BDSemPotencia
 import ATK.ZeroClasses.BDTaxaTeta
 import ATK.ZeroClasses.Convexidade
 import ATK.ZeroClasses.Unilateral
+import ATK.ZeroClasses.OmegaRaiz

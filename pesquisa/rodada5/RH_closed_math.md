@@ -2475,7 +2475,7 @@ A prova junta o teorema de Hardy (rodada 50, `existe_zero_acima`: um zero `ρ₀
 | `ψ(x) − x ≠ o(√x)`; `M(x) ≠ o(√x)` | CERTIFIED | consequência (incondicional) |
 | `ψ(x) − x ≠ O(x^θ)`, `M(x) ≠ O(x^θ)` para `θ < ½` | CERTIFIED | consequência (incondicional) |
 | `ψ(x) − x = Ω±(x^θ)`, `M(x) = Ω±(x^θ)` para `0 ≤ θ < Θ` (incondicional para `θ < ½`) | CERTIFIED (rodada 87, §4co) | consequência |
-| `ψ(x) − x = Ω±(√x)`, `M(x) = Ω±(√x)` (escala `√x`, com constante) | BUILD_PENDING (rodada seguinte) | — |
+| `ψ(x) − x = Ω±(√x)`, `M(x) = Ω±(√x)` (escala `√x`, com constante) | CERTIFIED (rodada 88, §4cp) | consequência |
 | `ψ(x) − x = Ω±(√x log log log x)` (Littlewood 1914) | BUILD_PENDING | — |
 | `limsup \|M(x)\|/√x = ∞` (conhecido: `> 1,06` por Odlyzko–te Riele 1985, `> 1,82` por Hurst 2018; ilimitado sob a independência linear das ordenadas) | OPEN_MATH | — |
 | RH | OPEN_MATH | — |
@@ -3373,7 +3373,7 @@ Os resultados:
 | Landau–Pringsheim para `∫_{x>1} x^{−s−1} f`, `f ≥ 0` | CERTIFIED | ferramenta |
 | `ψ(N) − N ≤ A(N+1)^θ + K` (ou `≥`; ou `M`) ⟹ `ζ ≠ 0` em `Re s > θ`; `Θ` e RH por um lado | CERTIFIED | reformulação |
 | `ψ(x) − x`, `M(x)` `= Ω±(x^θ)` para `0 ≤ θ < Θ` | CERTIFIED | consequência |
-| `Ω±(√x)` com constante (polo num zero de Hardy); zeros simples sob `M(x) ≤ A√x` | BUILD_PENDING (rodada seguinte) | — |
+| `Ω±(√x)` com constante (polo num zero de Hardy); zeros simples sob `M(x) ≤ A√x` | CERTIFIED (rodada 88, §4cp) | consequência |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/unilateral.py`, `dados/unilateral.json`, `testes/test_unilateral.py`, 2 testes):
@@ -3381,6 +3381,43 @@ Numérico (`codigo/unilateral.py`, `dados/unilateral.json`, `testes/test_unilate
   cauda `≤ 10⁻⁶`);
 * em `100 ≤ N ≤ 10⁶`, `M(N)/√(N + 1)` vai de `−0,566` a `0,438`, e `(ψ(N) − N)/√(N + 1)` vai de `−0,777` a `0,710`;
 * há 1652 e 6688 trocas de sinal, respectivamente.
+
+## 4cp. `Ω±(√x)` com constante, e zeros simples sob a cota de Mertens fraca (rodada 88)
+
+Um arquivo, **20 teoremas** (total 8229), só os axiomas padrão (`ZeroClasses/OmegaRaiz.lean`). A rodada 58 tinha
+`ψ(x) − x ≠ o(√x)`, `M(x) ≠ o(√x)`; a rodada 87, `Ω±(x^θ)` para `θ < Θ`. Agora, na escala `√x`, dos dois lados:
+
+* **`psi_omega_mais_raiz`**, **`psi_omega_menos_raiz`**: existe `c > 0` tal que `ψ(N) − N > c√(N + 1) + K` e
+  `ψ(N) − N < −c√(N + 1) − K` para infinitos `N`, qualquer que seja `K` (Schmidt 1903). Serve `c = 1/(8|ρ₀|)`,
+  com `ρ₀ = ½ + iγ₀` um zero de Hardy;
+* **`mertens_omega_mais_raiz`**, **`mertens_omega_menos_raiz`**: o mesmo para `M(x)`, com `c` dado pelo polo de
+  `1/ζ` em `ρ₀` (`cota_inf_F`);
+* **`simples_of_mertens_le`**, **`simples_of_mertens_ge`**, **`rh_e_simples_of_mertens_le`**: a cota de Mertens
+  fraca **de um lado só**, `M(N) ≤ A√(N + 1) + K`, implica RH **e** que todo zero `½ + iγ` é simples
+  (`analyticOrderAt ζ₁ ρ = 1`).
+
+O instrumento é **`cota_polo`**. Suponha `a(N) ≤ c(N + 1)^{1/2} + K`, `GA a = H` com `H` holomorfa em
+`Re s > ½` e em `½`, e `(σ − ½)|H(σ + iγ)| ≥ L` perto de `½⁺`. Então `L ≤ |½ + iγ| · c√2`. A prova tem três passos:
+* a extensão `Gext` da rodada 87 coincide com `H` em `Re s > ½` (`Gext_eq_H`, princípio da identidade);
+* com `f ≥ 0`, `|Ik f 0 (σ + iγ)| ≤ Ik f 0 σ` (`norm_Ik_le`);
+* `(σ − ½) Ik f 0 σ → c√2`, porque `H(σ)` é contínua em `½` (`ζ(½) ≠ 0`).
+
+Os polos de `−ζ′/ζ − ζ` e de `1/ζ` num zero da reta são os da rodada 58 (`cota_inf_H`, `cota_inf_F`). Se a
+multiplicidade for `≥ 2`, `(σ − ½)|1/ζ(σ + iγ)| → ∞` (`cota_inf_F_dupla`), o que contradiz `cota_polo`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ψ(x) − x = Ω±(√x)`, `M(x) = Ω±(√x)` (com constante) | CERTIFIED | consequência (incondicional) |
+| `M(N) ≤ A√(N+1) + K` (ou `≥ −…`) ⟹ RH e zeros na reta simples | CERTIFIED | consequência / reformulação parcial |
+| `ψ(x) − x = Ω±(√x log log log x)` (Littlewood 1914) | BUILD_PENDING | — |
+| a cota de Mertens fraca `M(x) = O(√x)` | OPEN_MATH (acredita-se falsa; Ng 2004, sob conjecturas) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/omega_raiz.py`, `dados/omega_raiz.json`, `testes/test_omega_raiz.py`, 2 testes):
+* com `ρ₀ = ½ + 14,1347…i`, `c = 1/(8|ρ₀|) = 0,00884`. Entre os `N ≤ 10⁶`, 515 811 têm `ψ(N) − N > c√(N + 1)`
+  e 452 491 têm `ψ(N) − N < −c√(N + 1)`;
+* 256 481 e 334 127 têm `M(N) > 0,1√(N + 1)` e `M(N) < −0,1√(N + 1)`, respectivamente;
+* `|ζ′(ρ)| = 0,7932; 1,1368; 1,3717` nos três primeiros zeros.
 
 ## 5. Formatos
 
