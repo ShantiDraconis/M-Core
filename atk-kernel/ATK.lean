@@ -381,3 +381,4 @@ import ATK.ZeroClasses.ExplicitaResiduos
 import ATK.ZeroClasses.ExplicitaLimite
 import ATK.ZeroClasses.ExplicitaT
 import ATK.ZeroClasses.BDEspectral
+import ATK.ZeroClasses.BDDesloc

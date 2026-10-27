@@ -2907,6 +2907,34 @@ Numérico (`codigo/bd_espectral.py`, `dados/bd_espectral.json`, `testes/test_bd_
 `w(1,7) = 0` a `2·10⁻⁹`; a representação de `A_10(1,5 + 2i)` bate a `3·10⁻⁸`; a cota espectral em `σ = 0,8` cai de
 `0,47` (`N = 10`) a `0,047` (`N = 40`) e `0,0039` (`N = 160`).
 
+## 4cb. Báez-Duarte ponderado: o deslocamento do molificador (rodada 74)
+
+Um arquivo, **10 teoremas** (total 8002), só os axiomas padrão (`ZeroClasses/BDDesloc.lean`). Segunda peça da Q2(ii).
+Sob `SemZeros θ` (`½ ≤ θ < 1`), para `θ + δ < Re s < 1` e `0 < δ < 1`:
+
+  **`A_N(s) = 1/ζ(s) + (1/2π) ∫ W(−δ + iy) N^{−δ+iy} ζ(s − δ + iy)^{−1} dy`**   (`desloc`),
+
+e daí, na reta `Re s = σ`, **`|A_N(σ + iτ) − 1/ζ(σ + iτ)| ≤ K N^{−δ}(1 + |τ|)^η`** uniforme em `N` e `τ`
+(`molif_cota`). A prova:
+
+* `bordo_Gs`: `∮ W(z)N^z F(s + z) dz = 2πi F(s)` em `[−δ, 1] × [−Y, Y]` — `W(z)N^zF(s + z) = H(z)/z` com `H` holomorfa
+  (`F = 1/ζ` holomorfa em `Re > θ`, `QuasiRH.differentiableAt_F`), `dslope` + `bordo_inv`;
+* `norm_WR_esq`, `norm_WR_hor`: `‖W(−δ + iy)‖ ≤ 8/(δ(1 − δ)) (1 + |y|)^{−2}`, `‖W(x ± iY)‖ ≤ 2/|Y|³`;
+* `norm_Gs_le`, `integrable_Gs`: com `|1/ζ| ≤ C(1 + |Im|)^η` (`QuasiRH.norm_F_le`) e
+  `(1 + |a + b|)^η ≤ (1 + |a|)^η(1 + |b|)^η` (`um_add_le`), as retas são integráveis;
+* `Y → ∞`: as horizontais são `O(Y^{−2})` e as verticais convergem (`intervalIntegral_tendsto_integral`); o lado
+  `Re z = 1` é `2π A_N(s)` pela representação da rodada 73.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `A_N(s) − 1/ζ(s) = (1/2π)∫ W(−δ+iy)N^{−δ+iy}/ζ(s−δ+iy) dy` e `\|A_N − 1/ζ\| ≤ K N^{−δ}(1+\|τ\|)^η`, sob `SemZeros θ` | CERTIFIED | ferramenta |
+| Q2(ii): `D_N(σ) ≪ N^{−2δ}` | BUILD_PENDING (rodada 75) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_desloc.py`, `dados/bd_desloc.json`, `testes/test_bd_desloc.py`, 2 testes): em `s = 0,8 + 3i`,
+`δ = 0,2`, `N = 10`, os dois lados de `desloc` batem a `4·10⁻⁸`; `|A_N(s) − 1/ζ(s)|` cai de `0,46` (`N = 10`) a
+`0,0077` (`N = 640`), com `|A_N − 1/ζ|·N^{1/4}` decrescendo de `0,82` a `0,039`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
