@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a582278e93607ac1f754cdd53a7606a6a9e7a9f7e023b9cb1c814b593672f312
+# axiomas por teorema — congelamento de 473577e68881f7990f979c7430b5d1cc9a539c7a6812c8aeabd855c3cce9935e
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8423,3 +8423,26 @@ ATK.ZeroClasses.LittlewoodPiIncond.um_le_log_eee	propext, Classical.choice, Quot
 ATK.ZeroClasses.LittlewoodPiIncond.pi_littlewood_nao_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodPiIncond.pi_littlewood	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LittlewoodPiIncond.pi_troca_sinal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.Li_eq_Li	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.cimaTheta_of_erro	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.baixoTheta_of_erro	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.cimaPi_of_erro	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.baixoPi_of_erro	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.pot_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.semZeros_of_cimaTheta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.semZeros_of_baixoTheta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.semZeros_of_cimaPi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.semZeros_of_baixoPi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.Teta_le_iff_theta_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.Teta_le_iff_theta_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.Teta_le_iff_pi_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.Teta_le_iff_pi_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.rh_iff_Teta_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.rh_iff_theta_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.rh_iff_theta_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.rh_iff_pi_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.rh_iff_pi_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.nao_cimaTheta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.nao_baixoTheta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.nao_cimaPi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PiUnilateral.nao_baixoPi	propext, Classical.choice, Quot.sound

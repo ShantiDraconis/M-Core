@@ -3737,6 +3737,47 @@ Numérico (`codigo/littlewood_pi_incond.py`, `dados/littlewood_pi_incond.json`, 
   (`99,1` em `10⁶`) é o viés todo, e é `O(√N)` — pequena demais para a escala `x^θ`, `θ > ½`, do caso `¬RH`.
   Sob RH o argumento de Landau só alcança `Ω±(x^{½−ε})`, abaixo de `√x`; por isso aquele caso precisou da rodada 95.
 
+## 4cy. `Θ` por cotas de um lado de `θ(x) − x` e `π(x) − Li(x)` (rodada 97)
+
+Um arquivo, **23 teoremas** (total 8446), só os axiomas padrão (`ZeroClasses/PiUnilateral.lean`).
+
+A rodada 87 leu `Θ` em cotas de um lado de `ψ(x) − x` e de `M(x)`; a rodada 60, em cotas bilaterais de `θ(x) − x` e
+`π(x) − Li(x)`. Esta rodada fecha os dois casos que faltavam. Para `½ ≤ θ < 1`:
+
+* **`Teta_le_iff_theta_le`**: `Θ ≤ θ` ⟺ para todo `ε > 0` existem `A, K` com `θ(x) − x ≤ A x^{θ+ε} + K` em `x ≥ 2`;
+  e `Teta_le_iff_theta_ge`, com `θ(x) − x ≥ −(A x^{θ+ε}) − K`;
+* **`Teta_le_iff_pi_le`**, **`Teta_le_iff_pi_ge`**: o mesmo para `π(x) − Li(x)`;
+* **`rh_iff_pi_le`**: **RH ⟺ `π(x) ≤ Li(x) + O(x^{½+ε})`** para todo `ε > 0` — von Koch de um lado só; e
+  `rh_iff_pi_ge`, `rh_iff_theta_le`, `rh_iff_theta_ge`;
+* `nao_cimaTheta`, `nao_baixoTheta`, `nao_cimaPi`, `nao_baixoPi`: para `½ ≤ θ < Θ` nenhuma das quatro cotas vale.
+
+As provas são curtas, porque as peças já estão no kernel:
+
+* para `θ`: `ψ − θ ≤ C√x` (Mathlib) leva a cota de `θ` para `ψ`, e então vale Landau para `ψ` (rodada 87);
+* para `π`: `a(N) = π(N) − Li(N) + O(√N)` leva a cota para `a(N) = Σ (Λ(n) − 1)/log n`, e então vale Landau para
+  `log ζ` (rodada 96);
+* as idas valem pela forma bilateral (rodada 60).
+
+Com isto `ψ`, `θ`, `π − Li` e `M` medem o mesmo `Θ`, por cima e por baixo.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `Θ ≤ θ` ⟺ cota de um lado de `θ(x) − x` (ou de `π(x) − Li(x)`) com expoente `θ + ε`, `½ ≤ θ < 1` | CERTIFIED | reformulação |
+| RH ⟺ `π(x) ≤ Li(x) + O(x^{½+ε})` ⟺ `π(x) ≥ Li(x) − O(x^{½+ε})` (e o mesmo para `θ`) | CERTIFIED | reformulação |
+| RH | OPEN_MATH | — |
+
+Os resultados são clássicos (Landau 1905; Ingham, *The Distribution of Prime Numbers*, cap. V). O que é novo aqui é só
+a formalização.
+
+Numérico (`codigo/pi_unilateral.py`, `dados/pi_unilateral.json`, `testes/test_pi_unilateral.py`, 2 testes), em
+`2 ≤ N ≤ 10⁶`:
+* o lado de cima parece de graça: `θ(N) < N` em todo o intervalo, e `π(N) < Li(N)` de `N = 8` em diante;
+  `max (θ(N) − N)/√N = −0,43` e `max (π(N) − Li(N))/(√N/log N) = −0,72`, ambos em `N = 355111`;
+* o lado de baixo fica na escala de RH: `min (θ(N) − N)/√N = −2,03` e `min (π(N) − Li(N))/(√N/log N) = −2,51`, em
+  `N = 1422`;
+* mesmo assim, o lado de cima **equivale** a RH: por Littlewood (rodada 96) ele é violado na escala
+  `√x log log log x/log x`, só que muito além de `10⁶`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
