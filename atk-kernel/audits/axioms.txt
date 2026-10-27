@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de e5b38942a8abec7b7c28bbca2d6e2ce33513adf1e2a25c463416be532354eac3
+# axiomas por teorema — congelamento de db64838594431380a5da0d3e4603bbb8d1b1af366a8ab973bc60fd575ae4e45e
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7501,3 +7501,14 @@ ATK.ZeroClasses.Perron.limite	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Perron.perron_pos	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Perron.perron_neg	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Perron.perron_degrau	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.xN_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.abs_log_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.log_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.inv_abs_log_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.termo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.norm_term_le_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.summable_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.termo_div	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.ne_zero_ct	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.soma_perron	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PerronD.perron_LSeries	propext, Classical.choice, Quot.sound
