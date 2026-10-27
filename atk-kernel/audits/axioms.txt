@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 903e26b73520b3cf5ecc6b188f2a8ed334045e7ac719ab4530ef285c4848fa5a
+# axiomas por teorema — congelamento de ef486bbc6f2b4adcb31592a4711b1680a88e2861f374a53c08bafe8dcf4f0856
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7612,3 +7612,8 @@ ATK.ZeroClasses.Mertens.M_succ_eq	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Mertens.G_eq_LSeries	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Mertens.RH_of_mertens	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Mertens.rh_iff_mertens	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LogDerivZeta.landau_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LogDerivZeta.zeta_disco	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LogDerivZeta.zeta_local_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LogDerivZeta.norm_logDeriv_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LogDerivZeta.logDeriv_zeta_le	propext, Classical.choice, Quot.sound
