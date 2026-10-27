@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 8e1027cee449e305c8512b4490401513737c5c7f3157aabdeca040ab297c5d5e
+# axiomas por teorema — congelamento de a9c59e1522f3009f0ad45869ff4b43a8d4a7e240593d7d5606faa85dce8a6c0d
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8085,3 +8085,18 @@ ATK.ZeroClasses.TNPPi.abel_dif	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.TNPPi.integral_fA_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.TNPPi.pi_tnp	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.TNPPi.pi_log_pow	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.integrable_mellin_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.integrable_espectro	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.int_espectro_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.int_cos_abs	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.norm_sq_soma	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.cpow_neg_I	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.media_inf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.soma_sigma	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.norm_P_sq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.media_sup	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.arit_X	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.soma_abs_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.soma_c_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.expoentes	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDNormaL1.norma_l1_le	propext, Classical.choice, Quot.sound

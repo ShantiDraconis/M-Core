@@ -389,3 +389,4 @@ import ATK.ZeroClasses.ExplicitaInteira
 import ATK.ZeroClasses.BDPisoL1
 import ATK.ZeroClasses.BDBurnolL1
 import ATK.ZeroClasses.TNPPi
+import ATK.ZeroClasses.BDNormaL1
