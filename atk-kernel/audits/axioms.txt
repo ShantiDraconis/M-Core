@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de a1f6591fcc8caf299c58352bf09e03cbf232159eec3c73e5b84b3168de5e32eb
+# axiomas por teorema — congelamento de 377bf26f46922d9d618462f0f47648b8f5c77f41ebae3cfe8b756e46515dd4ba
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8116,3 +8116,8 @@ ATK.ZeroClasses.BDSemPotencia.sem_taxa_meio_DN	propext, Classical.choice, Quot.s
 ATK.ZeroClasses.BDSemPotencia.DN_sem_potencia	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDSemPotencia.contracao_impossivel_incond	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDSemPotencia.sem_taxa_Teta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaTeta.comTaxa_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaTeta.comTaxa_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaTeta.Teta_eq_sInf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaTeta.rh_iff_comTaxa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTaxaTeta.rh_iff_comTaxa_perto	propext, Classical.choice, Quot.sound

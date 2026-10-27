@@ -8114,3 +8114,8 @@ ATK.ZeroClasses.BDSemPotencia.sem_taxa_meio_DN
 ATK.ZeroClasses.BDSemPotencia.DN_sem_potencia
 ATK.ZeroClasses.BDSemPotencia.contracao_impossivel_incond
 ATK.ZeroClasses.BDSemPotencia.sem_taxa_Teta
+ATK.ZeroClasses.BDTaxaTeta.comTaxa_iff
+ATK.ZeroClasses.BDTaxaTeta.comTaxa_mono
+ATK.ZeroClasses.BDTaxaTeta.Teta_eq_sInf
+ATK.ZeroClasses.BDTaxaTeta.rh_iff_comTaxa
+ATK.ZeroClasses.BDTaxaTeta.rh_iff_comTaxa_perto

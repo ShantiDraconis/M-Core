@@ -3274,6 +3274,29 @@ os `D_N` da rodada 2 (`N ≤ 7999`, double-double):
 * o expoente local médio `log(D_N/D_{2N})/log 2` cai de `0,38` (`[16, 32)`) para `0,12` (`[2048, 4096)`);
 * `D_N log N/C₀ ∈ [0,957; 1,010]` para `256 ≤ N < 8000`.
 
+## 4cm. `Θ` como o início das taxas de potência de `D_N(σ)` (rodada 85)
+
+Um arquivo, **5 teoremas** (total 8121), só os axiomas padrão (`ZeroClasses/BDTaxaTeta.lean`). Seja
+`ComTaxa σ := ∃ κ > 0, TaxaDN σ κ`. Com as rodadas 76 e 83:
+
+* **`comTaxa_iff`**: para `0 < σ < 1`, `ComTaxa σ ⟺ Θ < σ`. A ida é `taxaDN_pos`; a volta é `taxa_Teta` com
+  `κ = 2(σ − Θ)`.
+* `comTaxa_mono`: `ComTaxa` sobe com `σ`.
+* **`Teta_eq_sInf`**: se `Θ < 1`, `Θ = inf{σ ∈ (0, 1) : D_N(σ) ≪ N^{−κ} para algum κ > 0}`.
+* **`rh_iff_comTaxa`**, **`rh_iff_comTaxa_perto`**: RH ⟺ `D_N(σ)` tem taxa de potência para todo `σ ∈ (½, 1)` ⟺ há
+  `σ` com taxa em `(½, ½ + ε)` para todo `ε > 0`.
+
+Para medir `Θ` basta o sinal da taxa. O valor exato `2(σ − Θ)` (Q2(iii)) não entra.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ComTaxa σ ⟺ Θ < σ`; `Θ = inf{σ : ComTaxa σ}`; RH ⟺ `ComTaxa` em `(½, 1)` | CERTIFIED | reformulação |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_taxa_teta.py`, `dados/bd_taxa_teta.json`, `testes/test_bd_taxa_teta.py`, 2 testes): num modelo
+com `Θ ∈ {0,5; 0,6; 0,875}` hipotéticos, o ínfimo de uma grade de passo `10⁻³` onde o piso garantido `2(σ − Θ)` é
+positivo recupera `Θ` a menos do passo. Isso ilustra `Teta_eq_sInf` e não mede o `Θ` verdadeiro.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
