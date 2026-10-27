@@ -1,0 +1,10 @@
+{
+ "N": 100000,
+ "theta": 0.6,
+ "razao_psi": 0.6760112545356192,
+ "razao_mertens": 0.6825575036930732,
+ "w_reta": 1.0,
+ "w_hipotetico": 0.9999900003099902,
+ "w_reflexo": 1.0000099997900047,
+ "aviso": "numérico; nada aqui é certificado e nada aqui mede Θ — ver ATK/ZeroClasses/BDTheta.lean"
+}

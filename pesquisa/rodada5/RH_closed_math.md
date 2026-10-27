@@ -2966,6 +2966,36 @@ Numérico (`codigo/bd_taxa.py`, `dados/bd_taxa.json`, `testes/test_bd_taxa.py`, 
 `σ = 0,75` (`|τ| ≤ 1000`) cai de `0,448` (`N = 10`) a `0,0042` (`N = 160`), com expoentes locais `1,53`–`1,76`,
 acima do `2(σ − ½) = 0,5` garantido sob RH.
 
+## 4cd. O expoente `Θ = sup Re ρ` e três instrumentos que o medem (rodada 76)
+
+Um arquivo, **20 teoremas** (total 8029), só os axiomas padrão (`ZeroClasses/BDTheta.lean`). Define
+`Θ = inf{θ ≥ ½ : ζ ≠ 0 em Re s > θ}` (`Teta`) e organiza as rodadas 57 e 59–75 como medidas da mesma grandeza:
+
+* `½ ≤ Θ ≤ 1`, `ζ ≠ 0` em `Re s > Θ`, todo zero tem `Re ρ ≤ Θ`, e para `½ ≤ θ < Θ` há zero com `Re ρ > θ`
+  (`meio_le_Teta`, `Teta_le_um`, `semZeros_Teta`, `re_le_Teta`, `existe_zero`); **RH ⟺ Θ = ½** (`rh_iff_Teta`);
+* **três instrumentos**: para `½ ≤ θ < 1`, `Θ ≤ θ ⟺ ψ(x) − x ≪ x^{θ+ε} ⟺ M(x) ≪ x^{θ+ε} ⟺
+  inf_N D_N(σ) = 0 ∀σ ∈ (θ, 1)` (`Teta_le_iff_psi`, `Teta_le_iff_mertens`, `Teta_le_iff_DNσ`);
+* **a taxa** `TaxaDN σ κ` (`D_N(σ) ≪ N^{−δ}` para todo `δ < κ`): `TaxaDN σ (2(σ − Θ))` em `Θ < σ < 1`
+  (`taxa_Teta`); abaixo de `Θ`, `inf_N D_N(σ) > 0` e nenhuma taxa positiva (`piso_abaixo`, `nao_taxa_abaixo`);
+  **RH ⟺ `TaxaDN σ (2σ − 1)` para todo `σ ∈ (½, 1)`** (`rh_iff_taxa`);
+* **`PisoPonderado`** — a questão Q2(iii) como proposição: `TaxaDN σ κ ⟹ κ ≤ 2(σ − Θ)` para `Θ ≤ σ < 1`.
+  **OPEN_MATH.** Se valer, RH se decide num único `σ₀ ∈ (½, 1)`: RH ⟺ `TaxaDN σ₀ (2σ₀ − 1)`
+  (`rh_iff_taxa_de_piso`).
+
+Nada aqui fixa o valor de `Θ`: os enunciados valem qualquer que ele seja. Nenhuma amostra finita mede `Θ`
+(barreira B2: um zero fora da reta acima de `3·10¹²` só apareceria com `log N ≳ 10²³`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `Θ` definido; `½ ≤ Θ ≤ 1`; RH ⟺ `Θ = ½`; `ψ`, `M` e `D_N(σ)` medem o mesmo `Θ` | CERTIFIED | reformulação |
+| `κ(σ) ≥ 2(σ − Θ)` em `(Θ, 1)`; nenhuma taxa abaixo de `Θ`; RH ⟺ taxa `2σ − 1` em `(½, 1)` | CERTIFIED | reformulação |
+| `PisoPonderado` (Q2(iii)): `κ(σ) ≤ 2(σ − Θ)` | OPEN_MATH | — |
+| o valor de `Θ` (RH: `Θ = ½`; semiplano: `Θ < 1`) | OPEN_MATH | — |
+
+Numérico (`codigo/bd_theta.py`, `dados/bd_theta.json`, `testes/test_bd_theta.py`, 2 testes): até `10⁵`,
+`max |ψ(N) − N|/(N + 1)^{0,6} = 0,676` e `max |M(N)|/(N + 1)^{0,6} = 0,683` — compatível com qualquer `Θ`;
+`|1 − 1/ρ| = 1` na reta, `< 1` para `ρ = 0,6 + 100i` e `> 1` para `0,4 + 100i`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

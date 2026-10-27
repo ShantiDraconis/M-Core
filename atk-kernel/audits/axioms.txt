@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de fea5907de0f53b5dae17a099c879177d91ad906826393e401f1753ef0f5a3721
+# axiomas por teorema — congelamento de a99808ba7b6abd8667ac651e236da8f48f3472349b105bd282cb4ed4c288e06f
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8009,3 +8009,23 @@ ATK.ZeroClasses.BDTaxa.iInf_DNσ_eq_zero	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTaxa.semZeros_iff_DNσ	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTaxa.rh_iff_DNσ	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDTaxa.DNσ_taxa_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.semZeros_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.semZeros_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.um_mem	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.bdd	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.meio_le_Teta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.Teta_le_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.semZeros_Teta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.Teta_le_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.re_le_Teta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.existe_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.rh_iff_Teta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.Teta_le_iff_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.Teta_le_iff_mertens	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.Teta_le_iff_DNσ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.taxa_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.taxa_Teta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.piso_abaixo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.nao_taxa_abaixo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.rh_iff_taxa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDTheta.rh_iff_taxa_de_piso	propext, Classical.choice, Quot.sound

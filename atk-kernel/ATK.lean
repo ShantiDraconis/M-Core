@@ -383,3 +383,4 @@ import ATK.ZeroClasses.ExplicitaT
 import ATK.ZeroClasses.BDEspectral
 import ATK.ZeroClasses.BDDesloc
 import ATK.ZeroClasses.BDTaxa
+import ATK.ZeroClasses.BDTheta
