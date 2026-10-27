@@ -1656,6 +1656,40 @@ Numérico (`codigo/hadamard_xi.py`, `dados/hadamard_xi.json`, `testes/test_hadam
   relativo `≤ 3·10⁻⁴` em `s = 2, ½+2i, 3+5i, −1+3i, ½+10i`;
 * `g″ ≈ 6·10⁻⁶`, o ruído da diferença finita.
 
+## 4an. As recíprocas de Lagarias e de Sondow–Dumitrescu, sem hipóteses (rodada 34)
+
+Um arquivo, **14 teoremas** (total 7335), só os axiomas padrão. A rodada 28 deixou `RecLagarias` e `RecMonotonia`
+como hipóteses nomeadas, porque dependiam do produto de Hadamard. Com `hadamardXi` (§4am) as duas viram teoremas
+(`ZeroClasses/LagariasHadamard.lean`):
+
+* `Pcan_localmente`: o produto canônico converge localmente uniformemente em `ℂ`;
+* `logDeriv_E1`, `summable_logDeriv`, **`logDeriv_xi_eq`: `ξ′/ξ(s) = B + Σ_{(ρ,j)} (1/(s − ρ) + 1/ρ)`** onde
+  `ξ(s) ≠ 0`, via `logDeriv_tprod_eq_tsum` da Mathlib; `Lg_eq` dá a parte real;
+* **`Lg_sob_RH`: sob RH, `L(s) = Σ_{(ρ,j)} (σ − ½)/|s − ρ|²`**. A constante `Re B + Σ Re 1/ρ` sai de `L(½) = 0`
+  (`Lg_linha`, §4ah), e `termo_sob_RH` faz a conta termo a termo;
+* **`rec_lagarias : RecLagarias`**; `Lg_pos`: sob RH, `L > 0` em `Re s > ½`, porque há um zero de verdade
+  (`existe_zero_altura`);
+* **`rec_monotonia : RecMonotonia`**: sob RH, `σ ↦ |ξ(σ + it)|` é estritamente crescente em `σ > ½`
+  (`∂_σ log|ξ| = L > 0`, `deriv_log_norm`);
+* **`positividade_iff_RH`: `(Re ξ′/ξ ≥ 0 em Re s > ½, fora dos zeros) ⟺ RH`** e **`monotonia_iff_RH`:
+  `(|ξ(σ + it)| estritamente crescente em σ > ½ para todo t) ⟺ RH`**, sem hipóteses.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `ξ′/ξ = B + Σ (1/(s − ρ) + 1/ρ)`; sob RH, `L = Σ (σ − ½)/\|s − ρ\|²` | CERTIFIED | ferramenta |
+| `positividade_iff_RH`, `monotonia_iff_RH` (Lagarias 1999, Sondow–Dumitrescu 2010) | CERTIFIED | reformulação |
+| `∀ s, Re s > ½ → ξ(s) ≠ 0 → Re ξ′/ξ(s) ≥ 0` (sem RH) | OPEN_MATH (é RH) | alavanca |
+| RH | OPEN_MATH | — |
+
+As duas condições têm agora exatamente a força de RH, e isso está certificado. Provar qualquer uma delas sem RH
+seria provar RH.
+
+Numérico (`codigo/lagarias_rec.py`, `dados/lagarias_rec.json`, `testes/test_lagarias_rec.py`, 2 testes):
+* em `s = 2, 0,8+5i, 0,6+14i, 1,5+30i`, `ξ′/ξ` por diferença finita bate com `B + Σ_{|γ| ≤ 300}` mais a cauda
+  `≈ s·Σ_{|γ|>300} 1/γ²` (erro `≤ 2,5·10⁻⁴`), e `L` bate com `Σ (σ − ½)/|s − ρ|²` mais a cauda (erro `≤ 4·10⁻⁵`);
+* `L(½) ≈ 10⁻¹⁰`;
+* `|ξ(σ + it)|` é estritamente crescente em `½ < σ ≤ 3` para `t = 0,3, 5, 14,13, 20, 50`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

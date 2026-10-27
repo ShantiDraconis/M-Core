@@ -7319,3 +7319,17 @@ ATK.ZeroClasses.Hadamard.g_afim
 ATK.ZeroClasses.Hadamard.xi_hadamard
 ATK.ZeroClasses.Hadamard.hadamardXi
 ATK.ZeroClasses.Hadamard.necessidade_iff
+ATK.ZeroClasses.LagariasHadamard.Pcan_localmente
+ATK.ZeroClasses.LagariasHadamard.logDeriv_E1
+ATK.ZeroClasses.LagariasHadamard.summable_logDeriv
+ATK.ZeroClasses.LagariasHadamard.logDeriv_xi_eq
+ATK.ZeroClasses.LagariasHadamard.summable_re
+ATK.ZeroClasses.LagariasHadamard.Lg_eq
+ATK.ZeroClasses.LagariasHadamard.re_de_RH
+ATK.ZeroClasses.LagariasHadamard.termo_sob_RH
+ATK.ZeroClasses.LagariasHadamard.Lg_sob_RH
+ATK.ZeroClasses.LagariasHadamard.rec_lagarias
+ATK.ZeroClasses.LagariasHadamard.Lg_pos
+ATK.ZeroClasses.LagariasHadamard.rec_monotonia
+ATK.ZeroClasses.LagariasHadamard.positividade_iff_RH
+ATK.ZeroClasses.LagariasHadamard.monotonia_iff_RH
