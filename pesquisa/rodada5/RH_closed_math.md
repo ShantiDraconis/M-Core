@@ -3655,6 +3655,45 @@ Numérico (`codigo/littlewood_media.py`, `dados/littlewood_media.json`, `testes/
   `3/|ρ|² ≈ 0,005–0,015`;
 * `e^v + e^{−v} − 2 − (v²/2 + |v|³/6) ≥ 0` na malha `|v| ≤ 10`, com igualdade só em `v = 0`.
 
+## 4cw. Littlewood para `π(x) − Li(x)` sob RH (rodada 95)
+
+Um arquivo, **19 teoremas** (total 8393), só os axiomas padrão (`ZeroClasses/LittlewoodPi.lean`).
+
+**`pi_littlewood_RH`** (sob RH). Existe `c > 0` tal que `π(x) − Li(x) ≤ −c√x log log log x/log x` e
+`π(x) − Li(x) ≥ c√x log log log x/log x` para `x` arbitrariamente grandes, com `Li(x) = ∫₂ˣ dt/log t`. Em
+particular `π(x) − Li(x)` troca de sinal infinitas vezes (`pi_troca_sinal_RH`).
+
+A prova tem quatro passos.
+
+1. **A fórmula** (`Li_eq`, `pi_sub_Li`): integrando `Li` por partes, e usando a fórmula de Abel da Mathlib
+   (`Chebyshev.primeCounting_eq_theta_div_log_add_integral`),
+
+   `π(x) − Li(x) = (θ(x) − x)/log x + 2/log 2 + E(x)`, com `E(x) = ∫₂ˣ (θ(t) − t) dt/(t log² t)`.
+
+2. **A troca `t = e^w`** (`integral_exp_subst`, `E_subst`): `E(x) = ∫_{log 2}^{log x} (θ(e^w) − e^w)/w² dw`. Vale
+   sem continuidade do integrando, via `integral_Icc_deriv_smul_of_deriv_nonneg`.
+3. **Por partes com a média da rodada 94** (`integral_Fg_le`). Com `I(w) = ∫₁ʷ F = O(log w)`, como `F` é contínua à
+   direita (`Fpsi_right_cont`), vale `I′ = F` pela direita. Então
+   `|∫₁ʸ F(w) e^{w/2}/w² dw| ≤ K(1 + log y)(1 + e^{y/2}/y²)`, usando `∫₁ʸ e^{w/2}/w² ≤ 7e⁴ + 4e^{y/2}/y²`
+   (`integral_gpeso_le`). A cota pontual de von Koch daria só `O(√x)` aqui; é a média que dá `o(√x/log x)`.
+4. **O resto** (`resto_pi_le`): somando `ψ − θ ≤ C√x` da Mathlib,
+   `|2/log 2 + E(x)| ≤ K(1 + log log x)(1 + √x/log² x) = o(√x log log log x/log x)`. Com `θ(x) − x = Ω±(…)`
+   (rodada 93) sai o teorema.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| sob RH, `π(x) − Li(x) = Ω±(√x log log log x/log x)` e troca de sinal infinitas vezes | CERTIFIED | consequência (de RH) |
+| o mesmo sem hipóteses (Littlewood 1914) | BUILD_PENDING (falta `¬RH`: `π − Li = Ω±(x^θ)`, `θ < Θ`, via Landau para `log ζ`) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/littlewood_pi.py`, `dados/littlewood_pi.json`, `testes/test_littlewood_pi.py`, 2 testes):
+* `Li(x)` por quadratura e pela integração por partes coincidem (`10⁻⁷`–`2·10⁻⁴` em `x = 10; 100; 1000`);
+* `π(x) − Li(x) = −8,56; −16,09; −36,76; −128,50` em `x = 10³, …, 10⁶`, e a fórmula de `pi_sub_Li` reproduz esses
+  valores a `1,2·10⁻⁴`;
+* o resto `2/log 2 + E(x)` vale `−0,49; −0,44; −0,34; −0,26` vezes `√x/log x`, decrescendo como o teorema exige;
+* `π(x) ≥ Li(x)` só até `x = 7`: depois, `π(x) < Li(x)` em todo `8 ≤ x ≤ 10⁶`. A primeira troca de sinal está além de
+  `10¹⁹` (Büthe 2018).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
