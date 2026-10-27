@@ -2676,6 +2676,33 @@ Numérico (`codigo/pi_li_rh.py`, `dados/pi_li_rh.json`, `testes/test_pi_li_rh.py
 `0,019` (`x = 100`) a `0,00041` (`x = 10⁷`, `π − Li = −338,4`); contra a cota de Schoenfeld `√x log x/8π` (válida em
 `x ≥ 2657`), `0,44` a `0,17`; a fórmula de partes confere em `x = 10⁴` (`−16,0921`).
 
+## 4bt. As peças da fórmula explícita (rodada 66)
+
+Um arquivo, **15 teoremas** (total 7868), só os axiomas padrão (`ZeroClasses/ExplicitaPecas.lean`). Para deslocar o
+contorno de Perron **através** dos zeros (Davenport, cap. 17):
+
+* **`principio_ponderado`**: `∮_{∂R} (f′/f)·φ = 2πi Σ_u m_u φ(u)` para `f`, `φ` analíticas perto do retângulo, sem
+  zeros de `f` no bordo (o quociente local da rodada 40 e `φ(s)/(s − u) = dslope φ u (s) + φ(u)/(s − u)`);
+* **`bordo_explicita`**: no retângulo `[b, c] × [−T, T]` (`0 < b < 1 < c`) sem zeros de `ζ` no bordo,
+  `∮ x^s(−ζ′/ζ)(s)/s ds = 2πi (x − Σ_ρ m_ρ x^ρ/ρ)`, via `G(s) = (s − 1)ζ(s)` (`ordem_Gp`, `Gp_eq_zero_iff`);
+* **`soma_ordem_norm`**: `Σ_{|γ| ≤ T} m_ρ/|ρ| ≤ C (1 + log T)²` (blocos `⌊|γ|⌋ = k`, caixas de Jensen,
+  `H_n ≤ 1 + log n`);
+* **`separa`, `altura_boa`**: em cada `[T₀, T₀ + 1]`, `T₀ ≥ 6`, há `T` com `||γ| − T| ≥ 1/(2(n + 1))` para todo zero
+  (`n = O(log T₀)` zeros próximos, casa dos pombos entre `n + 1` candidatos) e, lá, `ζ(σ ± iT) ≠ 0` e
+  `|ζ′/ζ(σ ± iT)| ≤ C log²(2 + T)` em `0 < σ ≤ 2` — **incondicional**;
+* **`logDeriv_quarto_RH`**: sob RH, `|ζ′/ζ(¼ + it)| ≤ C log(2 + |t|)`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| princípio do argumento ponderado; resíduo `x − Σ x^ρ/ρ`; alturas boas | CERTIFIED | ferramenta |
+| RH ⟹ `ψ(x) = x + O(√x log² x)` | BUILD_PENDING (rodada 67) | consequência |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/explicita_pecas.py`, `dados/explicita_pecas.json`, `testes/test_explicita_pecas.py`, 2 testes):
+`Σ_{|γ|≤T} 1/|ρ|/(1 + log T)²` de `0,028` (`T = 50`) a `0,060` (`T = 600`); o algoritmo de `separa` em
+`T₀ = 100…400` acha `T` com separação `0,35–1,26 ≥ δ` e `|ζ′/ζ(σ ± iT)|/log²(2 + T) ≤ 0,11`;
+`max_{t ≤ 300} |ζ′/ζ(¼ + it)|/log(2 + t) = 3,01`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
