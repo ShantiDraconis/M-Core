@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 42646f7f2b7b66d81914c545d3b3ec916b6a17ee6a9cc59e68d7b855d4431530
+# axiomas por teorema — congelamento de 69f7033786f37da1f3bb732bf6f7d3b9f24fe8d2f845dad77eb8481821248f51
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7441,3 +7441,34 @@ ATK.ZeroClasses.VariacaoArg.gT_analitica	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VariacaoArg.cota_gT	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VariacaoArg.conta_zeros_re	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VariacaoArg.variacao_log	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.deriv_xi_one_sub	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.deriv_xi_conj	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.g_one_sub	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.g_conj	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.integral_conj'	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.xi_ne_zero_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.xi_ne_zero_baixo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.xi_ne_zero_topo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.continuousAt_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.integrable_horizontal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.integrable_vertical	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.lado_horizontal	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.lado_esquerdo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.bordo_eq_N	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.identidade	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.hasDerivAt_E	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.E'_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.hasDerivAt_Λ	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.lado_direito	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.continuousAt_digamma	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.topo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.formula_N	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.arg_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.im_E_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.rvm_nao_ordenada	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.existe_nao_ordenada	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.xlogx_sup	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.xlogx_inf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.m_lip	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.riemannVonMangoldt	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.RvM.necessidade_iff_deducao	propext, Classical.choice, Quot.sound
