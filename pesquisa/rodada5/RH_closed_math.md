@@ -2625,6 +2625,34 @@ de `0 < γ ≤ 600`: `S(t)/log t` entre `0,21` e `0,35` para `t = 50…400` (esp
 `|ζ′/ζ(s) − Σ_{|γ−t|≤1} 1/(s − ρ)|/log t` fica entre `0,03` e `0,31`; `(σ − ½)|ζ′/ζ(σ + 100i)|/log 100` cai de
 `0,072` a `0,0003` quando `σ − ½` vai de `0,5` a `0,001`.
 
+## 4br. RH ⟺ `ψ(x) = x + O(√x log³ x)` (rodada 64)
+
+Um arquivo, **20 teoremas** (total 7842), só os axiomas padrão (`ZeroClasses/PsiRH.lean`). A forma quantitativa do
+critério de von Koch, por Perron e deslocamento de contorno (sem a fórmula explícita):
+
+* **`psi_RH`**: sob RH, `|ψ(x) − x| ≤ K √x log³ x` para `x ≥ 100`; **`rh_iff_psiLog3`**: RH ⟺ `PsiLog3` (a volta pela
+  rodada 55, via `vonKoch_of_psiLog3`, com `log³ N ≤ (3/ε)³ N^ε` e `ψ(N) ≤ N²` para os `N` pequenos);
+* **Perron para `Λ`** (`perron_psi`): os coeficientes `f_η(n) = η Λ(n) n^{−η}` têm `|f_η| ≤ 1` (`norm_fL_le`), e a
+  fórmula truncada da rodada 45 em `s = −η` dá `ψ(N)` contra `(1/2π) ∫_{−T}^{T} x^{c+it}(−ζ′/ζ)(c + it)/(c + it) dt`,
+  com `Σ n^{−σ} ≤ 8/(σ − 1)` (`tsum_um_le`);
+* **o resíduo** (`bordo_Fx`): `∮ x^s(−ζ′/ζ)(s)/s ds = 2πi x` no retângulo `[a, c] × [−T, T]` onde
+  `G(s) = (s − 1)ζ(s) ≠ 0`;
+* **as cotas sob RH** (`logDeriv_RH_unif`): `|ζ′/ζ(σ + iy)| ≤ C log(2 + |y|)/(σ − ½)` em `½ < σ ≤ ¾`, para todo `y`
+  (rodada 63 em `|y| ≥ 6`, compacidade em `|y| ≤ 6`); `∫_{−T}^{T} dy/(1 + |y|) = 2 log(1 + T)` (`integral_um_abs`);
+* **a escolha** (`psi_RH_meio`) `η = 1/log x`, `c = 1 + 2η`, `a = ½ + η`, `T = x²`, `x = N + ½`: Perron custa
+  `48e² log² x/π`, os lados horizontais `O(log² x)`, o vertical `72e C √x log³ x`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| RH ⟺ `ψ(x) = x + O(√x log³ x)` | CERTIFIED | reformulação |
+| RH ⟹ `ψ(x) = x + O(√x log² x)` (fórmula explícita, `x^ρ/ρ`) | BUILD_PENDING | consequência |
+| RH ⟹ `π(x) = Li(x) + O(√x log x)` | BUILD_PENDING | consequência |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/psi_rh.py`, `dados/psi_rh.json`, `testes/test_psi_rh.py`, 2 testes). Até `x = 10⁷`, por década, o
+máximo de `|ψ(x) − x|/(√x log³ x)` cai de `0,0080` (`x ≤ 100`) a `0,00024`, e o de `|ψ(x) − x|/(√x log² x/8π)`
+(Schoenfeld, sob RH) de `0,92` a `0,083`; `η Λ(n) n^{−η} ≤ 0,35` para `η = 1/log 10⁷`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
