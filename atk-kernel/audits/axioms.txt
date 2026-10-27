@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de ef486bbc6f2b4adcb31592a4711b1680a88e2861f374a53c08bafe8dcf4f0856
+# axiomas por teorema — congelamento de 4fb174e3f8e52cfb26e4b5cb0a51a2af9e46b33197c52a9c513c63892ab188ce
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7617,3 +7617,21 @@ ATK.ZeroClasses.LogDerivZeta.zeta_disco	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LogDerivZeta.zeta_local_fora	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LogDerivZeta.norm_logDeriv_le	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.LogDerivZeta.logDeriv_zeta_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.perron_kk_c	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.integrable_KK_c	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.continuous_KK_c	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.LSeries_vM	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.integral_termo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.Ssm_eq_integral	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.logDeriv_eq_Gp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.zeros_compacto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.regiao_contorno	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.phx_diff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.phx_one	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.bordo_fx	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.cauda	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.norm_KK_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.norm_logDeriv_c	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.continuous_logDeriv_c	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.erro_explicito	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PNT.chebyshev_suave	propext, Classical.choice, Quot.sound

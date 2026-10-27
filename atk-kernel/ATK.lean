@@ -360,3 +360,4 @@ import ATK.ZeroClasses.HardyMomentos
 import ATK.ZeroClasses.HardyTeorema
 import ATK.ZeroClasses.MertensRH
 import ATK.ZeroClasses.LogDerivZeta
+import ATK.ZeroClasses.ChebyshevSuave

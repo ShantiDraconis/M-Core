@@ -2275,13 +2275,41 @@ Mathlib fixada.
 | --- | --- | --- |
 | Landau fora do centro, com contagem de zeros | CERTIFIED | ferramenta |
 | `\|ζ′/ζ(σ + it)\| ≤ C log²\|t\|` em `σ ≥ 1 − c/log\|t\|` | CERTIFIED | ferramenta |
-| Perron suavizado para `Λ` e o deslocamento até a região livre; `ψ(x) = x + O(x e^{−c√log x})` | BUILD_PENDING (próximas rodadas) | — |
+| Perron suavizado para `Λ` e o deslocamento até a região livre | CERTIFIED na rodada 53 (§4bg) | ferramenta |
 | RH | OPEN_MATH | — |
 
 Numérico (`codigo/logderiv_zeta.py`, `dados/logderiv_zeta.json`, `testes/test_logderiv_zeta.py`, 2 testes). Com `ζ`
 por Euler–Maclaurin e `ζ′` por diferença central: `|ζ′/ζ(σ + it)|/log²t` fica abaixo de `0,036` para
 `t = 10, 100, 1000` e `σ` entre `1 − 0,05/log t` e `2`; `|ζ′/ζ(σ + it)| ≤ −ζ′/ζ(σ)` em `σ = 1,1; 1,5; 2`, com
 `−ζ′/ζ(2) = 0,5699610`.
+
+## 4bg. A soma de Chebyshev suavizada com o erro de de la Vallée Poussin (rodada 53)
+
+Um arquivo, **18 teoremas** (total 7635), só os axiomas padrão (`ZeroClasses/ChebyshevSuave.lean`). Segunda peça do
+TNP com erro:
+
+  `|Σ_{n ≤ x} Λ(n)(1 − n/x) − x/2| ≤ K x log x · e^{−a√log x}`   para `x ≥ x₀`   (**`chebyshev_suave`**).
+
+* **Perron suavizado em `Re s = c`** (`perron_kk_c`, inversão de Mellin da Mathlib para `k(u) = (1 − u)₊` com
+  `K(s) = 1/(s(s + 1))`), e daí **`Ssm_eq_integral`**: `Σ_{n ≤ x} Λ(n)(1 − n/x) = (1/2π)∫ x^{c+iy}L(Λ, c + iy)K(c + iy) dy`
+  para `c > 1` (troca soma–integral como em `ATK.PerronSuave.AN_eq_integral`);
+* `logDeriv_eq_Gp`: `ζ′/ζ = G′/G − 1/(s − 1)` com `G(s) = (s − 1)ζ(s)`; `zeros_compacto`; **`regiao_contorno`**:
+  `ζ ≠ 0` e `|ζ′/ζ(s) + 1/(s − 1)| ≤ C log²T` em `1 − c₁/log T ≤ Re s ≤ 2`, `|Im s| ≤ T` (rodada 52 mais compacidade);
+* **`bordo_fx`**: no retângulo `[1 − c₁/log T, c] × [−T, T]`, `∮ x^s(−ζ′/ζ)(s)K(s) ds = πi x` (resíduo `x·K(1) = x/2`,
+  pela técnica `dslope` da rodada 46 e o princípio do argumento da rodada 40);
+* `cauda` (`‖∫_ℝ f − ∫_{−T}^{T} f‖ ≤ 2B/T` se `|f(y)| ≤ B/(1 + y²)`, via `arctan`), `norm_KK_um`, `norm_logDeriv_c`,
+  `continuous_logDeriv_c` e **`erro_explicito`**: o erro em função de `x`, `c`, `T`;
+* **`chebyshev_suave`**: `c = 1 + 1/log x` e `T = e^{√log x}` (então `x^c = e·x` e `x^{1 − c₁/log T} = x e^{−c₁√log x}`).
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `Σ_{n ≤ x} Λ(n)(1 − n/x) = x/2 + O(x log x · e^{−a√log x})` | CERTIFIED | ferramenta |
+| `ψ(x) = x + O(x e^{−b√log x})` (tirar a suavização) | BUILD_PENDING (próxima rodada) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/chebyshev_suave.py`, `dados/chebyshev_suave.json`, `testes/test_chebyshev_suave.py`, 2 testes).
+Por crivo até `10⁶`, `|Ssm(x) − x/2|/x` vale `2,1·10⁻³`, `1,7·10⁻⁴`, `3,2·10⁻⁶` e `6,1·10⁻⁶` em
+`x = 10³, 10⁴, 10⁵, 10⁶` — a oscilação é a dos zeros, e a constante `a` da prova não é explícita.
 
 ## 5. Formatos
 
