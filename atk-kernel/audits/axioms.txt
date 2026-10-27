@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 6e1b5a9d051dd447730c6d5da2f776f39b057a89d9943dfcacd87b72b6e1a30d
+# axiomas por teorema — congelamento de a23e8dea2d981d60208c3e49540aa9c31bc0f030e6d0684846fd82788c093aa0
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7407,3 +7407,20 @@ ATK.ZeroClasses.StirlingComplexo.hasDerivAt_ell	propext, Classical.choice, Quot.
 ATK.ZeroClasses.StirlingComplexo.ell_real	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.StirlingComplexo.stirling	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.StirlingComplexo.im_ell_quarto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.lado_inf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.lado_sup	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.lado_dir	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.lado_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.int_inf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.int_sup	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.int_dir	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.int_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.bordo_congr	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.bordo_add	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.bordo_sum	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.bordo_const_mul	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.bordo_cauchy	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.log_neg_im_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.log_neg_im_neg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.bordo_inv	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.ArgRetangulo.principio_argumento	propext, Classical.choice, Quot.sound
