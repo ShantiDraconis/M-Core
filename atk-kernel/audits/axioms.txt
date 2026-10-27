@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 89ed9aca91b4a450330a90b2105cc247e7a017cafc6a8038aa80cfb6a03bd8fe
+# axiomas por teorema — congelamento de 8e1027cee449e305c8512b4490401513737c5c7f3157aabdeca040ab297c5d5e
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound

@@ -264,7 +264,7 @@ theorem epsx_tendsto {x P C₁ c₀ B : ℝ} (hx : 1 < x) : Tendsto (epsx x P C�
   exact this
 
 /-- **A fórmula explícita com erro, `x` real**: para `x > 1` a distância `≥ d` dos inteiros e cada `k`, há uma altura boa
-`T ∈ [k + 6, k + 7]` com `‖Σ_{|γ|≤T} m_ρ x^ρ/ρ − (x + Σ_{n<k+7} x^{−2(n+1)}/(2(n+1)) − log 2π − ψ(N))‖ ≤ ε_k`. -/
+`T ∈ [k + 6, k + 7]` com `‖Σ_{|γ|≤T} m_ρ x^ρ/ρ − (x + Σ_{n<k+7} x^{−2(n+1)}/(2(n+1)) − log 2π − ψ(x))‖ ≤ ε_k`. -/
 theorem explicita_k_x {x d : ℝ} (hx : 1 < x) (hd0 : 0 < d) (hd1 : d ≤ 1) (hd : ∀ n : ℕ, d ≤ |x - n|) :
     ∃ C₁ c₀ B : ℝ, ∀ k : ℕ, ∃ T : ℝ, (k : ℝ) + 6 ≤ T ∧ T ≤ k + 7 ∧
     ∃ S : Finset ℂ, (∀ u, u ∈ S ↔ riemannZeta u = 0 ∧ 0 < u.re ∧ |u.im| ≤ T) ∧
@@ -450,7 +450,7 @@ theorem explicita_k_x {x d : ℝ} (hx : 1 < x) (hd0 : 0 < d) (hd1 : d ≤ 1) (hd
 
 /-- **A fórmula explícita, `x` real** (sem hipóteses): para `x > 1` não inteiro, ao longo de
 alturas boas `T_k ∈ [k + 6, k + 7]`,
-`Σ_{|γ| ≤ T_k} m_ρ x^ρ/ρ → x − ψ(N) − log 2π − ½ log(1 − x^{−2})`. -/
+`Σ_{|γ| ≤ T_k} m_ρ x^ρ/ρ → x − ψ(x) − log 2π − ½ log(1 − x^{−2})`. -/
 theorem formula_explicita_x {x d : ℝ} (hx : 1 < x) (hd0 : 0 < d) (hd1 : d ≤ 1)
     (hd : ∀ n : ℕ, d ≤ |x - n|) : ∃ T : ℕ → ℝ, (∀ k : ℕ, (k : ℝ) + 6 ≤ T k ∧ T k ≤ k + 7) ∧
     ∃ S : ℕ → Finset ℂ, (∀ k u, u ∈ S k ↔ riemannZeta u = 0 ∧ 0 < u.re ∧ |u.im| ≤ T k) ∧
@@ -476,7 +476,7 @@ theorem formula_explicita_x {x d : ℝ} (hx : 1 < x) (hd0 : 0 < d) (hd1 : d ≤ 
   exact (norm_add_le _ _).trans (add_le_add (hb k) le_rfl)
 
 /-- **A fórmula explícita com `T → ∞`, `x` real**: para `x > 1` com `|x − n| ≥ d > 0` para todo `n`,
-`Σ_{|γ| ≤ T} m_ρ x^ρ/ρ → x − ψ(N) − log 2π − ½ log(1 − x^{−2})` quando `T → ∞`. -/
+`Σ_{|γ| ≤ T} m_ρ x^ρ/ρ → x − ψ(x) − log 2π − ½ log(1 − x^{−2})` quando `T → ∞`. -/
 theorem formula_explicita_T_x {x d : ℝ} (hx : 1 < x) (hd0 : 0 < d) (hd1 : d ≤ 1)
     (hd : ∀ n : ℕ, d ≤ |x - n|) :
     Tendsto (fun T : ℝ => ∑ ρ ∈ ATK.ZeroClasses.ExplicitaT.Zfin T, (analyticOrderNatAt riemannZeta ρ : ℂ) * px x ρ) atTop
