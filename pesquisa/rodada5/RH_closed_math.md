@@ -2754,7 +2754,7 @@ Um arquivo, **20 teoremas** (total 7896), só os axiomas padrão (`ZeroClasses/L
 
 Numérico (`codigo/li_completo.py`, `dados/li_completo.json`, `testes/test_li_completo.py`, 2 testes): com os 341 zeros
 de `0 < γ ≤ 600` e a cauda `n² (log(600/2π) + 1)/(2π·600)`, `λ_1 = 0,023093` (forma fechada `0,0230957`),
-`λ_2 = 0,092335` (`0,0923457`), `λ_3 = 0,20762` (`0,2076389`); positivos e crescentes até `n = 30` (`λ_30 ≈ 17,3`,
+`λ_2 = 0,092335` (`0,0923457`), `λ_3 = 0,20762` (`0,2076389`); positivos e crescentes até `n = 30` (`λ_30 ≈ 18,6`,
 assintótica `17,1`). Um zero hipotético `ρ = 0,4 + 14,13i` teria `|w| = 1,0005`, e a parcela cai abaixo de `−10` em
 `n = 4796`.
 
