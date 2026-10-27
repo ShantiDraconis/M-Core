@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de ec005d6966e32a2ae2b9a311da231fff8a6ff81f3a8142345014a84d60018bbe
+# axiomas por teorema — congelamento de ec84405a2ee20fa41880f73bfcde11013d6d1c5970d6d4c99d2e6aa8fd39f246
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7876,3 +7876,23 @@ ATK.ZeroClasses.Koch.theta_RH_log2	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Koch.pi_RH_log	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Koch.piLog2_of_piLog	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.Koch.rh_iff_piLog	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.resto_binom	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.norm_rZ_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.inv_props	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.termo_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.abs_termo_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.summable_inv_sq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.summable_termo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.termo_le_cauda	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.termo_le_norma	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.lam_nonneg_of_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.fract_proximo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.floor_lt_seis	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.dirichlet_simultaneo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.cos_ge_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.re_pow_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.norm_wq_sq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.finito_grande	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.existe_fora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.RH_of_lam_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LiCompleto.rh_iff_li	propext, Classical.choice, Quot.sound
