@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 0ca614ef8e5a883da23c68373f2cc1b1ae022231cf4420c840ab89766ec43b68
+# axiomas por teorema — congelamento de 689f3440dc9c87df67d1356b1e0eb47ff8d4d027c9382b7459cff25893c0542c
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7853,3 +7853,18 @@ ATK.ZeroClasses.PiLiRH.pi_of_thetaLog3	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiLiRH.pi_RH	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiLiRH.erroPi_of_log2	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiLiRH.rh_iff_piLog2	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.principio_ponderado	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.Gp_analytic	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.zeta_analytic	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.ordem_Gp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.Gp_eq_zero_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.bordo_explicita	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.soma_harm	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.Lc_bloco	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.soma_ordem_norm	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.existe_q	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.faixa_finito	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.separa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.altura_boa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.compacto_quarto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Explicita.logDeriv_quarto_RH	propext, Classical.choice, Quot.sound
