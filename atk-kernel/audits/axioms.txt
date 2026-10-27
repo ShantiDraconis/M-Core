@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de d9f03b5a7cce9d6f55d4980f344c6ef4fc10757afffd7e58dd477771a7ecbb35
+# axiomas por teorema — congelamento de e5b38942a8abec7b7c28bbca2d6e2ce33513adf1e2a25c463416be532354eac3
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7491,3 +7491,13 @@ ATK.ZeroClasses.JRH.continuous_erro	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.JRH.tendsto_erro	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.JRH.tendsto_J	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.JRH.necessidade_iff_entrada	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.norm_nucleo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.nucleo_cont	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.horiz	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.vert	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.alg_esq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.alg_dir	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.limite	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.perron_pos	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.perron_neg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Perron.perron_degrau	propext, Classical.choice, Quot.sound
