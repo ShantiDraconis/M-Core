@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 4bf5e601c164ef09cfd959a218d8f5b1931cefcbebc8a1b33d0bc1e09731d039
+# axiomas por teorema — congelamento de 5bdf066846ff2568afd885edf7aa26a68950fff9e37115d70e4896069f715f34
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7708,3 +7708,26 @@ ATK.ZeroClasses.QuasiRH.semZeros_iff_psi	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.QuasiRH.semZeros_iff_mertens	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.QuasiRH.psi_iff_mertens	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.QuasiRH.semZeros_meio_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.summable_Z	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.Z_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.tendsto_Z	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.norm_gA_le_o	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.norm_GA_le_o	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.o_GA	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.fatora	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.caminho	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.sub_caminho	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.tendsto_sub_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.cota_inf_H	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.cota_inf_F	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.GA_E_eq_Hf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.GA_M_eq_F	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.O_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.psi_nao_o	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.mertens_nao_o	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.o_de_littleO	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.psi_nao_littleO	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.mertens_nao_littleO	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.re_zero_reta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.psi_nao_O_rpow	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.Omega.mertens_nao_O_rpow	propext, Classical.choice, Quot.sound

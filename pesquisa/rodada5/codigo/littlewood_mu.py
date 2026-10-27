@@ -9,7 +9,6 @@ Só biblioteca padrão. **Nada aqui é certificado.**
   `(1 + |τ|)^{−5/4}` (só a forma: a constante da prova não é calculada).
 """
 import json
-import math
 import os
 import sys
 
