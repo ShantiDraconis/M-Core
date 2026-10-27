@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 9c751007b5a0584d95824fb6f3b4718f1b87839966e6dc6431cec60074638212
+# axiomas por teorema — congelamento de 803fae57bc46dbf8358113941b93e2eaef53a9e412f5e5d47acf39cb9bd7f46c
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7659,3 +7659,25 @@ ATK.ZeroClasses.VonKoch.zeroFree_of_psi	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VonKoch.RH_of_psi	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VonKoch.zeroFree_of_mertens	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.VonKoch.mertens_of_vonKoch	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.norm_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.bordo_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.desloca	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.horiz_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.vert_g	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.cota_gen	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.deriv_zeta₁	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.Hf_eq	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.differentiableAt_Hf	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.norm_logDeriv_le_dois	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.norm_H_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.norm_cL_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.norm_fco_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.term_fco	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.LSeries_fco	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.somas_limitadas	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.term_mul_rpow	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.abel_cota	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.E_eq_sum	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.psi_of_RH	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.rh_iff_psi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.VonKochRH.vonKoch_iff_mertens	propext, Classical.choice, Quot.sound
