@@ -3830,6 +3830,52 @@ Numérico (`codigo/teta_expoente.py`, `dados/teta_expoente.json`, `testes/test_t
 * Os lados de cima de `θ − N` e de `π − Li` ficam **vazios** até `10⁶`: nenhum `N ≥ 8` com `θ(N) > N` ou
   `π(N) > Li(N)`. Mesmo assim o expoente deles é `Θ ≥ ½`.
 
+## 4da. A função de Liouville: `ζ(2s)/ζ(s)`, `Θ`, RH e Pólya (rodada 99)
+
+Um arquivo, **42 teoremas** (total 8536), só os axiomas padrão (`ZeroClasses/LiouvilleRH.lean`). Notação:
+`λ(n) = (−1)^{Ω(n)}` (`ArithmeticFunction.liouville`, da Mathlib) e `L(N) = Σ_{n ≤ N} λ(n)`.
+
+1. **A série** (`LSeries_lam_mul_zeta`): `L(λ, s) ζ(s) = ζ(2s)` em `Re s > 1`. A prova é pelos produtos de Euler da
+   Mathlib (`eulerProduct_completely_multiplicative_hasProd`): `λ` é completamente multiplicativa, `λ(p) = −1`, e
+   `(1 + p^{−s})⁻¹(1 − p^{−s})⁻¹ = (1 − p^{−2s})⁻¹`.
+2. **Landau** (`semZeros_of_liouville_le`, `_ge`). Para `θ ≥ ½`, `ζ(2s)F(s)` é holomorfa no disco
+   `|s − 2| < 2 − θ`, com `F = 1/ζ`. O passo de Landau (rodada 87) estende `L(λ, ·)` a `Re s > θ`, e dividir por
+   `ζ(2s)`, que não se anula em `Re s > ½`, estende `1/ζ`. Uma cota de um lado `L(N) ≤ A(N + 1)^θ + K` (ou `≥ −…`)
+   dá então `ζ ≠ 0` em `Re s > θ`.
+3. **RH e Pólya**:
+   * `rh_of_liouville_limitada_cima`: `L` limitada por cima ⟹ RH, e o mesmo por baixo;
+   * **`rh_of_polya`**: se `L(N) ≤ 0` para todo `N ≥ 2` (a conjectura de Pólya), vale RH. A conjectura é falsa
+     (Haselgrove 1958; primeiro contraexemplo `N = 906 150 257`, Tanaka 1980), mas a implicação é teorema;
+   * `liouville_omega_mais`, `_menos`: `L(x) = Ω±(x^θ)` para `½ ≤ θ < Θ`.
+4. **A recíproca** (`liouville_of_semZeros`). Usa a soma de Perron genérica da rodada 57
+   (`QuasiRH.somas_limitadas_gen`) e a cota uniforme `‖ζ(2v)‖ ≤ Σ (n + 1)^{−(1+ε/2)}` (`norm_zeta_le_unif`). Daí:
+   * `semZeros_iff_liouville`;
+   * `Teta_le_iff_liouville_le`, `_ge`;
+   * **`rh_iff_liouville`**: RH ⟺ `L(x) = O(x^{½+ε})`, e o mesmo de um lado só (`rh_iff_liouville_le`, `_ge`).
+5. **Abaixo de `½`, sem hipóteses** (`liouville_nao_O`, `liouville_omega_abs`): `L(x) ≠ O(x^θ)` para `0 ≤ θ < ½`.
+   Se valesse, `GA L` seria holomorfa em `Re s > θ`, e pelo princípio da identidade
+   `(2s − 1)L(λ, s) = ζ₁(2s)F(s)` em todo o disco `|s − 2| < 2`, que contém `½`. Em `s = ½` o lado esquerdo é `0` e o
+   direito é `ζ₁(1)F(½) ≠ 0`.
+6. **`Teta_eq_liouville`**: `Θ = inf{θ : |L(N)| ≤ N^θ para N grande}`, sem hipóteses (§4cz para `|L|`), e
+   `rh_iff_expoente_liouville`.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `L(λ, s) = ζ(2s)/ζ(s)` em `Re s > 1` | CERTIFIED | ferramenta |
+| `Θ ≤ θ` ⟺ cota de `L` (de um lado ou dos dois) com expoente `θ + ε`; RH ⟺ `L(x) = O(x^{½+ε})` | CERTIFIED | reformulação |
+| Pólya (`L(N) ≤ 0`, `N ≥ 2`) ⟹ RH | CERTIFIED | reformulação (Pólya 1919) |
+| `L(x) ≠ O(x^θ)` para `θ < ½`; `Θ` = expoente exato de `|L|` | CERTIFIED | consequência |
+| `L(x) > 0` infinitas vezes (a falha de Pólya em escala) | não formalizado (numérico/Ingham–Haselgrove) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/liouville_rh.py`, `dados/liouville_rh.json`, `testes/test_liouville_rh.py`, 2 testes), até `10⁶`:
+* `Σ_{n ≤ 10⁶} λ(n)/n² = 0,6579736271`, contra `π²/15 = 0,6579736267`;
+* `Σ λ(n)/n³` coincide com `ζ(6)/ζ(3)` a `10⁻¹⁵`;
+* Pólya vale no intervalo: `L(N) ≤ 0` em `2 ≤ N ≤ 10⁶`, e `L(10⁶) = −530`;
+* a média de `L(N)/√N` em `[10⁵, 10⁶]` é `−0,708`, perto de `1/ζ(½) = −0,685`. É a contribuição `√x/ζ(½)` do polo
+  em `s = ½`, o mesmo polo usado em `liouville_nao_O`;
+* `max |L(N)|/√N = 1,33`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
