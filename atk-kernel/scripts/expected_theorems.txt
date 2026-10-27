@@ -7770,3 +7770,12 @@ ATK.ZeroClasses.PiLi.semZeros_iff_theta
 ATK.ZeroClasses.PiLi.semZeros_iff_pi
 ATK.ZeroClasses.PiLi.rh_iff_pi
 ATK.ZeroClasses.PiLi.rh_iff_theta
+ATK.ZeroClasses.LindelofRH.norm_cpow_neg
+ATK.ZeroClasses.LindelofRH.norm_gL
+ATK.ZeroClasses.LindelofRH.one_le_norm_add_two
+ATK.ZeroClasses.LindelofRH.um_add_le
+ATK.ZeroClasses.LindelofRH.fator_le
+ATK.ZeroClasses.LindelofRH.norm_gL_faixa
+ATK.ZeroClasses.LindelofRH.differentiableAt_gL
+ATK.ZeroClasses.LindelofRH.lindelof_um
+ATK.ZeroClasses.LindelofRH.lindelof_of_RH

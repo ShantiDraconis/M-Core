@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 7e8a2db8626a6a735b0912a28e8a8b940852041fc833791ee59afaf7a21e9ce0
+# axiomas por teorema — congelamento de 1fdf57448daef2880c41fefb7bcc9f499cdbbc284d315acbda95ebd27f9af6bd
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -7772,3 +7772,12 @@ ATK.ZeroClasses.PiLi.semZeros_iff_theta	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiLi.semZeros_iff_pi	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiLi.rh_iff_pi	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PiLi.rh_iff_theta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.norm_cpow_neg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.norm_gL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.one_le_norm_add_two	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.um_add_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.fator_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.norm_gL_faixa	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.differentiableAt_gL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.lindelof_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.LindelofRH.lindelof_of_RH	propext, Classical.choice, Quot.sound
