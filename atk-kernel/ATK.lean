@@ -204,3 +204,7 @@ import ATK.NSIdent
 import ATK.NSTrilinear
 import ATK.NSUnicidade
 import ATK.NSB3
+import ATK.OSLacuna
+import ATK.OSTransferencia
+import ATK.OSProcesso
+import ATK.OSSimetria

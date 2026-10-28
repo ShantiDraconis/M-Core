@@ -396,11 +396,9 @@ theorem coeFn_fourier_toLp (p : 𝓢(E3, C3)) :
 
 theorem cvL_base (ξ : E3) (p q : 𝓢(E3, C3)) :
     cvL B ξ (p.toLp 2) (q.toLp 2) = prL B ξ (p.toLp 2) (q.toLp 2) := by
-  have h1 : cvL B ξ (p.toLp 2) (q.toLp 2) =
-      ∫ η, B ((𝓕 p : 𝓢(E3, C3)) η) ((𝓕 q : 𝓢(E3, C3)) (ξ - η)) :=
-    cvB_congr B (coeFn_fourier_toLp p) (coeFn_fourier_toLp q) ξ
-  have h2 : prL B ξ (p.toLp 2) (q.toLp 2) = ∫ x, 𝐞 (-⟪x, ξ⟫_ℝ) • B (p x) (q x) :=
-    prB_congr B (p.coeFn_toLp 2) (q.coeFn_toLp 2) ξ
+  have h1 := cvB_congr B (coeFn_fourier_toLp p) (coeFn_fourier_toLp q) ξ
+  have h2 := prB_congr B (p.coeFn_toLp 2) (q.coeFn_toLp 2) ξ
+  unfold cvL prL
   rw [h1, h2, conv_fourier_schwartz B p q ξ, Real.fourier_eq]
 
 theorem dist_cvL_left (ξ : E3) (u u' v : Lp C3 2 (volume : Measure E3)) :
