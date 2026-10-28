@@ -386,13 +386,22 @@ theorem fourierL_sub (u u' : Lp C3 2 (volume : Measure E3)) :
     (𝓕 (u - u') : Lp C3 2 (volume : Measure E3)) = 𝓕 u - 𝓕 u' :=
   map_sub (Lp.fourierTransformₗᵢ E3 C3) u u'
 
+theorem coeFn_fourier_toLp (p : 𝓢(E3, C3)) :
+    ((𝓕 (p.toLp 2) : Lp C3 2 (volume : Measure E3)) : E3 → C3) =ᵐ[volume]
+      ⇑(𝓕 p : 𝓢(E3, C3)) := by
+  have e : (𝓕 (p.toLp 2) : Lp C3 2 (volume : Measure E3)) = (𝓕 p : 𝓢(E3, C3)).toLp 2 :=
+    SchwartzMap.toLp_fourier_eq p
+  exact (EventuallyEq.of_eq (congrArg (fun u : Lp C3 2 (volume : Measure E3) =>
+    (u : E3 → C3)) e)).trans ((𝓕 p : 𝓢(E3, C3)).coeFn_toLp 2)
+
 theorem cvL_base (ξ : E3) (p q : 𝓢(E3, C3)) :
     cvL B ξ (p.toLp 2) (q.toLp 2) = prL B ξ (p.toLp 2) (q.toLp 2) := by
-  unfold cvL prL
-  rw [SchwartzMap.toLp_fourier_eq, SchwartzMap.toLp_fourier_eq,
-    cvB_congr B ((𝓕 p : 𝓢(E3, C3)).coeFn_toLp 2) ((𝓕 q : 𝓢(E3, C3)).coeFn_toLp 2) ξ,
-    prB_congr B (p.coeFn_toLp 2) (q.coeFn_toLp 2) ξ, conv_fourier_schwartz B p q ξ,
-    Real.fourier_eq]
+  have h1 : cvL B ξ (p.toLp 2) (q.toLp 2) =
+      ∫ η, B ((𝓕 p : 𝓢(E3, C3)) η) ((𝓕 q : 𝓢(E3, C3)) (ξ - η)) :=
+    cvB_congr B (coeFn_fourier_toLp p) (coeFn_fourier_toLp q) ξ
+  have h2 : prL B ξ (p.toLp 2) (q.toLp 2) = ∫ x, 𝐞 (-⟪x, ξ⟫_ℝ) • B (p x) (q x) :=
+    prB_congr B (p.coeFn_toLp 2) (q.coeFn_toLp 2) ξ
+  rw [h1, h2, conv_fourier_schwartz B p q ξ, Real.fourier_eq]
 
 theorem dist_cvL_left (ξ : E3) (u u' v : Lp C3 2 (volume : Measure E3)) :
     dist (cvL B ξ u v) (cvL B ξ u' v) ≤ ‖B‖ * ‖v‖ * dist u u' := by
@@ -545,6 +554,7 @@ end ATK.NSL2
 #print axioms ATK.NSL2.cvB_congr
 #print axioms ATK.NSL2.prB_congr
 #print axioms ATK.NSL2.fourierL_sub
+#print axioms ATK.NSL2.coeFn_fourier_toLp
 #print axioms ATK.NSL2.cvL_base
 #print axioms ATK.NSL2.dist_cvL_left
 #print axioms ATK.NSL2.dist_cvL_right

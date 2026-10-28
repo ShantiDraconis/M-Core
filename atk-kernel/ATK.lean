@@ -200,3 +200,7 @@ import ATK.NSCorte
 import ATK.NSL2
 import ATK.NSFracaFourier
 import ATK.NSDuhamel
+import ATK.NSIdent
+import ATK.NSTrilinear
+import ATK.NSUnicidade
+import ATK.NSB3
