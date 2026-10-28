@@ -37,10 +37,12 @@
       "id": "B4",
       "problem": "P vs NP",
       "kind": "PONTE",
-      "lean": "ATK.Conditional.PvsNP.CookLevin",
-      "status": "PARCIAL_NO_KERNEL",
-      "ref": "Cook 1971; Levin 1973 — SAT ∈ NP provado no modelo do m-core-p-vs-np (P01 fechado 09/10; PNPAfterP01.sat_in_np, 56a0e7a, Lean 4.19, não importado aqui); NP-dificuldade e fidelidade do modelo ainda não ligadas",
-      "progress": "SAT ∈ NP no modelo genuíno (ATK/SatNPSemantica.lean + ATK/SatNPMaquina.lean, 127 declarações): verificador verif como Turing.FinTM2 de 7 pilhas, em tempo 2(n+2)³ (verifComputavel); certificado = um segmento (valor, índice) por ocorrência de literal, |c| ≤ |x| (cert, cert_length); sat_iff_verif: x ∈ SAT ⟺ ∃ c, |c| ≤ |x| ∧ verif ⟨x,c⟩ = true; sat_em_NP : SAT ∈ classeNP. Falta a outra metade de CookLevin: ∀ L ∈ NP, L ≤p SAT (codificar como CNF, por uma redução FinTM2 de tempo polinomial, a execução de um verificador FinTM2 arbitrário)."
+      "lean": "ATK.Conditional.PvsNP.CookLevin ATK.ModeloPNP.modeloPNP ATK.ModeloPNP.SAT",
+      "status": "PROVADA_NO_KERNEL",
+      "ref": "Cook 1971; Levin 1973 — provado no modelo genuíno modeloPNP (ligação L2, fechada pelo titular): Turing.FinTM2, reduções de Karp em tempo polinomial",
+      "progress": "SAT ∈ NP: verificador FinTM2 de 7 pilhas em tempo 2(n+2)³ (sat_em_NP). NP-dificuldade: para L ∈ NP com verificador V : TM2ComputableInPolyTime cod encodeBool χ e polinômio q, fCL V q w := codCNF da fórmula do tableau (janela do passo, alfabetos restritos, linha 0 com certificado livre de comprimento ≤ q(|w|)); fCL_correta: w ∈ L ⟺ fCL V q w ∈ SAT; fCL_computavel: fCL V q é TM2ComputableInPolyTime cod cod — por uma linguagem de laços com contadores unários compilada para TM2 (asm_ok, computavel), moldes de fórmula (comp_ok, comp_cost) e aritmética unária para q(n), T e S (evalP). cookLevin : CookLevin modeloPNP SAT. Enunciado da obrigação instanciado no modelo genuíno (o campo anterior era o predicado paramétrico, sem modelo).",
+      "proof": "ATK.CookLevinFinal.cookLevin : CookLevin modeloPNP SAT (ATK/SatNPSemantica, SatNPMaquina — SAT ∈ NP; CookLevinJanela, Tableau, Restricao, Inicio, Verificador, Reducao — o tableau fiel; Gerador, GeradorTM, GeradorForm, GeradorArit, CookLevinMolde, CookLevinPrograma, CookLevinFinal — a redução como FinTM2 em tempo polinomial; axiomas padrão)",
+      "proof_theorem": "ATK.ObligationsClosed.B4"
     },
     {
       "id": "B5",
