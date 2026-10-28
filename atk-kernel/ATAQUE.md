@@ -96,6 +96,8 @@ o limite contínuo em 4D exige controle não perturbativo que ninguém tem. 3D c
 | F5.2 | `FormaRefletida ⇒` positividade; estável por soma de ações | ✅ | `AtaqueYM.rp_de_forma`, `forma_soma` |
 | F5.3 | `FormaRefletida` para a ação de Wilson numa rede refletida | ⬜ | `AtaqueYM.FormaRefletida` |
 | F5.4 | Gap em acoplamento forte (expansão em cluster) | ⬜ | — |
+| F5.5 | **Reconstrução de Osterwalder–Schrader no tempo** (parte de B7): medida euclidiana estacionária e positiva por reflexão ⇒ espaço de Hilbert físico, translações temporais como contrações, matriz de transferência e^{−tH} autoadjunta e positiva, simetrias do tempo zero como isometrias; **mistura exponencial ⇒ lacuna ≥ m e vácuo único** (sem teorema espectral); exemplo em ℂ² com a cota atingida | ✅ | `OSProcesso.lacuna_processo`, `OSTransferencia.lacuna_OS`, `OSLacuna.lacuna_de_decaimento`, `OSSimetria`, `OSExemplo.exemplo_otimo` |
+| F5.6 | Boosts de Lorentz por continuação analítica e campos de Wightman a partir das funções de Schwinger (o resto de B7) | ⬜ | — |
 
 ## Frentes 6 e 7 — Beal e Hodge
 

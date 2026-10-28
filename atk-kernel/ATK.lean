@@ -208,3 +208,4 @@ import ATK.OSLacuna
 import ATK.OSTransferencia
 import ATK.OSProcesso
 import ATK.OSSimetria
+import ATK.OSExemplo

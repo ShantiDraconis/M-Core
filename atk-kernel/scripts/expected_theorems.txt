@@ -4001,3 +4001,9 @@ ATK.OSSimetria.SimetriaOS.norm_U
 ATK.OSSimetria.SimetriaOS.U_P
 ATK.OSSimetria.SimetriaOS.U_Ω
 ATK.OSSimetria.SimetriaOS.U_comp
+ATK.OSExemplo.Sx_apply
+ATK.OSExemplo.re_conj_mul_self
+ATK.OSExemplo.exemplo_clu
+ATK.OSExemplo.exemplo_lacuna
+ATK.OSExemplo.norm_ι_sq
+ATK.OSExemplo.exemplo_otimo
