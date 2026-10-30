@@ -19,15 +19,15 @@
   "scope": "closed (arity-0) Prop definitions, plus any Prop-valued definition that is vacuous"
  },
  "summary": {
-  "modules_total": 42,
-  "modules_ok": 42,
-  "modules_failed": 0,
-  "modules_blocked": 0,
-  "modules_outside_default_build": 22,
+  "modules_total": 67,
+  "modules_ok": 47,
+  "modules_failed": 4,
+  "modules_blocked": 16,
+  "modules_outside_default_build": 47,
   "standalone_files_total": 0,
   "standalone_files_failed": 0,
-  "theorems_total": 259,
-  "theorems_clean": 259,
+  "theorems_total": 287,
+  "theorems_clean": 287,
   "theorems_using_sorry": 0,
   "theorems_using_project_axiom": 0,
   "theorems_nonstandard_axioms": 0,
@@ -53,6 +53,13 @@
    "path": "lean/MCore/ATK/StructuralDefect.lean",
    "status": "OK",
    "in_default_build": false
+  },
+  {
+   "module": "MCore.BSDLogicOpenMath",
+   "path": "lean/MCore/BSDLogicOpenMath.lean",
+   "status": "FAILED",
+   "in_default_build": false,
+   "first_error": "(no file:line error) error: ./././lean/MCore/BSDLogicOpenMath.lean: bad import 'MCore.IBoundaryProvenance'"
   },
   {
    "module": "MCore.FinalFail.AcceptedInhabitants",
@@ -293,6 +300,174 @@
    "path": "lean/MCore/FinalProofRegistry.lean",
    "status": "OK",
    "in_default_build": true
+  },
+  {
+   "module": "MCore.IBoundaryProvenance",
+   "path": "lean/MCore/IBoundaryProvenance.lean",
+   "status": "FAILED",
+   "in_default_build": false,
+   "first_error": "(no file:line error) error: ./././lean/MCore/IBoundaryProvenance.lean: bad import 'Mathlib.Topology.Instances.Real'"
+  },
+  {
+   "module": "MCore.OpenMath.I3Tristable",
+   "path": "lean/MCore/OpenMath/I3Tristable.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.OpenMath.IEnriched",
+   "path": "lean/MCore/OpenMath/IEnriched.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.OpenMath.IRegime",
+   "path": "lean/MCore/OpenMath/IRegime.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.Research.UserProgram",
+   "path": "lean/MCore/Research/UserProgram.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.BridgeFirewall",
+   "path": "lean/MCore/Research/UserProgram/BridgeFirewall.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.Operators"
+  },
+  {
+   "module": "MCore.Research.UserProgram.C3Action",
+   "path": "lean/MCore/Research/UserProgram/C3Action.lean",
+   "status": "FAILED",
+   "in_default_build": false,
+   "first_error": "lean/MCore/Research/UserProgram/C3Action.lean:11:70: unsolved goals\ncase manifesto.semente\nh : 0 = 2\n⊢ False\n\ncase travessia.semente\nh : 1 = 2\n⊢ False\n\ncase semente.manifesto\nh : 2 = 0\n⊢ False\n\ncase semente.travessia\nh : 2 = 1\n⊢ False"
+  },
+  {
+   "module": "MCore.Research.UserProgram.C3Fourier",
+   "path": "lean/MCore/Research/UserProgram/C3Fourier.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.C3Intertwiner",
+   "path": "lean/MCore/Research/UserProgram/C3Intertwiner.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.C3LinearSectors",
+   "path": "lean/MCore/Research/UserProgram/C3LinearSectors.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "path": "lean/MCore/Research/UserProgram/ConcreteOperators.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "path": "lean/MCore/Research/UserProgram/CrossOperatorLaws.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.CyclicInvariant",
+   "path": "lean/MCore/Research/UserProgram/CyclicInvariant.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "path": "lean/MCore/Research/UserProgram/FlowSemantics.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "path": "lean/MCore/Research/UserProgram/GlobalCertificate.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.I3Geometry",
+   "path": "lean/MCore/Research/UserProgram/I3Geometry.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "path": "lean/MCore/Research/UserProgram/I3VectorAlgebra.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.IRegime",
+   "path": "lean/MCore/Research/UserProgram/IRegime.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.Research.UserProgram.LocalGlobal",
+   "path": "lean/MCore/Research/UserProgram/LocalGlobal.lean",
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "path": "lean/MCore/Research/UserProgram/ModeDecomposition.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.OperatorLaws",
+   "path": "lean/MCore/Research/UserProgram/OperatorLaws.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.Operators"
+  },
+  {
+   "module": "MCore.Research.UserProgram.Operators",
+   "path": "lean/MCore/Research/UserProgram/Operators.lean",
+   "status": "FAILED",
+   "in_default_build": false,
+   "first_error": "lean/MCore/Research/UserProgram/Operators.lean:11:44: application type mismatch\n  { run := id }\nargument\n  id\nhas type\n  (α : Type) → Operator α : Type 1\nbut is expected to have type\n  α → α : Type",
+   "all_errors": [
+    "lean/MCore/Research/UserProgram/Operators.lean:11:44: application type mismatch\n  { run := id }\nargument\n  id\nhas type\n  (α : Type) → Operator α : Type 1\nbut is expected to have type\n  α → α : Type",
+    "lean/MCore/Research/UserProgram/Operators.lean:22:2: tactic 'rfl' failed, the left-hand side\n  (id α).comp { run := run✝ }\nis not definitionally equal to the right-hand side\n  { run := run✝ }\ncase mk\nα : Type\nrun✝ : α → α\n⊢ (id α).comp { run := run✝ } = { run := run✝ }",
+    "lean/MCore/Research/UserProgram/Operators.lean:27:2: tactic 'rfl' failed, the left-hand side\n  { run := run✝ }.comp (id α)\nis not definitionally equal to the right-hand side\n  { run := run✝ }\ncase mk\nα : Type\nrun✝ : α → α\n⊢ { run := run✝ }.comp (id α) = { run := run✝ }"
+   ]
+  },
+  {
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "path": "lean/MCore/Research/UserProgram/SemanticProofCore.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
+  },
+  {
+   "module": "MCore.Research.UserProgram.ThreeChannel",
+   "path": "lean/MCore/Research/UserProgram/ThreeChannel.lean",
+   "status": "BLOCKED",
+   "in_default_build": false,
+   "blocked_by": "MCore.Research.UserProgram.C3Action"
   }
  ],
  "standalone_files": [],
@@ -1961,6 +2136,230 @@
   {
    "name": "MCore.FinalProof.registry_length_eq_seven",
    "module": "MCore.FinalProofRegistry",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I.I10_is_finite",
+   "module": "MCore.OpenMath.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I.I3_is_finite",
+   "module": "MCore.OpenMath.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I.IInfinite_is_infinite",
+   "module": "MCore.OpenMath.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I.IZeroDivZero_is_indeterminate",
+   "module": "MCore.OpenMath.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I.regimes_distinct",
+   "module": "MCore.OpenMath.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.TristableRoot.cube_eq_one",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.TristableRoot.equilibrium",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.TristableRoot.nontrivial",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.i3_final_theorem",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.next_three",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.omega_cube",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.omega_equilibrium",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.omega_ne_one",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.omega_sq",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.sqrt_three_sq",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.I3.states_pairwise_distinct",
+   "module": "MCore.OpenMath.I3Tristable",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.IEnriched.lHospital_resolution_bridge",
+   "module": "MCore.OpenMath.IEnriched",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.IEnriched.limit_resolution_compatible",
+   "module": "MCore.OpenMath.IEnriched",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.IEnriched.observables_complete",
+   "module": "MCore.OpenMath.IEnriched",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.OpenMath.IEnriched.resolve_ofLimit",
+   "module": "MCore.OpenMath.IEnriched",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3State.enumList_getElem?_to_CtorIdx_eq",
+   "module": "MCore.Research.UserProgram.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3State.enumList_nodup",
+   "module": "MCore.Research.UserProgram.IRegime",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3State.next_ne_self",
+   "module": "MCore.Research.UserProgram.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3State.next_three",
+   "module": "MCore.Research.UserProgram.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3_ne_indeterminate",
+   "module": "MCore.Research.UserProgram.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3_ne_infinite",
+   "module": "MCore.Research.UserProgram.IRegime",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.gap_iff_no_reconstruction",
+   "module": "MCore.Research.UserProgram.LocalGlobal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.hasBridge_not_gap",
+   "module": "MCore.Research.UserProgram.LocalGlobal",
    "axioms": [],
    "status": "CLEAN"
   }
