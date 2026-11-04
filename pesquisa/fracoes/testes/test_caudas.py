@@ -1,0 +1,59 @@
+"""Testes do companheiro numérico da rodada 103 (atk-kernel/ATK/Fracoes*.lean)."""
+import os
+import sys
+from fractions import Fraction as F
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "codigo"))
+import caudas  # noqa: E402
+
+
+def test_zeros_fracao_continua():
+    # os mesmos quocientes que ATK/FracoesGama.lean certifica
+    z = {r["nome"]: r for r in caudas.zeros()}
+    assert z["gama1"]["quocientes"] == [14, 7, 2, 2, 1, 2, 1]
+    assert z["gama2"]["quocientes"] == [21, 45, 2, 1, 2]
+    assert z["gama3"]["quocientes"] == [25, 92]
+    assert z["gigante1"]["n_certificados"] == 16 and z["gigante2"]["n_certificados"] == 17
+    assert z["gama1"]["cauda"] == ["36140203/21453481", "38960203/17593481"]
+    for r in z.values():
+        assert r["erro_convergente_vezes_q2"] < 1
+
+
+def test_bsd():
+    # a_p conhecidos (LMFDB) e L(E,1)/Ω = 1/5 para 11a1
+    assert caudas.a_p(caudas.CURVAS["11a1"][0], 2) == -2
+    assert caudas.a_p(caudas.CURVAS["37a1"][0], 3) == -3
+    assert caudas.a_p(caudas.CURVAS["389a1"][0], 7) == -5
+    r = caudas.bsd_razao_11a1()
+    assert abs(r["razao"] - 0.2) < 1e-12
+    p = caudas.bsd_produtos(P=2000, marcos=(100, 2000))
+    e = [p[k]["expoente_estimado"] for k in ("11a1", "37a1", "389a1")]
+    assert e[0] < e[1] < e[2]
+
+
+def test_beal():
+    # (2,2,2): χ = 1/2 e a contagem cresce como X^{1/2}; (3,3,3): nenhuma; (2,3,7): as 5 conhecidas
+    assert len(caudas.contar(2, 2, 2, 10 ** 4)) == 32
+    assert len(caudas.contar(3, 3, 3, 10 ** 5)) == 0
+    b = caudas.beal(Xs=(10 ** 3, 10 ** 4), X_hip=10 ** 9)
+    assert b["hiperbolico"]["2,3,7"]["solucoes"][:2] == ["1^7 + 2^3 = 3^2", "2^7 + 17^3 = 71^2"]
+
+
+def test_ym_z2_exato():
+    w = caudas.z2_gauge(2)
+    assert w == {"1x1": "1/2", "1x2": "1/4", "2x2": "1/16"}
+
+
+def test_ns_burgers():
+    a = caudas.burgers_cauda(0.2, 1.0, N=128)["delta"]
+    b = caudas.burgers_cauda(0.05, 1.0, N=128)["delta"]
+    assert a > b > 0
+    assert caudas.choque_coeficientes(4) == ["1", "1/2", "1/3", "1/4"]
+
+
+def test_sat_e_euler():
+    assert caudas.sat(n=8, m=20)["media_satisfeitas"] == "7/8"
+    e = caudas.euler()
+    for nome in ("tetraedro", "cubo", "octaedro", "dodecaedro", "icosaedro"):
+        assert e[nome]["V-E+F"] == "2" and e[nome]["defeito_total_pi"] == "4"
+    assert F(e["icosaedro"]["chi"]) == F(1, 30)
