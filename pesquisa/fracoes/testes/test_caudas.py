@@ -58,6 +58,15 @@ def test_ns_burgers_limite_inviscido():
         assert c["erro_vs_quadratura"] < 1e-12
     assert abs(r["coeficientes"][0]["b_k"] - 0.8801011714898) < 1e-12  # 2·J_1(1)
     assert abs(r["coeficientes"][-1]["abs_b_k_vezes_k_4_3"] - r["constante_k_4_3"]) < 1e-4
+    # t = 0 é a condição inicial; t > 1 (depois do choque) é recusado
+    r0 = caudas.burgers_inviscido(0.0, ks=(1, 2, 5))
+    assert [c["b_k"] for c in r0["coeficientes"]] == [1.0, 0.0, 0.0]
+    assert all(c["erro_vs_quadratura"] < 1e-12 for c in r0["coeficientes"])
+    try:
+        caudas.burgers_inviscido(2.0)
+        assert False, "t > 1 deveria ser recusado"
+    except ValueError:
+        pass
     # δ ∝ ν^{3/4} na quebra, δ ∝ ν depois do choque
     p1 = caudas.expoente_largura(1.0, N=128)["p"]
     p2 = caudas.expoente_largura(2.0, N=256)["p"]

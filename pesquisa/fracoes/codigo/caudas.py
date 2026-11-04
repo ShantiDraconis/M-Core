@@ -355,11 +355,15 @@ def burgers_inviscido(t=1.0, ks=(1, 2, 5, 16, 64, 256)):
     Pelas características `x = ξ + t sin ξ`, `u = sin ξ`, os coeficientes de seno são
     `b_k = (1/(kπ))∫ cos(kx) du = (−1)^{k+1}·2J_k(kt)/(kt)`. Confere-se a fórmula contra a quadratura direta
     em `ξ` e, em `t = 1`, `|b_k|·k^{4/3} → 2Γ(1/3)/(2^{2/3}3^{1/6}π)`: a cauda é `k^{−4/3}` (cúspide), não `1/k`.
+    Em `t = 0` a fórmula vale no limite (`b_k = δ_{k1}`). Para `t > 1` as características se cruzam e a
+    solução entrópica tem choque, que esta fórmula não descreve: recusa com `ValueError`.
     """
+    if not 0 <= t <= 1:
+        raise ValueError("burgers_inviscido: a fórmula das características só vale para 0 ≤ t ≤ 1")
     M = 8192
     linhas = []
     for k in ks:
-        formula = (-1) ** (k + 1) * 2 * bessel_j(k, k * t) / (k * t)
+        formula = (1.0 if k == 1 else 0.0) if t == 0 else (-1) ** (k + 1) * 2 * bessel_j(k, k * t) / (k * t)
         direto = 2 / M * sum(math.sin(xi) * math.sin(k * (xi + t * math.sin(xi))) * (1 + t * math.cos(xi))
                              for xi in (2 * math.pi * j / M for j in range(M)))
         linhas.append({"k": k, "b_k": formula, "erro_vs_quadratura": abs(formula - direto),
@@ -371,6 +375,8 @@ def burgers_inviscido(t=1.0, ks=(1, 2, 5, 16, 64, 256)):
 def expoente_largura(t, nus=(0.2, 0.1, 0.05), N=256):
     """Expoente `p` em `δ ∝ ν^p`, entre valores consecutivos de `ν`: `≈ 3/4` em `t = 1`, `≈ 1` em `t = 2`."""
     d = [burgers_cauda(nu, t, N=N)["delta"] for nu in nus]
+    if any(x is None or x <= 0 for x in d):  # cauda abaixo de 1e-14 na janela: sem ajuste
+        return {"t": t, "delta": d, "p": None}
     return {"t": t, "delta": d,
             "p": [math.log(d[i] / d[i + 1]) / math.log(nus[i] / nus[i + 1]) for i in range(len(d) - 1)]}
 
