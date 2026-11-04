@@ -5,11 +5,13 @@ on:
     paths:
       - 'formatos/**'
       - 'pesquisa/rodada5/**'
+      - 'pesquisa/fracoes/**'
       - '.github/workflows/closed-math-multiprovador.yml'
   pull_request:
     paths:
       - 'formatos/**'
       - 'pesquisa/rodada5/**'
+      - 'pesquisa/fracoes/**'
       - '.github/workflows/closed-math-multiprovador.yml'
   workflow_dispatch:
 
@@ -149,6 +151,6 @@ jobs:
         run: |
           eval "$ANOTA"
           set +e
-          python -m pytest -q -rs pesquisa/rodada5/testes > py_saida.txt 2>&1; c=$?
+          python -m pytest -q -rs pesquisa/rodada5/testes pesquisa/fracoes/testes > py_saida.txt 2>&1; c=$?
           anota py_saida.txt "pytest" "$c"
           exit $c

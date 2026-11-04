@@ -134,9 +134,14 @@ A engenharia **contorna** os problemas abertos com modelos, cotas e computação
   `(2,2,3)` tem expoente `0,36` (`χ = 1/3`). `(3,3,3)`: nenhuma até `10⁶`. `(2,3,7)`: até `10¹⁵`, exatamente
   as 5 soluções do teorema de Poonen–Schaefer–Stoll (`1⁷ + 2³ = 3²`, `2⁷ + 17³ = 71²`,
   `17⁷ + 76 271³ = 21 063 928²`, `1414³ + 2 213 459² = 65⁷`, `9262³ + 15 312 283² = 113⁷`).
-* **NS (Burgers, Cole–Hopf, `t = 1`)**: largura da cauda exponencial `δ = 0,77; 0,46; 0,27` para
-  `ν = 0,2; 0,1; 0,05`. `δ ∝ ν^{0,74}` encolhe: no limite invíscido vira o choque, com coeficientes exatamente
-  `1/k`.
+* **NS (Burgers, Cole–Hopf, `u₀ = sin x`, `t = 1`)**: largura da cauda exponencial `δ = 0,77; 0,46; 0,27`
+  para `ν = 0,2; 0,1; 0,05`, ou seja, `δ ∝ ν^{0,742}`. `t = 1` é o tempo de quebra, e o limite invíscido
+  ainda é contínuo: pelas características (`x = ξ + sin ξ`), `b_k = (−1)^{k+1}·2J_k(k)/k`, conferido contra
+  a quadratura direta (erro `< 10⁻¹⁵`), com `|b_k|·k^{4/3} → 2Γ(1/3)/(2^{2/3}3^{1/6}π) = 0,8946`. A cauda é
+  `k^{−4/3}` (cúspide `|x − π|^{1/3}`), não `1/k`, e o expoente `¾` de `δ` é o que o balanço
+  `u·u_x ~ ν·u_xx` dá para `u ~ x^{1/3}`. Depois do choque (`t = 2`), `δ ∝ ν^{1,06…1,08}` (camada de choque de
+  largura `∝ ν`), e só aí a cauda invíscida é `1/k`. O dente de serra `(π − x)/2 = Σ sin(kx)/k` de
+  `choque_coeficientes` é essa forma de choque formado, uma ilustração separada, não o limite em `t = 1`.
 * **YM (calibre `Z₂`, rede `2×2`, enumeração de `2¹²` configurações)**: `⟨W⟩ = 1/2, 1/4, 1/16` para
   áreas 1, 2 e 4. É a lei de área com tensão `log 2`.
 * **P vs NP**: a média exata de cláusulas satisfeitas é `7/8` (`n = 10`, `m = 40`). Schöning em `n = 12`
