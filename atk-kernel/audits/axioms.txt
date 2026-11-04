@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de f33c7504b5d6a94c2e76b26a67191cceb617891f498c432b01793b71dec60faf
+# axiomas por teorema — congelamento de 776bfb3e8a68d0369b02cc501ed308008f3466cd7cb64c53e9c0f6ccfbaeedf3
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8559,3 +8559,40 @@ ATK.ZeroClasses.PrimosCurtos.theta_tnp	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PrimosCurtos.combina	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PrimosCurtos.parte_a	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PrimosCurtos.primo_curto_tnp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.rh_iff_Z	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.semZeros_mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.semZeros_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.existe_zero_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.meio_le_of_semZeros	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.bdd	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.nonempty	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.c_le_um	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.meio_le_c	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.semZeros_c	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.semZeros_iff	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.semZeros_meio_iff_rh	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.rh_iff_c	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.rh_iff_c_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.c_eq_sSup	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.rh_iff_forall	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.RHAte.mono	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.rhAte_neg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.passo_iff_rh	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.media_tautologica	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.gap_novo_derivado	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.reabs_valor	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.gap_real_ne	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.theta_valor	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.M_tensao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.M_meio	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.J_fixo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.euler_meio_diverge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.rh_iff_lambda_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.lambda_entre	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.autovalor_real	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.rh_of_hilbertPolya	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.estado	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRHAbscissa.semZeros_iff_quasi	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRHAbscissa.c_le_iff_mu	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRHAbscissa.c_le_iff_cL	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRHAbscissa.rh_iff_c_iff_mu	propext, Classical.choice, Quot.sound

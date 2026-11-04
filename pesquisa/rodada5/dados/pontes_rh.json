@@ -1,0 +1,57 @@
+{
+  "gap_centros": [
+    166747138007957,
+    100000000000000000
+  ],
+  "gap_centros_float": 0.00166747138007957,
+  "erro_gap": [
+    367,
+    50000000000000000000
+  ],
+  "erro_sobre_gap": 4.401874651455633e-15,
+  "um_e_menos_17_sobre_gap": 5.9971044297760664e-15,
+  "u_9585_5777953": 0.0016588919986022731,
+  "mdc_9585_5777953": 1,
+  "u_igual_71e4_vezes_gbar": true,
+  "gap_menos_u": 8.579381477296843e-06,
+  "gap_medio_local": 0.23364674175011269,
+  "s_normalizado": 0.007136720022669719,
+  "S_de_C0": -0.3796096779619561,
+  "zeros_esperados_janela": 23111813.26948379,
+  "zeros_declarados_janela": 23111813,
+  "media_tautologica": [
+    1,
+    2
+  ],
+  "re_abs": [
+    24970213,
+    50000000
+  ],
+  "mobius_tensao_ok": true,
+  "M_meio": [
+    -1,
+    3
+  ],
+  "theta_graus_71e4": [
+    -397160,
+    1119
+  ],
+  "gue_P_s_lt_0_01": 1.0965361253734541e-06,
+  "gue_P_s_gt_3": 4.944166852990917e-05,
+  "gue_normalizacao": 0.9999999890334399,
+  "gue_contagens": {
+    "14380682": {
+      "esperado_s_lt_0_01": 15.768937320507776,
+      "sigma_s_lt_0_01": 3.9710121279728896,
+      "esperado_s_gt_3": 711.0049126780312,
+      "sigma_s_gt_3": 26.664675371697875
+    },
+    "23111812": {
+      "esperado_s_lt_0_01": 25.3429367808397,
+      "sigma_s_lt_0_01": 5.0341768722244655,
+      "esperado_s_gt_3": 1142.6865480295771,
+      "sigma_s_gt_3": 33.80364696345022
+    }
+  },
+  "aviso": "numérico; nada aqui é certificado — os teoremas estão em ATK/ZeroClasses/PontesRH.lean"
+}
