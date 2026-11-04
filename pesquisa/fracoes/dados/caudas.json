@@ -1,0 +1,410 @@
+{
+ "zeros": [
+  {
+   "nome": "gama1",
+   "fonte": "certificado (ATK.ZeroCritico)",
+   "quocientes": [
+    14,
+    7,
+    2,
+    2,
+    1,
+    2,
+    1
+   ],
+   "n_certificados": 7,
+   "cauda": [
+    "36140203/21453481",
+    "38960203/17593481"
+   ],
+   "cauda_float": [
+    1.6845845669520951,
+    2.214468131690369
+   ],
+   "convergente": [
+    2728,
+    193
+   ],
+   "erro_convergente_vezes_q2": 0.3768031833
+  },
+  {
+   "nome": "gama2",
+   "fonte": "certificado (ATK.ZeroSegundo)",
+   "quocientes": [
+    21,
+    45,
+    2,
+    1,
+    2
+   ],
+   "n_certificados": 5,
+   "cauda": [
+    "6182808/1879711",
+    "6862808/64711"
+   ],
+   "cauda_float": [
+    3.2892332917134603,
+    106.05319033858231
+   ],
+   "convergente": [
+    7631,
+    363
+   ],
+   "erro_convergente_vezes_q2": 0.1411650372
+  },
+  {
+   "nome": "gama3",
+   "fonte": "certificado (ATK.ZeroTerceiro)",
+   "quocientes": [
+    25,
+    92
+   ],
+   "n_certificados": 2,
+   "cauda": [
+    "108565801/11946308",
+    "108585801/10106308"
+   ],
+   "cauda_float": [
+    9.087811983417806,
+    10.744358968675801
+   ],
+   "convergente": [
+    2301,
+    92
+   ],
+   "erro_convergente_vezes_q2": 0.1014420336
+  },
+  {
+   "nome": "gigante1",
+   "fonte": "bola da Arb (hipótese)",
+   "quocientes": [
+    3000180519279,
+    2,
+    6,
+    1,
+    2,
+    170,
+    1,
+    1,
+    1,
+    1,
+    4,
+    8,
+    5,
+    1,
+    1,
+    5
+   ],
+   "n_certificados": 16,
+   "cauda": [
+    "225999550232/27261545769",
+    "227780369768/17387844231"
+   ],
+   "cauda_float": [
+    8.290048999678937,
+    13.09997759020067
+   ],
+   "convergente": [
+    259849886030590292997,
+    86611417
+   ],
+   "erro_convergente_vezes_q2": 0.09667867340214074
+  },
+  {
+   "nome": "gigante2",
+   "fonte": "bola da Arb (hipótese)",
+   "quocientes": [
+    3000180519279,
+    2,
+    7,
+    36,
+    1,
+    4,
+    1,
+    3,
+    1,
+    17,
+    1,
+    1,
+    1,
+    4,
+    3,
+    4,
+    1
+   ],
+   "n_certificados": 17,
+   "cauda": [
+    "1160600583088/309053968335",
+    "1212243384912/245432091665"
+   ],
+   "cauda_float": [
+    3.7553330550668207,
+    4.939221177997534
+   ],
+   "convergente": [
+    212558034504827163898,
+    70848415
+   ],
+   "erro_convergente_vezes_q2": 0.1964222924529745
+  }
+ ],
+ "bsd_produtos": {
+  "11a1": {
+   "posto": 0,
+   "condutor": 11,
+   "marcos": [
+    {
+     "x": 100,
+     "log_produto": 1.869915928350082,
+     "digitos_numerador": 34
+    },
+    {
+     "x": 1000,
+     "log_produto": 1.7464923649328057,
+     "digitos_numerador": 379
+    },
+    {
+     "x": 10000,
+     "log_produto": 1.8303138072042202,
+     "digitos_numerador": 3943
+    }
+   ],
+   "expoente_estimado": 0.2913683204415321,
+   "a_p_iniciais": {
+    "2": -2,
+    "3": -1,
+    "5": 1,
+    "7": -2,
+    "11": 1,
+    "13": 4
+   }
+  },
+  "37a1": {
+   "posto": 1,
+   "condutor": 37,
+   "marcos": [
+    {
+     "x": 100,
+     "log_produto": 3.4201030781138257,
+     "digitos_numerador": 25
+    },
+    {
+     "x": 1000,
+     "log_produto": 3.821763248739785,
+     "digitos_numerador": 317
+    },
+    {
+     "x": 10000,
+     "log_produto": 4.314095484637619,
+     "digitos_numerador": 3434
+    }
+   ],
+   "expoente_estimado": 1.7113761441646842,
+   "a_p_iniciais": {
+    "2": -2,
+    "3": -3,
+    "5": -2,
+    "7": -1,
+    "11": -5,
+    "13": -2
+   }
+  },
+  "389a1": {
+   "posto": 2,
+   "condutor": 389,
+   "marcos": [
+    {
+     "x": 100,
+     "log_produto": 5.02014068138061,
+     "digitos_numerador": 27
+    },
+    {
+     "x": 1000,
+     "log_produto": 5.794935555783354,
+     "digitos_numerador": 316
+    },
+    {
+     "x": 10000,
+     "log_produto": 6.458159024853558,
+     "digitos_numerador": 3427
+    }
+   ],
+   "expoente_estimado": 2.305404238150322,
+   "a_p_iniciais": {
+    "2": -2,
+    "3": -2,
+    "5": -3,
+    "7": -5,
+    "11": -4,
+    "13": -3
+   }
+  }
+ },
+ "bsd_11a1": {
+  "L_E_1": 0.2538418608559107,
+  "Omega": 1.2692093042795534,
+  "razao": 0.20000000000000004,
+  "previsto_BSD": "1/5 = |Sha|·c_11/|T|² = 1·5/25",
+  "erro": 2.7755575615628914e-17
+ },
+ "beal": {
+  "esferico": {
+   "2,2,2": {
+    "chi": "1/2",
+    "X": [
+     1000,
+     10000,
+     100000,
+     1000000
+    ],
+    "contagem": [
+     10,
+     32,
+     100,
+     316
+    ],
+    "expoente_estimado": 0.49968708261840383
+   },
+   "2,2,3": {
+    "chi": "1/3",
+    "X": [
+     1000,
+     10000,
+     100000,
+     1000000
+    ],
+    "contagem": [
+     2,
+     6,
+     14,
+     32
+    ],
+    "expoente_estimado": 0.35902194264166815
+   }
+  },
+  "hiperbolico": {
+   "2,3,7": {
+    "chi": "-1/42",
+    "X": 1000000000000000,
+    "solucoes": [
+     "1^7 + 2^3 = 3^2",
+     "2^7 + 17^3 = 71^2",
+     "17^7 + 76271^3 = 21063928^2",
+     "1414^3 + 2213459^2 = 65^7",
+     "9262^3 + 15312283^2 = 113^7"
+    ]
+   }
+  },
+  "euclidiano_333": {
+   "chi": "0",
+   "contagem_ate_1e6": 0
+  }
+ },
+ "burgers": [
+  {
+   "nu": 0.2,
+   "t": 1.0,
+   "delta": 0.7666139119307088,
+   "b1": 0.7536000536262314,
+   "b10": 0.0003762062864876893,
+   "b20": 1.76734826587197e-07
+  },
+  {
+   "nu": 0.1,
+   "t": 1.0,
+   "delta": 0.4582780506731209,
+   "b1": 0.8175780547553866,
+   "b10": 0.004111866308435605,
+   "b20": 4.133124780809788e-05
+  },
+  {
+   "nu": 0.05,
+   "t": 1.0,
+   "delta": 0.2740948508189109,
+   "b1": 0.8494898165719391,
+   "b10": 0.013877407189391736,
+   "b20": 0.0008342572420996297
+  }
+ ],
+ "choque_coeficientes": [
+  "1",
+  "1/2",
+  "1/3",
+  "1/4",
+  "1/5",
+  "1/6",
+  "1/7",
+  "1/8",
+  "1/9",
+  "1/10"
+ ],
+ "z2_gauge": {
+  "1x1": "1/2",
+  "1x2": "1/4",
+  "2x2": "1/16"
+ },
+ "sat": {
+  "n": 10,
+  "m": 40,
+  "media_satisfeitas": "7/8"
+ },
+ "schoening": {
+  "n": 12,
+  "p_sucesso": 0.602,
+  "cota_(3/4)^n": 0.03167635202407837
+ },
+ "euler": {
+  "tetraedro": {
+   "chi": "1/6",
+   "V": "4",
+   "E": "6",
+   "F": "4",
+   "V-E+F": "2",
+   "defeito_por_vertice_pi": "1",
+   "defeito_total_pi": "4"
+  },
+  "cubo": {
+   "chi": "1/12",
+   "V": "8",
+   "E": "12",
+   "F": "6",
+   "V-E+F": "2",
+   "defeito_por_vertice_pi": "1/2",
+   "defeito_total_pi": "4"
+  },
+  "octaedro": {
+   "chi": "1/12",
+   "V": "6",
+   "E": "12",
+   "F": "8",
+   "V-E+F": "2",
+   "defeito_por_vertice_pi": "2/3",
+   "defeito_total_pi": "4"
+  },
+  "dodecaedro": {
+   "chi": "1/30",
+   "V": "20",
+   "E": "30",
+   "F": "12",
+   "V-E+F": "2",
+   "defeito_por_vertice_pi": "1/5",
+   "defeito_total_pi": "4"
+  },
+  "icosaedro": {
+   "chi": "1/30",
+   "V": "12",
+   "E": "30",
+   "F": "20",
+   "V-E+F": "2",
+   "defeito_por_vertice_pi": "1/3",
+   "defeito_total_pi": "4"
+  },
+  "icosaedro_truncado(bola)": {
+   "V": 60,
+   "E": 90,
+   "F": 32,
+   "V-E+F": 2
+  }
+ },
+ "aviso": "numérico; nada aqui é certificado — os teoremas estão em atk-kernel/ATK/Fracoes*.lean"
+}
