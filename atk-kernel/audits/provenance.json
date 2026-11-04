@@ -460,6 +460,6 @@
   "expected_theorems": 8596,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "390e3781109fa42e977d143caa9204ed94166a7b",
+  "commit_at_freeze": "92e1a506b609ee9e76e72dce9e50675bf0a1c8da",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }
