@@ -8664,4 +8664,4 @@ ATK.Fracoes.Gama.gigante1_fc	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Gama.gigante1_fc_conv	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Gama.gigante2_fc	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Gama.gigante2_fc_conv	propext, Classical.choice, Quot.sound
-ATK.Fracoes.GamaZeros.tres_zeros_fc	VER CI
+ATK.Fracoes.GamaZeros.tres_zeros_fc	propext, Classical.choice, Quot.sound
