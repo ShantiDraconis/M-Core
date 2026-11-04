@@ -11,8 +11,10 @@ Cada problema é olhado como uma *cauda* com um expoente:
   `L(E,1)/Ω = 1/5` para 11a1 (o lado aritmético: `|Ш|·c₁₁/|T|² = 1·5/5²`).
 * Beal — `beal`: contagem de soluções primitivas de `A^x + B^y = C^z` até `X`: cresce como `X^χ` no
   lado esférico, é finita no hiperbólico, vazia em `(3, 3, 3)`.
-* NS — `burgers`: cauda de Fourier da solução exata (Cole–Hopf) de Burgers viscosa: exponencial
-  `e^{−δk}` enquanto regular; a largura `δ` encolhe com `ν` (o limite invíscido é o choque, cauda `1/k`).
+* NS — `burgers`: cauda de Fourier da solução exata (Cole–Hopf) de Burgers viscosa com `u₀ = sin x`:
+  exponencial `e^{−δk}` para `ν > 0`. Em `t = 1` (o tempo de quebra) o limite invíscido é contínuo, com
+  cúspide `|x − π|^{1/3}` e coeficientes exatos `2J_k(k)/k ~ 0,8946·k^{−4/3}`; ali `δ ∝ ν^{3/4}`. Só depois
+  do choque (`t = 2`) a cauda invíscida é `1/k` e `δ ∝ ν`.
 * YM — `z2_gauge`: teoria de calibre `Z₂` na rede 2D, enumerada exatamente: `⟨W⟩ = (1/2)^{área}` com
   `e^{2β} = 3` — cauda exponencial em fração (lei de área, tensão `log 2`).
 * P vs NP — `sat`: média exata `7/8` das cláusulas satisfeitas; passeio de Schöning contra `(3/4)ⁿ`.
@@ -342,8 +344,43 @@ def burgers_cauda(nu, t, N=256, kmax=None):
     return {"nu": nu, "t": t, "delta": -sl, "b1": coef[0], "b10": coef[9], "b20": coef[19]}
 
 
+def bessel_j(n, x, M=4096):
+    """`J_n(x) = (1/2π)∫₀^{2π} cos(nτ − x sin τ) dτ` pela regra do trapézio (integrando periódico)."""
+    return sum(math.cos(n * (2 * math.pi * j / M) - x * math.sin(2 * math.pi * j / M)) for j in range(M)) / M
+
+
+def burgers_inviscido(t=1.0, ks=(1, 2, 5, 16, 64, 256)):
+    """Burgers invíscida com `u₀ = sin x`, antes ou no tempo de quebra (`t ≤ 1`).
+
+    Pelas características `x = ξ + t sin ξ`, `u = sin ξ`, os coeficientes de seno são
+    `b_k = (1/(kπ))∫ cos(kx) du = (−1)^{k+1}·2J_k(kt)/(kt)`. Confere-se a fórmula contra a quadratura direta
+    em `ξ` e, em `t = 1`, `|b_k|·k^{4/3} → 2Γ(1/3)/(2^{2/3}3^{1/6}π)`: a cauda é `k^{−4/3}` (cúspide), não `1/k`.
+    """
+    M = 8192
+    linhas = []
+    for k in ks:
+        formula = (-1) ** (k + 1) * 2 * bessel_j(k, k * t) / (k * t)
+        direto = 2 / M * sum(math.sin(xi) * math.sin(k * (xi + t * math.sin(xi))) * (1 + t * math.cos(xi))
+                             for xi in (2 * math.pi * j / M for j in range(M)))
+        linhas.append({"k": k, "b_k": formula, "erro_vs_quadratura": abs(formula - direto),
+                       "abs_b_k_vezes_k_4_3": abs(formula) * k ** (4 / 3)})
+    return {"t": t, "coeficientes": linhas,
+            "constante_k_4_3": 2 * math.gamma(1 / 3) / (2 ** (2 / 3) * 3 ** (1 / 6) * math.pi)}
+
+
+def expoente_largura(t, nus=(0.2, 0.1, 0.05), N=256):
+    """Expoente `p` em `δ ∝ ν^p`, entre valores consecutivos de `ν`: `≈ 3/4` em `t = 1`, `≈ 1` em `t = 2`."""
+    d = [burgers_cauda(nu, t, N=N)["delta"] for nu in nus]
+    return {"t": t, "delta": d,
+            "p": [math.log(d[i] / d[i + 1]) / math.log(nus[i] / nus[i + 1]) for i in range(len(d) - 1)]}
+
+
 def choque_coeficientes(K=10):
-    """Choque (dente de serra) `(π − x)/2 = Σ sin(kx)/k`: coeficientes exatamente `1/k`."""
+    """Ilustração separada: dente de serra `(π − x)/2 = Σ sin(kx)/k`, coeficientes exatamente `1/k`.
+
+    É a forma de um choque já formado (`t > 1`; para `t → ∞` a solução de `u₀ = sin x` fica em dente de
+    serra). **Não** é o limite invíscido do experimento em `t = 1`, que é a cúspide de `burgers_inviscido`.
+    """
     return [str(F(1, k)) for k in range(1, K + 1)]
 
 
@@ -443,6 +480,9 @@ def main(saida=None, P=10000, rapido=False):
         "beal": beal(Xs=(10 ** 3, 10 ** 4, 10 ** 5) if rapido else (10 ** 3, 10 ** 4, 10 ** 5, 10 ** 6),
                      X_hip=10 ** 9 if rapido else 10 ** 15),
         "burgers": [burgers_cauda(nu, 1.0, N=128 if rapido else 256) for nu in (0.2, 0.1, 0.05)],
+        "burgers_inviscido_t1": burgers_inviscido(1.0),
+        "burgers_expoente_largura": [expoente_largura(1.0, N=128 if rapido else 256),
+                                     expoente_largura(2.0, N=128 if rapido else 256)],
         "choque_coeficientes": choque_coeficientes(),
         "z2_gauge": z2_gauge(2),
         "sat": sat(),
