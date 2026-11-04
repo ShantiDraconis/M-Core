@@ -3941,6 +3941,61 @@ Numérico (`codigo/primos_curtos.py`, `dados/primos_curtos.json`, `testes/test_p
 | `log² p` | `0,68` |
 | `√p` | `1,32` |
 
+## 4dd. As seis "pontes" para RH: o que é teorema, o que é RH e o que é mal posto (rodada 102)
+
+Dois arquivos, **37 teoremas** (total 8596), só os axiomas padrão (`ZeroClasses/PontesRH.lean`,
+`ZeroClasses/PontesRHAbscissa.lean`). Auditoria da proposta "RH até `C₀` + seis pontes ⟹ RH", com
+`C₀ = 6 000 362 444 943/2`. Nenhuma hipótese de cálculo externo entra.
+
+* **A constante sem `½`.** `c := inf{θ : ζ ≠ 0 em Re s > θ}` (`PontesRH.c`), definida sem citar `½`.
+  Teoremas: `c ≤ 1` (`c_le_um`, Mathlib), `½ ≤ c` (`meio_le_c`, pelo zero certificado `zero_na_linha`),
+  o ínfimo é atingido (`semZeros_c`), `c = sup{Re ρ : ρ ∈ Z}` (`c_eq_sSup`) e **`rh_iff_c : RH ⟺ c = ½`**
+  (também `rh_iff_c_le : RH ⟺ c ≤ ½`). Provar `c = ½` sem citar `½` é provar `c ≤ ½`, que é RH.
+* **Ponte 5 (`C₀ → ∞` por indução).** `RHAte T` (zeros com `|Im ρ| ≤ T` na reta); `rh_iff_forall`:
+  `RH ⟺ ∀ T, RHAte T`; **`passo_iff_rh`**: para cada `δ > 0`, o passo `RHAte T → RHAte (T + δ)` para todo `T`
+  é equivalente a RH. A indução é válida em Lean; o passo é o problema inteiro.
+* **Ponte 2 (`s` ⇒ `Re` pontual).** `media_tautologica`: para quaisquer `g₁, …, gₙ` com soma não nula e
+  qualquer `b`, a média de `½ + (gᵢ/ḡ − 1)·b` é `½`. A "média ½" não depende de `ζ`. `gap_novo_derivado`:
+  `9 585/5 777 953 = (71/10 000)·(1 350 000/5 777 953)`, isto é, o `s` arredondado vezes `ḡ` (não é um gap
+  medido). `gap_real_ne`: com as bolas do par (hipóteses: raios `285·10⁻²⁰`, `449·10⁻²⁰`), o gap real excede
+  esse valor em mais de `8·10⁻⁶`. `reabs_valor`: `24 970 213/50 000 000` é a definição avaliada.
+* **Ponte 6 (geometria `θ = 360(s − 1)/(s + 1)`).** `theta_valor`: `−397 160/1 119` em `s = 71/10 000`.
+  `M_tensao`: com `M(s) = (s − 1)/(s + 1)`, `M(1 − s) = J(M(s))`, `J(w) = −(w + 1)/(1 − 3w)`; `M(½) = −⅓` é
+  ponto fixo de `J` (`M_meio`, `J_fixo`). A mudança de coordenadas transporta a simetria `s ↦ 1 − s`; não
+  carrega informação sobre os zeros.
+* **Ponte 1 (Euler).** `euler_meio_diverge`: `Σ_p p^{−½}` diverge (Mathlib, `Nat.Primes.summable_rpow`); o
+  produto de Euler não converge em `Re s ≤ 1`. Forma correta (`PontesRHAbscissa`): para `½ ≤ θ < 1`,
+  `c ≤ θ ⟺ Σ μ(n)n^{−s}` converge em `Re s > θ` (`c_le_iff_mu`) `⟺ Σ (Λ(n) − 1)n^{−s}` converge em `Re s > θ`
+  (`c_le_iff_cL`), da rodada 62; `rh_iff_c_iff_mu`.
+* **Ponte 3 (`Λ`).** `Φ`, `H_t`, `ΛdBN` definidos. De Bruijn–Newman (`RH ⟺ Λ ≤ 0`), Rodgers–Tao (`Λ ≥ 0`) e
+  Platt–Trudgian (`Λ ≤ 1/5`) entram como hipóteses nomeadas (publicadas). `rh_iff_lambda_zero`: com as duas
+  primeiras, `RH ⟺ Λ = 0`. Falta `Λ ≤ 0`, que é RH.
+* **Ponte 4 (Hilbert–Pólya).** `autovalor_real` e `rh_of_hilbertPolya`: um operador simétrico com autovalor
+  `−i(ρ − ½)` para cada `ρ ∈ Z` dá RH. A direção recíproca e a existência do operador são abertas.
+* `estado`: conjunção dos itens acima.
+
+| Ponte | Estado | Classe |
+| --- | --- | --- |
+| `RH ⟺ c = ½`, `½ ≤ c ≤ 1`, `c = sup Re ρ` | CERTIFIED | reformulação |
+| passo de indução `RHAte T → RHAte (T + δ)` ⟺ RH | CERTIFIED | reformulação |
+| "média ½", `9 585/5 777 953`, `Re_abs` | CERTIFIED (tautologia / valor derivado) | auditoria |
+| `θ = 360(s − 1)/(s + 1)`: conjugação de Möbius da equação funcional | CERTIFIED | auditoria |
+| `c ≤ θ ⟺` abscissa de `Σ μ(n)n^{−s}` | CERTIFIED | reformulação |
+| `RH ⟺ Λ = 0` (dado de Bruijn–Newman e Rodgers–Tao) | condicional | reformulação |
+| Hilbert–Pólya ⟹ RH | CERTIFIED | reformulação |
+| `c ≤ ½`, `Λ ≤ 0`, o passo de indução, o operador | OPEN_MATH (são RH) | — |
+| RH | OPEN_MATH | — |
+
+Numérico (`codigo/pontes_rh.py`, `dados/pontes_rh.json`, `testes/test_pontes_rh.py`, 4 testes), em `ℚ` e
+`Decimal` com 60 dígitos:
+* gap dos centros do par mais próximo: `166 747 138 007 957/10¹⁷`; erro `≤ 367/(5·10¹⁹)`, razão `4,4·10⁻¹⁵`;
+  `10⁻¹⁷/gap = 6·10⁻¹⁵` (não `1,6 %`); gap `− 9 585/5 777 953 = 8,58·10⁻⁶`;
+* gap médio local `2π/log(T/2π) = 0,23365`, logo `s = 0,0071367`;
+* `S(C₀) = N(C₀) − θ(C₀)/π − 1 = −0,380` com o `N(C₀) = 12 363 178 644 727` declarado; contagem esperada na
+  janela `(θ(b) − θ(a))/π = 23 111 813,27` contra `23 111 813` declarados;
+* GUE (núcleo seno, Fredholm com 40 nós de Gauss–Legendre): `P(s < 0,01) = 1,0965·10⁻⁶`,
+  `P(s > 3) = 4,944·10⁻⁵`; para `N = 14 380 682` gaps, esperados `15,8 ± 4,0` e `711 ± 27`.
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

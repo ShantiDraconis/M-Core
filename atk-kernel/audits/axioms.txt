@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de f33c7504b5d6a94c2e76b26a67191cceb617891f498c432b01793b71dec60faf
+# axiomas por teorema — congelamento de 776bfb3e8a68d0369b02cc501ed308008f3466cd7cb64c53e9c0f6ccfbaeedf3
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8559,3 +8559,40 @@ ATK.ZeroClasses.PrimosCurtos.theta_tnp	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PrimosCurtos.combina	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PrimosCurtos.parte_a	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.PrimosCurtos.primo_curto_tnp	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.PontesRH.rh_iff_Z	VER CI
+ATK.ZeroClasses.PontesRH.semZeros_mono	VER CI
+ATK.ZeroClasses.PontesRH.semZeros_um	VER CI
+ATK.ZeroClasses.PontesRH.existe_zero_meio	VER CI
+ATK.ZeroClasses.PontesRH.meio_le_of_semZeros	VER CI
+ATK.ZeroClasses.PontesRH.bdd	VER CI
+ATK.ZeroClasses.PontesRH.nonempty	VER CI
+ATK.ZeroClasses.PontesRH.c_le_um	VER CI
+ATK.ZeroClasses.PontesRH.meio_le_c	VER CI
+ATK.ZeroClasses.PontesRH.semZeros_c	VER CI
+ATK.ZeroClasses.PontesRH.semZeros_iff	VER CI
+ATK.ZeroClasses.PontesRH.semZeros_meio_iff_rh	VER CI
+ATK.ZeroClasses.PontesRH.rh_iff_c	VER CI
+ATK.ZeroClasses.PontesRH.rh_iff_c_le	VER CI
+ATK.ZeroClasses.PontesRH.c_eq_sSup	VER CI
+ATK.ZeroClasses.PontesRH.rh_iff_forall	VER CI
+ATK.ZeroClasses.PontesRH.RHAte.mono	VER CI
+ATK.ZeroClasses.PontesRH.rhAte_neg	VER CI
+ATK.ZeroClasses.PontesRH.passo_iff_rh	VER CI
+ATK.ZeroClasses.PontesRH.media_tautologica	VER CI
+ATK.ZeroClasses.PontesRH.gap_novo_derivado	VER CI
+ATK.ZeroClasses.PontesRH.reabs_valor	VER CI
+ATK.ZeroClasses.PontesRH.gap_real_ne	VER CI
+ATK.ZeroClasses.PontesRH.theta_valor	VER CI
+ATK.ZeroClasses.PontesRH.M_tensao	VER CI
+ATK.ZeroClasses.PontesRH.M_meio	VER CI
+ATK.ZeroClasses.PontesRH.J_fixo	VER CI
+ATK.ZeroClasses.PontesRH.euler_meio_diverge	VER CI
+ATK.ZeroClasses.PontesRH.rh_iff_lambda_zero	VER CI
+ATK.ZeroClasses.PontesRH.lambda_entre	VER CI
+ATK.ZeroClasses.PontesRH.autovalor_real	VER CI
+ATK.ZeroClasses.PontesRH.rh_of_hilbertPolya	VER CI
+ATK.ZeroClasses.PontesRH.estado	VER CI
+ATK.ZeroClasses.PontesRHAbscissa.semZeros_iff_quasi	VER CI
+ATK.ZeroClasses.PontesRHAbscissa.c_le_iff_mu	VER CI
+ATK.ZeroClasses.PontesRHAbscissa.c_le_iff_cL	VER CI
+ATK.ZeroClasses.PontesRHAbscissa.rh_iff_c_iff_mu	VER CI
