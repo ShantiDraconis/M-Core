@@ -8763,5 +8763,5 @@ ATK.Fracoes.Malha.passo_desce	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Malha.passo_sobe	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Malha.minimo_em_tres	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Malha.minimo_global	propext, Classical.choice, Quot.sound
-ATK.Fracoes.MalhaZeros.ponto_oito	VER CI
-ATK.Fracoes.MalhaZeros.anel_oito_minimo	VER CI
+ATK.Fracoes.MalhaZeros.ponto_oito	propext, Classical.choice, Quot.sound
+ATK.Fracoes.MalhaZeros.anel_oito_minimo	propext, Classical.choice, Quot.sound
