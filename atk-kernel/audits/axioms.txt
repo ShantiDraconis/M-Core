@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 65198347440b822f21fb3f26f0d970a651ccfcabc4cfb3ecac4f88a4c3ddbb5f
+# axiomas por teorema — congelamento de c68592bf1f0232fa82ec0a86281a53c7e8a60f933b86b1d3a31d9432e8a13439
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8765,3 +8765,32 @@ ATK.Fracoes.Malha.minimo_em_tres	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Malha.minimo_global	propext, Classical.choice, Quot.sound
 ATK.Fracoes.MalhaZeros.ponto_oito	propext, Classical.choice, Quot.sound
 ATK.Fracoes.MalhaZeros.anel_oito_minimo	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.w_eq	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.normSq_pos_re_im	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.norm_w_sq	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.norm_w_sq_sub_one	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.w_fora_iff	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.w_le_one_iff	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.re_um_sub_pow_nonneg	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.liS_eq	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.liS_nao_negativo	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.caixa	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.dirichlet_simultaneo	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.cos_ge_meio	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.re_pow_eq	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.re_soma_pot_ilimitada	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.liS_ilimitado	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.liS_criterio	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.ne_zero_of_naoTrivial	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.finito	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.mem_zerosAte	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.existe_zero_esquerda	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.liT_nao_negativo	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.liT_ilimitado	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.liT_mono	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.rh_iff_liT	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.principal_negativo	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.dh_taxa	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.dh_obstrucao	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.Ponte.mem_Z_of_naoTrivial	propext, Classical.choice, Quot.sound
+ATK.LiTrunc.Ponte.liT_le_lam	propext, Classical.choice, Quot.sound
