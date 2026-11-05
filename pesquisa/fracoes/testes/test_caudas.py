@@ -1,4 +1,5 @@
 """Testes do companheiro numérico da rodada 103 (atk-kernel/ATK/Fracoes*.lean)."""
+import math
 import os
 import sys
 from fractions import Fraction as F
@@ -80,3 +81,21 @@ def test_sat_e_euler():
     for nome in ("tetraedro", "cubo", "octaedro", "dodecaedro", "icosaedro"):
         assert e[nome]["V-E+F"] == "2" and e[nome]["defeito_total_pi"] == "4"
     assert F(e["icosaedro"]["chi"]) == F(1, 30)
+
+
+def test_rodada106_linearizacao_e_primons():
+    # |ζ(−2m−δ)| pela equação funcional: mínimo em m = 3 (centro 8), 0,000793; a/K = 2 sin(πδ/2) ∈ [2δ, πδ]
+    L = caudas.linearizacao()
+    assert L["minimo_m"] == 3
+    assert abs(L["linhas"][3]["abs_zeta"] - 0.000793) < 5e-7
+    for r in L["linhas"]:
+        assert L["cota_inferior_2delta"] <= r["a_sobre_K"] <= L["cota_superior_pi_delta"]
+    for d in (0.13, 0.14):  # anel_oito_linear: 26/100 ≤ a/K ≤ 45/100
+        assert 0.26 <= caudas.linearizacao(d, [3])["linhas"][0]["a_sobre_K"] <= 0.45
+    # gás de primos: traço → ζ(σ), parte conexa ≤ 2^{2−σ}(π²/6 − 1) (igualdade em σ = 2), lacuna 2^{−σ}
+    P = caudas.primons()
+    for sg in ("2", "3", "4"):
+        assert all(v < P[sg]["zeta"] for v in P[sg]["traco"].values())
+        assert P[sg]["conexo"] <= P[sg]["cota_conexo"] + 1e-12
+    assert abs(P["2"]["zeta"] - math.pi ** 2 / 6) < 1e-14
+    assert P["3"]["lacuna_fracao"] == "1/8"
