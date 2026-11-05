@@ -38,7 +38,7 @@ volta deles.
 | B4 | Cook–Levin | ✅ provada (`CookLevinNP.cookLevin`) | — | — |
 | B5 | Lefschetz (1,1) | ⬜ (metade linear: `HodgeFiltracao`) | cohomologia de variedades projetivas, sequência exponencial | anos |
 | B6 | Gross–Zagier–Kolyvagin | ⬜ | formas modulares, pontos de Heegner, sistemas de Euler | décadas de teoria |
-| B7 | reconstrução de Osterwalder–Schrader | ⬜ (miniatura 2D: `YMReconstrucao`; positividade abstrata: `BasePositividadeReflexao`) | medidas em `S′(ℝ⁴)`, reconstrução do espaço de Hilbert | anos |
+| B7 | reconstrução de Osterwalder–Schrader | ⬜ (miniatura 2D: `YMReconstrucao`; positividade abstrata: `BasePositividadeReflexao`; **reconstrução no tempo provada** (`OSProcesso`: medida euclidiana estacionária e positiva por reflexão ⇒ dados OS; `OSTransferencia`: espaço de Hilbert físico, translações temporais como contrações, matriz de transferência autoadjunta e positiva; `OSLacuna`/`OSTransferencia.lacuna_OS`: decaimento exponencial das correlações conexas ⇒ lacuna; `OSProcesso.lacuna_processo`: mistura exponencial da medida ⇒ lacuna, a segunda metade de `OSReconstruction` na forma temporal; `OSSimetria`: simetrias euclidianas do tempo zero ⇒ isometrias que comutam com e^{−tH}; `OSExemplo`: exemplo em ℂ² com a cota atingida; portado para main na rodada 104)) | a medida de Yang–Mills em `S′(ℝ⁴)` como `ProcessoOS` (é a hipótese aberta O8); boosts de Lorentz (continuação analítica das rotações euclidianas que misturam tempo e espaço), campos de Wightman; reconstrução do espaço de Hilbert e lacuna a partir do decaimento: ✅ na forma temporal | anos |
 | B8 | Darmon–Merel | ⬜ (caso `n = 6` via FLT(3): `DarmonMerelSeis`) | modularidade de curvas de Frey | anos |
 
 ## Ligações (L1–L5)

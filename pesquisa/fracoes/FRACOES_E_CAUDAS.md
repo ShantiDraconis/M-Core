@@ -147,3 +147,38 @@ A engenharia **contorna** os problemas abertos com modelos, cotas e computação
 * **P vs NP**: a média exata de cláusulas satisfeitas é `7/8` (`n = 10`, `m = 40`). Schöning em `n = 12`
   teve sucesso `0,60` por tentativa, contra a cota `(3/4)¹² = 0,032` de pior caso.
 * **Euler/Descartes**: `V − E + F = 2` e defeito angular total `4π` nos cinco sólidos.
+
+## 8. Rodada 104: o par recorde em frações e `7/8` para toda fórmula (kernel)
+
+### 8.1 O par 12 363 187 982 787/788 (`ATK/FracoesParRecorde.lean`, 16 teoremas)
+
+Hipóteses: as bolas da Arb de `par_mais_fragil_continuacao8` (clay-riemann-proof), `|γ₁ − c₁| ≤ 265·10⁻²⁰`,
+`|γ₂ − c₂| ≤ 379·10⁻²⁰`. Parte inteira comum `E = 3 000 183 404 278`. Consequências exatas:
+
+| teorema | enunciado |
+| --- | --- |
+| `cauda1_fc` | `γ₁ − E = [0; 1, 3, 7, 1, 2, 7, 2, 1, 1, 4, 17, 10, 2, 1, 3, 1, x₁₇]`, `x₁₇ ∈ [430 714 988 867/51 406 891 183, 434 252 755 933/46 907 084 017]` |
+| `cauda2_fc` | `γ₂ − E = [0; 1, 3, 7, 3, 40, 4, 1, 1, 2, 3, 1, 3, 1, 2, 3, 4, 2, x₁₈]`, `x₁₈ ∈ [487 467 507 456/308 072 325 131, 541 748 748 544/186 879 730 869]` |
+| `separam_no_quarto` | as duas caudas coincidem até `[0; 1, 3, 7]` e diferem no 4º quociente (1 contra 3) |
+| `simples1`, `simples2` | `314 849 491/415 434 260` e `296 762 215/391 380 514` estão nas bolas; nenhuma fração de denominador menor está (vizinhos de Farey, `farey_min`) |
+| `delta_bolas` | `Δγ ∈ 3 643 183 291 679/10¹⁶ ± 644·10⁻²⁰` |
+| `delta_fc` | `Δγ = [0; 2744, 1, 5, 1, 3, 2, 1, 6, 1, 10, 6, x₁₂]` com a cauda num intervalo racional |
+| `simples_delta` | `97 021/266 308 314` é a fração mais simples no erro de `Δγ` |
+| `lambda_bolas` | `−Δγ²/2` entre dois racionais exatos (`≈ −6,6364·10⁻⁸`) |
+| `log_altura` | `26 < log(T/2π) < 28` para `3·10¹² ≤ T ≤ 3,001·10¹²` (de `3,14 < π < 3,15`, `2,7182818283 < e < 2,7182818286`) |
+| `s_novo`, `s_anterior`, `recorde` | `3/2000 < s_novo < 1/600 < 1/400 < s_anterior`: o par novo é mais apertado que o 12 363 167 808 945/946 |
+
+### 8.2 `7/8` para toda fórmula 3-CNF (`ATK/FracoesSATMedia.lean`, 8 teoremas)
+
+`card_padrao_oito` (cada padrão de 3 bits em variáveis distintas tem `2ⁿ/8` atribuições, pela inversão de bits),
+`card_satisfaz` (`7·2ⁿ/8` satisfazem a cláusula), **`media_sete_oitavos`** (`8·Σ_v #sat(v) = 7m·2ⁿ`) e
+**`existe_sete_oitavos`** (Johnson: alguma atribuição satisfaz `≥ 7m/8`). Håstad: garantir `7/8 + ε` é NP-difícil
+(ponte). P vs NP continua `OPEN_MATH`.
+
+### 8.3 B7 no tempo (`ATK/OS*.lean`, 52 teoremas, portados da branch `atk/rh-rho-independent`)
+
+Reconstrução de Osterwalder–Schrader na forma temporal: medida euclidiana estacionária e positiva por reflexão ⇒
+espaço de Hilbert físico, matriz de transferência `P(t) = e^{−tH}` autoadjunta e positiva, decaimento
+exponencial das correlações conexas ⇒ lacuna `‖P(t)w‖ ≤ e^{−mt}‖w‖` (`lacuna_OS`, `lacuna_processo`), simetrias
+⇒ isometrias que comutam com `e^{−tH}`, e o exemplo em `ℂ²` com a cota atingida. É a cauda `e^{−mt}` de YM da
+§1 como teorema abstrato. Falta a medida de Yang–Mills em `S′(ℝ⁴)` (O8). B7 continua `PUBLICADA_NAO_FORMALIZADA`.
