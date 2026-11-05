@@ -563,7 +563,7 @@ def fermions(sigmas=(2, 3), Ns=(10, 100, 10000)):
     """Gás fermiônico: Σ_{n ≤ N} μ(n) n^{−σ} → 1/ζ(σ) (`traco_fermionico`); índice de Witten
     Σ_{d|n} μ(d) = [n = 1] (`indice_witten`); M(x) = Σ_{n ≤ x} μ(n) (a cauda que decide RH)."""
     N = max(Ns)
-    mu = moebius_crivo(N)
+    mu = moebius_crivo(max(N, 200))  # o índice de Witten abaixo vai até n = 200
     out = {}
     for sg in sigmas:
         alvo = 1 / zeta_real(sg)
