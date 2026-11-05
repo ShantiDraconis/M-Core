@@ -3996,6 +3996,62 @@ Numérico (`codigo/pontes_rh.py`, `dados/pontes_rh.json`, `testes/test_pontes_rh
 * GUE (núcleo seno, Fredholm com 40 nós de Gauss–Legendre): `P(s < 0,01) = 1,0965·10⁻⁶`,
   `P(s > 3) = 4,944·10⁻⁵`; para `N = 14 380 682` gaps, esperados `15,8 ± 4,0` e `711 ± 27`.
 
+## 4de. Q2(iii) exata: o piso ponderado `κ(σ) = 2(σ − Θ)` (rodada 109)
+
+Um arquivo, **61 teoremas** (total 8851), só os axiomas padrão (`ZeroClasses/BDPisoExato.lean`). Proposta R105
+(issue #176), classe **novo**. A rodada 76 declarou a questão Q2(iii) como a proposição `BDTheta.PisoPonderado`
+(OPEN_MATH); as rodadas 79 e 83 provaram tetos com fator (`κ(σ) ≤ (2σ + 3)(σ − Θ)/Θ`, §4ck). Esta rodada prova o teto
+exato:
+
+  **`TaxaDN σ κ ⟹ κ ≤ 2(σ − Θ)`** para `Θ < σ < 1`   (`taxa_le_Teta`).
+
+Com `taxa_Teta` (rodada 76), `2(σ − Θ)` é o **maior** expoente: `kappa_exato`, `sSup_taxa`, e `Θ = σ − κ(σ)/2`
+(`Teta_eq_taxa`). Em `σ = Θ` uma taxa positiva daria `Θ < σ` (`taxaDN_pos`, §4ck); logo **`PisoPonderado` é teorema**
+(`pisoPonderado`) e, pela rodada 76 (`rh_iff_taxa_de_piso`), **RH ⟺ `TaxaDN σ₀ (2σ₀ − 1)` para um único `σ₀ ∈ (½, 1)`
+fixado** (`rh_iff_taxa_um`). Isso é uma reformulação de RH; não decide nada sobre `Θ`.
+
+A prova:
+1. **Núcleo.** `K(s) = 1/((2 − s)(3 − s)(4 − s))` é a transformada de Mellin de `ψ(t) = (t − 1)₊²/(2t⁴)`
+   (`hasMellin_psi`); a inversão na reta `Re s = σ < 2` (`inv_K`) e `ψ = 0` em `(0, 1]` dão `∫ y^{σ+iτ}K = 0` para
+   `y ≥ 1` (`inv_K_zero`).
+2. **Pareamento** (`piso_G`, `piso_DN`). Para `c : Fin N → ℝ`, a densidade espectral da rodada 73 é
+   `‖(1 + ζP)/s‖²` na reta `σ ∈ (Θ, 1)`, com `P(s) = Σ c_k (k + 1)^{−s}`. Multiplicando por `s K(s) x^s/ζ(s)`, os
+   termos de `P` viram `c_k (x/(k + 1))^s K(s)` e integram a zero para `N ≤ x` (passo 1). Sobra
+   `2π G_σ(x)`, com `G_σ(x) = (1/2π)∫ x^{σ+iτ}K(σ + iτ)/ζ(σ + iτ) dτ`. Cauchy–Schwarz e Plancherel dão, para **todo** `c`,
+   `(2π)²‖G_σ(x)‖² ≤ x^{2σ}(2πW_σ(c))B`, com `B = ∫‖sK/ζ‖² < ∞`; o ínfimo em `c` dá o piso em `D_N(σ)`.
+3. **A Mertens suavizada** (`Gl_desloca`, `Gl_serie`, `Gl_mobius`). O contorno desloca até `Re s = 3/2`, e lá
+   `1/ζ = Σ μ(n)n^{−s}`: `G_σ(x) = Σ_n μ(n)ψ(n/x) = Σ_{n > x} μ(n)φ(x/n)`, com `φ(y) = y²(1 − y)²/2`.
+4. **Mellin** (`mellin_gU`). `∫_0^∞ u^{s−1}G(1/u) du = K(s)/ζ(s)` em `1 < Re s < 2` (troca soma–integral e
+   `mellin_comp_mul_left`).
+5. **Continuação** (`semZeros_of_cota`). Se `‖G_σ(x)‖ ≤ Cx^θ` para `x ≥ 1`, `G(1/u)` é `O(u^{−θ})` em `0⁺` e
+   `O(u^{−3/2})` em `∞`. A transformada é holomorfa em `θ < Re s < 3/2`, logo `1/ζ` estende-se a `Re s > θ` e não
+   há zeros lá (`Unilateral.semZeros_of_ext_mertens`).
+6. **Montagem.** Se `κ > 2(σ − Θ)`, tome `2(σ − Θ) < δ < κ` e `N = ⌊x⌋`. Os passos 2 e a taxa dão
+   `‖G_σ(x)‖ ≪ x^{σ−δ/2}`, com `σ − δ/2 < Θ`, contra `Unilateral.nao_semZeros`.
+
+Consequências: `Teta_le_de_taxa` (`Θ ≤ σ − κ/2`, a forma exata de `Teta_le_de_taxaDN`); `taxa_le_perfil`
+(`κ ≤ 2 max(σ − Θ, 0)` em `(0, 1)`); `nao_taxa`; `Gl_omega` (para `θ < Θ`, a Mertens suavizada não é `O(x^θ)`).
+
+Literatura (checagem da proposta R105): o análogo mais próximo é o piso polinomial de Burnol (2002, Nota 2.2); a cota
+de Balazard–Saias (1998) dá um teto implícito não ótimo; Manzur–Noor–Quintero (2026) é qualitativo. Não achamos o
+expoente exato `2(σ − Θ)` publicado. Essa é uma leitura de fontes, não uma prova de novidade.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| `κ(σ) = 2(σ − Θ)` em `(Θ, 1)` (`c` arbitrário); `PisoPonderado` | CERTIFIED | novo |
+| RH ⟺ `TaxaDN σ₀ (2σ₀ − 1)` num único `σ₀ ∈ (½, 1)`; `Θ ≤ σ − κ/2` | CERTIFIED | reformulação |
+| `(2π)²‖G_σ(x)‖² ≤ 2πBx^{2σ}D_N(σ)`; `G = Σ μ(n)ψ(n/x)`; `‖G‖ ≪ x^θ ⟹ ζ ≠ 0` em `Re s > θ` | CERTIFIED | ferramenta |
+| o valor de `Θ`; RH | OPEN_MATH | — |
+
+O enunciado em `(Θ, 1)` é vazio se `Θ = 1` (`Θ < 1` também é OPEN_MATH).
+
+Numérico (`codigo/bd_piso_exato.py`, `dados/bd_piso_exato.json`, `testes/test_bd_piso_exato.py`, 2 testes):
+* `∫_1^∞ t^{s−1}ψ(t) dt = K(s)` em `s = 0,5; 1; 1,5` por quadratura (erro ≤ `10⁻¹¹`);
+* `G(x)` por caudas exatas (`φ` é polinomial em `y ≤ 1`: `G = (x²/2)T₂ − x³T₃ + (x⁴/2)T₄`,
+  `T_k = 1/ζ(k) − Σ_{n ≤ x} μ(n)/n^k`, 60 dígitos) confere com `Σ_{n ≤ 4·10⁵} μ(n)ψ(n/x)` em `x = 2, 7, 10, 25`;
+* até `10⁵`, `max |G(N)|/√N = 1,08·10⁻³` em cada década de `10²` a `10⁵`, com 42 trocas de sinal. Sob RH,
+  `G(x) = Σ_ρ x^ρK(ρ)/ζ′(ρ) + O(x^{−2})`. Isso é consistência, não medida de `Θ` (barreira B2).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |

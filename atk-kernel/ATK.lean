@@ -428,3 +428,4 @@ import ATK.FracoesMalha
 import ATK.FracoesMalhaZeros
 import ATK.FracoesLinearizacao
 import ATK.FracoesPrimons
+import ATK.ZeroClasses.BDPisoExato
