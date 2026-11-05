@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 1f002f591987f141cd38570a2361e04a08977cc3424475201edc031d8f03989e
+# axiomas por teorema — congelamento de 65198347440b822f21fb3f26f0d970a651ccfcabc4cfb3ecac4f88a4c3ddbb5f
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8741,3 +8741,27 @@ ATK.Fracoes.SATMedia.card_padrao_oito	propext, Classical.choice, Quot.sound
 ATK.Fracoes.SATMedia.card_satisfaz	propext, Classical.choice, Quot.sound
 ATK.Fracoes.SATMedia.media_sete_oitavos	propext, Classical.choice, Quot.sound
 ATK.Fracoes.SATMedia.existe_sete_oitavos	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.translacao	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.re_ponto	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.im_ponto	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.espelho	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.norm_espelho	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.pontos_reais	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.anel_direita	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.hasSum_inv_sq_desde_dois	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.zeta_sub_um_le	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.pi_quad	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.dois_rpow_le	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.anel_perto_de_um	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.centro_600270	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.deslocamento	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.recorrencia	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.a_pos	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.a_perto_de_um	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.a_cotas	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.passo_desce	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.passo_sobe	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.minimo_em_tres	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Malha.minimo_global	propext, Classical.choice, Quot.sound
+ATK.Fracoes.MalhaZeros.ponto_oito	propext, Classical.choice, Quot.sound
+ATK.Fracoes.MalhaZeros.anel_oito_minimo	propext, Classical.choice, Quot.sound
