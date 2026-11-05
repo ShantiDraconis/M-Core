@@ -1,7 +1,7 @@
 # Critério de Li: truncagens, o sinal e a obstrução de Davenport–Heilbronn (rodada 108)
 
 Kernel: `atk-kernel/ATK/LiTruncado.lean` (27 teoremas, só Mathlib) e `atk-kernel/ATK/LiTruncadoPonte.lean` (2).
-Numérico: `codigo/li_tabela.py`, `dados/lambda_ate_10000.tsv`, `testes/test_li.py`.
+Numérico: `codigo/li_tabela.py`, `dados/lambda_ate_10000.tsv`, `testes/test_rodada108_li.py`.
 Classificação: **reformulação/consequência**. RH continua `OPEN_MATH`.
 
 ## 1. De onde veio
