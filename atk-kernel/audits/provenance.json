@@ -1,6 +1,6 @@
 {
   "schema": "atk-kernel.freeze.v1",
-  "sources_sha256": "c68592bf1f0232fa82ec0a86281a53c7e8a60f933b86b1d3a31d9432e8a13439",
+  "sources_sha256": "7b3e4dcaa0167395b370e487157c29922ac4844f4b071ba4048e77e487a01a16",
   "files": {
     "ATK/ASWReciproca.lean": "587b2b9e262aa330a60b8dee12bf77acdd75abaedb99acade9916d92779e6709",
     "ATK/ATKI.lean": "25b2cc254f3718260080f8924f72a82d4592a379bf4923a087099af5afab39b5",
@@ -172,9 +172,11 @@
     "ATK/FracoesEscala.lean": "6ee9ab8d8b05c5124cb0e21f9152811bce5ed810368c01d15a558559320eaeb8",
     "ATK/FracoesGama.lean": "10912758d33ba745cf223e6493c0966d0a5a98e7c7c26f94ac555a51c3604064",
     "ATK/FracoesGamaZeros.lean": "3f5fb5bdfe6eb59b5b6e92ed23959183e1f5add2a24baf0c03805e3af89492ce",
+    "ATK/FracoesLinearizacao.lean": "a012f9a04ce08016a92d04bca9ba2cf1bd8bb68f0dc54e8639299326efa64764",
     "ATK/FracoesMalha.lean": "2911a1ce1f04ec649c728ee7147414b09272cb9bc8f46550c3cf07ecc45a8541",
     "ATK/FracoesMalhaZeros.lean": "a7e61e2e4c53dae7d21c68eb9b6c0b13130824bd4202c579bd7deb48885f83c1",
     "ATK/FracoesParRecorde.lean": "cc49bec8a363ae05f340fac132b5635924f029d0e2a7a9d895580a0410009764",
+    "ATK/FracoesPrimons.lean": "314a7f96b53a60a35284f44217dba96a2ed7ed926447cc38e6949ff6fdb3bda8",
     "ATK/FracoesSAT.lean": "e50f7552139d4cd8798084c82540b54998d0a53d3b55d6ce1e853d83fce4e6b4",
     "ATK/FracoesSATMedia.lean": "2e74f4ca6d74112e01439737e69ff92e636d367d6c6f18e398d6339610962c64",
     "ATK/Fragmentos.lean": "a408b89e8737ef09c654b619f68036b51e36b1d577ff1a247727daf463d0f374",
@@ -471,12 +473,12 @@
     "ATK/ZetaSimetria.lean": "b69eed771ea2e61c424ff33f5891ee595a05d3c8a2857a5bec11060f876d4acf",
     "ATK/ZetaStrip.lean": "202994e0bf413c54bf1d4eedd1448e5777732bbd4d15df40ac24f9377074624e",
     "ATK/ZetaTroca.lean": "bd801a092e61b6f87f8c54372cd2942ee6da1e438ec6020241a78e8d7fe5947d",
-    "ATK.lean": "38c06acffbb209e29b287b94f03b2a0b4e0a2c2a3d8d2b4bbca7d756e72c8a5a"
+    "ATK.lean": "d49ae0c6f08532df4c8db52f331d58003eb2860832cec1a96c16858468a51345"
   },
-  "n_files": 470,
-  "expected_theorems": 8794,
+  "n_files": 472,
+  "expected_theorems": 8819,
   "lean_toolchain": "leanprover/lean4:v4.34.1",
   "mathlib_rev": "d13f23b723b8a846827a245b89c10fc7d3f11612",
-  "commit_at_freeze": "b5d0164be09614fee8b07ab100e163f240dc600b",
+  "commit_at_freeze": "11425838de0c69ee9becffed847d6ffca6ec3b99",
   "authority": "O certificado é o CI (check-run 'Lean 4 + Mathlib — compilação e auditoria de axiomas'), que recompila tudo e imprime o mesmo sources_sha256."
 }

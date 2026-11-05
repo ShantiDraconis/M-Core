@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de c68592bf1f0232fa82ec0a86281a53c7e8a60f933b86b1d3a31d9432e8a13439
+# axiomas por teorema — congelamento de 7b3e4dcaa0167395b370e487157c29922ac4844f4b071ba4048e77e487a01a16
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8765,6 +8765,31 @@ ATK.Fracoes.Malha.minimo_em_tres	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Malha.minimo_global	propext, Classical.choice, Quot.sound
 ATK.Fracoes.MalhaZeros.ponto_oito	propext, Classical.choice, Quot.sound
 ATK.Fracoes.MalhaZeros.anel_oito_minimo	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Linearizacao.K_pos	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Linearizacao.formula_exata	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Linearizacao.linearizacao	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Linearizacao.anel_oito_linear	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.peso_pos	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.peso_zero	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.peso_add	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.peso_vacuo	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.peso_le_um	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.peso_le_lacuna	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.peso_um	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.Sp_apply	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.re_conj_mul_self	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.soma_vacuo_dir	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.soma_vacuo_esq	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.B_def	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.conexa	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.conexa_le	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.lacuna_primons	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.norm_ι_sq	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.lacuna_atingida	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.diagonal	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.traco_tende_zeta	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.termo_le	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Primons.traco_conexo_le	propext, Classical.choice, Quot.sound
 ATK.LiTrunc.w_eq	propext, Classical.choice, Quot.sound
 ATK.LiTrunc.normSq_pos_re_im	propext, Classical.choice, Quot.sound
 ATK.LiTrunc.norm_w_sq	propext, Classical.choice, Quot.sound
