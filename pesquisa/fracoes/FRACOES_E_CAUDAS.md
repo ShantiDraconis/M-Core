@@ -241,3 +241,35 @@ em `σ = 3`, `ζ(3) − 1 = 0,2021 ≤ 0,3225`. A lacuna em fração: `e^{−σ 
 O que **não** é: Yang–Mills em ℝ⁴. O gás de primos é um sistema de modos livres e a lacuna `log 2` é a
 distância entre os dois primeiros níveis `log 1` e `log 2`; o que a ponte prova é que "cauda `e^{−mt}` ⟺ lacuna
 `m`" é a mesma lei nos dois lados. RH e YM continuam `OPEN_MATH`.
+
+## 11. Rodada 107: as pontes para RH — gás fermiônico e zeros triviais simples (`ATK/FracoesFermions.lean`, `FracoesFermionsRH.lean`, `FracoesZerosTriviais.lean`)
+
+**O gás de primos fermiônico.** O mesmo espaço da rodada 106 com o sinal `(−1)^F = μ(n)`:
+
+| teorema | enunciado |
+| --- | --- |
+| `indice_witten` | `Σ_{d ∣ n} μ(d) = [n = 1]`: só o vácuo sobrevive |
+| `traco_fermionico` | `Σ μ(n) n^{−s} = 1/ζ(s)` em `Re s > 1` (soma convergente) |
+| **`semZeros_iff_continuaAte`** | para todo `θ`: `ζ ≠ 0` em `Re s > θ` ⟺ `1/ζ` tem continuação holomorfa a `Re s > θ` |
+| `continuaAte_iff_traco` | o mesmo com o traço: existe `F` holomorfa em `Re s > θ` igual a `Σ μ(n) n^{−s}` em `Re s > 1` |
+| **`rh_iff_continuaAte`**, `rh_iff_traco` | **RH ⟺ `1/ζ` continua até `Re s > ½`** |
+| **`c_eq_continua`**, `continuaAte_iff_c` | a abscissa sem zeros `c` (rodada 102) é a abscissa de holomorfia do traço fermiônico |
+
+A prova da volta é o princípio de identidade no semiplano `{Re s > θ, Im s > 0}` (convexo), a simetria
+`ζ(s̄) = conj ζ(s)` e a continuidade na reta real; a ida usa a singularidade removível em `s = 1`.
+
+**Zeros triviais simples** (fecha a identificação deixada fora do kernel na rodada 106):
+
+| teorema | enunciado |
+| --- | --- |
+| `seno_sobre`, `K_tende`, `quociente_tende` | `2|sin(πδ/2)|/δ → π`, `K_m(δ) → K_m(0)` e `|ζ(−2m−δ)|/δ → ‖ζ′(−2m)‖` |
+| `derivada_exata`, **`derivada_fatorial`** | `‖ζ′(−2m)‖ = πK_m(0) = (2m)!·|ζ(2m+1)|/(2(2π)^{2m})`, `m ≥ 1` |
+| **`zero_trivial_simples`** | `ζ′(−2m) ≠ 0`: todo zero trivial é simples |
+| `derivada_menos_dois` | `|ζ′(−2)| = ζ(3)/(4π²)` |
+
+Numérico (`derivadas_triviais`, `fermions`): `|ζ′(−2m)|` = 0,030448; 0,0079838; **0,0058998**; 0,0083162; 0,018930;
+0,063271; 0,29166 (`m = 1…7`; mínimo em `m = 3`, o mesmo do anel de centro 8); o quociente com `δ = 10⁻⁶` bate
+a `10⁻⁶`. `Σ_{n ≤ 10⁴} μ(n)/n² = 0,6079269` contra `6/π² = 0,6079271`; `M(10⁴) = −23`.
+
+O que fica aberto: a continuação de `Σ μ(n) n^{−s}` até `Re s > ½` (equivale a `M(x) = O(x^{½+ε})`, Littlewood,
+não formalizado) e a simplicidade dos zeros **não** triviais. RH continua `OPEN_MATH`.
