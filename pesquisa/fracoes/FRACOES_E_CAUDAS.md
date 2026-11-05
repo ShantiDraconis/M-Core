@@ -182,3 +182,29 @@ espaço de Hilbert físico, matriz de transferência `P(t) = e^{−tH}` autoadju
 exponencial das correlações conexas ⇒ lacuna `‖P(t)w‖ ≤ e^{−mt}‖w‖` (`lacuna_OS`, `lacuna_processo`), simetrias
 ⇒ isometrias que comutam com `e^{−tH}`, e o exemplo em `ℂ²` com a cota atingida. É a cauda `e^{−mt}` de YM da
 §1 como teorema abstrato. Falta a medida de Yang–Mills em `S′(ℝ⁴)` (O8). B7 continua `PUBLICADA_NAO_FORMALIZADA`.
+
+## 9. Rodada 105: a malha de 16 direções em torno de `γ₁` (`ATK/FracoesMalha.lean`, `FracoesMalhaZeros.lean`)
+
+Malha `s_{c,k} = c + h e^{ikπ/8}`, `h = γ₁`, centros pares. O que é lei (kernel):
+
+| teorema | enunciado |
+| --- | --- |
+| `translacao`, `re_ponto`, `im_ponto` | `s_{c+2,k} = s_{c,k} + 2`; `Re = c + h cos(kπ/8)`, `Im = h sin(kπ/8)` |
+| `espelho`, `norm_espelho` | `s_{c,16−k} = conj s_{c,k}` e `|ζ|` é igual nos dois (Schwarz). A translação **não** é simetria de `|ζ|` |
+| `pontos_reais` | `2n ± h = 2(n ± 7) ± δ`, `δ = h − 14` |
+| `anel_direita` | `c ≥ 16` ⇒ anel inteiro em `Re s > 1`, `ζ ≠ 0` |
+| `zeta_sub_um_le`, `anel_perto_de_um`, `centro_600270` | `Re s = σ ≥ 2` ⇒ `|ζ(s) − 1| ≤ 2^{2−σ}(π²/6 − 1)`; no centro 600 270, `|ζ − 1| ≤ 2^{−600 253}` (≈ `10^{−180 695}`) |
+| `deslocamento` | `ζ(−1−s)·ζ(s)·4π² = −(s+1)s·ζ(s+2)·ζ(1−s)` (equação funcional duas vezes) |
+| `recorrencia`, `a_pos` | `|ζ(−2(m+1)−δ)|·|ζ(2m+1+δ)|·4π² = (2m+2+δ)(2m+1+δ)·|ζ(2m+3+δ)|·|ζ(−2m−δ)|`, e `ζ(−2m−δ) ≠ 0` |
+| `minimo_em_tres`, `minimo_global` | para `δ ∈ [0,13; 0,14]`, `|ζ(−2m−δ)|` decresce até `m = 3` e cresce depois: `(2m+1+δ)(2m+2+δ)` cruza `4π²` entre 2 e 3 |
+| `anel_oito_minimo` | com o `γ₁` certificado: no eixo de 180°, o anel de centro 8 tem o menor `|ζ|` entre todos os centros pares `≤ 12` |
+
+Valores (numéricos, equação funcional): `|ζ(−2m−δ)|` = 0,3922; 0,003538; 0,001019; **0,000793**; 0,001159; 0,002715;
+0,009289; 0,04368 para `m = 0,…,7` (centros 14, 12, …, 0). Linearização: `|ζ(−2m−δ)| ≈ δ·|ζ′(−2m)|`,
+`|ζ′(−2m)| = (2m)!ζ(2m+1)/(2(2π)^{2m})` (clássica, não formalizada); o mínimo de `(2m)!/(2π)^{2m}` está em `m = 3`.
+
+Correções ao texto analisado: (i) a fórmula `|ζ(−2m−δ)| = 2^{−δ}sin(πδ/2)Γ(2m+1+δ)ζ(2m+1+δ)/(π(4π²)^m)` perde o
+fator `π^{−δ}` (dá 0,000925 em vez de 0,000793 em `m = 3`); (ii) `2^{−600 255,865} ≈ 10^{−180 695}`, não
+`10^{−180 738}`; (iii) são 16 direções (8 retas), não 8; (iv) centros pares nunca passam por `Re s = ½`.
+
+Pontes (o que é estrutura comum e o que é analogia) estão na resposta da rodada e no PR. Nada aqui muda RH.

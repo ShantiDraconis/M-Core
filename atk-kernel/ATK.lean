@@ -424,3 +424,5 @@ import ATK.OSTransferencia
 import ATK.OSProcesso
 import ATK.OSSimetria
 import ATK.OSExemplo
+import ATK.FracoesMalha
+import ATK.FracoesMalhaZeros
