@@ -208,3 +208,36 @@ fator `π^{−δ}` (dá 0,000925 em vez de 0,000793 em `m = 3`); (ii) `2^{−600
 `10^{−180 738}`; (iii) são 16 direções (8 retas), não 8; (iv) centros pares nunca passam por `Re s = ½`.
 
 Pontes (o que é estrutura comum e o que é analogia) estão na resposta da rodada e no PR. Nada aqui muda RH.
+
+## 10. Rodada 106: a lei de linearização e o gás de primos (`ATK/FracoesLinearizacao.lean`, `FracoesPrimons.lean`)
+
+**Lei de linearização** (consequência da equação funcional; fecha a lacuna "clássica, não formalizada" do §9):
+
+| teorema | enunciado |
+| --- | --- |
+| `K_pos` | `K_m(δ) = (2π)^{−(2m+1+δ)}·Γ(2m+1+δ)·|ζ(2m+1+δ)| > 0` |
+| `formula_exata` | `|ζ(−2m−δ)| = 2·|sin(πδ/2)|·K_m(δ)` para `0 < δ < 1` — **igualdade**, sem aproximação |
+| `linearizacao` | `2δ·K_m(δ) ≤ |ζ(−2m−δ)| ≤ πδ·K_m(δ)`: `|ζ|` é linear na distância `δ` ao zero trivial, com constantes de dois lados |
+| `anel_oito_linear` | `δ ∈ [0,13; 0,14]`, `m = 3` (centro 8): `0,26·K₃ ≤ |ζ(−6−δ)| ≤ 0,45·K₃` |
+
+Com `δ = γ₁ − 14`: `a/K = 2 sin(πδ/2) = 0,4201` (entre `2δ = 0,2695` e `πδ = 0,4233`). Quando `δ → 0`,
+`πK_m(0) = |ζ′(−2m)|` (a identificação com a derivada continua fora do kernel).
+
+**Gás de primos** (ponte RH ↔ YM no nível que é teorema). Modos `n = 1, …, N+1`, energia `log n`,
+`S(t) = diag(n^{−t}) = e^{−tH}`, vácuo `n = 1`:
+
+| teorema | enunciado |
+| --- | --- |
+| `primons` | os axiomas de Osterwalder–Schrader (`DadosOS`, rodada 104) valem: forma positiva, semigrupo, simetria, vácuo |
+| `conexa`, `conexa_le` | correlação conexa `= Σ_{n ≥ 2} n^{−t}|f_n|² ≤ C·e^{−(log 2)t}` |
+| `lacuna_primons` | pela reconstrução OS: `‖P(t)w‖ ≤ e^{−(log 2)t}‖w‖` para `w ⊥ Ω` — **massa `log 2`** |
+| `lacuna_atingida` | o modo `n = 2` atinge a cota com igualdade: `log 2` é a massa exata |
+| `diagonal`, `traco_tende_zeta` | `⟨eₙ, e^{−σH}eₙ⟩ = n^{−σ}` e `Σ_{n ≤ N+1} n^{−σ} → ζ(σ)` (`σ > 1`): **`ζ(σ) = Tr e^{−σH}`** |
+| `termo_le`, `traco_conexo_le` | traço conexo `≤ 2^{2−σ}(π²/6 − 1)` para `σ ≥ 2`, uniforme em `N` (a cauda `|ζ − 1|` do §9 como lacuna) |
+
+Numérico (`primons`): em `σ = 2` a cota do traço conexo é atingida no limite (`ζ(2) − 1 = π²/6 − 1`);
+em `σ = 3`, `ζ(3) − 1 = 0,2021 ≤ 0,3225`. A lacuna em fração: `e^{−σ log 2} = 1/4, 1/8, 1/16` (`σ = 2, 3, 4`).
+
+O que **não** é: Yang–Mills em ℝ⁴. O gás de primos é um sistema de modos livres e a lacuna `log 2` é a
+distância entre os dois primeiros níveis `log 1` e `log 2`; o que a ponte prova é que "cauda `e^{−mt}` ⟺ lacuna
+`m`" é a mesma lei nos dois lados. RH e YM continuam `OPEN_MATH`.

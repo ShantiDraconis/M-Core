@@ -19,6 +19,9 @@ Cada problema é olhado como uma *cauda* com um expoente:
   `e^{2β} = 3` — cauda exponencial em fração (lei de área, tensão `log 2`).
 * P vs NP — `sat`: média exata `7/8` das cláusulas satisfeitas; passeio de Schöning contra `(3/4)ⁿ`.
 * Hodge — `euler`: `V − E + F = 2` e os defeitos angulares (Descartes) em frações de `π`.
+* Rodada 106 — `linearizacao`: `|ζ(−2m−δ)| = 2 sin(πδ/2)·K_m(δ)` com `K_m = (2π)^{−(2m+1+δ)}Γ(2m+1+δ)ζ(2m+1+δ)`
+  (`FracoesLinearizacao.lean`); `primons`: o gás de primos `Tr e^{−σH} = Σ (n+1)^{−σ} → ζ(σ)` e a lacuna
+  `log 2` (`FracoesPrimons.lean`).
 """
 import json
 import math
@@ -478,6 +481,52 @@ def euler():
     return out
 
 
+# ---------------------------------------------------------------- rodada 106
+
+_B2K = [F(1, 6), F(-1, 30), F(1, 42), F(-1, 30), F(5, 66), F(-691, 2730), F(7, 6), F(-3617, 510)]
+
+
+def zeta_real(s, N=30):
+    """ζ(s) para s real > 1 (Euler–Maclaurin com 8 termos de Bernoulli); erro ≪ 1e-15 para s ≥ 1,05."""
+    z = sum(n ** -s for n in range(1, N)) + N ** (1 - s) / (s - 1) + N ** -s / 2
+    fat, poch = 1.0, 1.0
+    for k, b in enumerate(_B2K, start=1):
+        fat *= (2 * k - 1) * (2 * k)
+        poch *= (s + 2 * k - 2) if k == 1 else (s + 2 * k - 3) * (s + 2 * k - 2)
+        z += float(b) / fat * poch * N ** (-s - 2 * k + 1)
+    return z
+
+
+GAMA1 = 14.134725141734693
+
+
+def linearizacao(delta=GAMA1 - 14, ms=range(8)):
+    """|ζ(−2m−δ)| = 2 sin(πδ/2)·K_m(δ) (equação funcional; `formula_exata`) e a cota 2δ ≤ a/K ≤ πδ."""
+    linhas = []
+    for m in ms:
+        x = 2 * m + 1 + delta
+        K = (2 * math.pi) ** (-x) * math.gamma(x) * zeta_real(x)
+        a = 2 * abs(math.sin(math.pi * delta / 2)) * K
+        linhas.append({"m": m, "centro": 14 - 2 * m, "K": K, "abs_zeta": a, "a_sobre_K": a / K})
+    return {"delta": delta, "cota_inferior_2delta": 2 * delta, "cota_superior_pi_delta": math.pi * delta,
+            "anel_oito_linear": [0.26, 0.45], "linhas": linhas,
+            "minimo_m": min(linhas, key=lambda r: r["abs_zeta"])["m"]}
+
+
+def primons(sigmas=(2, 3, 4), Ns=(10, 100, 1000)):
+    """Gás de primos: Tr_N e^{−σH} = Σ_{i ≤ N} (i+1)^{−σ} → ζ(σ) (`traco_tende_zeta`); parte conexa
+    ≤ 2^{2−σ}(π²/6 − 1) (`traco_conexo_le`); lacuna e^{−t·log 2} = 2^{−t} (`peso_um`, `lacuna_atingida`)."""
+    out = {}
+    for sg in sigmas:
+        z = zeta_real(sg)
+        tr = {str(N): sum((i + 1) ** -sg for i in range(N + 1)) for N in Ns}
+        out[str(sg)] = {"zeta": z, "traco": tr, "resto": {k: z - v for k, v in tr.items()},
+                        "conexo": z - 1, "cota_conexo": 2 ** (2 - sg) * (math.pi ** 2 / 6 - 1),
+                        "lacuna_fracao": str(F(1, 2 ** sg))}
+    out["lacuna"] = "log 2: o primeiro estado excitado (n = 2) pesa 2^{−t}; atingida, não só cota"
+    return out
+
+
 def main(saida=None, P=10000, rapido=False):
     out = {
         "zeros": zeros(),
@@ -494,6 +543,8 @@ def main(saida=None, P=10000, rapido=False):
         "sat": sat(),
         "schoening": schoening(tentativas=500 if rapido else 4000),
         "euler": euler(),
+        "linearizacao": linearizacao(),
+        "primons": primons(),
         "aviso": "numérico; nada aqui é certificado — os teoremas estão em atk-kernel/ATK/Fracoes*.lean",
     }
     if saida is None:
