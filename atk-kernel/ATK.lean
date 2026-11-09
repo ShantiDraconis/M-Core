@@ -431,3 +431,4 @@ import ATK.FracoesPrimons
 import ATK.FracoesFermions
 import ATK.FracoesFermionsRH
 import ATK.FracoesZerosTriviais
+import ATK.ZeroClasses.BDPisoExato
