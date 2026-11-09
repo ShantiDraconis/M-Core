@@ -428,4 +428,7 @@ import ATK.FracoesMalha
 import ATK.FracoesMalhaZeros
 import ATK.FracoesLinearizacao
 import ATK.FracoesPrimons
+import ATK.FracoesFermions
+import ATK.FracoesFermionsRH
+import ATK.FracoesZerosTriviais
 import ATK.ZeroClasses.BDPisoExato

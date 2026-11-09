@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 616bf0cd7cb950809e7aee47dc880b027ff073ca1d65fe255862838182a4bf59
+# axiomas por teorema — congelamento de 8269f20ad8fb3a0983ea00175e4529615a0db612ce8450cc4e20ae42c9123464
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8790,6 +8790,37 @@ ATK.Fracoes.Primons.diagonal	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Primons.traco_tende_zeta	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Primons.termo_le	propext, Classical.choice, Quot.sound
 ATK.Fracoes.Primons.traco_conexo_le	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.indice_witten	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.traco_fermionico_eq	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.traco_fermionico	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.inv_zeta_tende_zero	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.inversa_de_ne	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.continuaAte_of_semZeros	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.U_aberto	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.U_convexo	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.chave	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.semZeros_of_continuaAte	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.semZeros_iff_continuaAte	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.continuaAte_iff_traco	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.continuaAte_mono	propext, Classical.choice, Quot.sound
+ATK.Fracoes.Fermions.continuaAte_um	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.seno_sobre	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.K_tende	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.zeta_menos_dois_m	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.nao_um	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.zeta_real_hasDerivAt	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.quociente_tende	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.derivada_exata	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.K_zero	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.derivada_fatorial	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.a_impar_pos	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.zero_trivial_simples	propext, Classical.choice, Quot.sound
+ATK.Fracoes.ZerosTriviais.derivada_menos_dois	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.semZeros_iff	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.rh_iff_continuaAte	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.rh_iff_traco	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.continuaAte_iff_c	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.c_eq_continua	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoExato.psi_eq_zero	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoExato.psi_nonneg	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoExato.continuousAt_psi	propext, Classical.choice, Quot.sound
