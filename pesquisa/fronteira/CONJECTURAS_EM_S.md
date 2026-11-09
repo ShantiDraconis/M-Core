@@ -34,7 +34,7 @@ Os zeros não triviais do produto são a união, então `Θ` é o máximo.
 | `ζ_K(s)`, `[K : ℚ] = n` | `n` | `\|D_K\|` | `0^{r₁+r₂}, 1^{r₂}` | 1 | 1 | pode ser `> 0` (Armitage 1972) |
 | `L*(E, s) = L(E, s + ½)` | 2 | `N_E` | `(½, 3/2)` | `w_E` | 0 | `r_an(E)` |
 | `L*(f, s)`, nova de peso `k`, nível `N` | 2 | `N` | `((k−1)/2, (k+1)/2)` | `±1` | 0 | — |
-| `L*(H^w(X), s) = L(H^w(X), s + w/2)` | `b_w` | condutor de `X` | dado pelos `h^{p,q}` (Serre 1970) | — | Tate (abaixo) | — |
+| `L*(H^w(X), s) = L(H^w(X), s + w/2)` | `b_w` | condutor de `X` | dado pelos `h^{p,q}` e, em `H^{p,p}`, por `h^{p,±}` (ação de `F_∞`; Serre 1970) | — | Tate (abaixo) | — |
 
 As conjecturas como enunciados sobre `P(F)`:
 
@@ -44,9 +44,13 @@ As conjecturas como enunciados sobre `P(F)`:
   soma: `r(∏ L*(E_i)) = Σ rank E_i(ℚ)` é **mais fraco** que BSD para cada uma.
 * **Tate** (a forma aritmética de Hodge): `−ord_{s=1} L*(H^{2p}(X), s)` = posto dos ciclos algébricos de codimensão `p`
   sobre o corpo de definição. Para `X` = ponto (`p = 0`) é o polo simples de `ζ_K` em `s = 1`.
-* **Hodge** sobre `ℂ` não tem função `L`. A única entrada de `X/ℂ` no monoide são os números de Hodge `h^{p,q}`, que
-  fixam o fator `Γ` de `L(H^w(X), s)` (Serre 1970). Hodge é teorema para `p = 1` (Lefschetz (1,1)); Tate para divisores
-  de variedades abelianas sobre corpos de números segue de Faltings (1983). Hodge e Tate não são equivalentes.
+* **Hodge** sobre `ℂ` não tem função `L`. Para `X` definida sobre um corpo de números, a única entrada da teoria de Hodge
+  no monoide é o fator `Γ` de `L(H^w(X), s)`. Ele é fixado pelos números `h^{p,q}` e, em peso par, pela decomposição
+  `h^{p,p} = h^{p,+} + h^{p,−}` sob a conjugação complexa `F_∞` (Serre 1970); os `h^{p,q}` sozinhos não bastam. Exemplo:
+  corpos quadráticos reais e imaginários têm ambos `h^{0,0} = 2`, com fatores `Γ_ℝ(s)²` e `Γ_ℝ(s)Γ_ℝ(s+1)`.
+  Hodge é teorema para `p = 1` (Lefschetz (1,1)). Para divisores de variedades abelianas sobre corpos de números, Faltings
+  (1983) prova a forma **cohomológica** de Tate (as classes invariantes por Galois são algébricas); a forma com polo acima
+  exige ainda a continuação analítica e a ordem do polo de `L`, que não seguem disso. Hodge e Tate não são equivalentes.
 * **Beal** entra pelo **condutor**. No método modular, a curva de Frey de uma solução tem condutor dado pelo radical de
   `abc` (a menos da parte em 2); para FLT (`p ≥ 5`) o rebaixamento de nível leva a uma forma nova de nível 2, e
   `S₂(Γ₀(2)) = 0`. Fora dos casos de assinatura resolvidos (Darmon–Merel `(p, p, 2)`, `(p, p, 3)`), não há enunciado
@@ -112,7 +116,7 @@ o elo com funções `L` é o condutor da curva de Frey (§1).
 
 ## 4. O que não se junta
 
-* **Hodge sobre `ℂ`**, além dos `h^{p,q}` no fator `Γ`.
+* **Hodge sobre `ℂ`**, além da estrutura de Hodge real (`h^{p,q}`, `h^{p,±}`) no fator `Γ`.
 * **Poincaré** (teorema). A `ζ` espectral do Laplaciano tem abscissa `d/2` (Weyl), que só vê a dimensão; o espectro não
   determina a topologia (Vignéras 1980).
 * **P vs NP e NS** com qualquer função `L`: não há produto de Euler, fatoração única nem simetria espectral; a letra `s`
@@ -126,7 +130,7 @@ o elo com funções `L` é o condutor da curva de Frey (§1).
 | GRH | `s` de Riemann | `Θ(F)` | `Θ = ½` (junta por produto) | monoide `L` |
 | BSD | `s` de Riemann | `r`, coeficiente líder | `r = rank`, fórmula de BSD | monoide `L` |
 | Tate / Hodge aritmético | `s` de Riemann | `m` em `s = 1` | `m` = posto dos ciclos | monoide `L` |
-| Hodge (`ℂ`) | — | `h^{p,q}` (só no fator `Γ`) | `Hdg^p` gerado por ciclos | nenhuma |
+| Hodge (`ℂ`) | — | `h^{p,q}`, `h^{p,±}` (só no fator `Γ`) | `Hdg^p` gerado por ciclos | nenhuma |
 | Beal | — | `χ(x, y, z)`; condutor de Frey | sem solução primitiva com `χ ≤ 0` | condutor ⟶ monoide |
 | YM | tempo euclidiano `β = s` | `Δ` | `Δ > 0` | abscissa |
 | P vs NP | `s` de Dirichlet | `Θ_P` | `Θ_P < ∞ ⟺ P = NP` | abscissa (elementar) |

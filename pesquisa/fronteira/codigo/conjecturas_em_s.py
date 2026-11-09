@@ -17,6 +17,19 @@ import os
 from fractions import Fraction
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
+TOL_ZETA = 1e-12
+TOL_BSD = 1e-9
+ZETA_MEIO = -1.4603545088095868
+REG_37A1 = 0.0511114082399688  # regulador de 37a1 (Cremona)
+
+
+class FalhaConferencia(Exception):
+    pass
+
+
+def confere(ok, msg):
+    if not ok:
+        raise FalhaConferencia(msg)
 
 
 def zeta_borwein(s, n=60):
@@ -51,15 +64,16 @@ def ap(a, p):
 def coef(a, N, M):
     an = [0] * (M + 1)
     an[1] = 1
-    apv = {p: ap(a, p) for p in primos(M)}
+    ps = primos(M)
+    apv = {p: ap(a, p) for p in ps}
     for n in range(2, M + 1):
-        m, p = n, None
-        for q in primos(int(n ** 0.5) + 1):
-            if m % q == 0:
+        p = n
+        for q in ps:
+            if q * q > n:
+                break
+            if n % q == 0:
                 p = q
                 break
-        if p is None:
-            p = n
         k, m = 0, n
         while m % p == 0:
             m //= p
@@ -161,13 +175,15 @@ def main(saida=None):
     z12 = zeta_borwein(0.5)
     c11 = curva("11a1", (0, -1, 1, -10, -20), 11, 0)
     c37 = curva("37a1", (0, 0, 1, -1, 0), 37, 1)
-    assert abs(z12 + 1.4603545088095868) < 1e-12
-    assert c11["epsilon"] == 1 and abs(c11["razao"] - 0.2) < 1e-9
-    assert c37["epsilon"] == -1 and abs(c37["razao"] - 0.0511114082399688) < 1e-9
+    confere(abs(z12 - ZETA_MEIO) < TOL_ZETA, f"ζ(½) = {z12!r}, esperado {ZETA_MEIO!r}")
+    confere(c11["epsilon"] == 1, f"ε(11a1) = {c11['epsilon']}, esperado +1")
+    confere(abs(c11["razao"] - 0.2) < TOL_BSD, f"L(11a1, 1)/Ω = {c11['razao']!r}, esperado 1/5")
+    confere(c37["epsilon"] == -1, f"ε(37a1) = {c37['epsilon']}, esperado −1")
+    confere(abs(c37["razao"] - REG_37A1) < TOL_BSD, f"L′(37a1, 1)/Ω = {c37['razao']!r}, esperado Reg = {REG_37A1!r}")
     produto = {"fatores": ["zeta", "L*(11a1)", "L*(37a1)"], "grau": 1 + 2 + 2, "condutor": 1 * 11 * 37,
                "epsilon": 1 * c11["epsilon"] * c37["epsilon"], "polo_em_1": 1 + 0 + 0,
                "ordem_em_meio": 0 + 0 + 1}
-    assert produto["epsilon"] == (-1) ** produto["ordem_em_meio"]
+    confere(produto["epsilon"] == (-1) ** produto["ordem_em_meio"], "paridade ε = (−1)^r falhou no produto")
     chi = {f"{x},{y},{z}": str(Fraction(1, x) + Fraction(1, y) + Fraction(1, z) - 1)
            for (x, y, z) in ((3, 3, 3), (3, 3, 4), (3, 3, 5), (3, 4, 4), (4, 4, 4), (3, 3, 6))}
     out = {"zeta_meio": z12, "curvas": [c11, c37], "produto": produto, "beal_chi": chi,
