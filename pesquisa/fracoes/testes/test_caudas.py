@@ -99,3 +99,15 @@ def test_rodada106_linearizacao_e_primons():
         assert P[sg]["conexo"] <= P[sg]["cota_conexo"] + 1e-12
     assert abs(P["2"]["zeta"] - math.pi ** 2 / 6) < 1e-14
     assert P["3"]["lacuna_fracao"] == "1/8"
+
+
+def test_rodada107_derivadas_e_fermions():
+    # |ζ′(−2m)| = (2m)!ζ(2m+1)/(2(2π)^{2m}): o quociente |ζ(−2m−δ)|/δ converge para ela
+    d = caudas.derivadas_triviais()
+    assert abs(d["linhas"][0]["derivada_exata"] - 0.030448457058393) < 1e-13  # ζ(3)/(4π²)
+    assert min(d["linhas"], key=lambda r: r["derivada_exata"])["m"] == 3
+    assert all(r["erro_relativo_menor_delta"] < 1e-5 for r in d["linhas"])
+    # gás fermiônico: Σ μ(n) n^{−σ} → 1/ζ(σ), índice de Witten, M(10⁴) = −23
+    f = caudas.fermions()
+    assert abs(f["2"]["traco"]["10000"] - 6 / math.pi ** 2) < 1e-6
+    assert f["witten_ate_200"] and f["mertens"]["M(N)"] == -23

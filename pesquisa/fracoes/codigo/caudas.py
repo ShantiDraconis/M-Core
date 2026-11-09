@@ -22,6 +22,8 @@ Cada problema é olhado como uma *cauda* com um expoente:
 * Rodada 106 — `linearizacao`: `|ζ(−2m−δ)| = 2 sin(πδ/2)·K_m(δ)` com `K_m = (2π)^{−(2m+1+δ)}Γ(2m+1+δ)ζ(2m+1+δ)`
   (`FracoesLinearizacao.lean`); `primons`: o gás de primos `Tr e^{−σH} = Σ (n+1)^{−σ} → ζ(σ)` e a lacuna
   `log 2` (`FracoesPrimons.lean`).
+* Rodada 107 — `derivadas_triviais`: `|ζ′(−2m)| = (2m)!ζ(2m+1)/(2(2π)^{2m})` contra o quociente `|ζ(−2m−δ)|/δ`
+  (`FracoesZerosTriviais.lean`); `fermions`: `Σ μ(n) n^{−σ} → 1/ζ(σ)` e o índice de Witten (`FracoesFermions.lean`).
 """
 import json
 import math
@@ -527,6 +529,58 @@ def primons(sigmas=(2, 3, 4), Ns=(10, 100, 1000)):
     return out
 
 
+def derivadas_triviais(ms=range(1, 8), deltas=(1e-2, 1e-4, 1e-6)):
+    """|ζ′(−2m)| = (2m)!·ζ(2m+1)/(2(2π)^{2m}) (`derivada_fatorial`) contra |ζ(−2m−δ)|/δ (`formula_exata`)."""
+    linhas = []
+    for m in ms:
+        exata = math.factorial(2 * m) * zeta_real(2 * m + 1) / (2 * (2 * math.pi) ** (2 * m))
+        quoc = {}
+        for d in deltas:
+            x = 2 * m + 1 + d
+            K = (2 * math.pi) ** (-x) * math.gamma(x) * zeta_real(x)
+            quoc[f"{d:g}"] = 2 * abs(math.sin(math.pi * d / 2)) * K / d
+        linhas.append({"m": m, "derivada_exata": exata, "quociente": quoc,
+                       "erro_relativo_menor_delta": abs(quoc[f"{deltas[-1]:g}"] / exata - 1)})
+    return {"linhas": linhas, "menos_dois": "|ζ′(−2)| = ζ(3)/(4π²) = " + repr(zeta_real(3) / (4 * math.pi ** 2))}
+
+
+def moebius_crivo(N):
+    mu = [1] * (N + 1)
+    eh_primo = [True] * (N + 1)
+    for p in range(2, N + 1):
+        if eh_primo[p]:
+            for k in range(p, N + 1, p):
+                if k > p:
+                    eh_primo[k] = False
+                mu[k] = -mu[k]
+            for k in range(p * p, N + 1, p * p):
+                mu[k] = 0
+    mu[0] = 0
+    return mu
+
+
+def fermions(sigmas=(2, 3), Ns=(10, 100, 10000)):
+    """Gás fermiônico: Σ_{n ≤ N} μ(n) n^{−σ} → 1/ζ(σ) (`traco_fermionico`); índice de Witten
+    Σ_{d|n} μ(d) = [n = 1] (`indice_witten`); M(x) = Σ_{n ≤ x} μ(n) (a cauda que decide RH)."""
+    N = max(Ns)
+    mu = moebius_crivo(max(N, 200))  # o índice de Witten abaixo vai até n = 200
+    out = {}
+    for sg in sigmas:
+        alvo = 1 / zeta_real(sg)
+        out[str(sg)] = {"inverso_zeta": alvo,
+                        "traco": {str(n): sum(mu[k] * k ** -sg for k in range(1, n + 1)) for n in Ns}}
+    out["witten_ate_200"] = all(sum(mu[d] for d in range(1, n + 1) if n % d == 0) == (1 if n == 1 else 0)
+                                for n in range(1, 201))
+    M = 0
+    maxrazao = 0.0
+    for x in range(1, N + 1):
+        M += mu[x]
+        if x >= 10:
+            maxrazao = max(maxrazao, abs(M) / math.sqrt(x))
+    out["mertens"] = {"N": N, "M(N)": M, "max |M(x)|/sqrt(x), 10 <= x <= N": maxrazao}
+    return out
+
+
 def main(saida=None, P=10000, rapido=False):
     out = {
         "zeros": zeros(),
@@ -545,6 +599,8 @@ def main(saida=None, P=10000, rapido=False):
         "euler": euler(),
         "linearizacao": linearizacao(),
         "primons": primons(),
+        "derivadas_triviais": derivadas_triviais(),
+        "fermions": fermions(),
         "aviso": "numérico; nada aqui é certificado — os teoremas estão em atk-kernel/ATK/Fracoes*.lean",
     }
     if saida is None:
