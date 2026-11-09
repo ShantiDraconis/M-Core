@@ -5,6 +5,7 @@ mapas do que é conhecido e do que falta, testes numéricos e combinatórios bar
 dos achados que pareciam novos. Nada aqui prova uma conjectura; números finitos não decidem enunciados assintóticos.
 
 * `fronteira/<TÓPICO>_frontier.md` — estado da arte (out/2026), perguntas atacáveis, o que precisa ser criado, testes propostos.
+* `fronteira/CONJECTURAS_EM_S.md` — as conjecturas no `s` de Riemann (09/11/2026): o monoide das funções `L` (parâmetros `d, q, μ, ε, m, r, Θ` e a regra do produto), as abscissas de formato comum (YM, P vs NP, NS) e o que não se junta; números de `11a1`/`37a1` conferidos em `fronteira/codigo/`. Sem teoremas novos.
 * `testes/` — 1ª rodada: um relatório por teste (`<TÓPICO>_T<n>.md`), código em `testes/codigo/`, saídas em `testes/saidas/`.
 * `rodada2/` — 2ª rodada: revisões independentes (NS, Hodge) e o cálculo exato de D_N (RH); dados em `rodada2/dados/`.
 * `rodada3/` — RH: centro, tolerância, precisão e cauda de D_∞ (`RH_centro_Dinf.md`); certificado intervalar de D_256 (`certificado_D256/`).
