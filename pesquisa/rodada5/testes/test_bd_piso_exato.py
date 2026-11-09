@@ -16,7 +16,7 @@ def test_mellin_psi_e_serie():
     out = _out()
     # hasMellin_psi: ∫_1^∞ t^{s−1} ψ(t) dt = 1/((2 − s)(3 − s)(4 − s))
     for r in out["mellin_psi"]:
-        assert abs(r["quad"] - r["K"]) < 1e-8
+        assert abs(r["quad"] - r["K"]) < 1e-10
     # Gl_mobius: as caudas exatas conferem com a soma direta Σ_{n ≤ M} μ(n) ψ(n/x)
     for r in out["serie_direta"]:
         assert abs(r["direta"] - r["exata"]) <= r["erro_max_cauda"]
