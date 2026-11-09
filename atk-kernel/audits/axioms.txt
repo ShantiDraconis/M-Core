@@ -8816,8 +8816,8 @@ ATK.Fracoes.ZerosTriviais.derivada_fatorial	propext, Classical.choice, Quot.soun
 ATK.Fracoes.ZerosTriviais.a_impar_pos	propext, Classical.choice, Quot.sound
 ATK.Fracoes.ZerosTriviais.zero_trivial_simples	propext, Classical.choice, Quot.sound
 ATK.Fracoes.ZerosTriviais.derivada_menos_dois	propext, Classical.choice, Quot.sound
-ATK.Fracoes.FermionsRH.semZeros_iff	VER CI
-ATK.Fracoes.FermionsRH.rh_iff_continuaAte	VER CI
-ATK.Fracoes.FermionsRH.rh_iff_traco	VER CI
-ATK.Fracoes.FermionsRH.continuaAte_iff_c	VER CI
-ATK.Fracoes.FermionsRH.c_eq_continua	VER CI
+ATK.Fracoes.FermionsRH.semZeros_iff	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.rh_iff_continuaAte	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.rh_iff_traco	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.continuaAte_iff_c	propext, Classical.choice, Quot.sound
+ATK.Fracoes.FermionsRH.c_eq_continua	propext, Classical.choice, Quot.sound
