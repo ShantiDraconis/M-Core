@@ -1,4 +1,4 @@
-# axiomas por teorema — congelamento de 8269f20ad8fb3a0983ea00175e4529615a0db612ce8450cc4e20ae42c9123464
+# axiomas por teorema — congelamento de 0a62e5b47f03b3ad430bb539d9b48b537e99d54b9df4a2880c17b2ebfebed00b
 # padrão permitido: propext, Classical.choice, Quot.sound; 'VER CI' = não compilou neste ambiente
 ATK.BSD.regulator_det_identity	propext, Classical.choice, Quot.sound
 ATK.BSD.regulator_two_pos	propext, Classical.choice, Quot.sound
@@ -8882,3 +8882,39 @@ ATK.ZeroClasses.BDPisoExato.pisoPonderado	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoExato.rh_iff_taxa_um	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoExato.Teta_le_de_taxa	propext, Classical.choice, Quot.sound
 ATK.ZeroClasses.BDPisoExato.taxa_le_perfil	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.ClasseL.somavel_real	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.ClasseL.WF_nonneg	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.RetaBoa.holoM'	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.continuous_linha	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.integrable_pot	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.um_mais_sq_ge	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.inv_um_mais_sq_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.peso_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.integrable_KM	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.norm_P_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.continuous_P	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.integrable_resto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.integrable_B	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.piso_GF	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.piso_DNF	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.differentiableAt_fM	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.GF_desloca	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.GF_serie	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.norm_GF_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.continuousAt_GF	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.mellin_gUF	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.gUF_top	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.gUF_bot	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.anula_convexo	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.anula_limite	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.semZeros_de_extensao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.semZeros_de_cota	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.teto	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.rpow_metade	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.RetaBoa.mul	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.juncao	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.foldr_L_ne_zero	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.juncao_lista	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.retaBoa_zeta	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.taxaF_zeta_le	propext, Classical.choice, Quot.sound
+ATK.ZeroClasses.BDMonoide.juncao_zeta_dirichlet	propext, Classical.choice, Quot.sound

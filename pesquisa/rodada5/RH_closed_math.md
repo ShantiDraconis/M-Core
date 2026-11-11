@@ -4052,6 +4052,57 @@ Numérico (`codigo/bd_piso_exato.py`, `dados/bd_piso_exato.json`, `testes/test_b
 * até `10⁵`, `max |G(N)|/√N = 1,08·10⁻³` em cada década de `10²` a `10⁵`, com 42 trocas de sinal. Sob RH,
   `G(x) = Σ_ρ x^ρK(ρ)/ζ′(ρ) + O(x^{−2})`. Isso é consistência, não medida de `Θ` (barreira B2).
 
+## 4df. A taxa no monoide das funções `L`: teto e junção (rodada 110)
+
+Um arquivo, **36 teoremas** (total 8918), só os axiomas padrão (`ZeroClasses/BDMonoide.lean`). Proposta R110
+(issue #188), classe **novo**, parte 1. A rodada 109 provou `κ(σ) = 2(σ − Θ)` para `ζ`. Esta rodada leva o teto a
+uma classe abstrata de funções `L` fechada por produtos, onde a junção vale.
+
+**A classe `𝓛`** (`ClasseL`): `L` holomorfa em `Re s > 0` fora de `1`; `M = 1/L` holomorfa onde `L ≠ 0` e em `1`;
+`1/L = Σ μ(n) n^{−s}` absolutamente em `Re s > 1`. **Reta boa** (`RetaBoa 𝓛 σ A`): `0 < σ < 1`, `L ≠ 0` em
+`Re s ≥ σ`, `‖1/L‖ ≪ (1 + |Im s|)^η` para todo `η > 0` ali, e `‖L(σ + iτ)‖ ≪ (1 + |τ|)^A` com `A < 3/2`. A distância
+é `D_N^𝓛(σ) = inf_{c ∈ ℂ^N} (1/2π)∫ |1 − L(s)P_c(s)|²(1 + τ²)^{−2} dτ`. O peso `(1 + τ²)^{−2}` substitui `1/|s|²`
+porque, para `L` de grau maior, `L/s` pode não ser `L²` na reta.
+
+1. **Pareamento** (`piso_GF`, `piso_DNF`). Divide-se `(1 − LP)·x^s K/L` em `a·b`, com
+   `a = |1 − LP|(1 + τ²)^{−1}` e `b = x^σ|K/L|(1 + τ²)`. Os termos de `P` integram a zero (`inv_K_zero`), e
+   Cauchy–Schwarz dá `(2π)²‖G(x)‖² ≤ 2πB x^{2σ} D_N^𝓛(σ)` para `N ≤ x`. A integrabilidade de `a²` usa `A < 3/2`; a de
+   `b²` usa `η < 1/2`.
+2. **Série e Mellin** (`GF_desloca`, `GF_serie`, `mellin_gUF`). `G(x) = Σ μ(n)ψ(n/x)`, e `∫ u^{s−1}G(1/u) du = K(s)/L(s)`
+   em `1 < Re s < 2`. Só usa a convergência absoluta de `Σ μ(n) n^{−s}`; `μ(0)` não importa.
+3. **Continuação sem simetria** (`semZeros_de_extensao`). Se `H` é holomorfa em `θ < Re s < 3/2` e `H = K/L` em
+   `1 < Re s < 3/2`, então `H·L − K` se anula em cada meia-faixa convexa `{Im ≷ 0}` (teorema da identidade). Na reta
+   real, o anulamento sai por continuidade ao longo de `s₀ ± i/(n + 1)`. Logo `L ≠ 0` ali. Não usa equação funcional
+   nem conjugação.
+4. **Teto** (`teto`). Numa reta boa, `TaxaDNF σ κ ⟹ L ≠ 0` em `Re s > σ − κ/2`.
+5. **Junção** (`juncao`, `juncao_lista`, `foldr_L_ne_zero`). `ClasseL.mul` (`μ = μ₁ ⍟ μ₂`, `LSeries_convolution'`) e
+   `RetaBoa.mul` (expoentes de `L` somados, os de `1/L` divididos) fecham tudo por produto. A taxa do produto certifica
+   **todos** os fatores.
+
+Instâncias:
+* `ζ` (`classeZeta`) é incondicional; tem reta boa em todo `σ ∈ (Θ, 1)` (`retaBoa_zeta`, via `norm_F_le` e
+  `norm_zeta_linha`). Para a nova distância também vale `κ ≤ 2(σ − Θ)` (`taxaF_zeta_le`).
+* `L(s, χ)`, `χ ≠ 1` (`classeDirichlet`) é instanciada a partir da Mathlib (`LFunction`, `LSeries.mul_mu_eq_one`,
+  `LFunction_ne_zero_of_one_le_re`, `LFunction_apply_one_ne_zero`).
+* `juncao_zeta_dirichlet`: **uma taxa de `D_N^{ζ·L_χ}` certifica `ζ ≠ 0` e `L(·, χ) ≠ 0` juntas**, sob a hipótese de reta
+  boa para `L(s, χ)`. A Mathlib ainda não tem cotas de `L(s, χ)` em faixas.
+
+| Afirmação | Estado | Classe |
+| --- | --- | --- |
+| teto `TaxaDNF σ κ ⟹ L ≠ 0` em `Re s > σ − κ/2`, para `𝓛` abstrata | CERTIFIED | novo |
+| junção: a taxa do produto certifica todos os fatores | CERTIFIED | novo |
+| `ζ` incondicional; `L(s, χ)` na classe | CERTIFIED | ferramenta |
+| reta boa para `L(s, χ)` (cotas em faixas) | hipótese | — |
+| piso `TaxaDNF σ (2(σ − Θ_𝓛))` para `𝓛` geral; igualdade `κ_{𝓛₁𝓛₂} = min(κ_{𝓛₁}, κ_{𝓛₂})` | OPEN_MATH (parte 2 da R110) | — |
+| RH, GRH | OPEN_MATH | — |
+
+Numérico (`codigo/bd_monoide.py`, `dados/bd_monoide.json`, `testes/test_bd_monoide.py`, 2 testes), para
+`F = ζ·L(·, χ₋₄) = ζ_{ℚ(i)}` com `μ_F = μ ⋆ (χ₋₄μ)`:
+* `G_F` por caudas exatas (`1/F(k)` com `ζ(k)` e `β(k)` por Cohen–Villegas–Zagier, conferidos com `π²/6`, `π⁴/90`,
+  `π³/32` a `10⁻⁵⁹`) confere com a soma direta;
+* até `10⁵`, `max |G_F(N)|/√N ≈ 0,007`, estável de `10²` a `10⁵`, com 18 trocas de sinal. Isso é consistência com
+  RH ∧ GRH(χ₋₄), não medida (barreira B2).
+
 ## 5. Formatos
 
 | Formato | Verificador | Conteúdo |
