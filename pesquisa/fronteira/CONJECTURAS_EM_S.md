@@ -40,6 +40,9 @@ As conjecturas como enunciados sobre `P(F)`:
 
 * **RH**: `Θ(ζ) = ½`. **GRH**: `Θ(F) = ½` para toda `F`. Para uma família finita, **GRH para todas ⟺ `Θ(∏F_i) = ½`**:
   a junção é uma equivalência.
+  Na distância de Báez-Duarte, a rodada 110 (`ZeroClasses/BDMonoide.lean`, `juncao`) certifica a direção do teto: a taxa
+  `κ` de `D_N^{∏F_i}(σ)` dá `F_i ≠ 0` em `Re s > σ − κ/2` para todos os fatores (incondicional para `ζ`; para `L(s, χ)`, sob
+  a hipótese de reta boa).
 * **BSD**: `r(L*(E)) = rank E(ℚ)` e `L*^{(r)}(E, ½)/r! = Ω_E Reg_E #Ш ∏ c_p / (#E(ℚ)_tors)²`. Juntar curvas só dá a
   soma: `r(∏ L*(E_i)) = Σ rank E_i(ℚ)` é **mais fraco** que BSD para cada uma.
 * **Tate** (a forma aritmética de Hodge): `−ord_{s=1} L*(H^{2p}(X), s)` = posto dos ciclos algébricos de codimensão `p`
