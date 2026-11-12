@@ -1,0 +1,362 @@
+[
+{
+"teorema": "exercise_1_3",
+"modulo": "Auditados.Axler",
+"linha": 10,
+"achados": [
+"trivial=norm_num"
+]
+},
+{
+"teorema": "exercise_1_4",
+"modulo": "Auditados.Axler",
+"linha": 14,
+"achados": [
+"trivial=norm_num"
+]
+},
+{
+"teorema": "exercise_5_13",
+"modulo": "Auditados.Axler",
+"linha": 85,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_6_3",
+"modulo": "Auditados.Axler",
+"linha": 109,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_1_1_20",
+"modulo": "Auditados.DummitFoote",
+"linha": 40,
+"achados": [
+"trivial=norm_num"
+]
+},
+{
+"teorema": "exercise_2_1_5",
+"modulo": "Auditados.DummitFoote",
+"linha": 88,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_2_1_13",
+"modulo": "Auditados.DummitFoote",
+"linha": 93,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_9_4_2d",
+"modulo": "Auditados.DummitFoote",
+"linha": 396,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_2_2_6c",
+"modulo": "Auditados.Herstein",
+"linha": 35,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_2_4_36",
+"modulo": "Auditados.Herstein",
+"linha": 50,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_2_11_22",
+"modulo": "Auditados.Herstein",
+"linha": 136,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_4_2_9",
+"modulo": "Auditados.Herstein",
+"linha": 161,
+"achados": [
+"divisao_por_zero_nao_excluida",
+"divisao_inteira"
+]
+},
+{
+"teorema": "exercise_4_4_9",
+"modulo": "Auditados.Herstein",
+"linha": 173,
+"achados": [
+"falso_por_contraexemplo=2",
+"divisao_inteira",
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_5_4_3",
+"modulo": "Auditados.Herstein",
+"linha": 221,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_1_27",
+"modulo": "Auditados.IrelandRosen",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_2_21",
+"modulo": "Auditados.IrelandRosen",
+"linha": 23,
+"achados": [
+"divisao_inteira",
+"funcao_totalizada=Real.log"
+]
+},
+{
+"teorema": "exercise_2_27a",
+"modulo": "Auditados.IrelandRosen",
+"linha": 29,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_3_10",
+"modulo": "Auditados.IrelandRosen",
+"linha": 42,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_3_14",
+"modulo": "Auditados.IrelandRosen",
+"linha": 46,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_4_5",
+"modulo": "Auditados.IrelandRosen",
+"linha": 57,
+"achados": [
+"divisao_inteira",
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_4_8",
+"modulo": "Auditados.IrelandRosen",
+"linha": 66,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_4_11",
+"modulo": "Auditados.IrelandRosen",
+"linha": 70,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_2_32a",
+"modulo": "Auditados.Pugh",
+"linha": 23,
+"achados": [
+"trivial=norm_num"
+]
+},
+{
+"teorema": "exercise_3_4",
+"modulo": "Auditados.Pugh",
+"linha": 58,
+"achados": [
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "exercise_3_63a",
+"modulo": "Auditados.Pugh",
+"linha": 62,
+"achados": [
+"divisao_por_zero_nao_excluida",
+"funcao_totalizada=Real.log"
+]
+},
+{
+"teorema": "exercise_3_63b",
+"modulo": "Auditados.Pugh",
+"linha": 67,
+"achados": [
+"divisao_por_zero_nao_excluida",
+"funcao_totalizada=Real.log"
+]
+},
+{
+"teorema": "exercise_2018_b4",
+"modulo": "Auditados.Putnam",
+"linha": 20,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_2010_a4",
+"modulo": "Auditados.Putnam",
+"linha": 39,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_2001_a5",
+"modulo": "Auditados.Putnam",
+"linha": 43,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_1998_b6",
+"modulo": "Auditados.Putnam",
+"linha": 62,
+"achados": [
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "exercise_3_2a",
+"modulo": "Auditados.Rudin",
+"linha": 141,
+"achados": [
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "exercise_3_7",
+"modulo": "Auditados.Rudin",
+"linha": 165,
+"achados": [
+"divisao_por_zero_nao_excluida",
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "exercise_3_13",
+"modulo": "Auditados.Rudin",
+"linha": 179,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "exercise_5_2",
+"modulo": "Auditados.Rudin",
+"linha": 320,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_5_4",
+"modulo": "Auditados.Rudin",
+"linha": 333,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_5_6",
+"modulo": "Auditados.Rudin",
+"linha": 346,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_5_7",
+"modulo": "Auditados.Rudin",
+"linha": 355,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_1_19b",
+"modulo": "Auditados.Shakarchi",
+"linha": 26,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_1_19c",
+"modulo": "Auditados.Shakarchi",
+"linha": 31,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_2_2",
+"modulo": "Auditados.Shakarchi",
+"linha": 43,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_3_3",
+"modulo": "Auditados.Shakarchi",
+"linha": 61,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_3_4",
+"modulo": "Auditados.Shakarchi",
+"linha": 66,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "exercise_3_9",
+"modulo": "Auditados.Shakarchi",
+"linha": 71,
+"achados": [
+"funcao_totalizada=Real.log"
+]
+},
+{
+"teorema": "exercise_3_22",
+"modulo": "Auditados.Shakarchi",
+"linha": 79,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+}
+]

@@ -1,0 +1,804 @@
+[
+{
+"teorema": "aime_1983_p1",
+"modulo": "MiniF2F.Test.aime_1983_p1",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida",
+"funcao_totalizada=Real.log"
+]
+},
+{
+"teorema": "aime_1983_p3",
+"modulo": "MiniF2F.Test.aime_1983_p3",
+"linha": 7,
+"achados": [
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "aime_1989_p8",
+"modulo": "MiniF2F.Test.aime_1989_p8",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "aime_1991_p9",
+"modulo": "MiniF2F.Test.aime_1991_p9",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778",
+"modulo": "MiniF2F.Test.algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "algebra_ineq_nto1onlt2m1on",
+"modulo": "MiniF2F.Test.algebra_ineq_nto1onlt2m1on",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "algebra_sum1onsqrt2to1onsqrt10000lt198",
+"modulo": "MiniF2F.Test.algebra_sum1onsqrt2to1onsqrt10000lt198",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida",
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "amc12_2000_p6",
+"modulo": "MiniF2F.Test.amc12_2000_p6",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "amc12_2001_p5",
+"modulo": "MiniF2F.Test.amc12_2001_p5",
+"linha": 7,
+"achados": [
+"divisao_inteira"
+]
+},
+{
+"teorema": "amc12a_2013_p4",
+"modulo": "MiniF2F.Test.amc12a_2013_p4",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "amc12a_2019_p12",
+"modulo": "MiniF2F.Test.amc12a_2019_p12",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "amc12a_2020_p7",
+"modulo": "MiniF2F.Test.amc12a_2020_p7",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "amc12a_2021_p25",
+"modulo": "MiniF2F.Test.amc12a_2021_p25",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "amc12a_2021_p3",
+"modulo": "MiniF2F.Test.amc12a_2021_p3",
+"linha": 7,
+"achados": [
+"trivial=omega",
+"divisao_inteira"
+]
+},
+{
+"teorema": "amc12a_2021_p8",
+"modulo": "MiniF2F.Test.amc12a_2021_p8",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "amc12a_2021_p9",
+"modulo": "MiniF2F.Test.amc12a_2021_p9",
+"linha": 7,
+"achados": [
+"trivial=rfl",
+"subtracao_em_N"
+]
+},
+{
+"teorema": "amc12b_2002_p2",
+"modulo": "MiniF2F.Test.amc12b_2002_p2",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "amc12b_2020_p2",
+"modulo": "MiniF2F.Test.amc12b_2020_p2",
+"linha": 7,
+"achados": [
+"trivial=norm_num"
+]
+},
+{
+"teorema": "amc12b_2020_p21",
+"modulo": "MiniF2F.Test.amc12b_2020_p21",
+"linha": 7,
+"achados": [
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "amc12b_2021_p18",
+"modulo": "MiniF2F.Test.amc12b_2021_p18",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "amc12b_2021_p3",
+"modulo": "MiniF2F.Test.amc12b_2021_p3",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "imo_1968_p5_1",
+"modulo": "MiniF2F.Test.imo_1968_p5_1",
+"linha": 7,
+"achados": [
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "imo_1969_p2",
+"modulo": "MiniF2F.Test.imo_1969_p2",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "imo_1981_p6",
+"modulo": "MiniF2F.Test.imo_1981_p6",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "imo_1985_p6",
+"modulo": "MiniF2F.Test.imo_1985_p6",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "imo_2001_p6",
+"modulo": "MiniF2F.Test.imo_2001_p6",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "induction_nfactltnexpnm1ngt3",
+"modulo": "MiniF2F.Test.induction_nfactltnexpnm1ngt3",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "induction_pord1p1on2powklt5on2",
+"modulo": "MiniF2F.Test.induction_pord1p1on2powklt5on2",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "induction_pprime_pdvdapowpma",
+"modulo": "MiniF2F.Test.induction_pprime_pdvdapowpma",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "induction_prod1p1onk3le3m1onn",
+"modulo": "MiniF2F.Test.induction_prod1p1onk3le3m1onn",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "mathd_algebra_107",
+"modulo": "MiniF2F.Test.mathd_algebra_107",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_125",
+"modulo": "MiniF2F.Test.mathd_algebra_125",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_algebra_139",
+"modulo": "MiniF2F.Test.mathd_algebra_139",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "mathd_algebra_142",
+"modulo": "MiniF2F.Test.mathd_algebra_142",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_160",
+"modulo": "MiniF2F.Test.mathd_algebra_160",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_17",
+"modulo": "MiniF2F.Test.mathd_algebra_17",
+"linha": 7,
+"achados": [
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "mathd_algebra_170",
+"modulo": "MiniF2F.Test.mathd_algebra_170",
+"linha": 7,
+"achados": [
+"divisao_inteira"
+]
+},
+{
+"teorema": "mathd_algebra_176",
+"modulo": "MiniF2F.Test.mathd_algebra_176",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_208",
+"modulo": "MiniF2F.Test.mathd_algebra_208",
+"linha": 7,
+"achados": [
+"falso=norm_num",
+"divisao_inteira"
+]
+},
+{
+"teorema": "mathd_algebra_24",
+"modulo": "MiniF2F.Test.mathd_algebra_24",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_270",
+"modulo": "MiniF2F.Test.mathd_algebra_270",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "mathd_algebra_275",
+"modulo": "MiniF2F.Test.mathd_algebra_275",
+"linha": 7,
+"achados": [
+"hipoteses_contraditorias=simp_all",
+"divisao_inteira"
+]
+},
+{
+"teorema": "mathd_algebra_289",
+"modulo": "MiniF2F.Test.mathd_algebra_289",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "mathd_algebra_296",
+"modulo": "MiniF2F.Test.mathd_algebra_296",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_algebra_304",
+"modulo": "MiniF2F.Test.mathd_algebra_304",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_algebra_314",
+"modulo": "MiniF2F.Test.mathd_algebra_314",
+"linha": 7,
+"achados": [
+"trivial=norm_num",
+"divisao_inteira"
+]
+},
+{
+"teorema": "mathd_algebra_329",
+"modulo": "MiniF2F.Test.mathd_algebra_329",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_332",
+"modulo": "MiniF2F.Test.mathd_algebra_332",
+"linha": 7,
+"achados": [
+"funcao_totalizada=Real.sqrt"
+]
+},
+{
+"teorema": "mathd_algebra_354",
+"modulo": "MiniF2F.Test.mathd_algebra_354",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_359",
+"modulo": "MiniF2F.Test.mathd_algebra_359",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_362",
+"modulo": "MiniF2F.Test.mathd_algebra_362",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "mathd_algebra_388",
+"modulo": "MiniF2F.Test.mathd_algebra_388",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_392",
+"modulo": "MiniF2F.Test.mathd_algebra_392",
+"linha": 7,
+"achados": [
+"divisao_inteira",
+"subtracao_em_N"
+]
+},
+{
+"teorema": "mathd_algebra_398",
+"modulo": "MiniF2F.Test.mathd_algebra_398",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_400",
+"modulo": "MiniF2F.Test.mathd_algebra_400",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_412",
+"modulo": "MiniF2F.Test.mathd_algebra_412",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_427",
+"modulo": "MiniF2F.Test.mathd_algebra_427",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_432",
+"modulo": "MiniF2F.Test.mathd_algebra_432",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_440",
+"modulo": "MiniF2F.Test.mathd_algebra_440",
+"linha": 7,
+"achados": [
+"trivial=linarith"
+]
+},
+{
+"teorema": "mathd_algebra_80",
+"modulo": "MiniF2F.Test.mathd_algebra_80",
+"linha": 7,
+"achados": [
+"divisao_por_zero_nao_excluida"
+]
+},
+{
+"teorema": "mathd_numbertheory_1124",
+"modulo": "MiniF2F.Test.mathd_numbertheory_1124",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_12",
+"modulo": "MiniF2F.Test.mathd_numbertheory_12",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_127",
+"modulo": "MiniF2F.Test.mathd_numbertheory_127",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_175",
+"modulo": "MiniF2F.Test.mathd_numbertheory_175",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_185",
+"modulo": "MiniF2F.Test.mathd_numbertheory_185",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_207",
+"modulo": "MiniF2F.Test.mathd_numbertheory_207",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_212",
+"modulo": "MiniF2F.Test.mathd_numbertheory_212",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_229",
+"modulo": "MiniF2F.Test.mathd_numbertheory_229",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_235",
+"modulo": "MiniF2F.Test.mathd_numbertheory_235",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_237",
+"modulo": "MiniF2F.Test.mathd_numbertheory_237",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_239",
+"modulo": "MiniF2F.Test.mathd_numbertheory_239",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_247",
+"modulo": "MiniF2F.Test.mathd_numbertheory_247",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_254",
+"modulo": "MiniF2F.Test.mathd_numbertheory_254",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_293",
+"modulo": "MiniF2F.Test.mathd_numbertheory_293",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_299",
+"modulo": "MiniF2F.Test.mathd_numbertheory_299",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_3",
+"modulo": "MiniF2F.Test.mathd_numbertheory_3",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_320",
+"modulo": "MiniF2F.Test.mathd_numbertheory_320",
+"linha": 7,
+"achados": [
+"trivial=omega",
+"subtracao_em_N"
+]
+},
+{
+"teorema": "mathd_numbertheory_328",
+"modulo": "MiniF2F.Test.mathd_numbertheory_328",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_34",
+"modulo": "MiniF2F.Test.mathd_numbertheory_34",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_342",
+"modulo": "MiniF2F.Test.mathd_numbertheory_342",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_343",
+"modulo": "MiniF2F.Test.mathd_numbertheory_343",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_345",
+"modulo": "MiniF2F.Test.mathd_numbertheory_345",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_430",
+"modulo": "MiniF2F.Test.mathd_numbertheory_430",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "mathd_numbertheory_447",
+"modulo": "MiniF2F.Test.mathd_numbertheory_447",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_517",
+"modulo": "MiniF2F.Test.mathd_numbertheory_517",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_521",
+"modulo": "MiniF2F.Test.mathd_numbertheory_521",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "mathd_numbertheory_551",
+"modulo": "MiniF2F.Test.mathd_numbertheory_551",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_559",
+"modulo": "MiniF2F.Test.mathd_numbertheory_559",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_582",
+"modulo": "MiniF2F.Test.mathd_numbertheory_582",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_618",
+"modulo": "MiniF2F.Test.mathd_numbertheory_618",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "mathd_numbertheory_66",
+"modulo": "MiniF2F.Test.mathd_numbertheory_66",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_728",
+"modulo": "MiniF2F.Test.mathd_numbertheory_728",
+"linha": 7,
+"achados": [
+"trivial=rfl",
+"subtracao_em_N"
+]
+},
+{
+"teorema": "mathd_numbertheory_764",
+"modulo": "MiniF2F.Test.mathd_numbertheory_764",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "mathd_numbertheory_765",
+"modulo": "MiniF2F.Test.mathd_numbertheory_765",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "mathd_numbertheory_769",
+"modulo": "MiniF2F.Test.mathd_numbertheory_769",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_85",
+"modulo": "MiniF2F.Test.mathd_numbertheory_85",
+"linha": 7,
+"achados": [
+"trivial=rfl"
+]
+},
+{
+"teorema": "mathd_numbertheory_99",
+"modulo": "MiniF2F.Test.mathd_numbertheory_99",
+"linha": 7,
+"achados": [
+"trivial=omega"
+]
+},
+{
+"teorema": "numbertheory_2pownm1prime_nprime",
+"modulo": "MiniF2F.Test.numbertheory_2pownm1prime_nprime",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+},
+{
+"teorema": "numbertheory_3pow2pownm1mod2pownp3eq2pownp2",
+"modulo": "MiniF2F.Test.numbertheory_3pow2pownm1mod2pownp3eq2pownp2",
+"linha": 7,
+"achados": [
+"subtracao_em_N"
+]
+}
+]

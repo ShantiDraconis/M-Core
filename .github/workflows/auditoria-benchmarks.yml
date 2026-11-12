@@ -5,7 +5,8 @@ name: Auditoria de benchmarks Lean (miniF2F, ProofNet)
 on:
   push:
     paths:
-      - 'audit/benchmarks/**'
+      - 'audit/benchmarks/Auditor.lean'
+      - 'audit/benchmarks/auditar_benchmark.py'
       - '.github/workflows/auditoria-benchmarks.yml'
   workflow_dispatch:
 
