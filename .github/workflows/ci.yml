@@ -58,7 +58,7 @@ jobs:
           lake env python3 .github/scripts/compilar_raiz.py /tmp/k15
           lake env bash -c 'LEAN_PATH=/tmp/k15:$LEAN_PATH lean MCore/AxiomAudit.lean' 2>&1 | tee /tmp/mcore-axioms.log
           grep -q "depends on axioms\|does not depend on any axioms" /tmp/mcore-axioms.log
-          ! grep -q "error" /tmp/mcore-axioms.log
+          if grep -q "error" /tmp/mcore-axioms.log; then exit 1; fi
           python - <<'PY'
           import re
           from pathlib import Path
