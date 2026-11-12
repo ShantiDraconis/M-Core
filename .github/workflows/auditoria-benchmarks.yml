@@ -1,0 +1,90 @@
+name: Auditoria de benchmarks Lean (miniF2F, ProofNet)
+
+# Roda audit/benchmarks/Auditor.lean sobre benchmarks públicos, cada um com o seu próprio Lean e Mathlib,
+# e guarda o relatório (JSON e Markdown) como artefato. Ver audit/benchmarks/README.md.
+on:
+  push:
+    paths:
+      - 'audit/benchmarks/**'
+      - '.github/workflows/auditoria-benchmarks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  auditar:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - nome: miniF2F-test
+            repo: yangky11/miniF2F-lean4
+            sha: 5746b7d6c47855ce1294bed87329618ff7f1bc31
+            alvo: +MiniF2F.Test
+            raiz: MiniF2F/Test
+          - nome: miniF2F-valid
+            repo: yangky11/miniF2F-lean4
+            sha: 5746b7d6c47855ce1294bed87329618ff7f1bc31
+            alvo: +MiniF2F.Valid
+            raiz: MiniF2F/Valid
+          - nome: ProofNet
+            repo: rahul3613/ProofNet-lean4
+            sha: 6deae98b38954dadf732746d023e8be65c56f246
+            alvo: Auditados
+            raiz: Auditados
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: mcore
+      - name: Clonar o benchmark no commit fixado
+        run: |
+          git clone https://github.com/${{ matrix.repo }} bench
+          git -C bench checkout ${{ matrix.sha }}
+          cat bench/lean-toolchain
+      - name: Instalar o elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Preparar (auditor como biblioteca; ProofNet com nomes de módulo válidos)
+        working-directory: bench
+        run: |
+          cp ../mcore/audit/benchmarks/Auditor.lean .
+          printf '\nlean_lib Auditor\n' >> lakefile.lean
+          if [ "${{ matrix.alvo }}" = "Auditados" ]; then
+            python3 - <<'PY'
+          import os, re, shutil
+          os.makedirs("Auditados", exist_ok=True)
+          for f in sorted(os.listdir("formal")):
+              if f.endswith(".lean"):
+                  shutil.copy(os.path.join("formal", f), os.path.join("Auditados", re.sub(r"[^A-Za-z0-9]", "", f[:-5]) + ".lean"))
+          open("lakefile.lean", "a").write("\nlean_lib Auditados where\n  globs := #[.submodules `Auditados]\n")
+          PY
+          fi
+          tail -8 lakefile.lean
+          lake exe cache get
+      - name: Compilar o auditor e o benchmark
+        working-directory: bench
+        run: |
+          lake build Auditor
+          lake build ${{ matrix.alvo }} 2>&1 | tee ../build.log || true
+      - name: Auditar
+        working-directory: bench
+        run: |
+          python3 ../mcore/audit/benchmarks/auditar_benchmark.py --nome ${{ matrix.nome }} --raiz ${{ matrix.raiz }} \
+            --lean "lake env lean" --saida ../resultados \
+            --fonte "https://github.com/${{ matrix.repo }} @ ${{ matrix.sha }} ($(cat lean-toolchain))"
+          cat ../resultados/${{ matrix.nome }}.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: auditoria-${{ matrix.nome }}
+          path: |
+            resultados/*.json
+            resultados/*.md
+            build.log
