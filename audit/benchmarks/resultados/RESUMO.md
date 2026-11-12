@@ -38,3 +38,8 @@ risco `divisao_inteira`, que aponta onde procurar.
   inofensivos, como `log z ≠ 0` a partir de `1 < z`.
 - **Caminhos no ProofNet.** O workflow copia `formal/<Fonte>.lean` para `Auditados/<Fonte sem hífen>.lean` sem mudar
   as linhas, então `Auditados/Herstein.lean:173` é `formal/Herstein.lean:173`.
+
+## Conferência independente
+
+`Confere.lean` refaz os três com provas escritas à mão, sem o auditor: `m208_falso`, `m275_vazio`, `pn449_falso`.
+No Lean v4.19.0 com Mathlib v4.19.0, `#print axioms` dá `[propext, Classical.choice, Quot.sound]` para os três.
