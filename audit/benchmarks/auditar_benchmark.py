@@ -109,6 +109,12 @@ def main():
         if any(x.split("=")[0] in CERTIFICADAS for x in it["achados"]):
             arq = it["modulo"].replace(".", "/") + ".lean"
             md.append(f"| `{it['teorema']}` | `{arq}:{it['linha']}` | {'; '.join(it['achados'])} |")
+    md += ["", "## Para revisão (trivial por uma tática; riscos de codificação)", "",
+           "| Teorema | Arquivo:linha | Achados |", "|---|---|---|"]
+    for it in itens:
+        if it["achados"] and not any(x.split("=")[0] in CERTIFICADAS for x in it["achados"]):
+            arq = it["modulo"].replace(".", "/") + ".lean"
+            md.append(f"| `{it['teorema']}` | `{arq}:{it['linha']}` | {'; '.join(it['achados'])} |")
     if falhou:
         md += ["", "## Não compilam nesta versão", ""] + [f"- `{m}`" for m in falhou]
     open(os.path.join(a.saida, f"{a.nome}.md"), "w").write("\n".join(md) + "\n")

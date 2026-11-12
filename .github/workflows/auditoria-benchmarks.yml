@@ -80,6 +80,9 @@ jobs:
             --lean "lake env lean" --saida ../resultados \
             --fonte "https://github.com/${{ matrix.repo }} @ ${{ matrix.sha }} ($(cat lean-toolchain))"
           cat ../resultados/${{ matrix.nome }}.md >> "$GITHUB_STEP_SUMMARY"
+          # o relatório também vai para o log, porque o artefato pode não ser baixável de fora do GitHub
+          echo "=== RELATORIO-MD ===" && cat ../resultados/${{ matrix.nome }}.md
+          echo "=== ITENS-JSONL ===" && python3 -c "import json,sys; [print(json.dumps(i, ensure_ascii=False)) for i in json.load(open(sys.argv[1]))['itens'] if i['achados']]" ../resultados/${{ matrix.nome }}.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
