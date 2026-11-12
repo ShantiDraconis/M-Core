@@ -13,6 +13,12 @@
    "alarmes_falsos": 0,
    "limpos": 4
   },
+  "P": {
+   "defeitos_pegos": 0,
+   "defeitos": 8,
+   "alarmes_falsos": 0,
+   "limpos": 4
+  },
   "L": {
    "defeitos_pegos": 2,
    "defeitos": 8,
@@ -56,6 +62,20 @@
   "T": {
    "C01": false,
    "C02": true,
+   "C03": false,
+   "C04": false,
+   "C05": false,
+   "C06": false,
+   "C07": false,
+   "C08": false,
+   "C09": false,
+   "C10": false,
+   "C11": false,
+   "C12": false
+  },
+  "P": {
+   "C01": false,
+   "C02": false,
    "C03": false,
    "C04": false,
    "C05": false,

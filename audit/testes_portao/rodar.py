@@ -4,6 +4,7 @@
 Verificadores:
   G  grep do `ci.yml`/`audit.yml` do M-Core até 11/11/2026: `\\bsorry\\b|\\badmit\\b` no texto da fonte;
   T  a busca que o substitui (`.github/scripts/sem_sorry.py`): a mesma palavra, fora de comentários e strings;
+  P  o parser de `#print axioms` do passo K15 do `ci.yml` até 12/11/2026 (perdia o último axioma de cada lista);
   L  aviso do elaborador no log de compilação (`declaration uses 'sorry'`);
   M  o portão do M-Core, `atk-kernel/scripts/check_axioms.py`, sem alteração: compila, `#print axioms`
      só com os três padrões, e a fonte sem comentários não contém `sorry`, `admit` nem linha `axiom`;
@@ -46,6 +47,7 @@ CASOS = {
 VERIFICADORES = {
     "G": "grep do ci.yml",
     "T": "busca sem comentários",
+    "P": "K15 do ci.yml (antigo)",
     "L": "aviso de sorry no log",
     "M": "portão do M-Core",
     "V": "vazios do MVEI",
@@ -93,6 +95,10 @@ def main():
         status.append(f"ATK/{c}.lean {'OK' if r.returncode == 0 else 'FAIL'}\n")
         marcou["G"][c] = re.search(r"\bsorry\b|\badmit\b", fonte) is not None
         marcou["T"][c] = re.search(r"\b(sorry|admit)\b", codigo(fonte)) is not None
+        usados = set()
+        for bloco in re.findall(r"depends on axioms:\s*\[(.*?)\]", log, flags=re.S):
+            usados.update(re.findall(r"([A-Za-z_][A-Za-z0-9_\.]*)(?=,|\s|\])", bloco))
+        marcou["P"][c] = bool(usados - {"propext", "Quot.sound", "Classical.choice"})
         marcou["L"][c] = re.search(r"declaration uses .sorry.", log) is not None or r.returncode != 0
         enunciado = re.search(r"theorem\s+alvo(.*?):=", fonte, re.S).group(1).strip()
         marcou["V"][c] = bool(TRUE_FIM.search(enunciado) or EXISTE_TRUE.search(enunciado))

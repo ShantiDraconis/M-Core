@@ -67,7 +67,8 @@ jobs:
           allowed = {'propext', 'Quot.sound', 'Classical.choice'}
           used = set()
           for block in re.findall(r'depends on axioms:\s*\[(.*?)\]', text, flags=re.S):
-              used.update(re.findall(r'([A-Za-z_][A-Za-z0-9_\.]*)(?=,|\s|\])', block))
+              # separar por vírgula: o padrão anterior perdia o último nome de cada lista (`[sorryAx]` passava)
+              used.update(a.strip() for a in block.replace('\n', ' ').split(',') if a.strip())
           unauthorized = sorted(used - allowed)
           print('K15 used axioms:', sorted(used))
           print('K15 allowed axioms:', sorted(allowed))
