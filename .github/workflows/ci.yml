@@ -38,11 +38,16 @@ jobs:
       - name: Resolve dependencies
         run: lake update
       - name: Build M-Core
-        run: lake build
-      - name: Reject sorry in M-Core source
+        shell: bash
         run: |
-          if grep -RInE '\bsorry\b|\badmit\b' MCore MCore.lean --include='*.lean'; then
-            echo 'Unresolved Lean placeholder found.'
+          set -o pipefail
+          lake build 2>&1 | tee /tmp/mcore-build.log
+      - name: Reject sorry in M-Core source
+        # O grep anterior marcava a palavra em docstrings ("no-sorry"); ver audit/testes_portao/.
+        run: |
+          python3 .github/scripts/sem_sorry.py MCore MCore.lean lean
+          if grep -E "declaration uses .sorry." /tmp/mcore-build.log; then
+            echo 'O elaborador achou sorry numa declaração compilada.'
             exit 1
           fi
       - name: K15 audit actual axiom dependencies
