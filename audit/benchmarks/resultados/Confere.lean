@@ -1,7 +1,8 @@
-/-! Conferência independente dos três defeitos certificados, com provas escritas à mão (Lean v4.19.0, Mathlib v4.19.0):
-`#print axioms` mostra só `propext`, `Classical.choice`, `Quot.sound`. Ver RESUMO.md. -/
 import Mathlib
 open BigOperators Real Nat Topology Rat
+
+/-! Conferência independente dos três defeitos certificados, com provas escritas à mão (Lean v4.19.0, Mathlib v4.19.0):
+`#print axioms` mostra só `propext`, `Classical.choice`, `Quot.sound`. Ver RESUMO.md. -/
 
 -- miniF2F mathd_algebra_208: o enunciado é falso
 theorem m208_falso : ¬ (Real.sqrt 1000000 - 1000000^(1/3) = 900) := by
