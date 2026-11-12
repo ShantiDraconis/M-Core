@@ -9,12 +9,14 @@ import Mathlib
 AUDITORIA	<nome>	<módulo>	<linha>	<classe>=<detalhe>;…
 ```
 
-Classes (`hipoteses_contraditorias`, `falso` e `trivial` são **certificadas**: o termo que a tática produziu foi
+Classes (`hipoteses_contraditorias`, `falso`, `falso_por_contraexemplo` e `trivial` são **certificadas**: o termo que a tática produziu foi
 passou no kernel como teorema auxiliar):
 
 * `hipoteses_contraditorias=<tática>`: das hipóteses sai `False` (o enunciado é vazio);
 * `conclusao_vazia`: a conclusão, depois de desdobrar definições, é `True` ou `∃ _, True`;
 * `falso=<tática>`: a negação do enunciado (sem variáveis livres) foi provada;
+* `falso_por_contraexemplo=<valores>`: variáveis em ℕ ou ℤ com valores pequenos em que as hipóteses valem e a
+  conclusão não; a negação é provada por `decide` nesses valores;
 * `trivial=<tática>`: o enunciado inteiro fecha com uma única tática padrão (informativo: compara-se com o
   enunciado informal para ver se a formalização perdeu a dificuldade);
 * `axioma_extra=<nomes>`: depende de axiomas fora de `propext`, `Classical.choice`, `Quot.sound`, `sorryAx`;
@@ -111,6 +113,51 @@ def falso (tipo : Expr) (lps : List Name) : MetaM (Option String) := do
     if ← fecha (mkNot tipo) tac lps then return some nome
   return none
 
+/-- Valores de teste para variáveis em ℕ e ℤ (as primeiras `k` de cada lista quando há três variáveis). -/
+def valoresNat : List Nat := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+def valoresInt : List Int := [0, 1, -1, 2, -2, 3, -3, 4, 5, 6, -4, 7, 10]
+
+def numeral (t : Expr) (k : Nat) : MetaM (TSyntax `term) := do
+  if t.isConstOf ``Nat then
+    return ⟨Syntax.mkNumLit (toString (valoresNat[k]!))⟩
+  let v := valoresInt[k]!
+  if v < 0 then
+    let n : TSyntax `num := Syntax.mkNumLit (toString v.natAbs)
+    `(-$n)
+  else return ⟨Syntax.mkNumLit (toString v)⟩
+
+/-- Contraexemplo certificado: o enunciado tem só variáveis explícitas em ℕ ou ℤ (até três) seguidas de hipóteses;
+procura valores pequenos em que as hipóteses valem e a conclusão não, e prova `¬ enunciado` com `decide` no termo
+`absurd (h a b …) (by decide)`, conferido no kernel. -/
+def testemunha (tipo : Expr) (lps : List Name) : MetaM (Option String) := do
+  let tipos? ← forallTelescope tipo fun xs _ => do
+    let mut dados : Array Expr := #[]
+    let mut emHipoteses := false
+    for x in xs do
+      let t ← inferType x
+      if ← isProp t then
+        emHipoteses := true
+      else
+        if emHipoteses then return none
+        if !(t.isConstOf ``Nat || t.isConstOf ``Int) then return none
+        if (← x.fvarId!.getBinderInfo) != .default then return none
+        dados := dados.push t
+    if dados.isEmpty || dados.size > 3 then return none
+    return some dados
+  let some tipos := tipos? | return none
+  let n := if tipos.size == 3 then 6 else valoresNat.length
+  let mut combos : List (List Nat) := [[]]
+  for _ in tipos do
+    combos := combos.flatMap fun c => (List.range n).map fun k => c ++ [k]
+  for c in combos do
+    let args ← (tipos.toList.zip c).mapM fun (t, k) => numeral t k
+    let tac ← `(tactic| (intro h; exact absurd (h $(args.toArray)*) (by decide)))
+    if ← fecha (mkNot tipo) tac lps 4000 then
+      let vals := (tipos.toList.zip c).map fun (t, k) =>
+        if t.isConstOf ``Nat then toString (valoresNat[k]!) else toString (valoresInt[k]!)
+      return some (String.intercalate "," vals)
+  return none
+
 /-- Todos os subtermos de `e` (sem entrar em tipos de binders implícitos de instância). -/
 partial def subtermos (e : Expr) (acc : Array Expr := #[]) : Array Expr :=
   let acc := acc.push e
@@ -184,6 +231,7 @@ def auditar (n : Name) (tipo : Expr) (lps : List Name) : MetaM String := do
   if let some t ← hipotesesContraditorias tipo lps then achados := achados ++ [s!"hipoteses_contraditorias={t}"]
   if ← forallTelescope tipo fun _ c => conclusaoVazia c then achados := achados ++ ["conclusao_vazia"]
   if let some t ← falso tipo lps then achados := achados ++ [s!"falso={t}"]
+  else if let some v ← testemunha tipo lps then achados := achados ++ [s!"falso_por_contraexemplo={v}"]
   if let some t ← trivial tipo lps then achados := achados ++ [s!"trivial={t}"]
   achados := achados ++ (← riscos tipo lps)
   return String.intercalate ";" achados

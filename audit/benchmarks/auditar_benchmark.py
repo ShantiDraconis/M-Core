@@ -17,7 +17,7 @@ import subprocess
 import sys
 from collections import Counter
 
-CERTIFICADAS = ("hipoteses_contraditorias", "conclusao_vazia", "falso", "axioma_extra")
+CERTIFICADAS = ("hipoteses_contraditorias", "conclusao_vazia", "falso", "falso_por_contraexemplo", "axioma_extra")
 
 
 def modulos(raiz):

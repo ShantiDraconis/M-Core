@@ -8,6 +8,7 @@
 | `hipoteses_contraditorias=<tática>` | das hipóteses sai `False`: o enunciado é vazio | `contradiction`, `simp_all`, `omega`, `linarith`, `norm_num at *` fecham `∀ xs, False`; o termo vai ao kernel |
 | `conclusao_vazia` | a conclusão desdobra para `True` ou `∃ _, True` | `whnf` + `isDefEq` |
 | `falso=<tática>` | a negação do enunciado fechado foi provada | `norm_num`, `simp` em `¬ P`; o termo vai ao kernel |
+| `falso_por_contraexemplo=<valores>` | com variáveis em ℕ ou ℤ, há valores pequenos em que as hipóteses valem e a conclusão não | `absurd (h a b …) (by decide)`; o termo vai ao kernel |
 | `axioma_extra=<nomes>` | depende de axioma fora de `propext`, `Classical.choice`, `Quot.sound` (e `sorryAx`, esperado em benchmark) | `collectAxioms` |
 | `trivial=<tática>` | o enunciado inteiro fecha com uma tática padrão (informativo: comparar com o enunciado informal) | `rfl`, `norm_num`, `simp`, `omega`, `linarith`, `positivity`; o termo vai ao kernel |
 | `divisao_por_zero_nao_excluida` | denominador em ℝ, ℚ ou ℂ cujo `≠ 0` não sai das hipóteses | tenta `positivity`, `norm_num`, `linarith`, `simp_all` na condição |
