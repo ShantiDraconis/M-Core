@@ -120,13 +120,25 @@ jobs:
         run: |
           set +e
           sudo apt-get update -qq && sudo apt-get install -y -qq spass eprover > /dev/null
-          url=$(curl -s https://api.github.com/repos/vprover/vampire/releases/latest | python3 -c "import json,sys; a=json.load(sys.stdin).get('assets',[]); print(next((x['browser_download_url'] for x in a if 'linux' in x['name'].lower()), ''))")
-          if [ -n "$url" ]; then
-            mkdir -p vamp && curl -sL -o vamp/pkg "$url"
+          # Só binários x86_64 que rodam neste runner (em 11/11/2026 o primeiro asset "linux" não era: Exec format error).
+          curl -s https://api.github.com/repos/vprover/vampire/releases/latest | python3 -c "
+          import json, sys
+          a = json.load(sys.stdin).get('assets', [])
+          ruim = ('arm', 'aarch64', 'mac', 'darwin', 'win')
+          xs = [x for x in a if 'linux' in x['name'].lower() and not any(r in x['name'].lower() for r in ruim)]
+          xs.sort(key=lambda x: not any(k in x['name'].lower() for k in ('x86_64', 'x64', 'amd64', 'static')))
+          print('\\n'.join(x['browser_download_url'] for x in xs))" > vamp_urls.txt
+          while read -r url; do
+            [ -n "$url" ] || continue
+            rm -rf vamp && mkdir -p vamp && curl -sL -o vamp/pkg "$url"
             (cd vamp && (unzip -q pkg 2>/dev/null || tar xf pkg 2>/dev/null || cp pkg vampire))
-            v=$(find vamp -type f -name 'vampire*' ! -name pkg | head -1)
-            [ -n "$v" ] && chmod +x "$v" && echo "VAMPIRE=$PWD/$v" >> "$GITHUB_ENV" && echo "vampire: $url"
-          fi
+            for v in $(find vamp -type f -name 'vampire*' ! -name pkg); do
+              chmod +x "$v"
+              if "$v" --version > /dev/null 2>&1; then
+                echo "VAMPIRE=$PWD/$v" >> "$GITHUB_ENV"; echo "vampire: $url ($v)"; break 2
+              fi
+            done
+          done < vamp_urls.txt
           true
       - name: rodar
         run: |

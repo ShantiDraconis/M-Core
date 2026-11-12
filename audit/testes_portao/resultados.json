@@ -1,0 +1,175 @@
+{
+ "lean": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+ "resumo": {
+  "G": {
+   "defeitos_pegos": 1,
+   "defeitos": 8,
+   "alarmes_falsos": 2,
+   "limpos": 4
+  },
+  "T": {
+   "defeitos_pegos": 1,
+   "defeitos": 8,
+   "alarmes_falsos": 0,
+   "limpos": 4
+  },
+  "P": {
+   "defeitos_pegos": 0,
+   "defeitos": 8,
+   "alarmes_falsos": 0,
+   "limpos": 4
+  },
+  "L": {
+   "defeitos_pegos": 2,
+   "defeitos": 8,
+   "alarmes_falsos": 0,
+   "limpos": 4
+  },
+  "M": {
+   "defeitos_pegos": 5,
+   "defeitos": 8,
+   "alarmes_falsos": 1,
+   "limpos": 4
+  },
+  "V": {
+   "defeitos_pegos": 1,
+   "defeitos": 8,
+   "alarmes_falsos": 0,
+   "limpos": 4
+  },
+  "K": {
+   "defeitos_pegos": 8,
+   "defeitos": 8,
+   "alarmes_falsos": 0,
+   "limpos": 4
+  }
+ },
+ "marcou": {
+  "G": {
+   "C01": false,
+   "C02": true,
+   "C03": false,
+   "C04": false,
+   "C05": false,
+   "C06": false,
+   "C07": true,
+   "C08": true,
+   "C09": false,
+   "C10": false,
+   "C11": false,
+   "C12": false
+  },
+  "T": {
+   "C01": false,
+   "C02": true,
+   "C03": false,
+   "C04": false,
+   "C05": false,
+   "C06": false,
+   "C07": false,
+   "C08": false,
+   "C09": false,
+   "C10": false,
+   "C11": false,
+   "C12": false
+  },
+  "P": {
+   "C01": false,
+   "C02": false,
+   "C03": false,
+   "C04": false,
+   "C05": false,
+   "C06": false,
+   "C07": false,
+   "C08": false,
+   "C09": false,
+   "C10": false,
+   "C11": false,
+   "C12": false
+  },
+  "L": {
+   "C01": false,
+   "C02": true,
+   "C03": true,
+   "C04": false,
+   "C05": false,
+   "C06": false,
+   "C07": false,
+   "C08": false,
+   "C09": false,
+   "C10": false,
+   "C11": false,
+   "C12": false
+  },
+  "M": {
+   "C01": false,
+   "C02": true,
+   "C03": true,
+   "C04": true,
+   "C05": true,
+   "C06": true,
+   "C07": false,
+   "C08": true,
+   "C09": false,
+   "C10": false,
+   "C11": false,
+   "C12": false
+  },
+  "V": {
+   "C01": false,
+   "C02": false,
+   "C03": false,
+   "C04": false,
+   "C05": false,
+   "C06": false,
+   "C07": false,
+   "C08": false,
+   "C09": true,
+   "C10": false,
+   "C11": false,
+   "C12": false
+  },
+  "K": {
+   "C01": false,
+   "C02": true,
+   "C03": true,
+   "C04": true,
+   "C05": true,
+   "C06": true,
+   "C07": false,
+   "C08": false,
+   "C09": true,
+   "C10": true,
+   "C11": true,
+   "C12": false
+  }
+ },
+ "motivo_M": {
+  "C01": "",
+  "C02": "axiomas extras: sorryAx",
+  "C03": "axiomas extras: sorryAx",
+  "C04": "axiomas extras: ATK.C04.ax_atributo",
+  "C05": "axiomas extras: ATK.C05.ax_privado",
+  "C06": "axiomas extras: ATK.C06.alvo._native.native_decide.ax_1_1",
+  "C07": "",
+  "C08": "fonte contém sorry, admit",
+  "C09": "",
+  "C10": "",
+  "C11": "",
+  "C12": ""
+ },
+ "veredito_K": {
+  "C01": "OK",
+  "C02": "axiomas [sorryAx]",
+  "C03": "axiomas [sorryAx]",
+  "C04": "axiomas [ATK.C04.ax_atributo]",
+  "C05": "axiomas [_private._stdin.0.ATK.C05.ax_privado]",
+  "C06": "axiomas [ATK.C06.alvo._native.native_decide.ax_1_1]",
+  "C07": "OK",
+  "C08": "OK",
+  "C09": "vazio",
+  "C10": "vazio",
+  "C11": "hipoteses contraditorias",
+  "C12": "OK"
+ }
+}

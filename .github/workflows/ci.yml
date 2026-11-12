@@ -38,18 +38,27 @@ jobs:
       - name: Resolve dependencies
         run: lake update
       - name: Build M-Core
-        run: lake build
-      - name: Reject sorry in M-Core source
+        shell: bash
         run: |
-          if grep -RInE '\bsorry\b|\badmit\b' MCore MCore.lean --include='*.lean'; then
-            echo 'Unresolved Lean placeholder found.'
+          set -o pipefail
+          lake build 2>&1 | tee /tmp/mcore-build.log
+      - name: Reject sorry in M-Core source
+        # O grep anterior marcava a palavra em docstrings ("no-sorry"); ver audit/testes_portao/.
+        run: |
+          python3 .github/scripts/sem_sorry.py MCore MCore.lean lean
+          if grep -E "declaration uses .sorry." /tmp/mcore-build.log; then
+            echo 'O elaborador achou sorry numa declaração compilada.'
             exit 1
           fi
       - name: K15 audit actual axiom dependencies
         shell: bash
         run: |
           set -euo pipefail
-          lake env lean MCore/AxiomAudit.lean 2>&1 | tee /tmp/mcore-axioms.log
+          # A árvore MCore/ da raiz (o núcleo K15) não entra no `lake build` (srcDir := "lean"): compila à parte.
+          lake env python3 .github/scripts/compilar_raiz.py /tmp/k15
+          lake env bash -c 'LEAN_PATH=/tmp/k15:$LEAN_PATH lean MCore/AxiomAudit.lean' 2>&1 | tee /tmp/mcore-axioms.log
+          grep -q "depends on axioms\|does not depend on any axioms" /tmp/mcore-axioms.log
+          if grep -q "error" /tmp/mcore-axioms.log; then exit 1; fi
           python - <<'PY'
           import re
           from pathlib import Path
@@ -58,7 +67,8 @@ jobs:
           allowed = {'propext', 'Quot.sound', 'Classical.choice'}
           used = set()
           for block in re.findall(r'depends on axioms:\s*\[(.*?)\]', text, flags=re.S):
-              used.update(re.findall(r'([A-Za-z_][A-Za-z0-9_\.]*)(?=,|\s|\])', block))
+              # separar por vírgula: o padrão anterior perdia o último nome de cada lista (`[sorryAx]` passava)
+              used.update(a.strip() for a in block.replace('\n', ' ').split(',') if a.strip())
           unauthorized = sorted(used - allowed)
           print('K15 used axioms:', sorted(used))
           print('K15 allowed axioms:', sorted(allowed))
