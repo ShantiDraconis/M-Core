@@ -36,7 +36,10 @@ def main(caminho):
         for m in tar.getmembers():
             if not m.isfile() or not m.name.startswith("inventory/") or ".." in m.name:
                 sys.exit(f"membro inesperado no pacote: {m.name}")
-        tar.extractall(".", filter="data")
+        if hasattr(tarfile, "data_filter"):  # Python 3.12+ e patches de segurança 3.8–3.11
+            tar.extractall(".", filter="data")
+        else:  # os membros já foram conferidos acima: só arquivos comuns dentro de inventory/
+            tar.extractall(".")
     print("inventário extraído em inventory/")
 
 
