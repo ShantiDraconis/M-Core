@@ -33,10 +33,12 @@ jobs:
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
+          lake exe cache get
           lake env lean lean/MCore/OpenMath/IRegime.lean
           lake env lean lean/MCore/OpenMath/I3Tristable.lean
           lake env lean lean/MCore/OpenMath/IEnriched.lean
-          lake env lean lean/MCore/Research/UserProgram.lean
+          # UserProgram.lean importa módulos do próprio projeto: compilar antes de checar
+          lake build MCore.Research.UserProgram
           cp lean/MCore/OpenMath/I3Tristable.lean /tmp/I3AxiomAudit.lean
           cat >> /tmp/I3AxiomAudit.lean <<'EOF'
           #print axioms MCore.OpenMath.I3.i3_final_theorem
