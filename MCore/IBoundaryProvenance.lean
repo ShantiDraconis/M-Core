@@ -17,6 +17,8 @@ and `1/0` remain outside ordinary field division semantics.  The constructors
 below are tagged boundary states.
 -/
 
+open Filter
+
 namespace MCore.IBoundary
 
 inductive SingularityKind where
@@ -39,7 +41,11 @@ structure INumber where
   infinitesimalPart : ℝ
   kind : SingularityKind
   orientation : Orientation
-  deriving DecidableEq, Repr
+
+/-- A igualdade de ℝ não é computável, então a de `INumber` também não: a instância é clássica
+(e não há `Repr`, porque o `Repr ℝ` da Mathlib é `unsafe` e o kernel recusa a derivação).
+Por isso as desigualdades entre estados abaixo são provadas pelo campo `kind`, não por `decide`. -/
+noncomputable instance : DecidableEq INumber := Classical.decEq _
 
 /-- Terminal observable projection. -/
 def terminalProjection (x : INumber) : ℝ := x.realPart
@@ -81,7 +87,8 @@ theorem singularity_kinds_pairwise_distinct :
 theorem canonical_states_pairwise_distinct :
     I00 ≠ I10 ∧ I00 ≠ I0Inf ∧ I00 ≠ I1Inf ∧
     I10 ≠ I0Inf ∧ I10 ≠ I1Inf ∧ I0Inf ≠ I1Inf := by
-  decide
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩ <;> intro h <;> have hk := congrArg INumber.kind h <;>
+    simp [I00, I10, I0Inf, I1Inf] at hk
 
 theorem canonical_states_boundary_equivalent :
     BoundaryEquivalent I00 I10 ∧
@@ -99,7 +106,7 @@ def approachPos (ε : ℝ) : INumber :=
 
 theorem approach_orientation_distinct (ε : ℝ) :
     (approachNeg ε).orientation ≠ (approachPos ε).orientation := by
-  decide
+  simp [approachNeg, approachPos]
 
 theorem approach_states_distinct (ε : ℝ) :
     approachNeg ε ≠ approachPos ε := by
@@ -110,21 +117,23 @@ theorem approach_states_distinct (ε : ℝ) :
 theorem negative_terminal_limit :
     Tendsto (fun ε : ℝ => terminalProjection (approachNeg ε))
       (nhdsWithin 0 (Set.Ioi 0)) (nhds 0) := by
-  simpa [terminalProjection, approachNeg] using
-    (tendsto_neg_atTop_iff.comp tendsto_id)
+  have h : Tendsto (fun ε : ℝ => -ε) (nhds 0) (nhds 0) := by
+    simpa using (continuous_neg.tendsto (0 : ℝ))
+  simpa [terminalProjection, approachNeg] using h.mono_left nhdsWithin_le_nhds
 
 theorem positive_terminal_limit :
     Tendsto (fun ε : ℝ => terminalProjection (approachPos ε))
       (nhdsWithin 0 (Set.Ioi 0)) (nhds 0) := by
-  simpa [terminalProjection, approachPos] using
-    (tendsto_id : Tendsto (fun x : ℝ => x) (nhdsWithin 0 (Set.Ioi 0)) (nhds 0))
+  show Tendsto (fun ε : ℝ => ε) (nhdsWithin 0 (Set.Ioi 0)) (nhds 0)
+  exact tendsto_id.mono_left nhdsWithin_le_nhds
 
 /-- A simpler epsilon formulation of the two-sided convergence, independent
 of topology-library lemma naming. -/
 theorem two_sided_terminal_distance (ε : ℝ) (hε : 0 ≤ ε) :
     |terminalProjection (approachNeg ε) - terminalProjection (approachPos ε)| =
       2 * ε := by
-  simp [terminalProjection, approachNeg, approachPos, abs_of_nonneg hε]
+  simp only [terminalProjection, approachNeg, approachPos]
+  rw [show -ε - ε = -(2 * ε) by ring, abs_neg, abs_of_nonneg (mul_nonneg zero_le_two hε)]
 
 /-- Provenance code: different singularity natures receive different exact
 codes.  This is a concrete information channel, not an axiom. -/
@@ -152,7 +161,7 @@ theorem same_terminal_different_nature :
 
 theorem same_boundary_different_orientation (ε : ℝ) :
     provenanceCode (approachNeg ε) ≠ provenanceCode (approachPos ε) := by
-  decide
+  simp [provenanceCode, approachNeg, approachPos, kindCode, orientationCode]
 
 /-- Terminal collapse forgets all provenance. -/
 def collapse (x : INumber) : INumber :=
@@ -168,11 +177,11 @@ def ProvenanceResidue (x : INumber) : Prop :=
 
 theorem negative_approach_has_residue (ε : ℝ) :
     ProvenanceResidue (approachNeg ε) := by
-  decide
+  simp [ProvenanceResidue, provenanceCode, collapse, approachNeg, kindCode, orientationCode]
 
 theorem positive_approach_has_residue (ε : ℝ) :
     ProvenanceResidue (approachPos ε) := by
-  decide
+  simp [ProvenanceResidue, provenanceCode, collapse, approachPos, kindCode, orientationCode]
 
 /-- A binary terminal representation cannot reconstruct every full I-state:
 I00 and I10 have the same terminal observation but are distinct states. -/

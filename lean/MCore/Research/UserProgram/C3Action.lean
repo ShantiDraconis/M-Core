@@ -10,11 +10,11 @@ def I3State.index : I3State → ZMod 3
 
 theorem I3State.index_injective : Function.Injective I3State.index := by
   intro a b h
-  cases a <;> cases b <;> simp_all [I3State.index]
+  cases a <;> cases b <;> first | rfl | exact absurd h (by decide)
 
 theorem I3State.index_next (s : I3State) :
     s.next.index = s.index + 1 := by
-  cases s <;> native_decide
+  cases s <;> decide
 
 def rotate3 (k : ZMod 3) (s : I3State) : I3State :=
   match k.val with
