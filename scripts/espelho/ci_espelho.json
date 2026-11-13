@@ -1,0 +1,165 @@
+{
+ "ci": [
+  {
+   "repository": "ShantiDraconis/M-Core (private)",
+   "workflow_job": "Lean 4 + Mathlib — compilação e auditoria de axiomas",
+   "run_id": 43026127040,
+   "commit": "db91159",
+   "result": "T1 GREEN: CERTIFIED 8918/8918 theorems with only the standard axioms; sources_sha256 0a62e5b47f03b3ad430bb539d9b48b537e99d54b9df4a2880c17b2ebfebed00b (round 110: BDMonoide; the same sources as the published commit)"
+  },
+  {
+   "repository": "ShantiDraconis/M-Core (private)",
+   "workflow_job": "Lean 4 + Mathlib — compilação e auditoria de axiomas",
+   "run_id": 42698490788,
+   "commit": "ca9f98c",
+   "result": "T1 GREEN: CERTIFIED 8882/8882 theorems with only the standard axioms; sources_sha256 8269f20ad8fb3a0983ea00175e4529615a0db612ce8450cc4e20ae42c9123464 (round 109: BDPisoExato)"
+  },
+  {
+   "repository": "ShantiDraconis/M-Core (private)",
+   "workflow_job": "Lean 4 + Mathlib — compilação e auditoria de axiomas",
+   "run_id": 42087496333,
+   "commit": "f51683c",
+   "result": "T1 GREEN: CERTIFIED 8821/8821 theorems with only the standard axioms; sources_sha256 9809bbd14ce17794246df727bf65aa6ab3957ad3775987ae22c151aa218f98bd (round 107: FracoesFermions, FracoesFermionsRH, FracoesZerosTriviais; the later commits change only audits/ and Python)"
+  },
+  {
+   "repository": "ShantiDraconis/M-Core (private)",
+   "workflow_job": "Lean 4 + Mathlib — compilação e auditoria de axiomas",
+   "run_id": 42060186887,
+   "commit": "d8156ac",
+   "result": "T1 GREEN: 8790/8790 theorems with only the standard axioms; sources_sha256 f1eec42429f70d285ddc6c9b41ef66c47f361a6082c6cea8eb6b9de7d7ab139a (rounds 105–106: FracoesLinearizacao, FracoesPrimons; the merge commits after it change only audits/)"
+  },
+  {
+   "repository": "ShantiDraconis/M-Core (private)",
+   "workflow_job": "Lean 4 + Mathlib — compilação e auditoria de axiomas",
+   "run_id": 42042630073,
+   "commit": "f8ee71c",
+   "result": "T1 GREEN: 8765/8765 theorems with only the standard axioms; sources_sha256 65198347440b822f21fb3f26f0d970a651ccfcabc4cfb3ecac4f88a4c3ddbb5f (round 105: FracoesMalha, FracoesMalhaZeros)"
+  },
+  {
+   "repository": "ShantiDraconis/M-Core (private)",
+   "workflow_job": "Lean 4 + Mathlib — compilação e auditoria de axiomas",
+   "run_id": 41917163252,
+   "commit": "14cb7fc",
+   "result": "T6 GREEN: 8741/8741 theorems with only the standard axioms; sources_sha256 1f002f591987f141cd38570a2361e04a08977cc3424475201edc031d8f03989e",
+   "note": "the Lean and Lake files of 14cb7fc and of the published commit 05ce1d7 (merge of PR #181) are identical"
+  },
+  {
+   "repository": "ShantiDraconis/M-Core (private)",
+   "workflow_job": "Lean 4 + Mathlib — compilação e auditoria de axiomas",
+   "run_id": 41828386817,
+   "commit": "a777620",
+   "result": "T1 GREEN: 8665/8665 theorems with only the standard axioms; sources_sha256 f844898a5e67989235a5fe7c5e32490a88c3e5098d11857878b901d1bb64a797",
+   "note": "the Lean and Lake files of a777620 and of the published commit 21a802b are identical (git diff a777620 21a802b touches only audits/)"
+  }
+ ],
+ "local": "`lake build` of the added modules with Lean v4.34.1 (the `atk-kernel` toolchain) and `#print axioms` for each theorem. All depend only on `propext`, `Classical.choice` and `Quot.sound` (a few on a subset of them); the ones whose closure needs the whole Mathlib (`FracoesMalhaZeros`, `FracoesFermionsRH`, `BDPisoExato`, `BDMonoide`) were certified by the CI runs above. None uses `sorry`, `admit`, `native_decide` or a declared `axiom`.",
+ "so_ci": [
+  "ATK.Fracoes.MalhaZeros.",
+  "ATK.Fracoes.FermionsRH.",
+  "ATK.ZeroClasses.BDPisoExato.",
+  "ATK.ZeroClasses.BDMonoide."
+ ],
+ "ver_ci": {},
+ "tabela": [
+  [
+   "`atk-kernel/ATK/ZeroClasses/PontesRH.lean`",
+   33,
+   "Six proposed \"bridges\" to RH. Each one turns out to be a theorem, equivalent to RH, or ill-posed: `c ≤ ½` is RH, the induction step `RHAte T → RHAte (T + δ)` is RH, and Hilbert–Pólya (eigenvalue form) implies RH."
+  ],
+  [
+   "`atk-kernel/ATK/ZeroClasses/PontesRHAbscissa.lean`",
+   4,
+   "The same `c` as the abscissa of `Σ μ(n)n^{−s}`."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesChi.lean`",
+   22,
+   "`χ = 1/p + 1/q + 1/r − 1`: trichotomy, the gap `1/42` at `(2,3,7)`, orders of the polyhedral groups, Hurwitz's bound `84(g − 1)`, Euler `V − E + F = 2`, Beal exponents and `χ`."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesBernoulli.lean`",
+   20,
+   "`ζ(−1) = −1/12`, `ζ(−3) = 1/120`, `ζ(−5)`, `ζ(−7)`, `ζ(−9)` from Bernoulli numbers; von Staudt–Clausen for small indices."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesGama.lean`",
+   13,
+   "Continued fractions with a rational tail for the ordinates of zeros of `ζ`, from rational balls taken as hypotheses."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesEscala.lean`",
+   8,
+   "Scaling law `∫‖k^a f(k·)‖^q = k^{aq−d}∫‖f‖^q`; criticality of Navier–Stokes and Yang–Mills."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesSAT.lean`",
+   5,
+   "The `7/8` clause average for 3-SAT and the binomial identity behind Schöning's walk."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesGamaZeros.lean`",
+   1,
+   "The continued fractions above for three certified zeros."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesParRecorde.lean`",
+   16,
+   "The closest pair of zeros in the certified data (12 363 187 982 787/788), from its two Arb balls taken as hypotheses: continued fractions of both fractional parts with a rational tail, the simplest fraction in each ball (minimal by Farey neighbours), the gap and `−Δγ²/2` in exact rationals, and `3/2000 < s < 1/600 < 1/400 < s` of the previous record pair."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesSATMedia.lean`",
+   8,
+   "Every 3-CNF formula with distinct variables per clause: the average number of satisfied clauses is exactly `7m/8`, and some assignment satisfies at least `7m/8` (Johnson)."
+  ],
+  [
+   "`atk-kernel/ATK/OSLacuna.lean`, `OSTransferencia.lean`, `OSProcesso.lean`, `OSSimetria.lean`, `OSExemplo.lean`",
+   52,
+   "Osterwalder–Schrader reconstruction in time: Hilbert space from a reflection-positive stationary measure, transfer matrix `e^{−tH}`, spectral gap from exponential clustering, symmetries as isometries, an example in `ℂ²` where the bound is attained. Published before as branch-only theorems (`branches/M-Core/atk_rh-rho-independent/`); now in the default branch."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesMalha.lean`",
+   22,
+   "A mesh of 16 directions `s = c + γ₁e^{ikπ/8}` around even centres: translation and mirror laws (`|ζ|` equal on conjugate directions), rings with `c ≥ 16` free of zeros with `|ζ − 1|≤ 2^{2−σ}(π²/6 − 1)` (centre 600 270: `≤ 2^{−600 253}`), the shift operator `ζ(−1−s)ζ(s)4π² = −(s+1)sζ(s+2)ζ(1−s)`, and the minimum of `|ζ(−2m−δ)|` at `m = 3` for `δ ∈ [0.13, 0.14]`."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesMalhaZeros.lean`",
+   2,
+   "With the certified first zero `γ₁`: on the 180° axis the ring of centre 8 has the smallest `|ζ|` among even centres `≤ 12`."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesLinearizacao.lean`",
+   4,
+   "Exact law near the trivial zeros: `|ζ(−2m−δ)|= 2|sin(πδ/2)|·K_m(δ)` with `K_m(δ) = (2π)^{−(2m+1+δ)}Γ(2m+1+δ)|ζ(2m+1+δ)|`, and `2δK_m ≤|ζ(−2m−δ)|≤ πδK_m` for `0 < δ < 1`."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesPrimons.lean`",
+   21,
+   "The prime gas (modes `n` with energy `log n`) as Osterwalder–Schrader data: mass gap exactly `log 2` (bound from the OS reconstruction, attained by `n = 2`) and `ζ(σ) = Tr e^{−σH}` as a limit of partial traces."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesFermions.lean`",
+   14,
+   "The fermionic prime gas: Witten index `Σ_{d∣n} μ(d) = [n = 1]`, `Σ μ(n)n^{−s} = 1/ζ(s)` for `Re s > 1`, and for every `θ`: `ζ ≠ 0` on `Re s > θ` ⟺ `1/ζ` has a holomorphic continuation to `Re s > θ` (removable singularity at `s = 1`; identity principle on the upper half-strip, `ζ(s̄) = conj ζ(s)`)."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesFermionsRH.lean`",
+   5,
+   "RH ⟺ `1/ζ = Σ μ(n)n^{−s}` continues holomorphically to `Re s > ½`; the zero-free abscissa `c` equals the holomorphy abscissa of `1/ζ`. Equivalences only: RH stays open."
+  ],
+  [
+   "`atk-kernel/ATK/FracoesZerosTriviais.lean`",
+   12,
+   "The trivial zeros are simple: `‖ζ′(−2m)‖ = (2m)!·|ζ(2m+1)|/(2(2π)^{2m}) ≠ 0` for `m ≥ 1` (limit `δ → 0⁺` of the exact law of `FracoesLinearizacao`), e.g. `|ζ′(−2)|= ζ(3)/(4π²)`."
+  ],
+  [
+   "`atk-kernel/ATK/ZeroClasses/BDPisoExato.lean`",
+   0,
+   "Báez-Duarte weighted distance (round 109, proposal R105): the exact ceiling `TaxaDN σ κ ⟹ κ ≤ 2(σ − Θ)`, so `κ(σ) = 2(σ − Θ)` exactly, `PisoPonderado` becomes a theorem, and RH ⟺ `TaxaDN σ₀ (2σ₀ − 1)` for one fixed `σ₀ ∈ (½, 1)`. Proof via a smoothed Mertens function and its Mellin transform `K(s)/ζ(s)`."
+  ],
+  [
+   "`atk-kernel/ATK/ZeroClasses/BDMonoide.lean`",
+   0,
+   "The same rate on a monoid of `L`-functions (round 110, proposal R110): ceiling `TaxaDNF σ κ ⟹ L ≠ 0` on `Re s > σ − κ/2`, and the join: one rate of the product certifies the zero-free region of every factor (`ζ·L_χ` under a named good-line hypothesis for `L(s, χ)`). Decides neither RH nor GRH."
+  ]
+ ]
+}
