@@ -563,6 +563,23 @@ def main():
         msg = "committed inventory/PROOF_INVENTORY.json/.md is out of date; regenerate with scripts/proof_inventory.py"
         level = "error" if a.fail_if_stale else "warning"
         print(f"::{level}::{msg}" if gh else f"[inventory] {level.upper()}: {msg}")
+        if gh:
+            # Quem não tem a Mathlib compilada localmente pega os arquivos regenerados no log:
+            # python3 scripts/inventory_from_log.py LOG  (extrai inventory/ do bloco abaixo)
+            import base64
+            import io
+            import tarfile
+            buf = io.BytesIO()
+            with tarfile.open(fileobj=buf, mode="w:gz") as tar:
+                tar.add(jpath, arcname="inventory/PROOF_INVENTORY.json")
+                tar.add(mpath, arcname="inventory/PROOF_INVENTORY.md")
+            b64 = base64.b64encode(buf.getvalue()).decode()
+            print("::group::regenerated inventory (tar.gz, base64)")
+            print("BEGIN-INVENTORY-BUNDLE")
+            for i in range(0, len(b64), 76):
+                print(b64[i:i + 76])
+            print("END-INVENTORY-BUNDLE")
+            print("::endgroup::")
 
     if a.strict:
         problems = []

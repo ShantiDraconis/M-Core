@@ -1,6 +1,6 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.Order.Filter.Basic
-import Mathlib.Topology.Instances.Real
+import Mathlib.Topology.Instances.Real.Lemmas
 
 /-!
 # I-Boundary Provenance
