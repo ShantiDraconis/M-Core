@@ -6,15 +6,15 @@ Toolchain: `leanprover/lean4:v4.19.0`
 
 | Item | Count |
 | --- | ---: |
-| modules total | 42 |
-| modules ok | 42 |
-| modules failed | 0 |
-| modules blocked | 0 |
-| modules outside default build | 22 |
-| standalone files total | 0 |
+| modules total | 67 |
+| modules ok | 49 |
+| modules failed | 2 |
+| modules blocked | 16 |
+| modules outside default build | 47 |
+| standalone files total | 15 |
 | standalone files failed | 0 |
-| theorems total | 259 |
-| theorems clean | 259 |
+| theorems total | 308 |
+| theorems clean | 308 |
 | theorems using sorry | 0 |
 | theorems using project axiom | 0 |
 | theorems nonstandard axioms | 0 |
@@ -27,7 +27,26 @@ Toolchain: `leanprover/lean4:v4.19.0`
 
 ## Modules that do not compile
 
-None. Every module of the library compiles.
+| Module | Status | In default build | Detail |
+| --- | --- | --- | --- |
+| `MCore.Research.UserProgram` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.BridgeFirewall` | BLOCKED | no | MCore.Research.UserProgram.Operators |
+| `MCore.Research.UserProgram.C3Action` | FAILED | no | lean/MCore/Research/UserProgram/C3Action.lean:11:70: unsolved goals |
+| `MCore.Research.UserProgram.C3Fourier` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.C3Intertwiner` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.C3LinearSectors` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.ConcreteOperators` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.CrossOperatorLaws` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.CyclicInvariant` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.FlowSemantics` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.GlobalCertificate` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.I3Geometry` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.I3VectorAlgebra` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.ModeDecomposition` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.OperatorLaws` | BLOCKED | no | MCore.Research.UserProgram.Operators |
+| `MCore.Research.UserProgram.Operators` | FAILED | no | lean/MCore/Research/UserProgram/Operators.lean:11:44: application type mismatch |
+| `MCore.Research.UserProgram.SemanticProofCore` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
+| `MCore.Research.UserProgram.ThreeChannel` | BLOCKED | no | MCore.Research.UserProgram.C3Action |
 
 ## Stand-alone files that do not compile
 
