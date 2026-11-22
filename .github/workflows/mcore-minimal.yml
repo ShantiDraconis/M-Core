@@ -1,0 +1,32 @@
+name: M-Core minimal four-theorem verification
+
+on:
+  push:
+    paths:
+      - 'MINIMAL/**'
+      - '.github/workflows/mcore-minimal.yml'
+  pull_request:
+    paths:
+      - 'MINIMAL/**'
+      - '.github/workflows/mcore-minimal.yml'
+  workflow_dispatch:
+
+jobs:
+  compile-minimal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean toolchain via elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve Mathlib dependencies
+        run: |
+          lake update
+          lake exe cache get
+      - name: Compile each isolated theorem file
+        run: |
+          for file in MINIMAL/A1.lean MINIMAL/A2.lean MINIMAL/G1Fix.lean MINIMAL/A3.lean; do
+            echo "Checking $file"
+            lake env lean "$file"
+          done

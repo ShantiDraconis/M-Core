@@ -1,0 +1,39 @@
+name: M-Core audit proof verification
+
+on:
+  pull_request:
+    paths:
+      - 'MCore/Proof.lean'
+      - 'MCore/OpenProblems.lean'
+      - 'MCore/A1Amplitude.lean'
+      - 'MCore/A2SelfRef.lean'
+      - 'MCore/A3Zero.lean'
+      - 'MCore/DAG.lean'
+      - '.github/workflows/mcore-audit-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build Mathlib and library
+        run: |
+          lake update
+          lake exe cache get || true
+          lake build
+      - name: Compile root audit dependencies
+        run: lake env python3 .github/scripts/compilar_raiz.py /tmp/mcore-root-olean
+      - name: Compile audit proof and open specifications
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env bash -c 'LEAN_PATH=/tmp/mcore-root-olean:$LEAN_PATH lean MCore/Proof.lean'
+          lake env bash -c 'LEAN_PATH=/tmp/mcore-root-olean:$LEAN_PATH lean MCore/OpenProblems.lean'
