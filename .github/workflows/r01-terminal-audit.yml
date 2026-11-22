@@ -1,0 +1,96 @@
+name: R01 terminal kernel audit
+
+on:
+  pull_request:
+    paths:
+      - 'atk-kernel/ATK/R01TerminalAudit.lean'
+      - '.github/workflows/r01-terminal-audit.yml'
+  push:
+    branches:
+      - audit/r01-terminal-type-probes-20261122
+    paths:
+      - 'atk-kernel/ATK/R01TerminalAudit.lean'
+      - '.github/workflows/r01-terminal-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r01-terminal-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: atk-kernel
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up pinned Lean toolchain
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+          build: false
+          test: false
+          lint: false
+          lake-package-directory: atk-kernel
+      - name: Execute explicit R01 type and axiom audit
+        shell: bash
+        run: |
+          mkdir -p reports
+          set -o pipefail
+          lake env lean ATK/R01TerminalAudit.lean 2>&1 | tee reports/r01-terminal-audit.log
+      - name: Reject untrusted axiom dependencies
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, sys
+          log = pathlib.Path("reports/r01-terminal-audit.log").read_text()
+          expected = [
+            "ATK.FinalRoot.raiz_de_produtores",
+            "ATK.FinalRoot.verde_fiel_iff",
+            "ATK.ClosedMathReal.closedMath_real",
+            "ATK.ProdTN.nonempty_iff_rh",
+            "ATK.ProdTN.rh_of_kernel",
+            "ATK.TeoremaGlobal.teorema_global",
+            "ATK.ObrigacoesMinimas.closedMath_minimo",
+          ]
+          blocks = re.findall(r"'([^']+)' depends on axioms:\s*\[([^\]]*)\]", log)
+          results = {name: [a.strip() for a in axioms.split(",") if a.strip()] for name, axioms in blocks}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          errors = []
+          for name in expected:
+              if name not in results:
+                  errors.append(f"Missing #print axioms output for {name}")
+              elif set(results[name]) - allowed:
+                  errors.append(f"{name}: non-whitelisted axioms {sorted(set(results[name])-allowed)}")
+          if "sorryAx" in log:
+              errors.append("sorryAx detected in audit output")
+          lines = ["# R01 terminal audit", "", "All inspected declarations are combinators or equivalences; this check does not certify an unconditional FINAL_ROOT.", "", "| Declaration | Axioms | Status |", "|---|---|---|"]
+          for name in expected:
+              axioms = results.get(name)
+              status = "PASS" if axioms is not None and set(axioms) <= allowed else "FAIL"
+              lines.append(f"| `{name}` | {', '.join(axioms) if axioms is not None else 'MISSING'} | {status} |")
+          lines += ["", "## Gate", "OPEN_MATH=true; CLOSED_MATH=false; FINAL_FAIL. No status promotion."]
+          report = "\n".join(lines) + "\n"
+          pathlib.Path("reports/r01-terminal-audit.md").write_text(report)
+          print(report)
+          if errors:
+              print("\n".join(errors), file=sys.stderr)
+              sys.exit(1)
+          PY
+      - name: Publish report in job summary
+        if: always()
+        shell: bash
+        run: |
+          if [ -f reports/r01-terminal-audit.md ]; then
+            cat reports/r01-terminal-audit.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload raw axiom log and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r01-terminal-kernel-audit
+          path: |
+            atk-kernel/reports/r01-terminal-audit.log
+            atk-kernel/reports/r01-terminal-audit.md
+          if-no-files-found: warn
