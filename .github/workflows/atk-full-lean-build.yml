@@ -34,6 +34,8 @@ jobs:
           build: false
           test: false
           lint: false
+          auto-config: false
+          lake-package-directory: atk-kernel
       - name: Print pinned environment
         run: |
           cat lean-toolchain
@@ -43,6 +45,10 @@ jobs:
       - name: Scan explicit gaps (informational, not a proof gate)
         run: |
           grep -RInE 'sorry|admit|sorryAx|^[[:space:]]*axiom[[:space:]]|hwitness|htransfer|M1|M2' ATK || true
+      - name: Resolve pinned Lake dependencies
+        run: lake update
+      - name: Download Mathlib compiled cache
+        run: lake exe cache get
       - name: Build complete ATK library
         run: lake build ATK
       - name: Archive build metadata
