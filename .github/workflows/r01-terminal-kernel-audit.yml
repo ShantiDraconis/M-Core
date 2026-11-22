@@ -24,6 +24,9 @@ jobs:
           build-args: 'ATK'
           test: 'false'
           lint: 'false'
+      - name: Ensure ATK oleans exist before imports
+        working-directory: atk-kernel
+        run: lake build ATK
       - name: Execute explicit terminal probes and capture all output
         working-directory: atk-kernel
         shell: bash
