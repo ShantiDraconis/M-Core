@@ -33,6 +33,8 @@ jobs:
           test: false
           lint: false
           lake-package-directory: atk-kernel
+      - name: Compile ATK imports for R01 probe
+        run: lake build ATK
       - name: Execute explicit R01 type and axiom audit
         shell: bash
         run: |
