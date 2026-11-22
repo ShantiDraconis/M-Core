@@ -1,0 +1,60 @@
+name: ATK full Lean kernel build
+
+on:
+  push:
+    branches:
+      - main
+      - 'ci/atk-full-lean-build-*'
+    paths:
+      - 'atk-kernel/**'
+      - '.github/workflows/atk-full-lean-build.yml'
+  pull_request:
+    paths:
+      - 'atk-kernel/**'
+      - '.github/workflows/atk-full-lean-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean-full:
+    name: Lake full build / kernel audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: atk-kernel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          use-github-cache: true
+          use-mathlib-cache: true
+          build: false
+          test: false
+          lint: false
+      - name: Print pinned environment
+        run: |
+          cat lean-toolchain
+          lean --version
+          lake --version
+          git rev-parse HEAD
+      - name: Scan explicit gaps (informational, not a proof gate)
+        run: |
+          grep -RInE 'sorry|admit|sorryAx|^[[:space:]]*axiom[[:space:]]|hwitness|htransfer|M1|M2' ATK || true
+      - name: Build complete ATK library
+        run: lake build ATK
+      - name: Archive build metadata
+        if: always()
+        run: |
+          mkdir -p audit-artifacts
+          cp lean-toolchain lakefile.toml audit-artifacts/
+          cp lake-manifest.json audit-artifacts/ 2>/dev/null || true
+          git rev-parse HEAD > audit-artifacts/commit.txt
+      - name: Upload reproducibility metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atk-full-lean-build-metadata
+          path: atk-kernel/audit-artifacts/
