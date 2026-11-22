@@ -1,0 +1,70 @@
+name: R01 terminal kernel audit
+
+on:
+  pull_request:
+    paths:
+      - 'atk-kernel/**'
+      - '.github/workflows/r01-terminal-kernel-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terminal-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build ATK using pinned Lean and Mathlib
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: atk-kernel
+          build: 'true'
+          build-args: 'ATK'
+          test: 'false'
+          lint: 'false'
+      - name: Ensure ATK oleans exist before imports
+        working-directory: atk-kernel
+        run: lake build ATK
+      - name: Execute explicit terminal probes and capture all output
+        working-directory: atk-kernel
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p audits/results
+          lake env lean ATK/R01TerminalAudit.lean 2>&1 | tee audits/results/r01-terminal-probes.log
+      - name: Reject forbidden axioms in terminal probe output
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('atk-kernel/audits/results/r01-terminal-probes.log')
+          text = p.read_text()
+          expected = [
+            'ATK.FinalRoot.raiz_de_produtores',
+            'ATK.FinalRoot.verde_fiel_iff',
+            'ATK.ClosedMathReal.closedMath_real',
+            'ATK.ProdTN.nonempty_iff_rh',
+            'ATK.ProdTN.rh_of_kernel',
+            'ATK.TeoremaGlobal.teorema_global',
+            'ATK.ObrigacoesMinimas.closedMath_minimo',
+          ]
+          assert all(name in text for name in expected), 'Missing declaration output'
+          assert text.count('axioms:') >= len(expected), 'Missing axiom printouts'
+          import re
+          found = re.findall(r'axioms:\s*\[([^\]]*)\]', text)
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          for item in found:
+              axioms = {a.strip() for a in item.split(',') if a.strip()}
+              unexpected = axioms - allowed
+              if unexpected:
+                  raise SystemExit(f'Forbidden axioms: {sorted(unexpected)}')
+          print('PASS: probe declarations elaborated and printed axiom sets are allowlisted.')
+          print('NOT A CERTIFICATE OF INCONDITIONAL FINAL_ROOT.')
+      - name: Upload terminal probe evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r01-terminal-kernel-probes
+          path: atk-kernel/audits/results/r01-terminal-probes.log
+          if-no-files-found: warn
