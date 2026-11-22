@@ -16,14 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-        with:
-          use-github-cache: true
-          build: false
-          test: false
+      - name: Install Lean toolchain via elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve Mathlib dependencies
+        run: |
+          lake update
+          lake exe cache get
       - name: Compile each isolated theorem file
         run: |
-          lake exe cache get
           for file in MINIMAL/A1.lean MINIMAL/A2.lean MINIMAL/G1Fix.lean MINIMAL/A3.lean; do
             echo "Checking $file"
             lake env lean "$file"
