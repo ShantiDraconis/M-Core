@@ -4,3 +4,5 @@ import MCore.PrimitiveReduction
 import MCore.AnalyticReductions
 
 /-! Root module for the default Lake library. -/
+
+import MCore.RiemannIsolation
