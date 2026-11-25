@@ -458,4 +458,26 @@ theorem reciprocal_model_loss (n : ℕ) :
 
 #print axioms reciprocal_model_loss
 
+
+/-- A zero squared residual is equivalent to exact equality in any normed group. -/
+theorem exact_residual_zero {H : Type*} [NormedAddCommGroup H] (x y : H) :
+    ‖x - y‖^2 = 0 ↔ x = y := by
+  constructor
+  · intro h
+    have hn : ‖x - y‖ = 0 := by nlinarith [norm_nonneg (x-y)]
+    exact sub_eq_zero.mp (norm_eq_zero.mp hn)
+  · rintro rfl
+    simp
+
+/-- Nonnegative residuals with arbitrarily small values have no positive floor. -/
+theorem arbitrary_small_excludes_floor (D : ℕ → ℝ)
+    (small : ∀ ε : ℝ, 0 < ε → ∃ n, D n < ε) :
+    ∀ L : ℝ, 0 < L → ¬ (∀ n, L ≤ D n) := by
+  intro L hL floor
+  obtain ⟨n, hn⟩ := small L hL
+  exact (not_lt_of_ge (floor n)) hn
+
+#print axioms exact_residual_zero
+#print axioms arbitrary_small_excludes_floor
+
 end MCore.ClosureCalculus
