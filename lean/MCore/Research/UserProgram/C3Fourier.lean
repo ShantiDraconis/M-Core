@@ -1,23 +1,23 @@
 import Mathlib
-import MCore.Research.UserProgram.I3Geometry
+import MCore.Research.UserProgram.ModeDecomposition
 
 namespace MCore.Research.UserProgram
 
-def ComplexThreeChannel.rotate (x : ComplexThreeChannel) : ComplexThreeChannel where
+noncomputable def ComplexThreeChannel.rotate (x : ComplexThreeChannel) : ComplexThreeChannel where
   manifesto := x.travessia
   travessia := x.semente
   semente := x.manifesto
 
-def ComplexThreeChannel.fourier0 (x : ComplexThreeChannel) : ℂ :=
+noncomputable def ComplexThreeChannel.fourier0 (x : ComplexThreeChannel) : ℂ :=
   (x.manifesto + x.travessia + x.semente) / 3
 
-def ComplexThreeChannel.fourier1 (x : ComplexThreeChannel) : ℂ :=
+noncomputable def ComplexThreeChannel.fourier1 (x : ComplexThreeChannel) : ℂ :=
   (x.manifesto + omega3^2 * x.travessia + omega3 * x.semente) / 3
 
-def ComplexThreeChannel.fourier2 (x : ComplexThreeChannel) : ℂ :=
+noncomputable def ComplexThreeChannel.fourier2 (x : ComplexThreeChannel) : ℂ :=
   (x.manifesto + omega3 * x.travessia + omega3^2 * x.semente) / 3
 
-def ComplexThreeChannel.fromFourier (a0 a1 a2 : ℂ) : ComplexThreeChannel where
+noncomputable def ComplexThreeChannel.fromFourier (a0 a1 a2 : ℂ) : ComplexThreeChannel where
   manifesto := a0 + a1 + a2
   travessia := a0 + omega3 * a1 + omega3^2 * a2
   semente := a0 + omega3^2 * a1 + omega3 * a2
@@ -34,9 +34,12 @@ theorem ComplexThreeChannel.fourier_inversion (x : ComplexThreeChannel) :
       ComplexThreeChannel.fourier1, ComplexThreeChannel.fourier2]
   all_goals
     have h := omega3_sq_add_omega3_add_one
-    field_simp
-    ring_nf at h ⊢
-    nlinarith [h]
+    have hc := omega3_cube
+    have h4 := omega3_four
+    have h2 : omega3 ^ 2 = -omega3 - 1 := by linear_combination h
+    rw [h2]
+    ring_nf
+    simp only [h2, hc, h4] <;> ring
 
 theorem ComplexThreeChannel.fourier0_rotate (x : ComplexThreeChannel) :
     x.rotate.fourier0 = x.fourier0 := by
@@ -46,20 +49,11 @@ theorem ComplexThreeChannel.fourier0_rotate (x : ComplexThreeChannel) :
 theorem ComplexThreeChannel.fourier1_rotate (x : ComplexThreeChannel) :
     x.rotate.fourier1 = omega3 * x.fourier1 := by
   simp [ComplexThreeChannel.rotate, ComplexThreeChannel.fourier1]
-  have h := omega3_sq_add_omega3_add_one
-  have hc := omega3_cube
-  field_simp
-  ring_nf at h hc ⊢
-  nlinarith [h, hc]
+  linear_combination -x.travessia * omega3_cube / 3
 
 theorem ComplexThreeChannel.fourier2_rotate (x : ComplexThreeChannel) :
     x.rotate.fourier2 = omega3^2 * x.fourier2 := by
   simp [ComplexThreeChannel.rotate, ComplexThreeChannel.fourier2]
-  have h := omega3_sq_add_omega3_add_one
-  have hc := omega3_cube
-  have h4 := omega3_four
-  field_simp
-  ring_nf at h hc h4 ⊢
-  nlinarith [h, hc, h4]
+  linear_combination -x.travessia * omega3_cube / 3 - x.semente * omega3_four / 3
 
 end MCore.Research.UserProgram
