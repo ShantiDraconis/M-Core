@@ -152,4 +152,23 @@ theorem no_positive_residual_of_unbounded_loss
 
 #print axioms no_positive_residual_of_unbounded_loss
 
+
+/-- Exact scalar optimization of the quadratic residual along a new direction.
+    E is the old squared residual, C its correlation, and G the squared norm
+    of the new direction. -/
+theorem quadratic_rate_gain (E C G : ℝ) (hG : 0 < G) :
+    E - 2 * (C / G) * C + (C / G)^2 * G = E - C^2 / G := by
+  field_simp [ne_of_gt hG] <;> ring
+
+theorem quadratic_rate_gain_nonneg (C G : ℝ) (hG : 0 < G) :
+    0 ≤ C^2 / G := div_nonneg (sq_nonneg C) hG.le
+
+theorem quadratic_rate_gain_strict (C G : ℝ) (hG : 0 < G)
+    (hC : C ≠ 0) : 0 < C^2 / G :=
+  div_pos (sq_pos_of_ne_zero hC) hG
+
+#print axioms quadratic_rate_gain
+#print axioms quadratic_rate_gain_nonneg
+#print axioms quadratic_rate_gain_strict
+
 end MCore.ClosureCalculus
