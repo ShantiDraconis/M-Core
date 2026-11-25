@@ -8,7 +8,7 @@ structure Operator (α : Type) where
 def Operator.comp {α : Type} (f g : Operator α) : Operator α :=
   ⟨f.run ∘ g.run⟩
 
-def Operator.id (α : Type) : Operator α := ⟨id⟩
+def Operator.id (α : Type) : Operator α := ⟨fun x => x⟩
 
 theorem Operator.comp_assoc {α : Type} (f g h : Operator α) :
     Operator.comp (Operator.comp f g) h =
