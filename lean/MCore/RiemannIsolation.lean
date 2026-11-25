@@ -115,4 +115,38 @@ theorem triangular_all_zero {N : ℕ} (v : Fin N → ℝ)
 
 #print axioms triangular_all_zero
 
+/-- A relation is an exact object, independently of its truth. -/
+structure RelationalNumber where
+  sentence : Prop
+
+def zeroEndpoint (d : ℝ) : RelationalNumber := ⟨d = 0⟩
+
+def RelationalNumber.Valid (r : RelationalNumber) : Prop := r.sentence
+
+theorem endpoint_valid_iff (d : ℝ) :
+    (zeroEndpoint d).Valid ↔ d = 0 := Iff.rfl
+
+theorem endpoint_exists (d : ℝ) : Nonempty RelationalNumber :=
+  ⟨zeroEndpoint d⟩
+
+theorem endpoint_not_automatically_valid :
+    ¬ (zeroEndpoint 1).Valid := by
+  change ¬ (1 : ℝ) = 0
+  exact one_ne_zero
+
+theorem endpoint_discrete_close (d : ℝ)
+    (hn : 0 ≤ d) (hu : d < 1) (hz : ∃ z : ℤ, d = (z : ℝ)) :
+    (zeroEndpoint d).Valid := by
+  obtain ⟨z, rfl⟩ := hz
+  have h0 : (0 : ℤ) ≤ z := by exact_mod_cast hn
+  have h1 : z < (1 : ℤ) := by exact_mod_cast hu
+  have he : z = 0 := by omega
+  change (z : ℝ) = 0
+  simp [he]
+
+#print axioms endpoint_valid_iff
+#print axioms endpoint_exists
+#print axioms endpoint_not_automatically_valid
+#print axioms endpoint_discrete_close
+
 end MCore.RiemannIsolation
