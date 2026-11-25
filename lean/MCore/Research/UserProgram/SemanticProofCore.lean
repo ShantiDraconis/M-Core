@@ -196,6 +196,17 @@ theorem refuted_component_blocks_vector (g : VectorGap)
 inductive ExactExpr where
   | integer (n : Int)
   | infinity
+  | negativeInfinity
+  | directedZero (positive : Bool)
+  | variable (name : String)
+  | add (x y : ExactExpr)
+  | sub (x y : ExactExpr)
+  | log (x : ExactExpr)
+  | exp (x : ExactExpr)
+  | sin (x : ExactExpr)
+  | cos (x : ExactExpr)
+  | tan (x : ExactExpr)
+  | apply (name : String) (x : ExactExpr)
   | neg (x : ExactExpr)
   | sqrt (x : ExactExpr)
   | mul (x y : ExactExpr)
@@ -229,5 +240,32 @@ theorem parameter_uniform_discharge {A : Type*} (C : A → Prop)
 #print axioms admissible_exact
 #print axioms parameter_exists_iff
 #print axioms parameter_uniform_discharge
+
+-- A typed relation describes every admissible interpretation of an exact point.
+structure ExactPoint (A : Type*) where
+  expression : ExactExpr
+  constraint : A → Prop
+
+def ExactPoint.solutions {A : Type*} (p : ExactPoint A) : Set A :=
+  admissibleParameters p.constraint
+
+def ExactPoint.combine {A B : Type*} (op : ExactExpr → ExactExpr → ExactExpr)
+    (p : ExactPoint A) (q : ExactPoint B) (joint : A → B → Prop) :
+    ExactPoint (A × B) :=
+  ⟨op p.expression q.expression, fun x =>
+    p.constraint x.1 ∧ q.constraint x.2 ∧ joint x.1 x.2⟩
+
+theorem combine_exact {A B : Type*} (op : ExactExpr → ExactExpr → ExactExpr)
+    (p : ExactPoint A) (q : ExactPoint B) (joint : A → B → Prop)
+    (a : A) (b : B) :
+    (a, b) ∈ (ExactPoint.combine op p q joint).solutions ↔
+      p.constraint a ∧ q.constraint b ∧ joint a b := Iff.rfl
+
+theorem exact_zero_syntax_distinct :
+    ExactExpr.integer 0 ≠ ExactExpr.div (.integer 0) (.integer 0) := by
+  decide
+
+#print axioms combine_exact
+#print axioms exact_zero_syntax_distinct
 
 end MCore.Research.UserProgram
