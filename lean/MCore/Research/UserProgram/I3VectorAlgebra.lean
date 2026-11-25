@@ -3,6 +3,8 @@ import MCore.Research.UserProgram.SemanticProofCore
 
 namespace MCore.Research.UserProgram
 
+noncomputable section
+
 structure I3Vector where
   manifesto : ℂ
   travessia : ℂ
@@ -27,25 +29,25 @@ instance : SMul ℂ I3Vector :=
 
 theorem I3Vector.add_assoc (x y z : I3Vector) :
     (x + y) + z = x + (y + z) := by
-  ext <;> simp [add_assoc]
+  apply I3Vector.ext <;> change (_ + _) + _ = _ + (_ + _) <;> exact _root_.add_assoc _ _ _
 
 theorem I3Vector.add_zero (x : I3Vector) : x + 0 = x := by
-  ext <;> simp
+  apply I3Vector.ext <;> change _ + 0 = _ <;> exact _root_.add_zero _
 
 theorem I3Vector.add_neg (x : I3Vector) : x + (-x) = 0 := by
   ext <;> simp
 
 theorem I3Vector.smul_add (a : ℂ) (x y : I3Vector) :
     a • (x + y) = a • x + a • y := by
-  ext <;> simp [mul_add]
+  apply I3Vector.ext <;> change _ * (_ + _) = _ * _ + _ * _ <;> exact mul_add _ _ _
 
 theorem I3Vector.add_smul (a b : ℂ) (x : I3Vector) :
     (a + b) • x = a • x + b • x := by
-  ext <;> simp [add_mul]
+  apply I3Vector.ext <;> change (_ + _) * _ = _ * _ + _ * _ <;> exact add_mul _ _ _
 
 theorem I3Vector.mul_smul (a b : ℂ) (x : I3Vector) :
     (a * b) • x = a • (b • x) := by
-  ext <;> simp [mul_assoc]
+  apply I3Vector.ext <;> change (_ * _) * _ = _ * (_ * _) <;> exact mul_assoc _ _ _
 
 def I3Vector.rotate (x : I3Vector) : I3Vector :=
   ⟨x.travessia, x.semente, x.manifesto⟩
@@ -76,5 +78,7 @@ def I3VectorRotationInhabitant :
 def I3VectorSumInvariantInhabitant :
     Inhabitant (∀ x : I3Vector, x.rotate.sum = x.sum) :=
   ⟨I3Vector.sum_rotate⟩
+
+end
 
 end MCore.Research.UserProgram
