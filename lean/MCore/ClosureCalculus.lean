@@ -263,4 +263,20 @@ theorem zero_residual_absorbing (D : ℕ → ℝ) (hD : Antitone D)
 #print axioms relative_rate_product
 #print axioms zero_residual_absorbing
 
+
+/-- Exact cancellation criterion for a Schur residual step. -/
+theorem schur_zero_iff (D u s : ℝ) (hs : 0 < s) :
+    D - u^2 / s = 0 ↔ u^2 = s * D := by
+  constructor
+  · intro h
+    have he : u^2 / s = D := by linarith
+    have hm := (div_eq_iff (ne_of_gt hs)).mp he
+    simpa [mul_comm] using hm
+  · intro h
+    have he : u^2 / s = D :=
+      (div_eq_iff (ne_of_gt hs)).mpr (by simpa [mul_comm] using h)
+    linarith
+
+#print axioms schur_zero_iff
+
 end MCore.ClosureCalculus
