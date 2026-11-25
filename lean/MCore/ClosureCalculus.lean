@@ -135,4 +135,21 @@ theorem accumulated_loss_bound (D : ℕ → ℝ) (L : ℝ)
 #print axioms relative_loss_bound
 #print axioms accumulated_loss_bound
 
+
+/-- Unbounded finite relative losses exclude every positive uniform residual. -/
+theorem no_positive_residual_of_unbounded_loss
+    (D : ℕ → ℝ) (decrease : ∀ n, D (n+1) ≤ D n)
+    (unbounded : ∀ B : ℝ, ∃ N : ℕ,
+      B < ∑ n ∈ Finset.range N, (1 - D (n+1) / D n)) :
+    ∀ L : ℝ, 0 < L → ¬ (∀ n, L ≤ D n) := by
+  intro L hL lower
+  obtain ⟨N, hN⟩ := unbounded (D 0 / L)
+  have h := accumulated_loss_bound D L hL lower decrease N
+  have hm := (div_lt_iff₀ hL).mp hN
+  have hp := lower N
+  rw [mul_comm L] at h
+  linarith
+
+#print axioms no_positive_residual_of_unbounded_loss
+
 end MCore.ClosureCalculus
