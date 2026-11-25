@@ -19,24 +19,24 @@
   "scope": "closed (arity-0) Prop definitions, plus any Prop-valued definition that is vacuous"
  },
  "summary": {
-  "modules_total": 67,
-  "modules_ok": 49,
-  "modules_failed": 2,
-  "modules_blocked": 16,
+  "modules_total": 71,
+  "modules_ok": 71,
+  "modules_failed": 0,
+  "modules_blocked": 0,
   "modules_outside_default_build": 47,
   "standalone_files_total": 15,
   "standalone_files_failed": 0,
-  "theorems_total": 308,
-  "theorems_clean": 308,
+  "theorems_total": 469,
+  "theorems_clean": 469,
   "theorems_using_sorry": 0,
   "theorems_using_project_axiom": 0,
   "theorems_nonstandard_axioms": 0,
   "project_axioms_declared": 0,
-  "props_reported": 1,
-  "props_proved": 0,
+  "props_reported": 5,
+  "props_proved": 1,
   "props_refuted": 1,
   "props_vacuous": 0,
-  "props_no_proof_in_library": 0
+  "props_no_proof_in_library": 3
  },
  "project_axioms": [],
  "environment_groups": 1,
@@ -55,10 +55,22 @@
    "in_default_build": false
   },
   {
+   "module": "MCore.AnalyticReductions",
+   "path": "lean/MCore/AnalyticReductions.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
    "module": "MCore.BSDLogicOpenMath",
    "path": "lean/MCore/BSDLogicOpenMath.lean",
    "status": "OK",
    "in_default_build": false
+  },
+  {
+   "module": "MCore.ClosureCalculus",
+   "path": "lean/MCore/ClosureCalculus.lean",
+   "status": "OK",
+   "in_default_build": true
   },
   {
    "module": "MCore.FinalFail.AcceptedInhabitants",
@@ -325,95 +337,88 @@
    "in_default_build": false
   },
   {
+   "module": "MCore.PrimitiveReduction",
+   "path": "lean/MCore/PrimitiveReduction.lean",
+   "status": "OK",
+   "in_default_build": true
+  },
+  {
    "module": "MCore.Research.UserProgram",
    "path": "lean/MCore/Research/UserProgram.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.BridgeFirewall",
    "path": "lean/MCore/Research/UserProgram/BridgeFirewall.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.Operators"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.C3Action",
    "path": "lean/MCore/Research/UserProgram/C3Action.lean",
-   "status": "FAILED",
-   "in_default_build": false,
-   "first_error": "lean/MCore/Research/UserProgram/C3Action.lean:11:70: unsolved goals\ncase manifesto.semente\nh : 0 = 2\n⊢ False\n\ncase travessia.semente\nh : 1 = 2\n⊢ False\n\ncase semente.manifesto\nh : 2 = 0\n⊢ False\n\ncase semente.travessia\nh : 2 = 1\n⊢ False"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.C3Fourier",
    "path": "lean/MCore/Research/UserProgram/C3Fourier.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.C3Intertwiner",
    "path": "lean/MCore/Research/UserProgram/C3Intertwiner.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.C3LinearSectors",
    "path": "lean/MCore/Research/UserProgram/C3LinearSectors.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.ConcreteOperators",
    "path": "lean/MCore/Research/UserProgram/ConcreteOperators.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.CrossOperatorLaws",
    "path": "lean/MCore/Research/UserProgram/CrossOperatorLaws.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.CyclicInvariant",
    "path": "lean/MCore/Research/UserProgram/CyclicInvariant.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.FlowSemantics",
    "path": "lean/MCore/Research/UserProgram/FlowSemantics.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.GlobalCertificate",
    "path": "lean/MCore/Research/UserProgram/GlobalCertificate.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.I3Geometry",
    "path": "lean/MCore/Research/UserProgram/I3Geometry.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.I3VectorAlgebra",
    "path": "lean/MCore/Research/UserProgram/I3VectorAlgebra.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.IRegime",
@@ -430,42 +435,38 @@
   {
    "module": "MCore.Research.UserProgram.ModeDecomposition",
    "path": "lean/MCore/Research/UserProgram/ModeDecomposition.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.OperatorLaws",
    "path": "lean/MCore/Research/UserProgram/OperatorLaws.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.Operators"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.Operators",
    "path": "lean/MCore/Research/UserProgram/Operators.lean",
-   "status": "FAILED",
-   "in_default_build": false,
-   "first_error": "lean/MCore/Research/UserProgram/Operators.lean:11:44: application type mismatch\n  { run := id }\nargument\n  id\nhas type\n  (α : Type) → Operator α : Type 1\nbut is expected to have type\n  α → α : Type",
-   "all_errors": [
-    "lean/MCore/Research/UserProgram/Operators.lean:11:44: application type mismatch\n  { run := id }\nargument\n  id\nhas type\n  (α : Type) → Operator α : Type 1\nbut is expected to have type\n  α → α : Type",
-    "lean/MCore/Research/UserProgram/Operators.lean:22:2: tactic 'rfl' failed, the left-hand side\n  (id α).comp { run := run✝ }\nis not definitionally equal to the right-hand side\n  { run := run✝ }\ncase mk\nα : Type\nrun✝ : α → α\n⊢ (id α).comp { run := run✝ } = { run := run✝ }",
-    "lean/MCore/Research/UserProgram/Operators.lean:27:2: tactic 'rfl' failed, the left-hand side\n  { run := run✝ }.comp (id α)\nis not definitionally equal to the right-hand side\n  { run := run✝ }\ncase mk\nα : Type\nrun✝ : α → α\n⊢ { run := run✝ }.comp (id α) = { run := run✝ }"
-   ]
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.SemanticProofCore",
    "path": "lean/MCore/Research/UserProgram/SemanticProofCore.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
   },
   {
    "module": "MCore.Research.UserProgram.ThreeChannel",
    "path": "lean/MCore/Research/UserProgram/ThreeChannel.lean",
-   "status": "BLOCKED",
-   "in_default_build": false,
-   "blocked_by": "MCore.Research.UserProgram.C3Action"
+   "status": "OK",
+   "in_default_build": false
+  },
+  {
+   "module": "MCore.RiemannIsolation",
+   "path": "lean/MCore/RiemannIsolation.lean",
+   "status": "OK",
+   "in_default_build": true
   }
  ],
  "standalone_files": [
@@ -540,6 +541,40 @@
    "refuted_by": [
     "MCore.FinalProof.finalProof_not_ready"
    ]
+  },
+  {
+   "name": "MCore.Research.UserProgram.CrossOperatorLaw",
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "closed_prop": true,
+   "status": "NO_PROOF_IN_LIBRARY",
+   "inhabited_by": [],
+   "refuted_by": []
+  },
+  {
+   "name": "MCore.Research.UserProgram.GlobalFlowLaw",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "closed_prop": true,
+   "status": "NO_PROOF_IN_LIBRARY",
+   "inhabited_by": [],
+   "refuted_by": []
+  },
+  {
+   "name": "MCore.Research.UserProgram.RotationGlobalLaw",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "closed_prop": true,
+   "status": "PROVED",
+   "inhabited_by": [
+    "MCore.Research.UserProgram.rotationGlobalInhabitant_sound"
+   ],
+   "refuted_by": []
+  },
+  {
+   "name": "MCore.Research.UserProgram.SevenOperatorLaw",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "closed_prop": true,
+   "status": "NO_PROOF_IN_LIBRARY",
+   "inhabited_by": [],
+   "refuted_by": []
   }
  ],
  "theorems": [
@@ -589,6 +624,52 @@
    "name": "MCore.ATK.StructuralDefect.structural_number_closure",
    "module": "MCore.ATK.StructuralDefect",
    "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.AnalyticReductions.failure_partition",
+   "module": "MCore.AnalyticReductions",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.AnalyticReductions.gram_completion",
+   "module": "MCore.AnalyticReductions",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.AnalyticReductions.gram_lower",
+   "module": "MCore.AnalyticReductions",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.AnalyticReductions.rank_two_sided",
+   "module": "MCore.AnalyticReductions",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.AnalyticReductions.signed_gain",
+   "module": "MCore.AnalyticReductions",
+   "axioms": [
+    "Classical.choice",
     "Quot.sound",
     "propext"
    ],
@@ -652,6 +733,83 @@
     "Quot.sound",
     "propext"
    ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.align_iff_fail_image",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.counter_failure",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.counter_no_alignment",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.counter_no_cover",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.counter_semantics",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.cover_iff_failure_to_alignment",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.discharge",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.empty_input_fuel",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.refute",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.transport",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.ClosureCalculus.witness",
+   "module": "MCore.ClosureCalculus",
+   "axioms": [],
    "status": "CLEAN"
   },
   {
@@ -2577,6 +2735,316 @@
    "status": "CLEAN"
   },
   {
+   "name": "MCore.PrimitiveReduction.no_common_prime_pair",
+   "module": "MCore.PrimitiveReduction",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.PrimitiveReduction.prime_dvd_third",
+   "module": "MCore.PrimitiveReduction",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.PrimitiveReduction.signature_transport",
+   "module": "MCore.PrimitiveReduction",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.centered_sum_zero",
+   "module": "MCore.Research.UserProgram.I3Geometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.ext",
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.ext_iff",
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.fourier0_rotate",
+   "module": "MCore.Research.UserProgram.C3Fourier",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.fourier1_rotate",
+   "module": "MCore.Research.UserProgram.C3Fourier",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.fourier2_rotate",
+   "module": "MCore.Research.UserProgram.C3Fourier",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.fourier_inversion",
+   "module": "MCore.Research.UserProgram.C3Fourier",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.meanPart_idempotent",
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.meanPart_oscPart",
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.mean_meanPart",
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.mean_oscPart",
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.oscPart_idempotent",
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ComplexThreeChannel.reconstruct",
+   "module": "MCore.Research.UserProgram.ModeDecomposition",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.FlowCertificate.center1",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.FlowCertificate.center2",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.FlowCertificate.defectCancellation",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.FlowCertificate.periodic",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.FlowCertificate.sum1",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.FlowCertificate.sum2",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.FlowCertificate.sum3",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.Habitant.proof",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Flow_three",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3KernelCertificate.crossOperators",
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3KernelCertificate.globalFlow",
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3KernelCertificate.sevenOperators",
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3KernelCertificate.stateCycle",
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3KernelCertificate.vectorCycle",
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3KernelCertificate.vectorSumInvariant",
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3KernelInhabitant_sound",
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
    "name": "MCore.Research.UserProgram.I3State.enumList_getElem?_to_CtorIdx_eq",
    "module": "MCore.Research.UserProgram.IRegime",
    "axioms": [],
@@ -2585,6 +3053,26 @@
   {
    "name": "MCore.Research.UserProgram.I3State.enumList_nodup",
    "module": "MCore.Research.UserProgram.IRegime",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3State.index_injective",
+   "module": "MCore.Research.UserProgram.C3Action",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3State.index_next",
+   "module": "MCore.Research.UserProgram.C3Action",
    "axioms": [
     "Classical.choice",
     "Quot.sound",
@@ -2605,6 +3093,116 @@
    "status": "CLEAN"
   },
   {
+   "name": "MCore.Research.UserProgram.I3Vector.add_assoc",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.add_neg",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.add_smul",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.add_zero",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.ext",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.ext_iff",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.mul_smul",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.rotate_three",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.smul_add",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.sum_rotate",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.I3Vector.zeroSum_rotate",
+   "module": "MCore.Research.UserProgram.I3VectorAlgebra",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
    "name": "MCore.Research.UserProgram.I3_ne_indeterminate",
    "module": "MCore.Research.UserProgram.IRegime",
    "axioms": [],
@@ -2617,6 +3215,287 @@
    "status": "CLEAN"
   },
   {
+   "name": "MCore.Research.UserProgram.Inhabitant.nonempty_iff",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.Inhabitant.proof",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.Inhabitant.sound",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.LinearC3Operator.map_smul_channel",
+   "module": "MCore.Research.UserProgram.C3LinearSectors",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.LinearC3Operator.preserves_rotation_eigenspace",
+   "module": "MCore.Research.UserProgram.C3LinearSectors",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.LinearC3Operator.preserves_sector0",
+   "module": "MCore.Research.UserProgram.C3LinearSectors",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.LinearC3Operator.preserves_sector1",
+   "module": "MCore.Research.UserProgram.C3LinearSectors",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.LinearC3Operator.preserves_sector2",
+   "module": "MCore.Research.UserProgram.C3LinearSectors",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.Operator.comp_assoc",
+   "module": "MCore.Research.UserProgram.Operators",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.Operator.comp_id",
+   "module": "MCore.Research.UserProgram.Operators",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.Operator.id_comp",
+   "module": "MCore.Research.UserProgram.Operators",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.SemanticMap.comp_apply",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ThreeChannel.rotate_three",
+   "module": "MCore.Research.UserProgram.ThreeChannel",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.ThreeChannel.total_rotate",
+   "module": "MCore.Research.UserProgram.ThreeChannel",
+   "axioms": [
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.admissible_exact",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.allResolved_cons",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.closeVector",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.combine_exact",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.commutatorDefect_zero_of_commutes",
+   "module": "MCore.Research.UserProgram.C3Intertwiner",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.commute_refl",
+   "module": "MCore.Research.UserProgram.OperatorLaws",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.commute_symm",
+   "module": "MCore.Research.UserProgram.OperatorLaws",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.commutes_iff_pointwise",
+   "module": "MCore.Research.UserProgram.C3Intertwiner",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.commutes_preserves_constant_sector",
+   "module": "MCore.Research.UserProgram.C3Intertwiner",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.commutes_preserves_rotation_fixed",
+   "module": "MCore.Research.UserProgram.C3Intertwiner",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.conservedSum_orbit1",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.conservedSum_orbit2",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.conservedSum_orbit3",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.constant_iff_rotation_fixed",
+   "module": "MCore.Research.UserProgram.C3Intertwiner",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.cycleDefect_zero",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.cyclicInvariant_all_equal",
+   "module": "MCore.Research.UserProgram.CyclicInvariant",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.cyclicInvariant_constant",
+   "module": "MCore.Research.UserProgram.CyclicInvariant",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.cyclicInvariant_eq_manifesto",
+   "module": "MCore.Research.UserProgram.CyclicInvariant",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.delta_cycle_telescopes",
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.evidence_no_conflict",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.exact_zero_syntax_distinct",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.firewall_has_six_entries",
+   "module": "MCore.Research.UserProgram.BridgeFirewall",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
    "name": "MCore.Research.UserProgram.gap_iff_no_reconstruction",
    "module": "MCore.Research.UserProgram.LocalGlobal",
    "axioms": [],
@@ -2625,6 +3504,569 @@
   {
    "name": "MCore.Research.UserProgram.hasBridge_not_gap",
    "module": "MCore.Research.UserProgram.LocalGlobal",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.i3Provenance_nonempty",
+   "module": "MCore.Research.UserProgram.GlobalCertificate",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.involution_idempotent_iff_id",
+   "module": "MCore.Research.UserProgram.OperatorLaws",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.meanPart_constant",
+   "module": "MCore.Research.UserProgram.C3Intertwiner",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.omega3_cube",
+   "module": "MCore.Research.UserProgram.I3Geometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.omega3_four",
+   "module": "MCore.Research.UserProgram.C3Fourier",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.omega3_sq_add_omega3_add_one",
+   "module": "MCore.Research.UserProgram.I3Geometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opC_delta_zero",
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opC_fixed",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opC_idempotent",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opC_orbit1",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opC_orbit2",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opC_oscillatory_zero",
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opDelta_C_zero",
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opDelta_apply",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opDelta_zero_of_fixed",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opE_identity",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opGamma_eq_three_C",
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opGamma_fixed",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opGamma_rotate",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opQ_rotate",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opS_eq_T_sq",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opS_opT",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opS_sum",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opT_opS",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opT_sum",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.opT_three",
+   "module": "MCore.Research.UserProgram.ConcreteOperators",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.orbit3_eq_initial",
+   "module": "MCore.Research.UserProgram.FlowSemantics",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.oscillatoryPart_sum_zero",
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.parameter_exists_iff",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.parameter_uniform_discharge",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.phase_next",
+   "module": "MCore.Research.UserProgram.I3Geometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.phase_sum_zero",
+   "module": "MCore.Research.UserProgram.I3Geometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.reconstruct_C_osc",
+   "module": "MCore.Research.UserProgram.CrossOperatorLaws",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.refuted_component_blocks_vector",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.resolve_producer",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.rotate3_one",
+   "module": "MCore.Research.UserProgram.C3Action",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.rotate3_zero",
+   "module": "MCore.Research.UserProgram.C3Action",
+   "axioms": [
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.rotate_smul",
+   "module": "MCore.Research.UserProgram.C3LinearSectors",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.rotationGlobalInhabitant_sound",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.sqrt_three_sq",
+   "module": "MCore.Research.UserProgram.I3Geometry",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.EpistemicValue.conj_assoc",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.EpistemicValue.conj_comm",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.EpistemicValue.de_morgan",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.EpistemicValue.disj_assoc",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.EpistemicValue.disj_comm",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.EpistemicValue.neg_involutive",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.all_points_close",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.division_points_distinct",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.endpoint_discrete_close",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.endpoint_exists",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.endpoint_not_automatically_valid",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.endpoint_valid_iff",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.finite_limit_distinct",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.finite_zero_implies_limit_zero",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.isolated_fract",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.isolation_bounds",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.later_fract",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.later_generator_bound",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.negative_requires_refutation",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.positive_requires_proof",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.triangular_all_zero",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.triangular_sum",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.triangular_zero",
+   "module": "MCore.RiemannIsolation",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.RiemannIsolation.unknown_does_not_assert",
+   "module": "MCore.RiemannIsolation",
    "axioms": [],
    "status": "CLEAN"
   }
