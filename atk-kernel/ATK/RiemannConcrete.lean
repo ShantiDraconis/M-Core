@@ -86,6 +86,51 @@ theorem riemann_de_iInf_zero (hB : BaezDuarteCriterion) (h : ⨅ N, DN N = 0) :
     RiemannHypothesis :=
   hB (O1_iff_iInf_zero.mpr h)
 
+
+/-- Any positive uniform floor bounds the total normalized loss.
+    This uses the concrete DN, not an abstract surrogate. -/
+theorem DN_relative_loss_bound (L : ℝ) (hL : 0 < L)
+    (floor : ∀ n, L ≤ DN n) (N : ℕ) :
+    L * (∑ n ∈ Finset.range N, (1 - DN (n+1) / DN n)) ≤ DN 0 - DN N := by
+  induction N with
+  | zero => simp
+  | succ N ih =>
+    have hp : 0 < DN N := lt_of_lt_of_le hL (floor N)
+    have hd : DN (N+1) ≤ DN N := DN_antitone (Nat.le_succ N)
+    have hn : 0 ≤ 1 - DN (N+1) / DN N := by
+      have hh : DN (N+1) / DN N ≤ 1 := (div_le_iff₀ hp).2 (by simpa using hd)
+      linarith
+    have he : DN N * (1 - DN (N+1) / DN N) = DN N - DN (N+1) := by
+      field_simp [ne_of_gt hp] <;> ring
+    have hh := mul_le_mul_of_nonneg_right (floor N) hn
+    rw [he] at hh
+    rw [Finset.sum_range_succ, mul_add]
+    linarith
+
+#print axioms DN_relative_loss_bound
+
+
+/-- Concrete terminal reduction: unbounded normalized dissipation excludes
+    a positive infimum of the actual Baez-Duarte residual. -/
+theorem DN_iInf_zero_of_unbounded_relative_loss
+    (h : ∀ B : ℝ, ∃ N : ℕ,
+      B < ∑ n ∈ Finset.range N, (1 - DN (n+1) / DN n)) :
+    (⨅ n, DN n) = 0 := by
+  have hb : BddBelow (Set.range DN) := ⟨0, by
+    rintro _ ⟨n, rfl⟩
+    exact DN_nonneg n⟩
+  have hn : 0 ≤ ⨅ n, DN n := le_ciInf DN_nonneg
+  by_contra hne
+  have hp : 0 < ⨅ n, DN n := lt_of_le_of_ne hn (Ne.symm hne)
+  obtain ⟨N, hN⟩ := h (DN 0 / (⨅ n, DN n))
+  have hh := DN_relative_loss_bound (⨅ n, DN n) hp
+    (fun n => ciInf_le hb n) N
+  have hm := (div_lt_iff₀ hp).mp hN
+  rw [mul_comm (⨅ n, DN n)] at hh
+  linarith [DN_nonneg N]
+
+#print axioms DN_iInf_zero_of_unbounded_relative_loss
+
 end ATK.RiemannConcrete
 
 #print axioms ATK.RiemannConcrete.residualSq_nonneg
