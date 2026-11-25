@@ -549,4 +549,47 @@ theorem representation_not_proof :
 #print axioms finite_global_closure
 #print axioms representation_not_proof
 
+
+/-- Canonical identities are independent of the choice of representative. -/
+def canonicalQuotientMap {E P : Type*} (rep : E → P) :
+    Quotient (canonicalSetoid rep) → P :=
+  Quotient.lift rep (fun _ _ h => h)
+
+theorem canonicalQuotientMap_injective {E P : Type*} (rep : E → P) :
+    Function.Injective (canonicalQuotientMap rep) := by
+  intro a b h
+  revert h
+  refine Quotient.inductionOn₂ a b ?_
+  intro x y h
+  exact Quotient.sound h
+
+/-- The exact set of represented points is preserved by quotienting. -/
+theorem canonicalQuotientMap_range {E P : Type*} (rep : E → P) :
+    Set.range (canonicalQuotientMap rep) = Set.range rep := by
+  ext p
+  constructor
+  · rintro ⟨q, hq⟩
+    revert hq
+    refine Quotient.inductionOn q ?_
+    intro e he
+    exact ⟨e, he⟩
+  · rintro ⟨e, he⟩
+    exact ⟨Quotient.mk (canonicalSetoid rep) e, he⟩
+
+/-- Regression: different syntax, identical determined point. -/
+example :
+    semanticRepresentation (fun _ => some 0) (.quotient .zero (.atom 2)) =
+    semanticRepresentation (fun _ => some 0) (.quotient .zero (.atom 3)) := by
+  rfl
+
+/-- Regression: unresolved points preserve distinct source expressions. -/
+example :
+    semanticRepresentation (fun _ => none) (.quotient .zero (.atom 2)) ≠
+    semanticRepresentation (fun _ => none) (.quotient .zero (.atom 3)) := by
+  intro h
+  exact structural_zero_distinct (SemanticPoint.structural.inj h)
+
+#print axioms canonicalQuotientMap_injective
+#print axioms canonicalQuotientMap_range
+
 end MCore.ClosureCalculus
