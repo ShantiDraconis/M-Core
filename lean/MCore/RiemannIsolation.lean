@@ -88,4 +88,31 @@ theorem triangular_zero {N : ℕ} (v a r : Fin N → ℝ) (m : Fin N)
 
 #print axioms triangular_zero
 
+theorem triangular_all_zero {N : ℕ} (v : Fin N → ℝ)
+    (a r : Fin N → Fin N → ℝ)
+    (hdiag : ∀ m, r m m = a m m - 1)
+    (hlater : ∀ m k, m < k → r m k = a m k)
+    (ha : ∀ m, (∑ k, v k * a m k) = 0)
+    (hr : ∀ m, (∑ k, v k * r m k) = 0) :
+    ∀ m, v m = 0 := by
+  have h : ∀ n : ℕ, ∀ m : Fin N, m.val = n → v m = 0 := by
+    intro n
+    induction n using Nat.strong_induction_on with
+    | h n ih =>
+      intro m hm
+      apply triangular_zero v (a m) (r m) m
+      · intro k hk
+        apply ih k.val
+        · have hlt : k.val < m.val := hk
+          rw [hm] at hlt
+          exact hlt
+        · rfl
+      · exact hdiag m
+      · exact hlater m
+      · exact ha m
+      · exact hr m
+  exact fun m => h m.val m rfl
+
+#print axioms triangular_all_zero
+
 end MCore.RiemannIsolation
