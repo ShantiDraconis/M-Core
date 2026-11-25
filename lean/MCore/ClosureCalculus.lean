@@ -171,4 +171,48 @@ theorem quadratic_rate_gain_strict (C G : ℝ) (hG : 0 < G)
 #print axioms quadratic_rate_gain_nonneg
 #print axioms quadratic_rate_gain_strict
 
+
+/-- A normalized gain bounded below by a positive constant cannot persist
+    indefinitely when the residual has a positive lower bound. -/
+theorem uniform_gain_excludes_residual (D : ℕ → ℝ) (L c : ℝ)
+    (hL : 0 < L) (hc : 0 < c)
+    (lower : ∀ n, L ≤ D n)
+    (gain : ∀ n, c ≤ 1 - D (n+1) / D n) : False := by
+  have dec : ∀ n, D (n+1) ≤ D n := by
+    intro n
+    have hp : 0 < D n := lt_of_lt_of_le hL (lower n)
+    apply (div_le_iff₀ hp).mp
+    linarith [gain n]
+  have bound : ∀ N : ℕ, (N : ℝ) * c ≤
+      ∑ n ∈ Finset.range N, (1 - D (n+1) / D n) := by
+    intro N
+    induction N with
+    | zero => simp
+    | succ N ih =>
+      rw [Finset.sum_range_succ, Nat.cast_succ, add_mul, one_mul]
+      exact add_le_add ih (gain N)
+  obtain ⟨N, hN⟩ := exists_nat_gt (D 0 / (L*c))
+  have hmul := (div_lt_iff₀ (mul_pos hL hc)).mp hN
+  have h := accumulated_loss_bound D L hL lower dec N
+  have hh := mul_le_mul_of_nonneg_left (bound N) hL.le
+  have hlow := lower N
+  nlinarith [show (N : ℝ) * (L*c) = L * ((N : ℝ)*c) by ring]
+
+/-- Strict decrease alone is insufficient: a positive floor can persist. -/
+theorem positive_floor_counterexample :
+    ∃ D : ℕ → ℝ, (∀ n, D (n+1) < D n) ∧ (∀ n, 1 ≤ D n) := by
+  refine ⟨fun n => 1 + 1 / ((n : ℝ)+1), ?_, ?_⟩
+  · intro n
+    push_cast
+    have h : (0 : ℝ) < (n : ℝ)+1 := by positivity
+    have h' : (n : ℝ)+1 < (n : ℝ)+1+1 := by linarith
+    have hh := one_div_lt_one_div_of_lt h h'
+    linarith
+  · intro n
+    have h : 0 ≤ 1 / ((n : ℝ)+1) := by positivity
+    linarith
+
+#print axioms uniform_gain_excludes_residual
+#print axioms positive_floor_counterexample
+
 end MCore.ClosureCalculus
