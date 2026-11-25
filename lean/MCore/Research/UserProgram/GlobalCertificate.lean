@@ -58,7 +58,8 @@ def i3Provenance : List ProvenanceEntry :=
   ]
 
 theorem i3Provenance_nonempty : i3Provenance ≠ [] := by
-  decide
+  intro h
+  cases h
 
 def ExternalMaterialBridge (Endpoint : Prop) : Prop :=
   I3KernelCertificate → Endpoint
