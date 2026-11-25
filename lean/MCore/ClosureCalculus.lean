@@ -181,8 +181,9 @@ theorem uniform_gain_excludes_residual (D : ℕ → ℝ) (L c : ℝ)
   have dec : ∀ n, D (n+1) ≤ D n := by
     intro n
     have hp : 0 < D n := lt_of_lt_of_le hL (lower n)
-    apply (div_le_iff₀ hp).mp
-    linarith [gain n]
+    have hratio : D (n+1) / D n ≤ 1 := by linarith [gain n]
+    have hmul := (div_le_iff₀ hp).mp hratio
+    simpa only [one_mul] using hmul
   have bound : ∀ N : ℕ, (N : ℝ) * c ≤
       ∑ n ∈ Finset.range N, (1 - D (n+1) / D n) := by
     intro N
