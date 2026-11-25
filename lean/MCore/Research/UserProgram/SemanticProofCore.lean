@@ -167,4 +167,29 @@ theorem resolve_producer (gs : List GapPoint) (P : Prop)
 #print axioms allResolved_cons
 #print axioms resolve_producer
 
+structure VectorGap where
+  target : GapPoint
+  dimension : Nat
+  component : Fin dimension → GapPoint
+
+def VectorGap.Composition (g : VectorGap) : Prop :=
+  (∀ i, (g.component i).statement) → g.target.statement
+
+def VectorGap.Evidence (g : VectorGap) :=
+  ∀ i, PointEvidence (g.component i).statement
+
+theorem closeVector (g : VectorGap)
+    (compose : g.Composition)
+    (evidence : ∀ i, (g.component i).statement) :
+    g.target.statement :=
+  compose evidence
+
+theorem refuted_component_blocks_vector (g : VectorGap)
+    (i : Fin g.dimension) (h : ¬ (g.component i).statement) :
+    ¬ (∀ j, (g.component j).statement) :=
+  fun hp => h (hp i)
+
+#print axioms closeVector
+#print axioms refuted_component_blocks_vector
+
 end MCore.Research.UserProgram
