@@ -149,4 +149,58 @@ theorem endpoint_discrete_close (d : ℝ)
 #print axioms endpoint_not_automatically_valid
 #print axioms endpoint_discrete_close
 
+/-- Exact syntactic points; identity does not imply evaluation. -/
+inductive IndeterminatePoint where
+  | limitZero
+  | finiteZero (n : ℕ)
+  | zeroOverZero
+  | zeroOverInfinity
+  | infinityOverInfinity
+  | millennium (i : Fin 8)
+  deriving DecidableEq
+
+inductive EpistemicValue where
+  | negative
+  | undetermined
+  | positive
+  deriving DecidableEq
+
+/-- Positive and negative evaluations require evidence. -/
+def EvaluationSound (p : Prop) : EpistemicValue → Prop
+  | .positive => p
+  | .negative => ¬ p
+  | .undetermined => True
+
+theorem positive_requires_proof (p : Prop)
+    (h : EvaluationSound p .positive) : p := h
+
+theorem negative_requires_refutation (p : Prop)
+    (h : EvaluationSound p .negative) : ¬ p := h
+
+theorem unknown_does_not_assert (p : Prop) :
+    EvaluationSound p .undetermined := True.intro
+
+theorem finite_limit_distinct (n : ℕ) :
+    IndeterminatePoint.finiteZero n ≠ IndeterminatePoint.limitZero := by
+  decide
+
+theorem division_points_distinct :
+    IndeterminatePoint.zeroOverZero ≠ IndeterminatePoint.infinityOverInfinity := by
+  decide
+
+/-- All eight obligations close exactly when all have positive evidence. -/
+theorem all_points_close (P : Fin 8 → Prop) :
+    (∀ i, EvaluationSound (P i) .positive) ↔ (∀ i, P i) := Iff.rfl
+
+/-- Numeric sign is separate from epistemic truth. -/
+noncomputable def NumericSign (x : ℝ) : EpistemicValue :=
+  if x < 0 then .negative else if 0 < x then .positive else .undetermined
+
+#print axioms positive_requires_proof
+#print axioms negative_requires_refutation
+#print axioms unknown_does_not_assert
+#print axioms finite_limit_distinct
+#print axioms division_points_distinct
+#print axioms all_points_close
+
 end MCore.RiemannIsolation
