@@ -426,4 +426,24 @@ theorem structural_zero_distinct :
 #print axioms familyRateLimits_mono
 #print axioms structural_zero_distinct
 
+
+/-- Every finite real limit is realized by an admissible zero-over-zero path. -/
+theorem zero_over_zero_realizes_all (a : ℝ) :
+    ∃ p : AdmissibleRate, p.realizes a ∧
+      Filter.Tendsto p.numerator p.approach (nhds 0) ∧
+      Filter.Tendsto p.denominator p.approach (nhds 0) := by
+  let F := nhdsWithin (0 : ℝ) {t : ℝ | t ≠ 0}
+  have hF : F.NeBot := by
+    dsimp [F]
+    infer_instance
+  have hd : ∀ᶠ t in F, t ≠ 0 := self_mem_nhdsWithin
+  let p : AdmissibleRate := ⟨fun t => a * t, id, F, hF, hd⟩
+  have ht : Filter.Tendsto (fun t : ℝ => t) F (nhds 0) :=
+    nhdsWithin_le_nhds
+  refine ⟨p, ?_, ?_, ht⟩
+  · exact rate_division_constant_path a
+  · simpa [p] using tendsto_const_nhds.mul ht
+
+#print axioms zero_over_zero_realizes_all
+
 end MCore.ClosureCalculus
