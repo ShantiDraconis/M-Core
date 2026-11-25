@@ -1,8 +1,7 @@
 import MCore.FinalProofFirewall
+import MCore.ClosureCalculus
+import MCore.PrimitiveReduction
+import MCore.AnalyticReductions
+import MCore.RiemannIsolation
 
-/-!
-Root module for the Lake library declared with `srcDir := "lean"`.
-
-Keeping this file inside `lean/` makes the default `lake build` target resolve
-correctly while the repository-level `MCore.lean` remains provenance.
--/
+/-! Root module for the default Lake library. -/

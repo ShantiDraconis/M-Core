@@ -23,10 +23,10 @@ theorem cyclicInvariant_eq_manifesto {β : Type} {f : I3State → β}
     f s = f .manifesto := by
   cases s
   · rfl
-  · simpa [I3State.next] using (h I3State.manifesto).symm
+  · simpa [I3State.next] using (h I3State.manifesto)
   ·
     have h1 := h I3State.manifesto
     have h2 := h I3State.travessia
-    simpa [I3State.next] using h2.symm.trans h1.symm
+    simpa [I3State.next] using h2.trans h1
 
 end MCore.Research.UserProgram
