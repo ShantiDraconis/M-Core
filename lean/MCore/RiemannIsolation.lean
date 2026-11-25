@@ -203,4 +203,59 @@ noncomputable def NumericSign (x : ℝ) : EpistemicValue :=
 #print axioms division_points_distinct
 #print axioms all_points_close
 
+namespace EpistemicValue
+
+def neg : EpistemicValue → EpistemicValue
+  | .negative => .positive
+  | .positive => .negative
+  | .undetermined => .undetermined
+
+def conj : EpistemicValue → EpistemicValue → EpistemicValue
+  | .negative, _ => .negative
+  | _, .negative => .negative
+  | .positive, .positive => .positive
+  | _, _ => .undetermined
+
+def disj : EpistemicValue → EpistemicValue → EpistemicValue
+  | .positive, _ => .positive
+  | _, .positive => .positive
+  | .negative, .negative => .negative
+  | _, _ => .undetermined
+
+theorem neg_involutive (a : EpistemicValue) : neg (neg a) = a := by
+  cases a <;> rfl
+
+theorem conj_comm (a b : EpistemicValue) : conj a b = conj b a := by
+  cases a <;> cases b <;> rfl
+
+theorem disj_comm (a b : EpistemicValue) : disj a b = disj b a := by
+  cases a <;> cases b <;> rfl
+
+theorem de_morgan (a b : EpistemicValue) :
+    neg (conj a b) = disj (neg a) (neg b) := by
+  cases a <;> cases b <;> rfl
+
+theorem conj_assoc (a b c : EpistemicValue) :
+    conj (conj a b) c = conj a (conj b c) := by
+  cases a <;> cases b <;> cases c <;> rfl
+
+theorem disj_assoc (a b c : EpistemicValue) :
+    disj (disj a b) c = disj a (disj b c) := by
+  cases a <;> cases b <;> cases c <;> rfl
+
+end EpistemicValue
+
+theorem finite_zero_implies_limit_zero (D : ℕ → ℝ) (d : ℝ)
+    (hn : 0 ≤ d) (hb : ∀ n, d ≤ D n) (n : ℕ) (hz : D n = 0) :
+    d = 0 := by
+  have h := hb n
+  rw [hz] at h
+  exact le_antisymm h hn
+
+#print axioms EpistemicValue.neg_involutive
+#print axioms EpistemicValue.de_morgan
+#print axioms EpistemicValue.conj_assoc
+#print axioms EpistemicValue.disj_assoc
+#print axioms finite_zero_implies_limit_zero
+
 end MCore.RiemannIsolation
