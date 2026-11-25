@@ -192,4 +192,42 @@ theorem refuted_component_blocks_vector (g : VectorGap)
 #print axioms closeVector
 #print axioms refuted_component_blocks_vector
 
+-- Exact syntax is independent of numerical interpretation.
+inductive ExactExpr where
+  | integer (n : Int)
+  | infinity
+  | neg (x : ExactExpr)
+  | sqrt (x : ExactExpr)
+  | mul (x y : ExactExpr)
+  | div (x y : ExactExpr)
+  | pow (x y : ExactExpr)
+  deriving DecidableEq, Repr
+
+def exactIndeterminateExamples : List ExactExpr :=
+  [.sqrt .infinity, .div (.integer 0) .infinity,
+   .mul (.neg (.integer 0)) .infinity,
+   .div (.integer 2) (.integer 0),
+   .div (.neg (.integer 0)) (.integer 4),
+   .pow (.integer 0) .infinity,
+   .div (.integer 0) (.integer 0), .div .infinity .infinity]
+
+-- Retain the entire solution set, rather than choosing an arbitrary witness.
+def admissibleParameters {A : Type*} (constraint : A → Prop) : Set A :=
+  {a | constraint a}
+
+theorem admissible_exact {A : Type*} (C : A → Prop) (a : A) :
+    a ∈ admissibleParameters C ↔ C a := Iff.rfl
+
+theorem parameter_exists_iff {A : Type*} (C : A → Prop) :
+    (admissibleParameters C).Nonempty ↔ ∃ a, C a := Iff.rfl
+
+theorem parameter_uniform_discharge {A : Type*} (C : A → Prop)
+    (P : A → Prop) (h : ∀ a ∈ admissibleParameters C, P a) :
+    ∀ a, C a → P a :=
+  fun a ha => h a ha
+
+#print axioms admissible_exact
+#print axioms parameter_exists_iff
+#print axioms parameter_uniform_discharge
+
 end MCore.Research.UserProgram
