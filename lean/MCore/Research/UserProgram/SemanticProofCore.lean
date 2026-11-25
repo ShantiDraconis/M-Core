@@ -276,7 +276,7 @@ inductive ExpandedExpr where
   | angularZero (angle : ExpandedExpr)
   | unary (op : String) (x : ExpandedExpr)
   | binary (op : String) (x y : ExpandedExpr)
-  | binder (op variable : String) (domain body : ExpandedExpr)
+  | binder (op boundName : String) (domain body : ExpandedExpr)
   deriving DecidableEq, Repr
 
 def expandedExamples : List ExpandedExpr :=
@@ -307,7 +307,7 @@ def ExpandedPoint.limits {A B : Type*} (p : ExpandedPoint A B) : Set B :=
 theorem expanded_limits_exact {A B : Type*} (p : ExpandedPoint A B) (b : B) :
     b ∈ p.limits ↔ ∃ a, p.Admissible a ∧ p.limitRelation a b := Iff.rfl
 
-theorem expanded_zero_div (c : ℝ) : (0 : ℝ) / c = 0 := zero_div c
+theorem expanded_zero_div (c : ℝ) (_hc : c ≠ 0) : (0 : ℝ) / c = 0 := zero_div c
 
 theorem expanded_zero_pow_one : (0 : ℝ) ^ (1 : ℕ) = 0 := by simp
 
