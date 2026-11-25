@@ -230,4 +230,16 @@ theorem correction_energy (S j G : ℝ) :
 #print axioms reciprocal_tail_cancel
 #print axioms correction_energy
 
+
+/-- The positive-floor obstruction survives every monotone block selection. -/
+theorem block_relative_loss_bound (D : ℕ → ℝ) (K : ℕ → ℕ)
+    (hK : Monotone K) (hD : Antitone D) (L : ℝ) (hL : 0 < L)
+    (floor : ∀ n, L ≤ D n) (N : ℕ) :
+    L * (∑ n ∈ Finset.range N, (1 - D (K (n+1)) / D (K n))) ≤
+      D (K 0) - D (K N) := by
+  exact accumulated_loss_bound (fun n => D (K n)) L hL
+    (fun n => floor (K n)) (fun n => hD (hK (Nat.le_succ n))) N
+
+#print axioms block_relative_loss_bound
+
 end MCore.ClosureCalculus
