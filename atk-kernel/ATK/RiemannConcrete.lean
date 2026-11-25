@@ -86,6 +86,29 @@ theorem riemann_de_iInf_zero (hB : BaezDuarteCriterion) (h : ⨅ N, DN N = 0) :
     RiemannHypothesis :=
   hB (O1_iff_iInf_zero.mpr h)
 
+
+/-- Any positive uniform floor bounds the total normalized loss.
+    This uses the concrete DN, not an abstract surrogate. -/
+theorem DN_relative_loss_bound (L : ℝ) (hL : 0 < L)
+    (floor : ∀ n, L ≤ DN n) (N : ℕ) :
+    L * (∑ n ∈ Finset.range N, (1 - DN (n+1) / DN n)) ≤ DN 0 - DN N := by
+  induction N with
+  | zero => simp
+  | succ N ih =>
+    have hp : 0 < DN N := lt_of_lt_of_le hL (floor N)
+    have hd : DN (N+1) ≤ DN N := DN_antitone (Nat.le_succ N)
+    have hn : 0 ≤ 1 - DN (N+1) / DN N := by
+      have hh : DN (N+1) / DN N ≤ 1 := (div_le_iff₀ hp).2 (by simpa using hd)
+      linarith
+    have he : DN N * (1 - DN (N+1) / DN N) = DN N - DN (N+1) := by
+      field_simp [ne_of_gt hp] <;> ring
+    have hh := mul_le_mul_of_nonneg_right (floor N) hn
+    rw [he] at hh
+    rw [Finset.sum_range_succ, mul_add]
+    linarith
+
+#print axioms DN_relative_loss_bound
+
 end ATK.RiemannConcrete
 
 #print axioms ATK.RiemannConcrete.residualSq_nonneg
