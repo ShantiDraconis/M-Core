@@ -51,4 +51,25 @@ theorem later_fract {m k t : ℝ} (hm : 1 ≤ m)
 #print axioms isolated_fract
 #print axioms later_fract
 
+theorem triangular_sum {N : ℕ} (v a r : Fin N → ℝ) (m : Fin N)
+    (hprev : ∀ k : Fin N, k < m → v k = 0)
+    (hdiag : r m = a m - 1)
+    (hlater : ∀ k : Fin N, m < k → r k = a k) :
+    (∑ k, v k * r k) = (∑ k, v k * a k) - v m := by
+  classical
+  have h : ∀ k : Fin N, v k * r k =
+      v k * a k - (if k = m then v m else 0) := by
+    intro k
+    rcases lt_trichotomy k m with hk | hk | hk
+    · simp [hprev k hk, ne_of_lt hk]
+    · subst k
+      simp [hdiag] <;> ring
+    · simp [hlater k hk, ne_of_gt hk]
+  calc
+    _ = ∑ k : Fin N, (v k * a k - (if k = m then v m else 0)) :=
+      Finset.sum_congr rfl (fun k _ => h k)
+    _ = _ := by rw [Finset.sum_sub_distrib]; simp
+
+#print axioms triangular_sum
+
 end MCore.RiemannIsolation
