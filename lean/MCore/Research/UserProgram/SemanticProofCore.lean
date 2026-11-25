@@ -121,4 +121,50 @@ theorem evidence_no_conflict {P : Prop} (hp : P) (hn : ¬ P) : False :=
 
 #print axioms evidence_no_conflict
 
+inductive GapKind where
+  | sorryGap | missingParameter | analyticGap | bridgeGap | buildGap
+  deriving DecidableEq, Repr
+
+structure GapPoint where
+  repository : String
+  branch : String
+  path : String
+  declaration : String
+  ordinal : Nat
+  kind : GapKind
+  statement : Prop
+
+def GapPoint.Evidence (g : GapPoint) := PointEvidence g.statement
+
+def GapPoint.unresolved (g : GapPoint) : g.Evidence :=
+  .unknown
+
+def GapPoint.resolve (g : GapPoint) (h : g.statement) : g.Evidence :=
+  .positive h
+
+def GapPoint.refute (g : GapPoint) (h : ¬ g.statement) : g.Evidence :=
+  .negative h
+
+def AllResolved (gaps : List GapPoint) : Prop :=
+  ∀ g ∈ gaps, g.statement
+
+theorem allResolved_cons (g : GapPoint) (gs : List GapPoint) :
+    AllResolved (g :: gs) ↔ g.statement ∧ AllResolved gs := by
+  simp only [AllResolved, List.mem_cons]
+  constructor
+  · intro h
+    exact ⟨h g (Or.inl rfl), fun x hx => h x (Or.inr hx)⟩
+  · intro h x hx
+    rcases hx with he | hm
+    · subst x
+      exact h.1
+    · exact h.2 x hm
+
+theorem resolve_producer (gs : List GapPoint) (P : Prop)
+    (compose : AllResolved gs → P) (h : AllResolved gs) : P :=
+  compose h
+
+#print axioms allResolved_cons
+#print axioms resolve_producer
+
 end MCore.Research.UserProgram
