@@ -26,8 +26,8 @@
   "modules_outside_default_build": 47,
   "standalone_files_total": 15,
   "standalone_files_failed": 0,
-  "theorems_total": 469,
-  "theorems_clean": 469,
+  "theorems_total": 473,
+  "theorems_clean": 473,
   "theorems_using_sorry": 0,
   "theorems_using_project_axiom": 0,
   "theorems_nonstandard_axioms": 0,
@@ -3487,6 +3487,38 @@
    "name": "MCore.Research.UserProgram.exact_zero_syntax_distinct",
    "module": "MCore.Research.UserProgram.SemanticProofCore",
    "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.expanded_distinct_constants",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.expanded_limits_exact",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.expanded_zero_div",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
+   "status": "CLEAN"
+  },
+  {
+   "name": "MCore.Research.UserProgram.expanded_zero_pow_one",
+   "module": "MCore.Research.UserProgram.SemanticProofCore",
+   "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+   ],
    "status": "CLEAN"
   },
   {

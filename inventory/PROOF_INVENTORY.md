@@ -13,8 +13,8 @@ Toolchain: `leanprover/lean4:v4.19.0`
 | modules outside default build | 47 |
 | standalone files total | 15 |
 | standalone files failed | 0 |
-| theorems total | 469 |
-| theorems clean | 469 |
+| theorems total | 473 |
+| theorems clean | 473 |
 | theorems using sorry | 0 |
 | theorems using project axiom | 0 |
 | theorems nonstandard axioms | 0 |
