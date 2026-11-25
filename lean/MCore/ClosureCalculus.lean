@@ -48,7 +48,7 @@ theorem counter_semantics (n : Nat) :
   have h : n % 2 = 0 ∨ n % 2 = 1 := by omega
   rcases h with h | h <;> simp [counterS, counterR, counterA, h]
 
-theorem counter_failure : ∃ y, Fails counterA counterS y := ⟨0, by decide⟩
+theorem counter_failure : ∃ y, Fails counterA counterS y := ⟨0, by simp [Fails, counterA, counterS]⟩
 
 theorem counter_no_alignment (n : Nat) : ¬ Aligns counterA counterR n := by
   have h : n % 2 = 0 ∨ n % 2 = 1 := by omega
