@@ -308,4 +308,21 @@ theorem block_minorant_excludes_floor (D a : ℕ → ℝ) (K : ℕ → ℕ)
 
 #print axioms block_minorant_excludes_floor
 
+
+/-- Triangular jump equations force every coefficient to vanish. -/
+theorem triangular_jump_zero (c : ℕ → ℝ)
+    (h : ∀ n, c n + ∑ k ∈ Finset.range n, (if (k+1) ∣ (n+1) then c k else 0) = 0) :
+    ∀ n, c n = 0 := by
+  intro n
+  induction n using Nat.strong_induction_on with
+  | h n ih =>
+    have hz : (∑ k ∈ Finset.range n, (if (k+1) ∣ (n+1) then c k else 0)) = 0 := by
+      apply Finset.sum_eq_zero
+      intro k hk
+      rw [ih k (Finset.mem_range.mp hk)]
+      split <;> rfl
+    simpa [hz] using h n
+
+#print axioms triangular_jump_zero
+
 end MCore.ClosureCalculus
