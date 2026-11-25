@@ -384,6 +384,16 @@ theorem riemann_of_not_finito
 theorem riemann_of_uniformLogBound (h : UniformLogBound) : RiemannHypothesis :=
   riemann_conditional baezDuarteCriterion h
 
+
+/-- Terminal RH reduction using the actual concrete residual sequence. -/
+theorem riemann_of_unbounded_relative_loss
+    (h : ∀ B : ℝ, ∃ N : ℕ,
+      B < ∑ n ∈ Finset.range N, (1 - DN (n+1) / DN n)) :
+    RiemannHypothesis :=
+  riemann_of_iInf_zero (ATK.RiemannConcrete.DN_iInf_zero_of_unbounded_relative_loss h)
+
+#print axioms riemann_of_unbounded_relative_loss
+
 end ATK.BaezDuarteBridge
 
 #print axioms ATK.BaezDuarteBridge.chi_complex
