@@ -26,6 +26,6 @@ def millenniumBridgeFirewall : List BridgeRecord :=
   , ⟨"NS", .openMath, "No bridge supplied by the universal framework."⟩ ]
 
 theorem firewall_has_six_entries : millenniumBridgeFirewall.length = 6 := by
-  native_decide
+  rfl
 
 end MCore.Research.UserProgram
