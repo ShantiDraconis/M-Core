@@ -12,16 +12,15 @@ theorem sqrt_three_sq : (Real.sqrt 3)^2 = 3 := by
 theorem omega3_sq_add_omega3_add_one :
     omega3^2 + omega3 + 1 = 0 := by
   unfold omega3
-  apply Complex.ext <;> simp [Complex.ext_iff, sqrt_three_sq] <;> ring_nf
-  · rw [Real.sq_sqrt] <;> norm_num
-  · ring
+  apply Complex.ext <;> simp [Complex.ext_iff, sqrt_three_sq] <;> ring_nf <;>
+    nlinarith [sqrt_three_sq]
 
 theorem omega3_cube : omega3^3 = 1 := by
   have h := omega3_sq_add_omega3_add_one
+  apply sub_eq_zero.mp
   calc
     omega3^3 - 1 = (omega3 - 1) * (omega3^2 + omega3 + 1) := by ring
     _ = 0 := by rw [h, mul_zero]
-  exact sub_eq_zero.mp this
 
 noncomputable def I3State.phase : I3State → ℂ
   | .manifesto => 1
