@@ -37,9 +37,7 @@ theorem ComplexThreeChannel.fourier_inversion (x : ComplexThreeChannel) :
     have hc := omega3_cube
     have h4 := omega3_four
     have h2 : omega3 ^ 2 = -omega3 - 1 := by linear_combination h
-    rw [h2]
-    ring_nf
-    simp only [h2, hc, h4] <;> ring
+    rw [h2] <;> ring_nf <;> simp only [h2, hc, h4] <;> ring
 
 theorem ComplexThreeChannel.fourier0_rotate (x : ComplexThreeChannel) :
     x.rotate.fourier0 = x.fourier0 := by
