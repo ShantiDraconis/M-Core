@@ -359,4 +359,23 @@ theorem geometric_schur {H : Type*} [NormedAddCommGroup H]
 
 #print axioms geometric_schur
 
+
+/-- Distinguish exact zero, asymptotic zero and admissible rate division. -/
+structure AdmissibleRate where
+  numerator : ℝ → ℝ
+  denominator : ℝ → ℝ
+  approach : Filter ℝ
+  nontrivial : approach.NeBot
+  denominator_ne : ∀ᶠ t in approach, denominator t ≠ 0
+
+def AdmissibleRate.realizes (p : AdmissibleRate) (a : ℝ) : Prop :=
+  Filter.Tendsto (fun t => p.numerator t / p.denominator t) p.approach (nhds a)
+
+theorem admissible_rate_unique (p : AdmissibleRate) {a b : ℝ}
+    (ha : p.realizes a) (hb : p.realizes b) : a = b := by
+  letI : p.approach.NeBot := p.nontrivial
+  exact tendsto_nhds_unique ha hb
+
+#print axioms admissible_rate_unique
+
 end MCore.ClosureCalculus
