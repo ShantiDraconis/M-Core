@@ -513,4 +513,40 @@ theorem unresolved_structural_identity
 #print axioms canonical_numeric_identity
 #print axioms unresolved_structural_identity
 
+
+/-- Canonical identity induces an equivalence relation on every represented universe. -/
+def canonicalSetoid {E P : Type*} (rep : E → P) : Setoid E where
+  r x y := rep x = rep y
+  iseqv := ⟨fun _ => rfl, fun h => h.symm, fun h k => h.trans k⟩
+
+/-- A faithful operation preserves canonical identity. -/
+theorem canonical_binary_congruence {E P : Type*}
+    (rep : E → P) (op : E → E → E) (lift : P → P → P)
+    (faithful : ∀ x y, rep (op x y) = lift (rep x) (rep y))
+    {a b c d : E} (hab : rep a = rep b) (hcd : rep c = rep d) :
+    rep (op a c) = rep (op b d) := by
+  rw [faithful, faithful, hab, hcd]
+
+/-- Global finite closure is exactly pointwise certified closure. -/
+theorem finite_global_closure {n : ℕ} (P : Fin n → Prop) :
+    (∀ i, P i) ↔ ¬ (∃ i, ¬ P i) := by
+  classical
+  constructor
+  · intro h ⟨i, hi⟩
+    exact hi (h i)
+  · intro h i
+    by_contra hi
+    exact h ⟨i, hi⟩
+
+/-- Total representation alone cannot entail arbitrary mathematical obligations. -/
+theorem representation_not_proof :
+    ¬ (∀ (P : Prop), (∃! x : Unit, x = ()) → P) := by
+  intro h
+  exact h False ⟨(), rfl, fun x _ => by cases x; rfl⟩
+
+#print axioms canonicalSetoid
+#print axioms canonical_binary_congruence
+#print axioms finite_global_closure
+#print axioms representation_not_proof
+
 end MCore.ClosureCalculus
