@@ -480,4 +480,37 @@ theorem arbitrary_small_excludes_floor (D : ℕ → ℝ)
 #print axioms exact_residual_zero
 #print axioms arbitrary_small_excludes_floor
 
+
+/-- Exact semantic points include unresolved expressions without assigning fake values. -/
+inductive SemanticPoint where
+  | determined : ℝ → SemanticPoint
+  | structural : RateExpression → SemanticPoint
+
+def semanticRepresentation (valuation : RateExpression → Option ℝ)
+    (e : RateExpression) : SemanticPoint :=
+  match valuation e with
+  | some v => .determined v
+  | none => .structural e
+
+theorem semantic_representation_total
+    (valuation : RateExpression → Option ℝ) (e : RateExpression) :
+    ∃! p, semanticRepresentation valuation e = p := by
+  exact ⟨semanticRepresentation valuation e, rfl, fun _ h => h.symm⟩
+
+theorem canonical_numeric_identity
+    (valuation : RateExpression → Option ℝ) (e f : RateExpression)
+    (v : ℝ) (he : valuation e = some v) (hf : valuation f = some v) :
+    semanticRepresentation valuation e = semanticRepresentation valuation f := by
+  simp [semanticRepresentation, he, hf]
+
+theorem unresolved_structural_identity
+    (valuation : RateExpression → Option ℝ) (e : RateExpression)
+    (h : valuation e = none) :
+    semanticRepresentation valuation e = .structural e := by
+  simp [semanticRepresentation, h]
+
+#print axioms semantic_representation_total
+#print axioms canonical_numeric_identity
+#print axioms unresolved_structural_identity
+
 end MCore.ClosureCalculus
