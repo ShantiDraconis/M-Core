@@ -103,4 +103,36 @@ theorem universal_producer_bridge {α : Type*}
 #print axioms rate_division_constant_path
 #print axioms universal_producer_bridge
 
+
+/-- A positive residual converts relative losses into absolute losses. -/
+theorem relative_loss_bound (a b L : ℝ)
+    (hL : 0 < L) (hla : L ≤ a) (hab : b ≤ a) :
+    L * (1 - b / a) ≤ a - b := by
+  have ha : 0 < a := lt_of_lt_of_le hL hla
+  have he : a * (1 - b / a) = a - b := by
+    field_simp
+    <;> ring
+  have hn : 0 ≤ 1 - b / a := by
+    have h := (div_le_iff₀ ha).2 (show b ≤ 1 * a by simpa using hab)
+    linarith
+  calc
+    L * (1 - b / a) ≤ a * (1 - b / a) :=
+      mul_le_mul_of_nonneg_right hla hn
+    _ = a - b := he
+
+/-- Finite accumulated losses cannot exceed the initial residual. -/
+theorem accumulated_loss_bound (D : ℕ → ℝ) (L : ℝ)
+    (hL : 0 < L) (lower : ∀ n, L ≤ D n)
+    (decrease : ∀ n, D (n+1) ≤ D n) (N : ℕ) :
+    L * (∑ n ∈ Finset.range N, (1 - D (n+1) / D n)) ≤ D 0 - D N := by
+  induction N with
+  | zero => simp
+  | succ N ih =>
+    rw [Finset.sum_range_succ, mul_add]
+    have h := relative_loss_bound (D N) (D (N+1)) L hL (lower N) (decrease N)
+    linarith
+
+#print axioms relative_loss_bound
+#print axioms accumulated_loss_bound
+
 end MCore.ClosureCalculus
