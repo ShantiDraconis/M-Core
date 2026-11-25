@@ -378,4 +378,26 @@ theorem admissible_rate_unique (p : AdmissibleRate) {a b : ℝ}
 
 #print axioms admissible_rate_unique
 
+
+/-- A positive triple with gcd one cannot admit a common prime divisor. -/
+theorem common_prime_excluded_of_gcd_one (a b c p : ℕ)
+    (hg : Nat.gcd a (Nat.gcd b c) = 1)
+    (hp : Nat.Prime p) (ha : p ∣ a) (hb : p ∣ b) (hc : p ∣ c) : False := by
+  have hd : p ∣ Nat.gcd a (Nat.gcd b c) :=
+    Nat.dvd_gcd ha (Nat.dvd_gcd hb hc)
+  rw [hg] at hd
+  exact hp.not_dvd_one hd
+
+/-- Extract a material prime witness from a strict gcd lower bound. -/
+theorem common_prime_of_gcd_lower (a b c : ℕ)
+    (h : 1 < Nat.gcd a (Nat.gcd b c)) :
+    ∃ p : ℕ, Nat.Prime p ∧ p ∣ a ∧ p ∣ b ∧ p ∣ c := by
+  obtain ⟨p, hp, hd⟩ := Nat.ne_one_iff_exists_prime_dvd.mp (ne_of_gt h)
+  have hbc := dvd_trans hd (Nat.gcd_dvd_right a (Nat.gcd b c))
+  exact ⟨p, hp, dvd_trans hd (Nat.gcd_dvd_left a (Nat.gcd b c)),
+    dvd_trans hbc (Nat.gcd_dvd_left b c), dvd_trans hbc (Nat.gcd_dvd_right b c)⟩
+
+#print axioms common_prime_excluded_of_gcd_one
+#print axioms common_prime_of_gcd_lower
+
 end MCore.ClosureCalculus
