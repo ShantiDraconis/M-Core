@@ -346,4 +346,17 @@ theorem finite_triangular_jump_zero (c : ℕ → ℝ) (N : ℕ)
 
 #print axioms finite_triangular_jump_zero
 
+
+open scoped RealInnerProductSpace in
+theorem geometric_schur {H : Type*} [NormedAddCommGroup H]
+    [InnerProductSpace ℝ H] (R v : H) (hv : v ≠ 0) :
+    ‖R - (⟪R, v⟫_ℝ / ‖v‖^2) • v‖^2 =
+      ‖R‖^2 - ⟪R, v⟫_ℝ^2 / ‖v‖^2 := by
+  have hs : 0 < ‖v‖^2 := sq_pos_of_pos (norm_pos_iff.mpr hv)
+  rw [norm_sub_sq_real, norm_smul, Real.norm_eq_abs, mul_pow, sq_abs,
+    real_inner_smul_right]
+  convert quadratic_rate_gain (‖R‖^2) ⟪R, v⟫_ℝ (‖v‖^2) hs using 1 <;> ring
+
+#print axioms geometric_schur
+
 end MCore.ClosureCalculus
