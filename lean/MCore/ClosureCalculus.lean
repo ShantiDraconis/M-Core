@@ -215,4 +215,18 @@ theorem positive_floor_counterexample :
 #print axioms uniform_gain_excludes_residual
 #print axioms positive_floor_counterexample
 
+
+/-- A correction at index j cancels the reciprocal-weighted coefficient sum.
+    This is an algebraic identity, not an L² convergence claim. -/
+theorem reciprocal_tail_cancel (S j : ℝ) (hj : j ≠ 0) :
+    S + (-j * S) / j = 0 := by
+  field_simp [hj] <;> ring
+
+/-- Exact energy cost of a correction along a direction with squared norm G. -/
+theorem correction_energy (S j G : ℝ) :
+    (-j * S)^2 * G = j^2 * S^2 * G := by ring
+
+#print axioms reciprocal_tail_cancel
+#print axioms correction_energy
+
 end MCore.ClosureCalculus
