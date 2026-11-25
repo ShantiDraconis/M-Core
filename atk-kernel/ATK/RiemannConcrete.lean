@@ -109,6 +109,28 @@ theorem DN_relative_loss_bound (L : ℝ) (hL : 0 < L)
 
 #print axioms DN_relative_loss_bound
 
+
+/-- Concrete terminal reduction: unbounded normalized dissipation excludes
+    a positive infimum of the actual Baez-Duarte residual. -/
+theorem DN_iInf_zero_of_unbounded_relative_loss
+    (h : ∀ B : ℝ, ∃ N : ℕ,
+      B < ∑ n ∈ Finset.range N, (1 - DN (n+1) / DN n)) :
+    (⨅ n, DN n) = 0 := by
+  have hb : BddBelow (Set.range DN) := ⟨0, by
+    rintro _ ⟨n, rfl⟩
+    exact DN_nonneg n⟩
+  have hn : 0 ≤ ⨅ n, DN n := le_ciInf DN_nonneg
+  by_contra hne
+  have hp : 0 < ⨅ n, DN n := lt_of_le_of_ne hn (Ne.symm hne)
+  obtain ⟨N, hN⟩ := h (DN 0 / (⨅ n, DN n))
+  have hh := DN_relative_loss_bound (⨅ n, DN n) hp
+    (fun n => ciInf_le hb n) N
+  have hm := (div_lt_iff₀ hp).mp hN
+  rw [mul_comm (⨅ n, DN n)] at hh
+  linarith [DN_nonneg N]
+
+#print axioms DN_iInf_zero_of_unbounded_relative_loss
+
 end ATK.RiemannConcrete
 
 #print axioms ATK.RiemannConcrete.residualSq_nonneg
