@@ -66,4 +66,41 @@ theorem counter_no_cover : ¬ Cover counterA counterS counterR := by
 #print axioms counter_semantics
 #print axioms counter_no_cover
 
+
+/-! Rate-sensitive division: retain paths and their filter, not only a scalar. -/
+structure RateDivision where
+  numerator : ℝ → ℝ
+  denominator : ℝ → ℝ
+  approach : Filter ℝ
+
+def RateDivision.realizes (d : RateDivision) (a : ℝ) : Prop :=
+  Filter.Tendsto (fun t => d.numerator t / d.denominator t)
+    d.approach (nhds a)
+
+def RateDivision.admissible (d : RateDivision) : Prop :=
+  ∀ᶠ t in d.approach, d.denominator t ≠ 0
+
+def RateDivision.limits (d : RateDivision) : Set ℝ :=
+  {a | d.realizes a}
+
+theorem rate_division_constant_path (a : ℝ) :
+    (⟨fun t => a * t, id, nhdsWithin 0 {t : ℝ | t ≠ 0}⟩ :
+      RateDivision).realizes a := by
+  change Filter.Tendsto (fun t : ℝ => (a * t) / t)
+    (nhdsWithin 0 {t : ℝ | t ≠ 0}) (nhds a)
+  apply tendsto_const_nhds.congr'
+  filter_upwards [self_mem_nhdsWithin] with t ht
+  exact (mul_div_cancel_right₀ a ht).symm
+
+theorem universal_producer_bridge {α : Type*}
+    (F : α → Prop) (r : α → α)
+    (coverage : (∃ y, F y) → ∃ x, F (r x))
+    (exclusion : ∀ x, ¬ F (r x)) : ∀ y, ¬ F y := by
+  intro y hy
+  obtain ⟨x, hx⟩ := coverage ⟨y, hy⟩
+  exact exclusion x hx
+
+#print axioms rate_division_constant_path
+#print axioms universal_producer_bridge
+
 end MCore.ClosureCalculus
