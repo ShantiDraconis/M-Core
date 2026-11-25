@@ -242,4 +242,25 @@ theorem block_relative_loss_bound (D : ℕ → ℝ) (K : ℕ → ℕ)
 
 #print axioms block_relative_loss_bound
 
+
+/-- Exact finite product of relative rates, before the first zero. -/
+theorem relative_rate_product (D : ℕ → ℝ) (N : ℕ)
+    (hn : ∀ n < N, D n ≠ 0) :
+    D 0 * (∏ n ∈ Finset.range N, (D (n+1) / D n)) = D N := by
+  induction N with
+  | zero => simp
+  | succ N ih =>
+    rw [Finset.prod_range_succ, ← mul_assoc, ih (fun n h => hn n (Nat.lt.step h))]
+    field_simp [hn N (Nat.lt_succ_self N)]
+
+/-- Once a nonnegative antitone residual reaches zero, it stays zero. -/
+theorem zero_residual_absorbing (D : ℕ → ℝ) (hD : Antitone D)
+    (hn : ∀ n, 0 ≤ D n) (k : ℕ) (hk : D k = 0) :
+    ∀ n, k ≤ n → D n = 0 := by
+  intro n h
+  exact le_antisymm (hk ▸ hD h) (hn n)
+
+#print axioms relative_rate_product
+#print axioms zero_residual_absorbing
+
 end MCore.ClosureCalculus
