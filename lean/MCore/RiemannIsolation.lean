@@ -72,4 +72,16 @@ theorem triangular_sum {N : ℕ} (v a r : Fin N → ℝ) (m : Fin N)
 
 #print axioms triangular_sum
 
+theorem triangular_zero {N : ℕ} (v a r : Fin N → ℝ) (m : Fin N)
+    (hprev : ∀ k : Fin N, k < m → v k = 0)
+    (hdiag : r m = a m - 1)
+    (hlater : ∀ k : Fin N, m < k → r k = a k)
+    (ha : (∑ k, v k * a k) = 0)
+    (hr : (∑ k, v k * r k) = 0) : v m = 0 := by
+  have h := triangular_sum v a r m hprev hdiag hlater
+  rw [ha, hr] at h
+  linarith
+
+#print axioms triangular_zero
+
 end MCore.RiemannIsolation
