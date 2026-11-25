@@ -182,7 +182,8 @@ theorem unknown_does_not_assert (p : Prop) :
 
 theorem finite_limit_distinct (n : ℕ) :
     IndeterminatePoint.finiteZero n ≠ IndeterminatePoint.limitZero := by
-  decide
+  intro h
+  cases h
 
 theorem division_points_distinct :
     IndeterminatePoint.zeroOverZero ≠ IndeterminatePoint.infinityOverInfinity := by
