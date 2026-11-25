@@ -325,4 +325,25 @@ theorem triangular_jump_zero (c : ℕ → ℝ)
 
 #print axioms triangular_jump_zero
 
+
+/-- Finite triangular jump equations suffice for finite coefficient elimination. -/
+theorem finite_triangular_jump_zero (c : ℕ → ℝ) (N : ℕ)
+    (h : ∀ n < N, c n + ∑ k ∈ Finset.range n,
+      (if (k+1) ∣ (n+1) then c k else 0) = 0) :
+    ∀ n < N, c n = 0 := by
+  intro n
+  induction n using Nat.strong_induction_on with
+  | h n ih =>
+    intro hn
+    have hz : (∑ k ∈ Finset.range n,
+        (if (k+1) ∣ (n+1) then c k else 0)) = 0 := by
+      apply Finset.sum_eq_zero
+      intro k hk
+      have hkn := Finset.mem_range.mp hk
+      rw [ih k hkn (lt_trans hkn hn)]
+      split <;> rfl
+    simpa [hz] using h n hn
+
+#print axioms finite_triangular_jump_zero
+
 end MCore.ClosureCalculus
