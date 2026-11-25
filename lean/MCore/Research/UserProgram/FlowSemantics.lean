@@ -3,16 +3,16 @@ import MCore.Research.UserProgram.CrossOperatorLaws
 
 namespace MCore.Research.UserProgram
 
-def orbit0 (x : I3Vector) : I3Vector := x
-def orbit1 (x : I3Vector) : I3Vector := opT x
-def orbit2 (x : I3Vector) : I3Vector := opT (opT x)
-def orbit3 (x : I3Vector) : I3Vector := opT (opT (opT x))
+noncomputable def orbit0 (x : I3Vector) : I3Vector := x
+noncomputable def orbit1 (x : I3Vector) : I3Vector := opT x
+noncomputable def orbit2 (x : I3Vector) : I3Vector := opT (opT x)
+noncomputable def orbit3 (x : I3Vector) : I3Vector := opT (opT (opT x))
 
 theorem orbit3_eq_initial (x : I3Vector) :
     orbit3 x = orbit0 x := by
   exact I3Vector.rotate_three x
 
-def conservedSum (x : I3Vector) : ℂ := x.sum
+noncomputable def conservedSum (x : I3Vector) : ℂ := x.sum
 
 theorem conservedSum_orbit1 (x : I3Vector) :
     conservedSum (orbit1 x) = conservedSum x :=
@@ -35,7 +35,7 @@ theorem opC_orbit2 (x : I3Vector) :
     opC (orbit2 x) = opC x := by
   ext <;> simp [opC, orbit2, opT, I3Vector.sum_rotate]
 
-def cycleDefect (x : I3Vector) : I3Vector :=
+noncomputable def cycleDefect (x : I3Vector) : I3Vector :=
   opDelta (orbit0 x) + opDelta (orbit1 x) + opDelta (orbit2 x)
 
 theorem cycleDefect_zero (x : I3Vector) :
@@ -52,7 +52,7 @@ structure FlowCertificate (x : I3Vector) : Prop where
   center2 : opC (orbit2 x) = opC x
   defectCancellation : cycleDefect x = 0
 
-def flowCertificate (x : I3Vector) : FlowCertificate x where
+noncomputable def flowCertificate (x : I3Vector) : FlowCertificate x where
   periodic := orbit3_eq_initial x
   sum1 := conservedSum_orbit1 x
   sum2 := conservedSum_orbit2 x
@@ -61,9 +61,9 @@ def flowCertificate (x : I3Vector) : FlowCertificate x where
   center2 := opC_orbit2 x
   defectCancellation := cycleDefect_zero x
 
-def GlobalFlowLaw : Prop := ∀ x : I3Vector, FlowCertificate x
+noncomputable def GlobalFlowLaw : Prop := ∀ x : I3Vector, FlowCertificate x
 
-def globalFlowInhabitant : Inhabitant GlobalFlowLaw :=
+noncomputable def globalFlowInhabitant : Inhabitant GlobalFlowLaw :=
   ⟨flowCertificate⟩
 
 end MCore.Research.UserProgram
