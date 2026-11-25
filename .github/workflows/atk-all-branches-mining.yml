@@ -1,0 +1,53 @@
+name: ATK all-repos all-branches mining
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/atk-all-branches-mining.yml']
+permissions:
+  contents: read
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify cross-repository read credential
+        env:
+          ATK_READ_ALL_REPOS_TOKEN: ${{ secrets.ATK_READ_ALL_REPOS_TOKEN }}
+        run: |
+          if [ -z "$ATK_READ_ALL_REPOS_TOKEN" ]; then
+            echo "::error::Configure ATK_READ_ALL_REPOS_TOKEN with read access to all owned private and public repositories"
+            exit 1
+          fi
+      - name: Mine complete Git refs in assigned repositories
+        env:
+          ATK_READ_ALL_REPOS_TOKEN: ${{ secrets.ATK_READ_ALL_REPOS_TOKEN }}
+          ATK_SHARD: ${{ matrix.shard }}
+          ATK_SHARDS: "16"
+        run: python3 atk-mining/mine_all_repos.py
+      - name: Preserve aggregate coverage only
+        if: always()
+        run: |
+          mkdir -p atk-public-summary
+          python3 - <<'PY'
+          import json, pathlib
+          p = pathlib.Path("atk-mined/SUMMARY.json")
+          if p.exists():
+              d = json.loads(p.read_text())
+              keys = ["owner_repositories_listed","shard","shards","repos_assigned","refs_scanned","unique_blobs","matches","closed_math","kernel_run"]
+              out = {k:d[k] for k in keys}
+              out["error_count"] = len(d["errors"])
+              pathlib.Path("atk-public-summary/SUMMARY.json").write_text(json.dumps(out,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atk-coverage-shard-${{ matrix.shard }}
+          path: atk-public-summary/
+          if-no-files-found: warn
+          retention-days: 30
