@@ -7,7 +7,7 @@ namespace MCore.Research.UserProgram
     An inhabitant carries an actual proof of its proposition; no assumed bridge is created here. -/
 
 inductive NumericClass
-  | natural | integer | rational | real | complex | cyclic3
+  | natural | integer | rational | real | complex | cyclic3 | indeterminate
   deriving DecidableEq, Repr
 
 structure SemanticCarrier where
@@ -24,7 +24,7 @@ structure SemanticMap (A B : SemanticCarrier) where
   run : A.Carrier → B.Carrier
 
 def SemanticMap.id (A : SemanticCarrier) : SemanticMap A A :=
-  ⟨id⟩
+  ⟨fun x => x⟩
 
 def SemanticMap.comp {A B C : SemanticCarrier}
     (g : SemanticMap B C) (f : SemanticMap A B) : SemanticMap A C :=
@@ -67,7 +67,7 @@ def RotationLaw : Law I3State where
 
 def rotationHabitant : Habitant RotationLaw where
   witness := .manifesto
-  proof := by decide
+  proof := by rfl
 
 def RotationGlobalLaw : Prop :=
   ∀ s : I3State, s.next.next.next = s
@@ -97,5 +97,28 @@ theorem I3Flow_three (s : I3State) :
 def I3FlowThreeInhabitant :
     Inhabitant (∀ s : I3State, I3Flow.iterate 3 s = s) :=
   ⟨I3Flow_three⟩
+
+/-- Exact proposition points with evidence-bearing trivalent states. -/
+inductive PointEvidence (P : Prop) where
+  | unknown
+  | positive (proof : P)
+  | negative (refutation : ¬ P)
+
+def PointEvidence.map {P Q : Prop} (f : P → Q) :
+    PointEvidence P → PointEvidence Q
+  | .positive h => .positive (f h)
+  | .unknown => .unknown
+  | .negative _ => .unknown
+
+def PointEvidence.transport {P Q : Prop} (h : P ↔ Q) :
+    PointEvidence P → PointEvidence Q
+  | .positive hp => .positive (h.mp hp)
+  | .negative hn => .negative (fun hq => hn (h.mpr hq))
+  | .unknown => .unknown
+
+theorem evidence_no_conflict {P : Prop} (hp : P) (hn : ¬ P) : False :=
+  hn hp
+
+#print axioms evidence_no_conflict
 
 end MCore.Research.UserProgram
