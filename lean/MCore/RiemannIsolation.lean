@@ -36,8 +36,10 @@ theorem isolated_fract {m t : ℝ} (hm : 1 ≤ m)
   obtain ⟨h₁, h₂⟩ := isolation_bounds hm hl hu
   have hf : ⌊1 / (m * t)⌋ = (1 : ℤ) := by
     apply Int.floor_eq_iff.mpr
-    exact ⟨by simpa using h₁.le, by simpa using h₂⟩
-  simp [Int.fract, hf]
+    constructor
+    · simpa only [Int.cast_one] using h₁.le
+    · simpa only [Int.cast_one, one_add_one_eq_two] using h₂
+  simp only [Int.fract, hf, Int.cast_one]
 
 theorem later_fract {m k t : ℝ} (hm : 1 ≤ m)
     (hk : m + 1 ≤ k) (hl : 1 / (m + 1) < t) :
@@ -45,8 +47,10 @@ theorem later_fract {m k t : ℝ} (hm : 1 ≤ m)
   obtain ⟨h₁, h₂⟩ := later_generator_bound hm hk hl
   have hf : ⌊1 / (k * t)⌋ = (0 : ℤ) := by
     apply Int.floor_eq_iff.mpr
-    exact ⟨by simpa using h₁.le, by simpa using h₂⟩
-  simp [Int.fract, hf]
+    constructor
+    · simpa only [Int.cast_zero] using h₁.le
+    · simpa only [Int.cast_zero, zero_add] using h₂
+  simp only [Int.fract, hf, Int.cast_zero, sub_zero]
 
 #print axioms isolated_fract
 #print axioms later_fract
