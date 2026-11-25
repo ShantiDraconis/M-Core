@@ -68,7 +68,24 @@ theorem riemann_conditional (hBridge : BaezDuarteCriterion) (hOpen : UniformLogB
     RiemannHypothesis :=
   hBridge (DN_tendsto_zero hOpen)
 
+/-- Minimal convergence target; no prescribed rate. -/
+def WeakBound : Prop := Tendsto DN atTop (𝓝 0)
+
+/-- Explicit material gap for the weak route. -/
+def GapCertificate : Prop := WeakBound
+
+theorem strong_implies_weak (h : UniformLogBound) : WeakBound :=
+  DN_tendsto_zero h
+
+/-- Conditional endpoint: the published bridge is not yet formalized here. -/
+theorem weak_endpoint (hBridge : BaezDuarteCriterion)
+    (hGap : GapCertificate) : RiemannHypothesis :=
+  hBridge hGap
+
 end ATK.Conditional.Riemann
+
+#print axioms ATK.Conditional.Riemann.strong_implies_weak
+#print axioms ATK.Conditional.Riemann.weak_endpoint
 
 #print axioms ATK.Conditional.Riemann.DN_nonneg
 #print axioms ATK.Conditional.Riemann.DN_tendsto_zero
