@@ -347,7 +347,7 @@ theorem point_path_ratio (k t : ℝ) (ht : t ≠ 0) (hk : 1 + k ≠ 0) :
     t / (t + k * t) = 1 / (1 + k) := by
   have h : t + k * t = (1 + k) * t := by ring
   rw [h]
-  field_simp
+  field_simp <;> ring
 
 theorem point_power_log_realization (a t : ℝ) (ht : t ≠ 0) :
     (a / t) * t = a := by field_simp
@@ -360,5 +360,21 @@ theorem point_power_log_realization (a t : ℝ) (ht : t ≠ 0) :
 #print axioms point_difference_realization
 #print axioms point_path_ratio
 #print axioms point_power_log_realization
+
+
+-- Actual convergence for the constant realizations, on punctured domains.
+theorem point_difference_limit (a : ℝ) :
+    Filter.Tendsto (fun t : ℝ => (t + a) - t) Filter.atTop (nhds a) := by
+  simp only [point_difference_realization]
+  exact tendsto_const_nhds
+
+theorem point_ratio_limit (a : ℝ) :
+    Filter.Tendsto (fun t : ℝ => (a * t) / t) (nhdsWithin 0 {t : ℝ | t ≠ 0}) (nhds a) := by
+  apply tendsto_const_nhds.congr'
+  filter_upwards [self_mem_nhdsWithin] with t ht
+  exact (point_ratio_realization a t ht).symm
+
+#print axioms point_difference_limit
+#print axioms point_ratio_limit
 
 end MCore.Research.UserProgram
