@@ -41,11 +41,11 @@ theorem opDelta_zero_of_fixed {x : I3Vector} (hx : x.rotate = x) :
 
 theorem opGamma_rotate (x : I3Vector) :
     opGamma x.rotate = opGamma x := by
-  apply I3Vector.ext <;> change (_ + _) + _ = (_ + _) + _ <;> ring
+  apply I3Vector.ext <;> change (_ + _) + _ = (_ + _) + _ <;> ring_nf <;> rfl
 
 theorem opGamma_fixed (x : I3Vector) :
     (opGamma x).rotate = opGamma x := by
-  apply I3Vector.ext <;> change (_ + _) + _ = (_ + _) + _ <;> ring
+  apply I3Vector.ext <;> change (_ + _) + _ = (_ + _) + _ <;> ring_nf <;> rfl
 
 theorem opC_fixed (x : I3Vector) :
     (opC x).rotate = opC x := by
@@ -53,7 +53,7 @@ theorem opC_fixed (x : I3Vector) :
 
 theorem opC_idempotent (x : I3Vector) :
     opC (opC x) = opC x := by
-  apply I3Vector.ext <;> simp [opC, I3Vector.sum] <;> ring
+  apply I3Vector.ext <;> change ((_ / 3 + _ / 3 + _ / 3) / 3 : ℂ) = _ / 3 <;> ring
 
 theorem opQ_rotate (x : I3Vector) :
     opQ x.rotate = (opQ x).rotate := by
