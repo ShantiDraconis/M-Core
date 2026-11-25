@@ -3,6 +3,19 @@ import MCore.Research.UserProgram.C3Intertwiner
 
 namespace MCore.Research.UserProgram
 
+/-- Coordinate equivalence transports the standard complex module structure. -/
+def ComplexThreeChannel.coordinates : ComplexThreeChannel ≃ (ℂ × ℂ × ℂ) where
+  toFun x := (x.manifesto, x.travessia, x.semente)
+  invFun x := ⟨x.1, x.2.1, x.2.2⟩
+  left_inv x := by cases x; rfl
+  right_inv x := by rcases x with ⟨a, b, c⟩; rfl
+
+noncomputable instance : AddCommMonoid ComplexThreeChannel :=
+  ComplexThreeChannel.coordinates.addCommMonoid
+
+noncomputable instance : Module ℂ ComplexThreeChannel :=
+  ComplexThreeChannel.coordinates.module ℂ
+
 structure LinearC3Operator where
   run : ComplexThreeChannel →ₗ[ℂ] ComplexThreeChannel
 
@@ -15,7 +28,7 @@ def RotationEigenvector (lam : ℂ) (x : ComplexThreeChannel) : Prop :=
       travessia := lam * x.travessia
       semente := lam * x.semente }
 
-def ComplexThreeChannel.smul (z : ℂ) (x : ComplexThreeChannel) : ComplexThreeChannel where
+noncomputable def ComplexThreeChannel.smul (z : ℂ) (x : ComplexThreeChannel) : ComplexThreeChannel where
   manifesto := z * x.manifesto
   travessia := z * x.travessia
   semente := z * x.semente
@@ -36,9 +49,13 @@ theorem LinearC3Operator.preserves_rotation_eigenspace
     {lam : ℂ} {x : ComplexThreeChannel}
     (hx : RotationEigenvector lam x) :
     RotationEigenvector lam (A.run x) := by
-  unfold RotationEigenvector at hx ⊢
-  rw [← hA x, hx]
-  exact A.map_smul_channel lam x
+  change x.rotate = x.smul lam at hx
+  change (A.run x).rotate = (A.run x).smul lam
+  have hc := hA x
+  calc
+    (A.run x).rotate = A.run x.rotate := hc.symm
+    _ = A.run (x.smul lam) := congrArg (fun y => A.run y) hx
+    _ = (A.run x).smul lam := A.map_smul_channel lam x
 
 def sector0 (x : ComplexThreeChannel) : Prop := RotationEigenvector 1 x
 def sector1 (x : ComplexThreeChannel) : Prop := RotationEigenvector omega3 x

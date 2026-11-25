@@ -36,6 +36,7 @@ jobs:
           lake env lean lean/MCore/OpenMath/IRegime.lean
           lake env lean lean/MCore/OpenMath/I3Tristable.lean
           lake env lean lean/MCore/OpenMath/IEnriched.lean
+          lake build MCore.Research.UserProgram
           lake env lean lean/MCore/Research/UserProgram.lean
           cp lean/MCore/OpenMath/I3Tristable.lean /tmp/I3AxiomAudit.lean
           cat >> /tmp/I3AxiomAudit.lean <<'EOF'

@@ -1,0 +1,33 @@
+name: Sync certified inventory
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  sync:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'audit/closure-calculus-20261125'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/closure-calculus-20261125
+          fetch-depth: 0
+      - name: Retrieve and verify certified artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api repos/${{ github.repository }}/actions/artifacts/15013167519/zip > /tmp/inventory.zip
+          echo '442386e7806b4e93c19bf9b01d799cdda6c0be05592e85224e7f539a8a734d72  /tmp/inventory.zip' | sha256sum -c
+          git diff --exit-code 5297a0b4d76a8059125d9b245a45e7637be77486 HEAD -- lean atk-kernel scripts/proof_inventory.py lean-toolchain lakefile.lean lakefile.toml lake-manifest.json
+          unzip -p /tmp/inventory.zip PROOF_INVENTORY.json > inventory/PROOF_INVENTORY.json
+          unzip -p /tmp/inventory.zip PROOF_INVENTORY.md > inventory/PROOF_INVENTORY.md
+          git add inventory/PROOF_INVENTORY.json inventory/PROOF_INVENTORY.md
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Synchronize kernel-derived proof inventory (artifact 15013167519)'
+          git push origin HEAD:audit/closure-calculus-20261125

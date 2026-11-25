@@ -107,7 +107,62 @@ theorem pnp_toy_model_vacuous :
      P_closed_under_red := fun h _ => False.elim h },
    Set.empty_ne_univ⟩
 
+/-- Exact points for the eight original obligations, not replacement statements. -/
+inductive ObligationPoint where
+  | rh | beal | ns | pnp | hodge | bsdRank | bsdRefined | ym
+  deriving DecidableEq
+
+inductive PointStatus where
+  | negative | undetermined | positive
+  deriving DecidableEq
+
+def pointStatement (M : Models) : ObligationPoint → Prop
+  | .rh => ATK.Conditional.Riemann.UniformLogBound
+  | .beal => ATK.Conditional.Beal.GCDLowerBoundSmallExponents
+  | .ns => ATK.Conditional.NavierStokes.EnstrophyAPrioriBound M.ns
+  | .pnp => ATK.Conditional.PvsNP.SATNotInP M.cx M.sat
+  | .hodge => ATK.Conditional.Hodge.MiddleCodimension M.hodge
+  | .bsdRank => ATK.Conditional.BSD.RankOpen M.bsd
+  | .bsdRefined => ATK.Conditional.BSD.RefinedOpen M.bsd
+  | .ym => ATK.Conditional.YangMills.ConstructiveYM4D M.ym
+
+def pointEvidence (M : Models) (i : ObligationPoint) : PointStatus → Prop
+  | .positive => pointStatement M i
+  | .negative => ¬ pointStatement M i
+  | .undetermined => True
+
+theorem all_positive_iff_obligations (M : Models) :
+    (∀ i, pointEvidence M i .positive) ↔ OpenObligations M := by
+  constructor
+  · intro h
+    exact ⟨h .rh, h .beal, h .ns, h .pnp, h .hodge,
+      h .bsdRank, h .bsdRefined, h .ym⟩
+  · intro h i
+    cases i
+    · exact h.rh
+    · exact h.beal
+    · exact h.ns
+    · exact h.pnp
+    · exact h.hodge
+    · exact h.bsdRank
+    · exact h.bsdRefined
+    · exact h.ym
+
+theorem closedMath_of_positive_points {M : Models}
+    (hB : Bridges M) (h : ∀ i, pointEvidence M i .positive) :
+    SevenStatements M :=
+  closedMath_of_obligations hB ((all_positive_iff_obligations M).mp h)
+
+theorem negative_blocks_all_positive {M : Models} {i : ObligationPoint}
+    (h : pointEvidence M i .negative) :
+    ¬ (∀ j, pointEvidence M j .positive) :=
+  fun hp => h (hp i)
+
 end ATK.ClosedMath
+
+#print axioms ATK.ClosedMath.all_positive_iff_obligations
+#print axioms ATK.ClosedMath.closedMath_of_positive_points
+#print axioms ATK.ClosedMath.negative_blocks_all_positive
 
 #print axioms ATK.ClosedMath.closedMath_of_obligations
 #print axioms ATK.ClosedMath.closedMathFaithful_of_obligations

@@ -1,0 +1,69 @@
+name: ATK recovered proof audit
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: atk-kernel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: atk-kernel
+          auto-config: false
+          build: false
+      - name: Build recovered modules
+        run: lake build ATK.ObligationsClosed ATK.TeoremaGlobal ATK.BridgeReduction ATK.HodgeFiltracao ATK.BSDRefinada ATK.OSProcesso ATK.OSTransferencia ATK.OSSimetria ATK.OSLacuna ATK.OSExemplo ATK.YMReconstrucao
+      - name: Audit exact theorem dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > RecoveredAudit.lean <<'EOF'
+          import ATK.ObligationsClosed
+          import ATK.TeoremaGlobal
+          import ATK.BridgeReduction
+          import ATK.HodgeFiltracao
+          import ATK.BSDRefinada
+          import ATK.OSProcesso
+          import ATK.OSSimetria
+          #print axioms ATK.ObligationsClosed.B1
+          #print axioms ATK.ObligationsClosed.B3
+          #print axioms ATK.ObligationsClosed.B4
+          #print axioms ATK.ObligationsClosed.B9
+          #print axioms ATK.TeoremaGlobal.teorema_global
+          #print axioms ATK.BealFermatDescent.beal_iff_residual_descida_pairwise
+          #print axioms ATK.HodgeFiltracao.isHodgeClass_iff_filtracao
+          #print axioms ATK.HodgeFiltracao.inter_filtracao
+          #print axioms ATK.BSDRefinada.bsdFull_iff_fraco
+          #print axioms ATK.BSDRefinada.refinedOpen_iff
+          #print axioms ATK.BSDRefinada.formula_E32_iff_of_ne_zero
+          #print axioms ATK.OSProcesso.ProcessoOS.lacuna_processo
+          #print axioms ATK.OSTransferencia.DadosOS.lacuna_OS
+          #print axioms ATK.OSProcesso.ProcessoOS.vacuo_unico_processo
+          #print axioms ATK.OSSimetria.SimetriaOS.U_P
+          #print axioms ATK.OSSimetria.SimetriaOS.U_Ω
+          EOF
+          lake env lean RecoveredAudit.lean | tee recovered-axioms.txt
+          python3 - <<'PY'
+          import re
+          s=open('recovered-axioms.txt').read()
+          allowed={'propext','Classical.choice','Quot.sound'}
+          names=['ATK.ObligationsClosed.B1','ATK.ObligationsClosed.B3','ATK.ObligationsClosed.B4','ATK.ObligationsClosed.B9','ATK.TeoremaGlobal.teorema_global','ATK.BealFermatDescent.beal_iff_residual_descida_pairwise']
+          names += ["ATK.HodgeFiltracao.isHodgeClass_iff_filtracao","ATK.HodgeFiltracao.inter_filtracao","ATK.BSDRefinada.bsdFull_iff_fraco","ATK.BSDRefinada.refinedOpen_iff","ATK.BSDRefinada.formula_E32_iff_of_ne_zero","ATK.OSProcesso.ProcessoOS.lacuna_processo","ATK.OSTransferencia.DadosOS.lacuna_OS","ATK.OSProcesso.ProcessoOS.vacuo_unico_processo","ATK.OSSimetria.SimetriaOS.U_P","ATK.OSSimetria.SimetriaOS.U_Ω"]
+          for n in names:
+              m=re.search(r"'"+re.escape(n)+r"' depends on axioms: \[([^\]]*)\]",s,re.S)
+              if m:
+                  assert not (set(x.strip() for x in m[1].split(',') if x.strip())-allowed),n
+              else:
+                  assert "'"+n+"' does not depend on any axioms" in s,n
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recovered-axioms
+          path: atk-kernel/recovered-axioms.txt

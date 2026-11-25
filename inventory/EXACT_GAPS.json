@@ -1,0 +1,110 @@
+{
+  "scope": "ClosedMath declarations only; not exhaustive",
+  "gaps": [
+    {
+      "id": "Bridges.baezDuarte",
+      "kind": "bridgeGap",
+      "statement": "ATK.Conditional.Riemann.BaezDuarteCriterion",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "Bridges.fermat",
+      "kind": "bridgeGap",
+      "statement": "FermatLastTheorem",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "Bridges.leray",
+      "kind": "bridgeGap",
+      "statement": "ATK.Conditional.NavierStokes.EnstrophyBlowupCriterion M.ns",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "Bridges.cookLevin",
+      "kind": "bridgeGap",
+      "statement": "ATK.Conditional.PvsNP.CookLevin M.cx M.sat",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "Bridges.lefschetz",
+      "kind": "bridgeGap",
+      "statement": "ATK.Conditional.Hodge.KnownCases M.hodge",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "Bridges.grossZagierKolyvagin",
+      "kind": "bridgeGap",
+      "statement": "ATK.Conditional.BSD.GrossZagierKolyvagin M.bsd",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "Bridges.osterwalderSchrader",
+      "kind": "bridgeGap",
+      "statement": "ATK.Conditional.YangMills.OSReconstruction M.ym",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "OpenObligations.rh",
+      "kind": "analyticGap",
+      "statement": "ATK.Conditional.Riemann.UniformLogBound",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "OpenObligations.beal",
+      "kind": "analyticGap",
+      "statement": "ATK.Conditional.Beal.GCDLowerBoundSmallExponents",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "OpenObligations.ns",
+      "kind": "analyticGap",
+      "statement": "ATK.Conditional.NavierStokes.EnstrophyAPrioriBound M.ns",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "OpenObligations.pnp",
+      "kind": "analyticGap",
+      "statement": "ATK.Conditional.PvsNP.SATNotInP M.cx M.sat",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "OpenObligations.hodge",
+      "kind": "analyticGap",
+      "statement": "ATK.Conditional.Hodge.MiddleCodimension M.hodge",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "OpenObligations.bsdRank",
+      "kind": "analyticGap",
+      "statement": "ATK.Conditional.BSD.RankOpen M.bsd",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "OpenObligations.bsdRefined",
+      "kind": "analyticGap",
+      "statement": "ATK.Conditional.BSD.RefinedOpen M.bsd",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    },
+    {
+      "id": "OpenObligations.ym",
+      "kind": "analyticGap",
+      "statement": "ATK.Conditional.YangMills.ConstructiveYM4D M.ym",
+      "valuation": "BOT",
+      "path": "atk-kernel/ATK/ClosedMath.lean"
+    }
+  ]
+}

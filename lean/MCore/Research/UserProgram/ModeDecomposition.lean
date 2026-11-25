@@ -3,15 +3,15 @@ import MCore.Research.UserProgram.I3Geometry
 
 namespace MCore.Research.UserProgram
 
-def ComplexThreeChannel.meanPart (x : ComplexThreeChannel) : ComplexThreeChannel where
+noncomputable def ComplexThreeChannel.meanPart (x : ComplexThreeChannel) : ComplexThreeChannel where
   manifesto := x.mean
   travessia := x.mean
   semente := x.mean
 
-def ComplexThreeChannel.oscPart (x : ComplexThreeChannel) : ComplexThreeChannel :=
+noncomputable def ComplexThreeChannel.oscPart (x : ComplexThreeChannel) : ComplexThreeChannel :=
   x.centered
 
-def ComplexThreeChannel.add (x y : ComplexThreeChannel) : ComplexThreeChannel where
+noncomputable def ComplexThreeChannel.add (x y : ComplexThreeChannel) : ComplexThreeChannel where
   manifesto := x.manifesto + y.manifesto
   travessia := x.travessia + y.travessia
   semente := x.semente + y.semente
@@ -38,14 +38,15 @@ theorem ComplexThreeChannel.mean_oscPart (x : ComplexThreeChannel) :
 
 theorem ComplexThreeChannel.meanPart_idempotent (x : ComplexThreeChannel) :
     x.meanPart.meanPart = x.meanPart := by
-  apply ComplexThreeChannel.ext <;>
-    simp [ComplexThreeChannel.meanPart, ComplexThreeChannel.mean_meanPart]
+  have h := x.mean_meanPart
+  apply ComplexThreeChannel.ext <;> change x.meanPart.mean = x.mean <;> exact h
 
 theorem ComplexThreeChannel.oscPart_idempotent (x : ComplexThreeChannel) :
     x.oscPart.oscPart = x.oscPart := by
+  have h := x.mean_oscPart
   apply ComplexThreeChannel.ext <;>
-    simp [ComplexThreeChannel.oscPart, ComplexThreeChannel.centered,
-      ComplexThreeChannel.mean_oscPart]
+    simp only [ComplexThreeChannel.oscPart, ComplexThreeChannel.centered] at h ⊢ <;>
+    rw [h, sub_zero]
 
 theorem ComplexThreeChannel.meanPart_oscPart (x : ComplexThreeChannel) :
     x.oscPart.meanPart =

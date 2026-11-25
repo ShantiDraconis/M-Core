@@ -11,17 +11,24 @@ theorem sqrt_three_sq : (Real.sqrt 3)^2 = 3 := by
 
 theorem omega3_sq_add_omega3_add_one :
     omega3^2 + omega3 + 1 = 0 := by
-  unfold omega3
-  apply Complex.ext <;> simp [Complex.ext_iff, sqrt_three_sq] <;> ring_nf
-  · rw [Real.sq_sqrt] <;> norm_num
-  · ring
+  have hre : omega3.re = -1 / 2 := by
+    norm_num [omega3, Complex.div_re, Complex.mul_re]
+  have him : omega3.im = Real.sqrt 3 / 2 := by
+    norm_num [omega3, Complex.div_im, Complex.mul_im]
+  apply Complex.ext
+  · simp only [pow_two, Complex.add_re, Complex.mul_re, Complex.one_re,
+      Complex.zero_re, hre, him]
+    nlinarith [sqrt_three_sq]
+  · simp only [pow_two, Complex.add_im, Complex.mul_im, Complex.one_im,
+      Complex.zero_im, hre, him]
+    ring
 
 theorem omega3_cube : omega3^3 = 1 := by
   have h := omega3_sq_add_omega3_add_one
+  apply sub_eq_zero.mp
   calc
     omega3^3 - 1 = (omega3 - 1) * (omega3^2 + omega3 + 1) := by ring
     _ = 0 := by rw [h, mul_zero]
-  exact sub_eq_zero.mp this
 
 noncomputable def I3State.phase : I3State → ℂ
   | .manifesto => 1
@@ -38,9 +45,14 @@ theorem phase_sum_zero :
 theorem phase_next (s : I3State) :
     I3State.phase s.next = omega3 * I3State.phase s := by
   cases s
-  · simp [I3State.phase]
-  · simp [I3State.phase, pow_two]
-  · simp [I3State.phase, ← pow_succ, omega3_cube]
+  · change omega3 = omega3 * 1
+    simp
+  · change omega3 ^ 2 = omega3 * omega3
+    ring
+  · change (1 : ℂ) = omega3 * omega3 ^ 2
+    calc
+      1 = omega3 ^ 3 := omega3_cube.symm
+      _ = omega3 * omega3 ^ 2 := by ring
 
 structure ComplexThreeChannel where
   manifesto : ℂ

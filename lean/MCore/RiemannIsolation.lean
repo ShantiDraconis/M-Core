@@ -88,4 +88,175 @@ theorem triangular_zero {N : ℕ} (v a r : Fin N → ℝ) (m : Fin N)
 
 #print axioms triangular_zero
 
+theorem triangular_all_zero {N : ℕ} (v : Fin N → ℝ)
+    (a r : Fin N → Fin N → ℝ)
+    (hdiag : ∀ m, r m m = a m m - 1)
+    (hlater : ∀ m k, m < k → r m k = a m k)
+    (ha : ∀ m, (∑ k, v k * a m k) = 0)
+    (hr : ∀ m, (∑ k, v k * r m k) = 0) :
+    ∀ m, v m = 0 := by
+  have h : ∀ n : ℕ, ∀ m : Fin N, m.val = n → v m = 0 := by
+    intro n
+    induction n using Nat.strong_induction_on with
+    | h n ih =>
+      intro m hm
+      apply triangular_zero v (a m) (r m) m
+      · intro k hk
+        apply ih k.val
+        · have hlt : k.val < m.val := hk
+          rw [hm] at hlt
+          exact hlt
+        · rfl
+      · exact hdiag m
+      · exact hlater m
+      · exact ha m
+      · exact hr m
+  exact fun m => h m.val m rfl
+
+#print axioms triangular_all_zero
+
+/-- A relation is an exact object, independently of its truth. -/
+structure RelationalNumber where
+  sentence : Prop
+
+def zeroEndpoint (d : ℝ) : RelationalNumber := ⟨d = 0⟩
+
+def RelationalNumber.Valid (r : RelationalNumber) : Prop := r.sentence
+
+theorem endpoint_valid_iff (d : ℝ) :
+    (zeroEndpoint d).Valid ↔ d = 0 := Iff.rfl
+
+theorem endpoint_exists (d : ℝ) : Nonempty RelationalNumber :=
+  ⟨zeroEndpoint d⟩
+
+theorem endpoint_not_automatically_valid :
+    ¬ (zeroEndpoint 1).Valid := by
+  change ¬ (1 : ℝ) = 0
+  exact one_ne_zero
+
+theorem endpoint_discrete_close (d : ℝ)
+    (hn : 0 ≤ d) (hu : d < 1) (hz : ∃ z : ℤ, d = (z : ℝ)) :
+    (zeroEndpoint d).Valid := by
+  obtain ⟨z, rfl⟩ := hz
+  have h0 : (0 : ℤ) ≤ z := by exact_mod_cast hn
+  have h1 : z < (1 : ℤ) := by exact_mod_cast hu
+  have he : z = 0 := by omega
+  change (z : ℝ) = 0
+  simp [he]
+
+#print axioms endpoint_valid_iff
+#print axioms endpoint_exists
+#print axioms endpoint_not_automatically_valid
+#print axioms endpoint_discrete_close
+
+/-- Exact syntactic points; identity does not imply evaluation. -/
+inductive IndeterminatePoint where
+  | limitZero
+  | finiteZero (n : ℕ)
+  | zeroOverZero
+  | zeroOverInfinity
+  | infinityOverInfinity
+  | millennium (i : Fin 8)
+  deriving DecidableEq
+
+inductive EpistemicValue where
+  | negative
+  | undetermined
+  | positive
+  deriving DecidableEq
+
+/-- Positive and negative evaluations require evidence. -/
+def EvaluationSound (p : Prop) : EpistemicValue → Prop
+  | .positive => p
+  | .negative => ¬ p
+  | .undetermined => True
+
+theorem positive_requires_proof (p : Prop)
+    (h : EvaluationSound p .positive) : p := h
+
+theorem negative_requires_refutation (p : Prop)
+    (h : EvaluationSound p .negative) : ¬ p := h
+
+theorem unknown_does_not_assert (p : Prop) :
+    EvaluationSound p .undetermined := True.intro
+
+theorem finite_limit_distinct (n : ℕ) :
+    IndeterminatePoint.finiteZero n ≠ IndeterminatePoint.limitZero := by
+  intro h
+  cases h
+
+theorem division_points_distinct :
+    IndeterminatePoint.zeroOverZero ≠ IndeterminatePoint.infinityOverInfinity := by
+  decide
+
+/-- All eight obligations close exactly when all have positive evidence. -/
+theorem all_points_close (P : Fin 8 → Prop) :
+    (∀ i, EvaluationSound (P i) .positive) ↔ (∀ i, P i) := Iff.rfl
+
+/-- Numeric sign is separate from epistemic truth. -/
+noncomputable def NumericSign (x : ℝ) : EpistemicValue :=
+  if x < 0 then .negative else if 0 < x then .positive else .undetermined
+
+#print axioms positive_requires_proof
+#print axioms negative_requires_refutation
+#print axioms unknown_does_not_assert
+#print axioms finite_limit_distinct
+#print axioms division_points_distinct
+#print axioms all_points_close
+
+namespace EpistemicValue
+
+def neg : EpistemicValue → EpistemicValue
+  | .negative => .positive
+  | .positive => .negative
+  | .undetermined => .undetermined
+
+def conj : EpistemicValue → EpistemicValue → EpistemicValue
+  | .negative, _ => .negative
+  | _, .negative => .negative
+  | .positive, .positive => .positive
+  | _, _ => .undetermined
+
+def disj : EpistemicValue → EpistemicValue → EpistemicValue
+  | .positive, _ => .positive
+  | _, .positive => .positive
+  | .negative, .negative => .negative
+  | _, _ => .undetermined
+
+theorem neg_involutive (a : EpistemicValue) : neg (neg a) = a := by
+  cases a <;> rfl
+
+theorem conj_comm (a b : EpistemicValue) : conj a b = conj b a := by
+  cases a <;> cases b <;> rfl
+
+theorem disj_comm (a b : EpistemicValue) : disj a b = disj b a := by
+  cases a <;> cases b <;> rfl
+
+theorem de_morgan (a b : EpistemicValue) :
+    neg (conj a b) = disj (neg a) (neg b) := by
+  cases a <;> cases b <;> rfl
+
+theorem conj_assoc (a b c : EpistemicValue) :
+    conj (conj a b) c = conj a (conj b c) := by
+  cases a <;> cases b <;> cases c <;> rfl
+
+theorem disj_assoc (a b c : EpistemicValue) :
+    disj (disj a b) c = disj a (disj b c) := by
+  cases a <;> cases b <;> cases c <;> rfl
+
+end EpistemicValue
+
+theorem finite_zero_implies_limit_zero (D : ℕ → ℝ) (d : ℝ)
+    (hn : 0 ≤ d) (hb : ∀ n, d ≤ D n) (n : ℕ) (hz : D n = 0) :
+    d = 0 := by
+  have h := hb n
+  rw [hz] at h
+  exact le_antisymm h hn
+
+#print axioms EpistemicValue.neg_involutive
+#print axioms EpistemicValue.de_morgan
+#print axioms EpistemicValue.conj_assoc
+#print axioms EpistemicValue.disj_assoc
+#print axioms finite_zero_implies_limit_zero
+
 end MCore.RiemannIsolation

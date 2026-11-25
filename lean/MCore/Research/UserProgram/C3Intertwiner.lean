@@ -6,13 +6,13 @@ namespace MCore.Research.UserProgram
 
 def C3Operator := Operator ComplexThreeChannel
 
-def rotationOperator : C3Operator :=
+noncomputable def rotationOperator : C3Operator :=
   ⟨ComplexThreeChannel.rotate⟩
 
 def CommutesWithRotation (A : C3Operator) : Prop :=
   Operator.comp A rotationOperator = Operator.comp rotationOperator A
 
-def commutatorDefect (A : C3Operator) (x : ComplexThreeChannel) : ComplexThreeChannel :=
+noncomputable def commutatorDefect (A : C3Operator) (x : ComplexThreeChannel) : ComplexThreeChannel :=
   { manifesto := (A.run x.rotate).manifesto - (A.run x).rotate.manifesto
     travessia := (A.run x.rotate).travessia - (A.run x).rotate.travessia
     semente := (A.run x.rotate).semente - (A.run x).rotate.semente }
@@ -25,11 +25,17 @@ theorem commutes_iff_pointwise (A : C3Operator) :
     simpa [CommutesWithRotation, Operator.comp, rotationOperator,
       Function.comp_apply] using this
   · intro h
-    cases A with
-    | mk run =>
-      apply congrArg Operator.run |>.injective
+    change Operator.comp A rotationOperator = Operator.comp rotationOperator A
+    have he : (Operator.comp A rotationOperator).run =
+        (Operator.comp rotationOperator A).run := by
       funext x
       simpa [Operator.comp, rotationOperator, Function.comp_apply] using h x
+    generalize Operator.comp A rotationOperator = B at he ⊢
+    generalize Operator.comp rotationOperator A = C at he ⊢
+    cases B
+    cases C
+    cases he
+    rfl
 
 theorem commutatorDefect_zero_of_commutes
     (A : C3Operator) (hA : CommutesWithRotation A) (x : ComplexThreeChannel) :
@@ -65,7 +71,9 @@ theorem constant_iff_rotation_fixed (x : ComplexThreeChannel) :
   · intro h
     have hm := congrArg ComplexThreeChannel.manifesto h
     have ht := congrArg ComplexThreeChannel.travessia h
-    constructor <;> simpa [ComplexThreeChannel.rotate] using ‹_›
+    constructor
+    · simpa [ComplexThreeChannel.rotate] using hm.symm
+    · simpa [ComplexThreeChannel.rotate] using ht.symm
 
 theorem commutes_preserves_constant_sector
     (A : C3Operator) (hA : CommutesWithRotation A) :

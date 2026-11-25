@@ -5,13 +5,13 @@ namespace MCore.Research.UserProgram
 
 abbrev I3End := I3Vector → I3Vector
 
-def opT : I3End := I3Vector.rotate
-def opS : I3End := fun x => x.rotate.rotate
-def opE : I3End := id
-def opQ : I3End := fun x => (omega3 : ℂ) • x
-def opDelta : I3End := fun x => x.rotate + (-x)
-def opGamma : I3End := fun x => x + x.rotate + x.rotate.rotate
-def opC : I3End := fun x =>
+noncomputable def opT : I3End := I3Vector.rotate
+noncomputable def opS : I3End := fun x => x.rotate.rotate
+noncomputable def opE : I3End := id
+noncomputable def opQ : I3End := fun x => (omega3 : ℂ) • x
+noncomputable def opDelta : I3End := fun x => x.rotate + (-x)
+noncomputable def opGamma : I3End := fun x => x + x.rotate + x.rotate.rotate
+noncomputable def opC : I3End := fun x =>
   let m : ℂ := x.sum / 3
   ⟨m, m, m⟩
 
@@ -36,17 +36,16 @@ theorem opDelta_apply (x : I3Vector) :
 
 theorem opDelta_zero_of_fixed {x : I3Vector} (hx : x.rotate = x) :
     opDelta x = 0 := by
-  simp [opDelta, hx]
+  rw [opDelta_apply, hx]
+  exact I3Vector.add_neg x
 
 theorem opGamma_rotate (x : I3Vector) :
     opGamma x.rotate = opGamma x := by
-  ext <;> simp [opGamma, I3Vector.rotate]
-  all_goals ring
+  apply I3Vector.ext <;> change (_ + _) + _ = (_ + _) + _ <;> simp only [I3Vector.rotate] <;> ring
 
 theorem opGamma_fixed (x : I3Vector) :
     (opGamma x).rotate = opGamma x := by
-  ext <;> simp [opGamma, I3Vector.rotate]
-  all_goals ring
+  apply I3Vector.ext <;> change (_ + _) + _ = (_ + _) + _ <;> simp only [I3Vector.rotate] <;> ring
 
 theorem opC_fixed (x : I3Vector) :
     (opC x).rotate = opC x := by
@@ -54,8 +53,7 @@ theorem opC_fixed (x : I3Vector) :
 
 theorem opC_idempotent (x : I3Vector) :
     opC (opC x) = opC x := by
-  ext <;> simp [opC, I3Vector.sum]
-  all_goals ring
+  apply I3Vector.ext <;> change ((_ / 3 + _ / 3 + _ / 3) / 3 : ℂ) = _ / 3 <;> ring
 
 theorem opQ_rotate (x : I3Vector) :
     opQ x.rotate = (opQ x).rotate := by
@@ -67,7 +65,7 @@ theorem opT_sum (x : I3Vector) : (opT x).sum = x.sum :=
 theorem opS_sum (x : I3Vector) : (opS x).sum = x.sum := by
   simp [opS, I3Vector.sum_rotate]
 
-def SevenOperatorLaw : Prop :=
+noncomputable def SevenOperatorLaw : Prop :=
   (opT ∘ opT ∘ opT = id) ∧
   (opT ∘ opS = id) ∧
   (opS ∘ opT = id) ∧
@@ -76,7 +74,7 @@ def SevenOperatorLaw : Prop :=
   (∀ x, opC (opC x) = opC x) ∧
   (∀ x, opQ x.rotate = (opQ x).rotate)
 
-def sevenOperatorInhabitant : Inhabitant SevenOperatorLaw :=
+noncomputable def sevenOperatorInhabitant : Inhabitant SevenOperatorLaw :=
   ⟨opT_three, opT_opS, opS_opT, opGamma_fixed,
     opC_fixed, opC_idempotent, opQ_rotate⟩
 
