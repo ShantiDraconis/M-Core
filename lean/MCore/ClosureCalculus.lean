@@ -446,4 +446,16 @@ theorem zero_over_zero_realizes_all (a : ℝ) :
 
 #print axioms zero_over_zero_realizes_all
 
+
+/-- Exact relative loss of the reciprocal model. -/
+theorem reciprocal_model_loss (n : ℕ) :
+    1 - (1 / ((n : ℝ) + 2)) / (1 / ((n : ℝ) + 1)) =
+      1 / ((n : ℝ) + 2) := by
+  have hn : 0 ≤ (n : ℝ) := Nat.cast_nonneg n
+  have h1 : (n : ℝ) + 1 ≠ 0 := by linarith
+  have h2 : (n : ℝ) + 2 ≠ 0 := by linarith
+  field_simp [h1, h2] <;> ring
+
+#print axioms reciprocal_model_loss
+
 end MCore.ClosureCalculus
