@@ -400,4 +400,30 @@ theorem common_prime_of_gcd_lower (a b c : ℕ)
 #print axioms common_prime_excluded_of_gcd_one
 #print axioms common_prime_of_gcd_lower
 
+
+/-- Structural identity is independent of the numerical realization. -/
+inductive RateExpression where
+  | atom : Nat → RateExpression
+  | zero : RateExpression
+  | quotient : RateExpression → RateExpression → RateExpression
+  | product : RateExpression → RateExpression → RateExpression
+  | difference : RateExpression → RateExpression → RateExpression
+  deriving DecidableEq, Repr
+
+/-- A family of admissible paths retains all realizable finite limits. -/
+def familyRateLimits (paths : Set AdmissibleRate) : Set ℝ :=
+  {a | ∃ p ∈ paths, p.realizes a}
+
+theorem familyRateLimits_mono {P Q : Set AdmissibleRate} (h : P ⊆ Q) :
+    familyRateLimits P ⊆ familyRateLimits Q := by
+  rintro a ⟨p, hp, ha⟩
+  exact ⟨p, h hp, ha⟩
+
+theorem structural_zero_distinct :
+    RateExpression.quotient .zero (.atom 2) ≠
+      RateExpression.quotient .zero (.atom 3) := by decide
+
+#print axioms familyRateLimits_mono
+#print axioms structural_zero_distinct
+
 end MCore.ClosureCalculus
