@@ -268,4 +268,57 @@ theorem exact_zero_syntax_distinct :
 #print axioms combine_exact
 #print axioms exact_zero_syntax_distinct
 
+
+-- Expanded syntax: preserve constants, association, binding and operator arity.
+inductive ExpandedExpr where
+  | atom (x : ExactExpr)
+  | constant (name : String)
+  | angularZero (angle : ExpandedExpr)
+  | unary (op : String) (x : ExpandedExpr)
+  | binary (op : String) (x y : ExpandedExpr)
+  | binder (op variable : String) (domain body : ExpandedExpr)
+  deriving DecidableEq, Repr
+
+def expandedExamples : List ExpandedExpr :=
+  [.binary "div" (.atom (.integer 0)) (.atom (.integer 2)),
+   .binary "div" (.atom (.integer 0)) (.constant "pi"),
+   .binary "pow" (.atom (.integer 0)) (.atom (.integer 1)),
+   .binary "pow" (.atom (.integer 0))
+     (.binary "pow" (.atom .infinity) (.unary "sqrt" (.atom .infinity)))]
+
+-- Realizations retain joint constraints, not merely marginal limit sets.
+structure ExpandedPoint (A B : Type*) where
+  expression : ExpandedExpr
+  domain : Set A
+  direction : A → Prop
+  rates : A → Prop
+  constraints : A → Prop
+  limitRelation : A → B → Prop
+  accumulationRelation : A → B → Prop
+  singularity : A → Prop
+  branch : A → Prop
+
+def ExpandedPoint.Admissible {A B : Type*} (p : ExpandedPoint A B) (a : A) : Prop :=
+  a ∈ p.domain ∧ p.direction a ∧ p.rates a ∧ p.constraints a ∧ p.branch a
+
+def ExpandedPoint.limits {A B : Type*} (p : ExpandedPoint A B) : Set B :=
+  {b | ∃ a, p.Admissible a ∧ p.limitRelation a b}
+
+theorem expanded_limits_exact {A B : Type*} (p : ExpandedPoint A B) (b : B) :
+    b ∈ p.limits ↔ ∃ a, p.Admissible a ∧ p.limitRelation a b := Iff.rfl
+
+theorem expanded_zero_div (c : ℝ) : (0 : ℝ) / c = 0 := zero_div c
+
+theorem expanded_zero_pow_one : (0 : ℝ) ^ (1 : ℕ) = 0 := by simp
+
+theorem expanded_distinct_constants :
+    ExpandedExpr.binary "div" (.atom (.integer 0)) (.atom (.integer 2)) ≠
+    ExpandedExpr.binary "div" (.atom (.integer 0)) (.constant "pi") := by
+  decide
+
+#print axioms expanded_limits_exact
+#print axioms expanded_zero_div
+#print axioms expanded_zero_pow_one
+#print axioms expanded_distinct_constants
+
 end MCore.Research.UserProgram
