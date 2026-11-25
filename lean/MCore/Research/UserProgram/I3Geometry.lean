@@ -4,7 +4,7 @@ import MCore.Research.UserProgram.ThreeChannel
 namespace MCore.Research.UserProgram
 
 /-- A primitive cube root represented algebraically. -/
-def omega3 : ℂ := (-1 + Real.sqrt 3 * Complex.I) / 2
+noncomputable def omega3 : ℂ := (-1 + Real.sqrt 3 * Complex.I) / 2
 
 theorem sqrt_three_sq : (Real.sqrt 3)^2 = 3 := by
   norm_num
@@ -23,7 +23,7 @@ theorem omega3_cube : omega3^3 = 1 := by
     _ = 0 := by rw [h, mul_zero]
   exact sub_eq_zero.mp this
 
-def I3State.phase : I3State → ℂ
+noncomputable def I3State.phase : I3State → ℂ
   | .manifesto => 1
   | .travessia => omega3
   | .semente => omega3^2
@@ -47,10 +47,10 @@ structure ComplexThreeChannel where
   travessia : ℂ
   semente : ℂ
 
-def ComplexThreeChannel.mean (x : ComplexThreeChannel) : ℂ :=
+noncomputable def ComplexThreeChannel.mean (x : ComplexThreeChannel) : ℂ :=
   (x.manifesto + x.travessia + x.semente) / 3
 
-def ComplexThreeChannel.centered (x : ComplexThreeChannel) : ComplexThreeChannel where
+noncomputable def ComplexThreeChannel.centered (x : ComplexThreeChannel) : ComplexThreeChannel where
   manifesto := x.manifesto - x.mean
   travessia := x.travessia - x.mean
   semente := x.semente - x.mean
