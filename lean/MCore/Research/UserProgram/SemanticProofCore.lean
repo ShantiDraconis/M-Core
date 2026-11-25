@@ -321,4 +321,44 @@ theorem expanded_distinct_constants :
 #print axioms expanded_zero_pow_one
 #print axioms expanded_distinct_constants
 
+
+-- Material identities for exact points; domain restrictions are explicit.
+theorem point_zero_div_complex (c : ℂ) (_hc : c ≠ 0) :
+    (0 : ℂ) / c = 0 := zero_div c
+
+theorem point_zero_div_pi : (0 : ℝ) / Real.pi = 0 :=
+  expanded_zero_div Real.pi Real.pi_ne_zero
+
+theorem point_zero_pow_positive (n : ℕ) (hn : n ≠ 0) :
+    (0 : ℝ) ^ n = 0 := zero_pow hn
+
+theorem point_ratio_realization (a t : ℝ) (ht : t ≠ 0) :
+    (a * t) / t = a := by
+  field_simp
+
+theorem point_product_realization (a t : ℝ) (ht : t ≠ 0) :
+    (a * t) * t⁻¹ = a := by
+  field_simp
+
+theorem point_difference_realization (a t : ℝ) :
+    (t + a) - t = a := by ring
+
+theorem point_path_ratio (k t : ℝ) (ht : t ≠ 0) (hk : 1 + k ≠ 0) :
+    t / (t + k * t) = 1 / (1 + k) := by
+  have h : t + k * t = (1 + k) * t := by ring
+  rw [h]
+  field_simp
+
+theorem point_power_log_realization (a t : ℝ) (ht : t ≠ 0) :
+    (a / t) * t = a := by field_simp
+
+#print axioms point_zero_div_complex
+#print axioms point_zero_div_pi
+#print axioms point_zero_pow_positive
+#print axioms point_ratio_realization
+#print axioms point_product_realization
+#print axioms point_difference_realization
+#print axioms point_path_ratio
+#print axioms point_power_log_realization
+
 end MCore.Research.UserProgram
