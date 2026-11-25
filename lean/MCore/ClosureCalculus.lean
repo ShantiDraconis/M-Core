@@ -294,4 +294,18 @@ theorem rate_minorant_excludes_floor (D a : ℕ → ℝ)
 
 #print axioms rate_minorant_excludes_floor
 
+
+/-- A positive floor bounds the accumulated loss even along arbitrary monotone blocks. -/
+theorem block_minorant_excludes_floor (D a : ℕ → ℝ) (K : ℕ → ℕ)
+    (hK : Monotone K) (hD : Antitone D)
+    (minorant : ∀ n, a n ≤ 1 - D (K (n+1)) / D (K n))
+    (diverges : ∀ B : ℝ, ∃ N : ℕ, B < ∑ n ∈ Finset.range N, a n) :
+    ∀ L : ℝ, 0 < L → ¬ (∀ n, L ≤ D n) := by
+  intro L hL floor
+  exact rate_minorant_excludes_floor (fun n => D (K n)) a
+    (fun n => hD (hK (Nat.le_succ n))) minorant diverges L hL
+    (fun n => floor (K n))
+
+#print axioms block_minorant_excludes_floor
+
 end MCore.ClosureCalculus
