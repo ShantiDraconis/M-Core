@@ -35,7 +35,7 @@ theorem I3Vector.add_zero (x : I3Vector) : x + 0 = x := by
   apply I3Vector.ext <;> change _ + 0 = _ <;> exact _root_.add_zero _
 
 theorem I3Vector.add_neg (x : I3Vector) : x + (-x) = 0 := by
-  ext <;> simp
+  apply I3Vector.ext <;> change _ + -_ = (0 : ℂ) <;> exact add_neg_cancel _
 
 theorem I3Vector.smul_add (a : ℂ) (x y : I3Vector) :
     a • (x + y) = a • x + a • y := by
