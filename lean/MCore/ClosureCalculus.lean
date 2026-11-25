@@ -279,4 +279,19 @@ theorem schur_zero_iff (D u s : ℝ) (hs : 0 < s) :
 
 #print axioms schur_zero_iff
 
+
+/-- A divergent lower rate certificate excludes every positive residual floor. -/
+theorem rate_minorant_excludes_floor (D a : ℕ → ℝ)
+    (dec : ∀ n, D (n+1) ≤ D n)
+    (minorant : ∀ n, a n ≤ 1 - D (n+1) / D n)
+    (diverges : ∀ B : ℝ, ∃ N : ℕ, B < ∑ n ∈ Finset.range N, a n) :
+    ∀ L : ℝ, 0 < L → ¬ (∀ n, L ≤ D n) := by
+  apply no_positive_residual_of_unbounded_loss D dec
+  intro B
+  obtain ⟨N, hN⟩ := diverges B
+  refine ⟨N, lt_of_lt_of_le hN ?_⟩
+  exact Finset.sum_le_sum (fun n _ => minorant n)
+
+#print axioms rate_minorant_excludes_floor
+
 end MCore.ClosureCalculus
