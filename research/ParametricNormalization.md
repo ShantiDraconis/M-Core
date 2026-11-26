@@ -1,0 +1,3 @@
+# Universal parametric normalization
+
+For a != 0 and t>0 define T=(3a²/20)^(1/4), x=t/T. Then T⁴=3a²/20, and substitution yields F=3x⁴/(5+3x⁴), E=5/(5+3x⁴). Quotient rule gives F'=60x³/(5+3x⁴)² and F''=900x²(1-x⁴)/(5+3x⁴)³. E derivatives are their negatives. For x>0 the denominator is positive, so F'>0 and F'' changes sign from positive to negative exactly at x=1. F(1)=3/8 and E(1)=5/8. Limits at infinity follow by dividing numerator and denominator by x⁴. For a=0, F=1 and E=0 for t>0; normalization T is not defined. These identities are analytically proved, not Lean-certified. They impose no constraint on zeta zeros. RH remains OPEN. No CI requested.
